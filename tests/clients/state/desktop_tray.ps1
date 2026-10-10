@@ -5,7 +5,7 @@ Add-Type 'using System;using System.Runtime.InteropServices;public class StateTr
 if(-not [StateTray]::SetProcessDPIAware()){throw 'Own tray geometry DPI awareness failed'}
 $p=@(Get-Process im-client-storage|Where-Object {$_.Path -eq 'H:\.codex\toolchains\client-gui\installed\im-client-storage.exe'});if($p.Count -ne 1){throw 'Unique installed owner required'}
 $name='IM+ '+[char]0x00b7+' Your workspace'
-$match=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name))
+$match=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.AndCondition (New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name),(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::ControlTypeProperty),([System.Windows.Automation.ControlType]::Button))))
 if($null -eq $match){
  $taskbar=[System.Windows.Automation.AutomationElement]::FromHandle([StateTray]::FindWindow('Shell_TrayWnd',$null))
  $elements=$taskbar.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
@@ -13,7 +13,7 @@ if($null -eq $match){
  if($expand.Count -ne 1){throw ('Unique system tray overflow control required: '+$expand.Count)}
  Write-Output ('Observed overflow: '+$expand[0].Current.Name+' id='+$expand[0].Current.AutomationId)
  ([System.Windows.Automation.InvokePattern]$expand[0].GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)).Invoke();Start-Sleep -Milliseconds 350
- $match=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name))
+ $match=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.AndCondition (New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name),(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::ControlTypeProperty),([System.Windows.Automation.ControlType]::Button))))
  if($null -eq $match){throw 'Owned tray tooltip still not exposed after actual overflow'}
 }
 $c=$match.Current;$result=@{ownedClientPid=$p[0].Id;name=$c.Name;type=$c.ControlType.ProgrammaticName;bounds=$c.BoundingRectangle.ToString();offscreen=$c.IsOffscreen;enabled=$c.IsEnabled;patterns=@($match.GetSupportedPatterns()|ForEach-Object {$_.ProgrammaticName})}|ConvertTo-Json -Depth 4
@@ -25,14 +25,14 @@ if($Exercise){
  Add-Type -ReferencedAssemblies ([Accessibility.IAccessible].Assembly.Location) -TypeDefinition 'using System;using System.Runtime.InteropServices;public class StateMenuAccessibility { [DllImport("oleacc.dll")]static extern int AccessibleObjectFromWindow(IntPtr h,uint id,ref Guid iid,out Accessibility.IAccessible a);public static Accessibility.IAccessible Get(IntPtr h){var iid=new Guid("618736E0-3C3D-11CF-810C-00AA00389B71");Accessibility.IAccessible a;Marshal.ThrowExceptionForHR(AccessibleObjectFromWindow(h,0xfffffffc,ref iid,out a));return a;}public static string[] Describe(IntPtr h){var a=Get(h);var lines=new string[a.accChildCount];for(int i=1;i<=lines.Length;i++)lines[i-1]=i+" name="+a.get_accName(i)+" action="+a.get_accDefaultAction(i)+" role="+a.get_accRole(i);return lines;}public static string Invoke(IntPtr h,string name){var a=Get(h);int found=0,count=0;for(int i=1;i<=a.accChildCount;i++)if(a.get_accName(i)==name){found=i;count++;}if(count!=1||Convert.ToInt32(a.get_accRole(found))!=12||(Convert.ToInt32(a.get_accState(found))&1)!=0||a.get_accDefaultAction(found)!="Execute")throw new Exception("Unique observed enabled menu action required");int x,y,w,z;a.accLocation(out x,out y,out w,out z,found);a.accDoDefaultAction(found);return x+","+y+","+w+","+z;} }'
  $results=@()
  foreach($action in @('Hide window','Open IM+')){
-  $icon=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name))
+  $icon=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.AndCondition (New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name),(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::ControlTypeProperty),([System.Windows.Automation.ControlType]::Button))))
   if($null -eq $icon -or $icon.Current.IsOffscreen){
    $taskbar=[System.Windows.Automation.AutomationElement]::FromHandle([StateTray]::FindWindow('Shell_TrayWnd',$null))
    $elements=$taskbar.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
    $expand=@($elements|Where-Object {$_.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and ($_.Current.AutomationId -match 'Chevron' -or $_.Current.Name -match 'hidden|隐藏')})
    if($expand.Count -ne 1){throw 'Unique actual overflow required'}
    ([System.Windows.Automation.InvokePattern]$expand[0].GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)).Invoke();Start-Sleep -Milliseconds 350
-   $icon=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name))
+   $icon=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.AndCondition (New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name),(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::ControlTypeProperty),([System.Windows.Automation.ControlType]::Button))))
   }
   if($null -eq $icon -or $icon.Current.IsOffscreen){throw 'Actual owned tray icon must be visible'}
   $r=$icon.Current.BoundingRectangle;if($r.IsEmpty){throw 'Own tray bounds missing'}
