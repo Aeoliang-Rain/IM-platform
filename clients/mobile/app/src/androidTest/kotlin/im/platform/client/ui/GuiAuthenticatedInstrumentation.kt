@@ -147,11 +147,9 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    val targetIndex=messages.indexOfFirst{it[2]==text}
    val visible=messages.mapIndexedNotNull{index,row->val v=find(root,row[2]?:"");val bounds=android.graphics.Rect();v?.getBoundsInScreen(bounds);if(v!=null&&!bounds.isEmpty&&bounds.intersects(viewport.left,viewport.top,viewport.right,viewport.bottom))index else null}
    val above=visible.isNotEmpty()&&targetIndex>=0&&targetIndex<visible.min()
-   val delta=if(above)viewport.height()/3 else if(target!=null&&!r.isEmpty&&r.top<viewport.top+1)kotlin.math.min(viewport.height()/3,kotlin.math.max(20,viewport.top+1-r.top))
-    else -kotlin.math.min(viewport.height()/3,if(target==null||r.isEmpty)viewport.height()/3 else kotlin.math.max(20,(rowBottom(root,r)?:r.bottom+30)-(viewport.bottom-1)))
-   val x=viewport.centerX().toFloat();val y=viewport.centerY().toFloat();val down=android.os.SystemClock.uptimeMillis()
-   fun event(action:Int,step:Int){val e=android.view.MotionEvent.obtain(down,android.os.SystemClock.uptimeMillis(),action,x,y+delta*step/6f,0);e.source=android.view.InputDevice.SOURCE_TOUCHSCREEN;try{verify(uiAutomation.injectInputEvent(e,true))}finally{e.recycle()}}
-   event(android.view.MotionEvent.ACTION_DOWN,0);for(i in 1..6){Thread.sleep(25);event(android.view.MotionEvent.ACTION_MOVE,i)};event(android.view.MotionEvent.ACTION_UP,6)
+   val direction=if(above||target!=null&&!r.isEmpty&&r.top<viewport.top+1)AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
+   val moved=n.performAction(direction)
+   if(!moved&&target!=null)target.performAction(AccessibilityNodeInfo.ACTION_SHOW_ON_SCREEN)
    Thread.sleep(250);uiAutomation.waitForIdle(100,3000)
   }
   error("Actual complete message viewport unavailable "+text+" "+diagnostic)
