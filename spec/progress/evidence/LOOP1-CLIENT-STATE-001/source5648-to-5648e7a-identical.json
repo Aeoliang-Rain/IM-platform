@@ -1,0 +1,48 @@
+{
+  "oldSource": "5648c9d80004ea1db618c7740607f9797b6200a8",
+  "helperCandidate": "5648e7a47e14ede0576ff8fa36bd1950851bcc40",
+  "proofs": [
+    {
+      "path": "backend/go",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "clients/web/src",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "clients/desktop/src",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "clients/desktop/src-tauri",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "clients/mobile/app/src/main",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "tests/clients/state/android_actual.mjs",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "tests/clients/state/web_actual.mjs",
+      "byteIdenticalGitBlobs": true
+    },
+    {
+      "path": "tests/clients/state/fault_proxy.py",
+      "byteIdenticalGitBlobs": true
+    }
+  ],
+  "onlyChangedHarness": "tests/clients/state/desktop_window.ps1",
+  "webOriginalsRemainBoundToOldSource": true
+}

@@ -29,7 +29,7 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
             var ready=false
             send.state.collect {s->
                 val now=s.connection=="ready"
-                if(!now && ready){generation++;pull?.cancel()}
+                if(!now && ready){generation++;pending.set(false);pull?.cancel();if(!stopped)mutableState.value=SyncState(unavailable=mutableState.value.unavailable)}
                 if(now && !ready && !stopped)enqueue()
                 ready=now
             }

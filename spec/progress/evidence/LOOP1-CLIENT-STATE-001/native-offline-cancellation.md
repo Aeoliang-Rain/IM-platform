@@ -1,0 +1,11 @@
+# Native offline cancellation repair (2026-10-10)
+
+The complete friends-1e3c973e-85e3-4699-ac3e-1fb34ea6313b matrix remains FAIL. Its three actual origins, online projections and Web reconnect images are preserved. Mobile Go offline reached connection=offline while Sync remained syncing; the original Instrumentation output records 26 assertions and the failed Offline control wait. Cancellation advances generation, so the cancelled pull returns without clearing its syncing publication.
+
+The minimal repair clears the pending request and cancels the old generation, then publishes idle preserving unavailable, only when authentication has not stopped the owner. Old responses still cannot merge; reconnect/open/delivery triggers retain their existing behavior. No UI wording, polling interval, TLS, contract or data reset changes.
+
+Desktop actual UIA Invoke returned but did not establish an offline transition; its screenshots are diagnostic only. The same actual SQLx native Repository regression was run against the unchanged pre-fix Desktop source: Recorder native.py desktop exited 1 at desktop.mjs:64 with syncing != idle. After the one-line state repair, the same command exited 0 and also executed existing 401/stopped, retirement, real native HTTPS/WSS and storage regressions. The controlled noninterruptible delayed old page cannot advance cursor; a new bound connection triggers another pull. This native regression is distinct from mandatory real Go GUI acceptance.
+
+Android GUI build: first PowerShell unquoted Gradle property was split into an unknown task and failed. Correct single-string property then assembled product and GUI test APKs successfully (62 actionable tasks, 21s). Product/runner byte binding and new installed formal matrix remain pending. Previous source35d native formal runs are historical because native product logic changed; no old image will be relabeled.
+
+Current week2 temporary trust remains active and must be rolled back exactly with native negative TLS before handoff. Complete friends/recovery/isolation, rebuilt native formal matrices, tray actions, mobile baseline families, final source checks and independent review/CI/integration/main synchronization remain pending. Implementation is active, not accepted.

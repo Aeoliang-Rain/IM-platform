@@ -14,7 +14,7 @@ export class SyncApplication {
     this.detachDelivery=send.observeDelivery(()=>{if(send.state.connection==="ready") void this.synchronize().catch(()=>{});});
     this.detach=send.observe(s=>{
       const ready=s.connection==="ready";
-      if(!ready && this.wasReady){this.generation++;this.controller.abort();this.controller=new AbortController();}
+      if(!ready && this.wasReady){this.generation++;this.requested=false;this.controller.abort();this.controller=new AbortController();if(!this.stopped)this.publish({status:"idle",error:null,unavailable:this.current.unavailable});}
       if(ready && !this.wasReady && !this.stopped) void this.synchronize().catch(()=>{});
       this.wasReady=ready;
     });

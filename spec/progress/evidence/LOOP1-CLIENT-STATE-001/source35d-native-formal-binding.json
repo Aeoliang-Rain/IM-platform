@@ -1,0 +1,25 @@
+{
+  "actualProductBuildSource": "35d74e0a804719353b804e61638439693903c203",
+  "bindingCommit": "cdd026370f04c4435290eeba91915ff24cf09738",
+  "androidSourceAndRunnerSameAsBuild": true,
+  "androidApkSha256": {
+    "clients\\mobile\\app\\build\\outputs\\apk\\debug\\app-debug.apk": "8850520d5391d17193fc8fae26e68db529f9652e4ebaa12f76a6f97d82c4ed2d",
+    "clients\\mobile\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk": "c4aa8aff06e2acf9320c0bd0650234ec12703a026ecd473aa5de34c749c27535"
+  },
+  "unchangedSinceSource5648": {
+    "backend/go": true,
+    "clients/web": true,
+    "clients/desktop": true,
+    "clients/shared": true,
+    "tests/clients/state/web_actual.mjs": true,
+    "tests/clients/state/desktop_actual.mjs": true,
+    "tests/clients/state/android_actual.mjs": true,
+    "tests/clients/state/fault_proxy.py": true
+  },
+  "formalNewProductActualRuns": {
+    "restart": "restart-842cb2b2-ad89-44c0-8e67-fae1271e8a76",
+    "AB_and_order": "state-59e226bd-a1d2-4a07-9daf-61080a953f31",
+    "freshDatabase": "fresh-24c3828f-85da-44ac-86f2-1c26bb7a1dad"
+  },
+  "qualification": "Formal actual commands are Recorder original events; original proof kind fields remain unchanged. These Android runs use newly built/installed product source35d, not prior source5648 APK. Product metadata/candidate changes do not alter source identity."
+}

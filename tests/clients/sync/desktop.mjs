@@ -54,6 +54,17 @@ for(const local of [true,false]){
  assert.equal(pulled,1);assert.equal(await fresh.contiguous(chosen),1n);assert.equal((await fresh.messages(chosen))[0][3],"SENT");assert.equal(await fresh.cursor(),"0");await app.close();
 }
 
+// Disconnect cancels an in-flight old generation without retaining syncing or writing its page.
+{
+ const local=new Repository(database(uid(92000)));await local.initialize();let socket,release,calls=0;
+ const owner=new SendApplication(local,session,()=>socket={onopen:null,onmessage:null,onclose:null,onerror:null,close(){},send(text){const frame=JSON.parse(text);if(frame.type==="auth.bind")queueMicrotask(()=>socket.onmessage({data:JSON.stringify({protocolVersion:"1.0",type:"auth.ack",requestId:frame.requestId,payload:{status:"bound",userId:u,sessionId:sid,clientType:"DESKTOP",sessionEpoch:1}})}));}});
+ const fetchPage=async(url,options)=>{const request=JSON.parse(options.body);const call=++calls;if(call===1)await new Promise(r=>release=r);return response(fakePage(request,request.cursor,"cancelled",call===1));};
+ const app=new SyncApplication(owner,new SyncHttp("https://localhost/",session,fetchPage));
+ function connect(){owner.connect("wss://localhost/ws");socket.onopen(new Event("open"));}
+ connect();await until(()=>calls===1);assert.equal(app.state.status,"syncing");owner.disconnect();await owner.idle();assert.equal(app.state.status,"idle");release();await app.idle();assert.equal(await local.cursor(),"0");
+ connect();await until(()=>calls===2&&app.state.status==="idle");assert.equal(await local.cursor(),"0");await app.close();
+}
+
 // Raw API defaults must reject fixture CA; no product trust override.
 const env={...process.env};delete env.NODE_EXTRA_CA_CERTS;
 const rejection=spawnSync(process.execPath,["--input-type=module","-e","try { await fetch(process.argv[1]); process.exit(2); } catch { process.exit(0); }",endpoint],{env,encoding:"utf8"});assert.equal(rejection.status,0);

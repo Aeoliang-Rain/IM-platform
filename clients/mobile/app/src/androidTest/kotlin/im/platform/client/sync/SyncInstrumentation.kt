@@ -55,15 +55,15 @@ class SyncInstrumentation:Instrumentation() {
         val started=System.nanoTime()
         for(n in listOf("1e100000000","1e-100000000","100000000000000000000","1e2147483647","1e-2147483647")) reject {Wire.user(userPage(id).toString().replace("\"revision\":1","\"revision\":$n"),id,"0")}
         check(System.nanoTime()-started<2_000_000_000L) {"Hostile numeric Sync response was not bounded"}
-        val text="😀".repeat(4096);val messages=JSONArray();(1..100).forEach {messages.put(message(it,text))}
+        val text="馃榾".repeat(4096);val messages=JSONArray();(1..100).forEach {messages.put(message(it,text))}
         val raw=conversationPage(id,messages).toString()
         equal(Wire.conversation(raw,id,c,0).messages.size,100)
-        val escaped=raw.replace("😀","\\ud83d\\ude00");check(escaped.toByteArray().size<MAX_RESPONSE)
+        val escaped=raw.replace("馃榾","\\ud83d\\ude00");check(escaped.toByteArray().size<MAX_RESPONSE)
         equal(Wire.conversation(escaped,id,c,0).messages.last().text,text)
         reject {Wire.conversation(conversationPage(id,JSONArray().put(message(2))).toString(),id,c,0)}
         reject {Wire.conversation(conversationPage(id,JSONArray().put(message(1)).put(message(1))).toString(),id,c,0)}
         reject {Wire.conversation(conversationPage(id,JSONArray()).put("hasMore",true).toString(),id,c,0)}
-        reject {Wire.conversation(conversationPage(id,JSONArray().put(message(1,"😀".repeat(4097)))).toString(),id,c,0)}
+        reject {Wire.conversation(conversationPage(id,JSONArray().put(message(1,"馃榾".repeat(4097)))).toString(),id,c,0)}
         equal(Wire.conversation(conversationPage(id,JSONArray().put(message(1))).toString().replace("\"seq\":1","\"seq\":9007199254740993"),id,c,9007199254740992L).messages.single().seq,9007199254740993L)
         for(endpoint in listOf("http://localhost/","https://user@localhost/","https://localhost/?token=x","https://localhost/sub"))reject {SyncHttps(endpoint,session())}
     }
@@ -161,19 +161,22 @@ class SyncInstrumentation:Instrumentation() {
     private suspend fun slowPeriodicPull() {
         phase="slow-pull-no-periodic-backlog"
         val account=UUID.randomUUID().toString();val repo=Repository(targetContext,account);repo.initialize();val creds=session(account)
-        val id=uid(4500);val gate=CountDownLatch(1);val calls=java.util.concurrent.atomic.AtomicInteger()
+        val id=uid(4500);val gate=CountDownLatch(1);val cancelGate=CountDownLatch(1);val calls=java.util.concurrent.atomic.AtomicInteger()
         val sender=SendViewModel(repo,creds,{_,open,message,_->
             val socket=object:SendSocket {override fun close(){};override fun send(text:String){val frame=JSONObject(text);if(frame.getString("type")=="auth.bind")message(im.platform.client.send.Wire.envelope("auth.ack",frame.getString("requestId"),JSONObject().put("status","bound").put("userId",account).put("sessionId",sid).put("clientType","MOBILE").put("sessionEpoch",1)))}}
             open();socket
         })
-        val http=SyncHttps("https://localhost/",creds,{Fake({JSONObject().put("syncVersion","1.0").put("type","sync.user.page").put("requestId",id).put("events",JSONArray()).put("nextCursor","0").put("hasMore",false).toString()},gate=if(calls.incrementAndGet()==1)gate else null)},{id})
+        val http=SyncHttps("https://localhost/",creds,{val call=calls.incrementAndGet();Fake({if(call==3)userPage(id,"cancelled").toString() else JSONObject().put("syncVersion","1.0").put("type","sync.user.page").put("requestId",id).put("events",JSONArray()).put("nextCursor","0").put("hasMore",false).toString()},gate=when(call){1->gate;3->cancelGate;else->null})},{id})
         val sync=SyncViewModel(sender,repo,http)
         try {
             sender.connect("wss://localhost/ws");until{sender.state.value.connection=="ready"&&calls.get()==1}
             delay(11000);equal(sync.state.value.status,"syncing");equal(calls.get(),1)
             gate.countDown();until{sync.state.value.status=="idle"};delay(1000);equal(calls.get(),1)
             until{calls.get()==2};until{sync.state.value.status=="idle"};equal(repo.cursor(),"0")
-        }finally{gate.countDown();sync.dispose();repo.close();targetContext.deleteDatabase("im-$account.sqlite")}
+            val cancelled=CoroutineScope(Dispatchers.IO).launch{sync.synchronize()};until{calls.get()==3};equal(sync.state.value.status,"syncing")
+            sender.disconnect();until{sender.state.value.connection=="offline"&&sync.state.value.status=="idle"};cancelGate.countDown();cancelled.join();equal(repo.cursor(),"0")
+            sender.connect("wss://localhost/ws");until{calls.get()==4&&sync.state.value.status=="idle"};equal(repo.cursor(),"0")
+        }finally{gate.countDown();cancelGate.countDown();sync.dispose();repo.close();targetContext.deleteDatabase("im-$account.sqlite")}
     }
 
     override fun onCreate(arguments:Bundle?){args=arguments ?: Bundle();super.onCreate(arguments);start()}

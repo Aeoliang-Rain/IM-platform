@@ -1,0 +1,333 @@
+{
+  "task": "LOOP1-CLIENT-STATE-001",
+  "kind": "preliminary actual browser/default TLS and actual Go; exact candidate rerun pending",
+  "browser": "151.0.7922.34",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-35588",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_661cf5",
+        "userId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_cec3e9",
+        "userId": "4a36047f-5e07-484d-9464-814342ae235a",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_2253e1",
+        "userId": "1e47887f-967b-45ff-9be7-d5d6bd196e07",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+    "privateRuntime": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-35588",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "entries": [
+    {
+      "file": "A-sending.png",
+      "sha256": "fdd2fba7199924a81bfc3896257cc832a3dd3891ba99023185e0c7a38cfc81ac",
+      "state": "A-sending",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "theme": "cold",
+      "font": "16px",
+      "density": "comfortable",
+      "language": "zh/default",
+      "fixture": "im-gui-product-20261004-35588",
+      "source": "dirty candidate preliminary; no accepted SHA claim"
+    },
+    {
+      "file": "A-failed.png",
+      "sha256": "26cb7955877f8cb78f571474a2081ed2aed2c997ae23c6cdb0b0dde32d4a7582",
+      "state": "A-failed",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "theme": "cold",
+      "font": "16px",
+      "density": "comfortable",
+      "language": "zh/default",
+      "fixture": "im-gui-product-20261004-35588",
+      "source": "dirty candidate preliminary; no accepted SHA claim"
+    },
+    {
+      "file": "A-retry-sent.png",
+      "sha256": "b6c79c762e2cb2f292f1a1991c046ea270c9fb1d6b4344463e7ac57a93eb1fe2",
+      "state": "A-retry-sent",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "theme": "cold",
+      "font": "16px",
+      "density": "comfortable",
+      "language": "zh/default",
+      "fixture": "im-gui-product-20261004-35588",
+      "source": "dirty candidate preliminary; no accepted SHA claim"
+    },
+    {
+      "file": "B-sending.png",
+      "sha256": "db516753b1796fcf649b944867d78f4b25c9eb888b452f41a452ec4619928a7d",
+      "state": "B-sending",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "theme": "cold",
+      "font": "16px",
+      "density": "comfortable",
+      "language": "zh/default",
+      "fixture": "im-gui-product-20261004-35588",
+      "source": "dirty candidate preliminary; no accepted SHA claim"
+    },
+    {
+      "file": "B-receiver-live-before-retry.png",
+      "sha256": "ce2586b05345162ac1337e8254b4acf964aa17aa13981bc3442137be3bd4329a",
+      "state": "B-receiver-live-before-retry",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "theme": "cold",
+      "font": "16px",
+      "density": "comfortable",
+      "language": "zh/default",
+      "fixture": "im-gui-product-20261004-35588",
+      "source": "dirty candidate preliminary; no accepted SHA claim"
+    },
+    {
+      "file": "B-failed.png",
+      "sha256": "2cd718a4a6e2efb07c058cf8021e863b72b12af354369e67df0c5eeabf2eff3b",
+      "state": "B-failed",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "theme": "cold",
+      "font": "16px",
+      "density": "comfortable",
+      "language": "zh/default",
+      "fixture": "im-gui-product-20261004-35588",
+      "source": "dirty candidate preliminary; no accepted SHA claim"
+    },
+    {
+      "file": "B-retry-sent.png",
+      "sha256": "86c7ac1f20f0ca3e7ecce5a037c56d612e30f1340eb9e5186a5fbf921147989f",
+      "state": "B-retry-sent",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "theme": "cold",
+      "font": "16px",
+      "density": "comfortable",
+      "language": "zh/default",
+      "fixture": "im-gui-product-20261004-35588",
+      "source": "dirty candidate preliminary; no accepted SHA claim"
+    }
+  ],
+  "proofs": [
+    {
+      "mode": "A",
+      "text": "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78",
+      "requestId": "df626d60-ad25-4a09-8296-1387f41cddd9",
+      "before": {
+        "messages": 0,
+        "outbox": 0,
+        "rows": []
+      },
+      "after": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "df626d60-ad25-4a09-8296-1387f41cddd9",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "a5300d94-a01f-4b3f-8bca-74208f6b3633",
+            "seq": 29,
+            "content": "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78"
+          }
+        ]
+      },
+      "sends": [
+        {
+          "event": 16,
+          "kind": "send",
+          "requestId": "df626d60-ad25-4a09-8296-1387f41cddd9",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78"
+          },
+          "attempt": 1
+        },
+        {
+          "event": 23,
+          "kind": "send",
+          "requestId": "df626d60-ad25-4a09-8296-1387f41cddd9",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78"
+          },
+          "attempt": 2
+        }
+      ],
+      "actualAcks": [
+        {
+          "event": 24,
+          "kind": "actual_ack",
+          "requestId": "df626d60-ad25-4a09-8296-1387f41cddd9",
+          "payload": {
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "createdAt": "2026-10-10T11:00:19.406488Z",
+            "messageId": "a5300d94-a01f-4b3f-8bca-74208f6b3633",
+            "seq": 29,
+            "status": "committed"
+          },
+          "held": false
+        }
+      ],
+      "receiverLiveBeforeRetry": false,
+      "secondText": "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78 R2",
+      "second": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "81121261-de26-4f73-8551-db447bfa1cd6",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "556a1fe6-9151-41c0-8e10-e0e8ab06cfc1",
+            "seq": 28,
+            "content": "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78 R2"
+          }
+        ]
+      },
+      "rendered": [
+        "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78 R2SENT · 已确认#28",
+        "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78SENT · 已确认#29"
+      ],
+      "firstIndex": 1,
+      "secondIndex": 0
+    },
+    {
+      "mode": "B",
+      "text": "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24",
+      "requestId": "341dc8e3-d3d4-44d5-b5e9-0157a9c03741",
+      "before": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "341dc8e3-d3d4-44d5-b5e9-0157a9c03741",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "46f6a9df-c781-4ea6-b308-e22c505d59ae",
+            "seq": 30,
+            "content": "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24"
+          }
+        ]
+      },
+      "after": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "341dc8e3-d3d4-44d5-b5e9-0157a9c03741",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "46f6a9df-c781-4ea6-b308-e22c505d59ae",
+            "seq": 30,
+            "content": "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24"
+          }
+        ]
+      },
+      "sends": [
+        {
+          "event": 29,
+          "kind": "send",
+          "requestId": "341dc8e3-d3d4-44d5-b5e9-0157a9c03741",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24"
+          },
+          "attempt": 1
+        },
+        {
+          "event": 43,
+          "kind": "send",
+          "requestId": "341dc8e3-d3d4-44d5-b5e9-0157a9c03741",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24"
+          },
+          "attempt": 2
+        }
+      ],
+      "actualAcks": [
+        {
+          "event": 31,
+          "kind": "actual_ack",
+          "requestId": "341dc8e3-d3d4-44d5-b5e9-0157a9c03741",
+          "payload": {
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "createdAt": "2026-10-10T11:00:20.099827Z",
+            "messageId": "46f6a9df-c781-4ea6-b308-e22c505d59ae",
+            "seq": 30,
+            "status": "committed"
+          },
+          "held": true
+        },
+        {
+          "event": 45,
+          "kind": "actual_ack",
+          "requestId": "341dc8e3-d3d4-44d5-b5e9-0157a9c03741",
+          "payload": {
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "createdAt": "2026-10-10T11:00:20.099827Z",
+            "messageId": "46f6a9df-c781-4ea6-b308-e22c505d59ae",
+            "seq": 30,
+            "status": "committed"
+          },
+          "held": false
+        }
+      ],
+      "receiverLiveBeforeRetry": true,
+      "secondText": "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24 R2",
+      "second": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "727ea530-96f5-4f9c-8ea9-18843f358de6",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "092ed24b-bcc2-42fe-ae34-e948c4eb92b5",
+            "seq": 31,
+            "content": "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24 R2"
+          }
+        ]
+      },
+      "rendered": [
+        "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78 R2SENT · 已确认#28",
+        "STATE Web A bb2cfbe4-207d-4b31-accc-854537bddf78SENT · 已确认#29",
+        "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24SENT · 已确认#30",
+        "STATE Web B ed4277c9-1fb7-412c-8bd8-b02614d2fd24 R2SENT · 已确认#31"
+      ],
+      "firstIndex": 2,
+      "secondIndex": 3
+    }
+  ]
+}
