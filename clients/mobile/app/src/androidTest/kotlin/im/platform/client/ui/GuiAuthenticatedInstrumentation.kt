@@ -29,7 +29,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
  }
  private fun await(text:String,prefix:Boolean=false):AccessibilityNodeInfo{
   repeat(300){find(actualRoot(),text,prefix)?.let{return it};Thread.sleep(100)}
-  error("Actual control missing: "+text)
+  error("Actual control missing: "+text+" connection="+activity?.let{actualViewModel().state.value.connection}+" sync="+activity?.let{actualViewModel().state.value.sync})
  }
  private fun scroll(n:AccessibilityNodeInfo?,direction:Int=AccessibilityNodeInfo.ACTION_SCROLL_FORWARD):Boolean{
   fun collection(v:AccessibilityNodeInfo?):Boolean{
@@ -231,7 +231,12 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    result.putString("defaultHostnameMismatch","PASS");prefs.saveAppearance(Appearance("cold",14,.8f))
    activity=startActivitySync(Intent(targetContext,MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));await("Open your workspace")
    val phase=args.getString("phase")?:"matrix"
-   if(phase=="state-restart-prepare"){
+   if(phase=="state-connection-diagnostic"){
+      fill("Username",args.getString("avery")!!);fill("Password","fixture-password-not-a-real-secret");backKeyboard();reach("Sign in");click("Sign in")
+      val observed=org.json.JSONArray()
+      repeat(40){val s=actualViewModel().state.value;observed.put(org.json.JSONObject().put("elapsedMs",it*1000).put("connection",s.connection).put("sync",s.sync).put("error",s.error).put("connectedLabel",find(actualRoot(),"Connected")!=null).put("syncingLabel",find(actualRoot(),"Syncing…")!=null));Thread.sleep(1000)}
+      result.putString("connectionDiagnostic",observed.toString());capture("connection-diagnostic")
+     }else if(phase=="state-restart-prepare"){
      login(args.getString("avery")!!);openMorgan();val text=args.getString("retryText")!!;val control=URL("https://localhost:8443/__state/control").openConnection() as HttpsURLConnection;try{control.requestMethod="POST";control.doOutput=true;control.outputStream.use{it.write(org.json.JSONObject().put("mode","A").put("text",text).put("userId",args.getString("averyId")).put("clientType","MOBILE").toString().toByteArray())};verify(control.responseCode==200);control.inputStream.close()}finally{control.disconnect()};fill("Message",text);backKeyboard();click("Send ",true);val failed=delivery(text,"FAILED");showMessage(text);capture("restart-before-process-stop-failed");val d=java.io.File(targetContext.getExternalFilesDir(null),"gui-auth/$captureRun");java.io.File(d,"restart-before.json").writeText(org.json.JSONObject().put("text",text).put("requestId",failed[0]).put("state","FAILED").put("targetProcessId",android.os.Process.myPid()).toString());controlled("restart-process-stop")
     }else if(phase=="state-restart"){
      reach("Resume saved session");click("Resume saved session");await("Connected");openMorgan();val text=args.getString("retryText")!!;val failed=delivery(text,"FAILED");showMessage(text);capture("restart-preserved-failed");retryMessage(text);val sent=delivery(text,"SENT");verify(sent[0]==failed[0]);showMessage(text);capture("restart-original-retry-sent")
