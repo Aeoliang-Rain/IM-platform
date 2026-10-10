@@ -7,6 +7,8 @@ import android.view.accessibility.AccessibilityNodeInfo
 import im.platform.client.MainActivity
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 
 /** Real Compose UI/default SDK TLS against task-owned actual Go fixture. */
 class GuiAuthenticatedInstrumentation:Instrumentation(){
@@ -233,8 +235,11 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    val phase=args.getString("phase")?:"matrix"
    if(phase=="state-connection-diagnostic"){
       fill("Username",args.getString("avery")!!);fill("Password","fixture-password-not-a-real-secret");backKeyboard();reach("Sign in");click("Sign in")
-      val observed=org.json.JSONArray()
-      repeat(40){val vm=actualViewModel();val s=vm.state.value;val syncField=WorkspaceViewModel::class.java.getDeclaredField("sync").apply{isAccessible=true};val owner=syncField.get(vm) as? im.platform.client.sync.SyncViewModel;observed.put(org.json.JSONObject().put("syncOwner",owner?.state?.value?.status).put("syncOwnerError",owner?.state?.value?.error).put("elapsedMs",it*1000).put("connection",s.connection).put("sync",s.sync).put("error",s.error).put("connectedLabel",find(actualRoot(),"Connected")!=null).put("syncingLabel",find(actualRoot(),"Syncing…")!=null));Thread.sleep(1000)}
+      val observed=org.json.JSONArray();val vm=actualViewModel();val syncField=WorkspaceViewModel::class.java.getDeclaredField("sync").apply{isAccessible=true}
+      var owner:im.platform.client.sync.SyncViewModel?=null
+      repeat(100){if(owner==null){owner=syncField.get(vm) as? im.platform.client.sync.SyncViewModel;if(owner==null)Thread.sleep(100)}}
+      val boundOwner=checkNotNull(owner);val started=android.os.SystemClock.elapsedRealtime()
+      runBlocking {withTimeoutOrNull(40000){boundOwner.state.collect{value->val s=vm.state.value;observed.put(org.json.JSONObject().put("elapsedMs",android.os.SystemClock.elapsedRealtime()-started).put("syncOwner",value.status).put("syncOwnerError",value.error).put("connection",s.connection).put("workspaceSync",s.sync))}}}
       result.putString("connectionDiagnostic",observed.toString());capture("connection-diagnostic")
      }else if(phase=="state-restart-prepare"){
      login(args.getString("avery")!!);openMorgan();val text=args.getString("retryText")!!;val control=URL("https://localhost:8443/__state/control").openConnection() as HttpsURLConnection;try{control.requestMethod="POST";control.doOutput=true;control.outputStream.use{it.write(org.json.JSONObject().put("mode","A").put("text",text).put("userId",args.getString("averyId")).put("clientType","MOBILE").toString().toByteArray())};verify(control.responseCode==200);control.inputStream.close()}finally{control.disconnect()};fill("Message",text);backKeyboard();click("Send ",true);val failed=delivery(text,"FAILED");showMessage(text);capture("restart-before-process-stop-failed");val d=java.io.File(targetContext.getExternalFilesDir(null),"gui-auth/$captureRun");java.io.File(d,"restart-before.json").writeText(org.json.JSONObject().put("text",text).put("requestId",failed[0]).put("state","FAILED").put("targetProcessId",android.os.Process.myPid()).toString());controlled("restart-process-stop")
