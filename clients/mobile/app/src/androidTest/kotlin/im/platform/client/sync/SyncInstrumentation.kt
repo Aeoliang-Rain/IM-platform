@@ -158,10 +158,28 @@ class SyncInstrumentation:Instrumentation() {
         }
     }
 
+    private suspend fun slowPeriodicPull() {
+        phase="slow-pull-no-periodic-backlog"
+        val account=UUID.randomUUID().toString();val repo=Repository(targetContext,account);repo.initialize();val creds=session(account)
+        val id=uid(4500);val gate=CountDownLatch(1);val calls=java.util.concurrent.atomic.AtomicInteger()
+        val sender=SendViewModel(repo,creds,{_,open,message,_->
+            val socket=object:SendSocket {override fun close(){};override fun send(text:String){val frame=JSONObject(text);if(frame.getString("type")=="auth.bind")message(im.platform.client.send.Wire.envelope("auth.ack",frame.getString("requestId"),JSONObject().put("status","bound").put("userId",account).put("sessionId",sid).put("clientType","MOBILE").put("sessionEpoch",1)))}}
+            open();socket
+        })
+        val http=SyncHttps("https://localhost/",creds,{Fake({JSONObject().put("syncVersion","1.0").put("type","sync.user.page").put("requestId",id).put("events",JSONArray()).put("nextCursor","0").put("hasMore",false).toString()},gate=if(calls.incrementAndGet()==1)gate else null)},{id})
+        val sync=SyncViewModel(sender,repo,http)
+        try {
+            sender.connect("wss://localhost/ws");until{sender.state.value.connection=="ready"&&calls.get()==1}
+            delay(11000);equal(sync.state.value.status,"syncing");equal(calls.get(),1)
+            gate.countDown();until{sync.state.value.status=="idle"};delay(1000);equal(calls.get(),1)
+            until{calls.get()==2};until{sync.state.value.status=="idle"};equal(repo.cursor(),"0")
+        }finally{gate.countDown();sync.dispose();repo.close();targetContext.deleteDatabase("im-$account.sqlite")}
+    }
+
     override fun onCreate(arguments:Bundle?){args=arguments ?: Bundle();super.onCreate(arguments);start()}
     override fun onStart(){
         val result=Bundle()
-        try {runBlocking {wire();actual();storageLifecycle();discovery()};result.putString("result","PASS");result.putInt("sdkInt",android.os.Build.VERSION.SDK_INT);result.putInt("assertions",assertions);finish(Activity.RESULT_OK,result)}
+        try {runBlocking {wire();actual();storageLifecycle();discovery();slowPeriodicPull()};result.putString("result","PASS");result.putInt("sdkInt",android.os.Build.VERSION.SDK_INT);result.putInt("assertions",assertions);finish(Activity.RESULT_OK,result)}
         catch(error:Throwable){result.putString("result","FAIL");result.putString("phase",phase);result.putString("failure",error.javaClass.simpleName+": "+error.message);finish(Activity.RESULT_CANCELED,result)}
     }
 }
