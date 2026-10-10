@@ -26,7 +26,7 @@ export class Http {
       }
       if(r.ok)return invalid();
     }
-    if(r.redirected||!/^application\/json(?:\s*;|$)/i.test(r.headers.get('content-type')??'')||r.headers.get('cache-control')!=='no-store')return invalid();
+    if(r.redirected||!/^application\/json(?:\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();
     let raw='';const reader=r.body?.getReader();if(!reader)return invalid();const decoder=new TextDecoder('utf8',{fatal:true});let size=0;
     try {for(;;){const part=await reader.read();if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();raw+=decoder.decode(part.value,{stream:true});}raw+=decoder.decode();}finally{await reader.cancel().catch(()=>{});}
     const p=parse(raw,6*1024*1024);

@@ -7,7 +7,7 @@ export class SyncApplication {
   private opened="";
   private generation=0;private retired=false;private stopped=false;private controller=new AbortController();
   private queue:Promise<void>=Promise.resolve();private requested=false;private listeners=new Set<(s:SyncState)=>void>();
-  private detach:()=>void;private detachDelivery:()=>void;private wasReady=false;
+  private detach:()=>void;private detachDelivery:()=>void;private wasReady=false;private poll:ReturnType<typeof setInterval>;
   private current:SyncState={status:"idle",error:null,unavailable:[]};
   constructor(readonly send:SendApplication,private http:SyncHttp) {
     if(!http.matchesSession(s=>send.matchesSession(s))) throw new SyncFailure("authentication");
@@ -18,6 +18,8 @@ export class SyncApplication {
       if(ready && !this.wasReady && !this.stopped) void this.synchronize().catch(()=>{});
       this.wasReady=ready;
     });
+    // Low-frequency metadata changes have no message-delivery trigger.
+    this.poll=setInterval(()=>{if(send.state.connection==="ready"&&!this.stopped)void this.synchronize().catch(()=>{});},10000);
   }
   get state():SyncState{return this.current;}
   observe(listener:(s:SyncState)=>void):()=>void{this.listeners.add(listener);listener(this.current);return()=>this.listeners.delete(listener);}
@@ -60,5 +62,5 @@ export class SyncApplication {
     this.queue=job.catch(()=>{});return job;
   }
   async idle(){await this.queue;await this.send.idle();}
-  async close(){if(this.retired)return;this.retired=true;this.generation++;this.controller.abort();this.detach();this.detachDelivery();this.listeners.clear();this.current={status:"retired",error:null,unavailable:[]};this.send.close();await this.queue;await this.send.idle();}
+  async close(){if(this.retired)return;this.retired=true;clearInterval(this.poll);this.generation++;this.controller.abort();this.detach();this.detachDelivery();this.listeners.clear();this.current={status:"retired",error:null,unavailable:[]};this.send.close();await this.queue;await this.send.idle();}
 }

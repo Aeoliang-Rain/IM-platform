@@ -1,0 +1,454 @@
+{
+  "kind": "preliminary actual installed native fresh database absent before login, actual Sync cursor0 history1/2 and newrequest seq3",
+  "fixture": {
+    "project": "im-gui-product-20261004-35588",
+    "endpoint": "https://localhost:8443",
+    "accounts": [
+      {
+        "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+        "username": "state_fresh_aa798601ab",
+        "displayName": "STATE Fresh"
+      },
+      {
+        "userId": "688b2124-6929-4d87-b58b-145efb950284",
+        "username": "state_webfriend_7574bc29ec",
+        "displayName": "STATE WebFriend"
+      },
+      {
+        "userId": "2e6a967b-25ec-46f5-b443-679809aa00e4",
+        "username": "state_desktopfriend_7ed9d27d62",
+        "displayName": "STATE DesktopFriend"
+      },
+      {
+        "userId": "31ac4177-5541-4ff0-baef-a77bbf817dcd",
+        "username": "state_mobilefriend_a712ca9e19",
+        "displayName": "STATE MobileFriend"
+      },
+      {
+        "userId": "f7e11a5e-9f35-4d8b-9c2c-fe40457cfc4f",
+        "username": "state_offlinefriend_58ec157dbc",
+        "displayName": "STATE OfflineFriend"
+      }
+    ],
+    "source": "actual Go register201; unique disposable accounts; no native database reset",
+    "historyText": "STATE fresh historical 1 e5a254ad-138a-4b03-8919-c02ada6e362f",
+    "seed": {
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "messages": [
+        {
+          "requestId": "507ff7a7-41e4-4341-9fa9-64efc1775e31",
+          "messageId": "2bda0b28-db1a-47c8-96bd-882c2aadd31e",
+          "seq": 1,
+          "createdAt": "2026-10-10T10:21:45.262076+00:00",
+          "text": "STATE fresh historical 1 e5a254ad-138a-4b03-8919-c02ada6e362f"
+        },
+        {
+          "requestId": "90fbb0f5-ba62-4f91-a112-6373663a2e5c",
+          "messageId": "a697c599-1dd4-4cdd-97af-6f6d62432a60",
+          "seq": 2,
+          "createdAt": "2026-10-10T10:21:45.320661+00:00",
+          "text": "STATE fresh historical 2 e5a254ad-138a-4b03-8919-c02ada6e362f"
+        }
+      ]
+    }
+  },
+  "databaseAbsentBefore": true,
+  "rows": [
+    {
+      "local_id": 1,
+      "conversation_id": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "request_id": "507ff7a7-41e4-4341-9fa9-64efc1775e31",
+      "sender_id": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "content": "STATE fresh historical 1 e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "state": "SENT",
+      "server_message_id": "2bda0b28-db1a-47c8-96bd-882c2aadd31e",
+      "server_seq": 1,
+      "server_time": "2026-10-10T10:21:45.262076Z"
+    },
+    {
+      "local_id": 2,
+      "conversation_id": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "request_id": "90fbb0f5-ba62-4f91-a112-6373663a2e5c",
+      "sender_id": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "content": "STATE fresh historical 2 e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "state": "SENT",
+      "server_message_id": "a697c599-1dd4-4cdd-97af-6f6d62432a60",
+      "server_seq": 2,
+      "server_time": "2026-10-10T10:21:45.320661Z"
+    },
+    {
+      "local_id": 3,
+      "conversation_id": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "request_id": "4d798387-7df6-428a-835d-e060c9c9d47d",
+      "sender_id": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "content": "STATE Desktop fresh e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "state": "SENT",
+      "server_message_id": "21486de4-c6f8-4e74-8ff0-5b246028d6f7",
+      "server_seq": 3,
+      "server_time": "2026-10-10T10:33:22.130109Z"
+    }
+  ],
+  "next": {
+    "local_id": 3,
+    "conversation_id": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+    "request_id": "4d798387-7df6-428a-835d-e060c9c9d47d",
+    "sender_id": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+    "content": "STATE Desktop fresh e5a254ad-138a-4b03-8919-c02ada6e362f",
+    "state": "SENT",
+    "server_message_id": "21486de4-c6f8-4e74-8ff0-5b246028d6f7",
+    "server_seq": 3,
+    "server_time": "2026-10-10T10:33:22.130109Z"
+  },
+  "sync": [
+    {
+      "event": 55,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "0",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 57,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 0,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 58,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 59,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 60,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 61,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 62,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 63,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 64,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 65,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 66,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 67,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 68,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 69,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 70,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 71,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 72,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 73,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 74,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 75,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 76,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 77,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 78,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 79,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 80,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 81,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 82,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 83,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 84,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 85,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 86,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 87,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 88,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 91,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 3,
+      "conversationId": "b249bc5d-5312-47bc-b7a7-0ecf5fef2f44",
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 92,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAACc8j0mlYL7xwEnMCw9cjGGU-mCSZBqrtqX8wDWN4VKDLA",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "e5a254ad-138a-4b03-8919-c02ada6e362f",
+      "clientType": "DESKTOP"
+    }
+  ]
+}

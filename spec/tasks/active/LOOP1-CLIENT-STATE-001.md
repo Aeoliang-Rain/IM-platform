@@ -1,11 +1,11 @@
 ---
 task_id: LOOP1-CLIENT-STATE-001
 title: 消息状态、幂等重发与好友同步
-status: backlog
-owner: unassigned
+status: active
+owner: /root/state_impl
 stage: S2
 gate: S2
-client_supplement_phase: planned
+client_supplement_phase: state_product
 ---
 
 # Goal
@@ -60,6 +60,7 @@ client_runtime: Android
 
 # Allowed Paths
 
+- `clients/web/src/application/http.ts`
 - `clients/web/src/application/client.ts`
 - `clients/web/src/application/repository.ts`
 - `clients/web/src/ui/main.tsx`
@@ -146,3 +147,28 @@ main_sync_evidence: unavailable
 # Next Action
 
 保持backlog。后续明确授权且所有依赖独立接受/集成/main同步满足才ready→active，声明client_supplement_phase: state_product并登记实际新增验收命令；本次不执行产品。
+
+## 2026-10-10 正式激活与恢复
+
+Human当前直接授权“阅读AGENTS.md，完成下一个task”取代上一轮规划STOP，仅本STATE；UIREF/I18N与S2 Gate不启动。WEB已done/PR29产品a1b154d独立接受同步；PLAN已done/PR31产品9f99独立接受同步；本Agent调用GitHub connector取得PR32实际merged3eaf API原件 pr32-api-original.json，确认行政闭合。assigned root H:/.codex/worktrees/st/IM-platform精确核验，baseline3eaf，初始clean，main未知工作不复制。
+
+Recorder R-STATE-20261010-IMPL，private H:/IM-platform/.git/worktrees/IM-platform43/state-research；prospective_resume/启动前authority读取缺口公开，API非shell用事件绑定，不假称完整命令。基线architecture all/frozen/planning/Recovery Development真实exit0，raw输出留Recorder，不是接受。
+
+实际已定位harness：现有hold_send.py / go_runtime.py / native.py package、Android GUI instrumentation、Web browser与regressions；新增STATE故障联合harness在tests/clients/state/，准备后登记精确argv，不声称未执行PASS。场景A hold-forward导致0消息/0Outbox；B held confirmation必须既有receiver得到与sender FAILED再原retry；顺序/恢复/好友/账号隔离逐端执行，具体计数和PNG绑定candidate。TLS准备入口python -Xutf8 -B tests/clients/state/tls_fixture.py --prepare，只生成受控24h localhost/127.0.0.1证书与计划，不安装Root。Android当前adb无device，既有AVD IMClientSend34 API34可定位；Docker/JDK17/Gradle/MSVC/Cargo可用。旧CA与leaf NotAfter均Oct4，不能通过新验证；新的Root trust/受控overlay执行待精确证书与回滚审查。
+
+当前实现/接受/hosted/integration/sync均PENDING；下一步准备新受控证书与精确联合harness，同时审计unknown commit及friend sync缺口。产品写入只allowed_paths；唯一writer /root/state_impl；同期/root只读协调。无本Task自我接受，S2 OPEN。
+
+## Human scope amendment 2026-10-10
+
+Human answered “按API契约更正” to scope-http-cache-decision.md. Add only clients/web/src/application/http.ts to allowed_paths for removing generic noncontractual response no-store condition. Preserve TLS/request cache/credentials/redirect/strict parser/budget and contractual SyncHttp no-store check. No contract/server authority amendment.
+
+### Current recovery update 2026-10-10 (STATE implementation)
+Current authority: Human approved 7-day localhost/127.0.0.1 temporary trust and clarified API contract means current frontend/backend interaction contract. The authorized additional path clients/web/src/application/http.ts has one semantic line changed: generic response cache-control rejection removed; SyncHttp's explicit no-store gate remains.
+Current temporary chain: week2 CA SHA256 a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5, CurrentUser Root thumbprint 727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C, NotAfter 2026-10-17T08:58:07.083261Z. Old 24-hour object superseded, old week1 install fully rolled back to original 74-root set. Week2 Root and specified IMClientSend34 readonly CA overlay remain installed only for live controlled acceptance. Finally restore exact root set, exact overlay/mount baseline, adb reverse8443 and root UID, then fresh default-native TLS rejection with live CA-file positive control; no completion before cleanup.
+Actual preliminary evidence: Web A/B PASS; Android default SDK TLS positive/hostname mismatch negative PASS; Android A/B state-73fd0288-c4a6-4d25-b99b-90d7131b0819 PASS after real Retry UI viewport correction. Original failed runner/viewport rounds retained. Latest Desktop NSIS installed SHA3529537fc45ae3864c1f7923a4f809da73e2d26e8580469aada61d8c6842416f; actual Windows API login/default TLS/history recovery now observed. sky launch_app and get_window_state each hung ~10 minutes despite requested short timeout; no sandbox-cause inference. Windows API verifies exact owned process40156/window8260804/path and captures full raw1942x1273 after own DPI awareness. All current evidence dirty-source preliminary, not accepted Task PASS.
+Remaining: Desktop actual A/B, both R1/R2 order scenarios each client, native FAILED restart/original retry, fresh controlled account DB initial cursor0 history recovery, three real friend-add source directions and disconnect/account-switch/race recovery, source/build candidate binding and final original screenshot manifests/Architect, mandatory behavior/source/hosted checks, independent Review and protected integration/main sync. No UIREF/I18N/Stage Gate activation. Implementation writer owns task branch changes; baseline3eaf256790e9e6b7190326714be3f011edb24401 remains last committed good. Next exact action Desktop actual conversation/send A/B via UIA and live Go fault relay; then remaining actual matrix. Current live own Go project im-gui-product-20261004-35588, proxy8443, emulator-5590/PID4656 require finally cleanup. No clean candidate commit yet; status active, never done.
+### Source freeze recovery update 2026-10-10
+Preliminary actual Web/Desktop/Mobile A/B and both R1/R2 sequence order scenarios passed, with original earlier failures retained. Desktop preserved FAILED across actual PID restart and original UI Retry; Android host force-stop while runner remained live, new PID and saved FAILED/original request Retry passed. Full Go DB suite passed using a newly created isolated UUID database, then exact database cleanup. Core commit classification conservatively treats transaction/statement resolution unknown, transport/context and other unproven errors as unknown with no rejected ACK; existing deferred-trigger P0001 before persistence and ErrTxCommitRollback are definite rollback, backed by actual DB tests.
+Desktop fresh controlled account SQLite absent before login, UserSync cursor0 and conversation afterSeq0, historical seq1/2 and new request seq3 passed. Mobile fresh absence/history seq1/2/3 and new SENT seq4 occurred; capture gate failed because Sent was incorrectly given Retry-height margin. Original failure and visible raw Sent screenshot retained; harness now distinguishes actual Sent row versus Retry row.
+Friend preliminary rounds exposed harness username/UI page mistakes, not accepted matrix PASS. Actual Web/Desktop/Mobile new adds occurred, with individual cross-client projections; complete new-group driver is pending. All three disconnect and real account-switch branches are now encoded but unexecuted; new full fixture group only registered. Formal matrix will use committed source/build binding after rebuilding actual Go image for latest Core classification. Native installed source bytes remain current product, but test runner/code freeze binding will be recorded.
+Next exact action freeze clean active source/harness candidate, rebuild own live Core/Gateway, restore only own required build outputs, then execute final complete matrix and screenshot manifests. Independent Architect/Review and exact-head selected hosted jobs/main sync remain Coordinator-owned PENDING. week2 CurrentUser Root/AVD readonly overlay remain live and MUST finally be precisely rolled back with fresh default-native TLS rejection and live CA-file positive control. No done or Task PASS declared.

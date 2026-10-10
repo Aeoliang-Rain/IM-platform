@@ -9,7 +9,7 @@ import {appearance,defaults,nativeFetch,notify,type Appearance} from "./native.j
 export interface WorkspaceState {appearance:Appearance;busy:boolean;error:string|null;session:Session|null;offlineAccount:string|null;profile:User|null;friends:Friend[];results:User[];conversations:string[];selected:string;messages:ReadonlyArray<ReadonlyArray<string|null>>;connection:string;sync:string;unavailable:readonly string[];page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings";endpoint:string;previews:Record<string,{text:string;time:number}>}
 export class Workspace {
   state:WorkspaceState={appearance:defaults,busy:false,error:null,session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],page:"Chat",endpoint:"https://localhost:8443",previews:{}};
-  private listeners=new Set<()=>void>();private auth:Auth|null=null;private sync:SyncApplication|null=null;private offlineRepository:Repository|null=null;private generation=0;private operation=0;private detach: (()=>void)[]=[];private repository:Repository|null=null;private listRevision=0;private activity=new Map<string,number>();private refreshTimer:ReturnType<typeof setInterval>|null=null;
+  private listeners=new Set<()=>void>();private auth:Auth|null=null;private sync:SyncApplication|null=null;private offlineRepository:Repository|null=null;private generation=0;private operation=0;private detach: (()=>void)[]=[];private repository:Repository|null=null;private listRevision=0;private activity=new Map<string,number>();private friendRevision=0;private friendCursor="";private refreshTimer:ReturnType<typeof setInterval>|null=null;
   observe=(fn:()=>void)=>{this.listeners.add(fn);return()=>{this.listeners.delete(fn);};};
   snapshot=()=>this.state;
   private publish(value:Partial<WorkspaceState>){this.state={...this.state,...value};for(const listener of this.listeners)listener();}
@@ -18,7 +18,7 @@ export class Workspace {
   async testNotification(){try{await notify("IM+","Your workspace notifications are ready.");}catch{this.publish({error:"System notification unavailable"});}}
   private appearanceWrites:Promise<void>=Promise.resolve();
   preferences(value:Appearance){this.publish({appearance:value,error:null});this.appearanceWrites=this.appearanceWrites.then(async()=>{try{await appearance.save(value);}catch{this.publish({error:"Appearance could not be saved"});}});return this.appearanceWrites;}
-  private async stop(){this.generation++;if(this.refreshTimer)clearInterval(this.refreshTimer);this.refreshTimer=null;this.detach.forEach(fn=>fn());this.detach=[];const old=this.sync;this.sync=null;this.offlineRepository=null;this.repository=null;this.listRevision++;this.activity.clear();this.publish({session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],previews:{}});await old?.close();}
+  private async stop(){this.generation++;if(this.refreshTimer)clearInterval(this.refreshTimer);this.refreshTimer=null;this.detach.forEach(fn=>fn());this.detach=[];const old=this.sync;this.sync=null;this.offlineRepository=null;this.repository=null;this.friendCursor="";this.friendRevision++;this.listRevision++;this.activity.clear();this.publish({session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],previews:{}});await old?.close();}
   private socket(url:string,expired:()=>void):Socket {
     const ws=new WebSocket(url);let onmessage:Socket["onmessage"]=null;
     ws.onmessage=event=>{try{const frame=decode(event.data);if(frame.type==="session.revoked"||frame.type==="auth.ack"&&frame.payload.status==="rejected"){expired();return;}}catch{/* Existing Send parser owns malformed frame handling. */}onmessage?.(event);};
@@ -31,12 +31,19 @@ export class Workspace {
     this.repository=repo;const sync=new SyncApplication(send,new SyncHttp(this.state.endpoint,session,nativeFetch));this.sync=sync;
     const conversations=await repo.conversationIds();if(!active())return;this.publish({session,conversations,error:null});
     this.detach.push(send.observe(s=>{if(active()){this.publish({connection:s.connection,...(s.error?{error:s.error==="storage"?"Local history unavailable":"Protocol error"}:{})});void this.updateList(repo,g);}}));
-    this.detach.push(sync.observe(s=>{if(!active())return;this.publish({sync:s.status,unavailable:s.unavailable,...(s.error?{error:"Sync "+s.error}:{})});if(s.error==="authentication")void this.expire();if(s.status==="idle")void this.updateList(repo,g);}));
+    this.detach.push(sync.observe(s=>{if(!active())return;this.publish({sync:s.status,unavailable:s.unavailable,...(s.error?{error:"Sync "+s.error}:{})});if(s.error==="authentication")void this.expire();if(s.status==="idle"){void this.updateList(repo,g);void this.refreshFriends(repo,g);}}));
     this.detach.push(send.observeDelivery(()=>{if(active()&&document.visibilityState!=="visible")void notify("IM+","New activity in your conversations").catch(()=>{if(active())this.publish({error:"System notification unavailable"});});}));
     await this.updateList(repo,g);if(!active())return;
     this.publish({selected:"",messages:[]});send.connect(this.state.endpoint.replace(/^https:/,"wss:")+"/v1/ws");
     this.refreshTimer=setInterval(()=>{if(active()&&this.auth?.needsRefresh())void this.refresh();},30000);
-    try{const profile=await owner!.profile();if(!active())return;const friends=await owner!.friends();if(active()){this.publish({profile,friends});await this.updateList(repo,g);}}catch(error){if(active())this.failure(error);}
+    try{const profile=await owner!.profile();if(!active())return;this.publish({profile});await this.refreshFriends(repo,g);}catch(error){if(active())this.failure(error);}
+  }
+  private async refreshFriends(repo:Repository,g:number){
+    const owner=this.auth;if(!owner)return;const revision=++this.friendRevision;
+    try{const cursor=await repo.cursor();if(g!==this.generation||cursor===this.friendCursor)return;
+      const friends=await owner.friends();if(g!==this.generation||owner!==this.auth||revision!==this.friendRevision)return;
+      this.friendCursor=cursor;this.publish({friends});await this.updateList(repo,g);
+    }catch(error){if(g===this.generation&&revision===this.friendRevision)this.failure(error);}
   }
   private failure(error:unknown){this.publish({error:error instanceof ApiFailure?error.kind:"Operation unavailable"});if(error instanceof ApiFailure&&error.kind==="Session expired")void this.expire();}
   private async updateList(repo:Repository,g:number){
@@ -67,5 +74,5 @@ export class Workspace {
   async reconnect(){const g=this.generation,owner=this.sync;if(!owner)return;try{owner.send.connect(this.state.endpoint.replace(/^https:/,"wss:")+"/v1/ws");await owner.synchronize();}catch{if(g===this.generation)this.publish({error:"Connection unavailable"});}}
   disconnect(){this.sync?.send.disconnect();}
   async search(query:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,results:[],error:null});try{const results=await auth.search(query);if(g===this.generation)this.publish({results});}catch(error){if(g===this.generation)this.failure(error);}finally{if(g===this.generation)this.publish({busy:false});}}
-  async add(id:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const conversation=await auth.add(id);if(g!==this.generation)return;const friends=await auth.friends();if(g!==this.generation)return;this.publish({friends,conversations:[...new Set([...this.state.conversations,conversation])]});await this.open(conversation);}catch(error){if(g===this.generation)this.failure(error);}finally{if(g===this.generation)this.publish({busy:false});}}
+  async add(id:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const conversation=await auth.add(id);if(g!==this.generation)return;const revision=++this.friendRevision;const friends=await auth.friends();if(g!==this.generation||auth!==this.auth)return;if(revision===this.friendRevision)this.publish({friends,conversations:[...new Set([...this.state.conversations,conversation])]});await this.open(conversation);}catch(error){if(g===this.generation)this.failure(error);}finally{if(g===this.generation)this.publish({busy:false});}}
 }

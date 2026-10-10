@@ -1,0 +1,211 @@
+[
+  {
+    "mode": "A",
+    "text": "STATE Desktop A desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+    "sending": {
+      "local_id": 14,
+      "conversation_id": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+      "request_id": "9781ed08-adc4-4ab9-ba32-8958fc027d83",
+      "sender_id": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+      "content": "STATE Desktop A desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+      "state": "SENDING",
+      "server_message_id": null,
+      "server_seq": null,
+      "server_time": null
+    },
+    "failed": {
+      "local_id": 14,
+      "conversation_id": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+      "request_id": "9781ed08-adc4-4ab9-ba32-8958fc027d83",
+      "sender_id": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+      "content": "STATE Desktop A desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+      "state": "FAILED",
+      "server_message_id": null,
+      "server_seq": null,
+      "server_time": null
+    },
+    "before": {
+      "messages": 0,
+      "outbox": 0,
+      "rows": []
+    },
+    "sent": {
+      "local_id": 14,
+      "conversation_id": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+      "request_id": "9781ed08-adc4-4ab9-ba32-8958fc027d83",
+      "sender_id": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+      "content": "STATE Desktop A desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+      "state": "SENT",
+      "server_message_id": "184acdad-e5b3-422c-a539-f8704bac5f31",
+      "server_seq": 10,
+      "server_time": "2026-10-10T10:07:38.58605Z"
+    },
+    "after": {
+      "messages": 1,
+      "outbox": 1,
+      "rows": [
+        {
+          "requestId": "9781ed08-adc4-4ab9-ba32-8958fc027d83",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "messageId": "184acdad-e5b3-422c-a539-f8704bac5f31",
+          "seq": 10,
+          "text": "STATE Desktop A desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad"
+        }
+      ]
+    },
+    "sends": [
+      {
+        "event": 53,
+        "kind": "send",
+        "requestId": "9781ed08-adc4-4ab9-ba32-8958fc027d83",
+        "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+        "content": {
+          "kind": "TEXT",
+          "text": "STATE Desktop A desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad"
+        },
+        "attempt": 1
+      },
+      {
+        "event": 55,
+        "kind": "send",
+        "requestId": "9781ed08-adc4-4ab9-ba32-8958fc027d83",
+        "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+        "content": {
+          "kind": "TEXT",
+          "text": "STATE Desktop A desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad"
+        },
+        "attempt": 2
+      }
+    ],
+    "acks": [
+      {
+        "event": 56,
+        "kind": "actual_ack",
+        "requestId": "9781ed08-adc4-4ab9-ba32-8958fc027d83",
+        "payload": {
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "createdAt": "2026-10-10T10:07:38.58605Z",
+          "messageId": "184acdad-e5b3-422c-a539-f8704bac5f31",
+          "seq": 10,
+          "status": "committed"
+        },
+        "held": false
+      }
+    ]
+  },
+  {
+    "mode": "B",
+    "text": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+    "sending": {
+      "local_id": 15,
+      "conversation_id": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+      "request_id": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+      "sender_id": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+      "content": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+      "state": "SENDING",
+      "server_message_id": null,
+      "server_seq": null,
+      "server_time": null
+    },
+    "failed": {
+      "local_id": 15,
+      "conversation_id": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+      "request_id": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+      "sender_id": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+      "content": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+      "state": "FAILED",
+      "server_message_id": null,
+      "server_seq": null,
+      "server_time": null
+    },
+    "before": {
+      "messages": 1,
+      "outbox": 1,
+      "rows": [
+        {
+          "requestId": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "messageId": "5dc40669-0884-497a-a5e7-3202cf55fdae",
+          "seq": 11,
+          "text": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad"
+        }
+      ]
+    },
+    "sent": {
+      "local_id": 15,
+      "conversation_id": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+      "request_id": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+      "sender_id": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+      "content": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad",
+      "state": "SENT",
+      "server_message_id": "5dc40669-0884-497a-a5e7-3202cf55fdae",
+      "server_seq": 11,
+      "server_time": "2026-10-10T10:07:46.159117Z"
+    },
+    "after": {
+      "messages": 1,
+      "outbox": 1,
+      "rows": [
+        {
+          "requestId": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "messageId": "5dc40669-0884-497a-a5e7-3202cf55fdae",
+          "seq": 11,
+          "text": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad"
+        }
+      ]
+    },
+    "sends": [
+      {
+        "event": 60,
+        "kind": "send",
+        "requestId": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+        "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+        "content": {
+          "kind": "TEXT",
+          "text": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad"
+        },
+        "attempt": 1
+      },
+      {
+        "event": 66,
+        "kind": "send",
+        "requestId": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+        "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+        "content": {
+          "kind": "TEXT",
+          "text": "STATE Desktop B desktop-dbbcfe26-4112-46e0-bdf5-eb68ce6400ad"
+        },
+        "attempt": 2
+      }
+    ],
+    "acks": [
+      {
+        "event": 62,
+        "kind": "actual_ack",
+        "requestId": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+        "payload": {
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "createdAt": "2026-10-10T10:07:46.159117Z",
+          "messageId": "5dc40669-0884-497a-a5e7-3202cf55fdae",
+          "seq": 11,
+          "status": "committed"
+        },
+        "held": true
+      },
+      {
+        "event": 68,
+        "kind": "actual_ack",
+        "requestId": "b6c16cd3-b3ad-47f5-beec-02123a99b06a",
+        "payload": {
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "createdAt": "2026-10-10T10:07:46.159117Z",
+          "messageId": "5dc40669-0884-497a-a5e7-3202cf55fdae",
+          "seq": 11,
+          "status": "committed"
+        },
+        "held": false
+      }
+    ]
+  }
+]

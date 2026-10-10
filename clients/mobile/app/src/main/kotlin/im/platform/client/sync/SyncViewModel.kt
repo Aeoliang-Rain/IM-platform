@@ -34,6 +34,7 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
                 ready=now
             }
         }
+        scope.launch {while(isActive){delay(10000);if(send.state.value.connection=="ready" && !stopped)enqueue()}}
     }
     private fun enqueue(){scope.launch {try{synchronize()}catch(_:Exception){/* Failure already observable. */}}}
     suspend fun openConversation(c:String){val selected=SendWire.uuid(c);send.openConversation(selected);opened=selected;synchronize()}

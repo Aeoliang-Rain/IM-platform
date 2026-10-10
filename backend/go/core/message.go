@@ -4,13 +4,27 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 	"time"
 	"unicode/utf8"
 
 	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgconn"
 )
+
+var errCommitUnknown = errors.New("message commit outcome unknown")
+
+// Only a confirmed rollback or the tested deferred-trigger rejection establishes
+// that this new message did not commit. Unknown SQLSTATEs remain conservative.
+func newMessageCommitError(err error) error {
+	var rejection *pgconn.PgError
+	if errors.Is(err, pgx.ErrTxCommitRollback) || (errors.As(err, &rejection) && rejection.Code == "P0001") {
+		return err
+	}
+	return fmt.Errorf("%w: %v", errCommitUnknown, err)
+}
 
 type textContent struct {
 	Kind string `json:"kind"`
@@ -71,6 +85,11 @@ func (s *authService) sendMessage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	m, err := s.commitMessage(r.Context(), c, v)
+	if errors.Is(err, errCommitUnknown) {
+		// No rejection can be claimed when PostgreSQL commit confirmation is lost.
+		w.WriteHeader(http.StatusServiceUnavailable)
+		return
+	}
 	if err != nil {
 		code := "MESSAGE_COMMIT_FAILED"
 		var e apiError
@@ -131,7 +150,9 @@ func (s *authService) commitMessage(ctx context.Context, c claims, v sendFrame) 
 		if m.SenderID != c.UserID || m.Content.Text != v.Payload.Content.Text {
 			return m, fail(409, "MESSAGE_REQUEST_CONFLICT", "Request rejected")
 		}
-		err = tx.Commit(ctx)
+		if err = tx.Commit(ctx); err != nil {
+			err = fmt.Errorf("%w: %v", errCommitUnknown, err)
+		}
 		return m, err
 	}
 	if !errors.Is(err, pgx.ErrNoRows) {
@@ -164,6 +185,8 @@ func (s *authService) commitMessage(ctx context.Context, c claims, v sendFrame) 
 	if err != nil {
 		return m, err
 	}
-	err = tx.Commit(ctx)
+	if err = tx.Commit(ctx); err != nil {
+		err = newMessageCommitError(err)
+	}
 	return m, err
 }
