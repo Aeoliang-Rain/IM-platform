@@ -112,9 +112,10 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   return androidx.lifecycle.ViewModelProvider(owner)[key,WorkspaceViewModel::class.java]
  }
  private fun showMessage(text:String){
-  val state=actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)
-  val status=when(state){"SENT"->"Sent";"SENDING"->"Sending…";else->"Failed"}
+  var diagnostic="unobserved"
   fun rowBottom(root:AccessibilityNodeInfo?,body:android.graphics.Rect):Int?{
+   val state=actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)
+   val status=when(state){"SENT"->"Sent";"SENDING"->"Sending…";else->"Failed"}
    fun nearest(label:String):android.graphics.Rect?{
     val candidates=mutableListOf<android.graphics.Rect>()
     fun scan(n:AccessibilityNodeInfo?){if(n==null)return;if(n.text?.toString()==label){val b=android.graphics.Rect();n.getBoundsInScreen(b);if(!b.isEmpty&&b.top>=body.bottom)candidates.add(b)};for(i in 0 until n.childCount)scan(n.getChild(i))}
@@ -140,6 +141,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     return
    }
    n.getBoundsInScreen(viewport)
+   diagnostic="state="+actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)+" body="+r+" deliveryBottom="+rowBottom(root,r)+" viewport="+viewport+" composer="+composer
    if(target!=null&&!r.isEmpty&&r.top>=viewport.top+1&&(rowBottom(root,r)?.let{it<=viewport.bottom-1}==true))return
    val messages=actualViewModel().state.value.messages
    val targetIndex=messages.indexOfFirst{it[2]==text}
@@ -152,7 +154,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    event(android.view.MotionEvent.ACTION_DOWN,0);for(i in 1..6){Thread.sleep(25);event(android.view.MotionEvent.ACTION_MOVE,i)};event(android.view.MotionEvent.ACTION_UP,6)
    Thread.sleep(250);uiAutomation.waitForIdle(100,3000)
   }
-  error("Actual complete message viewport unavailable "+text)
+  error("Actual complete message viewport unavailable "+text+" "+diagnostic)
  }
  private fun retryMessage(text:String){
   showMessage(text);Thread.sleep(700);val body=android.graphics.Rect();await(text).getBoundsInScreen(body)
