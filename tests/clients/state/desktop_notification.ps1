@@ -3,7 +3,7 @@ $ErrorActionPreference='Stop'
 $manager=[Windows.UI.Notifications.ToastNotificationManager,Windows.UI.Notifications,ContentType=WindowsRuntime]
 $setting=$manager::CreateToastNotifier('im.platform.desktop').Setting.ToString();if($setting -ne 'Enabled'){throw 'Actual owned native notification setting unavailable'}
 $before=@($manager::History.GetHistory('im.platform.desktop')).Length
-& powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action click -Name ('⚙ Settings') -Output ($Output+'.settings.png') | Out-Null
+& powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action click -Name ([char]0x2699+' Settings') -Output ($Output+'.settings.png') | Out-Null
 if($LASTEXITCODE -ne 0){throw 'Actual Settings action failed'}
 & powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action click -Name 'Test notification' -Output ($Output+'.actual-ui.png') | Out-Null
 if($LASTEXITCODE -ne 0){throw 'Actual notification UI action failed'}
