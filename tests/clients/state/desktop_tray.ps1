@@ -1,7 +1,8 @@
 ﻿param([switch]$Exercise,[string]$Output='spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/desktop-native/tray-probe.json')
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName UIAutomationClient,UIAutomationTypes
-Add-Type 'using System;using System.Runtime.InteropServices;public class StateTray { [DllImport("user32.dll",CharSet=CharSet.Unicode)]public static extern IntPtr FindWindow(string cls,string title); }' 
+Add-Type 'using System;using System.Runtime.InteropServices;public class StateTray { [DllImport("user32.dll")]public static extern bool SetProcessDPIAware(); [DllImport("user32.dll",CharSet=CharSet.Unicode)]public static extern IntPtr FindWindow(string cls,string title); }' 
+if(-not [StateTray]::SetProcessDPIAware()){throw 'Own tray geometry DPI awareness failed'}
 $p=@(Get-Process im-client-storage|Where-Object {$_.Path -eq 'H:\.codex\toolchains\client-gui\installed\im-client-storage.exe'});if($p.Count -ne 1){throw 'Unique installed owner required'}
 $name='IM+ '+[char]0x00b7+' Your workspace'
 $match=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$name))
@@ -36,7 +37,7 @@ if($Exercise){
   if(-not [StateTrayActions]::SetCursorPos([int]($r.X+$r.Width/2),[int]($r.Y+$r.Height/2))){throw 'Own icon pointer positioning failed'}
   [StateTrayActions]::mouse_event(8,0,0,0,[UIntPtr]::Zero);[StateTrayActions]::mouse_event(16,0,0,0,[UIntPtr]::Zero);Start-Sleep -Milliseconds 350
   $item=[System.Windows.Automation.AutomationElement]::RootElement.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$action))
-  if($null -eq $item -or $item.Current.ProcessId -ne $p[0].Id -or -not $item.Current.IsEnabled){throw 'Actual menu item owner mismatch or unavailable'}
+  if($null -eq $item -or $item.Current.ProcessId -ne $p[0].Id -or -not $item.Current.IsEnabled){throw ('Actual menu item owner mismatch or unavailable: '+$(if($null -eq $item){'null'}else{$item.Current.ProcessId.ToString()+' '+$item.Current.Name}))}
   $menuBounds=$item.Current.BoundingRectangle.ToString()
   ([System.Windows.Automation.InvokePattern]$item.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)).Invoke();Start-Sleep -Milliseconds 500
   $visible=[StateTrayActions]::IsWindowVisible($window);if($visible -ne ($action -eq 'Open IM+')){throw 'Actual tray action window result failed'}
