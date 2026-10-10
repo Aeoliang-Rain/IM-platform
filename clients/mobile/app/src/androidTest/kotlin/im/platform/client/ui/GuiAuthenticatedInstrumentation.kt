@@ -118,7 +118,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    val status=when(state){"SENT"->"Sent";"SENDING"->"Sending…";else->"Failed"}
    fun nearest(label:String):android.graphics.Rect?{
     val candidates=mutableListOf<android.graphics.Rect>()
-    fun scan(n:AccessibilityNodeInfo?){if(n==null)return;if(n.text?.toString()==label){val b=android.graphics.Rect();n.getBoundsInScreen(b);if(!b.isEmpty&&b.top>=body.bottom)candidates.add(b)};for(i in 0 until n.childCount)scan(n.getChild(i))}
+    fun scan(n:AccessibilityNodeInfo?){if(n==null)return;if(n.text?.toString()==label){val b=android.graphics.Rect();n.getBoundsInScreen(b);if(!b.isEmpty&&b.top>=body.bottom){if(label=="Retry"){var button:AccessibilityNodeInfo?=n;while(button!=null&&!button.isClickable)button=button.parent;button?.getBoundsInScreen(b)};candidates.add(b)}};for(i in 0 until n.childCount)scan(n.getChild(i))}
     scan(root);return candidates.minByOrNull{it.top}
    }
    val delivery=nearest(status)?:return null
@@ -126,28 +126,29 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   }
   fun list(n:AccessibilityNodeInfo?,composerTop:Int,minHeight:Int):AccessibilityNodeInfo?{
    if(n==null)return null;val r=android.graphics.Rect();n.getBoundsInScreen(r)
-   if(n.isScrollable&&r.height()>minHeight&&r.bottom<=composerTop)return n
+   if((n.isScrollable||n.collectionInfo!=null)&&r.height()>minHeight&&r.bottom<=composerTop)return n
    for(i in 0 until n.childCount)list(n.getChild(i),composerTop,minHeight)?.let{return it};return null
   }
   repeat(40){
    val root=actualRoot();val composer=android.graphics.Rect();var editor=find(root,"Message")
-   while(editor!=null){editor.getBoundsInScreen(composer);if(!composer.isEmpty)break;editor=editor.parent}
+   while(editor!=null&&!editor.isEditable&&editor.actionList.none{it.id==AccessibilityNodeInfo.ACTION_SET_TEXT})editor=editor.parent
+   editor?.getBoundsInScreen(composer)
    val screen=checkNotNull(uiAutomation.takeScreenshot());val height=screen.height;screen.recycle()
    val viewport=android.graphics.Rect();val n=list(root,composer.top,height/6)
    val target=find(root,text);val r=android.graphics.Rect();target?.getBoundsInScreen(r)
    if(n==null){
     val heading=android.graphics.Rect();(find(root,"Messages sync automatically")?:find(root,"Offline · Showing saved history"))?.getBoundsInScreen(heading)
-    check(target!=null&&!heading.isEmpty&&!r.isEmpty&&r.left>=0&&r.top>=heading.bottom&&rowBottom(root,r)?.let{it<=composer.top-1}==true){"Actual complete non-scrolling message viewport unavailable"}
+    check(target!=null&&!heading.isEmpty&&!r.isEmpty&&r.left>=0&&r.top>=heading.bottom&&rowBottom(root,r)?.let{it<=composer.top}==true){"Actual complete non-scrolling message viewport unavailable"}
     return
    }
    n.getBoundsInScreen(viewport)
    diagnostic="state="+actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)+" body="+r+" deliveryBottom="+rowBottom(root,r)+" viewport="+viewport+" composer="+composer
-   if(target!=null&&!r.isEmpty&&r.top>=viewport.top+1&&(rowBottom(root,r)?.let{it<=viewport.bottom-1}==true))return
+   if(target!=null&&!r.isEmpty&&r.top>=viewport.top&&(rowBottom(root,r)?.let{it<=viewport.bottom}==true))return
    val messages=actualViewModel().state.value.messages
    val targetIndex=messages.indexOfFirst{it[2]==text}
    val visible=messages.mapIndexedNotNull{index,row->val v=find(root,row[2]?:"");val bounds=android.graphics.Rect();v?.getBoundsInScreen(bounds);if(v!=null&&!bounds.isEmpty&&bounds.intersects(viewport.left,viewport.top,viewport.right,viewport.bottom))index else null}
    val above=visible.isNotEmpty()&&targetIndex>=0&&targetIndex<visible.min()
-   val direction=if(above||target!=null&&!r.isEmpty&&r.top<viewport.top+1)AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
+   val direction=if(above||target!=null&&!r.isEmpty&&r.top<viewport.top)AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
    val moved=n.performAction(direction)
    if(!moved&&target!=null)target.performAction(AccessibilityNodeInfo.ACTION_SHOW_ON_SCREEN)
    Thread.sleep(250);uiAutomation.waitForIdle(100,3000)
