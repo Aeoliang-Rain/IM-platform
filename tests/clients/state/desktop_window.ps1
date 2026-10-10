@@ -17,12 +17,17 @@ if($owner -ne $TargetPid){throw 'Window ownership mismatch'}
 Start-Sleep -Milliseconds 150
 $root=[System.Windows.Automation.AutomationElement]::FromHandle([IntPtr]$Hwnd)
 if($Action -eq 'reach'){
- $matches=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name));if($matches.Count -ne 1){throw 'Unique controlled friend username required'}
- $body=$matches[0].Current.BoundingRectangle
- $buttons=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),'Message'))
- $sameRow=@($buttons | Where-Object {$_.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and [Math]::Abs($_.Current.BoundingRectangle.Top-$body.Top) -lt 70})
- if($sameRow.Count -ne 1){throw 'Unique friend card Message focus required'};$sameRow[0].SetFocus();Start-Sleep -Milliseconds 300
- $root=[System.Windows.Automation.AutomationElement]::FromHandle([IntPtr]$Hwnd);$current=$root.FindFirst([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name));if($current.Current.IsOffscreen){throw 'Controlled friend remains offscreen'}
+ function FindOwnedFriendCard($tree){
+  $bodies=$tree.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name))
+  $buttons=$tree.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),'Message'))
+  $cards=@();foreach($body in $bodies){if($body.Current.ControlType -ne [System.Windows.Automation.ControlType]::Text){continue};$bounds=$body.Current.BoundingRectangle;if($bounds.IsEmpty){continue};$middle=$bounds.Top+$bounds.Height/2
+   $same=@($buttons|Where-Object {$_.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and -not $_.Current.BoundingRectangle.IsEmpty -and $middle -ge $_.Current.BoundingRectangle.Top -and $middle -le $_.Current.BoundingRectangle.Bottom})
+   if($same.Count -eq 1){$cards+=@{body=$body;button=$same[0]}}
+  };if($cards.Count -ne 1){throw ('Unique controlled username/Message friend card required: '+$cards.Count)};return $cards[0]
+ }
+ $card=FindOwnedFriendCard $root;$card.button.SetFocus();Start-Sleep -Milliseconds 300
+ $root=[System.Windows.Automation.AutomationElement]::FromHandle([IntPtr]$Hwnd);$current=FindOwnedFriendCard $root
+ if($current.body.Current.IsOffscreen -or $current.button.Current.IsOffscreen){throw 'Controlled friend card remains offscreen'}
 }elseif($Action -eq 'retry'){
  $b=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name));if($b.Count -ne 1){throw 'Unique controlled message body required'}
  $body=$b[0].Current.BoundingRectangle;if($body.IsEmpty){throw 'Current message body geometry unavailable'}
