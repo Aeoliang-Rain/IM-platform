@@ -134,8 +134,10 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    while(editor!=null&&!editor.isEditable&&editor.actionList.none{it.id==AccessibilityNodeInfo.ACTION_SET_TEXT})editor=editor.parent
    editor?.getBoundsInScreen(composer)
    val screen=checkNotNull(uiAutomation.takeScreenshot());val height=screen.height;screen.recycle()
-   val viewport=android.graphics.Rect();val n=list(root,composer.top,height/6)
-   val target=find(root,text);val r=android.graphics.Rect();target?.getBoundsInScreen(r)
+   val viewport=android.graphics.Rect();val target=find(root,text);val r=android.graphics.Rect();target?.getBoundsInScreen(r)
+   var ancestor=target;var parentList:AccessibilityNodeInfo?=null
+   while(ancestor!=null){val bounds=android.graphics.Rect();ancestor.getBoundsInScreen(bounds);if((ancestor.isScrollable||ancestor.collectionInfo!=null)&&bounds.height()>height/6&&bounds.bottom<=composer.top){parentList=ancestor;break};ancestor=ancestor.parent}
+   val n=parentList?:list(root,composer.top,height/6)
    if(n==null){
     val heading=android.graphics.Rect();(find(root,"Messages sync automatically")?:find(root,"Offline · Showing saved history"))?.getBoundsInScreen(heading)
     check(target!=null&&!heading.isEmpty&&!r.isEmpty&&r.left>=0&&r.top>=heading.bottom&&rowBottom(root,r)?.let{it<=composer.top}==true){"Actual complete non-scrolling message viewport unavailable"}
@@ -150,7 +152,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    val above=visible.isNotEmpty()&&targetIndex>=0&&targetIndex<visible.min()
    val direction=if(above||target!=null&&!r.isEmpty&&r.top<viewport.top)AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
    val moved=n.performAction(direction)
-   if(!moved&&target!=null)target.performAction(AccessibilityNodeInfo.ACTION_SHOW_ON_SCREEN)
+   if(!moved&&target!=null)target.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
    Thread.sleep(250);uiAutomation.waitForIdle(100,3000)
   }
   error("Actual complete message viewport unavailable "+text+" "+diagnostic)
