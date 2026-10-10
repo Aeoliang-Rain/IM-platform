@@ -18,7 +18,7 @@ try{
   ConvertTo-Json -InputObject $stateBefore | Set-Content -LiteralPath $stateBaseline -Encoding utf8
   $stateStore.Add($stateCA)
  }elseif($Action -eq 'rollback'){
-  $stateOriginal=@(Get-Content $stateBaseline -Raw | ConvertFrom-Json)
+  $stateOriginal=[string[]](Get-Content $stateBaseline -Raw | ConvertFrom-Json)
   if($stateOriginal -contains $stateExpected){throw 'Baseline certificate cannot be removed'}
   foreach($stateOwned in @($stateStore.Certificates | Where-Object Thumbprint -eq $stateExpected)){$stateStore.Remove($stateOwned)}
  }
