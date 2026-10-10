@@ -112,7 +112,17 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   return androidx.lifecycle.ViewModelProvider(owner)[key,WorkspaceViewModel::class.java]
  }
  private fun showMessage(text:String){
-  val reserve=if(actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)=="SENT")16 else 36
+  val state=actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)
+  val status=when(state){"SENT"->"Sent";"SENDING"->"Sending…";else->"Failed"}
+  fun rowBottom(root:AccessibilityNodeInfo?,body:android.graphics.Rect):Int?{
+   fun nearest(label:String):android.graphics.Rect?{
+    val candidates=mutableListOf<android.graphics.Rect>()
+    fun scan(n:AccessibilityNodeInfo?){if(n==null)return;if(n.text?.toString()==label){val b=android.graphics.Rect();n.getBoundsInScreen(b);if(!b.isEmpty&&b.top>=body.bottom)candidates.add(b)};for(i in 0 until n.childCount)scan(n.getChild(i))}
+    scan(root);return candidates.minByOrNull{it.top}
+   }
+   val delivery=nearest(status)?:return null
+   return if(state=="FAILED")kotlin.math.max(delivery.bottom,(nearest("Retry")?:return null).bottom) else delivery.bottom
+  }
   fun list(n:AccessibilityNodeInfo?,composerTop:Int,minHeight:Int):AccessibilityNodeInfo?{
    if(n==null)return null;val r=android.graphics.Rect();n.getBoundsInScreen(r)
    if(n.isScrollable&&r.height()>minHeight&&r.bottom<=composerTop)return n
@@ -126,17 +136,17 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    val target=find(root,text);val r=android.graphics.Rect();target?.getBoundsInScreen(r)
    if(n==null){
     val heading=android.graphics.Rect();(find(root,"Messages sync automatically")?:find(root,"Offline · Showing saved history"))?.getBoundsInScreen(heading)
-    check(target!=null&&!heading.isEmpty&&!r.isEmpty&&r.left>=0&&r.top>=heading.bottom&&r.bottom<=composer.top-reserve){"Actual complete non-scrolling message viewport unavailable"}
+    check(target!=null&&!heading.isEmpty&&!r.isEmpty&&r.left>=0&&r.top>=heading.bottom&&rowBottom(root,r)?.let{it<=composer.top-1}==true){"Actual complete non-scrolling message viewport unavailable"}
     return
    }
    n.getBoundsInScreen(viewport)
-   if(target!=null&&!r.isEmpty&&r.top>=viewport.top+8&&r.bottom<=viewport.bottom-reserve)return
+   if(target!=null&&!r.isEmpty&&r.top>=viewport.top+1&&(rowBottom(root,r)?.let{it<=viewport.bottom-1}==true))return
    val messages=actualViewModel().state.value.messages
    val targetIndex=messages.indexOfFirst{it[2]==text}
    val visible=messages.mapIndexedNotNull{index,row->val v=find(root,row[2]?:"");val bounds=android.graphics.Rect();v?.getBoundsInScreen(bounds);if(v!=null&&!bounds.isEmpty&&bounds.intersects(viewport.left,viewport.top,viewport.right,viewport.bottom))index else null}
    val above=visible.isNotEmpty()&&targetIndex>=0&&targetIndex<visible.min()
-   val delta=if(above)viewport.height()/3 else if(target!=null&&!r.isEmpty&&r.top<viewport.top+8)kotlin.math.min(viewport.height()/3,kotlin.math.max(20,viewport.top+8-r.top))
-    else -kotlin.math.min(viewport.height()/3,if(target==null||r.isEmpty)viewport.height()/3 else kotlin.math.max(20,r.bottom-(viewport.bottom-reserve)))
+   val delta=if(above)viewport.height()/3 else if(target!=null&&!r.isEmpty&&r.top<viewport.top+1)kotlin.math.min(viewport.height()/3,kotlin.math.max(20,viewport.top+1-r.top))
+    else -kotlin.math.min(viewport.height()/3,if(target==null||r.isEmpty)viewport.height()/3 else kotlin.math.max(20,(rowBottom(root,r)?:r.bottom+30)-(viewport.bottom-1)))
    val x=viewport.centerX().toFloat();val y=viewport.centerY().toFloat();val down=android.os.SystemClock.uptimeMillis()
    fun event(action:Int,step:Int){val e=android.view.MotionEvent.obtain(down,android.os.SystemClock.uptimeMillis(),action,x,y+delta*step/6f,0);e.source=android.view.InputDevice.SOURCE_TOUCHSCREEN;try{verify(uiAutomation.injectInputEvent(e,true))}finally{e.recycle()}}
    event(android.view.MotionEvent.ACTION_DOWN,0);for(i in 1..6){Thread.sleep(25);event(android.view.MotionEvent.ACTION_MOVE,i)};event(android.view.MotionEvent.ACTION_UP,6)
