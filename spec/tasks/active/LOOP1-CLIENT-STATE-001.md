@@ -8,6 +8,10 @@ gate: S2
 client_supplement_phase: state_product
 ---
 
+# Current Resume State (2026-10-10 11:58Z)
+
+Active implementation; source35d74e0 Android periodic in-flight guard is the current product build, current harnessa8ffe7c. Actual new-product Android A/B/order/restart/fresh PASS are bound in source35d-native-formal-binding.json, with original labels unchanged. Web/Desktop/Go product bytes remain source5648. Current actual friend fixture3ba894eb three-origin/recovery/account-switch matrix is running. Mobile existing Send/Sync/GUI, shared SQLite, final source/Recovery Acceptance, exact temporary trust rollback/native negative TLS, final screenshot manifest/Architect and fresh independent Review/hosted/integration/main sync remain mandatory pending. Completion Metadata stays PENDING. Historical backlog and prior candidate records below are preserved history; current resume state overrides their next action.
+
 # Goal
 
 以最新三端实现和已有验收为基线，逐项记录现有能力、证据和待补齐内容，将以下要求写入任务目标与强制验收。

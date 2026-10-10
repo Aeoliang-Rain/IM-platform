@@ -1,11 +1,12 @@
-param([ValidateSet('install','rollback','inspect')][string]$Action)
+﻿param([ValidateSet('install','rollback','inspect')][string]$Action)
 $ErrorActionPreference='Stop'
 $statePrivate='H:/IM-platform/.git/worktrees/IM-platform43/state-runtime'
 $stateMeta=Get-Content ($statePrivate+'/tls-state-week2/public.json') -Raw | ConvertFrom-Json
 $stateCA=[System.Security.Cryptography.X509Certificates.X509Certificate2]::new($statePrivate+'/tls-state-week2/ca.der')
 $stateExpected='727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C'
 if($stateCA.Thumbprint -ne $stateExpected -or $stateCA.NotAfter.ToUniversalTime() -le [DateTime]::UtcNow){throw 'New authorized certificate identity/expiry mismatch'}
-if((Get-FileHash ($statePrivate+'/tls-state-week2/ca.der') -Algorithm SHA256).Hash.ToLower() -ne 'a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5'){throw 'CA hash mismatch'}
+$stateHash=[BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash([IO.File]::ReadAllBytes($statePrivate+'/tls-state-week2/ca.der'))).Replace('-','').ToLower()
+if($stateHash -ne 'a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5'){throw 'CA hash mismatch'}
 $stateStore=[System.Security.Cryptography.X509Certificates.X509Store]::new('Root','CurrentUser')
 $stateStore.Open([System.Security.Cryptography.X509Certificates.OpenFlags]::ReadWrite)
 try{
