@@ -19,13 +19,13 @@ started="2026-10-10T12:29:56.178373Z"
 original=json.loads(next(line for line in Path("H:/IM-platform/.git/worktrees/IM-platform43/state-research/runs/R-STATE-20261010-IMPL/events.jsonl").read_text(encoding="utf-8").splitlines() if json.loads(line).get("data",{}).get("command_id")=="C-4a9652c8-4f30-4874-a7e4-e5e61904e9f4"));assert original["event_type"]=="command_started" and original["timestamp"]==started
 messageOutbox=db("SELECT json_build_object('before',(SELECT count(*) FROM outbox_events WHERE event_type='message.created' AND created_at<'"+started+"'),'after',(SELECT count(*) FROM outbox_events WHERE event_type='message.created'),'new',(SELECT count(*) FROM outbox_events WHERE event_type='message.created' AND created_at>='"+started+"'),'missingOrDuplicate',(SELECT count(*) FROM (SELECT m.server_message_id,count(o.event_id) n FROM messages m LEFT JOIN outbox_events o ON o.message_id=m.server_message_id AND o.event_type='message.created' GROUP BY m.server_message_id HAVING count(o.event_id)<>1) invalid))")
 assert messageOutbox=={"before":73,"after":73,"new":0,"missingOrDuplicate":0}
-nonMessage=db("SELECT coalesce(json_agg(json_build_object('eventId',event_id,'type',event_type,'aggregateUserId',aggregate_id,'createdAt',created_at,'subjectId',payload->>'subjectId','sessionId',payload->>'sessionId') ORDER BY created_at,event_id),'[]'::json) FROM outbox_events WHERE event_type<>'message.created' AND created_at>='"+started+"'")
+nonMessage=db("SELECT coalesce(json_agg(json_build_object('eventId',event_id,'type',event_type,'aggregateId',e.aggregate_id,'aggregateType',e.aggregate_type,'ownerUserId',coalesce(s.user_id,e.aggregate_id),'clientType',s.client_type,'createdAt',e.created_at,'subjectId',e.payload->>'subjectId','sessionId',e.payload->>'sessionId') ORDER BY e.created_at,e.event_id),'[]'::json) FROM outbox_events e LEFT JOIN sessions s ON e.aggregate_type='session' AND s.session_id=e.aggregate_id WHERE e.event_type<>'message.created' AND e.created_at>='"+started+"'")
 assert len(nonMessage)==after["outbox"]-before["outbox"]==32
 from collections import Counter
 assert dict(Counter(e["type"] for e in nonMessage))=={"friend.changed":8,"conversation.changed":8,"membership.changed":8,"session.revoked":8}
 allowed={a["userId"] for a in f["accounts"]}|{"648e2d74-bf54-43b4-ace8-a4c6c206f5a1"}|{json.loads((runtime/"go-35588/public.json").read_text(encoding="utf-8"))["accounts"][2]["username"]}
 base=json.loads((runtime/"go-35588/public.json").read_text(encoding="utf-8"));allowed.add(base["accounts"][2]["userId"])
-assert all(e["aggregateUserId"] in allowed for e in nonMessage)
+assert all(e["ownerUserId"] in allowed for e in nonMessage)
 context=ssl.create_default_context(cafile=str(runtime/"tls-state-week2/ca.pem"))
 with urllib.request.urlopen("https://localhost:8443/__state/events",context=context,timeout=15) as response:events=json.load(response)
 assert not any(e["kind"] in ["send","actual_created","actual_ack"] for e in events[boundary["lastEvent"]:])
