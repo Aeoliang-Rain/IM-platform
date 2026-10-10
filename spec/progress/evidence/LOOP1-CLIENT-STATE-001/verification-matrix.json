@@ -1,0 +1,899 @@
+[
+  {
+    "verification": "Architecture all",
+    "commandId": "C-4c941c60-5cc9-4c5d-936e-6bba7c367805",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T13:09:26.618311Z",
+    "finishedUTC": "2026-10-10T13:09:28.651697Z",
+    "exit": 0,
+    "elapsedMs": 2000.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-4c941c60-5cc9-4c5d-936e-6bba7c367805.stdout.txt",
+        "storedBlobSHA256": "344add87b05c5d8679e13b5fd287b1e3b6d6ff83ca2033865f42f417b5b590ea",
+        "recordedRawOutputSHA256": "284d2e51abf788b268fad6b368e8017f9c6a64fb3c60b2fb8119055d0f9ac22d",
+        "rawByteEqual": false,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-4c941c60-5cc9-4c5d-936e-6bba7c367805.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Frozen authority",
+    "commandId": "C-08e6ba23-4606-4864-8a25-10ebd42c7f7c",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T13:09:26.146560Z",
+    "finishedUTC": "2026-10-10T13:09:26.262555Z",
+    "exit": 0,
+    "elapsedMs": 109.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-08e6ba23-4606-4864-8a25-10ebd42c7f7c.stdout.txt",
+        "storedBlobSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+        "recordedRawOutputSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-08e6ba23-4606-4864-8a25-10ebd42c7f7c.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "S2 planning",
+    "commandId": "C-e3d6de2a-218e-449a-a540-f7df84f62724",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T13:09:27.010279Z",
+    "finishedUTC": "2026-10-10T13:09:27.115603Z",
+    "exit": 0,
+    "elapsedMs": 94.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-e3d6de2a-218e-449a-a540-f7df84f62724.stdout.txt",
+        "storedBlobSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+        "recordedRawOutputSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-e3d6de2a-218e-449a-a540-f7df84f62724.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Architecture tests",
+    "commandId": "C-fcbb2fe5-5f9b-43cd-8fd3-170ed09fdb5f",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/architecture",
+      "-v"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T13:09:27.641842Z",
+    "finishedUTC": "2026-10-10T13:09:43.021334Z",
+    "exit": 0,
+    "elapsedMs": 15359.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-fcbb2fe5-5f9b-43cd-8fd3-170ed09fdb5f.stdout.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-fcbb2fe5-5f9b-43cd-8fd3-170ed09fdb5f.stderr.txt",
+        "storedBlobSHA256": "4e19a25ef6c0d3a5affe364a33be43785a50b36b89e27dc7b3b3db691d752712",
+        "recordedRawOutputSHA256": "4e19a25ef6c0d3a5affe364a33be43785a50b36b89e27dc7b3b3db691d752712",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Recovery Development",
+    "commandId": "C-375d7dbf-ed5c-4c6d-b7ca-35d5d16f3d0c",
+    "argv": [
+      "pwsh",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Development"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T08:34:44.784919Z",
+    "finishedUTC": "2026-10-10T08:34:59.998841Z",
+    "exit": 0,
+    "elapsedMs": 15210.9249,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-375d7dbf-ed5c-4c6d-b7ca-35d5d16f3d0c.stdout.txt",
+        "storedBlobSHA256": "353bb095ea1774d59124b0f9a955a0495fa82f0eae32308bb4609598eea105fb",
+        "recordedRawOutputSHA256": "353bb095ea1774d59124b0f9a955a0495fa82f0eae32308bb4609598eea105fb",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-375d7dbf-ed5c-4c6d-b7ca-35d5d16f3d0c.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Shared SQLite",
+    "commandId": "C-807ba6c1-11ef-4260-9d7d-79d204e749ae",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tools/verify_client_sqlite.py",
+      "--scope",
+      "shared"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:00:50.081862Z",
+    "finishedUTC": "2026-10-10T12:00:52.772336Z",
+    "exit": 0,
+    "elapsedMs": 2672.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-807ba6c1-11ef-4260-9d7d-79d204e749ae.stdout.txt",
+        "storedBlobSHA256": "47c4ff54258d68d7d95d459e2aa61e362b04a44d8b5f4527dd12d51f9833cb48",
+        "recordedRawOutputSHA256": "47c4ff54258d68d7d95d459e2aa61e362b04a44d8b5f4527dd12d51f9833cb48",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-807ba6c1-11ef-4260-9d7d-79d204e749ae.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Shared Send",
+    "commandId": "C-e7e8e9b6-d691-4033-884b-72624a0384c8",
+    "argv": [
+      "python",
+      "-Xutf8",
+      "-B",
+      "tools/verify_client_send.py",
+      "--scope",
+      "shared"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T08:38:26.480411Z",
+    "finishedUTC": "2026-10-10T08:38:31.536434Z",
+    "exit": 0,
+    "elapsedMs": 5052.0769,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-e7e8e9b6-d691-4033-884b-72624a0384c8.stdout.txt",
+        "storedBlobSHA256": "2434a308acf2d8f96929bbacdc922e05e19c3f3e5e32933a767be1efbe8eec94",
+        "recordedRawOutputSHA256": "2434a308acf2d8f96929bbacdc922e05e19c3f3e5e32933a767be1efbe8eec94",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-e7e8e9b6-d691-4033-884b-72624a0384c8.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Shared Sync",
+    "commandId": "C-ae8626fb-e58d-43c5-a8de-b41c31059cd5",
+    "argv": [
+      "python",
+      "-Xutf8",
+      "-B",
+      "tools/verify_client_sync.py",
+      "--scope",
+      "shared"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T08:41:25.786102Z",
+    "finishedUTC": "2026-10-10T08:41:28.085816Z",
+    "exit": 0,
+    "elapsedMs": 2296.5721,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ae8626fb-e58d-43c5-a8de-b41c31059cd5.stdout.txt",
+        "storedBlobSHA256": "2bfe9f5cb0b5462a017cea5f95dd2c10892c3230693d95190a5f40cc4ad10857",
+        "recordedRawOutputSHA256": "2bfe9f5cb0b5462a017cea5f95dd2c10892c3230693d95190a5f40cc4ad10857",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ae8626fb-e58d-43c5-a8de-b41c31059cd5.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Desktop existing SQLite/Send/Sync",
+    "commandId": "C-6cad1051-6533-4698-a34f-ccf96b7f7e8a",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/gui/regressions.py",
+      "desktop"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T11:08:31.242990Z",
+    "finishedUTC": "2026-10-10T11:10:31.568172Z",
+    "exit": 0,
+    "elapsedMs": 120313.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-6cad1051-6533-4698-a34f-ccf96b7f7e8a.stdout.txt",
+        "storedBlobSHA256": "8ee46bd0abf03b3f9077dc8588ac19aa1a8a080f37060dfb9f3ca224c8467a55",
+        "recordedRawOutputSHA256": "8ee46bd0abf03b3f9077dc8588ac19aa1a8a080f37060dfb9f3ca224c8467a55",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-6cad1051-6533-4698-a34f-ccf96b7f7e8a.stderr.txt",
+        "storedBlobSHA256": "d0d345baa062cb4c98b7eca714d0e3ca8aea5d3fde02d8783a47166ccf3641a7",
+        "recordedRawOutputSHA256": "d0d345baa062cb4c98b7eca714d0e3ca8aea5d3fde02d8783a47166ccf3641a7",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Desktop final cancellation Sync",
+    "commandId": "C-4247bc57-9ab5-4898-986b-6d4d12019957",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/gui/native.py",
+      "desktop"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:10:25.427714Z",
+    "finishedUTC": "2026-10-10T12:11:05.556108Z",
+    "exit": 0,
+    "elapsedMs": 40125.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-4247bc57-9ab5-4898-986b-6d4d12019957.stdout.txt",
+        "storedBlobSHA256": "549b625ecefc7d7b1a4cf4cb2496de9a1363bec65e1d13544efba2271cb517f2",
+        "recordedRawOutputSHA256": "549b625ecefc7d7b1a4cf4cb2496de9a1363bec65e1d13544efba2271cb517f2",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-4247bc57-9ab5-4898-986b-6d4d12019957.stderr.txt",
+        "storedBlobSHA256": "080f29d5c943c0b625da418a804466e23fb19cdde744141b678f0b7ec4b4d706",
+        "recordedRawOutputSHA256": "080f29d5c943c0b625da418a804466e23fb19cdde744141b678f0b7ec4b4d706",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Mobile Send",
+    "commandId": "C-7bd32b53-48ac-4280-b274-0d4e9c44fc54",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/gui/native.py",
+      "send-mobile",
+      "--serial",
+      "emulator-5590"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:53:51.777816Z",
+    "finishedUTC": "2026-10-10T12:54:09.057446Z",
+    "exit": 0,
+    "elapsedMs": 17281.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-7bd32b53-48ac-4280-b274-0d4e9c44fc54.stdout.txt",
+        "storedBlobSHA256": "15240e7ef43f3a1878bbcdce34afc4e54b76f4881618a26bc7d243ce0941278a",
+        "recordedRawOutputSHA256": "15240e7ef43f3a1878bbcdce34afc4e54b76f4881618a26bc7d243ce0941278a",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-7bd32b53-48ac-4280-b274-0d4e9c44fc54.stderr.txt",
+        "storedBlobSHA256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "recordedRawOutputSHA256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Mobile Sync final",
+    "commandId": "C-fd5c3c22-7253-4a91-8406-fca2afc4230b",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/gui/native.py",
+      "mobile",
+      "--serial",
+      "emulator-5590"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T13:01:29.237242Z",
+    "finishedUTC": "2026-10-10T13:02:27.972652Z",
+    "exit": 0,
+    "elapsedMs": 58719.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-fd5c3c22-7253-4a91-8406-fca2afc4230b.stdout.txt",
+        "storedBlobSHA256": "80ad05ebbb76eb3755b89d52fae6311fc960bcabf577026e2fcc5c7833ad7345",
+        "recordedRawOutputSHA256": "80ad05ebbb76eb3755b89d52fae6311fc960bcabf577026e2fcc5c7833ad7345",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-fd5c3c22-7253-4a91-8406-fca2afc4230b.stderr.txt",
+        "storedBlobSHA256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "recordedRawOutputSHA256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Mobile GUI/capture",
+    "commandId": "C-0ca4ec63-2992-4da0-982a-6ed86c865c11",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/gui/native.py",
+      "gui-mobile",
+      "--serial",
+      "emulator-5590",
+      "--capture"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T13:00:27.107635Z",
+    "finishedUTC": "2026-10-10T13:01:05.669265Z",
+    "exit": 0,
+    "elapsedMs": 38562.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-0ca4ec63-2992-4da0-982a-6ed86c865c11.stdout.txt",
+        "storedBlobSHA256": "c95118539e5f6dec89bae3a77f8eb3aed4ebefa4c55377147f7da98137fc4e17",
+        "recordedRawOutputSHA256": "c95118539e5f6dec89bae3a77f8eb3aed4ebefa4c55377147f7da98137fc4e17",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-0ca4ec63-2992-4da0-982a-6ed86c865c11.stderr.txt",
+        "storedBlobSHA256": "273e5d3075ddc25a1f594374ae803be46cf8f956b692dd03fb1270fc311542f0",
+        "recordedRawOutputSHA256": "273e5d3075ddc25a1f594374ae803be46cf8f956b692dd03fb1270fc311542f0",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Web locked behavior/appearance/source",
+    "commandId": "C-82e1e48f-d608-4153-8678-c29ae3d7758b",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/web/verify.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T11:19:33.491662Z",
+    "finishedUTC": "2026-10-10T11:19:48.349140Z",
+    "exit": 0,
+    "elapsedMs": 14844.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-82e1e48f-d608-4153-8678-c29ae3d7758b.stdout.txt",
+        "storedBlobSHA256": "77b78c9b8e4dd9c160e1b019bf163ea839c15558f3d5252bf109282e36323dd3",
+        "recordedRawOutputSHA256": "77b78c9b8e4dd9c160e1b019bf163ea839c15558f3d5252bf109282e36323dd3",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-82e1e48f-d608-4153-8678-c29ae3d7758b.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Web required browser baseline",
+    "commandId": "C-b86184fb-d26e-47a5-abd1-7c0ed2d0475f",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "tests/clients/web/browser.mjs"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:58:42.255619Z",
+    "finishedUTC": "2026-10-10T12:59:33.747233Z",
+    "exit": 0,
+    "elapsedMs": 51484.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-b86184fb-d26e-47a5-abd1-7c0ed2d0475f.stdout.txt",
+        "storedBlobSHA256": "fcd7a53822b8e077d78ae7c7ad4758aab6af15cbb860ac14819f23e755669fbd",
+        "recordedRawOutputSHA256": "fcd7a53822b8e077d78ae7c7ad4758aab6af15cbb860ac14819f23e755669fbd",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-b86184fb-d26e-47a5-abd1-7c0ed2d0475f.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Go full suite isolated actual DB",
+    "commandId": "C-3a88a3da-894c-4d72-9402-d4f67bf05bc3",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/state/backend_verify.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T10:28:59.422366Z",
+    "finishedUTC": "2026-10-10T10:29:44.949825Z",
+    "exit": 0,
+    "elapsedMs": 45515.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-3a88a3da-894c-4d72-9402-d4f67bf05bc3.stdout.txt",
+        "storedBlobSHA256": "575955ac9810c6bea3d90582d32dd8c269509d3b90f398278738685eb40a8a50",
+        "recordedRawOutputSHA256": "575955ac9810c6bea3d90582d32dd8c269509d3b90f398278738685eb40a8a50",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-3a88a3da-894c-4d72-9402-d4f67bf05bc3.stderr.txt",
+        "storedBlobSHA256": "ccb9b319889a8523507363ee10e1ccc6c1124405e579484993e31f0db3ff3728",
+        "recordedRawOutputSHA256": "ccb9b319889a8523507363ee10e1ccc6c1124405e579484993e31f0db3ff3728",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Actual Go Sync runtime",
+    "commandId": "C-870ff10f-a4f9-4d5b-a7a3-2b00c935d1e0",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tools/verify_sync_runtime.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T11:24:45.733761Z",
+    "finishedUTC": "2026-10-10T11:25:08.325460Z",
+    "exit": 0,
+    "elapsedMs": 22593.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-870ff10f-a4f9-4d5b-a7a3-2b00c935d1e0.stdout.txt",
+        "storedBlobSHA256": "4ab3b1647f6bba235792ada0fe2afe17d997b79dc384b5f7f7fe28bcd07736f6",
+        "recordedRawOutputSHA256": "4ab3b1647f6bba235792ada0fe2afe17d997b79dc384b5f7f7fe28bcd07736f6",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-870ff10f-a4f9-4d5b-a7a3-2b00c935d1e0.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Windows NSIS actual package",
+    "commandId": "C-b8104c6a-1e3d-4e8f-92e3-3410466fcf50",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/gui/native.py",
+      "package"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:12:17.335840Z",
+    "finishedUTC": "2026-10-10T12:13:38.264795Z",
+    "exit": 0,
+    "elapsedMs": 80922.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-b8104c6a-1e3d-4e8f-92e3-3410466fcf50.stdout.txt",
+        "storedBlobSHA256": "01f7857b5a3acf4702d753a8d48d12f2b77aefed6983250680ccea14997d439d",
+        "recordedRawOutputSHA256": "01f7857b5a3acf4702d753a8d48d12f2b77aefed6983250680ccea14997d439d",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-b8104c6a-1e3d-4e8f-92e3-3410466fcf50.stderr.txt",
+        "storedBlobSHA256": "a342e79a665fef3c824963c7c51c4a91e870ac2bfd9d15e852ae701f5d6a9a8c",
+        "recordedRawOutputSHA256": "a342e79a665fef3c824963c7c51c4a91e870ac2bfd9d15e852ae701f5d6a9a8c",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Web actual Go A/B/order",
+    "commandId": "C-dafa01f9-59f8-4cc2-be45-ea25636b35e8",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "tests/clients/state/web_actual.mjs"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T10:59:56.801013Z",
+    "finishedUTC": "2026-10-10T11:00:31.792089Z",
+    "exit": 0,
+    "elapsedMs": 34984.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-dafa01f9-59f8-4cc2-be45-ea25636b35e8.stdout.txt",
+        "storedBlobSHA256": "0272f3b37e5301cb407eb8241b8d17f083a702999c86f308200eacf484754929",
+        "recordedRawOutputSHA256": "0272f3b37e5301cb407eb8241b8d17f083a702999c86f308200eacf484754929",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-dafa01f9-59f8-4cc2-be45-ea25636b35e8.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Desktop actual Go A/B/order/restart",
+    "commandId": "C-ac1b607c-7164-493b-a1fb-caa6a25755b4",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "tests/clients/state/desktop_actual.mjs"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:16:43.522776Z",
+    "finishedUTC": "2026-10-10T12:18:19.457670Z",
+    "exit": 0,
+    "elapsedMs": 95921.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ac1b607c-7164-493b-a1fb-caa6a25755b4.stdout.txt",
+        "storedBlobSHA256": "8e751f5732ca89c34200f295a1abdbd3d6c94aaadccfc881ea4942f40cf88651",
+        "recordedRawOutputSHA256": "8e751f5732ca89c34200f295a1abdbd3d6c94aaadccfc881ea4942f40cf88651",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ac1b607c-7164-493b-a1fb-caa6a25755b4.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Android actual Go A/B/order",
+    "commandId": "C-a9693c5f-7fe0-4368-a16b-f0f95f308596",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "tests/clients/state/android_actual.mjs"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:13:00.139435Z",
+    "finishedUTC": "2026-10-10T12:14:14.162084Z",
+    "exit": 0,
+    "elapsedMs": 74016.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-a9693c5f-7fe0-4368-a16b-f0f95f308596.stdout.txt",
+        "storedBlobSHA256": "c81649c6b547b9be5487f330ab8b154c6fa3860b3df4d4978b4b5c93ebf14f04",
+        "recordedRawOutputSHA256": "c81649c6b547b9be5487f330ab8b154c6fa3860b3df4d4978b4b5c93ebf14f04",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-a9693c5f-7fe0-4368-a16b-f0f95f308596.stderr.txt",
+        "storedBlobSHA256": "efb9fa2ae73334e6661268300bacfea4b8f8e3120291083f8f26c105db1980e5",
+        "recordedRawOutputSHA256": "efb9fa2ae73334e6661268300bacfea4b8f8e3120291083f8f26c105db1980e5",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Android actual process restart",
+    "commandId": "C-6c3f4c06-c67c-4bfa-8117-5a563f30c434",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "tests/clients/state/android_restart.mjs"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:15:06.250599Z",
+    "finishedUTC": "2026-10-10T12:16:19.898234Z",
+    "exit": 0,
+    "elapsedMs": 73641.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-6c3f4c06-c67c-4bfa-8117-5a563f30c434.stdout.txt",
+        "storedBlobSHA256": "c19acd14ba094777b08a41cf827f355769a7c7ef19f673c7fbc4bdeedf192df0",
+        "recordedRawOutputSHA256": "c19acd14ba094777b08a41cf827f355769a7c7ef19f673c7fbc4bdeedf192df0",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-6c3f4c06-c67c-4bfa-8117-5a563f30c434.stderr.txt",
+        "storedBlobSHA256": "53f54cfecaaf626b358f8aaf686b4d1c60484ed110d451e570b75c69e451ba4e",
+        "recordedRawOutputSHA256": "53f54cfecaaf626b358f8aaf686b4d1c60484ed110d451e570b75c69e451ba4e",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Desktop fresh controlled DB",
+    "commandId": "C-ed0424a5-39c5-433f-bb7a-1e039a83d23d",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "tests/clients/state/desktop_fresh.mjs"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:23:45.580223Z",
+    "finishedUTC": "2026-10-10T12:24:19.780187Z",
+    "exit": 0,
+    "elapsedMs": 34188.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ed0424a5-39c5-433f-bb7a-1e039a83d23d.stdout.txt",
+        "storedBlobSHA256": "dda51a097df54adb4fd962672830349cec2a7843629bae31b5d6c7969d87806e",
+        "recordedRawOutputSHA256": "dda51a097df54adb4fd962672830349cec2a7843629bae31b5d6c7969d87806e",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ed0424a5-39c5-433f-bb7a-1e039a83d23d.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Mobile fresh controlled DB",
+    "commandId": "C-0587c0a9-feec-4a7d-ac83-651541e97a3d",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "tests/clients/state/android_fresh.mjs"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:24:54.497613Z",
+    "finishedUTC": "2026-10-10T12:25:13.304043Z",
+    "exit": 0,
+    "elapsedMs": 18797.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-0587c0a9-feec-4a7d-ac83-651541e97a3d.stdout.txt",
+        "storedBlobSHA256": "6b51fb69e6d5b44ab0f288d6dc5e364e51e6ec3a63421fce5f44adfd15891e2a",
+        "recordedRawOutputSHA256": "6b51fb69e6d5b44ab0f288d6dc5e364e51e6ec3a63421fce5f44adfd15891e2a",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-0587c0a9-feec-4a7d-ac83-651541e97a3d.stderr.txt",
+        "storedBlobSHA256": "b9dd1568b3118af1d3f922fb284ac8cad0d3feac2246fc82ac383cf8f801f425",
+        "recordedRawOutputSHA256": "b9dd1568b3118af1d3f922fb284ac8cad0d3feac2246fc82ac383cf8f801f425",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Friends separate read-only continuation",
+    "commandId": "C-ca437c8c-46a4-4981-84cc-3cc2f7d914e8",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/state/finalize_friends.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:39:34.369986Z",
+    "finishedUTC": "2026-10-10T12:39:37.538377Z",
+    "exit": 0,
+    "elapsedMs": 3157.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ca437c8c-46a4-4981-84cc-3cc2f7d914e8.stdout.txt",
+        "storedBlobSHA256": "05ab8300924ce67a3f1066b6a7351f4d6a0aa8dac14d795e9ab4b92504cd7f77",
+        "recordedRawOutputSHA256": "05ab8300924ce67a3f1066b6a7351f4d6a0aa8dac14d795e9ab4b92504cd7f77",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-ca437c8c-46a4-4981-84cc-3cc2f7d914e8.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Fresh Windows default TLS negative",
+    "commandId": "C-c5d69b05-0467-4a3f-8b35-4cf83d124112",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/state/windows_negative_tls.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:55:31.233487Z",
+    "finishedUTC": "2026-10-10T12:55:56.178473Z",
+    "exit": 0,
+    "elapsedMs": 24937.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-c5d69b05-0467-4a3f-8b35-4cf83d124112.stdout.txt",
+        "storedBlobSHA256": "5f1d043aa145824fef1caae092ac393e46cc435b373e92a4526149c9d8a0bb46",
+        "recordedRawOutputSHA256": "5f1d043aa145824fef1caae092ac393e46cc435b373e92a4526149c9d8a0bb46",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-c5d69b05-0467-4a3f-8b35-4cf83d124112.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Fresh Android default TLS negative",
+    "commandId": "C-81045f41-e9c1-45a4-9332-0c7c289f1765",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/state/android_negative_tls.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T12:47:14.258957Z",
+    "finishedUTC": "2026-10-10T12:47:21.640766Z",
+    "exit": 0,
+    "elapsedMs": 7375.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-81045f41-e9c1-45a4-9332-0c7c289f1765.stdout.txt",
+        "storedBlobSHA256": "ae86ffde9bfa3fa1e2b3c8ba6c41e653a4f4d0465c979f86ab523fed6ecf7648",
+        "recordedRawOutputSHA256": "ae86ffde9bfa3fa1e2b3c8ba6c41e653a4f4d0465c979f86ab523fed6ecf7648",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-81045f41-e9c1-45a4-9332-0c7c289f1765.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  },
+  {
+    "verification": "Exact final resource baseline",
+    "commandId": "C-5795ad57-561e-45d4-8be4-d940b5107909",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-B",
+      "tests/clients/state/verify_teardown.py"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-10T13:11:12.389969Z",
+    "finishedUTC": "2026-10-10T13:11:15.951277Z",
+    "exit": 0,
+    "elapsedMs": 3562.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-5795ad57-561e-45d4-8be4-d940b5107909.stdout.txt",
+        "storedBlobSHA256": "9c4e4154cbb6b9cafd5967284418fa871e6bf0a38a1337e0295bec3f37086934",
+        "recordedRawOutputSHA256": "9c4e4154cbb6b9cafd5967284418fa871e6bf0a38a1337e0295bec3f37086934",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/command-originals/C-5795ad57-561e-45d4-8be4-d940b5107909.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
+      }
+    }
+  }
+]

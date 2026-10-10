@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\finalize_friends.py", line 16, in <module>
+    before=json.loads((root/"messages-before.json").read_text(encoding="utf-8"));after=db("SELECT json_build_object('messages',(SELECT count(*) FROM messages),'outbox',(SELECT count(*) FROM outbox_events))");assert before==after
+                                                                                                                                                                                                                       ^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,7 @@
+Exception calling "OwnedWindow" with "1" argument(s): "Unique actual owned window required: 0"
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:10 char:17
++ ... Hwnd -eq 0){$Hwnd=[StateWin]::OwnedWindow([uint32]$TargetPid).ToInt64 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : Exception
+ 

@@ -1,0 +1,4 @@
+  File "<string>", line 1
+    from pathlib import Path; p=Path('tests/clients/state/desktop_window.ps1'); s=p.read_text(encoding='utf-8-sig'); s=s.replace('public class StateWin {','public class StateWin { [DllImport(\
+                                                                                                                                                           ^
+SyntaxError: unterminated string literal (detected at line 1)

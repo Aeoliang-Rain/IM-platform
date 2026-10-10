@@ -1,0 +1,28 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-1e3c973e-85e3-4699-ac3e-1fb34ea6313b/: 11 files pulled, 0 skipped. 2.6 MB/s (167266 bytes in 0.062s)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Native runner ended: s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+INSTRUMENTATION_RESULT: assertions=26
+INSTRUMENTATION_RESULT: captureRun=friends-1e3c973e-85e3-4699-ac3e-1fb34ea6313b
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: defaultSDKHTTPS=PASS
+INSTRUMENTATION_RESULT: deliveries=[]
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Actual control missing: Offline connection=offline sync=syncing
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_CODE: 0
+
+    at marker (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:10:199)
+    at async file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:22:2 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

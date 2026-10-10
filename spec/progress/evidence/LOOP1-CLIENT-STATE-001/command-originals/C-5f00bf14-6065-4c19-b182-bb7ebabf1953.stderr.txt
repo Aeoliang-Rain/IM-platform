@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+sqlite3.OperationalError: unable to open database file
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -c import sqlite3,json,sys; c=sqlite3.connect('file:C:/Users/21441/AppData/Roaming/im.platform.desktop/im-bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0.sqlite?mode=ro',uri=True);c.row_factory=sqlite3.Row;print(json.dumps([dict(r) for r in c.execute('SELECT * FROM messages WHERE content=?',(sys.argv[1],))])) STATE Desktop A desktop-b9b45f77-1bb9-4ee8-a57b-712c335c6334
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+sqlite3.OperationalError: unable to open database file
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at execFileSync (node:child_process:961:15)
+    at local (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:5:40)
+    at waitState (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:7:72)
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:10:447 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Traceback (most recent call last):\r\n' +
+      '  File "<string>", line 1, in <module>\r\n' +
+      'sqlite3.OperationalError: unable to open database file\r\n'
+  ],
+  pid: 50516,
+  stdout: '',
+  stderr: 'Traceback (most recent call last):\r\n' +
+    '  File "<string>", line 1, in <module>\r\n' +
+    'sqlite3.OperationalError: unable to open database file\r\n'
+}
+
+Node.js v24.16.0

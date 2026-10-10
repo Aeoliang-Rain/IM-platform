@@ -1,0 +1,21 @@
+RUN C:\Users\21441\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -B ci/check_architecture.py --scope clients --json
+{
+  "result": "PASS",
+  "scope": "clients",
+  "violations": [],
+  "graphs": {}
+}
+RUN H:\node.js\npm.cmd --prefix C:\Users\21441\AppData\Local\Temp\web-verification-0rvfx_p3\clients\web ci --ignore-scripts --no-audit --no-fund
+
+added 10 packages in 771ms
+RUN H:\node.js\npm.cmd --prefix C:\Users\21441\AppData\Local\Temp\web-verification-0rvfx_p3\clients\web run build
+
+> im-web@0.1.0 build
+> tsc -p tsconfig.json && node src/ui/build.config.mjs
+
+RUN H:\node.js\node.EXE H:\.codex\worktrees\st\IM-platform\tests\clients\web\behavior.mjs
+PASS Web behavior: exact auth/contracts, no initial backfill, memory state, retry identity, terminal SENT, gap/duplicates/page rollback, refresh/logout and stale callback isolation
+PASS Web regression: late ACK identity, both terminal-page crossing directions, continued pagination/atomic failed-page rollback, stable missing-gap failure/retry, strict legal logout204 and genuine failure
+RUN H:\node.js\node.EXE H:\.codex\worktrees\st\IM-platform\tests\clients\web\appearance.mjs
+PASS appearance: bounded values, rejection, restart, theme independence, unavailable storage, unrelated key preservation
+PASS: actual locked Web build, behavior, appearance and source verification; GUI screenshots remain independent.

@@ -1,0 +1,26 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: prepare ended prematurely: s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+INSTRUMENTATION_RESULT: assertions=333
+INSTRUMENTATION_RESULT: captureRun=restart-92641444-193f-4b81-87b8-7e151bce10ad
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: defaultSDKHTTPS=PASS
+INSTRUMENTATION_RESULT: deliveries=[STATE Android restart restart-92641444-193f-4b81-87b8-7e151bce10ad|FAILED|a0e3bfc1-e19d-4e6f-986a-a8bba5524ca8|null]
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Actual complete message viewport unavailable STATE Android restart restart-92641444-193f-4b81-87b8-7e151bce10ad
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_CODE: 0
+
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/android_restart.mjs:6:761 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

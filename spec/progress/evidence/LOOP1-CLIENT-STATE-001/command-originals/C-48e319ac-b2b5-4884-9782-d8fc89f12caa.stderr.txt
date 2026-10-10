@@ -1,0 +1,23 @@
+s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: H:/Android/platform-tools/adb.exe -s emulator-5590 shell 'pidof' 'im.platform.client'
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at execFileSync (node:child_process:961:15)
+    at call (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/android_restart.mjs:3:15)
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/android_restart.mjs:6:321 {
+  status: 1,
+  signal: null,
+  output: [ null, '', '' ],
+  pid: 36364,
+  stdout: '',
+  stderr: ''
+}
+
+Node.js v24.16.0

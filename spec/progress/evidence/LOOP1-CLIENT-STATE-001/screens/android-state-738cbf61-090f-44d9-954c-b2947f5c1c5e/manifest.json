@@ -1,0 +1,272 @@
+{
+  "task": "LOOP1-CLIENT-STATE-001",
+  "kind": "preliminary dirty source, exact candidate rerun pending",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-35588",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_661cf5",
+        "userId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_cec3e9",
+        "userId": "4a36047f-5e07-484d-9464-814342ae235a",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_2253e1",
+        "userId": "1e47887f-967b-45ff-9be7-d5d6bd196e07",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+    "privateRuntime": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-35588",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "run": "state-738cbf61-090f-44d9-954c-b2947f5c1c5e",
+  "proofs": [
+    {
+      "mode": "A",
+      "text": "STATE Android A state-738cbf61-090f-44d9-954c-b2947f5c1c5e",
+      "requestId": "4e182fea-19d3-4cbe-8634-d775d9604bb8",
+      "before": {
+        "messages": 0,
+        "outbox": 0,
+        "rows": []
+      },
+      "receiverLiveBeforeRetry": false,
+      "after": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "4e182fea-19d3-4cbe-8634-d775d9604bb8",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "182f7c0c-266e-48ee-8f0c-4adbcf3d248b",
+            "seq": 46,
+            "content": "STATE Android A state-738cbf61-090f-44d9-954c-b2947f5c1c5e"
+          }
+        ]
+      },
+      "second": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "0096a48a-f5ff-471e-b209-7a7a66b87fd2",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "02d98003-c262-4299-bd68-e2ec32cc1555",
+            "seq": 45,
+            "content": "STATE Android A state-738cbf61-090f-44d9-954c-b2947f5c1c5e R2"
+          }
+        ]
+      },
+      "sends": [
+        {
+          "event": 1526,
+          "kind": "send",
+          "requestId": "4e182fea-19d3-4cbe-8634-d775d9604bb8",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Android A state-738cbf61-090f-44d9-954c-b2947f5c1c5e"
+          },
+          "attempt": 1
+        },
+        {
+          "event": 1540,
+          "kind": "send",
+          "requestId": "4e182fea-19d3-4cbe-8634-d775d9604bb8",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Android A state-738cbf61-090f-44d9-954c-b2947f5c1c5e"
+          },
+          "attempt": 2
+        }
+      ],
+      "acks": [
+        {
+          "event": 1541,
+          "kind": "actual_ack",
+          "requestId": "4e182fea-19d3-4cbe-8634-d775d9604bb8",
+          "payload": {
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "createdAt": "2026-10-10T12:13:48.389752Z",
+            "messageId": "182f7c0c-266e-48ee-8f0c-4adbcf3d248b",
+            "seq": 46,
+            "status": "committed"
+          },
+          "held": false
+        }
+      ]
+    },
+    {
+      "mode": "B",
+      "text": "STATE Android B state-738cbf61-090f-44d9-954c-b2947f5c1c5e",
+      "requestId": "9880e05a-6a20-469c-803c-2f1b5f9e3387",
+      "before": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "9880e05a-6a20-469c-803c-2f1b5f9e3387",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "e5b2d1f4-0d00-4c6d-ab24-5024f987e3cf",
+            "seq": 47,
+            "content": "STATE Android B state-738cbf61-090f-44d9-954c-b2947f5c1c5e"
+          }
+        ]
+      },
+      "receiverLiveBeforeRetry": true,
+      "after": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "9880e05a-6a20-469c-803c-2f1b5f9e3387",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "e5b2d1f4-0d00-4c6d-ab24-5024f987e3cf",
+            "seq": 47,
+            "content": "STATE Android B state-738cbf61-090f-44d9-954c-b2947f5c1c5e"
+          }
+        ]
+      },
+      "second": {
+        "messages": 1,
+        "outbox": 1,
+        "rows": [
+          {
+            "requestId": "e27f6706-ed0e-476d-b92c-9871900ac6f4",
+            "senderId": "bb330dd3-a3cd-46bb-a8ae-f6ab79b984c0",
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "messageId": "968b0cef-76ff-4a97-9917-406603528436",
+            "seq": 48,
+            "content": "STATE Android B state-738cbf61-090f-44d9-954c-b2947f5c1c5e R2"
+          }
+        ]
+      },
+      "sends": [
+        {
+          "event": 1546,
+          "kind": "send",
+          "requestId": "9880e05a-6a20-469c-803c-2f1b5f9e3387",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Android B state-738cbf61-090f-44d9-954c-b2947f5c1c5e"
+          },
+          "attempt": 1
+        },
+        {
+          "event": 1566,
+          "kind": "send",
+          "requestId": "9880e05a-6a20-469c-803c-2f1b5f9e3387",
+          "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+          "content": {
+            "kind": "TEXT",
+            "text": "STATE Android B state-738cbf61-090f-44d9-954c-b2947f5c1c5e"
+          },
+          "attempt": 2
+        }
+      ],
+      "acks": [
+        {
+          "event": 1548,
+          "kind": "actual_ack",
+          "requestId": "9880e05a-6a20-469c-803c-2f1b5f9e3387",
+          "payload": {
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "createdAt": "2026-10-10T12:13:51.014002Z",
+            "messageId": "e5b2d1f4-0d00-4c6d-ab24-5024f987e3cf",
+            "seq": 47,
+            "status": "committed"
+          },
+          "held": true
+        },
+        {
+          "event": 1568,
+          "kind": "actual_ack",
+          "requestId": "9880e05a-6a20-469c-803c-2f1b5f9e3387",
+          "payload": {
+            "conversationId": "8dd62763-2aeb-4e13-bbd5-a36adada8ac0",
+            "createdAt": "2026-10-10T12:13:51.014002Z",
+            "messageId": "e5b2d1f4-0d00-4c6d-ab24-5024f987e3cf",
+            "seq": 47,
+            "status": "committed"
+          },
+          "held": false
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "file": "native-originals/state-A-failed.png",
+      "sha256": "e7d7fda0a6cbe8c51f31a514c17217b0e13a91c5d0564f3bc951969fe56eacd7",
+      "theme": "cold",
+      "fontSize": 14,
+      "density": 0.8,
+      "language": "English/default",
+      "avd": "IMClientSend34",
+      "serial": "emulator-5590"
+    },
+    {
+      "file": "native-originals/state-A-retry-sent.png",
+      "sha256": "1232f60e4d671228d9dd556c241d9f614c1a245a9c08710aab7803b59bad3a8e",
+      "theme": "cold",
+      "fontSize": 14,
+      "density": 0.8,
+      "language": "English/default",
+      "avd": "IMClientSend34",
+      "serial": "emulator-5590"
+    },
+    {
+      "file": "native-originals/state-A-sending.png",
+      "sha256": "3e158d33fe04c494ffffab02b8f5a3214c1b500acfeed6a4872b682c0043ce41",
+      "theme": "cold",
+      "fontSize": 14,
+      "density": 0.8,
+      "language": "English/default",
+      "avd": "IMClientSend34",
+      "serial": "emulator-5590"
+    },
+    {
+      "file": "native-originals/state-B-failed.png",
+      "sha256": "529ee935ccf6792d40da85991ea411227807ac33c527b84a2cd35b8b1e80543d",
+      "theme": "cold",
+      "fontSize": 14,
+      "density": 0.8,
+      "language": "English/default",
+      "avd": "IMClientSend34",
+      "serial": "emulator-5590"
+    },
+    {
+      "file": "native-originals/state-B-retry-sent.png",
+      "sha256": "b507064bd444024bf4a7d0666fe902ae210afb3a746c0d022f7febbc617e9e45",
+      "theme": "cold",
+      "fontSize": 14,
+      "density": 0.8,
+      "language": "English/default",
+      "avd": "IMClientSend34",
+      "serial": "emulator-5590"
+    },
+    {
+      "file": "native-originals/state-B-sending.png",
+      "sha256": "52e61504b0fea5130e3d16584a30c61c7882f4e9a770262e9e581cdea53f5e93",
+      "theme": "cold",
+      "fontSize": 14,
+      "density": 0.8,
+      "language": "English/default",
+      "avd": "IMClientSend34",
+      "serial": "emulator-5590"
+    }
+  ]
+}

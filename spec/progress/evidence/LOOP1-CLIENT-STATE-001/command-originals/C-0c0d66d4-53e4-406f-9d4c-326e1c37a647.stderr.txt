@@ -1,0 +1,14 @@
+Unique observed UI control required: 鈿?Settings (0)
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:42 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed... 鈿?Settings (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: 鈿?Settings (0)
+ 
+Actual Settings action failed
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_notification.ps1:7 char:25
++ if($LASTEXITCODE -ne 0){throw 'Actual Settings action failed'}
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Actual Settings action failed:String) [], RuntimeException
+    + FullyQualifiedErrorId : Actual Settings action failed
+ 

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\finalize_archive.py", line 24, in <module>
+    row['fixture']=data.get('fixture',row['fixture'])
+                   ^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'

@@ -1,0 +1,17 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: 'GUI Fixture Morgan', exact: true })[22m
+
+    at login (H:\.codex\worktrees\st\IM-platform\tests\clients\state\web_actual.mjs:8:578)
+    at async file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/web_actual.mjs:14:77 {
+  log: [
+    "  - waiting for getByRole('button', { name: 'GUI Fixture Morgan', exact: true })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.16.0

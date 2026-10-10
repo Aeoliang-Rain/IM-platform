@@ -1,0 +1,6 @@
+{
+  "qualification": "Prospective resume with explicit gaps, not a complete raw trace",
+  "reason": "Outer file reads, apply_patch authoring and coordination/tool UI calls were not command-recorder invocations. Early startup and sky native timeout gaps remain disclosed. Recorder captures raw output SHA but persists UTF8-decoded/redacted/JSON-canonicalized text; five stored stdout hashes differ, with original raw bytes unavailable. Exporter first assertion FAIL retained; corrected dual-hash index preserves stored blobs and event raw hashes. No Recorder event/blob edited.",
+  "evidence": "command-index.json; verification-matrix.md; screenshot-index.json",
+  "acceptance": "Recorder success is not Task/Stage acceptance; fresh review/hosted/main synchronization pending"
+}

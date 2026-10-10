@@ -1,0 +1,97 @@
+Existing accepted sqlite desktop regression
+Owned GUI/native mode=sqlite-desktop
++ npm.cmd --prefix clients/shared/protocol-sdk ci --ignore-scripts --no-audit --no-fund
+
+added 1 package in 1s
++ npm.cmd --prefix clients/shared/protocol-sdk run build
+
+> @im/protocol-sdk@0.1.0 build
+> tsc -p tsconfig.json
+
++ npm.cmd --prefix clients/desktop ci --ignore-scripts --no-audit --no-fund
+
+added 13 packages in 840ms
++ npm.cmd --prefix clients/desktop run build
+
+> im-desktop@0.1.0 build
+> tsc -p tsconfig.json && node src/ui/build.config.mjs
+
++ cargo test --locked
+
+running 1 test
+test desktop_capabilities::tests::actual_windows_credential_manager_roundtrip ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test real_atomic_adapter_rolls_back_and_queries_are_read_only ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
++ cargo build --locked --bin storage_probe
++ node tests/clients/sqlite/desktop.mjs H:\.codex\toolchains\client-gui\target\debug\storage_probe.exe
+{"result":"PASS","engine":"actual SQLx SQLite","canonicalCases":13,"assertions":141,"root":"C:\\Users\\21441\\AppData\\Local\\Temp\\im-desktop-storage-AKWJ4l"}
+Existing accepted send desktop regression
+Owned GUI/native mode=send-desktop
++ npm.cmd --prefix clients/shared/protocol-sdk ci --ignore-scripts --no-audit --no-fund
+
+added 1 package in 1s
++ npm.cmd --prefix clients/shared/protocol-sdk run build
+
+> @im/protocol-sdk@0.1.0 build
+> tsc -p tsconfig.json
+
++ node tests/clients/send/shared.mjs
+PASS: strict schema fields, duplicate keys, exact integer lexemes, invalid frames, escaped content
++ npm.cmd --prefix clients/desktop ci --ignore-scripts --no-audit --no-fund
+
+added 13 packages in 748ms
++ npm.cmd --prefix clients/desktop run build
+
+> im-desktop@0.1.0 build
+> tsc -p tsconfig.json && node src/ui/build.config.mjs
+
++ cargo build --locked --bin storage_probe
++ node tests/clients/send/desktop.mjs H:\.codex\toolchains\client-gui\target\debug\storage_probe.exe wss://localhost:56262
+PASS: actual SQLx + builtin WSS TLS send, persisted SENDING, timeout/offline/reject, same-ID restart retry, late ACK/realtime/Sync terminal merge, strict invalid/session checks, transactional rollback, stale socket and account isolation
+PASS: controlled TLS fixture actual client behavior; this is distinct from Go durable-ACK E2E
+Existing accepted sync desktop regression
+Owned GUI/native mode=desktop
++ npm.cmd --prefix clients/shared/protocol-sdk ci --ignore-scripts --no-audit --no-fund
+
+added 1 package in 645ms
++ npm.cmd --prefix clients/shared/protocol-sdk run build
+
+> @im/protocol-sdk@0.1.0 build
+> tsc -p tsconfig.json
+
++ node tests/clients/sync/shared.mjs
+PASS: exact Sync correlation/shapes/gap/progress/kinds/numbers, 100x4096 escaped/literal Unicode bounded transport, strict nonstring Sync/WSS enums and WSS bound regression
++ npm.cmd --prefix clients/desktop ci --ignore-scripts --no-audit --no-fund
+
+added 13 packages in 787ms
++ npm.cmd --prefix clients/desktop run build
+
+> im-desktop@0.1.0 build
+> tsc -p tsconfig.json && node src/ui/build.config.mjs
+
++ cargo build --locked --bin storage_probe
++ node tests/clients/sync/desktop.mjs H:\.codex\toolchains\client-gui\target\debug\storage_probe.exe https://localhost:53113
+PASS: actual Desktop SQLx+HTTPS+WSS 205->208 complete pagination, all Conversation gaps/realtime duplicates, FAILED->SENT/local-first/restart/reconnect/403, atomic rollback, in-flight retirement/401/mismatched session and untrusted CA
+PASS: actual native HTTPS/WSS controlled fixture; Go/PostgreSQL runtime acceptance is separately identified

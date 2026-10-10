@@ -55,15 +55,15 @@ class SyncInstrumentation:Instrumentation() {
         val started=System.nanoTime()
         for(n in listOf("1e100000000","1e-100000000","100000000000000000000","1e2147483647","1e-2147483647")) reject {Wire.user(userPage(id).toString().replace("\"revision\":1","\"revision\":$n"),id,"0")}
         check(System.nanoTime()-started<2_000_000_000L) {"Hostile numeric Sync response was not bounded"}
-        val text="馃榾".repeat(4096);val messages=JSONArray();(1..100).forEach {messages.put(message(it,text))}
+        val text="😀".repeat(4096);val messages=JSONArray();(1..100).forEach {messages.put(message(it,text))}
         val raw=conversationPage(id,messages).toString()
         equal(Wire.conversation(raw,id,c,0).messages.size,100)
-        val escaped=raw.replace("馃榾","\\ud83d\\ude00");check(escaped.toByteArray().size<MAX_RESPONSE)
+        val escaped=raw.replace("😀","\\ud83d\\ude00");check(escaped.toByteArray().size<MAX_RESPONSE)
         equal(Wire.conversation(escaped,id,c,0).messages.last().text,text)
         reject {Wire.conversation(conversationPage(id,JSONArray().put(message(2))).toString(),id,c,0)}
         reject {Wire.conversation(conversationPage(id,JSONArray().put(message(1)).put(message(1))).toString(),id,c,0)}
         reject {Wire.conversation(conversationPage(id,JSONArray()).put("hasMore",true).toString(),id,c,0)}
-        reject {Wire.conversation(conversationPage(id,JSONArray().put(message(1,"馃榾".repeat(4097)))).toString(),id,c,0)}
+        reject {Wire.conversation(conversationPage(id,JSONArray().put(message(1,"😀".repeat(4097)))).toString(),id,c,0)}
         equal(Wire.conversation(conversationPage(id,JSONArray().put(message(1))).toString().replace("\"seq\":1","\"seq\":9007199254740993"),id,c,9007199254740992L).messages.single().seq,9007199254740993L)
         for(endpoint in listOf("http://localhost/","https://user@localhost/","https://localhost/?token=x","https://localhost/sub"))reject {SyncHttps(endpoint,session())}
     }
@@ -81,9 +81,11 @@ class SyncInstrumentation:Instrumentation() {
         fun http()=SyncHttps(endpoint,session(),{url->(url.openConnection() as HttpsURLConnection).also {it.sslSocketFactory=tls.socketFactory}})
         var sender=send();sender.openConversation(c);equal(sender.send(c,"message-1"),uid(1001));equal(repo.messages(c).single()[3],"FAILED")
         var sync=SyncViewModel(sender,repo,http());sender.connect(endpoint.replace("https:","wss:")+"/ws")
-        until {sender.state.value.connection=="ready"};until {repo.contiguous(c)==205L && sync.state.value.status=="idle"}
+        until {sender.state.value.connection=="ready"};var completed:SyncState?=null
+        until {val state=sync.state.value;if(repo.contiguous(c)==205L && state.status=="idle" && denied in state.unavailable){completed=state;true}else false}
+        println("Completed actual pull cursor="+repo.cursor()+" contiguous="+repo.contiguous(c)+" snapshot="+completed)
         equal(repo.cursor(),"u-205");equal(repo.messages(c).size,205);equal(repo.messages(c).first {it[0]==uid(1001)}[3],"SENT")
-        equal(repo.contiguous(d),2L);equal(repo.conversationIds(),listOf(c,d,denied));check(denied in sync.state.value.unavailable);equal(sender.state.value.messages.size,205)
+        equal(repo.contiguous(d),2L);equal(repo.conversationIds(),listOf(c,d,denied));check(denied in checkNotNull(completed).unavailable);equal(sender.state.value.messages.size,205)
         val append=(URL(endpoint+"/fixture/append").openConnection() as HttpsURLConnection);append.sslSocketFactory=tls.socketFactory;append.inputStream.use {it.readBytes()};append.disconnect()
         until {repo.contiguous(c)==208L && repo.cursor()=="u-206" && sync.state.value.status=="idle"};equal(repo.messages(c).size,208)
         sender.disconnect();sender.connect(endpoint.replace("https:","wss:")+"/ws");until {sender.state.value.connection=="ready"};delay(200);sync.synchronize();equal(repo.contiguous(c),208L)
@@ -183,6 +185,6 @@ class SyncInstrumentation:Instrumentation() {
     override fun onStart(){
         val result=Bundle()
         try {runBlocking {wire();actual();storageLifecycle();discovery();slowPeriodicPull()};result.putString("result","PASS");result.putInt("sdkInt",android.os.Build.VERSION.SDK_INT);result.putInt("assertions",assertions);finish(Activity.RESULT_OK,result)}
-        catch(error:Throwable){result.putString("result","FAIL");result.putString("phase",phase);result.putString("failure",error.javaClass.simpleName+": "+error.message);finish(Activity.RESULT_CANCELED,result)}
+        catch(error:Throwable){result.putString("result","FAIL");result.putString("phase",phase);result.putString("failure",error.javaClass.simpleName+": "+error.message);result.putString("failureStack",error.stackTraceToString());finish(Activity.RESULT_CANCELED,result)}
     }
 }

@@ -1,0 +1,86 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.62kB done
+#1 DONE 0.0s
+
+#2 [core-go internal] load build definition from Dockerfile
+#2 transferring dockerfile: 247B 0.0s done
+#2 DONE 0.0s
+
+#3 [gateway-go internal] load metadata for docker.io/library/golang:1.25-alpine
+#3 DONE 0.4s
+
+#4 [gateway-go internal] load metadata for docker.io/library/alpine:3.21
+#4 DONE 4.0s
+
+#5 [core-go internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [core-go build 1/6] FROM docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59
+#6 resolve docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 0.0s done
+#6 DONE 0.0s
+
+#7 [core-go stage-1 1/2] FROM docker.io/library/alpine:3.21@sha256:ce64758a109eb420d874a118f87920e625e12d3634e03b4a5573fd9f6e5d3507
+#7 resolve docker.io/library/alpine:3.21@sha256:ce64758a109eb420d874a118f87920e625e12d3634e03b4a5573fd9f6e5d3507 0.0s done
+#7 DONE 0.0s
+
+#8 [core-go internal] load build context
+#8 transferring context: 39.16kB 0.0s done
+#8 DONE 0.0s
+
+#9 [gateway-go build 2/6] WORKDIR /src
+#9 CACHED
+
+#10 [gateway-go build 3/6] COPY go.mod go.sum ./
+#10 CACHED
+
+#11 [gateway-go build 4/6] RUN go mod download
+#11 CACHED
+
+#12 [core-go build 5/6] COPY . .
+#12 DONE 0.1s
+
+#12 [gateway-go build 5/6] COPY . .
+#12 DONE 0.1s
+
+#13 [core-go build 6/6] RUN CGO_ENABLED=0 go build -o /im-go .
+#13 DONE 9.2s
+
+#13 [core-go build 6/6] RUN CGO_ENABLED=0 go build -o /im-go .
+#13 DONE 9.2s
+
+#7 [core-go stage-1 1/2] FROM docker.io/library/alpine:3.21@sha256:ce64758a109eb420d874a118f87920e625e12d3634e03b4a5573fd9f6e5d3507
+#7 CACHED
+
+#7 [gateway-go stage-1 1/2] FROM docker.io/library/alpine:3.21@sha256:ce64758a109eb420d874a118f87920e625e12d3634e03b4a5573fd9f6e5d3507
+#7 CACHED
+
+#14 [core-go stage-1 2/2] COPY --from=build /im-go /im-go
+#14 DONE 0.0s
+
+#15 [core-go] exporting to image
+#15 exporting layers
+#15 exporting layers 0.5s done
+#15 exporting manifest sha256:f2675f3d78eab6597a9c83cd15322eb840aa9637df83e208226af1fe0d76530f 0.0s done
+#15 exporting config sha256:2e07d0ad1d21404eebc94ccf84a583427616b6299afdcf326314fc7023ff02ce 0.0s done
+#15 exporting attestation manifest sha256:9f64711db9fb7dead244882bb486a2b7806660aa8ac5fe949b2508277c9c9f34 0.0s done
+#15 exporting manifest list sha256:a4a553d2d69d3a26a0797c28f8bf4ffba5c83f937b3ca0fdb5102852e943ab4c 0.0s done
+#15 naming to docker.io/library/im-gui-product-20261004-35588-core-go:latest 0.0s done
+#15 unpacking to docker.io/library/im-gui-product-20261004-35588-core-go:latest 0.1s done
+#15 DONE 0.7s
+
+#16 [gateway-go] exporting to image
+#16 exporting layers 0.5s done
+#16 exporting manifest sha256:f176237e9046e76fd41f006a97ca8f616c0d953a90edfab33826ec7200129718 0.0s done
+#16 exporting config sha256:b491f7fbcf5041102ca184e2d917d50ca2ab95abc980a95fd7a0e7add6d59749 0.0s done
+#16 exporting attestation manifest sha256:7f0b5260a7bdf91e476892617db24197fee1891a72f0c8a1ba6bf833b490c75e 0.0s done
+#16 exporting manifest list sha256:76f78895a7f7d5b0b7e5477c33be7a5f8d7ea53a0bf6f2d99b021f55dbc2b53e 0.0s done
+#16 naming to docker.io/library/im-gui-product-20261004-35588-gateway-go:latest done
+#16 unpacking to docker.io/library/im-gui-product-20261004-35588-gateway-go:latest 0.1s done
+#16 DONE 0.7s
+
+#17 [core-go] resolving provenance for metadata file
+#17 DONE 0.0s
+
+#18 [gateway-go] resolving provenance for metadata file
+#18 DONE 0.0s

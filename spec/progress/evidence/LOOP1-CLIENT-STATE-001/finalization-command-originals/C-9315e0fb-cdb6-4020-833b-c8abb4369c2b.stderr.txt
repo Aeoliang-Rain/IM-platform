@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\finalize_archive.py", line 6, in <module>
+    old=E/'finalize-originals';old.mkdir(exist_ok=True)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1311, in mkdir
+    os.mkdir(self, mode)
+PermissionError: [WinError 5] 拒绝访问。: 'spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\finalize-originals'
