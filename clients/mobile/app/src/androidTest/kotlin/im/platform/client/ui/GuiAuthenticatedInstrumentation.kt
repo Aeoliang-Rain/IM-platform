@@ -265,10 +265,10 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     }else if(phase=="state-friends"){
      val fresh=args.getString("freshUser")!!;login(fresh);navigate("Friends");await("Your friends");capture("friends-online-baseline");controlled("friends-online")
      fun has(id:String)=actualViewModel().state.value.friends.any{it.user.userId==id}
-     fun waitFriend(id:String,name:String){repeat(300){if(!has(id))Thread.sleep(100)};verify(has(id));reach("Your friends");reach(name);capture("friends-observed-"+name.replace(" ","-"))}
+     fun waitFriend(id:String,name:String){repeat(300){if(!has(id))Thread.sleep(100)};verify(has(id));top();reach("Your friends");reach(name);capture("friends-observed-"+name.replace(" ","-"))}
      waitFriend(args.getString("webFriendId")!!,args.getString("webFriendName")?:"STATE WebFriend");controlled("friends-web-observed")
      waitFriend(args.getString("desktopFriendId")!!,args.getString("desktopFriendName")?:"STATE DesktopFriend")
-     fill("Username",args.getString("mobileFriendUser")!!);backKeyboard();reach("Search");click("Search");await(args.getString("mobileFriendName")?:"STATE MobileFriend");click("Add friend");waitFriend(args.getString("mobileFriendId")!!,args.getString("mobileFriendName")?:"STATE MobileFriend");controlled("friends-mobile-added")
+     top();fill("Username",args.getString("mobileFriendUser")!!);backKeyboard();reach("Search");click("Search");await(args.getString("mobileFriendName")?:"STATE MobileFriend");click("Add friend");waitFriend(args.getString("mobileFriendId")!!,args.getString("mobileFriendName")?:"STATE MobileFriend");controlled("friends-mobile-added")
      settingsControl("Go offline");navigate("Friends");await("Offline");controlled("friends-offline");verify(!has(args.getString("offlineFriendId")!!));capture("friends-offline-retained")
      settingsControl("Reconnect");await("Connected");navigate("Friends");waitFriend(args.getString("offlineFriendId")!!,args.getString("offlineFriendName")?:"STATE OfflineFriend");controlled("friends-recovered")
      settingsControl("Sign out");await("Open your workspace");login(args.getString("riley")!!);navigate("Friends");verify(actualViewModel().state.value.friends.none{it.user.displayName.startsWith("STATE ")});capture("friends-account-switch-isolated")
