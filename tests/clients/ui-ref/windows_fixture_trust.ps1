@@ -1,6 +1,6 @@
-param([ValidateSet('inspect','baseline','verify-manual','verify-approved','rollback')][string]$Action='inspect',[Parameter(Mandatory=$true)][string]$ReceiptDirectory)
+param([ValidateSet('inspect','baseline','verify-manual','verify-approved','rollback')][string]$Action='inspect',[Parameter(Mandatory=$true)][string]$ReceiptDirectory,[string]$CertificatePath='H:/IM-platform/.git/worktrees/IM-platform43/state-runtime/tls-state-week2/ca.der')
 $ErrorActionPreference='Stop'
-$fixtureCertificate='H:/IM-platform/.git/worktrees/IM-platform43/state-runtime/tls-state-week2/ca.der'
+$fixtureCertificate=$CertificatePath
 $expectedThumbprint='727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C'
 $expectedHash='a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5'
 $certificate=[Security.Cryptography.X509Certificates.X509Certificate2]::new($fixtureCertificate)

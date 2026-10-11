@@ -1,8 +1,8 @@
 """Loopback-only fault relay to the actual Go TLS fixture; never fabricates ACKs/messages."""
 from pathlib import Path
-import base64,hashlib,http.client,http.server,json,mimetypes,socket,ssl,struct,threading,time
+import base64,hashlib,http.client,http.server,json,mimetypes,socket,ssl,struct,threading,time,os
 ROOT=Path(__file__).resolve().parents[4]
-PRIVATE=Path('C:/Users/21441/.codex/visualizations/2026/10/11/01a129aa-d2ed-7350-8f8d-efb0ecc85664/ui-ref-runtime')
+PRIVATE=Path(os.environ.get('IM_GUI_PRIVATE_RUNTIME','C:/Users/21441/.codex/visualizations/2026/10/11/01a129aa-d2ed-7350-8f8d-efb0ecc85664/ui-ref-runtime'))
 TLS=PRIVATE/'tls-ui-ref'
 mimetypes.add_type('application/javascript','.mjs')
 CA=ssl.create_default_context(cafile=str(TLS/'ca.pem'))
@@ -78,6 +78,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
   try:
    headers={k:v for k,v in self.headers.items() if k.lower() not in ('host','connection','content-length')}
    upstream.request(self.command,self.path,body or None,headers);response=upstream.getresponse();content=response.read()
+   if self.path in ('/v1/auth/login','/v1/auth/refresh/native','/v1/auth/logout'):
+    code=None
+    if response.status>=400:
+     try:code=json.loads(content).get('error',{}).get('code')
+     except (ValueError,AttributeError):pass
+    record('actual_auth_response',path=self.path,status=response.status,errorCode=code)
    if self.path=='/v1/sync/conversation':
     token=self.headers.get('Authorization','').removeprefix('Bearer ')
     with lock:block=any(h['token']==token for h in held.values())

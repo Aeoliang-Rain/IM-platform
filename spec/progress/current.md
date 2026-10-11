@@ -9,12 +9,15 @@ Batch Status: REVIEW_PENDING
 Current Task: LOOP1-CLIENT-UI-REF-001
 Current Task State: review
 Execution Status: REVIEW_PENDING
+Fix State: AUTH_EVIDENCE_FIX_PENDING
 
 ## Immediately Relevant Completed Work
 
 UIREF three-platform extraction, semantic display IDs, full local/live behavior regression and exact cleanup complete. Product source1bd1a1bf; no schema/contracts/technology change. STATE prerequisite accepted and synchronized at ca527ca. Local results do not establish Task acceptance.
 
 ## Current Blockers
+
+Fresh independent final Review and Architect on f91508db29a40b66574cb41f611015b677836467 returned FAIL for missing actual Mobile wrong-password/401-expiry/credential-session clearing/completed idle logout and installed current Desktop expiry evidence. Fresh Fix Agent /root/ui_ref_auth_fix now owns the sole writer; product1bd is frozen. Old raw failures remain. Narrow Auth supplement and report qualifications precede a new clean candidate and fresh independent acceptance. Certificate roots are currently restored; no renewed automatic CA import is authorized.
 
 No remaining implementation/resource blocker. Independent final Architect/Review, exact-head hosted acceptance, protected integration and main synchronization pending.
 
@@ -35,6 +38,8 @@ Direct three-platform render components and semantic status/error IDs; task-only
 Additive qualifications.md preserves historical failures, inherited labels and exact capture/artifact mappings. Background Syncing remains visible; actual friend/private/name/cursor/offline/account/no-chat convergence is proved. No new visible OS notification card: exact-source accepted-card continuity is limited. Original Android unknown DB only filename preservation verified, not a content-restoration claim. Temporary pinned CA was Human manually imported and explicitly authorized for actual LM/CU use/automatic removal; exact owned rollback and complete original CU74/LM72 full sets restored PASS. Original scope/permission/sandbox-view failures retained. Installation3bytes/preferences and all owned processes/ports/runtime/newfactoryAVD/generated outputs cleanup PASS.
 
 ## Next Exact Action
+
+Complete four required real Auth cases using owned fixtures/new factory Android explicit test CA, and installed current Desktop default native TLS only after necessary Human manual trust import. Restore all owned resources/trust after testing, then commit and release to fresh independent reviewers. Task review/PENDING; no I18N or Stage Gate.
 
 Commit clean task-owned review candidate and run original clean Acceptance with bundled PowerShell7/Python PATH; finish/validate implementation Recorder and release writer to Coordinator. Coordinator obtains fresh independent final decisions, exact-head hosted jobs, protected integration/actual-main and safe main sync before done. No I18N/S2 Gate work.
 

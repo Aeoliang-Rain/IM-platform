@@ -2,7 +2,7 @@
 task_id: LOOP1-CLIENT-UI-REF-001
 title: 组件拆分与完整性验证
 status: review
-owner: /root/ui_ref_resume
+owner: /root/ui_ref_auth_fix
 stage: S2
 gate: S2
 client_supplement_phase: ui_ref_product
@@ -127,5 +127,7 @@ Assigned exact managed root H:/.codex/worktrees/u/IM-platform, branch task/LOOP1
 Local source checks and 77 architecture tests PASS; Recovery Development PASS using existing bundled Python/PowerShell7. Clean committed Acceptance runs after candidate commit; actual SHA/clean result/Recorder finish are externally delivered. Recorder R-UIREF-RESUME-20261011 linked prospective_resume, old interrupted implementation CANCELLED. Local/Recorder PASS is not Task/S2 PASS.
 
 # Next Action
+
+2026-10-11 fresh final Review and Architect decisions on clean f91508db29a40b66574cb41f611015b677836467 are FAIL: actual current Mobile wrong-password classification, real 401 expiry/session and secure credential clearing, completed idle logout, and installed current Desktop native expiry evidence are missing. Old mock/busy logout captures do not establish those outcomes. Fresh Fix Agent /root/ui_ref_auth_fix is the sole writer, limited to task test/evidence and recovery metadata. Product1bd remains unchanged; Task stays review/PENDING. Supplement only these four Auth cases, preserve all old raw failures and broad-report qualifications, then release a clean new candidate to new independent reviewers. No CI/integration/done until accepted. Recorder R-UIREF-AUTH-FIX-20261011 is prospective_resume with startup direct reads disclosed.
 
 Coordinator owns fresh independent final Architect/Review, applicable exact-head hosted CI, protected integration/actual-main verification, safe H:/IM-platform synchronization and administrative closure. No further product work, I18N or Stage Gate is authorized. Task remains unfinished in review; Completion Metadata PENDING.

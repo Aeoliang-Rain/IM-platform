@@ -293,6 +293,29 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
      controlled("state-"+mode+"-failed")
      retryMessage(text);val committed=delivery(text,"SENT");verify(committed[0]==failed[0]);showMessage(if(mode=="A")secondText else text);val firstBounds=android.graphics.Rect();val secondBounds=android.graphics.Rect();await(text).getBoundsInScreen(firstBounds);await(secondText).getBoundsInScreen(secondBounds);verify(!firstBounds.isEmpty&&!secondBounds.isEmpty);verify(if(mode=="A")secondBounds.top<firstBounds.top else firstBounds.top<secondBounds.top);capture("state-"+mode+"-retry-sent")
     }
+   }else if(phase=="auth-required"){
+    fill("Username",args.getString("avery")!!);fill("Password","wrong-fixture-password");backKeyboard();reach("Sign in");click("Sign in");await("Invalid username or password")
+    repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
+    val invalid=actualViewModel().state.value
+    verify(!invalid.busy&&invalid.session==null&&invalid.offlineAccount==null&&invalid.connection=="offline"&&invalid.error=="Invalid username or password")
+    verify(prefs.read("https://localhost:8443/current")==null);verify(find(actualRoot(),"Session expired. Sign in again.")==null);capture("actual-invalid-password-idle")
+    login(args.getString("avery")!!)
+    val logoutSlot=checkNotNull(prefs.read("https://localhost:8443/current"));verify(prefs.read(logoutSlot)!=null)
+    settingsControl("Sign out");await("Open your workspace")
+    repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
+    val loggedOut=actualViewModel().state.value
+    verify(!loggedOut.busy&&loggedOut.session==null&&loggedOut.offlineAccount==null&&loggedOut.connection=="offline")
+    verify(prefs.read("https://localhost:8443/current")==null&&prefs.read(logoutSlot)==null);verify(find(actualRoot(),"Please wait…")==null);capture("actual-logout-completed-idle")
+    result.putString("logoutSecureSlotAbsent","PASS current and former owned session credential absent")
+    login(args.getString("avery")!!)
+    val expirySlot=checkNotNull(prefs.read("https://localhost:8443/current"));verify(prefs.read(expirySlot)!=null)
+    settingsControl("Go offline");await("Offline");navigate("Settings");reach("Refresh session");capture("actual-session-before-expiry")
+    controlled("expiry");click("Refresh session");await("Session expired. Sign in again.")
+    repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
+    val expired=actualViewModel().state.value
+    verify(!expired.busy&&expired.session==null&&expired.offlineAccount==null&&expired.connection=="offline")
+    verify(prefs.read("https://localhost:8443/current")==null&&prefs.read(expirySlot)==null);top();reach("Session expired. Sign in again.");capture("actual-session-expired-cleared-idle")
+    result.putString("expiredSecureSlotAbsent","PASS current and former owned session credential absent")
    }else if(phase=="auth-errors"){
     fun invalid(name:String){
      fill("Username",args.getString("avery")!!);fill("Password","wrong-fixture-password");backKeyboard();reach("Sign in");click("Sign in");await("Invalid username or password")

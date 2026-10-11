@@ -4,6 +4,7 @@ import subprocess, os, json, time, datetime, socket, hashlib, sys, uuid
 root=Path(__file__).resolve().parents[3]
 private=Path('C:/Users/21441/.codex/visualizations/2026/10/11/01a129aa-d2ed-7350-8f8d-efb0ecc85664/ui-ref-runtime')
 on_h='--h-storage' in sys.argv
+auth_fix='--auth-fix' in sys.argv
 directory=root/'tests/clients/ui-ref/.runtime/baseline-avd' if on_h else private/'baseline-avd'
 assert not on_h or directory.resolve().is_relative_to((root/'tests/clients/ui-ref').resolve())
 resume='--resume-own' in sys.argv;attempt=uuid.uuid4().hex
@@ -31,7 +32,7 @@ receipt={'actualUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'d
 receipt.update({'attempt':attempt,'resumeOwnedFactory':resume,'userdataPartitionMegabytes':2047 if resume else 'SDK default','priorFailureQualification':'Default userdata required7372MB but only6175MB available; emulator rejects2048 above its2047MB CLI limit; both original logs retained' if resume else None})
 import shutil
 receipt.update({'resolvedOwnedRoot':str(directory.resolve()),'freeBytesBeforeLaunch':shutil.disk_usage(directory).free,'environmentMethod':'Child-only explicit env mapping; parent environment unchanged','storageOnAssignedTaskAllowedPath':on_h})
-target=root/'spec/progress/evidence/LOOP1-CLIENT-UI-REF-001'/('baseline-avd-h-created.json' if on_h else 'baseline-avd-restart-'+attempt+'.json' if resume else 'baseline-avd-created.json');assert not target.exists();target.write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
+target=root/'spec/progress/evidence/LOOP1-CLIENT-UI-REF-001'/('auth-fix-avd-created.json' if auth_fix else 'baseline-avd-h-created.json' if on_h else 'baseline-avd-restart-'+attempt+'.json' if resume else 'baseline-avd-created.json');assert not target.exists();target.write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
 try:
  for _ in range(180):
   assert process.poll() is None
@@ -40,7 +41,7 @@ try:
   time.sleep(1)
  else:raise RuntimeError('Independent baseline AVD boot timeout')
  sdk=subprocess.check_output([adb,'-s',serial,'shell','getprop','ro.build.version.sdk'],env=env,text=True).strip();assert sdk=='34'
- ready=root/'spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/baseline-avd-ready.json';assert not ready.exists();ready.write_text(json.dumps({**receipt,'actualReadyUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'actualSDK':sdk},indent=2)+'\n',encoding='utf-8');print('READY independent owned API34 baseline '+serial,flush=True)
+ ready=root/'spec/progress/evidence/LOOP1-CLIENT-UI-REF-001'/('auth-fix-avd-ready.json' if auth_fix else 'baseline-avd-ready.json');assert not ready.exists();ready.write_text(json.dumps({**receipt,'actualReadyUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'actualSDK':sdk},indent=2)+'\n',encoding='utf-8');print('READY independent owned API34 baseline '+serial,flush=True)
  while not (directory/'stop-request').exists():
   assert process.poll() is None;time.sleep(.5)
 finally:
