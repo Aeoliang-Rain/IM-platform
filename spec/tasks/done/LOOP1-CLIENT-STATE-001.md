@@ -1,14 +1,20 @@
 ---
 task_id: LOOP1-CLIENT-STATE-001
 title: 消息状态、幂等重发与好友同步
-status: review
-owner: /root/state_fix_b
+status: done
+owner: /root/state_close (administrative closure; product independently accepted)
 stage: S2
 gate: S2
 client_supplement_phase: state_product
 ---
 
-# Current Resume State (Fix B local verification 2026-10-11)
+# Current Resume State (independently accepted product, administrative closure candidate 2026-10-11)
+
+STATE product candidate a3c768ef97cf689c202e005ba417597e5f98f6a3 is independently accepted by fresh Reviewer B/Architect B and exact hosted candidate/PR/main CI, normal protected PR33 integration to actual main aab1c5907d5886816b4969013912c9fbd1be492b, and safe H:/IM-platform synchronization independently audited for all task blobs and781unknown bytes/status/index/branch. Product Task PASS; S1 PASS/S2 OPEN. Durable original reports, hosted API/logs, receipt hashes and preservation proof: spec/progress/evidence/LOOP1-CLIENT-STATE-001/acceptance-20261011/acceptance.md.
+
+This sole-writer administrative candidate changes only Task/evidence/current/checkpoint. Its own fresh independent Review, exact-head hosted CI, protected integration, actual-main verification and safe synchronization remain PENDING; actual administrative SHA is externally sealed after commit. No self-acceptance or automatic UI-REF/I18N/S2 Gate activation. All prior local/pending/backlog statements below are historical snapshots, not current resume instructions. Original FAIL/PNG/Recorder and disclosed provenance limits remain immutable.
+
+# Historical Fix B local verification (2026-10-11)
 
 Fresh Fix B local affected verification PASS: Desktop7ef8 real pane/physical viewport/occlusion-checked A/B SENDING/FAILED/actual UI Retry/SENT, both seq orders and true restart FAILED; friends5bec real Mobile-origin target/name/button plus Web held-offline/reconnect/original-account restore visible, Message6→6/message.created6→6 and measured nonmessage Outbox41→73. Old failing SQL/equality checker and offscreen images retained.
 
@@ -138,23 +144,31 @@ Goal全部条目与spec/acceptance/client-supplement.md本任务段是强制验�
 
 # Evidence
 
-`spec/progress/evidence/LOOP1-CLIENT-STATE-001/`保存可复现场景/原始结果/failed记录/真实截图Architect/independent Review/hosted/main/sync；Research Recorder独立run。当前未执行产品验收；local/Recorder PASS不是Task/Stage PASS。
+`spec/progress/evidence/LOOP1-CLIENT-STATE-001/`保存可复现场景/原始结果/failed记录/真实截图Architect/independent Review/hosted/main/sync；Research Recorder独立run。当前产品独立接受/受保护集成/actual-main hosted和主仓库安全同步PASS，见acceptance-20261011/acceptance.md；行政候选自身接受仍待新独立链。local/Recorder PASS不是Task/Stage PASS。
 
 # Completion Metadata
 
-acceptance_result: PENDING
-accepted_candidate_sha: unavailable
-integrated_main_sha: unavailable
-main_sync_result: PENDING
-independent_review_evidence: unavailable
-hosted_acceptance_evidence: unavailable
-main_sync_evidence: unavailable
+acceptance_result: PASS
+accepted_candidate_sha: a3c768ef97cf689c202e005ba417597e5f98f6a3
+integrated_main_sha: aab1c5907d5886816b4969013912c9fbd1be492b
+main_sync_result: PASS
+independent_review_evidence: spec/progress/evidence/LOOP1-CLIENT-STATE-001/acceptance-20261011/independent-review.md
+hosted_acceptance_evidence: spec/progress/evidence/LOOP1-CLIENT-STATE-001/acceptance-20261011/product-acceptance.md
+main_sync_evidence: spec/progress/evidence/LOOP1-CLIENT-STATE-001/acceptance-20261011/main-sync.json
 
 # Handoff
+
+Product candidate a3c768ef97cf689c202e005ba417597e5f98f6a3 / protectedPR33 actualmain aab1c5907d5886816b4969013912c9fbd1be492b is independently accepted and synchronized; full original evidence: spec/progress/evidence/LOOP1-CLIENT-STATE-001/acceptance-20261011/acceptance.md. Task queue done records this completed product chain. Administrative closure is sole-owned by /root/state_close in assigned root H:/.codex/worktrees/st/IM-platform, task branch task/LOOP1-CLIENT-STATE-001; its actual commit/clean state is external sealed evidence and still requires fresh independent Review/exact-head CI/protected integration/actual-main/safe sync before overall closure. Main781unknown preserved. S1 PASS/S2 OPEN; no architecture/contract/schema change. Stable product recovery point aab1; historical failures and Recorder remain untouched.
+
+Historical backlog handoff (superseded by product activation and acceptance; preserved):
 
 仅backlog规格交付，无产品实现/接受/同步。起点latest accepted main b4d271ceeed40343e627450f6b43cd9c9ad5ff0e，基线审计见规划evidence/baseline-audit.md；本规划pending，S1 PASS/S2 OPEN。无本Task uncommitted product ownership，未知main工作保留。激活时fresh context读最新前项完整接受/视觉/source并补充精确harness。
 
 # Next Action
+
+Coordinator obtains fresh independent administrative Review, exact-head hosted CI, normal protected integration, actual-main audit and safe main synchronization for the externally sealed administrative commit. Then STOP at completed STATE; UI-REF/I18N remain backlog, S2 Gate OPEN and not evaluated. Product acceptance does not accept future administrative bytes.
+
+Historical backlog instruction (superseded; preserved):
 
 保持backlog。后续明确授权且所有依赖独立接受/集成/main同步满足才ready→active，声明client_supplement_phase: state_product并登记实际新增验收命令；本次不执行产品。
 
@@ -224,3 +238,6 @@ All three concrete review gaps now have real affected evidence. Detailed summary
 
 
 Fix B after-edit checks: Frozen/planning/architecture all PASS; 77 architecture tests PASS (1 skip); Recovery Development PASS; capture Python/Node syntax PASS. Generated own Android outputs triggered initial architecture FAIL, preserved then archived with full SHA manifest; checker unchanged. See fix-b/after-edit-checks.json and command-index.json. Machine pre-manual-import snapshot remains unavailable and historical GUI76/tool75 discrepancy unresolved; neither is explained away. Exact committed Recovery Acceptance and independent acceptance remain pending.
+
+
+Administrative final recovery discovery: fixed external seal `C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-administrative-final-acceptance.json` is created only by Coordinator after fresh independent administrative Review, exact administrative candidate hosted CI, protected integration, actual-main hosted/audit and safe main synchronization all PASS. Before it exists and those actual SHA/evidence/results are verified, this is an administrative-pending snapshot. Once its actual independent chain is verified, this STATE scope is closed and the next exact action is STOP; do not repeat product verification or automatically select UI-REF/I18N/Gate. The seal binds actual administrative candidate/main SHA without self-referential commits. Missing, incomplete or mismatched seal cannot establish PASS.
