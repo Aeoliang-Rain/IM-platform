@@ -1,0 +1,90 @@
+[
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "command_id": "C-3aff9d52-30e2-482e-a2c2-60a9fc5d5002",
+    "started": "2026-10-11T12:11:38.220289Z",
+    "duration_ms": 860.0,
+    "exit_code": 0,
+    "stdoutHashMatches": false,
+    "stderrHashMatches": true,
+    "stdoutTail": "res/auth-user-friend/loop1-exceptions.json\",\"json:\\\"loop\\\"\",\"json:\\\"scenarioId\\\"\",\"json:\\\"status\\\"\",\"json:\\\"runtimeAcceptanceRequired\\\"\",\"json:\\\"countsAsPass\\\"\",\"json:\\\"exceptions\\\"\",\"Loop1\",\"unexpected applicability profile\",\"friend-add-authorization-denied\",\"DEFERRED_BY_HUMAN\",\"unapproved exception\",\"../../../contracts/fixtures/auth-user-friend/negative.json\",\"DISPOSITION friend-add-authorization-denied DEFERRED_BY_HUMAN; runtime not executed; does not count as canonical PASS\",\"SELECT user_id FROM users WHERE user_id=$1 FOR UPDATE\",\"PUT\",\"/v1/friends/\",\"SELECT count(*) FROM pg_stat_activity WHERE datname=current_database() AND wait_event_type='Lock' AND query LIKE 'SELECT user_id FROM users WHERE user_id=%'\",\"Social request did not wait for account lock\",\"UPDATE sessions SET expires_at=now()-interval '1 second' WHERE user_id=$1 AND client_type='WEB'\",\"error\",\"code\",\"AUTH_SESSION_REVOKED\",\"expired Session accepted after lock\",\"request did not unblock\",\"SELECT count(*) FROM friendships WHERE user_low_id=$1 OR user_high_id=$1\",\"SELECT count(*) FROM user_sync_events WHERE user_id=$1\",\"SELECT count(*) FROM outbox_events WHERE aggregate_type='user' AND aggregate_id=$1\",\"rejected Session left social effects\"],\"types\":null}],\"java\":[{\"owner\":\"root\",\"package\":\"\",\"path\":\"InfraPlaceholder.java\",\"strings\":[\"gateway\",\"core\",\"plugin-host\",\"expected gateway, core, or plugin-host role\",\"placeholder request failed: \",\" \",\"Sec-WebSocket-Key\",\"Upgrade\",\"websocket\",\"gateway\",\"/__infra/ws\",\"SHA-1\",\"258EAFA5-E914-47DA-95CA-C5AB0DC85B11\",\"HTTP/1.1 101 Switching Protocols\\\\r\\\\nUpgrade: websocket\\\\r\\\\nConnection: Upgrade\\\\r\\\\nSec-WebSocket-Accept: \",\"\\\\r\\\\n\\\\r\\\\n\",\"/__infra/health\",\"profile=java role=\",\"\\\\n\",\"HTTP/1.1 200 OK\\\\r\\\\nContent-Type: text/plain; charset=utf-8\\\\r\\\\nContent-Length: \",\"\\\\r\\\\nConnection: close\\\\r\\\\n\\\\r\\\\n\",\"HTTP/1.1 404 Not Found\\\\r\\\\nContent-Length: 0\\\\r\\\\nConnection: close\\\\r\\\\n\\\\r\\\\n\"],\"types\":[\"InfraPlaceholder\"]}]},\"result\":\"PASS\",\"scope\":\"all\",\"violations\":[]}",
+    "stderrTail": ""
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "command_id": "C-46572b02-b542-41a1-b994-cf0a262bc33c",
+    "started": "2026-10-11T12:11:48.565098Z",
+    "duration_ms": 156.0,
+    "exit_code": 0,
+    "stdoutHashMatches": true,
+    "stderrHashMatches": true,
+    "stdoutTail": "PASS: v1.1 current SHA/PDF provenance/ADR and section-bound semantic structure; historical migration semantic_change=false; current revision semantic_change=true\n",
+    "stderrTail": ""
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "command_id": "C-311613e8-7fb3-4ea6-8f2e-8406a2311c9d",
+    "started": "2026-10-11T12:11:49.975579Z",
+    "duration_ms": 125.0,
+    "exit_code": 0,
+    "stdoutHashMatches": true,
+    "stderrHashMatches": true,
+    "stdoutTail": "PASS: planning queue/authority/dependencies; OPEN Stage Gate not evaluated\n",
+    "stderrTail": ""
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/architecture",
+      "-v"
+    ],
+    "command_id": "C-55943b9d-2bb1-4049-ae7c-2c186e8d7044",
+    "started": "2026-10-11T12:11:53.073168Z",
+    "duration_ms": 29875.0,
+    "exit_code": 0,
+    "stdoutHashMatches": true,
+    "stderrHashMatches": true,
+    "stdoutTail": "",
+    "stderrTail": "d_without_name_hardcoding) ... ok\ntest_root_new_business_and_unapproved_internal (test_source_boundaries.SourceTests.test_root_new_business_and_unapproved_internal) ... ok\ntest_root_test_name_cannot_hide_business (test_source_boundaries.SourceTests.test_root_test_name_cannot_hide_business) ... ok\ntest_shared_generic_repository_call_rejected_without_sql_literal (test_source_boundaries.SourceTests.test_shared_generic_repository_call_rejected_without_sql_literal) ... ok\ntest_shared_java_connection_factory_is_support_not_repository (test_source_boundaries.SourceTests.test_shared_java_connection_factory_is_support_not_repository) ... ok\ntest_shared_reverse_dependency_and_moved_full_auth (test_source_boundaries.SourceTests.test_shared_reverse_dependency_and_moved_full_auth) ... ok\ntest_syntax_failure_cannot_be_skipped (test_source_boundaries.SourceTests.test_syntax_failure_cannot_be_skipped) ... ok\ntest_workflow_missing_commands_dependencies_and_suppression_rejected (test_source_boundaries.SourceTests.test_workflow_missing_commands_dependencies_and_suppression_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 77 tests in 29.292s\n\nOK (skipped=1)\n"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-Command",
+      "$env:PATH=\"C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python;\"+$env:PATH; & ./tools/verify-loop1-ctrl-002.ps1 -Mode Acceptance"
+    ],
+    "command_id": "C-f3dabb23-8ec4-4d45-b17a-387d87553337",
+    "started": "2026-10-11T12:12:11.840318Z",
+    "duration_ms": 29282.0,
+    "exit_code": 0,
+    "stdoutHashMatches": true,
+    "stderrHashMatches": true,
+    "stdoutTail": "PASS: generic repository recovery verified task=LOOP1-CLIENT-UI-REF-001 state=review mode=Acceptance queues=5 task_specs=35.\nGIT: branch=task/LOOP1-CLIENT-UI-REF-001 status_entries=0 diff_lines=0 recent_commits=5.\n",
+    "stderrTail": ""
+  }
+]

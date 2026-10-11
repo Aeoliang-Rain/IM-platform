@@ -1,0 +1,3953 @@
+{
+  "candidate": "0f2309bcfc86e4c5d9e9c41a91b1a60b1da9be4d",
+  "branch": "task/LOOP1-CLIENT-UI-REF-001",
+  "clean": true,
+  "status": "",
+  "canonical_sha256": "efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc",
+  "pdf_sha256": "546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510",
+  "product_equals_1bd": true,
+  "production_files": [
+    {
+      "file": "clients/desktop/src/application/ui/auth.ts",
+      "sha256": "1d46b97270090aaf4fcf5d348388779cfc36f4bddf9026d573c8cf61b914c16a",
+      "imports": [
+        "import {object,parse,positive,uuid} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+        "import type {Session} from \"../send.js\";",
+        "import {nativeFetch,secure} from \"./native.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/application/ui/workspace.ts",
+      "sha256": "dd5d1db5a154f25334ef945ce4f26a72759d1f17af8d00db16887cb7082f7b64",
+      "imports": [
+        "import {Repository} from \"../../../../shared/protocol-sdk/src/storage/repository.js\";",
+        "import {SyncHttp} from \"../../../../shared/protocol-sdk/src/sync/http.js\";",
+        "import {decode} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+        "import {accountDatabase} from \"../../storage/database.js\";",
+        "import {SendApplication,type Session,type Socket} from \"../send.js\";",
+        "import {SyncApplication} from \"../sync/application.js\";",
+        "import {Auth,ApiFailure,type Friend,type User,origin} from \"./auth.js\";",
+        "import {appearance,defaults,nativeFetch,notify,type Appearance} from \"./native.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/AIPlaceholder.tsx",
+      "sha256": "797c66fb385d7eb420758f55ae17f1b5f6c7591f7528946e855fdaca55f042a1",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/AuthPanel.tsx",
+      "sha256": "c561df8e4af7af21f20342a93f1366b11aa37c790706b9f48ed1b6b5738a1c0f",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/Composer.tsx",
+      "sha256": "75698904984f6949fd57a4efebf4c03356ba112515e242e35851cc51f5506143",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";",
+        "import {resizedComposerHeight} from \"../composer.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/ConversationList.tsx",
+      "sha256": "235b75c534354ca028b919ca1136bfd73da846f4eabec3cf38f410af1bc47ad2",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/FriendsPanel.tsx",
+      "sha256": "2445a49a467866445fa8dca4b9beb334528cab6c634045c780fa0e18bba0e798",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/Header.tsx",
+      "sha256": "f27cf6b493d8e0449c8b50bf6b4e51f1c79f6cbe8e625f94adb4467d7b58be99",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/Messages.tsx",
+      "sha256": "1c4ee6d0b7e78aec9e77231476a1c12de5009575271ad9693fbefb7bfe3f2961",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/Navigation.tsx",
+      "sha256": "7e3896a809f57c2311e9c850341a43c8b3de42f469c34f2f504dd6557cca201d",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/PluginPlaceholder.tsx",
+      "sha256": "923c7cc72524d43e211e2d50eef763d298571c34b5201ab44f8ac694c56dc6ac",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/ProfilePanel.tsx",
+      "sha256": "f96e4088c5acc2e6c457fb860bf98306082169ddeac5f14ce0f28ea873cf86d8",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/SettingsPanel.tsx",
+      "sha256": "3d29f3989470e95af209d09ebe4ac6682b0bf323e70af2a771b4457fb8e9817b",
+      "imports": [
+        "import {ProfilePanel} from \"./ProfilePanel.js\";",
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/Shell.tsx",
+      "sha256": "a1177356dc04750f0b3ee93d41608754fed37269ed6bdf3a06af5841391d000b",
+      "imports": [
+        "import {WindowBar} from \"./WindowBar.js\";",
+        "import {Navigation} from \"./Navigation.js\";",
+        "import {Header} from \"./Header.js\";",
+        "import {AuthPanel} from \"./AuthPanel.js\";",
+        "import {ConversationList} from \"./ConversationList.js\";",
+        "import {Messages} from \"./Messages.js\";",
+        "import {Composer} from \"./Composer.js\";",
+        "import {FriendsPanel} from \"./FriendsPanel.js\";",
+        "import {AIPlaceholder} from \"./AIPlaceholder.js\";",
+        "import {PluginPlaceholder} from \"./PluginPlaceholder.js\";",
+        "import {SettingsPanel} from \"./SettingsPanel.js\";",
+        "import React,{useEffect,useRef,useState,useSyncExternalStore} from \"react\";",
+        "import {Workspace} from \"../../application/ui/workspace.js\";",
+        "import {windowControl,windowMaximized} from \"../../application/ui/native.js\";",
+        "import {resizedComposerHeight} from \"../composer.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/components/WindowBar.tsx",
+      "sha256": "ffa5c07bfdc3365c2a40f50a6559cb97b45689641ecf0600e5045f51e9651501",
+      "imports": [
+        "import React from \"react\";",
+        "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+        "import type {Appearance} from \"../../application/ui/native.js\";",
+        "import type {Friend} from \"../../application/ui/auth.js\";"
+      ]
+    },
+    {
+      "file": "clients/desktop/src/ui/main.tsx",
+      "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3",
+      "imports": [
+        "import React from \"react\";",
+        "import {createRoot} from \"react-dom/client\";",
+        "import {Shell} from \"./components/Shell.js\";"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "sha256": "b5301037f45d2a45a68e4eb9ee5998fc9de39d8dd5d16d876e403eefdef90a72",
+      "imports": [
+        "import im.platform.client.send.SendSession",
+        "import im.platform.client.send.Wire",
+        "import java.net.URI",
+        "import java.net.URL",
+        "import javax.net.ssl.HttpsURLConnection",
+        "import java.net.URLEncoder",
+        "import java.nio.ByteBuffer",
+        "import java.nio.charset.CodingErrorAction",
+        "import org.json.JSONObject",
+        "import kotlinx.coroutines.Dispatchers",
+        "import kotlinx.coroutines.withContext"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Workspace.kt",
+      "sha256": "28880b0012487de49aa292963ce02ba899d01242e4440c5165ffdb3f7c1efa0e",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import im.platform.client.ui.components.Shell"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "sha256": "279a17f083e1527ab8e5551444ca9af1444b5b0e52e2dc1530c2d0a20a533e52",
+      "imports": [
+        "import android.app.Application",
+        "import androidx.lifecycle.AndroidViewModel",
+        "import im.platform.client.send.*",
+        "import im.platform.client.send.Wire as SendWire",
+        "import im.platform.client.storage.Repository",
+        "import im.platform.client.sync.*",
+        "import kotlinx.coroutines.*",
+        "import kotlinx.coroutines.flow.*",
+        "import kotlinx.coroutines.sync.Mutex",
+        "import kotlinx.coroutines.sync.withLock"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt",
+      "sha256": "c6e2f2dc57cff1a679ea2e772d397572236938ba1e6d8a240dc2a5010af7ff5a",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt",
+      "sha256": "0489c49e0af3c9be61a60deb35b4c25f92757ffa90f04704b252fa9a1dcd7b4a",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt",
+      "sha256": "c5e0009b7394e7139a3de1b9b2eb07384a8dc81b9aad1a927a2a4dfcdf374b4f",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+      "sha256": "a4ea04d5a3a811a33e07af49aa817d4aa1145eb12fe7babe35d285177d7cd873",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Future.kt",
+      "sha256": "ac703717f2a8b2cec4318046bf73472381350bab71859e36243e520203dc4449",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Login.kt",
+      "sha256": "40a400d787fdcb502a2479ee1f7c61ce6f73bf2243fc9dd6cd6495843961047d",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+      "sha256": "9a89cf49a4c049435278bb52eb83d163f8a6048ef2010dca29aa1091b590254a",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*",
+        "import androidx.compose.ui.unit.Dp"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Navigation.kt",
+      "sha256": "c0865fbe758589a6d0ddfc2a973d8b27d0cff9e5d80d9db9317d776596ea2c11",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Panel.kt",
+      "sha256": "7a29137a26e0acc2958005987b9ca136583345bc6a519c6e94a54858c30a23c1",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt",
+      "sha256": "e97d1f80c22b8d2c184cd6ccd4f9550f23c54d6ec3ca132239d14635449c2593",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Settings.kt",
+      "sha256": "bd0be8c54e3369880f41ca443fba93a25dada12e676e3bdb1516616a5ab683c1",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt",
+      "sha256": "7b1e1676fd3c5a9e36fbf5706f45120b094e8dab2dfa269f09d1b683e79cc81c",
+      "imports": [
+        "import androidx.compose.runtime.*",
+        "import androidx.activity.compose.BackHandler",
+        "import androidx.compose.foundation.*",
+        "import androidx.compose.foundation.layout.*",
+        "import androidx.compose.foundation.lazy.LazyColumn",
+        "import androidx.compose.foundation.lazy.items",
+        "import androidx.compose.foundation.shape.RoundedCornerShape",
+        "import androidx.compose.material3.*",
+        "import androidx.compose.ui.Modifier",
+        "import androidx.compose.ui.semantics.semantics",
+        "import androidx.compose.ui.semantics.contentDescription",
+        "import androidx.compose.ui.Alignment",
+        "import androidx.compose.ui.graphics.Color",
+        "import androidx.compose.ui.graphics.RectangleShape",
+        "import androidx.compose.ui.text.font.FontWeight",
+        "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+        "import androidx.compose.ui.unit.dp",
+        "import androidx.compose.ui.unit.sp",
+        "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+        "import androidx.lifecycle.viewmodel.compose.viewModel",
+        "import androidx.navigation.compose.*",
+        "import im.platform.client.ui.*"
+      ]
+    },
+    {
+      "file": "clients/web/src/application/client.ts",
+      "sha256": "0dbaf39c8a3019a18e4cc5c9939f8990357f4e699a0146fa631f15925ebf93b8",
+      "imports": [
+        "import {decode,envelope,object,uuid,content} from '../../../shared/protocol-sdk/src/send/wire.js';",
+        "import {SyncHttp} from '../../../shared/protocol-sdk/src/sync/http.js';",
+        "import {SyncFailure} from '../../../shared/protocol-sdk/src/sync/wire.js';",
+        "import type {Committed,RealtimeMessage} from '../../../shared/protocol-sdk/src/storage/models.js';",
+        "import {Http,auth,user,friends,ApiFailure} from './http.js';",
+        "import type {User,Friend,Session} from './http.js';",
+        "import {MemoryRepository} from './repository.js';"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/AuthPanel.tsx",
+      "sha256": "a9af2d7addd20f8c51dbe20ffcbf2a6cedb30b08d3c29de1e1763c96cab60585",
+      "imports": [
+        "import React from \"react\";",
+        "import type {View} from \"../../application/client.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/Composer.tsx",
+      "sha256": "954b3c9e46896885a421c9eb59f86b628a757a9b1c317ebd5b30f47ac28d434f",
+      "imports": [
+        "import React from \"react\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/ConversationList.tsx",
+      "sha256": "0db7557d109d743e129f0f2d6b8c314526888d85b461c55b1cfe39979adf063f",
+      "imports": [
+        "import React from \"react\";",
+        "import type {View} from \"../../application/client.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/FriendsPanel.tsx",
+      "sha256": "b9bf6c2d1bf23eceb6bb89369848ad820ba8e4af59a8a00e00989797c8c5edf9",
+      "imports": [
+        "import React from \"react\";",
+        "import type {View} from \"../../application/client.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/Header.tsx",
+      "sha256": "4f90c10538b065704125fcb01e6242ffda8bc38abb684d46fb6323abd622404c",
+      "imports": [
+        "import React from \"react\";",
+        "import type {View} from \"../../application/client.js\";",
+        "import {connectionText} from \"./status.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/Messages.tsx",
+      "sha256": "0b187f76e95575c2e37f68e4feedbd4e9e490523f18ed7079c41caf9bf183fef",
+      "imports": [
+        "import React from \"react\";",
+        "import type {View} from \"../../application/client.js\";",
+        "import type {MemoryRepository} from \"../../application/repository.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/Navigation.tsx",
+      "sha256": "0163c9ed621a07b4d4f4cea3b1563e762644340ca31cdc7e55e8146e1a045544",
+      "imports": [
+        "import React from \"react\";",
+        "import type {View} from \"../../application/client.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/Placeholder.tsx",
+      "sha256": "192846daa66f9f1eb8e0ac947624f07c5cd4e5dee19882c56d817f8ecc9d5bc4",
+      "imports": [
+        "import React from \"react\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/ProfilePanel.tsx",
+      "sha256": "361fff862e56e8e569a24ca71ae745d4133c40a2c765244ff5c477d0ed8a6c9c",
+      "imports": [
+        "import React from \"react\";",
+        "import type {View} from \"../../application/client.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/SettingsPanel.tsx",
+      "sha256": "87cab6787d71670a0a85588d68a25106f0827dd727cf3674ef4a03fa654edc3a",
+      "imports": [
+        "import React from \"react\";",
+        "import type {Appearance} from \"../appearance.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/Shell.tsx",
+      "sha256": "a54a10a62f872890ab85c89c2c24cd63d3487faef1d4233cf077abd93892bf77",
+      "imports": [
+        "import {Navigation} from \"./Navigation.js\";",
+        "import {Header} from \"./Header.js\";",
+        "import {AuthPanel} from \"./AuthPanel.js\";",
+        "import {ConversationList} from \"./ConversationList.js\";",
+        "import {Messages} from \"./Messages.js\";",
+        "import {Composer} from \"./Composer.js\";",
+        "import {FriendsPanel} from \"./FriendsPanel.js\";",
+        "import {Placeholder} from \"./Placeholder.js\";",
+        "import {SettingsPanel} from \"./SettingsPanel.js\";",
+        "import {ProfilePanel} from \"./ProfilePanel.js\";",
+        "import React,{useState,useEffect,useSyncExternalStore} from 'react';",
+        "import {WebClient} from '../../application/client.js';",
+        "import {loadAppearance,saveAppearance} from '../appearance.js';",
+        "import type {Appearance} from '../appearance.js';"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/components/status.ts",
+      "sha256": "868e6d4d1459f83c8a6dff7580c88aeb4cabb0f027af1e9bf3b67f07c801ff12",
+      "imports": [
+        "import type {Connection} from \"../../application/client.js\";"
+      ]
+    },
+    {
+      "file": "clients/web/src/ui/main.tsx",
+      "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3",
+      "imports": [
+        "import React from \"react\";",
+        "import {createRoot} from \"react-dom/client\";",
+        "import {Shell} from \"./components/Shell.js\";"
+      ]
+    }
+  ],
+  "manifests": [
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-auth-required-30cf4414688d4208880caa413b050420\\manifest.json",
+      "sha256": "6de3b959b6114306d9350ea31518a9c0cbfb89c7c570478a52de7ef1bd038aa2",
+      "entries_checked": 2
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-auth-required-84a0b31703f943ffae31d2a509ede81f\\manifest.json",
+      "sha256": "be739931c0293282b64a7043dc44e0d4b8e20e187117490f2a128688bcf4db60",
+      "entries_checked": 2
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\manifest.json",
+      "sha256": "1d55ea45167052ae12f87b1188440d48acc7423629fc7f867dd3ea6de9c3d382",
+      "entries_checked": 14
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-gui-4aafa7a02a97472f8a0d6cc16349b8c7\\manifest.json",
+      "sha256": "771065e260b5c7ce85913a2f8691df1bb74b251cb23b664a89e4dd0f35b44df4",
+      "entries_checked": 19
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-gui-874fd99dcd9b45699f8a77771b11c899\\manifest.json",
+      "sha256": "46494a37426a27fa705868b6441414b787b1e1f4f1900df79d683ebfb2b1b43a",
+      "entries_checked": 6
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-gui-9820ac146caf47d6adcfafc3ec560457\\manifest.json",
+      "sha256": "69c8410e1fe121c875b41ab30fcd60901a1d90171c51a8e0dbaefd55f80064f5",
+      "entries_checked": 5
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-send-2312ce89c98b4223b0338da2ebf33e5f\\manifest.json",
+      "sha256": "dbf9014f38c5bad836c44e801b2adcadf04bb59a355e516f17c64da0fb25a01b",
+      "entries_checked": 6
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-sqlite-89d46ac1bb8045a4b97c3e5d25689037\\manifest.json",
+      "sha256": "a325f2d0290f514ed54ce603a0f323797fb0d2eabc6d41004316257ec226ca7b",
+      "entries_checked": 6
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\manifest.json",
+      "sha256": "25224e1d2b40eb59b7d9e2b49d49299a8a7d028ee3da559e4cdcfc8fefd1434c",
+      "entries_checked": 6
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-default-negative-087a7c7-a3d3f0acce0c434ca567811aa93197cb\\manifest.json",
+      "sha256": "72fb88df4fea900e8787c469881c8cfe720639d99e5b37b38a6c177dac7ad304",
+      "entries_checked": 0
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-default-negative-5af6983\\manifest.json",
+      "sha256": "8145fd7828a987afe0db89e48748eafce96c510cb610e9d4ee0424c6cf352991",
+      "entries_checked": 0
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-default-negative-979d202\\manifest.json",
+      "sha256": "7f64ecedfc11eb05a60fc1b282a8b72152476720662d89014d6f135a284f94a3",
+      "entries_checked": 0
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-matrix-ui-ref-620676b58fbd417d9bbd519ad35f392b\\manifest.json",
+      "sha256": "36f69c44dfbcf0ee3a83015b617e0a2c66bc7b9a8002fe5e477356f5715fad90",
+      "entries_checked": 7
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-matrix-ui-ref-f6baeed3396949c79bba1319f26f074b\\manifest.json",
+      "sha256": "a50c56d7f29d98ed14ece46a93273439e3a26c90d40c66b6a6570241fe72d9f1",
+      "entries_checked": 23
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-refresh-ui-ref-06c60c15603f49649a32651d7b30032a\\manifest.json",
+      "sha256": "f43cb2d3a14de6a558d76da53f89361ed93112ec535e6694a600336b39dacf14",
+      "entries_checked": 7
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-refresh-ui-ref-3ca2b8a00a6941ebb509e155e58a9589\\manifest.json",
+      "sha256": "d9e10025e30aeed96d2a7b1574e04aa1a606f93bffd6fcd94c487de2b691d830",
+      "entries_checked": 5
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-restart-4ae543f4-48a7-4b7b-bfef-d165faafa5b3\\manifest.json",
+      "sha256": "1eaffe67ec2532543a5d888f093bd76840f59770dce175bae030da16f6659f62",
+      "entries_checked": 12
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-state-1171ad0e-d371-45a4-a755-de6df87d5fef\\manifest.json",
+      "sha256": "99c6a5971f803b925789c87a30a1eaf406627d00300d42e5860cd02ff69a798f",
+      "entries_checked": 6
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-state-215ccbcc-1f58-46f0-954c-08af66ffd8af\\manifest.json",
+      "sha256": "46da8e275612f5ad1e02f1630cf9f817dda0cb598ef0a5e50526ec2782458971",
+      "entries_checked": 6
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-state-connection-diagnostic-ui-ref-37cad58a84c84635a750058a13b31e49\\manifest.json",
+      "sha256": "9206599d8ba7ae2364153523e3c6342b5647933e3cf9d34d645c8599c940952b",
+      "entries_checked": 2
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-ui-revision-ui-ref-b1c9ca9b798a4fcc91d6a24d0a8292d4\\manifest.json",
+      "sha256": "29a3d54a148e0942a01b490488893bb9e6cace7a75e2b5e404abce7c740ac6d5",
+      "entries_checked": 31
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-ui-revision-ui-ref-bd07b632929644f69b1b68006a46a5e1\\manifest.json",
+      "sha256": "734619d2f5c24e9b5190d8015882b45e06b20f2d6386310cc1bde7a30ea14e96",
+      "entries_checked": 33
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-5366e364-1b9b-4d28-aff2-4f67c0234bd8\\manifest.json",
+      "sha256": "9649daca7aed6aa7f9dd9baabd17bbbc3de2313607471f9559ef9851af8d6183",
+      "entries_checked": 0
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-accepted-base-compare-80be375d4fa3412f84d8040910f6333d\\manifest.json",
+      "sha256": "00502e1cfff40011806d056f99a0a4b2a37d4ce4659a875eea87213b182d7914",
+      "entries_checked": 126
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-accepted-base-compare-aa568dc0e4434728b73d687e2f7f08cf\\manifest.json",
+      "sha256": "7acaa250fd4e89e37799db95b09a7b2da39f8f7ba8657f03c3d18ff41f7a48bf",
+      "entries_checked": 8
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\manifest.json",
+      "sha256": "37e2a16de1193e935e5689e07114e7e5c227356d25982357357b30dcd5cf465d",
+      "entries_checked": 59
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\manifest.json",
+      "sha256": "75ace07fced119cf4d3b8336482b591751bcefd8f29484e6d273da08a70fcde9",
+      "entries_checked": 50
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\manifest.json",
+      "sha256": "78e0b0a9c07d927109b871d714df0446de54709b8895737bbad1c717ee0855c5",
+      "entries_checked": 40
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\manifest.json",
+      "sha256": "05671a8e71c690cb2cc02323feaf6cd631dfe23c2228335e526045501035288a",
+      "entries_checked": 51
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-matrix-21b0a48696cc473ea5e22f4bd912d4e0\\manifest.json",
+      "sha256": "be444d2c7b7f2928b24c91bb0bcc568f7caaf5721c404e0605d2238e5f33e786",
+      "entries_checked": 42
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-matrix-7591a6ad811443f3b30baabffdbeccfd\\manifest.json",
+      "sha256": "b9e8e5a48a84ff983a154e39fe71a71d781958a0f35087748bb54f0695a1f070",
+      "entries_checked": 240
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\manifest.json",
+      "sha256": "e6286fd9dc69bda0be0283f22d3d5af516df68d63c0def8c9b52e341f4d2302f",
+      "entries_checked": 348
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\web-full-1bd1a1b\\manifest.json",
+      "sha256": "142a7836f679816daf2c187b968bbd289ed6222bc9fe01001ca8527ef172207a",
+      "entries_checked": 52
+    },
+    {
+      "file": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\web-order-31d2f027-f1b9-47c3-b3ea-95c61d59b182\\manifest.json",
+      "sha256": "b4262bf8a48703676cf8f3dcd97d1060e646d82c8896b100b0cef959068577c4",
+      "entries_checked": 7
+    }
+  ],
+  "index_checks": [
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-android-package-cleanup.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-avd-created.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-avd-ready.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-desktop-install.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-desktop-restore.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-final-report.md",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-final-verification-originals\\0-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-final-verification-originals\\1-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-final-verification-originals\\2-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-final-verification-originals\\3-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-final-verification-originals\\4-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-final-verification.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-generated-cleanup.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-index.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-report.md",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-review-fail.md",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-runtime-resource-cleanup.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-trust-elevated-rollback-exit.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-trust-elevated-rollback-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-trust-root-baseline.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-trust-root-rollback.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "auth-fix-trust-root-verify-approved-observed.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "coverage.md",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "final-local-report.md",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "qualifications.md",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-30cf4414688d4208880caa413b050420\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-30cf4414688d4208880caa413b050420\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-30cf4414688d4208880caa413b050420\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-84a0b31703f943ffae31d2a509ede81f\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-84a0b31703f943ffae31d2a509ede81f\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-84a0b31703f943ffae31d2a509ede81f\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\actual-auth-http-responses.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-invalid-password-idle.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-invalid-password-idle.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-logout-completed-idle.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-logout-completed-idle.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-before-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-expired-cleared-idle.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-expired-cleared-idle.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\expiry-continue",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\expiry-ready",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-default-negative-087a7c7-a3d3f0acce0c434ca567811aa93197cb\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-default-negative-087a7c7-a3d3f0acce0c434ca567811aa93197cb\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\android-default-negative-087a7c7-e2f4a1722b514fcd8a2df24bf6afbcbe\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\actual-auth-http-responses.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\actual-auth-http-responses.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\negative-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\negative-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\negative-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\owned-accessibility-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\owned-finally-cleanup-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\proof.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\startup-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\startup-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\startup-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "entries",
+      "file": "screens\\windows-week2-negative-c592dab6-da0d-4372-8eab-b77fcaae194c\\username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefFixtureTrust.kt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "tests/clients/ui-ref/android_negative.py",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "tests/clients/ui-ref/auth_desktop_install.py",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "tests/clients/ui-ref/auth_required.py",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "tests/clients/ui-ref/baseline_avd.py",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "tests/clients/ui-ref/state/fault_proxy.py",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "tests/clients/ui-ref/state/windows_negative_tls.py",
+      "match": true
+    },
+    {
+      "index": "auth-fix-final-index.json",
+      "section": "helperSources",
+      "file": "tests/clients/ui-ref/windows_fixture_trust.ps1",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-84a0b31703f943ffae31d2a509ede81f\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-84a0b31703f943ffae31d2a509ede81f\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-84a0b31703f943ffae31d2a509ede81f\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-30cf4414688d4208880caa413b050420\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-30cf4414688d4208880caa413b050420\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-30cf4414688d4208880caa413b050420\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\actual-auth-http-responses.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-invalid-password-idle.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-invalid-password-idle.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-logout-completed-idle.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-logout-completed-idle.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-before-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-expired-cleared-idle.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\actual-session-expired-cleared-idle.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\expiry-continue",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\native-originals\\expiry-ready",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\session-expired-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-8b5ac0601c594cc0adc7a4c19267345b\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\actual-auth-http-responses.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\session-expired-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-f84773a916ae4d68bfae1677e6ab7a88\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-d5f39931267b450d84032c5ffb9bc993\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\actual-auth-http-responses.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\actual-server-expiry.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\anonymous-before.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\auth-http-before.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\disconnect.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-password.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\fixture-username.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\logged-in-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login-completed-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\login.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\offline-ready-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\refresh-expired.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-before-expiry.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-0.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\session-expired-1.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings-command-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings.png",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings.png.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\desktop-auth-required-297845cf66bf4f58bdea734666d688e6\\settings.png.zorder.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-default-negative-087a7c7-e2f4a1722b514fcd8a2df24bf6afbcbe\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-default-negative-087a7c7-a3d3f0acce0c434ca567811aa93197cb\\instrumentation-original.txt",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "screens\\android-default-negative-087a7c7-a3d3f0acce0c434ca567811aa93197cb\\manifest.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "auth-fix-avd-created.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "auth-fix-avd-ready.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "auth-fix-desktop-install.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "auth-fix-android-package-cleanup.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "auth-fix-generated-cleanup.json",
+      "match": true
+    },
+    {
+      "index": "auth-fix-index.json",
+      "section": "entries",
+      "file": "auth-fix-report.md",
+      "match": true
+    }
+  ],
+  "failures": [],
+  "result": "PASS"
+}
