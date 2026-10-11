@@ -101,7 +101,7 @@ if($Action -eq 'reach-message'){
   }}
  }}
  foreach($target in $g.targets){$visibleTargets+=@{text=$target.text;body=$target.body.Current.BoundingRectangle.ToString();state=$target.state.Current.Name;stateBounds=$target.state.Current.BoundingRectangle.ToString();retryBounds=$(if($target.retry){$target.retry.Current.BoundingRectangle.ToString()}else{$null});clip=$g.clip;boundsChecked=$true;physicalMonitorChecked=$true;occlusionChecked=$true;foregroundAtCapture=([StateWin]::GetForegroundWindow().ToInt64() -eq $Hwnd)}}
-}elseif($Action -eq 'reach'){
+}elseif($Action -in @('reach','open-friend')){
  function FindOwnedFriendCard($tree){
   $bodies=$tree.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name))
   $buttons=$tree.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),'Message'))
@@ -113,6 +113,7 @@ if($Action -eq 'reach-message'){
  $card=FindOwnedFriendCard $root;$card.button.SetFocus();Start-Sleep -Milliseconds 300
  $root=[System.Windows.Automation.AutomationElement]::FromHandle([IntPtr]$Hwnd);$current=FindOwnedFriendCard $root
  if($current.body.Current.IsOffscreen -or $current.button.Current.IsOffscreen){throw 'Controlled friend card remains offscreen'}
+ if($Action -eq 'open-friend'){([System.Windows.Automation.InvokePattern]$current.button.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern)).Invoke();Start-Sleep -Milliseconds 700}
 }elseif($Action -eq 'click-conversation'){
  $all=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
  $matches=@($all|Where-Object {$_.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and $_.Current.Name.Contains($Name)})
@@ -134,11 +135,12 @@ if($Action -eq 'reach-message'){
  ([System.Windows.Automation.RangeValuePattern]$matching[0].GetCurrentPattern([System.Windows.Automation.RangeValuePattern]::Pattern)).SetValue([double]$Value)
  Start-Sleep -Milliseconds 700
 }elseif($Action -eq 'wait-sync-idle'){
+ if($Name -ne 'Connected · Messages sync automatically'){throw 'Formal Sync idle requires the actual Connected chat header'}
  $clock=[Diagnostics.Stopwatch]::StartNew();$syncWait=$null
  do{
   $idle=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),'Up to date'))
-  $ready=if($Name){$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name))}else{$null}
-  if($idle.Count -eq 1 -and -not $idle[0].Current.IsOffscreen -and (!$Name -or ($ready.Count -eq 1 -and -not $ready[0].Current.IsOffscreen))){$syncWait=@{observedUTC=[DateTime]::UtcNow.ToString('o');elapsedMilliseconds=$clock.ElapsedMilliseconds;syncHeader='Up to date';requiredConnectionHeader=$Name;pollMilliseconds=40};break}
+  $ready=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name))
+  if($idle.Count -eq 1 -and -not $idle[0].Current.IsOffscreen -and $ready.Count -eq 1 -and -not $ready[0].Current.IsOffscreen){$syncWait=@{observedUTC=[DateTime]::UtcNow.ToString('o');elapsedMilliseconds=$clock.ElapsedMilliseconds;syncHeader='Up to date';requiredConnectionHeader=$Name;pollMilliseconds=40};break}
   Start-Sleep -Milliseconds 40
  }while($clock.ElapsedMilliseconds -lt 30000)
  if(!$syncWait){throw 'Actual visible Sync idle/required connection header not observed within 30s'}
