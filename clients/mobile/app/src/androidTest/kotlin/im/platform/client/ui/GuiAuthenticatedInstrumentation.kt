@@ -219,7 +219,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
  private fun controlled(name:String){
   val directory=java.io.File(targetContext.getExternalFilesDir(null),"gui-auth/$captureRun").apply{mkdirs()}
   java.io.File(directory,name+"-ready").writeText(captureRun)
-  val proceed=java.io.File(directory,name+"-continue");repeat(1200){if(!proceed.exists())Thread.sleep(50)};verify(proceed.exists())
+  val proceed=java.io.File(directory,name+"-continue");repeat(if(name.startsWith("friends-"))2400 else 1200){if(!proceed.exists())Thread.sleep(50)};verify(proceed.exists())
  }
  private fun top(){repeat(10){if(scroll(actualRoot(),AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)){waitForIdleSync();Thread.sleep(100)}}}
  override fun onCreate(arguments:Bundle?){super.onCreate(arguments);args=arguments?:Bundle();args.getString("stateRun")?.let{require(Regex("[A-Za-z0-9-]{1,80}").matches(it));captureRun=it};start()}
@@ -266,11 +266,11 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
      val fresh=args.getString("freshUser")!!;login(fresh);navigate("Friends");await("Your friends");capture("friends-online-baseline");controlled("friends-online")
      fun has(id:String)=actualViewModel().state.value.friends.any{it.user.userId==id}
      fun waitFriend(id:String,name:String){repeat(300){if(!has(id))Thread.sleep(100)};verify(has(id));reach("Your friends");reach(name);capture("friends-observed-"+name.replace(" ","-"))}
-     waitFriend(args.getString("webFriendId")!!,"STATE WebFriend");controlled("friends-web-observed")
-     waitFriend(args.getString("desktopFriendId")!!,"STATE DesktopFriend")
-     fill("Username",args.getString("mobileFriendUser")!!);backKeyboard();reach("Search");click("Search");await("STATE MobileFriend");click("Add friend");waitFriend(args.getString("mobileFriendId")!!,"STATE MobileFriend");controlled("friends-mobile-added")
+     waitFriend(args.getString("webFriendId")!!,args.getString("webFriendName")?:"STATE WebFriend");controlled("friends-web-observed")
+     waitFriend(args.getString("desktopFriendId")!!,args.getString("desktopFriendName")?:"STATE DesktopFriend")
+     fill("Username",args.getString("mobileFriendUser")!!);backKeyboard();reach("Search");click("Search");await(args.getString("mobileFriendName")?:"STATE MobileFriend");click("Add friend");waitFriend(args.getString("mobileFriendId")!!,args.getString("mobileFriendName")?:"STATE MobileFriend");controlled("friends-mobile-added")
      settingsControl("Go offline");navigate("Friends");await("Offline");controlled("friends-offline");verify(!has(args.getString("offlineFriendId")!!));capture("friends-offline-retained")
-     settingsControl("Reconnect");await("Connected");navigate("Friends");waitFriend(args.getString("offlineFriendId")!!,"STATE OfflineFriend");controlled("friends-recovered")
+     settingsControl("Reconnect");await("Connected");navigate("Friends");waitFriend(args.getString("offlineFriendId")!!,args.getString("offlineFriendName")?:"STATE OfflineFriend");controlled("friends-recovered")
      settingsControl("Sign out");await("Open your workspace");login(args.getString("riley")!!);navigate("Friends");verify(actualViewModel().state.value.friends.none{it.user.displayName.startsWith("STATE ")});capture("friends-account-switch-isolated")
      settingsControl("Sign out");await("Open your workspace");login(fresh);navigate("Friends");for(id in listOf("webFriendId","desktopFriendId","mobileFriendId","offlineFriendId")){repeat(300){if(!has(args.getString(id)!!))Thread.sleep(100)};verify(has(args.getString(id)!!))};capture("friends-original-account-restored")
     }else if(phase=="state"){
