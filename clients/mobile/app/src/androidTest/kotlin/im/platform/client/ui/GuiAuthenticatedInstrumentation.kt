@@ -227,6 +227,11 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    c.connectTimeout=10000;c.readTimeout=10000;c.instanceFollowRedirects=false
    try{verify(c.responseCode==200);c.inputStream.close()}finally{c.disconnect()}
    result.putString(if(fixtureTrust==null)"defaultSDKHTTPS"else"explicitTestCAHTTPS","PASS")
+   val actualFactory=javax.net.ssl.SSLSocketFactory.getDefault() as javax.net.ssl.SSLSocketFactory
+   result.putString("actualSocketFactoryClass",actualFactory.javaClass.name)
+   result.putString("actualDefaultContextProvider",javax.net.ssl.SSLContext.getDefault().provider.name)
+   val positive=actualFactory.createSocket("localhost",8443) as javax.net.ssl.SSLSocket
+   try{positive.soTimeout=10000;val parameters=positive.sslParameters;parameters.endpointIdentificationAlgorithm="HTTPS";positive.sslParameters=parameters;positive.startHandshake();result.putString("actualDefaultSocketTLSHostnamePositive","PASS localhost:8443")}finally{positive.close()}
    val plain=java.net.Socket();plain.connect(java.net.InetSocketAddress("127.0.0.1",8443),10000)
    val wrong=(javax.net.ssl.SSLSocketFactory.getDefault() as javax.net.ssl.SSLSocketFactory).createSocket(plain,"fixture-hostname-mismatch.invalid",8443,true) as javax.net.ssl.SSLSocket
    try{wrong.soTimeout=10000;val parameters=wrong.sslParameters;parameters.endpointIdentificationAlgorithm="HTTPS";wrong.sslParameters=parameters
@@ -400,7 +405,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    }
    result.putInt("targetProcessId",android.os.Process.myPid());result.putString("result","PASS");result.putInt("assertions",count);result.putString("phase",phase);result.putString("captureRun",captureRun);result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   }catch(e:Throwable){try{capture("failure")}catch(_:Throwable){};result.putString("result","FAIL");result.putString("failure",e.toString());result.putInt("assertions",count);result.putString("captureRun",captureRun)}
-  finally{try{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}finally{fixtureTrust?.close()}}
+  finally{try{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}finally{fixtureTrust?.close();if(fixtureTrust!=null)result.putString("testTrustRestore","PASS exact original context/HTTPS factory/socket provider property/provider order")}}
   result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   finish(if(result.getString("result")=="PASS")Activity.RESULT_OK else Activity.RESULT_CANCELED,result)
  }
