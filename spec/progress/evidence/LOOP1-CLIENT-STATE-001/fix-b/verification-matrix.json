@@ -1,0 +1,55 @@
+{
+  "generatedUTC": "2026-10-11T04:52:37.271267+00:00",
+  "result": "PASS local affected repairs; independent acceptance pending",
+  "rows": [
+    {
+      "verification": "Desktop affected actual visible A/B, restart FAILED/actual Retry, both seq orders",
+      "result": "PASS local",
+      "run": "desktop-7ef8d976-9446-4b01-9342-ee0ee1ecf3c1",
+      "proofs": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/desktop-7ef8d976-9446-4b01-9342-ee0ee1ecf3c1/proofs.json"
+    },
+    {
+      "verification": "Fresh real Mobile-origin/Web visible target/button, offline recovery/original account restored, no chat additions",
+      "result": "PASS local",
+      "run": "friends-5bec1f97-c2ca-47cc-8007-148f4a83ccdd",
+      "before": {
+        "messages": 6,
+        "outbox": 41,
+        "messageOutbox": 6
+      },
+      "after": {
+        "messages": 6,
+        "outbox": 73,
+        "messageOutbox": 6
+      },
+      "eventBoundary": 606,
+      "newMessageDeliveryEvents": 0,
+      "qualification": "New measured Message6→6/message.created6→6; totalOutbox41→73.32 nonmessage delta measured; no per-type count query for this run. Old failed SQL/equality checker preserved, never transplanted73/1886."
+    },
+    {
+      "verification": "Actual own Windows OS notification surface",
+      "result": "PASS local",
+      "image": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/own-os-notification-human-visible.png",
+      "binding": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/native-notification-capture/execution-binding.json"
+    },
+    {
+      "verification": "Fresh Android baseline/default SDK TLS rejection with same live explicitCA200",
+      "result": "PASS local",
+      "receipt": "fix-b/android-negative-repaired.json",
+      "baseline": "fix-b/android-baseline-restored-repaired.json",
+      "cleanup": "fix-b/android-final-verification-resource-repaired.json",
+      "packaging": "fix-b/android-rebuilt-rollback-binding.json"
+    },
+    {
+      "verification": "Exact Machine/current-user restored fullsets and fresh Windows default TLS rejects same live explicitCA200",
+      "result": "PASS local",
+      "restoration": "fix-b/machine-manual-restored-canonical.json",
+      "WindowsNativeProof": "screens/windows-week2-negative-6b9e8a8c-5aeb-4e71-905b-03d1b17bbb86/proof.json",
+      "cleanup": "fix-b/windows-final-controls/cleanup.json",
+      "qualification": "First canonical JSON was refreshed by final-controls preflight; its initial and later distinct raw command outputs remain preserved. Later audit files timestamped. Human administrator report has no captured CLI exit/PID, fresh fullset audit provides verification."
+    }
+  ],
+  "commands": "fix-b/command-index.json",
+  "originalFailures": "All previous PNG/metadata and selected failed command outputs retained; no failed result rewritten",
+  "recorderQualification": "Prospective_resume; direct reads/authoring gaps, private fullsets remain private, old predecessor trace untouched. Recorder is not Task acceptance."
+}

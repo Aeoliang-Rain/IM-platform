@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-File",
+    "tests/clients/state/trust_windows.ps1",
+    "-Action",
+    "rollback",
+    "-BaselineName",
+    "windows-root-fix-b-baseline.json"
+  ],
+  "startedUTC": "2026-10-10T15:10:01.292880+00:00",
+  "elapsedSeconds": 2.553386688232422,
+  "exit": 1,
+  "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSHA256": "161d52afa82e46e211b629361f92de053a8557887e370c05ad3f8238df867ab8"
+}

@@ -1,6 +1,6 @@
 """Fresh installed process/default TLS after exact temporary trust rollback."""
 from pathlib import Path
-import datetime, hashlib, json, subprocess, time, ssl, urllib.request, uuid
+import os,datetime, hashlib, json, subprocess, time, ssl, urllib.request, uuid
 
 out=Path('spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/windows-week2-negative-'+str(uuid.uuid4()))
 out.mkdir(parents=True,exist_ok=False)
@@ -12,7 +12,7 @@ command=r"""$p=@(Get-Process im-client-storage -ErrorAction SilentlyContinue | W
 process=json.loads(subprocess.check_output(['powershell','-NoProfile','-Command',command],text=True,encoding='utf-8',timeout=10))
 assert process['newPid']!=process['oldPid']
 def ui(action,label,name='',value=''):
-    subprocess.run(['powershell','-NoProfile','-File','tests/clients/state/desktop_window.ps1','-Action',action,'-Name',name,'-Value',value,'-TargetPid',str(process['newPid']),'-Output',str(out/(label+'.png'))],check=True,capture_output=True,timeout=12)
+    subprocess.run(['powershell','-NoProfile','-File','tests/clients/state/desktop_window.ps1','-Action',action,'-Name',name,'-Value',value,'-TargetPid',str(process['newPid']),'-Output',str(out/(label+'.png'))],check=True,capture_output=True,timeout=45)
     return json.loads((out/(label+'.png.json')).read_text(encoding='utf-8'))
 for i in range(20):
     try:
@@ -21,7 +21,7 @@ for i in range(20):
     except subprocess.CalledProcessError:pass
     time.sleep(.3)
 else: raise RuntimeError('Actual fresh resume control not presented')
-fixture=json.loads(Path('H:/IM-platform/.git/worktrees/IM-platform43/state-runtime/fresh-public.json').read_text(encoding='utf-8'))
+fixture=json.loads(Path(os.environ.get('IM_STATE_FRESH_FIXTURE','H:/IM-platform/.git/worktrees/IM-platform43/state-runtime/fresh-public.json')).read_text(encoding='utf-8'))
 ui('fill','username','Username',fixture['accounts'][0]['username'])
 ui('fill','password','Password','fixture-password-not-a-real-secret')
 ui('click','login','Sign in')

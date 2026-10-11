@@ -1,0 +1,26 @@
+{
+  "archivedUTC": "2026-10-10T15:23:35.629028+00:00",
+  "automaticReviewRejection": {
+    "action": "cleanup patch and runtime startup combination",
+    "reason": "The patch makes certificate rollback conditional on a relay health check, so a transient relay failure can leave the approved CA persistently installed; rollback must be attempted independently of service health.",
+    "patchApplied": false,
+    "saferCorrection": "live positive control and Root rollback now have separate try blocks; Root failure recorded while independent owned resources still stop",
+    "correctedHarnessSHA256": "91a84d0e2f1507998949a4d06dee29fe287aaa2f01bcf5a5d997cfc778788bbe"
+  },
+  "machinePermission": {
+    "decisionId": "HD-STATE-FIX-B-MACHINE",
+    "source": "Human exact response relayed by Coordinator root",
+    "exactDecision": "批准仅移除此测试证书并核对恢复",
+    "planSHA256": "ee7cf08612e8104b503ce899c5064dae78c651fd762c4c070375384ea724c4f8",
+    "authorizedAction": "normal authorized administrator context standard exact own727E Machine Root deletion and exact restoration verification only",
+    "mutatedUnderNewPermission": false
+  },
+  "resources": {
+    "AVD1536Requested": true,
+    "actualEmulatorClampedMB": 2048,
+    "remainingCommitMB": 783.367188,
+    "actualResult": "exited before boot; no overlay/reverse installed",
+    "DesktopOnlyNewProject": "im-gui-product-20261004-52804",
+    "MobileOriginAcceptance": "PENDING"
+  }
+}

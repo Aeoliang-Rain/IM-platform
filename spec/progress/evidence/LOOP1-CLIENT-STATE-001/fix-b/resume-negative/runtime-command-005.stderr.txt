@@ -1,0 +1,8 @@
+Exception calling "Remove" with "1" argument(s): "Access is denied.
+"
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\trust_windows.ps1:23 char:100
++ ... ject Thumbprint -eq $stateExpected)){$stateStore.Remove($stateOwned)}
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : CryptographicException
+ 

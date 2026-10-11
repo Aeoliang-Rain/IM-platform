@@ -1,0 +1,51 @@
+{
+  "actualUTC": "2026-10-11T04:41:08.464163+00:00",
+  "productSource": "547514f6c8c8c0c40e27073b67d17bb3f224b6c5",
+  "productChangedPaths": [],
+  "sourceBuildAndRollbackInputs": [
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiTrustRollbackInstrumentation.kt",
+      "sourceSHA256": "93ed19f5eee3989107282ad20cd7b0b767bcd076bb94cc2447ee22b57f81a303",
+      "actualSHA256": "93ed19f5eee3989107282ad20cd7b0b767bcd076bb94cc2447ee22b57f81a303",
+      "byteEqual": true
+    },
+    {
+      "path": "clients/mobile/app/build.gradle.kts",
+      "sourceSHA256": "af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077",
+      "actualSHA256": "af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077",
+      "byteEqual": true
+    },
+    {
+      "path": "clients/mobile/build.gradle.kts",
+      "sourceSHA256": "6a31d62bd097db83ac71cf4deb9a920443c3d7ccd1abf8087eff12740a2decf7",
+      "actualSHA256": "6a31d62bd097db83ac71cf4deb9a920443c3d7ccd1abf8087eff12740a2decf7",
+      "byteEqual": true
+    },
+    {
+      "path": "clients/mobile/settings.gradle.kts",
+      "sourceSHA256": "3e21709a3a02ecf2cc4d6093d4065e052681930551a9e6ac3e6a7e5095866fde",
+      "actualSHA256": "3e21709a3a02ecf2cc4d6093d4065e052681930551a9e6ac3e6a7e5095866fde",
+      "byteEqual": true
+    },
+    {
+      "path": "clients/mobile/gradle.properties",
+      "sourceSHA256": "0cc66f8565a869c7a56174e75d944254a69015cfbfb9bec3f4762219adb7679f",
+      "actualSHA256": "0cc66f8565a869c7a56174e75d944254a69015cfbfb9bec3f4762219adb7679f",
+      "byteEqual": true
+    }
+  ],
+  "testAPKSHA256": "12892541d9af8524ae8c18c471130fe17ec20d08dce969320905ab80e8ee9c37",
+  "testAPKBytes": 304403,
+  "buildCommandId": "C-1e91f367-02bb-42bc-8ac4-2819d503c63b",
+  "buildArgv": [
+    "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "-B",
+    "tests/clients/gui/native.py",
+    "gradle",
+    "-PimSendInstrumentation=im.platform.client.ui.GuiTrustRollbackInstrumentation",
+    ":app:assembleDebugAndroidTest"
+  ],
+  "actualRunner": "im.platform.client.test/im.platform.client.ui.GuiTrustRollbackInstrumentation",
+  "nativeRunReceipt": "fix-b/android-negative-repaired.json",
+  "qualification": "New test-only packaging rebuilt from existing rollback source and source547-equivalent product/build inputs. Other retained Task Sync instrumentation test source differs from547; no claim that all test files or test APK equal old308 packaging. Main installed Android APK/data were not cleared or replaced by this test-only variant."
+}

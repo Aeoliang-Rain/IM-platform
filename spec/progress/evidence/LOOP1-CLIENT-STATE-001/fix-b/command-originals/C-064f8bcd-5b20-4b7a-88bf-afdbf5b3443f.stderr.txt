@@ -1,0 +1,18 @@
+At C:\Users\21441\.codex\visualizations\2026\10\10\01a124ec-bca5-7c72-a720-88c39f75ff47\state-fix-b\verify_machine_manual_restore
+.ps1:24 char:20
++ $r.result=if($ok){'PASS exact approved owned CA absent and fullsets r ...
++                    ~~~~
+Unexpected token 'PASS' in expression or statement.
+At C:\Users\21441\.codex\visualizations\2026\10\10\01a124ec-bca5-7c72-a720-88c39f75ff47\state-fix-b\verify_machine_manual_restore
+.ps1:24 char:20
++ $r.result=if($ok){'PASS exact approved owned CA absent and fullsets r ...
++                    ~
+The hash literal was incomplete.
+At C:\Users\21441\.codex\visualizations\2026\10\10\01a124ec-bca5-7c72-a720-88c39f75ff47\state-fix-b\verify_machine_manual_restore
+.ps1:25 char:134
++ ... 1-CLIENT-STATE-001/fix-b/machine-manual-restored.json' -Encoding UTF8
++                                                          ~~~~~~~~~~~~~~~~
+The string is missing the terminator: '.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+ 

@@ -895,5 +895,11 @@
         "qualification": "Byte-identical Recorder-persisted blob; where rawByteEqual=false, Recorder UTF8decode/redact/JSONcanonicalization changed stored representation and original captured bytes are unavailable. No trace edited."
       }
     }
+  },
+  {
+    "verification": "Fix B affected visible acceptance and native restoration supplement",
+    "result": "PASS local; independent approval pending",
+    "evidence": "fix-b/verification-matrix.json",
+    "commandEvidence": "fix-b/command-index.json"
   }
 ]

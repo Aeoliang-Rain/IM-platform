@@ -1,13 +1,13 @@
 """Approved exact ephemeral API34 trust tool lifecycle; no product TLS changes."""
 from pathlib import Path
-import datetime as dt,hashlib,json,posixpath,ssl,subprocess,sys,time
+import os,datetime as dt,hashlib,json,posixpath,ssl,subprocess,sys,time
 ADB='H:/Android/platform-tools/adb.exe';SERIAL='emulator-5590'
 PRIVATE=Path('H:/IM-platform/.git/worktrees/IM-platform43/state-runtime')
 OLD=Path('H:/.codex/gui-handoffs/20261004-4f866046/gui-second-resume-research/android-mount-helper/mount-ro')
 CA=PRIVATE/'tls-state-week2/ca.pem'
 SOURCE='/data/local/tmp/im-gui-ca';TARGET='/apex/com.android.conscrypt/cacerts'
 DEVICE='/data/local/tmp/im-gui-mount-ro';CAFILE='6432a2a5.0'
-STATE=PRIVATE/'android-state-week2.json'
+STATE=Path(os.environ.get('IM_STATE_ANDROID_RECORD',str(PRIVATE/'android-state-week2.json')))
 def adb(*args,check=True):
  r=subprocess.run([ADB,'-s',SERIAL,*map(str,args)],capture_output=True,text=True,timeout=60)
  if check and r.returncode:raise RuntimeError('adb failed: '+r.stdout.strip()+' '+r.stderr.strip())

@@ -1,0 +1,28 @@
+{
+  "actualUTC": "2026-10-11T04:11:30.654904+00:00",
+  "avd": "IMClientSend34",
+  "serial": "emulator-5590",
+  "originalUid": "2000",
+  "restoredUid": "2000",
+  "SELinux": "Enforcing",
+  "reverseBaseline": "",
+  "reverseRestored": "",
+  "namespaceProofs": [
+    {
+      "pid": "1",
+      "namespace": "mnt:[4026532358]",
+      "targetMounts": [],
+      "caBaselineByteEqual": true,
+      "caCount": 134
+    },
+    {
+      "pid": "359",
+      "namespace": "mnt:[4026532923]",
+      "targetMounts": [],
+      "caBaselineByteEqual": true,
+      "caCount": 134
+    }
+  ],
+  "ownedCAHelperDirectoryAbsent": true,
+  "result": "PASS exact CA baseline/mount/helper/UID/reverse restoration; fresh native TLS negative pending"
+}

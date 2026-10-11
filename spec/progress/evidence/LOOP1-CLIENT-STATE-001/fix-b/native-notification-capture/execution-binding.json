@@ -1,0 +1,63 @@
+{
+  "actualCapturedUTC": "2026-10-11T04:47:55.2212062Z",
+  "actualCommand": {
+    "commandId": "C-830896be-89d0-4396-908a-b2b260a2ccde",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-c",
+      "import subprocess;subprocess.run([r'C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',r'C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/capture_already_visible.ps1'],check=True,timeout=45)"
+    ],
+    "cwd": ".",
+    "startedUTC": "2026-10-11T04:47:51.407045Z",
+    "finishedUTC": "2026-10-11T04:47:55.506951Z",
+    "exit": 0,
+    "elapsedMs": 4062.0,
+    "result": "PASS",
+    "originals": {
+      "stdout": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-830896be-89d0-4396-908a-b2b260a2ccde.stdout.txt",
+        "storedBlobSHA256": "1e72b13c462c83bd12c46d088f62454c05d235ace27b085a6a525128e3aaad62",
+        "recordedRawOutputSHA256": "1e72b13c462c83bd12c46d088f62454c05d235ace27b085a6a525128e3aaad62",
+        "rawByteEqual": true,
+        "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+      },
+      "stderr": {
+        "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-830896be-89d0-4396-908a-b2b260a2ccde.stderr.txt",
+        "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawByteEqual": true,
+        "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+      }
+    }
+  },
+  "executedSourceCopies": [
+    {
+      "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/native-notification-capture/capture_already_visible.ps1",
+      "sha256": "4652526901dcc4bbef608f9192889c7a60c3a6f8c099a72d2fde141a337fe70b",
+      "byteIdenticalToExecutedPrivateSource": true
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/native-notification-capture/notification-native-query.cs",
+      "sha256": "ecda620cf0cfe902e560c1201f1f3e432c72d291fc9e9556e2686850b81e969b",
+      "byteIdenticalToExecutedPrivateSource": true
+    }
+  ],
+  "originalPNG": {
+    "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/own-os-notification-human-visible.png",
+    "sha256": "84952089b8d7edea2249c67722a8608993a06f874692b8c43eb17e003993c01d"
+  },
+  "originalMetadata": {
+    "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/own-os-notification-human-visible.png.json",
+    "sha256": "2772d68d68d0a9f8c7b17970ae3150f8669e51eab98419a632fb5e6abdfff89c"
+  },
+  "productSource": "547514f6c8c8c0c40e27073b67d17bb3f224b6c5",
+  "installedEXESHA256": "18f8b5bb6f8a8c1a6ec8777421a5440c60fabf03a4f8dea0f24deb48ed870503",
+  "actualTriggerReceipt": "fix-b/notification-fresh-native-query.json",
+  "actualTriggerUTC": "2026-10-11T04:29:59.3829417Z",
+  "receivedLocalMinute": "12:29",
+  "captureHumanAssistance": "Human opened/expanded own known OS card and held it. No capture helper toggle/trigger/close. Human observation alone was not counted as image proof.",
+  "requiredComplexity": "Native UIA Name MatchSubstring0x2 is required by observed merged ListViewItem title/body, unlike .NET exact independent Text assumptions. Existing Windows COM/UIA only; purpose-limited interop slots from installed SDK UIAutomationClient.h. Card selection requires observed combined own title/body, OS Shell path, ListViewItem, full physical monitor and five same-root hit points. No generic framework/dependency/product change.",
+  "derivedLanguage": "en own title/body; zh-CN OS notification grouping chrome. Raw original language=en remains unchanged.",
+  "appearance": "Observed light OS card; native OS font/density numeric values unavailable. App warm14/0.8 is not an OS card appearance default."
+}

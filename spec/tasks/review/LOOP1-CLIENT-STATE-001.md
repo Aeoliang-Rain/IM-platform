@@ -2,15 +2,21 @@
 task_id: LOOP1-CLIENT-STATE-001
 title: 消息状态、幂等重发与好友同步
 status: review
-owner: /root/state_finalize
+owner: /root/state_fix_b
 stage: S2
 gate: S2
 client_supplement_phase: state_product
 ---
 
-# Current Resume State (fresh finalization 2026-10-10)
+# Current Resume State (Fix B local verification 2026-10-11)
 
-Fresh implementation finalizer /root/state_finalize preserves prior state_impl work and original FAILs. Product547514/native18f8/Android1b6 mandatory tests are local evidence; full verification-matrix and byte-identical originals are archived. Source/build packaging distinctions remain explicit. Mandatory Sync69, GUI46/12PNG, Web browser52, real Go suite/Sync205→208 passed. Exact TLS/root74/Android baseline and owned resource teardown completed. Screenshot527 hash audit and exact metadata/source/run derivations are in screenshot-index.json; empty screenshot-metadata-gaps is local completeness, not Architect approval. Web-row substring selector defect corrected with original matrix preserved. Clean committed candidate Recovery Acceptance follows this review transition; fresh Architect/Review/hosted/protected integration/main sync remain Coordinator PENDING. Old Recorder running remains untouched; new R-STATE-FINALIZE-20261010 is prospective_resume with public gaps. S2 OPEN; no UIREF/I18N.
+Fresh Fix B local affected verification PASS: Desktop7ef8 real pane/physical viewport/occlusion-checked A/B SENDING/FAILED/actual UI Retry/SENT, both seq orders and true restart FAILED; friends5bec real Mobile-origin target/name/button plus Web held-offline/reconnect/original-account restore visible, Message6→6/message.created6→6 and measured nonmessage Outbox41→73. Old failing SQL/equality checker and offscreen images retained.
+
+Own real Windows OS card captured04:47:55Z,499x213 with complete IM+/body/received12:29, verified Shell ListViewItem/monitor/5-hit-root. Human held the existing card; capture did not toggle/trigger/close or read other notifications. Actual trigger04:29:59Z source547/installed18f8. Necessary native substring/combined-card capture is byte-archived with argv/hash/raw metadata, not a product abstraction. Original Settings screenshot is honestly classified as app UI/history only.
+
+Android fresh default SDK SSLHandshakeException and same live explicitCA200 PASS with rebuilt existing test-only12892541 variant; source/product/build inputs byte-bound547, other Sync test-source differences explicit. Exact AVD134CA namespaces/no own mount/reverseempty/UID2000/SELinuxEnforcing restored and verification AVDowned exited. Machine73-minus-owned→72 and targetUser original74 fullsets exact; own727E thumb/DER/HKLM/HKCU absent. Human manually executed already-approved administrator deletion; actual command exit/PID unavailable, fresh read-only fullsets verified restoration. Original access-denied/UAC-canceled/checker-array FAILs preserved, not misattributed to user action. Installed fresh Windows process29812 default reqwest Sign in Connection unavailable with Online absent and same live explicitCA200 PASS. Final Go45068/relay35484/app finally cleanup[]; prior resumed Go36708/relay44132 and app24888 independently stopped. No trust reimport/AVD in final Windows controls.
+
+No product/source/build input changed from547. Fix B capture/test/evidence changes remain sole-owned in assigned root; unknown main work untouched. Required after-edit checks, task-owned clean commit and exact committed Recovery Acceptance follow. Fresh independent Architect/Reviewer, applicable exact-head hosted CI, protected integration/actual-main and safe main sync remain pending. Task remains unfinished review; S1 PASS/S2 OPEN; no UIREF/I18N or self-acceptance. All original failures, pause/resume history and predecessor Recorder remain preserved. Final candidate clean SHA and Recorder finish/validation sealed externally after commit.
 
 # Goal
 
@@ -185,3 +191,36 @@ Current native product source is 547514f6c8c8c0c40e27073b67d17bb3f224b6c5. Lates
 ## Fresh finalization handoff 2026-10-10
 
 Prior next actions above are historical. Current local mandatory verification is verification-matrix.md / command-index.json, with full original FAILED chain and dual hashes. Product source547514 byte identity and APK packaging qualification remain final-product-binding.json; exact runtime/trust baseline remains final-resource-baseline.json. New source/index-only finalizer corrects matrix argv matching and binds screenshots through original manifest/UIA/source defaults and immutable phase execution, without editing originals. All inherited uncommitted changes are known state_impl ownership and preserved; finalizer owns this finalization. Main781 unknown changes remain untouched. No task acceptance/CI/sync asserted. Final clean candidate/Recovery Acceptance result and own finished Recorder are sealed externally by actual SHA after commit. Next exact action Coordinator fresh Architect and independent Review, then required hosted/protected actualmain/safe sync. Completion Metadata remains PENDING until that real chain.
+
+## Fresh independent FAIL and bounded Fix B (2026-10-10)
+
+Review A and Architect A independently FAIL ac369135 for missing visible Desktop target states/restarted FAILED, misclassified application Settings notification image, and clipped Web friend target rows. Both reports are preserved byte-exact in fix-b with original hashes. Task remains unfinished review; fresh sole Fix writer /root/state_fix_b repairs only capture harness/evidence, no product changes absent proven fault. Prior original PNG/commands/SQL FAIL/supplement remain immutable. New honest controlled fixture/run is required because previous owned Go containers/volumes are gone; retained installed source547514 product and native account DB/preferences remain untouched. Fresh Architect/Review, hosted/protected integration/main sync remain pending. Recorder R-STATE-FIX-B is prospective_resume; delegated summary and startup read gaps disclosed. Next: bounded visibility checks, affected actual captures/new no-message Web friends run, exact rollback/teardown, clean commit and Recovery Acceptance.
+
+
+### Fix B live recovery state 2026-10-10
+
+Review remains unfinished. Bounded capture helpers and derived Settings notification classification are corrected; affected actual rerun is pending. Human manually imported exact approved week2CA after standard API/certutil reported success without persistence. Current same-target exec/Shell Root views are exact preserved74 plus approved thumb727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C=75; screenshot76/two-same-name observation remains unexplained. Standard Remove failed access denied; formal certutil del returned0 but ownCA remained, so exact trust restore is PENDING. Owned Go project15480 and relay37008 stopped after AVD2048MB failed before boot due1759MB remaining commit; no overlay/reverse mutation. Next: owned1536MB runtime launch only, actualDesktop/OSnotification and actualMobile-origin Web friend row visibility/no-message window, finally exact74/CAabsent/native TLSnegative and explicitCA200, clean commit+RecoveryAcceptance, fresh independent review/CI/integration/main sync. No acceptance or done claim; Fix B owns all current task edits. Original historical receipts/images remain immutable.
+
+
+### Fix B physical trust and cleanup authority
+
+Read-only exact-scope proof found approved727E CA physically in LocalMachineRoot (DERa804, HKLMexact=true/HKCUexact=false); CurrentUser75 is inherited visibility, not proof of CurrentUser insertion. Machine pre-manual-import snapshot unavailable. Human exact reply “批准仅移除此测试证书并核对恢复” authorizes the concrete rollback plan ee7cf086 (Machine actual73 minus exactownCA→72, CurrentUserexactoriginal74, no other trust/registry/ACL changes) after necessary actual acceptance; own Recorder HD-STATE-FIX-B-MACHINE records it. Auto-review rejected the conditional health-before-rollback patch; it was not applied, and safe independent rollback/cleanup correction is now in fix_runtime.py. Durable details: fix-b/cleanup-review-and-machine-decision.json. AVD1536 runtime request was clamped2048 and failed beforeboot with783MB commit; no overlay/reverse mutation. Desktop-only actual environment Go52804/relay58348 is READY, Mobile-origin still pending. First Desktopnewfixture runner failed on a stale dynamic conversation button label before A/B; original retained, fresh unique UIA selection corrected. All acceptance remains pending.
+
+Fix B recovery 2026-10-10T15:43Z: Human memory released; native preflight2558MiB physical/5585MiB commit. Prior1536 clamped2048 failure retained. Isolated FAILED native gate exit0 (~2.87s): complete body/state/Retry within pane, monitor and root-hit verified. Default-context no-owned-window failure preserved, cause unknown. Formal Desktop running; OS toast/Mobile-origin pending; exact approved MachineRoot rollback required. Independent acceptance pending.
+
+## Human pause recovery
+
+Human explicitly requested immediate stop; resume only after “继续”. See `spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/pause-recovery.md` and JSON for last known facts. Desktop7ef8/friends5bec local PASS; Android exactbaseline PASS but fresh TLSnegative072 FAIL (missing generated testAPK); Machine delete denied0x80070005, CA last known still present, no UAC/elevated deletion launched. Own OS card uncaptured. Current residue unknown/no recheck. All Fix B uncommitted files are task-owned; writer released. Task stays review/unfinished; no independent acceptance/CI/synchronization/commit claim.
+
+
+### Fix B resumed actual state 2026-10-11
+
+Human “继续” revoked pause. Desktop7ef8/friends5bec local PASS retained. Android baseline-repaired and native negative-repaired PASS with same live explicitCA200, data-preserving existing runner12892541 packaging and owned AVD exit. Original072 missingAPK/108 wrongrunner/build argument FAIL remain immutable. Exact Machine727E rollback pending: nonadmin0x80070005, authorized normalUAC request returned canceled before PID; user action/cause unknown, no blind repeat pending prompt status. Own OS surface still pending; own shortcutAUMID correct/SettingEnabled/SuppressPopupfalse,15sec exactknownbody query FAIL and no proven external blocker. Resumed owned Go36708/relay44132 is only for pending fresh TLS controls and independent cleanup. Full facts/paths in fix-b/resume-progress.json; pause history unmodified. Review/CI/integration/main sync unfinished; Fix B sole writer.
+
+
+### Fix B repaired local verification 2026-10-11
+
+All three concrete review gaps now have real affected evidence. Detailed summary/failed history/selected images/commands/source+native bindings: fix-b/fix-summary.md, verification-matrix.json, command-index.json, selected-screenshot-index.json and native-notification-capture/execution-binding.json. Clean committed Recovery Acceptance and fresh independent review/CI/integration/main synchronization pending. No self-acceptance.
+
+
+Fix B after-edit checks: Frozen/planning/architecture all PASS; 77 architecture tests PASS (1 skip); Recovery Development PASS; capture Python/Node syntax PASS. Generated own Android outputs triggered initial architecture FAIL, preserved then archived with full SHA manifest; checker unchanged. See fix-b/after-edit-checks.json and command-index.json. Machine pre-manual-import snapshot remains unavailable and historical GUI76/tool75 discrepancy unresolved; neither is explained away. Exact committed Recovery Acceptance and independent acceptance remain pending.

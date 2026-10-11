@@ -1,4 +1,4 @@
-﻿param([ValidateSet('install','rollback','inspect')][string]$Action)
+﻿param([ValidateSet('install','rollback','inspect')][string]$Action,[ValidateSet('windows-root-week2-baseline.json','windows-root-fix-b-baseline.json')][string]$BaselineName='windows-root-week2-baseline.json')
 $ErrorActionPreference='Stop'
 $statePrivate='H:/IM-platform/.git/worktrees/IM-platform43/state-runtime'
 $stateMeta=Get-Content ($statePrivate+'/tls-state-week2/public.json') -Raw | ConvertFrom-Json
@@ -11,7 +11,7 @@ $stateStore=[System.Security.Cryptography.X509Certificates.X509Store]::new('Root
 $stateStore.Open([System.Security.Cryptography.X509Certificates.OpenFlags]::ReadWrite)
 try{
  $stateBefore=@($stateStore.Certificates | ForEach-Object Thumbprint | Sort-Object)
- $stateBaseline=$statePrivate+'/windows-root-week2-baseline.json'
+ $stateBaseline=$statePrivate+'/'+$BaselineName
  if($Action -eq 'install'){
   if(Test-Path -LiteralPath $stateBaseline){throw 'Baseline already exists'}
   if($stateBefore -contains $stateExpected){throw 'CA collision'}

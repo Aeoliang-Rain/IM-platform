@@ -8,15 +8,17 @@ Current Batch: LOOP1-CLIENT-STATE-001
 Batch Status: IN_PROGRESS
 Current Task: LOOP1-CLIENT-STATE-001
 Current Task State: review
-Execution Status: INDEPENDENT_REVIEW_PENDING
+Execution Status: INDEPENDENT_FAIL_FIX_IN_PROGRESS
 
 ## Immediately Relevant Completed Work
 
-STATE product source547514 and same-product native builds have actual three-client A/B, both seq orders, native real process restart/original retry, strict sequential fresh-account cursor0/history/newrequest, friend projections/recovery/account isolation. Mandatory Send/Sync/GUI/Web/Go checks are local evidence. TLS exact baseline restoration and owned runtime teardown are complete. UIREF/I18N remain backlog; S1 PASS/S2 OPEN.
+Fresh Fix B local affected verification PASS: Desktop7ef8 real pane/physical viewport/occlusion-checked A/B SENDING/FAILED/actual UI Retry/SENT, both seq orders and true restart FAILED; friends5bec real Mobile-origin target/name/button plus Web held-offline/reconnect/original-account restore visible, Message6→6/message.created6→6 and measured nonmessage Outbox41→73. Old failing SQL/equality checker and offscreen images retained.
+
+Own Windows OS card and Android/Windows default-nativeTLS negative/liveexplicitCA200 now local PASS. Machine72/Useroriginal74 exact fullsets and AVD/owned-runtime baselines restored. See `spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/fix-summary.md`; all failure and Human pause/resume history preserved.
 
 ## Current Blockers
 
-No external blocker. Fresh Architect/independent Review, exact-head hosted jobs, protected integration/actual-main and safe main synchronization remain PENDING. No self-acceptance.
+No current local execution blocker. Fresh independent Architect/Reviewer, exact-head hosted jobs, protected integration/actual-main and safe main synchronization remain pending. No self-acceptance.
 
 ## Verification
 
@@ -30,11 +32,11 @@ Core/Gateway unknown-outcome classification; native Sync periodic/cancellation a
 
 ## Known Failures, Risks, and Assumptions
 
-Original friends runner/checker FAIL retained with separate read-only canonical continuation;32 nonmessage Outbox events attributed, Message73/message.created73 unchanged. Original Sync denied-state failure cause unproven; final snapshot regression69 PASS. Recorder raw-vs-stored5 hash differences/raw unavailable; old run remains running, untouched. Finalization startup reads/authoring outside recorder disclosed. Original screenshot metadata is now bound through immutable source/run/default/actual UIA derivations, for fresh Architect scrutiny. Development preflight formatting/Python27 and finalizer list-shape/permission failures retained.
+Historical offscreen captures/Settings-as-OS classification, SQL/equality failure, instrumentation/build/capture/UAC/access-denied failures preserved. Fresh friends5bec has Message6→6/message.created6→6, Outbox41→73; per-type nonmessage counts unavailable. Machine pre-import snapshot unavailable; old GUI76/tool75 discrepancy unresolved. Exact final Machine72/User74 restoration is separately verified. Recorder prospective_resume/direct authoring gaps and raw/stored differences remain disclosed; predecessor trace untouched. Independent acceptance pending.
 
 ## Next Exact Action
 
-Run committed Recovery Acceptance, then relinquish writes; actual result is externally sealed by the reviewed SHA. Coordinator delegates fresh Architect and independent Reviewer and completes exact-head hosted/protected integration/main synchronization. No done until independent acceptance and safe sync. Main781 unknown files preserved; no next product task activation.
+Required after-edit checks PASS (fix-b/after-edit-checks.json). Create task-owned clean commit and exact committed Recovery Acceptance; finish/validate own Recorder and seal exact-head receipt, release writer for fresh independent Architect/Reviewer/CI/integration/main sync. Task remains review unfinished; completed real affected matrices need no repeat.
 
 ## Last Known Good Commit
 
@@ -42,11 +44,11 @@ Run committed Recovery Acceptance, then relinquish writes; actual result is exte
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-10-loop1-client-state-001-review-candidate.md`
+`spec/progress/checkpoints/2026-10-11-loop1-client-state-001-fix-b-local-verification.md`
 
 ## Uncommitted Changes / Ownership
 
-Assigned root H:/.codex/worktrees/st/IM-platform; branch task/LOOP1-CLIENT-STATE-001. Preserved old state_impl owned changes reviewed by fresh /root/state_finalize, sole writer. Main781 unknown work untouched. Final candidate SHA/clean state and Recorder validation are sealed externally after commit.
+Assigned root H:/.codex/worktrees/st/IM-platform; branch task/LOOP1-CLIENT-STATE-001. Fresh /root/state_fix_b is sole writer after Review A/Architect A FAIL; originals and prior task-owned implementation remain preserved. Main781 unknown work untouched. Final candidate SHA/clean state and Recorder validation are sealed externally after commit.
 
 ## Architecture Conflicts / ACP / ADR
 

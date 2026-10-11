@@ -38,3 +38,8 @@ Architecture tests ran77, skipped1: POSIX symlink test is unavailable on Windows
 Existing Send/Sync TLS fixture success does not establish Go persistence: actual Go A/B/order/restart/fresh rows and their original server/UI/identity/count proofs establish that separate layer.
 Full friends15c8 original runner exit1 is retained; f98b supplemental read-only continuation checks canonical identity/SQL and32 nonmessage Outbox. This chain requires fresh independent review, not self-acceptance.
 The second Mobile Sync actual-TLS unavailable-check FAIL was not reproduced with added stack diagnostics. Its exact root cause remains unproven. The final test binds a completed real pull (fresh fixture database, contiguous205, idle, denied unavailable) to an immutable state snapshot, preserving the permission assertion. Final complete Sync69 PASS includes slow periodic/cancellation/reconnect regression.
+
+
+## Fix B affected repair local evidence
+
+Desktop7ef8, friends5bec, actual own Windows OS card and repaired Android/Windows native TLS controls all local PASS. Exact Machine72/targetUseroriginal74 restored, owned runtime cleanup PASS. See `fix-b/verification-matrix.json`, selected-screenshot-index and recorded command originals. Failed offscreen/Settings-as-OS claims and all ordinary failure history remain preserved. Independent Architect/Reviewer/exact-head CI/protected integration/main sync remain pending.
