@@ -159,6 +159,12 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   }
   error("Actual complete message viewport unavailable "+text+" "+diagnostic)
  }
+ private fun awaitProjected(text:String){
+  val expected=args.getString("expectedConversation")
+  repeat(300){val s=actualViewModel().state.value;if(s.messages.any{it[2]==text}){verify(expected==null||s.selected==expected);return};Thread.sleep(100)}
+  val s=actualViewModel().state.value
+  error("Actual message projection did not converge text="+text+" selected="+s.selected+" expected="+expected+" connection="+s.connection+" sync="+s.sync+" error="+s.error+" rows="+s.messages.size+" account="+s.session?.userId)
+ }
  private fun retryMessage(text:String){
   showMessage(text);Thread.sleep(700);val body=android.graphics.Rect();await(text).getBoundsInScreen(body)
   val candidates=mutableListOf<Pair<AccessibilityNodeInfo,android.graphics.Rect>>()
@@ -326,10 +332,10 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     click("New here? Create an account");fill("Username","gui_ui_"+captureRun);fill("Password","fixture-password-not-a-real-secret");fill("Confirm password","fixture-password-not-a-real-secret");backKeyboard();reach("Create account");capture("registration");click("Create account");await("Account created. Sign in to continue.");capture("registration-success")
     login(args.getString("avery")!!);await("GUI Fixture Morgan");verify(actualViewModel().state.value.selected.isEmpty());verify(find(actualRoot(),"Message")==null);headerAbsent();capture("cold-chat-list")
     click("Friends");await("Your friends");headerAbsent();capture("cold-friends");click("AI");headerAbsent();capture("cold-ai");click("Plugin");headerAbsent();capture("cold-plugin");click("Chat");click("GUI Fixture Morgan");await("Welcome to the GUI fixture. This message crossed the actual Go services.");verify(find(actualRoot(),"Friends")==null&&find(actualRoot(),"Settings")==null);headerAbsent();verify(find(actualRoot(),"←")!=null&&find(actualRoot(),"← Chat")==null&&find(actualRoot(),"Chat")==null);capture("cold-conversation")
-    fill("Message",sentText);backKeyboard();click("Send ",true);delivery(sentText,"SENT");reach(sentText);capture("sent")
+    fill("Message",sentText);backKeyboard();click("Send ",true);delivery(sentText,"SENT");awaitProjected(sentText);showMessage(sentText);capture("sent")
     click("←");await("GUI Fixture Morgan");verify(actualViewModel().state.value.selected.isEmpty());capture("back-to-chat-list")
     click("Settings");reach("Cold AI");headerAbsent(true);capture("cold-settings-theme");click("Cold AI");verify(actualViewModel().state.value.appearance.theme=="warm");headerAbsent(true);click("Warm Creative");verify(actualViewModel().state.value.appearance==Appearance("cold",14,.8f));click("Cold AI");verify(actualViewModel().state.value.appearance==Appearance("warm",14,.8f));click("Friends");await("Your friends");headerAbsent();capture("warm-friends");click("Settings");repeat(8){click("+")};reach("Comfort");click("Comfort");verify(actualViewModel().state.value.appearance==Appearance("warm",22,1.2f));headerAbsent(true);capture("warm-settings-22")
-    click("Chat");await("GUI Fixture Morgan");headerAbsent();capture("warm-chat-list-22");click("GUI Fixture Morgan");reach(sentText);headerAbsent();verify(find(actualRoot(),"←")!=null&&find(actualRoot(),"← Chat")==null&&find(actualRoot(),"Chat")==null);capture("warm-conversation-22");click("←");click("Settings");reach("Sign out");click("Sign out");await("Open your workspace");verify(find(actualRoot(),"Friends")==null);headerAbsent();capture("logout-22")
+    click("Chat");await("GUI Fixture Morgan");headerAbsent();capture("warm-chat-list-22");click("GUI Fixture Morgan");awaitProjected(sentText);showMessage(sentText);headerAbsent();verify(find(actualRoot(),"←")!=null&&find(actualRoot(),"← Chat")==null&&find(actualRoot(),"Chat")==null);capture("warm-conversation-22");click("←");click("Settings");reach("Sign out");click("Sign out");await("Open your workspace");verify(find(actualRoot(),"Friends")==null);headerAbsent();capture("logout-22")
    }else if(phase=="expiry"){
     backKeyboard();reach("Resume saved session");click("Resume saved session")
     await("Session expired. Sign in again.");verify(prefs.read("https://localhost:8443/current")==null)
