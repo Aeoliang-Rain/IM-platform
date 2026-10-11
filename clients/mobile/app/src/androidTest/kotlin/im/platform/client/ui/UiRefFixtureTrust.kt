@@ -14,6 +14,7 @@ import javax.net.ssl.TrustManagerFactory
 class UiRefFixtureTrust private constructor(private val originalContext:SSLContext,
     private val originalFactory:javax.net.ssl.SSLSocketFactory,
     private val originalProviders:List<String>,private val originalSocketProvider:String):AutoCloseable {
+    var restorationProof:String?=null;private set
     override fun close(){
         HttpsURLConnection.setDefaultSSLSocketFactory(originalFactory)
         SSLContext.setDefault(originalContext)
@@ -23,6 +24,7 @@ class UiRefFixtureTrust private constructor(private val originalContext:SSLConte
         check(Security.getProperty("ssl.SocketFactory.provider")==originalSocketProvider)
         check(HttpsURLConnection.getDefaultSSLSocketFactory()===originalFactory)
         check(SSLContext.getDefault()===originalContext)
+        restorationProof=org.json.JSONObject().put("providerOrderBefore",org.json.JSONArray(originalProviders)).put("providerOrderAfter",org.json.JSONArray(Security.getProviders().map{it.name})).put("socketProviderBefore",originalSocketProvider).put("socketProviderAfter",Security.getProperty("ssl.SocketFactory.provider")).put("sameDefaultContext",SSLContext.getDefault()===originalContext).put("sameHTTPSFactory",HttpsURLConnection.getDefaultSSLSocketFactory()===originalFactory).put("emptyMarkerAbsent",Security.getProvider("UIRefFixtureCacheRefresh")==null).toString()
     }
     companion object {
         fun install(path:String):UiRefFixtureTrust {

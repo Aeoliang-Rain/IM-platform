@@ -405,7 +405,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    }
    result.putInt("targetProcessId",android.os.Process.myPid());result.putString("result","PASS");result.putInt("assertions",count);result.putString("phase",phase);result.putString("captureRun",captureRun);result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   }catch(e:Throwable){try{capture("failure")}catch(_:Throwable){};result.putString("result","FAIL");result.putString("failure",e.toString());result.putInt("assertions",count);result.putString("captureRun",captureRun)}
-  finally{try{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}finally{fixtureTrust?.close();if(fixtureTrust!=null)result.putString("testTrustRestore","PASS exact original context/HTTPS factory/socket provider property/provider order")}}
+  finally{try{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}finally{fixtureTrust?.close();if(fixtureTrust!=null){result.putString("testTrustRestore","PASS exact original context/HTTPS factory/socket provider property/provider order");result.putString("testTrustRestoreDetails",fixtureTrust?.restorationProof)}}}
   result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   finish(if(result.getString("result")=="PASS")Activity.RESULT_OK else Activity.RESULT_CANCELED,result)
  }
