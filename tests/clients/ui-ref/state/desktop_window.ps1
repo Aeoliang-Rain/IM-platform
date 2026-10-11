@@ -1,4 +1,4 @@
-param([string]$Action='observe',[string]$Name='',[string]$Value='',[int]$TargetPid=0,[long]$Hwnd=0,[string]$Output='spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/desktop-initial.png')
+﻿param([string]$Action='observe',[string]$Name='',[string]$Value='',[int]$TargetPid=0,[long]$Hwnd=0,[string]$Output='spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/desktop-initial.png')
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.Drawing,UIAutomationClient,UIAutomationTypes
 Add-Type @"
