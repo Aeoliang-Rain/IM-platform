@@ -89,7 +89,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
  private fun capture(name:String){
   Thread.sleep(250);val d=java.io.File(targetContext.getExternalFilesDir(null),"gui-auth/$captureRun").apply{mkdirs()}
   val b=checkNotNull(uiAutomation.takeScreenshot());java.io.File(d,name+".png").outputStream().use{check(b.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it))}
-  if(args.getString("phase") in listOf("evidence-complete","auth-errors")){
+  if(args.getString("uiRefCA")!=null || args.getString("phase") in listOf("evidence-complete","auth-errors")){
    val s=actualViewModel().state.value
    java.io.File(d,name+".json").writeText(org.json.JSONObject().put("theme",s.appearance.theme).put("fontSize",s.appearance.fontSize).put("spacingDensity",s.appearance.density).put("busy",s.busy).put("error",s.error).put("connection",s.connection).put("sync",s.sync).put("conversationCount",s.conversations.size).put("friendCount",s.friends.size).put("resultCount",s.results.size).put("messageCount",s.messages.size).put("conversationSelected",s.selected.isNotEmpty()).put("sessionPresent",s.session!=null).put("offlineAccountPresent",s.offlineAccount!=null).put("secureCurrentPresent",Preferences(targetContext).read("https://localhost:8443/current")!=null).put("width",b.width).put("height",b.height).toString(2))
   };b.recycle()
@@ -202,7 +202,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   }
   if(!selected(actualRoot()))click(page)
  }
- private fun openMorgan(){navigate("Chat");if(find(actualRoot(),"←")!=null)click("←");click("GUI Fixture Morgan")}
+ private fun openMorgan(){navigate("Chat");if(find(actualRoot(),"←")!=null)click("←");click("GUI Fixture Morgan");args.getString("expectedConversation")?.let{expected->repeat(100){if(actualViewModel().state.value.selected==expected)return;Thread.sleep(100)};error("Actual selected conversation mismatch expected="+expected+" actual="+actualViewModel().state.value.selected)}}
  private fun settingsControl(name:String){navigate("Settings");reach(name);click(name)}
  private fun toggleTheme(){
   navigate("Settings")
@@ -342,7 +342,8 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     delivery(sentText,"SENT");result.putString("afterCommitted",actualState());showMessage(sentText);capture("diagnose-sent")
    }else if(phase=="matrix"){
     capture("cold-login");login(args.getString("avery")!!);click("GUI Fixture Morgan");await("Welcome to the GUI fixture. This message crossed the actual Go services.");capture("cold-chat-history")
-    navigate("Friends");await("Your friends");capture("cold-friends");fill("Username",args.getString("riley")!!);backKeyboard();reach("Search");click("Search");await("GUI Fixture Riley");capture("friend-search-result");click("Add friend");await("Connected")
+    navigate("Friends");await("Your friends");capture("cold-friends");fill("Username",args.getString("riley")!!);backKeyboard();reach("Search");click("Search");await("GUI Fixture Riley");capture("friend-search-result");click("Add friend")
+    var addComplete=false;repeat(100){val s=actualViewModel().state.value;val friend=s.friends.find{it.user.username==args.getString("riley")};if(!s.busy&&friend!=null&&s.selected==friend.directConversationId)addComplete=true;if(!addComplete)Thread.sleep(100)};verify(addComplete);capture("friend-add-completed")
     openMorgan();fill("Message",sentText);backKeyboard();click("Send ",true);delivery(sentText,"SENT");showMessage(sentText);capture("sent")
     settingsControl("Go offline");openMorgan();await("Offline");showMessage(sentText);capture("offline-history")
     fill("Message",retryText);backKeyboard();click("Send ",true);val retryId=delivery(retryText,"FAILED")[0];showMessage(retryText);capture("failed")
