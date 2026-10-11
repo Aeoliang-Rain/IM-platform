@@ -1,0 +1,51 @@
+Unique observed UI control required: Resume saved session (0)
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:140 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed...ved session (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: Resume saved session (0)
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/ui-ref/state/desktop_window.ps1 -TargetPid 50648 -Action click -Name Resume saved session -Output spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/desktop-sync-debug-5c9276a6-df76-4169-afa3-32b07d5fd539/resume.png
+Unique observed UI control required: Resume saved session (0)
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:140 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed...ved session (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: Resume saved session (0)
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at ui (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/desktop_debug.mjs:7:32)
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/desktop_debug.mjs:8:2 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Unique observed UI control required: Resume saved session (0)\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:140 char:27\r\n' +
+      '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+      '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Unique observed...ved session (0):String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Unique observed UI control required: Resume saved session (0)\r\n' +
+      ' \r\n'
+  ],
+  pid: 54340,
+  stdout: '',
+  stderr: 'Unique observed UI control required: Resume saved session (0)\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:140 char:27\r\n' +
+    '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+    '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Unique observed...ved session (0):String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Unique observed UI control required: Resume saved session (0)\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0

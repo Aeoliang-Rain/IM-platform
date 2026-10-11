@@ -1,0 +1,21 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-0b21b9f5-11a1-464b-9a1a-05c2a06a6747/: 7 files pulled, 0 skipped. 3.3 MB/s (87071 bytes in 0.025s)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.evaluate: Error: Actual friend name/private chat button clipped
+    at eval (eval at evaluate (:311:30), <anonymous>:1:529)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at webHas (H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\friends_actual.mjs:17:26)
+    at async file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:24:421 {
+  log: []
+}
+
+Node.js v24.19.0
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\friends_retry.py", line 17, in <module>
+    subprocess.run(['node','tests/clients/ui-ref/state/friends_actual.mjs'],cwd=root,env=env,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', 'tests/clients/ui-ref/state/friends_actual.mjs']' returned non-zero exit status 1.

@@ -1,0 +1,17 @@
+INSTRUMENTATION_RESULT: actualDefaultContextProvider=AndroidOpenSSL
+INSTRUMENTATION_RESULT: actualDefaultSocketTLSHostnamePositive=PASS localhost:8443
+INSTRUMENTATION_RESULT: actualSocketFactoryClass=com.android.org.conscrypt.OpenSSLSocketFactoryImpl
+INSTRUMENTATION_RESULT: assertions=14
+INSTRUMENTATION_RESULT: captureRun=fresh-5b1f4854-f276-4702-9813-0d9ea622d9c0
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[STATE Mobile fresh fresh-5b1f4854-f276-4702-9813-0d9ea622d9c0|SENT|0d0b71b0-0713-45f5-bf0a-20db7f0684d9|a07a3057-e62a-4e65-9b09-a1b0f5453c26]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: freshDatabaseAbsentBefore=PASS
+INSTRUMENTATION_RESULT: freshRowsAfter=[{"requestId":"a3326cb7-eccb-492b-8428-6f28d609172a","messageId":"755a90cb-7802-4ef3-b693-179d0feb8bcd","seq":1,"text":"STATE fresh historical 1 1bbab93c-77e4-4870-ae05-cf48ae16e6a7","state":"SENT"},{"requestId":"498ca127-c026-4967-9d6c-4bedc4cb923e","messageId":"2441338b-c7b3-4736-9c98-845f309af031","seq":2,"text":"STATE fresh historical 2 1bbab93c-77e4-4870-ae05-cf48ae16e6a7","state":"SENT"},{"requestId":"59daa70f-671d-4c1f-b8f1-198569382d26","messageId":"56c160bd-40f3-454d-b8d8-0a012f16f4ca","seq":3,"text":"STATE Desktop fresh 1bbab93c-77e4-4870-ae05-cf48ae16e6a7","state":"SENT"},{"requestId":"0d0b71b0-0713-45f5-bf0a-20db7f0684d9","messageId":"a07a3057-e62a-4e65-9b09-a1b0f5453c26","seq":4,"text":"STATE Mobile fresh fresh-5b1f4854-f276-4702-9813-0d9ea622d9c0","state":"SENT"}]
+INSTRUMENTATION_RESULT: freshRowsBefore=[{"requestId":"a3326cb7-eccb-492b-8428-6f28d609172a","messageId":"755a90cb-7802-4ef3-b693-179d0feb8bcd","seq":1,"text":"STATE fresh historical 1 1bbab93c-77e4-4870-ae05-cf48ae16e6a7","state":"SENT"},{"requestId":"498ca127-c026-4967-9d6c-4bedc4cb923e","messageId":"2441338b-c7b3-4736-9c98-845f309af031","seq":2,"text":"STATE fresh historical 2 1bbab93c-77e4-4870-ae05-cf48ae16e6a7","state":"SENT"},{"requestId":"59daa70f-671d-4c1f-b8f1-198569382d26","messageId":"56c160bd-40f3-454d-b8d8-0a012f16f4ca","seq":3,"text":"STATE Desktop fresh 1bbab93c-77e4-4870-ae05-cf48ae16e6a7","state":"SENT"}]
+INSTRUMENTATION_RESULT: phase=state-fresh
+INSTRUMENTATION_RESULT: result=PASS
+INSTRUMENTATION_RESULT: targetProcessId=5971
+INSTRUMENTATION_RESULT: testTrustRestore=PASS exact original context/HTTPS factory/socket provider property/provider order
+INSTRUMENTATION_RESULT: testTrustRestoreDetails={"providerOrderBefore":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"providerOrderAfter":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"socketProviderBefore":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","socketProviderAfter":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","sameDefaultContext":true,"sameHTTPSFactory":true,"emptyMarkerAbsent":true}
+INSTRUMENTATION_CODE: -1

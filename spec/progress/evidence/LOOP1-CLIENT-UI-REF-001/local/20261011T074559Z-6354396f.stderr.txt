@@ -1,0 +1,39 @@
+The message received from the daemon indicates that the daemon has disappeared.
+Build request sent: Build{id=17d75fb7-4da4-43e5-a53a-9a2c3069be95, currentDir=H:\.codex\worktrees\u\IM-platform\clients\mobile}
+Attempting to read last messages from the daemon log...
+Daemon pid: 60832
+  log file: H:\gradle\daemon\8.9\daemon-60832.out.log
+----- Last  20 lines from daemon log file - daemon-60832.out.log -----
+2026-10-11T15:46:02.547+0800 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Starting executing command: Build{id=17d75fb7-4da4-43e5-a53a-9a2c3069be95, currentDir=H:\.codex\worktrees\u\IM-platform\clients\mobile} with connection: socket connection from /127.0.0.1:50078 to /127.0.0.1:50081.
+2026-10-11T15:46:02.549+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: started DaemonCommandExecution[command = Build{id=17d75fb7-4da4-43e5-a53a-9a2c3069be95, currentDir=H:\.codex\worktrees\u\IM-platform\clients\mobile}, connection = DefaultDaemonConnection: socket connection from /127.0.0.1:50078 to /127.0.0.1:50081] after 0.013266666666666668 minutes of idle
+2026-10-11T15:46:02.550+0800 [INFO] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Marking the daemon as busy, address: [d751810c-71f3-4807-a217-49a68523baa4 port:50078, addresses:[localhost/127.0.0.1]]
+2026-10-11T15:46:02.550+0800 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Marking busy by address: [d751810c-71f3-4807-a217-49a68523baa4 port:50078, addresses:[localhost/127.0.0.1]]
+2026-10-11T15:46:02.551+0800 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2026-10-11T15:46:02.551+0800 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2026-10-11T15:46:02.552+0800 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2026-10-11T15:46:02.552+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] resetting idle timer
+2026-10-11T15:46:02.552+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+2026-10-11T15:46:02.553+0800 [INFO] [org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy] Daemon is about to start building Build{id=17d75fb7-4da4-43e5-a53a-9a2c3069be95, currentDir=H:\.codex\worktrees\u\IM-platform\clients\mobile}. Dispatching build started information...
+2026-10-11T15:46:02.553+0800 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 35: dispatching org.gradle.launcher.daemon.protocol.BuildStarted@4536f39f
+2026-10-11T15:46:02.555+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring env variables: [PATH, SYSTEMDRIVE, ANTHROPIC_DEFAULT_OPUS_MODEL, ANTHROPIC_DEFAULT_SONNET_MODEL, IM_CLIENT_GRADLE, GIT_PAGER, ANDROID_HOME, GH_PAGER, PROGRAMFILES, COLORTERM, PSMODULEPATH, NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S, RUSTUP_HOME, PROGRAMDATA, DIRNAME, USERNAME, CARGO_HOME, APP_HOME, DEFAULT_JVM_OPTS, PATHEXT, SHELL, PAGER, WINDIR, CARGO_TARGET_DIR, HOMEPATH, LC_ALL, CARGO_BUILD_JOBS, ANTHROPIC_BASE_URL, ANTHROPIC_DEFAULT_SONNET_MODEL_NAME, LC_CTYPE, ANTHROPIC_DEFAULT_HAIKU_MODEL, CODEX_SESSION_ID, LOCALAPPDATA, USERDOMAIN, JAVA_HOME, PROMPT, PROGRAMFILES(X86), TERM, LANG, PYTHONUTF8, APPDATA, GRADLE_USER_HOME, ANTHROPIC_AUTH_TOKEN, CODEX_APPLY_PATCH_PRESERVE_LINE_ENDINGS, ANTHROPIC_MODEL, PROGRAMW6432, SYSTEMROOT, JAVA_EXE, CODEX_THREAD_ID, IM_CLIENT_ADB, NO_COLOR, CODEX_CI, ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME, PYTHONIOENCODING, RUSTUP_TOOLCHAIN, COMSPEC, ANDROID_SDK_ROOT, CLASSPATH, =H:, APP_BASE_NAME, PYTHONDONTWRITEBYTECODE, TEMP, HOMEDRIVE, USERPROFILE, TMP, CODEX_VERSION, ANTHROPIC_DEFAULT_OPUS_MODEL_NAME]
+2026-10-11T15:46:02.559+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all logs to the client via the connection.
+2026-10-11T15:46:02.559+0800 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 60832). The daemon log file: H:\gradle\daemon\8.9\daemon-60832.out.log
+2026-10-11T15:46:02.561+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon] Requesting daemon stop after processing Build{id=17d75fb7-4da4-43e5-a53a-9a2c3069be95, currentDir=H:\.codex\worktrees\u\IM-platform\clients\mobile}
+2026-10-11T15:46:02.561+0800 [LIFECYCLE] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Daemon will be stopped at the end of the build 
+2026-10-11T15:46:02.561+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Stop as soon as idle requested. The daemon is busy
+2026-10-11T15:46:02.561+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon stop has been requested. Sleeping until state changes.
+2026-10-11T15:46:02.562+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+2026-10-11T15:46:02.562+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=66fdaaad-ca46-414a-bf99-3d2b2a2c3947,javaHome=H:\.jdks\jdk17,javaVersion=17,daemonRegistryDir=H:\gradle\daemon,pid=60832,idleTimeout=120000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=--add-opens=java.base/java.util=ALL-UNNAMED,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.base/java.lang.invoke=ALL-UNNAMED,--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED,--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED,--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED,--add-opens=java.base/java.nio.charset=ALL-UNNAMED,--add-opens=java.base/java.net=ALL-UNNAMED,--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant]----- End of the daemon log -----
+
+JVM crash log found: file:///H:/.codex/worktrees/u/IM-platform/clients/mobile/hs_err_pid60832.log
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.

@@ -1,0 +1,21 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-4c30c405-59ba-4689-a630-993220046083/: 3 files pulled, 0 skipped. 2.9 MB/s (39213 bytes in 0.013s)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.evaluate: Error: Wrong controlled friend identity
+    at eval (eval at evaluate (:311:30), <anonymous>:1:818)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at webHas (H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\friends_actual.mjs:17:26)
+    at async file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:23:303 {
+  log: []
+}
+
+Node.js v24.19.0
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\friends_retry.py", line 16, in <module>
+    subprocess.run(['node','tests/clients/ui-ref/state/friends_actual.mjs'],cwd=root,env=env,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', 'tests/clients/ui-ref/state/friends_actual.mjs']' returned non-zero exit status 1.

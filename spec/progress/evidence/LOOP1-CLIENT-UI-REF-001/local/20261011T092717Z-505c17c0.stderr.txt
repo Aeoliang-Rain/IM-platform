@@ -1,0 +1,210 @@
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:41 char:32
++   if($send.Count -ne 1){throw 'Actual composer Send control must be u ...
++                                ~~~~~~
+Unexpected token 'Actual' in expression or statement.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:40 char:29
++   $send=@($all|Where-Object {$_.Current.Name -eq 'Send 鈫? -and $_.Cur ...
++                             ~
+Missing closing '}' in statement block or type definition.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:51 char:272
++ ... m -and $_.Current.BoundingRectangle.Top -lt $br.Bottom+110} | Sort-Ob ...
++                                                                 ~
+An empty pipe element is not allowed.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:31 char:32
++ if($Action -eq 'reach-message'){
++                                ~
+Missing closing '}' in statement block or type definition.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:19 char:5
++ try {
++     ~
+Missing closing '}' in statement block or type definition.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:51 char:320
++ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})
++                                                                         ~
+The Try statement is missing its Catch or Finally block.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:51 char:320
++ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})
++                                                                         ~
+Unexpected token ')' in expression or statement.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:54 char:41
++    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unexpected token 'Failed';SENT='Sent'}[$Value]
+   if($expect -and -not $state.Current.Name.EndsWith($expect)){throw 'Actual' in expression or statement.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:54 char:41
++    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]
++                                         ~
+The hash literal was incomplete.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:174 char:254
++ ... creen}).Count) -or @($nodes|Where-Object name -eq 'Syncing鈥?).Count)) ...
++                                                                 ~
+Unexpected token ')' in expression or statement.
+Not all parse errors were reported.  Correct the reported errors and try again.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+ 
+adb: error: failed to stat remote object '/sdcard/Android/data/im.platform.client/files/gui-auth/friends-314c01a7-a5d3-413e-b312-e31dd2cc908c': No such file or directory
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/ui-ref/state/desktop_window.ps1 -Action observe -Name  -Value  -Output spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/friends-314c01a7-a5d3-413e-b312-e31dd2cc908c/desktop-startup-before-login.png
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:41 char:32
++   if($send.Count -ne 1){throw 'Actual composer Send control must be u ...
++                                ~~~~~~
+Unexpected token 'Actual' in expression or statement.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:40 char:29
++   $send=@($all|Where-Object {$_.Current.Name -eq 'Send 鈫? -and $_.Cur ...
++                             ~
+Missing closing '}' in statement block or type definition.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:51 char:272
++ ... m -and $_.Current.BoundingRectangle.Top -lt $br.Bottom+110} | Sort-Ob ...
++                                                                 ~
+An empty pipe element is not allowed.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:31 char:32
++ if($Action -eq 'reach-message'){
++                                ~
+Missing closing '}' in statement block or type definition.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:19 char:5
++ try {
++     ~
+Missing closing '}' in statement block or type definition.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:51 char:320
++ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})
++                                                                         ~
+The Try statement is missing its Catch or Finally block.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:51 char:320
++ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})
++                                                                         ~
+Unexpected token ')' in expression or statement.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:54 char:41
++    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unexpected token 'Failed';SENT='Sent'}[$Value]
+   if($expect -and -not $state.Current.Name.EndsWith($expect)){throw 'Actual' in expression or statement.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:54 char:41
++    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]
++                                         ~
+The hash literal was incomplete.
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:174 char:254
++ ... creen}).Count) -or @($nodes|Where-Object name -eq 'Syncing鈥?).Count)) ...
++                                                                 ~
+Unexpected token ')' in expression or statement.
+Not all parse errors were reported.  Correct the reported errors and try again.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at ui (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:5:64)
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:21:385 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:41 char:32\r\n' +
+      "+   if($send.Count -ne 1){throw 'Actual composer Send control must be u ...\r\n" +
+      '+                                ~~~~~~\r\n' +
+      "Unexpected token 'Actual' in expression or statement.\r\n" +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:40 char:29\r\n' +
+      "+   $send=@($all|Where-Object {$_.Current.Name -eq 'Send 鈫? -and $_.Cur ...\r\n" +
+      '+                             ~\r\n' +
+      "Missing closing '}' in statement block or type definition.\r\n" +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:51 char:272\r\n' +
+      '+ ... m -and $_.Current.BoundingRectangle.Top -lt $br.Bottom+110} | Sort-Ob ...\r\n' +
+      '+                                                                 ~\r\n' +
+      'An empty pipe element is not allowed.\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:31 char:32\r\n' +
+      "+ if($Action -eq 'reach-message'){\r\n" +
+      '+                                ~\r\n' +
+      "Missing closing '}' in statement block or type definition.\r\n" +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:19 char:5\r\n' +
+      '+ try {\r\n' +
+      '+     ~\r\n' +
+      "Missing closing '}' in statement block or type definition.\r\n" +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:51 char:320\r\n' +
+      '+ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})\r\n' +
+      '+                                                                         ~\r\n' +
+      'The Try statement is missing its Catch or Finally block.\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:51 char:320\r\n' +
+      '+ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})\r\n' +
+      '+                                                                         ~\r\n' +
+      "Unexpected token ')' in expression or statement.\r\n" +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:54 char:41\r\n' +
+      "+    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]\r\n" +
+      '+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      "Unexpected token 'Failed';SENT='Sent'}[$Value]\r\n" +
+      "   if($expect -and -not $state.Current.Name.EndsWith($expect)){throw 'Actual' in expression or statement.\r\n" +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:54 char:41\r\n' +
+      "+    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]\r\n" +
+      '+                                         ~\r\n' +
+      'The hash literal was incomplete.\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:174 char:254\r\n' +
+      "+ ... creen}).Count) -or @($nodes|Where-Object name -eq 'Syncing鈥?).Count)) ...\r\n" +
+      '+                                                                 ~\r\n' +
+      "Unexpected token ')' in expression or statement.\r\n" +
+      'Not all parse errors were reported.  Correct the reported errors and try again.\r\n' +
+      '    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException\r\n' +
+      '    + FullyQualifiedErrorId : UnexpectedToken\r\n' +
+      ' \r\n'
+  ],
+  pid: 50584,
+  stdout: '',
+  stderr: 'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:41 char:32\r\n' +
+    "+   if($send.Count -ne 1){throw 'Actual composer Send control must be u ...\r\n" +
+    '+                                ~~~~~~\r\n' +
+    "Unexpected token 'Actual' in expression or statement.\r\n" +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:40 char:29\r\n' +
+    "+   $send=@($all|Where-Object {$_.Current.Name -eq 'Send 鈫? -and $_.Cur ...\r\n" +
+    '+                             ~\r\n' +
+    "Missing closing '}' in statement block or type definition.\r\n" +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:51 char:272\r\n' +
+    '+ ... m -and $_.Current.BoundingRectangle.Top -lt $br.Bottom+110} | Sort-Ob ...\r\n' +
+    '+                                                                 ~\r\n' +
+    'An empty pipe element is not allowed.\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:31 char:32\r\n' +
+    "+ if($Action -eq 'reach-message'){\r\n" +
+    '+                                ~\r\n' +
+    "Missing closing '}' in statement block or type definition.\r\n" +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:19 char:5\r\n' +
+    '+ try {\r\n' +
+    '+     ~\r\n' +
+    "Missing closing '}' in statement block or type definition.\r\n" +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:51 char:320\r\n' +
+    '+ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})\r\n' +
+    '+                                                                         ~\r\n' +
+    'The Try statement is missing its Catch or Finally block.\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:51 char:320\r\n' +
+    '+ ... -lt $br.Bottom+110} | Sort-Object {$_.Current.BoundingRectangle.Top})\r\n' +
+    '+                                                                         ~\r\n' +
+    "Unexpected token ')' in expression or statement.\r\n" +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:54 char:41\r\n' +
+    "+    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]\r\n" +
+    '+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    "Unexpected token 'Failed';SENT='Sent'}[$Value]\r\n" +
+    "   if($expect -and -not $state.Current.Name.EndsWith($expect)){throw 'Actual' in expression or statement.\r\n" +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:54 char:41\r\n' +
+    "+    $expect=@{SENDING='Sending鈥?;FAILED='Failed';SENT='Sent'}[$Value]\r\n" +
+    '+                                         ~\r\n' +
+    'The hash literal was incomplete.\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:174 char:254\r\n' +
+    "+ ... creen}).Count) -or @($nodes|Where-Object name -eq 'Syncing鈥?).Count)) ...\r\n" +
+    '+                                                                 ~\r\n' +
+    "Unexpected token ')' in expression or statement.\r\n" +
+    'Not all parse errors were reported.  Correct the reported errors and try again.\r\n' +
+    '    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException\r\n' +
+    '    + FullyQualifiedErrorId : UnexpectedToken\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\friends_retry.py", line 17, in <module>
+    subprocess.run(['node','tests/clients/ui-ref/state/friends_actual.mjs'],cwd=root,env=env,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', 'tests/clients/ui-ref/state/friends_actual.mjs']' returned non-zero exit status 1.

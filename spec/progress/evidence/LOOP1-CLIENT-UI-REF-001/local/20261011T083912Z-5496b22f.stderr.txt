@@ -1,0 +1,39 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-4c32b819-f661-4a74-8ef8-2e2d6e81459f/: 10 files pulled, 0 skipped. 3.9 MB/s (140720 bytes in 0.034s)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Native runner ended: s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+INSTRUMENTATION_RESULT: actualDefaultContextProvider=AndroidOpenSSL
+INSTRUMENTATION_RESULT: actualDefaultSocketTLSHostnamePositive=PASS localhost:8443
+INSTRUMENTATION_RESULT: actualSocketFactoryClass=com.android.org.conscrypt.OpenSSLSocketFactoryImpl
+INSTRUMENTATION_RESULT: assertions=13
+INSTRUMENTATION_RESULT: captureRun=friends-4c32b819-f661-4a74-8ef8-2e2d6e81459f
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Control unreachable Your friends absent activityFinishing=false activityDestroyed=false rootPackage=im.platform.client windows= tree=[text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=STATE DesktopFriend 403277ccfe desc=null clickable=false][text=@state_desktopfriend_403277ccfe desc=null clickable=false][text=null desc=null clickable=true][text=Message desc=null clickable=false][text=null desc=null clickable=false][text=STATE DesktopFriend desc=null clickable=false][text=@state_desktopfriend_6a962a2009 desc=null clickable=false][text=null desc=null clickable=true][text=Message desc=null clickable=false][text=null desc=null clickable=false][text=STATE MobileFriend desc=null clickable=false][text=@state_mobilefriend_456d5b7d41 desc=null clickable=false][text=null desc=null clickable=true][text=Message desc=null clickable=false][text=null desc=null clickable=false][text=STATE WebFriend 51090e5900 desc=null clickable=false][text=@state_webfriend_51090e5900 desc=null clickable=false][text=null desc=null clickable=true][text=Message desc=null clickable=false][text=null desc=null clickable=false][text=STATE WebFriend desc=null clickable=false][text=@state_webfriend_5ee8bc21c5 desc=null clickable=false][text=null desc=null clickable=true][text=Message desc=null clickable=false][text=null desc=null clickable=false][text=STATE WebFriend desc=null clickable=false][text=@state_webfriend_6ec51df676 desc=null clickable=false][text=null desc=null clickable=true][text=Message desc=null clickable=false][text=null desc=null clickable=false][text=STATE WebFriend ebd9d07119 desc=null clickable=false][text=@state_webfriend_ebd9d07119 desc=null clickable=false][text=null desc=null clickable=true][text=Message desc=null clickable=false][text=null desc=null clickable=false][text=Friends desc=null clickable=false][text=Syncing… desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=true][text=Chat desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=Friends desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=true][text=AI desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=true][text=Plugin desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=true][text=Settings desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false]
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_RESULT: testTrustRestore=PASS exact original context/HTTPS factory/socket provider property/provider order
+INSTRUMENTATION_RESULT: testTrustRestoreDetails={"providerOrderBefore":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"providerOrderAfter":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"socketProviderBefore":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","socketProviderAfter":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","sameDefaultContext":true,"sameHTTPSFactory":true,"emptyMarkerAbsent":true}
+INSTRUMENTATION_CODE: 0
+
+    at marker (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:10:199)
+    at async file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:25:2 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\friends_retry.py", line 17, in <module>
+    subprocess.run(['node','tests/clients/ui-ref/state/friends_actual.mjs'],cwd=root,env=env,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', 'tests/clients/ui-ref/state/friends_actual.mjs']' returned non-zero exit status 1.

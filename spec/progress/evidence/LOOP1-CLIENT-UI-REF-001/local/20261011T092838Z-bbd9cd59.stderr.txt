@@ -1,0 +1,52 @@
+Unique observed UI control required: ⚙ Settings (0)
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:151 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed... ⚙ Settings (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: ⚙ Settings (0)
+ 
+adb: error: failed to stat remote object '/sdcard/Android/data/im.platform.client/files/gui-auth/friends-8e61b1ad-a7f4-4bbb-88bc-fb9685865785': No such file or directory
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/ui-ref/state/desktop_window.ps1 -Action click -Name ⚙ Settings -Value  -Output spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/friends-8e61b1ad-a7f4-4bbb-88bc-fb9685865785/desktop-old-settings.png
+Unique observed UI control required: ⚙ Settings (0)
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:151 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed... ⚙ Settings (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: ⚙ Settings (0)
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at ui (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:5:64)
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:21:612 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Unique observed UI control required: ⚙ Settings (0)\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:151 char:27\r\n' +
+      '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+      '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Unique observed... ⚙ Settings (0):String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Unique observed UI control required: ⚙ Settings (0)\r\n' +
+      ' \r\n'
+  ],
+  pid: 18764,
+  stdout: '',
+  stderr: 'Unique observed UI control required: ⚙ Settings (0)\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:151 char:27\r\n' +
+    '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+    '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Unique observed... ⚙ Settings (0):String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Unique observed UI control required: ⚙ Settings (0)\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0

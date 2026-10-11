@@ -1,0 +1,17 @@
+s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+INSTRUMENTATION_RESULT: actualDefaultContextProvider=AndroidOpenSSL
+INSTRUMENTATION_RESULT: actualDefaultSocketTLSHostnamePositive=PASS localhost:8443
+INSTRUMENTATION_RESULT: actualSocketFactoryClass=com.android.org.conscrypt.OpenSSLSocketFactoryImpl
+INSTRUMENTATION_RESULT: assertions=69
+INSTRUMENTATION_RESULT: captureRun=friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: phase=state-friends
+INSTRUMENTATION_RESULT: result=PASS
+INSTRUMENTATION_RESULT: targetProcessId=10319
+INSTRUMENTATION_RESULT: testTrustRestore=PASS exact original context/HTTPS factory/socket provider property/provider order
+INSTRUMENTATION_RESULT: testTrustRestoreDetails={"providerOrderBefore":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"providerOrderAfter":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"socketProviderBefore":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","socketProviderAfter":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","sameDefaultContext":true,"sameHTTPSFactory":true,"emptyMarkerAbsent":true}
+INSTRUMENTATION_CODE: -1

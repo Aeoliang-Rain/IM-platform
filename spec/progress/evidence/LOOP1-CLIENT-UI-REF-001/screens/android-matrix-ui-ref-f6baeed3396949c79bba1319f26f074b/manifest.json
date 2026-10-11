@@ -1,0 +1,128 @@
+{
+  "actualUTC": "2026-10-11T08:14:16.429021+00:00",
+  "phase": "matrix",
+  "actualHEAD": "324a2d01aaa5a5f8d59e218b87806078e8978e5c",
+  "actualStatus": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/\n",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "testAPKHash": "6c8e3d748453333d6acc2c6985ec2701f744db741e7a937b29c55ef3ac818ab1",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_f67ad4",
+        "userId": "d66198b5-fe2f-4f9c-9da0-e393691ecb6c",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_763c45",
+        "userId": "ece3fb64-18ab-4823-a09c-f9cbb61f8f13",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_3446c1",
+        "userId": "5783e943-90fc-4979-baac-b12df49093e1",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "a81f7f07-0484-4e2d-8608-0f3089f0ce43",
+    "privateRuntime": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\go-35128",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "TLSQualification": "Pinned explicit test-process CA for HTTPS and WSS; default endpoint hostname verification; empty process-only Provider cache marker restored finally; no device/system roots changed",
+  "entries": [
+    {
+      "file": "instrumentation-original.txt",
+      "sha256": "fa1a87c026b79c46ab58853081065b214206d4c5841289fe1eec78cac93df13c"
+    },
+    {
+      "file": "native-originals\\cold-chat-history.json",
+      "sha256": "815b75e4fb53521c9f007cb4bdb4195c806ecda6ad71ea44ac3556f89d1add59"
+    },
+    {
+      "file": "native-originals\\cold-chat-history.png",
+      "sha256": "e8795fb31b763c1831f7f758276d71e3e78d4ce6d143fb3f01ccf0468057cc45"
+    },
+    {
+      "file": "native-originals\\cold-friends.json",
+      "sha256": "804aa71c44d6c084e7124e22aff97e30c973cb8eed794a5c62107c9dc2c9b51f"
+    },
+    {
+      "file": "native-originals\\cold-friends.png",
+      "sha256": "aa1cf7f636c207fa100a45b2c92ed65fdf2ef8c07560a51587550feedb0360bb"
+    },
+    {
+      "file": "native-originals\\cold-login.json",
+      "sha256": "62caf8bc58476ca4c0c28c193855ee2e37e5fe56fb0f87765d0d18f79bbc520b"
+    },
+    {
+      "file": "native-originals\\cold-login.png",
+      "sha256": "f474b24df9748861345877a9811f6c30f9a441cdd30e3453f61b4374b417d4a3"
+    },
+    {
+      "file": "native-originals\\failed.json",
+      "sha256": "15252dd9a03200a47ac46568f29b5b1b503658d9cb0d75d0f9601acbabeeaf7b"
+    },
+    {
+      "file": "native-originals\\failed.png",
+      "sha256": "adf3b2740775c9ab1005a0a02514fe4ce130cea5134876a7d6aab7a903338597"
+    },
+    {
+      "file": "native-originals\\friend-add-completed.json",
+      "sha256": "84294040357ef49954cc60e1d1174f9fd8c9c2f7cec6f218a828aafbeff8dcfc"
+    },
+    {
+      "file": "native-originals\\friend-add-completed.png",
+      "sha256": "9dc991a3090bfe69003d7cba3bed07b8c19912c299412cb678c5988f78399f33"
+    },
+    {
+      "file": "native-originals\\friend-search-result.json",
+      "sha256": "80fc131a886de1a1f5d3e1cad9a8b348ef7d2fec437490b5278eebd839447e0a"
+    },
+    {
+      "file": "native-originals\\friend-search-result.png",
+      "sha256": "47f691a019da699547bfc3eced0cfb022f3e105eb502fc28c2dc5a0800118e88"
+    },
+    {
+      "file": "native-originals\\offline-history.json",
+      "sha256": "4489b6f7b0d24465bcbdd7c155b114827de6a3994591b078062ff97d41cd7c18"
+    },
+    {
+      "file": "native-originals\\offline-history.png",
+      "sha256": "cdcc50d98081b4d0409d9d0bfec45e2fa98ad17ca06cd0e8a7799876bb690cbf"
+    },
+    {
+      "file": "native-originals\\profile-refreshed.json",
+      "sha256": "b80bf82a4fb76bc6a7eb9903f9c88097ddcd037b205fe0a62296a4719a590002"
+    },
+    {
+      "file": "native-originals\\profile-refreshed.png",
+      "sha256": "73528148f698e15e56ddb73640d9fb5ef5a7dbd3f2fb37f5bb18813a1e3004c7"
+    },
+    {
+      "file": "native-originals\\retry-sent.json",
+      "sha256": "027ed36c13561740a1b4c0330867c38a33ac6e33cd18f5c333b9ceb532c65dc2"
+    },
+    {
+      "file": "native-originals\\retry-sent.png",
+      "sha256": "583d18c5a390683841ba99d01ea2e22c28f602337847e2937f2a96424e2a932f"
+    },
+    {
+      "file": "native-originals\\sent.json",
+      "sha256": "f0a741259d17d3bc129ea24d9687ee4317e2bf7c7d583037fde2ae75e05b8384"
+    },
+    {
+      "file": "native-originals\\sent.png",
+      "sha256": "573feceb6019fa18ffe5274b92eba108a4ae7f0d262aa649a152c09e6f532998"
+    },
+    {
+      "file": "native-originals\\warm-chat-history.json",
+      "sha256": "113a829218bcbfbc2bf3edb29824e5b6ea1280084063033d36cb7c1fcd806872"
+    },
+    {
+      "file": "native-originals\\warm-chat-history.png",
+      "sha256": "7f1e62b4284a83a16fba37fcf57acc7cbb8fbc69c140026c044e7dca50990733"
+    }
+  ]
+}

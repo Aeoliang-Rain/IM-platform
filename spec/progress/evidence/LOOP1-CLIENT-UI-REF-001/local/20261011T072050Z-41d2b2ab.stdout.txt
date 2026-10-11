@@ -1,0 +1,6 @@
+PASS GUI auth: exact epoch, canonical native metadata, rotation, OS storage intent, logout, delayed retired login isolation, account switch, expired cleanup, HTTPS origin and malformed response controls
+PASS canonical invalid credentials remain anonymous with safe login error; no false session expiry or stored credential
+PASS GUI workspace: delayed login, search and add cannot repopulate a logged-out account or overwrite the current busy/error state
+PASS GUI workspace: delayed close/bind, refresh and profile cannot restore or overwrite a retired account
+PASS GUI appearance: rapid font/theme/density changes preserve independent intent and serialized native writes
+PASS registration canonical body/confirmation/malformed/conflict; private+group latest-first and retired-account list guard; desktop selected row closes detail

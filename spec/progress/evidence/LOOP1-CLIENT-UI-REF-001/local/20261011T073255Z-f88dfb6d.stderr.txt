@@ -1,0 +1,51 @@
+Selected target occluded by another native window
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:97 char:4
++    throw 'Selected target occluded by another native window'
++    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Selected target...r native window:String) [], RuntimeException
+    + FullyQualifiedErrorId : Selected target occluded by another native window
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/ui-ref/state/desktop_window.ps1 -Action reach-message -Name STATE Desktop A desktop-448a4924-8f68-4b4c-9dde-3baaeb1cbe60 -Value FAILED -Output spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/desktop-448a4924-8f68-4b4c-9dde-3baaeb1cbe60/A-reopened.png
+Selected target occluded by another native window
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:97 char:4
++    throw 'Selected target occluded by another native window'
++    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Selected target...r native window:String) [], RuntimeException
+    + FullyQualifiedErrorId : Selected target occluded by another native window
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at ui (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/desktop_actual.mjs:4:64)
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/desktop_actual.mjs:16:988 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Selected target occluded by another native window\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:97 char:4\r\n' +
+      "+    throw 'Selected target occluded by another native window'\r\n" +
+      '+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Selected target...r native window:String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Selected target occluded by another native window\r\n' +
+      ' \r\n'
+  ],
+  pid: 60484,
+  stdout: '',
+  stderr: 'Selected target occluded by another native window\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:97 char:4\r\n' +
+    "+    throw 'Selected target occluded by another native window'\r\n" +
+    '+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Selected target...r native window:String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Selected target occluded by another native window\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0

@@ -1,0 +1,16 @@
+INSTRUMENTATION_RESULT: actualDefaultContextProvider=AndroidOpenSSL
+INSTRUMENTATION_RESULT: actualDefaultSocketTLSHostnamePositive=PASS localhost:8443
+INSTRUMENTATION_RESULT: actualSocketFactoryClass=com.android.org.conscrypt.OpenSSLSocketFactoryImpl
+INSTRUMENTATION_RESULT: assertions=9
+INSTRUMENTATION_RESULT: captureRun=ui-ref-3ca2b8a00a6941ebb509e155e58a9589
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Actual control missing: GUI Android actual send connection=ready sync=idle
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_RESULT: testTrustRestore=PASS exact original context/HTTPS factory/socket provider property/provider order
+INSTRUMENTATION_RESULT: testTrustRestoreDetails={"providerOrderBefore":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"providerOrderAfter":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"socketProviderBefore":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","socketProviderAfter":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","sameDefaultContext":true,"sameHTTPSFactory":true,"emptyMarkerAbsent":true}
+INSTRUMENTATION_CODE: 0
+s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord

@@ -1,0 +1,17 @@
+INSTRUMENTATION_RESULT: actualDefaultContextProvider=AndroidOpenSSL
+INSTRUMENTATION_RESULT: actualDefaultSocketTLSHostnamePositive=PASS localhost:8443
+INSTRUMENTATION_RESULT: actualSocketFactoryClass=com.android.org.conscrypt.OpenSSLSocketFactoryImpl
+INSTRUMENTATION_RESULT: assertions=35
+INSTRUMENTATION_RESULT: captureRun=ui-ref-620676b58fbd417d9bbd519ad35f392b
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[GUI Android actual send 1791705899429|SENT|e744dab6-3126-433b-973d-34a2e13cc58f|efd8fda8-ea49-4ee7-9303-4496112f4fa6]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Actual complete message viewport unavailable GUI Android actual send 1791705899429 state=null body=Rect(0, 0 - 0, 0) deliveryBottom=null viewport=Rect(16, 148 - 304, 555) composer=Rect(16, 563 - 210, 627)
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_RESULT: testTrustRestore=PASS exact original context/HTTPS factory/socket provider property/provider order
+INSTRUMENTATION_RESULT: testTrustRestoreDetails={"providerOrderBefore":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"providerOrderAfter":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"socketProviderBefore":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","socketProviderAfter":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","sameDefaultContext":true,"sameHTTPSFactory":true,"emptyMarkerAbsent":true}
+INSTRUMENTATION_CODE: 0
+s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+

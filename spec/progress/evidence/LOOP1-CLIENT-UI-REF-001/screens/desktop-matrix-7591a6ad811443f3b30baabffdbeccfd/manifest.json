@@ -1,0 +1,981 @@
+{
+  "result": "PASS",
+  "actualUTC": "2026-10-11T07:58:20.744755+00:00",
+  "actualHead": "29b8bd44360f42d26baad501e9790ffe66db2d30",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "observedBefore": [
+    "cold",
+    14,
+    0.8
+  ],
+  "originalAppearance": [
+    "warm",
+    14,
+    0.8
+  ],
+  "originalMethod": "Recovered initial readonly actual warm/14/.8 receipt; earlier failed theme-toggle attempt changed to cold; exact Rust serialization bytes",
+  "appearanceRestoredExactly": true,
+  "fixture": "owned installed NSIS identity; no presentation injection",
+  "entries": [
+    {
+      "file": "actual-refresh.png",
+      "sha256": "f1525781d4620092269503f2217555fceeb42e4fbf9fbd0d0632808eaa1cd517"
+    },
+    {
+      "file": "actual-refresh.png.json",
+      "sha256": "d35cec773fb4ed662eced1b0e6a8d1fcdd25a1aeba6dd1bd337e38ec9dc4e3da"
+    },
+    {
+      "file": "actual-refresh.png.zorder.json",
+      "sha256": "32bb63ba65e99363a7f49e19273b89ab8f1c3716a71ae2c6a663fbcc8750e588"
+    },
+    {
+      "file": "actual-refresh.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-AI-before.png",
+      "sha256": "24dad40e9db5fb1f0d4978342348a0a99993f922cae82e65a5cc2fed1507e4c9"
+    },
+    {
+      "file": "cold-14-0.8-AI-before.png.json",
+      "sha256": "c1098c96adf2c03ad72b21111d62b6119acc809f615e75eb0afca14a959e2a2e"
+    },
+    {
+      "file": "cold-14-0.8-AI-before.png.zorder.json",
+      "sha256": "f166e3de57ff69a4c2beff2c22a28df6cdeebb3342ac270b193104906323e202"
+    },
+    {
+      "file": "cold-14-0.8-AI-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-AI.png",
+      "sha256": "88ba14bb9e9bcc2c859ccf4f536aae8f254d18ba5499ca10396ddce0cf099d81"
+    },
+    {
+      "file": "cold-14-0.8-AI.png.json",
+      "sha256": "74c8df0e9598f6c60e9f1476f3506c2ccb6b4b07632a285908f3190f16be0ff1"
+    },
+    {
+      "file": "cold-14-0.8-AI.png.zorder.json",
+      "sha256": "2662d030393592d725c7c465ccf04a254702bd522df33402aa6e44bfb3ab47a4"
+    },
+    {
+      "file": "cold-14-0.8-AI.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-Chat-before.png",
+      "sha256": "c0d7191f98d6e4e082fb6277c8af562f60c85c66673fa3fe1d769193f3d76ff0"
+    },
+    {
+      "file": "cold-14-0.8-Chat-before.png.json",
+      "sha256": "e82d4f59204961bb4d83da4bf635b41ba579690a90702606adcf08c5fe2e581b"
+    },
+    {
+      "file": "cold-14-0.8-Chat-before.png.zorder.json",
+      "sha256": "bfb9bc94896ef31226a934ea702e3c27d962f561ef6999dfa3e2cc26ecf57951"
+    },
+    {
+      "file": "cold-14-0.8-Chat-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-Chat.png",
+      "sha256": "13bfeb1dea59c30df5e011e7841fbf1b4cb6a1f669ca71088e64159d9323e937"
+    },
+    {
+      "file": "cold-14-0.8-Chat.png.json",
+      "sha256": "92648c0c5c403121e1e0b093669d21a7af92142c52bfe467494ce21000a5f7b2"
+    },
+    {
+      "file": "cold-14-0.8-Chat.png.zorder.json",
+      "sha256": "f059feed56d3744641ba449923cfca6b5004285545c90bcdd0d9b0d1522724ee"
+    },
+    {
+      "file": "cold-14-0.8-Chat.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-density.png",
+      "sha256": "d00576e11cdf290231291b029416b52fb4976361c3f08fd17c9bc0e3b9816aa4"
+    },
+    {
+      "file": "cold-14-0.8-density.png.json",
+      "sha256": "a475f95b1b3be59525ee3a1acc25551be08356c7584ad09a6f79dfe354e6086e"
+    },
+    {
+      "file": "cold-14-0.8-density.png.zorder.json",
+      "sha256": "a6d14aa7301edd574319ff02d7ff46d36c089b81f40b2bf10c9d2ba0d3f56681"
+    },
+    {
+      "file": "cold-14-0.8-density.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-font.png",
+      "sha256": "c2649c11d115df4033de9886567665d922df13e26be3310b552b72c1fe3af0d3"
+    },
+    {
+      "file": "cold-14-0.8-font.png.json",
+      "sha256": "c468896dd3ca201a6f8019cab3e32d70d03e40943f038baeb0a60751149a4f9f"
+    },
+    {
+      "file": "cold-14-0.8-font.png.zorder.json",
+      "sha256": "b746b954eaf35bf45ff30feb192e7aed7557d9e6dd173d8837e37ad905df308b"
+    },
+    {
+      "file": "cold-14-0.8-font.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-Friends-before.png",
+      "sha256": "5ddfb2d6e48898a9961628ab3be2e85855c758787a59638d458f8db5ab362da9"
+    },
+    {
+      "file": "cold-14-0.8-Friends-before.png.json",
+      "sha256": "87d95a07d202331a22ee6abd8333d7abf2f9bf0fa1ddc703875ba230a686546f"
+    },
+    {
+      "file": "cold-14-0.8-Friends-before.png.zorder.json",
+      "sha256": "ef7ddb36b96412aa0e3a5505cdf5ce073ac46c5bca340d380f172f696d5469b9"
+    },
+    {
+      "file": "cold-14-0.8-Friends-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-Friends.png",
+      "sha256": "c97741844f78f094bcc8212cbef366e121678e10bb57f8cf0a10cefffdfe8873"
+    },
+    {
+      "file": "cold-14-0.8-Friends.png.json",
+      "sha256": "274d4484ed987729ace8182cf5da6978271a41e7341d4212d63f6525b1caed29"
+    },
+    {
+      "file": "cold-14-0.8-Friends.png.zorder.json",
+      "sha256": "ce511c68dbe6e5eb60eb42a05861d89ef90a7c846779ee446e334e974b54f281"
+    },
+    {
+      "file": "cold-14-0.8-Friends.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-Plugin-before.png",
+      "sha256": "effc11c80b67a7db9bbf7bdd28e42b5a72294bf74090b8adf517ff4674ee5939"
+    },
+    {
+      "file": "cold-14-0.8-Plugin-before.png.json",
+      "sha256": "89ad38107e16bdb6e17d8c10b4256cff8bff3123dbb41afe005d95b15d07e904"
+    },
+    {
+      "file": "cold-14-0.8-Plugin-before.png.zorder.json",
+      "sha256": "d2f27bafbf0bf223e0607ba9a499c52fabe460bf6512176d157b366375804820"
+    },
+    {
+      "file": "cold-14-0.8-Plugin-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-Plugin.png",
+      "sha256": "fbe1e650f656e26216cd40e3315c2150006aaba6a483b822e2f13186774ba46d"
+    },
+    {
+      "file": "cold-14-0.8-Plugin.png.json",
+      "sha256": "0e51c93384b6004af3fb15058fb2b9671faae4993b126011ea7d7cdd515218b8"
+    },
+    {
+      "file": "cold-14-0.8-Plugin.png.zorder.json",
+      "sha256": "a920f0bd21e7b2f6e4713e15a365f2a153cc8b7cfbc4e48bd74875eb6e7f310b"
+    },
+    {
+      "file": "cold-14-0.8-Plugin.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-profile.png",
+      "sha256": "987d85b70b6e5d048a5773e0f73d83b0bf59035aa0c42eee46d3e9e83de322b2"
+    },
+    {
+      "file": "cold-14-0.8-profile.png.json",
+      "sha256": "9c00257a7a557d8cbce062c3bea4a65aead7114825d876ffd6a30379b1128943"
+    },
+    {
+      "file": "cold-14-0.8-profile.png.zorder.json",
+      "sha256": "dba9680a73f48e800827e5f4d8c757221f234934367ba85083fe9a718a93484f"
+    },
+    {
+      "file": "cold-14-0.8-profile.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-settings.png",
+      "sha256": "8c9ffa327ad1bd922bbf564d433f0058c461f9e7272736b218af9ce7f5db44d7"
+    },
+    {
+      "file": "cold-14-0.8-settings.png.json",
+      "sha256": "dd673c4a4252bebaf6bff226217709fbe85c04c25deb21f499a185477942a2ad"
+    },
+    {
+      "file": "cold-14-0.8-settings.png.zorder.json",
+      "sha256": "52904a4ad4c30b3e47b71fbe339aa4dc4aa33c87b4e9845a12134da34b8e0e9d"
+    },
+    {
+      "file": "cold-14-0.8-settings.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-14-0.8-theme.png",
+      "sha256": "706cac672df5c42c19efe67f5bf48cec8b02bbca102e3a7739132955741d766c"
+    },
+    {
+      "file": "cold-14-0.8-theme.png.json",
+      "sha256": "ba0e47b4f4eabf52095d84135df12f4a4af2717ac0854104cc753f3b821ca5c2"
+    },
+    {
+      "file": "cold-14-0.8-theme.png.zorder.json",
+      "sha256": "cdaebbdf6bd95ec4a216b4c157b23a097e186bdc4febbe84fc7917dc3ffb9546"
+    },
+    {
+      "file": "cold-14-0.8-theme.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-AI-before.png",
+      "sha256": "4dd1e931e08e4f6f2ca4c98c42c92274ff24be4dec8ede7b64271026326d4f9c"
+    },
+    {
+      "file": "cold-22-1.2-AI-before.png.json",
+      "sha256": "9964672d2d93ce259d621f53c0415e8d8c0087b3921677a3d42308a5f2a05709"
+    },
+    {
+      "file": "cold-22-1.2-AI-before.png.zorder.json",
+      "sha256": "edbce75fa2f700e62d0d9f19f6578e0c7596fd33f040cb0cb8e0374fc5fa2282"
+    },
+    {
+      "file": "cold-22-1.2-AI-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-AI.png",
+      "sha256": "acf1e9bcddd0ad654a1eab942c5bfd556cb51f82be231766c7cebe8845f6edfc"
+    },
+    {
+      "file": "cold-22-1.2-AI.png.json",
+      "sha256": "ef4579b25de6edf467a355aa580ad77ea451c12a2e9b091184d2ab1ad72d6f7a"
+    },
+    {
+      "file": "cold-22-1.2-AI.png.zorder.json",
+      "sha256": "c6551c2462f7fe8daa9c83af4376387d503bdccfeb4fea80e47f389d07f47405"
+    },
+    {
+      "file": "cold-22-1.2-AI.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-Chat-before.png",
+      "sha256": "16abd374df2e7235bb414ef24cdfdb19d7db241eb149b4a6ac15a8a159d9bc10"
+    },
+    {
+      "file": "cold-22-1.2-Chat-before.png.json",
+      "sha256": "e151336eb84fa62635ede3c9544f26f2aa0ac67365a424e376fcc4c425d42790"
+    },
+    {
+      "file": "cold-22-1.2-Chat-before.png.zorder.json",
+      "sha256": "0cc196eb3e50a6bb686a4cfd3e4ea7cbafb2825748c3175e7e2923a43a86e845"
+    },
+    {
+      "file": "cold-22-1.2-Chat-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-Chat.png",
+      "sha256": "b35e3057779ed1e122645f2be1e9583d2e84fc9f69da219da06a6ec39cd527fd"
+    },
+    {
+      "file": "cold-22-1.2-Chat.png.json",
+      "sha256": "789b1d106aee16ba0f98d2fe810bbe03c94b4630d654446fc7e9230f1c5718aa"
+    },
+    {
+      "file": "cold-22-1.2-Chat.png.zorder.json",
+      "sha256": "eb3384892bcc43ade51815b5296b90badb57fccfc791f2b521b4d39f9d7cd85a"
+    },
+    {
+      "file": "cold-22-1.2-Chat.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-density.png",
+      "sha256": "16abd374df2e7235bb414ef24cdfdb19d7db241eb149b4a6ac15a8a159d9bc10"
+    },
+    {
+      "file": "cold-22-1.2-density.png.json",
+      "sha256": "fb92a5900b830a64f363c2e628e7349fe0143a4af29d146fd1b313eb6e4aef51"
+    },
+    {
+      "file": "cold-22-1.2-density.png.zorder.json",
+      "sha256": "f462b117d79b455d9a1f307e83ef7af5ed2389b80996f2ae0906b25246b10437"
+    },
+    {
+      "file": "cold-22-1.2-density.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-font.png",
+      "sha256": "60539852ecd8c963be9c427b7028d4b18f67d6751a68dac796a497a8a742f7bd"
+    },
+    {
+      "file": "cold-22-1.2-font.png.json",
+      "sha256": "7298387411c03b763127595df4f44165b693322e02e820cffda6957afed1ee04"
+    },
+    {
+      "file": "cold-22-1.2-font.png.zorder.json",
+      "sha256": "b8153f653d07d1181410d24c31c57390a849b00dba7a59ce210ce400827aaa6e"
+    },
+    {
+      "file": "cold-22-1.2-font.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-Friends-before.png",
+      "sha256": "b35e3057779ed1e122645f2be1e9583d2e84fc9f69da219da06a6ec39cd527fd"
+    },
+    {
+      "file": "cold-22-1.2-Friends-before.png.json",
+      "sha256": "c135b55dd63ec01ef9be860b54b32c5395225a1bb2af18369516a5b8e7dddb09"
+    },
+    {
+      "file": "cold-22-1.2-Friends-before.png.zorder.json",
+      "sha256": "3dae01aaa414111b9bbb6a1a6a9e9dbd187738479db17e82deacdea09c7126d0"
+    },
+    {
+      "file": "cold-22-1.2-Friends-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-Friends.png",
+      "sha256": "4dd1e931e08e4f6f2ca4c98c42c92274ff24be4dec8ede7b64271026326d4f9c"
+    },
+    {
+      "file": "cold-22-1.2-Friends.png.json",
+      "sha256": "721d3b684bfabeb52bd2091c1e24556c63b8346ea25bc291b740d6ec901529de"
+    },
+    {
+      "file": "cold-22-1.2-Friends.png.zorder.json",
+      "sha256": "f07a11913e2de69339e150803d76c4ba1d5c66949716ca8000a1574e1f8c99b2"
+    },
+    {
+      "file": "cold-22-1.2-Friends.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-Plugin-before.png",
+      "sha256": "acf1e9bcddd0ad654a1eab942c5bfd556cb51f82be231766c7cebe8845f6edfc"
+    },
+    {
+      "file": "cold-22-1.2-Plugin-before.png.json",
+      "sha256": "9f8c965c41396ea913f46bbee551c97e4b16637b17345a87f80ef37014511d2f"
+    },
+    {
+      "file": "cold-22-1.2-Plugin-before.png.zorder.json",
+      "sha256": "6c2983186d13c1a2cf659545c09f902140223b2e225a973045abe740dfde77a9"
+    },
+    {
+      "file": "cold-22-1.2-Plugin-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-Plugin.png",
+      "sha256": "d2a522eb962c16deb83198d5f29222b8752cc1ac96abaaece077d755050464c1"
+    },
+    {
+      "file": "cold-22-1.2-Plugin.png.json",
+      "sha256": "7e50d214222da6b9a032f47fd107ffda2438094843831ddc8bbb248928185038"
+    },
+    {
+      "file": "cold-22-1.2-Plugin.png.zorder.json",
+      "sha256": "aeb0eda857bde9d9afc646432b7881a12bb3ee71eafe80443ca5bc865a8749d3"
+    },
+    {
+      "file": "cold-22-1.2-Plugin.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-profile.png",
+      "sha256": "c82e741f5d4a7d5df4855547dff1fcedcc8e935cd15e9302d8833729577c33e9"
+    },
+    {
+      "file": "cold-22-1.2-profile.png.json",
+      "sha256": "36edbb014fa11b8f25e5bcd583c06659ce3e187891bc82f6eb2a76623cfe6e6c"
+    },
+    {
+      "file": "cold-22-1.2-profile.png.zorder.json",
+      "sha256": "af1843880784a707b62c9624727db0e167bc837c42b7a566ab27750e8a17e41e"
+    },
+    {
+      "file": "cold-22-1.2-profile.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-settings.png",
+      "sha256": "a044caab2d4f4fc0f4b8eabe81fc0ce3b62b4b63e46b7abb5d781ad8c8df4f16"
+    },
+    {
+      "file": "cold-22-1.2-settings.png.json",
+      "sha256": "d11b01c7d4577bb720bb899ae6f36958e9744ff2503522d8374a7f7a263437b7"
+    },
+    {
+      "file": "cold-22-1.2-settings.png.zorder.json",
+      "sha256": "3e9de056f63b8214e3b2bf0f6bee835265e4ef63841b271dc48b31de8ea98546"
+    },
+    {
+      "file": "cold-22-1.2-settings.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "cold-22-1.2-theme.png",
+      "sha256": "b9de3637794d8f5ab33f3b5e492a81edcf5899e1e2cd9b4d21ebc324875c7243"
+    },
+    {
+      "file": "cold-22-1.2-theme.png.json",
+      "sha256": "874726fb6998a092713be34a8449c2e8a399feb171ad57ee38e21d713d3f7832"
+    },
+    {
+      "file": "cold-22-1.2-theme.png.zorder.json",
+      "sha256": "6ecc5d82467c06d124ea43bd3c902fb9e56e196bc7ab9c4431f80dcf2470a103"
+    },
+    {
+      "file": "cold-22-1.2-theme.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "desktop_notification.ps1.json",
+      "sha256": "8b9ec651fdf6ef8ebc3385fa66cc23cf50204633eafba5bbcb8b84037df8cd96"
+    },
+    {
+      "file": "desktop_notification.ps1.json.actual-ui.png",
+      "sha256": "b911b77d5e9b33b19fdc7c820acc000d2317561873bf1a9fbf91d9305fe551ed"
+    },
+    {
+      "file": "desktop_notification.ps1.json.actual-ui.png.json",
+      "sha256": "61b7ec9c49c05efacf92a02c571eb6a7918705a6fe54918dea681a59c43b2f71"
+    },
+    {
+      "file": "desktop_notification.ps1.json.actual-ui.png.zorder.json",
+      "sha256": "47ece27ac7ed5e5f05ea0cd2c4e876ac36cdafc5731da0e08e5a976671804396"
+    },
+    {
+      "file": "desktop_notification.ps1.json.settings.png",
+      "sha256": "fab434398097e63d06673c865f04ccf0c098a52294fe183b55473d25aa3d8359"
+    },
+    {
+      "file": "desktop_notification.ps1.json.settings.png.json",
+      "sha256": "aa2c097de812fac20fa76c4cea02c456149696133d06e4fec886c1a8eb11dd0a"
+    },
+    {
+      "file": "desktop_notification.ps1.json.settings.png.zorder.json",
+      "sha256": "c4b26adf5e00c199a5677776f8971e261d9d0b749ec698b992e442a1c650d3d8"
+    },
+    {
+      "file": "desktop_shortcut.ps1.json",
+      "sha256": "323e48e9640ecc198f46404767bdca7849e968d8db7c62f9928715af97d8fde1"
+    },
+    {
+      "file": "desktop_tray.ps1.json",
+      "sha256": "3ba9b1df0c93558eed6c1466ee1c2e0f21df5ec875386cd3dc24668ac9be17e9"
+    },
+    {
+      "file": "desktop_tray.ps1.json.actions.json",
+      "sha256": "5193a0c3d13efad4bfdac3e46fdc8376f6984afd8d0508a4b2d80f64a6de4bef"
+    },
+    {
+      "file": "desktop_tray.ps1.json.menu-Hide-window.png",
+      "sha256": "464eb1d444beee4b5a43caeef918b27d620ae2b2191a445484d7bf6895842982"
+    },
+    {
+      "file": "desktop_tray.ps1.json.menu-Open-IM+.png",
+      "sha256": "464eb1d444beee4b5a43caeef918b27d620ae2b2191a445484d7bf6895842982"
+    },
+    {
+      "file": "restore-original-appearance-density.png",
+      "sha256": "191ae832de07fdf3f8f27b0ee12aa10104d94ccb20a1c414d9bea939832bc164"
+    },
+    {
+      "file": "restore-original-appearance-density.png.json",
+      "sha256": "3218cf5789da72d186c9b8ffa7752642512e6b5e9c0981d3bcadccda3a7a953e"
+    },
+    {
+      "file": "restore-original-appearance-density.png.zorder.json",
+      "sha256": "1e57b186d36d925b0c97edecde67977eb9cbf5f49f92ff7a76a29ebcab7a0b60"
+    },
+    {
+      "file": "restore-original-appearance-density.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "restore-original-appearance-font.png",
+      "sha256": "609ebfe33430acc4020bf49b3f53820b2840a563261e969ca95f518618555c2c"
+    },
+    {
+      "file": "restore-original-appearance-font.png.json",
+      "sha256": "f6f72b54d9e7f0bd99d82ba5e34fa192bd8810632d8fece87833407990dbcfb2"
+    },
+    {
+      "file": "restore-original-appearance-font.png.zorder.json",
+      "sha256": "2db4b4508328101e63ab971f60ad0ec8909e6f025dce1fde4a177e5807df6e06"
+    },
+    {
+      "file": "restore-original-appearance-font.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "restore-original-appearance-settings.png",
+      "sha256": "76c77cb7beee1f0705f0f8dd7099468061d75ee9edd3473672fbc1670d66b7bf"
+    },
+    {
+      "file": "restore-original-appearance-settings.png.json",
+      "sha256": "4e262e7f821468327939967ab83d445bed8374fd889614aaf2ebaa3dd8971cc3"
+    },
+    {
+      "file": "restore-original-appearance-settings.png.zorder.json",
+      "sha256": "4a20355c2160c0d85c4064f1304ba01173062ba6439e521b4bcd65c3451f60ac"
+    },
+    {
+      "file": "restore-original-appearance-settings.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "restore-original-appearance-theme.png",
+      "sha256": "a1cd3ae79cf846dd424b5667f69e4d43228960c19ed00b5eb93e84a6e74ddfeb"
+    },
+    {
+      "file": "restore-original-appearance-theme.png.json",
+      "sha256": "5aeb811914fa04362fe8ce7d91937b64b35a7bba6885467a21695e6cb06ea521"
+    },
+    {
+      "file": "restore-original-appearance-theme.png.zorder.json",
+      "sha256": "448bb1190ec496b49cd1323fda8d193ee1ca49d80e73510168c61389c7662356"
+    },
+    {
+      "file": "restore-original-appearance-theme.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-AI-before.png",
+      "sha256": "94bf68c8a4ffeedcb15ca50391ecc879836e1d2c350b5c174203ff36457b626d"
+    },
+    {
+      "file": "warm-14-0.8-AI-before.png.json",
+      "sha256": "4221f7bddcaab631bc3c67b215bba47af3471072fe92e92c79f9d7b069b376f6"
+    },
+    {
+      "file": "warm-14-0.8-AI-before.png.zorder.json",
+      "sha256": "ae367314401d1b09bfe4dd0de4eb2445d9af0b054ee3a3ffcb94abea2cdc1025"
+    },
+    {
+      "file": "warm-14-0.8-AI-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-AI.png",
+      "sha256": "960125335836794489c940cc4a1c4ff8e7dc3265e5e97c67b3db4376a930ef55"
+    },
+    {
+      "file": "warm-14-0.8-AI.png.json",
+      "sha256": "6f23e64440cccdc8652802e1698098488428c6a9c99288a77bd659e1430dfc75"
+    },
+    {
+      "file": "warm-14-0.8-AI.png.zorder.json",
+      "sha256": "09cb42a62161abeb21f7127d73f0a943603406442694db1e76a181c8c9418c90"
+    },
+    {
+      "file": "warm-14-0.8-AI.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-Chat-before.png",
+      "sha256": "96e9ea37d6dc550176999b13bdbcbeaaf5f9d73a2a223bb45eb4b414284ed57d"
+    },
+    {
+      "file": "warm-14-0.8-Chat-before.png.json",
+      "sha256": "ee46471d91e6037559f0bcb0b6348656838d10d798f4d2bdac25c94e3ad25cba"
+    },
+    {
+      "file": "warm-14-0.8-Chat-before.png.zorder.json",
+      "sha256": "2514495af86a72fc0267397f0cacf94621c821d95f0674b1ab2d0cc14a718ca2"
+    },
+    {
+      "file": "warm-14-0.8-Chat-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-Chat.png",
+      "sha256": "aab3883e34c1f08b06fda7ffa946a8bc15043171f50030cb7d988aafc129931d"
+    },
+    {
+      "file": "warm-14-0.8-Chat.png.json",
+      "sha256": "4127834f2c2f69f0826bc27a4338d66d8601b9f91053db0807ba7e0340fe0b59"
+    },
+    {
+      "file": "warm-14-0.8-Chat.png.zorder.json",
+      "sha256": "1fcaf577cda6d6aca4e7977d8a1ff86993205d32072c75e9485d8e540cd674dc"
+    },
+    {
+      "file": "warm-14-0.8-Chat.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-density.png",
+      "sha256": "e8d197a4e946294a9e3e879bc61a43f89baf8da46aaac33aa80e4fbdf3757aff"
+    },
+    {
+      "file": "warm-14-0.8-density.png.json",
+      "sha256": "a13c4af012f31e6fd01ea6a4f2eb12103e14d745fd445ddb2616c1b72e0418b4"
+    },
+    {
+      "file": "warm-14-0.8-density.png.zorder.json",
+      "sha256": "10c566ab076d50bf720d4027414a56129a51adabe516c664f2b8290fae98d421"
+    },
+    {
+      "file": "warm-14-0.8-density.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-font.png",
+      "sha256": "dc7572140ff0d0fb8986da596c0fe76c286f8e58e30d8cb6054dc45fe4d33250"
+    },
+    {
+      "file": "warm-14-0.8-font.png.json",
+      "sha256": "9947064c15722c8400b14ab97ea85b9b6a4e9c1f2a19d171584f2658dcc95c01"
+    },
+    {
+      "file": "warm-14-0.8-font.png.zorder.json",
+      "sha256": "d0edfc273ea64e2d14d739933565ce7e6fc07b12e309b2778474c82a2415d129"
+    },
+    {
+      "file": "warm-14-0.8-font.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-Friends-before.png",
+      "sha256": "e9005897a5ae64bd43f0998e1670e184c51036167f8edc972e673d0e7279315c"
+    },
+    {
+      "file": "warm-14-0.8-Friends-before.png.json",
+      "sha256": "df5087a9e38d6ac86584ee7ede3d399f147b4aa3bb53622b0fa706e9b3f8b1dc"
+    },
+    {
+      "file": "warm-14-0.8-Friends-before.png.zorder.json",
+      "sha256": "fcd48a4836cb09cfcca9a8a8c508a82b378df326c6bb84339d50dda4374640a6"
+    },
+    {
+      "file": "warm-14-0.8-Friends-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-Friends.png",
+      "sha256": "800862e2beaf91993c7316cdf1ab0da3f4090e3173bbccdb98d27dcc4be4cd77"
+    },
+    {
+      "file": "warm-14-0.8-Friends.png.json",
+      "sha256": "b5c6c5b640e71e5141eba448da2b21064644b18a33acd6f08270566716ed18ca"
+    },
+    {
+      "file": "warm-14-0.8-Friends.png.zorder.json",
+      "sha256": "fd25f49a8edc3beaae33fcbe31e1d720d08e59aff836e31e08faa5e77ce51827"
+    },
+    {
+      "file": "warm-14-0.8-Friends.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-Plugin-before.png",
+      "sha256": "4b8307bc9c7961e757ff82d61dff8124788e0c092d145dfbfba5bd64f6e0cc21"
+    },
+    {
+      "file": "warm-14-0.8-Plugin-before.png.json",
+      "sha256": "5bb138433fcf1a38c6fbda4c85c7b2d5424f88f95d72f3051a51b8db5914954f"
+    },
+    {
+      "file": "warm-14-0.8-Plugin-before.png.zorder.json",
+      "sha256": "8dfe0948ca21c1ca29721626a965a0149420655ee69df106b1d5b6a20b4275e9"
+    },
+    {
+      "file": "warm-14-0.8-Plugin-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-Plugin.png",
+      "sha256": "c1097f1584e3499ec0d057ac4704cf5329aec989f477ff0116e0618ce35a4cfc"
+    },
+    {
+      "file": "warm-14-0.8-Plugin.png.json",
+      "sha256": "1cc927e67a1acc61cce22e764d6b828e0acb84ef094f16693416975d540a6b70"
+    },
+    {
+      "file": "warm-14-0.8-Plugin.png.zorder.json",
+      "sha256": "856ff8354a3f928b332240207c163228d5d18d8ac55ffe5335af0d41136ff99e"
+    },
+    {
+      "file": "warm-14-0.8-Plugin.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-profile.png",
+      "sha256": "2fac72f699758bbd1892e9d0dc9a8c5e01f4e2bcfafc35f55dbf968edebc3c6e"
+    },
+    {
+      "file": "warm-14-0.8-profile.png.json",
+      "sha256": "c50c09837f7b18327e1a1a4a099685dccf77ee97d36b2b5cdb6a76cb940667e3"
+    },
+    {
+      "file": "warm-14-0.8-profile.png.zorder.json",
+      "sha256": "3ab4df0e25c2207e93f17d370a38d0b573a2a13278eb7c1070581328d61bfa60"
+    },
+    {
+      "file": "warm-14-0.8-profile.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-settings.png",
+      "sha256": "2efc52305e408af9bde0489b1f1478ec7a53fc0e9b86ee75bff2ee4812b01ba0"
+    },
+    {
+      "file": "warm-14-0.8-settings.png.json",
+      "sha256": "aad5ffb3a34ab1406ac3b67f95cc6fc5d7cb3f8537125d5e1cba44f0841b54c8"
+    },
+    {
+      "file": "warm-14-0.8-settings.png.zorder.json",
+      "sha256": "041b65d788c6590e9d8f2e85b9a74b0c9ef4bbe67efd1fcdb7e416e7cccf172e"
+    },
+    {
+      "file": "warm-14-0.8-settings.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-14-0.8-theme.png",
+      "sha256": "85073651e7ce5361c077a1965618fdfff969d9db8947532fa791eee987113a14"
+    },
+    {
+      "file": "warm-14-0.8-theme.png.json",
+      "sha256": "3977e48da777f78f8887460b8a5742471d2b0ad757074c53b644f12149a67659"
+    },
+    {
+      "file": "warm-14-0.8-theme.png.zorder.json",
+      "sha256": "c61b165931f970a27b0b89e90e5be4360c6ed9415f60a83ae76d87f99b34023c"
+    },
+    {
+      "file": "warm-14-0.8-theme.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-AI-before.png",
+      "sha256": "32ca84af8b788c20da5d58f0604d51633fb603fafded71c724fd409e710fa9ea"
+    },
+    {
+      "file": "warm-22-1.2-AI-before.png.json",
+      "sha256": "af684fa2f48263f813e0a13d95401499de40d86f9f076b36fdf0265899294516"
+    },
+    {
+      "file": "warm-22-1.2-AI-before.png.zorder.json",
+      "sha256": "887bf781101ab3cdf9bd3845a6123d4030abd39b90955b74c8d59bf1087afa57"
+    },
+    {
+      "file": "warm-22-1.2-AI-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-AI.png",
+      "sha256": "e07c26ab22f847ede4255d0dbe431722f552a9c731a6661269cd4a07bb681564"
+    },
+    {
+      "file": "warm-22-1.2-AI.png.json",
+      "sha256": "f31aa66f23a2d95ba10b16f813e71ab705b6ae7193d054fb5d3c3591b1556c9c"
+    },
+    {
+      "file": "warm-22-1.2-AI.png.zorder.json",
+      "sha256": "0b3db5d9fdc0014d58480e316fbb906301db1b63c1fd359ac654d5ae7e75d789"
+    },
+    {
+      "file": "warm-22-1.2-AI.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-Chat-before.png",
+      "sha256": "821c49553ad8957f211d664e8353806b6819461d377b60d13604ab340a23828e"
+    },
+    {
+      "file": "warm-22-1.2-Chat-before.png.json",
+      "sha256": "40c29eef22740cc4368dceff9111df00f688a54b09587e7d09c019a12f7274c6"
+    },
+    {
+      "file": "warm-22-1.2-Chat-before.png.zorder.json",
+      "sha256": "19a878d867307df1e58736730179e3c43b2d673e7589c737e0501bc8eab449d1"
+    },
+    {
+      "file": "warm-22-1.2-Chat-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-Chat.png",
+      "sha256": "aa151c47497b52246276886df3f5a73ccd0c76e2167ab04c01ed07ec8c09ad80"
+    },
+    {
+      "file": "warm-22-1.2-Chat.png.json",
+      "sha256": "c202942ed6453246840cfc74187bcd409d002cc827013293b9143bb4ef7285a9"
+    },
+    {
+      "file": "warm-22-1.2-Chat.png.zorder.json",
+      "sha256": "979c72087281878351114eee082489e07c0d749055eb2892c083813ffcd1b549"
+    },
+    {
+      "file": "warm-22-1.2-Chat.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-density.png",
+      "sha256": "0406c259fe0699370bbf671e02611fb10a67d6f497531a15dc6e3cd6ef253302"
+    },
+    {
+      "file": "warm-22-1.2-density.png.json",
+      "sha256": "7f5877e7f7b2f1fc4ffa8d087afee8c9ff36e17f54b560748aaa149015ea10bd"
+    },
+    {
+      "file": "warm-22-1.2-density.png.zorder.json",
+      "sha256": "525afa36995c0b442776e50b73bb13323b3496cdaafe7bcf31ff51b96aede559"
+    },
+    {
+      "file": "warm-22-1.2-density.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-font.png",
+      "sha256": "3fafe53884986e64ed2504d3a1de5dacfc091d529c31c6a27e56d360e90dcf0e"
+    },
+    {
+      "file": "warm-22-1.2-font.png.json",
+      "sha256": "e10b4e0802729ee37f6fc0435995f7e4ec20971e59681f0c62ea38532ef1a9f6"
+    },
+    {
+      "file": "warm-22-1.2-font.png.zorder.json",
+      "sha256": "8759ff7e960cad4d09603bb9ffdf3eaee14cc4a6c646c689421cf5d21c05e76f"
+    },
+    {
+      "file": "warm-22-1.2-font.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-Friends-before.png",
+      "sha256": "dd1e6b8611faafa1abf9020ecb3d1d1f757110b29afb14fde60d8d5964cb620b"
+    },
+    {
+      "file": "warm-22-1.2-Friends-before.png.json",
+      "sha256": "251f3dfb90afebe8894d7567dd1d627f4f24afd0f57e7826615942531bfae8c7"
+    },
+    {
+      "file": "warm-22-1.2-Friends-before.png.zorder.json",
+      "sha256": "5c27ee9db1ecf4bb139d932137d60f3e53c379ca18d1485b515659480836e947"
+    },
+    {
+      "file": "warm-22-1.2-Friends-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-Friends.png",
+      "sha256": "e065f81ddff65608f3f540d4c5877e1f6f79a0d365bd93a80452c212e91ed89b"
+    },
+    {
+      "file": "warm-22-1.2-Friends.png.json",
+      "sha256": "958e926597154be6d0d33514fc097f5a0a1cb38e7672710e4f538c004621ecef"
+    },
+    {
+      "file": "warm-22-1.2-Friends.png.zorder.json",
+      "sha256": "558074116661f245aa0dc843a31bde3818f4868bf95639badc3a229422df10e8"
+    },
+    {
+      "file": "warm-22-1.2-Friends.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-Plugin-before.png",
+      "sha256": "a4f14c2fba142d12717c6ac94c841282d12de1e5c609ec8fd49544371df2500c"
+    },
+    {
+      "file": "warm-22-1.2-Plugin-before.png.json",
+      "sha256": "931fd603223f089be6896133295366a63d55f829574ea90a28700568fe03ec5a"
+    },
+    {
+      "file": "warm-22-1.2-Plugin-before.png.zorder.json",
+      "sha256": "e8cc2ef148a9d6513559846b86831415f582998efcd2de9ac813885045eee2d3"
+    },
+    {
+      "file": "warm-22-1.2-Plugin-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-Plugin.png",
+      "sha256": "65e440df4de46da1ebba0ddc00be56a7dbd5a0b2adbd283e89f398cee2e7da75"
+    },
+    {
+      "file": "warm-22-1.2-Plugin.png.json",
+      "sha256": "d92094d80fc55691d8e8a8e4fec0e17a696d5f2d4e96a0e1420b2d0cd24a75b0"
+    },
+    {
+      "file": "warm-22-1.2-Plugin.png.zorder.json",
+      "sha256": "7318de9b08fbe963c9be95e2b4f129056aea56c52e9e07557c6fea08ef6d89ff"
+    },
+    {
+      "file": "warm-22-1.2-Plugin.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-profile.png",
+      "sha256": "5d8e9fa3a49108381084a299d9ec07fb31c3b62777af6e7dc642e68769ce609b"
+    },
+    {
+      "file": "warm-22-1.2-profile.png.json",
+      "sha256": "6ad4a3690e3a6e9de6aca4f4f496be92c1eb0d5d6461caa7e8054f3989da10dc"
+    },
+    {
+      "file": "warm-22-1.2-profile.png.zorder.json",
+      "sha256": "910d061f47eabd12068bb41d8cb3500766758d9a041cb2403a8de76ba784d934"
+    },
+    {
+      "file": "warm-22-1.2-profile.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-settings.png",
+      "sha256": "78ed5be824f349db0d0031990c28fae57f02f704f5138c47ef2e1d44d7f2435c"
+    },
+    {
+      "file": "warm-22-1.2-settings.png.json",
+      "sha256": "f41456180cfc6fb9551f238e80c0cfaa8c32b8363045c807116d546efe5d661c"
+    },
+    {
+      "file": "warm-22-1.2-settings.png.zorder.json",
+      "sha256": "0616335f52e41216ca620bd36cd4575d0743cd6fe53b3ee8ea728139f8717146"
+    },
+    {
+      "file": "warm-22-1.2-settings.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "warm-22-1.2-theme.png",
+      "sha256": "cac24f21bd7eb99091b0f022c24ca5f04e7cd334715bebf1008cf380cdabc9d5"
+    },
+    {
+      "file": "warm-22-1.2-theme.png.json",
+      "sha256": "0114074e85b5d3500beb8ae1791d3a830b9fd86739236a0ee1fcaf05fd9d72c3"
+    },
+    {
+      "file": "warm-22-1.2-theme.png.zorder.json",
+      "sha256": "18cd7c4c8ac386580d1d00f95271f4dfcef5296da47ee2d3a573a1d4729e0417"
+    },
+    {
+      "file": "warm-22-1.2-theme.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

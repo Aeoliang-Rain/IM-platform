@@ -1,0 +1,21 @@
+{
+  "actualUTC": "2026-10-11T10:03:23.569457+00:00",
+  "serial": "emulator-5592",
+  "proof": [
+    {
+      "package": "im.platform.client.test",
+      "alreadyAbsent": true,
+      "actualPathExit": 1,
+      "qualification": "Prior owned reset succeeded at uninstall then failed because absent pm path returns1; no pre-removal receipt was written. Original failure and previous stage device archive remain."
+    },
+    {
+      "package": "im.platform.client",
+      "beforeDevicePath": "/data/app/~~LTRCZaJkQZ9_ttkXRaOhoQ==/im.platform.client-Kk0cAJmPu_NxOvlzckdVDQ==/base.apk",
+      "beforeSHA256": "04c6c9450d823dcaeeb65dbc9cab440941620440f2a5951f924be1043f03c12e",
+      "ownedBaselineSourceManifest": "H:\\.codex\\worktrees\\u\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\manifest.json",
+      "uninstallRaw": "Success\r\n",
+      "afterAbsent": true
+    }
+  ],
+  "qualification": "Only new factory task-owned baseline packages/data reset. Existing GUI wrapper clears build ANDROID_USER_HOME and signs with default key unlike preceding stages. Previous stage exact artifacts/data evidence retained. Never reset old emulator5590 unknown data."
+}

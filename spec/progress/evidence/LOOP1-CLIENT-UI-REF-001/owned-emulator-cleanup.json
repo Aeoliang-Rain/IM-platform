@@ -1,0 +1,61 @@
+{
+  "actualUTC": "2026-10-11T10:38:39.118710+00:00",
+  "beforeOwnedFamily": [
+    {
+      "ProcessId": 28496,
+      "ParentProcessId": 32896,
+      "Name": "emulator.exe",
+      "ExecutablePath": "H:\\Android\\emulator\\emulator.exe",
+      "CommandLine": "\"H:\\Android\\emulator\\emulator.exe\" -avd IMClientSend34 -port 5590 -memory 2048 -gpu swiftshader_indirect -no-snapshot-load -no-snapshot-save -no-window -no-audio"
+    },
+    {
+      "ProcessId": 47760,
+      "ParentProcessId": 28496,
+      "Name": "conhost.exe",
+      "ExecutablePath": "C:\\WINDOWS\\system32\\conhost.exe",
+      "CommandLine": "\\??\\C:\\WINDOWS\\system32\\conhost.exe 0x4"
+    },
+    {
+      "ProcessId": 58344,
+      "ParentProcessId": 28496,
+      "Name": "crashpad_handler.exe",
+      "ExecutablePath": "H:\\Android\\emulator\\crashpad_handler.exe",
+      "CommandLine": "H:\\Android\\emulator\\crashpad_handler.exe --no-rate-limit --database=C:\\Users\\21441\\AppData\\Local\\Temp\\\\AndroidEmulator\\emu-crash-36.5.11.db --url=https://clients2.google.com/cr/report --annotation=prod=AndroidEmulator --annotation=ver=36.5.11-15261927 --initial-client-data=0x294,0x298,0x29c,0x278,0x2a0,0x7ff6d49c14a0,0x7ff6d49c14b0,0x7ff6d49c1470"
+    },
+    {
+      "ProcessId": 58400,
+      "ParentProcessId": 28496,
+      "Name": "qemu-system-x86_64-headless.exe",
+      "ExecutablePath": "H:\\Android\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "CommandLine": "H:\\Android\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd IMClientSend34 -port 5590 -memory 2048 -gpu swiftshader_indirect -no-snapshot-load -no-snapshot-save -no-window -no-audio"
+    },
+    {
+      "ProcessId": 56064,
+      "ParentProcessId": 58400,
+      "Name": "crashpad_handler.exe",
+      "ExecutablePath": "H:\\Android\\emulator\\crashpad_handler.exe",
+      "CommandLine": "H:\\Android\\emulator\\crashpad_handler.exe --no-rate-limit --database=C:\\Users\\21441\\AppData\\Local\\Temp\\\\AndroidEmulator\\emu-crash-36.5.11.db --url=https://clients2.google.com/cr/report --annotation=prod=AndroidEmulator --annotation=ver=36.5.11-15261927 --initial-client-data=0x390,0x394,0x398,0x37c,0x39c,0x7ff79ebf4d68,0x7ff79ebf4d78,0x7ff79ebf4d38"
+    },
+    {
+      "ProcessId": 57044,
+      "ParentProcessId": 58400,
+      "Name": "netsimd.exe",
+      "ExecutablePath": "H:\\Android\\emulator\\netsimd.exe",
+      "CommandLine": "H:\\Android\\emulator\\netsimd.exe --host-dns=202.120.190.208"
+    }
+  ],
+  "ownedPackagePIDBefore": null,
+  "ownedPackageStopped": true,
+  "reverseBefore": "host-19 tcp:8443 tcp:8443\r\n\r\n",
+  "reverseAfter": "\r\n",
+  "removedExactTaskCAFile": {
+    "devicePath": "/sdcard/Android/data/im.platform.client/files/ui-ref-ca.der",
+    "DERHash": "a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5"
+  },
+  "unknownAccountDatabasePresentBeforeAndAfterOwnedFileRemoval": true,
+  "unknownDataQualification": "Filename existence only; no unknown DB content read/copied/reset/deleted. Original AVD userdata remains on disk. App package data and controlled old relationships remain.",
+  "emulatorKillRaw": "OK: killing emulator, bye bye\r\r\nOK\r\r\n",
+  "ownedFamilyGone": true,
+  "bothOwnedSerialsAbsent": true,
+  "devicesAfter": "List of devices attached\n\n"
+}

@@ -1,0 +1,101 @@
+{
+  "actualUTC": "2026-10-11T09:51:29.228547+00:00",
+  "kind": "Diagnostic accepted-base comparison, not task acceptance",
+  "candidateFiles": {
+    "im-client-storage.exe": "9792fe15f4126ad7f46cad6aaaddd96a0eecf17083ad8702d79a13626e1d7767",
+    "storage_probe.exe": "781bf73079a107356c2c73e3e58481df7325f826aacd7c7709de7df352b6ea1b",
+    "uninstall.exe": "37a8c2fa503f6831cb5939a63e707cfc7d83b01bb7da17bebaf2a78d2ca979fe"
+  },
+  "acceptedOriginalFiles": [
+    {
+      "name": "im-client-storage.exe",
+      "sha256": "18F8B5BB6F8A8C1A6EC8777421A5440C60FABF03A4F8DEA0F24DEB48ED870503"
+    },
+    {
+      "name": "storage_probe.exe",
+      "sha256": "BD39F3B1F260A9D951388CB4441CC54F906830107FFAEBC5E2561734F76F3DBF"
+    },
+    {
+      "name": "uninstall.exe",
+      "sha256": "37A8C2FA503F6831CB5939A63E707CFC7D83B01BB7DA17BEBAF2A78D2CA979FE"
+    }
+  ],
+  "acceptedProductSource": "547514f6c8c8c0c40e27073b67d17bb3f224b6c5",
+  "bindingReferences": {
+    "H:\\.codex\\worktrees\\u\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\source547514-native-binding.json": "31802b7c5e19ac472162fea865be18ecc7690d20518ae3bc46b01bc210a7026d",
+    "H:\\.codex\\worktrees\\u\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\desktop-source547514-install.json": "feaedd8b0c0a0611be0a2eec69f21d56d7450aacac98b4cc6aeba2ffa056172d",
+    "H:\\.codex\\worktrees\\u\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\final-resource-baseline.json": "1b88f1d8926725a7c004b7d0b2264071e3bab14d098f70044fe22b7761352c4c"
+  },
+  "fixture": {
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:8443",
+    "accounts": [
+      {
+        "userId": "bbf13eb9-93c9-4a42-aae8-e14135d50a9c",
+        "username": "state_fresh_85278bfbff",
+        "displayName": "STATE Fresh 85278bfbff"
+      },
+      {
+        "userId": "83efe84d-4327-45bf-88f6-98307040e2f8",
+        "username": "state_webfriend_742db1f684",
+        "displayName": "STATE WebFriend 742db1f684"
+      },
+      {
+        "userId": "99e7e871-35ba-46a2-9d20-eb5821dec1d3",
+        "username": "state_desktopfriend_12d6c06598",
+        "displayName": "STATE DesktopFriend 12d6c06598"
+      },
+      {
+        "userId": "6dbd24f5-592d-4885-a3d1-fa030d946962",
+        "username": "state_mobilefriend_3d00963685",
+        "displayName": "STATE MobileFriend 3d00963685"
+      },
+      {
+        "userId": "8d521feb-7734-4ea4-8cee-e4005f8a16fe",
+        "username": "state_offlinefriend_95a31d7ad1",
+        "displayName": "STATE OfflineFriend 95a31d7ad1"
+      }
+    ],
+    "source": "actual Go register201; unique disposable accounts; no native database reset",
+    "qualification": "Independent new controlled Friends owner/four targets isolate accumulated historical fixture load; original fresh-public owner/relationships/DB/evidence unchanged"
+  },
+  "appearanceBaseline": "Existing exact warm14/.8 unchanged; no direct preferences writes",
+  "sourceQualification": "Coordinator independently verified entire clients/desktop547514\u2192acceptedca527ca tree unchanged",
+  "candidateFilesRestored": true,
+  "acceptedOwnedProcessStopped": true,
+  "endUTC": "2026-10-11T09:51:46.776492+00:00",
+  "entries": [
+    {
+      "file": "accepted-default-start-stderr-original.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "accepted-default-start-stdout-original.txt",
+      "sha256": "c4147041922b2a891c51037e9e59cbaae1c016b11dd3302c5cf93cbd1442fb5c"
+    },
+    {
+      "file": "accepted-finally-stop-stderr-original.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "accepted-finally-stop-stdout-original.txt",
+      "sha256": "74d44e6220e6621454bf202283ee50c7c2b34d67c0e2316c947cfd0ef871e914"
+    },
+    {
+      "file": "accepted-owned-accessibility-stderr-original.txt",
+      "sha256": "2eca03ec9ee873b64387102e751e645480ab45f679fac4734a9fbe7845c6ae0d"
+    },
+    {
+      "file": "accepted-owned-accessibility-stdout-original.txt",
+      "sha256": "4d5774d2bcdadfc7b03460649b59a850d572cd475ff68b3eb1c2096d7637e116"
+    },
+    {
+      "file": "candidate-stop-stderr-original.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "candidate-stop-stdout-original.txt",
+      "sha256": "fdc3501380bb5c56d5b5c4c7422863af55130e8cc4800ee77b57c6dd112a5868"
+    }
+  ]
+}

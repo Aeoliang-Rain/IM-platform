@@ -1,0 +1,19 @@
+file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/android_actual.mjs:13
+  for(let n=0;n<180;n++){try{adbCall(['shell','test','-f',base+'-ready']);ready=true;break;}catch{}if(exited)throw Error('Native exited before failed marker: '+raw);await new Promise(r=>setTimeout(r,500));}assert(ready,'native real FAILED marker required');
+                                                                                                                   ^
+
+Error: Native exited before failed marker: android.util.AndroidException: INSTRUMENTATION_FAILED: im.platform.client.test/im.platform.client.ui.GuiAuthenticatedInstrumentation
+	at com.android.commands.am.Instrument.run(Instrument.java:535)
+	at com.android.commands.am.Am.runInstrument(Am.java:208)
+	at com.android.commands.am.Am.onRun(Am.java:85)
+	at com.android.internal.os.BaseCommand.run(BaseCommand.java:62)
+	at com.android.commands.am.Am.main(Am.java:54)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:359)
+INSTRUMENTATION_STATUS: Error=Unable to find instrumentation info for: ComponentInfo{im.platform.client.test/im.platform.client.ui.GuiAuthenticatedInstrumentation}
+INSTRUMENTATION_STATUS: id=ActivityManagerService
+INSTRUMENTATION_STATUS_CODE: -1
+
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/android_actual.mjs:13:116
+
+Node.js v24.19.0

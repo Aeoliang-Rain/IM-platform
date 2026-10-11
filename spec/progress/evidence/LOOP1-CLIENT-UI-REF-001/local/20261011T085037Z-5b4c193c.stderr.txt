@@ -1,0 +1,16 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-25b9954f-48bf-420c-bd78-75430fe51432/: 17 files pulled, 0 skipped. 4.1 MB/s (216138 bytes in 0.051s)
+file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:6
+async function desktopReady(label){for(let i=0;i<20;i++){ui('observe','','',label);const nodes=JSON.parse(await fs.readFile(out+'/'+label+'.png.json','utf8')).nodes;if(nodes.some(n=>n.name==='Online')&&!nodes.some(n=>n.name==='Syncing…'))return;await new Promise(r=>setTimeout(r,500));}throw Error('Actual Desktop initial Sync has not reached idle');}
+                                                                                                                                                                                                                                                                                                    ^
+
+Error: Actual Desktop initial Sync has not reached idle
+    at desktopReady (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:6:293)
+    at async file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:29:106
+
+Node.js v24.19.0
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\friends_retry.py", line 17, in <module>
+    subprocess.run(['node','tests/clients/ui-ref/state/friends_actual.mjs'],cwd=root,env=env,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', 'tests/clients/ui-ref/state/friends_actual.mjs']' returned non-zero exit status 1.

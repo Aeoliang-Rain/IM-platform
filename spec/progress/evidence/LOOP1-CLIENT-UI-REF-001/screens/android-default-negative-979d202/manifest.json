@@ -1,0 +1,31 @@
+{
+  "actualUTC": "2026-10-11T09:37:58.630969+00:00",
+  "actualHEAD": "979d2020d5d7d40b586acec08061ebd275f6fd96",
+  "positiveOriginal": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-ui-revision-ui-ref-bd07b632929644f69b1b68006a46a5e1\\instrumentation-original.txt",
+  "positiveSHA256": "042f57ce3d55f08c7ac63f15b485819187a3912207ef4adbc40d62ba49eddb10",
+  "lastPositivePID": 7275,
+  "actualLivePIDBefore": null,
+  "oldPackageAbsentBeforeNewProcess": true,
+  "newActualInstrumentationPID": 10043,
+  "negativeRunner": "im.platform.client.ui.UiRefTLSNegative",
+  "source": "979d2020d5d7d40b586acec08061ebd275f6fd96",
+  "sourceQualification": "Actual build HEAD; androidTest tracked tree must be clean before build",
+  "negativeAPK": {
+    "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\negative-test-979d202.apk",
+    "sha256": "9c1c098531aace8346602ecfad206a0a3ef0c16442303c8357a8853fb9c5557b",
+    "actualDevicePath": "/data/app/~~k-5GmEpAIa8Bn0rHLBXB4w==/im.platform.client.test-NWjRLIPpx6LBg5IAn4nMhA==/base.apk",
+    "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\negative-installed-979d202.apk",
+    "deviceSHA256": "9c1c098531aace8346602ecfad206a0a3ef0c16442303c8357a8853fb9c5557b",
+    "installRaw": "Performing Streamed Install\r\nSuccess\r\n"
+  },
+  "sameFixtureCertificateDERHash": "a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5",
+  "explicitPinnedCAHealthBefore": {
+    "status": 200,
+    "UTC": "2026-10-11T09:37:53.134918+00:00"
+  },
+  "explicitPinnedCAHealthAfter": {
+    "status": 200,
+    "UTC": "2026-10-11T09:37:58.630969+00:00"
+  },
+  "qualification": "No helper/explicit CA installed in new process; original SDK default HTTPS and socket trust reject same live fixture. Context/factory/property/full provider order restoration bound to preceding positive original. No Android system roots/security changes."
+}

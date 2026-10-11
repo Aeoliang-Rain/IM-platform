@@ -1,0 +1,174 @@
+{
+  "kind": "preliminary actual installed native fresh database absent before login, actual Sync cursor0 history1/2 and newrequest seq3",
+  "fixture": {
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:8443",
+    "accounts": [
+      {
+        "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+        "username": "state_fresh_3ff8b22e18",
+        "displayName": "STATE Fresh"
+      },
+      {
+        "userId": "6bd840d2-cc92-40cc-bbaf-93a5fefcc5bb",
+        "username": "state_webfriend_5ee8bc21c5",
+        "displayName": "STATE WebFriend"
+      },
+      {
+        "userId": "29f3539c-da14-4bd0-8889-deaf340888a1",
+        "username": "state_desktopfriend_6a962a2009",
+        "displayName": "STATE DesktopFriend"
+      },
+      {
+        "userId": "ef186d54-6a91-42af-bd9c-df65cfcdc3f2",
+        "username": "state_mobilefriend_456d5b7d41",
+        "displayName": "STATE MobileFriend"
+      },
+      {
+        "userId": "a6eb6b3d-0a7d-4c50-b80e-b3b447642366",
+        "username": "state_offlinefriend_f2bafde545",
+        "displayName": "STATE OfflineFriend"
+      }
+    ],
+    "source": "actual Go register201; unique disposable accounts; no native database reset",
+    "historyText": "STATE fresh historical 1 1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+    "seed": {
+      "conversationId": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "messages": [
+        {
+          "requestId": "a3326cb7-eccb-492b-8428-6f28d609172a",
+          "messageId": "755a90cb-7802-4ef3-b693-179d0feb8bcd",
+          "seq": 1,
+          "createdAt": "2026-10-11T07:42:41.835084+00:00",
+          "text": "STATE fresh historical 1 1bbab93c-77e4-4870-ae05-cf48ae16e6a7"
+        },
+        {
+          "requestId": "498ca127-c026-4967-9d6c-4bedc4cb923e",
+          "messageId": "2441338b-c7b3-4736-9c98-845f309af031",
+          "seq": 2,
+          "createdAt": "2026-10-11T07:42:41.909382+00:00",
+          "text": "STATE fresh historical 2 1bbab93c-77e4-4870-ae05-cf48ae16e6a7"
+        }
+      ]
+    }
+  },
+  "databaseAbsentBefore": true,
+  "rows": [
+    {
+      "local_id": 1,
+      "conversation_id": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "request_id": "a3326cb7-eccb-492b-8428-6f28d609172a",
+      "sender_id": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "content": "STATE fresh historical 1 1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "state": "SENT",
+      "server_message_id": "755a90cb-7802-4ef3-b693-179d0feb8bcd",
+      "server_seq": 1,
+      "server_time": "2026-10-11T07:42:41.835084Z"
+    },
+    {
+      "local_id": 2,
+      "conversation_id": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "request_id": "498ca127-c026-4967-9d6c-4bedc4cb923e",
+      "sender_id": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "content": "STATE fresh historical 2 1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "state": "SENT",
+      "server_message_id": "2441338b-c7b3-4736-9c98-845f309af031",
+      "server_seq": 2,
+      "server_time": "2026-10-11T07:42:41.909382Z"
+    },
+    {
+      "local_id": 3,
+      "conversation_id": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "request_id": "59daa70f-671d-4c1f-b8f1-198569382d26",
+      "sender_id": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "content": "STATE Desktop fresh 1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "state": "SENT",
+      "server_message_id": "56c160bd-40f3-454d-b8d8-0a012f16f4ca",
+      "server_seq": 3,
+      "server_time": "2026-10-11T07:47:08.151261Z"
+    }
+  ],
+  "next": {
+    "local_id": 3,
+    "conversation_id": "49573f66-5065-4a2a-8830-400c3b7834ba",
+    "request_id": "59daa70f-671d-4c1f-b8f1-198569382d26",
+    "sender_id": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+    "content": "STATE Desktop fresh 1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+    "state": "SENT",
+    "server_message_id": "56c160bd-40f3-454d-b8d8-0a012f16f4ca",
+    "server_seq": 3,
+    "server_time": "2026-10-11T07:47:08.151261Z"
+  },
+  "sync": [
+    {
+      "event": 292,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "0",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 293,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 0,
+      "conversationId": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 294,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAABZYY2qTNneNp3LgCcoBzi4dr6kJTx63N_panXPWyBpPig",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 295,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 2,
+      "conversationId": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 296,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAABZYY2qTNneNp3LgCcoBzi4dr6kJTx63N_panXPWyBpPig",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 299,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 3,
+      "conversationId": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "clientType": "DESKTOP"
+    },
+    {
+      "event": 300,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAABZYY2qTNneNp3LgCcoBzi4dr6kJTx63N_panXPWyBpPig",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+      "clientType": "DESKTOP"
+    }
+  ]
+}

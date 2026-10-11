@@ -1,0 +1,24 @@
+{
+  "actualStartUTC": "2026-10-11T08:02:45.491484+00:00",
+  "actualEndUTC": "2026-10-11T08:03:14.975026+00:00",
+  "elapsedSeconds": 29.48400000000038,
+  "command": [
+    "python",
+    "-Xutf8",
+    "-B",
+    "tests/clients/gui/native.py",
+    "gradle",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx768m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    "-PimSendInstrumentation=im.platform.client.ui.GuiAuthenticatedInstrumentation",
+    ":app:assembleDebugAndroidTest"
+  ],
+  "cwd": "H:\\.codex\\worktrees\\u\\IM-platform",
+  "actualCaptureHead": "5d063908c16d01d8176e18537edb7d76907786d4",
+  "actualStatusBefore": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/\n",
+  "exitCode": 0,
+  "result": "PASS",
+  "stdout": "20261011T080245Z-781a528d.stdout.txt",
+  "stderr": "20261011T080245Z-781a528d.stderr.txt"
+}

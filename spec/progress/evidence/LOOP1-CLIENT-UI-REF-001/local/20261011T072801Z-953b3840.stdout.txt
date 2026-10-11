@@ -1,0 +1,9 @@
+Owned GUI/native mode=package
+
+> im-desktop@0.1.0 tauri
+> tauri build --target x86_64-pc-windows-msvc
+
+
+> im-desktop@0.1.0 build
+> tsc -p tsconfig.json && node src/ui/build.config.mjs
+

@@ -1,0 +1,24 @@
+{
+  "actualStartUTC": "2026-10-11T07:55:44.428447+00:00",
+  "actualEndUTC": "2026-10-11T07:56:09.073690+00:00",
+  "elapsedSeconds": 24.64100000000144,
+  "command": [
+    "python",
+    "-Xutf8",
+    "-B",
+    "tests/clients/gui/native.py",
+    "gradle",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx768m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    "-PimSendInstrumentation=im.platform.client.ui.GuiAuthenticatedInstrumentation",
+    ":app:assembleDebugAndroidTest"
+  ],
+  "cwd": "H:\\.codex\\worktrees\\u\\IM-platform",
+  "actualCaptureHead": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "actualStatusBefore": " M clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt\n M clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefFixtureTrust.kt\n M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/\n",
+  "exitCode": 0,
+  "result": "PASS",
+  "stdout": "20261011T075544Z-a21ed73c.stdout.txt",
+  "stderr": "20261011T075544Z-a21ed73c.stderr.txt"
+}

@@ -1,0 +1,17 @@
+s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+INSTRUMENTATION_RESULT: actualDefaultContextProvider=AndroidOpenSSL
+INSTRUMENTATION_RESULT: actualDefaultSocketTLSHostnamePositive=PASS localhost:8443
+INSTRUMENTATION_RESULT: actualSocketFactoryClass=com.android.org.conscrypt.OpenSSLSocketFactoryImpl
+INSTRUMENTATION_RESULT: assertions=39
+INSTRUMENTATION_RESULT: captureRun=state-1171ad0e-d371-45a4-a755-de6df87d5fef
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[STATE Android A state-1171ad0e-d371-45a4-a755-de6df87d5fef|SENDING|3369442b-f6df-4140-bcd0-9103bf069ac0|null, STATE Android A state-1171ad0e-d371-45a4-a755-de6df87d5fef|FAILED|3369442b-f6df-4140-bcd0-9103bf069ac0|null, STATE Android A state-1171ad0e-d371-45a4-a755-de6df87d5fef R2|SENT|2804f4bf-7439-45a0-94a1-1b7092be8a0e|446f3886-7fdb-4423-8945-47023e60840c, STATE Android A state-1171ad0e-d371-45a4-a755-de6df87d5fef|FAILED|3369442b-f6df-4140-bcd0-9103bf069ac0|null, STATE Android A state-1171ad0e-d371-45a4-a755-de6df87d5fef|SENT|3369442b-f6df-4140-bcd0-9103bf069ac0|cf1c1671-83aa-4b7f-8122-03817245c2dc, STATE Android B state-1171ad0e-d371-45a4-a755-de6df87d5fef|SENDING|0f3bd10f-0f2d-490e-a06a-24200747d634|null, STATE Android B state-1171ad0e-d371-45a4-a755-de6df87d5fef|FAILED|0f3bd10f-0f2d-490e-a06a-24200747d634|null, STATE Android B state-1171ad0e-d371-45a4-a755-de6df87d5fef R2|SENT|947ec176-af30-4d46-81aa-cafe141617b2|db0dc9c7-4bf6-4832-a902-f9fa3637028a, STATE Android B state-1171ad0e-d371-45a4-a755-de6df87d5fef|FAILED|0f3bd10f-0f2d-490e-a06a-24200747d634|null, STATE Android B state-1171ad0e-d371-45a4-a755-de6df87d5fef|SENT|0f3bd10f-0f2d-490e-a06a-24200747d634|04ea61cf-b0cf-4dc0-9950-b7674b0331fd]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: phase=state
+INSTRUMENTATION_RESULT: result=PASS
+INSTRUMENTATION_RESULT: targetProcessId=6485
+INSTRUMENTATION_RESULT: testTrustRestore=PASS exact original context/HTTPS factory/socket provider property/provider order
+INSTRUMENTATION_RESULT: testTrustRestoreDetails={"providerOrderBefore":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"providerOrderAfter":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"socketProviderBefore":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","socketProviderAfter":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","sameDefaultContext":true,"sameHTTPSFactory":true,"emptyMarkerAbsent":true}
+INSTRUMENTATION_CODE: -1

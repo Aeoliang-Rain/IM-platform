@@ -1,0 +1,16 @@
+INSTRUMENTATION_RESULT: actualDefaultContextProvider=AndroidOpenSSL
+INSTRUMENTATION_RESULT: actualDefaultSocketTLSHostnamePositive=PASS localhost:8443
+INSTRUMENTATION_RESULT: actualSocketFactoryClass=com.android.org.conscrypt.OpenSSLSocketFactoryImpl
+INSTRUMENTATION_RESULT: assertions=95
+INSTRUMENTATION_RESULT: captureRun=ui-ref-b1c9ca9b798a4fcc91d6a24d0a8292d4
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[GUI Android actual send 1791706522686|SENT|41c248e7-353e-422e-ad70-2bd2f44af0ed|08e4bfc2-b6c3-4106-92e6-e0230c2f6bc4]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Control unreachable GUI Android actual send 1791706522686 absent activityFinishing=false activityDestroyed=false rootPackage=im.platform.client windows= tree=[text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=GUI Fixture Morgan desc=null clickable=false][text=Messages sync automatically desc=null clickable=false][text=null desc=null clickable=true][text=Reconnect desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=false][text=A fresh start desc=null clickable=false][text=No messages yet. Say hello. desc=null clickable=false][edit][text=Message desc=null clickable=false][text=null desc=null clickable=true][text=Send ↑ desc=null clickable=false][text=null desc=null clickable=false][text=null desc=null clickable=true][text=null desc=Back to chats clickable=false][text=← desc=null clickable=false][text=null desc=null clickable=false][text=GUI Fixture Morgan desc=null clickable=false][text=Syncing… desc=null clickable=false][text=null desc=null clickable=false]
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_RESULT: testTrustRestore=PASS exact original context/HTTPS factory/socket provider property/provider order
+INSTRUMENTATION_RESULT: testTrustRestoreDetails={"providerOrderBefore":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"providerOrderAfter":["AndroidNSSP","AndroidOpenSSL","CertPathProvider","AndroidKeyStoreBCWorkaround","BC","HarmonyJSSE","AndroidKeyStore"],"socketProviderBefore":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","socketProviderAfter":"com.android.org.conscrypt.OpenSSLSocketFactoryImpl","sameDefaultContext":true,"sameHTTPSFactory":true,"emptyMarkerAbsent":true}
+INSTRUMENTATION_CODE: 0
+s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord

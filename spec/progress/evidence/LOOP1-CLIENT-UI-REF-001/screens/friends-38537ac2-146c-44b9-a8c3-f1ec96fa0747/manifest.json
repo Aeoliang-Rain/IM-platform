@@ -1,0 +1,1454 @@
+{
+  "result": "PASS",
+  "task_id": "LOOP1-CLIENT-UI-REF-001",
+  "assembledUTC": "2026-10-11T10:21:21.792281+00:00",
+  "assemblyQualification": "Post-capture hash index of unchanged originals; actual capture states/times/HEAD are retained in original PNG sidecars and before-install binding.",
+  "fixture": {
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:8443",
+    "accounts": [
+      {
+        "userId": "ffbec181-ee90-4947-b41f-fe68cb37efca",
+        "username": "state_fresh_cf55fec0d8",
+        "displayName": "STATE Fresh cf55fec0d8"
+      },
+      {
+        "userId": "de0bce2a-e7a6-4de9-8935-815d6adffe18",
+        "username": "state_webfriend_816cb273c5",
+        "displayName": "STATE WebFriend 816cb273c5"
+      },
+      {
+        "userId": "45635cbc-bd90-4d32-98d0-e987e7385168",
+        "username": "state_desktopfriend_fadd80072a",
+        "displayName": "STATE DesktopFriend fadd80072a"
+      },
+      {
+        "userId": "85ff003e-5db1-48b7-8c2a-4b5c2594a1c7",
+        "username": "state_mobilefriend_e6aeb0bd77",
+        "displayName": "STATE MobileFriend e6aeb0bd77"
+      },
+      {
+        "userId": "9300cd64-863a-465d-b70e-9da841ee019a",
+        "username": "state_offlinefriend_4c8c10c8ef",
+        "displayName": "STATE OfflineFriend 4c8c10c8ef"
+      }
+    ],
+    "source": "actual Go register201; unique disposable accounts; no native database reset",
+    "qualification": "Independent new controlled Friends owner/four targets isolate accumulated historical fixture load; original fresh-public owner/relationships/DB/evidence unchanged"
+  },
+  "androidBindingAfter": {
+    "actualUTC": "2026-10-11T10:21:21.535Z",
+    "actualHEAD": "1294c1f9a548e468bcf7afdc0f0f0349cb99d3f0",
+    "actualStatus": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/.runtime/\n?? tests/clients/ui-ref/adapt_state.py\n?? tests/clients/ui-ref/android_fixture_backup.py\n?? tests/clients/ui-ref/android_install_binding.py\n?? tests/clients/ui-ref/android_matrix_diagnosis.py\n?? tests/clients/ui-ref/android_negative.py\n?? tests/clients/ui-ref/android_phase.py\n?? tests/clients/ui-ref/bind.py\n?? tests/clients/ui-ref/desktop_debug.mjs\n?? tests/clients/ui-ref/desktop_debug_start.ps1\n?? tests/clients/ui-ref/desktop_matrix.py\n?? tests/clients/ui-ref/friends_geometry.mjs\n?? tests/clients/ui-ref/friends_manifest.py\n?? tests/clients/ui-ref/friends_sync_diagnosis.py\n?? tests/clients/ui-ref/gradle_bounded.cmd\n?? tests/clients/ui-ref/install_desktop.ps1\n?? tests/clients/ui-ref/notification_continuity.py\n?? tests/clients/ui-ref/record_command.py\n?? tests/clients/ui-ref/restart_manifest.py\n?? tests/clients/ui-ref/runtime.py\n?? tests/clients/ui-ref/state/android_actual.mjs\n?? tests/clients/ui-ref/state/android_binding.mjs\n?? tests/clients/ui-ref/state/android_fresh.mjs\n?? tests/clients/ui-ref/state/android_restart.mjs\n?? tests/clients/ui-ref/state/backend_verify.py\n?? tests/clients/ui-ref/state/desktop_actual.mjs\n?? tests/clients/ui-ref/state/desktop_fresh.mjs\n?? tests/clients/ui-ref/state/desktop_notification.ps1\n?? tests/clients/ui-ref/state/desktop_shortcut.ps1\n?? tests/clients/ui-ref/state/desktop_toast_capture.ps1\n?? tests/clients/ui-ref/state/desktop_tray.ps1\n?? tests/clients/ui-ref/state/fault_proxy.py\n?? tests/clients/ui-ref/state/fresh_web.mjs\n?? tests/clients/ui-ref/state/prepare_desktop.mjs\n?? tests/clients/ui-ref/state/web_actual.mjs\n?? tests/clients/ui-ref/state/windows_negative_tls.py\n?? tests/clients/ui-ref/web/\n?? tests/clients/ui-ref/windows_fixture_trust.ps1\n",
+    "productionSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+    "testSource": "7907a23f5fe51c5d1c62063e2f055ecced068120",
+    "runner": "im.platform.client.ui.GuiAuthenticatedInstrumentation",
+    "artifacts": {
+      "im.platform.client": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\restore-friends-apk-3a6a4b5af479451bbb8313831b4871e0\\production-unchanged.apk",
+        "sha256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92",
+        "devicePath": "/data/app/~~6LfUZYEI2_g2RgT_urR-GA==/im.platform.client-9c9rAPOXjrtpmgpbR8rTpw==/base.apk"
+      },
+      "im.platform.client.test": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\restore-friends-apk-3a6a4b5af479451bbb8313831b4871e0\\after-exact-790-runner.apk",
+        "sha256": "936f5cd4804e63442cc069ff89d6947eef09da7a486b910428c7417355382693",
+        "devicePath": "/data/app/~~xGRJTrXOipI6t3yDo3qNpA==/im.platform.client.test-1ZOYCPLYt1czELLxQvN7GQ==/base.apk"
+      }
+    }
+  },
+  "windowsTrustQualification": "Human manually imported exact pinned fixture CA; actual machine/user-view temporary lease approved, cleanup remains separately required.",
+  "entries": [
+    {
+      "file": "desktop-account-settings.png",
+      "sha256": "bfe6d77d1f9d73cfd8418909e4f20d09b8a89ee3415ca7f944d3d694c5c3bb41"
+    },
+    {
+      "file": "desktop-account-settings.png.json",
+      "sha256": "b34eac2a72f08ae14e8f935a23ddac3b926d3bea85271187dae2ab41071b5d54"
+    },
+    {
+      "file": "desktop-account-settings.png.zorder.json",
+      "sha256": "0b04081ad7a470ecb716df3cb6dd016c3d4679872be11381ea6c89419fb82b8d"
+    },
+    {
+      "file": "desktop-account-signout.png",
+      "sha256": "9490a15af2593d975c5314878570fcc27bcf7752dcb5fb7f5459bbc2c7797fa1"
+    },
+    {
+      "file": "desktop-account-signout.png.json",
+      "sha256": "847df5650f09b85705df09412b7b564ad9e3bdbae4a98dbd6366236f80500f3f"
+    },
+    {
+      "file": "desktop-account-signout.png.zorder.json",
+      "sha256": "3f4d1698125dd964ab178bb5bba952022e34ad505a073ddf10a66ee01741cdb4"
+    },
+    {
+      "file": "desktop-add-open-complete.png",
+      "sha256": "2863c637bd5932e4e11613affc2dfe17a51788d273df842844b2d3281d7c3718"
+    },
+    {
+      "file": "desktop-add-open-complete.png.json",
+      "sha256": "4a219a35481f87a06badc1f5cab300b04a9df2e99d819d78ca32b78a5488fd2a"
+    },
+    {
+      "file": "desktop-add-open-complete.png.zorder.json",
+      "sha256": "9aa250cf07952c298b98ea2b852c0abdd24f134d2e9d047e2eaf4b7952f8b9f5"
+    },
+    {
+      "file": "desktop-db-after-exact-fourth-reconnect.json",
+      "sha256": "80ce5b61e0e237f5a744b41dfef1be446ab795fd008dce510667c0b02fde2551"
+    },
+    {
+      "file": "desktop-db-before-offline-fourth.json",
+      "sha256": "c7ecf6ce2de0ff1f1686cba253a69e8191b63a2eb1f51070b0f50fe31e1da9dd"
+    },
+    {
+      "file": "desktop-db-fourth-added-still-offline.json",
+      "sha256": "08331ded4d01c8d2e12292655b6654cb546b25267611c6a22c5fa1dc78a36842"
+    },
+    {
+      "file": "desktop-disconnect-settings.png",
+      "sha256": "e1b71cb242c535d0ea2a87fd4513a504835596d065a82271a96f6b66d3bbf5b9"
+    },
+    {
+      "file": "desktop-disconnect-settings.png.json",
+      "sha256": "d5706292e959932a4d1002a00c09e2f641a31c9a650f8ddc0bbea6c086cda79c"
+    },
+    {
+      "file": "desktop-disconnect-settings.png.zorder.json",
+      "sha256": "25abfc384fda069bf6f62e0b43819eecbaaf11953b869e8eee02bb9cf41c6af2"
+    },
+    {
+      "file": "desktop-disconnected-friends.png",
+      "sha256": "1b79f4617a748b0824ec1c54b66f1eacd67a7d816160e16f063c022014a7f784"
+    },
+    {
+      "file": "desktop-disconnected-friends.png.json",
+      "sha256": "714729bd036864bfac9e3aa4fd0cafbb69bde2f7812bf9c06bd75447ba3cfcdb"
+    },
+    {
+      "file": "desktop-disconnected-friends.png.zorder.json",
+      "sha256": "b465959cf43338a352ab99302def6c91d1145e34a04c8d05c9247fc5da2405f9"
+    },
+    {
+      "file": "desktop-disconnected.png",
+      "sha256": "18b8c7e6be1f01d9fb9724980f27e4b655102a9b4125dcacc0ed0eacc18f41bb"
+    },
+    {
+      "file": "desktop-disconnected.png.json",
+      "sha256": "3c154fe7885429d29baf376d0a00c60470c629a1c1168789cf8d0ff3f6786841"
+    },
+    {
+      "file": "desktop-disconnected.png.zorder.json",
+      "sha256": "0e538f845e2348457b315cd0a57eefad17aad8b094b3df48ab6b8b4ce3494e33"
+    },
+    {
+      "file": "desktop-fixture-login.png",
+      "sha256": "f85747be57aae0f961d2be6c211a55e84791cf2a7b167ab4514babbc864132d8"
+    },
+    {
+      "file": "desktop-fixture-login.png.json",
+      "sha256": "fd987471c71ccf7402706cbd459c23716050c9c94e37bfe2de22d4894a47c4d7"
+    },
+    {
+      "file": "desktop-fixture-login.png.zorder.json",
+      "sha256": "bbd46a1f6d31008872ddf8429aa0f7aea6d9d406113d19d50145bd62c73cefed"
+    },
+    {
+      "file": "desktop-fixture-password.png",
+      "sha256": "f2fceba2639caa7c68db68cfa60cf1b4382d3e939ca6db799512649b075ecdae"
+    },
+    {
+      "file": "desktop-fixture-password.png.json",
+      "sha256": "0958b8955c770e2b87fd9cb9913b14de570a7d79ffff9a5148c8c373fea648ee"
+    },
+    {
+      "file": "desktop-fixture-password.png.zorder.json",
+      "sha256": "32f5056a9455e06121f363d88b08f1785dded22ad3af9b4f88edbc9bc960699d"
+    },
+    {
+      "file": "desktop-fixture-username.png",
+      "sha256": "333b5925a0fd196d840e6f5ca3b0614076ee3f1fb3cc9ab742317f347573d664"
+    },
+    {
+      "file": "desktop-fixture-username.png.json",
+      "sha256": "74a29f95b64f5a76f222052a419c01dc69b50931394ad2aa5019adc0e0f1b37a"
+    },
+    {
+      "file": "desktop-fixture-username.png.zorder.json",
+      "sha256": "a6b2450ff71c125214c0048a3ac0e72f38e66740aa824d060c5261dbab36b452"
+    },
+    {
+      "file": "desktop-formal-original.json",
+      "sha256": "dcc80ebf001dd1e86c399a02bc7165202c7ede626ac23a97b56c84141e3256fa"
+    },
+    {
+      "file": "desktop-friends-baseline.png",
+      "sha256": "399a4b4b04cbd9b31c5181983c94f40e02f6a26e51a13a02b1dda191766f782b"
+    },
+    {
+      "file": "desktop-friends-baseline.png.json",
+      "sha256": "3d2809a6264032d098d6b632c206dabfe6cda24474e09faabb8b5aff2e705892"
+    },
+    {
+      "file": "desktop-friends-baseline.png.zorder.json",
+      "sha256": "f14d6fba4df9e6aabe80b240b755492604ef6500f7884fabebd1f0bee83934b7"
+    },
+    {
+      "file": "desktop-initial-exact-friend-heading.png",
+      "sha256": "af21da0cb5d11b6cf5c987fe579932b6323fb4e16a795c8762296970e9ff70cc"
+    },
+    {
+      "file": "desktop-initial-exact-friend-heading.png.json",
+      "sha256": "40b51ffd17c5c322ce015fa396aab1c17c1f752775151ff336733df98ec4adf8"
+    },
+    {
+      "file": "desktop-initial-exact-friend-heading.png.zorder.json",
+      "sha256": "333ad0ec1f6528a208cb0aa25d44a15c644e9977da535db30cbbaa1316ef1053"
+    },
+    {
+      "file": "desktop-initial-exact-friend-open.png",
+      "sha256": "af21da0cb5d11b6cf5c987fe579932b6323fb4e16a795c8762296970e9ff70cc"
+    },
+    {
+      "file": "desktop-initial-exact-friend-open.png.json",
+      "sha256": "e69dd8addc30fc4c9624f699ea3b81f2d2bb5d8d551bc989a02a11d88d1f8300"
+    },
+    {
+      "file": "desktop-initial-exact-friend-open.png.zorder.json",
+      "sha256": "54276b22f58398884adb03fb678a360060956c14ad234a6ef587af978e966b7c"
+    },
+    {
+      "file": "desktop-initial-return-friends.png",
+      "sha256": "6ede67845807bbf849788851ada8ad4cd3b71de6205954af1c1e42d659ee7fdd"
+    },
+    {
+      "file": "desktop-initial-return-friends.png.json",
+      "sha256": "c79e5181d32ac1799d617f5975bad8542cc97348e78472669be563b423be8c3c"
+    },
+    {
+      "file": "desktop-initial-return-friends.png.zorder.json",
+      "sha256": "908f1bfdbc1b394aa2a9e0eaaac24df7c0ec569e3b3f440016ac9775b280c633"
+    },
+    {
+      "file": "desktop-initial-sync-idle.png",
+      "sha256": "af725d67550eb3b36510aa4f5bb3e6b516359a8711d5262c4000a2877a148dd2"
+    },
+    {
+      "file": "desktop-initial-sync-idle.png.json",
+      "sha256": "fd09948fd9e6953289b23cc9787cdb06f483918836433d4227c5f7409db1e142"
+    },
+    {
+      "file": "desktop-initial-sync-idle.png.zorder.json",
+      "sha256": "77a80124fffaab4a41f867e8b570ac9d03c490c7a40e5003ffbeb8e29c3b1467"
+    },
+    {
+      "file": "desktop-observes-mobile-visible.png",
+      "sha256": "e67af701532f24f389ae7f11b46a7be04f97df8bf9123e202c59f5bc7c8eaf72"
+    },
+    {
+      "file": "desktop-observes-mobile-visible.png.json",
+      "sha256": "942f40bfc2ef32f25d01dd4f25f9727b7b2226be305bccaa8fb107dab1a34a00"
+    },
+    {
+      "file": "desktop-observes-mobile-visible.png.zorder.json",
+      "sha256": "745e59fc70d4ad6c578bdea51d71c8b21cb15ec04eb498530cf347dc5f61115e"
+    },
+    {
+      "file": "desktop-observes-mobile.png",
+      "sha256": "ef069255b6a2249f3fa618a57272108dcb364611f0b0f63845d777fcc0712aab"
+    },
+    {
+      "file": "desktop-observes-mobile.png.json",
+      "sha256": "f24ea7ddfe6782c1fdca70161b65817d517a9db12cb66a22c6950e3a159c6af6"
+    },
+    {
+      "file": "desktop-observes-mobile.png.zorder.json",
+      "sha256": "29f8bbdbd4560abbc2d8a90eecc21638e3684c118c30122616460fe62af1df8e"
+    },
+    {
+      "file": "desktop-observes-web-visible.png",
+      "sha256": "74180ef2833e09dfe45ca038b44830cede92851c132d6c701236e90aa4afed7c"
+    },
+    {
+      "file": "desktop-observes-web-visible.png.json",
+      "sha256": "641cd889d9ab36373573337bc22eea016518c8608f9dddd5f2388c73aad705bb"
+    },
+    {
+      "file": "desktop-observes-web-visible.png.zorder.json",
+      "sha256": "3273027fa9b5c6b07989ec6b203ae21a81012061d78b43dde27c03c9b3c44704"
+    },
+    {
+      "file": "desktop-observes-web.png",
+      "sha256": "254135ca805cd70a61041bbae48611a11f5a9c45efbb1dde258d934cd7cfb9fa"
+    },
+    {
+      "file": "desktop-observes-web.png.json",
+      "sha256": "944bb336b5ed1005eaf830db32acf258194b07a9ec94cbc661a9e1573989e929"
+    },
+    {
+      "file": "desktop-observes-web.png.zorder.json",
+      "sha256": "650c5ef90e231ba2ebf13aab663bfccfe4c91d8193052c6bce24888ebc47108a"
+    },
+    {
+      "file": "desktop-offline-fourth-absent.png",
+      "sha256": "9b771077815dd278ac30a432ff886a556276b273dbd9299492e043a3b7baee07"
+    },
+    {
+      "file": "desktop-offline-fourth-absent.png.json",
+      "sha256": "d7fe0703f69123fb22a5b504703507168ff632268b5e5fabe678bed09915708e"
+    },
+    {
+      "file": "desktop-offline-fourth-absent.png.zorder.json",
+      "sha256": "fc492e011a7c8e675687e7adc8e2a34bb0d919343918500cd4c03b809d12275c"
+    },
+    {
+      "file": "desktop-offline-retained-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png",
+      "sha256": "71586758cc1c4a5df560ae086018e358d21237a483cddea559c140bf46dd12bd"
+    },
+    {
+      "file": "desktop-offline-retained-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png.json",
+      "sha256": "45f8ead8686409bbcada9f0ed169652768887258e263a4760348d9529614e956"
+    },
+    {
+      "file": "desktop-offline-retained-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png.zorder.json",
+      "sha256": "be92874ba821100a61403e6e9c9b0ddab6fe6afb0ba30553626a41445d017695"
+    },
+    {
+      "file": "desktop-offline-retained-45635cbc-bd90-4d32-98d0-e987e7385168.png",
+      "sha256": "ba9034b0a1a94129fa559a820f816890a95a8a11baeb6464c4eb40b4dc1f1319"
+    },
+    {
+      "file": "desktop-offline-retained-45635cbc-bd90-4d32-98d0-e987e7385168.png.json",
+      "sha256": "a0123f10a8a269f76260a752be68f50a0ab03ff7878d1248366f715429df1eec"
+    },
+    {
+      "file": "desktop-offline-retained-45635cbc-bd90-4d32-98d0-e987e7385168.png.zorder.json",
+      "sha256": "ae0ce59894fd6ce1bebc00c9a201d63e57beff083b70b8e67a48b32789c30ad0"
+    },
+    {
+      "file": "desktop-offline-retained-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png",
+      "sha256": "9b771077815dd278ac30a432ff886a556276b273dbd9299492e043a3b7baee07"
+    },
+    {
+      "file": "desktop-offline-retained-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png.json",
+      "sha256": "8ef6f9abcd7bc70f4cdbf6cf1803b044f5449841834d1ce3b1b4ba209496d0ab"
+    },
+    {
+      "file": "desktop-offline-retained-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png.zorder.json",
+      "sha256": "adf02777e0ea2c80d63879e3cb37225176e6abbbe06f116c50322388d5a2ed96"
+    },
+    {
+      "file": "desktop-offline-retained-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png",
+      "sha256": "71586758cc1c4a5df560ae086018e358d21237a483cddea559c140bf46dd12bd"
+    },
+    {
+      "file": "desktop-offline-retained-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.json",
+      "sha256": "eba018b6ba99111dab7114126e0f6d20f9aa6a70e6b4af384dc83ed69504451c"
+    },
+    {
+      "file": "desktop-offline-retained-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.zorder.json",
+      "sha256": "0f8cbe5c8622131c179b162357b360e967d905a99a8315f18509100d3348f6d9"
+    },
+    {
+      "file": "desktop-offline-retained-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png",
+      "sha256": "ba9034b0a1a94129fa559a820f816890a95a8a11baeb6464c4eb40b4dc1f1319"
+    },
+    {
+      "file": "desktop-offline-retained-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png.json",
+      "sha256": "a29abdaf8378f3059009933821c26141d60b93e1e20f42f504ca537b81e47c6c"
+    },
+    {
+      "file": "desktop-offline-retained-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png.zorder.json",
+      "sha256": "4614e258ae58759f4054f6e05da8714862cf668a3f3c346e3d5f684973abe534"
+    },
+    {
+      "file": "desktop-offline-retained-de0bce2a-e7a6-4de9-8935-815d6adffe18.png",
+      "sha256": "1b79f4617a748b0824ec1c54b66f1eacd67a7d816160e16f063c022014a7f784"
+    },
+    {
+      "file": "desktop-offline-retained-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.json",
+      "sha256": "06cef8618dcb6472e5f5a744cc9f77caa85ab19bf6d3c8bdb287b36114423db9"
+    },
+    {
+      "file": "desktop-offline-retained-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.zorder.json",
+      "sha256": "1bce29f332f5a771ee101f4057304e7b916fc1848909a29c6b7d4c1da8ab4062"
+    },
+    {
+      "file": "desktop-offline-state.png",
+      "sha256": "9b771077815dd278ac30a432ff886a556276b273dbd9299492e043a3b7baee07"
+    },
+    {
+      "file": "desktop-offline-state.png.json",
+      "sha256": "e0aa98a42f9ed308cf041ee37ff2f4495c4ebd8d91d2a79ba561f918adb06f23"
+    },
+    {
+      "file": "desktop-offline-state.png.zorder.json",
+      "sha256": "d7c2f30ee88b0e8e6da580f08fcf2262a1bf5d89445e653397a59491f3b756a9"
+    },
+    {
+      "file": "desktop-origin-projection-visible.png",
+      "sha256": "3011b1f98267bb884c356fe35268accbcb3bc01e6489c70afa7274746e0b7a51"
+    },
+    {
+      "file": "desktop-origin-projection-visible.png.json",
+      "sha256": "4bc1146ef56cb31d8502e687b83b6ab94378c06190411e2761ee3666fbd3a16d"
+    },
+    {
+      "file": "desktop-origin-projection-visible.png.zorder.json",
+      "sha256": "ed54236244db62b143da92c29f3e90fcfb5d92e8e084f6d188bc7fb46964c3c4"
+    },
+    {
+      "file": "desktop-origin-projection.png",
+      "sha256": "5d1ff21099293fc10f99676fb1b06152167beaac51f6c151f693229a22987a68"
+    },
+    {
+      "file": "desktop-origin-projection.png.json",
+      "sha256": "67553389bdb9fa28939a58d60caf8cb6c744694b26afaf50198cdad86689ef8d"
+    },
+    {
+      "file": "desktop-origin-projection.png.zorder.json",
+      "sha256": "d3e0a2fe5d6e528ebe36aa44a7ddffb8606bb08d1c6ba71cf6194e93108444ae"
+    },
+    {
+      "file": "desktop-origin-return-friends.png",
+      "sha256": "5d1ff21099293fc10f99676fb1b06152167beaac51f6c151f693229a22987a68"
+    },
+    {
+      "file": "desktop-origin-return-friends.png.json",
+      "sha256": "b49808ce7296f515ceaf94cbcfed0cc24403b65b0cdbf8418b52a9a284bcf992"
+    },
+    {
+      "file": "desktop-origin-return-friends.png.zorder.json",
+      "sha256": "7083a5a49b0c58073c676c1b73b3492e6bab1ffb1a6207d9256432f765c8539e"
+    },
+    {
+      "file": "desktop-origin.png",
+      "sha256": "e91710cfe99dfed703ad0245accc9f099554014739dba77df664dc157fef6b3e"
+    },
+    {
+      "file": "desktop-origin.png.json",
+      "sha256": "7cf32cd13b451971808b6bb9bfdaca78556a44fac16aa031109835775b98390b"
+    },
+    {
+      "file": "desktop-origin.png.zorder.json",
+      "sha256": "e9e7cd6dd2eb1b0479c0464047f08599d8b0ce9d3c67c772fda5e785eafc2617"
+    },
+    {
+      "file": "desktop-original-actual-connected.png",
+      "sha256": "301939f07d4cd295d59803b4dd3e2204998f5dcbe9498bdc908172a5ec744433"
+    },
+    {
+      "file": "desktop-original-actual-connected.png.json",
+      "sha256": "7191af4e46138f7e22c1a5d154171f5929f7a7389a57716a6c192ec800d6bb1b"
+    },
+    {
+      "file": "desktop-original-actual-connected.png.zorder.json",
+      "sha256": "5a667d721209881f92220323e586b969f34deb426ec11ac77793ca7ff4950a23"
+    },
+    {
+      "file": "desktop-original-exact-friend-heading.png",
+      "sha256": "301939f07d4cd295d59803b4dd3e2204998f5dcbe9498bdc908172a5ec744433"
+    },
+    {
+      "file": "desktop-original-exact-friend-heading.png.json",
+      "sha256": "59f93f857f77e248e495089802b14ef85c74b06671909ee41d429d8509e803c8"
+    },
+    {
+      "file": "desktop-original-exact-friend-heading.png.zorder.json",
+      "sha256": "9cacad2bf369112006a6e78a09db01ceb50bcc46dedf93709d140322068eb8af"
+    },
+    {
+      "file": "desktop-original-exact-friend-open.png",
+      "sha256": "4ae7e5f5023b97e7ff5136c9644141d2f9aee83e9babc92e8f4512c48797df84"
+    },
+    {
+      "file": "desktop-original-exact-friend-open.png.json",
+      "sha256": "4f837adba7e45cf556f5b132739d779836bbaf562d564d7d34e5635f7396e4cc"
+    },
+    {
+      "file": "desktop-original-exact-friend-open.png.zorder.json",
+      "sha256": "47161b1449921143644eae13dc7618ef6e7093b8c9653e6a192496e3b16a77fe"
+    },
+    {
+      "file": "desktop-original-friends.png",
+      "sha256": "229a3752f972da63bbe5606b09d44ceaa67095d61acd3468482a46996399a517"
+    },
+    {
+      "file": "desktop-original-friends.png.json",
+      "sha256": "e8633b8f219c56d4333a4070a3f590a318df5522183361ca88c26a46aaaac758"
+    },
+    {
+      "file": "desktop-original-friends.png.zorder.json",
+      "sha256": "12dd1e28fe543079a4889607fb0824504dab5049b74f6050e795e8f15eafdcf1"
+    },
+    {
+      "file": "desktop-original-login.png",
+      "sha256": "a5c695d14e591ae19e78bb4ff3f5c84a3ec496d4567f58984bc480c5b5c7303d"
+    },
+    {
+      "file": "desktop-original-login.png.json",
+      "sha256": "2fc6bb228854fdaa564cd04b2b256b0eb1c0c6f3e38c8bb097bf3e3dcb99b305"
+    },
+    {
+      "file": "desktop-original-login.png.zorder.json",
+      "sha256": "4697d538f06b7faaaf1f6d2cc391408ecb7b481a04493abddf916e9d386adae9"
+    },
+    {
+      "file": "desktop-original-password.png",
+      "sha256": "ada06a9685b1c922439a5c70e2fdb21c91e3f98e46570a4d027255611f053ba3"
+    },
+    {
+      "file": "desktop-original-password.png.json",
+      "sha256": "f1f33347a549d0c861ef3cfe04d681c2676e7bb39f5431534a01c70d0152cbf2"
+    },
+    {
+      "file": "desktop-original-password.png.zorder.json",
+      "sha256": "59ebe750e8d8cbd3dbed5a2b33b6f46fd13663dc3e59a43d3bbedc145a873249"
+    },
+    {
+      "file": "desktop-original-restored-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png",
+      "sha256": "06969e495f88b9ddc79200551be9deb7dc7c570445588149b667da65f5ec3032"
+    },
+    {
+      "file": "desktop-original-restored-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png.json",
+      "sha256": "c11e84b4c412cb9f6d1a533ad626f45382994806b6535d17766bedc6c28a2f64"
+    },
+    {
+      "file": "desktop-original-restored-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png.zorder.json",
+      "sha256": "e6262b0b9c640031da25ad2b1053d9e20cc70875286f410b8e539cf93373ebb7"
+    },
+    {
+      "file": "desktop-original-restored-45635cbc-bd90-4d32-98d0-e987e7385168.png",
+      "sha256": "b18cd46c0461a4d46683f00711e1a3db33f6d1a16fa96f7f5da2633459230659"
+    },
+    {
+      "file": "desktop-original-restored-45635cbc-bd90-4d32-98d0-e987e7385168.png.json",
+      "sha256": "41e2dc287aef2228d0c37123b28b56a1b5196787ac8fe446914b9e8e9bb3c710"
+    },
+    {
+      "file": "desktop-original-restored-45635cbc-bd90-4d32-98d0-e987e7385168.png.zorder.json",
+      "sha256": "b979be994f62c091b7b938ecf7e473759427f6f10a1d2edad26009edf5861c57"
+    },
+    {
+      "file": "desktop-original-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png",
+      "sha256": "851f6046dc5c2bdaa6980f27f5ef8d5cffbe69a7d6396ab1c64ae30d5f613191"
+    },
+    {
+      "file": "desktop-original-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png.json",
+      "sha256": "094001c5409708c9a198923628767b6c773280c1e69ba32d507c6122aefd8a7c"
+    },
+    {
+      "file": "desktop-original-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png.zorder.json",
+      "sha256": "f7dbf029c0ee0c48f6672e6eb7bc99f9ac6408379cffa17d548f3ae96047e760"
+    },
+    {
+      "file": "desktop-original-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png",
+      "sha256": "06969e495f88b9ddc79200551be9deb7dc7c570445588149b667da65f5ec3032"
+    },
+    {
+      "file": "desktop-original-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.json",
+      "sha256": "a93f00dba1f719199e0ed5ab1385da2008d8630545c817589e02b98faef80d97"
+    },
+    {
+      "file": "desktop-original-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.zorder.json",
+      "sha256": "b985e4cc0e80bdfbaa6a52653896760e07de84ce5548cc59f45241d7dc6c79f3"
+    },
+    {
+      "file": "desktop-original-restored-9300cd64-863a-465d-b70e-9da841ee019a-visible.png",
+      "sha256": "f9abfc851b4a30241402372ed7b20e2bcec6b71fa0f4b9ecdd17f4f1fcf27b6c"
+    },
+    {
+      "file": "desktop-original-restored-9300cd64-863a-465d-b70e-9da841ee019a-visible.png.json",
+      "sha256": "fc3da4b21de1951d639708816b48784177335cccce076d7d113ab639a794e2fd"
+    },
+    {
+      "file": "desktop-original-restored-9300cd64-863a-465d-b70e-9da841ee019a-visible.png.zorder.json",
+      "sha256": "d2753f694c89c50c71576309e908e8a2eb078b78595da812a6c8d29740ff6f7c"
+    },
+    {
+      "file": "desktop-original-restored-9300cd64-863a-465d-b70e-9da841ee019a.png",
+      "sha256": "851f6046dc5c2bdaa6980f27f5ef8d5cffbe69a7d6396ab1c64ae30d5f613191"
+    },
+    {
+      "file": "desktop-original-restored-9300cd64-863a-465d-b70e-9da841ee019a.png.json",
+      "sha256": "216c38bba69eca600f616a12753cbb314f7eee48a77900fa3b3c8824ce561cb5"
+    },
+    {
+      "file": "desktop-original-restored-9300cd64-863a-465d-b70e-9da841ee019a.png.zorder.json",
+      "sha256": "105694aa8bc34ce4fa8390a2094f848620e0068535c83f34bd3b93b19dfe1f32"
+    },
+    {
+      "file": "desktop-original-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png",
+      "sha256": "b18cd46c0461a4d46683f00711e1a3db33f6d1a16fa96f7f5da2633459230659"
+    },
+    {
+      "file": "desktop-original-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png.json",
+      "sha256": "8d9599c541aa85655faa219d62d0fc6d6105e58fc33fa239a54bd27d7ea3d7f6"
+    },
+    {
+      "file": "desktop-original-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png.zorder.json",
+      "sha256": "c6c765356b54f5f1f3edc72fb6e49e3fd0126a65c953e9764614a04fbb493886"
+    },
+    {
+      "file": "desktop-original-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18.png",
+      "sha256": "4f2b1af773cfaa14d887efa7454474277940f0d3cc0813f167c1b856170225f1"
+    },
+    {
+      "file": "desktop-original-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.json",
+      "sha256": "6ec3086aa075209ede4702b177b6b73f67917cadc4a60638abf021bdd2a66dd2"
+    },
+    {
+      "file": "desktop-original-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.zorder.json",
+      "sha256": "9b1cde8aeefcfbc44cf1f006ca3cdbc8626d915c13f1a173ca51ee4a9d119fde"
+    },
+    {
+      "file": "desktop-original-return-friends.png",
+      "sha256": "f2ae73b76dcae2e6b1985c8a69b4204e2efc7dfd3e54d65a287f91ddf4ca9403"
+    },
+    {
+      "file": "desktop-original-return-friends.png.json",
+      "sha256": "5d8c3e5442835ea8046e6324625bb43d75712a5c5dd1bf7343adcbdd5fb3de76"
+    },
+    {
+      "file": "desktop-original-return-friends.png.zorder.json",
+      "sha256": "a5557d3c7e7a607f9a7dc2439a477018bdaa0b287fb37b41d3c7a5408a4a6aef"
+    },
+    {
+      "file": "desktop-original-settings.png",
+      "sha256": "a653f968ce04d759b876b5f759ebd42131728e9f098b0a71ad1431870212dfe8"
+    },
+    {
+      "file": "desktop-original-settings.png.json",
+      "sha256": "94614948c0329abac89f8429669d13b52a31f931017df706d84ecb47d7191473"
+    },
+    {
+      "file": "desktop-original-settings.png.zorder.json",
+      "sha256": "c5a6ee426963830dcd49742a9fcb833f549dce862e99495e27ed2a22ac2c95b2"
+    },
+    {
+      "file": "desktop-original-username.png",
+      "sha256": "ab7de5217f4f55bce0215f81833c0ac5d25e79c083e7fbe82416f60b15fe967d"
+    },
+    {
+      "file": "desktop-original-username.png.json",
+      "sha256": "c8112addcac3112fac70a22309980a7be6267a4141c8d1af0ec720bbd2aa620e"
+    },
+    {
+      "file": "desktop-original-username.png.zorder.json",
+      "sha256": "e67a3397f020a96b600389efbaeab56fa49b2562087e7addbce94db4790d1938"
+    },
+    {
+      "file": "desktop-other-account-isolated.png",
+      "sha256": "cc48c90d8bb7326843923b060d957153634af4ad979b1489161ed0ee05df7de1"
+    },
+    {
+      "file": "desktop-other-account-isolated.png.json",
+      "sha256": "0f6ae6df5378f1a0524c97e04fcce08019d0c555c79ed6ca49d565a33de84ac6"
+    },
+    {
+      "file": "desktop-other-account-isolated.png.zorder.json",
+      "sha256": "75eaa0694c85dc111b34cf05d72ecee8d99546e5d0ff5d096ad75c3ef91c8479"
+    },
+    {
+      "file": "desktop-other-chat.png",
+      "sha256": "63b74025e7cb3c3a19443d5d937dfe59834ca79ad522b3537d588b152854d6cd"
+    },
+    {
+      "file": "desktop-other-chat.png.json",
+      "sha256": "22e356d350cdbd416b9e711b5f4b78419286d6d0f919697c6854ab877aa0c79d"
+    },
+    {
+      "file": "desktop-other-chat.png.zorder.json",
+      "sha256": "299b7af1fe37dc9adc8ea28c3f2c4f70823cdf52e2d248f89339203508bc6e33"
+    },
+    {
+      "file": "desktop-other-conversations-isolated.png",
+      "sha256": "63b74025e7cb3c3a19443d5d937dfe59834ca79ad522b3537d588b152854d6cd"
+    },
+    {
+      "file": "desktop-other-conversations-isolated.png.json",
+      "sha256": "5082403e8f280c9ace3e005a7c698966d2d936ce0d8a57b021f4e59e01b28f7b"
+    },
+    {
+      "file": "desktop-other-conversations-isolated.png.zorder.json",
+      "sha256": "5278151faa69c0ad62b63fc932ad5a85c5e68804bc9040b33279d24155e1aea9"
+    },
+    {
+      "file": "desktop-other-exact-existing-friend-visible.png",
+      "sha256": "5773a24d288231d9492c4f7185ccd4f06819f7e5f475ee53073617bcb0c29980"
+    },
+    {
+      "file": "desktop-other-exact-existing-friend-visible.png.json",
+      "sha256": "25e30ee2be6d74f6869924f8ea04d1651f68d57770a68513bbd69b469e500265"
+    },
+    {
+      "file": "desktop-other-exact-existing-friend-visible.png.zorder.json",
+      "sha256": "fa081086cc3e3083cf695e7703be90ad152b7161ff641f07dfc22f889e3943d8"
+    },
+    {
+      "file": "desktop-other-exact-existing-friend.png",
+      "sha256": "648cb4a3f64ccf179dead61fd779c3daf035b76b159de4b617d5cc5842f50e64"
+    },
+    {
+      "file": "desktop-other-exact-existing-friend.png.json",
+      "sha256": "6b7543bc500aa3dbf055b28c57489132d8f9efc07ed534ba4eae6be3e565fad2"
+    },
+    {
+      "file": "desktop-other-exact-existing-friend.png.zorder.json",
+      "sha256": "b0e8d090af125bff8f9b9540839b94e617d5d87adc33921070492289f4328b12"
+    },
+    {
+      "file": "desktop-other-exact-friend-heading.png",
+      "sha256": "3bc1ac59ad76d2ef8c84058e543737b57764649a15d5a9e0b8526d0cff3f35cc"
+    },
+    {
+      "file": "desktop-other-exact-friend-heading.png.json",
+      "sha256": "9a859e73fcc732444f9c51fad73dca3a0fa8841d1c372875fa45b951c3d26b60"
+    },
+    {
+      "file": "desktop-other-exact-friend-heading.png.zorder.json",
+      "sha256": "030c46f65e4ef3db03edf3527d4bb2dbc7ac377f2e05cafe88c495b66f9ccae8"
+    },
+    {
+      "file": "desktop-other-exact-friend-open.png",
+      "sha256": "3bc1ac59ad76d2ef8c84058e543737b57764649a15d5a9e0b8526d0cff3f35cc"
+    },
+    {
+      "file": "desktop-other-exact-friend-open.png.json",
+      "sha256": "aad4d8f88a91334beb768ffa91868678f4fff66d5b18b4b48feca7ceb74d6c22"
+    },
+    {
+      "file": "desktop-other-exact-friend-open.png.zorder.json",
+      "sha256": "cbd82cabe543c53cfe40bbdbaa11d604f63f1d5f33ca05a79f3c23817353d66b"
+    },
+    {
+      "file": "desktop-other-friends.png",
+      "sha256": "229a3752f972da63bbe5606b09d44ceaa67095d61acd3468482a46996399a517"
+    },
+    {
+      "file": "desktop-other-friends.png.json",
+      "sha256": "143c33d3955e06dbcf37aaca80df1162ed2bacefa2d27dd309f0155093b3ff5c"
+    },
+    {
+      "file": "desktop-other-friends.png.zorder.json",
+      "sha256": "231a9784336deffc04bd1404ebd2e693ab663133495bd129f1bcb752c2c6a36e"
+    },
+    {
+      "file": "desktop-other-login.png",
+      "sha256": "ba1c570d1d757c9ecfdd7639f11f0f2167d6f5267b94417a750c11238dc0a9dd"
+    },
+    {
+      "file": "desktop-other-login.png.json",
+      "sha256": "28f1fb5c137763a197d510ea4f1fb48ddebd3e25a649f373c2163b344beaf087"
+    },
+    {
+      "file": "desktop-other-login.png.zorder.json",
+      "sha256": "427d13398ce6b6a9299f0811787e615a802713b8213bb95414f30e39d3d68368"
+    },
+    {
+      "file": "desktop-other-password.png",
+      "sha256": "a36e7a3f3f170bfa4ceedbf2b3acdf9413ef84fdc5cbf2a7274d98d42db2ea6c"
+    },
+    {
+      "file": "desktop-other-password.png.json",
+      "sha256": "877dd29e8208c4d704db17be91ac8396f1b34b568cdc3ac89353bf6c9c8f72fd"
+    },
+    {
+      "file": "desktop-other-password.png.zorder.json",
+      "sha256": "e21de14a20151b8ad0e5b522be0eec88ef4c622285490ee856a57a26bf195f0d"
+    },
+    {
+      "file": "desktop-other-signout.png",
+      "sha256": "24c4aadc9ffb2863ccc7111ac3f2e79ac4b7a04fa55cadaeeb4cb33b7c53ce57"
+    },
+    {
+      "file": "desktop-other-signout.png.json",
+      "sha256": "eb71207052fff094bb9f486ba3db23c314d9107af26c8c345bedc834ec3f8873"
+    },
+    {
+      "file": "desktop-other-signout.png.zorder.json",
+      "sha256": "86531a0ee8fbb745291aeb307cd001028258fe065c61b64977d7343c79fcba5f"
+    },
+    {
+      "file": "desktop-other-sync-idle.png",
+      "sha256": "1dd16220019802562d39d864f29fb8759565dfc03e128cb89b4aa051737ee676"
+    },
+    {
+      "file": "desktop-other-sync-idle.png.json",
+      "sha256": "498ca34597b5ed136809313b91c4dcfea172aa7afd844483b9e7b7cae61d10c9"
+    },
+    {
+      "file": "desktop-other-sync-idle.png.zorder.json",
+      "sha256": "bd467df9bb02b804ea4ac7332d4ca8bb902dbb61d56dad028211662846b22864"
+    },
+    {
+      "file": "desktop-other-username.png",
+      "sha256": "101b25b4c2f19b76b0e9587db37ff8558e2f0ec60d4b287b4a4457570a6e2743"
+    },
+    {
+      "file": "desktop-other-username.png.json",
+      "sha256": "cc8d58da04b1cd1fb8059c2ec238e4dc507978bb99ef4e3c5d81f5a3dc59ddf7"
+    },
+    {
+      "file": "desktop-other-username.png.zorder.json",
+      "sha256": "3c192fc27ba038d52577ab772188af18d38b4b4738aa9810e8f3220563d1668d"
+    },
+    {
+      "file": "desktop-reconnect-chat-header.png",
+      "sha256": "5e4103172731d6638398b5f06bdf965a4cf277fe449f483492fe17e90b4e559a"
+    },
+    {
+      "file": "desktop-reconnect-chat-header.png.json",
+      "sha256": "533b795bcb9f04fe17c3b9cd4bbf2af8a1c043b943f6789f9e5637ed68f2d1ee"
+    },
+    {
+      "file": "desktop-reconnect-chat-header.png.zorder.json",
+      "sha256": "c53dd88823a2bc631ff69586c9d1554dd1b668cc386fefb431d0d3892098ceb9"
+    },
+    {
+      "file": "desktop-reconnect-settings.png",
+      "sha256": "537684316981244909f1bb511d301f6a8ef4a6db92bda0a336bdfa6090b619e3"
+    },
+    {
+      "file": "desktop-reconnect-settings.png.json",
+      "sha256": "619e8f705a1dd7089379c5876626b908f1cc56b2c8202c5a5aa14de2048f1aaf"
+    },
+    {
+      "file": "desktop-reconnect-settings.png.zorder.json",
+      "sha256": "3c3fc7bc51f4dd0f7f6da03ee5204a14c7af3ca78e538c9640f006c36cf57cbe"
+    },
+    {
+      "file": "desktop-reconnect.png",
+      "sha256": "81caa361b6df205731845830cdc439d07f41c0a1bfd17ad6cfab2fa292556e43"
+    },
+    {
+      "file": "desktop-reconnect.png.json",
+      "sha256": "31615719d327eddc055ddc7cbbca0e933914a4806fa3db9f8da3cf197c7d06d1"
+    },
+    {
+      "file": "desktop-reconnect.png.zorder.json",
+      "sha256": "d55ec2c690c4ae415289ef15577c1a3074fefb169be39844bbcd7ba4836e4083"
+    },
+    {
+      "file": "desktop-reconnected-actual-connected.png",
+      "sha256": "5cdc8c94ff867d6bcebc67a34ad3fe89be6fd0d9969f83ff63a0f55149ffe139"
+    },
+    {
+      "file": "desktop-reconnected-actual-connected.png.json",
+      "sha256": "1b4c157997d5cc59be3198e32091eb16af54f1dcb52a726f062d0ccdfa069a44"
+    },
+    {
+      "file": "desktop-reconnected-actual-connected.png.zorder.json",
+      "sha256": "21ba60af8608dc14518941e0e06f0c07b461fd8b00e9f554880fa8b307396f76"
+    },
+    {
+      "file": "desktop-reconnected-exact-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png",
+      "sha256": "57b9bd0b89d0dba608f875d3f6a2366bbc1971b55e535099bbd0218f16451809"
+    },
+    {
+      "file": "desktop-reconnected-exact-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png.json",
+      "sha256": "e44413eec1b0b15e5dc986efccb640f9fcada2767d00fa0a368f22e3714ff5aa"
+    },
+    {
+      "file": "desktop-reconnected-exact-45635cbc-bd90-4d32-98d0-e987e7385168-visible.png.zorder.json",
+      "sha256": "edaea6e3a99f8cb748c21cce43447a17e811622a4ece5b6f722912712750c5cf"
+    },
+    {
+      "file": "desktop-reconnected-exact-45635cbc-bd90-4d32-98d0-e987e7385168.png",
+      "sha256": "fe0c803235f3b01018f3fa3e9764f1359c149054702cba19284f965a98220954"
+    },
+    {
+      "file": "desktop-reconnected-exact-45635cbc-bd90-4d32-98d0-e987e7385168.png.json",
+      "sha256": "63feca0a0cfb4aede5c7debcc3b0cd72582b89b5647ddd4fd77b267c7023907a"
+    },
+    {
+      "file": "desktop-reconnected-exact-45635cbc-bd90-4d32-98d0-e987e7385168.png.zorder.json",
+      "sha256": "6fda9ac58aab1445adb74c2fbf6d48194e9bdc46d06e19ba4f60a054bcd1e0fa"
+    },
+    {
+      "file": "desktop-reconnected-exact-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png",
+      "sha256": "5749c62f797e557eca8d9f77050da8339d8ed30d22ca9cfbdbbb8a344e9e3b46"
+    },
+    {
+      "file": "desktop-reconnected-exact-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png.json",
+      "sha256": "15b7c2a1c31f0a3503be983507be156484d7a1a691faac4ba587a8559a53f55f"
+    },
+    {
+      "file": "desktop-reconnected-exact-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-visible.png.zorder.json",
+      "sha256": "43cbabae606788ad35d082f1caa10f254bea59bd1792373f8238534af4b3fe6e"
+    },
+    {
+      "file": "desktop-reconnected-exact-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png",
+      "sha256": "57b9bd0b89d0dba608f875d3f6a2366bbc1971b55e535099bbd0218f16451809"
+    },
+    {
+      "file": "desktop-reconnected-exact-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.json",
+      "sha256": "c5fb6d651b95e82452b58a3b24652ebcf1eb86bfa5c81b07739d3b4fc5684a92"
+    },
+    {
+      "file": "desktop-reconnected-exact-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.zorder.json",
+      "sha256": "c38eae096282393e775f836c7fae8e176719eace8fbfadddadb2a15306f622fd"
+    },
+    {
+      "file": "desktop-reconnected-exact-9300cd64-863a-465d-b70e-9da841ee019a-visible.png",
+      "sha256": "218eaf99aeb8556d6c1de64fecab93251b801ec21a61e3ef438dfc863b3ab9a0"
+    },
+    {
+      "file": "desktop-reconnected-exact-9300cd64-863a-465d-b70e-9da841ee019a-visible.png.json",
+      "sha256": "d58d1ee6cb65b2a0434b825b1ab6593ddc0679b17e0de381037b886e464123b7"
+    },
+    {
+      "file": "desktop-reconnected-exact-9300cd64-863a-465d-b70e-9da841ee019a-visible.png.zorder.json",
+      "sha256": "d729d4ec385d2c7fa45e1e777a60a57670d78624f107e743bcd0a9f80b265466"
+    },
+    {
+      "file": "desktop-reconnected-exact-9300cd64-863a-465d-b70e-9da841ee019a.png",
+      "sha256": "5749c62f797e557eca8d9f77050da8339d8ed30d22ca9cfbdbbb8a344e9e3b46"
+    },
+    {
+      "file": "desktop-reconnected-exact-9300cd64-863a-465d-b70e-9da841ee019a.png.json",
+      "sha256": "0eb883b89a5e40bbb712f30995657ee883d3a16281aa5ab433ed6cd3efc49e07"
+    },
+    {
+      "file": "desktop-reconnected-exact-9300cd64-863a-465d-b70e-9da841ee019a.png.zorder.json",
+      "sha256": "89a68bb7e488a130f551e71b557f6f843b2028f2b82aed76cdc578393d31001e"
+    },
+    {
+      "file": "desktop-reconnected-exact-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png",
+      "sha256": "c7a9945278d3e6570acb1a64218a67efcf45d8d11d66091b5c19761589ac12e1"
+    },
+    {
+      "file": "desktop-reconnected-exact-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png.json",
+      "sha256": "81919c30014bc8b436a63d95b6b43e6e1d094688549a8c45cac174e117d336c5"
+    },
+    {
+      "file": "desktop-reconnected-exact-de0bce2a-e7a6-4de9-8935-815d6adffe18-visible.png.zorder.json",
+      "sha256": "eab13e426836b243f593c391f93a045011575517a28b5b8b81c683625653823d"
+    },
+    {
+      "file": "desktop-reconnected-exact-de0bce2a-e7a6-4de9-8935-815d6adffe18.png",
+      "sha256": "f9b44d2fe9b529ee4fb8f21d6ef41a7b9cc07c1d17c1c2c8acad87b816d86c4e"
+    },
+    {
+      "file": "desktop-reconnected-exact-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.json",
+      "sha256": "692b23609441412e0770849339cfaeab76d5887527b0af8654a43840baae5c75"
+    },
+    {
+      "file": "desktop-reconnected-exact-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.zorder.json",
+      "sha256": "83be11e4b109110742ca19d4046e0417611fb6d9d1e1c1a3653deb08d7b2fd02"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-connected.png",
+      "sha256": "e86348ff360f2650f59189012f5b60ecf05b83deda5c9c0e31c2a3e49a056ab9"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-connected.png.json",
+      "sha256": "cab69468134b1d53a9887b910e58a1125c9964b403e8685bf994d6d84ca4cd44"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-connected.png.zorder.json",
+      "sha256": "87c5a2766a2799bb11bec830ab986f682e52c8e732416ed30d60ccd4f575f14c"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-name.png",
+      "sha256": "b60a4d30a5193489eed5f06c812a6777647e9c554c07b29cdac1feb7974b647a"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-name.png.json",
+      "sha256": "3020ea2a8b13f9f36c93045e670fd1895995b3b8e7e4334a22e00b406cf931d4"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-name.png.zorder.json",
+      "sha256": "6ce5adb151b4259f155b976161e4f946a0cf011a876afdf7aa6976339c808e6e"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-open.png",
+      "sha256": "b60a4d30a5193489eed5f06c812a6777647e9c554c07b29cdac1feb7974b647a"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-open.png.json",
+      "sha256": "32e8056d22ffd23b087637c72524fffcd762a148b1b5ae0d40b2ad1b86437860"
+    },
+    {
+      "file": "desktop-reconnected-fourth-private-open.png.zorder.json",
+      "sha256": "335f684e6e1015b82c61f72baa8f00681ebb65f1b99971fbdf7105fa46dcd1ec"
+    },
+    {
+      "file": "desktop-reconnected-fourth-return.png",
+      "sha256": "3edebd5ffb3197711482d19b07fead83548470fe114577b0ca89d5be43703fd2"
+    },
+    {
+      "file": "desktop-reconnected-fourth-return.png.json",
+      "sha256": "c69d2e653a39333601657232df3395e04b0c3d2c908ad451a47b8cae850fa290"
+    },
+    {
+      "file": "desktop-reconnected-fourth-return.png.zorder.json",
+      "sha256": "d87dda163307d245e70c377343c2a33f49606927002259d3f6ec4ec54595202d"
+    },
+    {
+      "file": "desktop-reconnected-friends.png",
+      "sha256": "f9b44d2fe9b529ee4fb8f21d6ef41a7b9cc07c1d17c1c2c8acad87b816d86c4e"
+    },
+    {
+      "file": "desktop-reconnected-friends.png.json",
+      "sha256": "0ae8ce3ccf9c775a773117cb9f0074a4174794b855787fe97337be6a8271fa7b"
+    },
+    {
+      "file": "desktop-reconnected-friends.png.zorder.json",
+      "sha256": "7621474e0b4c67dfe4726127ae92d78adb03f99a3bf3202d875d8bbe0f12ca18"
+    },
+    {
+      "file": "desktop-search-result.png",
+      "sha256": "8b881745b3d3ece7ad6669be02326b2b98c2132e4e75b2b52457663adc4d47eb"
+    },
+    {
+      "file": "desktop-search-result.png.json",
+      "sha256": "855c4aeef41ed57138919838abebaeebfc54d7df672caf161343e431e593dc26"
+    },
+    {
+      "file": "desktop-search-result.png.zorder.json",
+      "sha256": "47a39e8ecea11049bb6151c83691f51bb9f6d5366ad2c81e1d73ed456e9b8780"
+    },
+    {
+      "file": "desktop-search.png",
+      "sha256": "ead5f6b8a6fd1ffea990d34c8ebbf4e3d21ac91cf2b4ef12e062c0bf6898c41e"
+    },
+    {
+      "file": "desktop-search.png.json",
+      "sha256": "2d53c4801bc9dc35bfe73765c98149857b70d893c172e9c72429c0a572758573"
+    },
+    {
+      "file": "desktop-search.png.zorder.json",
+      "sha256": "3cf854212b24d371c9a5cf583d3a4e3aca4e8953d17513208f68dbf3db4ce941"
+    },
+    {
+      "file": "desktop-startup-before-login.png",
+      "sha256": "be8bb124d8add822a5ca6b4fe09fffeec24b7865913f7fa8286cc30af15f0cc0"
+    },
+    {
+      "file": "desktop-startup-before-login.png.json",
+      "sha256": "13af399e93b2d3c2bc229ea5ef83f5f076d163daf1fe68f878deb6d4ba9939fc"
+    },
+    {
+      "file": "desktop-startup-before-login.png.zorder.json",
+      "sha256": "274d2172be460623055548cc82bc76bd8590027f6bf02180e8f6833dee7e44c8"
+    },
+    {
+      "file": "fourth-mutation-source-identity.json",
+      "sha256": "b8abbc7f90db04d7803e0fc89e5eea8227bd6201bbe788d34da113f28799843f"
+    },
+    {
+      "file": "fourth-server-boundary-after.json",
+      "sha256": "4e9949dcd606a7aa98cd50b9d557d5842ae772f5f5315adae83d6074ea5f7cad"
+    },
+    {
+      "file": "fourth-server-boundary-before.json",
+      "sha256": "82efaf3d64ff2ffd81f76cf8b5b3bfd4207664f1ec93cf48453d78c9814f6b11"
+    },
+    {
+      "file": "initial-sync-complete-event-boundary.json",
+      "sha256": "a727e3479b1868dd2e32bd0a166ef43d1021e93b376a2a9e18023b0812f41617"
+    },
+    {
+      "file": "instrumentation-original.txt",
+      "sha256": "10d8b52523f4dc95e40680f8f0feb7e931200d94f4fe0bff05b023e405f48170"
+    },
+    {
+      "file": "messages-before.json",
+      "sha256": "10570ad22bf18729c09bbda73b0c9a1dd9d230a0ebd990df7a69b284e6d4e407"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-account-switch-isolated.json",
+      "sha256": "1588c721c1d13c85e85cb3c60054df0dbb9869f5f96750cd4eb351f9fa2e0d1d"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-account-switch-isolated.png",
+      "sha256": "7cc38f8d0db3b5b4d9d53e3ad9a40f3c7c732c0f8a75b72e54287ed11cd9cb68"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-empty-search.json",
+      "sha256": "f53ec7ece0839e7a1ea2796b2639a6032a43c96cadb975bff13f76564a110928"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-empty-search.png",
+      "sha256": "38bf2954777f12970fba0ea0e42501723d652469df0635d72118c283b6610f79"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-mobile-added-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-mobile-added-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-DesktopFriend-fadd80072a.json",
+      "sha256": "b52e9991eb1164ea64353d6c64b7f96d6bf5ec04eaad008d9db54b457436e953"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-DesktopFriend-fadd80072a.png",
+      "sha256": "947cec3f3a4b2a9d352cd7b99bcf898e5ef5fb24863b4cef2e17486e228a6348"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-MobileFriend-e6aeb0bd77.json",
+      "sha256": "f53ec7ece0839e7a1ea2796b2639a6032a43c96cadb975bff13f76564a110928"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-MobileFriend-e6aeb0bd77.png",
+      "sha256": "56f5da18574a12dbc1be4f7697dcd7c2a5bf8a74e95c83108e5e48a2658c3f98"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-OfflineFriend-4c8c10c8ef.json",
+      "sha256": "b25c2766523723b9a1d21ab1a6f5f5cb638ecb8cf562afa9c3f11cdc735c7c15"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-OfflineFriend-4c8c10c8ef.png",
+      "sha256": "51c06a8e6e8651fb0b471d9fe482c840567dcb34484889bec2be3e739eb5316e"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-WebFriend-816cb273c5.json",
+      "sha256": "1588c721c1d13c85e85cb3c60054df0dbb9869f5f96750cd4eb351f9fa2e0d1d"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-observed-STATE-WebFriend-816cb273c5.png",
+      "sha256": "310607ca103d96a735dfa2d51653509a8e650bf0322eee63370f8cac8cce9639"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-offline-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-offline-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-offline-retained.json",
+      "sha256": "d783aca857c9ad9aad17192a65137c3352c7bd1606cd2506943e38b4bb108b06"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-offline-retained.png",
+      "sha256": "2c79406a9962a9108cef0671b493a5a761ed152afbff6fe7ee452df41e7cb9cf"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-online-baseline.json",
+      "sha256": "1d4636e7602d15989a30e7844b9db737e31c52da2d67be43a49b2bed143b451d"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-online-baseline.png",
+      "sha256": "8b38b70fe8f8757901c0b621f73c84f61401cd74f0da4ec298c9d2c4a8049772"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-online-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-online-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-original-account-restored.json",
+      "sha256": "b3cbced0f0a97c257c0edfd5e57f01d7ceb383662b6625a77d94133a22b3ede4"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-original-account-restored.png",
+      "sha256": "4c84d192c746b658ab5a514debd30858c290acb2df1a935c4d508c0b81db7bb8"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-recovered-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-recovered-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-web-observed-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-38537ac2-146c-44b9-a8c3-f1ec96fa0747\\friends-web-observed-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-account-switch-isolated.json",
+      "sha256": "1588c721c1d13c85e85cb3c60054df0dbb9869f5f96750cd4eb351f9fa2e0d1d"
+    },
+    {
+      "file": "native-originals\\friends-account-switch-isolated.png",
+      "sha256": "7cc38f8d0db3b5b4d9d53e3ad9a40f3c7c732c0f8a75b72e54287ed11cd9cb68"
+    },
+    {
+      "file": "native-originals\\friends-empty-search.json",
+      "sha256": "f53ec7ece0839e7a1ea2796b2639a6032a43c96cadb975bff13f76564a110928"
+    },
+    {
+      "file": "native-originals\\friends-empty-search.png",
+      "sha256": "38bf2954777f12970fba0ea0e42501723d652469df0635d72118c283b6610f79"
+    },
+    {
+      "file": "native-originals\\friends-mobile-added-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-mobile-added-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-DesktopFriend-fadd80072a.json",
+      "sha256": "b52e9991eb1164ea64353d6c64b7f96d6bf5ec04eaad008d9db54b457436e953"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-DesktopFriend-fadd80072a.png",
+      "sha256": "947cec3f3a4b2a9d352cd7b99bcf898e5ef5fb24863b4cef2e17486e228a6348"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-MobileFriend-e6aeb0bd77.json",
+      "sha256": "f53ec7ece0839e7a1ea2796b2639a6032a43c96cadb975bff13f76564a110928"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-MobileFriend-e6aeb0bd77.png",
+      "sha256": "56f5da18574a12dbc1be4f7697dcd7c2a5bf8a74e95c83108e5e48a2658c3f98"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-OfflineFriend-4c8c10c8ef.json",
+      "sha256": "b25c2766523723b9a1d21ab1a6f5f5cb638ecb8cf562afa9c3f11cdc735c7c15"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-OfflineFriend-4c8c10c8ef.png",
+      "sha256": "51c06a8e6e8651fb0b471d9fe482c840567dcb34484889bec2be3e739eb5316e"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-WebFriend-816cb273c5.json",
+      "sha256": "1588c721c1d13c85e85cb3c60054df0dbb9869f5f96750cd4eb351f9fa2e0d1d"
+    },
+    {
+      "file": "native-originals\\friends-observed-STATE-WebFriend-816cb273c5.png",
+      "sha256": "310607ca103d96a735dfa2d51653509a8e650bf0322eee63370f8cac8cce9639"
+    },
+    {
+      "file": "native-originals\\friends-offline-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-offline-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-offline-retained.json",
+      "sha256": "d783aca857c9ad9aad17192a65137c3352c7bd1606cd2506943e38b4bb108b06"
+    },
+    {
+      "file": "native-originals\\friends-offline-retained.png",
+      "sha256": "2c79406a9962a9108cef0671b493a5a761ed152afbff6fe7ee452df41e7cb9cf"
+    },
+    {
+      "file": "native-originals\\friends-online-baseline.json",
+      "sha256": "1d4636e7602d15989a30e7844b9db737e31c52da2d67be43a49b2bed143b451d"
+    },
+    {
+      "file": "native-originals\\friends-online-baseline.png",
+      "sha256": "8b38b70fe8f8757901c0b621f73c84f61401cd74f0da4ec298c9d2c4a8049772"
+    },
+    {
+      "file": "native-originals\\friends-online-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-online-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-original-account-restored.json",
+      "sha256": "b3cbced0f0a97c257c0edfd5e57f01d7ceb383662b6625a77d94133a22b3ede4"
+    },
+    {
+      "file": "native-originals\\friends-original-account-restored.png",
+      "sha256": "4c84d192c746b658ab5a514debd30858c290acb2df1a935c4d508c0b81db7bb8"
+    },
+    {
+      "file": "native-originals\\friends-recovered-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-recovered-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "native-originals\\friends-web-observed-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\friends-web-observed-ready",
+      "sha256": "8570068c365a607ecc06044f14f6b4773ba0f7e53895d3b6c000cb75b370437c"
+    },
+    {
+      "file": "owned-accessibility-original.json",
+      "sha256": "936a7e74420eae3938d4726f65c0c04efa29f5d3e1f7cbdc642b1788771217cf"
+    },
+    {
+      "file": "proofs.json",
+      "sha256": "33499e274dcbee253b65273f34dc8d1624ec333398b34c0cd8afec69cca91aec"
+    },
+    {
+      "file": "source-install-binding-after.json",
+      "sha256": "421a8f64dc8736bb294147bca1c72d9d6c37127978a6780fa4781c4081b9458a"
+    },
+    {
+      "file": "source-install-binding-before.json",
+      "sha256": "7dbd4e6ab263ae7ade6868e7cdbd25810b26273f65b0b09604e9d7c3d0b1bd69"
+    },
+    {
+      "file": "web-disconnected-retained.png",
+      "sha256": "428dcc916716010d1c960a2739756d1e4c28ad0b2d98818e42cdc396f02dfb9a"
+    },
+    {
+      "file": "web-fourth-target-source-adds-owner-before-guard.png",
+      "sha256": "2a793b2f49daffdc88497a737f7ef97558587d17f55bea30a350f4b8cb1c6390"
+    },
+    {
+      "file": "web-fourth-target-source-adds-owner.png",
+      "sha256": "b15864a6a725f360d6cb3a7b350ab5ffc0bc329d32f3c2adc324bea6bb7b529c"
+    },
+    {
+      "file": "web-fourth-target-source-adds-owner.png.json",
+      "sha256": "4e7de606c5dd8133fd614a5322f285e7388521752d60094f1ce310e45a0a7b1b"
+    },
+    {
+      "file": "web-observes-desktop-before-guard.png",
+      "sha256": "79c9325bdc84803a11aa4d331d9255e5af78c0a1af89eb1a8c473499f723031e"
+    },
+    {
+      "file": "web-observes-desktop.png",
+      "sha256": "e997f1bcdb0ea0fd40613aac96ebd3bfc66aca0f8a5025b6d310597811c497d6"
+    },
+    {
+      "file": "web-observes-desktop.png.json",
+      "sha256": "be2a64aa79248767e986fc063bdca47144783f01d448552243930705ee5e5663"
+    },
+    {
+      "file": "web-observes-mobile-before-guard.png",
+      "sha256": "848f6f43af59f52c8a9e00096e3f2bd58bcc627e6cb8ff73d92cb27d41b45205"
+    },
+    {
+      "file": "web-observes-mobile.png",
+      "sha256": "2598310055f32efd523f2a1ddbce5acefef900160cfafde7ee2fa97040a73ac6"
+    },
+    {
+      "file": "web-observes-mobile.png.json",
+      "sha256": "0e1a332167133b985983df501bffbe4abc2d044c968f4e24ce43ccf8c219ded4"
+    },
+    {
+      "file": "web-origin-before-guard.png",
+      "sha256": "cd02798670d7023ec88ca6070c38ca30010b72c81b53944f3ff59d620e500594"
+    },
+    {
+      "file": "web-origin.png",
+      "sha256": "7b5e627e5ee87e41ba8246f069adbf3ac5329f9622e3c028b8435a71d95ce009"
+    },
+    {
+      "file": "web-origin.png.json",
+      "sha256": "04eb1f3b04b3964d707a3e50298e46f2fdb58c77d208b390f7fad81fe61efb49"
+    },
+    {
+      "file": "web-original-account-restored-45635cbc-bd90-4d32-98d0-e987e7385168-before-guard.png",
+      "sha256": "b8328acb55515082d33adbbe2e9eab0cbd2320ba14ac05944be56047bcab10df"
+    },
+    {
+      "file": "web-original-account-restored-45635cbc-bd90-4d32-98d0-e987e7385168.png",
+      "sha256": "b8328acb55515082d33adbbe2e9eab0cbd2320ba14ac05944be56047bcab10df"
+    },
+    {
+      "file": "web-original-account-restored-45635cbc-bd90-4d32-98d0-e987e7385168.png.json",
+      "sha256": "78e8c3c7fc9095ceb7c5e9182a716e80364b332c312ca5613929e6308dc361d7"
+    },
+    {
+      "file": "web-original-account-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-before-guard.png",
+      "sha256": "c439f8f9f82516166e3bbddeeea44ad686ab03319c71c450a120377919c4a8c6"
+    },
+    {
+      "file": "web-original-account-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png",
+      "sha256": "c439f8f9f82516166e3bbddeeea44ad686ab03319c71c450a120377919c4a8c6"
+    },
+    {
+      "file": "web-original-account-restored-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.json",
+      "sha256": "284a2cfc5f36ba567b7a144ed616aa9fd9fe8c1168857fb71fc755005c863b53"
+    },
+    {
+      "file": "web-original-account-restored-9300cd64-863a-465d-b70e-9da841ee019a-before-guard.png",
+      "sha256": "c439f8f9f82516166e3bbddeeea44ad686ab03319c71c450a120377919c4a8c6"
+    },
+    {
+      "file": "web-original-account-restored-9300cd64-863a-465d-b70e-9da841ee019a.png",
+      "sha256": "c439f8f9f82516166e3bbddeeea44ad686ab03319c71c450a120377919c4a8c6"
+    },
+    {
+      "file": "web-original-account-restored-9300cd64-863a-465d-b70e-9da841ee019a.png.json",
+      "sha256": "3460b89b07884a3c04d61c5ca7f9aeef86830ad033df32f2b01096ef4fb24c38"
+    },
+    {
+      "file": "web-original-account-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18-before-guard.png",
+      "sha256": "c439f8f9f82516166e3bbddeeea44ad686ab03319c71c450a120377919c4a8c6"
+    },
+    {
+      "file": "web-original-account-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18.png",
+      "sha256": "c439f8f9f82516166e3bbddeeea44ad686ab03319c71c450a120377919c4a8c6"
+    },
+    {
+      "file": "web-original-account-restored-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.json",
+      "sha256": "3bd6fe6120da1c4f90f7fdd3a5bdfdd1f31bf73bda0fb03c3b536d4915b9a6d6"
+    },
+    {
+      "file": "web-other-account-isolated.png",
+      "sha256": "a206c97d2d1bb7a158605f61afef5a53213e8e212fbfe1a193bd7d786b0ab3e5"
+    },
+    {
+      "file": "web-reconnected-45635cbc-bd90-4d32-98d0-e987e7385168-before-guard.png",
+      "sha256": "67636f7f81ab0e7d090669b6ae12f33dea59f3a0ff4fe5fd3934f54671da2404"
+    },
+    {
+      "file": "web-reconnected-45635cbc-bd90-4d32-98d0-e987e7385168.png",
+      "sha256": "67636f7f81ab0e7d090669b6ae12f33dea59f3a0ff4fe5fd3934f54671da2404"
+    },
+    {
+      "file": "web-reconnected-45635cbc-bd90-4d32-98d0-e987e7385168.png.json",
+      "sha256": "da5ddf9574277ea94d4d3ba8ac1219c711bded165f9d4a19d12075da3bd7cafe"
+    },
+    {
+      "file": "web-reconnected-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7-before-guard.png",
+      "sha256": "67636f7f81ab0e7d090669b6ae12f33dea59f3a0ff4fe5fd3934f54671da2404"
+    },
+    {
+      "file": "web-reconnected-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png",
+      "sha256": "67636f7f81ab0e7d090669b6ae12f33dea59f3a0ff4fe5fd3934f54671da2404"
+    },
+    {
+      "file": "web-reconnected-85ff003e-5db1-48b7-8c2a-4b5c2594a1c7.png.json",
+      "sha256": "8d6e99cf6204f4dd4cc2094f74f8bf282fae293b7f79025762aabc15dc58b949"
+    },
+    {
+      "file": "web-reconnected-9300cd64-863a-465d-b70e-9da841ee019a-before-guard.png",
+      "sha256": "48d0cb8a1dd7462d31f16485aa8ba947b0267988397f66f56030731ec9684e68"
+    },
+    {
+      "file": "web-reconnected-9300cd64-863a-465d-b70e-9da841ee019a.png",
+      "sha256": "8c999ba6ddeaf55adb96d724d909f08b90f2ca851e4821468925a82ceacabdf4"
+    },
+    {
+      "file": "web-reconnected-9300cd64-863a-465d-b70e-9da841ee019a.png.json",
+      "sha256": "9990f60aac420175061b1c59b5f11c5be4b61160af1d1601a2f86d99dccd8487"
+    },
+    {
+      "file": "web-reconnected-de0bce2a-e7a6-4de9-8935-815d6adffe18-before-guard.png",
+      "sha256": "0595b53b4c4ff444316b304d9fc83a2a7c8a05c010ba41343efb2e7a5a161120"
+    },
+    {
+      "file": "web-reconnected-de0bce2a-e7a6-4de9-8935-815d6adffe18.png",
+      "sha256": "033e5f8b7fc2aea565ba06035be4931ab417e20e27272b77abb160784cf32587"
+    },
+    {
+      "file": "web-reconnected-de0bce2a-e7a6-4de9-8935-815d6adffe18.png.json",
+      "sha256": "2a9397c666cffb6fcc0757b326b6ac9bb9dbda63f0f06b7f03dc85eed20a74dc"
+    }
+  ]
+}

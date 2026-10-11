@@ -1,0 +1,47 @@
+{
+  "actualUTC": "2026-10-11T09:41:23.493016+00:00",
+  "directory": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd",
+  "serial": "emulator-5592",
+  "image": "system-images;android-34;google_apis;x86_64",
+  "createCommand": [
+    "H:/Android/cmdline-tools/latest/bin/avdmanager.bat",
+    "create",
+    "avd",
+    "--name",
+    "IMUIRefBaseline34",
+    "--package",
+    "system-images;android-34;google_apis;x86_64",
+    "--path",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd\\avds\\IMUIRefBaseline34.avd"
+  ],
+  "launchCommand": [
+    "H:/Android/emulator/emulator.exe",
+    "-avd",
+    "IMUIRefBaseline34",
+    "-port",
+    "5592",
+    "-no-window",
+    "-no-snapshot",
+    "-no-audio",
+    "-no-boot-anim",
+    "-gpu",
+    "swiftshader_indirect",
+    "-memory",
+    "1536",
+    "-partition-size",
+    "2047"
+  ],
+  "launcherPID": 37048,
+  "originalDevices": "List of devices attached\nemulator-5590\tdevice\n\n",
+  "method": "Factory SDK image; independent new owned userdata; no original AVD copy/reset or root/SELinux/system trust changes",
+  "environment": {
+    "JAVA_HOME": "H:/.jdks/jdk17",
+    "ANDROID_HOME": "H:/Android",
+    "ANDROID_USER_HOME": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd\\android-user",
+    "ANDROID_AVD_HOME": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd\\avds"
+  },
+  "attempt": "44e88bb5c51d4cd39685881c079e168a",
+  "resumeOwnedFactory": true,
+  "userdataPartitionMegabytes": 2047,
+  "priorFailureQualification": "Default userdata required7372MB but only6175MB available; emulator rejects2048 above its2047MB CLI limit; both original logs retained"
+}
