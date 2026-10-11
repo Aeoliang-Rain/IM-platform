@@ -1,6 +1,6 @@
 """Four missing real Auth cases; public receipts contain no credentials/tokens."""
 from pathlib import Path
-import subprocess,os,json,hashlib,datetime,uuid,time,re,sys
+import subprocess,os,json,hashlib,datetime,uuid,time,re,sys,ssl,urllib.request
 ROOT=Path(__file__).resolve().parents[3]
 PRIVATE=Path(os.environ['IM_GUI_PRIVATE_RUNTIME']).resolve()
 EVIDENCE=ROOT/'spec/progress/evidence/LOOP1-CLIENT-UI-REF-001'
@@ -20,10 +20,15 @@ def expire(client):
 def seal(out,result,**extra):
  entries=[{'file':str(p.relative_to(out)),'sha256':SHA(p)} for p in sorted(out.rglob('*')) if p.is_file()]
  (out/'manifest.json').write_text(json.dumps({'task':'LOOP1-CLIENT-UI-REF-001','actualUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'result':result,'actualHEAD':HEAD,'productSource':'1bd1a1bf015edd6422bd8bfeeb73bc454b565034','fixture':F,'entries':entries,**extra},indent=2)+'\n',encoding='utf-8')
+def auth_witness():
+ context=ssl.create_default_context(cafile=str(PRIVATE/'tls-ui-ref/ca.pem'))
+ with urllib.request.urlopen('https://localhost:8443/__state/events',context=context,timeout=15) as response:events=json.load(response)
+ return [e for e in events if e['kind']=='actual_auth_response']
 def android():
  run='auth-required-'+uuid.uuid4().hex;out=EVIDENCE/'screens'/('android-'+run);out.mkdir()
  archive=PRIVATE/run;archive.mkdir();binding={};passed=False;child=None
  try:
+  events_before=auth_witness();(out/'auth-http-before.json').write_text(json.dumps(events_before,indent=2)+'\n',encoding='utf-8')
   for pkg in ['im.platform.client','im.platform.client.test']:
    old=subprocess.run([ADB,'-s',SERIAL,'shell','pm','path',pkg],capture_output=True);assert not old.stdout.strip(),'Only empty owned factory device may be installed'
   for pkg,source in [('im.platform.client',Path(sys.argv[2])),('im.platform.client.test',ROOT/'clients/mobile/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk')]:
@@ -48,6 +53,10 @@ def android():
   assert child.returncode==0 and 'INSTRUMENTATION_RESULT: result=PASS' in raw
   for key in ['logoutSecureSlotAbsent','expiredSecureSlotAbsent','actualDefaultSocketTLSHostnamePositive','defaultHostnameMismatch','testTrustRestore']:assert key+'=PASS' in raw
   for pkg,b in binding.items():assert hashlib.sha256(adb('exec-out','cat',b['devicePath'])).hexdigest()==b['sha256']
+  witness=[e for e in auth_witness() if e['event'] not in {e['event'] for e in events_before}];(out/'actual-auth-http-responses.json').write_text(json.dumps(witness,indent=2)+'\n',encoding='utf-8')
+  assert any(e['path']=='/v1/auth/login' and e['status']==401 and e['errorCode']=='AUTH_INVALID_CREDENTIALS' for e in witness)
+  assert any(e['path']=='/v1/auth/logout' and e['status']==204 for e in witness)
+  assert any(e['path']=='/v1/auth/refresh/native' and e['status']==401 and e['errorCode']=='AUTH_REFRESH_REVOKED' for e in witness)
   pid=int(re.search(r'targetProcessId=(\d+)',raw).group(1));passed=True
   print('PASS actual Android wrong-password, completed logout, actual server-expired refresh and credential/session clearing; '+str(out),flush=True)
  finally:
@@ -66,6 +75,7 @@ def desktop():
    time.sleep(.2)
   raise RuntimeError('Actual native UI state absent '+name)
  try:
+  events_before=auth_witness();(out/'auth-http-before.json').write_text(json.dumps(events_before,indent=2)+'\n',encoding='utf-8')
   initial=ui(label='anonymous-before');assert any(x['name']=='Username' and x['type']=='ControlType.Edit' for x in initial)
   ui('fill','Username',F['accounts'][0]['username'],'fixture-username');ui('fill','Password','fixture-password-not-a-real-secret','fixture-password');ui('click','Sign in',label='login')
   wait('Online','logged-in');ui('click','⚙ Settings',label='settings');ui('click','Go offline',label='disconnect');ui(label='session-before-expiry')
@@ -74,6 +84,8 @@ def desktop():
   assert any(x['name']=='Username' and x['type']=='ControlType.Edit' and x['enabled'] for x in nodes)
   assert any(x['name']=='Sign in' and x['type']=='ControlType.Button' and x['enabled'] for x in nodes)
   assert not any(x['name'] in ['Please wait…','⚙ Settings','Session expired; secure credential cleanup failed'] for x in nodes)
+  witness=[e for e in auth_witness() if e['event'] not in {e['event'] for e in events_before}];(out/'actual-auth-http-responses.json').write_text(json.dumps(witness,indent=2)+'\n',encoding='utf-8')
+  assert any(e['path']=='/v1/auth/refresh/native' and e['status']==401 and e['errorCode']=='AUTH_REFRESH_REVOKED' for e in witness)
   passed=True;print('PASS actual installed native default-TLS session-expired classification and anonymous idle UI; '+str(out),flush=True)
  finally:seal(out,'PASS' if passed else 'FAIL',runtimeQualification='Installed current source1bd native reqwest system TLS; actual owned user DESKTOP session expired in Go PostgreSQL; user-operated Refresh through real UI, no mock transport or synthetic ViewModel calls. UI anonymity/idle observed; no claim to directly reading session/credential contents.')
 if __name__=='__main__':
