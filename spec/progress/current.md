@@ -20,6 +20,10 @@ No remaining implementation/resource blocker. Independent final Architect/Review
 
 ## Verification
 
+- Command: `python -Xutf8 -B ci/check_architecture.py --scope all --json`
+  - Result: PASS; final all-source verification complete.
+  - Evidence: `spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/final-local-report.md`
+
 Architecture all, frozen architecture, S2 planning PASS; architecture suite77 tests OK with one POSIX-only skip on Windows. Recovery Development PASS with existing bundled Python/PowerShell7. Full new Web/Windows/Android/Go and native baseline evidence indexed in spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/final-local-report.md. Clean committed Recovery Acceptance next, Recorder raw receipt outside repo.
 
 ## Changed Files or Migrations
@@ -36,11 +40,11 @@ Commit clean task-owned review candidate and run original clean Acceptance with 
 
 ## Last Known Good Commit
 
-ca527ca889e6b88d39ce2f9e8e2ae599aa2d7be5 accepted synchronized STATE main. Product local frozen source1bd1a1bf015edd6422bd8bfeeb73bc454b565034 is not independently accepted UIREF.
+`ca527ca889e6b88d39ce2f9e8e2ae599aa2d7be5` accepted synchronized STATE main. Product local frozen source1bd1a1bf015edd6422bd8bfeeb73bc454b565034 is not independently accepted UIREF.
 
 ## Latest Checkpoint
 
-spec/progress/checkpoints/2026-10-11-loop1-client-ui-ref-001-local-candidate.md
+`spec/progress/checkpoints/2026-10-11-loop1-client-ui-ref-001-local-candidate.md`
 
 ## Uncommitted Changes / Ownership
 
