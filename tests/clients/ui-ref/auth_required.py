@@ -39,8 +39,10 @@ def android():
   beforeReverse=adb('reverse','--list').decode();assert 'tcp:8443' not in beforeReverse
   adb('reverse','tcp:8443','tcp:8443');adb('shell','run-as','im.platform.client','mkdir','-p','files')
   cert='/data/data/im.platform.client/files/ui-ref-ca.der'
-  subprocess.run([ADB,'-s',SERIAL,'shell','run-as','im.platform.client','sh','-c','cat > files/ui-ref-ca.der'],input=(PRIVATE/'tls-ui-ref/ca.der').read_bytes(),check=True,capture_output=True)
+  staging='/data/local/tmp/'+run+'-public-ca.der';adb('push',str(PRIVATE/'tls-ui-ref/ca.der'),staging)
+  adb('shell','run-as','im.platform.client','cp',staging,'files/ui-ref-ca.der')
   assert hashlib.sha256(adb('exec-out','run-as','im.platform.client','cat','files/ui-ref-ca.der')).hexdigest()==SHA(PRIVATE/'tls-ui-ref/ca.der')
+  assert hashlib.sha256(adb('exec-out','cat',staging)).hexdigest()==SHA(PRIVATE/'tls-ui-ref/ca.der');adb('shell','rm',staging)
   log=(out/'instrumentation-original.txt').open('xb')
   args=[ADB,'-s',SERIAL,'shell','am','instrument','-w','-e','uiRefCA',cert,'-e','phase','auth-required','-e','stateRun',run,'-e','avery',F['accounts'][0]['username'],'im.platform.client.test/im.platform.client.ui.GuiAuthenticatedInstrumentation']
   child=subprocess.Popen(args,stdout=log,stderr=subprocess.STDOUT)
