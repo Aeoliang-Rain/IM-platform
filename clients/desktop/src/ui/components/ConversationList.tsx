@@ -1,0 +1,7 @@
+import React from "react";
+import type {WorkspaceState} from "../../application/ui/workspace.js";
+import type {Appearance} from "../../application/ui/native.js";
+import type {Friend} from "../../application/ui/auth.js";
+export function ConversationList({s,page,open,run}:{s:Pick<WorkspaceState,"conversations"|"friends"|"previews"|"selected"|"unavailable">;page:(page:WorkspaceState["page"])=>void;open:(id:string)=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+return <aside className="conversation-list glass"><div className="section-heading"><h2>Messages</h2><button className="quiet" onClick={()=>page("Friends")}>New chat</button></div><p className="muted list-caption">People and spaces that matter.</p>{s.conversations.length===0?<div className="empty"><span>◫</span><h3>Your next conversation starts here</h3><p>Add a friend to open a private chat.</p><button onClick={()=>page("Friends")}>Find a friend</button></div>:s.conversations.map(id=>{const f=s.friends.find(f=>f.directConversationId===id);return <button key={id} className={s.selected===id?"conversation active":"conversation"} onClick={()=>run(open(id))}><span className="avatar">{f?.user.displayName[0]??"#"}</span><div><strong>{f?.user.displayName??"Conversation "+id.slice(0,8)}</strong><small>{s.unavailable.includes(id)?"Access unavailable":s.previews[id]?.text??"No messages yet"}</small></div></button>;})}</aside>;
+}

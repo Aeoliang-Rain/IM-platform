@@ -22,7 +22,7 @@ class WorkspaceViewModel(application:Application):AndroidViewModel(application) 
     private val appearanceWrites=Mutex()
     fun appearance(value:Appearance){publish{it.copy(appearance=value,error=null)};scope.launch{appearanceWrites.withLock{try{withContext(Dispatchers.IO){preferences.saveAppearance(value)}}catch(_:Exception){publish{it.copy(error="Appearance could not be saved")}}}}}
     private suspend fun stop(){generation++;listRevision++;repository=null;friendCursor="";friendRevision++;activity.clear();refreshTimer?.cancel();refreshTimer=null;observers?.cancel();observers=null;val old=sync;sync=null;val offline=offlineRepository;offlineRepository=null;publish{WorkspaceState(appearance=it.appearance,endpoint=it.endpoint,busy=it.busy)};withContext(Dispatchers.IO){old?.dispose();offline?.close()}}
-    private fun fail(e:Exception){val kind=if(e is ApiFailure)e.kind else "Operation unavailable";publish{it.copy(error=kind)};if(kind=="Session expired")expire()}
+    private fun fail(e:Exception){publish{it.copy(error=if(e is ApiFailure)e.message else "Operation unavailable")};if(e is ApiFailure&&e.kind=="session_expired")expire()}
     private suspend fun bind(session:SendSession,op:Long){
         if(op!=operation)return;stop();if(op!=operation)return;val g=generation;val authOwner=auth
         val repo=withContext(Dispatchers.IO){Repository(getApplication(),session.userId).also{it.initialize()}}

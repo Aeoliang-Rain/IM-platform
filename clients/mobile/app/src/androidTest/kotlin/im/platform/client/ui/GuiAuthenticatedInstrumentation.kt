@@ -219,12 +219,14 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
  override fun onCreate(arguments:Bundle?){super.onCreate(arguments);args=arguments?:Bundle();args.getString("stateRun")?.let{require(Regex("[A-Za-z0-9-]{1,80}").matches(it));captureRun=it};start()}
  override fun onStart(){
   val result=Bundle();val prefs=Preferences(targetContext);val appearance=prefs.loadAppearance()
+  var fixtureTrust:UiRefFixtureTrust?=null
   try{
+   args.getString("uiRefCA")?.let{fixtureTrust=UiRefFixtureTrust.install(it)}
    verify(android.os.Build.VERSION.SDK_INT==34)
    val c=URL("https://localhost:8443/__infra/health").openConnection() as HttpsURLConnection
    c.connectTimeout=10000;c.readTimeout=10000;c.instanceFollowRedirects=false
    try{verify(c.responseCode==200);c.inputStream.close()}finally{c.disconnect()}
-   result.putString("defaultSDKHTTPS","PASS")
+   result.putString(if(fixtureTrust==null)"defaultSDKHTTPS"else"explicitTestCAHTTPS","PASS")
    val plain=java.net.Socket();plain.connect(java.net.InetSocketAddress("127.0.0.1",8443),10000)
    val wrong=(javax.net.ssl.SSLSocketFactory.getDefault() as javax.net.ssl.SSLSocketFactory).createSocket(plain,"fixture-hostname-mismatch.invalid",8443,true) as javax.net.ssl.SSLSocket
    try{wrong.soTimeout=10000;val parameters=wrong.sslParameters;parameters.endpointIdentificationAlgorithm="HTTPS";wrong.sslParameters=parameters
@@ -398,7 +400,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    }
    result.putInt("targetProcessId",android.os.Process.myPid());result.putString("result","PASS");result.putInt("assertions",count);result.putString("phase",phase);result.putString("captureRun",captureRun);result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   }catch(e:Throwable){try{capture("failure")}catch(_:Throwable){};result.putString("result","FAIL");result.putString("failure",e.toString());result.putInt("assertions",count);result.putString("captureRun",captureRun)}
-  finally{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}
+  finally{try{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}finally{fixtureTrust?.close()}}
   result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   finish(if(result.getString("result")=="PASS")Activity.RESULT_OK else Activity.RESULT_CANCELED,result)
  }
