@@ -37,9 +37,12 @@ def android():
    binding[pkg]={'archive':str(owned),'sha256':SHA(owned),'deviceArchive':str(actual),'deviceSHA256':SHA(actual),'devicePath':path,'installOriginal':raw}
   assert binding['im.platform.client']['sha256']==os.environ['IM_UIREF_PRODUCT_APK_SHA256']
   beforeReverse=adb('reverse','--list').decode();assert 'tcp:8443' not in beforeReverse
-  adb('reverse','tcp:8443','tcp:8443');adb('shell','mkdir','-p','/sdcard/Android/data/im.platform.client/files');adb('push',str(PRIVATE/'tls-ui-ref/ca.der'),'/sdcard/Android/data/im.platform.client/files/ui-ref-ca.der')
+  adb('reverse','tcp:8443','tcp:8443');adb('shell','run-as','im.platform.client','mkdir','-p','files')
+  cert='/data/data/im.platform.client/files/ui-ref-ca.der'
+  subprocess.run([ADB,'-s',SERIAL,'shell','run-as','im.platform.client','sh','-c','cat > files/ui-ref-ca.der'],input=(PRIVATE/'tls-ui-ref/ca.der').read_bytes(),check=True,capture_output=True)
+  assert hashlib.sha256(adb('exec-out','run-as','im.platform.client','cat','files/ui-ref-ca.der')).hexdigest()==SHA(PRIVATE/'tls-ui-ref/ca.der')
   log=(out/'instrumentation-original.txt').open('xb')
-  args=[ADB,'-s',SERIAL,'shell','am','instrument','-w','-e','uiRefCA','/sdcard/Android/data/im.platform.client/files/ui-ref-ca.der','-e','phase','auth-required','-e','stateRun',run,'-e','avery',F['accounts'][0]['username'],'im.platform.client.test/im.platform.client.ui.GuiAuthenticatedInstrumentation']
+  args=[ADB,'-s',SERIAL,'shell','am','instrument','-w','-e','uiRefCA',cert,'-e','phase','auth-required','-e','stateRun',run,'-e','avery',F['accounts'][0]['username'],'im.platform.client.test/im.platform.client.ui.GuiAuthenticatedInstrumentation']
   child=subprocess.Popen(args,stdout=log,stderr=subprocess.STDOUT)
   marker='/sdcard/Android/data/im.platform.client/files/gui-auth/'+run
   for _ in range(600):
