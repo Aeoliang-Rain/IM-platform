@@ -362,7 +362,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     toggleTheme();verify(actualViewModel().state.value.appearance.theme=="warm");openMorgan();showMessage(sentText);capture("warm-chat-history")
    }else{
     if(phase=="refresh"||prefs.read("https://localhost:8443/current")==null)login(args.getString("avery")!!) else {backKeyboard();reach("Resume saved session");click("Resume saved session");await("Connected")}
-    click("GUI Fixture Morgan");await("GUI Android actual send",true);capture("restart-resume")
+    click("GUI Fixture Morgan");if(phase!="refresh")await("GUI Android actual send",true);capture(if(phase=="refresh")"profile-before-refresh" else "restart-resume")
     if(phase=="refresh"){
      val slot=checkNotNull(prefs.read("https://localhost:8443/current"));val before=prefs.read(slot)
      settingsControl("Refresh session");repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
