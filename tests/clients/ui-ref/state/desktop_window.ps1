@@ -134,13 +134,14 @@ if($Action -eq 'reach-message'){
  if($matching.Count -ne 1){throw 'Unique observed appearance slider required'}
  ([System.Windows.Automation.RangeValuePattern]$matching[0].GetCurrentPattern([System.Windows.Automation.RangeValuePattern]::Pattern)).SetValue([double]$Value)
  Start-Sleep -Milliseconds 700
-}elseif($Action -eq 'wait-sync-idle'){
+}elseif($Action -in @('wait-sync-idle','wait-connected')){
  if($Name -ne 'Connected · Messages sync automatically'){throw 'Formal Sync idle requires the actual Connected chat header'}
+ $needIdle=$Action -eq 'wait-sync-idle'
  $clock=[Diagnostics.Stopwatch]::StartNew();$syncWait=$null
  do{
   $idle=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),'Up to date'))
   $ready=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::NameProperty),$Name))
-  if($idle.Count -eq 1 -and -not $idle[0].Current.IsOffscreen -and $ready.Count -eq 1 -and -not $ready[0].Current.IsOffscreen){$syncWait=@{observedUTC=[DateTime]::UtcNow.ToString('o');elapsedMilliseconds=$clock.ElapsedMilliseconds;syncHeader='Up to date';requiredConnectionHeader=$Name;pollMilliseconds=40};break}
+  if((!$needIdle -or ($idle.Count -eq 1 -and -not $idle[0].Current.IsOffscreen)) -and $ready.Count -eq 1 -and -not $ready[0].Current.IsOffscreen){$syncWait=@{observedUTC=[DateTime]::UtcNow.ToString('o');elapsedMilliseconds=$clock.ElapsedMilliseconds;syncHeaderRequired=$needIdle;requiredConnectionHeader=$Name;pollMilliseconds=40};break}
   Start-Sleep -Milliseconds 40
  }while($clock.ElapsedMilliseconds -lt 30000)
  if(!$syncWait){throw 'Actual visible Sync idle/required connection header not observed within 30s'}
@@ -172,6 +173,7 @@ $result=@{pid=$TargetPid;hwnd=$Hwnd;path=$p.Path;visibleTargets=$visibleTargets;
 
 [IO.File]::WriteAllText($full+'.json',$result,(New-Object Text.UTF8Encoding $false)); ($nodes | Where-Object {$_.name}) | ConvertTo-Json -Depth 4
 if($Action -eq 'wait-sync-idle' -and (!@($nodes|Where-Object {$_.name -eq 'Up to date' -and -not $_.offscreen}).Count -or ($Name -and !@($nodes|Where-Object {$_.name -eq $Name -and -not $_.offscreen}).Count) -or @($nodes|Where-Object name -eq 'Syncing…').Count)){throw 'Captured actual UIA state changed before strict idle/connection sidecar; original preserved'}
+if($Action -eq 'wait-connected' -and @($nodes|Where-Object {$_.name -eq $Name -and -not $_.offscreen}).Count -ne 1){throw 'Captured actual Connected header absent or not unique; original preserved'}
 } finally {
  [void][StateWin]::SetWindowPos([IntPtr]$Hwnd,[IntPtr]($(if($originalTopmost){-1}else{-2})),0,0,0,0,19)
  $restoredTopmost=(([UiRefZ]::GetWindowLong([IntPtr]$Hwnd,-20) -band 8) -ne 0)
