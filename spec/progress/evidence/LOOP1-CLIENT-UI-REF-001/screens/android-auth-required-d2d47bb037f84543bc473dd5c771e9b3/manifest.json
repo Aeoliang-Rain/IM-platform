@@ -1,0 +1,111 @@
+{
+  "task": "LOOP1-CLIENT-UI-REF-001",
+  "actualUTC": "2026-10-11T11:36:47.496846+00:00",
+  "result": "PASS",
+  "actualHEAD": "087a7c76c363d77caf703204c8ffffb5d677c7d2",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-27280",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_b2ff32",
+        "userId": "5198d0ff-d1d8-4b4c-a454-192fdb2b066b",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_024119",
+        "userId": "3b2bd793-65da-4a1c-af6a-93303ce18437",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_2ff82a",
+        "userId": "9a42256f-3805-4a48-91e0-2e3cc3f8149c",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "8f0a04aa-ddff-4e60-aedf-264e7467913b",
+    "privateRuntime": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\go-27280",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "entries": [
+    {
+      "file": "actual-auth-http-responses.json",
+      "sha256": "0a91723d9642a34c0850a82d24281d6949cf1a6d63e1d8c2c02a51f5a38ab383"
+    },
+    {
+      "file": "actual-server-expiry.json",
+      "sha256": "a3c315587e4ce800867170f4b62bdf26a9ec28ad8bf1dde70fd05eefd8367a71"
+    },
+    {
+      "file": "auth-http-before.json",
+      "sha256": "a226a84014ac606ef7c326f9a44d82c7d42da5f3eb0b20a8a505e8df809a595d"
+    },
+    {
+      "file": "instrumentation-original.txt",
+      "sha256": "f1bd57aee68ff01dcda4f54ee89881d85ddbc9f3c9818c4411d93e02b13236d5"
+    },
+    {
+      "file": "native-originals\\actual-invalid-password-idle.json",
+      "sha256": "fb71dbc16fa7045da020745aa3be2884e29abc5a25539fba5f6b6fea3b6013f1"
+    },
+    {
+      "file": "native-originals\\actual-invalid-password-idle.png",
+      "sha256": "af10a8ce829e7d45fbe01aa2ad6b283a5aaaa86aa3df73a36a25b845df9199d2"
+    },
+    {
+      "file": "native-originals\\actual-logout-completed-idle.json",
+      "sha256": "70576e3974fe1c35f4cf543195b5354e3dde39c5e94ebd4239fe217a49282fc0"
+    },
+    {
+      "file": "native-originals\\actual-logout-completed-idle.png",
+      "sha256": "ba627b7b1152164a8871a2589260e20869a1cc7727ea799570c7508b7c624e0f"
+    },
+    {
+      "file": "native-originals\\actual-session-before-expiry.json",
+      "sha256": "20c88e000cdb49b94bbfc0af66aca052e772593c116e047d2854951345e7ea81"
+    },
+    {
+      "file": "native-originals\\actual-session-before-expiry.png",
+      "sha256": "db78d26c9854f6e54c05045795697584b0985f27c19d387820159c1463659cfd"
+    },
+    {
+      "file": "native-originals\\actual-session-expired-cleared-idle.json",
+      "sha256": "1968f809f6a7db03edfa20fdcd736e98efc3a565d50992bf340897dd1ae1e28d"
+    },
+    {
+      "file": "native-originals\\actual-session-expired-cleared-idle.png",
+      "sha256": "6743e4f3ce85739a580f19b3f6371510a857ec3e791214081689495a2b193ce3"
+    },
+    {
+      "file": "native-originals\\expiry-continue",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-originals\\expiry-ready",
+      "sha256": "6d88ed8694b73b9ed602b2a57b7cfa79ec2066d528d1a9198690ce8e2d9591c4"
+    }
+  ],
+  "serial": "emulator-5592",
+  "androidBinding": {
+    "im.platform.client": {
+      "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\auth-required-d2d47bb037f84543bc473dd5c771e9b3\\im.platform.client.apk",
+      "sha256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92",
+      "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\auth-required-d2d47bb037f84543bc473dd5c771e9b3\\im.platform.client-device.apk",
+      "deviceSHA256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92",
+      "devicePath": "/data/app/~~m8TOQ11Cf_xj9v09cFfiRg==/im.platform.client-8dpih1ARCPb-VAXHqOjXGQ==/base.apk",
+      "installOriginal": "Performing Streamed Install\r\nSuccess\r\n"
+    },
+    "im.platform.client.test": {
+      "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\auth-required-d2d47bb037f84543bc473dd5c771e9b3\\im.platform.client.test.apk",
+      "sha256": "98a6838d77226a19c0b0b73faddab5f3cef3c8e8c6da9ee06557fb3fb3889456",
+      "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\auth-required-d2d47bb037f84543bc473dd5c771e9b3\\im.platform.client.test-device.apk",
+      "deviceSHA256": "98a6838d77226a19c0b0b73faddab5f3cef3c8e8c6da9ee06557fb3fb3889456",
+      "devicePath": "/data/app/~~2daLQLmziOMRbx_bGgVHGg==/im.platform.client.test-OHVVhT7pHC5FzyxZ8YuJ0g==/base.apk",
+      "installOriginal": "Performing Streamed Install\r\nSuccess\r\n"
+    }
+  },
+  "positivePID": 6272,
+  "TLSQualification": "Pinned test-process context/socket factory only; native HttpsURLConnection/default hostname verification; original provider/context/factory restored by runner finally. No system roots modified."
+}

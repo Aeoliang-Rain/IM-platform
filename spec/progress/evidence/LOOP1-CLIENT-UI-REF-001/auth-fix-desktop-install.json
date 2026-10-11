@@ -1,0 +1,29 @@
+{
+  "actualUTC": "2026-10-11T11:19:36.921321+00:00",
+  "actualHEAD": "d780e52578d8b80d8f8e95f3fe48edea6d3a3d60",
+  "privateOwnedBackup": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\desktop-install",
+  "result": "PASS",
+  "dataQualification": "Only exact three owned install files and owned appearance preference; no database/userdata or credentials read/copied/deleted",
+  "originalFiles": [
+    {
+      "name": "im-client-storage.exe",
+      "sha256": "18F8B5BB6F8A8C1A6EC8777421A5440C60FABF03A4F8DEA0F24DEB48ED870503"
+    },
+    {
+      "name": "storage_probe.exe",
+      "sha256": "BD39F3B1F260A9D951388CB4441CC54F906830107FFAEBC5E2561734F76F3DBF"
+    },
+    {
+      "name": "uninstall.exe",
+      "sha256": "37A8C2FA503F6831CB5939A63E707CFC7D83B01BB7DA17BEBAF2A78D2CA979FE"
+    }
+  ],
+  "candidateFiles": {
+    "im-client-storage.exe": "9792fe15f4126ad7f46cad6aaaddd96a0eecf17083ad8702d79a13626e1d7767",
+    "storage_probe.exe": "781bf73079a107356c2c73e3e58481df7325f826aacd7c7709de7df352b6ea1b",
+    "uninstall.exe": "37a8c2fa503f6831cb5939a63e707cfc7d83b01bb7da17bebaf2a78d2ca979fe"
+  },
+  "originalAppearanceSHA256": "ee5143f3aa1e23f978e0e1fd0614a4fea98c6bab3e260fd385081d80a446ddf0",
+  "installedCurrentSource1bd": true,
+  "identityQualification": "Exact archive of previously source1bd NSIS-installed identity and3files, matching accepted-base compare manifest candidateFiles. No installer rebuilt or fake new installation claim."
+}

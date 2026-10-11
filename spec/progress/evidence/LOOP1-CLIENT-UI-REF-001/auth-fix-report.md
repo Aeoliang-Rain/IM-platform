@@ -1,0 +1,24 @@
+# Bounded actual Auth fix
+
+Fresh Review and Architect rejected clean f91508db29a40b66574cb41f611015b677836467. Product source1bd1a1bf015edd6422bd8bfeeb73bc454b565034 remains unchanged. Sole Fix Agent /root/ui_ref_auth_fix changed only tests/evidence/recovery metadata; no self acceptance, hosted CI, integration or Task completion is claimed.
+
+| Required case | Original evidence | Actual local outcome |
+| --- | --- | --- |
+| Mobile wrong password | screens/android-auth-required-d2d47bb037f84543bc473dd5c771e9b3/manifest.json | Real Go401 AUTH_INVALID_CREDENTIALS; actual idle wrong-password PNG; session absent |
+| Mobile expiry/session+credentials clearing | Same original manifest, actual-server-expiry.json/actual-auth-http-responses.json/native-originals | Only controlled MOBILE session expires_at updated; native Refresh401 AUTH_SESSION_REVOKED; busyfalse anonymous/current+former secure slots absent and actual terminal PNG |
+| Mobile completed logout | Same original manifest/native-originals/actual-logout-completed-idle.png | Actual logout204; busyfalse anonymous/current+former slots absent; 34 combined assertions |
+| Current installed Windows native expiry | screens/desktop-auth-required-297845cf66bf4f58bdea734666d688e6/manifest.json | Only controlled DESKTOP slot expires; real native Refresh401 AUTH_SESSION_REVOKED; actual expired notice/anonymous enabled idle fields PNG/UIA |
+
+Both positives captured HEAD087a7c76c363d77caf703204c8ffffb5d677c7d2. Android source1bd APK archive/device SHA0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92 and separate test APK archive/device binding are in original manifest. Windows exact previously NSIS-installed source1bd identity/threefiles bound by auth-fix-desktop-install.json; no new installer claim. All affected terminal PNGs are original native images. Cold Auth scenarios are bounded evidence, not a state/theme/font/density crossproduct. Desktop private native credentials were not inspected; anonymous UI/real response are the bounded claims.
+
+Fresh Android default-SDK negative: screens/android-default-negative-087a7c7-a3d3f0acce0c434ca567811aa93197cb/manifest.json. PositivePID6272 ended; newPID6827 default HTTPS and socket trust reject the same live chain. Explicit pinnedCA health200 before/after; negative test APK38cdfced archive/device hashes matched. Positive finally restored original context/factory/property/provider order. No Android system roots/SELinux changes.
+
+Retained failures: Android auth84a0b317 (shell-owned external CA EACCES), auth30cf4414 (test exact path guard before app-private path was allowed), default-negative-e2f4a172 (negative runner not registered). Desktop auth8b5ac060 (wrong empty SignIn busy predicate), authf84773a9 (wrong guessed server code), authd5f39931 (Refresh invoked before login busy completed). Those originals remain FAIL; helper predicates were corrected to observed canonical Go code and real terminal idle, not weakened assertions. Recorder retains earlier build quoting/toolchain/resource failures and partial Android cleanup expected absent pm-path exit1 before strict resume.
+
+Second Human lease: exact thumb727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C / DERa8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5. Actual CU75/LM73 sole delta from fullCU74/LM72 baseline9b8513761cba71979686dee9d87f94a18b45c3ba051c65770ae059552b619e12; continuing Human actual LM/CU use/automatic exact removal authorization. Windows uses actual roots, Android only process explicitCA; inherited fixture no-system-trust status is qualified, original bytes preserved.
+
+Standard UAC rollback launch was cancelled: Recorder command C-514ef5cc-a078-4903-8141-c26afad157b2 exit1. Frozen private rollback_second_lease.ps1 SHA6ca36dcddf8c7a8e8dba25d7d5d9d3c7895981c5c81cc6b66d2db7fc27afb78e never began; no rollback receipt exists. CA remains ACTIVE; no bypass or concurrent retry. This is BLOCKED_EXTERNAL_ACCESS pending actual system UAC response.
+
+Android owned newfactory5592 two APKs/reverse cleaned and manager stopped; auth-fix-android-package-cleanup.json and auth-fix-generated-cleanup.json prove exact cleanup, archived APKs/public logs. Old5590/original AVD/unknown9c73 data untouched. Runtime2 Go project im-gui-product-20261004-27280 and TLS8443/upstream18443 intentionally remain live for Windows fresh negative. Installed candidate threefiles/preferences and owned clientPID15596 restoration remain pending.
+
+Next: after actual system response retry frozen UAC wrapper once; exact LM then CU removal/full original74/72 restore and independent real-user read-only verification; fresh Windows default-native negative with explicitCA health+/hostname-; original installed files/preferences restore; exact runtime stop/absence. Then new clean candidate and fresh independent Review/Architect/exact-head CI/integration/main. Task review/PENDING, S2 OPEN.
