@@ -1,0 +1,82 @@
+{
+  "capturedUTC": "2026-10-11T08:40:34.468Z",
+  "run": "friends-4c32b819-f661-4a74-8ef8-2e2d6e81459f",
+  "fixture": {
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:8443",
+    "accounts": [
+      {
+        "userId": "1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+        "username": "state_fresh_3ff8b22e18",
+        "displayName": "STATE Fresh"
+      },
+      {
+        "userId": "ed778ff5-d911-4d5e-9617-9cf5156ce28d",
+        "username": "state_webfriend_ebd9d07119",
+        "displayName": "STATE WebFriend ebd9d07119"
+      },
+      {
+        "userId": "0e3064bc-3c48-40a2-b024-a3872ffba5e5",
+        "username": "state_desktopfriend_403277ccfe",
+        "displayName": "STATE DesktopFriend 403277ccfe"
+      },
+      {
+        "userId": "213a7008-22a8-4723-a35a-cef70acfc08c",
+        "username": "state_mobilefriend_5bf66d0d1c",
+        "displayName": "STATE MobileFriend 5bf66d0d1c"
+      },
+      {
+        "userId": "59f021e4-9516-48ff-b1ae-b12a97637aea",
+        "username": "state_offlinefriend_8e7d87b0b6",
+        "displayName": "STATE OfflineFriend 8e7d87b0b6"
+      }
+    ],
+    "source": "actual Go register201; unique disposable accounts; no native database reset",
+    "historyText": "STATE fresh historical 1 1bbab93c-77e4-4870-ae05-cf48ae16e6a7",
+    "seed": {
+      "conversationId": "49573f66-5065-4a2a-8830-400c3b7834ba",
+      "messages": [
+        {
+          "requestId": "a3326cb7-eccb-492b-8428-6f28d609172a",
+          "messageId": "755a90cb-7802-4ef3-b693-179d0feb8bcd",
+          "seq": 1,
+          "createdAt": "2026-10-11T07:42:41.835084+00:00",
+          "text": "STATE fresh historical 1 1bbab93c-77e4-4870-ae05-cf48ae16e6a7"
+        },
+        {
+          "requestId": "498ca127-c026-4967-9d6c-4bedc4cb923e",
+          "messageId": "2441338b-c7b3-4736-9c98-845f309af031",
+          "seq": 2,
+          "createdAt": "2026-10-11T07:42:41.909382+00:00",
+          "text": "STATE fresh historical 2 1bbab93c-77e4-4870-ae05-cf48ae16e6a7"
+        }
+      ]
+    },
+    "qualification": "Existing owned fresh account retained; four new targets via actual register201; earlier target friendships/data retained"
+  },
+  "account": {
+    "userId": "ed778ff5-d911-4d5e-9617-9cf5156ce28d",
+    "username": "state_webfriend_ebd9d07119",
+    "displayName": "STATE WebFriend ebd9d07119"
+  },
+  "visible": {
+    "row": {
+      "x": 283.59375,
+      "y": 570.828125,
+      "width": 932.8125,
+      "height": 109
+    },
+    "name": "STATE WebFriend ebd9d07119",
+    "username": "@state_webfriend_ebd9d07119",
+    "button": "开始聊天",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": "cold",
+  "fontSize": 16,
+  "density": "comfortable",
+  "language": "en shell/zh-CN Web copy",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034"
+}

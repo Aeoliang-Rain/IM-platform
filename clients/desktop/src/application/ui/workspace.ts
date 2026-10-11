@@ -45,7 +45,7 @@ export class Workspace {
       this.friendCursor=cursor;this.publish({friends});await this.updateList(repo,g);
     }catch(error){if(g===this.generation&&revision===this.friendRevision)this.failure(error);}
   }
-  private failure(error:unknown){this.publish({error:error instanceof ApiFailure?error.kind:"Operation unavailable"});if(error instanceof ApiFailure&&error.kind==="Session expired")void this.expire();}
+  private failure(error:unknown){this.publish({error:error instanceof ApiFailure?error.message:"Operation unavailable"});if(error instanceof ApiFailure&&error.kind==="session_expired")void this.expire();}
   private async updateList(repo:Repository,g:number){
     const revision=++this.listRevision;
     try{const ids=[...new Set([...await repo.conversationIds(),...this.state.friends.map(f=>f.directConversationId)])];

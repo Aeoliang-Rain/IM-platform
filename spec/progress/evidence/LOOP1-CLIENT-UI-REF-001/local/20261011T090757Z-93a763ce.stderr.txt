@@ -1,0 +1,50 @@
+Diagnostic port already occupied
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_debug_start.ps1:4 char:73
++ ... rorAction SilentlyContinue){throw 'Diagnostic port already occupied'}
++                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Diagnostic port already occupied:String) [], RuntimeException
+    + FullyQualifiedErrorId : Diagnostic port already occupied
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/ui-ref/desktop_debug_start.ps1
+Diagnostic port already occupied
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_debug_start.ps1:4 char:73
++ ... rorAction SilentlyContinue){throw 'Diagnostic port already occupied'}
++                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Diagnostic port already occupied:String) [], RuntimeException
+    + FullyQualifiedErrorId : Diagnostic port already occupied
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/desktop_debug.mjs:3:26 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Diagnostic port already occupied\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\desktop_debug_start.ps1:4 char:73\r\n' +
+      "+ ... rorAction SilentlyContinue){throw 'Diagnostic port already occupied'}\r\n" +
+      '+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Diagnostic port already occupied:String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Diagnostic port already occupied\r\n' +
+      ' \r\n'
+  ],
+  pid: 3744,
+  stdout: '',
+  stderr: 'Diagnostic port already occupied\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\desktop_debug_start.ps1:4 char:73\r\n' +
+    "+ ... rorAction SilentlyContinue){throw 'Diagnostic port already occupied'}\r\n" +
+    '+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Diagnostic port already occupied:String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Diagnostic port already occupied\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0

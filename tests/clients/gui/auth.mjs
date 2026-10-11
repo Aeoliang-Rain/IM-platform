@@ -38,7 +38,7 @@ const {Workspace}=await import("../../../clients/desktop/dist/desktop/src/applic
 const workspace=new Workspace();
 reply={status:401,data:{error:{code:"AUTH_INVALID_CREDENTIALS",message:"Server detail must not be echoed"},requestId:S}};
 const anonymous=new Auth("https://localhost:8443");
-await assert.rejects(anonymous.login("fixture-user","incorrect-fixture-input"),error=>error.kind==="Invalid username or password");
+await assert.rejects(anonymous.login("fixture-user","incorrect-fixture-input"),error=>error.kind==="invalid_credentials"&&error.message==="Invalid username or password");
 assert.equal(anonymous.session,null);assert.equal(credentials.size,0);
 await workspace.login("https://localhost:8443","fixture-user","incorrect-fixture-input");
 assert.equal(workspace.state.error,"Invalid username or password");assert.equal(workspace.state.session,null);assert.equal(workspace.state.offlineAccount,null);assert.equal(workspace.state.busy,false);assert.equal(credentials.size,0);

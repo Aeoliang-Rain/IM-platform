@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_matrix.py", line 20, in <module>
+    nodes=ui('click',page,label=label+'-'+page)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_matrix.py", line 9, in ui
+    if r.returncode:print(r.stderr.decode('utf-8',errors='replace'));raise RuntimeError('Actual UI action failed '+label)
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Actual UI action failed cold-14-0.8-AI

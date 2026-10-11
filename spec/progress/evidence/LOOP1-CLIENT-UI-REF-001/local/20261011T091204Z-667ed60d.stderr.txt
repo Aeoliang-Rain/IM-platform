@@ -1,0 +1,8 @@
+file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/desktop_debug.mjs:14
+ await fs.writeFile(out+'/initial-sync-public-samples.json',JSON.stringify(samples,null,2));if(samples.at(-1).workspace.sync!=='idle'||samples.at(-1).workspace.connection!=='ready')throw Error('Diagnostic initial real Sync idle not observed');
+                                                                                                                                                                                           ^
+
+Error: Diagnostic initial real Sync idle not observed
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/desktop_debug.mjs:14:188
+
+Node.js v24.19.0

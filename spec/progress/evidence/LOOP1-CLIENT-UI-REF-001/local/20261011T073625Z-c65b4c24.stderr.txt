@@ -1,0 +1,15 @@
+node:internal/fs/promises:697
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open 'C:\Users\21441\.codex\visualizations\2026\10\11\01a129aa-d2ed-7350-8f8d-efb0ecc85664\ui-ref-runtime\fresh-public.json'
+    at async open (node:internal/fs/promises:697:25)
+    at async Object.readFile (node:internal/fs/promises:1348:14)
+    at async file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/fresh_web.mjs:2:133 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\fresh-public.json'
+}
+
+Node.js v24.19.0

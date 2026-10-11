@@ -1,0 +1,16 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-573c124c-a1ea-4ed6-b9d6-b8813f8bac1f/: 15 files pulled, 0 skipped. 2.8 MB/s (142860 bytes in 0.048s)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Actual Desktop WSS offline required
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:28:46 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

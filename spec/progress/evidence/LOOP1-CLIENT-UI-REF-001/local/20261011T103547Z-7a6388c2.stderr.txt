@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\restore_desktop_install.py", line 13, in <module>
+    assert not subprocess.check_output(['powershell','-NoProfile','-Command',"Get-Process im-client-storage -ErrorAction SilentlyContinue | Where-Object Path -eq 'H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe' | ForEach-Object Id"],text=True).strip(),'Owned install must be stopped before restore'
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['powershell', '-NoProfile', '-Command', "Get-Process im-client-storage -ErrorAction SilentlyContinue | Where-Object Path -eq 'H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe' | ForEach-Object Id"]' returned non-zero exit status 1.

@@ -1,0 +1,19 @@
+file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/android_actual.mjs:13
+  for(let n=0;n<180;n++){try{adbCall(['shell','test','-f',base+'-ready']);ready=true;break;}catch{}if(exited)throw Error('Native exited before failed marker: '+raw);await new Promise(r=>setTimeout(r,500));}assert(ready,'native real FAILED marker required');
+                                                                                                                   ^
+
+Error: Native exited before failed marker: s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+INSTRUMENTATION_RESULT: assertions=7
+INSTRUMENTATION_RESULT: captureRun=state-7bd1eebf-230f-4968-ad5a-a27dcdc3ba46
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: deliveries=[]
+INSTRUMENTATION_RESULT: explicitTestCAHTTPS=PASS
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Actual control missing: Connected connection=offline sync=idle
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_CODE: 0
+
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/android_actual.mjs:13:116
+
+Node.js v24.19.0

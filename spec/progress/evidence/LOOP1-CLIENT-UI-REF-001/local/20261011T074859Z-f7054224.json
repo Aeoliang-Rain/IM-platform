@@ -1,0 +1,31 @@
+{
+  "actualStartUTC": "2026-10-11T07:48:59.541312+00:00",
+  "actualEndUTC": "2026-10-11T07:49:03.399345+00:00",
+  "elapsedSeconds": 3.8590000000003783,
+  "command": [
+    "H:/Android/platform-tools/adb.exe",
+    "-s",
+    "emulator-5590",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-e",
+    "uiRefCA",
+    "/sdcard/Android/data/im.platform.client/files/ui-ref-ca.der",
+    "-e",
+    "phase",
+    "state-connection-diagnostic",
+    "-e",
+    "avery",
+    "gui_avery_f67ad4",
+    "im.platform.client.test/im.platform.client.ui.GuiAuthenticatedInstrumentation"
+  ],
+  "cwd": "H:\\.codex\\worktrees\\u\\IM-platform",
+  "actualCaptureHead": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "actualStatusBefore": " M clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt\n M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/\n",
+  "exitCode": 0,
+  "result": "PASS",
+  "stdout": "20261011T074859Z-f7054224.stdout.txt",
+  "stderr": "20261011T074859Z-f7054224.stderr.txt"
+}

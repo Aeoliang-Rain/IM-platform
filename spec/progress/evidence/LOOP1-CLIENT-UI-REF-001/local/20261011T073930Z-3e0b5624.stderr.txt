@@ -1,0 +1,51 @@
+Unique observed UI control required: G GUI Fixture Avery No messages yet (0)
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:132 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Avery No messages yet (0)
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/ui-ref/state/desktop_window.ps1 -Action click -Name G GUI Fixture Avery No messages yet -Value  -Output spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/desktop-fresh-cd1cc334-6549-4244-81f5-19cb71df8ed9/history.png
+Unique observed UI control required: G GUI Fixture Avery No messages yet (0)
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:132 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Avery No messages yet (0)
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at ui (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/desktop_fresh.mjs:3:64)
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/desktop_fresh.mjs:6:325 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Unique observed UI control required: G GUI Fixture Avery No messages yet (0)\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:132 char:27\r\n' +
+      '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+      '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Avery No messages yet (0)\r\n' +
+      ' \r\n'
+  ],
+  pid: 35940,
+  stdout: '',
+  stderr: 'Unique observed UI control required: G GUI Fixture Avery No messages yet (0)\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:132 char:27\r\n' +
+    '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+    '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Avery No messages yet (0)\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0

@@ -1,0 +1,53 @@
+Actual visible Sync idle/required connection header not observed within 30s
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:146 char:17
++ ... !$syncWait){throw 'Actual visible Sync idle/required connection heade ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Actual visible ...rved within 30s:String) [], RuntimeException
+    + FullyQualifiedErrorId : Actual visible Sync idle/required connection header not observed within 30s
+ 
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-8c44b6a2-1cc4-4874-835d-c47c0555a825/: 17 files pulled, 0 skipped. 3.3 MB/s (173614 bytes in 0.050s)
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/ui-ref/state/desktop_window.ps1 -Action wait-sync-idle -Name Connected · Messages sync automatically -Value  -Output spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/screens/friends-8c44b6a2-1cc4-4874-835d-c47c0555a825/desktop-reconnected-sync-idle.png
+Actual visible Sync idle/required connection header not observed within 30s
+At H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\state\desktop_window.ps1:146 char:17
++ ... !$syncWait){throw 'Actual visible Sync idle/required connection heade ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Actual visible ...rved within 30s:String) [], RuntimeException
+    + FullyQualifiedErrorId : Actual visible Sync idle/required connection header not observed within 30s
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at ui (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:5:64)
+    at desktopReady (file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:6:36)
+    at file:///H:/.codex/worktrees/u/IM-platform/tests/clients/ui-ref/state/friends_actual.mjs:30:166 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Actual visible Sync idle/required connection header not observed within 30s\r\n' +
+      'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:146 char:17\r\n' +
+      "+ ... !$syncWait){throw 'Actual visible Sync idle/required connection heade ...\r\n" +
+      '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Actual visible ...rved within 30s:String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Actual visible Sync idle/required connection header not observed within 30s\r\n' +
+      ' \r\n'
+  ],
+  pid: 59364,
+  stdout: '',
+  stderr: 'Actual visible Sync idle/required connection header not observed within 30s\r\n' +
+    'At H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\state\\desktop_window.ps1:146 char:17\r\n' +
+    "+ ... !$syncWait){throw 'Actual visible Sync idle/required connection heade ...\r\n" +
+    '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Actual visible ...rved within 30s:String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Actual visible Sync idle/required connection header not observed within 30s\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0

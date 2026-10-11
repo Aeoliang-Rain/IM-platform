@@ -1,0 +1,120 @@
+{
+  "task_id": "LOOP1-CLIENT-UI-REF-001",
+  "stage": "sync",
+  "command": [
+    "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-Xutf8",
+    "-B",
+    "tools/verify_client_sync.py",
+    "--scope",
+    "mobile",
+    "--serial",
+    "emulator-5592"
+  ],
+  "actualHEAD": "ab6c2576c57b3ba895d2cbe4da0a2f795f5f4c2f",
+  "actualStatusBefore": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n M tests/clients/ui-ref/desktop_accessibility.ps1\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/.runtime/\n?? tests/clients/ui-ref/adapt_state.py\n?? tests/clients/ui-ref/android_fixture_backup.py\n?? tests/clients/ui-ref/android_install_binding.py\n?? tests/clients/ui-ref/android_matrix_diagnosis.py\n?? tests/clients/ui-ref/android_negative.py\n?? tests/clients/ui-ref/android_phase.py\n?? tests/clients/ui-ref/bind.py\n?? tests/clients/ui-ref/desktop_debug.mjs\n?? tests/clients/ui-ref/desktop_debug_start.ps1\n?? tests/clients/ui-ref/desktop_matrix.py\n?? tests/clients/ui-ref/friends_geometry.mjs\n?? tests/clients/ui-ref/friends_manifest.py\n?? tests/clients/ui-ref/friends_sync_diagnosis.py\n?? tests/clients/ui-ref/gradle_bounded.cmd\n?? tests/clients/ui-ref/install_desktop.ps1\n?? tests/clients/ui-ref/notification_continuity.py\n?? tests/clients/ui-ref/record_command.py\n?? tests/clients/ui-ref/restart_manifest.py\n?? tests/clients/ui-ref/runtime.py\n?? tests/clients/ui-ref/state/android_actual.mjs\n?? tests/clients/ui-ref/state/android_binding.mjs\n?? tests/clients/ui-ref/state/android_fresh.mjs\n?? tests/clients/ui-ref/state/android_restart.mjs\n?? tests/clients/ui-ref/state/backend_verify.py\n?? tests/clients/ui-ref/state/desktop_actual.mjs\n?? tests/clients/ui-ref/state/desktop_fresh.mjs\n?? tests/clients/ui-ref/state/desktop_notification.ps1\n?? tests/clients/ui-ref/state/desktop_shortcut.ps1\n?? tests/clients/ui-ref/state/desktop_toast_capture.ps1\n?? tests/clients/ui-ref/state/desktop_tray.ps1\n?? tests/clients/ui-ref/state/fault_proxy.py\n?? tests/clients/ui-ref/state/fresh_web.mjs\n?? tests/clients/ui-ref/state/prepare_desktop.mjs\n?? tests/clients/ui-ref/state/web_actual.mjs\n?? tests/clients/ui-ref/state/windows_negative_tls.py\n?? tests/clients/ui-ref/web/\n?? tests/clients/ui-ref/windows_fixture_trust.ps1\n",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "startUTC": "2026-10-11T09:54:23.933527+00:00",
+  "endUTC": "2026-10-11T09:55:13.154570+00:00",
+  "elapsedSeconds": 49.21900000000096,
+  "exit": 0,
+  "result": "PASS",
+  "actualAVD": {
+    "actualUTC": "2026-10-11T09:45:34.994284+00:00",
+    "directory": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd",
+    "serial": "emulator-5592",
+    "image": "system-images;android-34;google_apis;x86_64",
+    "createCommand": [
+      "H:/Android/cmdline-tools/latest/bin/avdmanager.bat",
+      "create",
+      "avd",
+      "--name",
+      "IMUIRefBaselineH34",
+      "--package",
+      "system-images;android-34;google_apis;x86_64",
+      "--path",
+      "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds\\IMUIRefBaselineH34.avd"
+    ],
+    "launchCommand": [
+      "H:/Android/emulator/emulator.exe",
+      "-avd",
+      "IMUIRefBaselineH34",
+      "-port",
+      "5592",
+      "-no-window",
+      "-no-snapshot",
+      "-no-audio",
+      "-no-boot-anim",
+      "-gpu",
+      "swiftshader_indirect",
+      "-memory",
+      "1536"
+    ],
+    "launcherPID": 36216,
+    "originalDevices": "List of devices attached\nemulator-5590\tdevice\n\n",
+    "method": "Factory SDK image; independent new owned userdata; no original AVD copy/reset or root/SELinux/system trust changes",
+    "environment": {
+      "JAVA_HOME": "H:/.jdks/jdk17",
+      "ANDROID_HOME": "H:/Android",
+      "ANDROID_USER_HOME": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\android-user",
+      "ANDROID_AVD_HOME": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds"
+    },
+    "attempt": "d9c53aa67d0c40749b2496df43a2096d",
+    "resumeOwnedFactory": false,
+    "userdataPartitionMegabytes": "SDK default",
+    "priorFailureQualification": null,
+    "resolvedOwnedRoot": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd",
+    "freeBytesBeforeLaunch": 146155888640,
+    "environmentMethod": "Child-only explicit env mapping; parent environment unchanged",
+    "storageOnAssignedTaskAllowedPath": true,
+    "actualReadyUTC": "2026-10-11T09:46:17.640167+00:00",
+    "actualSDK": "34"
+  },
+  "artifacts": [
+    {
+      "package": "im.platform.client",
+      "outputsQualification": "Observed after actual stage command; only accepted when commandPASS and matches installed bytes",
+      "buildArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\im.platform.client-built.apk",
+      "buildSHA256": "04c6c9450d823dcaeeb65dbc9cab440941620440f2a5951f924be1043f03c12e",
+      "devicePath": "/data/app/~~LTRCZaJkQZ9_ttkXRaOhoQ==/im.platform.client-Kk0cAJmPu_NxOvlzckdVDQ==/base.apk",
+      "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\im.platform.client-device.apk",
+      "deviceSHA256": "04c6c9450d823dcaeeb65dbc9cab440941620440f2a5951f924be1043f03c12e"
+    },
+    {
+      "package": "im.platform.client.test",
+      "outputsQualification": "Observed after actual stage command; only accepted when commandPASS and matches installed bytes",
+      "buildArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\im.platform.client.test-built.apk",
+      "buildSHA256": "8c7af84931110dd7d79e91b99175d957ddf1b848fba6daeff15c4af8dabbfb0b",
+      "devicePath": "/data/app/~~OEOvaQxIBwcOLUo-5KkPcQ==/im.platform.client.test-j2KmKA3LIY9ZMCenmE0qCQ==/base.apk",
+      "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\im.platform.client.test-device.apk",
+      "deviceSHA256": "8c7af84931110dd7d79e91b99175d957ddf1b848fba6daeff15c4af8dabbfb0b"
+    }
+  ],
+  "entries": [
+    {
+      "file": "command-stderr-original.txt",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "file": "command-stdout-original.txt",
+      "sha256": "f95b62b82e57cd5128be67569e0a02e4882372309a502d9350a1baac983293d2"
+    },
+    {
+      "file": "im.platform.client-device-path-original.txt",
+      "sha256": "ac078e70941df47740c55541fe000bd3e618b68ac568369296cbf9686132229e"
+    },
+    {
+      "file": "im.platform.client-pull-original.txt",
+      "sha256": "04ae567e145e200629adcee898ae8ecb78a442a50ce3aaeb692f6ce2c9e3e44a"
+    },
+    {
+      "file": "im.platform.client.test-device-path-original.txt",
+      "sha256": "987e6c3993bc6f27e50ab345eb68b74720fd754ebb0ff8aca04f8b6c5c2995ae"
+    },
+    {
+      "file": "im.platform.client.test-pull-original.txt",
+      "sha256": "be5c561ccec0e3db779f9e6e6e66b2c1304d0b7a5f3bdb921d24a219f03f969b"
+    }
+  ],
+  "qualification": "Separate factory-owned emulator baseline/reset; never clears old emulator5590 unknown userdata and never replaces actual A/B/Friends evidence. APKs archived and installed bytes pulled before any later runner rebuild."
+}

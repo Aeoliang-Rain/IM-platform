@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_matrix.py", line 16, in <module>
+    label=f'{t}-{f}-{d}';appearance(t,f,d,label)
+                         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_matrix.py", line 12, in appearance
+    ui('click',button,label=label+'-theme');ui('range','font',f,label+'-font');ui('range','density',d,label+'-density')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_matrix.py", line 7, in ui
+    p=out/(label+'.png');subprocess.run(['powershell','-NoProfile','-File','tests/clients/ui-ref/state/desktop_window.ps1','-Action',action,'-Name',name,'-Value',str(value),'-Output',str(p)],cwd=ROOT,check=True,capture_output=True,timeout=45)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['powershell', '-NoProfile', '-File', 'tests/clients/ui-ref/state/desktop_window.ps1', '-Action', 'click', '-Name', 'Cold AI Blue · quiet · focused', '-Value', '', '-Output', 'H:\\.codex\\worktrees\\u\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\desktop-matrix-ed7164d56a30427dbe62a3173eb5aeb7\\cold-14-0.8-theme.png']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_matrix.py", line 26, in <module>
+    appearance(theme,font,density,'restore-original-appearance');assert prefs.read_bytes()==original
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\ui-ref\desktop_matrix.py", line 13, in appearance
+    assert json.loads(prefs.read_bytes())==[t,f,d]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

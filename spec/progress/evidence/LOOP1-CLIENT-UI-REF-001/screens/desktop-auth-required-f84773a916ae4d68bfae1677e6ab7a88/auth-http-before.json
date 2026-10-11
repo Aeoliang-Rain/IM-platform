@@ -1,0 +1,16 @@
+[
+  {
+    "event": 1,
+    "kind": "actual_auth_response",
+    "path": "/v1/auth/login",
+    "status": 200,
+    "errorCode": null
+  },
+  {
+    "event": 3,
+    "kind": "actual_auth_response",
+    "path": "/v1/auth/refresh/native",
+    "status": 401,
+    "errorCode": "AUTH_SESSION_REVOKED"
+  }
+]

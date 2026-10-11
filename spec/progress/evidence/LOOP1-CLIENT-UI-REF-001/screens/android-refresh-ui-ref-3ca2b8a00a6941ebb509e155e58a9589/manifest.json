@@ -1,0 +1,95 @@
+{
+  "actualUTC": "2026-10-11T10:25:11.767453+00:00",
+  "phase": "refresh",
+  "actualHEAD": "4d5fd49b57b2fe8c95f0051c6aa11b4b5ed36cfc",
+  "actualStatus": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/.runtime/\n?? tests/clients/ui-ref/adapt_state.py\n?? tests/clients/ui-ref/android_fixture_backup.py\n?? tests/clients/ui-ref/android_install_binding.py\n?? tests/clients/ui-ref/android_matrix_diagnosis.py\n?? tests/clients/ui-ref/android_negative.py\n?? tests/clients/ui-ref/bind.py\n?? tests/clients/ui-ref/desktop_debug.mjs\n?? tests/clients/ui-ref/desktop_debug_start.ps1\n?? tests/clients/ui-ref/desktop_matrix.py\n?? tests/clients/ui-ref/friends_geometry.mjs\n?? tests/clients/ui-ref/friends_manifest.py\n?? tests/clients/ui-ref/friends_sync_diagnosis.py\n?? tests/clients/ui-ref/gradle_bounded.cmd\n?? tests/clients/ui-ref/install_desktop.ps1\n?? tests/clients/ui-ref/notification_continuity.py\n?? tests/clients/ui-ref/record_command.py\n?? tests/clients/ui-ref/restart_manifest.py\n?? tests/clients/ui-ref/runtime.py\n?? tests/clients/ui-ref/state/android_actual.mjs\n?? tests/clients/ui-ref/state/android_binding.mjs\n?? tests/clients/ui-ref/state/android_fresh.mjs\n?? tests/clients/ui-ref/state/android_restart.mjs\n?? tests/clients/ui-ref/state/backend_verify.py\n?? tests/clients/ui-ref/state/desktop_actual.mjs\n?? tests/clients/ui-ref/state/desktop_fresh.mjs\n?? tests/clients/ui-ref/state/desktop_notification.ps1\n?? tests/clients/ui-ref/state/desktop_shortcut.ps1\n?? tests/clients/ui-ref/state/desktop_toast_capture.ps1\n?? tests/clients/ui-ref/state/desktop_tray.ps1\n?? tests/clients/ui-ref/state/fault_proxy.py\n?? tests/clients/ui-ref/state/fresh_web.mjs\n?? tests/clients/ui-ref/state/prepare_desktop.mjs\n?? tests/clients/ui-ref/state/web_actual.mjs\n?? tests/clients/ui-ref/state/windows_negative_tls.py\n?? tests/clients/ui-ref/web/\n?? tests/clients/ui-ref/windows_fixture_trust.ps1\n",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "androidBindingBefore": {
+    "actualUTC": "2026-10-11T10:24:17.233Z",
+    "actualHEAD": "4d5fd49b57b2fe8c95f0051c6aa11b4b5ed36cfc",
+    "actualStatus": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/.runtime/\n?? tests/clients/ui-ref/adapt_state.py\n?? tests/clients/ui-ref/android_fixture_backup.py\n?? tests/clients/ui-ref/android_install_binding.py\n?? tests/clients/ui-ref/android_matrix_diagnosis.py\n?? tests/clients/ui-ref/android_negative.py\n?? tests/clients/ui-ref/bind.py\n?? tests/clients/ui-ref/desktop_debug.mjs\n?? tests/clients/ui-ref/desktop_debug_start.ps1\n?? tests/clients/ui-ref/desktop_matrix.py\n?? tests/clients/ui-ref/friends_geometry.mjs\n?? tests/clients/ui-ref/friends_manifest.py\n?? tests/clients/ui-ref/friends_sync_diagnosis.py\n?? tests/clients/ui-ref/gradle_bounded.cmd\n?? tests/clients/ui-ref/install_desktop.ps1\n?? tests/clients/ui-ref/notification_continuity.py\n?? tests/clients/ui-ref/record_command.py\n?? tests/clients/ui-ref/restart_manifest.py\n?? tests/clients/ui-ref/runtime.py\n?? tests/clients/ui-ref/state/android_actual.mjs\n?? tests/clients/ui-ref/state/android_binding.mjs\n?? tests/clients/ui-ref/state/android_fresh.mjs\n?? tests/clients/ui-ref/state/android_restart.mjs\n?? tests/clients/ui-ref/state/backend_verify.py\n?? tests/clients/ui-ref/state/desktop_actual.mjs\n?? tests/clients/ui-ref/state/desktop_fresh.mjs\n?? tests/clients/ui-ref/state/desktop_notification.ps1\n?? tests/clients/ui-ref/state/desktop_shortcut.ps1\n?? tests/clients/ui-ref/state/desktop_toast_capture.ps1\n?? tests/clients/ui-ref/state/desktop_tray.ps1\n?? tests/clients/ui-ref/state/fault_proxy.py\n?? tests/clients/ui-ref/state/fresh_web.mjs\n?? tests/clients/ui-ref/state/prepare_desktop.mjs\n?? tests/clients/ui-ref/state/web_actual.mjs\n?? tests/clients/ui-ref/state/windows_negative_tls.py\n?? tests/clients/ui-ref/web/\n?? tests/clients/ui-ref/windows_fixture_trust.ps1\n",
+    "productionSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+    "testSource": "4d5fd49b57b2fe8c95f0051c6aa11b4b5ed36cfc",
+    "runner": "im.platform.client.ui.GuiAuthenticatedInstrumentation",
+    "artifacts": {
+      "im.platform.client": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\apk-install-4d5fd49\\device-production.apk",
+        "sha256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92",
+        "devicePath": "/data/app/~~6LfUZYEI2_g2RgT_urR-GA==/im.platform.client-9c9rAPOXjrtpmgpbR8rTpw==/base.apk"
+      },
+      "im.platform.client.test": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\apk-install-4d5fd49\\after-device-test.apk",
+        "sha256": "939b8d40d4bb9b3ed252ba6fd6058e35c64451175065cf4fee564824bcfb6d78",
+        "devicePath": "/data/app/~~lg4ArrepiX4iEbJ-kI8MOw==/im.platform.client.test-OhWlKnZ8F2Qh_EJngYmC2g==/base.apk"
+      }
+    }
+  },
+  "androidBindingAfter": {
+    "actualUTC": "2026-10-11T10:25:11.654Z",
+    "actualHEAD": "4d5fd49b57b2fe8c95f0051c6aa11b4b5ed36cfc",
+    "actualStatus": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/.runtime/\n?? tests/clients/ui-ref/adapt_state.py\n?? tests/clients/ui-ref/android_fixture_backup.py\n?? tests/clients/ui-ref/android_install_binding.py\n?? tests/clients/ui-ref/android_matrix_diagnosis.py\n?? tests/clients/ui-ref/android_negative.py\n?? tests/clients/ui-ref/bind.py\n?? tests/clients/ui-ref/desktop_debug.mjs\n?? tests/clients/ui-ref/desktop_debug_start.ps1\n?? tests/clients/ui-ref/desktop_matrix.py\n?? tests/clients/ui-ref/friends_geometry.mjs\n?? tests/clients/ui-ref/friends_manifest.py\n?? tests/clients/ui-ref/friends_sync_diagnosis.py\n?? tests/clients/ui-ref/gradle_bounded.cmd\n?? tests/clients/ui-ref/install_desktop.ps1\n?? tests/clients/ui-ref/notification_continuity.py\n?? tests/clients/ui-ref/record_command.py\n?? tests/clients/ui-ref/restart_manifest.py\n?? tests/clients/ui-ref/runtime.py\n?? tests/clients/ui-ref/state/android_actual.mjs\n?? tests/clients/ui-ref/state/android_binding.mjs\n?? tests/clients/ui-ref/state/android_fresh.mjs\n?? tests/clients/ui-ref/state/android_restart.mjs\n?? tests/clients/ui-ref/state/backend_verify.py\n?? tests/clients/ui-ref/state/desktop_actual.mjs\n?? tests/clients/ui-ref/state/desktop_fresh.mjs\n?? tests/clients/ui-ref/state/desktop_notification.ps1\n?? tests/clients/ui-ref/state/desktop_shortcut.ps1\n?? tests/clients/ui-ref/state/desktop_toast_capture.ps1\n?? tests/clients/ui-ref/state/desktop_tray.ps1\n?? tests/clients/ui-ref/state/fault_proxy.py\n?? tests/clients/ui-ref/state/fresh_web.mjs\n?? tests/clients/ui-ref/state/prepare_desktop.mjs\n?? tests/clients/ui-ref/state/web_actual.mjs\n?? tests/clients/ui-ref/state/windows_negative_tls.py\n?? tests/clients/ui-ref/web/\n?? tests/clients/ui-ref/windows_fixture_trust.ps1\n",
+    "productionSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+    "testSource": "4d5fd49b57b2fe8c95f0051c6aa11b4b5ed36cfc",
+    "runner": "im.platform.client.ui.GuiAuthenticatedInstrumentation",
+    "artifacts": {
+      "im.platform.client": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\apk-install-4d5fd49\\device-production.apk",
+        "sha256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92",
+        "devicePath": "/data/app/~~6LfUZYEI2_g2RgT_urR-GA==/im.platform.client-9c9rAPOXjrtpmgpbR8rTpw==/base.apk"
+      },
+      "im.platform.client.test": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\apk-install-4d5fd49\\after-device-test.apk",
+        "sha256": "939b8d40d4bb9b3ed252ba6fd6058e35c64451175065cf4fee564824bcfb6d78",
+        "devicePath": "/data/app/~~lg4ArrepiX4iEbJ-kI8MOw==/im.platform.client.test-OhWlKnZ8F2Qh_EJngYmC2g==/base.apk"
+      }
+    }
+  },
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_f67ad4",
+        "userId": "d66198b5-fe2f-4f9c-9da0-e393691ecb6c",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_763c45",
+        "userId": "ece3fb64-18ab-4823-a09c-f9cbb61f8f13",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_3446c1",
+        "userId": "5783e943-90fc-4979-baac-b12df49093e1",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "a81f7f07-0484-4e2d-8608-0f3089f0ce43",
+    "privateRuntime": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\go-35128",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "TLSQualification": "Pinned explicit test-process CA for HTTPS and WSS; default endpoint hostname verification; empty process-only Provider cache marker restored finally; no device/system roots changed",
+  "entries": [
+    {
+      "file": "instrumentation-original.txt",
+      "sha256": "93568c9adcbad845d7ad7002fd54668a3a4ef23f3af95da8014b2e997f91a335"
+    },
+    {
+      "file": "native-originals\\failure.json",
+      "sha256": "b17a91a39b142dc2950609fa6580686a2b909c8244e4fb777821b6437dda31e8"
+    },
+    {
+      "file": "native-originals\\failure.png",
+      "sha256": "4753f1eec29d854b9c800a2d6966cb7dde07214e3526b3fdb64803083a64da85"
+    },
+    {
+      "file": "source-install-binding-after.json",
+      "sha256": "dc9525b03bb23def76e44093153032437789b2df32531b98f53646c0f27e0c2a"
+    },
+    {
+      "file": "source-install-binding-before.json",
+      "sha256": "412eba0ef91bb12d96a99da179beae343855a359ff3bc68a41b5b5cee4dc5f2d"
+    }
+  ]
+}

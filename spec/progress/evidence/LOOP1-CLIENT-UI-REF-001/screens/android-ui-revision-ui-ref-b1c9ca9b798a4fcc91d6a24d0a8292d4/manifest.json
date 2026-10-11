@@ -1,0 +1,160 @@
+{
+  "actualUTC": "2026-10-11T08:16:16.797938+00:00",
+  "phase": "ui-revision",
+  "actualHEAD": "324a2d01aaa5a5f8d59e218b87806078e8978e5c",
+  "actualStatus": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/\n",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "testAPKHash": "6c8e3d748453333d6acc2c6985ec2701f744db741e7a937b29c55ef3ac818ab1",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_f67ad4",
+        "userId": "d66198b5-fe2f-4f9c-9da0-e393691ecb6c",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_763c45",
+        "userId": "ece3fb64-18ab-4823-a09c-f9cbb61f8f13",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_3446c1",
+        "userId": "5783e943-90fc-4979-baac-b12df49093e1",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "a81f7f07-0484-4e2d-8608-0f3089f0ce43",
+    "privateRuntime": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\go-35128",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "TLSQualification": "Pinned explicit test-process CA for HTTPS and WSS; default endpoint hostname verification; empty process-only Provider cache marker restored finally; no device/system roots changed",
+  "entries": [
+    {
+      "file": "instrumentation-original.txt",
+      "sha256": "c618c3495603f4e4b6f6f3165e4d7b9010316ecf3857f57c95084b9ceaf90dbb"
+    },
+    {
+      "file": "native-originals\\anonymous-login.json",
+      "sha256": "62caf8bc58476ca4c0c28c193855ee2e37e5fe56fb0f87765d0d18f79bbc520b"
+    },
+    {
+      "file": "native-originals\\anonymous-login.png",
+      "sha256": "a60f42fb39c203e33c7e4b097a1e2faa009145cf3da5581f99dc69576ba4942c"
+    },
+    {
+      "file": "native-originals\\back-to-chat-list.json",
+      "sha256": "804aa71c44d6c084e7124e22aff97e30c973cb8eed794a5c62107c9dc2c9b51f"
+    },
+    {
+      "file": "native-originals\\back-to-chat-list.png",
+      "sha256": "8744a0bdd83493a20b29dc502295ce677e76ddcc401bb19a6f01e37c8c66db5f"
+    },
+    {
+      "file": "native-originals\\cold-ai.json",
+      "sha256": "804aa71c44d6c084e7124e22aff97e30c973cb8eed794a5c62107c9dc2c9b51f"
+    },
+    {
+      "file": "native-originals\\cold-ai.png",
+      "sha256": "c084d2c0d4130d47ce3cefba841e611d112e106e5ba0a8e7bffdb14ae4a309d0"
+    },
+    {
+      "file": "native-originals\\cold-chat-list.json",
+      "sha256": "804aa71c44d6c084e7124e22aff97e30c973cb8eed794a5c62107c9dc2c9b51f"
+    },
+    {
+      "file": "native-originals\\cold-chat-list.png",
+      "sha256": "4434197810553954c24502ff33746ac62f9756b9ec47ed5964e79755fceaf0bf"
+    },
+    {
+      "file": "native-originals\\cold-conversation.json",
+      "sha256": "847039a81a10321a19af786f3b7b87c6236dc6a2889041682105af0e1fd5c5d4"
+    },
+    {
+      "file": "native-originals\\cold-conversation.png",
+      "sha256": "be3c0503fe46c647ea33483ae2a126de4e2025e2ebe94aab2e4622b0d4d0fbdf"
+    },
+    {
+      "file": "native-originals\\cold-friends.json",
+      "sha256": "804aa71c44d6c084e7124e22aff97e30c973cb8eed794a5c62107c9dc2c9b51f"
+    },
+    {
+      "file": "native-originals\\cold-friends.png",
+      "sha256": "65a6be12315e29d36e7aea779b56529713edcb20da6ee3ffe1529d3775ddc033"
+    },
+    {
+      "file": "native-originals\\cold-plugin.json",
+      "sha256": "804aa71c44d6c084e7124e22aff97e30c973cb8eed794a5c62107c9dc2c9b51f"
+    },
+    {
+      "file": "native-originals\\cold-plugin.png",
+      "sha256": "e1cabaecd4d1c64cafe6da0d36436e08daff01ed20be8d276bb76cad8750f2e7"
+    },
+    {
+      "file": "native-originals\\cold-settings-theme.json",
+      "sha256": "804aa71c44d6c084e7124e22aff97e30c973cb8eed794a5c62107c9dc2c9b51f"
+    },
+    {
+      "file": "native-originals\\cold-settings-theme.png",
+      "sha256": "da8c09ca73621c30807fd7756b60765844eec1df74d7b405fd74f69505622f50"
+    },
+    {
+      "file": "native-originals\\failure.json",
+      "sha256": "415e3dc2c5c4530212ae86e2c66b41cf5d95ebbff45a104670303146aec82fba"
+    },
+    {
+      "file": "native-originals\\failure.png",
+      "sha256": "e99eb66e58f913cb94f685de0231477a4cd2bba3206ea438c0764ebabbfca055"
+    },
+    {
+      "file": "native-originals\\registration-success.json",
+      "sha256": "62caf8bc58476ca4c0c28c193855ee2e37e5fe56fb0f87765d0d18f79bbc520b"
+    },
+    {
+      "file": "native-originals\\registration-success.png",
+      "sha256": "8bac0eeba72fa1008e7fa0bef9db943d40bb3d688f107675f0534616e60923db"
+    },
+    {
+      "file": "native-originals\\registration.json",
+      "sha256": "62caf8bc58476ca4c0c28c193855ee2e37e5fe56fb0f87765d0d18f79bbc520b"
+    },
+    {
+      "file": "native-originals\\registration.png",
+      "sha256": "63fca4ff0f9b533c5b3f137f7e328531882b91266ce35c43d83a606418865f4b"
+    },
+    {
+      "file": "native-originals\\sent.json",
+      "sha256": "bc749dc45b0b1587618e67d2b8dccf3a110502237ca8c391f933237cdb706a76"
+    },
+    {
+      "file": "native-originals\\sent.png",
+      "sha256": "2c8b04b3cbf4acbef5d0f21080f299eb614bfbc185668e5995582061c6d8cc7c"
+    },
+    {
+      "file": "native-originals\\warm-chat-list-22.json",
+      "sha256": "0e72a0f368e6c3d8fa72334bb630def5609bd9d22f97ed52ba2fe002facd889f"
+    },
+    {
+      "file": "native-originals\\warm-chat-list-22.png",
+      "sha256": "e62cf6f5b6bff97bbf8bb0736a93bc75084445d8951f5cd5118826a93d9b23f4"
+    },
+    {
+      "file": "native-originals\\warm-friends.json",
+      "sha256": "9864ee5ea2e3479642bc59500c33230acbd266c2703d5750aeb58b52b9fffdb8"
+    },
+    {
+      "file": "native-originals\\warm-friends.png",
+      "sha256": "5d15560b9f1d390c9fe6b54d39808df1546c19b1b10a4bcb7b7b1d0dc2dd9b5a"
+    },
+    {
+      "file": "native-originals\\warm-settings-22.json",
+      "sha256": "0e72a0f368e6c3d8fa72334bb630def5609bd9d22f97ed52ba2fe002facd889f"
+    },
+    {
+      "file": "native-originals\\warm-settings-22.png",
+      "sha256": "9c5b5bccc2a7d0ef30dcec988c3ae1cc22999bd9ca478aa4b0bfeb35835b7046"
+    }
+  ]
+}

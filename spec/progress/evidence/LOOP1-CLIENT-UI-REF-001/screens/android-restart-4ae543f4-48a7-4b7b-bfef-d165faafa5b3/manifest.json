@@ -1,0 +1,197 @@
+{
+  "task_id": "LOOP1-CLIENT-UI-REF-001",
+  "kind": "Post-capture hash/state/source inventory of completed real Android process stop/newPID/resume/original-ID retry",
+  "assembledUTC": "2026-10-11T08:36:00.640006+00:00",
+  "assemblyHEAD": "0eb36c33707496fc3c42f8a4cba61476a03ece80",
+  "captureOriginalBinding": {
+    "actualUTC": "2026-10-11T08:19:15.575Z",
+    "actualHEAD": "324a2d01aaa5a5f8d59e218b87806078e8978e5c",
+    "actualStatus": " M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/\n",
+    "productionSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+    "testSource": "324a2d01aaa5a5f8d59e218b87806078e8978e5c",
+    "runner": "im.platform.client.ui.GuiAuthenticatedInstrumentation",
+    "artifacts": {
+      "im.platform.client": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\apk-install-324a2d0\\device-production.apk",
+        "sha256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92",
+        "devicePath": "/data/app/~~6LfUZYEI2_g2RgT_urR-GA==/im.platform.client-9c9rAPOXjrtpmgpbR8rTpw==/base.apk"
+      },
+      "im.platform.client.test": {
+        "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\apk-install-324a2d0\\after-device-test.apk",
+        "sha256": "6c8e3d748453333d6acc2c6985ec2701f744db741e7a937b29c55ef3ac818ab1",
+        "devicePath": "/data/app/~~VBlDOB66IB8rpIAK5BHcMg==/im.platform.client.test-6Sz42TdLid-6p4yv-HK8zw==/base.apk"
+      }
+    }
+  },
+  "captureTimeQualification": "Original binding actualUTC is pre-run observation; precise per-PNG capture UTC unavailable. This supplement was assembled afterward and does not claim contemporaneous manifest creation. Original sidecars, raw results, process IDs and bytes retained.",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_f67ad4",
+        "userId": "d66198b5-fe2f-4f9c-9da0-e393691ecb6c",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_763c45",
+        "userId": "ece3fb64-18ab-4823-a09c-f9cbb61f8f13",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_3446c1",
+        "userId": "5783e943-90fc-4979-baac-b12df49093e1",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "a81f7f07-0484-4e2d-8608-0f3089f0ce43",
+    "privateRuntime": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\go-35128",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "runtimeQualification": "Real owned Go/PostgreSQL/NATS/proxy; approved Windows fixture CA lease active; Android explicit pinned test-process CA with hostname checks, no Android root changes",
+  "proof": {
+    "kind": "preliminary actual Android target process restart/explicitTestCA/resume/originalUIretry",
+    "run": "restart-4ae543f4-48a7-4b7b-bfef-d165faafa5b3",
+    "text": "STATE Android restart restart-4ae543f4-48a7-4b7b-bfef-d165faafa5b3",
+    "requestId": "9aa60a2d-7038-471f-826e-d500e16d03de",
+    "pidBefore": "6867",
+    "terminated": true,
+    "pidAfter": "7115",
+    "before": {
+      "messages": 0,
+      "outbox": 0,
+      "rows": []
+    },
+    "after": {
+      "messages": 1,
+      "outbox": 1,
+      "rows": [
+        {
+          "requestId": "9aa60a2d-7038-471f-826e-d500e16d03de",
+          "messageId": "20f2114b-f5c5-4129-9c17-f7555c74ccd5",
+          "seq": 23,
+          "createdAt": "2026-10-11T08:20:21.024078+00:00",
+          "text": "STATE Android restart restart-4ae543f4-48a7-4b7b-bfef-d165faafa5b3"
+        }
+      ]
+    }
+  },
+  "entries": [
+    {
+      "file": "native-originals\\restart-before-process-stop-failed.json",
+      "sha256": "f33e2c82b2c15577d8363bc67a571252241516387c222bf8a1cea1299932cde1"
+    },
+    {
+      "file": "native-originals\\restart-before-process-stop-failed.png",
+      "sha256": "058006b0cd0b9f0cb242bc23b4ebbe547d67fba7cf9dd1e6d462686f324b9f8f",
+      "actualCapturedState": {
+        "theme": "cold",
+        "fontSize": 14,
+        "spacingDensity": 0.8,
+        "busy": false,
+        "connection": "ready",
+        "sync": "syncing",
+        "conversationCount": 4,
+        "friendCount": 4,
+        "resultCount": 0,
+        "messageCount": 23,
+        "conversationSelected": true,
+        "sessionPresent": true,
+        "offlineAccountPresent": false,
+        "secureCurrentPresent": true,
+        "width": 320,
+        "height": 640
+      },
+      "serial": "emulator-5590",
+      "avd": "IMClientSend34",
+      "API": 34,
+      "language": "English/default"
+    },
+    {
+      "file": "native-originals\\restart-before.json",
+      "sha256": "e6fe58d247463d9e0d8c1fa7682479e16e8d92ed0786f45168dde0da858e5a86"
+    },
+    {
+      "file": "native-originals\\restart-original-retry-sent.json",
+      "sha256": "f33e2c82b2c15577d8363bc67a571252241516387c222bf8a1cea1299932cde1"
+    },
+    {
+      "file": "native-originals\\restart-original-retry-sent.png",
+      "sha256": "3a2c31c54409fdb7bc64c9436896bd34479a420e452a9dba2df64f80d473d418",
+      "actualCapturedState": {
+        "theme": "cold",
+        "fontSize": 14,
+        "spacingDensity": 0.8,
+        "busy": false,
+        "connection": "ready",
+        "sync": "syncing",
+        "conversationCount": 4,
+        "friendCount": 4,
+        "resultCount": 0,
+        "messageCount": 23,
+        "conversationSelected": true,
+        "sessionPresent": true,
+        "offlineAccountPresent": false,
+        "secureCurrentPresent": true,
+        "width": 320,
+        "height": 640
+      },
+      "serial": "emulator-5590",
+      "avd": "IMClientSend34",
+      "API": 34,
+      "language": "English/default"
+    },
+    {
+      "file": "native-originals\\restart-preserved-failed.json",
+      "sha256": "f33e2c82b2c15577d8363bc67a571252241516387c222bf8a1cea1299932cde1"
+    },
+    {
+      "file": "native-originals\\restart-preserved-failed.png",
+      "sha256": "d676918e968363a653862f571def38e3cc314c5891d57f7965facf3ba038ca69",
+      "actualCapturedState": {
+        "theme": "cold",
+        "fontSize": 14,
+        "spacingDensity": 0.8,
+        "busy": false,
+        "connection": "ready",
+        "sync": "syncing",
+        "conversationCount": 4,
+        "friendCount": 4,
+        "resultCount": 0,
+        "messageCount": 23,
+        "conversationSelected": true,
+        "sessionPresent": true,
+        "offlineAccountPresent": false,
+        "secureCurrentPresent": true,
+        "width": 320,
+        "height": 640
+      },
+      "serial": "emulator-5590",
+      "avd": "IMClientSend34",
+      "API": 34,
+      "language": "English/default"
+    },
+    {
+      "file": "native-originals\\restart-process-stop-ready",
+      "sha256": "39164ab19266956183179c2e185f5567075f67282901217274873a27c11bb365"
+    },
+    {
+      "file": "prepare-intentionally-process-stopped-original.txt",
+      "sha256": "393d29deebcbc817f4391ef505137b47f25b5db6bc435ccc38dcc4ada1250e55"
+    },
+    {
+      "file": "proofs.json",
+      "sha256": "61780936825973935402d8696920c072998d7021c5296d7237c40c7a7ef865b3"
+    },
+    {
+      "file": "resume-original.txt",
+      "sha256": "fc6b5d1357fba80cc94c3d8014f9561e781ff30f5944d0839d5d69b8a4ac485f"
+    },
+    {
+      "file": "source-install-binding-before.json",
+      "sha256": "67936dd80b138dd631dc48d0b7a110b2eba06d9128e74ed8937be572c390efa0"
+    }
+  ],
+  "result": "PASS local only; independent review/acceptance pending"
+}

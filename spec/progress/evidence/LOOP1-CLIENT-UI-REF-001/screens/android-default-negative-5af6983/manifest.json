@@ -1,0 +1,31 @@
+{
+  "actualUTC": "2026-10-11T10:30:00.960051+00:00",
+  "actualHEAD": "5af6983b885072cb9ae8ea7c0d4fa58001d66525",
+  "positiveOriginal": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-refresh-ui-ref-06c60c15603f49649a32651d7b30032a\\instrumentation-original.txt",
+  "positiveSHA256": "1049f9508d88b3c0456070399737373425780714e1a8159661edc997036728f7",
+  "lastPositivePID": 10958,
+  "actualLivePIDBefore": null,
+  "oldPackageAbsentBeforeNewProcess": true,
+  "newActualInstrumentationPID": 11082,
+  "negativeRunner": "im.platform.client.ui.UiRefTLSNegative",
+  "source": "5af6983b885072cb9ae8ea7c0d4fa58001d66525",
+  "sourceQualification": "Actual build HEAD; androidTest tracked tree must be clean before build",
+  "negativeAPK": {
+    "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\negative-test-5af6983.apk",
+    "sha256": "4de2b2ea068ffac5242475eaf9cebd9cc0e7c1c442d5d216af8eb045b0257fc6",
+    "actualDevicePath": "/data/app/~~JQPLRag3NGDnKws2KyPSOA==/im.platform.client.test-kBHZmvH-DA61m2AbSK3HyQ==/base.apk",
+    "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\negative-installed-5af6983.apk",
+    "deviceSHA256": "4de2b2ea068ffac5242475eaf9cebd9cc0e7c1c442d5d216af8eb045b0257fc6",
+    "installRaw": "Performing Streamed Install\r\nSuccess\r\n"
+  },
+  "sameFixtureCertificateDERHash": "a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5",
+  "explicitPinnedCAHealthBefore": {
+    "status": 200,
+    "UTC": "2026-10-11T10:29:55.741844+00:00"
+  },
+  "explicitPinnedCAHealthAfter": {
+    "status": 200,
+    "UTC": "2026-10-11T10:30:00.960051+00:00"
+  },
+  "qualification": "No helper/explicit CA installed in new process; original SDK default HTTPS and socket trust reject same live fixture. Context/factory/property/full provider order restoration bound to preceding positive original. No Android system roots/security changes."
+}

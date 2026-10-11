@@ -1,0 +1,36 @@
+{
+  "actualUTC": "2026-10-11T10:16:52.693094+00:00",
+  "proof": [
+    {
+      "stage": "sync",
+      "APK": {
+        "package": "im.platform.client",
+        "outputsQualification": "Observed after actual stage command; only accepted when commandPASS and matches installed bytes",
+        "buildArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\im.platform.client-built.apk",
+        "buildSHA256": "04c6c9450d823dcaeeb65dbc9cab440941620440f2a5951f924be1043f03c12e",
+        "devicePath": "/data/app/~~LTRCZaJkQZ9_ttkXRaOhoQ==/im.platform.client-Kk0cAJmPu_NxOvlzckdVDQ==/base.apk",
+        "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\im.platform.client-device.apk",
+        "deviceSHA256": "04c6c9450d823dcaeeb65dbc9cab440941620440f2a5951f924be1043f03c12e"
+      },
+      "publicSignerSHA256": "76e006bafbde322238b8f7756a65ad29466e3dccda00a37cdf590628042bf4e5",
+      "raw": "H:\\.codex\\worktrees\\u\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-sync-4ef4902a295d480186a579ef5bbb7e0e\\apksigner-public-original.txt",
+      "rawSHA256": "004ad27a59336600f8a218c8677a50e77e3fc78f3a0dc1bb3c14a2e47b05f3af"
+    },
+    {
+      "stage": "gui",
+      "APK": {
+        "package": "im.platform.client",
+        "outputsQualification": "Observed after actual stage command; only accepted when commandPASS and matches installed bytes",
+        "buildArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-gui-4aafa7a02a97472f8a0d6cc16349b8c7\\im.platform.client-built.apk",
+        "buildSHA256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92",
+        "devicePath": "/data/app/~~o27aIuKVLYxYU2stUQgTdg==/im.platform.client-iKFAaif2z7Suoza81Y-a7g==/base.apk",
+        "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\android-baseline-gui-4aafa7a02a97472f8a0d6cc16349b8c7\\im.platform.client-device.apk",
+        "deviceSHA256": "0beb1aa150e42d943d1ab80529afadd84b5d5a9b6c64f48867ecec17134d9e92"
+      },
+      "publicSignerSHA256": "0849ec6a9bb859af048a011f0e8c618708a56af2391e6a166fe0048f024215d3",
+      "raw": "H:\\.codex\\worktrees\\u\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-baseline-gui-4aafa7a02a97472f8a0d6cc16349b8c7\\apksigner-public-original.txt",
+      "rawSHA256": "717af6d8b0e81d54c4a8a1713e898c29b6857fb1e26c6708b8fc2177fde1c415"
+    }
+  ],
+  "qualification": "Existing checker child ANDROID_USER_HOME key versus GUI default debug signer explains preserved install-update incompatibility. Only new owned5592 factory data reset; old5590 unknown data untouched."
+}

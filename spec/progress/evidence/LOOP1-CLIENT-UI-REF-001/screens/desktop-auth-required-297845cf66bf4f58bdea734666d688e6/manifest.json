@@ -1,0 +1,271 @@
+{
+  "task": "LOOP1-CLIENT-UI-REF-001",
+  "actualUTC": "2026-10-11T11:33:06.753957+00:00",
+  "result": "PASS",
+  "actualHEAD": "087a7c76c363d77caf703204c8ffffb5d677c7d2",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-27280",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_b2ff32",
+        "userId": "5198d0ff-d1d8-4b4c-a454-192fdb2b066b",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_024119",
+        "userId": "3b2bd793-65da-4a1c-af6a-93303ce18437",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_2ff82a",
+        "userId": "9a42256f-3805-4a48-91e0-2e3cc3f8149c",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "8f0a04aa-ddff-4e60-aedf-264e7467913b",
+    "privateRuntime": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\go-27280",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "entries": [
+    {
+      "file": "actual-auth-http-responses.json",
+      "sha256": "a7b71f15c6dad22b18ec6a3dc8bf7d52f30d91ac1ddd8025704bbb5bbaba3f9f"
+    },
+    {
+      "file": "actual-server-expiry.json",
+      "sha256": "71bb5665bcaf7bb2c95d331834e626ded499d9298bf4963dceeb69f4c94e1720"
+    },
+    {
+      "file": "anonymous-before-command-original.txt",
+      "sha256": "c934452b269097f8ea55b9de7f9804ed81b4818b02c867e339bd97bb1988bb60"
+    },
+    {
+      "file": "anonymous-before.png",
+      "sha256": "5eeaab4f992b581d354dd9e7ab2eb5fab8fbce7f0588f9c9985eae5aff10d550"
+    },
+    {
+      "file": "anonymous-before.png.json",
+      "sha256": "1a1c625f3e621f45c644ab404dc45aaeaa576935b37fa9b96018f27899181cbe"
+    },
+    {
+      "file": "anonymous-before.png.zorder.json",
+      "sha256": "34a512891e44160ebfdb9a445b2aa330454a6a3e158906be12c0a2b96ccf2673"
+    },
+    {
+      "file": "auth-http-before.json",
+      "sha256": "243c946318c327b918787ed0c92cdf74d85a78800a95a9d3701e623323322046"
+    },
+    {
+      "file": "disconnect-command-original.txt",
+      "sha256": "b06efe044d1e846e373a999b7df0dd19b52b56bcbb6f224d7853a8a855e1636f"
+    },
+    {
+      "file": "disconnect.png",
+      "sha256": "708fbbcbb28703eb155cb2a2fd4f6e340b20999ce12d20a186df80a3a04cd3be"
+    },
+    {
+      "file": "disconnect.png.json",
+      "sha256": "4a8ba6f97d6fe5f34d88aba906db8836d6314d5bd4398352badde22571f7354f"
+    },
+    {
+      "file": "disconnect.png.zorder.json",
+      "sha256": "750717b8e3931f39473c3bdbb09a8981ac6c62e24e0a4a9537e4b1a0d3258582"
+    },
+    {
+      "file": "fixture-password-command-original.txt",
+      "sha256": "56084ebe501a58a2b3e83ad11c194d3152e5139bf024f705933080ea3259b7a1"
+    },
+    {
+      "file": "fixture-password.png",
+      "sha256": "0389795935745050d017cb630345212e88dba91d49cf838e312e49ab4e3ecdce"
+    },
+    {
+      "file": "fixture-password.png.json",
+      "sha256": "4dc5082cf169deccb5d8f1a034750c2bffd6a1b108cccb04b019072f4d0d2f33"
+    },
+    {
+      "file": "fixture-password.png.zorder.json",
+      "sha256": "4bdebcd74c9d9abd0b1ff65778f6cc3f7968e5505138bcbf20250ced06a5022d"
+    },
+    {
+      "file": "fixture-username-command-original.txt",
+      "sha256": "92705f8b0d710b7a635c27229c34ae10683f57d93a9c2f0a9b60fcf8492014dc"
+    },
+    {
+      "file": "fixture-username.png",
+      "sha256": "9a5ffd1f68765494874b901a6ffa9d1247fd2ca4d4e565a048c591d53b284678"
+    },
+    {
+      "file": "fixture-username.png.json",
+      "sha256": "475a72bcd32b212ca56a31930741e71dd427793415bf695dde8d0e420c797561"
+    },
+    {
+      "file": "fixture-username.png.zorder.json",
+      "sha256": "870e956903b5bf85bba51ed04d14a6a2dd6bbaa1c35ffc9dff6b4af50996af2e"
+    },
+    {
+      "file": "logged-in-0-command-original.txt",
+      "sha256": "e9a0a9ee92c3d29142ef4d5884cb147c44882513e4341e3c9ad9a9d82c469570"
+    },
+    {
+      "file": "logged-in-0.png",
+      "sha256": "411ed6ab26bcaa395dfab40b2c915e42f40d32e83751d9bfaad247c48086b92c"
+    },
+    {
+      "file": "logged-in-0.png.json",
+      "sha256": "4fb87005c8605e4895f2706ae36750475eaa9de4c074f20c00a1331c1db76d53"
+    },
+    {
+      "file": "logged-in-0.png.zorder.json",
+      "sha256": "6c95cb9d842c85daa873ed7a97069a719b7f10a76b71a80e9e6f4af3a7d1653f"
+    },
+    {
+      "file": "logged-in-1-command-original.txt",
+      "sha256": "045aebc7e8ddfed88c70a4d318a04636ffaffbff51a42062e0afc21903d98245"
+    },
+    {
+      "file": "logged-in-1.png",
+      "sha256": "acd69b59dc3323e752e40ebd18fabe4bc2b37e21d2880643654b28fb2527215e"
+    },
+    {
+      "file": "logged-in-1.png.json",
+      "sha256": "cfec7af89b82e3f4164fd76bd6d346e6cd71baa968e4b8006ddbfd6fe46bef2b"
+    },
+    {
+      "file": "logged-in-1.png.zorder.json",
+      "sha256": "0104a87df80f341a99dfebe71bf3c105f97e0b5fad84bf9977f68417fe953f64"
+    },
+    {
+      "file": "login-command-original.txt",
+      "sha256": "3bab2abfcfb0d026a7205fb48337dc96fb6e5c2c15d6c7a82ee9da054a2a7bc3"
+    },
+    {
+      "file": "login-completed-0-command-original.txt",
+      "sha256": "0fbbd67e43be83e1ed73881ff2f0ea1c75b33ffd276aecfc60866a98019ea621"
+    },
+    {
+      "file": "login-completed-0.png",
+      "sha256": "daffcb392412cfba729be42555bd4c0e4929cb2da7fec81cbac2c287369b7c55"
+    },
+    {
+      "file": "login-completed-0.png.json",
+      "sha256": "130d789927273b86134dc113ae9966b28d9b9905d24bc0d05b844b67d0c21a66"
+    },
+    {
+      "file": "login-completed-0.png.zorder.json",
+      "sha256": "53cbd003b1feaa552e9064a913dbf18b3170eee143af97e5e4a0adbcd0750246"
+    },
+    {
+      "file": "login.png",
+      "sha256": "411ed6ab26bcaa395dfab40b2c915e42f40d32e83751d9bfaad247c48086b92c"
+    },
+    {
+      "file": "login.png.json",
+      "sha256": "b9923d22ccc06f562396d1d49a1cf4885cef18696a6e97f1424d87679bee2ed8"
+    },
+    {
+      "file": "login.png.zorder.json",
+      "sha256": "b13e02a3320e93fe84ae74b59d685d2089a909b222cbaee84c7ab7ce19a64c85"
+    },
+    {
+      "file": "offline-ready-0-command-original.txt",
+      "sha256": "4037906face7f8aeb30914866aa7c5b629a4dc594e045ca67c2814424ef29fb8"
+    },
+    {
+      "file": "offline-ready-0.png",
+      "sha256": "708fbbcbb28703eb155cb2a2fd4f6e340b20999ce12d20a186df80a3a04cd3be"
+    },
+    {
+      "file": "offline-ready-0.png.json",
+      "sha256": "672c36a7dd9bdeb38f44bb3d89c581aa66bc820b84e0744a1b9947adfbe694bf"
+    },
+    {
+      "file": "offline-ready-0.png.zorder.json",
+      "sha256": "94fef84a838c3e07a36c30f8a18c48a3ae3d7415a06dfb3cccb496936af380c9"
+    },
+    {
+      "file": "refresh-expired-command-original.txt",
+      "sha256": "80f3eadec3f4cb9afb5e3953959de3a85e29e9c369f6d2e4795a9fed1beb3e7f"
+    },
+    {
+      "file": "refresh-expired.png",
+      "sha256": "55f62968506406c92e2780718d23145d5a05eeca4d71ab49ba89941869dc8169"
+    },
+    {
+      "file": "refresh-expired.png.json",
+      "sha256": "980653121bf80404d0a56fb22ed50107c5df17955a77c5e9500b2e9c4ed9eec2"
+    },
+    {
+      "file": "refresh-expired.png.zorder.json",
+      "sha256": "84166f8b11e36a634aa9125237129d00cb0107b5745646bc78f72632e3ea1ae5"
+    },
+    {
+      "file": "session-before-expiry-command-original.txt",
+      "sha256": "d0e9aeb388d6fc5938ef250dcc44e31429230c3a62f422827d784a8b07203642"
+    },
+    {
+      "file": "session-before-expiry.png",
+      "sha256": "708fbbcbb28703eb155cb2a2fd4f6e340b20999ce12d20a186df80a3a04cd3be"
+    },
+    {
+      "file": "session-before-expiry.png.json",
+      "sha256": "6796fb4a66438c2cef3528c5662d96d23c32938db8938c138b8abb6680b82483"
+    },
+    {
+      "file": "session-before-expiry.png.zorder.json",
+      "sha256": "1603a3da3b6f80d7b469b757f52c9eacc8a6e1ec6e56c3a87fd2195173a7be96"
+    },
+    {
+      "file": "session-expired-0-command-original.txt",
+      "sha256": "9e9bfff24ea65664b704dc7a67c957ccb9edc3b971fbe71bdd7e4861bf1a450b"
+    },
+    {
+      "file": "session-expired-0.png",
+      "sha256": "55f62968506406c92e2780718d23145d5a05eeca4d71ab49ba89941869dc8169"
+    },
+    {
+      "file": "session-expired-0.png.json",
+      "sha256": "39f5fc9f5ee07517bc6a87013feae539b1ee05fa14175bbc47c552c6a0cac3a8"
+    },
+    {
+      "file": "session-expired-0.png.zorder.json",
+      "sha256": "40c08b0b82c378ffaef10b2a51950d784490166f1a22be53d065ced5ff29834a"
+    },
+    {
+      "file": "session-expired-1-command-original.txt",
+      "sha256": "173587ab62335d78126d053b8cc2106aa3d0747d3c314cd19f4c11e425314a0f"
+    },
+    {
+      "file": "session-expired-1.png",
+      "sha256": "5ae378fa2a727e5fd9f6b953e4ecba890cf7cfbd8afc44a09097dc65c11d6b9b"
+    },
+    {
+      "file": "session-expired-1.png.json",
+      "sha256": "17ac4ee493eef499ca33e9cf0fdbfc601b06e4eac061b1328a082e419873b88b"
+    },
+    {
+      "file": "session-expired-1.png.zorder.json",
+      "sha256": "f2491ad1510402ac0c793717e1b94211d64a723c397092941781729968935471"
+    },
+    {
+      "file": "settings-command-original.txt",
+      "sha256": "a13b89f2d1947c132bd33ed29a069664ab9178cc0babec79075ee2101a856776"
+    },
+    {
+      "file": "settings.png",
+      "sha256": "daffcb392412cfba729be42555bd4c0e4929cb2da7fec81cbac2c287369b7c55"
+    },
+    {
+      "file": "settings.png.json",
+      "sha256": "38741bcfe39c0cb0af924deed56673cf663975ec7075e6691cd680b39963f3b2"
+    },
+    {
+      "file": "settings.png.zorder.json",
+      "sha256": "8662ff6a81767d6acda2d34af8a8c203be9b04ccb6970ad4de68226450838f8f"
+    }
+  ],
+  "runtimeQualification": "Installed current source1bd native reqwest system TLS; actual owned user DESKTOP session expired in Go PostgreSQL; user-operated Refresh through real UI, no mock transport or synthetic ViewModel calls. UI anonymity/idle observed; no claim to directly reading session/credential contents."
+}

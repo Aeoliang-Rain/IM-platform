@@ -1,0 +1,49 @@
+{
+  "actualUTC": "2026-10-11T11:17:48.482541+00:00",
+  "directory": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd",
+  "serial": "emulator-5592",
+  "image": "system-images;android-34;google_apis;x86_64",
+  "createCommand": [
+    "H:/Android/cmdline-tools/latest/bin/avdmanager.bat",
+    "create",
+    "avd",
+    "--name",
+    "IMUIRefBaselineH34",
+    "--package",
+    "system-images;android-34;google_apis;x86_64",
+    "--path",
+    "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds\\IMUIRefBaselineH34.avd"
+  ],
+  "launchCommand": [
+    "H:/Android/emulator/emulator.exe",
+    "-avd",
+    "IMUIRefBaselineH34",
+    "-port",
+    "5592",
+    "-no-window",
+    "-no-snapshot",
+    "-no-audio",
+    "-no-boot-anim",
+    "-gpu",
+    "swiftshader_indirect",
+    "-memory",
+    "1536"
+  ],
+  "launcherPID": 33992,
+  "originalDevices": "List of devices attached\n\n",
+  "method": "Factory SDK image; independent new owned userdata; no original AVD copy/reset or root/SELinux/system trust changes",
+  "environment": {
+    "JAVA_HOME": "H:/.jdks/jdk17",
+    "ANDROID_HOME": "H:/Android",
+    "ANDROID_USER_HOME": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\android-user",
+    "ANDROID_AVD_HOME": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds"
+  },
+  "attempt": "5de0606cb0724e0ea42e85071f4f768e",
+  "resumeOwnedFactory": false,
+  "userdataPartitionMegabytes": "SDK default",
+  "priorFailureQualification": null,
+  "resolvedOwnedRoot": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd",
+  "freeBytesBeforeLaunch": 145980882944,
+  "environmentMethod": "Child-only explicit env mapping; parent environment unchanged",
+  "storageOnAssignedTaskAllowedPath": true
+}

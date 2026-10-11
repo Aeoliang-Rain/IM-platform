@@ -89,7 +89,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
  private fun capture(name:String){
   Thread.sleep(250);val d=java.io.File(targetContext.getExternalFilesDir(null),"gui-auth/$captureRun").apply{mkdirs()}
   val b=checkNotNull(uiAutomation.takeScreenshot());java.io.File(d,name+".png").outputStream().use{check(b.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it))}
-  if(args.getString("phase") in listOf("evidence-complete","auth-errors")){
+  if(args.getString("uiRefCA")!=null || args.getString("phase") in listOf("evidence-complete","auth-errors")){
    val s=actualViewModel().state.value
    java.io.File(d,name+".json").writeText(org.json.JSONObject().put("theme",s.appearance.theme).put("fontSize",s.appearance.fontSize).put("spacingDensity",s.appearance.density).put("busy",s.busy).put("error",s.error).put("connection",s.connection).put("sync",s.sync).put("conversationCount",s.conversations.size).put("friendCount",s.friends.size).put("resultCount",s.results.size).put("messageCount",s.messages.size).put("conversationSelected",s.selected.isNotEmpty()).put("sessionPresent",s.session!=null).put("offlineAccountPresent",s.offlineAccount!=null).put("secureCurrentPresent",Preferences(targetContext).read("https://localhost:8443/current")!=null).put("width",b.width).put("height",b.height).toString(2))
   };b.recycle()
@@ -159,6 +159,12 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   }
   error("Actual complete message viewport unavailable "+text+" "+diagnostic)
  }
+ private fun awaitProjected(text:String){
+  val expected=args.getString("expectedConversation")
+  repeat(300){val s=actualViewModel().state.value;if(s.messages.any{it[2]==text}){verify(expected==null||s.selected==expected);return};Thread.sleep(100)}
+  val s=actualViewModel().state.value
+  error("Actual message projection did not converge text="+text+" selected="+s.selected+" expected="+expected+" connection="+s.connection+" sync="+s.sync+" error="+s.error+" rows="+s.messages.size+" account="+s.session?.userId)
+ }
  private fun retryMessage(text:String){
   showMessage(text);Thread.sleep(700);val body=android.graphics.Rect();await(text).getBoundsInScreen(body)
   val candidates=mutableListOf<Pair<AccessibilityNodeInfo,android.graphics.Rect>>()
@@ -202,7 +208,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   }
   if(!selected(actualRoot()))click(page)
  }
- private fun openMorgan(){navigate("Chat");if(find(actualRoot(),"←")!=null)click("←");click("GUI Fixture Morgan")}
+ private fun openMorgan(){navigate("Chat");if(find(actualRoot(),"←")!=null)click("←");click("GUI Fixture Morgan");args.getString("expectedConversation")?.let{expected->repeat(100){if(actualViewModel().state.value.selected==expected)return;Thread.sleep(100)};error("Actual selected conversation mismatch expected="+expected+" actual="+actualViewModel().state.value.selected)}}
  private fun settingsControl(name:String){navigate("Settings");reach(name);click(name)}
  private fun toggleTheme(){
   navigate("Settings")
@@ -213,18 +219,25 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
  private fun controlled(name:String){
   val directory=java.io.File(targetContext.getExternalFilesDir(null),"gui-auth/$captureRun").apply{mkdirs()}
   java.io.File(directory,name+"-ready").writeText(captureRun)
-  val proceed=java.io.File(directory,name+"-continue");repeat(1200){if(!proceed.exists())Thread.sleep(50)};verify(proceed.exists())
+  val proceed=java.io.File(directory,name+"-continue");repeat(if(name.startsWith("friends-"))2400 else 1200){if(!proceed.exists())Thread.sleep(50)};verify(proceed.exists())
  }
  private fun top(){repeat(10){if(scroll(actualRoot(),AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)){waitForIdleSync();Thread.sleep(100)}}}
  override fun onCreate(arguments:Bundle?){super.onCreate(arguments);args=arguments?:Bundle();args.getString("stateRun")?.let{require(Regex("[A-Za-z0-9-]{1,80}").matches(it));captureRun=it};start()}
  override fun onStart(){
   val result=Bundle();val prefs=Preferences(targetContext);val appearance=prefs.loadAppearance()
+  var fixtureTrust:UiRefFixtureTrust?=null
   try{
+   args.getString("uiRefCA")?.let{fixtureTrust=UiRefFixtureTrust.install(it)}
    verify(android.os.Build.VERSION.SDK_INT==34)
    val c=URL("https://localhost:8443/__infra/health").openConnection() as HttpsURLConnection
    c.connectTimeout=10000;c.readTimeout=10000;c.instanceFollowRedirects=false
    try{verify(c.responseCode==200);c.inputStream.close()}finally{c.disconnect()}
-   result.putString("defaultSDKHTTPS","PASS")
+   result.putString(if(fixtureTrust==null)"defaultSDKHTTPS"else"explicitTestCAHTTPS","PASS")
+   val actualFactory=javax.net.ssl.SSLSocketFactory.getDefault() as javax.net.ssl.SSLSocketFactory
+   result.putString("actualSocketFactoryClass",actualFactory.javaClass.name)
+   result.putString("actualDefaultContextProvider",javax.net.ssl.SSLContext.getDefault().provider.name)
+   val positive=actualFactory.createSocket("localhost",8443) as javax.net.ssl.SSLSocket
+   try{positive.soTimeout=10000;val parameters=positive.sslParameters;parameters.endpointIdentificationAlgorithm="HTTPS";positive.sslParameters=parameters;positive.startHandshake();result.putString("actualDefaultSocketTLSHostnamePositive","PASS localhost:8443")}finally{positive.close()}
    val plain=java.net.Socket();plain.connect(java.net.InetSocketAddress("127.0.0.1",8443),10000)
    val wrong=(javax.net.ssl.SSLSocketFactory.getDefault() as javax.net.ssl.SSLSocketFactory).createSocket(plain,"fixture-hostname-mismatch.invalid",8443,true) as javax.net.ssl.SSLSocket
    try{wrong.soTimeout=10000;val parameters=wrong.sslParameters;parameters.endpointIdentificationAlgorithm="HTTPS";wrong.sslParameters=parameters
@@ -250,16 +263,20 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
      fun stored():String{val rows=org.json.JSONArray();android.database.sqlite.SQLiteDatabase.openDatabase(targetContext.getDatabasePath("im-"+owner+".sqlite").path,null,android.database.sqlite.SQLiteDatabase.OPEN_READONLY).use{db->db.rawQuery("SELECT request_id,server_message_id,server_seq,content,state FROM messages ORDER BY server_seq",null).use{c->while(c.moveToNext())rows.put(org.json.JSONObject().put("requestId",c.getString(0)).put("messageId",c.getString(1)).put("seq",c.getLong(2)).put("text",c.getString(3)).put("state",c.getString(4)))}};return rows.toString()}
      result.putString("freshRowsBefore",stored());capture("fresh-db-history-recovered");val text="STATE Mobile fresh "+captureRun;fill("Message",text);backKeyboard();click("Send ",true);delivery(text,"SENT");showMessage(text);capture("fresh-db-next-sent");result.putString("freshRowsAfter",stored());result.putString("freshDatabaseAbsentBefore","PASS")
     }else if(phase=="state-friends"){
+     fun friendControl(name:String){navigate("Settings");top();reach(name);click(name)}
      val fresh=args.getString("freshUser")!!;login(fresh);navigate("Friends");await("Your friends");capture("friends-online-baseline");controlled("friends-online")
      fun has(id:String)=actualViewModel().state.value.friends.any{it.user.userId==id}
-     fun waitFriend(id:String,name:String){repeat(300){if(!has(id))Thread.sleep(100)};verify(has(id));reach("Your friends");reach(name);capture("friends-observed-"+name.replace(" ","-"))}
-     waitFriend(args.getString("webFriendId")!!,"STATE WebFriend");controlled("friends-web-observed")
-     waitFriend(args.getString("desktopFriendId")!!,"STATE DesktopFriend")
-     fill("Username",args.getString("mobileFriendUser")!!);backKeyboard();reach("Search");click("Search");await("STATE MobileFriend");click("Add friend");waitFriend(args.getString("mobileFriendId")!!,"STATE MobileFriend");controlled("friends-mobile-added")
-     settingsControl("Go offline");navigate("Friends");await("Offline");controlled("friends-offline");verify(!has(args.getString("offlineFriendId")!!));capture("friends-offline-retained")
-     settingsControl("Reconnect");await("Connected");navigate("Friends");waitFriend(args.getString("offlineFriendId")!!,"STATE OfflineFriend");controlled("friends-recovered")
-     settingsControl("Sign out");await("Open your workspace");login(args.getString("riley")!!);navigate("Friends");verify(actualViewModel().state.value.friends.none{it.user.displayName.startsWith("STATE ")});capture("friends-account-switch-isolated")
-     settingsControl("Sign out");await("Open your workspace");login(fresh);navigate("Friends");for(id in listOf("webFriendId","desktopFriendId","mobileFriendId","offlineFriendId")){repeat(300){if(!has(args.getString(id)!!))Thread.sleep(100)};verify(has(args.getString(id)!!))};capture("friends-original-account-restored")
+     fun waitFriend(id:String,name:String){repeat(300){if(!has(id)||actualViewModel().state.value.busy)Thread.sleep(100)};verify(has(id)&&!actualViewModel().state.value.busy);top();reach("Your friends");reach(name);capture("friends-observed-"+name.replace(" ","-"))}
+     waitFriend(args.getString("webFriendId")!!,args.getString("webFriendName")?:"STATE WebFriend");controlled("friends-web-observed")
+     waitFriend(args.getString("desktopFriendId")!!,args.getString("desktopFriendName")?:"STATE DesktopFriend")
+     top();fill("Username",args.getString("mobileFriendUser")!!);backKeyboard();reach("Search");click("Search");await(args.getString("mobileFriendName")?:"STATE MobileFriend");click("Add friend")
+     repeat(300){if(!has(args.getString("mobileFriendId")!!)||actualViewModel().state.value.busy)Thread.sleep(100)};verify(has(args.getString("mobileFriendId")!!)&&!actualViewModel().state.value.busy)
+     top();fill("Username","state_none_"+captureRun);backKeyboard();reach("Search");click("Search");await("No matching user shown.");verify(actualViewModel().state.value.results.isEmpty()&&!actualViewModel().state.value.busy);capture("friends-empty-search")
+     top();fill("Username","");backKeyboard();waitFriend(args.getString("mobileFriendId")!!,args.getString("mobileFriendName")?:"STATE MobileFriend");controlled("friends-mobile-added")
+     friendControl("Go offline");navigate("Friends");await("Offline");controlled("friends-offline");verify(!has(args.getString("offlineFriendId")!!));capture("friends-offline-retained")
+     friendControl("Reconnect");await("Connected");navigate("Friends");waitFriend(args.getString("offlineFriendId")!!,args.getString("offlineFriendName")?:"STATE OfflineFriend");controlled("friends-recovered")
+     friendControl("Sign out");await("Open your workspace");login(args.getString("riley")!!);repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)};verify(!actualViewModel().state.value.busy);verify(actualViewModel().state.value.session?.userId==args.getString("rileyId")!!);navigate("Friends");verify(actualViewModel().state.value.friends.none{it.user.displayName.startsWith("STATE ")});capture("friends-account-switch-isolated")
+     friendControl("Sign out");await("Open your workspace");login(fresh);navigate("Friends");for(id in listOf("webFriendId","desktopFriendId","mobileFriendId","offlineFriendId")){repeat(300){if(!has(args.getString(id)!!)||actualViewModel().state.value.busy)Thread.sleep(100)};verify(has(args.getString(id)!!)&&!actualViewModel().state.value.busy)};top();capture("friends-original-account-restored")
     }else if(phase=="state"){
     login(args.getString("avery")!!);click("GUI Fixture Morgan")
     repeat(300){if(actualViewModel().state.value.sync!="idle")Thread.sleep(100)}
@@ -276,6 +293,29 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
      controlled("state-"+mode+"-failed")
      retryMessage(text);val committed=delivery(text,"SENT");verify(committed[0]==failed[0]);showMessage(if(mode=="A")secondText else text);val firstBounds=android.graphics.Rect();val secondBounds=android.graphics.Rect();await(text).getBoundsInScreen(firstBounds);await(secondText).getBoundsInScreen(secondBounds);verify(!firstBounds.isEmpty&&!secondBounds.isEmpty);verify(if(mode=="A")secondBounds.top<firstBounds.top else firstBounds.top<secondBounds.top);capture("state-"+mode+"-retry-sent")
     }
+   }else if(phase=="auth-required"){
+    fill("Username",args.getString("avery")!!);fill("Password","wrong-fixture-password");backKeyboard();reach("Sign in");click("Sign in");await("Invalid username or password")
+    repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
+    val invalid=actualViewModel().state.value
+    verify(!invalid.busy&&invalid.session==null&&invalid.offlineAccount==null&&invalid.connection=="offline"&&invalid.error=="Invalid username or password")
+    verify(prefs.read("https://localhost:8443/current")==null);verify(find(actualRoot(),"Session expired. Sign in again.")==null);capture("actual-invalid-password-idle")
+    login(args.getString("avery")!!)
+    val logoutSlot=checkNotNull(prefs.read("https://localhost:8443/current"));verify(prefs.read(logoutSlot)!=null)
+    settingsControl("Sign out");await("Open your workspace")
+    repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
+    val loggedOut=actualViewModel().state.value
+    verify(!loggedOut.busy&&loggedOut.session==null&&loggedOut.offlineAccount==null&&loggedOut.connection=="offline")
+    verify(prefs.read("https://localhost:8443/current")==null&&prefs.read(logoutSlot)==null);verify(find(actualRoot(),"Please wait…")==null);capture("actual-logout-completed-idle")
+    result.putString("logoutSecureSlotAbsent","PASS current and former owned session credential absent")
+    login(args.getString("avery")!!)
+    val expirySlot=checkNotNull(prefs.read("https://localhost:8443/current"));verify(prefs.read(expirySlot)!=null)
+    settingsControl("Go offline");await("Offline");navigate("Settings");reach("Refresh session");capture("actual-session-before-expiry")
+    controlled("expiry");click("Refresh session");await("Session expired. Sign in again.")
+    repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
+    val expired=actualViewModel().state.value
+    verify(!expired.busy&&expired.session==null&&expired.offlineAccount==null&&expired.connection=="offline")
+    verify(prefs.read("https://localhost:8443/current")==null&&prefs.read(expirySlot)==null);top();reach("Session expired. Sign in again.");capture("actual-session-expired-cleared-idle")
+    result.putString("expiredSecureSlotAbsent","PASS current and former owned session credential absent")
    }else if(phase=="auth-errors"){
     fun invalid(name:String){
      fill("Username",args.getString("avery")!!);fill("Password","wrong-fixture-password");backKeyboard();reach("Sign in");click("Sign in");await("Invalid username or password")
@@ -319,10 +359,10 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     click("New here? Create an account");fill("Username","gui_ui_"+captureRun);fill("Password","fixture-password-not-a-real-secret");fill("Confirm password","fixture-password-not-a-real-secret");backKeyboard();reach("Create account");capture("registration");click("Create account");await("Account created. Sign in to continue.");capture("registration-success")
     login(args.getString("avery")!!);await("GUI Fixture Morgan");verify(actualViewModel().state.value.selected.isEmpty());verify(find(actualRoot(),"Message")==null);headerAbsent();capture("cold-chat-list")
     click("Friends");await("Your friends");headerAbsent();capture("cold-friends");click("AI");headerAbsent();capture("cold-ai");click("Plugin");headerAbsent();capture("cold-plugin");click("Chat");click("GUI Fixture Morgan");await("Welcome to the GUI fixture. This message crossed the actual Go services.");verify(find(actualRoot(),"Friends")==null&&find(actualRoot(),"Settings")==null);headerAbsent();verify(find(actualRoot(),"←")!=null&&find(actualRoot(),"← Chat")==null&&find(actualRoot(),"Chat")==null);capture("cold-conversation")
-    fill("Message",sentText);backKeyboard();click("Send ",true);delivery(sentText,"SENT");reach(sentText);capture("sent")
+    fill("Message",sentText);backKeyboard();click("Send ",true);delivery(sentText,"SENT");awaitProjected(sentText);showMessage(sentText);capture("sent")
     click("←");await("GUI Fixture Morgan");verify(actualViewModel().state.value.selected.isEmpty());capture("back-to-chat-list")
     click("Settings");reach("Cold AI");headerAbsent(true);capture("cold-settings-theme");click("Cold AI");verify(actualViewModel().state.value.appearance.theme=="warm");headerAbsent(true);click("Warm Creative");verify(actualViewModel().state.value.appearance==Appearance("cold",14,.8f));click("Cold AI");verify(actualViewModel().state.value.appearance==Appearance("warm",14,.8f));click("Friends");await("Your friends");headerAbsent();capture("warm-friends");click("Settings");repeat(8){click("+")};reach("Comfort");click("Comfort");verify(actualViewModel().state.value.appearance==Appearance("warm",22,1.2f));headerAbsent(true);capture("warm-settings-22")
-    click("Chat");await("GUI Fixture Morgan");headerAbsent();capture("warm-chat-list-22");click("GUI Fixture Morgan");reach(sentText);headerAbsent();verify(find(actualRoot(),"←")!=null&&find(actualRoot(),"← Chat")==null&&find(actualRoot(),"Chat")==null);capture("warm-conversation-22");click("←");click("Settings");reach("Sign out");click("Sign out");await("Open your workspace");verify(find(actualRoot(),"Friends")==null);headerAbsent();capture("logout-22")
+    click("Chat");await("GUI Fixture Morgan");headerAbsent();capture("warm-chat-list-22");click("GUI Fixture Morgan");awaitProjected(sentText);showMessage(sentText);headerAbsent();verify(find(actualRoot(),"←")!=null&&find(actualRoot(),"← Chat")==null&&find(actualRoot(),"Chat")==null);capture("warm-conversation-22");click("←");click("Settings");reach("Sign out");click("Sign out");await("Open your workspace");verify(find(actualRoot(),"Friends")==null);headerAbsent();capture("logout-22")
    }else if(phase=="expiry"){
     backKeyboard();reach("Resume saved session");click("Resume saved session")
     await("Session expired. Sign in again.");verify(prefs.read("https://localhost:8443/current")==null)
@@ -335,7 +375,8 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     delivery(sentText,"SENT");result.putString("afterCommitted",actualState());showMessage(sentText);capture("diagnose-sent")
    }else if(phase=="matrix"){
     capture("cold-login");login(args.getString("avery")!!);click("GUI Fixture Morgan");await("Welcome to the GUI fixture. This message crossed the actual Go services.");capture("cold-chat-history")
-    navigate("Friends");await("Your friends");capture("cold-friends");fill("Username",args.getString("riley")!!);backKeyboard();reach("Search");click("Search");await("GUI Fixture Riley");capture("friend-search-result");click("Add friend");await("Connected")
+    navigate("Friends");await("Your friends");capture("cold-friends");fill("Username",args.getString("riley")!!);backKeyboard();reach("Search");click("Search");await("GUI Fixture Riley");capture("friend-search-result");click("Add friend")
+    var addComplete=false;repeat(100){val s=actualViewModel().state.value;val friend=s.friends.find{it.user.username==args.getString("riley")};if(!s.busy&&friend!=null&&s.selected==friend.directConversationId)addComplete=true;if(!addComplete)Thread.sleep(100)};verify(addComplete);capture("friend-add-completed")
     openMorgan();fill("Message",sentText);backKeyboard();click("Send ",true);delivery(sentText,"SENT");showMessage(sentText);capture("sent")
     settingsControl("Go offline");openMorgan();await("Offline");showMessage(sentText);capture("offline-history")
     fill("Message",retryText);backKeyboard();click("Send ",true);val retryId=delivery(retryText,"FAILED")[0];showMessage(retryText);capture("failed")
@@ -343,8 +384,8 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
     settingsControl("Refresh session");await("GUI Fixture Avery");capture("profile-refreshed")
     toggleTheme();verify(actualViewModel().state.value.appearance.theme=="warm");openMorgan();showMessage(sentText);capture("warm-chat-history")
    }else{
-    if(prefs.read("https://localhost:8443/current")==null)login(args.getString("avery")!!) else {backKeyboard();reach("Resume saved session");click("Resume saved session");await("Connected")}
-    click("GUI Fixture Morgan");await("GUI Android actual send",true);capture("restart-resume")
+    if(phase=="refresh"||prefs.read("https://localhost:8443/current")==null)login(args.getString("avery")!!) else {backKeyboard();reach("Resume saved session");click("Resume saved session");await("Connected")}
+    click("GUI Fixture Morgan");if(phase!="refresh")await("GUI Android actual send",true);capture(if(phase=="refresh")"profile-before-refresh" else "restart-resume")
     if(phase=="refresh"){
      val slot=checkNotNull(prefs.read("https://localhost:8443/current"));val before=prefs.read(slot)
      settingsControl("Refresh session");repeat(300){if(actualViewModel().state.value.busy)Thread.sleep(100)}
@@ -398,7 +439,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    }
    result.putInt("targetProcessId",android.os.Process.myPid());result.putString("result","PASS");result.putInt("assertions",count);result.putString("phase",phase);result.putString("captureRun",captureRun);result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   }catch(e:Throwable){try{capture("failure")}catch(_:Throwable){};result.putString("result","FAIL");result.putString("failure",e.toString());result.putInt("assertions",count);result.putString("captureRun",captureRun)}
-  finally{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}
+  finally{try{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}finally{fixtureTrust?.close();if(fixtureTrust!=null){result.putString("testTrustRestore","PASS exact original context/HTTPS factory/socket provider property/provider order");result.putString("testTrustRestoreDetails",fixtureTrust?.restorationProof)}}}
   result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   finish(if(result.getString("result")=="PASS")Activity.RESULT_OK else Activity.RESULT_CANCELED,result)
  }

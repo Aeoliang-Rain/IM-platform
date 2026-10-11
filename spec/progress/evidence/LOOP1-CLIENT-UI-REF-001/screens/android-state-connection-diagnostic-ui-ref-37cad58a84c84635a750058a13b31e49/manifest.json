@@ -1,0 +1,44 @@
+{
+  "actualUTC": "2026-10-11T07:57:26.249679+00:00",
+  "phase": "state-connection-diagnostic",
+  "actualHEAD": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "actualStatus": " M clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt\n M clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefFixtureTrust.kt\n M spec/progress/current.md\n D spec/tasks/backlog/LOOP1-CLIENT-UI-REF-001.md\n?? clients/mobile/hs_err_pid57924.log\n?? clients/mobile/hs_err_pid60832.log\n?? clients/mobile/replay_pid57924.log\n?? clients/mobile/replay_pid60832.log\n?? clients/web/dist/\n?? clients/web/node_modules/\n?? spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/\n?? spec/tasks/active/LOOP1-CLIENT-UI-REF-001.md\n?? tests/clients/ui-ref/\n",
+  "productSource": "1bd1a1bf015edd6422bd8bfeeb73bc454b565034",
+  "testAPKHash": "03a6643f5b4e2024825edad95fa5239e2e7dd6828e59a2d2acbb693ecfeabd9e",
+  "fixture": {
+    "status": "actual owned Go/PG/NATS, no system trust installed",
+    "project": "im-gui-product-20261004-35128",
+    "endpoint": "https://localhost:18443",
+    "accounts": [
+      {
+        "username": "gui_avery_f67ad4",
+        "userId": "d66198b5-fe2f-4f9c-9da0-e393691ecb6c",
+        "displayName": "GUI Fixture Avery"
+      },
+      {
+        "username": "gui_morgan_763c45",
+        "userId": "ece3fb64-18ab-4823-a09c-f9cbb61f8f13",
+        "displayName": "GUI Fixture Morgan"
+      },
+      {
+        "username": "gui_riley_3446c1",
+        "userId": "5783e943-90fc-4979-baac-b12df49093e1",
+        "displayName": "GUI Fixture Riley"
+      }
+    ],
+    "conversationId": "a81f7f07-0484-4e2d-8608-0f3089f0ce43",
+    "privateRuntime": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\go-35128",
+    "password": "unavailable in public evidence; owned fixture input only"
+  },
+  "TLSQualification": "Pinned explicit test-process CA for HTTPS and WSS; default endpoint hostname verification; empty process-only Provider cache marker restored finally; no device/system roots changed",
+  "entries": [
+    {
+      "file": "instrumentation-original.txt",
+      "sha256": "978e45dac3ad9575155644a2333af9e090a59e6eba4233295c4f3fe7dffb63f5"
+    },
+    {
+      "file": "native-originals\\connection-diagnostic.png",
+      "sha256": "50238d1be3b69b1d52293df3a9d03e9ad9cde564c4ae0c2096084d08b8537b71"
+    }
+  ]
+}

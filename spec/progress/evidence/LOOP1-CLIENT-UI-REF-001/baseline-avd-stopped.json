@@ -1,0 +1,86 @@
+{
+  "actualUTC": "2026-10-11T10:24:51.441269+00:00",
+  "ownedReady": {
+    "actualUTC": "2026-10-11T09:45:34.994284+00:00",
+    "directory": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd",
+    "serial": "emulator-5592",
+    "image": "system-images;android-34;google_apis;x86_64",
+    "createCommand": [
+      "H:/Android/cmdline-tools/latest/bin/avdmanager.bat",
+      "create",
+      "avd",
+      "--name",
+      "IMUIRefBaselineH34",
+      "--package",
+      "system-images;android-34;google_apis;x86_64",
+      "--path",
+      "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds\\IMUIRefBaselineH34.avd"
+    ],
+    "launchCommand": [
+      "H:/Android/emulator/emulator.exe",
+      "-avd",
+      "IMUIRefBaselineH34",
+      "-port",
+      "5592",
+      "-no-window",
+      "-no-snapshot",
+      "-no-audio",
+      "-no-boot-anim",
+      "-gpu",
+      "swiftshader_indirect",
+      "-memory",
+      "1536"
+    ],
+    "launcherPID": 36216,
+    "originalDevices": "List of devices attached\nemulator-5590\tdevice\n\n",
+    "method": "Factory SDK image; independent new owned userdata; no original AVD copy/reset or root/SELinux/system trust changes",
+    "environment": {
+      "JAVA_HOME": "H:/.jdks/jdk17",
+      "ANDROID_HOME": "H:/Android",
+      "ANDROID_USER_HOME": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\android-user",
+      "ANDROID_AVD_HOME": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds"
+    },
+    "attempt": "d9c53aa67d0c40749b2496df43a2096d",
+    "resumeOwnedFactory": false,
+    "userdataPartitionMegabytes": "SDK default",
+    "priorFailureQualification": null,
+    "resolvedOwnedRoot": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd",
+    "freeBytesBeforeLaunch": 146155888640,
+    "environmentMethod": "Child-only explicit env mapping; parent environment unchanged",
+    "storageOnAssignedTaskAllowedPath": true,
+    "actualReadyUTC": "2026-10-11T09:46:17.640167+00:00",
+    "actualSDK": "34"
+  },
+  "serialAbsentAfterManagerExit": true,
+  "old5590PresentAndUntouched": true,
+  "devices": "List of devices attached\nemulator-5590\tdevice\n\n",
+  "publicConfigurationAndLogArchives": [
+    {
+      "original": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\create-original.txt",
+      "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd-public-originals\\create-original.txt",
+      "SHA256": "fd4b0f5af8af451eb2dbffea6a4b0fec58cdaef987b265bbe95628c726683932"
+    },
+    {
+      "original": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\emulator-stdout.txt",
+      "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd-public-originals\\emulator-stdout.txt",
+      "SHA256": "d8b4e807aafdd89e0e4fe0d8764ffe7e1e3986fbb5b9d5738085076b13a185bc"
+    },
+    {
+      "original": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\emulator-stderr.txt",
+      "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd-public-originals\\emulator-stderr.txt",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds\\IMUIRefBaselineH34.ini",
+      "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd-public-originals\\IMUIRefBaselineH34.ini",
+      "SHA256": "16c9def5351570436afb98953d6a4da6922a69c641f17d4cb74ce057d33c2c7d"
+    },
+    {
+      "original": "H:\\.codex\\worktrees\\u\\IM-platform\\tests\\clients\\ui-ref\\.runtime\\baseline-avd\\avds\\IMUIRefBaselineH34.avd\\config.ini",
+      "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-runtime\\baseline-avd-public-originals\\config.ini",
+      "SHA256": "cdef62333ba95a05fd9a3f87db212f850472e0e4da173f763c342a5259f5566d"
+    }
+  ],
+  "unknownDataOperation": "none",
+  "generatedOwnedDirectoryRemoval": "pending after exact PID/socket proof"
+}

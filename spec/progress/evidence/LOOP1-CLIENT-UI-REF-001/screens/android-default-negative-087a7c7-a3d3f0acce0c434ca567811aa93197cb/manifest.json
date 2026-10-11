@@ -1,0 +1,31 @@
+{
+  "actualUTC": "2026-10-11T11:39:13.685661+00:00",
+  "actualHEAD": "087a7c76c363d77caf703204c8ffffb5d677c7d2",
+  "positiveOriginal": "spec\\progress\\evidence\\LOOP1-CLIENT-UI-REF-001\\screens\\android-auth-required-d2d47bb037f84543bc473dd5c771e9b3\\instrumentation-original.txt",
+  "positiveSHA256": "f1bd57aee68ff01dcda4f54ee89881d85ddbc9f3c9818c4411d93e02b13236d5",
+  "lastPositivePID": 6272,
+  "actualLivePIDBefore": null,
+  "oldPackageAbsentBeforeNewProcess": true,
+  "newActualInstrumentationPID": 6827,
+  "negativeRunner": "im.platform.client.ui.UiRefTLSNegative",
+  "source": "087a7c76c363d77caf703204c8ffffb5d677c7d2",
+  "sourceQualification": "Actual build HEAD; androidTest tracked tree must be clean before build",
+  "negativeAPK": {
+    "archive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\negative-test-087a7c7-a3d3f0acce0c434ca567811aa93197cb.apk",
+    "sha256": "38cdfcedcfc8334d4e220fbb8c58a9735c9b573992b26872d7120065cd598f5e",
+    "actualDevicePath": "/data/app/~~YP5ZbGPZ7gMKiPvQdM-TnA==/im.platform.client.test-43MG5Nawi0zW-8kN53s7mA==/base.apk",
+    "deviceArchive": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\runtime2\\negative-installed-087a7c7-a3d3f0acce0c434ca567811aa93197cb.apk",
+    "deviceSHA256": "38cdfcedcfc8334d4e220fbb8c58a9735c9b573992b26872d7120065cd598f5e",
+    "installRaw": "Performing Streamed Install\r\nSuccess\r\n"
+  },
+  "sameFixtureCertificateDERHash": "a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5",
+  "explicitPinnedCAHealthBefore": {
+    "status": 200,
+    "UTC": "2026-10-11T11:39:08.677724+00:00"
+  },
+  "explicitPinnedCAHealthAfter": {
+    "status": 200,
+    "UTC": "2026-10-11T11:39:13.685661+00:00"
+  },
+  "qualification": "No helper/explicit CA installed in new process; original SDK default HTTPS and socket trust reject same live fixture. Context/factory/property/full provider order restoration bound to preceding positive original. No Android system roots/security changes."
+}

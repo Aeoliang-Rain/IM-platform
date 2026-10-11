@@ -1,0 +1,37 @@
+[
+  {
+    "event": 13,
+    "kind": "actual_auth_response",
+    "path": "/v1/auth/login",
+    "status": 401,
+    "errorCode": "AUTH_INVALID_CREDENTIALS"
+  },
+  {
+    "event": 14,
+    "kind": "actual_auth_response",
+    "path": "/v1/auth/login",
+    "status": 200,
+    "errorCode": null
+  },
+  {
+    "event": 17,
+    "kind": "actual_auth_response",
+    "path": "/v1/auth/logout",
+    "status": 204,
+    "errorCode": null
+  },
+  {
+    "event": 18,
+    "kind": "actual_auth_response",
+    "path": "/v1/auth/login",
+    "status": 200,
+    "errorCode": null
+  },
+  {
+    "event": 21,
+    "kind": "actual_auth_response",
+    "path": "/v1/auth/refresh/native",
+    "status": 401,
+    "errorCode": "AUTH_SESSION_REVOKED"
+  }
+]

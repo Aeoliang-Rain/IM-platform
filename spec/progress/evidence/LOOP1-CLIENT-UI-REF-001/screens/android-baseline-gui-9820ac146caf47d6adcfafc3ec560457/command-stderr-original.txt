@@ -1,0 +1,12 @@
+adb.exe: failed to install H:\.codex\worktrees\u\IM-platform\clients\mobile\app\build\outputs\apk\debug\app-debug.apk: Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE: Existing package im.platform.client signatures do not match newer version; ignoring!]
+
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\gui\android.py", line 15, in <module>
+    for name in ('debug/app-debug.apk','androidTest/debug/app-debug-androidTest.apk'):run([adb,'-s',a.serial,'install','-r',ROOT/'clients/mobile/app/build/outputs/apk'/name])
+                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\u\IM-platform\tests\clients\gui\android.py", line 8, in run
+    def run(argv,cwd=ROOT,command_env=None):subprocess.run(list(map(str,argv)),cwd=cwd,env=command_env or env,check=True)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['H:/Android/platform-tools/adb.exe', '-s', 'emulator-5592', 'install', '-r', 'H:\\.codex\\worktrees\\u\\IM-platform\\clients\\mobile\\app\\build\\outputs\\apk\\debug\\app-debug.apk']' returned non-zero exit status 1.
