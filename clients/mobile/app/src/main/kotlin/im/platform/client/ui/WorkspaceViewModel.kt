@@ -14,14 +14,14 @@ data class WorkspaceState(val appearance:Appearance=Appearance(),val busy:Boolea
 class WorkspaceViewModel(application:Application):AndroidViewModel(application) {
     private val scope=CoroutineScope(SupervisorJob()+Dispatchers.Main.immediate)
     private val preferences=Preferences(application)
-    private var repository:Repository?=null;private var listRevision=0L;private val activity=mutableMapOf<String,Long>()
+    private var friendRevision=0L;private var friendCursor="";private var repository:Repository?=null;private var listRevision=0L;private val activity=mutableMapOf<String,Long>()
     private var auth:Auth?=null;private var sync:SyncViewModel?=null;private var offlineRepository:Repository?=null;private var generation=0L;private var operation=0L;private var observers:Job?=null;private var refreshTimer:Job?=null
     private val mutable=MutableStateFlow(WorkspaceState());val state:StateFlow<WorkspaceState> = mutable.asStateFlow()
     private fun publish(change:(WorkspaceState)->WorkspaceState){mutable.value=change(mutable.value)}
     init{scope.launch{try{val value=withContext(Dispatchers.IO){preferences.loadAppearance()};publish{it.copy(appearance=value)}}catch(_:Exception){publish{it.copy(error="Appearance unavailable")}}}}
     private val appearanceWrites=Mutex()
     fun appearance(value:Appearance){publish{it.copy(appearance=value,error=null)};scope.launch{appearanceWrites.withLock{try{withContext(Dispatchers.IO){preferences.saveAppearance(value)}}catch(_:Exception){publish{it.copy(error="Appearance could not be saved")}}}}}
-    private suspend fun stop(){generation++;listRevision++;repository=null;activity.clear();refreshTimer?.cancel();refreshTimer=null;observers?.cancel();observers=null;val old=sync;sync=null;val offline=offlineRepository;offlineRepository=null;publish{WorkspaceState(appearance=it.appearance,endpoint=it.endpoint,busy=it.busy)};withContext(Dispatchers.IO){old?.dispose();offline?.close()}}
+    private suspend fun stop(){generation++;listRevision++;repository=null;friendCursor="";friendRevision++;activity.clear();refreshTimer?.cancel();refreshTimer=null;observers?.cancel();observers=null;val old=sync;sync=null;val offline=offlineRepository;offlineRepository=null;publish{WorkspaceState(appearance=it.appearance,endpoint=it.endpoint,busy=it.busy)};withContext(Dispatchers.IO){old?.dispose();offline?.close()}}
     private fun fail(e:Exception){val kind=if(e is ApiFailure)e.kind else "Operation unavailable";publish{it.copy(error=kind)};if(kind=="Session expired")expire()}
     private suspend fun bind(session:SendSession,op:Long){
         if(op!=operation)return;stop();if(op!=operation)return;val g=generation;val authOwner=auth
@@ -35,12 +35,19 @@ class WorkspaceViewModel(application:Application):AndroidViewModel(application) 
         val ids=withContext(Dispatchers.IO){repo.conversationIds()};if(g!=generation || op!=operation)return;publish{it.copy(session=session,conversations=ids,selected="",error=null)}
         observers=scope.launch {
             launch{send.state.collect{s->if(g==generation){publish{it.copy(connection=s.connection,error=s.error?:it.error)};updateList(repo,g)}}}
-            launch{owner.state.collect{s->if(g==generation){publish{it.copy(sync=s.status,unavailable=s.unavailable,error=s.error?.let{"Sync "+it}?:it.error)};if(s.error=="authentication")expire();if(s.status=="idle"){updateList(repo,g)}}}}
+            launch{owner.state.collect{s->if(g==generation){publish{it.copy(sync=s.status,unavailable=s.unavailable,error=s.error?.let{"Sync "+it}?:it.error)};if(s.error=="authentication")expire();if(s.status=="idle"){updateList(repo,g);refreshFriends(repo,g)}}}}
         }
         updateList(repo,g);if(g!=generation)return
         send.connect(state.value.endpoint.replaceFirst("https:","wss:")+"/v1/ws")
         refreshTimer=scope.launch{while(isActive){delay(30000);if(g==generation && auth?.needsRefresh()==true && !state.value.busy)refresh()}}
-        try{val profile=authOwner!!.profile();if(g!=generation || op!=operation)return;val friends=authOwner.friends();if(g==generation && op==operation){publish{it.copy(profile=profile,friends=friends)};updateList(repo,g)}}catch(e:Exception){if(g==generation && op==operation)fail(e)}
+        try{val profile=authOwner!!.profile();if(g!=generation || op!=operation)return;publish{it.copy(profile=profile)};refreshFriends(repo,g)}catch(e:Exception){if(g==generation && op==operation)fail(e)}
+    }
+    private suspend fun refreshFriends(repo:Repository,g:Long){
+        val owner=auth?:return;val revision=++friendRevision
+        try{val cursor=withContext(Dispatchers.IO){repo.cursor()};if(g!=generation||cursor==friendCursor)return
+            val friends=owner.friends();if(g!=generation||owner!==auth||revision!=friendRevision)return
+            friendCursor=cursor;publish{it.copy(friends=friends)};updateList(repo,g)
+        }catch(e:CancellationException){throw e}catch(e:Exception){if(g==generation&&revision==friendRevision)fail(e)}
     }
     private suspend fun updateList(repo:Repository,g:Long){
         val revision=++listRevision
@@ -69,6 +76,6 @@ class WorkspaceViewModel(application:Application):AndroidViewModel(application) 
     fun disconnect(){scope.launch{sync?.send?.disconnect()}}
     fun reconnect(){val owner=sync?:return;val g=generation;scope.launch{try{owner.send.connect(state.value.endpoint.replaceFirst("https:","wss:")+"/v1/ws");owner.synchronize()}catch(_:Exception){if(g==generation)publish{it.copy(error="Connection unavailable")}}}}
     fun search(query:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,results=emptyList(),error=null)};scope.launch{try{val results=owner.search(query);if(g==generation)publish{it.copy(results=results)}}catch(e:Exception){if(g==generation)fail(e)}finally{if(g==generation)publish{it.copy(busy=false)}}}}
-    fun add(id:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,error=null)};scope.launch{try{val c=owner.add(id);if(g!=generation)return@launch;val friends=owner.friends();if(g==generation){publish{it.copy(friends=friends,conversations=(it.conversations+c).distinct())};open(c)}}catch(e:Exception){if(g==generation)fail(e)}finally{if(g==generation)publish{it.copy(busy=false)}}}}
+    fun add(id:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,error=null)};scope.launch{try{val c=owner.add(id);if(g!=generation)return@launch;val revision=++friendRevision;val friends=owner.friends();if(g==generation&&owner===auth){if(revision==friendRevision)publish{it.copy(friends=friends,conversations=(it.conversations+c).distinct())};open(c)}}catch(e:Exception){if(g==generation)fail(e)}finally{if(g==generation)publish{it.copy(busy=false)}}}}
     override fun onCleared(){generation++;observers?.cancel();refreshTimer?.cancel();val owner=sync;val offline=offlineRepository;sync=null;offlineRepository=null;scope.launch{try{withContext(Dispatchers.IO){owner?.dispose();offline?.close()}}finally{scope.cancel()}}}
 }

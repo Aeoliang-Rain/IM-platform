@@ -1,0 +1,1604 @@
+{
+  "generatedUTC": "2026-10-11T04:52:37.271267+00:00",
+  "recorderRun": "R-STATE-FIX-B",
+  "qualification": "Selected public affected acceptance, native controls and failed iterations. Private full certificate sets and other app details are not exported. Direct helper authoring/some reads outside Recorder and prospective_resume gaps remain disclosed. Not independent acceptance.",
+  "commands": [
+    {
+      "commandId": "C-0d972fb2-272f-4602-a958-4ce9918da6d9",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-Command",
+        "git rev-parse --show-toplevel; git status --short; git diff --stat; git log -5 --oneline; Get-ChildItem tests/clients/state | Select-Object Name; Get-Content tests/clients/state/desktop_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T14:32:33.660200Z",
+      "finishedUTC": "2026-10-10T14:32:34.867943Z",
+      "exit": 0,
+      "elapsedMs": 1188.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-0d972fb2-272f-4602-a958-4ce9918da6d9.stdout.txt",
+          "storedBlobSHA256": "c05fa2844e1a91b264db711973d6373329a182ce4d254e372fbbc8525787ae87",
+          "recordedRawOutputSHA256": "c05fa2844e1a91b264db711973d6373329a182ce4d254e372fbbc8525787ae87",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-0d972fb2-272f-4602-a958-4ce9918da6d9.stderr.txt",
+          "storedBlobSHA256": "6660b55d5ddc23a90bc143d59cd97ee8e2eac08138dcc650f30b3c781c0c994e",
+          "recordedRawOutputSHA256": "6660b55d5ddc23a90bc143d59cd97ee8e2eac08138dcc650f30b3c781c0c994e",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-27fd52b2-3952-4872-b4e2-95b3898437e9",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-Command",
+        "Get-Content contracts/websocket/envelope.schema.json,contracts/websocket/sync-v1.schema.json,contracts/http/auth-user-friend.openapi.json,contracts/http/sync.openapi.json; Get-ChildItem contracts/database -Recurse -File | Select-Object FullName; Get-Content spec/progress/evidence/LOOP1-CLIENT-STATE-001/tls-trust-plan.md,spec/progress/evidence/LOOP1-CLIENT-STATE-001/windows-week2-rollback.json; Get-Content tests/clients/state/teardown.py,tests/clients/state/friends_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T14:34:33.146225Z",
+      "finishedUTC": "2026-10-10T14:34:34.096900Z",
+      "exit": 0,
+      "elapsedMs": 921.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-27fd52b2-3952-4872-b4e2-95b3898437e9.stdout.txt",
+          "storedBlobSHA256": "2d921c2e492a34d699132aed601e1ab1d332f31dd93f9d8768a429bba494d546",
+          "recordedRawOutputSHA256": "2d921c2e492a34d699132aed601e1ab1d332f31dd93f9d8768a429bba494d546",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-27fd52b2-3952-4872-b4e2-95b3898437e9.stderr.txt",
+          "storedBlobSHA256": "8b48f4edd560f723f637b80442dc0f015ae4dd57e554fc801c7f45c7928da7d9",
+          "recordedRawOutputSHA256": "8b48f4edd560f723f637b80442dc0f015ae4dd57e554fc801c7f45c7928da7d9",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-a83dc492-8f62-4513-9cde-371c09b64f31",
+      "argv": [
+        "H:/node.js/node.exe",
+        "--check",
+        "tests/clients/state/friends_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:15:16.802374Z",
+      "finishedUTC": "2026-10-10T15:15:16.924928Z",
+      "exit": 0,
+      "elapsedMs": 94.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-a83dc492-8f62-4513-9cde-371c09b64f31.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-a83dc492-8f62-4513-9cde-371c09b64f31.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-b34b8ba9-dfa1-4eab-a6d5-1f4b0ae1decf",
+      "argv": [
+        "H:/node.js/node.exe",
+        "--check",
+        "tests/clients/state/desktop_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:15:17.386930Z",
+      "finishedUTC": "2026-10-10T15:15:17.466044Z",
+      "exit": 0,
+      "elapsedMs": 62.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b34b8ba9-dfa1-4eab-a6d5-1f4b0ae1decf.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b34b8ba9-dfa1-4eab-a6d5-1f4b0ae1decf.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-3da0e9e0-ec67-445b-b08e-ebf601075c26",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/desktop_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:20:16.826052Z",
+      "finishedUTC": "2026-10-10T15:20:47.610538Z",
+      "exit": 1,
+      "elapsedMs": 30766.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-3da0e9e0-ec67-445b-b08e-ebf601075c26.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-3da0e9e0-ec67-445b-b08e-ebf601075c26.stderr.txt",
+          "storedBlobSHA256": "3811942eca8bed43e67c070d11a4879c355edc30e9a9f6a23ab933db5e3741dd",
+          "recordedRawOutputSHA256": "3811942eca8bed43e67c070d11a4879c355edc30e9a9f6a23ab933db5e3741dd",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-78854d9c-2588-4444-b86e-3051ab85824a",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/desktop_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:22:38.164128Z",
+      "finishedUTC": "2026-10-10T15:23:38.328722Z",
+      "exit": 1,
+      "elapsedMs": 60125.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-78854d9c-2588-4444-b86e-3051ab85824a.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-78854d9c-2588-4444-b86e-3051ab85824a.stderr.txt",
+          "storedBlobSHA256": "c325f254b1bac0b12cb4ac2826cd749fd5728e11491f38c6d4dbf135450968c1",
+          "recordedRawOutputSHA256": "c325f254b1bac0b12cb4ac2826cd749fd5728e11491f38c6d4dbf135450968c1",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-6ebb9808-dfe1-4769-bba7-1904ca4dcf0f",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/desktop_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:24:37.050364Z",
+      "finishedUTC": "2026-10-10T15:25:50.970169Z",
+      "exit": 1,
+      "elapsedMs": 73875.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-6ebb9808-dfe1-4769-bba7-1904ca4dcf0f.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-6ebb9808-dfe1-4769-bba7-1904ca4dcf0f.stderr.txt",
+          "storedBlobSHA256": "15dda5071171dff8ee5a92e30a356b3336cf5e6d0b42156463ee31378dfd7e4a",
+          "recordedRawOutputSHA256": "15dda5071171dff8ee5a92e30a356b3336cf5e6d0b42156463ee31378dfd7e4a",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-ac24e4a3-c710-4ba3-9cd7-546f82a2b31f",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/desktop_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:32:34.817981Z",
+      "finishedUTC": "2026-10-10T15:33:39.095401Z",
+      "exit": 1,
+      "elapsedMs": 64235.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-ac24e4a3-c710-4ba3-9cd7-546f82a2b31f.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-ac24e4a3-c710-4ba3-9cd7-546f82a2b31f.stderr.txt",
+          "storedBlobSHA256": "90d13ff98751a3c8a7ca5fc6fbb196acac2c651d711d48f5306bc992f4174514",
+          "recordedRawOutputSHA256": "90d13ff98751a3c8a7ca5fc6fbb196acac2c651d711d48f5306bc992f4174514",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-e70ae3a8-89c8-4911-80ca-03c6f33ba30e",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/desktop_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:43:04.639658Z",
+      "finishedUTC": "2026-10-10T15:45:09.492871Z",
+      "exit": 0,
+      "elapsedMs": 124812.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-e70ae3a8-89c8-4911-80ca-03c6f33ba30e.stdout.txt",
+          "storedBlobSHA256": "8e751f5732ca89c34200f295a1abdbd3d6c94aaadccfc881ea4942f40cf88651",
+          "recordedRawOutputSHA256": "8e751f5732ca89c34200f295a1abdbd3d6c94aaadccfc881ea4942f40cf88651",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-e70ae3a8-89c8-4911-80ca-03c6f33ba30e.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-ee89fdb0-b82c-40fb-bd11-b9be5f90e054",
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:46:02.904058Z",
+      "finishedUTC": "2026-10-10T15:47:45.462751Z",
+      "exit": 1,
+      "elapsedMs": 102531.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-ee89fdb0-b82c-40fb-bd11-b9be5f90e054.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-ee89fdb0-b82c-40fb-bd11-b9be5f90e054.stderr.txt",
+          "storedBlobSHA256": "bd58f1da49a7125f0ecf820a9f77e8634036227d4e1d2aa34a54ffaaab20f895",
+          "recordedRawOutputSHA256": "bd58f1da49a7125f0ecf820a9f77e8634036227d4e1d2aa34a54ffaaab20f895",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-9f6b3741-00be-41df-800e-d39f9bc79567",
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:48:15.826926Z",
+      "finishedUTC": "2026-10-10T15:48:18.267889Z",
+      "exit": 1,
+      "elapsedMs": 2406.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9f6b3741-00be-41df-800e-d39f9bc79567.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9f6b3741-00be-41df-800e-d39f9bc79567.stderr.txt",
+          "storedBlobSHA256": "b7c978b0fe60d81a0e5e3d75e9f3e6b98e483516f94759bae731afc60f24f7f2",
+          "recordedRawOutputSHA256": "b7c978b0fe60d81a0e5e3d75e9f3e6b98e483516f94759bae731afc60f24f7f2",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-4f75c3e6-f9c6-4bec-bf73-29ea984efc17",
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:49:12.528700Z",
+      "finishedUTC": "2026-10-10T15:49:15.018238Z",
+      "exit": 1,
+      "elapsedMs": 2468.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-4f75c3e6-f9c6-4bec-bf73-29ea984efc17.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-4f75c3e6-f9c6-4bec-bf73-29ea984efc17.stderr.txt",
+          "storedBlobSHA256": "e26d228778218fc103aa827844d28199eb72fad0fa7b7f8e93fad2c566d59560",
+          "recordedRawOutputSHA256": "e26d228778218fc103aa827844d28199eb72fad0fa7b7f8e93fad2c566d59560",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-5a467f5b-ff9f-4650-a33b-ef316c1cd0ea",
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:49:57.740498Z",
+      "finishedUTC": "2026-10-10T15:51:42.162567Z",
+      "exit": 1,
+      "elapsedMs": 104391.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-5a467f5b-ff9f-4650-a33b-ef316c1cd0ea.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-5a467f5b-ff9f-4650-a33b-ef316c1cd0ea.stderr.txt",
+          "storedBlobSHA256": "490db052913846efa893efb65f5b004cf0824690510d6363399e3e79371c44d7",
+          "recordedRawOutputSHA256": "490db052913846efa893efb65f5b004cf0824690510d6363399e3e79371c44d7",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-794468fa-d02c-4cdc-86ee-58bc08d7e8aa",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/friends_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:51:49.861963Z",
+      "finishedUTC": "2026-10-10T15:52:16.918042Z",
+      "exit": 1,
+      "elapsedMs": 27016.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-794468fa-d02c-4cdc-86ee-58bc08d7e8aa.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-794468fa-d02c-4cdc-86ee-58bc08d7e8aa.stderr.txt",
+          "storedBlobSHA256": "17f6ecb12df214e437bcadf04537ed4f7af2b6c3a2ec6071b1290b84dde82de3",
+          "recordedRawOutputSHA256": "17f6ecb12df214e437bcadf04537ed4f7af2b6c3a2ec6071b1290b84dde82de3",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-9e667306-b530-491f-9385-f4bb3d45af3c",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/friends_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:53:50.479143Z",
+      "finishedUTC": "2026-10-10T15:56:04.657238Z",
+      "exit": 1,
+      "elapsedMs": 134140.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9e667306-b530-491f-9385-f4bb3d45af3c.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9e667306-b530-491f-9385-f4bb3d45af3c.stderr.txt",
+          "storedBlobSHA256": "1fafebb0e6f23548bc72d5d3d6d2f8ece8355a5f701bb9abdac65098dfe1362a",
+          "recordedRawOutputSHA256": "1fafebb0e6f23548bc72d5d3d6d2f8ece8355a5f701bb9abdac65098dfe1362a",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-32f0ac25-be40-41ec-9c5d-851619e2a0ee",
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1",
+        "-NotificationCenter",
+        "-Output",
+        "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/own-os-notification-center.png"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:56:37.159691Z",
+      "finishedUTC": "2026-10-10T15:56:43.801864Z",
+      "exit": 1,
+      "elapsedMs": 6610.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-32f0ac25-be40-41ec-9c5d-851619e2a0ee.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-32f0ac25-be40-41ec-9c5d-851619e2a0ee.stderr.txt",
+          "storedBlobSHA256": "a6e76ce6daebbefb0206c780f1c7da535a1a9f7779d31f068e2435f9df77543e",
+          "recordedRawOutputSHA256": "a6e76ce6daebbefb0206c780f1c7da535a1a9f7779d31f068e2435f9df77543e",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-b53020c4-c377-4b6f-888c-e90a8e7abb6e",
+      "argv": [
+        "H:/node.js/node.exe",
+        "tests/clients/state/friends_actual.mjs"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T15:59:15.794261Z",
+      "finishedUTC": "2026-10-10T16:03:42.941323Z",
+      "exit": 0,
+      "elapsedMs": 267125.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b53020c4-c377-4b6f-888c-e90a8e7abb6e.stdout.txt",
+          "storedBlobSHA256": "ad5927fbf772a786ca747e25d987a5661eed52caedc4898dfc77a2ad3a55f5eb",
+          "recordedRawOutputSHA256": "ad5927fbf772a786ca747e25d987a5661eed52caedc4898dfc77a2ad3a55f5eb",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b53020c4-c377-4b6f-888c-e90a8e7abb6e.stderr.txt",
+          "storedBlobSHA256": "c890b145a39b41db4745516a232a8dbffc3d995334ffcd89a8e4322412ad6d5e",
+          "recordedRawOutputSHA256": "c890b145a39b41db4745516a232a8dbffc3d995334ffcd89a8e4322412ad6d5e",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-359a6216-c379-49a5-aa5e-d05bd7d03158",
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1",
+        "-NotificationCenter",
+        "-Output",
+        "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/own-os-notification-observed-center.png"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T16:04:01.276969Z",
+      "finishedUTC": "2026-10-10T16:04:09.929627Z",
+      "exit": 1,
+      "elapsedMs": 8625.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-359a6216-c379-49a5-aa5e-d05bd7d03158.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-359a6216-c379-49a5-aa5e-d05bd7d03158.stderr.txt",
+          "storedBlobSHA256": "49e822766aa13e5d395e40341aa1e979f1cb1bc030a410405b234c11f56f9728",
+          "recordedRawOutputSHA256": "49e822766aa13e5d395e40341aa1e979f1cb1bc030a410405b234c11f56f9728",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-b23c9d64-9883-4a7a-9235-e69267c23f82",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/mobile_verify_restored.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T16:07:53.963827Z",
+      "finishedUTC": "2026-10-10T16:08:36.512819Z",
+      "exit": 1,
+      "elapsedMs": 42516.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b23c9d64-9883-4a7a-9235-e69267c23f82.stdout.txt",
+          "storedBlobSHA256": "56d5a9ffbb327fc4c82c8fee2703189cf7861d2df7534e91ecddf596c08ce482",
+          "recordedRawOutputSHA256": "56d5a9ffbb327fc4c82c8fee2703189cf7861d2df7534e91ecddf596c08ce482",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b23c9d64-9883-4a7a-9235-e69267c23f82.stderr.txt",
+          "storedBlobSHA256": "5109d1ea97106fbbeea28c30077c1c495ef15a6b0d69d3d44b5b1ef6e98d136a",
+          "recordedRawOutputSHA256": "5109d1ea97106fbbeea28c30077c1c495ef15a6b0d69d3d44b5b1ef6e98d136a",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-d814add8-e27c-4e75-9a6a-a2fc3bc88b22",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/mobile_verify_restored.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:10:37.872738Z",
+      "finishedUTC": "2026-10-11T04:11:45.750822Z",
+      "exit": 1,
+      "elapsedMs": 67843.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-d814add8-e27c-4e75-9a6a-a2fc3bc88b22.stdout.txt",
+          "storedBlobSHA256": "a045de447db2421cbe568dc7a20fcd67af83ae83671a190997a340668ab0f1b1",
+          "recordedRawOutputSHA256": "a045de447db2421cbe568dc7a20fcd67af83ae83671a190997a340668ab0f1b1",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-d814add8-e27c-4e75-9a6a-a2fc3bc88b22.stderr.txt",
+          "storedBlobSHA256": "70ee24e78320d4473fcfa4492bebb154b1974708d868f14762e5d3f5dbfa2359",
+          "recordedRawOutputSHA256": "70ee24e78320d4473fcfa4492bebb154b1974708d868f14762e5d3f5dbfa2359",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-b86ccecb-60af-425d-ae5a-4c5ae4e1c266",
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/machine_uac_delete.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:09:55.321986Z",
+      "finishedUTC": "2026-10-11T04:12:00.123262Z",
+      "exit": 1,
+      "elapsedMs": 124765.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b86ccecb-60af-425d-ae5a-4c5ae4e1c266.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-b86ccecb-60af-425d-ae5a-4c5ae4e1c266.stderr.txt",
+          "storedBlobSHA256": "f473c95ca0d537fdcde576f098c4097bc65eb1a93b768c0a713589283573879e",
+          "recordedRawOutputSHA256": "f473c95ca0d537fdcde576f098c4097bc65eb1a93b768c0a713589283573879e",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-bb32aadd-02b6-42b9-9aae-c74b2fa94301",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/gui/native.py",
+        "gradle",
+        "-PimSendInstrumentation=im",
+        ".platform.client.ui.GuiTrustRollbackInstrumentation",
+        ":app:assembleDebugAndroidTest"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:13:44.943319Z",
+      "finishedUTC": "2026-10-11T04:13:56.953375Z",
+      "exit": 1,
+      "elapsedMs": 11969.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-bb32aadd-02b6-42b9-9aae-c74b2fa94301.stdout.txt",
+          "storedBlobSHA256": "0c505d521bb34c630bccbabf070fd393b4d1ab5dcd5775da737c1b4fa826d825",
+          "recordedRawOutputSHA256": "0c505d521bb34c630bccbabf070fd393b4d1ab5dcd5775da737c1b4fa826d825",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-bb32aadd-02b6-42b9-9aae-c74b2fa94301.stderr.txt",
+          "storedBlobSHA256": "907d1f095499ba0809ce2b31d1bf1189ebccb3a1b78bd116b9c694e0596a38b7",
+          "recordedRawOutputSHA256": "907d1f095499ba0809ce2b31d1bf1189ebccb3a1b78bd116b9c694e0596a38b7",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-1e91f367-02bb-42bc-8ac4-2819d503c63b",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-B",
+        "tests/clients/gui/native.py",
+        "gradle",
+        "-PimSendInstrumentation=im.platform.client.ui.GuiTrustRollbackInstrumentation",
+        ":app:assembleDebugAndroidTest"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:17:09.139307Z",
+      "finishedUTC": "2026-10-11T04:17:44.244420Z",
+      "exit": 0,
+      "elapsedMs": 35078.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-1e91f367-02bb-42bc-8ac4-2819d503c63b.stdout.txt",
+          "storedBlobSHA256": "16fec7ca38eb88946c2fb6fd85d5f109ed2c80d8b88a303a91f5775dd71aaf57",
+          "recordedRawOutputSHA256": "16fec7ca38eb88946c2fb6fd85d5f109ed2c80d8b88a303a91f5775dd71aaf57",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-1e91f367-02bb-42bc-8ac4-2819d503c63b.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-9e78bf47-0acd-4e0a-ade3-c5e9c50968cc",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/notification-own-popup-shortcut.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:18:53.413895Z",
+      "finishedUTC": "2026-10-11T04:18:55.731200Z",
+      "exit": 0,
+      "elapsedMs": 2281.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9e78bf47-0acd-4e0a-ade3-c5e9c50968cc.stdout.txt",
+          "storedBlobSHA256": "8f23f418ab935316e0c868ef6178d4e41a598ca43e780be3b1d8f688c0de7df2",
+          "recordedRawOutputSHA256": "8f23f418ab935316e0c868ef6178d4e41a598ca43e780be3b1d8f688c0de7df2",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9e78bf47-0acd-4e0a-ade3-c5e9c50968cc.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-2b915a79-1abd-4985-846e-f248fb9f91df",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/mobile_verify_restored_repaired.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:19:24.554290Z",
+      "finishedUTC": "2026-10-11T04:20:23.612261Z",
+      "exit": 0,
+      "elapsedMs": 59016.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-2b915a79-1abd-4985-846e-f248fb9f91df.stdout.txt",
+          "storedBlobSHA256": "04d5e10bb9bd5ff8213a93031d0d06c2825023c7dfa821203057b4a79394e72d",
+          "recordedRawOutputSHA256": "04d5e10bb9bd5ff8213a93031d0d06c2825023c7dfa821203057b4a79394e72d",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-2b915a79-1abd-4985-846e-f248fb9f91df.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-66180f3f-a56a-4a54-8211-980bad34cd05",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1",
+        "-NotificationCenter",
+        "-Output",
+        "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/own-os-notification-deadline.png"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:20:10.851939Z",
+      "finishedUTC": "2026-10-11T04:20:30.894291Z",
+      "exit": 1,
+      "elapsedMs": 20000.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-66180f3f-a56a-4a54-8211-980bad34cd05.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-66180f3f-a56a-4a54-8211-980bad34cd05.stderr.txt",
+          "storedBlobSHA256": "3c0037c052dcf5a2c3467fbe45dd58d209910766e545536ea24687feaf43baed",
+          "recordedRawOutputSHA256": "3c0037c052dcf5a2c3467fbe45dd58d209910766e545536ea24687feaf43baed",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-dbe41267-0e24-423f-888a-83d18e97cae3",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/notification-own-token.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:25:56.873269Z",
+      "finishedUTC": "2026-10-11T04:25:59.478725Z",
+      "exit": 1,
+      "elapsedMs": 2562.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-dbe41267-0e24-423f-888a-83d18e97cae3.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-dbe41267-0e24-423f-888a-83d18e97cae3.stderr.txt",
+          "storedBlobSHA256": "8dcdd50e1d647ec72795920b1a7321064038a26e2529106848390848aa99f3e5",
+          "recordedRawOutputSHA256": "8dcdd50e1d647ec72795920b1a7321064038a26e2529106848390848aa99f3e5",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-988df79b-17f3-468b-bdb0-be16cf145aef",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/notification-own-token.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:27:01.084773Z",
+      "finishedUTC": "2026-10-11T04:27:03.726487Z",
+      "exit": 0,
+      "elapsedMs": 2610.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-988df79b-17f3-468b-bdb0-be16cf145aef.stdout.txt",
+          "storedBlobSHA256": "6a35d2b8d11b89e3d72c820e4d9f13862fe25b22608da13aede790d90eee1c0c",
+          "recordedRawOutputSHA256": "6a35d2b8d11b89e3d72c820e4d9f13862fe25b22608da13aede790d90eee1c0c",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-988df79b-17f3-468b-bdb0-be16cf145aef.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-f24da792-f2f5-481c-908b-2cff17d78c83",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "tests/clients/state/desktop_toast_capture.ps1",
+        "-Output",
+        "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/own-os-notification-resume-trigger.png"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:27:32.253796Z",
+      "finishedUTC": "2026-10-11T04:27:35.791505Z",
+      "exit": 1,
+      "elapsedMs": 3500.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-f24da792-f2f5-481c-908b-2cff17d78c83.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-f24da792-f2f5-481c-908b-2cff17d78c83.stderr.txt",
+          "storedBlobSHA256": "0ff9b3f97c206b4c33ee304f229f984e2de55a26a45f152eda890934a81038c9",
+          "recordedRawOutputSHA256": "0ff9b3f97c206b4c33ee304f229f984e2de55a26a45f152eda890934a81038c9",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-78f78199-06a5-492c-9d9c-224853488d8d",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/notification-fresh-native.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:29:31.660867Z",
+      "finishedUTC": "2026-10-11T04:29:35.454966Z",
+      "exit": 1,
+      "elapsedMs": 3750.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-78f78199-06a5-492c-9d9c-224853488d8d.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-78f78199-06a5-492c-9d9c-224853488d8d.stderr.txt",
+          "storedBlobSHA256": "57ef5d299d455d2e520b8824d3d9b509c1ed7747317a889286f432b602d3ab9d",
+          "recordedRawOutputSHA256": "57ef5d299d455d2e520b8824d3d9b509c1ed7747317a889286f432b602d3ab9d",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-ef18d8f9-9ec8-4fdd-b0e4-4fecf9abd0a8",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/notification-fresh-native.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:29:55.332640Z",
+      "finishedUTC": "2026-10-11T04:30:14.752163Z",
+      "exit": 1,
+      "elapsedMs": 19375.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-ef18d8f9-9ec8-4fdd-b0e4-4fecf9abd0a8.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-ef18d8f9-9ec8-4fdd-b0e4-4fecf9abd0a8.stderr.txt",
+          "storedBlobSHA256": "31856fbe42e61f803d90d9d05f7625ed747abd51442eb4fb676ae40de46ce343",
+          "recordedRawOutputSHA256": "31856fbe42e61f803d90d9d05f7625ed747abd51442eb4fb676ae40de46ce343",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-064f8bcd-5b20-4b7a-88bf-afdbf5b3443f",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/verify_machine_manual_restore.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:35:24.281911Z",
+      "finishedUTC": "2026-10-11T04:35:25.887551Z",
+      "exit": 1,
+      "elapsedMs": 1578.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-064f8bcd-5b20-4b7a-88bf-afdbf5b3443f.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-064f8bcd-5b20-4b7a-88bf-afdbf5b3443f.stderr.txt",
+          "storedBlobSHA256": "ff44d06209ace820b5004d055ec66ee5712d369024324e01b2bae48121f7a688",
+          "recordedRawOutputSHA256": "ff44d06209ace820b5004d055ec66ee5712d369024324e01b2bae48121f7a688",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-9b123919-d3ad-43e2-9dae-ae7aaffe4a98",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/verify_machine_manual_restore.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:35:39.853237Z",
+      "finishedUTC": "2026-10-11T04:35:41.956161Z",
+      "exit": 1,
+      "elapsedMs": 2063.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9b123919-d3ad-43e2-9dae-ae7aaffe4a98.stdout.txt",
+          "storedBlobSHA256": "cc5f39dbecb1f2b4e2abc4ca2cb635625dfce87c42658bbc8fd21c9a199a1894",
+          "recordedRawOutputSHA256": "cc5f39dbecb1f2b4e2abc4ca2cb635625dfce87c42658bbc8fd21c9a199a1894",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9b123919-d3ad-43e2-9dae-ae7aaffe4a98.stderr.txt",
+          "storedBlobSHA256": "28fb901a676e158313262a575d6da4d98c57f2b4494e9c32c6f1ac174eebb1c7",
+          "recordedRawOutputSHA256": "28fb901a676e158313262a575d6da4d98c57f2b4494e9c32c6f1ac174eebb1c7",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-9d4723b5-b0a4-45fd-aabc-e5585bbfe427",
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/verify_machine_manual_restore.ps1"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:36:15.708866Z",
+      "finishedUTC": "2026-10-11T04:36:17.683839Z",
+      "exit": 0,
+      "elapsedMs": 1938.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9d4723b5-b0a4-45fd-aabc-e5585bbfe427.stdout.txt",
+          "storedBlobSHA256": "876539c00a4dad0270cd3653a70e5afaeae97c4e53c629109fb04ece44dccd80",
+          "recordedRawOutputSHA256": "876539c00a4dad0270cd3653a70e5afaeae97c4e53c629109fb04ece44dccd80",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9d4723b5-b0a4-45fd-aabc-e5585bbfe427.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-486dcafe-b880-4937-940d-679839a78d39",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/windows_final_controls.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:37:45.757472Z",
+      "finishedUTC": "2026-10-11T04:39:19.276783Z",
+      "exit": 0,
+      "elapsedMs": 93485.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-486dcafe-b880-4937-940d-679839a78d39.stdout.txt",
+          "storedBlobSHA256": "6c2435d7c28dcc79420d1ba18a625e0569d81caab9d7a4ca2d2ac015ced24639",
+          "recordedRawOutputSHA256": "6c2435d7c28dcc79420d1ba18a625e0569d81caab9d7a4ca2d2ac015ced24639",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-486dcafe-b880-4937-940d-679839a78d39.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-3b79288b-5624-48ae-b581-4d6e985b162a",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/bind_rebuilt_rollback.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:41:07.357708Z",
+      "finishedUTC": "2026-10-11T04:41:08.474888Z",
+      "exit": 0,
+      "elapsedMs": 1109.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-3b79288b-5624-48ae-b581-4d6e985b162a.stdout.txt",
+          "storedBlobSHA256": "27abec7fa129f1e67a5dee151e2778d741fca7ec9851be78795e29309c6bf0c3",
+          "recordedRawOutputSHA256": "27abec7fa129f1e67a5dee151e2778d741fca7ec9851be78795e29309c6bf0c3",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-3b79288b-5624-48ae-b581-4d6e985b162a.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-cee87b2b-b64a-4e37-aace-340ffa420cd2",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-c",
+        "import subprocess;subprocess.run([r'C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',r'C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/capture_already_visible.ps1'],check=True,timeout=45)"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:41:58.996448Z",
+      "finishedUTC": "2026-10-11T04:42:03.153520Z",
+      "exit": 1,
+      "elapsedMs": 4109.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-cee87b2b-b64a-4e37-aace-340ffa420cd2.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-cee87b2b-b64a-4e37-aace-340ffa420cd2.stderr.txt",
+          "storedBlobSHA256": "7a20304562f7bc2e7708d7560020b40bcb9ddd2631479356e117705d3b00610b",
+          "recordedRawOutputSHA256": "7a20304562f7bc2e7708d7560020b40bcb9ddd2631479356e117705d3b00610b",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-2355ca77-db02-499d-8b47-d1c254e68a29",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-c",
+        "import subprocess;subprocess.run([r'C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',r'C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/capture_already_visible.ps1'],check=True,timeout=45)"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:42:21.315287Z",
+      "finishedUTC": "2026-10-11T04:42:54.035120Z",
+      "exit": 1,
+      "elapsedMs": 32688.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-2355ca77-db02-499d-8b47-d1c254e68a29.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-2355ca77-db02-499d-8b47-d1c254e68a29.stderr.txt",
+          "storedBlobSHA256": "4653482dc477fe8633c2422ecfec86f8317503465a489f72da41fbe0bfd0ad90",
+          "recordedRawOutputSHA256": "4653482dc477fe8633c2422ecfec86f8317503465a489f72da41fbe0bfd0ad90",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-830896be-89d0-4396-908a-b2b260a2ccde",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-c",
+        "import subprocess;subprocess.run([r'C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',r'C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/capture_already_visible.ps1'],check=True,timeout=45)"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:47:51.407045Z",
+      "finishedUTC": "2026-10-11T04:47:55.506951Z",
+      "exit": 0,
+      "elapsedMs": 4062.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-830896be-89d0-4396-908a-b2b260a2ccde.stdout.txt",
+          "storedBlobSHA256": "1e72b13c462c83bd12c46d088f62454c05d235ace27b085a6a525128e3aaad62",
+          "recordedRawOutputSHA256": "1e72b13c462c83bd12c46d088f62454c05d235ace27b085a6a525128e3aaad62",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-830896be-89d0-4396-908a-b2b260a2ccde.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true,
+          "qualification": "Unmodified Recorder-persisted blob; raw-vs-stored differences remain exposed and unavailable raw bytes are not invented."
+        }
+      }
+    },
+    {
+      "commandId": "C-919c01c0-57d2-4402-94fd-6b8160a7886d",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T14:34:45.430955Z",
+      "finishedUTC": "2026-10-10T14:34:46.728832Z",
+      "exit": 0,
+      "elapsedMs": 1250.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-919c01c0-57d2-4402-94fd-6b8160a7886d.stdout.txt",
+          "storedBlobSHA256": "344add87b05c5d8679e13b5fd287b1e3b6d6ff83ca2033865f42f417b5b590ea",
+          "recordedRawOutputSHA256": "284d2e51abf788b268fad6b368e8017f9c6a64fb3c60b2fb8119055d0f9ac22d",
+          "rawByteEqual": false
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-919c01c0-57d2-4402-94fd-6b8160a7886d.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-17ffdf26-7931-495b-8449-756f2422dbaa",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T14:34:59.085988Z",
+      "finishedUTC": "2026-10-10T14:34:59.261926Z",
+      "exit": 0,
+      "elapsedMs": 156.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-17ffdf26-7931-495b-8449-756f2422dbaa.stdout.txt",
+          "storedBlobSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "recordedRawOutputSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-17ffdf26-7931-495b-8449-756f2422dbaa.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-9d3db90e-6b23-4b4d-9391-449a233b81ca",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T14:34:59.402349Z",
+      "finishedUTC": "2026-10-10T14:34:59.548704Z",
+      "exit": 0,
+      "elapsedMs": 125.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9d3db90e-6b23-4b4d-9391-449a233b81ca.stdout.txt",
+          "storedBlobSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "recordedRawOutputSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-9d3db90e-6b23-4b4d-9391-449a233b81ca.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-54f3d41b-4024-43f6-9892-876589fa193e",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-10T14:34:59.669415Z",
+      "finishedUTC": "2026-10-10T14:35:18.345958Z",
+      "exit": 0,
+      "elapsedMs": 18640.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-54f3d41b-4024-43f6-9892-876589fa193e.stdout.txt",
+          "storedBlobSHA256": "905638d677e177baf9490888227d315ae78aa6a88a2d3977497aa62e5098193f",
+          "recordedRawOutputSHA256": "905638d677e177baf9490888227d315ae78aa6a88a2d3977497aa62e5098193f",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-54f3d41b-4024-43f6-9892-876589fa193e.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-33bfe9b3-93bd-46de-983c-33940981aec4",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:53:26.908335Z",
+      "finishedUTC": "2026-10-11T04:53:27.387493Z",
+      "exit": 0,
+      "elapsedMs": 437.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-33bfe9b3-93bd-46de-983c-33940981aec4.stdout.txt",
+          "storedBlobSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "recordedRawOutputSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-33bfe9b3-93bd-46de-983c-33940981aec4.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-c4a8ad83-07c5-42d0-a786-becdbd06c554",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:53:28.721073Z",
+      "finishedUTC": "2026-10-11T04:53:29.229112Z",
+      "exit": 0,
+      "elapsedMs": 469.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-c4a8ad83-07c5-42d0-a786-becdbd06c554.stdout.txt",
+          "storedBlobSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "recordedRawOutputSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-c4a8ad83-07c5-42d0-a786-becdbd06c554.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-6c28dafa-8dab-4cff-9056-823a5f4e730b",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:53:31.846222Z",
+      "finishedUTC": "2026-10-11T04:53:36.966334Z",
+      "exit": 1,
+      "elapsedMs": 4985.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-6c28dafa-8dab-4cff-9056-823a5f4e730b.stdout.txt",
+          "storedBlobSHA256": "f24f7be44d48fea4fc77fcd3d312e815a8404199012e803d4d1c5ba75bbac352",
+          "recordedRawOutputSHA256": "9874eb2263f594d36b744382c862926bf61697d5421444ce1d7cf16770b44b97",
+          "rawByteEqual": false
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-6c28dafa-8dab-4cff-9056-823a5f4e730b.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-8feda90f-d1f3-41d6-9dc8-c6c23b727a56",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:53:29.318843Z",
+      "finishedUTC": "2026-10-11T04:53:56.754305Z",
+      "exit": 1,
+      "elapsedMs": 27375.0,
+      "result": "FAIL",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-8feda90f-d1f3-41d6-9dc8-c6c23b727a56.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-8feda90f-d1f3-41d6-9dc8-c6c23b727a56.stderr.txt",
+          "storedBlobSHA256": "b8e1eea074be23a58502a8c11f01ff95710ebfe3cab4e7e424614ae80e08e03e",
+          "recordedRawOutputSHA256": "b8e1eea074be23a58502a8c11f01ff95710ebfe3cab4e7e424614ae80e08e03e",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-d16108cc-7356-4db5-9f8c-721624017153",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/archive_generated.py"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:54:45.912245Z",
+      "finishedUTC": "2026-10-11T04:54:46.903678Z",
+      "exit": 0,
+      "elapsedMs": 953.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-d16108cc-7356-4db5-9f8c-721624017153.stdout.txt",
+          "storedBlobSHA256": "d933355dd5b71e5057827ee823d363f7ade100ec34df660aa1925f7a7f0bc921",
+          "recordedRawOutputSHA256": "d933355dd5b71e5057827ee823d363f7ade100ec34df660aa1925f7a7f0bc921",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-d16108cc-7356-4db5-9f8c-721624017153.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-1f36f5e0-05c3-460a-b7fb-78c13222f6a7",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:55:22.956659Z",
+      "finishedUTC": "2026-10-11T04:55:24.953242Z",
+      "exit": 0,
+      "elapsedMs": 1937.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-1f36f5e0-05c3-460a-b7fb-78c13222f6a7.stdout.txt",
+          "storedBlobSHA256": "344add87b05c5d8679e13b5fd287b1e3b6d6ff83ca2033865f42f417b5b590ea",
+          "recordedRawOutputSHA256": "284d2e51abf788b268fad6b368e8017f9c6a64fb3c60b2fb8119055d0f9ac22d",
+          "rawByteEqual": false
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-1f36f5e0-05c3-460a-b7fb-78c13222f6a7.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-5c27ab67-8eb4-4bc5-9c0d-3a07bffc50ba",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:55:21.248349Z",
+      "finishedUTC": "2026-10-11T04:55:50.194365Z",
+      "exit": 0,
+      "elapsedMs": 28906.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-5c27ab67-8eb4-4bc5-9c0d-3a07bffc50ba.stdout.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-5c27ab67-8eb4-4bc5-9c0d-3a07bffc50ba.stderr.txt",
+          "storedBlobSHA256": "94b1f22aff5a5090861002a4eebaf0f9a96d30c8b8dc4da1fce03be15397685b",
+          "recordedRawOutputSHA256": "94b1f22aff5a5090861002a4eebaf0f9a96d30c8b8dc4da1fce03be15397685b",
+          "rawByteEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-f9fdb321-b6a9-426e-b7a5-829c5b054995",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "cwd": ".",
+      "startedUTC": "2026-10-11T04:55:38.392492Z",
+      "finishedUTC": "2026-10-11T04:56:05.577555Z",
+      "exit": 0,
+      "elapsedMs": 27141.0,
+      "result": "PASS",
+      "originals": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-f9fdb321-b6a9-426e-b7a5-829c5b054995.stdout.txt",
+          "storedBlobSHA256": "db4d3fd5bbffd4f96945caefee834ba8991c84db8341968f551104105d6e8db7",
+          "recordedRawOutputSHA256": "db4d3fd5bbffd4f96945caefee834ba8991c84db8341968f551104105d6e8db7",
+          "rawByteEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/fix-b/command-originals/C-f9fdb321-b6a9-426e-b7a5-829c5b054995.stderr.txt",
+          "storedBlobSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawOutputSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawByteEqual": true
+        }
+      }
+    }
+  ]
+}

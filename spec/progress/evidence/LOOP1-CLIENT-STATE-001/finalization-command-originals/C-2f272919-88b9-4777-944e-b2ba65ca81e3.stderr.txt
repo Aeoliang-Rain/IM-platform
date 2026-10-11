@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\handoff_manifest.py", line 19, in <module>
+    (E/'verification-matrix.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1047, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\verification-matrix.md'

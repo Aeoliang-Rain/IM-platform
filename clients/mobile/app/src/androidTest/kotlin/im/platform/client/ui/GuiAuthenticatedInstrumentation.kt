@@ -7,12 +7,14 @@ import android.view.accessibility.AccessibilityNodeInfo
 import im.platform.client.MainActivity
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 
 /** Real Compose UI/default SDK TLS against task-owned actual Go fixture. */
 class GuiAuthenticatedInstrumentation:Instrumentation(){
  private val deliveries=mutableListOf<String>()
  private var args=Bundle();private var activity:Activity?=null;private var count=0
- private val captureRun=System.currentTimeMillis().toString()
+ private var captureRun=System.currentTimeMillis().toString()
  private val sentText="GUI Android actual send "+captureRun
  private val retryText="GUI Android retry identity "+captureRun
  private val sendingText="GUI Android controlled sending "+captureRun
@@ -29,7 +31,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
  }
  private fun await(text:String,prefix:Boolean=false):AccessibilityNodeInfo{
   repeat(300){find(actualRoot(),text,prefix)?.let{return it};Thread.sleep(100)}
-  error("Actual control missing: "+text)
+  error("Actual control missing: "+text+" connection="+activity?.let{actualViewModel().state.value.connection}+" sync="+activity?.let{actualViewModel().state.value.sync})
  }
  private fun scroll(n:AccessibilityNodeInfo?,direction:Int=AccessibilityNodeInfo.ACTION_SCROLL_FORWARD):Boolean{
   fun collection(v:AccessibilityNodeInfo?):Boolean{
@@ -112,39 +114,53 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   return androidx.lifecycle.ViewModelProvider(owner)[key,WorkspaceViewModel::class.java]
  }
  private fun showMessage(text:String){
+  var diagnostic="unobserved"
+  fun rowBottom(root:AccessibilityNodeInfo?,body:android.graphics.Rect):Int?{
+   val state=actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)
+   val status=when(state){"SENT"->"Sent";"SENDING"->"Sending…";else->"Failed"}
+   fun nearest(label:String):android.graphics.Rect?{
+    val candidates=mutableListOf<android.graphics.Rect>()
+    fun scan(n:AccessibilityNodeInfo?){if(n==null)return;if(n.text?.toString()==label){val b=android.graphics.Rect();n.getBoundsInScreen(b);if(!b.isEmpty&&b.top>=body.bottom){if(label=="Retry"){var button:AccessibilityNodeInfo?=n;while(button!=null&&!button.isClickable)button=button.parent;button?.getBoundsInScreen(b)};candidates.add(b)}};for(i in 0 until n.childCount)scan(n.getChild(i))}
+    scan(root);return candidates.minByOrNull{it.top}
+   }
+   val delivery=nearest(status)?:return null
+   return if(state=="FAILED")kotlin.math.max(delivery.bottom,(nearest("Retry")?:return null).bottom) else delivery.bottom
+  }
   fun list(n:AccessibilityNodeInfo?,composerTop:Int,minHeight:Int):AccessibilityNodeInfo?{
    if(n==null)return null;val r=android.graphics.Rect();n.getBoundsInScreen(r)
-   if(n.isScrollable&&r.height()>minHeight&&r.bottom<=composerTop)return n
+   if((n.isScrollable||n.collectionInfo!=null)&&r.height()>minHeight&&r.bottom<=composerTop)return n
    for(i in 0 until n.childCount)list(n.getChild(i),composerTop,minHeight)?.let{return it};return null
   }
   repeat(40){
    val root=actualRoot();val composer=android.graphics.Rect();var editor=find(root,"Message")
-   while(editor!=null){editor.getBoundsInScreen(composer);if(!composer.isEmpty)break;editor=editor.parent}
+   while(editor!=null&&!editor.isEditable&&editor.actionList.none{it.id==AccessibilityNodeInfo.ACTION_SET_TEXT})editor=editor.parent
+   editor?.getBoundsInScreen(composer)
    val screen=checkNotNull(uiAutomation.takeScreenshot());val height=screen.height;screen.recycle()
-   val viewport=android.graphics.Rect();val n=list(root,composer.top,height/6)
-   val target=find(root,text);val r=android.graphics.Rect();target?.getBoundsInScreen(r)
+   val viewport=android.graphics.Rect();val target=find(root,text);val r=android.graphics.Rect();target?.getBoundsInScreen(r)
+   var ancestor=target;var parentList:AccessibilityNodeInfo?=null
+   while(ancestor!=null){val bounds=android.graphics.Rect();ancestor.getBoundsInScreen(bounds);if((ancestor.isScrollable||ancestor.collectionInfo!=null)&&bounds.height()>height/6&&bounds.bottom<=composer.top){parentList=ancestor;break};ancestor=ancestor.parent}
+   val n=parentList?:list(root,composer.top,height/6)
    if(n==null){
     val heading=android.graphics.Rect();(find(root,"Messages sync automatically")?:find(root,"Offline · Showing saved history"))?.getBoundsInScreen(heading)
-    check(target!=null&&!heading.isEmpty&&!r.isEmpty&&r.left>=0&&r.top>=heading.bottom&&r.bottom<=composer.top-36){"Actual complete non-scrolling message viewport unavailable"}
+    check(target!=null&&!heading.isEmpty&&!r.isEmpty&&r.left>=0&&r.top>=heading.bottom&&rowBottom(root,r)?.let{it<=composer.top}==true){"Actual complete non-scrolling message viewport unavailable"}
     return
    }
    n.getBoundsInScreen(viewport)
-   if(target!=null&&!r.isEmpty&&r.top>=viewport.top+8&&r.bottom<=viewport.bottom-16)return
+   diagnostic="state="+actualViewModel().state.value.messages.firstOrNull{it[2]==text}?.get(3)+" body="+r+" deliveryBottom="+rowBottom(root,r)+" viewport="+viewport+" composer="+composer
+   if(target!=null&&!r.isEmpty&&r.top>=viewport.top&&(rowBottom(root,r)?.let{it<=viewport.bottom}==true))return
    val messages=actualViewModel().state.value.messages
    val targetIndex=messages.indexOfFirst{it[2]==text}
    val visible=messages.mapIndexedNotNull{index,row->val v=find(root,row[2]?:"");val bounds=android.graphics.Rect();v?.getBoundsInScreen(bounds);if(v!=null&&!bounds.isEmpty&&bounds.intersects(viewport.left,viewport.top,viewport.right,viewport.bottom))index else null}
    val above=visible.isNotEmpty()&&targetIndex>=0&&targetIndex<visible.min()
-   val delta=if(above)viewport.height()/3 else if(target!=null&&!r.isEmpty&&r.top<viewport.top+8)kotlin.math.min(viewport.height()/3,kotlin.math.max(20,viewport.top+8-r.top))
-    else -kotlin.math.min(viewport.height()/3,if(target==null||r.isEmpty)viewport.height()/3 else kotlin.math.max(20,r.bottom-(viewport.bottom-16)))
-   val x=viewport.centerX().toFloat();val y=viewport.centerY().toFloat();val down=android.os.SystemClock.uptimeMillis()
-   fun event(action:Int,step:Int){val e=android.view.MotionEvent.obtain(down,android.os.SystemClock.uptimeMillis(),action,x,y+delta*step/6f,0);e.source=android.view.InputDevice.SOURCE_TOUCHSCREEN;try{verify(uiAutomation.injectInputEvent(e,true))}finally{e.recycle()}}
-   event(android.view.MotionEvent.ACTION_DOWN,0);for(i in 1..6){Thread.sleep(25);event(android.view.MotionEvent.ACTION_MOVE,i)};event(android.view.MotionEvent.ACTION_UP,6)
+   val direction=if(above||target!=null&&!r.isEmpty&&r.top<viewport.top)AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD
+   val moved=n.performAction(direction)
+   if(!moved&&target!=null)target.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
    Thread.sleep(250);uiAutomation.waitForIdle(100,3000)
   }
-  error("Actual complete message viewport unavailable "+text)
+  error("Actual complete message viewport unavailable "+text+" "+diagnostic)
  }
  private fun retryMessage(text:String){
-  showMessage(text);val body=android.graphics.Rect();await(text).getBoundsInScreen(body)
+  showMessage(text);Thread.sleep(700);val body=android.graphics.Rect();await(text).getBoundsInScreen(body)
   val candidates=mutableListOf<Pair<AccessibilityNodeInfo,android.graphics.Rect>>()
   fun scan(n:AccessibilityNodeInfo?,parent:AccessibilityNodeInfo?){
    if(n==null)return;val click=if(n.isClickable)n else parent
@@ -200,7 +216,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
   val proceed=java.io.File(directory,name+"-continue");repeat(1200){if(!proceed.exists())Thread.sleep(50)};verify(proceed.exists())
  }
  private fun top(){repeat(10){if(scroll(actualRoot(),AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)){waitForIdleSync();Thread.sleep(100)}}}
- override fun onCreate(arguments:Bundle?){super.onCreate(arguments);args=arguments?:Bundle();start()}
+ override fun onCreate(arguments:Bundle?){super.onCreate(arguments);args=arguments?:Bundle();args.getString("stateRun")?.let{require(Regex("[A-Za-z0-9-]{1,80}").matches(it));captureRun=it};start()}
  override fun onStart(){
   val result=Bundle();val prefs=Preferences(targetContext);val appearance=prefs.loadAppearance()
   try{
@@ -217,7 +233,50 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
    result.putString("defaultHostnameMismatch","PASS");prefs.saveAppearance(Appearance("cold",14,.8f))
    activity=startActivitySync(Intent(targetContext,MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));await("Open your workspace")
    val phase=args.getString("phase")?:"matrix"
-   if(phase=="auth-errors"){
+   if(phase=="state-connection-diagnostic"){
+      fill("Username",args.getString("avery")!!);fill("Password","fixture-password-not-a-real-secret");backKeyboard();reach("Sign in");click("Sign in")
+      val observed=org.json.JSONArray();val vm=actualViewModel();val syncField=WorkspaceViewModel::class.java.getDeclaredField("sync").apply{isAccessible=true}
+      var owner:im.platform.client.sync.SyncViewModel?=null
+      repeat(100){if(owner==null){owner=syncField.get(vm) as? im.platform.client.sync.SyncViewModel;if(owner==null)Thread.sleep(100)}}
+      val boundOwner=checkNotNull(owner);val started=android.os.SystemClock.elapsedRealtime()
+      runBlocking {withTimeoutOrNull(40000){boundOwner.state.collect{value->val s=vm.state.value;observed.put(org.json.JSONObject().put("elapsedMs",android.os.SystemClock.elapsedRealtime()-started).put("syncOwner",value.status).put("syncOwnerError",value.error).put("connection",s.connection).put("workspaceSync",s.sync))}}}
+      result.putString("connectionDiagnostic",observed.toString());capture("connection-diagnostic")
+     }else if(phase=="state-restart-prepare"){
+     login(args.getString("avery")!!);openMorgan();val text=args.getString("retryText")!!;val control=URL("https://localhost:8443/__state/control").openConnection() as HttpsURLConnection;try{control.requestMethod="POST";control.doOutput=true;control.outputStream.use{it.write(org.json.JSONObject().put("mode","A").put("text",text).put("userId",args.getString("averyId")).put("clientType","MOBILE").toString().toByteArray())};verify(control.responseCode==200);control.inputStream.close()}finally{control.disconnect()};fill("Message",text);backKeyboard();click("Send ",true);val failed=delivery(text,"FAILED");showMessage(text);capture("restart-before-process-stop-failed");val d=java.io.File(targetContext.getExternalFilesDir(null),"gui-auth/$captureRun");java.io.File(d,"restart-before.json").writeText(org.json.JSONObject().put("text",text).put("requestId",failed[0]).put("state","FAILED").put("targetProcessId",android.os.Process.myPid()).toString());controlled("restart-process-stop")
+    }else if(phase=="state-restart"){
+     reach("Resume saved session");click("Resume saved session");await("Connected");openMorgan();val text=args.getString("retryText")!!;val failed=delivery(text,"FAILED");showMessage(text);capture("restart-preserved-failed");retryMessage(text);val sent=delivery(text,"SENT");verify(sent[0]==failed[0]);showMessage(text);capture("restart-original-retry-sent")
+    }else if(phase=="state-fresh"){
+     val owner=args.getString("freshId")!!;verify(!targetContext.getDatabasePath("im-"+owner+".sqlite").exists());login(args.getString("freshUser")!!);verify(Auth("https://localhost:8443",prefs).savedAccount()==owner);click("GUI Fixture Avery");await(args.getString("historyText")!!)
+     fun stored():String{val rows=org.json.JSONArray();android.database.sqlite.SQLiteDatabase.openDatabase(targetContext.getDatabasePath("im-"+owner+".sqlite").path,null,android.database.sqlite.SQLiteDatabase.OPEN_READONLY).use{db->db.rawQuery("SELECT request_id,server_message_id,server_seq,content,state FROM messages ORDER BY server_seq",null).use{c->while(c.moveToNext())rows.put(org.json.JSONObject().put("requestId",c.getString(0)).put("messageId",c.getString(1)).put("seq",c.getLong(2)).put("text",c.getString(3)).put("state",c.getString(4)))}};return rows.toString()}
+     result.putString("freshRowsBefore",stored());capture("fresh-db-history-recovered");val text="STATE Mobile fresh "+captureRun;fill("Message",text);backKeyboard();click("Send ",true);delivery(text,"SENT");showMessage(text);capture("fresh-db-next-sent");result.putString("freshRowsAfter",stored());result.putString("freshDatabaseAbsentBefore","PASS")
+    }else if(phase=="state-friends"){
+     val fresh=args.getString("freshUser")!!;login(fresh);navigate("Friends");await("Your friends");capture("friends-online-baseline");controlled("friends-online")
+     fun has(id:String)=actualViewModel().state.value.friends.any{it.user.userId==id}
+     fun waitFriend(id:String,name:String){repeat(300){if(!has(id))Thread.sleep(100)};verify(has(id));reach("Your friends");reach(name);capture("friends-observed-"+name.replace(" ","-"))}
+     waitFriend(args.getString("webFriendId")!!,"STATE WebFriend");controlled("friends-web-observed")
+     waitFriend(args.getString("desktopFriendId")!!,"STATE DesktopFriend")
+     fill("Username",args.getString("mobileFriendUser")!!);backKeyboard();reach("Search");click("Search");await("STATE MobileFriend");click("Add friend");waitFriend(args.getString("mobileFriendId")!!,"STATE MobileFriend");controlled("friends-mobile-added")
+     settingsControl("Go offline");navigate("Friends");await("Offline");controlled("friends-offline");verify(!has(args.getString("offlineFriendId")!!));capture("friends-offline-retained")
+     settingsControl("Reconnect");await("Connected");navigate("Friends");waitFriend(args.getString("offlineFriendId")!!,"STATE OfflineFriend");controlled("friends-recovered")
+     settingsControl("Sign out");await("Open your workspace");login(args.getString("riley")!!);navigate("Friends");verify(actualViewModel().state.value.friends.none{it.user.displayName.startsWith("STATE ")});capture("friends-account-switch-isolated")
+     settingsControl("Sign out");await("Open your workspace");login(fresh);navigate("Friends");for(id in listOf("webFriendId","desktopFriendId","mobileFriendId","offlineFriendId")){repeat(300){if(!has(args.getString(id)!!))Thread.sleep(100)};verify(has(args.getString(id)!!))};capture("friends-original-account-restored")
+    }else if(phase=="state"){
+    login(args.getString("avery")!!);click("GUI Fixture Morgan")
+    repeat(300){if(actualViewModel().state.value.sync!="idle")Thread.sleep(100)}
+    for(mode in listOf("A","B")){
+     val text="STATE Android "+mode+" "+captureRun
+     val control=URL("https://localhost:8443/__state/control").openConnection() as HttpsURLConnection
+     try{control.requestMethod="POST";control.doOutput=true;control.connectTimeout=10000;control.readTimeout=10000
+      control.outputStream.use{it.write(org.json.JSONObject().put("mode",mode).put("text",text).put("userId",args.getString("averyId")).put("clientType","MOBILE").toString().toByteArray())}
+      verify(control.responseCode==200);control.inputStream.close()
+     }finally{control.disconnect()}
+     fill("Message",text);backKeyboard();click("Send ",true);val pending=delivery(text,"SENDING");showMessage(text);capture("state-"+mode+"-sending")
+     val failed=delivery(text,"FAILED");verify(failed[0]==pending[0]);showMessage(text);capture("state-"+mode+"-failed")
+     val secondText=text+" R2";fill("Message",secondText);backKeyboard();click("Send ",true);val second=delivery(secondText,"SENT");verify(delivery(text,"FAILED")[0]==failed[0])
+     controlled("state-"+mode+"-failed")
+     retryMessage(text);val committed=delivery(text,"SENT");verify(committed[0]==failed[0]);showMessage(if(mode=="A")secondText else text);val firstBounds=android.graphics.Rect();val secondBounds=android.graphics.Rect();await(text).getBoundsInScreen(firstBounds);await(secondText).getBoundsInScreen(secondBounds);verify(!firstBounds.isEmpty&&!secondBounds.isEmpty);verify(if(mode=="A")secondBounds.top<firstBounds.top else firstBounds.top<secondBounds.top);capture("state-"+mode+"-retry-sent")
+    }
+   }else if(phase=="auth-errors"){
     fun invalid(name:String){
      fill("Username",args.getString("avery")!!);fill("Password","wrong-fixture-password");backKeyboard();reach("Sign in");click("Sign in");await("Invalid username or password")
      val s=actualViewModel().state.value;verify(s.session==null&&s.offlineAccount==null&&!s.busy&&s.connection=="offline"&&s.error=="Invalid username or password")
@@ -337,7 +396,7 @@ class GuiAuthenticatedInstrumentation:Instrumentation(){
      verify(delivery(sendingText,"SENT")[0]==pending[0]);await(sendingText);capture("controlled-send-sent")
     }
    }
-   result.putString("result","PASS");result.putInt("assertions",count);result.putString("phase",phase);result.putString("captureRun",captureRun);result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
+   result.putInt("targetProcessId",android.os.Process.myPid());result.putString("result","PASS");result.putInt("assertions",count);result.putString("phase",phase);result.putString("captureRun",captureRun);result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))
   }catch(e:Throwable){try{capture("failure")}catch(_:Throwable){};result.putString("result","FAIL");result.putString("failure",e.toString());result.putInt("assertions",count);result.putString("captureRun",captureRun)}
   finally{activity?.let{runOnMainSync{it.finish()}};prefs.saveAppearance(appearance)}
   result.putStringArrayList("deliveries",java.util.ArrayList(deliveries))

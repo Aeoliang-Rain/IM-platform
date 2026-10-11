@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.fill: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('用户名', { exact: true })[22m
+
+    at login (H:\.codex\worktrees\st\IM-platform\tests\clients\state\web_actual.mjs:8:271)
+    at async file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/web_actual.mjs:14:77 {
+  log: [ "  - waiting for getByLabel('用户名', { exact: true })" ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.16.0

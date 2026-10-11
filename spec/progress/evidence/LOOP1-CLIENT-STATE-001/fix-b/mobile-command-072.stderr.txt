@@ -1,0 +1,14 @@
+adb.exe: failed to stat clients\mobile\app\build\outputs\apk\androidTest\debug\app-debug-androidTest.apk: No such file or directory
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\android_negative_tls.py", line 12, in <module>
+    call("reverse","tcp:8443","tcp:8443");call("install","-r",str(apk))
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\android_negative_tls.py", line 5, in call
+    def call(*args):return subprocess.check_output([adb,"-s","emulator-5590",*args],env=env,text=True,encoding="utf-8",timeout=30).strip()
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['H:/Android/platform-tools/adb.exe', '-s', 'emulator-5590', 'install', '-r', 'clients\\mobile\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk']' returned non-zero exit status 1.

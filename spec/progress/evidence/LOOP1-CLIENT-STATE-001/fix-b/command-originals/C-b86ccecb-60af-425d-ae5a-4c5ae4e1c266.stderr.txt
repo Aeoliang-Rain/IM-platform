@@ -1,0 +1,8 @@
+Start-Process : This command cannot be run due to the error: The operation was canceled by the user.
+At C:\Users\21441\.codex\visualizations\2026\10\10\01a124ec-bca5-7c72-a720-88c39f75ff47\state-fix-b\machine_uac_delete.ps1:8 char
+:11
++  $process=Start-Process -FilePath $exe -ArgumentList $argsExact -Verb ...
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+ 

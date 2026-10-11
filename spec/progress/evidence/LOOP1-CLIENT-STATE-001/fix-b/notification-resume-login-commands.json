@@ -1,0 +1,68 @@
+{
+  "actualUTC": "2026-10-11T04:28:44.716805+00:00",
+  "commands": [
+    {
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "tests/clients/state/desktop_window.ps1",
+        "-Action",
+        "fill",
+        "-Name",
+        "Username",
+        "-Value",
+        "state_fixb_fresh_f9d7179d",
+        "-TargetPid",
+        "24888",
+        "-Output",
+        "H:\\.codex\\worktrees\\st\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\fix-b\\notification-resume-username.png"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "tests/clients/state/desktop_window.ps1",
+        "-Action",
+        "fill",
+        "-Name",
+        "Password",
+        "-Value",
+        "fixture-password-not-a-real-secret",
+        "-TargetPid",
+        "24888",
+        "-Output",
+        "H:\\.codex\\worktrees\\st\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\fix-b\\notification-resume-password.png"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "tests/clients/state/desktop_window.ps1",
+        "-Action",
+        "click",
+        "-Name",
+        "Sign in",
+        "-Value",
+        "",
+        "-TargetPid",
+        "24888",
+        "-Output",
+        "H:\\.codex\\worktrees\\st\\IM-platform\\spec\\progress\\evidence\\LOOP1-CLIENT-STATE-001\\fix-b\\notification-resume-signin.png"
+      ],
+      "exit": 0
+    }
+  ]
+}

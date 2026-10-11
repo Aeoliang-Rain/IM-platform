@@ -1,0 +1,6 @@
+"""Disclose instrumentation representation/outer-tool gaps without changing prior events."""
+from pathlib import Path
+import json,subprocess,sys
+data={'qualification':'Prospective resume with explicit gaps, not a complete raw trace','reason':'Outer file reads, apply_patch authoring and coordination/tool UI calls were not command-recorder invocations. Early startup and sky native timeout gaps remain disclosed. Recorder captures raw output SHA but persists UTF8-decoded/redacted/JSON-canonicalized text; five stored stdout hashes differ, with original raw bytes unavailable. Exporter first assertion FAIL retained; corrected dual-hash index preserves stored blobs and event raw hashes. No Recorder event/blob edited.','evidence':'command-index.json; verification-matrix.md; screenshot-index.json','acceptance':'Recorder success is not Task/Stage acceptance; fresh review/hosted/main synchronization pending'}
+Path('spec/progress/evidence/LOOP1-CLIENT-STATE-001/recorder-handoff-gap.json').write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
+subprocess.run([sys.executable,'-B','tools/research/recorder.py','record-event','--research-root','H:/IM-platform/.git/worktrees/IM-platform43/state-research','--run-id','R-STATE-20261010-IMPL','--event-type','instrumentation_warning','--data-json',json.dumps(data)],check=True)

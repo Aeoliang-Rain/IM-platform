@@ -1,0 +1,11 @@
+CREATE DATABASE
+Isolated actual Go test database state_verify_6976e20b5b1f; fixture im untouched
+?   	im-platform/backend/go	[no test files]
+ok  	im-platform/backend/go/core	4.603s
+ok  	im-platform/backend/go/gateway	0.416s
+?   	im-platform/backend/go/plugin-host	[no test files]
+ok  	im-platform/backend/go/shared	0.008s
+ok  	im-platform/backend/go/tests	17.626s
+PASS full actual Go suite DB_TEST_ENABLE=1 isolated database
+DROP DATABASE
+Owned isolated database cleanup complete

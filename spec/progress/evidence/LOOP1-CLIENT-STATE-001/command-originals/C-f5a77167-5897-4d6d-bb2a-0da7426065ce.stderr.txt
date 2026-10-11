@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\ci\check_architecture.py", line 747, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "H:\.codex\worktrees\st\IM-platform\ci\check_architecture.py", line 738, in main
+    print(json.dumps({"result": "FAIL" if errors else "PASS", "scope": args.scope, "violations": errors, "graphs": graphs}, ensure_ascii=False, indent=2))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\xbb' in position 5787: illegal multibyte sequence
+FAIL: Command '['C:\\Users\\21441\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe', '-B', 'ci/check_architecture.py', '--scope', 'clients', '--json']' returned non-zero exit status 1.

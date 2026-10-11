@@ -1,0 +1,26 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: prepare ended prematurely: s_glBindAttribLocation: bind attrib 0 name position
+s_glBindAttribLocation: bind attrib 1 name color
+s_glBindAttribLocation: bind attrib 2 name localCoord
+INSTRUMENTATION_RESULT: assertions=7
+INSTRUMENTATION_RESULT: captureRun=restart-c2a0cc8c-7cfc-4c6d-baa4-09f8a0cbfa3f
+INSTRUMENTATION_RESULT: defaultHostnameMismatch=PASS
+INSTRUMENTATION_RESULT: defaultSDKHTTPS=PASS
+INSTRUMENTATION_RESULT: deliveries=[]
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Actual control missing: Connected
+INSTRUMENTATION_RESULT: result=FAIL
+INSTRUMENTATION_CODE: 0
+
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/android_restart.mjs:6:761 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

@@ -1,0 +1,51 @@
+Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:99 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action click -Name G GUI Fixture Morgan No messages yet -Value  -Output spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/desktop-e8bf9c25-c702-4b8d-9db3-ed78f289e147/fixture-open.png
+Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:99 char:27
++ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at execFileSync (node:child_process:961:15)
+    at ui (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:4:64)
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:12:360 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)\r\n' +
+      'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:99 char:27\r\n' +
+      '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+      '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)\r\n' +
+      ' \r\n'
+  ],
+  pid: 22292,
+  stdout: '',
+  stderr: 'Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)\r\n' +
+    'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:99 char:27\r\n' +
+    '+ ... ount -ne 1){throw "Unique observed UI control required: $Name ($($mat ...\r\n' +
+    '+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Unique observed...essages yet (0):String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Unique observed UI control required: G GUI Fixture Morgan No messages yet (0)\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.16.0

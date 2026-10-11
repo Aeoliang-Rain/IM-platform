@@ -1,0 +1,11 @@
+file:///H:/.codex/worktrees/st/IM-platform/clients/web/src/ui/build.config.mjs:4
+if(!out||!path.isAbsolute(out))throw new Error('WEB_BUILD_DIR must be an explicit absolute build destination');
+                                     ^
+
+Error: WEB_BUILD_DIR must be an explicit absolute build destination
+    at file:///H:/.codex/worktrees/st/IM-platform/clients/web/src/ui/build.config.mjs:4:38
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.16.0

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\fix_runtime.py", line 48, in <module>
+    command(['powershell','-NoProfile','-File','tests/clients/state/trust_windows.ps1','-Action','install','-BaselineName','windows-root-fix-b-baseline.json']);root_installed=True
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\fix_runtime.py", line 12, in command
+    if r.returncode:raise RuntimeError(f'Actual command failed {label.name}: exit{r.returncode}')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Actual command failed runtime-command-013: exit1

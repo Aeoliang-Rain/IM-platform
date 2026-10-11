@@ -250,20 +250,19 @@ func (h *hub) forward(ctx context.Context, c *connection, e envelope) {
 	req.Header.Set("Content-Type", "application/json")
 	response, err := h.client.Do(req)
 	if err != nil {
-		reject()
+		// Transport failure cannot determine whether Core durably committed.
 		return
 	}
 	defer response.Body.Close()
 	var ack envelope
 	if response.StatusCode != 200 || json.NewDecoder(io.LimitReader(response.Body, 65536)).Decode(&ack) != nil || ack.ProtocolVersion != "1.0" || ack.Type != "message.ack" || !strings.EqualFold(ack.RequestID, e.RequestID) {
-		reject()
+		// Preserve the uncertain origin; client timeout/retry/Sync resolves it.
 		return
 	}
 	var outcome struct {
 		Status string `json:"status"`
 	}
-	if json.Unmarshal(ack.Payload, &outcome) != nil {
-		reject()
+	if json.Unmarshal(ack.Payload, &outcome) != nil || (outcome.Status != "committed" && outcome.Status != "rejected") {
 		return
 	}
 	// A rejected retry cannot erase an earlier committed or uncertain send.

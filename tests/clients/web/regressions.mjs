@@ -14,6 +14,7 @@ async function setup(handler,timeout=10000){
   if(url.endsWith('/auth/login'))return json(auth);
   if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});
   if(url.endsWith('/friends'))return json({friends:[{user:{userId:peer,username:'bob',displayName:'Bob'},friendshipId:id(6),directConversationId:c}]});
+  if(url.endsWith('/sync/user')){const b=JSON.parse(options.body);return json({syncVersion:'1.0',type:'sync.user.page',requestId:b.requestId,events:[],nextCursor:b.cursor,hasMore:false});}
   return handler(url,options);
  };
  const factory=()=>{const socket={sent:[],send(raw){this.sent.push(JSON.parse(raw));},close(){this.onclose?.();}};sockets.push(socket);return socket;};
@@ -104,3 +105,32 @@ for(const held of [false,true]){
  for(const success of [true,false]){const {client}=await setup(async url=>{assert(url.endsWith('/auth/logout'));return success?new Response(null,{status:204}):json({requestId:id(999),error:{code:'AUTH_SESSION_REVOKED',message:'Controlled rejection'}},401);});try{await client.logout();assert.equal(client.view().session,false);assert.equal(client.view().notice,success?'已退出登录。':'本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。');}finally{client.dispose();}}
 }
 console.log('PASS Web regression: late ACK identity, both terminal-page crossing directions, continued pagination/atomic failed-page rollback, stable missing-gap failure/retry, strict legal logout204 and genuine failure');
+// STATE friend projection: late old responses/errors cannot overwrite new
+// snapshots; failed canonical projection does not consume the UserSync cursor.
+{
+ const {SyncHttp}=await import(pathToFileURL(process.env.WEB_BUILD_DIR+'/shared/protocol-sdk/src/sync/http.js'));
+ const validWithoutCache=new Http('https://regression.invalid',async()=>new Response(JSON.stringify({user:{userId:u,username:'alice',displayName:'Alice'}}),{headers:{'content-type':'application/json'}}));
+ assert.equal((await validWithoutCache.request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal)).user.userId,u);
+ for(const fetcher of [async()=>new Response('{}',{headers:{'content-type':'text/plain'}}),async()=>new Response('{broken',{headers:{'content-type':'application/json'}})])await assert.rejects(()=>new Http('https://regression.invalid',fetcher).request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal));
+ const sync=new SyncHttp('https://regression.invalid',{userId:u,sessionId:sid,sessionEpoch:1n,accessToken:'controlled'},async(_url,options)=>{const b=JSON.parse(options.body);return new Response(JSON.stringify({syncVersion:'1.0',type:'sync.user.page',requestId:b.requestId,events:[],nextCursor:b.cursor,hasMore:false}),{headers:{'content-type':'application/json'}});});
+ await assert.rejects(()=>sync.user('0',new AbortController().signal));
+ const list=n=>({friends:[{user:{userId:id(n),username:'peer'+n,displayName:'Peer '+n},friendshipId:id(60+n),directConversationId:id(80+n)}]});
+ for(const staleError of [false,true]){
+  const old=deferred();let count=0;
+  const api=async url=>{if(url.endsWith('/auth/login'))return json(auth);if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});if(url.endsWith('/friends'))return ++count===1?old.promise:json(list(7));throw Error('Unexpected path');};
+  const client=new WebClient('https://regression.invalid',api,()=>({close(){},send(){}}));
+  try{await client.login('alice','controlled');await client.loadFriends();assert.equal(client.view().friends[0].user.userId,id(7));old.resolve(staleError?json({requestId:id(999),error:{code:'VALIDATION_FAILED'}},400):json(list(2)));await new Promise(r=>setTimeout(r,0));assert.equal(client.view().friends[0].user.userId,id(7));assert.equal(client.view().friendsError,'');}finally{old.resolve(json(list(2)));client.dispose();}
+ }
+ {
+  let projectionFail=true;const cursors=[];
+  const api=async(url,options)=>{if(url.endsWith('/auth/login'))return json(auth);if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});if(url.endsWith('/friends'))return cursors.length&&projectionFail?json({requestId:id(999),error:{code:'VALIDATION_FAILED'}},400):json(list(cursors.length?7:2));if(url.endsWith('/sync/user')){const b=JSON.parse(options.body);cursors.push(b.cursor);return json({syncVersion:'1.0',type:'sync.user.page',requestId:b.requestId,events:[{eventId:id(30),cursor:'opaque-friend-1',kind:'friend.changed',subjectId:id(7),revision:1}],nextCursor:'opaque-friend-1',hasMore:false});}throw Error('Unexpected path');};
+  const client=new WebClient('https://regression.invalid',api,()=>({close(){},send(){}}));
+  try{await client.login('alice','controlled');await new Promise(r=>setTimeout(r,0));await client.syncFriends();assert.equal(client.userCursor,'0');assert.equal(client.view().friends[0].user.userId,peer);projectionFail=false;await client.syncFriends();assert.deepEqual(cursors,['0','0']);assert.equal(client.userCursor,'opaque-friend-1');assert.equal(client.view().friends[0].user.userId,id(7));}finally{client.dispose();}
+ }
+ {
+  const old=deferred();let friendsCount=0;
+  const client=new WebClient('https://regression.invalid',async url=>{if(url.endsWith('/auth/login'))return json(auth);if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});if(url.endsWith('/friends'))return ++friendsCount===1?old.promise:json(list(7));if(url.endsWith('/auth/logout'))return new Response(null,{status:204});throw Error('Unexpected path');},()=>({close(){},send(){}}));
+  try{await client.login('alice','controlled');await client.logout();await client.login('alice','controlled');await new Promise(r=>setTimeout(r,0));old.resolve(json(list(2)));await new Promise(r=>setTimeout(r,0));assert.equal(client.view().friends[0].user.userId,id(7));}finally{old.resolve(json(list(2)));client.dispose();}
+ }
+ console.log('PASS STATE real-contract cache alignment, strict Sync cache rejection, late old friend success/error isolation, cursor projection failure retry, prior login generation isolation');
+}

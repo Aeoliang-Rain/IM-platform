@@ -1,0 +1,53 @@
+Unique controlled friend username required
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:20 char:227
++ ... ches.Count -ne 1){throw 'Unique controlled friend username required'}
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique controll...ername required:String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique controlled friend username required
+ 
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-c556e10a-a5b0-4989-9976-8eeb75d64ab6/: 5 files pulled, 0 skipped. 2.1 MB/s (53438 bytes in 0.024s)
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action reach -Name state_desktopfriend_a864338478 -Value  -Output spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/friends-c556e10a-a5b0-4989-9976-8eeb75d64ab6/desktop-origin-projection-visible.png
+Unique controlled friend username required
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:20 char:227
++ ... ches.Count -ne 1){throw 'Unique controlled friend username required'}
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Unique controll...ername required:String) [], RuntimeException
+    + FullyQualifiedErrorId : Unique controlled friend username required
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at ui (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:5:64)
+    at desktopHas (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:8:217)
+    at async file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:19:361 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Unique controlled friend username required\r\n' +
+      'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:20 char:227\r\n' +
+      "+ ... ches.Count -ne 1){throw 'Unique controlled friend username required'}\r\n" +
+      '+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Unique controll...ername required:String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Unique controlled friend username required\r\n' +
+      ' \r\n'
+  ],
+  pid: 39348,
+  stdout: '',
+  stderr: 'Unique controlled friend username required\r\n' +
+    'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:20 char:227\r\n' +
+    "+ ... ches.Count -ne 1){throw 'Unique controlled friend username required'}\r\n" +
+    '+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Unique controll...ername required:String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Unique controlled friend username required\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.19.0

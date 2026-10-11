@@ -1,0 +1,51 @@
+Method invocation failed because [System.Object[]] does not contain a method named 'op_Addition'.
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:85 char:3
++   $points=@(@($rect.Left+1,$rect.Top+1),@($rect.Right-1,$rect.Top+1), ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (op_Addition:String) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MethodNotFound
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action reach-message -Name STATE Desktop A desktop-d7ee1529-3e6a-4d97-bdeb-96ebdf9f3013 -Value SENDING -Output spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/desktop-d7ee1529-3e6a-4d97-bdeb-96ebdf9f3013/A-sending.png
+Method invocation failed because [System.Object[]] does not contain a method named 'op_Addition'.
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:85 char:3
++   $points=@(@($rect.Left+1,$rect.Top+1),@($rect.Right-1,$rect.Top+1), ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (op_Addition:String) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MethodNotFound
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at execFileSync (node:child_process:961:15)
+    at ui (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:4:64)
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:15:477 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    "Method invocation failed because [System.Object[]] does not contain a method named 'op_Addition'.\r\n" +
+      'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:85 char:3\r\n' +
+      '+   $points=@(@($rect.Left+1,$rect.Top+1),@($rect.Right-1,$rect.Top+1), ...\r\n' +
+      '+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : InvalidOperation: (op_Addition:String) [], ParentContainsErrorRecordException\r\n' +
+      '    + FullyQualifiedErrorId : MethodNotFound\r\n' +
+      ' \r\n'
+  ],
+  pid: 25088,
+  stdout: '',
+  stderr: "Method invocation failed because [System.Object[]] does not contain a method named 'op_Addition'.\r\n" +
+    'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:85 char:3\r\n' +
+    '+   $points=@(@($rect.Left+1,$rect.Top+1),@($rect.Right-1,$rect.Top+1), ...\r\n' +
+    '+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : InvalidOperation: (op_Addition:String) [], ParentContainsErrorRecordException\r\n' +
+    '    + FullyQualifiedErrorId : MethodNotFound\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.16.0

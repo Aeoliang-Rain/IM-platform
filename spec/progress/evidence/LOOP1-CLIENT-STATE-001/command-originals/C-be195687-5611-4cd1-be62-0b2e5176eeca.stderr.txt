@@ -1,0 +1,21 @@
+   Compiling im-client-storage v0.1.0 (H:\.codex\worktrees\st\IM-platform\clients\desktop\src-tauri)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.09s
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+'syncing' !== 'idle'
+
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/sync/desktop.mjs:64:125 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'syncing',
+  expected: 'idle',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.16.0
+FAIL: Command '['node', 'tests/clients/sync/desktop.mjs', 'H:\\.codex\\toolchains\\client-gui\\target\\debug\\storage_probe.exe', 'https://localhost:50892']' returned non-zero exit status 1.

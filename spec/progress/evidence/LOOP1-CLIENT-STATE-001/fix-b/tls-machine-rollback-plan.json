@@ -1,0 +1,48 @@
+{
+  "task": "LOOP1-CLIENT-STATE-001",
+  "preparedUTC": "2026-10-10T15:19:35.351627+00:00",
+  "state": "PROPOSED_AWAITING_EXPLICIT_HUMAN_MACHINE_SCOPE_PERMISSION",
+  "thumbprint": "727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C",
+  "DER_SHA256": "a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5",
+  "NotAfterUTC": "2026-10-17T08:58:07Z",
+  "observedPhysicalScope": {
+    "LocalMachineRootExactCount": 1,
+    "HKLMExactThumbKey": true,
+    "HKCUExactThumbKey": false,
+    "CurrentUserLogicalCount": 75,
+    "CurrentUserOriginalCount": 74
+  },
+  "machineSnapshotBeforeManualImport": "unavailable; not fabricated",
+  "machineBeforeRemoval": {
+    "count": 73,
+    "sortedThumbSetSHA256": "4035fc2508f6fcb30d5f9ce7c6dbb317403c8f432906a2e7d199e07fdd59f996",
+    "privateOriginalSHA256": "8684aef684adcca13a25bac18ac2bef635dc309b3ca8c50449775fb7d9c74482"
+  },
+  "machineExpectedAfter": {
+    "count": 72,
+    "sortedThumbSetSHA256": "e925b2f3455492dd0a903771df0ba791dd0d23ff715acf2183f16ba27603f37b",
+    "definition": "actual before set minus only exact approved CA thumb"
+  },
+  "minimalStandardCommand": [
+    "certutil.exe",
+    "-f",
+    "-delstore",
+    "Root",
+    "727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C"
+  ],
+  "execution": "normal administrator-authorized Windows context after explicit Machine-scope permission; capture actual exit and any precisely owned certificate confirmation; escalation permission is not assumed to prove administrator token",
+  "postconditions": [
+    "Machine full after set exactly actual before minus ownCA",
+    "same-target CurrentUser logical full after exactly preserved original74",
+    "ownCA absent in Machine and CurrentUser; HKCU untouched",
+    "fresh installed native defaultTLS rejects while live explicitCA200 positive control succeeds",
+    "owned resources stopped and AVD exact baseline independently verified"
+  ],
+  "forbidden": [
+    "No unknown or other same-CN certificate deletion",
+    "No trust addition",
+    "No registry writes or ACL/policy/global preference modifications",
+    "No unrelated process operation"
+  ],
+  "authorizationReason": "Original explicit authorization was CurrentUser Root only; human manual import was observed in Machine Root. This concrete Machine removal needs a scope-specific human decision before execution."
+}

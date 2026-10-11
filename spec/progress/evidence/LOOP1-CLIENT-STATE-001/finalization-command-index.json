@@ -1,0 +1,469 @@
+{
+  "run": "R-STATE-FINALIZE-20261010",
+  "snapshotFinalEventHash": "b71f426adac9dae520f9b67456c8cf017dadd9daf1348a923f445fc6e89b09a7",
+  "commands": [
+    {
+      "commandId": "C-3fb03f5f-e0b7-4a07-8843-8f98a900b746",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exit": 0,
+      "durationMs": 281.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-3fb03f5f-e0b7-4a07-8843-8f98a900b746.stdout.txt",
+          "storedSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "recordedRawSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-3fb03f5f-e0b7-4a07-8843-8f98a900b746.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-5dbc76cd-b229-4787-8d78-ac32661e5222",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exit": 0,
+      "durationMs": 250.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-5dbc76cd-b229-4787-8d78-ac32661e5222.stdout.txt",
+          "storedSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "recordedRawSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-5dbc76cd-b229-4787-8d78-ac32661e5222.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-a076e85e-037e-4123-8e67-fbaab911cd1f",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit": 0,
+      "durationMs": 1891.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-a076e85e-037e-4123-8e67-fbaab911cd1f.stdout.txt",
+          "storedSHA256": "344add87b05c5d8679e13b5fd287b1e3b6d6ff83ca2033865f42f417b5b590ea",
+          "recordedRawSHA256": "284d2e51abf788b268fad6b368e8017f9c6a64fb3c60b2fb8119055d0f9ac22d",
+          "rawBytesEqual": false
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-a076e85e-037e-4123-8e67-fbaab911cd1f.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-7a03d321-2348-4851-a7a7-d39e70529558",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit": 1,
+      "durationMs": 27046.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-7a03d321-2348-4851-a7a7-d39e70529558.stdout.txt",
+          "storedSHA256": "a442d74d9e66bed225bd6c84f66088493cb6e5e232a0e3f4e1ed3203dba5dc5d",
+          "recordedRawSHA256": "a442d74d9e66bed225bd6c84f66088493cb6e5e232a0e3f4e1ed3203dba5dc5d",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-7a03d321-2348-4851-a7a7-d39e70529558.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-9315e0fb-cdb6-4020-833b-c8abb4369c2b",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/state/finalize_archive.py"
+      ],
+      "exit": 1,
+      "durationMs": 234.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-9315e0fb-cdb6-4020-833b-c8abb4369c2b.stdout.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-9315e0fb-cdb6-4020-833b-c8abb4369c2b.stderr.txt",
+          "storedSHA256": "a867ac7b3c73ca6ae7301e64acd11888102289632249e41e0cbdc5304a8047c2",
+          "recordedRawSHA256": "a867ac7b3c73ca6ae7301e64acd11888102289632249e41e0cbdc5304a8047c2",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-2f272919-88b9-4777-944e-b2ba65ca81e3",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/state/handoff_manifest.py"
+      ],
+      "exit": 1,
+      "durationMs": 172.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-2f272919-88b9-4777-944e-b2ba65ca81e3.stdout.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-2f272919-88b9-4777-944e-b2ba65ca81e3.stderr.txt",
+          "storedSHA256": "b8b8d89db23364ea9eda5083f29d4fc924ee5244b037d75f9e5c6c96cafd9295",
+          "recordedRawSHA256": "b8b8d89db23364ea9eda5083f29d4fc924ee5244b037d75f9e5c6c96cafd9295",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-28a5a34d-3e3f-4661-8c78-ff47a16faa93",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/state/finalize_archive.py"
+      ],
+      "exit": 0,
+      "durationMs": 1110.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-28a5a34d-3e3f-4661-8c78-ff47a16faa93.stdout.txt",
+          "storedSHA256": "f0a461103110c1043f3baffda5da0938104cb222ce5d2c6f84b3e91ccca10e2f",
+          "recordedRawSHA256": "f0a461103110c1043f3baffda5da0938104cb222ce5d2c6f84b3e91ccca10e2f",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-28a5a34d-3e3f-4661-8c78-ff47a16faa93.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-346066f7-ac26-49f2-8367-98000f051541",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/state/handoff_manifest.py"
+      ],
+      "exit": 0,
+      "durationMs": 344.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-346066f7-ac26-49f2-8367-98000f051541.stdout.txt",
+          "storedSHA256": "943afedcbd68a10b1625f3a0b5b9d4795e4b1f66af842a3028994b6d0cbe95fe",
+          "recordedRawSHA256": "943afedcbd68a10b1625f3a0b5b9d4795e4b1f66af842a3028994b6d0cbe95fe",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-346066f7-ac26-49f2-8367-98000f051541.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-69f691db-1035-4ace-8096-f7f751208ab3",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/state/finalize_archive.py"
+      ],
+      "exit": 1,
+      "durationMs": 406.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-69f691db-1035-4ace-8096-f7f751208ab3.stdout.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-69f691db-1035-4ace-8096-f7f751208ab3.stderr.txt",
+          "storedSHA256": "42a5bb5a87a5fd76f114b7194e903d414de84d32e86438531f235405a0943dbc",
+          "recordedRawSHA256": "42a5bb5a87a5fd76f114b7194e903d414de84d32e86438531f235405a0943dbc",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-db634855-5c02-4dc5-aea1-999b1c46605d",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/state/finalize_archive.py"
+      ],
+      "exit": 0,
+      "durationMs": 1032.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-db634855-5c02-4dc5-aea1-999b1c46605d.stdout.txt",
+          "storedSHA256": "f0a461103110c1043f3baffda5da0938104cb222ce5d2c6f84b3e91ccca10e2f",
+          "recordedRawSHA256": "f0a461103110c1043f3baffda5da0938104cb222ce5d2c6f84b3e91ccca10e2f",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-db634855-5c02-4dc5-aea1-999b1c46605d.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-a8428f6d-93d5-40c7-adcc-4a80677151aa",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/state/finalize_archive.py"
+      ],
+      "exit": 0,
+      "durationMs": 1031.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-a8428f6d-93d5-40c7-adcc-4a80677151aa.stdout.txt",
+          "storedSHA256": "f0a461103110c1043f3baffda5da0938104cb222ce5d2c6f84b3e91ccca10e2f",
+          "recordedRawSHA256": "f0a461103110c1043f3baffda5da0938104cb222ce5d2c6f84b3e91ccca10e2f",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-a8428f6d-93d5-40c7-adcc-4a80677151aa.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-4ce24e3f-7bef-4bf7-8044-74e2763dfce3",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-finalize/update_recovery.py"
+      ],
+      "exit": 0,
+      "durationMs": 250.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-4ce24e3f-7bef-4bf7-8044-74e2763dfce3.stdout.txt",
+          "storedSHA256": "dc3731a225a769400f1689e28c6c51f2ee94b1c9c7328255e995fc1e86c7febf",
+          "recordedRawSHA256": "dc3731a225a769400f1689e28c6c51f2ee94b1c9c7328255e995fc1e86c7febf",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-4ce24e3f-7bef-4bf7-8044-74e2763dfce3.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-c773a7f8-5fcb-4838-8d3a-de3486f370a9",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit": 0,
+      "durationMs": 19188.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-c773a7f8-5fcb-4838-8d3a-de3486f370a9.stdout.txt",
+          "storedSHA256": "b848f2b20960f0cb77cb2bd2b672ca03e5dd4a125360f7821781fb8711d1dce7",
+          "recordedRawSHA256": "b848f2b20960f0cb77cb2bd2b672ca03e5dd4a125360f7821781fb8711d1dce7",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-c773a7f8-5fcb-4838-8d3a-de3486f370a9.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-bb956f52-8517-49f8-b502-4dd3f39c7c59",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-finalize/seal_precommit.py"
+      ],
+      "exit": 0,
+      "durationMs": 360.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-bb956f52-8517-49f8-b502-4dd3f39c7c59.stdout.txt",
+          "storedSHA256": "b9f21fa45dfe72b902d61bf72cf51f75393b0f89928a5fff6794a363c8474bae",
+          "recordedRawSHA256": "b9f21fa45dfe72b902d61bf72cf51f75393b0f89928a5fff6794a363c8474bae",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-bb956f52-8517-49f8-b502-4dd3f39c7c59.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-82ed8910-7bc9-41c6-b76d-948338ebd112",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit": 0,
+      "durationMs": 1047.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-82ed8910-7bc9-41c6-b76d-948338ebd112.stdout.txt",
+          "storedSHA256": "344add87b05c5d8679e13b5fd287b1e3b6d6ff83ca2033865f42f417b5b590ea",
+          "recordedRawSHA256": "284d2e51abf788b268fad6b368e8017f9c6a64fb3c60b2fb8119055d0f9ac22d",
+          "rawBytesEqual": false
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-82ed8910-7bc9-41c6-b76d-948338ebd112.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-19c41f1c-2b36-4f6f-a198-177d4755752f",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exit": 0,
+      "durationMs": 313.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-19c41f1c-2b36-4f6f-a198-177d4755752f.stdout.txt",
+          "storedSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "recordedRawSHA256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-19c41f1c-2b36-4f6f-a198-177d4755752f.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-13c3d718-4557-4263-a143-3cb10349ea0c",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exit": 0,
+      "durationMs": 266.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-13c3d718-4557-4263-a143-3cb10349ea0c.stdout.txt",
+          "storedSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "recordedRawSHA256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-13c3d718-4557-4263-a143-3cb10349ea0c.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    },
+    {
+      "commandId": "C-21785e3b-a2f8-4a3e-a13d-e59f7996017c",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit": 0,
+      "durationMs": 25032.0,
+      "streams": {
+        "stdout": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-21785e3b-a2f8-4a3e-a13d-e59f7996017c.stdout.txt",
+          "storedSHA256": "5b204c7cb861fa09c178903a7141157d414a918f0917f925703260a967ec17f6",
+          "recordedRawSHA256": "5b204c7cb861fa09c178903a7141157d414a918f0917f925703260a967ec17f6",
+          "rawBytesEqual": true
+        },
+        "stderr": {
+          "path": "spec/progress/evidence/LOOP1-CLIENT-STATE-001/finalization-command-originals/C-21785e3b-a2f8-4a3e-a13d-e59f7996017c.stderr.txt",
+          "storedSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recordedRawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawBytesEqual": true
+        }
+      }
+    }
+  ],
+  "qualification": "Precommit snapshot only. Later clean commit/Acceptance and finished own Recorder are externally sealed by actual SHA. Original old running trace untouched; startup reads/apply_patch/outer-tool gaps and recorder stdout GBK failure disclosed. Registered prompt is public propagated Human/delegation summary, not raw original Human message; hidden prompts unavailable."
+}

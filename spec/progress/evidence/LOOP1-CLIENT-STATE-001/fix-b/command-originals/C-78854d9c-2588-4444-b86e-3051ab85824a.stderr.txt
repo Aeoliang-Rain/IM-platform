@@ -1,0 +1,51 @@
+Adjacent actual delivery label absent
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:36 char:28
++ ... f($states.Count -eq 0){throw 'Adjacent actual delivery label absent'}
++                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Adjacent actual delivery label absent:String) [], RuntimeException
+    + FullyQualifiedErrorId : Adjacent actual delivery label absent
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action reach-message -Name STATE Desktop A desktop-a0d2c9c5-c134-4d69-817c-331d17313085 -Value SENDING -Output spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/desktop-a0d2c9c5-c134-4d69-817c-331d17313085/A-sending.png
+Adjacent actual delivery label absent
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:36 char:28
++ ... f($states.Count -eq 0){throw 'Adjacent actual delivery label absent'}
++                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Adjacent actual delivery label absent:String) [], RuntimeException
+    + FullyQualifiedErrorId : Adjacent actual delivery label absent
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at execFileSync (node:child_process:961:15)
+    at ui (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:4:64)
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:15:477 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Adjacent actual delivery label absent\r\n' +
+      'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:36 char:28\r\n' +
+      "+ ... f($states.Count -eq 0){throw 'Adjacent actual delivery label absent'}\r\n" +
+      '+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Adjacent actual delivery label absent:String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Adjacent actual delivery label absent\r\n' +
+      ' \r\n'
+  ],
+  pid: 45144,
+  stdout: '',
+  stderr: 'Adjacent actual delivery label absent\r\n' +
+    'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:36 char:28\r\n' +
+    "+ ... f($states.Count -eq 0){throw 'Adjacent actual delivery label absent'}\r\n" +
+    '+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Adjacent actual delivery label absent:String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Adjacent actual delivery label absent\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.16.0

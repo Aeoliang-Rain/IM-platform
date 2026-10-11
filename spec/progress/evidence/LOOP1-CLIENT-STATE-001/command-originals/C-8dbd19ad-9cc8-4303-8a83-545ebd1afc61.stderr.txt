@@ -1,0 +1,10 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-2802c11d-c328-4d8c-a1ea-8f0311e93673/: 6 files pulled, 0 skipped. 4.6 MB/s (99498 bytes in 0.021s)
+file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:6
+async function desktopHas(account,label){for(let i=0;i<20;i++){ui('observe','','',label);const nodes=JSON.parse(await fs.readFile(out+'/'+label+'.png.json','utf8')).nodes;if(nodes.some(n=>n.name===account.username)){ui('reach',account.username,'',label+'-visible');return nodes;}await new Promise(r=>setTimeout(r,600));}throw Error('Actual Desktop friend projection missing '+account.username);}
+                                                                                                                                                                                                                                                                                                                                      ^
+
+Error: Actual Desktop friend projection missing state_desktopfriend_36ae1da52a
+    at desktopHas (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:6:327)
+    at async file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/friends_actual.mjs:17:298
+
+Node.js v24.19.0

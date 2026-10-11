@@ -1,0 +1,57 @@
+{
+  "archivedUTC": "2026-10-10T15:05:45.957464+00:00",
+  "certificateDER_SHA256": "a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5",
+  "certificateThumb": "727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C",
+  "receipts": [
+    {
+      "originalPrivateName": "native-trust-install.json",
+      "originalSHA256": "e859dff8e3f6ed8eb28a053554068a0d20b3aec0d62b01bdc8aecefeb0ec5836",
+      "processId": 45712,
+      "sidSHA256": "301af11e3674924384b40656cca2bbf5846fbd57bb28963624b2186bee7a7b8f",
+      "beforeCount": 74,
+      "afterCount": 74,
+      "beforeSetSHA256": "afe7c82024512295f1bc75f04e78e772bf6fad5b124e74860fd2755247526347",
+      "afterSetSHA256": "afe7c82024512295f1bc75f04e78e772bf6fad5b124e74860fd2755247526347",
+      "exactBaselineUnchanged": true,
+      "ownPresent": false,
+      "reportedExit": 1,
+      "phase": "before-standard-API",
+      "result": "FAIL_NOT_PERSISTED"
+    },
+    {
+      "originalPrivateName": "native-certutil-receipt.json",
+      "originalSHA256": "49b03583fb29000cf8cada24f546de9d331a584cd846ce6650da2dd7f85c7095",
+      "processId": 53336,
+      "sidSHA256": "301af11e3674924384b40656cca2bbf5846fbd57bb28963624b2186bee7a7b8f",
+      "beforeCount": 74,
+      "afterCount": 74,
+      "beforeSetSHA256": "afe7c82024512295f1bc75f04e78e772bf6fad5b124e74860fd2755247526347",
+      "afterSetSHA256": "afe7c82024512295f1bc75f04e78e772bf6fad5b124e74860fd2755247526347",
+      "exactBaselineUnchanged": true,
+      "ownPresent": false,
+      "reportedExit": 0,
+      "phase": null,
+      "result": "FAIL_NOT_PERSISTED"
+    }
+  ],
+  "standardViewerHistory": {
+    "twoQuotedRawfileAttempts": "invalid-public-key-security-object error; no trust changed",
+    "unquotedWindowsCERFileAssociationAttempt": {
+      "pid": 52908,
+      "observedTitle": "\u8bc1\u4e66",
+      "observedSubject": "IM STATE owned fixture 20261010",
+      "observedDates": "2026/10/10 through 2026/10/17",
+      "observedTrustText": "CA root untrusted",
+      "InstallInvoked": false,
+      "processLaterAbsent": true
+    },
+    "uniqueCauseForNonPersistingAPI": "unavailable"
+  },
+  "userSuppliedErrorImage": {
+    "sha256": "8ecdb01cb0ca66a5562b82f238de86c3e6f0a8f950b564c7df294f8455e65e8b",
+    "captureTime": null,
+    "processIdentity": null,
+    "classification": "historical user-supplied viewer error; not OS notification acceptance"
+  },
+  "recorderLimitations": "Initial direct UI/helper and standard trust diagnosis calls ran outside run-command; actual tool outputs and private receipts exist, not represented as a complete prospective command trace."
+}

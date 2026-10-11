@@ -4,7 +4,10 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"im-platform/backend/go/shared"
 	"net/http/httptest"
@@ -281,5 +284,27 @@ func TestGroup500SingleLogicalMessageAndOutbox(t *testing.T) {
 	}
 	if f.count(t, `SELECT count(*) FROM messages WHERE conversation_id=$1`) != 1 || f.count(t, `SELECT count(*) FROM outbox_events WHERE conversation_id=$1`) != 1 {
 		t.Fatal("GROUP persisted per member")
+	}
+}
+
+func TestNewMessageCommitUnknownClassification(t *testing.T) {
+	for _, v := range []struct {
+		name    string
+		err     error
+		unknown bool
+	}{
+		{"confirmed rollback", pgx.ErrTxCommitRollback, false},
+		{"tested deferred trigger rollback", &pgconn.PgError{Code: "P0001"}, false},
+		{"transaction resolution unknown", &pgconn.PgError{Code: "08007"}, true},
+		{"statement completion unknown", &pgconn.PgError{Code: "40003"}, true},
+		{"unclassified server error", &pgconn.PgError{Code: "XX000"}, true},
+		{"lost transport", errors.New("transport ended"), true},
+		{"context cancellation", context.Canceled, true},
+	} {
+		t.Run(v.name, func(t *testing.T) {
+			if errors.Is(newMessageCommitError(v.err), errCommitUnknown) != v.unknown {
+				t.Fatal("commit certainty classification differs")
+			}
+		})
 	}
 }

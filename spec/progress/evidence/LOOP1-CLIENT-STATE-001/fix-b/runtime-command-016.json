@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "$p=@(Get-Process im-client-storage -ErrorAction SilentlyContinue|Where-Object {$_.Path -eq 'H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe'});foreach($i in $p){Stop-Process -Id $i.Id}"
+  ],
+  "startedUTC": "2026-10-10T14:47:49.436603+00:00",
+  "elapsedSeconds": 2.6531283855438232,
+  "exit": 0,
+  "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

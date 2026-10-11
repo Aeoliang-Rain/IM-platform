@@ -29,11 +29,12 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
             var ready=false
             send.state.collect {s->
                 val now=s.connection=="ready"
-                if(!now && ready){generation++;pull?.cancel()}
+                if(!now && ready){generation++;pending.set(false);pull?.cancel();if(!stopped)mutableState.value=SyncState(unavailable=mutableState.value.unavailable)}
                 if(now && !ready && !stopped)enqueue()
                 ready=now
             }
         }
+        scope.launch {while(isActive){delay(10000);if(send.state.value.connection=="ready" && !stopped && pull==null)enqueue()}}
     }
     private fun enqueue(){scope.launch {try{synchronize()}catch(_:Exception){/* Failure already observable. */}}}
     suspend fun openConversation(c:String){val selected=SendWire.uuid(c);send.openConversation(selected);opened=selected;synchronize()}

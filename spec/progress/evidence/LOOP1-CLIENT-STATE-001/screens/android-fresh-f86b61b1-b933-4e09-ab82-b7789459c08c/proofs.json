@@ -1,0 +1,158 @@
+{
+  "kind": "preliminary actual Mobile fresh SQLite absent/cursor0/history seq1/2/3/newrequest seq4",
+  "fixture": {
+    "project": "im-gui-product-20261004-35588",
+    "endpoint": "https://localhost:8443",
+    "accounts": [
+      {
+        "userId": "6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+        "username": "state_fresh_44857c1878",
+        "displayName": "STATE Fresh"
+      },
+      {
+        "userId": "48865dca-83fa-4a5d-9ea4-937fabd16075",
+        "username": "state_webfriend_6c936970a4",
+        "displayName": "STATE WebFriend"
+      },
+      {
+        "userId": "4f4132cf-e3d4-4f7a-976d-998735aff234",
+        "username": "state_desktopfriend_5bf3705b8a",
+        "displayName": "STATE DesktopFriend"
+      },
+      {
+        "userId": "6f12b422-fad8-49a1-ae94-f77bff5705f7",
+        "username": "state_mobilefriend_e8a3507cc0",
+        "displayName": "STATE MobileFriend"
+      },
+      {
+        "userId": "e89b9f38-5c5e-4b5d-9787-28476d70fc46",
+        "username": "state_offlinefriend_322a601c67",
+        "displayName": "STATE OfflineFriend"
+      }
+    ],
+    "source": "actual Go register201; unique disposable accounts; no native database reset",
+    "historyText": "STATE fresh historical 1 6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+    "seed": {
+      "conversationId": "90ed358a-61d6-4f6c-9fff-43802153b58a",
+      "messages": [
+        {
+          "requestId": "c2249229-b121-4ee8-a1fd-7f24522a0388",
+          "messageId": "425d626d-ceaf-4ba9-89c1-477fdc2ed0d8",
+          "seq": 1,
+          "createdAt": "2026-10-10T12:18:00.722219+00:00",
+          "text": "STATE fresh historical 1 6322ebc7-ae0a-4913-9fde-ebc0241bffe6"
+        },
+        {
+          "requestId": "9a70f77b-b7a1-457d-92f0-0202c45cc924",
+          "messageId": "87dc9a7a-6d66-4566-bf49-e98387c6c564",
+          "seq": 2,
+          "createdAt": "2026-10-10T12:18:00.776142+00:00",
+          "text": "STATE fresh historical 2 6322ebc7-ae0a-4913-9fde-ebc0241bffe6"
+        }
+      ]
+    }
+  },
+  "run": "fresh-f86b61b1-b933-4e09-ab82-b7789459c08c",
+  "before": [
+    {
+      "requestId": "c2249229-b121-4ee8-a1fd-7f24522a0388",
+      "messageId": "425d626d-ceaf-4ba9-89c1-477fdc2ed0d8",
+      "seq": 1,
+      "text": "STATE fresh historical 1 6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "state": "SENT"
+    },
+    {
+      "requestId": "9a70f77b-b7a1-457d-92f0-0202c45cc924",
+      "messageId": "87dc9a7a-6d66-4566-bf49-e98387c6c564",
+      "seq": 2,
+      "text": "STATE fresh historical 2 6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "state": "SENT"
+    },
+    {
+      "requestId": "139fe9da-a033-4ba2-a083-2a61e0683511",
+      "messageId": "d0fb0df5-ea37-47fe-96c6-dee3414593a5",
+      "seq": 3,
+      "text": "STATE Desktop fresh 6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "state": "SENT"
+    }
+  ],
+  "after": [
+    {
+      "requestId": "c2249229-b121-4ee8-a1fd-7f24522a0388",
+      "messageId": "425d626d-ceaf-4ba9-89c1-477fdc2ed0d8",
+      "seq": 1,
+      "text": "STATE fresh historical 1 6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "state": "SENT"
+    },
+    {
+      "requestId": "9a70f77b-b7a1-457d-92f0-0202c45cc924",
+      "messageId": "87dc9a7a-6d66-4566-bf49-e98387c6c564",
+      "seq": 2,
+      "text": "STATE fresh historical 2 6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "state": "SENT"
+    },
+    {
+      "requestId": "139fe9da-a033-4ba2-a083-2a61e0683511",
+      "messageId": "d0fb0df5-ea37-47fe-96c6-dee3414593a5",
+      "seq": 3,
+      "text": "STATE Desktop fresh 6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "state": "SENT"
+    },
+    {
+      "requestId": "0bb28dc4-28f0-4f8b-95ef-7c72cccb622b",
+      "messageId": "2e712510-d6d5-4552-bb0d-ea60f1b42ac7",
+      "seq": 4,
+      "text": "STATE Mobile fresh fresh-f86b61b1-b933-4e09-ab82-b7789459c08c",
+      "state": "SENT"
+    }
+  ],
+  "next": {
+    "requestId": "0bb28dc4-28f0-4f8b-95ef-7c72cccb622b",
+    "messageId": "2e712510-d6d5-4552-bb0d-ea60f1b42ac7",
+    "seq": 4,
+    "text": "STATE Mobile fresh fresh-f86b61b1-b933-4e09-ab82-b7789459c08c",
+    "state": "SENT"
+  },
+  "sync": [
+    {
+      "event": 1716,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "0",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "clientType": "MOBILE"
+    },
+    {
+      "event": 1718,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 0,
+      "conversationId": "90ed358a-61d6-4f6c-9fff-43802153b58a",
+      "userId": "6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "clientType": "MOBILE"
+    },
+    {
+      "event": 1723,
+      "kind": "sync_request",
+      "path": "/v1/sync/user",
+      "cursor": "AAAAAAAAAdx_OIrl03hIA6Nb0s9G_vIODvugqqG33_6e3wozHyT5Hw",
+      "afterSeq": null,
+      "conversationId": null,
+      "userId": "6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "clientType": "MOBILE"
+    },
+    {
+      "event": 1725,
+      "kind": "sync_request",
+      "path": "/v1/sync/conversation",
+      "cursor": null,
+      "afterSeq": 3,
+      "conversationId": "90ed358a-61d6-4f6c-9fff-43802153b58a",
+      "userId": "6322ebc7-ae0a-4913-9fde-ebc0241bffe6",
+      "clientType": "MOBILE"
+    }
+  ]
+}

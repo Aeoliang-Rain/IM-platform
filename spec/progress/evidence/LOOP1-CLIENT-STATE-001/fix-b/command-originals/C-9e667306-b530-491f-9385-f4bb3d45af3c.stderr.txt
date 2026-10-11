@@ -1,0 +1,17 @@
+/sdcard/Android/data/im.platform.client/files/gui-auth/friends-fa705fde-5c13-446d-aa77-bac55e494195/: 11 files pulled, 0 skipped. 4.1 MB/s (131152 bytes in 0.030s)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('header.top .connection').filter({ hasText: /^连接已断开$/ }) to be visible[22m
+
+    at H:\.codex\worktrees\st\IM-platform\tests\clients\state\friends_actual.mjs:25:129 {
+  log: [
+    "  - waiting for locator('header.top .connection').filter({ hasText: /^连接已断开$/ }) to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.16.0

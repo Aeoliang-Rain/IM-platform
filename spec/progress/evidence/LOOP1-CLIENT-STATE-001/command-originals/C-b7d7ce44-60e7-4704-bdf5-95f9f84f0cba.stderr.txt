@@ -1,0 +1,51 @@
+Ambiguous message retry container
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:17 char:396
++ ... break};if($c.Count -gt 1){throw 'Ambiguous message retry container'}}
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Ambiguous message retry container:String) [], RuntimeException
+    + FullyQualifiedErrorId : Ambiguous message retry container
+ 
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: powershell -NoProfile -File tests/clients/state/desktop_window.ps1 -Action retry -Name STATE Desktop A desktop-4c7b50d1-3c68-4a75-93db-f7ef58c1624c -Value  -Output spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/desktop-4c7b50d1-3c68-4a75-93db-f7ef58c1624c/A-retry.png
+Ambiguous message retry container
+At H:\.codex\worktrees\st\IM-platform\tests\clients\state\desktop_window.ps1:17 char:396
++ ... break};if($c.Count -gt 1){throw 'Ambiguous message retry container'}}
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Ambiguous message retry container:String) [], RuntimeException
+    + FullyQualifiedErrorId : Ambiguous message retry container
+ 
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:925:11)
+    at execFileSync (node:child_process:961:15)
+    at ui (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:4:64)
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:12:49 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Ambiguous message retry container\r\n' +
+      'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:17 char:396\r\n' +
+      "+ ... break};if($c.Count -gt 1){throw 'Ambiguous message retry container'}}\r\n" +
+      '+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+      '    + CategoryInfo          : OperationStopped: (Ambiguous message retry container:String) [], RuntimeException\r\n' +
+      '    + FullyQualifiedErrorId : Ambiguous message retry container\r\n' +
+      ' \r\n'
+  ],
+  pid: 6140,
+  stdout: '',
+  stderr: 'Ambiguous message retry container\r\n' +
+    'At H:\\.codex\\worktrees\\st\\IM-platform\\tests\\clients\\state\\desktop_window.ps1:17 char:396\r\n' +
+    "+ ... break};if($c.Count -gt 1){throw 'Ambiguous message retry container'}}\r\n" +
+    '+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n' +
+    '    + CategoryInfo          : OperationStopped: (Ambiguous message retry container:String) [], RuntimeException\r\n' +
+    '    + FullyQualifiedErrorId : Ambiguous message retry container\r\n' +
+    ' \r\n'
+}
+
+Node.js v24.16.0

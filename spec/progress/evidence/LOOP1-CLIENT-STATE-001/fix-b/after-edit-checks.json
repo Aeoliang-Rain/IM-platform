@@ -1,0 +1,173 @@
+{
+  "actualUTC": "2026-10-11T04:58:48.786375+00:00",
+  "commands": [
+    {
+      "commandId": "C-919c01c0-57d2-4402-94fd-6b8160a7886d",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit": 0,
+      "elapsedMs": 1250.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-17ffdf26-7931-495b-8449-756f2422dbaa",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exit": 0,
+      "elapsedMs": 156.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-9d3db90e-6b23-4b4d-9391-449a233b81ca",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exit": 0,
+      "elapsedMs": 125.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-54f3d41b-4024-43f6-9892-876589fa193e",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit": 0,
+      "elapsedMs": 18640.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-33bfe9b3-93bd-46de-983c-33940981aec4",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exit": 0,
+      "elapsedMs": 437.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-c4a8ad83-07c5-42d0-a786-becdbd06c554",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exit": 0,
+      "elapsedMs": 469.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-6c28dafa-8dab-4cff-9056-823a5f4e730b",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit": 1,
+      "elapsedMs": 4985.0,
+      "result": "FAIL"
+    },
+    {
+      "commandId": "C-8feda90f-d1f3-41d6-9dc8-c6c23b727a56",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "exit": 1,
+      "elapsedMs": 27375.0,
+      "result": "FAIL"
+    },
+    {
+      "commandId": "C-d16108cc-7356-4db5-9f8c-721624017153",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/10/01a124ec-bca5-7c72-a720-88c39f75ff47/state-fix-b/archive_generated.py"
+      ],
+      "exit": 0,
+      "elapsedMs": 953.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-1f36f5e0-05c3-460a-b7fb-78c13222f6a7",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit": 0,
+      "elapsedMs": 1937.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-5c27ab67-8eb4-4bc5-9c0d-3a07bffc50ba",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "exit": 0,
+      "elapsedMs": 28906.0,
+      "result": "PASS"
+    },
+    {
+      "commandId": "C-f9fdb321-b6a9-426e-b7a5-829c5b054995",
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit": 0,
+      "elapsedMs": 27141.0,
+      "result": "PASS"
+    }
+  ],
+  "currentRequiredResults": "Frozen/planning/architecture all/77 architecture tests (1 skip)/Recovery Development PASS. Initial generated Android outputs caused architecture FAIL; archived only owned outputs with full byte manifest, then reruns PASS.",
+  "captureSyntax": "Python AST and Node check PASS",
+  "independentAcceptance": "PENDING"
+}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\evidence_manifest.py", line 15, in <module>
+    src=R/data[stream+'_blob'];raw=src.read_bytes();digest=hashlib.sha256(raw).hexdigest();assert digest==data[stream+'_sha256']
+                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

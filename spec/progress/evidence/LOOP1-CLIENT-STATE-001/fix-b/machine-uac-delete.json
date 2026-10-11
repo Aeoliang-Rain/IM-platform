@@ -1,0 +1,15 @@
+{
+    "entry":  "Standard Windows RunAs UAC consent; no consent bypass",
+    "requestedUTC":  "2026-10-11T04:09:56.8712770Z",
+    "file":  "C:\\Windows\\System32\\certutil.exe",
+    "authorizedPlanSHA256":  "ee7cf08612e8104b503ce899c5064dae78c651fd762c4c070375384ea724c4f8",
+    "failedUTC":  "2026-10-11T04:11:59.7807873Z",
+    "error":  "This command cannot be run due to the error: The operation was canceled by the user.",
+    "result":  "FAIL standard UAC/process execution; no restore claim",
+    "argv":  [
+                 "-f",
+                 "-delstore",
+                 "Root",
+                 "727E5D6BB4D072F9A76BFBC8FA81A6159A047D5C"
+             ]
+}

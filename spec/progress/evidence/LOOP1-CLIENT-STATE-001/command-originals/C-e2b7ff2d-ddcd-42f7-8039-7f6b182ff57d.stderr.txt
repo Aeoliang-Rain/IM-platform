@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 20000ms exceeded.
+Call log:
+[2m  - waiting for locator('article.message').filter({ has: getByText('STATE Web B 9e5b1247-2766-4395-bb46-6de567699b6e', { exact: true }) }).getByText('FAILED · 未确认', { exact: true }) to be visible[22m
+
+    at H:\.codex\worktrees\st\IM-platform\tests\clients\state\web_actual.mjs:17:56 {
+  log: [
+    "  - waiting for locator('article.message').filter({ has: getByText('STATE Web B 9e5b1247-2766-4395-bb46-6de567699b6e', { exact: true }) }).getByText('FAILED · 未确认', { exact: true }) to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.16.0

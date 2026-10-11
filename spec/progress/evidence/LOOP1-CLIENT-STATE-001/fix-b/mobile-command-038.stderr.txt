@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\verify_android_restore.py", line 8, in <module>
+    assert call("emu","avd","name").splitlines()[0]=="IMClientSend34" and sh("getprop sys.boot_completed")=="1"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

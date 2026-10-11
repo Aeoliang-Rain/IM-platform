@@ -1,0 +1,229 @@
+{
+  "sourceSHA": "5648c9d80004ea1db618c7740607f9797b6200a8",
+  "sourceGitBlobs": [
+    "100644 blob f2de55f368ba7f7098ccd602371b68f427569554\tbackend/go/Dockerfile",
+    "100644 blob 49bf31d37a49e52b33f2104c02911ce019135331\tbackend/go/config.example.json",
+    "100644 blob 8b137891791fe96927ad78e64b0aad7bded08bdc\tbackend/go/core/.gitkeep",
+    "100644 blob 0f2414eb3d8d1370394833ae47318cb393bca6d4\tbackend/go/core/auth.go",
+    "100644 blob f4e7c00ee4dd57a9831ad1001f8a8c597dc21215\tbackend/go/core/http.go",
+    "100644 blob c5fa3d350afa57aa65027acf4e4f3995bf34a26d\tbackend/go/core/message.go",
+    "100644 blob 6fdcd592de8d148e919c9fd6fcb3b1da5420466b\tbackend/go/core/message_test.go",
+    "100644 blob 0f80d23177bb1d21361d8a5797e4ef9e9219a83f\tbackend/go/core/outbox.go",
+    "100644 blob c981c7ecc3e4abd80109b140ca54d097d15950e4\tbackend/go/core/outbox_test.go",
+    "100644 blob 493137765ab8cad62b769ea6ce38b75fffc7b13e\tbackend/go/core/rollback_test.go",
+    "100644 blob de016ae604796b551b31f0be920fe66266c999ad\tbackend/go/core/social.go",
+    "100644 blob 2429393bf95f1ac3ac31a33d98453987659d6cec\tbackend/go/core/social_test.go",
+    "100644 blob 0bbd456a79b85d7a33e39dd5c307edbf2ce615cb\tbackend/go/core/sync.go",
+    "100644 blob 74822ff88a4bbb1204ffc96992654f1b8b360866\tbackend/go/core/sync_http_test.go",
+    "100644 blob f41215fdb31f9a7ce0db33b40e01353e30ae8893\tbackend/go/core/sync_test.go",
+    "100644 blob 8b137891791fe96927ad78e64b0aad7bded08bdc\tbackend/go/gateway/.gitkeep",
+    "100644 blob d97120626f4a17737909dcbb85165a1000a641d5\tbackend/go/gateway/gateway.go",
+    "100644 blob 1239cdde76e79b12b3fb96d5629ba6e89b420c27\tbackend/go/gateway/http.go",
+    "100644 blob c230cceb70649d5c35739cdafdddea78a6c16920\tbackend/go/gateway/message_test.go",
+    "100644 blob 145d068407c3a09371fc221899e4adeda0690f0a\tbackend/go/gateway/origin_test.go",
+    "100644 blob 874efc9f7c5dc24d107a847754f8b066a6d7b7d6\tbackend/go/gateway/session.go",
+    "100644 blob 6cbf3cd8f121147693b59b2a72fa365c70cfc1e8\tbackend/go/gateway/session_test.go",
+    "100644 blob 3b599e765359ba57ec5163032dba3c6b20a8046f\tbackend/go/go.mod",
+    "100644 blob dbe8312d1ad7d7184709310e8c19f4060cd55bb9\tbackend/go/go.sum",
+    "100644 blob ca1a2a44d7c0db2824bbeb29c2d906f3c04d4390\tbackend/go/main.go",
+    "100644 blob 8b137891791fe96927ad78e64b0aad7bded08bdc\tbackend/go/plugin-host/.gitkeep",
+    "100644 blob ae264988ba197ef0a60003b12a288bd2d5043f4a\tbackend/go/plugin-host/http.go",
+    "100644 blob 3b3839a7bc37c224e1d6d4d04a30d00ba9fb1840\tbackend/go/shared/config.go",
+    "100644 blob 26864e3e39d9b9b7e0c90489a242a937a5f8c20b\tbackend/go/shared/config_test.go",
+    "100644 blob da5650ed865920331b327d2475b1bcf73e0b4ed8\tbackend/go/shared/infra.go",
+    "100644 blob ba1adc4b5ce3100bc3e43aa31952037a15168213\tbackend/go/shared/security.go",
+    "100644 blob 3577489024d51393b1e4c575d9636d78a7525f8c\tbackend/go/shared/security_test.go",
+    "100644 blob 8b137891791fe96927ad78e64b0aad7bded08bdc\tbackend/go/tests/.gitkeep",
+    "100644 blob 8d955a1b9e70169a104a3239504382aea2904ddb\tbackend/go/tests/auth_test.go",
+    "100644 blob d4aa39054874097aa09136b7edaafb4d0646d367\tbackend/go/tests/contract_fixture_test.go",
+    "100644 blob 5aa0eee7460477cefcb0ac9cda5ad8ccb3926cf7\tbackend/go/tests/message_test.go",
+    "100644 blob 5167c3162c3d14608edb98552d08816e4927e265\tbackend/go/tests/revocation_fallback_test.go",
+    "100644 blob 3233baab30b6cdab18a4e73e156c09241935624b\tbackend/go/tests/runtime_test.go",
+    "100644 blob efa0e74c30bd3d1166182c870b99d3f47c69d16c\tbackend/go/tests/social_test.go",
+    "100644 blob 2e3f5fc23aee2c2e7824c8dfc93c8c37482896d0\tclients/desktop/src-tauri/.gitignore",
+    "100644 blob ee966973f17db79731abd14b786d8d955770ae85\tclients/desktop/src-tauri/Cargo.lock",
+    "100644 blob 4d294c29c57e756e52ac9713b8814a18df70db4c\tclients/desktop/src-tauri/Cargo.toml",
+    "100644 blob 2846c573a499b639c9092ac49a7cdf965fe0d25e\tclients/desktop/src-tauri/build.rs",
+    "100644 blob e849a60e37c3b36a444f800a18f0bb6094fdc98e\tclients/desktop/src-tauri/icons/icon.ico",
+    "100644 blob fa0a323f005d4658ab2e8a9622061a54d7e4506b\tclients/desktop/src-tauri/icons/icon.png",
+    "100644 blob 5ca4dbaf042eb6ccebbbc2eaf6e593688bb2a033\tclients/desktop/src-tauri/src/bin/storage_probe.rs",
+    "100644 blob 33c530dab1edfe05aa3fb462ac643a065a072016\tclients/desktop/src-tauri/src/database.rs",
+    "100644 blob 653b9972874e1f59a71d208fa6f06d1ac0056e9d\tclients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "100644 blob 40b6b028bc2c1a7a4228d191bdf5edd84d677964\tclients/desktop/src-tauri/src/lib.rs",
+    "100644 blob 7a89991f8aec252b399dcde52c14a5ee5ba3f4af\tclients/desktop/src-tauri/src/main.rs",
+    "100644 blob 7bfae4f5aabc05a916b944c6474130ae31b6e55a\tclients/desktop/src-tauri/tauri.conf.json",
+    "100644 blob c2367d58abc7ef703f733eab828006655479c8c9\tclients/desktop/src-tauri/tests/storage.rs",
+    "100644 blob 128d7b498d10846096d249217c0c55980ed2da00\tclients/desktop/src/application/accountSend.ts",
+    "100644 blob 47f589d11a80502db4b01caf68218fa73e384bf7\tclients/desktop/src/application/send.ts",
+    "100644 blob 356a14b53a20f2da97db32adf1006c2001c45351\tclients/desktop/src/application/sync/accountSync.ts",
+    "100644 blob 19abd75463212379bca22b34386ae04146b5b975\tclients/desktop/src/application/sync/application.ts",
+    "100644 blob 32623510782a494e3f43fe24a8320691592f18f4\tclients/desktop/src/application/ui/auth.ts",
+    "100644 blob d0c93c8515e4a8519aa5f6bd90ff1b2e2f1e9e73\tclients/desktop/src/application/ui/native.ts",
+    "100644 blob 68da0277098ba7dbe3e5a235148d389bc0377604\tclients/desktop/src/application/ui/workspace.ts",
+    "100644 blob ff9e42414a43ad7f27f8d8cbab55ed009077e9af\tclients/desktop/src/storage/database.ts",
+    "100644 blob 39822b9b2e582fcf5a90cc3d521bde6321a96025\tclients/desktop/src/ui/build.config.mjs",
+    "100644 blob 78e4be10a2cf361bed5b4c69483de182d6bdd1f6\tclients/desktop/src/ui/composer.ts",
+    "100644 blob fb52e45c0ed8c7ffce18a3d4f7f53974cc3a50df\tclients/desktop/src/ui/index.html",
+    "100644 blob 28a064c1747f60c8a06965271b699ffa26e5ab5b\tclients/desktop/src/ui/logo.png",
+    "100644 blob 376541cecac9941a4003d5185f82eb5fbfd7c5bc\tclients/desktop/src/ui/main.tsx",
+    "100644 blob 9fd2c44ecfbd29131732b9ee5ff26c13bd1224a1\tclients/desktop/src/ui/react-dom.config.mjs",
+    "100644 blob e03114752d1fcc0793d53c2e1be6ba183e840b36\tclients/desktop/src/ui/react.config.mjs",
+    "100644 blob 8e286ddbfc0e646b3e2792698498b44cd716b72b\tclients/desktop/src/ui/style.css",
+    "100644 blob 3116c3b6ad8bef4ebed0ffdaa86fe146d7369fc1\tclients/mobile/app/src/androidTest/assets/golden.json",
+    "100644 blob b1aa58a87c6a9a737e7e4c02a35c33d9a2f41288\tclients/mobile/app/src/androidTest/assets/v1.sql",
+    "100644 blob eb06cde47fdd843fe13fbfce460547d8d485f398\tclients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendInstrumentation.kt",
+    "100644 blob 6467b2670195f036bc337c5b0b9e2a978f6b452b\tclients/mobile/app/src/androidTest/kotlin/im/platform/client/storage/StorageInstrumentation.kt",
+    "100644 blob 801eef76dbd455632324f635438d4f544779e184\tclients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/SyncInstrumentation.kt",
+    "100644 blob 7c2e3d0e98c63a2a5c35267ff3a7e2436ef63941\tclients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt",
+    "100644 blob 5f4dcf993ef91ccd9cea0d13149482a9b1036147\tclients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiInstrumentation.kt",
+    "100644 blob 0a3cc2c40409f3c01f3b65c220f5b43ebacfdd1a\tclients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiTrustRollbackInstrumentation.kt",
+    "100644 blob 8467239b690fd55ebfaf1d999c298de5eede398e\tclients/mobile/app/src/main/AndroidManifest.xml",
+    "100644 blob 7fc7f373fc766ac1113332727b48b1fa18d417b0\tclients/mobile/app/src/main/kotlin/im/platform/client/MainActivity.kt",
+    "100644 blob 342c6bb60e183999c85052663dc03ee4d52a1e27\tclients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "100644 blob 2db61ca93c2502b6cad3fb5f23c101fb61fe4784\tclients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "100644 blob 0effa7fb268032afc1764dad95267722b7f48562\tclients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "100644 blob 47d30ba000ea722c5b808275a1d0dea789a2939e\tclients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt",
+    "100644 blob 658da53accb60d8131ff6d0681560aa0f6749c7b\tclients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+    "100644 blob 68e609760ee866d1df3688b0c2eb7b6c50f944f1\tclients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt",
+    "100644 blob 533d93f0c610151f9129e59e38a5ddd875c0af1c\tclients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "100644 blob b2fb0c69ac3c4851b3edfd3c4468fc7c92b81525\tclients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "100644 blob 1829201a3d5c109cc1bfd3e52dfa026aa9f4b56b\tclients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "100644 blob 45c0a3046939dd5840ffa7ed63c739a6ee76a838\tclients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "100644 blob 3282947d0ccb5a0db47e87de1bd9ffb3bef35b2f\tclients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+    "100644 blob 58751a8fecafb847ff0188d780cb8608572ddb45\tclients/mobile/app/src/main/kotlin/im/platform/client/ui/Workspace.kt",
+    "100644 blob 39bb470e05cc2ca9c29a0cbad38bcb7e7fb3baa4\tclients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "100644 blob baee496daa80650bf517e89cc641e13cf5959c4c\tclients/mobile/app/src/main/res/drawable/project_logo.png",
+    "100644 blob 527cd16f9dcc4efbdda99cc8915ce42dbad55026\tclients/shared/protocol-sdk/src/send/wire.ts",
+    "100644 blob 06a0ee062889c12c65d832fc1d5ec9048dbf2387\tclients/shared/protocol-sdk/src/storage/models.ts",
+    "100644 blob fed7c91db120a5aa9842c91605da2efb564ecbc9\tclients/shared/protocol-sdk/src/storage/repository.ts",
+    "100644 blob 95c2cd4f99866d3401373e0fab6483fcb9c8e951\tclients/shared/protocol-sdk/src/storage/schema.ts",
+    "100644 blob 1fc54ce6516870c9215c0326057424722a29bb72\tclients/shared/protocol-sdk/src/sync/http.ts",
+    "100644 blob 9e89646aaba13c0e35e2d42e20dfef58025e3489\tclients/shared/protocol-sdk/src/sync/wire.ts",
+    "100644 blob e4878c4b4d8e8f56a32c1b9f50b30cf1667ed8ca\tclients/web/src/application/client.ts",
+    "100644 blob 88bd3bca7789cde68a5b38b399e9615edd69e12d\tclients/web/src/application/http.ts",
+    "100644 blob 7028cdc06f4a2c032ba5ebd21a6a761e154b2b6b\tclients/web/src/application/repository.ts",
+    "100644 blob 32ef9fdf9421dbcf4404212745f8aaf710824afa\tclients/web/src/ui/appearance.ts",
+    "100644 blob 82ab4e224f835d4b73d7730c34ba6e8f71fd7d54\tclients/web/src/ui/build.config.mjs",
+    "100644 blob 9dcc7bba1ffe495533678ce42bfd1e496e0ad57d\tclients/web/src/ui/index.html",
+    "100644 blob 28a064c1747f60c8a06965271b699ffa26e5ab5b\tclients/web/src/ui/logo.png",
+    "100644 blob cad23b5d4346d788ec65da2315216e7ebdde520e\tclients/web/src/ui/main.tsx",
+    "100644 blob 9fd2c44ecfbd29131732b9ee5ff26c13bd1224a1\tclients/web/src/ui/react-dom.config.mjs",
+    "100644 blob 419253c08a5e106223b0fe36600e6f3d6dcdef1b\tclients/web/src/ui/react.config.mjs",
+    "100644 blob 331e17f4d531c648429c034741fc45fa987574ea\tclients/web/src/ui/style.css",
+    "100644 blob d5f5052b8253c22bc2569af96c13d07b450d0983\ttests/clients/state/android_actual.mjs",
+    "100644 blob 8c6283d3345e4344dc775726ad250322eef218a6\ttests/clients/state/android_fresh.mjs",
+    "100644 blob c0931d748022078b52b75165e068b1f38a1636a0\ttests/clients/state/android_restart.mjs",
+    "100644 blob a7832f17386b07646ad5c00d0154c30043dd23f0\ttests/clients/state/android_trust.py",
+    "100644 blob a37d3a3c8f5a0d0a318da1037d700443de077414\ttests/clients/state/backend_verify.py",
+    "100644 blob ad67437ec6ab4733dfb59c1b9cd709800f359cfc\ttests/clients/state/browser_diagnose.mjs",
+    "100644 blob 50545f91cdf6b422534ff61fbe58aed47718774b\ttests/clients/state/desktop_actual.mjs",
+    "100644 blob 85acab9177572ebd0aaac5e4be3f4aad95645ba0\ttests/clients/state/desktop_fresh.mjs",
+    "100644 blob 48514d1067470c5c10de151b797fd06f263a5b22\ttests/clients/state/desktop_window.ps1",
+    "100644 blob 2b22e4368138a650bf8e16a6e05e1fbcf4cef5d7\ttests/clients/state/fault_proxy.py",
+    "100644 blob aae069e39dcd83d87e3d99b2075057070328fe8c\ttests/clients/state/fresh_fixture.py",
+    "100644 blob ae403d13b46d87341f3d3668138e0ff9972a6e94\ttests/clients/state/fresh_web.mjs",
+    "100644 blob 63093f01aac1d3bf62113bcce2bd5d35c1ecce7a\ttests/clients/state/friends_actual.mjs",
+    "100644 blob 417e31f1bf9a2f7cff36b49fcdfc2d8fc2fce2ea\ttests/clients/state/install_desktop.ps1",
+    "100644 blob 7377d9b289432d0139969a302e77166aafa89b32\ttests/clients/state/start_emulator.ps1",
+    "100644 blob b0a0748eaf12563bc0356b17d0075136ad41c87e\ttests/clients/state/tls_fixture.py",
+    "100644 blob 0eb2daf72507eba9371c81460e4c9bc76425a4b7\ttests/clients/state/trust_windows.ps1",
+    "100644 blob 81f29e966104ced2ea3b8735acc74ab247bee655\ttests/clients/state/web_actual.mjs"
+  ],
+  "artifacts": [
+    {
+      "path": "clients/mobile/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "1b86de0e6deb7ea81affb38b5f444d18ffd692286a055a4d9a97b79d897353b1",
+      "bytes": 24159994
+    },
+    {
+      "path": "clients/mobile/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "f85eedde169f7d67944a485cd32f4a6c95a9573af8a6319190c1d184751cdee6",
+      "bytes": 348903
+    },
+    {
+      "path": "H:/.codex/toolchains/client-gui/target/x86_64-pc-windows-msvc/release/bundle/nsis/IM Plus_0.1.0_x64-setup.exe",
+      "sha256": "8c4507b13e7cbb8bcf3f7a4506db478d575fe47e16ef681d2a120aa8ea27944f",
+      "bytes": 5928305
+    },
+    {
+      "path": "H:/.codex/toolchains/client-gui/installed/im-client-storage.exe",
+      "sha256": "7f39c9d1010b0ca70c8cd0971540c1fbdee1f4a8135ecdb18168fb97ffab12e1",
+      "bytes": 15495168
+    }
+  ],
+  "webOutput": [
+    {
+      "path": "index.html",
+      "sha256": "397bf2bbfb9d2e48e9d742e04537525345b2683f492377cc417c81843e5729d9"
+    },
+    {
+      "path": "logo.png",
+      "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+    },
+    {
+      "path": "package.json",
+      "sha256": "68633bef087551aed4dc83e2de8a5eb0a1a8657eba08cea04121f904020a15a2"
+    },
+    {
+      "path": "react-dom.mjs",
+      "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+    },
+    {
+      "path": "react.mjs",
+      "sha256": "92595c5e2aef4233d0ac7d7de085cfd37eb145af37c0d634f83dd3c8d4e7bc27"
+    },
+    {
+      "path": "style.css",
+      "sha256": "b6e81ff8333cb45d2a4dfe5b6f34a6024cb23637aee7e6487baa971d0f7870a0"
+    },
+    {
+      "path": "vendor\\react-dom.js",
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    },
+    {
+      "path": "vendor\\react.js",
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    },
+    {
+      "path": "shared\\protocol-sdk\\src\\send\\wire.js",
+      "sha256": "a6c191658c4b4f94cb931ebb06f0c80b91db5860ff7fcb3887603b7e2d4350fb"
+    },
+    {
+      "path": "shared\\protocol-sdk\\src\\storage\\models.js",
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "shared\\protocol-sdk\\src\\sync\\http.js",
+      "sha256": "8ca2b32070f2ed2da1eaed46a3f02e68fc48e3c0224c1f56ec00636b60a7b1fc"
+    },
+    {
+      "path": "shared\\protocol-sdk\\src\\sync\\wire.js",
+      "sha256": "1d20e4d72015da38dde3dfda48a56537b959e8dfbc6c665f254b0302b636abff"
+    },
+    {
+      "path": "web\\src\\application\\client.js",
+      "sha256": "51a0ae00b3c8ec16fa1c263fa1f60baabf56fe4f56818a5fd669ed6707c4ba6b"
+    },
+    {
+      "path": "web\\src\\application\\http.js",
+      "sha256": "39e65abb6fc6811906386c04f409851c8777d31d598622650f6b5ce84f3f72df"
+    },
+    {
+      "path": "web\\src\\application\\repository.js",
+      "sha256": "8a6753f1bd93a4a615ddbfb691e468a67abaf8807338a3244425b3118dd7de89"
+    },
+    {
+      "path": "web\\src\\ui\\appearance.js",
+      "sha256": "a59d4309feb020bd14b654cb5b8c71ac4ce6a74d9b11b40bc83938c81db900af"
+    },
+    {
+      "path": "web\\src\\ui\\main.js",
+      "sha256": "95246796bf6c47dbc71a17113ad2e870ced18ce2b3bdd643883ea9a6c08cdeed"
+    }
+  ],
+  "classification": "committed source/local actual verification; independent acceptance pending",
+  "runningGo": [
+    "sha256:a4a553d2d69d3a26a0797c28f8bf4ffba5c83f937b3ca0fdb5102852e943ab4c",
+    "sha256:76f78895a7f7d5b0b7e5477c33be7a5f8d7ea53a0bf6f2d99b021f55dbc2b53e"
+  ]
+}

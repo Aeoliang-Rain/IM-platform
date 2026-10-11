@@ -1,0 +1,13 @@
+"""Public byte binding; never relabel original capture metadata or hide pre-freeze builds."""
+from pathlib import Path
+import hashlib,json,subprocess
+source="547514f6c8c8c0c40e27073b67d17bb3f224b6c5"
+def git(*args):return subprocess.check_output(["git",*args],text=True,encoding="utf-8").strip()
+def unchanged(base,paths):return not git("diff","--name-only",base,"HEAD","--",*paths)
+paths=["clients/mobile/app/src/main","clients/mobile/app/src/androidTest","clients/desktop/src","clients/shared"]
+assert unchanged(source,paths),"Native product/runner changed after recorded build"
+artifacts=["clients/mobile/app/build/outputs/apk/debug/app-debug.apk","clients/mobile/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk","H:/.codex/toolchains/client-gui/installed/im-client-storage.exe","H:/.codex/toolchains/client-gui/target/x86_64-pc-windows-msvc/release/bundle/nsis/IM Plus_0.1.0_x64-setup.exe"]
+result={"productSource":source,"bindingCommit":git("rev-parse","HEAD"),"actualBuildInputQualification":"Builds ran with task-owned uncommitted native cancellation edits before freezing source547514; exact recorded commands retain their original git/dirty context. No claim that future source547514 was the then-current HEAD. Those product/runner inputs were frozen unchanged in source547514; current product/runner tracked bytes are identical.","productAndRunnerUnchanged":True,"sha256":{p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in artifacts},"unaffectedOriginalSource5648":{"backend/go":unchanged("5648c9d80004ea1db618c7740607f9797b6200a8",["backend/go"]),"clients/web":unchanged("5648c9d80004ea1db618c7740607f9797b6200a8",["clients/web"]),"clients/shared":unchanged("5648c9d80004ea1db618c7740607f9797b6200a8",["clients/shared"])},"actualFormalRuns":{"androidABOrder":"state-738cbf61-090f-44d9-954c-b2947f5c1c5e","androidProcessRestart":"restart-7cb18750-4e72-4a30-8e82-b541f714e400","androidSequentialFresh":"fresh-8b9f45b9-a99b-4789-9342-450ff733b0ee","desktopABOrderProcessRestart":"desktop-dc5abc0e-2d63-4be3-b637-62b778def174","desktopSequentialFreshAccount":"648e2d74-bf54-43b4-ace8-a4c6c206f5a1"},"recorder":{"root":"H:/IM-platform/.git/worktrees/IM-platform43/state-research","run":"R-STATE-20261010-IMPL"},"status":"Local original evidence only; independent review/hosted CI/integration/main synchronization still pending. Original proof source/kind fields are unchanged."}
+assert all(result["unaffectedOriginalSource5648"].values())
+Path("spec/progress/evidence/LOOP1-CLIENT-STATE-001/source547514-native-binding.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
+print("PASS actual native artifact hashes and tracked product byte binding; Task acceptance remains pending")

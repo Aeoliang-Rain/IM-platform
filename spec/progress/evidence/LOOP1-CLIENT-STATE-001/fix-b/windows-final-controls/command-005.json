@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "$p=@(Get-Process im-client-storage -ErrorAction SilentlyContinue|Where-Object {$_.Path -eq 'H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe'});foreach($i in $p){Stop-Process -Id $i.Id};if(@(Get-Process im-client-storage -ErrorAction SilentlyContinue|Where-Object {$_.Path -eq 'H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe'}).Count){throw 'Owned installed app remains'}"
+  ],
+  "actualUTC": "2026-10-11T04:39:17.741675+00:00",
+  "exit": 0,
+  "elapsedSeconds": 2.8952722549438477
+}

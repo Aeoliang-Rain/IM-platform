@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "$s=[Security.Cryptography.X509Certificates.X509Store]::new('Root','CurrentUser');$s.Open('ReadOnly');try{@($s.Certificates|ForEach-Object Thumbprint|Sort-Object)|ConvertTo-Json}finally{$s.Close()}"
+  ],
+  "startedUTC": "2026-10-10T14:41:40.585623+00:00",
+  "elapsedSeconds": 1.676825761795044,
+  "exit": 0,
+  "stdoutSHA256": "eb03f6776615b505e856a5749ea798c13f49caacd5b3ed24fcb88db674f0f5a2",
+  "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,39 @@
+node:internal/child_process:1143
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+<ref *1> Error: spawnSync powershell ETIMEDOUT
+    at Object.spawnSync (node:internal/child_process:1143:20)
+    at spawnSync (node:child_process:911:24)
+    at execFileSync (node:child_process:954:15)
+    at ui (file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:4:64)
+    at file:///H:/.codex/worktrees/st/IM-platform/tests/clients/state/desktop_actual.mjs:15:477
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:472:9) {
+  errno: -4039,
+  code: 'ETIMEDOUT',
+  syscall: 'spawnSync powershell',
+  path: 'powershell',
+  spawnargs: [
+    '-NoProfile',
+    '-File',
+    'tests/clients/state/desktop_window.ps1',
+    '-Action',
+    'reach-message',
+    '-Name',
+    'STATE Desktop A desktop-a61f9789-686c-4ef2-9fad-6c523e6d96c7',
+    '-Value',
+    'SENDING',
+    '-Output',
+    'spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/desktop-a61f9789-686c-4ef2-9fad-6c523e6d96c7/A-sending.png'
+  ],
+  error: [Circular *1],
+  status: null,
+  signal: 'SIGTERM',
+  output: [ null, '', '' ],
+  pid: 22700,
+  stdout: '',
+  stderr: ''
+}
+
+Node.js v24.16.0

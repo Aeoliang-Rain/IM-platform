@@ -1,0 +1,8 @@
+使用“1”个参数调用“Remove”时发生异常:“拒绝访问。
+”
+所在位置 H:\.codex\worktrees\st\IM-platform\tests\clients\state\trust_windows.ps1:23 字符: 100
++ ... ject Thumbprint -eq $stateExpected)){$stateStore.Remove($stateOwned)}
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : CryptographicException
+ 

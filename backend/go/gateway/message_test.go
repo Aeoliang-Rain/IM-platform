@@ -212,3 +212,53 @@ func TestRejectedRetryPreservesCommittedOrigin(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+func TestUnknownCoreOutcomeHasNoRejectionAndKeepsOrigin(t *testing.T) {
+	for _, mode := range []string{"unavailable", "malformed", "timeout"} {
+		t.Run(mode, func(t *testing.T) {
+			id := "40000000-0000-4000-8000-000000000001"
+			conv := "30000000-0000-4000-8000-000000000001"
+			core := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				switch mode {
+				case "unavailable":
+					w.WriteHeader(http.StatusServiceUnavailable)
+				case "malformed":
+					w.Write([]byte("lost confirmation"))
+				case "timeout":
+					time.Sleep(100 * time.Millisecond)
+				}
+			}))
+			defer core.Close()
+			h := newHub(&validator{now: time.Now})
+			h.coreURL = core.URL
+			h.client = &http.Client{Timeout: 50 * time.Millisecond}
+			origins := make(chan bool, 1)
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				ws, err := (&websocket.Upgrader{}).Upgrade(w, r, nil)
+				if err != nil {
+					return
+				}
+				defer ws.Close()
+				c := &connection{ws: ws, done: make(chan struct{}), token: "fixture-not-a-credential"}
+				h.forward(r.Context(), c, envelope{ProtocolVersion: "1.0", Type: "message.send", RequestID: id, Payload: json.RawMessage(`{"conversationId":"` + conv + `","content":{"kind":"TEXT","text":"hello"}}`)})
+				c.mu.Lock()
+				origin := c.origins[conv+":"+id]
+				c.mu.Unlock()
+				origins <- origin
+			}))
+			defer server.Close()
+			ws, _, err := websocket.DefaultDialer.Dial("ws"+strings.TrimPrefix(server.URL, "http"), nil)
+			if err != nil {
+				t.Fatal(err)
+			}
+			defer ws.Close()
+			ws.SetReadDeadline(time.Now().Add(time.Second))
+			var ack envelope
+			if ws.ReadJSON(&ack) == nil {
+				t.Fatal("unknown outcome emitted an ACK")
+			}
+			if !<-origins {
+				t.Fatal("uncertain origin erased")
+			}
+		})
+	}
+}

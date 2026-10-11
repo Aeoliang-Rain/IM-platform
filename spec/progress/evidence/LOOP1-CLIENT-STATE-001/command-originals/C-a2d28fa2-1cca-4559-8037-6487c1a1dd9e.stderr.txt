@@ -1,0 +1,26 @@
+        Info Looking up installed tauri packages to check mismatched versions...
+     Running beforeBuildCommand `npm run build`
+   Compiling vswhom-sys v0.1.3
+   Compiling vswhom v0.1.0
+   Compiling embed-resource v3.0.11
+   Compiling tauri-winres v0.3.6
+   Compiling tauri-build v2.7.1
+   Compiling tauri v2.12.1
+   Compiling im-client-storage v0.1.0 (H:\.codex\worktrees\st\IM-platform\clients\desktop\src-tauri)
+   Compiling tauri-plugin-global-shortcut v2.4.0
+   Compiling tauri-plugin-notification v2.5.1
+warning: im-client-storage@0.1.0: STATIC_VCRUNTIME is deprecated; use build.windows.staticVCRuntime in tauri.conf.json or tauri_build::WindowsAttributes::static_vc_runtime instead.
+    Finished `release` profile [optimized] target(s) in 1m 02s
+       Built application at: H:\.codex\toolchains\client-gui\target\x86_64-pc-windows-msvc\release\im-client-storage.exe
+        Info Patching H:\.codex\toolchains\client-gui\target\x86_64-pc-windows-msvc\release\im-client-storage.exe with bundle type information: nsis
+        Info Verifying NSIS package
+ Downloading https://github.com/tauri-apps/binary-releases/releases/download/nsis-3.11/nsis-3.11.zip
+        Info validating hash
+        Info extracting NSIS
+ Downloading https://github.com/tauri-apps/nsis-tauri-utils/releases/download/nsis_tauri_utils-v0.5.3/nsis_tauri_utils.dll
+        Info validating hash
+        Info Target: x64
+     Running makensis to produce H:\.codex\toolchains\client-gui\target\x86_64-pc-windows-msvc\release\bundle\nsis\IM Plus_0.1.0_x64-setup.exe
+    Finished 1 bundle at:
+        H:\.codex\toolchains\client-gui\target\x86_64-pc-windows-msvc\release\bundle\nsis\IM Plus_0.1.0_x64-setup.exe
+

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\fix_runtime.py", line 30, in <module>
+    original=json.loads((PRIVATE/'windows-root-week2-baseline.json').read_text(encoding='utf8-sig'));assert roots()==original and len(original)==74
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LookupError: unknown encoding: utf8-sig
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\clients\state\fix_runtime.py", line 85, in <module>
+    (OUT/'resource-restoration.json').write_text(json.dumps({'actualUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'root74Exact':roots()==original,'newOwnedGoRemoved':True,'proxyExited':proxy is None or proxy.poll() is not None,'emulatorExited':emulator is None or emulator.poll() is not None,'originalsRetained':True,'noAppDataReset':True},indent=2));status('STOPPED_EXACT_BASELINE_RESTORED')
+                                                                                                                                                         ^^^^^^^^
+NameError: name 'original' is not defined

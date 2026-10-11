@@ -1,0 +1,1528 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/envelope.schema.json",
+  "title": "WSS protocol v1 envelope",
+  "description": "TLS and WebSocket upgrade precede auth.bind. Access tokens are carried only in auth.bind payload, never a URL. Success message.ack is emitted only after atomic durable Message and Outbox commit. A retry under sender/conversation/requestId returns the same messageId, seq and createdAt.",
+  "oneOf": [
+    { "$ref": "#/$defs/AuthBind" },
+    { "$ref": "#/$defs/AuthAck" },
+    { "$ref": "#/$defs/MessageSend" },
+    { "$ref": "#/$defs/MessageAck" },
+    { "$ref": "#/$defs/MessageCreated" },
+    { "$ref": "#/$defs/SessionRevoked" },
+    { "$ref": "#/$defs/Ping" },
+    { "$ref": "#/$defs/Pong" }
+  ],
+  "$defs": {
+    "Id": { "type": "string", "format": "uuid" },
+    "Timestamp": { "type": "string", "format": "date-time" },
+    "Base": {
+      "type": "object",
+      "required": ["protocolVersion", "type", "requestId", "payload"],
+      "properties": {
+        "protocolVersion": { "const": "1.0" },
+        "type": { "type": "string" },
+        "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object" }
+      }
+    },
+    "Error": {
+      "type": "object", "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "AUTHORIZATION_DENIED", "PROTOCOL_VERSION_UNSUPPORTED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] },
+        "message": { "type": "string", "minLength": 1 }
+      },
+      "description": "Must not include credentials, tokens or message content."
+    },
+    "AuthError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "PROTOCOL_VERSION_UNSUPPORTED"] } } }] },
+    "MessageError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_SESSION_REVOKED", "AUTHORIZATION_DENIED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] } } }] },
+    "AuthBind": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.bind" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["accessToken"], "properties": { "accessToken": { "type": "string", "minLength": 1 } } }
+      }}]
+    },
+    "AuthAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [
+          { "type": "object", "additionalProperties": false, "required": ["status", "userId", "sessionId", "clientType", "sessionEpoch"], "properties": { "status": { "const": "bound" }, "userId": { "$ref": "#/$defs/Id" }, "sessionId": { "$ref": "#/$defs/Id" }, "clientType": { "enum": ["WEB", "DESKTOP", "MOBILE"] }, "sessionEpoch": { "type": "integer", "minimum": 1 } } },
+          { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/AuthError" } } }
+        ] }
+      }}]
+    },
+    "TextContent": { "type": "object", "additionalProperties": false, "required": ["kind", "text"], "properties": { "kind": { "const": "TEXT" }, "text": { "type": "string", "minLength": 1, "maxLength": 4096 } } },
+    "MessageSend": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.send" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "Committed": { "type": "object", "additionalProperties": false, "required": ["status", "conversationId", "messageId", "seq", "createdAt"], "properties": { "status": { "const": "committed" }, "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" } } },
+    "MessageAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [ { "$ref": "#/$defs/Committed" }, { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/MessageError" } } } ] }
+      }}]
+    },
+    "MessageCreated": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.created" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "messageId", "senderId", "seq", "createdAt", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "senderId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "SessionRevoked": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "session.revoked" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["sessionId", "reason"], "properties": { "sessionId": { "$ref": "#/$defs/Id" }, "reason": { "enum": ["LOGOUT", "REPLACED", "REVOKED"] } } }
+      }}]
+    },
+    "Ping": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "ping" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] },
+    "Pong": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "pong" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] }
+  }
+}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/sync-v1.schema.json",
+  "title": "Sync v1 request and response contract",
+  "description": "User cursor carries only low-frequency friend, conversation, membership and plugin state. Message history uses a per-conversation sequence. Cursor and materialized data commit atomically on a client.",
+  "oneOf": [
+    {"$ref":"#/$defs/UserRequest"}, {"$ref":"#/$defs/UserPage"},
+    {"$ref":"#/$defs/ConversationRequest"}, {"$ref":"#/$defs/ConversationPage"}
+  ],
+  "$defs": {
+    "Id": {"type":"string","format":"uuid"},
+    "Seq": {"type":"integer","minimum":0},
+    "PositiveSeq": {"type":"integer","minimum":1},
+    "Cursor": {"type":"string","minLength":1,"maxLength":256},
+    "UserRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","cursor","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.request"},"requestId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"limit":{"type":"integer","minimum":1}}},
+    "UserEvent": {"type":"object","additionalProperties":false,"required":["eventId","cursor","kind","subjectId","revision"],"properties":{"eventId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"kind":{"enum":["friend.changed","conversation.changed","membership.changed","plugin.changed"]},"subjectId":{"$ref":"#/$defs/Id"},"revision":{"$ref":"#/$defs/PositiveSeq"}}},
+    "UserPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","events","nextCursor","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.page"},"requestId":{"$ref":"#/$defs/Id"},"events":{"type":"array","items":{"$ref":"#/$defs/UserEvent"}},"nextCursor":{"$ref":"#/$defs/Cursor"},"hasMore":{"type":"boolean"}}},
+    "ConversationRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","afterSeq","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.request"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"afterSeq":{"$ref":"#/$defs/Seq"},"limit":{"type":"integer","minimum":1}}},
+    "Message": {"type":"object","additionalProperties":false,"required":["conversationId","seq","messageId","senderId","requestId","createdAt","content"],"properties":{"conversationId":{"$ref":"#/$defs/Id"},"seq":{"$ref":"#/$defs/PositiveSeq"},"messageId":{"$ref":"#/$defs/Id"},"senderId":{"$ref":"#/$defs/Id"},"requestId":{"$ref":"#/$defs/Id"},"createdAt":{"type":"string","format":"date-time"},"content":{"type":"object","additionalProperties":false,"required":["kind","text"],"properties":{"kind":{"const":"TEXT"},"text":{"type":"string","minLength":1,"maxLength":4096}}}}},
+    "ConversationPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","messages","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.page"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"messages":{"type":"array","items":{"$ref":"#/$defs/Message"}},"hasMore":{"type":"boolean"}}}
+  }
+}
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "IM Auth, User, and Friend HTTP API",
+    "version": "1.0.0",
+    "description": "Canonical Loop 1 HTTP contract. Production transport is HTTPS only. Authentication material is never accepted in URL query parameters and must not be logged or returned in errors. PostgreSQL-backed session and friendship transactions are authoritative."
+  },
+  "servers": [
+    {
+      "url": "https://api.example.invalid"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Friends"
+    }
+  ],
+  "paths": {
+    "/v1/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "registerUser",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict",
+            "x-error-codes": [
+              "USERNAME_ALREADY_EXISTS"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "login",
+        "security": [],
+        "description": "A successful login atomically revokes any active session in the same user/clientType slot, increments that slot's sessionEpoch, creates the replacement session, and only then returns it. Other clientType slots remain valid.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login committed",
+            "headers": {
+              "Set-Cookie": {
+                "description": "For WEB only, __Host-im_refresh is emitted with Secure, HttpOnly, Path=/, and SameSite=Strict attributes; native clients never receive this cookie.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_INVALID_CREDENTIALS"
+            ]
+          },
+          "426": {
+            "$ref": "#/components/responses/UnsupportedProtocol",
+            "x-error-codes": [
+              "PROTOCOL_VERSION_UNSUPPORTED"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "logout",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Atomically revokes the bound session and every refresh token issued for it. The service then emits the session revocation effect and closes its WSS connection. Local client history is not deleted.",
+        "responses": {
+          "204": {
+            "description": "Session and refresh credentials revoked; no response body"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/users/me": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "getCurrentUser",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/users/search": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "searchUsers",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Username"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exact normalized username match or an empty list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "users"
+                  ],
+                  "properties": {
+                    "users": {
+                      "type": "array",
+                      "maxItems": 1,
+                      "items": {
+                        "$ref": "#/components/schemas/PublicUser"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/friends": {
+      "get": {
+        "tags": [
+          "Friends"
+        ],
+        "operationId": "listFriends",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current bidirectional friendships",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "friends"
+                  ],
+                  "properties": {
+                    "friends": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FriendView"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/friends/{friendUserId}": {
+      "put": {
+        "tags": [
+          "Friends"
+        ],
+        "operationId": "addFriend",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Idempotently establishes an immediate bidirectional friendship. The normalized friendship, the pair's single DIRECT conversation, exactly two memberships, user sync events, and outbox effects commit atomically. There is no pending or approval state. Reversing caller and target returns the same friendshipId and directConversationId.",
+        "parameters": [
+          {
+            "name": "friendUserId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing normalized friendship returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FriendshipResult"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Friendship and DIRECT conversation atomically created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FriendshipResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden",
+            "x-error-codes": [
+              "AUTHORIZATION_DENIED"
+            ]
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "x-error-codes": [
+              "USER_NOT_FOUND"
+            ]
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict",
+            "x-error-codes": [
+              "FRIENDSHIP_STATE_CONFLICT"
+            ]
+          },
+          "422": {
+            "$ref": "#/components/responses/Unprocessable",
+            "x-error-codes": [
+              "FRIEND_SELF_NOT_ALLOWED"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/auth/refresh/web": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "refreshWebSession",
+        "security": [
+          {
+            "refreshCookie": []
+          }
+        ],
+        "description": "WEB must present the refresh credential only in the __Host-im_refresh Secure HttpOnly cookie. The required body supplies client metadata but cannot carry a refresh token. A successful refresh rotates and independently revokes the presented refresh token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebRefreshRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "WEB refresh committed",
+            "headers": {
+              "Set-Cookie": {
+                "description": "The rotated __Host-im_refresh cookie is emitted with Secure, HttpOnly, Path=/, and SameSite=Strict attributes.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH",
+              "AUTH_REFRESH_REVOKED"
+            ]
+          },
+          "426": {
+            "$ref": "#/components/responses/UnsupportedProtocol",
+            "x-error-codes": [
+              "PROTOCOL_VERSION_UNSUPPORTED"
+            ]
+          }
+        }
+      }
+    },
+    "/v1/auth/refresh/native": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "refreshNativeSession",
+        "security": [],
+        "description": "DESKTOP and MOBILE must present a nonempty refresh token together with clientType, deviceId, clientVersion, and protocolVersion in the required JSON body. WEB is not representable on this operation. A successful refresh rotates and independently revokes the presented refresh token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NativeRefreshRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Native refresh committed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "x-error-codes": [
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH",
+              "AUTH_REFRESH_REVOKED"
+            ]
+          },
+          "426": {
+            "$ref": "#/components/responses/UnsupportedProtocol",
+            "x-error-codes": [
+              "PROTOCOL_VERSION_UNSUPPORTED"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Short-lived access token carrying user_id, session_id, client_type, session_epoch, iat, and exp claims. It is accepted only from the Authorization header."
+      },
+      "refreshCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "__Host-im_refresh",
+        "description": "Long-lived WEB refresh token received only as a Secure HttpOnly SameSite cookie. The server persists only its hash and can revoke it independently."
+      }
+    },
+    "schemas": {
+      "Id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "Username": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 64,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+        "description": "Uniqueness is evaluated using the server's canonical lowercase normalization."
+      },
+      "Password": {
+        "type": "string",
+        "format": "password",
+        "minLength": 12,
+        "maxLength": 256,
+        "writeOnly": true
+      },
+      "ClientType": {
+        "type": "string",
+        "enum": [
+          "WEB",
+          "DESKTOP",
+          "MOBILE"
+        ]
+      },
+      "SessionStatus": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "REVOKED"
+        ]
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "username",
+          "password",
+          "displayName"
+        ],
+        "properties": {
+          "username": {
+            "$ref": "#/components/schemas/Username"
+          },
+          "password": {
+            "$ref": "#/components/schemas/Password"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "username",
+          "password",
+          "clientType",
+          "deviceId",
+          "clientVersion",
+          "protocolVersion"
+        ],
+        "properties": {
+          "username": {
+            "$ref": "#/components/schemas/Username"
+          },
+          "password": {
+            "$ref": "#/components/schemas/Password"
+          },
+          "clientType": {
+            "$ref": "#/components/schemas/ClientType"
+          },
+          "deviceId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "clientVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "protocolVersion": {
+            "type": "string",
+            "const": "1"
+          }
+        }
+      },
+      "PublicUser": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "userId",
+          "username",
+          "displayName"
+        ],
+        "properties": {
+          "userId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "username": {
+            "$ref": "#/components/schemas/Username"
+          },
+          "displayName": {
+            "type": "string"
+          }
+        }
+      },
+      "UserResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "user"
+        ],
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/PublicUser"
+          }
+        }
+      },
+      "Session": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sessionId",
+          "userId",
+          "clientType",
+          "sessionEpoch",
+          "status"
+        ],
+        "properties": {
+          "sessionId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "clientType": {
+            "$ref": "#/components/schemas/ClientType"
+          },
+          "sessionEpoch": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "status": {
+            "$ref": "#/components/schemas/SessionStatus"
+          }
+        }
+      },
+      "WebTokens": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "accessToken",
+          "accessTokenExpiresInSeconds",
+          "refreshTokenDelivery"
+        ],
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accessTokenExpiresInSeconds": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "refreshTokenDelivery": {
+            "const": "HTTP_ONLY_SECURE_COOKIE"
+          }
+        }
+      },
+      "NativeTokens": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "accessToken",
+          "accessTokenExpiresInSeconds",
+          "refreshToken",
+          "refreshTokenExpiresInSeconds",
+          "refreshTokenDelivery"
+        ],
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accessTokenExpiresInSeconds": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "refreshToken": {
+            "type": "string",
+            "minLength": 1
+          },
+          "refreshTokenExpiresInSeconds": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "refreshTokenDelivery": {
+            "const": "RESPONSE_BODY_FOR_OS_SECURE_STORAGE"
+          }
+        }
+      },
+      "AuthResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session",
+          "tokens",
+          "replacedExistingSession"
+        ],
+        "properties": {
+          "session": {
+            "$ref": "#/components/schemas/Session"
+          },
+          "tokens": {},
+          "replacedExistingSession": {
+            "type": "boolean"
+          }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "session": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Session"
+                  },
+                  {
+                    "properties": {
+                      "clientType": {
+                        "const": "WEB"
+                      }
+                    }
+                  }
+                ]
+              },
+              "tokens": {
+                "$ref": "#/components/schemas/WebTokens"
+              }
+            }
+          },
+          {
+            "properties": {
+              "session": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Session"
+                  },
+                  {
+                    "properties": {
+                      "clientType": {
+                        "enum": [
+                          "DESKTOP",
+                          "MOBILE"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "tokens": {
+                "$ref": "#/components/schemas/NativeTokens"
+              }
+            }
+          }
+        ]
+      },
+      "NormalizedUserPair": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "lowUserId",
+          "highUserId"
+        ],
+        "properties": {
+          "lowUserId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "highUserId": {
+            "$ref": "#/components/schemas/Id"
+          }
+        },
+        "description": "lowUserId and highUserId are the deterministic ascending ordering of the two distinct user IDs."
+      },
+      "FriendshipResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "friendshipId",
+          "normalizedPair",
+          "directConversationId",
+          "memberUserIds",
+          "created"
+        ],
+        "properties": {
+          "friendshipId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "normalizedPair": {
+            "$ref": "#/components/schemas/NormalizedUserPair"
+          },
+          "directConversationId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "memberUserIds": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/components/schemas/Id"
+            }
+          },
+          "created": {
+            "type": "boolean"
+          }
+        }
+      },
+      "FriendView": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "user",
+          "friendshipId",
+          "directConversationId"
+        ],
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/PublicUser"
+          },
+          "friendshipId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "directConversationId": {
+            "$ref": "#/components/schemas/Id"
+          }
+        }
+      },
+      "NativeClientType": {
+        "type": "string",
+        "enum": [
+          "DESKTOP",
+          "MOBILE"
+        ]
+      },
+      "WebRefreshRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "clientType",
+          "deviceId",
+          "clientVersion",
+          "protocolVersion"
+        ],
+        "properties": {
+          "clientType": {
+            "const": "WEB"
+          },
+          "deviceId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "clientVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "protocolVersion": {
+            "type": "string",
+            "const": "1"
+          }
+        }
+      },
+      "NativeRefreshRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "refreshToken",
+          "clientType",
+          "deviceId",
+          "clientVersion",
+          "protocolVersion"
+        ],
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "minLength": 1,
+            "writeOnly": true
+          },
+          "clientType": {
+            "$ref": "#/components/schemas/NativeClientType"
+          },
+          "deviceId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "clientVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "protocolVersion": {
+            "type": "string",
+            "const": "1"
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Malformed or semantically invalid request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Authentication failed, expired, revoked, stale, or mismatched",
+        "headers": {
+          "WWW-Authenticate": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Authenticated principal is not authorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "Unique identity or canonical state conflict",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unprocessable": {
+        "description": "Well-formed request violates a domain rule",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+            }
+          }
+        }
+      },
+      "UnsupportedProtocol": {
+        "description": "The requested protocol version is unsupported",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "IM Sync HTTPS API",
+    "version": "1.0.0",
+    "description": "Canonical pull transport for existing Sync v1 shapes; HTTPS only. WSS realtime and ACK are unchanged. Both operations accept exactly one required JSON body and no query parameters. Authentication credentials are accepted only through Authorization Bearer, never query/body/cookie; each request validates token and authoritative Session ID, epoch, client type, revocation and expiry. Core derives user identity from credentials. Success and canonical errors echo the decoded valid UUID body requestId; otherwise a fresh server UUID is used, no alternate header correlation. Sync version other than 1.0 returns 426 PROTOCOL_VERSION_UNSUPPORTED; other malformed inputs return 400 VALIDATION_FAILED. Precedence: reject query parameters or uncorrelatable malformed JSON, authenticate, then validate version/body/cursor/membership. All positive integer limit values remain valid; page length <= min(limit,100), calculate cap exactly before bounded conversion. Read at most effectiveLimit+1 eligible items; hasMore is true iff an additional committed eligible item exists, requiring nonempty progress. Empty page is terminal; User nextCursor equals input cursor. Nonempty User nextCursor equals last event cursor, differs from input; events have distinct IDs/cursors in source order and form a stable committed prefix so concurrent late commits cannot be skipped. Initial User cursor is literal 0; subsequent event/next cursors are opaque server-issued tokens bound to the authenticated user, replayable across that user's Sessions. Invalid, fabricated or other-user cursors return 400 VALIDATION_FAILED; clients never parse/order cursors. Conversation messages strictly ascend from afterSeq+1 with no gap, identify the requested Conversation, and the next request uses last returned seq. afterSeq beyond current committed head yields empty terminal page. Valid user cursors remain usable for current Loop 1 (no cursor expiry/retention/reset protocol). Servers may project internal cursor_id to opaque external event.cursor without changing existing wire shapes or persistent producer payloads. Only catalogued canonical errors use ErrorResponse. Unexpected server/unavailable transport failures are non-2xx transport failures without any successful page or cursor advancement; no uncatalogued code/envelope is introduced. Responses contain no credentials and use no-store; retrieval is read-only and retry can observe newly committed data. afterSeq accepts all nonnegative JSON integers exactly, including values beyond storage signed64 range; after authorization, values beyond storage head return empty terminal page without lossy conversion."
+  },
+  "servers": [
+    {
+      "url": "https://api.example.invalid"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/sync/user": {
+      "post": {
+        "operationId": "pullUserSync",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Pull only authenticated user's low-frequency events after an opaque cursor. No Message or Session event. Core validates cursor ownership and durable committed prefix.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../websocket/sync-v1.schema.json#/$defs/UserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Correlated Sync page; never an ACK or write effect",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../websocket/sync-v1.schema.json#/$defs/UserPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request or user cursor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ],
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authoritative authentication failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ],
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          },
+          "426": {
+            "description": "Unsupported syncVersion",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "PROTOCOL_VERSION_UNSUPPORTED"
+            ],
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sync/conversation": {
+      "post": {
+        "operationId": "pullConversationSync",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Pull committed messages after afterSeq for a currently authorized Conversation member; absent and foreign Conversation both return 403. Each page is ordered and gap-free.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../websocket/sync-v1.schema.json#/$defs/ConversationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Correlated Sync page; never an ACK or write effect",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../websocket/sync-v1.schema.json#/$defs/ConversationPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request or user cursor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ],
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authoritative authentication failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ],
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Conversation access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTHORIZATION_DENIED"
+            ],
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          },
+          "426": {
+            "description": "Unsupported syncVersion",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "PROTOCOL_VERSION_UNSUPPORTED"
+            ],
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "$ref": "./auth-user-friend.openapi.json#/components/securitySchemes/bearerAuth"
+      }
+    }
+  },
+  "x-sync-binding": {
+    "initialCursor": "0",
+    "cursorOwnership": "authenticated-user",
+    "cursorComparison": "opaque-equality-only",
+    "effectiveLimitCap": 100,
+    "limitPolicy": "accept-all-positive-integers-cap-before-conversion",
+    "authentication": "authoritative-session-each-request",
+    "authorization": "core-user-scope-and-conversation-membership",
+    "correlation": "decoded-valid-body-requestId-echo-else-server-uuid",
+    "emptyUserPage": "retain-request-cursor-hasMore-false",
+    "userOrder": "stable-committed-prefix",
+    "userNextCursor": "last-event-cursor",
+    "conversationOrder": "ascending-gap-free-afterSeq",
+    "hasMore": "additional-committed-item-exists",
+    "failure": "non-2xx-never-a-sync-page",
+    "queryParameters": "none",
+    "runtimeAcceptance": "deferred-until-human-approved-Go-plan",
+    "afterSeqPolicy": "accept-all-nonnegative-integers-above-storage-head-empty",
+    "pagination": "commit-page-then-continue-hasMore-to-terminal-without-fixed-total-cap",
+    "completion": "latest-committed-visible-at-terminal-read-not-future-writes"
+  }
+}
+
+FullName
+--------
+H:\.codex\worktrees\st\IM-platform\contracts\database\.gitkeep
+H:\.codex\worktrees\st\IM-platform\contracts\database\migrate.py
+H:\.codex\worktrees\st\IM-platform\contracts\database\README.md
+H:\.codex\worktrees\st\IM-platform\contracts\database\migrations\0001_initial.down.sql
+H:\.codex\worktrees\st\IM-platform\contracts\database\migrations\0001_initial.up.sql
+# STATE临时测试信任精确执行对象
+
+未安装信任，产品TLS默认校验无改动。旧CA和leaf均2026-10-04 19:20:46 UTC到期，真实结果已记录。新CA原件指纹见tls-prepared.json，SHA256 44d029ca6c5d243b8948b477aec9bb1c0c66d8f8ec656e26d2f5df5d83d615a2，Windows SHA1 ca463bfb65537808cb8d61591e5a7626f64e6202；有效至2026-10-17 08:41:50 UTC（北京时间16:41:50）。CA pathLen0并critical name constraints只localhost/127.0.0.1，leaf对应SAN，仅7天测试。CA私钥未持久化；leaf key仅worktree私有runtime ACL保留。
+
+拟执行范围：Windows当前用户Root仅导入此CA，不触LocalMachine或policy；实际桌面同账号新进程核验默认TLS/hostname通过，不以工具隔离视图代替应用真实环境。记录原Root证书集私有hash/baseline，发现碰撞/身份不符即停；结束仅删除此新thumbprint，原集合逐项相等并以同live endpoint默认TLS拒绝+请求scoped原CA成功作rollback负正例。任何import失败不通过registry/unprotected-store或绕过TLS解决。
+
+Android仅既有受控AVD IMClientSend34/API34 x86_64，拟独占serial emulator-5590；先确认无其他owner、api/AVD/Enforcing/原uid及134CA实际集合。暂时adb root仅操作该AVD；在init/zygote命名空间受控copy原CA集合加此CA，然后只读bind overlay /apex/com.android.conscrypt/cacerts，不持久改system分区、不改SELinux或product TrustManager。每namespace记录mount identity与original exact CA hashes，新app继承和默认SDK TLS验证。adb reverse仅所需测试18443/8443映射，记录原list不覆盖未知mapping。完成严格反序umount新mount/删除已登记own临时路径，reboot no wipe/no snapshot，核对init/zygote/app原集合、Enforcing、uid2000及ownmapping不存在，default SDK拒绝同live fixture。旧helper硬编码旧证书及到期，不直接运行；tests/state窄工具只登记此对象，失败保留并安全回滚。
+
+清理只已记录本次创建的进程、Docker project labels/volumes、fixture账号数据库和新临时证书；不删除真实用户数据库/凭好或凭据，不改变main未知work。证书更换是测试输入，不改变生产security boundary/contracts，但新系统Root import具有真实信任影响，当前仅准备审查对象，Human已明确批准临时测试信任并回滚，最新明确授权有效期一周；仅此新对象。旧24h未装保留为superseded。
+
+
+
+## Strict chain repair replacement (latest)
+
+Previous week object 44d029/CA463B was revoked; windows-week1-rollback.json proves full 74-thumbprint baseline restored. Python3.13 strict validation refused missing AKI. New same scoped seven-day object includes AKI/SKI and leaf key usage. No verify_flags or product TLS change. Latest exact input:
+
+```json
+{
+  "task_id": "LOOP1-CLIENT-STATE-001",
+  "directory": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\tls-state-week2",
+  "hosts": [
+    "localhost",
+    "127.0.0.1"
+  ],
+  "endpoint": "https://localhost:18443",
+  "notAfterUTC": "2026-10-17T08:58:07.083261+00:00",
+  "caSHA256": "a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5",
+  "caWindowsThumbprintSHA1": "727e5d6bb4d072f9a76bfbc8fa81a6159a047d5c",
+  "caPEMSHA256": "1dfcade204cf7f2b276fb67a745d71d424aed4a5f557f2947c706eee2b970ab5",
+  "serverSHA256": "37e443d4412dd48cae3c5d3e542b660a8ac0f53ba6cade7ff498e736fba60c7d",
+  "trust_installed": false,
+  "ca_private_key_saved": false
+}
+```
+
+Latest Human seven-day localhost/current-user/readonly-AVD approval covers this necessary certificate repair, as confirmed by Coordinator. New CurrentUser baseline file windows-root-week2-baseline.json; retain original baseline. Cleanup remains exact thumb removal, full baseline equality, default SDK negative test with same live fixture.
+"""Exact registered test resources only; preserve installed candidates and all application data."""
+from pathlib import Path
+import datetime, json, os, ssl, subprocess, time, urllib.request
+
+private=Path('H:/IM-platform/.git/worktrees/IM-platform43/state-runtime')
+out=Path('spec/progress/evidence/LOOP1-CLIENT-STATE-001')
+def ps(code):return subprocess.check_output(['powershell','-NoProfile','-Command',code],text=True,encoding='utf-8',timeout=12)
+proxy=json.loads(ps('Get-CimInstance Win32_Process -Filter "ProcessId=38928" | Select-Object ProcessId,ExecutablePath,CommandLine | ConvertTo-Json'))
+assert proxy['ExecutablePath'].replace('\\','/')=='C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
+assert proxy['CommandLine'].endswith(' -B tests/clients/state/fault_proxy.py')
+assert int((private/'emulator.pid').read_text(encoding='utf-8-sig').strip())==4656
+emulator=json.loads(ps('Get-CimInstance Win32_Process -Filter "ProcessId=4656" | Select-Object ProcessId,ExecutablePath,CommandLine | ConvertTo-Json'))
+assert emulator['ExecutablePath'].replace('\\','/')=='H:/Android/emulator/emulator.exe'
+assert ' -avd IMClientSend34 -port 5590 ' in emulator['CommandLine'] and '-no-snapshot-save' in emulator['CommandLine']
+ctx=ssl.create_default_context(cafile=str(private/'tls-state-week2/ca.pem'))
+with urllib.request.urlopen('https://localhost:8443/__state/events',context=ctx,timeout=10) as r:events=r.read()
+(out/'relay-final-events-original.json').write_bytes(events)
+req=urllib.request.Request('https://localhost:8443/__state/stop',data=b'{}',method='POST')
+with urllib.request.urlopen(req,context=ctx,timeout=10) as r:assert r.status==200
+for _ in range(40):
+    found=ps('if(Get-Process -Id 38928 -ErrorAction SilentlyContinue){"PRESENT"}').strip()
+    if not found:break
+    time.sleep(.2)
+else:raise RuntimeError('Owned relay did not stop')
+env={**os.environ,'ANDROID_USER_HOME':'H:/IM-platform/.git/worktrees/IM-platform4/send-runtime/android-user'}
+def adb(*args):return subprocess.check_output(['H:/Android/platform-tools/adb.exe','-s','emulator-5590',*args],env=env,text=True,encoding='utf-8',timeout=15).strip()
+assert adb('shell','id','-u')=='2000' and adb('shell','getenforce')=='Enforcing' and not adb('reverse','--list')
+assert adb('emu','avd','name').splitlines()[0]=='IMClientSend34'
+adb('emu','kill')
+desktop=ps("$p=@(Get-Process im-client-storage -ErrorAction SilentlyContinue | Where-Object {$_.Path -eq 'H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe'});foreach($item in $p){Stop-Process -Id $item.Id};@{stoppedOwnedPID=@($p|ForEach-Object Id);installedCandidateRetained=$true;appDataOperation='none'}|ConvertTo-Json")
+proof={'actualUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'registeredProxy':proxy,'proxyStopped':True,'registeredEmulator':emulator,'adbBeforeStop':{'uid':'2000','reverse':[],'SELinux':'Enforcing'},'emulatorStopRequested':True,'desktop':json.loads(desktop),'retained':'Controlled Windows18f8/Android current candidate install, baseline snapshot, all account databases/appearance/secure slots preserved. Go runtime receives its own stop separately; no unrelated resource operation.'}
+(out/'runtime-teardown.json').write_text(json.dumps(proof,indent=2)+'\n',encoding='utf-8')
+print('PASS exact owned relay/AVD/app teardown; installed candidates and all AppData retained')
+import fs from 'node:fs/promises';import assert from 'node:assert/strict';import crypto from 'node:crypto';import {pathToFileURL} from 'node:url';import {execFileSync,spawn} from 'node:child_process';
+const runtime='H:/IM-platform/.git/worktrees/IM-platform43/state-runtime',f=JSON.parse(await fs.readFile(runtime+'/fresh-public.json','utf8')),base=JSON.parse(await fs.readFile(runtime+'/go-35588/public.json','utf8')),run='friends-'+crypto.randomUUID(),out='spec/progress/evidence/LOOP1-CLIENT-STATE-001/screens/'+run;await fs.mkdir(out,{recursive:true});
+const adb='H:/Android/platform-tools/adb.exe',env={...process.env,ANDROID_USER_HOME:'H:/IM-platform/.git/worktrees/IM-platform4/send-runtime/android-user'};const quote=v=>"'"+v.replaceAll("'","'\"'\"'")+"'";
+const call=a=>execFileSync(adb,['-s','emulator-5590',...(a[0]==='shell'?['shell',a.slice(1).map(quote).join(' ')]:a)],{encoding:'utf8',env,timeout:12000});
+function ui(action='observe',name='',value='',label='observe'){execFileSync('powershell',['-NoProfile','-File','tests/clients/state/desktop_window.ps1','-Action',action,'-Name',name,'-Value',value,'-Output',out+'/'+label+'.png'],{encoding:'utf8',timeout:12000});}
+async function desktopReady(label){for(let i=0;i<20;i++){ui('observe','','',label);const nodes=JSON.parse(await fs.readFile(out+'/'+label+'.png.json','utf8')).nodes;if(nodes.some(n=>n.name==='Online')&&!nodes.some(n=>n.name==='Syncing…'))return;await new Promise(r=>setTimeout(r,500));}throw Error('Actual Desktop initial Sync has not reached idle');}
+async function desktopOpened(account,label){for(let i=0;i<20;i++){ui('observe','','',label);const nodes=JSON.parse(await fs.readFile(out+'/'+label+'.png.json','utf8')).nodes;if(nodes.some(n=>n.name===account.displayName&&n.type==='ControlType.Text')&&nodes.some(n=>n.name==='Message'&&n.type==='ControlType.Edit'))return;await new Promise(r=>setTimeout(r,500));}throw Error('Add friend has not presented actual new Chat');}
+async function desktopHas(account,label){for(let i=0;i<20;i++){ui('observe','','',label);const nodes=JSON.parse(await fs.readFile(out+'/'+label+'.png.json','utf8')).nodes;if(nodes.some(n=>n.name===account.username)){ui('reach',account.username,'',label+'-visible');return nodes;}await new Promise(r=>setTimeout(r,600));}throw Error('Actual Desktop friend projection missing '+account.username);}
+const {chromium}=await import(pathToFileURL('C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs'));const b=await chromium.launch({executablePath:'C:/Users/21441/.codex/visualizations/2026/10/08/01a11a79-95c1-79e2-a26b-9bcf56508973/web-task/product-implementation/browsers/chromium-1234/chrome-win64/chrome.exe',headless:true}),c=await b.newContext(),p=await c.newPage();let child,raw='',ended=false;
+const device='/sdcard/Android/data/im.platform.client/files/gui-auth/'+run;async function marker(name){for(let i=0;i<160;i++){try{call(['shell','test','-f',device+'/'+name+'-ready']);return;}catch{}assert(!ended,'Native runner ended: '+raw);await new Promise(r=>setTimeout(r,500));}throw Error('Native marker missing '+name);}function release(name){call(['shell','touch',device+'/'+name+'-continue']);}
+async function webAdd(account){await p.getByLabel('通过准确用户名寻找好友',{exact:true}).fill(account.username);await p.getByRole('button',{name:'搜索',exact:true}).click();await p.getByRole('button',{name:'添加好友',exact:true}).click();}
+function messageCounts(){return JSON.parse(execFileSync('C:/Program Files/Docker/Docker/resources/bin/docker.exe',['exec',f.project+'-postgres-1','psql','-U','im','-d','im','-Atc',"SELECT json_build_object('messages',(SELECT count(*) FROM messages),'outbox',(SELECT count(*) FROM outbox_events),'messageOutbox',(SELECT count(*) FROM outbox_events WHERE event_type='message.created'))"],{encoding:'utf8',timeout:12000}));}
+const messagesBefore=messageCounts();await fs.writeFile(out+'/messages-before.json',JSON.stringify(messagesBefore,null,2));
+async function webHas(account,label){await p.locator('.friend-grid').getByText(account.displayName,{exact:true}).waitFor({timeout:35000});await p.screenshot({path:out+'/'+label+'.png'});}
+try{
+ await p.goto(f.endpoint);await p.getByLabel('用户名',{exact:true}).fill(f.accounts[0].username);await p.getByLabel('密码',{exact:true}).fill('fixture-password-not-a-real-secret');await p.getByRole('button',{name:'进入工作区 →',exact:true}).click();await p.locator('header.top .connection').filter({hasText:/^在线$/}).waitFor();await p.getByRole('button',{name:'Friends 好友',exact:false}).click();ui('click','⚙ Settings','','desktop-old-settings');ui('click','Sign out','','desktop-old-signout');ui('fill','Username',f.accounts[0].username,'desktop-fixture-username');ui('fill','Password','fixture-password-not-a-real-secret','desktop-fixture-password');ui('click','Sign in','','desktop-fixture-login');await desktopReady('desktop-initial-sync-idle');ui('click','Friends','','desktop-friends-baseline');
+ const args=['am','instrument','-w','-e','phase','state-friends','-e','stateRun',run,'-e','freshUser',f.accounts[0].username,'-e','webFriendId',f.accounts[1].userId,'-e','desktopFriendId',f.accounts[2].userId,'-e','mobileFriendId',f.accounts[3].userId,'-e','mobileFriendUser',f.accounts[3].username,'-e','offlineFriendId',f.accounts[4].userId,'-e','riley',base.accounts[2].username,'im.platform.client.test/im.platform.client.ui.GuiAuthenticatedInstrumentation'];child=spawn(adb,['-s','emulator-5590','shell',args.map(quote).join(' ')],{env,stdio:['ignore','pipe','pipe']});child.stdout.on('data',v=>raw+=v);child.stderr.on('data',v=>raw+=v);child.on('exit',()=>ended=true);
+ await marker('friends-online');const eventBaseline=await p.evaluate(async()=>await(await fetch('/__state/events')).json());await fs.writeFile(out+'/initial-sync-complete-event-boundary.json',JSON.stringify({lastEvent:eventBaseline.length,messages:messageCounts()},null,2));await webAdd(f.accounts[1]);await webHas(f.accounts[1],'web-origin');await desktopHas(f.accounts[1],'desktop-observes-web');release('friends-online');
+ await marker('friends-web-observed');ui('fill','Search username',f.accounts[2].username,'desktop-search');ui('click','Search','','desktop-search-result');await new Promise(r=>setTimeout(r,600));ui('click','Add friend','','desktop-origin');await desktopOpened(f.accounts[2],'desktop-add-open-complete');ui('click','Friends','','desktop-origin-return-friends');await desktopHas(f.accounts[2],'desktop-origin-projection');await webHas(f.accounts[2],'web-observes-desktop');release('friends-web-observed');
+ await marker('friends-mobile-added');await webHas(f.accounts[3],'web-observes-mobile');await desktopHas(f.accounts[3],'desktop-observes-mobile');release('friends-mobile-added');
+ assert(await p.evaluate(async userId=>(await fetch('/__state/disconnect',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({userId,clientType:'WEB'})})).ok,f.accounts[0].userId));await p.locator('header.top .connection').filter({hasText:/^连接已断开$/}).waitFor();await p.screenshot({path:out+'/web-disconnected-retained.png'});await p.locator('header.top .connection').filter({hasText:/^在线$/}).waitFor();for(const account of f.accounts.slice(1,4))await webHas(account,'web-reconnected-'+account.userId);
+ await marker('friends-offline');ui('click','⚙ Settings','','desktop-offline-settings');ui('click','Go offline','','desktop-go-offline');ui('click','Friends','','desktop-offline-list');await webAdd(f.accounts[4]);await webHas(f.accounts[4],'web-offline-source');ui('observe','','','desktop-offline-retained');assert(!JSON.parse(await fs.readFile(out+'/desktop-offline-retained.png.json','utf8')).nodes.some(n=>n.name===f.accounts[4].username));release('friends-offline');
+ ui('click','⚙ Settings','','desktop-reconnect-settings');ui('click','Reconnect','','desktop-reconnect');ui('click','Friends','','desktop-recovered-list');await desktopHas(f.accounts[4],'desktop-offline-recovered');await marker('friends-recovered');release('friends-recovered');
+ for(let i=0;i<120&&!ended;i++)await new Promise(r=>setTimeout(r,500));assert(ended,'Native runner must finish');await fs.writeFile(out+'/instrumentation-original.txt',raw);assert(raw.includes('INSTRUMENTATION_RESULT: result=PASS'),raw);
+ call(['pull',device,out+'/native-originals']);
+ async function webLogin(account){await p.getByLabel('用户名',{exact:true}).fill(account.username);await p.getByLabel('密码',{exact:true}).fill('fixture-password-not-a-real-secret');await p.getByRole('button',{name:'进入工作区 →',exact:true}).click();await p.locator('header.top .connection').filter({hasText:/^在线$/}).waitFor();await p.getByRole('button',{name:'Friends 好友',exact:false}).click();}
+ await p.getByRole('button',{name:'退出登录',exact:true}).click();await webLogin(base.accounts[2]);assert.equal(await p.locator('.friend-grid').getByText(/^STATE /).count(),0);await p.getByRole('button',{name:'Chat 聊天',exact:false}).click();assert.equal(await p.locator('.conversation').getByText(/^STATE /).count(),0);await p.screenshot({path:out+'/web-other-account-isolated.png'});await p.getByRole('button',{name:'退出登录',exact:true}).click();await webLogin(f.accounts[0]);for(const account of f.accounts.slice(1))await webHas(account,'web-original-account-restored-'+account.userId);
+ ui('click','⚙ Settings','','desktop-account-settings');ui('click','Sign out','','desktop-account-signout');ui('fill','Username',base.accounts[2].username,'desktop-other-username');ui('fill','Password','fixture-password-not-a-real-secret','desktop-other-password');ui('click','Sign in','','desktop-other-login');await desktopReady('desktop-other-sync-idle');ui('click','Friends','','desktop-other-friends');ui('observe','','','desktop-other-account-isolated');assert(!JSON.parse(await fs.readFile(out+'/desktop-other-account-isolated.png.json','utf8')).nodes.some(n=>n.name?.startsWith('STATE ')));ui('click','Chat','','desktop-other-chat');ui('observe','','','desktop-other-conversations-isolated');assert(!JSON.parse(await fs.readFile(out+'/desktop-other-conversations-isolated.png.json','utf8')).nodes.some(n=>n.name?.includes('STATE ')));ui('click','⚙ Settings','','desktop-original-settings');ui('click','Sign out','','desktop-other-signout');ui('fill','Username',f.accounts[0].username,'desktop-original-username');ui('fill','Password','fixture-password-not-a-real-secret','desktop-original-password');ui('click','Sign in','','desktop-original-login');await desktopReady('desktop-original-sync-idle');ui('click','Friends','','desktop-original-friends');for(const account of f.accounts.slice(1))await desktopHas(account,'desktop-original-restored-'+account.userId);
+ const sql=`SELECT coalesce(json_agg(json_build_object('userLow',user_low_id,'userHigh',user_high_id,'directConversationId',direct_conversation_id)),'[]'::json) FROM friendships WHERE user_low_id='${f.accounts[0].userId}' OR user_high_id='${f.accounts[0].userId}'`;const rows=JSON.parse(execFileSync('C:/Program Files/Docker/Docker/resources/bin/docker.exe',['exec',f.project+'-postgres-1','psql','-U','im','-d','im','-Atc',sql],{encoding:'utf8',timeout:12000}));for(const account of f.accounts.slice(1))assert.equal(rows.filter(r=>r.userLow===account.userId||r.userHigh===account.userId).length,1);assert.equal(new Set(rows.map(r=>r.directConversationId)).size,rows.length);const messagesAfter=messageCounts();assert.equal(messagesAfter.messages,messagesBefore.messages);assert.equal(messagesAfter.messageOutbox,messagesBefore.messageOutbox,'Friend polling recovery/isolation must not use any new message.created Outbox trigger');const events=await p.evaluate(async()=>await(await fetch('/__state/events')).json());assert(!events.slice(eventBaseline.length).some(e=>e.kind==='actual_created'||e.kind==='send'||e.kind==='actual_ack'),'No chat delivery trigger is permitted in actual friend matrix');await fs.writeFile(out+'/proofs.json',JSON.stringify({kind:'actual three friend origins/online projections/three-client disconnect recovery/account isolation',run,fixture:f,rows,messagesBefore,messagesAfter,eventBoundary:eventBaseline.length,newMessageDeliveryEvents:0,sync:events.filter(e=>e.kind==='sync_request'&&e.userId===f.accounts[0].userId)},null,2));console.log('PASS actual three friend origins/all online projections/three-client disconnect recovery/account isolation');
+}finally{await fs.writeFile(out+'/instrumentation-original.txt',raw);if(child&&!ended)child.kill();try{call(['pull',device,out+'/native-originals']);}catch{}await c.close();await b.close();}
+

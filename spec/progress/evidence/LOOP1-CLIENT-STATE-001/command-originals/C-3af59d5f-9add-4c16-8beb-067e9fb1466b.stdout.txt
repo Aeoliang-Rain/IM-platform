@@ -1,0 +1,611 @@
+### 5.3 缇よ亰 fan-out
+
+GROUP 娑堟伅浠嶅彧鍐欎竴鏉?message 鍜屼竴鏉?outbox 浜嬩欢銆侴ateway 鏍规嵁浼氳瘽鍦ㄧ嚎鎴愬憳鎵ц local fan-out銆傛櫘閫氱兢鏈€澶ф垚鍛樻暟涓嶅湪璁捐闃舵鎷嶈剳琚嬪浐瀹氾紝搴旂敱 10/50/200/500 鎴愬憳绛夐樁姊祴璇曠粨鏋滃喅瀹氥€?
+#### 娑堟伅姝ｇ‘鎬х孩绾?
+lost committed messages = 0锛沝uplicate logical messages = 0锛泈rong conversation delivery = 0锛沺ermanent seq gap = 0锛汚CK-before-commit = 0銆?
+<a id="section-6"></a>
+## 6. 瀹㈡埛绔姸鎬併€佹湰鍦板瓨鍌ㄤ笌绂荤嚎鍚屾
+
+<a id="section-6-1"></a>
+### 6.1 涓夌宸紓
+
+| 瀹㈡埛绔?| 鏈湴鎸佷箙鍖?| 绂荤嚎鍘嗗彶 | 鍚姩琛屼负 |
+| --- | --- | --- | --- |
+| Web | 鏃犺亰澶?DB锛汳emory only | 涓嶈ˉ鑱婂ぉ鍘嗗彶锛涚櫥褰曞悗鑾峰彇褰撳墠濂藉弸/浼氳瘽鐘舵€?| HTTPS 鐧诲綍 -> WSS auth.bind -> 浠呭睍绀烘湰浼氳瘽瀹炴椂鏁版嵁 |
+| Desktop | 鎸夎处鍙风嫭绔?SQLite + OS secure token storage | 鏀寔 | 鍏堣 SQLite 绔嬪嵆娓叉煋锛屽啀鍚庡彴鍚屾 |
+| Mobile | 鎸夎处鍙风嫭绔?SQLite + OS secure token storage | 鏀寔 | 鍏堣 SQLite 绔嬪嵆娓叉煋锛屽啀鍚庡彴鍚屾 |
+
+
+#### 宸叉壒鍑嗗鎴风鎶€鏈爤涓庤竟鐣岋紙Human-approved v1.1 clarification锛?
+- Web = React + TypeScript锛涗粎涓存椂鍦ㄧ嚎 Memory only锛涙棤 SQLite銆佹棤鑱婂ぉ鍘嗗彶鎸佷箙鍖栥€佹棤绂荤嚎鍘嗗彶鍔犺浇锛涢€氳繃 HTTPS + WSS 閫氫俊锛岄〉闈㈢敓鍛藉懆鏈熺粨鏉熷悗涓嶄繚璇佹秷鎭姸鎬佷繚鐣欍€?- Desktop = Tauri + React + TypeScript锛沀I 鐙珛瀹炵幇锛涘叡浜崗璁€佹ā鍨嬨€侀€傜敤 hooks銆丏esign Token 鍜?UI 璇箟锛屼笉鍏变韩瀹屾暣 React 瑙嗚缁勪欢锛圓DR-0006锛夛紱鎸夎处鍙?SQLite銆佺绾垮巻鍙层€乷ptimistic send銆丼ENDING/SENT/FAILED銆丄CK 鍥炲啓銆乺etry 澶嶇敤 request_id銆丼ync 鏀舵暃銆?- Desktop 蹇呰 Rust/native 浠ｇ爜浠呴檺 `clients/desktop/src-tauri/**`锛屼粎浣滀负 SQLite native access銆丱S secure storage銆佸繀瑕佹枃浠剁郴缁熺瓑绯荤粺鑳藉姏鐨?native adapter锛涘鎴风涓氬姟灞傘€丷epository API銆乸rotocol/model/plugin SDK 浠嶄负 TypeScript锛屼笉寰楄縼鍏?Rust銆侱esktop SQLite native boundary 浣跨敤 Tauri + SQLx(SQLite)锛汿ypeScript 鎸佹湁鍏变韩 Repository銆佹ā鍨嬪拰浜嬪姟鎰忓浘锛孯ust 浠呮彁渚涙暟鎹簱杩炴帴銆佹煡璇㈠拰鍘熷瓙 transaction adapter銆備笉寰楅€氳繃澶氫釜鐙珛 tauri-plugin-sql execute() 璋冪敤妯℃嫙璺ㄨ皟鐢ㄤ簨鍔°€係QLx 浠ュ鐨?SQLite crate/plugin/library 鏈壒鍑嗐€?- Mobile = Android + Kotlin + Jetpack Compose锛汬uman 鏄庣‘绉婚櫎 Mobile TypeScript 鎶€鏈爤锛屽叿浣?framework 涓嶅啀 TBD銆侫ndroid Studio emulator 涓虹湡瀹?Android 楠岃瘉鐜锛涙寜璐﹀彿 SQLite銆佺绾垮巻鍙层€乷ptimistic send銆丄CK/retry/Sync 涓庡叾浠栧鎴风鐩稿悓銆?- Mobile 鍦?`clients/mobile/**` 浣跨敤 Kotlin 绛変环妯″瀷銆丷epository 璇箟銆佸崗璁?鎻掍欢閫傞厤涓?data/domain 琛屼负锛屾湇浠庡悓涓€ canonical contracts/fixtures锛涗笉瑕佹眰鐩存帴澶嶇敤 TypeScript SDK銆備紭鍏?Android SDK 鑷甫 SQLite 浜嬪姟鑳藉姏锛屼笉鎺堟潈 Room銆佺涓夋柟 SQLite/ORM/network library 鎴栧叾浠栨灦鏋勬晱鎰熶緷璧栥€備笉寰椾负鍏变韩浠ｇ爜鑷鍔犲叆 JS runtime銆乀S/JS bridge銆乧odegen 鎴栨妸 shared 灞傛敼鍐欐垚璺ㄧ native銆傚畬鏁?Mobile acceptance 鏈弧瓒虫椂 S2 Gate OPEN锛汥esktop host/mock 涓嶈兘鍐掑厖 Android emulator acceptance銆?- `clients/shared/{protocol-sdk,plugin-sdk,ui}/` 鍙?Web/Desktop shared models銆丷epository銆乨ata/domain logic 淇濇寔 TypeScript 鐢熸€併€侻obile 浠ュ悓涓€鍏叡濂戠害涓?fixtures 楠岃瘉绛変环琛屼负锛涗笉鍒涘缓鏂板叕鍏卞绾︺€備繚鐣欑幇鏈夌洰褰曟潈濞侊紝鏃犳棤鎰忎箟鎼縼銆係2 涓嶅疄鐜?S4 WASM host銆乵arketplace 鎴栧畬鏁?lifecycle銆?- Dart/Flutter 涓嶅睘浜庡綋鍓嶆壒鍑?active client 鎶€鏈爤锛涘巻鍙?PR7/Review/FAIL/Recorder/evidence 淇濈暀锛屼絾 PR7 涓嶆彁渚涙巿鏉冩垨鏂?TypeScript acceptance銆?
+鏈哄櫒妫€鏌ヨ鍙栦笅鍒楀凡鎵瑰噯鎶€鏈爣璇嗭紱鏍囧噯鍖呭悕浠呭搴斾笂杩版樉寮忔爤鍙婂繀瑕?type/build bindings锛屼笉鎺堟潈棰濆妗嗘灦銆乺untime銆佹暟鎹簱椹卞姩鎴栧師鐢熶緷璧栥€傛瘡涓灦鏋勬晱鎰熸柊渚濊禆浠嶉』鐙珛 Review 杩芥函鎺堟潈銆侫ndroid SDK銆丟radle銆並otlin/Compose compiler/plugin銆佹爣鍑?Compose UI 涓?Android activity binding 鏄墍閫夋爤鐨勫繀瑕佸伐绋嬫爣璇嗭紝浠呴檺 Mobile锛涗笉鎺堟潈鍏朵粬 Kotlin frameworks銆丱RM銆佺綉缁滄垨 plugin runtimes銆?
+#### 鏈€灏忓師鐢?GUI 鑳藉姏涓庡瑙傚瓨鍌紙Human-approved ADR-0009锛涙帴鍙楀緟瀹屾垚锛?
+Desktop 棣栨鐪熷疄楠屾敹鐩爣涓?Windows銆傚繀瑕?Rust 浠嶉檺瀹氬湪 clients/desktop/src-tauri/**锛歳eqwest 鎻愪緵鍘熺敓 HTTPS锛屼娇鐢ㄧ郴缁熻瘉涔︿笌涓绘満鍚嶉獙璇併€佸彧鍏佽 HTTPS銆佺姝㈤噸瀹氬悜銆佷繚鎸佸簲鐢ㄥ簭鍒楀寲鐨勮姹?bytes/headers 涓庤繑鍥?status/headers/body bytes锛屼笉瑙ｉ噴涓氬姟鍗忚锛沰eyring 閫氳繃 Windows Credential Manager 鎸佷箙鍖?app/account/session 闅旂鐨?refresh credential锛涘畼鏂?tauri-plugin-notification 涓?tauri-plugin-global-shortcut 鎻愪緵 OS 閫氱煡/杈撳叆锛宼ray 浣跨敤宸叉湁 Tauri tray feature銆俆ypeScript UI/auth application 閫氳繃鏃㈡湁 SyncHttp injected-fetch 涓庤鑼?auth 璋冪敤缁勫悎浼犺緭锛涘師鐢熷眰涓嶆嫢鏈夎璇佺紪鎺掋€丷epository銆乸rotocol schema銆佹巿鏉冩垨 ACK/retry/Sync 鍐崇瓥銆傜姝㈣瘉涔︾粫杩囥€乧redential query/logging銆佹槑鏂囧嚟鎹檷绾у強 backend/CORS/public API 鏀瑰姩銆傚叿浣撶増鏈?features 鍦ㄤ骇鍝佸疄鐜版椂鍐欏叆 Cargo.lock 骞剁嫭绔?Review锛涘彧鎵瑰噯鍒楀嚭鐨?crate families锛屼笉鎵瑰噯棰濆鍓嶇 plugin package銆?
+Android 浣跨敤 SDK HttpsURLConnection 鎻愪緵绛変环鐨勭郴缁熻瘉涔?涓绘満鍚嶉獙璇併€丠TTPS-only銆佺閲嶅畾鍚戝強 exact serialized bytes 浼犺緭锛涗娇鐢?Android Keystore AES/GCM 闈炲鍑哄瘑閽ヤ繚鎶?refresh credential锛孲DK SharedPreferences 浠呭瓨 ciphertext 涓庡繀瑕?IV/metadata銆侹otlin 淇濇湁 auth lifecycle/cleanup intent/account isolation 涓庡悓涓€ contracts/fixtures 涓嬬殑 Repository/protocol/model 琛屼负銆侱esktop/Android 鍑嵁瀛樺偍澶辫触涓嶅緱鏄庢枃闄嶇骇锛沘ccess credential 淇濇寔涓存椂锛屾浛鎹?logout/expiry 娓呯悊璇箟浠嶇敱搴旂敤灞傚喅瀹氥€?
+澶栬鎸佷箙鍖栦粎鍏佽 Desktop app-owned app_data JSON 涓?Android SDK SharedPreferences 涓殑 Cold AI/Warm Creative theme銆乫ont-size/density 鏍囬噺锛屼笉瀛?credential/message/sync cursor/account Repository data銆係QLx/SDK SQLite 鍘熷瓙浜嬪姟銆乄SS銆佸叕鍏卞绾︺€佸畨鍏ㄨ竟鐣屽強渚濊禆鏂瑰悜涓嶅彉锛涗笉鎺堟潈鍏朵粬 OS parity銆乶etwork/ORM/JS bridge 鎴栨湭鏉?plugin runtime銆侫DR-0009 椤荤粡鏂扮嫭绔?Review銆侀€傜敤 exact-head hosted CI銆乸rotected integration/actual-main 楠岃瘉鍙婁富浠撳簱鍚屾鎵嶇敓鏁堬紱鍊欓€変笉鏄骇鍝佸疄鏂芥潈濞併€?
+<!-- client-technology-policy -->
+```json
+{
+  "decision": "ADR-0005-client-technology-clarification",
+  "languages": [
+    "TypeScript",
+    "JavaScript",
+    "Rust",
+    "Kotlin"
+  ],
+  "frameworks": [
+    "React",
+    "Tauri",
+    "Jetpack Compose"
+  ],
+  "runtimes": [
+    "Tauri",
+    "Android"
+  ],
+  "packages": [
+    "typescript",
+    "react",
+    "react-dom",
+    "@types/react",
+    "@types/react-dom",
+    "@tauri-apps/api",
+    "@tauri-apps/cli"
+  ],
+  "native_packages": [
+    "tauri",
+    "tauri-build",
+    "sqlx",
+    "reqwest",
+    "keyring",
+    "tauri-plugin-notification",
+    "tauri-plugin-global-shortcut"
+  ],
+  "mobile_framework": "Jetpack Compose",
+  "native_boundary": "clients/desktop/src-tauri/",
+  "mobile_languages": [
+    "Kotlin"
+  ],
+  "mobile_runtimes": [
+    "Android"
+  ],
+  "mobile_frameworks": [
+    "Jetpack Compose"
+  ],
+  "mobile_plugins": [
+    "com.android.application",
+    "com.android.library",
+    "org.jetbrains.kotlin.android",
+    "org.jetbrains.kotlin.plugin.compose"
+  ],
+  "mobile_dependencies": [
+    "com.android.tools.build:gradle",
+    "org.jetbrains.kotlin:kotlin-gradle-plugin",
+    "org.jetbrains.kotlin:compose-compiler-gradle-plugin",
+    "org.jetbrains.kotlin:kotlin-stdlib",
+    "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+    "org.jetbrains.kotlin:kotlin-test",
+    "androidx.activity:activity-compose",
+    "androidx.compose:compose-bom",
+    "androidx.compose.runtime:runtime",
+    "androidx.compose.ui:ui",
+    "androidx.compose.ui:ui-tooling",
+    "androidx.compose.ui:ui-tooling-preview",
+    "androidx.compose.foundation:foundation",
+    "androidx.compose.animation:animation",
+    "androidx.compose.material3:material3",
+    "androidx.lifecycle:lifecycle-viewmodel-compose",
+    "androidx.lifecycle:lifecycle-runtime-compose",
+    "androidx.navigation:navigation-compose",
+    "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+    "org.jetbrains.kotlinx:kotlinx-coroutines-android"
+  ],
+  "mobile_tooling": [
+    "Android SDK",
+    "Android Studio",
+    "Gradle",
+    "android-actions/setup-android",
+    "gradle/actions/setup-gradle",
+    "reactivecircus/android-emulator-runner"
+  ],
+  "mobile_import_prefixes": [
+    "android.",
+    "kotlin.",
+    "java.",
+    "javax.",
+    "org.json.",
+    "org.xml.",
+    "org.w3c.",
+    "androidx.compose.",
+    "androidx.activity.",
+    "androidx.lifecycle.",
+    "androidx.navigation.",
+    "kotlinx.coroutines."
+  ],
+  "web_appearance": {
+    "decision": "ADR-0011-web-appearance-storage",
+    "adapter": "clients/web/src/ui/appearance.ts",
+    "storage": "localStorage",
+    "key": "plugworldim.appearance.v1",
+    "fields": [
+      "theme",
+      "fontSize",
+      "density"
+    ],
+    "themes": [
+      "cold",
+      "warm"
+    ],
+    "font_sizes": [
+      14,
+      16,
+      18,
+      20
+    ],
+    "densities": [
+      "compact",
+      "comfortable",
+      "spacious"
+    ],
+    "max_serialized_length": 128,
+    "defaults": {
+      "theme": "cold",
+      "fontSize": 16,
+      "density": "comfortable"
+    }
+  }
+}
+```
+
+JavaScript 浠呬负 TypeScript 鐢熸€佺殑蹇呰閰嶇疆/鏋勫缓浜掓搷浣滐紱Web/Desktop/shared 瀹㈡埛绔笟鍔?API/protocol/model/plugin SDK 蹇呴』 TypeScript锛汳obile 鐨勭瓑浠峰疄鐜颁负 Kotlin銆俁ust 浠呬笂杩?native adapter銆傛鏍囪瘑琛ㄤ笉鎺堟潈 Node/Bun/Deno 绛変骇鍝?runtime锛孲QLite native driver 浠呮壒鍑?Desktop SQLx(SQLite)銆侻obile 宸叉壒鍑?Android Kotlin + Jetpack Compose锛孉ndroid Studio emulator 楠岃瘉锛汚ndroid 宸ョ▼鏍囪瘑涓嶆槸鍏朵粬妗嗘灦鎴栫涓夋柟鏍稿績渚濊禆鐨勯€夊瀷鎺堟潈銆?
+<a id="section-6-2"></a>
+### 6.2 Optimistic write 涓庣姸鎬佹満
+
+浠ヤ笅 SQLite 鎸佷箙鐘舵€佹満閫傜敤浜?Desktop/Mobile锛沇eb 浣跨敤鍐呭瓨鎬佹敹鏁涳紝涓嶅紩鍏ヨ亰澶╁巻鍙叉暟鎹簱銆?
+1. 鐢ㄦ埛鐐瑰嚮鍙戦€?2. -> 鐢熸垚涓嶅彲鍙?request_id
+3. -> SQLite 浜嬪姟 UPSERT锛宻tate=SENDING
+4. -> UI 绔嬪嵆娓叉煋
+5. -> WSS message.send
+6. -> ACK: SENT + server_message_id + seq + server_time
+7. -> timeout/offline: FAILED
+8. -> Retry: 澶嶇敤鐩稿悓 request_id锛孎AILED -> SENDING
+
+FAILED 浠呰〃绀哄綋鍓嶅皾璇曟病鏈夋敹鍒版垚鍔熺‘璁わ紝涓嶈瘉鏄庢湇鍔＄鏈彁浜ゃ€係ENT 鏄粓鎬侊紝涓嶈兘鍊掗€€鍒?FAILED銆係ync 鑻ョ湅鍒版湰鍦癋AILED 浣嗘湇鍔＄宸叉湁鐩稿悓 (conversation_id, request_id)锛屽繀椤?UPSERT 涓?SENT锛岃€屼笉鏄柊澧炰竴琛屻€?
+<a id="section-6-3"></a>
+### 6.3 SQLite 浜嬪姟涓嶅彉閲?
+- UNIQUE(conversation_id, request_id)
+- UNIQUE(server_message_id) WHERE server_message_id IS NOT NULL
+- UNIQUE(conversation_id, server_seq) WHERE server_seq IS NOT NULL
+- 鎵€鏈夋湰鍦板彂閫?/ ACK / WSS realtime / Sync 鍧囪蛋浜嬪姟 UPSERT
+- 涓氬姟鏁版嵁鍙樻洿涓?cursor / contiguous_seq 鎺ㄨ繘蹇呴』鍦ㄥ悓涓€浜嬪姟
+
+```mermaid
+flowchart LR
+  Start["鍚姩<br/>璇诲彇 SQLite 骞舵覆鏌?] --> Connect["杩炴帴<br/>HTTPS + WSS"]
+  Connect --> UserSync["鐢ㄦ埛鐘舵€佸悓姝?br/>user_sync_cursor"]
+  UserSync --> GapSync["娑堟伅缂哄彛鍚屾<br/>conversation seq"]
+  UserSync --> Tx["鍚屼竴 SQLite 浜嬪姟<br/>UPSERT 鏁版嵁 + 鎺ㄨ繘 cursor / contiguous_seq"]
+  GapSync --> Tx
+```
+
+> WSS 瀹炴椂娴佷笌 Sync 琛ュ伩娴佸厑璁镐氦鍙夛紝闈犲敮涓€绾︽潫鍜屼簨鍔℃敹鏁涳紝涓嶆殏鍋滃疄鏃舵帹閫併€?>
+> 鍥?6-1 鍙屽眰鍚屾涓庢湰鍦版敹鏁涖€?
+<a id="section-6-4"></a>
+### 6.4 鍙屽眰 Cursor
+
+user_sync_cursor 鍙壙杞?friend銆乧onversation銆乵embership銆乸lugin 绛変綆棰戠敤鎴风姸鎬併€傛秷鎭笉杩涘叆鐢ㄦ埛绾т簨浠舵祦锛屼互閬垮厤缇ゆ秷鎭寜鎴愬憳鍐欐斁澶с€傛瘡涓細璇濈淮鎶?contiguous_seq锛屽彧鏈夋湰鍦颁粠鏃у€煎紑濮嬭繛缁棤缂哄彛鏃舵墠鑳藉墠绉汇€?
+### 6.5 瀹㈡埛绔?UI 鏋舵瀯涓?GUI 楠屾敹锛圚uman-approved ADR-0006 鍊欓€夛級
+
+浠ヤ笅 Human 鍐冲畾寰呮柊鐙珛 Review銆佺簿纭€欓€?hosted CI銆侀泦鎴愪笌瀹為檯 main 鏍搁獙鍚庣敓鏁堬紱姝ゅ墠涓嶅緱鎹€欓€夊惎鍔ㄤ骇鍝佸疄鐜般€傝ˉ鍏呰璁¤鏄庝綅浜?`spec/architecture/decisions/client-ui/architecture.md` 鍜?`design-direction.md`锛汫UI 楠屾敹瑙勭害涓?`spec/acceptance/client-gui.md`锛涜繖浜涗粠灞炰簬鏈鏂囧拰 ADR-0006锛屼笉鏄浜?canonical 鎴栧叕鍏?wire/schema 鏉冨▉銆?
+- 浜у搧鏋勭晫 IM+ / PlugWorldIM锛汚daptive Glass Workspace锛涜瑙夐噸鐐?50% Future AI Communication / 30% Productivity Tool / 20% Developer Extensibility銆傜畝娲併€佺幓鐠冨眰娆°€丄I-native銆佹ā鍧楀寲銆佸彲閰嶇疆锛涜姣斾緥涓嶆槸鍔熻兘鑳藉姏鎵胯銆侻inimal Glassmorphism 浣跨敤 translucent surface銆乻ubtle border銆乥lur銆乴ayered depth 琛ㄨ揪灞傛锛涚姝俊鎭爢鐮屻€佸鏉?Dashboard銆佽繃搴?Cyber/HUD銆侀噸搴﹀彂鍏?闇撹櫣/绮掑瓙/澶嶆潅 3D 鍜屼负鐐妧娣诲姞瑙嗚鍏冪礌銆?- 涓や富棰?Cold AI锛堝喎钃濄€佺传鑹叉笎鍙樸€佹繁鑹茬幓鐠冿級鍜?Warm Creative锛堟殩鑹叉笎鍙樸€佹煍鍜岀幓鐠冦€佷翰鍜岋級銆傚叡浜?Logo銆佸搧鐗屻€丩ayout銆丆omponent semantic锛涗富棰樺垏鎹㈠彧鏀瑰彉 Color token銆傜敤鎴风嫭绔嬫湰鍦拌缃?Typography/Spacing锛涙彃浠朵笉寰椾慨鏀逛富瀵艰埅銆佸搧鐗屾牳蹇冩垨鍩虹 UI 璇箟銆備富棰樺垏鎹笉寰楅噸缃瓧浣?闂磋窛锛涜璁″€?鍍忕礌甯冨眬鍜屽叿浣撳亸濂藉瓨鍌ㄦ満鍒剁敱鍚庣画鍙楁帶 GUI Task 缁欏嚭锛屼笉鎺堟潈 Web 鑱婂ぉ鎸佷箙鍖栥€傚彲璇绘€?鐒︾偣/鐘舵€佷笉鑳戒粎闈犻鑹叉垨閫忔槑鏁堟灉琛ㄨ揪銆?- Application Shell 鎷ユ湁 Chat / Friends / AI / Plugin 涓€绾у鑸紱鏈潵浠呭鎴风鍙楁帶浠诲姟鍙鍔?Settings/Profile锛涙彃浠朵笉寰楁柊澧炰竴绾у鑸垨鐩存帴鎺у埗 Shell銆侰hat 璐熻矗 Conversation List/View/Message锛涘ソ鍙嬫悳绱€佸叧绯汇€佹坊鍔犲睘 Friends銆侫I 浠呭叆鍙?鎻掑浘/鏂藉伐涓紝涓嶅惈 AI chat銆丄gent銆丷AG銆乀ool Calling銆丄PI 鎴栧亣 AI 鏁版嵁銆侾lugin 涓?Installed Plugins/Status/Entry 涓汉鑳藉姏闈㈡澘锛涚己澶辫兘鍔涜瘹瀹炴樉绀烘湭寮€鏀撅紝涓嶅埗閫犲亣鏁版嵁锛涗笉鏄晢搴楁垨 Marketplace銆?- Web React/TypeScript 宸ョ▼鍒嗗眰涓?Shell/routing銆佸畾鍒朵笟鍔＄粍浠躲€乭ooks/data/state 鍜?Repository/protocol adapter锛涢粯璁?useState/useReducer/Context/custom hooks銆備笉閫夋嫨绗笁鏂?router/data/state 搴擄紱Zustand/Redux/MobX 鎴栨晱鎰熷簱闇€鍗曠嫭 ADR 鎵瑰噯銆傚熀纭€ icon/accessibility/utility 绫诲埆骞堕潪鍏蜂綋鍖呯殑 blanket approval锛涗笉寰楃粦瀹氬畬鏁翠笟鍔?UI framework銆?- Desktop Tauri/React/TypeScript 鐙珛 UI锛屽畾浣嶈垝閫傘€侀珮棰戙€佺敓浜у姏锛屽厑璁稿悗缁彈鎺т换鍔℃彁渚涙洿涓板瘜甯冨眬/浜や簰/鏈湴鑳藉姏灞曠ず銆傚叡浜?protocol-sdk/plugin-sdk/models銆丷epository 琛屼负銆侀€傜敤骞冲彴涓珛 hooks銆丏esign Token/UI semantic锛涗笉鍏变韩瀹屾暣 Button/MessageBubble/ChatWindow銆侻obile 鍒嗕韩瑙勮寖鍜?canonical contracts/fixtures锛岄€氳繃 Kotlin 绛変环瀹炵幇锛屼笉瑕佹眰澶嶇敤 TS hook/SDK/缁勪欢銆傜幇琛?SQLx/TypeScript 鍘熷瓙閫傞厤杈圭晫涓嶅彉銆?- Mobile Compose UI 鍚?ViewModel 鍙戝嚭鎰忓浘锛沄iewModel 璋冪敤 Repository 骞堕€氳繃 StateFlow 鏆撮湶鐘舵€侊紱Compose 鐢熷懡鍛ㄦ湡鎰熺煡鍦拌瀵?StateFlow銆俁epository 濮旀墭 SDK SQLite 涓庢巿鏉?WSS/protocol adapter銆侸etpack Navigation Compose 绠＄悊瀹夸富瀵艰埅锛涗粎鏄庣‘ state/navigation 鎵€闇€渚濊禆鎸夋湰鑺?machine policy锛汚ndroid Studio emulator 楠屾敹锛屼笉鎺堟潈棰濆 Room/ORM/network/runtime/bridge/codegen銆?- UI 鍙樉绀鸿瀵熺姸鎬佸苟鍙戝嚭鎰忓浘锛汻epository 鎷ユ湁鏈湴 materialized data/浜嬪姟鏀舵暃锛宲rotocol 灞傞伒寰?contracts/锛沀I 涓嶇洿杩?SQLite銆佷笉鑷鎺ㄨ繘 cursor/contiguous_seq銆佷笉浼€?ACK/SENT銆佷笉鍐冲畾鏈嶅姟绔潈闄愩€侱esktop/Mobile 鏈湴鍏堟樉绀哄啀鑳屾櫙 Sync锛汼ENDING/SENT/FAILED銆乺etry 澶嶇敤 request_id銆丼ENT 涓嶅洖閫€銆佸け璐ヤ笌鏈嶅姟绔簨浠舵敹鏁涖€佹暟鎹笌 cursor 鍘熷瓙鎬ф部鐢?搂6.2-6.4銆俉eb memory only銆佹棤绂荤嚎鍘嗗彶锛涜处鍙峰垏鎹笉鏄剧ず鏃ц处鍙锋暟鎹€?- S2 涓嶄笅杞?鎵ц鎻掍欢 UI 浠ｇ爜銆佷笉鍔ㄦ€佸姞杞?娉ㄥ叆浠绘剰杩滅▼缁勪欢銆佷笉瀹炵幇 Renderer/runtime/瀹夎绯荤粺銆傛湭鏉ュ０鏄庡紡 poll 鎻忚堪鏄柟鍚戯紝涓嶆槸鏂板绾︺€侶uman 鏄庣‘涓婅堪浠ｇ爜鎵ц绂佷护浠呴檺 S2锛汼4 淇濈暀 搂8.2 瀹℃煡鍔犳矙绠?Custom Render Bundle/鐧藉悕鍗?Bridge銆佺鍚?hash/schema/API/鏉冮檺/CSP/璧勬簮/鍏ュ彛鏍￠獙鍙婂巻鍙茬増鏈粦瀹氾紱鏈妭涓嶅垹闄ゆ垨鏀惧瀹冧滑銆傛彃浠朵笉鑳芥帶鍒跺涓诲鑸€?- 鍚庣画 GUI 瑕嗙洊鐜版湁 contracts/ 鐨?Auth login/refresh/logout/session-expired銆乁ser info銆丗riend search/add銆丆onversation list/open銆丮essage send/receive/state銆丼ync state锛涗紶杈?瀛楁鏉ヨ嚜鐜拌 OpenAPI/WSS锛屼笉鍙戞槑 HTTP route 鎴?AI/Plugin API銆傛棤 AI 鍔熻兘銆丳lugin runtime銆丮arketplace 瀹炵幇銆?- GUI Task acceptance 蹇呴』鍚湡瀹炶繍琛屾埅鍥?-> Architect Review -> 淇/閲嶆柊鎴浘 -> Architect Approval锛屽苟淇濈暀鐙珛瀹炵幇 Review銆佺簿纭€欓€?CI 涓庨泦鎴?main 鏍搁獙銆俉eb 鎴浘瑕嗙洊 Login/Chat/Friends/AI Placeholder/Plugin Page锛汥esktop 瑕嗙洊涓荤獥鍙?Chat/Friends/Offline History/鐪熷疄 Notification-Tray/Theme锛汳obile 涓虹湡瀹?Android emulator Login/Chat/Friends/Offline History/Sync 鐘舵€?Theme銆備袱涓婚/鍙楁敮鎸佸瓧浣撻棿璺濆彉鍖栦笌鐩稿叧鍔犺浇/绌?閿欒/浼氳瘽澶辨晥/绂荤嚎鐘舵€侀渶瀹為檯璇佹嵁锛涘眬閮ㄤ换鍔℃槑纭墿浣欒寖鍥达紝涓嶅緱瀹ｇО鍏ㄥ鎴风 PASS銆?- 鎴浘缁戝畾 Task銆佸€欓€?SHA/build/runtime銆佸睆骞曠姸鎬?灏哄銆乼heme/閰嶇疆銆佸彲閲嶅姝ラ銆佹枃浠?hash锛涗娇鐢ㄥ彈鎺ф棤绉樺瘑鏁版嵁銆侫rchitect 鍐崇瓥缁戝畾鍚屼竴鍊欓€夊拰鎴浘闆嗭紝澶辫触鐣欐湭瀹屾垚锛涘奖鍝嶅凡鎵瑰噯瑙嗚鐨勬敼鍔ㄥ繀椤婚噸鏂版埅鍥炬壒鍑嗐€傛埅鍥句笉鑳借瘉鏄?ACK/浜嬪姟/骞傜瓑锛屼笉鏇夸唬琛屼负/鏉冮檺/濂戠害/婧愮爜渚濊禆娴嬭瘯锛汿ask PASS 涓嶇瓑浜?S2 Gate PASS銆?
+GUI 鍘熺敓/澶栬瀹炵幇閬靛畧 搂6.1 / ADR-0009 鐨勭獎閫傞厤杈圭晫銆侱esktop 棣栨楠屾敹涓?Windows锛涚湡瀹為€氱煡璇佹嵁蹇呴』鏉ヨ嚜宸插畨瑁呬笖鏈夎嚜韬韩浠界殑瀹㈡埛绔寘锛屽紑鍙?PowerShell toast 涓嶅彲浠ｆ浛銆倀ray/global shortcut 闇€鐪熷疄瀹㈡埛绔涓猴紝Mobile 浠嶉渶 Android Studio emulator銆傝閫夊瀷涓嶈眮鍏嶆埅鍥?Architect Review/Approval銆佺嫭绔嬪疄鐜?Review 涓?exact-head CI銆?
+#### Web 澶栬瀛樺偍锛圚uman-approved ADR-0011锛汚PPROVED_PENDING_FREEZE锛?
+Human 宸叉壒鍑嗘渶灏忓墠缃柟妗堝苟缁х画銆俉eb 浠呭厑璁稿涓婚€傞厤鍣?`clients/web/src/ui/appearance.ts` 浣跨敤娴忚鍣ㄥ師鐢?localStorage锛屽浐瀹氫笖鍞竴 key 涓?`plugworldim.appearance.v1`锛涜褰曟伆濂戒笁涓爣閲?`theme`銆乣fontSize`銆乣density`锛屼笉鍚増鏈瓧娈碉紙鐗堟湰鐢?key 鏍囪瘑锛夈€侰old AI/Warm Creative 鐨勫唴閮ㄥ€间负 `cold`/`warm`锛宖ontSize 涓?14/16/18/20锛宒ensity 涓?compact/comfortable/spacious锛涢粯璁?cold/16/comfortable銆傝鍐欓兘楠岃瘉 exact keys 涓庢灇涓撅紝搴忓垪鍖栨渶澶?128 涓瓧绗︼紱闈炴硶銆佽秴闀裤€佷笉鍙敤瀛樺偍鍥為€€鍐呭瓨榛樿鍊硷紝涓嶆竻鐞嗗叾浠?origin key銆備富棰樺垏鎹㈠彧鏀瑰彉 theme锛屼笉閲嶇疆瀛椾綋鎴栧瘑搴︺€傞€傞厤鍣ㄤ笉鎺ユ敹/鍐欏叆娑堟伅銆佸巻鍙层€佺敤鎴枫€佷細璇濄€佸嚟鎹€佺鐐广€佷笟鍔＄姸鎬佹垨 Sync cursor锛涚姝?SQLite銆両ndexedDB銆佸叾浠栨祻瑙堝櫒鎸佷箙鍖栧強浠绘剰 key/棰濆灞炴€с€俉eb Repository/娑堟伅浠嶄粎鍐呭瓨锛屾棤绂荤嚎鍘嗗彶锛涗笉鎺堟潈浠讳綍鏂颁緷璧栥€乺outer/state/data 妗嗘灦鎴?runtime/bridge銆?
+鏈哄櫒瀹堝崼缁戝畾鏈妭 policy銆乥aseline Web ADR/鎵瑰噯鏉ユ簮銆佸敮涓€閫傞厤鍣ㄣ€佸浐瀹?key銆佺洿鎺?getItem/setItem 鍙婁笁涓瓧娈垫姇褰憋紱琛屼负楠屾敹杩橀』鎵ц鐪熷疄閫傞厤鍣ㄧ殑姝ｈ礋渚嬨€佷笉鍙敤瀛樺偍/閲嶅惎涓庝富棰樼嫭绔嬫€ф鏌ワ紝骞剁敱鐙珛 Reviewer 妫€鏌ュ疄闄呴€昏緫銆傚墠缃?CI 鍙湪 Web 瀹屽叏绌洪鏋躲€乀ask backlog/鏄庣‘澶栬鍓嶇疆銆佸彲淇¤姣旇緝 base 鏃犱骇鍝佹椂鍏佽 PREREQUISITE_SKELETON_ONLY锛涗换浣曚骇鍝?閮ㄥ垎鑴氭墜鏋舵垨鍒犻櫎鏃㈡湁浜у搧閮戒笉鑳介檷绾т负绌洪鏋躲€備骇鍝?CI 蹇呴』閿佸畾渚濊禆銆佸疄闄?build銆佽涓?澶栬涓庢簮鐮佸畧鍗€傛柊鐙珛 Review銆佺簿纭?HEAD hosted CI銆佸彈淇濇姢闆嗘垚/actual-main 楠岃瘉鍜屼富浠撳簱瀹夊叏鍚屾鍓嶏紝姝ゅ€欓€変笉鐢熸晥銆佷笉瀹炴柦 Web 浜у搧銆?
+<a id="section-6-6"></a>
+### 6.6 Web 瀹屾垚鍚庣殑 S2 瀹㈡埛绔ˉ鍏咃紙Human-approved ADR-0012锛涘€欓€夊緟鐙珛鎺ュ彈锛?
+鏈疆鐩存帴 Human 瑙勫垝鎺堟潈瑙?`spec/progress/evidence/LOOP1-CLIENT-SUPPLEMENT-PLAN-001/human-request.txt`銆侫DR-0007 鍘熸湁浠诲姟鍙婃帴鍙楃粨鏋滀繚鎸侊紱鍏?WEB鈫扴2 Gate 鐨勭洿鎺ヨ竟琚互涓嬩覆琛岄摼杩藉姞鏇夸唬锛歀OOP1-WEB-001 鈫?LOOP1-CLIENT-STATE-001 鈫?LOOP1-CLIENT-UI-REF-001 鈫?LOOP1-CLIENT-I18N-001 鈫?S2 Gate銆備笁涓柊澧炰骇鍝佷换鍔″潎S2/backlog锛涙瘡椤逛粎鍦ㄥ墠椤圭嫭绔嬫帴鍙椼€乸rotected integration/actual-main楠岃瘉鍜孒:/IM-platform鍚屾瀹屾垚鍚庢縺娲伙紱STATE鍙︿緷璧栨湰瑙勫垝姝ｅ紡鐢熸晥銆傛湰杞粎瑙勫垝鍙婂叾鎺ュ彈/闆嗘垚/鍚屾锛屼笉瀹炴柦鏂颁骇鍝侊紝S2 Gate OPEN銆?
+#### STATE锛氭秷鎭姸鎬併€佸箓绛夐噸鍙戜笌濂藉弸鍚屾
+
+浠ユ渶鏂颁笁绔疄鐜板拰宸叉湁楠屾敹涓哄熀绾匡紝閫愰」璁板綍鐜版湁鑳藉姏銆佽瘉鎹拰寰呰ˉ榻愬唴瀹癸紝灏嗕互涓嬭姹傚啓鍏ヤ换鍔＄洰鏍囦笌寮哄埗楠屾敹銆?
+1. 娑堟伅鍙潬鎬х殑涓や釜鏍稿績鍦烘櫙锛?   A. 棣栨鍙戦€佹湭鍦ㄦ湇鍔＄鎻愪氦锛屽彂閫佹柟瓒呮椂鏄剧ず FAILED锛岀敤鎴风偣鍑婚噸鍙戝悗瀹屾垚棣栨鎸佷箙鍖栧苟鏀舵暃涓?SENT銆?   B. 棣栨鍙戦€佸凡鍦ㄦ湇鍔＄鎻愪氦锛屾帴鏀舵柟宸茶幏寰楁秷鎭紝鍙戦€佹柟鍥犳垚鍔熺‘璁や涪澶辨垨寤惰繜鏄剧ず FAILED锛涚敤鎴烽噸鍙戝悗鑾峰緱鍘熷鎻愪氦缁撴灉锛屽師娑堟伅鏀舵暃涓?SENT銆?
+2. 鍚屼竴閫昏緫娑堟伅鐨勬瘡娆￠噸鍙戝鐢ㄥ師濮?request_id銆乧onversation_id銆佸彂閫佽€呰韩浠藉拰娑堟伅鍐呭銆傛湇鍔＄宸叉湁鎻愪氦鏃惰繑鍥炲師濮?messageId銆乻eq銆乧reatedAt锛涙渶缁堝搴斾竴鏉℃寔涔呭寲娑堟伅銆佷竴鏉￠€昏緫 Outbox 鍜屽悇瀹㈡埛绔殑涓€鏉℃秷鎭睍绀恒€?
+3. 瑕嗙洊 SENDING銆丗AILED銆侀噸鍙戞寜閽拰 SENT 鐨勭湡瀹炵晫闈㈢姸鎬併€侳AILED 琛ㄨ揪褰撳墠灏濊瘯鏈幏寰楁垚鍔熺‘璁わ紱杩熷埌 ACK銆佸疄鏃舵秷鎭拰閫傜敤 Sync 鍧囬€氳繃鏃㈡湁鏀舵暃鍏ュ彛鏇存柊鍘熸秷鎭紝SENT 淇濇寔缁堟€併€傛牳瀵?Gateway/Core 瓒呮椂涓庢彁浜ょ粨鏋滄湭鐭ヨ矾寰勶紝浣垮叾澶勭悊绗﹀悎瀹為檯鎻愪氦缁撴灉鍜岀幇琛屽绾︺€?
+4. 鍚屼竴浼氳瘽鐨勫凡纭娑堟伅浠ユ湇鍔＄ seq 涓烘渶缁堟帓搴忎緷鎹紝瑕嗙洊锛?   - R1 棣栨鏈彁浜わ紝R2 鍏堟垚鍔熸彁浜わ紝R1 鍚庨噸鍙戞垚鍔燂細鏈€缁堥『搴忎负 R2銆丷1銆?   - R1 棣栨宸叉彁浜や絾纭瓒呮椂锛孯2 闅忓悗鎻愪氦锛孯1 鍐嶈幏寰楃‘璁わ細鏈€缁堥『搴忎负 R1銆丷2銆?   楠岃瘉 UI 鍦?ACK銆佸疄鏃朵簨浠躲€丼ync 浜ゅ弶鍒拌揪鍚庝繚鎸佹纭韩浠姐€佺姸鎬佸拰椤哄簭銆?
+5. Desktop/Mobile 瑕嗙洊淇濈暀鏈湴娑堟伅鏃剁殑閲嶅惎閲嶅彂锛屼互鍙婂彈鎺ф祴璇曚腑浠庡叏鏂拌处鍙锋湰鍦版暟鎹簱鍜屽垵濮嬪悓姝ユ父鏍囨仮澶嶇殑娴佺▼銆傞獙璇佸凡鎻愪氦鍘嗗彶鎸?seq 鎭㈠锛屽悗缁柊娑堟伅浣跨敤鏂扮殑 request_id 鍜屾湇鍔＄鍒嗛厤鐨勫簭鍙凤紝搴忓彿杩炵画鎬т笌娓叉煋椤哄簭姝ｇ‘銆俉eb 鎸夊綋鍓嶉〉闈㈠唴瀛樼敓鍛藉懆鏈熷拰宸叉帴鍙楃殑鍦ㄧ嚎娑堟伅鍚屾瑙勫垯楠屾敹銆?
+6. 琛ラ綈涓夌濂藉弸鍙樻洿鍚屾銆傛槑纭棦鏈夊ソ鍙嬫煡璇㈠拰 User Sync 鐨勮Е鍙戙€佹秷璐瑰強鐣岄潰鍒锋柊閾捐矾锛涗换涓€绔坊鍔犲ソ鍙嬪悗锛屽叾浣欏湪绾跨鏈€缁堟洿鏂板ソ鍙嬪垪琛ㄣ€佸搴旂鑱婂拰鍚嶇О灞曠ず锛屽苟楠岃瘉鏂嚎鎭㈠涓庤处鍙峰垏鎹㈠悗鐨勬纭粨鏋溿€?
+7. 浣跨敤鐪熷疄鏈嶅姟绔€佹暟鎹簱鍜屽鎴风鐨勫彈鎺ф晠闅滄敞鍏ラ獙璇佷笂杩伴摼璺€傚満鏅?B 鍚屾椂鍙栧緱鏈嶅姟绔寔涔呮彁浜ゃ€佹帴鏀舵柟鑾峰緱娑堟伅銆佸彂閫佹柟 FAILED銆侀噸鍙戝悗鍘熸秷鎭?SENT 鐨勮瘉鎹紱鍒嗗埆鏍稿瀛樺偍璁板綍銆佽姹傝韩浠姐€佸簭鍙枫€丱utbox 鍜屽疄闄呮覆鏌撱€?
+
+#### UI-REF锛氱粍浠舵媶鍒嗕笌瀹屾暣鎬?
+浠ヤ换鍔′竴楠屾敹鍚庣殑涓夌浜у搧鏍戜负琛屼负鍜岃瑙夊熀绾匡紝瑙勫垝骞堕獙鏀跺悇绔幇鏈夐〉闈€佺粍浠跺拰灞曠ず鐘舵€佺殑鑱岃矗鎷嗗垎銆?
+1. 鏍规嵁瀹為檯婧愮爜鎷嗗垎搴旂敤鍏ュ彛銆丼hell銆佸鑸€佽璇併€佷細璇濆垪琛ㄣ€佹秷鎭睍绀恒€佽緭鍏ュ尯鍩熴€佸ソ鍙嬪強璁剧疆绛夌幇鏈夎亴璐ｏ紝鏄庣‘鍏ュ彛鎸傝浇銆佺粍浠惰緭鍏ヨ緭鍑恒€佺姸鎬佸綊灞炲拰瀵煎叆鏂瑰悜銆?
+2. 淇濇寔鍚勭鐙珛瑙嗚瀹炵幇鍙婄幇鏈?Auth銆丷epository銆丼end銆丼ync 鑱岃矗杈圭晫锛屽叡浜幇鏈夊崗璁€佺被鍨嬪拰閫傜敤灞曠ず璇箟銆?
+3. 灏嗙粍浠跺睍绀烘枃妗堛€佸簲鐢ㄧ姸鎬佹爣璇嗕笌涓氬姟鍒ゆ柇寤虹珛娓呮櫚杈圭晫锛屼负鍚庣画璇█璧勬簮鎻愬彇鎻愪緵绋冲畾鎺ュ彛銆?
+4. 寤虹珛鎷嗗垎鍓嶅悗鐨勯〉闈€佸叆鍙ｃ€佸姛鑳藉拰娴嬭瘯瑕嗙洊瀵圭収琛ㄣ€傚畬鏁村洖褰掔幇鏈夊鎴风鑳藉姏鍙婁换鍔′竴鏂板鍦烘櫙锛岄獙璇佺姸鎬佷繚鎸併€佷簨浠剁粦瀹氥€佽处鍙烽殧绂汇€佸悓姝ャ€侀噸鍙戙€佹帓搴忓拰澶栬璁剧疆鐨勮涓虹瓑浠枫€?
+5. 瀹屾垚鍚勭鏋勫缓銆侀€傜敤鑷姩鍖栨祴璇曘€佺湡瀹炶繍琛屾埅鍥惧拰 Architect 瀹℃煡锛屼互鍔熻兘瀹屾暣銆佽涓虹瓑浠峰拰瑙嗚鍩虹嚎淇濇寔浣滀负楠屾敹缁撴灉銆?
+
+#### I18N锛氫笁绔浗闄呭寲鎷嗗寘
+
+渚濊禆浠诲姟浜屽畬鎴愶紝鎻愬彇涓夌鐜版湁鐢ㄦ埛鍙鏂囨锛屽缓绔嬭嫳璇€佺畝浣撲腑鏂囧拰鏃ヨ鐨勭嫭绔嬭瑷€璧勬簮銆?
+1. 缁熶竴璇█鏍囪瘑 en銆亃h-CN銆乯a-JP锛屼互鍙婅法绔枃妗堣涔夊拰鍗犱綅鍙傛暟銆俉eb/Desktop 浣跨敤 TypeScript 渚х函鏁版嵁璇█璧勬簮锛孉ndroid 浣跨敤鐜版湁 Kotlin/Compose 鎶€鏈爤涓嬬殑绛変环璧勬簮鏄犲皠銆?
+2. 瑕嗙洊椤甸潰鏂囨湰銆佹寜閽€佽緭鍏ユ彁绀恒€佹牎楠屼笌閿欒鎻愮ず銆佽繛鎺ュ強鍚屾鐘舵€併€佹棤闅滅鏍囩锛屼互鍙婂凡鏈夌郴缁熼€氱煡鍜屾墭鐩樻枃妗堛€傚皢鐘舵€侀€昏緫浣跨敤鐨勭ǔ瀹氭爣璇嗕笌缈昏瘧鍚庣殑鏄剧ず鏂囨湰鍒嗙銆?
+3. Settings 澧炲姞鍥哄畾鍏ュ彛鈥淟anguage / 璇█ / 瑷€瑾炩€濓紝浣跨敤鍥哄畾椤哄簭鐨勬粴鍔ㄩ€夋嫨鍒楄〃锛?   English 鈫?绠€浣撲腑鏂?鈫?鏃ユ湰瑾炪€?   閫夐」鍚嶇О淇濇寔鍚勮嚜璇█锛屽垏鎹㈠悗鍗虫椂鏇存柊褰撳墠鐣岄潰锛屾湰鍦颁繚瀛樺苟鎭㈠璇█閫夋嫨銆?
+4. 灏嗚瑷€閫夋嫨鐨勬湰鍦版寔涔呭寲鑼冨洿銆佸瓨鍌ㄤ綅缃€佸瓧娈靛拰鏍￠獙瑙勫垯绾冲叆涓夌鍋忓ソ閫傞厤鍣ㄧ殑鏄庣‘鏋舵瀯鎺堟潈锛屼繚璇佺幇鏈夊瑙傞厤缃户缁湁鏁堬紝涓婚銆佸瓧鍙枫€侀棿璺濆拰璇█鐙珛淇濇寔銆?
+5. 寤虹珛璇█閿畬鏁存€с€佸崰浣嶅弬鏁颁竴鑷存€у拰鑻辨枃鍥為€€楠岃瘉锛涜鐩栧垏鎹㈠悗鐨勯〉闈㈢姸鎬併€佹秷鎭姸鎬併€佸竷灞€鍙鎬у強鏈湴鍋忓ソ鎭㈠锛屽畬鎴愪笁绉嶈瑷€鐨勯€傜敤鎴浘鍜?Architect 楠屾敹銆?
+
+#### 璇█鍋忓ソ绐勬巿鏉冧笌闃舵
+
+璇█鍋忓ソ涓鸿澶?瀹夸富搴旂敤鑼冨洿锛岃法璐﹀彿淇濇寔銆佹棤浜戝悓姝ワ紝鐙珛浜巆redential銆佽处鍙稴QLite銆佹秷鎭拰Sync cursor銆傞粯璁?en锛涘彧鍏佽澶у皬鍐欑簿纭殑 en銆亃h-CN銆乯a-JP锛屼笉trim銆佷笉鎺ュ彈绯荤粺locale鐚滄祴鎴栦换鎰忓埆鍚嶃€傜己澶?闈炴硶/瓒呴暱/瀛樺偍涓嶅彲鐢ㄥ洖閫€鍐呭瓨en锛屽啓澶辫触璇氬疄鏄剧ず涓斾笉瑕嗙洊鍏朵粬鍋忓ソ鎴栨竻闄ゅ叾浠杒ey銆傚浐瀹氫笁绔綅缃細Web浠呮柊澧?src/ui/language.ts 浠ュ師鐢?localStorage鍥哄畾key plugworldim.language.v1璇诲彇/鍐欏叆raw UTF-8 enum锛堟渶闀?bytes锛夛紝涓嶆敼plugworldim.appearance.v1涓夊瓧娈碉紱Desktop TypeScript native.ts鎸佹湁language鎰忓浘锛宒esktop_capabilities.rs浠呯獎language_load/save瀛楃涓叉灇涓炬牎楠屽強app_data/language.txt璇诲啓raw UTF-8锛堟渶澶?bytes銆佹棤BOM/鎹㈣锛夛紝appearance.json涓夐」tuple鍘熷瓧鑺傜户缁彲璇伙紱Android Preferences.kt鍦ㄦ棦鏈塎ODE_PRIVATE appearance SharedPreferences鍙String key language锛堟渶澶?UTF-8bytes锛夛紝淇濈暀theme/fontSize/density閿拰鍊笺€倀heme浠卌old/warm锛沇eb fontSize14/16/18/20銆乨ensity compact/comfortable/spacious锛汥esktop/Android鏃㈡湁fontSize14..22銆乨ensity0.8/1.0/1.2鍙婇粯璁old/16/1缁х画鏈夋晥銆傚洓鏍囬噺璇箟鍚勮嚜鐙珛锛屼絾Web/Desktop澶栬record浠嶄笁椤癸紝涓嶅悎骞朵负鍥涘瓧娈佃褰曘€傚綋鍓嶄笁瀛楁appearance瀹堝崼涓嶅緱鎻愬墠鏀惧锛涘彧鏈塈18N渚濊禆鐙珛鎺ュ彈+闆嗘垚鍚屾涓斾换鍔ctive/review/done銆乧lient_supplement_phase: i18n_product鎵嶅彲瀹炵幇璇█adapter鍙婂搴旂獎婧愮爜guard銆係TATE/UI-REF鍜屾湰瑙勫垝涓嶈幏寰楄瑷€鎸佷箙鍖栦骇鍝佽鍙€?
+Web/Desktop鑻辫銆佺畝涓€佹棩璇祫婧愪负TypeScript绾暟鎹紱Mobile涓篕otlin/Compose绛変环绾暟鎹槧灏勶紝涓嶅畨瑁卛18n/runtime/妗ユ帴搴撱€傞€氱煡/tray鍥哄畾鏄剧ず鏂囨鍚屾牱鎻愬彇锛孌esktop搴旂敤灞傛牴鎹甽anguage閫夋嫨宸叉壒鍑嗙函鏁版嵁骞跺皢鏄剧ず鏂囨湰浼犵粰鐜版湁native presentation锛沶ative涓嶆嫢鏈夊崗璁€佷笟鍔″垽鏂垨缈昏瘧鐘舵€併€傜炕璇戦敭/鍗犱綅鍙傛暟璺ㄧ鍚屼箟锛屾湭鐭ラ敭鎴栫己澶眑ocale椤瑰洖閫€鑻辨枃锛堣嫳鏂囬敭缂哄け涓洪獙鏀禙AIL锛夛紱绋冲畾鐘舵€佹爣璇嗕笉鍙備笌缈昏瘧銆佷笉鐢辨樉绀哄瓧绗︿覆鍒ゆ柇涓氬姟銆?
+<!-- client-supplement-policy -->
+```json
+{
+  "decision": "ADR-0012-client-supplement-planning",
+  "planning_task": "LOOP1-CLIENT-SUPPLEMENT-PLAN-001",
+  "stage": "S2",
+  "chain": [
+    "LOOP1-WEB-001",
+    "LOOP1-CLIENT-STATE-001",
+    "LOOP1-CLIENT-UI-REF-001",
+    "LOOP1-CLIENT-I18N-001"
+  ],
+  "gate_prerequisites": [
+    "LOOP1-CLIENT-SQLITE-001",
+    "LOOP1-CLIENT-UI-ARCH-001",
+    "LOOP1-CLIENT-SEND-001",
+    "LOOP1-SYNC-001",
+    "LOOP1-CLIENT-GUI-001",
+    "LOOP1-WEB-001",
+    "LOOP1-CLIENT-STATE-001",
+    "LOOP1-CLIENT-UI-REF-001",
+    "LOOP1-CLIENT-I18N-001"
+  ],
+  "language": {
+    "activation_task": "LOOP1-CLIENT-I18N-001",
+    "activation_phase": "i18n_product",
+    "locales": [
+      "en",
+      "zh-CN",
+      "ja-JP"
+    ],
+    "default": "en",
+    "names": [
+      "English",
+      "绠€浣撲腑鏂?,
+      "鏃ユ湰瑾?
+    ],
+    "entry": "Language / 璇█ / 瑷€瑾?,
+    "web": {
+      "adapter": "clients/web/src/ui/language.ts",
+      "key": "plugworldim.language.v1",
+      "storage": "localStorage",
+      "field": "language",
+      "format": "raw UTF-8 enum",
+      "max_bytes": 5
+    },
+    "desktop": {
+      "adapter": "clients/desktop/src/application/ui/native.ts",
+      "native_adapter": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "storage": "app_data/language.txt",
+      "field": "language",
+      "format": "raw UTF-8 enum",
+      "max_bytes": 5
+    },
+    "mobile": {
+      "adapter": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+      "storage": "SharedPreferences appearance MODE_PRIVATE",
+      "key": "language",
+      "field": "language",
+      "format": "String enum",
+      "max_bytes": 5
+    }
+  }
+}
+```
+
+鏈満鍣╬olicy鍙粦瀹氳鍒?涓茶渚濊禆/鏈潵璇█绐勬巿鏉冿紝涓嶅缓绔嬫柊鍏叡濂戠害銆傚疄闄呬骇鍝侀渶姣忛」鐙珛鐪熷疄杩愯涓庡瓨鍌?鍗忚璇佹嵁銆佹埅鍥?Architect鎵瑰噯銆乫resh independent Review銆佺簿纭€欓€塰osted CI鍜屽畨鍏ㄥ悓姝ャ€傛柊澧炰换鍔＄殑瀹屾垚metadata涓庣湡瀹炶瘉鎹繀椤诲悓鏃跺彲鏍稿锛涘啓PASS鏂囨湰涓嶈兘浠ｆ浛鐙珛鎺ュ彈銆係2 Gate鍘熸墍鏈夋潯浠朵笌涓変釜鏂板瀹屾垚椤瑰叡鍚岀敓鏁堬紝灏氭湭瀹屾垚浠讳竴椤逛笉鑳絊tage PASS銆?
+<a id="section-7"></a>
+## 7. HTTPS/WSS/TLS 涓庤璇佸崗璁?
+<a id="section-7-1"></a>
+### 7.1 鐧诲綍涓?Token
+
+- 鐧诲綍绔偣銆佸瓧娈靛悕銆佺増鏈笌浼犺緭褰㈢姸鐢?contracts/http/ 瀹氫箟锛堝綋鍓嶄负 POST /v1/auth/login锛夈€傛湰绔?snake_case 棰嗗煙鍚嶇О涓嶆槸鍙︿竴濂?wire schema銆?
+- Access Token 鐭湡銆丷efresh Token 闀挎湡锛涘叿浣撴椂闀挎槸閰嶇疆锛屼笉鍐欐杩涘崗璁€?
+- Web 浼樺厛浣跨敤 HttpOnly Secure Cookie 鎸佹湁 Refresh Token锛涘師鐢熺浣跨敤 OS secure storage銆?
+- 鏄惧紡 logout 鎾ら攢 Session銆丷efresh Token 涓?WSS锛涢€€鍑虹櫥褰曚笉绛変簬绔嬪嵆鍒犻櫎鏈湴 SQLite銆?
+<a id="section-7-2"></a>
+### 7.2 WSS 鐘舵€佹満
+
+1. TCP/TLS -> WebSocket Upgrade -> UNAUTHENTICATED
+2. UNAUTHENTICATED 鍙厑璁?auth.bind 涓?ping/pong
+3. auth.bind 鏍￠獙绛惧悕銆乪xp銆乻ession_id銆乧lient_type銆乻ession_epoch
+4. 鎴愬姛 -> AUTHENTICATED锛宻ocket 姘镐箙缁戝畾 user/session/client_type
+5. 鍚岀鏂扮櫥褰?-> session.revoked -> 鎺ㄩ€佹棫杩炴帴 -> close
+
+<a id="section-7-3"></a>
+### 7.3 Session 缂撳瓨涓€鑷存€?
+Core 鍦?Session 鍒涘缓/鎾ら攢浜嬪姟涓啓 outbox锛汫ateway 缁?NATS 鏇存柊鍐呭瓨鏄犲皠 (user_id, client_type) ->session_id/epoch/connection_id銆傛瘡鏉℃秷鎭笉鏌ヨ PostgreSQL銆傚疄鏃舵挙閿€浜嬩欢鏄綋楠屼紭鍖栵紱姣忔鏂扮粦瀹?閲嶈繛蹇呴』楠岃瘉鏁版嵁搴撴潈濞?Session ID 涓?epoch锛屾嫆缁濇棫鍑嵁锛涗笉寰楁妸瀹炴椂鎾ら攢浜嬩欢浣滀负鍞竴鏈夋晥鎬ф潵婧愩€侴ateway 鍙嫢鏈夐獙璇?杩炴帴鑳藉姏锛涙敞鍐屻€佺櫥褰曘€佸埛鏂般€侀€€鍑恒€丼ession 鍐欎簨鍔″強鍏?Outbox 灞炰簬 Core锛屼笉鑳介€氳繃鍏变韩瀹屾暣 Auth 鏈嶅姟缁曡繃杈圭晫銆?
+<a id="section-7-4"></a>
+### 7.4 浼犺緭涓庢棩蹇楀畨鍏?
+| 瑙勫垯 | 瑕佹眰 |
+| --- | --- |
+| 浼犺緭 | 鐢熶骇鍏ュ彛浠?HTTPS/WSS/TLS锛涚鐢ㄦ槑鏂囧洖閫€ |
+| Token | 绂佹鏀?URL query锛涚姝㈠啓搴旂敤鏃ュ織/trace锛涢敊璇搷搴斾笉寰楀洖鏄?|
+| 瀵嗙爜 | 鍙瓨寮哄搱甯岋紱鍑瘉涓庢櫘閫氱敤鎴疯祫鏂欏垎绂?|
+| 鎻掍欢 | 姘镐笉鍚?Custom Renderer 鏆撮湶璁よ瘉 token 鎴?SQLite 鐩磋繛 |
+| 鏃ュ織 | request_id/message_id 鍙娴嬶紱娑堟伅姝ｆ枃榛樿涓嶈繘鍏ョ粨鏋勫寲鏃ュ織 |
+
+<a id="section-8"></a>
+## 8. 鎻掍欢骞冲彴鏋舵瀯
+
+<a id="section-8-1"></a>
+### 8.1 鍖呯粨鏋勪笌鍏叡 API
+
+```text
+plugin.pkg
+鈹溾攢鈹€ manifest.json
+鈹溾攢鈹€ backend/plugin.wasm
+鈹斺攢鈹€ ui/
+鈹溾攢鈹€ render.bundle.js
+鈹溾攢鈹€ render.css
+鈹斺攢鈹€ assets/
+```
+
+Plugin API v1 = Events + Queries + Actions + UI Host API
+
+| 闈?| 鑳藉姏 | 绾︽潫 |
+| --- | --- | --- |
+| Events | message.created銆乵ember.joined銆乸lugin lifecycle 绛?| 浠呰闃?manifest 澹版槑涓斿凡鎺堟潈鐨勪簨浠?|
+| Queries | 璇诲彇琚巿鏉冪殑浼氳瘽銆佹垚鍛樸€佹秷鎭€佹彃浠剁鏈夌姸鎬?| 鍙銆佸垎椤点€侀檺棰濓紱涓嶅彲鐩存帴璁块棶 Core 鍐呴儴鏈嶅姟/DB |
+| Actions | 鍙戦€佹秷鎭€佹洿鏂版彃浠剁姸鎬併€佽Е鍙戝厑璁哥殑 UI 琛屼负 | 姣忎釜 Action 閲嶆柊閴存潈銆佸箓绛変笌瀹¤ |
+| UI Host | Page/Modal/Panel/Menu/Form/Toolbar/Message Renderer 绛?| 瀹屾暣 UI 鎵╁睍鑳藉姏涓嶇瓑浜庡涓?OS 鏉冮檺 |
+
+<a id="section-8-2"></a>
+### 8.2 Custom Render Bundle
+
+鎵€鏈夊鎴风閮芥敮鎸佸０鏄庡紡 UI 涓?Custom Render Bundle 涓ゆ。銆傝嚜瀹氫箟鍖呭湪鍔犺浇鍓嶅繀椤诲畬鎴?package hash銆佺鍚嶃€乵anifest schema銆丳lugin API 鍏煎銆佹潈闄愩€佸ぇ灏?璧勬簮銆丆SP 涓庡叆鍙ｆ鏌ワ紱杩愯鏃跺湪 sandbox iframe 鎴?isolated WebView 涓墽琛岋紝骞朵笖鍙兘閫氳繃鐧藉悕鍗?Plugin Bridge 璋冪敤 Host API銆?
+#### 涓嶅彲鍙樺埗鍝?
+UNIQUE(plugin_id, version)銆傚悓涓€鐗堟湰鐨?package/backend/renderer hash 鍙樺寲蹇呴』鎷掔粷銆傛秷鎭暟鎹笌娓叉煋浠ｇ爜鍒嗙锛屽巻鍙叉彃浠舵秷鎭惡甯?plugin_id銆乸lugin_version銆乺enderer 涓?fallback TEXT锛涘鎴风蹇呴』淇濈暀浠嶈鍘嗗彶娑堟伅寮曠敤鐨勬棫 renderer銆?
+<a id="section-8-3"></a>
+### 8.3 WASM 鍚庣 Sandbox
+
+- 榛樿涓嶅彲璁块棶鏁版嵁搴撱€佹湇鍔″櫒鏂囦欢銆佷换鎰?socket銆佸叾浠栨彃浠跺唴瀛樸€?
+- 璧勬簮杈圭晫鍖呮嫭 CPU/鎵ц鏃堕暱銆佸唴瀛樸€佸苟鍙戙€佸瓨鍌ㄩ厤棰濅笌缃戠粶绛栫暐銆?
+- 鎸佷箙鐘舵€佸湪 PostgreSQL plugin_kv锛沇ASM 鎵ц灏介噺鏃犵姸鎬侊紝鍙紦瀛樼紪璇?module銆?
+- 杩炵画 timeout/panic/limit violation 杈鹃槇鍊煎悗 AUTO_DISABLED锛屽苟閫氱煡 Conversation Owner锛汭M 涓婚摼缁х画宸ヤ綔銆?
+<a id="section-9"></a>
+## 9. 鎻掍欢鐗堟湰銆佺儹鎻掓嫈涓庡洖婊?
+```mermaid
+flowchart LR
+  subgraph Artifact["涓嶅彲鍙樺埗鍝?]
+    Uploaded["UPLOADED"] --> Validating["VALIDATING"] --> Verified["VERIFIED"]
+  end
+  Verified -.->|"瀹夎鍓嶆彁锛屼笉鏄悓涓€鐘舵€佹満"| Installing
+  subgraph Instance["Conversation 瀹炰緥"]
+    Installing["INSTALLING"] --> Enabled["ENABLED"]
+  Enabled --> Disabled["DISABLED"] --> Uninstalled["UNINSTALLED"] --> Retained["RETAINED"] --> Purged["PURGED"]
+  Disabled -->|"re-enable"| Enabled
+  end
+  Exception["寮傚父鏃佽矾<br/>VALIDATION / INSTALL / RUNTIME / ROLLBACK_FAILED"]
+  Upgrade["鍗囩骇<br/>鏃х増淇濇寔 ENABLED 鈫?蹇収/杩佺Щ/鍋ュ悍妫€鏌?鈫?鍘熷瓙鍒囨崲锛涘け璐ュ洖婊?]
+  %% 寮傚父鍙婂崌绾т粛閬靛惊姝ｆ枃鍜?canonical lifecycle contracts銆?```
+
+> 鍥?9-1 鎻掍欢鍒跺搧涓庡疄渚嬬敓鍛藉懆鏈熴€侫rtifact 鐘舵€佸拰 Conversation 涓?Instance 鐘舵€佸繀椤诲垎绂汇€?
+<a id="section-9-1"></a>
+### 9.1 瀹夎
+
+1. 妫€鏌ュ畨瑁呮潈闄?-> Artifact VERIFIED -> API compatibility -> 鏉冮檺纭
+2. BEGIN: plugin_instance=INSTALLING + grants + sync_event + outbox -> COMMIT
+3. 寮傛: preload WASM + client bundle fetch + health check
+4. 鎴愬姛: ENABLED锛涘け璐? INSTALL_FAILED锛屼笉褰卞搷 IM 涓绘湇鍔?
+<a id="section-9-2"></a>
+### 9.2 鍗囩骇涓庡弻鐗堟湰鍏卞瓨
+
+Plugin Instance 缁存姢 active_version銆乨esired_version銆乸revious_version銆傚崌绾ф湡闂存棫鐗堜繚鎸佹湇鍔★細瀹夎鏂扮増 -> plugin_kv 蹇収 -> storage migration -> backend/renderer 鍋ュ悍妫€鏌?-> 鍘熷瓙鍒囨崲銆備换浣曚竴姝ュけ璐ラ兘鎭㈠蹇収骞剁户缁棫鐗堛€侭ackend WASM 涓?Renderer Bundle 灞炰簬鍚屼竴鍒跺搧鐗堟湰锛屼笉鍏佽鎷嗗紑鍗囩骇銆?
+<a id="section-9-3"></a>
+### 9.3 Disable / Uninstall / Purge
+
+| 鎿嶄綔 | 杩愯琛屼负 | 鏁版嵁 |
+| --- | --- | --- |
+| DISABLE | 鍋滄鎺ユ敹鏂颁簨浠朵笌浜х敓 Action锛岄殣钘忓叆鍙ｏ紝鍙噸鏂?enable | 淇濈暀 |
+| UNINSTALL | Conversation 涓嶅啀鎸佹湁娲诲姩瀹炰緥 | 榛樿 RETAINED |
+| PURGE | 鏄惧紡涓嶅彲閫嗘竻鐞嗘搷浣滐紱闇€瑕侀珮鏉冮檺鍜屽璁?| 鍒犻櫎鍓嶅繀椤荤‘璁や繚鐣欑瓥鐣ワ紱涓嶅緱鍒犻櫎浠嶈鍘嗗彶娑堟伅寮曠敤涓斿繀椤讳繚鐣欑殑 renderer |
+
+<a id="section-9-4"></a>
+### 9.4 瀹樻柟鍏煎 fixtures
+
+Loop 1 蹇呴』鎻愪緵 Echo Plugin 鍜?Poll Plugin銆侲cho 楠岃瘉 event -> WASM -> action -> message锛汸oll 楠岃瘉 PLUGIN message銆丆ustom Renderer銆乸lugin storage銆佸鎴风 UI 浜や簰涓?fallback TEXT銆傝繖涓や釜鎻掍欢杩涘叆鎸佺画鍏煎鐭╅樀銆?
+<a id="section-10"></a>
+## 10. Monorepo 涓庤鑼冩帶鍒堕潰
+
+```text
+/
+鈹溾攢鈹€ spec/
+鈹?鈹溾攢鈹€ architecture/
+鈹?鈹?鈹溾攢鈹€ README.md + baseline.md # resolver 涓庡畬鏁存€у厓鏁版嵁
+鈹?鈹?鈹溾攢鈹€ frozen-architecture.md # 鍞竴鐜拌姝ｆ枃
+鈹?鈹?鈹斺攢鈹€ decisions/ # ADR + frozen decisions
+鈹?鈹溾攢鈹€ domain/ # auth/user/friend/conversation/message/sync/plugin
+鈹?鈹溾攢鈹€ invariants/ # 璺ㄨ瑷€涓嶅彲鍙橀噺
+鈹?鈹溾攢鈹€ acceptance/ # loop-1.md + stage gates
+鈹?鈹溾攢鈹€ progress/
+鈹?鈹?鈹溾攢鈹€ current.md
+鈹?鈹?鈹斺攢鈹€ checkpoints/
+鈹?鈹溾攢鈹€ handoff/agent-context.md
+鈹?鈹斺攢鈹€ tasks/{backlog,ready,active,review,done}/
+鈹溾攢鈹€ contracts/
+鈹?鈹溾攢鈹€ http/
+鈹?鈹溾攢鈹€ websocket/
+鈹?鈹溾攢鈹€ errors/
+鈹?鈹溾攢鈹€ database/
+鈹?鈹溾攢鈹€ plugin-api/
+鈹?鈹斺攢鈹€ fixtures/ # golden vectors / old clients / plugins
+鈹溾攢鈹€ backend/
+鈹?鈹溾攢鈹€ go/{gateway,core,plugin-host,tests,shared}/
+鈹?鈹斺攢鈹€ java/{gateway,core,plugin-host,tests,shared}/
+鈹溾攢鈹€ clients/
+鈹?鈹溾攢鈹€ shared/{protocol-sdk,plugin-sdk,ui}/
+鈹?鈹溾攢鈹€ web/
+鈹?鈹溾攢鈹€ desktop/
+鈹?鈹斺攢鈹€ mobile/
+鈹溾攢鈹€ plugins/fixtures/{echo,poll}/
+鈹溾攢鈹€ tests/{contract,integration,e2e,compatibility,load}/
+鈹溾攢鈹€ deploy/{compose,proxy,observability}/
+鈹溾攢鈹€ ci/
+鈹斺攢鈹€ tools/
+```
+
+### 鏈嶅姟婧愮爜涓庝緷璧栬鍒欙紙Go / Java 鍏卞悓閫傜敤锛?
+- **SRC-01**锛歚backend/<language>/gateway/**` 鍙疄鐜?搂3.1 Gateway锛沗core/**` 鎷ユ湁 Auth/Session 鍐欎簨鍔°€乁ser/Friend/Conversation/Message/Sync/Outbox锛沗plugin-host/**` 鎷ユ湁鍙楁帶鎻掍欢鎵ц涓庝唬鐞嗐€備笟鍔℃簮鐮?MUST 浣嶄簬瀵瑰簲鏈嶅姟鑼冨洿锛屼笉鑳芥斁鍦ㄨ瑷€鏍圭洰褰曟垨鏈壒鍑嗙殑 `internal/**` 涓氬姟鐩綍銆?- **SRC-02**锛氳瑷€鏍圭洰褰曞彧鐧藉悕鍗曞厑璁稿叆鍙ｈ閰嶏紙Go `main.go`銆丣ava `Main.java`锛夈€佹ā鍧?渚濊禆/鏋勫缓鏂囦欢锛圙o `go.mod`/`go.sum`锛孞ava `pom.xml` 鎴?Gradle 閰嶇疆锛夈€丏ockerfile銆丷EADME.md銆乧onfig.example.json 鍙婃牴鍏ュ彛娴嬭瘯锛圙o `main_test.go`銆丣ava `MainTest.java`锛夈€傚叆鍙ｅ彧鑳借鍙栭厤缃€侀€夋嫨瑙掕壊銆佽繛鎺ヤ緷璧栥€佸惎鍔?鍏抽棴瀵瑰簲鏈嶅姟锛涗笉寰楀疄鐜拌矾鐢变笟鍔°€丄uth 鏈嶅姟鎴?Session 鍐欓€昏緫銆傛牴娴嬭瘯浠呴獙璇佽閰嶏紝鏈嶅姟娴嬭瘯涓庤亴璐ｅ悓杩佹垨缃簬 `tests/**`锛涗笉鑳戒互娴嬭瘯鏂囦欢鍚嶈棌涓氬姟瀹炵幇銆傛柊澧炴牴婧愮爜渚嬪蹇呴』鍏堟槑纭壒鍑嗐€佸垪鍏ユ鏌ュ櫒鐧藉悕鍗曞苟闄愬畾鐢ㄩ€斻€?- **SRC-03**锛歚shared/**` 鍙壙杞介厤缃鍙栥€佹棩蹇椼€佽繛鎺ュ缓绔嬨€侀€氱敤缂栬В鐮併€佸瘑鐮佸/浠ょ墝鍘熻鍜岀敱 canonical contracts 绾︽潫鐨勪紶杈撴暟鎹被鍨嬨€傚叡浜寘 MUST NOT 鎵胯浇瀹屾暣 Auth 鏈嶅姟銆佹敞鍐?鐧诲綍/鍒锋柊/閫€鍑烘祦绋嬨€丼ession 鍐欎簨鍔°€佷笟鍔′粨鍌ㄣ€佹潈闄?鎴愬憳鍐崇瓥銆丱utbox 涓氬姟缂栨帓锛屼害涓嶅緱鍙嶅悜渚濊禆浠讳綍鏈嶅姟鍖呫€侴ateway 鐨勫彧璇绘潈濞?Session 鏍￠獙褰?Gateway锛汣ore 淇濇湁鍐欎簨鍔°€傚叡浜笉鏄粫杩囪亴璐ｇ殑鍚庨棬銆?- **SRC-04**锛氭湇鍔″彲渚濊禆鍏变韩鏀寔涓庢湰鏈嶅姟鍐呴儴鍖咃紱浠讳綍鏈嶅姟 MUST NOT 鐩存帴 import/渚濊禆鍙︿竴鏈嶅姟鍐呴儴瀹炵幇銆傛湇鍔￠棿閫氳繃鐜版湁鎺堟潈鐨?HTTP/WSS/浜嬩欢/鍙楁帶 Host bridge 杈圭晫鍗忎綔锛涗笉鍥犳簮鐮佹暣鏀规柊澧?RPC銆佸叕鍏卞绾︺€乵odule 鎴栧熀纭€璁炬柦銆傛牴瑁呴厤鍙緷璧栧悇鏈嶅姟鐨勬渶灏忓惎鍔ㄦ帴鍙ｏ紝娴嬭瘯鍙法鏈嶅姟浣滈粦鐩掔粍鍚堥獙璇侊紝鍧囦笉寰楁垚涓鸿繍琛屾湡涓氬姟鍙嶅悜渚濊禆銆?- **SRC-05**锛欸o 涓?Java 鍙娇鐢ㄤ笉鍚岀殑鏈嶅姟鍐呴儴鍖?妯″潡/绾跨▼缁勭粐锛涘叡鍚岃亴璐ｃ€佺墿鐞嗚鑹插拰涓婅堪婧愮爜杈圭晫涓嶅彲琚€滆涓虹瓑浠封€濊眮鍏嶃€備笉寮哄埗涓?module銆佷笁 binary 鎴栧灞傛灦鏋勩€俁eviewer 妫€鏌ュ疄闄呰亴璐ｅ拰 import 鍥撅紝涓嶅彧鐪嬫枃浠跺悕鎴栫洰褰曞瓨鍦ㄣ€?- **SRC-06**锛歋0 鍘嗗彶鍗犱綅鐧藉悕鍗曚负 Go `backend/go/main.go` 涓?Java `backend/java/InfraPlaceholder.java` 鐨勯潪涓氬姟鍚姩/鍋ュ悍/transport echo 楠ㄦ灦锛涙竻鍗曚笉鍏佽鍏舵壙杞戒笟鍔°€傛寜鍚庣鍒嗗埆閫€鍑猴細璇ュ悗绔涓€娆′笟鍔″疄鐜板紑濮嬪嵆绉婚櫎涓氬姟璺緞鐨勫崰浣嶈眮鍏嶏紱鍙︿竴鍚庣浠嶆寜鏄庣‘鍗犱綅娓呭崟楠岃瘉锛屼笉鑳芥案涔呰烦杩囩粨鏋勮鍒欍€傛柊瑙勫垯鏆撮湶鐨勬棫瀹炵幇鍋忕蹇呴』鍦ㄨ縼绉讳换鍔℃秷闄わ紝涓嶈兘 grandfather銆傚崟娆¤法鏈嶅姟杩佺Щ闇€ Task Spec 鏄庣‘鍒楀嚭杩佺Щ鏂囦欢/鑱岃矗銆佽寖鍥村拰閫€鍑烘潯浠躲€?- **SRC-07**锛歍ask `allowed_paths` 浠呴檺瀹氬彲淇敼鑼冨洿锛屼笉鏄灦鏋勮眮鍏嶃€傛櫘閫氫笟鍔′换鍔℃寜鏈嶅姟鑱岃矗鏀剁獎锛涚粨鏋?渚濊禆妫€鏌ュ拰琛屼负娴嬭瘯鍏卞悓楠屾敹銆傝鑼冨啿绐佸繀椤诲湪瀹炵幇鍓嶅崌绾э紝绂佹浜嬪悗淇敼鏋舵瀯杩借閿欒甯冨眬銆?
+<a id="section-10-1"></a>
+### 10.1 spec/ 鍚勭洰褰曠殑鑱岃矗
+
+| 璺緞 | 鍥炵瓟鐨勯棶棰?| 绂佹鍐呭 |
+| --- | --- | --- |
+| architecture/decisions | 涓轰粈涔堣繖鏍疯璁★紝鍝簺宸茬粡鍐荤粨锛?| 涓存椂瀹炵幇绗旇 |
+| domain | 涓氬姟瀵硅薄涓庤涓烘槸浠€涔堬紵 | 鏌愯瑷€鐨勭被缁撴瀯 |
+| invariants | 鏃犺瀹炵幇濡備綍閮藉繀椤绘垚绔嬩粈涔堬紵 | 鎬ц兘鐚滄祴 |
+| acceptance | 鎬庢牱鍒ゅ畾闃舵/Loop 閫氳繃锛?| 涓嶅彲楠岃瘉鐨勨€滃熀鏈畬鎴愨€?|
+| progress/current.md | 鐜板湪鏁翠綋鍦ㄥ摢閲岋紵鏈€鍚庡凡楠岃瘉鐘舵€佹槸浠€涔堬紵 | 浠诲姟缁嗚妭鍫嗙Н |
+| checkpoints | 绋冲畾閲岀▼纰戠殑鍙仮澶嶅揩鐓ф槸浠€涔堬紵 | 姣忔灏忕紪杈戞棩蹇?|
+| handoff/agent-context.md | 鏂?Agent 鍏堢煡閬撲粈涔堬紵 | 閲嶅鍏ㄩ儴鏂囨。 |
+# ADR-0005: Client technology clarification and universal selection governance
+
+Status: Human-approved clarification independently accepted at e7c80c7 under bounded Human GString waiver; final administrative confirmation pending before S2 activation.
+Date: 2026-10-01
+Approval source: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/approval-and-recovery.md; full explicit Human instruction human-approved-request.txt and supplemental human-desktop-sqlx-mobile-emulator-decision.txt in the same directory (raw-byte SHA25691033f339f337105bc70f45b20c312b8ed2490d01c0b1607e197cda6e09c770b; normalized prompt SHA25678aa2191a4f3614185781a17ebd5204c949312d3a8eb159435af469d0d1929b5; Recorder P-CLIENT-SQLX-DECISION-20261001).
+
+## Motivation and decision
+
+PR7 implemented Dart SQLite despite missing architecture authorization. PR8 restored main3f352a8e465c0c4b093cca8e5f404ea587550b6e to accepted pre-PR7 tree. The withdrawn attempt and its tests/reviews are historical evidence, not authority or new acceptance.
+
+Canonical 搂2.3 freezes universal no-unapproved-technology governance; 搂6.1 freezes React/TypeScript memory-only Web, Tauri/React/TypeScript SQLite Desktop and Android Kotlin + Jetpack Compose SQLite Mobile. Web/Desktop/shared protocol/plugin/models/Repository/domain/UI remain TypeScript, necessary Desktop Rust is confined to clients/desktop/src-tauri. Mobile uses Kotlin equivalent models/Repository/behavior/adapters under the SAME canonical contracts/fixtures; no mandatory direct TypeScript SDK reuse, new public contract, JS runtime/bridge/codegen or shared native rewrite. Android Studio emulator validates the real Mobile runtime; host tests/mocks cannot replace it. Android SDK/Gradle/Kotlin/Compose engineering identifiers and built-in Android SQLite access follow the approved stack, not arbitrary Room/ORM/network/native dependencies.
+
+Supplemental Desktop approval remains Tauri + SQLx(SQLite). TypeScript holds shared Repository/models/transaction intent; Rust only connections, queries and atomic transaction adapter. Independent tauri-plugin-sql execute() calls MUST NOT simulate a cross-call transaction. Other sensitive dependency choices remain subject to 搂2.3.
+
+Approval chain: original full Human instruction -> supplemental Desktop SQLx/emulator instruction -> NEW exact Human answer 鈥渕oblie鏄庣‘涓簁otlin jetpack compose锛岀Щ闄oblie ts鎶€鏈爤鈥? Latest answer supersedes ONLY the original Mobile TS/TBD/direct-TS-reuse clauses. Raw evidence: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/human-mobile-kotlin-compose-decision.txt; raw-byte SHA2561901f6dcd93069a19b6a88f5249858c8017ad36c71d61a109cbbad2ec5e9c061; normalized Recorder SHA256863da9423040acffa2c11b7e67d6c71673f5d7aeb7edd26954108884b5705dd4; prompt P-CLIENT-MOBILE-KOTLIN-20261001. Candidate188d24a / canonical ac042107 was superseded before independent acceptance, never an accepted baseline. Previous accepted canonical83d124b remains the lineage. Original prompt, approval/recovery and finished Recorder archives remain immutable.
+
+Missing sensitive decision: stop affected work -> smallest question -> Human/Architect -> frozen body/approved ADR -> machine guards -> fresh independent Review/applicable exact-head hosted CI -> product implementation. Task text, allowed_paths, familiarity/popularity/installed tools or passing tests cannot authorize a technology. Go/Java internal variation does not bypass this universal rule.
+
+## Normative effect and compatibility
+
+semantic_change=true: this is a Human-approved architecture clarification, not a representation-only migration. Version remains v1.1; canonical bytes and hash change. Previous canonical SHA25683d124bba4b9c605ae29b637e1ea6f8aa55ec4fb7cc6f631f7c069c6f1f77c2e is preserved in manifest revision history. PDF546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510 remains byte-for-byte unchanged. Older ADRs, checkpoints, PR7/FAIL/Review/Recorder/evidence are immutable. No contract, server schema, ACK/Sync, security or compatibility semantics change. S1 PASS; S2 OPEN.
+
+## Implementation, effectiveness and migration
+
+This bounded prerequisite changes authority, execution governance and existing checker/classifier/CI only, without S2 product code or dependencies. Source/dependency/import/config/workflow/task declaration controls inspect active clients; historical evidence is excluded by exact active path ownership, never deletion. Direct static checks supplement mandatory semantic independent Review of language/dependency authority and Rust responsibility.
+
+New independent Review of clean committed candidate and real applicable exact-head hosted CI must accept this prerequisite before task done or S2 activation. Local/Recorder PASS cannot establish Task/S2 PASS. Acceptance SHA/run/effective point are pending and must be recorded by Coordinator truthfully after acceptance. S4/Java/Loop2 are not advanced. New S2 tasks require fresh authorized TypeScript/Kotlin implementation Review/CI; PR7 cannot be restored or reused as acceptance.
+
+## Rollback
+
+Before acceptance, retain accepted main and repair candidate on FAIL. After acceptance, any authority correction uses a Human-approved corrective ADR and new independently reviewed commit; do not rewrite historical commits/evidence/PDF or silently restore Dart. There is no product/data migration in this prerequisite.
+
+Prompt raw-byte vs Recorder LF-normalized hashes are distinguished in spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/prompt-hash-normalization.md; original approval/recovery and prompt bytes are preserved.
+
+## Accepted clarification discovery (2026-10-01)
+
+Fresh independent Review accepts clean e7c80c726d4799ba3ddab026266be638c9e6b252 under scoped Human GString waiver; original4b5 Review FAIL immutable. Exactpush36881391141 selected5SUCCESS/8correctinactive and PR36881397009 all13/every stepSUCCESS. Canonicalaa2398020beeda5f7f9456aac346da57bd8b75212192123c943c35dfdc80f84c/PDF546915 unchanged. ADR0005 effective at accepted prerequisite. Evidence: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/2026-10-01-coordinator-resume/acceptance.md. Earlier pending paragraphs are historical; later administrative closure needs NEW independent Review/exactHEADCI before S2activation. No product/contract change; S1PASS/S2OPEN.
+# ADR-0006锛氬鎴风 UI 鏋舵瀯涓庢埅鍥鹃獙鏀?
+鐘舵€侊細宸插喕缁撱€侶uman 鎵瑰噯鐨勮璁″唴瀹瑰凡鍦ㄥ€欓€?3cc754涓嶱R12瀹為檯 main4f18d222锛岀粡鏂伴矞鐙珛 Review銆佺簿纭?HEAD 鎵樼 CI 鍜屼富浠撳簱鍚屾鎺ュ彈銆傞獙鏀惰瘉鎹細`spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/accepted-freeze/acceptance.md`銆傛湰鐘舵€佽褰曚笉鍚姩 GUI 瀹炵幇锛孲2 Gate 浠嶄负 OPEN銆?鏃ユ湡锛?026-10-03
+鎵瑰噯鏉ユ簮锛歴pec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/human-request.txt
+琛ュ厖鍐冲畾锛歴pec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/human-supplement.txt
+
+## 鍔ㄦ満涓庢槑纭喅绛?
+Human 瑕佹眰鍦?GUI 瀹炵幇鍓嶅喕缁撲笁绔?UI 鏋舵瀯銆丄daptive Glass Workspace 璁捐鏂瑰悜锛屼互鍙婄敱鎴浘椹卞姩鐨?Architect 楠屾敹銆傝姹傛槑纭€夋嫨 Desktop 鐙珛 UI銆丷eact 鍐呯疆鐘舵€佹満鍒跺拰 Mobile ViewModel/StateFlow/Jetpack Navigation Compose銆傚悗缁?Human 绛斿灏?UI 浠ｇ爜鎵ц绂佷护闄愬畾浜?S2锛屼繚鐣?S4 缁忓鏌ョ殑娌欑 Render Bundle銆傚伐浣滄爲琛ュ厖璇存槑鎺堟潈锛氭病鏈夊垎閰嶆椂锛屽湪 Codex 璁剧疆鐨勫伐浣滄爲鐩綍涓嚜涓诲垎閰嶅彈绠＄悊宸ヤ綔鏍戙€傛柊澧?Human 瑕佹眰銆屾灦鏋勬枃妗ｇ敤涓枃缂栧啓銆嶏紝鏈?ADR 涓庝笁浠芥柊浜や粯鏂囨。鎹浣跨敤涓枃銆?
+瑙勮寖 搂6.5 璁板綍鍏ㄩ儴瑙勮寖鎬у喅瀹氾紱浠庡睘鏋舵瀯/璁捐鏂囨。瑙ｉ噴杩欎簺瑕佹眰锛屼笉寤虹珛鍙︿竴浠借鑼冩潈濞併€偮?.1 鍘熷畬鏁寸粍浠跺鐢ㄨ鍒欐敼涓哄悇绔嫭绔嬭瑙夊疄鐜帮紝鍏变韩鍗忚銆佹ā鍨嬨€侀€傜敤 hooks銆乀oken 鍜?UI 璇箟銆備笉鍏变韩 Button/MessageBubble/ChatWindow銆侻obile Kotlin 绛変环琛屼负淇濇寔涓嶅彉锛涙壒鍑嗙殑 Navigation/Lifecycle/StateFlow 渚濊禆浠呭湪瑙勮寖鏈哄櫒绛栫暐涓檺瀹氬垪鍑猴紝渚涙湭鏉ュ凡鎵瑰噯浠诲姟浣跨敤銆俉eb 璺敱浠ュ強閫氱敤鍥炬爣/鏃犻殰纰?宸ュ叿搴撶被鍒湭閫夋嫨浠讳綍鏂板鍏蜂綋鍖呫€備笉閫夋嫨鐘舵€佺鐞嗘鏋躲€丄I API 鎴?Plugin 杩愯鏃躲€?
+## 瑙勮寖鏁堝姏涓庡吋瀹规€?
+semantic_change=true銆備繚鐣?v1.1銆傝鑼冩鏂囧強鍝堝笇宸茬敱姝ゅ墠鍊欓€夋洿鏂帮紱宸叉帴鍙楄緭鍏?aa2398020beeda5f7f9456aac346da57bd8b75212192123c943c35dfdc80f84c 鍦?baseline.md 涓繚鐣欎负 UI 淇璋辩郴锛屽鎴风鍩虹鎶€鏈潵婧愪粛涓?ADR-0005銆傚熀纭€淇鍏冩暟鎹€丄DR-0001 鑷?ADR-0005銆佸師 PDF546915銆丳R7/PR8 鍘嗗彶鍙婃棦鏈?FAIL/璞佸厤/璇佹嵁淇濇寔涓嶅彲鍙樸€偮?.2 瀹夊叏鏍￠獙銆乻andbox銆丅ridge 鍜屾彃浠跺绾︿繚鎸佸畬鏁达紱S2 涓嶅疄鐜?renderer銆佷笅杞姐€佸畨瑁呮垨杩愯鏃躲€備笉鏀瑰彉 wire contract銆丄CK銆佸吋瀹规€с€佸瓨鍌?schema銆佸畨鍏ㄦ潈闄愭垨鍚庣銆備笉娑夊強浜у搧/鏁版嵁杩佺Щ銆傛湰娆′腑鏂囦慨璁笉鏀瑰彉瑙勮寖姝ｆ枃鎴栧叾鍊欓€夊搱甯屻€?
+## 鍒濆浜や粯涓庣敓鏁堢偣
+
+浜や粯鏂囨。涓?decisions/client-ui/architecture.md銆乨ecisions/client-ui/design-direction.md 鍜?spec/acceptance/client-gui.md銆侴UI 浠诲姟蹇呴』瑕佹眰缁戝畾鍊欓€?SHA 鐨勭湡瀹炶繍琛屾埅鍥炬竻鍗曘€丄rchitect 瀹℃煡/淇/閲嶆媿/鎵瑰噯銆佺嫭绔嬭涔夊疄鐜?Review锛屼互鍙婇€傜敤鐨勭簿纭?HEAD 鎵樼 CI銆傛埅鍥炬壒鍑嗕笉鏇夸唬杩欎簺妫€鏌ワ紝涔熶笉鑳藉缓绔?S2 PASS銆?
+鍐荤粨浠呭湪鏂扮殑鐙珛骞插噣鍊欓€?Review銆侀€傜敤鐨勭簿纭?HEAD 鎵樼 CI銆佽鎺ュ彈鐨勯泦鎴愪笌瀹為檯 main 楠岃瘉涔嬪悗鐢熸晥銆傛鍓嶅凡鎺ュ彈 main 浠嶆槸鏈€鍚庡凡鐭ヨ壇濂芥彁浜わ紝浜у搧瀹炵幇涓嶅緱灏嗗€欓€夊綋浣滃凡鎺ュ彈鏉冨▉銆俁eviewer 椤绘鏌ヨ鑼冨彉鏇淬€佷粠灞炴枃妗ｃ€佺簿纭啓鍏ヨ寖鍥淬€佹満鍣ㄧ瓥鐣ヤ緷璧栨柊澧炲強鍘嗗彶璋辩郴淇濈暀銆傚瀹炶褰曠敓鏁?SHA/CI/main 鍜屽彈淇濇姢鍚屾缁撴灉涔嬪悗锛屼换鍔℃墠鍙?done锛涗繚鐣?S1 PASS/S2 OPEN銆備笉婵€娲?SEND/SYNC/WEB 浠诲姟銆?
+## 鏈€灏忔€т笌鍥炴粴
+
+鑼冨洿涓轰笁浠芥枃妗ｃ€侀檺瀹氱殑瑙勮寖/ADR/绱㈠紩/娓呭崟淇鍜?Human 瑕佹眰鐨?AGENTS 琛ュ厖锛涗笉瀹炵幇缁勪欢銆乀oken 寮曟搸銆佸簱瀹夎銆佹彃浠惰繍琛屾椂鎴?AI銆傛柊澧炲伐绋嬫爣璇嗕粎鏈嶅姟鏄庣‘鐨?Mobile 鐘舵€?瀵艰埅璁捐锛屼笉鎺堟潈 Room銆佺綉缁滄垨娴嬭瘯妗嗘灦銆傜敓鏁堝墠锛屽湪宸叉帴鍙?main 涓嶅彉鐨勬儏鍐典笅淇鍊欓€夛紱鐢熸晥鍚庝慨姝ｅ繀椤讳娇鐢?Human 鎵瑰噯鐨勭籂姝?ADR 鍜屾柊鐨勭嫭绔嬮獙鏀讹紝涓嶅緱閲嶅啓鍘嗗彶銆丳DF 鎴?Recorder銆?
+# ADR-0007锛氬鎴风 MVP 浠诲姟瑙勫垝琛ュ厖
+
+鐘舵€侊細瑙勫垝鏍稿績宸茬嫭绔嬫帴鍙椾簬 candidate7466ce7/PR14/actualmain b60f116a14f9265031bff255db500f3414f2a357锛屽苟淇濇姢鍚屾 H:/IM-platform锛涜瘉鎹?mvp-planning/closure/acceptance.md銆傛湰鐘舵€佸彂鐜颁粎琛屾斂鏀跺熬锛屼粛寰呮柊鐙珛 Review/绮剧‘ CI/闆嗘垚锛涗箣鍚庣珛鍗虫墽琛屾湰杞?SEND銆?鏃ユ湡锛?026-10-03
+鎵瑰噯鏉ユ簮锛歴pec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/mvp-planning/human-request.txt
+
+## 鍔ㄦ満涓庡喅瀹?
+ADR-0006 宸插喕缁?UI 鏋舵瀯浣?搂19/搂20 鏈畬鏁磋惤瀹炰骇鍝?GUI 宸ヤ綔銆侶uman 鏄庣‘鎵瑰噯 minimum-task-count 琛ュ叏锛歋2 浠呮柊澧?LOOP1-CLIENT-GUI-001锛岃鐩?Desktop/Mobile 瀹屾暣 Loop1 GUI锛屼緷璧?SQLITE/UI-ARCH/SEND/SYNC锛涘師 LOOP1-WEB-001 鏄?Web 瀹屾暣 GUI锛屼繚鎸?React/TypeScript memory only銆佹棤 SQLite/绂荤嚎鍘嗗彶銆係2 椤哄簭 SQLITE 鈫?UI-ARCH 鈫?SEND 鈫?SYNC 鈫?GUI 鈫?WEB 鈫?Gate銆傚鎴风鑷湁 Settings/Profile銆佸弻涓婚涓庢湰鍦板瓧浣撻棿璺濄€佺湡瀹炲彂閫?鍚屾鐘舵€佸強骞冲彴鑳藉姏鍧囧湪 GUI 浠诲姟楠屾敹鍐呫€?
+S3 PARITY 鍏奸【鏃犱笟鍔′慨鏀瑰垏鎹?profile锛汼4 PLUGIN-UI/FIX 鎵挎帴鐪熷疄瀹夸富 UI銆佸鑸檺鍒躲€佹埅鍥捐瘉鎹紱S5 COMPAT/RELEASE 鎵挎帴涓夌鍏煎銆丼QLite/涓婚鍋忓ソ/Plugin UI銆佸疄闄呭埗鍝佷笌瀹夎鍗囩骇鍥炴粴锛汼6 浠?RC 澧炲姞鏈€缁堜笁绔?GUI smoke 鍜屽疄璐ㄥ彉鍖栭噸鎷嶆壒鍑嗭紝5000 WSS 鐢?load harness 鎵挎媴銆傜姝㈡柊澧?UI parity/plugin/release/soak/E2E ID銆侴UI/Web 寮曠敤鏃㈡湁 client-gui 鎴浘 鈫?Architect Review 鈫?淇閲嶆媿 鈫?Approval 鈫?fresh independent Review 鈫?exact-head CI 鈫?protected integration/main 閾俱€?
+## 褰卞搷銆佸吋瀹逛笌杩佺Щ
+
+semantic_change=true锛堜换鍔¤鍒掍笌 Gate obligations锛夛紱v1.1 涓嶅彉銆傝鑼?搂15/搂19/搂20/闄勫綍 A 鍚屾锛宐aseline 褰撳墠 hash 鏇存柊锛宲lanning_previous_sha256 璁板綍鎺ュ彈杈撳叆 a234bc06銆備笉鏇存敼 搂3/搂6 瀛樺偍/鍙戦€?Sync 鑱岃矗銆佹妧鏈斂绛栥€佸绾?schema/ACK/security/compatibility锛涗笉閫夋柊渚濊禆銆佷笉杩佺Щ浜у搧鏁版嵁锛涘巻鍙?PDF/ADR-0006/PR7/PR8/FAIL/Recorder 涓嶅彉銆傚崟鐙渶灏?ADR 鐣欎笅鏂版壒鍑嗘潵婧愶紝閬垮厤鎶婂凡鎺ュ彈 ADR-0006 鐨勬棫 CI 褰撴垚鏈疆楠屾敹銆?
+## 鎺ュ彈涓庢湰杞?endpoint
+
+鏈琛ュ厖鍦?clean committed candidate 鐨勫畬鏁存€с€乤rchitecture銆乨ependency/negative controls銆佹柊 independent Review銆佺簿纭€欓€?applicable hosted CI銆乸rotected merge/actual-main 涓庡彈淇濇姢涓讳粨搴撳悓姝ュ畬鎴愬悗鐢熸晥銆備箣鍚庣珛鍗宠繘鍏?SEND 缂栨帓瀹炵幇锛涙湰杞甯稿仠姝㈢偣 SEND 宸茬嫭绔嬫帴鍙椼€侀泦鎴愬悓姝ヤ笖 done锛汼YNC/GUI/WEB 涓嶆縺娲汇€俇I 鏋舵瀯 Task 宸叉帴鍙楀唴瀹逛笉鎾ゅ洖锛屾湰娆?pending 浠呮寚鏂板瑙勫垝銆?
+## 鏈€灏忔€т笌鍥炴粴
+
+澶嶇敤 UI-ARCH 琛屾斂浠诲姟锛屼骇鍝佸彧鏂板 GUI ID锛涘叾浣欓槦鍒楀疄渚嬪寲宸叉湁瑙勫垝 ID锛屼笉鐢熸垚鏈潵 S3锝濻6 鏂颁换鍔″眰銆傜敓鏁堝墠淇鍊欓€夛紱鐢熸晥鍚庣籂姝ｉ€氳繃鏂?Human 鍐冲畾涓庣嫭绔嬮獙鏀讹紝涓嶉噸鍐欏巻鍙层€傛棤浜у搧/鏁版嵁鍥炴粴銆?
+## 鎺ュ彈鍙戠幇
+
+鍘熸枃鍊欓€夋晥鍔涜鏄庝负鍘嗗彶娴佺▼銆傚綋鍓峜anonical16e9c7b4閫氳繃fresh candidate/actualmain Review涓庣簿纭甴osted5jobs/every stepPASS锛寁1.1/PDF涓嶅彉锛涙湰娈典笉淇敼瑙勮寖鑱岃矗/杈圭晫锛孲1PASS/S2OPEN銆?
+# ADR-0008锛氬叕寮€ Sync HTTPS 鎷夊彇缁戝畾
+
+鐘舵€侊細Human-approved freeze candidate锛涗粎缁?fresh independent Review銆佺簿纭€欓€?hosted CI銆乸rotected integration/actual-main 鏍搁獙鍙?H:/IM-platform 鍚屾鍚庣敓鏁堛€?鏃ユ湡锛?026-10-03
+鎵瑰噯鏉ユ簮锛歴pec/progress/evidence/LOOP1-SYNC-TRANSPORT-001/human-authorization.txt
+浠诲姟锛歀OOP1-SYNC-TRANSPORT-001
+semantic_change=true锛涚増鏈?v1.1 涓嶅彉銆?
+## 鍔ㄦ満涓庢渶灏忓喅瀹?
+SYNC 鐨勫洓绉嶇幇鏈?JSON 褰㈢姸宸叉湁 contracts/websocket/sync-v1.schema.json锛屼絾鏃犲叕寮€浼犺緭缁戝畾銆侶uman 鎺堟潈鍏堟彁鍑哄苟鍐荤粨鍏紑 Sync 鏂规锛汫o 浜у搧浠ｇ爜鍙﹀緟鏈墠缃帴鍙楀悗灞曠ず鍏蜂綋鏂规骞跺彇寰楀悓鎰忋€?
+鏂板涓や釜 HTTPS POST 鎷夊彇鎿嶄綔 /v1/sync/user 涓?/v1/sync/conversation銆傛満鍣ㄦ潈濞佷负 contracts/http/sync.openapi.json锛屽閮ㄥ紩鐢ㄧ幇鏈?UserRequest/UserPage/ConversationRequest/ConversationPage銆丅earer 涓?HTTP ErrorResponse銆俉SS 淇濈暀瀹炴椂/ACK锛屼笉鏂板 envelope/type锛汣ore 淇濇湁 Sync銆佹垚鍛?鐢ㄦ埛鎺堟潈鍜?PostgreSQL 鏌ヨ锛汫ateway 娌跨敤鍏紑 HTTP 浠ｇ悊锛屼笉鍐欎笟鍔°€傛棤鏂拌瑷€銆乫ramework/runtime/dependency銆佹湇鍔°€丏B 瀵硅薄鎴栭€氱敤鍗忚灞傘€?
+姣忔璇锋眰楠岃瘉鏁版嵁搴撴潈濞?Session锛涜韩浠藉彧鏉ヨ嚜 Bearer銆傜敤鎴?cursor 鍒濆€?0锛岄殢鍚庢槸褰撳墠鐢ㄦ埛缁戝畾銆佸彲璺ㄥ叾 Session 閲嶆斁鐨?opaque token锛屽鎴风鍙綔鐩哥瓑姣旇緝銆傛棤鏁?澶栬处鍙?token 杩斿洖鏃㈡湁400 VALIDATION_FAILED锛涘綋鍓?Loop 1 涓嶅紩鍏?cursor 杩囨湡銆佷繚鐣欑獥鍙ｆ垨閲嶇疆鍗忚銆倁ser events 浠嶄负鍥涚浣庨 metadata锛屾帓闄?Message/Session锛涜竟鐣屽彲鎶婂唴瀛?鎸佷箙鍖栧唴閮?cursor_id 鎶曞奖涓哄閮?event.cursor 涓?nextCursor锛屾棤闇€淇敼 producer payload/schema銆?
+浠讳綍鐜版湁姝ｆ暣鏁?limit 鍧囨帴鍙楋紝鍏堢簿纭彇 min(limit,100)锛屽啀浣滄湁鐣岃浆鎹紱鏌ヨ鏈€澶?effectiveLimit+1 鍚堟牸椤癸紝杩斿洖涓嶈秴杩?effectiveLimit銆傜┖椤电粓姝笖 user nextCursor 淇濇寔璇锋眰 cursor锛涢潪绌?user 椤?nextCursor 涓烘湯浜嬩欢 cursor 骞跺墠杩涖€俬asMore 浠呰〃绀哄綋鍓嶈鍙栨湁棰濆宸叉彁浜ゅ悎鏍奸」锛屼笉鑳戒骇鐢熸棤闄愭棤杩涘睍椤点€傜敤鎴锋祦蹇呴』鏄ǔ瀹氬凡鎻愪氦鍓嶇紑锛屼笉鑳借烦杩囧苟鍙戣緝浣庡簭鍙锋櫄鎻愪氦锛沜onversation 椤哄簭浠?afterSeq+1 杩炵画鍓嶈繘锛岃秴 head 绌洪〉缁堟銆備笉鏀瑰彉瀹㈡埛绔暟鎹?cursor 鍚屼簨鍔℃垨 contiguous_seq/gap 璇箟銆?
+鎴愬姛鍜屽凡瑙ｇ爜鏈夋晥 UUID 鐨勯敊璇搷搴?echo 璇锋眰 body requestId锛涗笉鍙叧鑱旂殑鏍煎紡閿欒鐢?server UUID銆傞敊璇爜/鐘舵€佷粎娌跨敤鏃㈡湁鐩綍锛屾湭鐭ユ湇鍔″櫒鎴栧熀纭€璁炬柦澶辫触涓?non-2xx transport failure锛屼笉鍐掑厖鎴愬姛椤点€佷笉寮曞叆閿欒鐮併€俀uery 鍙傛暟涓€寰嬫嫆缁濓紝鍑嵁/姝ｆ枃涓嶈繘鍏ユ棩蹇?閿欒锛涘搷搴?no-store銆傚叿浣撲紭鍏堢骇/瀛楁/鐘舵€佷互鍏紑濂戠害涓哄噯銆備笉瀛樺湪/闈炴垚鍛樹細璇濈粺涓€403閬垮厤娉勯湶锛涙潈闄愮敱 Core 姣忚姹傚垽瀹氥€?
+## 褰卞搷銆佸吋瀹逛笌鍥炴粴
+
+鏂板浼犺緭鎿嶄綔锛屼笉鏀圭幇鏈夊洓褰㈢姸銆丄uth API銆乄SS/ACK銆佹暟鎹簱/杩佺Щ銆佸瓨鍌ㄣ€佸鎴风鎶€鏈斂绛栨垨瀹夊叏杈圭晫銆傛棫 schema/oracle 绂荤嚎鍚戦噺淇濇寔鍘熸牱涓斾粛鏈夋晥锛沷paque token 鐨勫叿浣撶紪鐮佹槸鍚庣画 Core 杈圭晫瀹炵幇缁嗚妭锛屼笉鑳藉弽鍚戝畾涔夊绾︺€傚喕缁撴鏂囧鍔?搂11.5锛堢粦瀹氾級锛宐aseline 淇濆瓨鏃?canonical hash16e9c7b4 涓庢壒鍑嗘潵婧愩€傚巻鍙?PDF/ADR/澶辫触/Recorder 涓嶆敼銆?
+鍊欓€夋湭鎺ュ彈鍓嶄笉寰椾綔涓?Go/client 浜у搧瀹炵幇鎺堟潈锛涙帴鍙楀悗渚濈劧蹇呴』鍏堝悜 Human 灞曠ず Go 瀹炵幇鏂规骞跺彇寰楀悓鎰忋€傝鍒欐帴鍙椾笉浠ｈ〃瀹為檯 Sync 鏈嶅姟瀛樺湪锛屼笉瑙ｉ櫎 SYNC backlog 鐨?runtime 杈撳叆闃诲銆傛柊浠诲姟鍙湁杩欎竴涓綋鍓嶅凡璇佹槑蹇呰鐨勫墠缃紝涓嶅疄渚嬪寲鏈潵浜у搧/UI 灞傘€傛挙閿€鏈帴鍙楀€欓€夊嵆鍙洖婊氾紱鐢熸晥鍚庣殑璋冩暣璧版柊鍐冲畾涓庣嫭绔嬫帴鍙楋紝涓嶉噸鍐欏巻鍙层€?
+## Human 鍒嗛〉淇锛?026-10-03锛?
+100 浠呴檺鍒跺崟椤碉紝涓嶉檺鍒舵€诲悓姝ユ潯鏁版垨椤垫暟銆傚鎴风姣忛〉鏁版嵁涓庢父鏍?杩炵画搴忓彿浜嬪姟鎻愪氦鎴愬姛鍚庯紝鑻?hasMore=true锛岀敤鎴锋祦浣跨敤 nextCursor銆佷細璇濇祦浣跨敤宸叉彁浜ゆ棤 gap 鍓嶇紑鐨?afterSeq 缁х画鎷夊彇锛岀洿鍒?hasMore=false锛涗笉寰椾互鍥哄畾鎬绘潯鏁版垨鎬婚〉鏁版彁鍓嶆埅鏂€傜粓姝㈤〉琛ㄧず璇ユ璇诲彇鍙鐨勫凡鎻愪氦鏈€鏂扮姸鎬侊紝涓嶄繚璇佺粓姝㈠悗鐨勬柊鍐欏叆宸茬粡鍚屾锛涘悗缁疄鏃舵祦/鍐嶆鍚屾鎵挎媴鏂板彉鍖栥€?
+鏂板鎵瑰噯鏉ユ簮锛歴pec/progress/evidence/LOOP1-SYNC-TRANSPORT-001/paging-revision/human-authorization.txt銆傚彧鍐荤粨鎸佺画鍒嗛〉璇箟涓庡悗缁獙鏀惰姹傦紝褰撳墠涓嶅疄鐜板鎴风寰幆銆傛棫鍊欓€?Review 涓嶈鐩栦慨姝ｅ悗 SHA锛涗粛寰呮柊鐙珛 Review/绮剧‘ HEAD CI/闆嗘垚鍚屾銆?
+# ADR-0009锛氭渶灏忓師鐢?GUI 鑳藉姏涓庡瑙傚瓨鍌?
+鐘舵€侊細Human-approved freeze candidate锛汚PPROVED_PENDING_FREEZE銆傛柊鐙珛 Review銆侀€傜敤 exact-head hosted CI銆乸rotected integration/actual-main 楠岃瘉鍙婂畨鍏ㄥ悓姝ヨ嚦 H:/IM-platform 鍚庢墠鐢熸晥銆?鏃ユ湡锛?026-10-04
+浠诲姟锛歀OOP1-CLIENT-NATIVE-ARCH-001
+鎵瑰噯鏉ユ簮锛歴pec/progress/evidence/LOOP1-CLIENT-GUI-001/readiness/human-decisions.md 涓?authority-gap.md锛涙湰浠诲姟 approval.md 淇濆瓨绮剧‘鎵瑰噯涓庤寖鍥淬€?semantic_change=true锛涗繚鐣?v1.1銆?
+## 褰撳墠闇€瑕佷笌鍐崇瓥
+
+宸叉帴鍙?GUI 瑕佹眰鍘熺敓 refresh persistence銆丠TTPS auth/Sync銆佺湡瀹為€氱煡/tray/global shortcut 涓庢寔涔呭寲澶栬銆傜幇 Desktop 鏄瓨鍌ㄥ涓伙紱SyncHttp 宸叉敮鎸?injected fetch銆侶uman 鍗曠嫭鎵瑰噯鍏釜瑁呴厤鏂囦欢鑼冨洿鍚庢槑纭壒鍑嗚鏈€灏忓墠缃柟妗堝苟缁х画銆傝寖鍥磋鍙笉鏄妧鏈潈濞侊紱鏈?ADR 鍐荤粨鍏蜂綋閫夊瀷銆?
+Desktop 棣栨鐪熷疄楠屾敹鐩爣鏄?Windows銆傚繀瑕?Rust 闄愪簬 clients/desktop/src-tauri锛涙壒鍑?reqwest 鍘熺敓 HTTPS銆乲eyring/Windows Credential Manager refresh credential銆佸畼鏂?tauri-plugin-notification 涓?tauri-plugin-global-shortcut锛泃ray 浣跨敤宸叉湁 Tauri feature銆傜浉杈冩墜鍐?Win32 FFI锛岃繖浜涚獎閫傞厤鍣ㄧ洿鎺ユ弧瓒冲綋鍓嶈亴璐ｃ€備骇鍝佸疄鏂芥椂灏嗗叿浣撴敮鎸佺殑鐗堟湰/features 閿佸畾浜?Cargo.lock 骞剁嫭绔?Review锛涙湰娆′笉瀹夎渚濊禆銆佷笉棰勮█娴嬭瘯缁撴灉锛屼笉鎺堟潈棰濆鍓嶇 plugin package銆佸叾浠?OS 鎴栨浛浠ｅ簱銆?
+HTTPS 浣跨敤绯荤粺璇佷功/涓绘満鍚嶉獙璇侊紝浠?HTTPS銆佺閲嶅畾鍚戯紝淇濇寔搴旂敤搴忓垪鍖?request bytes/headers 涓庡搷搴?status/headers/body bytes锛屼笉瑙ｉ噴鍗忚銆傜姝㈣瘉涔︾粫杩囥€乼oken query/logging 鎴?backend/CORS 鏇夸唬鍏ュ彛銆俆ypeScript UI/auth application 閫氳繃鏃㈡湁 SyncHttp injected-fetch 涓庤鑼?auth 璋冪敤缁勫悎浼犺緭锛涘師鐢熷眰涓嶆嫢鏈?login/refresh/logout 缂栨帓銆乺equest schema銆丷epository銆丄CK/retry/Sync 鎴栦笟鍔℃巿鏉冿紱鏃㈡湁 WSS/protocol 鑱岃矗涓嶅彉銆?
+Desktop keyring 鎸?app/account/session 闅旂 refresh credential锛汿ypeScript 鎸佹湁 auth lifecycle銆佽处鍙烽殧绂诲強 replacement/logout/expiry cleanup intent銆傚瓨鍌ㄥけ璐ヤ笉寰楁槑鏂囬檷绾э紱access credential 涓轰复鏃躲€傚畼鏂?notification/global-shortcut 浠呮彁渚?OS presentation/input锛屽簲鐢ㄥ喅瀹氬姩浣溿€俉indows 閫氱煡楠屾敹蹇呴』浣跨敤宸插畨瑁呫€佹湁鑷韩韬唤鐨勫鎴风鍖咃紝寮€鍙?PowerShell toast 涓嶅彲浠ｆ浛锛泃ray/shortcut 鍚屾牱闇€瑕佺湡瀹炲鎴风琛屼负銆?
+Desktop app-owned app_data JSON銆丄ndroid SDK SharedPreferences 鍙寔涔呭寲 Cold AI/Warm Creative theme 涓?font-size/density 鏍囬噺銆傚瑙傚瓨鍌ㄤ笉寰楀寘鍚?credential/message/sync cursor/account Repository data锛屼笌璐﹀彿 SQLite 鍒嗙銆?
+Android 浣跨敤 Android Keystore AES/GCM 闈炲鍑哄瘑閽ヤ繚鎶?refresh credential锛孲DK SharedPreferences 浠呭瓨 ciphertext 鍙婂繀瑕?IV/metadata锛汯otlin 鎸佹湁 auth lifecycle/cleanup/account isolation锛屾棤鏄庢枃闄嶇骇銆係DK HttpsURLConnection 浣跨敤绯荤粺璇佷功/涓绘満鍚嶉獙璇併€丠TTPS-only銆佺閲嶅畾鍚戝強 exact serialized bytes锛涗笉澧炲姞 network/ORM/JS runtime/bridge/codegen dependency銆侹otlin 绛変环 Repository/protocol/model 琛屼负浠嶄緷鎹悓涓€ canonical contracts/fixtures 鍜岀湡瀹?Android Studio emulator 楠屾敹銆?
+## 鏈€灏忔€с€佹潈濞佷笌鍏煎
+
+鍙鍔犲綋鍓?GUI 蹇呴渶鐨勯€傞厤鍣?澶栬閫夊瀷锛屼笉澧炲姞 generic framework銆佹湭鏉?OS 鏈哄埗鎴?plugin runtime銆俆ypeScript/Kotlin 淇濈暀 application/business/Repository/protocol 鑱岃矗锛汥esktop SQLx 鍘熷瓙浜嬪姟鎰忓浘涓嶅彉銆傛棤 database schema銆丄CK銆乸ublic API銆乧ompatibility銆乥ackend/CORS銆丄I銆乸lugin sandbox/security boundary 鎴?source dependency direction 鏀瑰姩銆?
+canonical 搂6.1/搂6.5/native_packages 鏋氫妇绐勬潈濞侊紱ADR-0005 浠嶄负鍩虹 stack/policy marker锛孉DR-0009 涓鸿拷鍔犺氨绯汇€傚厛鍓?canonical ef90846ba380df14086795a3c58aef43f6503447fe0cb83ee2d0772d725d8e03銆丳DF546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510銆乿1.1銆佹棫 ADR/鍘嗗彶璇佹嵁涓嶅彉銆?
+## 鐢熸晥涓庡洖婊?
+GUI 渚濊禆鏈换鍔★紝鍦ㄧ嫭绔嬫帴鍙椼€侀泦鎴愩€乤ctual-main 楠岃瘉鍙婂畨鍏ㄥ悓姝ュ墠浠嶄负 backlog銆係1 PASS/S2 OPEN锛沴ocal/Recorder PASS 涓嶆槸 Task/Stage 鎺ュ彈銆侳AIL 鍦ㄦ巿鏉冭寖鍥翠慨澶嶅悗鐢辨柊鐙珛 Agent Review銆傛湰娆℃棤鏁版嵁/浜у搧杩佺Щ锛涚敓鏁堝悗淇闇€鏂版壒鍑?ADR 涓庣嫭绔嬫帴鍙楋紝淇濈暀鍘嗗彶銆?
+## Human 鎸囧畾缁熶竴鍊欓€夋壒娆★紙2026-10-04锛涘彇浠ｅ崟鐙墠缃帴鍙楁椂搴忥級
+
+鏈€鏂扮簿纭?Human 鎸囦护锛氬畬鎴怗UI浠诲姟鍚庣粺涓€瀹℃煡鎺ㄩ€併€傛潵婧愶細spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/unified-batch.md锛屽師濮?prompt 涓?SHA 璁板綍浜?linked Recorder P-UNIFIED-20261004銆?
+姝ゆ寚浠ゅ彧瀵规湰娆″凡鏄庣‘鎵瑰噯鐨?native/appearance freeze + LOOP1-CLIENT-GUI-001 鎺堟潈缁熶竴鏈湴鍊欓€夊噯澶囷細GUI 鍙互浣跨敤鏈?ADR 宸叉壒鍑嗗苟鍐欏叆鏈湴 frozen candidate 鐨勫叿浣撻€夋嫨缁х画瀹炵幇锛屼笉绛夊緟鍗曠嫭 native Task 鎺ュ彈/鎺ㄩ€併€傛鍓嶁€淕UI 淇濇寔 backlog 鐩村埌鍓嶇疆鐙珛鎺ュ彈鈥濇椂搴忚鏈簿纭寚浠ゅ彇浠ｏ紱涓嶆槸鍙栨秷鐙珛 Review/CI锛屼篃涓嶆槸璁ゅ畾鍊欓€夋潈濞佸凡姝ｅ紡鐢熸晥銆俢anonical 搂6.1 鍊欓€夊緟鎺ュ彈鍙?搂2.3 鍏ㄥ眬娴佺▼涓嶆敼锛屾湰绐?ACP/ADR 鎸囦护涓嶆墿灞曞埌鍏朵粬浠诲姟銆?
+native Task 浠嶄负 review/pending锛孏UI 鎸夊疄闄呰緭鍏ョ粡杩?backlog -> ready -> active锛涘凡鎺ュ彈 SQLITE/UI-ARCH/SEND/SYNC 渚濊禆涓嶅彉锛宯ative 鍚屾壒鍊欓€変緷璧栦緥澶栨槑纭拷婧埌涓婅堪 Human 鎸囦护銆傛棦鏈夊叓涓閰嶈矾寰勩€侀€夊瀷銆佸绾?瀛樺偍/瀹夊叏/ACK/鑱岃矗杈圭晫涓嶅彉锛屼笉鏂板鎶€鏈€傚畬鎴愬畬鏁?GUI 涓庢埅鍥?Architect 瀹￠槄鍚庯紝瀵圭簿纭畬鏁村€欓€夎繘琛?fresh independent Review锛岀粺涓€鎺ㄩ€併€侀€傜敤 exact-head hosted CI銆乸rotected integration/actual-main 楠岃瘉涓庡畨鍏ㄤ富浠撳簱鍚屾锛涗袱浠诲姟 done銆佹寮忕敓鏁堝強 S2 Gate 鍒ゆ柇鍧囧欢鍚庡埌鍚勮嚜閫傜敤鎺ュ彈鏉′欢婊¤冻銆傛鍓嶇嫭绔?native Review 宸插彇娑堬紝涓嶈兘璁颁负 PASS锛涙棤 hosted 鎺ュ彈鎴栨帹閫佷簨瀹炪€?
+
+## Latest Human standalone-first order (2026-10-07)
+
+Human selected LOOP1-CLIENT-NATIVE-ARCH-001 and instructed: 鍏堝畬鎴愯繖椤逛换鍔★紝鐒跺悗鍐嶆灏濊瘯Windows楠岃瘉. Evidence: spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/completion-20261007/human-order.md and exact human-order.txt. This supersedes only the preceding unified native/GUI batch acceptance/publication timing: independently complete this authority-only native freeze, protected integration/actual-main audit/safe main synchronization, then retry Windows validation. Existing GUI candidate91598049dfb0bf4360b0ce8bdbc4598606db1407/PR24 remains review, not integrated or accepted. Original approved native choices and canonical a6b1670/PDF546915/v1.1 remain unchanged; no new technical or product authority. Original timing evidence is historical and preserved. Task remains review until applicable independent acceptance and synchronization; S2 remains OPEN.
+
+
+## Native freeze accepted discovery (2026-10-08)
+
+Native authority freeze independently accepted: candidate `89cacae924be7ae3e85c13779e99f9f463d2c6f8`, protected PR25 actual main `6a87751087de5b4063445d0fba9fe94534507a57` and safe main synchronization PASS. Exact candidate push37656041487/PR37656059375 and actual-main37657410444:5selected jobs SUCCESS,8classifier-false normally inactive, nofailedsteps. Fresh candidate Review and new same-role actual-main audit are independently bound to their exact SHA; canonical a6b1670/PDF546915/v1.1 unchanged. Task branch task/LOOP1-CLIENT-NATIVE-ARCH-001-close; receipt preserves781unknown files/status/index and recovery/s1-handoff-20261001 branch. Source approval choices unchanged; no product/contract/schema/ACK/security change, no GUI/Windows/S2 PASS. Earlier pending/blocked statements are preserved historical snapshots. Evidence: spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/acceptance-20261008/acceptance.md.
+# ADR-0011锛歐eb 澶栬鍋忓ソ鐨勬渶灏忔湰鍦板瓨鍌?
+鐘舵€侊細Human-approved candidate锛汚PPROVED_PENDING_FREEZE锛屾湭鐙珛鎺ュ彈/鐢熸晥銆?鏃ユ湡锛?026-10-09
+浠诲姟锛歀OOP1-WEB-001
+鎵瑰噯鏉ユ簮锛歚spec/progress/evidence/LOOP1-WEB-001/freeze-20261009/human-approval.txt`锛沗human-approval.json` 璁板綍鐩存帴 Human 绛斿涓庡凡鎻愪氦鏂规 e35c425a90a851540e140078274126ac65606e3e銆?绮剧‘绛斿锛氭壒鍑嗘渶灏忓墠缃柟妗堝苟缁х画銆?semantic_change=true锛岀増鏈?v1.1銆?
+## 褰撳墠璐ｄ换涓庡喅瀹?
+宸插喕缁?UI 璁捐瑕佹眰閲嶅惎淇濇寔涓婚/瀛楀彿/瀵嗗害锛岃€?Web 鑱婂ぉ浠呭唴瀛橈紱姝ゅ墠鍏蜂綋澶栬瀛樺偍鏈喕缁擄紝瀹堝崼涓?CI 绌洪鏋堕樆姝骇鍝佸疄鐜般€侶uman 鎵瑰噯 readiness-20261008/proposal.md 鐨勬渶灏忔祻瑙堝櫒鍘熺敓 localStorage 涓庝竷涓墠缃枃浠舵潈闄愶紝鍚庡湪鏆傚仠鍚庢槑纭户缁€備笉寮曞叆搴撴垨绗簩鏁版嵁灞傦紱杩欎簺鏉冮檺涓嶆巿鏉冨叾浠栨灦鏋勯€夋嫨銆?
+鍞竴閫傞厤鍣?clients/web/src/ui/appearance.ts锛涘敮涓€ key plugworldim.appearance.v1銆傜増鏈敱 key 鏍囪瘑锛孞SON exact keys 鎭板ソ theme/fontSize/density锛歵heme cold锛圕old AI锛夋垨 warm锛圵arm Creative锛夛紱fontSize 14/16/18/20锛沝ensity compact/comfortable/spacious锛涢粯璁?cold/16/comfortable銆傝鍐欏潎涓ユ牸楠岃瘉瀵硅薄/瀛楁/鏋氫妇鍜屾渶澶у簭鍒楀寲闀垮害128瀛楃锛岀姝㈤澶栧睘鎬с€傚彧浠ュ浐瀹?key 璋冪敤 window.localStorage.getItem/setItem锛涗笉瀵煎嚭搴曞眰瀛樺偍鎴栦换鎰?key/浠绘剰鏁版嵁鎺ュ彛銆傚啓鍏ヤ负楠岃瘉鍚庤繖涓変釜瀛楁鐨勬樉寮忔姇褰便€?malformed/瓒呴暱/涓嶅彲鐢ㄦ椂鍥為€€榛樿鍐呭瓨澶栬锛屼笉娓呯┖鍏朵粬 origin key锛涗富棰樹慨鏀逛繚鎸佸瓧鍙?瀵嗗害銆?
+澶栬涓嶆槸璐﹀彿鏁版嵁锛氱姝?message/history/user/session/access/refresh credential/endpoint/conversation/cursor 鎴栧叾浠栦笟鍔℃暟鎹寔涔呭寲銆俉eb Repository/娑堟伅濮嬬粓鍐呭瓨锛屼笉鍔犺浇绂荤嚎鍘嗗彶銆備繚鐣欑姝?SQLite銆両ndexedDB銆佸叾浠栨祻瑙堝櫒瀛樺偍銆佹湭鎵瑰噯 framework/runtime/dependency/bridge銆傚師鐢?Desktop/Android 鎶€鏈€佸崗璁€丄CK銆丼ync銆佸叕鍏卞绾︺€佸畨鍏ㄨ竟鐣屼笌渚濊禆鏂瑰悜涓嶅彉銆?
+## 鍓嶇疆鎺у埗涓庢晥鍔?
+canonical 搂6.5 鍜屽師瀹㈡埛绔?policy 鐨?web_appearance 鎻忚堪鏈喅瀹氾紱baseline 璁板綍 exact digest銆佷笂涓€ accepted canonical a6b1670涓庢壒鍑嗛摼鎺ワ紝鍘?PDF546915涓嶅彉銆俫uard fail closed锛氭巿鏉冮摼鎺?鍝堝笇/policy涓嶅尮閰嶃€佸叾浠栧瓨鍌ㄨ矾寰勩€佷换鎰?key/鍒悕/棰濆瀛楁鍜屼笟鍔℃寔涔呭寲鍧囨嫆缁濄€傞潤鎬佹鏌ヤ笉鏇夸唬鐪熷疄琛屼负鎴栬涔夌嫭绔?Review銆?
+宸叉壒鍑?workflow 閫氳繃涓庡師 classifier 鐩稿悓 base/head銆?-no-renames 鍚垹闄ょ殑 tests/clients/web/ diff锛屽皢鍙樺寲浠?OR 鍏?web/architecture锛涙墍鏈夎緭鍑烘瘡 key 涓€娆★紝鍏朵粬閫夋嫨鍜?CI aggregate gate 鍘熻鍒欎笉鍙樸€俉eb 涓庡吋瀹?Web鍏ュ彛鎵ц鍚屼竴瀹為檯 verifier銆傚綋鍓嶆病鏈変骇鍝侊細浠呯湡瀹為潪 symlink 绌?.gitkeep銆乀ask鍞竴backlog/appearance_prerequisite銆佸彲淇ase涔熸棤浜у搧鍏佽 PREREQUISITE_SKELETON_ONLY锛岃繖涓嶆槸 Web build/behavior PASS銆傚嚭鐜颁换浣曚骇鍝?閮ㄥ垎鑴氭墜鏋跺垯瑕佹眰瀹屾暣蹇呴渶杈撳叆銆侀攣瀹?install銆佸疄闄?build銆乥ehavior/appearance娴嬭瘯鍙妔ource guard锛涘け璐ユ棤楠ㄦ灦 fallback銆傚垹闄ゅ凡缁忓瓨鍦ㄧ殑浜у搧涓嶈兘閲嶈幏楠ㄦ灦渚嬪銆傝闃舵鎺у埗浠呬负鍏堥獙鏀跺喕缁撳啀瀹炵幇鐨勫綋鍓嶉『搴忥紝浜у搧瀛樺湪鍗抽€€鍑恒€?
+fresh independent Review -> applicable exact-head hosted CI -> protected integration -> actual-main verification -> H:/IM-platform safe synchronization 鍏ㄩ儴瀹屾垚鍚庢墠鐢熸晥锛涙鍓?Web backlog 涓嶆縺娲汇€傛湰鍊欓€夋湰鍦版鏌?Recorder鏈夋晥涓嶇瓑浜?Task鎴朣2 PASS锛屾埅鍥?Architect Approval/鐙珛浜у搧 Review/鐪熷疄CI浠嶅畬鏁翠繚鐣欍€傛渶鏂?Human endpoint锛歐eb瀹屾暣鎺ュ彈骞跺畨鍏ㄥ悓姝ュ悗鍋滄浜嶴2 Gate鍓嶏紝涓嶅S2 Stage Gate鎿嶄綔锛汣I aggregate gate蹇呴渶鏈哄埗淇濈暀銆?
+## 鏈€灏忔€с€佽縼绉讳笌鍥炴粴
+
+鏃犳柊搴撱€佹湇鍔°€乻chema鎴栫敤鎴锋暟鎹縼绉汇€傚浐瀹氫竴涓獎閫傞厤鍣?涓変釜鏍囬噺鐩存帴婊¤冻褰撳墠閲嶅惎鍋忓ソ闇€瑕併€倂erifier 灏?Web/鐜版湁 shared 鏋勫缓杈撳叆澶嶅埗鍒颁竴娆℃€х郴缁熶复鏃剁洰褰曞畨瑁?鏋勫缓锛屼互鍏嶇涓夋柟 node_modules 杩涘叆 active source/dependency guard锛涜繖鍙殧绂婚獙璇佽緭鍑猴紝涓嶅垱寤轰粨搴撴垨浜у搧澶嶅埗鏍广€?
+鐢熸晥鍓嶅け璐ュ彧淇鍊欓€夊苟淇濈暀宸叉帴鍙?main銆傜敓鏁堝悗鐨勬潈闄?瀛樺偍绾犳椤绘柊 Human/Architect鎵瑰噯鍙婄嫭绔嬮獙鏀讹紱涓嶅緱閲嶅啓鏃?ADR銆丗AIL銆丷ecorder銆丳DF銆倂1 key娌℃湁鐢ㄦ埛涓氬姟鏁版嵁锛屼笉鎺堟潈鏃ey杩佺Щ/娓呴櫎銆佽繙绋嬪悓姝ユ垨浠ュ悗鐗堟湰鍏煎鏈哄埗銆?

@@ -1,0 +1,19 @@
+...............F............................s................................
+======================================================================
+FAIL: test_current_active_clients (test_client_technology.ClientTechnologyControls.test_current_active_clients)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\st\IM-platform\tests\architecture\test_client_technology.py", line 81, in test_current_active_clients
+    self.assertEqual([], checker.check_clients(ROOT))
+AssertionError: Lists differ: [] != ['CLIENT clients/mobile/.gradle/file-syste[232350 chars]rce']
+
+Second list contains 1119 additional elements.
+First extra element 0:
+'CLIENT clients/mobile/.gradle/file-system.probe: unapproved source/config type; Web/Desktop/shared TypeScript, Mobile Android Kotlin/Compose, Rust Desktop native only'
+
+Diff is 252637 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 77 tests in 25.421s
+
+FAILED (failures=1, skipped=1)

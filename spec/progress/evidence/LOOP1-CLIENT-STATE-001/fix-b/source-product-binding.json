@@ -1,0 +1,35 @@
+{
+  "actualUTC": "2026-10-11T04:52:37.271267+00:00",
+  "source": "547514f6c8c8c0c40e27073b67d17bb3f224b6c5",
+  "observedBaseHEAD": "ac369135156fa6ee496a887fc36c3cce9e7ff45f",
+  "productAndBuildInputPaths": [
+    "backend/go",
+    "clients/web",
+    "clients/desktop",
+    "clients/shared",
+    "clients/mobile/app/src/main",
+    "clients/mobile/app/build.gradle.kts",
+    "clients/mobile/build.gradle.kts",
+    "clients/mobile/settings.gradle.kts",
+    "clients/mobile/gradle.properties"
+  ],
+  "workingTrackedProductAndBuildInputsByteIdentical": true,
+  "method": [
+    "git",
+    "diff",
+    "--name-only",
+    "547514f6c8c8c0c40e27073b67d17bb3f224b6c5",
+    "--",
+    "backend/go",
+    "clients/web",
+    "clients/desktop",
+    "clients/shared",
+    "clients/mobile/app/src/main",
+    "clients/mobile/app/build.gradle.kts",
+    "clients/mobile/build.gradle.kts",
+    "clients/mobile/settings.gradle.kts",
+    "clients/mobile/gradle.properties"
+  ],
+  "newRebuiltTestOnlyBinding": "fix-b/android-rebuilt-rollback-binding.json",
+  "qualification": "Fix B modifies capture/tests/evidence only; original product/build native bindings remain valid. Candidate HEAD/clean state sealed externally after commit."
+}
