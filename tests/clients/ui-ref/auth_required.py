@@ -59,7 +59,7 @@ def android():
   witness=[e for e in auth_witness() if e['event'] not in {e['event'] for e in events_before}];(out/'actual-auth-http-responses.json').write_text(json.dumps(witness,indent=2)+'\n',encoding='utf-8')
   assert any(e['path']=='/v1/auth/login' and e['status']==401 and e['errorCode']=='AUTH_INVALID_CREDENTIALS' for e in witness)
   assert any(e['path']=='/v1/auth/logout' and e['status']==204 for e in witness)
-  assert any(e['path']=='/v1/auth/refresh/native' and e['status']==401 and e['errorCode']=='AUTH_REFRESH_REVOKED' for e in witness)
+  assert any(e['path']=='/v1/auth/refresh/native' and e['status']==401 and e['errorCode']=='AUTH_SESSION_REVOKED' for e in witness)
   pid=int(re.search(r'targetProcessId=(\d+)',raw).group(1));passed=True
   print('PASS actual Android wrong-password, completed logout, actual server-expired refresh and credential/session clearing; '+str(out),flush=True)
  finally:
@@ -89,7 +89,7 @@ def desktop():
   assert any(x['name']=='Password' and x['type']=='ControlType.Edit' and x['enabled'] for x in nodes)
   assert not any(x['name'] in ['Please wait…','⚙ Settings','Session expired; secure credential cleanup failed'] for x in nodes)
   witness=[e for e in auth_witness() if e['event'] not in {e['event'] for e in events_before}];(out/'actual-auth-http-responses.json').write_text(json.dumps(witness,indent=2)+'\n',encoding='utf-8')
-  assert any(e['path']=='/v1/auth/refresh/native' and e['status']==401 and e['errorCode']=='AUTH_REFRESH_REVOKED' for e in witness)
+  assert any(e['path']=='/v1/auth/refresh/native' and e['status']==401 and e['errorCode']=='AUTH_SESSION_REVOKED' for e in witness)
   passed=True;print('PASS actual installed native default-TLS session-expired classification and anonymous idle UI; '+str(out),flush=True)
  finally:seal(out,'PASS' if passed else 'FAIL',runtimeQualification='Installed current source1bd native reqwest system TLS; actual owned user DESKTOP session expired in Go PostgreSQL; user-operated Refresh through real UI, no mock transport or synthetic ViewModel calls. UI anonymity/idle observed; no claim to directly reading session/credential contents.')
 if __name__=='__main__':
