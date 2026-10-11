@@ -28,7 +28,7 @@ class UiRefFixtureTrust private constructor(private val originalContext:SSLConte
     }
     companion object {
         fun install(path:String):UiRefFixtureTrust {
-            require(path=="/sdcard/Android/data/im.platform.client/files/ui-ref-ca.der")
+            require(path=="/sdcard/Android/data/im.platform.client/files/ui-ref-ca.der" || path=="/data/data/im.platform.client/files/ui-ref-ca.der")
             val bytes=File(path).readBytes();require(bytes.size<8192)
             val digest=MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it)}
             require(digest=="a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5")
