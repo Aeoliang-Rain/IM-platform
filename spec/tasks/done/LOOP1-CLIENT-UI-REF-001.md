@@ -126,10 +126,12 @@ Full UIREF product candidate independently reviewed by fresh semantic and Archit
 
 Canonical efbe04c7 unchanged; S1 PASS/S2 OPEN. Evidence and checkpoint bind accepted product SHA, task branch, actual protected main SHA and sync receipt. These product completion records are a new administrative candidate, requiring fresh independent review and applicable exact-head hosted verification before final delivery. Consult external final administrative seal at C:\Users\21441\.codex\visualizations\2026\10\11\01a129aa-d2ed-7350-8f8d-efb0ecc85664\ui-ref-final-acceptance-seal.json; unavailable or non-PASS seal means closure remains unfinished. Do not activate I18N or evaluate S2 Gate within this task.
 
+Administrative recovery repair: fresh independent administrative Review rejected b8295afa3406181ee5e6bd490d4e443d7914a29e for ten existing recovery-verifier format failures. Fresh Fix /root/ui_ref_admin_fix reproduced all ten with bundled Python3/PowerShell7 and restores only required current.md headings, exact Verification command/result/evidence fields, full-SHA and checkpoint formatting. Durable history: spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/admin-recovery-fix-20261011.md. Product acceptance remains unchanged; new clean candidate still requires a new fresh Review, applicable exact-head hosted CI, protected integration/actual-main and safe sync. Previous administrative FAIL remains preserved.
+
 # Next Action
 
 Confirm administrative exact-head independent Review/hosted PASS, protected integration/actual-main and final safe sync, then external final seal. No product work remains. Subsequent task selection needs a new request and completed closure confirmation.
 
 # Ownership
 
-Only Coordinator /root owns this administrative evidence/task/current/checkpoint delta. Product tree remains accepted source1bd and all previous owned work is committed. Main781 unknown changes are preserved, not adopted.
+Fresh Fix /root/ui_ref_admin_fix owns the bounded recovery-format repair until committed and released; Coordinator /root owns the other administrative evidence/task/current/checkpoint delta. Product tree remains accepted source1bd and all previous owned work is committed. Main781 unknown changes are preserved, not adopted.
