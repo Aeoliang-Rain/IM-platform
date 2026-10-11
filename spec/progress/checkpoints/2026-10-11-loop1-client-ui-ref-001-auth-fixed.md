@@ -1,0 +1,9 @@
+# Actual Auth supplement recovery point
+
+Task LOOP1-CLIENT-UI-REF-001 remains review/PENDING after formal f915 FAIL. Branch task/LOOP1-CLIENT-UI-REF-001, exact root H:/.codex/worktrees/u/IM-platform, sole Fix Agent /root/ui_ref_auth_fix. Product1bd unchanged; accepted mainca527ca/main781 unknown untouched. Positive Auth captures087a7c7, renewed Windows negative287464c; later final metadata/evidence commits preserve exact trees. auth-fix-final-report.md and auth-fix-final-index.json bind originals and qualifications.
+
+Four actual cases locally PASS: Mobile wrong password, completed logout, real Go401 expiry/current+former secure/session clearing; installed source1bd Windows actual native expiry. Android fresh defaultnegative PID6827 after6272 and Windows54180 after15596 both PASS against same live fixture, explicitCA health200 and hostname negative; original failed attempts preserved.
+
+Original UACcancel recovery checkpoint remains history. User reported no popup; single real-user standardRunAs retry frozenwrapper6ca36dcd PID26584 exit0 removed exact727E/a804 LM then CU, full baseline9b851376 CU74/LM72 restored and independently verified by Root actual-user read-only. New factory/packages/reverse/generated outputs absent; original install3files/appearance bytes restored; owned Go project27280 containers/volumes/listeners and owned native family gone. Public auth-fix-runtime-resource-cleanup/trust/desktop-restore receipts bind completion. No residual CA or running fixture, original userdata untouched.
+
+Next: clean final candidate/Recovery Acceptance/Recorder finish then solewriter release; Root delegates new independent Review and Architect, exact-head hosted jobs/protected integration/main verification/sync before acceptance or done. Local verification is not Task/S2 PASS. No I18N or Stage Gate.

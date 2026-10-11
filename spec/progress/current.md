@@ -8,19 +8,19 @@ Current Batch: LOOP1-CLIENT-UI-REF-001
 Batch Status: REVIEW_PENDING
 Current Task: LOOP1-CLIENT-UI-REF-001
 Current Task State: review
-Execution Status: BLOCKED_EXTERNAL_ACCESS
-Fix State: SYSTEM_UAC_CANCELLED_EXACT_CLEANUP_PENDING
-Owned Trust Lease: ACTIVE same727E/a804 Human manual import; exact CU75/LM73 sole CA delta verified under continuing Human LM-use/automatic-removal authorization. Sole writer /root/ui_ref_auth_fix owns LM then CU exact removal/full original CU74/LM72 restoration and fresh negatives before closure.
+Execution Status: REVIEW_PENDING
+Fix State: AUTH_CASES_LOCAL_PASS_CLEANUP_COMPLETE_REVIEW_PENDING
+Owned Trust Lease: CLOSED exact727E/a804 LM then CU rollback; standardUAC PID26584 real exit0/full originalCU74/LM72 receipt9db2950d. Root independent real-user full sets/absence PASS; new Windows negative PASS. Installed three files/preferences and all owned runtime/factory resources restored/cleaned.
 
 ## Immediately Relevant Completed Work
 
-UIREF three-platform extraction, semantic display IDs and prior local/live regression complete. First trust lease cleanup completed; second Auth supplement lease is currently ACTIVE. Product source1bd1a1bf; no schema/contracts/technology change. STATE prerequisite accepted and synchronized at ca527ca. Local results do not establish Task acceptance.
+UIREF three-platform extraction, semantic display IDs and prior local/live regression complete. Four actual Auth supplement cases and new fresh Android/Windows default negatives locally PASS; second trust lease/installation/preferences/owned resources exact cleanup complete. Product source1bd1a1bf; no schema/contracts/technology change. STATE prerequisite accepted and synchronized at ca527ca. Local results do not establish Task acceptance.
 
 ## Current Blockers
 
 Fresh independent final Review and Architect on f91508db29a40b66574cb41f611015b677836467 returned FAIL for missing actual Mobile wrong-password/401-expiry/credential-session clearing/completed idle logout and installed current Desktop expiry evidence. Fresh Fix Agent /root/ui_ref_auth_fix owns the sole writer; product1bd is frozen. All four cases now have local actual PASS at capture HEAD087a7c7: Android d2d47bb037f84543bc473dd5c771e9b3 and Desktop297845cf66bf4f58bdea734666d688e6. Old raw failures remain. Fresh default-TLS negatives, exact second-lease cleanup and report qualifications precede a new clean candidate and independent acceptance. Human manually renewed the same CA; actual CU75/LM73 sole delta is approved for use/automatic exact removal. No automatic CA import is authorized.
 
-System UAC launch was cancelled (exec79914/Recorder C-514ef5cc); wrapper never ran and no rollback receipt exists. Exact CA restoration and Windows fresh negative remain BLOCKED_EXTERNAL_ACCESS pending actual system authorization. Android two owned packages/reverse, owned factory manager and generated output cleanup passed; installed files/preferences and live runtime remain owned cleanup obligations. Independent final Architect/Review, exact-head hosted acceptance, protected integration and main synchronization pending.
+Original system UAC launch cancelledC-514ef5cc remains FAIL. User reported no popup; one authorized real-user standardUAC retry PID26584 succeeded, exact full74/72 rollback and Root independent actual-user verification PASS. Fresh Windows native negativePID54180 after15596 PASS, explicitCA live health200/hostname rejection and finallyfamilyexit. Android fresh defaultnegative6827 after6272 PASS. Original threefiles/preferences and all owned runtime/Docker/ports/newfactory/generated cleanup PASS. New independent final Architect/Review, exact-head hosted acceptance, protected integration/main synchronization pending.
 
 ## Verification
 
@@ -36,11 +36,11 @@ Direct three-platform render components and semantic status/error IDs; task-only
 
 ## Known Failures, Risks, and Assumptions
 
-Additive qualifications.md preserves historical failures and capture/artifact mappings. First lease full cleanup passed; the renewed second lease is ACTIVE with UAC cancellation retained. Windows uses Human-approved roots, while Android uses only process explicit CA; inherited fixture no-system-trust wording does not describe this Windows lease. Android initial negative failed to start due to runner registration; existing negative-runner build then passed and newPID6827 negative passed. Package cleanup initially failed on expected absent pm-path exit1 after product uninstall; strict partial resume completed. Unknown original Android DB only filename preservation verified, no content-restoration claim. No new visible OS notification card is claimed.
+Additive qualifications.md preserves historical failures and capture/artifact mappings. Both leases now fully cleaned; second UAC cancellation and successful authorized retry retained. Windows positive used Human roots, Android only process explicitCA; inherited fixture no-system-trust wording is qualified. Failed Android negative runner registration and partial package cleanup remain original FAIL with subsequent actual completion. Unknown original Android DB only filename preservation verified, no content-restoration claim. No new visible OS notification card or full state/theme/font/density crossproduct is claimed.
 
 ## Next Exact Action
 
-Wait for actual response to the standard system UAC; only then retry the frozen rollback_second_lease.ps1 once (SHA6ca36dcd), remove exact CA LM then CU and compare full original74/72. Root independently verifies actual user full sets, then run fresh Windows default-native negative against the retained live fixture with explicit CA positive/hostname-negative controls. Restore installed three files/preferences and stop exact runtime. New factory5592/packages/reverse/generated data already cleaned. Task review/PENDING; no I18N or Stage Gate.
+Freeze final bounded Auth/source/evidence index, commit clean task-owned candidate, run clean Recovery Acceptance with bundled toolchain, finish/validate Recorder, and release sole writer to Root for new independent Review/Architect and applicable exact-head hosted acceptance. All owned cleanup complete. Task review/PENDING; no I18N or Stage Gate.
 
 Commit clean task-owned review candidate and run original clean Acceptance with bundled PowerShell7/Python PATH; finish/validate implementation Recorder and release writer to Coordinator. Coordinator obtains fresh independent final decisions, exact-head hosted jobs, protected integration/actual-main and safe main sync before done. No I18N/S2 Gate work.
 
@@ -50,7 +50,7 @@ Commit clean task-owned review candidate and run original clean Acceptance with 
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-11-loop1-client-ui-ref-001-auth-uac-blocked.md`
+`spec/progress/checkpoints/2026-10-11-loop1-client-ui-ref-001-auth-fixed.md`
 
 ## Uncommitted Changes / Ownership
 

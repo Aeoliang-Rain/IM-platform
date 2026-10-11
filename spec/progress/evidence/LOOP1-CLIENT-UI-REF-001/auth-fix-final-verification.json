@@ -1,0 +1,75 @@
+{
+  "actualUTC": "2026-10-11T12:03:02.094103+00:00",
+  "actualHEAD": "287464c97459ce9dbc22940902159c3b3b5f5de7",
+  "result": "PASS",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.056995,
+      "original": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\final-verification\\0-original.txt",
+      "sha256": "284d2e51abf788b268fad6b368e8017f9c6a64fb3c60b2fb8119055d0f9ac22d"
+    },
+    {
+      "command": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.127178,
+      "original": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\final-verification\\1-original.txt",
+      "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+    },
+    {
+      "command": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.104212,
+      "original": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\final-verification\\2-original.txt",
+      "sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f"
+    },
+    {
+      "command": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 16.520773,
+      "original": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\final-verification\\3-original.txt",
+      "sha256": "0dffaf0151c2acbe1ad08ce55bb1df308349edbef3579530057375d4208df736"
+    },
+    {
+      "command": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\recovery_baseline.py"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 16.554778,
+      "original": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a129aa-d2ed-7350-8f8d-efb0ecc85664\\ui-ref-auth-fix\\final-verification\\4-original.txt",
+      "sha256": "d0737de60cfe22be3267d6f47e6d6d4d335667be448bd0bcc98859c952d6f719"
+    }
+  ],
+  "qualification": "Local required source/baseline checks; clean committed Recovery Acceptance next, no Task or Stage acceptance."
+}
