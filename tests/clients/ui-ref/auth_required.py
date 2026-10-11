@@ -73,17 +73,17 @@ def desktop():
   p=out/(label+'.png');r=subprocess.run([PWSH,'-NoProfile','-File','tests/clients/ui-ref/state/desktop_window.ps1','-Action',action,'-Name',name,'-Value',value,'-Output',str(p)],cwd=ROOT,capture_output=True,timeout=45)
   (out/(label+'-command-original.txt')).write_bytes(r.stdout+r.stderr);assert r.returncode==0,'Actual native UI failed '+label
   return json.loads(Path(str(p)+'.json').read_text(encoding='utf-8'))['nodes']
- def wait(name,label):
+ def wait(name,label,enabled=False):
   for n in range(50):
    nodes=ui(label=label+'-'+str(n))
-   if any(x['name']==name and not x['offscreen'] for x in nodes):return nodes
+   if any(x['name']==name and not x['offscreen'] and (not enabled or x['enabled']) for x in nodes):return nodes
    time.sleep(.2)
   raise RuntimeError('Actual native UI state absent '+name)
  try:
   events_before=auth_witness();(out/'auth-http-before.json').write_text(json.dumps(events_before,indent=2)+'\n',encoding='utf-8')
   initial=ui(label='anonymous-before');assert any(x['name']=='Username' and x['type']=='ControlType.Edit' for x in initial)
   ui('fill','Username',F['accounts'][0]['username'],'fixture-username');ui('fill','Password','fixture-password-not-a-real-secret','fixture-password');ui('click','Sign in',label='login')
-  wait('Online','logged-in');ui('click','⚙ Settings',label='settings');ui('click','Go offline',label='disconnect');ui(label='session-before-expiry')
+  wait('Online','logged-in');ui('click','⚙ Settings',label='settings');wait('Refresh session','login-completed',True);ui('click','Go offline',label='disconnect');wait('Refresh session','offline-ready',True);ui(label='session-before-expiry')
   (out/'actual-server-expiry.json').write_text(json.dumps(expire('DESKTOP'),indent=2)+'\n',encoding='utf-8');ui('click','Refresh session',label='refresh-expired')
   nodes=wait('Session expired. Sign in again.','session-expired')
   assert any(x['name']=='Username' and x['type']=='ControlType.Edit' and x['enabled'] for x in nodes)
