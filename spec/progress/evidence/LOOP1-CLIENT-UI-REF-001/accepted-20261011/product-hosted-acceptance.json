@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "scope": "product",
+  "run_id": 38140090598,
+  "event": "pull_request",
+  "candidate_sha": "0f2309bcfc86e4c5d9e9c41a91b1a60b1da9be4d",
+  "run_attempt": 1,
+  "required_jobs": [
+    "architecture",
+    "classify",
+    "desktop (ubuntu-latest)",
+    "desktop (windows-latest)",
+    "gate",
+    "mobile",
+    "source_go",
+    "source_java",
+    "web"
+  ],
+  "expected_unselected_jobs": [
+    "compatibility",
+    "deploy",
+    "go",
+    "java",
+    "shared"
+  ],
+  "total_jobs": 14,
+  "run_sha256": "9e50985929bd31d7680d71e66c35154e4576ebb24ec574fa86643fe45307cee5",
+  "jobs_sha256": "fc7011d0bc6b99ecb68127e7fd507590bdbb7e7b3d14971e2c3c9937d4003d18",
+  "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38140090598"
+}

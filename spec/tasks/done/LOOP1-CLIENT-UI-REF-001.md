@@ -1,8 +1,8 @@
 ---
 task_id: LOOP1-CLIENT-UI-REF-001
 title: 组件拆分与完整性验证
-status: review
-owner: /root/ui_ref_auth_fix
+status: done
+owner: /root
 stage: S2
 gate: S2
 client_supplement_phase: ui_ref_product
@@ -108,34 +108,30 @@ Goal全部条目与spec/acceptance/client-supplement.md本任务段是强制验�
 
 # Evidence
 
-`spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/`保存可复现场景/原始结果/failed记录/真实截图Architect/independent Review/hosted/main/sync；Research Recorder独立run。当前未执行产品验收；local/Recorder PASS不是Task/Stage PASS。
+Accepted original product/native evidence remains under spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/. Durable independent reports, exact hosted run/jobs and safe sync are indexed at spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/accepted-20261011/acceptance-manifest.json. All historical failures and bounded qualifications remain; Recorder PASS does not establish Task or Stage Gate PASS.
 
 # Completion Metadata
 
-acceptance_result: PENDING
-accepted_candidate_sha: unavailable
-integrated_main_sha: unavailable
-main_sync_result: PENDING
-independent_review_evidence: unavailable
-hosted_acceptance_evidence: unavailable
-main_sync_evidence: unavailable
+acceptance_result: PASS
+accepted_candidate_sha: 0f2309bcfc86e4c5d9e9c41a91b1a60b1da9be4d
+integrated_main_sha: d6fb8e0d2ef4a4f6b441ea5ddc034ffd9db0f60f
+main_sync_result: PASS
+independent_review_evidence: spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/accepted-20261011/independent-semantic-review.md
+hosted_acceptance_evidence: spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/accepted-20261011/product-hosted-acceptance.json
+main_sync_evidence: spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/accepted-20261011/product-main-sync.json
 
 # Handoff
 
-Current final fix state supersedes historical lease/stop paragraphs below: all four actual Auth cases locally PASS, fresh Android6827/Windows54180 default negatives PASS, full second-lease root74/72/exactCAabsence independently verified, original install3files/preferences restored and owned runtime/factory/ports/generated cleanup PASS. auth-fix-final-report.md/index/checkpoint bind bounded evidence and unchanged source1bd. Original UACcancel and blocked recovery records retained. Final sourceall/frozen/S2planning/77architecture tests/Development PASS; clean committed Acceptance/Recorder finish result delivered externally before solewriter release. New independent acceptance/hosted/integration/main still pending; Task review/PENDING.
+Full UIREF product candidate independently reviewed by fresh semantic and Architect agents and accepted by exact-head hosted run38140090598. Protected PR35 main d6fb8e0d2ef4a4f6b441ea5ddc034ffd9db0f60f has an identical tree and actual-main hosted run38140979898 PASS. Assigned root H:/.codex/worktrees/u/IM-platform, branch task/LOOP1-CLIENT-UI-REF-001; source frozen1bd. Safe synchronization to H:/IM-platform verified all781 unknown file bytes/status/index/cached diff/branch preserved. All temporary CA/install/preferences/owned runtime resources restored, with new default negatives and exact full74/72 Root sets. Historical failure/visual/Syncing/notification bounds remain. No source/contract/architecture/technology expansion.
 
-Historical blocked/lease observations, preserved for recovery provenance (superseded by current final state):
+Canonical efbe04c7 unchanged; S1 PASS/S2 OPEN. Evidence and checkpoint bind accepted product SHA, task branch, actual protected main SHA and sync receipt. These product completion records are a new administrative candidate, requiring fresh independent review and applicable exact-head hosted verification before final delivery. Consult external final administrative seal at C:\Users\21441\.codex\visualizations\2026\10\11\01a129aa-d2ed-7350-8f8d-efb0ecc85664\ui-ref-final-acceptance-seal.json; unavailable or non-PASS seal means closure remains unfinished. Do not activate I18N or evaluate S2 Gate within this task.
 
-Current stop: BLOCKED_EXTERNAL_ACCESS(system UAC cancellationC-514ef5cc, exit1); frozen wrapper never began, no new rollback receipt. Four actual Auth local PASS capture087a7c7; Android fresh default-SDK negativePID6827 after6272 PASS. auth-fix-index.json seals234 original files/hashes, product diff empty. Android newfactory packages/reverse/manager/generated cleanup PASS; installed files/preferences and live Go/TLS runtime intentionally retained pending Windows fresh negative. Checkpoint spec/progress/checkpoints/2026-10-11-loop1-client-ui-ref-001-auth-uac-blocked.md. Actual system response is required before one frozen UAC retry; then full74/72 root verification, Windowsnegative and exact remaining cleanup. Task review/PENDING, no acceptance.
-
-Auth fix new lease ACTIVE: Human manually reimported same week certificate727E/DERa804; actual CU75/LM73 sole exact CA delta verify-approved PASS after CU-only FAIL preserved. Earlier explicit Human actual LM-use/automatic removal authorization remains in effect. Fresh actual-user baseline9b8513761cba71979686dee9d87f94a18b45c3ba051c65770ae059552b619e12 equals original CU74/LM72 full sets (originala23b); no Agent import occurred. /root/ui_ref_auth_fix owns precise LM then CU removal, original full trust restore/fresh negatives and all new fixture5592/Go project27280/installed3files/preferences cleanup. Task remains review/PENDING.
-
-Assigned exact managed root H:/.codex/worktrees/u/IM-platform, branch task/LOOP1-CLIENT-UI-REF-001. Fresh sole writer /root/ui_ref_auth_fix owns the Auth supplement; prior /root/ui_ref_resume regression and cleanup PASS refer only to the first lease. Main781 unknown files untouched. Product frozen1bd1a1bf, later tests/evidence only. The second lease remains ACTIVE until new exact full restoration evidence exists. Existing final-local-report.md/final-source-binding.json/coverage.md and qualifications.md retain original capture/artifact limitations. No new visible OS notification card is claimed. Original Android unknown DB only filename preservation verified; no content restoration claim or old5590 data clear/uninstall. All historical failures remain.
-
-Local source checks and 77 architecture tests PASS; Recovery Development PASS using existing bundled Python/PowerShell7. Clean committed Acceptance runs after candidate commit; actual SHA/clean result/Recorder finish are externally delivered. Recorder R-UIREF-RESUME-20261011 linked prospective_resume, old interrupted implementation CANCELLED. Local/Recorder PASS is not Task/S2 PASS.
+Administrative recovery repair: fresh independent administrative Review rejected b8295afa3406181ee5e6bd490d4e443d7914a29e for ten existing recovery-verifier format failures. Fresh Fix /root/ui_ref_admin_fix reproduced all ten with bundled Python3/PowerShell7 and restores only required current.md headings, exact Verification command/result/evidence fields, full-SHA and checkpoint formatting. Durable history: spec/progress/evidence/LOOP1-CLIENT-UI-REF-001/admin-recovery-fix-20261011.md. Product acceptance remains unchanged; new clean candidate still requires a new fresh Review, applicable exact-head hosted CI, protected integration/actual-main and safe sync. Previous administrative FAIL remains preserved.
 
 # Next Action
 
-2026-10-11 fresh final Review and Architect rejected clean f91508db29a40b66574cb41f611015b677836467 for the four actual Auth gaps. Fresh sole writer /root/ui_ref_auth_fix now has local actual PASS at capture HEAD087a7c7: Android screens/android-auth-required-d2d47bb037f84543bc473dd5c771e9b3 and installed Desktop screens/desktop-auth-required-297845cf66bf4f58bdea734666d688e6. Android new distinct default-SDK process6827 after positive6272 rejects HTTPS/socket against the same live fixture with explicitCA health200; the initial unregistered-negative-runner failure remains. Finish exact second-lease LM/CU full74/72 rollback, Windows fresh default-native negative, installed preferences/files and all owned resource cleanup, then qualify broad claims and freeze a clean candidate for new independent reviewers. Product1bd remains unchanged; Task review/PENDING. No CI/integration/done until accepted. Recorder R-UIREF-AUTH-FIX-20261011 is prospective_resume with direct instrumentation gaps disclosed.
+Confirm administrative exact-head independent Review/hosted PASS, protected integration/actual-main and final safe sync, then external final seal. No product work remains. Subsequent task selection needs a new request and completed closure confirmation.
 
-Coordinator owns fresh independent final Architect/Review, applicable exact-head hosted CI, protected integration/actual-main verification, safe H:/IM-platform synchronization and administrative closure. No further product work, I18N or Stage Gate is authorized. Task remains unfinished in review; Completion Metadata PENDING.
+# Ownership
+
+Fresh Fix /root/ui_ref_admin_fix owns the bounded recovery-format repair until committed and released; Coordinator /root owns the other administrative evidence/task/current/checkpoint delta. Product tree remains accepted source1bd and all previous owned work is committed. Main781 unknown changes are preserved, not adopted.

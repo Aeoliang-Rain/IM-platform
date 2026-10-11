@@ -1,0 +1,13 @@
+# Administrative recovery-format repair
+
+Fresh Fix actor: /root/ui_ref_admin_fix. Base candidate b8295afa3406181ee5e6bd490d4e443d7914a29e; assigned managed root H:/.codex/worktrees/u/IM-platform, branch task/LOOP1-CLIENT-UI-REF-001. Product accepted candidate 0f2309bcfc86e4c5d9e9c41a91b1a60b1da9be4d / protected synchronized main d6fb8e0d2ef4a4f6b441ea5ddc034ffd9db0f60f remain unchanged. S1 PASS / S2 OPEN.
+
+Independent administrative Review FAIL is preserved in the original private report ui-ref-closure-review/report.md, SHA256 133e7fb4713a37b58d11084b5ff262952ad23d39841e742c600fbe97d7484c43. With bundled Python3 prepended to PATH and bundled PowerShell7, fresh Fix independently reproduced all ten existing current.md format failures using tools/verify-loop1-ctrl-002.ps1 -Mode Development (exit1); no host Python27 issue masked the reproduction.
+
+Minimal repair restores mandatory headings Immediately Relevant Completed Work, Current Blockers, Verification, Changed Files or Migrations, Known Failures, Risks, and Assumptions; exact command/result/evidence fields and full-SHA/checkpoint backticks. Current Task handoff records this repair and prior failure. No product, contract, schema, guard, workflow, authority, original evidence, main repository, trust or runtime resource writes. No I18N or Stage Gate work.
+
+Fresh baseline: python -Xutf8 -B ci/check_architecture.py --scope all --json, tools/verify_frozen_architecture.py and ci/check_s2_planning.py each exit0/PASS. Recorder R-UIREF-ADMIN-FIX-20261011 records command IDs, timestamps, durations and original-stream versus redacted-stored fingerprints in private admin-fix-research. Initial direct reads/help/private prompt and one failed argv ordering call are disclosed as incomplete pre-Recorder activity; large output truncation is disclosed. Private repair script first failed a Windows separator comparison assertion before any writes, then normalized both roots and verified the exact assigned root before edits. Raw failures preserved.
+
+Post-repair local verification and clean committed candidate receipt are supplied in the finished Fix report and Recorder. They are local evidence only. New fresh independent Review plus applicable exact-head hosted jobs (classify, architecture, source_go, source_java, gate), protected integration, actual-main verification and final safe synchronization remain required. External final administrative seal remains unavailable; no administrative completion or next task selection is claimed.
+
+Post-repair Development verifier: PASS exit0 (non-acceptance only); ten recovery-format failures cleared. Exact clean Acceptance will run after committing these final document bytes.
