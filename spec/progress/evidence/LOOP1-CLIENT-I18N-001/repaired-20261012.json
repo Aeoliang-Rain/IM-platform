@@ -1,0 +1,116 @@
+{
+  "task": "LOOP1-CLIENT-I18N-001",
+  "candidateSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+  "branch": "task/LOOP1-CLIENT-I18N-001",
+  "assignedRoot": "H:\\.codex\\worktrees\\i18n\\IM-platform",
+  "verificationRoot": "H:/.codex/worktrees/i18n-v/IM-platform",
+  "execution": "BLOCKED_EXTERNAL_ACCESS",
+  "taskStatus": "active",
+  "gate": "S1 PASS / S2 OPEN",
+  "independentReview": "# Independent bounded review — LOOP1-CLIENT-I18N-001\n\nReviewed candidate: 9700c498700d1cfef3b48c445452d87851621c64.\nDelta base: 335e78ae27584ef49e67604752d6736ec39c9578.\nTask branch: task/LOOP1-CLIENT-I18N-001. Verification checkout: H:/.codex/worktrees/i18n-v/IM-platform, detached exact candidate, initially clean. Fresh reviewer context neither implemented nor fixed this candidate. Parent owns dirty recovery documentation in H:/.codex/worktrees/i18n/IM-platform. No repository writes by this reviewer.\n\n| Bounded verdict | Result |\n| --- | --- |\n| Capture delta semantics / authority / minimality | PASS |\n| All 19 original Android PNGs / prior four crossfades / login line spacing | PASS |\n| Source, APK, manifest and screenshot binding | PASS |\n| Exact-head incremental hosted CI selection and conclusions | PASS |\n| Full Task / Architect closure / integration / main synchronization / S2 Gate | NOT PASS; pending outside this bounded review |\n\nNo actionable defect found in the requested delta or supplied pixel set.\n\nThe delta changes only I18nComposeInstrumentation.kt: capture waits 1000ms elapsed time on the instrumentation thread, then main and accessibility idle, before the existing real screenshot operation. Existing navigation still requires destination semantics present and outgoing Settings absent. This directly addresses the observed approximately 700ms navigation transition without changing production navigation, translations, persistence, protocols, security or dependencies. Fixed settling time is evidence for this tested runtime, not a universal assertion about arbitrary devices. The prior Login.kt proportional lineHeight = 1.25 times headline fontSize is preserved; there is no production-source change in the reviewed delta. Kotlin/Compose and SDK SystemClock remain within canonical §2.3/§6.1 and accepted ADR5/6/12. No speculative abstraction or new dependency.\n\nStartup resolved the unique active task, its inputs and accepted authority; canonical SHA256 efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc and historical PDF SHA256 546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510 match. Minimality and source/technology/review governance applied. Parent recovery state is informational, not acceptance of uncommitted docs.\n\nAll 19 PNGs were individually viewed as originals, not contact sheets or edited images. Inventory with each file, original hash, dimensions, state and visual verdict: binding-inventory.json. All are 1080×1920, warm theme, fontSize22, density1.2. en-ai, zh-CN-ai, ja-JP-ai and zh-CN-plugin are fully settled: no outgoing Settings, crossfade ghosting or overlapping panels. English and Japanese login headlines wrap cleanly with separated baselines and clearance above the login panel. All Friends/Plugin/Settings/navigation/chat/history images remain readable; Settings is intentionally a scrolling surface with lower appearance controls below the viewport. Fixed language entry, native names and order are preserved. Controlled fixture names and message bodies remain unchanged across locale switches. Japanese chat-preserved and navigation-draft are byte-identical; they represent separately declared states, not 19 unique pixel contents. Activity recreation is explicitly not process restart. Parent separately owns real restart and final teardown; this review does not accept them by implication.\n\nBinding audit independently hashed 57 source inputs, four retained APKs, all 19 PNGs, manifest and result against build-binding.json and compose binding.json. Every hash matched; installed app hash agrees between build, runtime binding and manifest. Captures/result.json records PASS,109 assertions,cleanupComplete true; runner binding records PASS_LOCAL_CHECKS and default TLS before/after PASS. These are runtime producer records, not independent full Task acceptance. Actual input inventory audit output and timings are retained in Recorder blobs.\n\nHosted run38206155266, attempt1, push, exact head9700c498700d1cfef3b48c445452d87851621c64 completed success. Saved live API receipts: hosted-run.json and hosted-jobs.json; actual hosted.log retrieved with permitted GH escalation after default access returned403. Hosted classifier BASE_SHA is335e78ae27584ef49e67604752d6736ec39c9578. Hosted gate NEEDS_JSON selects architecture=true,mobile=true; local same-range classifier independently reproduces the single instrumentation path and same selection. classify,architecture,mobile,gate all success; go,java,web,desktop,shared,compatibility,deploy,source_go,source_java all skipped with corresponding classifier=false. No missing required job, failed step, cancellation or anomalous skip. This accepts the incremental capture delta only; it is not a full-range three-client acceptance run. Run: https://github.com/nilesthump/IM-platform/actions/runs/38206155266.\n\nLocal checks with bundled Python3: ci/check_architecture.py --scope all --json PASS; tools/verify_frozen_architecture.py PASS; ci/check_s2_planning.py PASS; unittest tests/architecture/test_client_technology.py PASS (25 controls); tools/verify-loop1-ctrl-002.ps1 -Mode Acceptance PASS with branchHEAD,status_entries0,diff_lines0. Binding audit PASS and exact-range classifier agrees. Exact commands, exits, duration and output hashes are in research/runs/R-PIXEL2-INDEPENDENT-REVIEW/events.jsonl and blobs. Failed attempts preserved: startup Python2.7 invocation, Recorder console GBK encoding failure (command succeeded, console display failed; rerun under PYTHONUTF8=1), recovery nested Python2.7 failure (rerun with bundled Python3 first in PATH), missing guessed compose-result.json (resolved actual captures/result.json), default GH logs403 (escalated successful read), and ambiguous short Git object9700 (all actual review/binding uses full exact SHA). None was silently treated as PASS.\n\nResearch run uses prospective_resume with pre_recorder_work=true and pre_recorder_trace_complete=false: initial startup/read-only observations preceded registration. Prompt P-PIXEL2-INDEPENDENT-REVIEW is bound to the visible request. Recorder structural acceptance is separate from these review verdicts and from product acceptance.\n\nRetain three built-in locales and English default/fallback under ADR12. Separate en/ja language artifacts remain unpublished; publication/unified JSON/download management deferred issue37. User-accepted zh/ja tray requires no repeated captures. Web/Desktop normalTLS external trust-view blocker remains; no trust import or bypass performed. Integration and safe H:/IM-platform synchronization remain pending; accepted main is not advanced. Full Task and S2 Gate are NOT PASS. Parent must retain these boundaries in recovery docs, handle restart/teardown, resolve normalTLS blocker and complete outstanding Architect/full acceptance/protected integration/actual-main/safe synchronization before task closure.\n",
+  "artifacts": {
+    "pixel2-android/build-binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\pixel2-android\\build-binding.json",
+      "sha256": "0c57f4e2062933cf59e841226b0aef62c72a8f257cb263085266209d67007b7c"
+    },
+    "pixel2-android-compose-run/binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\pixel2-android-compose-run\\binding.json",
+      "sha256": "03cc73f33f9b781d2167a1f976bc141454c0575964b2577733c4df1ae5d2aa74"
+    },
+    "pixel2-android-restart-run1/binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\pixel2-android-restart-run1\\binding.json",
+      "sha256": "8b737b00795ad5db73c58fc25b58978d5375e42d99326c41115d301c3d60c798"
+    },
+    "pixel2-independent-review/report.md": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\pixel2-independent-review\\report.md",
+      "sha256": "d7ef2072c8e6ac0d33b216d11055f7477c5a2ecbb7e5b63d6b05268b2dd03fc6"
+    },
+    "candidate-trust-final-cleanup.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\candidate-trust-final-cleanup.json",
+      "sha256": "20e0f95ebae80e635739b48bb81d5a0664c60e648dec2f821249b6d8f842ec9d"
+    },
+    "pixel2-runtime.log": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\pixel2-runtime.log",
+      "sha256": "6b39cf03b2baae3ad42c8cdc1f63155baf29da737726271acd3be2b44b7b62f7"
+    },
+    "main-preservation-after-pixel2-20261012.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\main-preservation-after-pixel2-20261012.json",
+      "sha256": "5f3542803fe9c179153e8f175ad661d93015f1dcbaea8cfa75d64cfb3f728eef"
+    }
+  },
+  "localResults": {
+    "compose": {
+      "result": "PASS_LOCAL_CHECKS",
+      "source_sha": "9700c498700d1cfef3b48c445452d87851621c64",
+      "source_is_clean_committed_candidate": true,
+      "mode": "android",
+      "started_at_unix": 1791781618.3819356,
+      "serial": "emulator-5556",
+      "backend_project": "im-gui-product-20261004-4128",
+      "endpoint": "https://localhost:8443",
+      "apks": {
+        "apk": "4bbd2f8a399fd821f1b0ad8e37325bff3d1ec362c4df551355271106616e0f87",
+        "test_apk": "b51be6fdd25bb07b3110c5e73b3442c3091acca4b6e04bf48f11a5c99b58eaf6",
+        "negative_apk": "6bbd9da83241afdbe0fb0f57fea21a5038107a4f0ce6e3c549da692185bd419f"
+      },
+      "scope": "actual owned API34 Compose; controlled real Go/PG/NATS; not independent acceptance",
+      "captured_files": {
+        "en-ai.png": "5192553d12448bf8e546d454f637edf05524043a492e6f415d435dd13ff4a11d",
+        "en-chat-preserved.png": "2916e731a10c1800540529c920a9dac9f1f50896dfa4b8abc618ce7f5e4e618b",
+        "en-friends.png": "17c8105985b89e6e8b54ba21457a78f1456cd8589a97ba2e7d599f9a0d31c2b7",
+        "en-login.png": "3fadb68f8e345b76db4bf785f5d02ceffdbaffb1e7d274a5051be161ae848af4",
+        "en-plugin.png": "89fa48cb1616cd2b626364ae41b38e65efcbd31f6cb243bee7ae4e90b01ddbfb",
+        "en-settings.png": "5c9b3e4317536c4334b0603930f61f910ed8c3c62a622c6a67dcfb1cc60cacb8",
+        "ja-JP-activity-recreated-login.png": "cd9f59a25494dd1174123a78970e47ed9e85ef6cab43a225793f7026aa1c9714",
+        "ja-JP-ai.png": "ed4560c7ee21362e79bb70d8d79fb24325177a3e8ebaeb3ce08f900a08fd72e9",
+        "ja-JP-chat-preserved.png": "f737c6ca2f3b44215e9fe0b652a948a3f70590527872ab91fe008b380afbcf11",
+        "ja-JP-friends.png": "ac7575985fd17489562cdc7503c2d0fcfe110cfde739b0c179eb23177a055949",
+        "ja-JP-navigation-draft.png": "f737c6ca2f3b44215e9fe0b652a948a3f70590527872ab91fe008b380afbcf11",
+        "ja-JP-plugin.png": "6905c002394622092eba53e4210003aa545d6c1aa1d8669edc0af9b68293001e",
+        "ja-JP-resumed-history.png": "d1771f73ce04081db10f2aba923ad893597e13090cf23ea76a37d477d72bbb12",
+        "ja-JP-settings.png": "5dd5cf0df79d552e62b6cb749d546458e70559eec119ea26c491ebf35e14bdce",
+        "manifest.json": "f5b2c64575525ea638e0b0b829eca13fe836ff26baf3568b80d486999e3f75e7",
+        "result.json": "61662c65ae02a52fc1156330852644bf51a6f78f0c61b91a4707a8b6f883756c",
+        "zh-CN-ai.png": "b9bbdf8ddb8eb7f12938a776f185d81ea1650455d25b05c6c3d81e179b2f7ae7",
+        "zh-CN-chat-preserved.png": "43f10c7a8afeec54f3708244a03f15c9dc00eaa52be9e3e005d272489e7c6117",
+        "zh-CN-friends.png": "75c7dc5717c2fe20d732b34c9757a0db251d253a922d01f35ad4698c2c995c03",
+        "zh-CN-plugin.png": "bde0b9d12bacf47b788e142ddd87f9ffe2d96fd0927ecc39dfebd20ecf63a52d",
+        "zh-CN-settings.png": "6adae688a81e09e048dbc0c98ca932ae5d5c441aa3789438e3842e589eb62a18"
+      },
+      "compose_checks": "PASS",
+      "default_tls_before_after": "PASS",
+      "cleanup_errors": [],
+      "cleanup_scope": "Runner preference/trust cleanup verified in result; owned reverse removed. APKs/evidence intentionally retained; parent owns AVD/accounts/backend final teardown."
+    },
+    "restart": {
+      "result": "PASS_LOCAL_CHECKS",
+      "sourceSha": "9700c498700d1cfef3b48c445452d87851621c64",
+      "sourceTreeSha256": "ae9d1858c01b862a8faa67608823e3f494b8670eddb2fd8181ae5718f94d94f1",
+      "wip": false,
+      "targetSHA256": "4bbd2f8a399fd821f1b0ad8e37325bff3d1ec362c4df551355271106616e0f87",
+      "testSHA256": "9f80748ae5908383d577f902fd5da0ebcad9e73a6cadeda95269d39ba75b7cc5",
+      "phases": [
+        "setup",
+        "verify",
+        "invalid",
+        "verify-invalid",
+        "restore"
+      ],
+      "exactPreferenceRestore": true,
+      "failure": null
+    }
+  },
+  "scope": "Retain three builtins/en default under ADR12; en/ja standalone JSON NOT_PUBLISHED; downloads/unifiedJSON/futurezhdefault deferred issue37",
+  "blocker": "Normal Web/Desktop HTTPS blocked: Human GUI and fresh agent root-store views differ; exact temporary CA manually removed and full agent original root sets restored. No TLS bypass or further import.",
+  "pending": [
+    "Clean Web six A/B real runtime",
+    "Installed Desktop exact candidate native/Go runtime",
+    "Full Architect/Task acceptance",
+    "Protected integration, actual-main audit and safe main synchronization"
+  ],
+  "cleanup": "Owned API34 emulator killed without wipe; owned Go/PG/NATS fixture cleanup PASS; preferences exactly restored; trust CLOSED. Prior artifacts and failures retained.",
+  "ownership": "Parent owns recovery docs and retained runtime/build archives; all product source committed; unknown main work untouched; synchronization PENDING.",
+  "history": "e5 CODE/14-job CI PASS, first pixel FAIL;335 headline repair and CI PASS but four unsettled frames FAIL;9700 elapsed capture wait rebuilt and rerun. Earlier recovery missing15 fields repaired. Recorder remains qualified prospective_resume, not complete historical trace or acceptance.",
+  "recoveryDevelopment": "PASS exit0; non-acceptance dirty recovery validation",
+  "researchRun": "R-I18N-20261012-PIXEL-REPAIR; finish BLOCKED / validation receipt external; historical/instrumentation limitations retained"
+}

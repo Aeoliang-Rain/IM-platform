@@ -1,0 +1,666 @@
+{
+  "task": "LOOP1-CLIENT-I18N-001",
+  "productAndCaptureCandidateSHA": "e829352aa02c3e87d3d01376df4ef1ac2c9ede38",
+  "branch": "task/LOOP1-CLIENT-I18N-001",
+  "assignedRoot": "H:\\.codex\\worktrees\\i18n\\IM-platform",
+  "scope": "Retain3builtins/en default+fallback ADR12; standalone en/ja NOT_PUBLISHED; Human excludes issue37 from task completion",
+  "taskStatus": "review",
+  "acceptance": "PENDING full independent semantic/native Architect and exact-head hosted/protected integration/actual-main/safe sync",
+  "webIndependentReport": "# Fresh independent Web3 source / Architect / behavior acceptance\n\n**Bounded decision: PASS.** Exact reviewed candidate `e829352aa02c3e87d3d01376df4ef1ac2c9ede38`; range `9700c498700d1cfef3b48c445452d87851621c64..e829352aa02c3e87d3d01376df4ef1ac2c9ede38`. Source delta PASS; supplied Web3 Chat screenshot set Architect PASS; six real A/B behavioral evidence proofs PASS. No actionable defect remains in this bounded review. No Task/Gate PASS, hosted acceptance, native acceptance, integration or main synchronization is claimed.\n\nReviewer is a fresh independent Codex context, neither implementer nor either capture fixer. R=`H:/.codex/worktrees/i18n/IM-platform`; V=`H:/.codex/worktrees/i18n-v/IM-platform`. V is a clean detached committed checkout at the exact candidate: initial inspected status/diff empty, Development recovery status_entries=0/diff_lines=0 and final status/diff empty. R has parent-owned recovery/runtime/cache work and is not claimed globally clean. This reviewer made no repository/source/runtime/browser/native/trust writes and launched no Web run or live SQL queries. Only external review output and its own Recorder run were written. Parent owns native acceptance, fixtures, trust lease, cleanup and recovery/task updates.\n\n## Source and authority\n\nCanonical SHA256 `efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc` matches manifest; retained PDF SHA256 `546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510` matches provenance. Current task uniquely resolves active with `i18n_product`; V recovery/dependency checks pass. Canonical technology/client/source/contract sections, accepted ADR12, applicable prior client/UI authority, task inputs, messaging/Sync invariants, public wire/database contracts and minimality were inspected. Main checkout has older recovery records; it was not used as this candidate's active state or modified.\n\nOnly `tests/clients/i18n/actual.mjs` differs in this range. Independent outside-shot normalization proves all program text identical after removing the six explicit capture argument additions and sanitized geometry diagnostic. Protocol/control/timing/send/SQL/ACK/retry/identity/order/preservation assertions remain intact. Actual scrolling positions real target articles; it asserts target, paragraph, metadata/status and FAILED retry bounds inside both inner scroller and viewport. R1/R2 pair is checked together. Composer remains viewport-visible; selected peer is DOM-visible and within the full-document original, which legitimately includes content above the viewport. Screenshots remain original fullPage captures with original hash calculation. No style/content/viewport fabrication, synthetic ACK, production CSS, new dependency or security bypass. Added geometry checks directly address the original independently observed clipping failure and meet minimality.\n\n`clients/{desktop,mobile,shared,web}`, contracts and architecture are unchanged byte-for-byte by Git tree comparison from9700 to e829. This establishes source equivalence across this capture-only delta, not new native runtime acceptance. Issue37 publication/download/pack persistence is not required; three builtins and ADR12 en default/fallback remain current authority.\n\n## Binding and behavioral audit\n\n`machine-audit.json` records **776 checks, zero errors**; `hash-inventory.json` binds source Git objects/R/V relevant inputs, retained stage3 compiled files, all 69 PNG originals, harness/helper/relay and runtime artifacts. `before.json`/`after.json` record review time, exact V state and hash-preservation checks. Final additional nine preservation checks PASS. Runtime start `2026-10-12T06:23:25.303175Z`, finish `06:28:22.009617Z`, elapsed296.706s. Stage3 precedes runtime; stage3/build/config/runtime source manifests and candidate SHA agree, wip=false and clean=true. Runtime binding digest points to exact stage3 binding; every retained build file hash matches. Producer reports are local evidence, independently audited here rather than promoted to full acceptance.\n\nActual fixture `im-gui-product-20261004-34680`, upstream `https://localhost:8443`, relay `https://localhost:18444`, Edge155.0.4283.45. Actual harness launches two ephemeral1280x900 contexts with default TLS, no ignoreHTTPSErrors/security flags. Accepted relay source/config substitutions and real helper were read: only explicit roots/build/TLS directory/listener/upstream configuration changes; ACK and message.created are forwarded actual server frames, faults withhold send A or sender confirmation/Sync B. Strict upstream TLS uses the controlled CA; no TLS bypass. All154 final relay events have contiguous event numbering and match their binding hash; actual send/ACK/created records cross-match the six proofs. Relay graceful stop/process exit is recorded; broader native/backend/trust cleanup remains parent-owned and unaccepted here.\n\n| Case | Before message/Outbox | Final message/Outbox | R1 seq | R2 seq | Final pair |\n| --- | --- | --- | --- | --- | --- |\n| en-A | 0/0 | 1/1 | 20 | 19 | R2,R1 |\n| en-B | 1/1 | 1/1 | 21 | 22 | R1,R2 |\n| zh-CN-A | 0/0 | 1/1 | 24 | 23 | R2,R1 |\n| zh-CN-B | 1/1 | 1/1 | 25 | 26 | R1,R2 |\n| ja-JP-A | 0/0 | 1/1 | 28 | 27 | R2,R1 |\n| ja-JP-B | 1/1 | 1/1 | 29 | 30 | R1,R2 |\n\nEvery logical target has exactly two sends with identical request/conversation/content and correct fixture sender. Original ACK messageId/seq/time agrees with durable PostgreSQL row, including timezone-normalized createdAt. B retains original row and original held/released ACK unchanged, with live receiver screenshot before retry. R2 is distinct and uniquely persisted; targets render once and final DOM order matches durable seq. All42 switch records retain exact multilingual draft, selected peer, warm20/spacious appearance bytes, appropriate state and unchanged send identities. Actual harness checks fixed Language entry and English→简体中文→日本語 order. Original DB snapshots were audited; no new live DB query is claimed.\n\n## Independent pixel decision\n\n**All69 originals: PASS for the requested Chat targets/status/retry/order pairs.** All pixels were inspected through12 derived contact sheets, and nine representative original PNGs were additionally opened at original resolution: en-A-failed-en, en-B-sent-ja-JP, zh-CN-A-sent-zh-CN, zh-CN-B-failed-zh-CN, ja-JP-A-sending-ja-JP, ja-JP-A-sent-ja-JP, ja-JP-B-failed-ja-JP, ja-JP-B-live-receiver-before-retry, ja-JP-B-receiver-ja-JP. Per-image original hashes, target text, state/pair and pixel decision are in `visual-inventory.json`. Contact sheets are inspection aids only; acceptance binds the untouched PNG originals.\n\nThe previously absent zh/ja targets now display complete scenario text, translated status and visible retry. All sender/receiver final images show both R1/R2 texts and confirmation seq together in correct order. All B pre-retry originals show the exact receiver target. Sender draft and full-page peer remain visible. Older non-target rows can be clipped at the scroll boundary; the required target/status/retry and ordering pair are complete. FullPage heights exceeding900 are legitimate baseline layout; screenshot width1280 matches viewport. No new clipping/missing-target defect observed in this set. This is bounded Chat evidence, not a full-page matrix or invalid/unavailable storage/reload acceptance.\n\nPrior independent FAIL report, all real1 originals, real2 FAIL at en-B-SENT-three-locale-retention, failure.png and both fixer handoffs remain byte-identical across this review. Their FAILs are not erased or reclassified. No edited image is accepted.\n\n## Verification, instrumentation and handoff\n\nFresh V local frozen architecture, architecture all (zero violations), S2 planning and recovery Development pass. These checks are not hosted or Gate acceptance. Recovery first failed because nested `python` selected G:/Python27; corrected child PATH to the fixed bundled Python3 passed. Failure and correction are retained in Recorder. Read probes before completion found browser-result/binding absent while run was in progress; this was expected pending state. Final R broad status emitted Filename-too-long warnings on parent generated Android archives; R global cleanliness is not asserted. Exact committed tree comparison and V/relevant R source hashes remain reliable and unchanged; no archive repair/delete performed.\n\nOwn Recorder `R-WEB3-INDEPENDENT-20261012`, prompt `P-WEB3-INDEPENDENT-20261012`, external `E/i18n-research`, explicit --repo V, fresh-context true, role review, qualified prospective_resume/pre_recorder_work=true/incomplete pre-start trace. Registered prompt is a readable spacing-normalized transcription of the visible scope. Finish/validation receipts accompany this report; Recorder validity is only research evidence.\n\nNext exact action: parent may consume this bounded PASS without another Web run; complete native acceptance and exact cleanup, final independent semantic Review, applicable exact-head hosted checks, protected integration/actual-main verification and safe H:/IM-platform synchronization. Task active/acceptance and sync pending; S1 accepted/S2 OPEN. Last known good integrated main remains b52f8b85bc699821f3720e339fcd48e17b2b04b1. Parent links this external report and findings in its task/current recovery documents under sole-writer ownership; reviewer intentionally leaves repository recovery untouched.\n\nRecorder finalization correction: initial review_finished event was rejected exit2 because its required result field was omitted. Original error retained in recorder-event-failed.txt; corrected event and fresh finish/validate follow. No Recorder evidence was edited or failure concealed.\n",
+  "nativeLocalEvidence": [
+    {
+      "file": "en-initial-login.jpg",
+      "sha256": "f5a292fa38b6fd27aff71d79d938ea2dd789f12dc0586389b837b3c47730fedc",
+      "locale": "en",
+      "observed": "Missing preference defaults English; actual original warm/font14/density0.8 verified from preference bytes and Settings UI",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance",
+      "metadataCorrection": "Initial parent font22/density1.2 annotation was mistaken; original pixels unchanged, corrected against actual original [warm,14,0.8]. Not independent acceptance."
+    },
+    {
+      "file": "en-chat-retained.jpg",
+      "sha256": "20bfb4440f906350eb4493b5cc6e0c3d7ed0c68d57006b724b41ccb6a5750eb2",
+      "locale": "en",
+      "observed": "Actual Online Go history and selected Morgan retained; unsent multilingual draft; original appearance unchanged",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-settings-original.jpg",
+      "sha256": "211e7fdfe6cc4590cfbf7384847e9518949e1f4400e062dcf2c9feedced86750",
+      "locale": "en",
+      "observed": "Actual fixed Language entry/native-name order; original appearance as observed in UI: warm,14px,Compact",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-appearance-maximum.jpg",
+      "sha256": "7ca790f70ca133cdac8994bf354242549518e318110d93c281893bf39c0017f3",
+      "locale": "en",
+      "observed": "Actual warm/font22/density1.2 controlled test setting; baseline warm/font14/density0.8 saved for exact restoration",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-settings-maximum.jpg",
+      "sha256": "1715e540ef4dee0a3898f7c8c8f2b066ac3b0d6a3bc34df718003776374e223b",
+      "locale": "en",
+      "observed": "Actual warm/font22/density1.2; fixed language order; language list scrollable",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "zh-CN-settings-maximum.jpg",
+      "sha256": "7d4aa41cf7db1f8d75dbaf4ff700d19b2f22b4c630d81d25e853e54fb5742e0b",
+      "locale": "zh-CN",
+      "observed": "Actual persisted zh-CN; warm/font22/density1.2 unchanged from English maximum; fixed entry/order and session preserved",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "zh-CN-chat-retained-maximum.jpg",
+      "sha256": "b24d2e3d8ab63462c4aff3fa80396a749b18f127398edb5e5f8dc24ef5ad820b",
+      "locale": "zh-CN",
+      "observed": "Actual selected Morgan, unchanged multilingual draft and Go history confirmed state; warm/font22/density1.2 retained",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "zh-CN-friends-maximum.jpg",
+      "sha256": "c99c7f68b5b06d64117b0a559d7b7b765d00ed473505591bc06b6f494ae75716",
+      "locale": "zh-CN",
+      "observed": "Actual owned Avery account/Morgan friend; warm/font22/density1.2; Chinese page and controls",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "zh-CN-ai-maximum.jpg",
+      "sha256": "28347be2c21f65ab42b9d82db6aee0778ca1d9f7510719461023f22df78baa06",
+      "locale": "zh-CN",
+      "observed": "Actual AI reserved page; warm/font22/density1.2; no AI runtime",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "zh-CN-plugin-maximum.jpg",
+      "sha256": "dbb895b87605f0c36cc530cd8b44cc509dbe51d33be1d41179b8f85efc974db9",
+      "locale": "zh-CN",
+      "observed": "Actual plugin reserved page; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-settings-offline-maximum.jpg",
+      "sha256": "2c40ce855db5ff0fc641ce816f0ac9a98082e6cee9233cb50bef90b5589c3a40",
+      "locale": "ja-JP",
+      "observed": "Actual offline application connection; selected Japanese; warm/font22/density1.2 preserved; scrollable language list",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-chat-offline-list.jpg",
+      "sha256": "b061de48d6c5e07da68e7200b77223d25279355cbb719ba655110ac4c86ebc33",
+      "locale": "ja-JP",
+      "observed": "Actual local-history list after application disconnect; not a selection/draft retention claim",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-chat-offline-history-maximum.jpg",
+      "sha256": "5424330d6fccef6979db3b1d2af1c8a1c56e0f77e2ebe226727d765ed2beb957",
+      "locale": "ja-JP",
+      "observed": "Actual Go history retained in SQLx private account storage; offline connection; unchanged multilingual draft; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-friends-maximum.jpg",
+      "sha256": "1c34c32df7d10686f6b630348e90b4490a2e29f7d7ed80887343c9fcf5308f40",
+      "locale": "ja-JP",
+      "observed": "Owned friend names unchanged; Japanese controls; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-ai-maximum.jpg",
+      "sha256": "a700f6ebf5b0b7f5359d65d29953a7a5f4234bdd77afedf67b2efe4329dc8a41",
+      "locale": "ja-JP",
+      "observed": "Actual reserved AI page; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-plugin-maximum.jpg",
+      "sha256": "dfa68b59ea7f27c59939be53b62378c7ec5107edce4f0136f51c5f7f4c302afb",
+      "locale": "ja-JP",
+      "observed": "Actual reserved plugin page; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-settings-offline-maximum.jpg",
+      "sha256": "f52c9cdd59cee7f5c579903cd6c3e88e628a19dddbf7abe791e0be66335b423e",
+      "locale": "en",
+      "observed": "Offline language switch Japanese to English; warm/font22/density1.2 unchanged",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-friends-maximum.jpg",
+      "sha256": "2f3e52d5545421bf5b7d1eda0557cf78a98c4b30c15d2ba0cb4a57eb54b5e550",
+      "locale": "en",
+      "observed": "Actual friend list owned fixture; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-ai-maximum.jpg",
+      "sha256": "322480c7b3767c2203228879b114ddd11e17160c99f2d1e7ff25dee919daea09",
+      "locale": "en",
+      "observed": "Actual AI placeholder; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-plugin-maximum.jpg",
+      "sha256": "62e13e33e340d1c2e4c0e58a869d4552d4868664a062b6640c087b2565fee689",
+      "locale": "en",
+      "observed": "Actual plugin unavailable page; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 265234,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-process-restart-login-maximum.jpg",
+      "sha256": "4092099e1f2639d38a5e61c7722a23e0e29b3a6b44a3471e7677f1f116531b46",
+      "locale": "ja-JP",
+      "observed": "True new PID23888 after PID35456 absent; locale restored ja-JP; warm/font22/density1.2; actual login before session resume",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 5442104,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-process-restart-session.jpg",
+      "sha256": "da172b5d21dcd51f8cf582e823afd62c86cc8b46336f60b9fd5570957677b1e6",
+      "locale": "ja-JP",
+      "observed": "True new PID23888; secure session resumed to owned Avery/Morgan actual Go; persisted warm/font22/density1.2; no draft persistence across restart claim",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 5442104,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-process-restart-history.jpg",
+      "sha256": "32c149afd5fed58973068c3395e4406928b4189722f1dc3ffd35085a024c4f0f",
+      "locale": "ja-JP",
+      "observed": "Actual restored Go history and SENT labels after true process restart; no draft restart persistence claim",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 5442104,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "ja-JP-offline-failed-maximum.jpg",
+      "sha256": "78cb7edaadf4725e22657346c4b1bd0df2bf0dc1770dae960e826958eeca3cb1",
+      "locale": "ja-JP",
+      "observed": "Actual offline send FAILED and real retry button visible; server0rows; original installed9700; warm/font22/density1.2",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 5442104,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "zh-CN-offline-failed-retained-maximum.jpg",
+      "sha256": "40a5da2403b17cec8b4ba58cd0ff3218c38324b411c11aa926442b29eb043d36",
+      "locale": "zh-CN",
+      "observed": "Actual same offline FAILED message and retry; selected Morgan, draft and warm/font22/density1.2 unchanged; keyboard focus only brings target into view",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 5442104,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-failed-retained-maximum.jpg",
+      "sha256": "55f7fd1e9c03eb25d1b480ff71577f2ee4a974ed5c7e7656731bbd282d7da8ee",
+      "locale": "en",
+      "observed": "Actual SQLx retained same FAILED message after token refresh rebind and English switch; draft/appearance unchanged; retry visible; selection reopened after refresh so not uninterrupted selection claim",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 5442104,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-native-retry-sent-maximum.jpg",
+      "sha256": "2cf88f70be76bca179f3a3ca9f8eef27f30b8e76fc407b9b73feaa4e48bdab05",
+      "locale": "en",
+      "observed": "Actual native failed→retry→Sent; server1message/1logicalOutbox; retained draft and max appearance; selected owned Morgan; no first-send wireRID claim",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 5442104,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    },
+    {
+      "file": "en-invalid-preference-process-restart.jpg",
+      "sha256": "c5b3dec30c995b6541180c0647387b4c9dc90ca20086d4f86a029399afc4b1da",
+      "locale": "en",
+      "observed": "Actual new PID30696 after PID23888 absent; rawEN invalid preference defaults English; warm/font22/density1.2 unchanged; no auto download",
+      "mime": "image/jpeg",
+      "width": 1283,
+      "height": 843,
+      "window": {
+        "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+        "id": 460926,
+        "title": "IM+ · PlugWorldIM"
+      },
+      "sourceSHA": "9700c498700d1cfef3b48c445452d87851621c64",
+      "installedSHA256": "c2ef1b521e86d65dd6908ee110585d3c472c37614aad7afaac61183571f20c13",
+      "actual": "Installed Windows Tauri; own controlled real Go/PG/NATS; screenshots unedited originals; parent observations not independent acceptance"
+    }
+  ],
+  "artifacts": {
+    "acceptance-web-stage3/binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-stage3\\binding.json",
+      "sha256": "56ffa3ef9d6c80683ccbafcc75719fb8ebd4101b3398f596ac0221542227adc4"
+    },
+    "acceptance-web-real3/binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-real3\\binding.json",
+      "sha256": "237a1cc378d2321b41d1a286ced2cc02c586ed4dc808534439466a8403c0a3ab"
+    },
+    "acceptance-web-real3/browser-result.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-real3\\browser-result.json",
+      "sha256": "6ccb5bc960ab944fe300896c0f017930973f4df5a842bb8f5ecb814bfc6ab826"
+    },
+    "acceptance-web3-independent/report.md": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web3-independent\\report.md",
+      "sha256": "e0682a19da4693c40685a60926eacb254353e3955d761b6f01a60b303eeab85c"
+    },
+    "acceptance-web3-independent/machine-audit.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web3-independent\\machine-audit.json",
+      "sha256": "8d43dd7858d8c81a8981afb3503b223bf92128ea4b5d3f9dfd7d4b84508c16ab"
+    },
+    "acceptance-web3-independent/hash-inventory.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web3-independent\\hash-inventory.json",
+      "sha256": "653184e1f7ed23cdb278bbaaea5734e362cbbd305024adfe94c8df37d82d3ff7"
+    },
+    "acceptance-desktop/build-binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-desktop\\build-binding.json",
+      "sha256": "7dd0c89108146dafa28d82c83c16e23605a227f2476ad75576558d4b8f118dc4"
+    },
+    "acceptance-desktop-before/original.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-desktop-before\\original.json",
+      "sha256": "ecb50e8cc9949e4a90b0c425caaa2cd27f6d29c28f25156ae12ec484b000dc8f"
+    },
+    "acceptance-desktop-before/installed.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-desktop-before\\installed.json",
+      "sha256": "a560c3231a9aae26b052ab91f42201d1abcb93945e8c3966ad7c6d983fa55290"
+    },
+    "acceptance-desktop-before/restored.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-desktop-before\\restored.json",
+      "sha256": "623f177d026832160cf5327a5c3d373cc52b752515875b7ded4f80083e2792bc"
+    },
+    "acceptance-native-captures/manifest.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-native-captures\\manifest.json",
+      "sha256": "6779416d99363b8983887105a7616f383db7f7c57ea3b27fac330cb3df3eb1df"
+    },
+    "acceptance-native-captures/restart-before.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-native-captures\\restart-before.json",
+      "sha256": "1878cefb23cd7f7dfae5ab28c3ae389e58f227d6d5ef89ddb09077722a5dee29"
+    },
+    "acceptance-native-captures/invalid-before.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-native-captures\\invalid-before.json",
+      "sha256": "40ef23711c1d24cf6adacc0e3d1b6c9a1d0191e28ebc7babb0e1c82d6bbfcc57"
+    },
+    "acceptance-native-captures/offline-before-db.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-native-captures\\offline-before-db.json",
+      "sha256": "2d61c55c61802886427711a40b1fc5d1396e691aed6327af8f973d7c7ab53807"
+    },
+    "acceptance-native-captures/retry-after-db.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-native-captures\\retry-after-db.json",
+      "sha256": "70fb47aba886e5f7b883c361e4520701e41b534f38274b5245a16e5e363a893a"
+    },
+    "machine-trust-proposal-readonly.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\machine-trust-proposal-readonly.json",
+      "sha256": "3db87d259b50cd3b53546b1383f349ab828f2d671efe910f9745b84a65468520"
+    },
+    "machine-trust-lease-open.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\machine-trust-lease-open.json",
+      "sha256": "dddf6a1e38695946f29f8537253a9b15719985a9cd4474a7b7debe21a1dac841"
+    },
+    "machine-trust-lease-closed.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\machine-trust-lease-closed.json",
+      "sha256": "ab997c86d5c29ec252163d32dc0826f8758c453a560815f00be3f7fae7ff114d"
+    },
+    "acceptance-cleanup-fresh-verification.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-cleanup-fresh-verification.json",
+      "sha256": "11f140d8dc6b6414911f62f10d1ad9caa2cc479cebae0be9e104d0d77ae5d019"
+    },
+    "acceptance-runtime.log": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-runtime.log",
+      "sha256": "15cfbf0e2548262e000033d1164666af231366aad9b3f486a79168f5138701f6"
+    },
+    "acceptance-web-independent/report.md": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-independent\\report.md",
+      "sha256": "df5e66f09466268c53c0189ebac7069366013b190807a1734014ae7a3a836887"
+    },
+    "acceptance-web-real2/browser-result.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-real2\\browser-result.json",
+      "sha256": "643480d2d933956d9a2b641855bc6002a2cccb346b59c87434c2319f3c91161d"
+    },
+    "acceptance-web-fix/handoff.md": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-fix\\handoff.md",
+      "sha256": "3bae60a578b29b674fde6a00b3ab93840504794ea4db1c53cac4451dde94cac0"
+    },
+    "acceptance-web-fix-review/report.md": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-fix-review\\report.md",
+      "sha256": "5b30e2122b27a502ab05e89dc1c120fa580b7edb11571f7d6a65c2203fb744a4"
+    },
+    "acceptance-web-fix2/handoff.md": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\acceptance-web-fix2\\handoff.md",
+      "sha256": "0d5626e1041c0bd1ec901f4f8076d0f2529ba7fd1e43362dbe4f6f476a802ef5"
+    }
+  },
+  "cleanup": {
+    "machineRootLease": {
+      "status": "CLOSED",
+      "started": true,
+      "thumbprint": "8713a454493c0513e523e79ec1ec92b054120754",
+      "userSame": true,
+      "machineSame": true,
+      "ownedAbsent": true,
+      "closedUTC": "2026-10-12T06:45:05.4168093Z"
+    },
+    "freshVerification": {
+      "rootSets": [
+        {
+          "count": 74,
+          "ownedAbsent": true,
+          "location": "CurrentUser",
+          "completeThumbprintDERSetSame": true
+        },
+        {
+          "count": 72,
+          "ownedAbsent": true,
+          "location": "LocalMachine",
+          "completeThumbprintDERSetSame": true
+        }
+      ],
+      "freshPid": 52000,
+      "result": "PASS_LOCAL_CHECKS",
+      "utc": "2026-10-12T06:47:28.6963471Z",
+      "scope": "Fresh separate process compares both full original thumbprint+DER sets; no trust mutation",
+      "leaseReceipt": "machine-trust-lease-closed.json"
+    },
+    "nativeRestoration": {
+      "scope": "Only verified known three installation files and exact two original preferences restored; controlled fixture account data retained, no private DB/credential restoration claim",
+      "preferences": [
+        {
+          "exists": true,
+          "name": "appearance.json",
+          "same": true
+        },
+        {
+          "exists": false,
+          "name": "language.txt",
+          "same": true
+        }
+      ],
+      "restored": [
+        {
+          "sha256": "18f8b5bb6f8a8c1a6ec8777421a5440c60fabf03a4f8dea0f24deb48ed870503",
+          "name": "im-client-storage.exe",
+          "same": true
+        },
+        {
+          "sha256": "bd39f3b1f260a9d951388cb4441cc54f906830107ffaebc5e2561734f76f3dbf",
+          "name": "storage_probe.exe",
+          "same": true
+        },
+        {
+          "sha256": "37a8c2fa503f6831cb5939a63e707cfc7d83b01bb7da17bebaf2a78d2ca979fe",
+          "name": "uninstall.exe",
+          "same": true
+        }
+      ],
+      "utc": "2026-10-12T06:45:04.3752246Z",
+      "result": "PASS_LOCAL_CHECKS",
+      "stoppedPid": 30696
+    },
+    "backend": "Actual child exit0; log PASS owned fixture cleanup; no unrelated container/volume operation"
+  },
+  "sourceEquivalence": "9700..e829 only actual.mjs; native artifact/captures remain honestly bound9700, source equivalence independently checked in Web3 report; not relabeled as rebuilt e829",
+  "blockedPublishing": {
+    "result": "AUTO_REVIEW_REJECTED",
+    "destination": "https://github.com/nilesthump/IM-platform",
+    "reason": "Public GitHub publication requires explicit trusted Human approval; two push attempts rejected, no workaround or successful push; metadata confirms configured origin but does not itself grant permission"
+  },
+  "qualification": "Prospective-resume Recorder incomplete pre-start trace; prior Web/native CLI/cwd/package/restore failures retained. Native first screenshot metadata correction transparent, pixels unchanged. Native English FAILED caption explicitly notes refresh rebind and reopened selection. No new OS visible notification card or native first-send wireRID/A/B proof claim; accepted source-equivalent baseline retained."
+}

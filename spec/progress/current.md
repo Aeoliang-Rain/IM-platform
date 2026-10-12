@@ -5,55 +5,57 @@ Current Stage: S2
 Current Gate: S2
 Gate Status: OPEN
 Current Batch: LOOP1-CLIENT-I18N-001
-Batch Status: ACTIVE
+Batch Status: REVIEW
 Current Task: LOOP1-CLIENT-I18N-001
-Current Task State: active
-Execution Status: IMPLEMENTATION_ACTIVE
-Owned Trust Lease: CLOSED; exact CurrentUser and LocalMachine full thumbprint+DER sets restored; CA absent. Receipt windows-trust-closed-certutil.json.
+Current Task State: review
+Execution Status: INDEPENDENT_REVIEW_PUBLICATION_APPROVAL_PENDING
+Owned Trust Lease: CLOSED; exact original CurrentUser74/LocalMachine72 full thumbprint+DER sets restored, owned CA absent; fresh-process verification PASS.
 
 ## Immediately Relevant Completed Work
 
-UIREF final administrative seal PASS at b52f8b85bc699821f3720e339fcd48e17b2b04b1; all seal evidence hashes checked. Supersedes earlier administrative pending. I18N unique active, client_supplement_phase i18n_product; dependencies satisfied. S1 PASS/S2 OPEN.
-
-## Verification
-
-Latest local WIP checks are recorded in `spec/progress/evidence/LOOP1-CLIENT-I18N-001/resume-20261012.json`. Historical failures remain preserved. Three-end builds and real Web six A/B cases passed; Android actual Compose and true process restart passed; Desktop offline switch, Japanese system notification and true process restart passed with appearance bytes preserved. These checks are not independent acceptance.
-
-- Command: `python -Xutf8 -B ci/check_architecture.py --scope all --json`
-  - Result: PASS exit0; generated outputs retained in owned archive.
-  - Evidence: `spec/progress/evidence/LOOP1-CLIENT-I18N-001/resume-20261012.json`
-- Command: `python -Xutf8 -B -m unittest discover -s tests/architecture -p test_client_technology.py`
-  - Result: PASS exit0, 25 tests.
-  - Evidence: `spec/progress/evidence/LOOP1-CLIENT-I18N-001/resume-20261012.json`
+Product/capture candidate `e829352aa02c3e87d3d01376df4ef1ac2c9ede38` committed; Web3 real6 A/B/69originals independently PASS. Android9700 independent19pixels/true restart/TLS negatives remain source-equivalent. Installed Desktop9700 normalTLS login/3language/maxappearance/offline/draft/history/nativeFAILED retry/ja+invalidEN true restart PASS_LOCAL_CHECKS; Native Architect/fullsemantic pending. Details: acceptance-20261012.json.
 
 ## Current Blockers
 
-No authority revision: canonical/manifest/ADR12 unchanged. Native/browser runtime and independent acceptance PENDING. Actual static resource publication/download/manage/offline-pack persistence and future default/JSON migration are deferred to issue https://github.com/nilesthump/IM-platform/issues/37; current scope is only unpublished JSON artifact build plus three built-in languages.
+Automatic approval review rejected push to public origin, requiring explicit Human publication authorization. Two latest capture-only commits remain local. Prepare/review final committed recovery candidate, then ask final approval. Full independent native/semantic review, applicable exact-head hosted/protected integration/actual-main and safe main sync pending. Issue37 NOT required.
+
+## Verification
+
+- Command: `python -Xutf8 -B ci/check_architecture.py --scope all --json`
+  - Result: Current source PASS exit0; local only.
+  - Evidence: `spec/progress/evidence/LOOP1-CLIENT-I18N-001/repaired-20261012.json`
+- Command: `tests/clients/i18n/runtime.py android` and `run-pixel2-android-restart.py`
+  - Result: Actual exact9700 Compose/Go/TLS checks and five restart phases PASS_LOCAL_CHECKS; preferences restored.
+  - Evidence: `spec/progress/evidence/LOOP1-CLIENT-I18N-001/repaired-20261012.json`
+
+- Command: tools/verify-loop1-ctrl-002.ps1 -Mode Development
+  - Result: PASS exit0; dirty recovery schema only, NOT acceptance.
+  - Evidence: spec/progress/evidence/LOOP1-CLIENT-I18N-001/repaired-20261012.json
 
 ## Changed Files or Migrations
 
-I18N resources, adapters/providers/list/tray WIP plus fix1 guard and display-interface repairs. No migrations.
+Original three-end language product and unpublished artifact builder; Android line metrics/capture settling; latest Web screenshot framing only. Recovery evidence/task moved active→review/current/checkpoint. No contract/schema/dependency/security authority change.
 
 ## Known Failures, Risks, and Assumptions
 
-Recovery first attempt selected system Python2.7 and failed; explicit Python3 PATH corrected it. Recorder parent prompt duplicate association rejected; independent same-prompt registration/run succeeds. All failures preserved. Runtime evidence pending.
+Earlier e5/335 Android pixels, Windows trust-view and Web normalTLS failures preserved. Web1 behaviorPASS/pixelsFAIL; Web2 strict viewport-peerFAIL, Web3 independentlyPASS after minimal capture repair. Native package/cwd/defaultRecorderroot/NSIS3-byte marker initial mismatch and first restoration PowerShell module failure retained; approved exact bundle-marker proof/restoration succeeded. Initial screenshot metadata corrected transparently. Research prospective_resume/incomplete earlier trace, not TaskPASS. No new OS visible notification-card/native first-send RID/full A/B proof claim; unchanged accepted baselines bounded.
 
 ## Next Exact Action
 
-Prepare clean committed candidate and source/build bindings; obtain fresh independent Architect/semantic Review, exact-head hosted CI, protected integration/actual-main and safe main synchronization. User resume revoked pause; zh-CN/ja-JP tray need no repeat screenshots. Own trust/services/AVD are closed.
+Complete final fresh Native Architect/fullsemantic clean committed Review and local recovery checks. Present exact reviewable commit and request explicit publicGitHub publication authorization; after approval push same task branch, required exact-head hosted/protected PR/actualmain checks and verified safe H:/IM-platform synchronization. Do not implementissue37 or repeat user-acceptedzh/ja tray. All owned native/backend/trust fixtures already restored/closed.
 
 ## Last Known Good Commit
 
-`b52f8b85bc699821f3720e339fcd48e17b2b04b1`: external final UIREF acceptance and verified actual main/safe sync PASS.
+`b52f8b85bc699821f3720e339fcd48e17b2b04b1`: independently accepted UIREF actual-main/safe sync. Current i18n candidate not integrated; main unchanged and782 original files/status SHA verified preserved.
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-12-loop1-client-i18n-001-runtime.md`
+`spec/progress/checkpoints/2026-10-12-loop1-client-i18n-001-acceptance.md`; evidence `spec/progress/evidence/LOOP1-CLIENT-I18N-001/acceptance-20261012.json`.
 
 ## Uncommitted Changes / Ownership
 
-Parent Coordinator is the sole repository writer; worker is external AUTHOR ONLY. All I18N WIP remains in assigned worktree H:/.codex/worktrees/i18n/IM-platform, branch task/LOOP1-CLIENT-I18N-001. Main782 unknown paths preserved per fresh parent snapshot; do not adopt or write main.
+Parent owns known task recovery documents/evidence/checkpoints and generatedruntime archives in assigned H:/.codex/worktrees/i18n/IM-platform, task/LOOP1-CLIENT-I18N-001. Product/capture source committed, two latestcommits unpushed; independent reviewer read-only. Unknownmainwork preserved; no other write lease. Main synchronization PENDING.
 
 ## Architecture Conflicts / ACP / ADR
 
-None; canonical efbe04c7 unchanged. S1 PASS/S2 OPEN.
+None. Canonical/ADR12 unchanged; S1 PASS/S2 OPEN. Human explicitly excludes issue37 from current task acceptance. Machine trust is temporary controlled test environment approval, not a product security change.
