@@ -61,7 +61,10 @@ class I18nComposeInstrumentation:Instrumentation(){
  private fun hash(file:File):String{val digest=MessageDigest.getInstance("SHA-256");file.inputStream().use{stream->val bytes=ByteArray(8192);while(true){val n=stream.read(bytes);if(n<0)break;digest.update(bytes,0,n)}};return digest.digest().joinToString(""){"%02x".format(it.toInt()and 255)}}
  private fun snapshot(s:WorkspaceState)=JSONObject().put("locale",s.language).put("theme",s.appearance.theme).put("fontSize",s.appearance.fontSize).put("density",s.appearance.density).put("selected",s.selected).put("messageCount",s.messages.size).put("sessionPresent",s.session!=null).put("connection",s.connection).put("sync",s.sync)
  private fun capture(name:String,step:String){
-  waitForIdleSync();uiAutomation.waitForIdle(1000,5000)
+  waitForIdleSync()
+  // Accessibility idle can be historical; semantics may switch before NavHost pixels settle.
+  // Wait on the instrumentation thread beyond the observed ~700ms transition, leaving main free.
+  android.os.SystemClock.sleep(1000);waitForIdleSync();uiAutomation.waitForIdle(1000,5000)
   val image=checkNotNull(uiAutomation.takeScreenshot());val file=File(directory,name+".png");check(!file.exists())
   file.outputStream().use{verify(image.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it))}
   captures.put(snapshot(vm().state.value).put("file",file.name).put("sha256",hash(file)).put("width",image.width).put("height",image.height).put("step",step));image.recycle()
@@ -102,7 +105,7 @@ class I18nComposeInstrumentation:Instrumentation(){
     capture(locale+"-settings","Actual Settings fixed language entry and native preference write")
     for((page,key) in listOf("friends" to "friends.reach","ai" to "ai.title","plugin" to "plugin.workspace")){
      val destination=text(key);navigate(page,destination,languageEntry)
-     capture(locale+"-"+page,"Actual Compose navigation; destination present and outgoing Settings absent, then accessibility idle")
+     capture(locale+"-"+page,"Actual Compose navigation; destination present and outgoing Settings absent, then 1000ms elapsed settling/main idle/accessibility idle")
      navigate("settings",languageEntry,destination)
     }
    }
