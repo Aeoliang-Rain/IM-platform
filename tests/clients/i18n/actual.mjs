@@ -19,6 +19,8 @@ function uuid(v){assert.match(v,/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4
 function snapshot(r){uuid(r);return JSON.parse(sql(`SELECT json_build_object('messages',(SELECT count(*) FROM messages WHERE request_id='${r}'),'outbox',(SELECT count(*) FROM outbox_events WHERE payload->>'requestId'='${r}'),'rows',(SELECT coalesce(json_agg(json_build_object('requestId',request_id,'senderId',sender_id,'conversationId',conversation_id,'messageId',server_message_id,'seq',seq::text,'createdAt',created_at,'content',text_body)), '[]'::json) FROM messages WHERE request_id='${r}'))`));}
 async function shot(p,name,l,text,stateKey,secondText){
  await settled(p,l);const framing=[];
+ const contains=(box,clip)=>box&&box.width>0&&box.height>0&&box.x>=clip.left&&box.y>=clip.top&&box.x+box.width<=clip.right&&box.y+box.height<=clip.bottom;
+ const checkBounds=(box,clip,role)=>{if(!contains(box,clip)){const error=new Error('Capture bounds failed');error.capture_geometry={capture:name,role,box,clip};throw error;}};
  if(text){
   const texts=secondText?[text,secondText]:[text],targets=texts.map(value=>article(p,value));
   for(const target of targets)assert.equal(await target.count(),1);
@@ -35,10 +37,16 @@ async function shot(p,name,l,text,stateKey,secondText){
    const required=[target,target.locator('p'),target.locator('.message-meta'),status];
    if(stateKey==='chat.webFailed'){const retry=target.getByRole('button',{name:t('chat.retry',l),exact:true});assert(await retry.isVisible());required.push(retry);}
    const clip=await p.locator('.messages').evaluate(el=>{const r=el.getBoundingClientRect();return {left:Math.max(0,r.left+el.clientLeft),top:Math.max(0,r.top+el.clientTop),right:Math.min(window.innerWidth,r.left+el.clientLeft+el.clientWidth),bottom:Math.min(window.innerHeight,r.top+el.clientTop+el.clientHeight)};});
-   for(const item of required){const box=await item.boundingBox();assert(box&&box.width>0&&box.height>0&&box.x>=clip.left&&box.y>=clip.top&&box.x+box.width<=clip.right&&box.y+box.height<=clip.bottom,'Capture target/text/state/retry must be fully inside scroller and viewport');}
+   for(let j=0;j<required.length;j++)checkBounds(await required[j].boundingBox(),clip,['target','text','metadata','status','retry'][j]);
    framing.push({text:texts[i],state_key:stateKey,box:await target.boundingBox(),clip});
   }
-  for(const item of [p.locator('.chat-heading h2'),p.locator('#message')]){const box=await item.boundingBox(),viewport=p.viewportSize();assert(box&&box.x>=0&&box.y>=0&&box.x+box.width<=viewport.width&&box.y+box.height<=viewport.height,'Capture must retain peer and composer in viewport');}
+  // The selected peer is above the viewport on a tall baseline page, but remains in the full-page original.
+  const peer=p.locator('.chat-heading h2');assert(await peer.isVisible());
+  const documentBounds=await p.evaluate(()=>({left:-window.scrollX,top:-window.scrollY,right:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)-window.scrollX,bottom:Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-window.scrollY}));
+  const peerBox=await peer.boundingBox();checkBounds(peerBox,documentBounds,'selected-peer-fullpage');
+  const viewport=p.viewportSize(),composerBox=await p.locator('#message').boundingBox();
+  checkBounds(composerBox,{left:0,top:0,right:viewport.width,bottom:viewport.height},'composer-viewport');
+  framing.push({selected_peer:{box:peerBox,document_bounds:documentBounds},composer:{box:composerBox,viewport}});
  }
  const file=name+'.png';await p.screenshot({path:path.join(out,file),fullPage:true});captures.push({file,sha256:hash(await fs.readFile(path.join(out,file))),state:name,locale:l,framing,source_sha:config.source_sha,wip:config.wip,source_is_clean_committed_candidate:config.clean,viewport:p.viewportSize(),appearance:await p.evaluate(()=>({raw:localStorage.getItem('plugworldim.appearance.v1'),theme:document.documentElement.dataset.theme,density:document.documentElement.dataset.density,font:getComputedStyle(document.documentElement).fontSize})),fixture_project:fixture.project,actual_endpoint:fixture.endpoint,relay_origin:origin,browser:browser.version(),browser_channel:config.browser_channel,default_tls:true});
 }
@@ -78,5 +86,5 @@ try{
  }
  assert.deepEqual(errors,[]);assert.equal(proofs.length,6);
  await fs.writeFile(path.join(out,'browser-result.json'),JSON.stringify({result:'PASS_LOCAL_CHECKS',scope:'real existing Go/PG/NATS A/B ordering/live receiver and i18n retention; Architect/independent acceptance pending',source_sha:config.source_sha,wip:config.wip,clean:config.clean,fixture_project:fixture.project,browser:browser.version(),default_browser_tls:true,build_files:config.build_files,source_inputs:config.source_inputs,captures,preservation,proofs,errors},null,2));console.log('PASS_LOCAL_CHECKS actual Go/PG/NATS Web six A/B cases; default Edge TLS; no independent acceptance');
-}catch(e){if(sender){try{await shot(sender,'failure',locale)}catch{}}await fs.writeFile(path.join(out,'browser-result.json'),JSON.stringify({result:'FAIL',sanitized_failure:{stage,name:e.name,code:e.code??null,assertion_operator:e.operator??null,message:'Actual owned browser/DB assertion failed; no auth values or raw browser URLs retained'},source_sha:config.source_sha,wip:config.wip,fixture_project:fixture.project,captures,preservation,proofs,errors},null,2));console.log('FAIL actual Web; retained sanitized browser-result.json');process.exitCode=1;}
+}catch(e){if(sender){try{await shot(sender,'failure',locale)}catch{}}await fs.writeFile(path.join(out,'browser-result.json'),JSON.stringify({result:'FAIL',sanitized_failure:{stage,name:e.name,code:e.code??null,assertion_operator:e.operator??null,capture_geometry:e.capture_geometry??null,message:'Actual owned browser/DB assertion failed; no auth values or raw browser URLs retained'},source_sha:config.source_sha,wip:config.wip,fixture_project:fixture.project,captures,preservation,proofs,errors},null,2));console.log('FAIL actual Web; retained sanitized browser-result.json');process.exitCode=1;}
 finally{await senderContext?.close();await receiverContext?.close();await browser?.close();}
