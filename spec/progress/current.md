@@ -8,16 +8,16 @@ Current Batch: LOOP1-CLIENT-I18N-001
 Batch Status: REVIEW
 Current Task: LOOP1-CLIENT-I18N-001
 Current Task State: review
-Execution Status: INDEPENDENT_REVIEW_PUBLICATION_APPROVAL_PENDING
-Owned Trust Lease: CLOSED; exact original CurrentUser74/LocalMachine72 full thumbprint+DER sets restored, owned CA absent; fresh-process verification PASS.
+Execution Status: INDEPENDENT_REVIEW_FIXED_NATIVE_ACCEPTANCE_PENDING
+Owned Trust Lease: CLOSED07:32:02Z; fresh separate-process PASS complete original user74/machine72 thumbprint+DER sets restored and exact test CA absent. Original native files/preferences restored; backend closed.
 
 ## Immediately Relevant Completed Work
 
-Product/capture candidate `e829352aa02c3e87d3d01376df4ef1ac2c9ede38` committed; Web3 real6 A/B/69originals independently PASS. Android9700 independent19pixels/true restart/TLS negatives remain source-equivalent. Installed Desktop9700 normalTLS login/3language/maxappearance/offline/draft/history/nativeFAILED retry/ja+invalidEN true restart PASS_LOCAL_CHECKS; Native Architect/fullsemantic pending. Details: acceptance-20261012.json.
+Product/capture e829 followed by fixed native candidate1115 committed; targeted actual fixed Desktop13originals and full restoration PASS_LOCAL_CHECKS; details navigation-repair-20261012.json. Web/Android product inputs unchanged. Earlier  Web3 real6 A/B/69originals independently PASS. Android9700 independent19pixels/true restart/TLS negatives remain source-equivalent. Installed Desktop9700 normalTLS login/3language/maxappearance/offline/draft/history/nativeFAILED retry/ja+invalidEN true restart PASS_LOCAL_CHECKS; Native Architect/fullsemantic pending. Details: acceptance-20261012.json.
 
 ## Current Blockers
 
-Automatic approval review rejected push to public origin, requiring explicit Human publication authorization. Two latest capture-only commits remain local. Prepare/review final committed recovery candidate, then ask final approval. Full independent native/semantic review, applicable exact-head hosted/protected integration/actual-main and safe main sync pending. Issue37 NOT required.
+Fresh independent Native review FAIL on retained-session Online indicator preserved. Fresh fix1115 committed; actual fixed build/install/normalTLS/13original disconnected-reconnected captures passed locally and fixtures restored. NEW fresh independent review pending. Human publication authorization now granted after review; prior auto-review rejections retained as history. Exact-head hosted/protected integration/actual-main/safe sync pending; issue37 NOT required.
 
 ## Verification
 
@@ -42,7 +42,7 @@ Earlier e5/335 Android pixels, Windows trust-view and Web normalTLS failures pre
 
 ## Next Exact Action
 
-Complete final fresh Native Architect/fullsemantic clean committed Review and local recovery checks. Present exact reviewable commit and request explicit publicGitHub publication authorization; after approval push same task branch, required exact-head hosted/protected PR/actualmain checks and verified safe H:/IM-platform synchronization. Do not implementissue37 or repeat user-acceptedzh/ja tray. All owned native/backend/trust fixtures already restored/closed.
+Complete NEW fresh independent Review/Native Architect on committed fixed runtime recovery and clean recovery checks. After Review PASS publish under granted Human authorization, required exact-head hosted/protected PR/actualmain checks and verified safe H:/IM-platform synchronization. Do not implementissue37 or repeat user-acceptedzh/ja tray. All owned native/backend/trust fixtures already restored/closed.
 
 ## Last Known Good Commit
 
@@ -50,12 +50,16 @@ Complete final fresh Native Architect/fullsemantic clean committed Review and lo
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-12-loop1-client-i18n-001-acceptance.md`; evidence `spec/progress/evidence/LOOP1-CLIENT-I18N-001/acceptance-20261012.json`.
+`spec/progress/checkpoints/2026-10-12-loop1-client-i18n-001-navigation.md`; evidence `spec/progress/evidence/LOOP1-CLIENT-I18N-001/acceptance-20261012.json`.
 
 ## Uncommitted Changes / Ownership
 
-Parent owns known task recovery documents/evidence/checkpoints and generatedruntime archives in assigned H:/.codex/worktrees/i18n/IM-platform, task/LOOP1-CLIENT-I18N-001. Product/capture source committed, two latestcommits unpushed; independent reviewer read-only. Unknownmainwork preserved; no other write lease. Main synchronization PENDING.
+Parent owns known task recovery documents/evidence/checkpoints and generatedruntime archives in assigned H:/.codex/worktrees/i18n/IM-platform, task/LOOP1-CLIENT-I18N-001. Product/capture/fix source committed, recovery being committed, latestcommits unpushed; independent reviewer read-only. Unknownmainwork preserved; no other write lease. Main synchronization PENDING.
 
 ## Architecture Conflicts / ACP / ADR
 
 None. Canonical/ADR12 unchanged; S1 PASS/S2 OPEN. Human explicitly excludes issue37 from current task acceptance. Machine trust is temporary controlled test environment approval, not a product security change.
+
+## Latest targeted verification
+
+Actual clean fix1115 NSIS build/install marker proof, normal system TLS, native13 originals disconnect/reconnect three locales, controlledPG2messages/2Outbox/0draft, original native/preference restoration and fresh full root-set restoration PASS_LOCAL_CHECKS. Evidence: navigation-repair-20261012.json. Fresh independent acceptance and hosted/integration/sync PENDING.
