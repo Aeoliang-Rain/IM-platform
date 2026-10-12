@@ -27,11 +27,12 @@ class UiRefFixtureTrust private constructor(private val originalContext:SSLConte
         restorationProof=org.json.JSONObject().put("providerOrderBefore",org.json.JSONArray(originalProviders)).put("providerOrderAfter",org.json.JSONArray(Security.getProviders().map{it.name})).put("socketProviderBefore",originalSocketProvider).put("socketProviderAfter",Security.getProperty("ssl.SocketFactory.provider")).put("sameDefaultContext",SSLContext.getDefault()===originalContext).put("sameHTTPSFactory",HttpsURLConnection.getDefaultSSLSocketFactory()===originalFactory).put("emptyMarkerAbsent",Security.getProvider("UIRefFixtureCacheRefresh")==null).toString()
     }
     companion object {
-        fun install(path:String):UiRefFixtureTrust {
+        fun install(path:String, expectedDigest:String="a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5"):UiRefFixtureTrust {
+            require(Regex("[a-f0-9]{64}").matches(expectedDigest))
             require(path=="/sdcard/Android/data/im.platform.client/files/ui-ref-ca.der" || path=="/data/data/im.platform.client/files/ui-ref-ca.der")
             val bytes=File(path).readBytes();require(bytes.size<8192)
             val digest=MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it)}
-            require(digest=="a8042057db2373aa63b5b46c860c61614ba0e4bd6627f1acd3244dcf22d1c2f5")
+            require(digest==expectedDigest)
             val ca=CertificateFactory.getInstance("X.509").generateCertificate(bytes.inputStream()) as java.security.cert.X509Certificate
             ca.checkValidity();require(ca.basicConstraints==0)
             val keys=KeyStore.getInstance(KeyStore.getDefaultType()).apply{load(null);setCertificateEntry("ui-ref-owned-local-fixture",ca)}

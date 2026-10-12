@@ -24,3 +24,6 @@ mode='bad';await client.sync(c);assert.match(client.view().sync,/同步失败/);
 console.log('PASS Web behavior: exact auth/contracts, no initial backfill, memory state, retry identity, terminal SENT, gap/duplicates/page rollback, refresh/logout and stale callback isolation');
 
 await import('./regressions.mjs');
+
+const {verifyCompiledI18n}=await import('../i18n/compiled.mjs');
+await verifyCompiledI18n(root);

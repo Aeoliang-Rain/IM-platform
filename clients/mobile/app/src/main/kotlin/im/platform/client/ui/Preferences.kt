@@ -15,6 +15,8 @@ class Preferences(context:Context) {
     fun loadAppearance():Appearance {val value=Appearance(appearance.getString("theme","cold")!!,appearance.getInt("fontSize",16),appearance.getFloat("density",1f));validate(value);return value}
     private fun validate(v:Appearance){require(v.theme in listOf("cold","warm") && v.fontSize in 14..22 && listOf(.8f,1f,1.2f).any {kotlin.math.abs(v.density-it)<.001f})}
     fun saveAppearance(v:Appearance){validate(v);check(appearance.edit().putString("theme",v.theme).putInt("fontSize",v.fontSize).putFloat("density",v.density).commit())}
+    fun loadLanguage():String=try {val value=appearance.getString("language",null);if(value=="en"||value=="zh-CN"||value=="ja-JP")value!! else "en"}catch(_:Exception){"en"}
+    fun saveLanguage(value:String){require(value=="en"||value=="zh-CN"||value=="ja-JP");check(appearance.edit().putString("language",value).commit())}
     private fun key():SecretKey {
         val store=KeyStore.getInstance("AndroidKeyStore");store.load(null);(store.getKey("im-platform-refresh",null) as? SecretKey)?.let {return it}
         val generator=KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,"AndroidKeyStore");generator.init(KeyGenParameterSpec.Builder("im-platform-refresh",KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT).setBlockModes(KeyProperties.BLOCK_MODE_GCM).setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE).setRandomizedEncryptionRequired(true).build());return generator.generateKey()

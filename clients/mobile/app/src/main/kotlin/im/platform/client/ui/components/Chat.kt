@@ -22,16 +22,19 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 
 import im.platform.client.ui.*
-@Composable fun Chat(state:WorkspaceState,open:(String)->Unit,reconnect:()->Unit,retry:(String)->Unit,send:(String)->Unit) {
+import im.platform.client.ui.i18n.*
+@Composable fun Chat(state:WorkspaceState,open:(String)->Unit,reconnect:()->Unit,retry:(String)->Unit,send:(String)->Unit,draft:String,setDraft:(String)->Unit) {
+    val t=useText()
+
     if(state.selected.isEmpty()){
         ConversationList(state,open);return
     }
-    var draft by remember(state.session?.userId){mutableStateOf("")};val selected=state.friends.find{it.directConversationId==state.selected};val spacing=(10*state.appearance.density).dp
+    val selected=state.friends.find{it.directConversationId==state.selected};val spacing=(10*state.appearance.density).dp
     Column(Modifier.fillMaxSize(),verticalArrangement=Arrangement.spacedBy(spacing)){
-        if(state.conversations.isEmpty()){Panel(Modifier.fillMaxWidth(),state.appearance){Text("Your next conversation starts here",style=MaterialTheme.typography.titleLarge);Text("Find a friend to open a private chat.")}}else {
-            Row(verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(selected?.user?.displayName?:"Conversation",style=MaterialTheme.typography.titleMedium);Text(if(state.connection=="ready")"Messages sync automatically"else"Offline · Showing saved history",style=MaterialTheme.typography.bodyMedium)};TextButton(onClick=reconnect,enabled=state.session!=null){Text("Reconnect")}}
+        if(state.conversations.isEmpty()){Panel(Modifier.fillMaxWidth(),state.appearance){Text(t("chat.next"),style=MaterialTheme.typography.titleLarge);Text(t("chat.addHint"))}}else {
+            Row(verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(selected?.user?.displayName?:t("chat.conversation"),style=MaterialTheme.typography.titleMedium);Text(if(state.connection=="ready")t("sync.automatic")else t("sync.offline"),style=MaterialTheme.typography.bodyMedium)};TextButton(onClick=reconnect,enabled=state.session!=null){Text(t("auth.reconnect"))}}
         }
         Messages(state,spacing,retry,Modifier.weight(1f))
-        Composer(state,draft,{draft=it},send){draft=""};Spacer(Modifier.height(5.dp))
+        Composer(state,draft,setDraft,send){setDraft("")};Spacer(Modifier.height(5.dp))
     }
 }

@@ -22,20 +22,23 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 
 import im.platform.client.ui.*
+import im.platform.client.ui.i18n.*
 @Composable fun Login(state:WorkspaceState,login:(String,String,String)->Unit,register:(String,String,String)->Unit,restore:(String)->Unit) {
+    val t=useText()
+
     var registering by remember{mutableStateOf(false)};var username by remember{mutableStateOf("")};var password by remember{mutableStateOf("")};var confirmation by remember{mutableStateOf("")}
     LaunchedEffect(state.registered){if(state.registered){registering=false;password="";confirmation=""}}
     Column(Modifier.fillMaxWidth().imePadding().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(14.dp)){
-        Text("Stay close. Think beyond.",fontSize=(state.appearance.fontSize+10).sp,fontWeight=FontWeight.Bold)
+        Text(t("auth.stayCloseMobile"),fontSize=(state.appearance.fontSize+10).sp,fontWeight=FontWeight.Bold)
         Panel(Modifier.fillMaxWidth(),state.appearance){
-            Text(if(registering)"Create your account"else"Open your workspace",style=MaterialTheme.typography.titleLarge)
-            if(state.registered&&!registering)Text("Account created. Sign in to continue.")
-            OutlinedTextField(value=username,onValueChange={username=it},label={Text("Username")},singleLine=true,modifier=Modifier.fillMaxWidth())
-            OutlinedTextField(value=password,onValueChange={password=it},label={Text("Password")},visualTransformation=PasswordVisualTransformation(),singleLine=true,modifier=Modifier.fillMaxWidth())
-            if(registering){OutlinedTextField(value=confirmation,onValueChange={confirmation=it},label={Text("Confirm password")},visualTransformation=PasswordVisualTransformation(),singleLine=true,modifier=Modifier.fillMaxWidth());Text("Use 12–256 characters for your password.",style=MaterialTheme.typography.bodyMedium)}
-            Button(onClick={if(registering)register(username,password,confirmation)else{login(state.endpoint,username,password);password=""}},enabled=!state.busy&&username.isNotEmpty()&&password.isNotEmpty()&&(!registering||confirmation.isNotEmpty()),modifier=Modifier.fillMaxWidth()){Text(if(state.busy)"Please wait…"else if(registering)"Create account"else"Sign in")}
-            TextButton(onClick={registering=!registering;password="";confirmation=""},enabled=!state.busy,modifier=Modifier.fillMaxWidth()){Text(if(registering)"Already have an account? Sign in"else"New here? Create an account")}
-            if(!registering)TextButton(onClick={restore(state.endpoint)},enabled=!state.busy,modifier=Modifier.fillMaxWidth()){Text("Resume saved session")}
+            Text(if(registering)t("auth.createTitle")else t("auth.openTitle"),style=MaterialTheme.typography.titleLarge)
+            if(state.registered&&!registering)Text(t("auth.created"))
+            OutlinedTextField(value=username,onValueChange={username=it},label={Text(t("auth.username"))},singleLine=true,modifier=Modifier.fillMaxWidth())
+            OutlinedTextField(value=password,onValueChange={password=it},label={Text(t("auth.password"))},visualTransformation=PasswordVisualTransformation(),singleLine=true,modifier=Modifier.fillMaxWidth())
+            if(registering){OutlinedTextField(value=confirmation,onValueChange={confirmation=it},label={Text(t("auth.confirmPassword"))},visualTransformation=PasswordVisualTransformation(),singleLine=true,modifier=Modifier.fillMaxWidth());Text(t("auth.passwordHint"),style=MaterialTheme.typography.bodyMedium)}
+            Button(onClick={if(registering)register(username,password,confirmation)else{login(state.endpoint,username,password);password=""}},enabled=!state.busy&&username.isNotEmpty()&&password.isNotEmpty()&&(!registering||confirmation.isNotEmpty()),modifier=Modifier.fillMaxWidth()){Text(if(state.busy)t("auth.wait")else if(registering)t("auth.create")else t("auth.signIn"))}
+            TextButton(onClick={registering=!registering;password="";confirmation=""},enabled=!state.busy,modifier=Modifier.fillMaxWidth()){Text(if(registering)t("auth.existing")else t("auth.new"))}
+            if(!registering)TextButton(onClick={restore(state.endpoint)},enabled=!state.busy,modifier=Modifier.fillMaxWidth()){Text(t("auth.resume"))}
         }
     }
 }

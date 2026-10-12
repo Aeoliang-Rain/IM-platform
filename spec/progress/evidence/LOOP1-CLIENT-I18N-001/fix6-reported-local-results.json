@@ -1,0 +1,24 @@
+{
+  "task": "LOOP1-CLIENT-I18N-001",
+  "scope": "ADR12 en default/fallback and three built-ins; separate en/ja JSON artifacts NOT_PUBLISHED",
+  "issue": "https://github.com/nilesthump/IM-platform/issues/37",
+  "provenance": "Parent direct reports; raw commands/results in external i18n-research, not independently accepted by this worker",
+  "reported_results": [
+    "Existing Web locked install/build/behavior/regressions/STATE friend cache/stale callbacks/appearance PASS exit0 before fix6",
+    "Resource verify.py PASS exit0 before fix6",
+    "Desktop locked npm ci/tsc/build PASS exit0",
+    "Android assembleDebug and AndroidTest build PASS; original unquoted Gradle argument failure preserved",
+    "Actual Windows language_owned_file_exact_enum_and_appearance_isolation: 1 test PASS; prior zero-test execution not counted",
+    "Independent en/ja JSON external output PASS; NOT_PUBLISHED",
+    "Latest guard run FAIL from parent-created build outputs scanned under clients: 2410 errors; 24 of 25 tests PASS; outputs being preserved outside client tree, no guard waiver"
+  ],
+  "pending": [
+    "guard/test rerun after owned output relocation",
+    "fix6 browser execution/screenshots",
+    "actual Compose runner/preferences execution",
+    "installed Desktop/tray/notification",
+    "real backend regression/process restart",
+    "Architect approval",
+    "fresh independent Review/exact-head hosted CI/integration/actual-main/safe sync"
+  ]
+}

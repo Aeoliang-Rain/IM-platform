@@ -22,4 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 
 import im.platform.client.ui.*
-@Composable fun Future(symbol:String,title:String,description:String,detail:String,prefs:Appearance){Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)){Panel(Modifier.fillMaxWidth(),prefs){Text(symbol,fontSize=60.sp,color=MaterialTheme.colorScheme.primary);Text(title,style=MaterialTheme.typography.titleLarge);Text(description);AssistChip(onClick={},label={Text("Coming later")});Text(detail,style=MaterialTheme.typography.bodyMedium)}}}
+import im.platform.client.ui.i18n.*
+@Composable fun Future(symbol:String,title:String,description:String,detail:String,prefs:Appearance){
+    val t=useText()
+Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)){Panel(Modifier.fillMaxWidth(),prefs){Text(symbol,fontSize=60.sp,color=MaterialTheme.colorScheme.primary);Text(title,style=MaterialTheme.typography.titleLarge);Text(description);AssistChip(onClick={},label={Text(t("ai.later"))});Text(detail,style=MaterialTheme.typography.bodyMedium)}}}

@@ -438,7 +438,38 @@ def check_android(root, policy):
     return errors
 
 
-def check_web_storage(relative, text, policy):
+def language_product_enabled(root):
+    import importlib.util
+    try:
+        spec = importlib.util.spec_from_file_location('i18n_planning_authority', Path(__file__).with_name('check_s2_planning.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        if module.check(root): return False
+        tasks, errors = module.inventory(root)
+        entries = tasks.get('LOOP1-CLIENT-I18N-001', [])
+        return (not errors and len(entries) == 1 and entries[0][0] in ('active', 'review', 'done')
+                and entries[0][2].get('client_supplement_phase') == 'i18n_product')
+    except (OSError, ValueError, KeyError):
+        return False
+
+
+def check_language_storage(relative, code, enabled):
+    errors = []
+    if relative != 'clients/web/src/ui/language.ts' or not enabled:
+        return [f'CLIENT {relative}: language storage requires exact adapter and accepted i18n product phase']
+    declaration = r'const\s+LANGUAGE_KEY\s*=\s*"plugworldim\.language\.v1"\s*;'
+    read = r'window\.localStorage\.getItem\(LANGUAGE_KEY\)'
+    write = r'window\.localStorage\.setItem\(LANGUAGE_KEY,value\)'
+    if len(re.findall(declaration, code)) != 1 or len(re.findall(read, code)) != 1 or len(re.findall(write, code)) != 1:
+        errors.append(f'CLIENT {relative}: language requires direct fixed-key raw scalar read/write')
+    remaining = re.sub(read, '', re.sub(write, '', code))
+    if re.search(r'localStorage|JSON|\b(?:clear|removeItem|trim|toLowerCase|message\w*|history\w*|credential\w*|session\w*|token\w*)\b', remaining, re.I):
+        errors.append(f'CLIENT {relative}: alternate storage, normalization or business payload forbidden')
+    if 'validLocale(raw)?raw:"en"' not in code or 'if(!validLocale(value))return false;' not in code:
+        errors.append(f'CLIENT {relative}: exact locale validation and English read fallback required')
+    return errors
+
+
+def check_web_storage(relative, text, policy, language_enabled=False):
     """One authority-bound appearance record; no generic storage/path waiver.
 
     Direct calls and explicit projection are intentionally bounded. Actual value
@@ -449,6 +480,8 @@ def check_web_storage(relative, text, policy):
     errors = []
     if re.search(r'\b(?:sqlite\w*|indexedDB|sessionStorage)\b|\bcaches\s*[.\[]|\bdocument\s*\.\s*cookie\b', code, re.I):
         errors.append(f'CLIENT {relative}: Web must remain memory only / no SQLite/history persistence')
+    if relative == 'clients/web/src/ui/language.ts' or 'plugworldim.language.v1' in code:
+        return errors + check_language_storage(relative, code, language_enabled)
     authority = policy['web_appearance']
     storage = bool(re.search(r'\blocalStorage\b', code, re.I))
     key = authority['key']
@@ -477,10 +510,53 @@ def check_web_storage(relative, text, policy):
     return errors
 
 
+def check_native_language(relative, text, enabled):
+    if relative.startswith('clients/mobile/app/src/androidTest/'):
+        return []  # Test-only faults are not production adapter ownership.
+    code = uncomment_client(text)
+    compact = re.sub(r'\s+', '', code)
+    ts = 'clients/desktop/src/application/ui/native.ts'
+    rust = 'clients/desktop/src-tauri/src/desktop_capabilities.rs'
+    android = 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt'
+    errors = []
+    tokens = ('"language_load"', '"language_save"', '.join("language.txt")', '.putString("language",')
+    if relative not in (ts, rust, android):
+        if any(token in compact for token in tokens):
+            errors.append(f'CLIENT {relative}: native language persistence confined to exact approved adapters')
+        return errors
+    present = ('exportconstlanguage=' in compact if relative == ts else 'fnlanguage_load(' in compact if relative == rust else 'funloadLanguage(' in compact)
+    if not present: return errors
+    if not enabled:
+        errors.append(f'CLIENT {relative}: native language persistence requires accepted i18n phase')
+    if relative == ts:
+        start = compact.find('exportconstlanguage=')
+        part = compact[start:compact.find('exportconsttrayText=', start)]
+        required = ('invoke<unknown>("language_load")', 'validLocale(value)?value:"en"', 'catch{return"en";}', 'if(!validLocale(value))', 'invoke<void>("language_save",{value})')
+        if any(token not in part for token in required) or re.search(r'credentials?|sqlite|appearance|localStorage|trim\(|toLowerCase\(', part, re.I):
+            errors.append(f'CLIENT {relative}: language intent must validate exact enum and use only narrow native commands')
+    elif relative == rust:
+        start = compact.find('fnvalid_language('); end = compact.find('pubfnsetup(', start)
+        part = compact[start:end]
+        required = ('matches!(value,"en"|"zh-CN"|"ja-JP")', 'file.take(6).read_to_end(&mutbytes)', 'bytes.len()>5', 'std::str::from_utf8(&bytes)', 'valid_language(value)', 'if!valid_language(value)', 'std::fs::write(path,value.as_bytes())')
+        if any(token not in part for token in required) or part.count('.join("language.txt")') != 2 or re.search(r'credentials?|sqlite|appearance|serde|trim\(|to_lowercase\(', part, re.I):
+            errors.append(f'CLIENT {relative}: native language file must remain fixed raw bounded UTF-8 enum')
+        for name,signature in [('language_load','app:tauri::AppHandle'),('language_save','app:tauri::AppHandle,value:String')]:
+            if f'pubfn{name}({signature})' not in part:
+                errors.append(f'CLIENT {relative}: arbitrary language path/argument forbidden')
+    else:
+        start = compact.find('funloadLanguage('); end = compact.find('privatefunkey(', start)
+        part = compact[start:end]
+        required = ('appearance.getString("language",null)', 'value=="en"||value=="zh-CN"||value=="ja-JP"', 'else"en"', 'catch(_:Exception){"en"}', 'require(value=="en"||value=="zh-CN"||value=="ja-JP")', 'appearance.edit().putString("language",value).commit()')
+        if any(token not in part for token in required) or re.search(r'credentials?|sqlite|putInt|putFloat|remove\(|clear\(|trim\(|lowercase\(',part,re.I):
+            errors.append(f'CLIENT {relative}: language must be one validated String key in existing appearance MODE_PRIVATE store')
+    return errors
+
+
 def check_clients(root):
     policy, errors = client_policy(root)
     if errors:
         return errors
+    language_enabled = language_product_enabled(root)
     errors += check_android(root, policy)
     files = []
     for directory in ('clients', '.github/workflows'):
@@ -532,7 +608,9 @@ def check_clients(root):
         if suffix == '.dart' or path.name.lower() in {'pubspec.yaml', 'pubspec.lock', '.metadata'} or (suffix != '.md' and FORBIDDEN_CLIENT.search(text)):
             errors.append(f'CLIENT {relative}: Dart/Flutter active source/dependency/configuration forbidden')
         if relative.startswith('clients/web/') and suffix != '.md':
-            errors += check_web_storage(relative, text, policy)
+            errors += check_web_storage(relative, text, policy, language_enabled)
+        if client and suffix in {'.ts', '.tsx', '.kt', '.rs'}:
+            errors += check_native_language(relative, text, language_enabled)
         if path.name == 'package.json':
             try:
                 manifest = json.loads(text)
