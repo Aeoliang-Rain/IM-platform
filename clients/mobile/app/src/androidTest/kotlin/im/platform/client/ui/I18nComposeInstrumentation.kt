@@ -42,6 +42,11 @@ class I18nComposeInstrumentation:Instrumentation(){
   repeat(12){if(target==null){target=clickable(root(),text)?.takeIf{it.isEnabled};if(target==null){scroll(root());waitForIdleSync();Thread.sleep(150)}}}
   val node=checkNotNull(target){"Actual clickable UI absent: "+text};verify(node.isEnabled);verify(node.performAction(AccessibilityNodeInfo.ACTION_CLICK));waitForIdleSync();Thread.sleep(200)
  }
+ private fun navigate(page:String,visible:String,absent:String){
+  click(text("nav."+page))
+  // NavHost keeps outgoing content during its animation; a changed toolbar is not settled content.
+  await{val tree=root();find(tree,visible)!=null&&find(tree,absent)==null}
+ }
  private fun fill(label:String,value:String){
   await{find(root(),label)!=null};var node=find(root(),label)!!
   while(node.actionList.none{it.id==AccessibilityNodeInfo.ACTION_SET_TEXT})node=node.parent?:error("Actual editable UI absent")
@@ -56,7 +61,7 @@ class I18nComposeInstrumentation:Instrumentation(){
  private fun hash(file:File):String{val digest=MessageDigest.getInstance("SHA-256");file.inputStream().use{stream->val bytes=ByteArray(8192);while(true){val n=stream.read(bytes);if(n<0)break;digest.update(bytes,0,n)}};return digest.digest().joinToString(""){"%02x".format(it.toInt()and 255)}}
  private fun snapshot(s:WorkspaceState)=JSONObject().put("locale",s.language).put("theme",s.appearance.theme).put("fontSize",s.appearance.fontSize).put("density",s.appearance.density).put("selected",s.selected).put("messageCount",s.messages.size).put("sessionPresent",s.session!=null).put("connection",s.connection).put("sync",s.sync)
  private fun capture(name:String,step:String){
-  waitForIdleSync();uiAutomation.waitForIdle(200,5000)
+  waitForIdleSync();uiAutomation.waitForIdle(1000,5000)
   val image=checkNotNull(uiAutomation.takeScreenshot());val file=File(directory,name+".png");check(!file.exists())
   file.outputStream().use{verify(image.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it))}
   captures.put(snapshot(vm().state.value).put("file",file.name).put("sha256",hash(file)).put("width",image.width).put("height",image.height).put("step",step));image.recycle()
@@ -95,7 +100,11 @@ class I18nComposeInstrumentation:Instrumentation(){
    for((index,locale) in locales.withIndex()){
     await{find(root(),languageEntry)!=null};click(languageNames[index]);await{vm().state.value.language==locale&&prefs.loadLanguage()==locale};verify(vm().state.value.session?.sessionId==baseline.session?.sessionId);verify(vm().state.value.appearance==baseline.appearance)
     capture(locale+"-settings","Actual Settings fixed language entry and native preference write")
-    for(page in listOf("friends","ai","plugin")){click(text("nav."+page));capture(locale+"-"+page,"Actual Compose navigation");click(text("nav.settings"))}
+    for((page,key) in listOf("friends" to "friends.reach","ai" to "ai.title","plugin" to "plugin.workspace")){
+     val destination=text(key);navigate(page,destination,languageEntry)
+     capture(locale+"-"+page,"Actual Compose navigation; destination present and outgoing Settings absent, then accessibility idle")
+     navigate("settings",languageEntry,destination)
+    }
    }
    click(text("nav.chat"));click(peer);await{vm().state.value.selected==expected};verify(find(root(),draft)!=null);capture("ja-JP-navigation-draft","Settings/navigation did not discard Shell-owned draft")
    close();launch();await{vm().state.value.language=="ja-JP"};verify(prefs.loadLanguage()=="ja-JP");capture("ja-JP-activity-recreated-login","Actual activity/ViewModel recreation loads persisted locale; not process restart claim")

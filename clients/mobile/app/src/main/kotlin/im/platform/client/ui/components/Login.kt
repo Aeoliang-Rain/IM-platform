@@ -29,7 +29,7 @@ import im.platform.client.ui.i18n.*
     var registering by remember{mutableStateOf(false)};var username by remember{mutableStateOf("")};var password by remember{mutableStateOf("")};var confirmation by remember{mutableStateOf("")}
     LaunchedEffect(state.registered){if(state.registered){registering=false;password="";confirmation=""}}
     Column(Modifier.fillMaxWidth().imePadding().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(14.dp)){
-        Text(t("auth.stayCloseMobile"),fontSize=(state.appearance.fontSize+10).sp,fontWeight=FontWeight.Bold)
+        Text(t("auth.stayCloseMobile"),fontSize=(state.appearance.fontSize+10).sp,lineHeight=((state.appearance.fontSize+10)*1.25f).sp,fontWeight=FontWeight.Bold)
         Panel(Modifier.fillMaxWidth(),state.appearance){
             Text(if(registering)t("auth.createTitle")else t("auth.openTitle"),style=MaterialTheme.typography.titleLarge)
             if(state.registered&&!registering)Text(t("auth.created"))
