@@ -1,0 +1,254 @@
+[
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:40:05.240509Z",
+    "finished": "2026-10-13T05:40:05.470465Z",
+    "command_id": "C-59f93bb0-2cdc-46c8-a7da-fe301584cb60",
+    "duration_ms": 219.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-59f93bb0-2cdc-46c8-a7da-fe301584cb60.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-59f93bb0-2cdc-46c8-a7da-fe301584cb60.stdout.txt",
+    "stdout_sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:40:06.774226Z",
+    "finished": "2026-10-13T05:40:06.979782Z",
+    "command_id": "C-2e2f7e0f-1244-46f4-ba46-74b5d82fdf33",
+    "duration_ms": 187.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-2e2f7e0f-1244-46f4-ba46-74b5d82fdf33.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-2e2f7e0f-1244-46f4-ba46-74b5d82fdf33.stdout.txt",
+    "stdout_sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:40:08.145385Z",
+    "finished": "2026-10-13T05:40:15.047811Z",
+    "command_id": "C-40ccab59-ddde-444e-888e-6ae006f59933",
+    "duration_ms": 6859.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-40ccab59-ddde-444e-888e-6ae006f59933.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-40ccab59-ddde-444e-888e-6ae006f59933.stdout.txt",
+    "stdout_sha256": "284d2e51abf788b268fad6b368e8017f9c6a64fb3c60b2fb8119055d0f9ac22d"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Acceptance"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:40:35.989150Z",
+    "finished": "2026-10-13T05:41:20.539267Z",
+    "command_id": "C-624b64ea-265e-41f3-9640-27357d3b9c36",
+    "duration_ms": 44532.0,
+    "exit_code": 1,
+    "result": "FAIL",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-624b64ea-265e-41f3-9640-27357d3b9c36.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-624b64ea-265e-41f3-9640-27357d3b9c36.stdout.txt",
+    "stdout_sha256": "fda111677b6bbdff547452564c7bce087ef32f9147f1c13b4c5145c02233e090"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/11/01a12b31-cc14-7501-939e-af2463e0f507/acceptance-fixed-independent/go-diagnostic.py"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:43:04.572842Z",
+    "finished": "2026-10-13T05:43:09.842438Z",
+    "command_id": "C-4e7bacb5-7802-4f8e-a4a6-0c0324cb00a9",
+    "duration_ms": 5266.0,
+    "exit_code": 1,
+    "result": "FAIL",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-4e7bacb5-7802-4f8e-a4a6-0c0324cb00a9.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-4e7bacb5-7802-4f8e-a4a6-0c0324cb00a9.stdout.txt",
+    "stdout_sha256": "2eed5c133c24ebc07c5883d024b1e64d74deff868ac61b319300cfc43d0036b4"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/11/01a12b31-cc14-7501-939e-af2463e0f507/acceptance-fixed-independent/audit.py"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:43:10.962924Z",
+    "finished": "2026-10-13T05:43:14.832695Z",
+    "command_id": "C-a7073343-4766-495b-a012-ab999f676d80",
+    "duration_ms": 3859.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-a7073343-4766-495b-a012-ab999f676d80.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-a7073343-4766-495b-a012-ab999f676d80.stdout.txt",
+    "stdout_sha256": "928c655be38ff4f43522590de9487cfd7a299632d1dceae226d1fb66dfe137b0"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Acceptance"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:43:28.824880Z",
+    "finished": "2026-10-13T05:43:57.966999Z",
+    "command_id": "C-fc2b5590-aeb9-46e2-bb1a-3ac46541daa8",
+    "duration_ms": 29141.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-fc2b5590-aeb9-46e2-bb1a-3ac46541daa8.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-fc2b5590-aeb9-46e2-bb1a-3ac46541daa8.stdout.txt",
+    "stdout_sha256": "267fdfa5596f9821ba288eaf075a28c709492393ba506174b1255ab930a1e0ec"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/build_language_packs.py",
+      "--verify"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:44:40.655282Z",
+    "finished": "2026-10-13T05:44:40.861181Z",
+    "command_id": "C-003b7aca-7666-415a-b9b3-72f2743f1a36",
+    "duration_ms": 203.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-003b7aca-7666-415a-b9b3-72f2743f1a36.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-003b7aca-7666-415a-b9b3-72f2743f1a36.stdout.txt",
+    "stdout_sha256": "bfeb03575d6a7363096efe0cf1c9126b16e1da59dd18f09aed26fb9474ea6862"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/clients/i18n",
+      "-p",
+      "test_language_packs.py"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:44:42.157097Z",
+    "finished": "2026-10-13T05:44:42.410614Z",
+    "command_id": "C-7fdbfa92-a620-4529-ab9d-35c3d2b74dde",
+    "duration_ms": 250.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-7fdbfa92-a620-4529-ab9d-35c3d2b74dde.stderr.txt",
+    "stderr_sha256": "e0215d339015e477dcb94673aee870b369f93fee9905861eaef8b8e5cf73d24d",
+    "stdout_blob": "blobs/C-7fdbfa92-a620-4529-ab9d-35c3d2b74dde.stdout.txt",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "H:/node.js/node.exe",
+      "tests/clients/i18n/verify.mjs"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:44:43.580107Z",
+    "finished": "2026-10-13T05:44:44.348294Z",
+    "command_id": "C-a6a88057-d82b-466c-b965-ce001cfb8e59",
+    "duration_ms": 766.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-a6a88057-d82b-466c-b965-ce001cfb8e59.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-a6a88057-d82b-466c-b965-ce001cfb8e59.stdout.txt",
+    "stdout_sha256": "e8408ac51410c6dd8cee6598ee186788b8802937d219a1d884187d96cd9d1e48"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/11/01a12b31-cc14-7501-939e-af2463e0f507/acceptance-fixed-independent/audit.py"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:46:25.621855Z",
+    "finished": "2026-10-13T05:46:29.236964Z",
+    "command_id": "C-fbb69dec-c83d-4fdc-a953-4d8a1dd9a45c",
+    "duration_ms": 3610.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-fbb69dec-c83d-4fdc-a953-4d8a1dd9a45c.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-fbb69dec-c83d-4fdc-a953-4d8a1dd9a45c.stdout.txt",
+    "stdout_sha256": "4a1aedf9da546040bba3d5128e4981d79b75ba8e8d74db322f2cf235fbc18f4b"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/11/01a12b31-cc14-7501-939e-af2463e0f507/acceptance-fixed-independent/audit.py"
+    ],
+    "cwd": "H:/.codex/worktrees/i18n-v/IM-platform",
+    "started": "2026-10-13T05:47:06.953809Z",
+    "finished": "2026-10-13T05:47:09.206841Z",
+    "command_id": "C-00ff29ff-29ad-4513-983e-abb8bca25cbb",
+    "duration_ms": 2250.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-00ff29ff-29ad-4513-983e-abb8bca25cbb.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-00ff29ff-29ad-4513-983e-abb8bca25cbb.stdout.txt",
+    "stdout_sha256": "ba6670f49ec84e55343faf66326f46281d7657fd4001fa2f007bdb883b4399d5"
+  }
+]
