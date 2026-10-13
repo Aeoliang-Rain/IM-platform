@@ -1,0 +1,58 @@
+[
+  {
+    "id": "F-CLEANUP-CAUSE-CYCLE",
+    "priority": "P2",
+    "candidate": "b5ea1350cd1909582029c6258d17b37f5354e594",
+    "title": "Keep direct protocol rejection outside its own cause tree",
+    "locations": [
+      {
+        "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+        "line": 33,
+        "column": 13
+      },
+      {
+        "path": "clients/web/src/application/http.ts",
+        "line": 30,
+        "column": 13
+      },
+      {
+        "path": "clients/web/src/application/http.ts",
+        "line": 47,
+        "column": 13
+      }
+    ],
+    "trigger": "Direct response size validation or nonempty controlled204 logout stream throws newly created known protocol error; mandatory reader.cancel rejects distinct genuine known DOMException.",
+    "actual": "When sourceFailure absent, AggregateError roots contain primary.error, then Object.defineProperty(primary.error,cause) attaches same aggregate. thrownError.cause.errors[0]===thrownError creates a self-cause loop in all three blocks. Cancellation executes exactlyonce; classification remains original protocol/INVALID_RESPONSE. This is root graph corruption, not fabricated networkfailure.",
+    "authority": "CurrentTask unknown/root-propagation acceptance + spec/governance/error-handling.md no rootloss/meaningless wrapping + explicitly requested no selfcause loop.",
+    "repro": "cycle-repro.mjs strict compiled current actual source, real Response/ReadableStream; oversize MAX_RESPONSE+1 and controlled AbortError cancellation. Logout204 actualstatus with adapter-controlledexposedbody, not claim native204 allowsbody.",
+    "evidence": "Recorder successful cycle-repro run stdout; checks.json confirms strict source compile. Existing cleanup modes allPASS do not cover directprotocol validation origins.",
+    "minimal_repair": "Preserve a distinct original protocol validation error as root in combinedcause without adding aggregate containing that same object to its own cause; preserve knownFAILED category, unknownError/primitive propagation, same-root dedup, and mandatorycleanup. No genericframework. Add three directprotocol validation/cancel controls checking classification/rawroots/cancelcount and absence of cycle.",
+    "affected_source_sha256": {
+      "clients/shared/protocol-sdk/src/sync/http.ts": "7a7525c809f29b8f772f0f0378b960387fcac8d71b8175fecdad364eeea57307",
+      "clients/web/src/application/http.ts": "8b349bb74dd0fc5f5fca978c6c6fbeff5632287a6aeee3dfe455c5af15ede3e6",
+      "tests/clients/errors/stream_cleanup.mjs": "a24bc6d9fbdf5c9f063b5fc847976b07d4b3f9910253d74e30d77b1961852307"
+    }
+  },
+  {
+    "id": "F-CONTIGUOUS-READ-DEFAULT",
+    "priority": "P2",
+    "candidate": "b5ea1350cd1909582029c6258d17b37f5354e594",
+    "title": "Default contiguous sequence only for absent conversation row",
+    "locations": [
+      {
+        "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+        "line": 129,
+        "column": 12
+      }
+    ],
+    "actual": "Exact productionread returns BigInt(\"\")=0 for existing malformed requiredfield. Actual preserved SQLx probe with unchanged canonical schema accepts controlled emptyTEXT in integer-affinity field (CHECK>=0 permits typeordering) and CASTreadreturns emptystring. Productioncontiguous then silently fake0. ActualNoRow0 legitimate control passes. Controlled malformed schema existingNULL separately fake0 via??, not claim canonicalNOTNULL allowsNULL.",
+    "current_basis": "Current Human fullproduction READ/errorhandling requires invariantbreaks explicitfailure rather than fake normaldata. Protectedfile writeexclusion is not readsemantic exemption.",
+    "repro": "cursor-repro.mjs; freshly compiled exactcurrent Repository; preserved actualSQLx binary hashedbelow; ownedexternalfixture only, invaliddata injection is not productionwritepolicy change.",
+    "mobile_assessment": "Android emptyString.toLong() throws NumberFormatException, so no shared empty-string finding applies there. Android presentNULL->0 Elvis is sourceconfirmed conditional malformed-schema risk; no actualSDK/emulator reexecution, not reported as actualnative reproduction.",
+    "minimum_repair": "Keep no-row→0. Existingrow requiredfield must be present nonnull canonicaldecimal and validrange before BigInt; throw unknown/invariantfailure otherwise. No SQL/schema/write/draft change. Review Android analogous presentnull read mapping under newly authorizedscope if selected.",
+    "scope_conflict": "Current allowed_paths excludes shared/mobile storageRepository and Forbidden forbids Repository change. Coordinator must obtain explicit Human read-only mapper scope exception before any such writes; does not require Frozen/contracts modification.",
+    "probe_sha256": "5e391c02dfa36381cb9c88341ba9e3be45035c6e911f2d2a7fa4cc77bc2fbfb4",
+    "source_sha256": "647f45b9589fb91c79ab5b7a9de96c779ce6b575b868d84334773ad9d0f3e09f",
+    "fixture": "owned-cursor-fixture retained externalasrepro evidence; allprobeprocesses synchronous closed; no source/device/globaltrust mutation"
+  }
+]

@@ -37,3 +37,6 @@ try{
   fault="";assert.deepEqual(await repo.messages(C),before);assert.equal(await repo.cursor(),savedCursor);assert.equal(await repo.contiguous(C),savedPrefix);assert(observed.length>=9);assert(observed.every(e=>e==="Storage directory unavailable"));
   console.log("PASS actual SQLx read-path failure -> query provenance -> Sync failed/recovery and Workspace list/history/friends/offline/initialize errors; original durable data and cursor preserved. Private probe, no installed GUI/Go acceptance claim.");
 }finally{rmSync(root,{recursive:true,force:true});}
+
+const {verifyNativeContiguous}=await import('./contiguous_native_reads.mjs');
+await verifyNativeContiguous(build,probe);

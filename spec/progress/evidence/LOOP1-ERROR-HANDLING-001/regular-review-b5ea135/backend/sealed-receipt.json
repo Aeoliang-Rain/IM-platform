@@ -1,0 +1,205 @@
+{
+  "candidate_sha": "b5ea1350cd1909582029c6258d17b37f5354e594",
+  "base": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "root": "H:/.codex/worktrees/err/IM-platform",
+  "status_porcelain": "",
+  "role": "fresh regular Review backend helper",
+  "actor": "/root/regular_review_b5ea135/backend_review",
+  "result": "PASS",
+  "files": 39,
+  "inventory_retained_sites": 27,
+  "additional_sites": 35,
+  "artifact_seals": [
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\delegation-prompt.txt",
+      "sha256": "aca26f0e8a733a5b16f6eb59fd33cb8196c693ce26f39a2df05fe99362c58093",
+      "bytes": 1389
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\inspect.py",
+      "sha256": "451c269996911cb7f93fcaa4fe6e246eebfe4cc97654a4cf3d0b032eac49dc0b",
+      "bytes": 1400
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\navigation-addendum.json",
+      "sha256": "2faa4678ccece2db014be009aec08d302fb7821d51c39a44c738d89fec4aa9a2",
+      "bytes": 23280
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\prior-live-inspection.json",
+      "sha256": "da3c4b4e6e7eacdcca879cf4004e359e1fc586cbc86f61502b4c82230d45fdd1",
+      "bytes": 3787
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\prompt.txt",
+      "sha256": "4d242341bc0455108004a7eedc0c39f112cc9132f0f1c99beb65d25d4a23bb82",
+      "bytes": 302
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\report.json",
+      "sha256": "e2f43a9af371d5e7c011eba9045cb9daf74adf69dc8a53649c73ef2eefb1a822",
+      "bytes": 1960
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\report.py",
+      "sha256": "5ed3cbeae7f49f48e6defa64850f8ec8e28e96d43ee4f8e8b52621c0071c2880",
+      "bytes": 26643
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\prompts\\P-ERROR-REGULAR-B5EA135-BACKEND\\metadata.json",
+      "sha256": "bab739d1478b6257a6f6bffeceb74e0e1f34f10a65c273eb8e9bea9a13132077",
+      "bytes": 499
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\prompts\\P-ERROR-REGULAR-B5EA135-BACKEND\\prompt.txt",
+      "sha256": "88dd0448d362689b9d932af1c64393455f58e71329a8c1dda7502b8833f24116",
+      "bytes": 301
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\prompts\\P-ERROR-REGULAR-B5EA135-BACKEND-DELEGATION\\metadata.json",
+      "sha256": "742ace1ad117ad842d8639ed9c0c304dcadf048c87c1be1d767f01e9e86b4be7",
+      "bytes": 515
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\prompts\\P-ERROR-REGULAR-B5EA135-BACKEND-DELEGATION\\prompt.txt",
+      "sha256": "aca26f0e8a733a5b16f6eb59fd33cb8196c693ce26f39a2df05fe99362c58093",
+      "bytes": 1389
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-07976563-b574-46ea-8511-1b952e496ae4.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-07976563-b574-46ea-8511-1b952e496ae4.stdout.txt",
+      "sha256": "0989732e009789f2a6e196fdd349f451b95a3345530d15b3e1f8f431c75ad9e0",
+      "bytes": 711
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-43bde397-0ccf-4d08-9cde-472b13b6f3cc.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-43bde397-0ccf-4d08-9cde-472b13b6f3cc.stdout.txt",
+      "sha256": "52341ad8f6c196e1d53070d6b47e5e2dfa413b4b8bdbb44f7abc0c8f97d042f9",
+      "bytes": 5248
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-5ef2370a-3a64-49f5-923d-e90fa651b50f.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-5ef2370a-3a64-49f5-923d-e90fa651b50f.stdout.txt",
+      "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+      "bytes": 163
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-987ff3a3-7485-4eb4-aaf1-b2716f375e26.stderr.txt",
+      "sha256": "3bd4cf7df358bb01f01ee4ac33505e1c57546972cbb4983efbbd53f154baf5dd",
+      "bytes": 364
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-987ff3a3-7485-4eb4-aaf1-b2716f375e26.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-9b2f9e1c-d38d-4c3d-b982-248fbab38013.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-9b2f9e1c-d38d-4c3d-b982-248fbab38013.stdout.txt",
+      "sha256": "42417f43c8bbdeb24a501501e61f7379176bb859b93ddd77d314a48c83f07637",
+      "bytes": 1287
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-b39ac266-d0fe-4d51-8724-93b003e8a507.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-b39ac266-d0fe-4d51-8724-93b003e8a507.stdout.txt",
+      "sha256": "f6a959e0488dfb8e20f0ba79cfe8b2897795ca5ffcbab2ce01c3b5758d92c0c2",
+      "bytes": 64
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-e6691d88-ea74-43b5-a3d5-37496e53e338.stderr.txt",
+      "sha256": "e192a12cf01889a406811435d249d3983bc92e1374ea895966e1bf585b8f1522",
+      "bytes": 366
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\blobs\\C-e6691d88-ea74-43b5-a3d5-37496e53e338.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\diff.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\events.jsonl",
+      "sha256": "813979cd9126523465f6368e120c60331a5c242e873fff695a906f8eeb481802",
+      "bytes": 13836
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\final_state.json",
+      "sha256": "0d510ffd3f5836bd69a4f426f5af7f43319235e5649cfc2407bf87a44a61c97d",
+      "bytes": 13948
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\initial_state.json",
+      "sha256": "177afae5cb046c700dc7e4250a4030a95e9e12963f873f6bef928e3683dc2d4d",
+      "bytes": 13948
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\metadata.json",
+      "sha256": "3453dbef2c89274805b3dd64d1e0120337a66f6a4c14e3958835767ecaef14f7",
+      "bytes": 1094
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\research\\runs\\R-ERROR-REGULAR-B5EA135-BACKEND\\summary.json",
+      "sha256": "a861111205db2c0652da3e2e405c1f48f46d0153985b608516c070e85228edbd",
+      "bytes": 420
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\retained-sites.json",
+      "sha256": "2731c6a936a3e6b632df96ed7ede9f6cdf76ee022f8b37fdb991f4ae3e1b6b7e",
+      "bytes": 18864
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\seal.py",
+      "sha256": "2ee6b40d3f0bee729801c9305722b8e3676f4e317cf937015edbda3c9273b728",
+      "bytes": 1662
+    },
+    {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-b5ea135\\backend\\source-coverage.json",
+      "sha256": "87f6c1771d5950180d337d6d0a168a4f68708ba33809e8653e6a5fba6a6c7476",
+      "bytes": 24879
+    }
+  ],
+  "research_summary": {
+    "event_count": 19,
+    "final_event_hash": "05715b1ad56df3f4e37e2a1b5f67184d1caa318fafa9146ab9dd23027eaf4d6e",
+    "first_event_hash": "7573134b1a37254588efb5a9c880687b9742529f7d645afeff5c574dc6d1bf74",
+    "manifest_hash": "938a3f71ef30151b7d069e05dd36be46d2215f70965f6f677a4287d2cdc019a9",
+    "recorder_schema_version": "1.0.0",
+    "result": "PASS",
+    "run_id": "R-ERROR-REGULAR-B5EA135-BACKEND",
+    "status": "finished"
+  },
+  "recorder_is_not_product_acceptance": true,
+  "full_prospective_trace": false,
+  "no_write_release": {
+    "no_source_git_device_trust_writes": true,
+    "no_build_outputs": true,
+    "external_evidence_only": true,
+    "no_owned_runtime_resource": true,
+    "lease": "READ_ONLY_RELEASED"
+  },
+  "next": "Parent full regular Review; different uninvolved specialized audit still required before hosted CI. No integration/main synchronization claimed."
+}

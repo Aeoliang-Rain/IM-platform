@@ -27,7 +27,8 @@ export class Http {
           if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
           const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
           if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
-            Object.defineProperty(primary.error,"cause",{value:causes});throw primary.error;
+            const failure=new ApiFailure(primary.error.code,primary.error.status);
+            Object.defineProperty(failure,"cause",{value:causes});throw failure;
           }
           throw causes;
         }
@@ -44,7 +45,8 @@ export class Http {
           if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
           const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
           if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
-            Object.defineProperty(primary.error,"cause",{value:causes});throw primary.error;
+            const failure=new ApiFailure(primary.error.code,primary.error.status);
+            Object.defineProperty(failure,"cause",{value:causes});throw failure;
           }
           throw causes;
         }

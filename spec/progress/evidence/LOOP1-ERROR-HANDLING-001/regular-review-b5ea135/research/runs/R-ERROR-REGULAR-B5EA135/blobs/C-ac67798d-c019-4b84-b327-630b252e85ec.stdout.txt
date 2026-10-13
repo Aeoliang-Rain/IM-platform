@@ -1,0 +1,7 @@
+PASS stream cleanup normal/single/known same root/unknown same root/distinct dual roots
+PASS stream cleanup normal/single/known same root/unknown same root/distinct dual roots
+PASS stream cleanup normal/single/known same root/unknown same root/distinct dual roots (actual204 status; controlled adapter-exposed empty stream)
+{"case":"Sync size","classification":"protocol","cancelCount":1,"selfCycle":true,"causeRoot0IsThrownError":true,"source":"current exact source strict compiled; real Response/ReadableStream with controlled known cancellation rejection; logout uses controlled adapter body at real204 status"}
+{"case":"Web JSON size","classification":"INVALID_RESPONSE","cancelCount":1,"selfCycle":true,"causeRoot0IsThrownError":true,"source":"current exact source strict compiled; real Response/ReadableStream with controlled known cancellation rejection; logout uses controlled adapter body at real204 status"}
+{"case":"Web logout illegal body","classification":"INVALID_RESPONSE","cancelCount":1,"selfCycle":true,"causeRoot0IsThrownError":true,"source":"current exact source strict compiled; real Response/ReadableStream with controlled known cancellation rejection; logout uses controlled adapter body at real204 status"}
+CONFIRMED all three direct protocol+known cancel paths create cause->errors[0]->same thrown error

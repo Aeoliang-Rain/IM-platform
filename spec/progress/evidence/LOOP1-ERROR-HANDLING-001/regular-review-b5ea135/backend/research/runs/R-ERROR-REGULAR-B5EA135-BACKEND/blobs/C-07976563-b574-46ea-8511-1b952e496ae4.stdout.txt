@@ -1,0 +1,18 @@
+['rev-parse', 'HEAD'] b5ea1350cd1909582029c6258d17b37f5354e594
+ 
+['rev-parse', '--show-toplevel'] H:/.codex/worktrees/err/IM-platform
+ 
+['status', '--porcelain']  
+['diff', '--name-only', '35bd6f5..HEAD', '--', 'backend', 'deploy', 'plugins', 'contracts', 'tools/build_language_packs.py'] backend/go/core/auth.go
+backend/go/core/error_handling_test.go
+backend/go/core/message.go
+backend/go/core/outbox.go
+backend/go/core/outbox_test.go
+backend/go/core/sync.go
+backend/go/gateway/error_handling_test.go
+backend/go/gateway/gateway.go
+backend/go/gateway/session.go
+backend/go/main.go
+backend/java/InfraPlaceholder.java
+ 
+canonical efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc

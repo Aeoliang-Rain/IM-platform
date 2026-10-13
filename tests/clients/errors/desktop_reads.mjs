@@ -76,3 +76,18 @@ for(const original of [known,...unknowns]){
   if(original===known)await Promise.all([job,closing]);else await Promise.all([assert.rejects(job,e=>e===original),assert.rejects(closing,e=>e===original)]);assert.equal(app.state.status,"retired");assert.equal(app.state.error,null);assert.equal(transactions,0);
 }
 console.log("PASS literal native read boundary: list/history/open/restore/bind/friends, Sync initial and continuation reads, known queue recovery, retained state/cursor, unknown identity and same-code observers, retired-account isolation. Controlled invoke only; live SQLx/TLS tested separately.");
+
+// Current SDK protocol/transport faults remain real FAILED at the Sync consumer.
+{
+ const {SyncHttp}=await import(new URL('shared/protocol-sdk/src/sync/http.js',build));
+ const {SyncFailure}=await import(new URL('shared/protocol-sdk/src/sync/wire.js',build));
+ for(const mode of ['same-known','distinct-known','protocol-distinct','direct-validation']) {
+  reset();let cancelCount=0;const network=new TypeError('controlled network read'),cleanup=new DOMException('controlled cleanup','AbortError');
+  const stream=mode==='same-known'?new ReadableStream({start(controller){controller.error(network);}}):new ReadableStream({start(controller){if(mode==='protocol-distinct')controller.enqueue(new Uint8Array([0xff]));if(mode==='direct-validation')controller.enqueue(new Uint8Array(6*1024*1024+1));},cancel(){throw cleanup;}});
+  const get=stream.getReader.bind(stream);stream.getReader=()=>{const reader=get(),cancel=reader.cancel.bind(reader);reader.cancel=(...args)=>{cancelCount++;return cancel(...args)};if(mode==='distinct-known')reader.read=async()=>{throw network};return reader;};
+  const send=new SendApplication(repo(),session),http=new SyncHttp('https://localhost/',session,async()=>new Response(stream,{headers:{'content-type':'application/json','cache-control':'no-store'}}),()=>S),app=new SyncApplication(send,http);
+  const kind=mode==='protocol-distinct'||mode==='direct-validation'?'protocol':'transport';
+  await assert.rejects(app.synchronize(),error=>error instanceof SyncFailure&&error.kind===kind);await app.idle();assert.equal(app.state.status,'failed');assert.equal(app.state.error,kind);assert.equal(cancelCount,1);assert.equal(transactions,0);await app.close();
+ }
+ console.log('PASS current SDK protocol/transport failures stay FAILED; same/distinct/direct validation cleanup runs once without data/cursor writes');
+}

@@ -1,0 +1,17 @@
+# Fresh regular Review: FAIL
+
+Candidate `b5ea1350cd1909582029c6258d17b37f5354e594`, branch task/LOOP1-ERROR-HANDLING-001, assigned managed root H:/.codex/worktrees/err/IM-platform; base `35bd6f5f1091503f95a0282f730ed04233b0b6ea`. Reviewer /root/regular_review_b5ea135 and freshhelpers backend_review/mobile_review never implemented/fixed/reviewed this candidate before dispatch. All regular role only, ineligible future specializedaudit.
+
+Full185 production paths and305 exact path+ID+line+column navigation sites freshly assessed. Inputhashes and ownactual semantic grounds in semantic-coverage.json/retained-grounds.json; false regex/declaration/license sites explicitly distinguished. Additional51own native/root sites,35backend sites,7mobile sites included separately. Existinginventory counts or oldSHA verdicts never substituted for semantics.65protectedinputs equalbaseline;171changes allowed.
+
+[P2] F-CLEANUP-CAUSE-CYCLE: sharedsync/http.ts33 and Webhttp.ts30/47 attach aggregate containing primary projected error to that same error.cause when directprotocolvalidation lacksrawsource. Exactcompiledsource reproduces all3 branches: thrownError.cause.errors[0]===thrownError; cancel executes once; knownclassification remainsprotocol/INVALID_RESPONSE. Normal/read/decode/same/distinct/primitive controls allPASS, but directprotocol rejection + knowncancel wasmissing. Repaironlythreeblocks + directvalidationcontrols; preserve rawroots/category/unknownidentity and actualcleanup without selfreference.
+
+Freshfrozen/architectureall/planning/cleanAcceptancePASS;82architecture tests PASS oneexistingWindows skip. Currentshared/Web strictcompile and currentcleanupfaultcontrolsPASS. Directcycleproof successful after preserved reviewerESM-fileURL error. Prior Android actualAPI34Send66+Read21/Sync69+Read33/errors and oldGo/Java evidence independently inspected/hashbound with limits, not rerun/relabelledfresh. No newdeviceDiskIO/exactcontinuationfault claim.
+
+No source/Gitrefs/main/GitHub/device/trust change or ownedruntime lease. Compiledprobes/evidence externalonly. Recorderprospective_resume incompletestartup/directinspection trace disclosed; structuralvalidation notacceptance. This is REGULAR FAIL, not specializedaudit/Task/GatePASS. FreshFix then NEWfreshregular then DIFFERENTnewfreshspecialist onsamefinalSHA; hosted14jobs/protectedintegration/actualmain/safesync allpending. Source read-onlylease released after finalcleanproof.
+
+## Additional current READ finding
+
+[P2] F-CONTIGUOUS-READ-DEFAULT: sharedstorage Repository.ts129 uses BigInt(rows[0]?.[0]??"0"). Existing emptyrequiredfield maps0 and NULL/shortrow also fake0. Actual preservedSQLx probe on unchangedcanonicalspecificschema accepted fixture emptyTEXT and queryreturned emptystring; exactcompiled productionmapperreturned0. NoRow0 normalcontrolpasses. NULLshownonlycontrolledmalformedschema, notcanonicalNOTNULL. Androidempty toLong throws; nullableElvissourcecondition reviewed, noSDK/emulatorrerun claim.
+
+Smallestrepair: defaultonlyNoRow; presentcolumnmustcanonicaldecimal/non-null beforeconversion, elseexplicitinvariantfailure. NoSQL/schema/write/draftchange. Currentallowedpaths excludes storageRepository andForbidden says noRepositorychange: Coordinator mustresolve explicitHuman narrowREADmapper exception BEFOREwrites. Scopepreservation/hashmatch wasnotsemanticapproval. Ownedexternalfixture retainedasrepro, allprobeprocessesclosed; no source/device/trustmutation.

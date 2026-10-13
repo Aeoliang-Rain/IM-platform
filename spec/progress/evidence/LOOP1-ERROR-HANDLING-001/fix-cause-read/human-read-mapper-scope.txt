@@ -1,0 +1,3 @@
+Question: 独立审查用真实 SQLx 证明：共享 Repository.contiguous 将已有记录的空序号读成 0；Android 同类只读方法也会将损坏模式下的 NULL 读成 0。此前确认仅修正异常边界，当前 Task 禁止改 Repository，AGENTS.md 要求只写 allowed_paths。是否允许仅修改这两个只读映射：无记录仍返回 0，已有无效序号明确失败？SQL、Schema、事务、写入行为和草稿全部不改。其他已授权修复会继续进行。
+Direct Human reply: 允许仅修正这两个只读映射
+Boundaries: Amend the unique task's exact allowed paths before edits. Only shared/mobile contiguous READ mapping changes are authorized. SQL, Schema, initialization, transactions, write behavior, native database implementation, Composer and drafts remain unchanged. No-row zero remains valid; present invalid data fails. No Frozen/contract change or general framework is authorized.

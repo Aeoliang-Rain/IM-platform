@@ -2,7 +2,7 @@
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
 status: review
-owner: fresh Fix Agent /root/fix_send_cleanup_roots
+owner: fresh Fix Agent /root/fix_cause_cycle_read_scope
 stage: S2
 gate: S2
 ---
@@ -98,6 +98,8 @@ allowed_paths is a hard write boundary and never an architecture exemption. Java
 - `clients/desktop/src-tauri/src/main.rs`
 - `clients/shared/protocol-sdk/src/send/wire.ts`
 - `clients/shared/protocol-sdk/src/sync/*.ts`
+- `clients/shared/protocol-sdk/src/storage/repository.ts` (Human exception: ONLY contiguous read mapper, unchanged SQL/all other bytes)
+- `clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt` (Human exception: ONLY contiguous read mapper, unchanged SQL/all other bytes)
 - `clients/mobile/app/src/main/kotlin/im/platform/client/send/*.kt`
 - `clients/mobile/app/src/main/kotlin/im/platform/client/sync/*.kt`
 - `clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt`
@@ -132,7 +134,7 @@ allowed_paths is a hard write boundary and never an architecture exemption. Java
 
 # Forbidden
 
-不处理SQLite写入失败及草稿保护；不改storage Repository/schema/native database或Composer；不改Frozen/approved ADR/contracts/security/ACK/compatibility/invariants，不加框架/库/重试机制/未来功能。unknown主仓库work不复制、不覆盖、不提交。没有两个最终SHA审查PASS不得push或创建/更新会触发CI的PR。
+不处理SQLite写入失败及草稿保护；不改storage Repository/schema/native database或Composer；唯一Human例外仅shared/mobile Repository.contiguous两个只读映射：无记录0，现有无效序号明确失败，SQL/Schema/初始化/事务/全部写入/草稿不变；不改Frozen/approved ADR/contracts/security/ACK/compatibility/invariants，不加框架/库/重试机制/未来功能。unknown主仓库work不复制、不覆盖、不提交。没有两个最终SHA审查PASS不得push或创建/更新会触发CI的PR。
 
 # Minimality
 
@@ -195,3 +197,11 @@ Regular697ef28 FAIL BOTH F-SEND-READ/F-CLIENT-CLEANUP-ROOT is immutable at regul
 ActualownedAPI34Send66+newRead21/Sync69+existingRead33/originalerrors, lockedWeb strictbuild/behavior/renderer/appearance/i18n, sharedstrictbuild/originalSend/Sync and exactknownFAILED/unknownprimitive/dualcause/logoutcontrols localPASS. Details/knownfailures/limitations/resourcecleanup/method: fix-send-cleanup/handoff.md, input-checks.json, runtime-cleanup.json, verification-history.json. Nativeerroredstream sameknownroot remainsFAILED; onlydistinctroots usebuilt-inAggregateError, preservingknownclassification onlywhenbothboundaryfaults known; unknownprimary neverreclassified. Actual204nullbody vscontrolledadapterexposedemptybranch explicitly labeled. No newdeps/framework/publiccontract/write policy.
 
 Regular Review finalSHA: PENDING; Specialized Error Audit finalSHA: PENDING. NewcleancommittedtaskHEAD delivered externally; bothNEWfreshcontexts mustreview SAMEfinalSHA, no priorPASS reusable. Next: newfreshregularReview thenDIFFERENTfreshspecialist; no push/CItriggeringPR untilbothPASS, thenexactheadhostedCI/protectedintegration/actualmain/safemain sync. Taskreview/S2OPEN, LastGood35bd6f5, synchronizedresultPENDING. RecorderR-ERROR-SEND-CLEANUP-FIX prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013/relatedR-ERROR-REGULAR-697EF28 incompleteprestart/directread factsdisclosed; finish/validateexternal aftercommit. Own5592/AVD/buildleases released/preserved; mainuntouched; sourcewriter releasesonfinalcleancandidate receipt.
+
+# Fresh regular b5ea135 FAIL / Human READ mapper exception
+
+Regular b5ea135 FAIL F-CLEANUP-CAUSE-CYCLE and F-CONTIGUOUS-READ-DEFAULT preserved immutable; sole fresh Fix /root/fix_cause_cycle_read_scope owns repair. Direct Human reply to Coordinator: “允许仅修正这两个只读映射”. Exact question/reply separately saved at fix-cause-read/human-read-mapper-scope.txt; Coordinator boundaries are interpretation of scope, not a new Human quote. This amendment precedes source writes. Only two contiguous READ mappers distinguish absent row zero from invalid present canonical decimal/null failure. No SQL/schema/init/transaction/write/nativeDB/Composer/draft changes. HTTP dual-known branch receives distinct projection to preserve acyclic roots. New finalSHA regular Review and different fresh specialized audit remain PENDING; no push/PR/CI/integration/main sync or Task/S2 PASS. Last accepted35bd6f5; source-only local Fix evidence follows.
+
+# Fresh b5 repair local handoff
+
+Both b5 findings repaired within pre-amended Human scope. Only3HTTP dual-known projections and2contiguousREAD mappings;185inputhashes/305navigation; protected63equal+2READmethod exceptions with allotherbytes/readSQL equal. No false all65unchanged statement applies to this newcandidate; older paragraphs preserve earliercandidate history. Current local lockedshared/Web/strictDesktop/literal/actualSQLx and API34 Sync69+Read33+contiguous18/Send66+Read21 PASS; finalstatic/recovery/history/failures/resources in fix-cause-read/handoff.md and verification-history.json. New finalSHA regular and DIFFERENTfreshspecialist bothPENDING, then exactheadhostedCI/protectedintegration/actualmain/safesync; no push/Taskdone/StagePASS. Taskbranch exactSHA/cleanAcceptance/Recorderreceipt external after cleancommit. LastGood35bd6f5. Own5594/5596closed/buildspreserved; mainuntouched. SoleFix sourcelease releases after finalcleanreceipt.

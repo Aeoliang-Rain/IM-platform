@@ -30,7 +30,8 @@ export class SyncHttp {
           if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
           const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
           if(primary.error instanceof SyncFailure && (error instanceof TypeError || error instanceof DOMException)){
-            Object.defineProperty(primary.error,"cause",{value:causes});throw primary.error;
+            const failure=new SyncFailure(primary.error.kind,primary.error.message);
+            Object.defineProperty(failure,"cause",{value:causes});throw failure;
           }
           throw causes;
         }

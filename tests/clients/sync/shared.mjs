@@ -89,4 +89,15 @@ console.log("PASS unknown adapter errors retain identity; known transport remain
 console.log("PASS malformed UTF8 is protocol; stream transport stays failed; unknown stream cause preserved");
 
 const {verifyStreamCleanup}=await import('../errors/stream_cleanup.mjs');
-await verifyStreamCleanup((response,signal)=>new SyncHttp('https://localhost/',session,async()=>response,()=>id).user('0',signal),(error,mode)=>error instanceof SyncFailure&&error.kind===(mode==='protocol-distinct'?'protocol':'transport'),JSON.stringify({...page,events:[],nextCursor:'0'}));
+await verifyStreamCleanup((response,signal)=>new SyncHttp('https://localhost/',session,async()=>response,()=>id).user('0',signal),(error,mode)=>error instanceof SyncFailure&&error.kind===((mode==='protocol-distinct'||mode==='direct-validation')?'protocol':'transport'),JSON.stringify({...page,events:[],nextCursor:'0'}));
+
+{
+ const {Repository}=await import('../../../clients/shared/protocol-sdk/dist/storage/repository.js');
+ for(const [rows,value] of [[[],0n],[[['0']],0n],[[['7']],7n],[[['9007199254740993']],9007199254740993n],[[['9223372036854775807']],9223372036854775807n]]) {
+  const repo=new Repository({query:async()=>rows,transaction:async()=>assert.fail('read must not write')});assert.equal(await repo.contiguous(c),value);
+ }
+ for(const rows of [[['']],[[null]],[[]],[[' 0']],[['+0']],[['01']],[['-1']],[['1.5']],[['9223372036854775808']]]) {
+  const repo=new Repository({query:async()=>rows,transaction:async()=>assert.fail('read must not write')});await assert.rejects(repo.contiguous(c),/Invalid contiguous sequence/);
+ }
+ console.log('PASS contiguous mapper: absent row zero, exact valid signed64 prefixes, invalid present rows fail without writes');
+}

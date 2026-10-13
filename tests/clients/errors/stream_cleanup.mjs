@@ -12,16 +12,16 @@ export async function verifyStreamCleanup(invoke,known,body,{logout=false}={}) {
  const cleanup=new DOMException('controlled cleanup failure','AbortError');
  const original=new Error('controlled internal read failure');
  const decoder=TextDecoder.prototype.decode;
- for(const mode of ['cleanup-only','cleanup-unknown','decoder-distinct','protocol-distinct','read-distinct','read-single','same-known','same-unknown','distinct-known','undefined-distinct','null-distinct','primitive-distinct']) {
+ for(const mode of ['cleanup-only','cleanup-unknown','decoder-distinct','protocol-distinct','read-distinct','read-single','same-known','same-unknown','distinct-known','undefined-distinct','null-distinct','primitive-distinct','direct-validation']) {
   if(logout&&(mode==='decoder-distinct'||mode==='protocol-distinct'))continue; // 204 path never decodes.
   let calls=0;
   const primary=mode==='distinct-known'?new TypeError('controlled network read'):mode==='undefined-distinct'?undefined:mode==='null-distinct'?null:mode==='primitive-distinct'?'controlled primitive':original;
   let stream;
   if(mode.startsWith('same-'))stream=new ReadableStream({start(c){c.error(mode==='same-known'?new TypeError('native stream network failure'):original);}});
   else {
-   stream=new ReadableStream({start(c){if(!logout)c.enqueue(new TextEncoder().encode(body));},cancel(){calls++;if(mode==='cleanup-unknown')throw original;if(mode!=='read-single')throw cleanup;}});
+   stream=new ReadableStream({start(c){if(mode==='direct-validation')c.enqueue(new Uint8Array(logout?1:6*1024*1024+1));else if(!logout)c.enqueue(new TextEncoder().encode(body));},cancel(){calls++;if(mode==='cleanup-unknown')throw original;if(mode!=='read-single')throw cleanup;}});
    const get=stream.getReader.bind(stream);
-   stream.getReader=()=>{const reader=get();if(mode!=='decoder-distinct'&&mode!=='protocol-distinct')reader.read=async()=>{if(mode.startsWith('cleanup-'))return {done:true,value:undefined};throw primary;};return reader;};
+   stream.getReader=()=>{const reader=get();if(mode!=='decoder-distinct'&&mode!=='protocol-distinct'&&mode!=='direct-validation')reader.read=async()=>{if(mode.startsWith('cleanup-'))return {done:true,value:undefined};throw primary;};return reader;};
   }
   const protocol=new TypeError('controlled invalid UTF8');
   if(mode==='decoder-distinct'||mode==='protocol-distinct')TextDecoder.prototype.decode=function(){throw mode==='protocol-distinct'?protocol:original;};
@@ -29,11 +29,12 @@ export async function verifyStreamCleanup(invoke,known,body,{logout=false}={}) {
    await assert.rejects(invoke(response(stream),signal()),error=>{
     if(mode==='cleanup-only'||mode==='same-known')return known(error,mode)&&!(error instanceof AggregateError);
     if(mode==='cleanup-unknown'||mode==='read-single'||mode==='same-unknown')return error===original;
-    const allKnown=mode==='distinct-known'||mode==='protocol-distinct';
+    const allKnown=mode==='distinct-known'||mode==='protocol-distinct'||mode==='direct-validation';
     if(allKnown)assert.equal(known(error,mode),true,'two actual known boundary faults retain FAILED classification');
     else {assert(error instanceof AggregateError,'unknown primary must escape known classification');assert.equal(known(error,mode),false);}
     const roots=allKnown?error.cause:error;assert(roots instanceof AggregateError);assert.equal(roots.errors.length,2);
-    assert.equal(roots.errors[0],mode==='protocol-distinct'?protocol:mode==='decoder-distinct'?original:primary);assert.equal(roots.errors[1],cleanup);return true;
+    if(mode==='direct-validation'){assert.equal(known(roots.errors[0],mode),true);assert.notEqual(roots.errors[0],error);assert.equal(roots.errors[0].cause,undefined);}else assert.equal(roots.errors[0],mode==='protocol-distinct'?protocol:mode==='decoder-distinct'?original:primary);
+    assert.notEqual(roots.errors[1],error);assert.notEqual(roots.errors[0]?.cause,roots,'raw primary cannot point back to aggregate');assert.equal(roots.errors[1],cleanup);return true;
    });
    if(!mode.startsWith('same-'))assert.equal(calls,1,'cleanup executed exactly once');
   }finally{TextDecoder.prototype.decode=decoder;}

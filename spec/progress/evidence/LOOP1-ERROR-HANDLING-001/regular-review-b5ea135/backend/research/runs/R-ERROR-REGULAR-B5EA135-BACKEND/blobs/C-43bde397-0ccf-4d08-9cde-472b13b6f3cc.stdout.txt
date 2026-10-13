@@ -1,0 +1,78 @@
+### 2.3 Agent 技术选型权限（所有任务适用）
+
+Agent 没有未授权技术选型权。编程语言、UI/application/client/cross-platform framework、runtime、database/local database、ORM、network framework、IPC/RPC、state management framework、plugin runtime、serialization framework、message queue、cache、storage engine、native bridge、authentication framework、major infrastructure dependency，以及形成长期架构耦合的核心第三方库，都必须具有现行 Frozen Architecture、approved ADR、contracts 或明确 Human 架构决定的充分授权。
+
+答案不明确时唯一合法顺序是：停止受影响实现 → 标记 BLOCKED_BY_ARCHITECTURE → 最小决策问题与影响范围 → Architect / Human 明确决定 → 写入 Frozen Architecture / approved ADR → 必要 machine guard → 新独立 Review + applicable 精确候选 hosted CI → 决定正式生效 → 产品实现。可继续不依赖该决定的已批准工作。禁止先实现、测试通过后再修改架构追认。
+
+“熟悉、已安装、方便、流行、代码少、以前失败实现用过、Task Spec 未禁止、allowed_paths 允许、CI PASS”都不能授权；未禁止 ≠ 已批准。chat、handoff、task notes、current.md、implementation README、source comments 不能代替权威层。Task Spec 只能收窄范围、指定已授权细节/测试/路径，不能自行创造技术栈、框架、runtime、数据库、跨平台策略、服务边界或协议。Reviewer 必须逐项回答新的敏感选型来自哪个已接受权威条款/ADR；无法追溯则 Review FAIL。机器检查只补充语义 Review；执行规约见 spec/governance/technology-selection.md。
+
+
+<a id="section-5-2"></a>
+### 5.2 NATS 与 Gateway fan-out
+
+- Outbox dispatcher 发布 message.created 到 NATS，并以可重试方式标记 published。
+
+- Gateway 订阅需要的实时事件，并只向本机活跃连接 fan-out。
+
+- 收件人的所有在线端、发送者的其他在线端接收 message.created；发送端原连接由 ACK 收敛。
+
+- NATS 事件可重复，消费者必须幂等；NATS 事件可短暂错过，Sync 必须最终补齐。
+
+- Loop 1 不把 NATS JetStream 作为消息事实来源，也不为每个群成员写一条持久投递记录。消息写一次，在线端由
+
+Gateway 读扩散。
+
+
+<a id="section-7-3"></a>
+### 7.3 Session 缓存一致性
+
+Core 在 Session 创建/撤销事务中写 outbox；Gateway 经 NATS 更新内存映射 (user_id, client_type) ->session_id/epoch/connection_id。每条消息不查询 PostgreSQL。实时撤销事件是体验优化；每次新绑定/重连必须验证数据库权威 Session ID 与 epoch，拒绝旧凭据；不得把实时撤销事件作为唯一有效性来源。Gateway 只拥有验证/连接能力；注册、登录、刷新、退出、Session 写事务及其 Outbox 属于 Core，不能通过共享完整 Auth 服务绕过边界。
+
+
+<a id="section-12"></a>
+## 12. AI Development Loop
+
+```mermaid
+flowchart LR
+  Context["读取上下文"] --> Repo["恢复真实任务状态"] --> Plan["PLAN"] --> Implement["新 Implementation Agent"] --> Test["本地验证 + 候选提交"] --> Review["新独立 Review Agent"]
+  Review -->|"FAIL"| Failure["新 Fix Agent；授权范围内修复"]
+  Failure --> Test
+  Review -->|"PASS"| CI["适用真实 CI；核对 head SHA 与必跑作业"]
+  CI -->|"FAIL"| Failure
+  CI -->|"PASS"| Complete["接受任务；更新队列/证据/current/checkpoint"]
+  Complete --> Handoff["HANDOFF / 下一依赖满足任务"]
+```
+
+> 实现/修复与接受候选的 Review 必须是真实不同的新上下文；同一上下文改角色名不是独立审查。单写者；普通失败进入修复与新的独立 Review 循环。验收依据是权威规范、契约、候选 diff、结构/依赖/最小性检查及真实测试结果。
+>
+> 图 12-1 Agent 工作流。开发自动化和 CI/CD 是两个独立系统。
+
+
+<a id="section-14"></a>
+## 14. CI/CD 独立校验架构
+
+```mermaid
+flowchart LR
+  Diff["Diff 分类"]
+  Diff --> GoPath["backend/go/**"]
+  Diff --> JavaPath["backend/java/**"]
+  Diff --> Shared["contracts/** / DB / shared SDK"]
+  Diff --> Rules["architecture / Agent / task template / acceptance / checker"]
+  Rules --> Structure["规范 + 源码归属 + 依赖 + 触发负例"]
+  GoCI --> Structure
+  JavaCI --> Structure
+  Structure --> Gate
+  GoPath --> GoCI["Go CI<br/>unit + integration<br/>contract"]
+  JavaPath --> JavaCI["Java CI<br/>unit + integration<br/>contract"]
+  Shared --> Matrix["全平台兼容矩阵<br/>Go + Java + clients<br/>plugin + migration"]
+  Matrix --> Artifacts["可重复制品<br/>镜像 / 客户端"]
+  Matrix --> Smoke["Staging Smoke"]
+  Artifacts --> Smoke
+  Smoke --> Gate["Release Gate<br/>manifest + rollback"]
+```
+
+> Agent 负责提出变更；CI 独立验证事实。Agent 无权自行宣布 Gate 通过。
+>
+> 图 14-1 Path-aware CI DAG。分类分支相互独立；公共契约/schema/shared SDK 变更按表触发兼容矩阵，规范与检查器变更必须触发适用架构检查。部署/发布节点表示相应阶段要求，不把未来发布能力冒充当前 skeleton。
+
+
