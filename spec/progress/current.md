@@ -21,6 +21,10 @@ No product blocker. Administrative closure still requires fresh independent boun
 
 ## Verification
 
+- Command: `& "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe" -Xutf8 -B tools/verify_frozen_architecture.py`
+  - Result: PASS (exit 0), retained fresh independent product-candidate verification; administrative closure remains pending.
+  - Evidence: `spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/independent-checks.json`
+
 - Fresh independent clean candidate checks: frozen architecture, S2 planning, architecture all, recovery Acceptance, language-pack verification/three unit tests and actual resource/adapter/Workspace checks PASS; spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/independent-checks.json.
 - Exact99 pull_request hosted run38354231620 and actual82 push run38355749163: all14 required jobs SUCCESS; raw jobs/runs and platform conditional-skip audit in spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013.
 - Guarded main integration: PASS782 original bytes/status/cached diff/index flags/branch; spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/product-main-sync-20261013.json.
@@ -40,11 +44,11 @@ Commit closure in assigned task worktree; delegate fresh independent bounded adm
 
 ## Last Known Good Commit
 
-82cd512f659873a9d17cbef803da1acb873613cc: protected integrated product actual-main all14 SUCCESS, safely synchronized H:/IM-platform. Branch task/LOOP1-CLIENT-I18N-001 now based on this accepted main.
+`82cd512f659873a9d17cbef803da1acb873613cc`: protected integrated product actual-main all14 SUCCESS, safely synchronized H:/IM-platform. Branch task/LOOP1-CLIENT-I18N-001 now based on this accepted main.
 
 ## Latest Checkpoint
 
-spec/progress/checkpoints/2026-10-13-loop1-client-i18n-001-accepted.md; product proof spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/acceptance-manifest.json. Administrative confirmation remains pending at this source generation; consume later exact-bound external final seal without recursively rewriting accepted evidence.
+`spec/progress/checkpoints/2026-10-13-loop1-client-i18n-001-accepted.md`; product proof spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/acceptance-manifest.json. Administrative confirmation remains pending at this source generation; consume later exact-bound external final seal without recursively rewriting accepted evidence.
 
 ## Uncommitted Changes / Ownership
 
