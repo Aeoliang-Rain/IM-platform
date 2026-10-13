@@ -1,0 +1,90 @@
+// Real existing Go/PG/NATS + existing readonly fault relay. No fake ACK fixture.
+import fs from 'node:fs/promises';import path from 'node:path';import {pathToFileURL} from 'node:url';import assert from 'node:assert/strict';import crypto from 'node:crypto';import {execFileSync} from 'node:child_process';
+if(!process.env.I18N_REAL_CONFIG)throw Error('Run through real_web.py with explicit actual inputs');
+const config=JSON.parse(await fs.readFile(process.env.I18N_REAL_CONFIG,'utf8'));
+const out=path.resolve(config.out),build=path.resolve(config.build),fixture=config.fixture,origin=config.origin;
+assert.equal(origin,'https://localhost:18444');assert.equal(fixture.endpoint,'https://localhost:8443');
+const {resources,languageNames,languageEntry,translate}=await import(pathToFileURL(path.join(build,'web/src/ui/i18n/resources.js')));
+const {chromium}=await import(pathToFileURL(config.playwright_module));
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const proofs=[],captures=[],preservation=[],errors=[];let browser,senderContext,receiverContext,sender,receiver,locale='en',receiverLocale='en',stage='browser-launch';
+const locales=['en','zh-CN','ja-JP'];const t=(key,l=locale)=>translate(l,key);
+const exact=text=>new RegExp('^'+text.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$');
+const article=(p,text)=>p.locator('article.message').filter({has:p.getByText(text,{exact:true})});
+async function settled(p,l){await p.waitForFunction(l=>document.documentElement.lang===l,l);await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));}
+async function events(p){return p.evaluate(async()=>{const r=await fetch('/__state/events');if(!r.ok)throw Error('Owned relay events failed');return r.json()});}
+async function control(p,data){await p.evaluate(async data=>{const r=await fetch('/__state/control',{method:'POST',body:JSON.stringify(data)});if(!r.ok)throw Error('Owned arm failed')},data);}
+function sql(q){return execFileSync(config.docker,['exec',fixture.project+'-postgres-1','psql','-U','im','-d','im','-Atc',q],{encoding:'utf8',timeout:20000}).trim();}
+function uuid(v){assert.match(v,/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/);return v;}
+function snapshot(r){uuid(r);return JSON.parse(sql(`SELECT json_build_object('messages',(SELECT count(*) FROM messages WHERE request_id='${r}'),'outbox',(SELECT count(*) FROM outbox_events WHERE payload->>'requestId'='${r}'),'rows',(SELECT coalesce(json_agg(json_build_object('requestId',request_id,'senderId',sender_id,'conversationId',conversation_id,'messageId',server_message_id,'seq',seq::text,'createdAt',created_at,'content',text_body)), '[]'::json) FROM messages WHERE request_id='${r}'))`));}
+async function shot(p,name,l,text,stateKey,secondText){
+ await settled(p,l);const framing=[];
+ const contains=(box,clip)=>box&&box.width>0&&box.height>0&&box.x>=clip.left&&box.y>=clip.top&&box.x+box.width<=clip.right&&box.y+box.height<=clip.bottom;
+ const checkBounds=(box,clip,role)=>{if(!contains(box,clip)){const error=new Error('Capture bounds failed');error.capture_geometry={capture:name,role,box,clip};throw error;}};
+ if(text){
+  const texts=secondText?[text,secondText]:[text],targets=texts.map(value=>article(p,value));
+  for(const target of targets)assert.equal(await target.count(),1);
+  // Full-page capture cannot reveal an inner overflow clip. Move only real scroll positions.
+  await p.evaluate(()=>window.scrollTo({left:0,top:document.documentElement.scrollHeight-window.innerHeight,behavior:'instant'}));
+  const boxes=await Promise.all(targets.map(target=>target.boundingBox()));assert(boxes.every(Boolean));
+  const top=Math.min(...boxes.map(box=>box.y)),bottom=Math.max(...boxes.map(box=>box.y+box.height));
+  await p.locator('.messages').evaluate((el,{top,bottom})=>{
+   const rect=el.getBoundingClientRect(),visibleTop=Math.max(0,rect.top+el.clientTop),visibleBottom=Math.min(window.innerHeight,rect.top+el.clientTop+el.clientHeight);
+   el.scrollTo({left:0,top:el.scrollTop+(top+bottom-visibleTop-visibleBottom)/2,behavior:'instant'});
+  },{top,bottom});
+  for(let i=0;i<targets.length;i++){
+   const target=targets[i],status=target.getByText(t(stateKey,l),{exact:true});assert(await status.isVisible());
+   const required=[target,target.locator('p'),target.locator('.message-meta'),status];
+   if(stateKey==='chat.webFailed'){const retry=target.getByRole('button',{name:t('chat.retry',l),exact:true});assert(await retry.isVisible());required.push(retry);}
+   const clip=await p.locator('.messages').evaluate(el=>{const r=el.getBoundingClientRect();return {left:Math.max(0,r.left+el.clientLeft),top:Math.max(0,r.top+el.clientTop),right:Math.min(window.innerWidth,r.left+el.clientLeft+el.clientWidth),bottom:Math.min(window.innerHeight,r.top+el.clientTop+el.clientHeight)};});
+   for(let j=0;j<required.length;j++)checkBounds(await required[j].boundingBox(),clip,['target','text','metadata','status','retry'][j]);
+   framing.push({text:texts[i],state_key:stateKey,box:await target.boundingBox(),clip});
+  }
+  // The selected peer is above the viewport on a tall baseline page, but remains in the full-page original.
+  const peer=p.locator('.chat-heading h2');assert(await peer.isVisible());
+  const documentBounds=await p.evaluate(()=>({left:-window.scrollX,top:-window.scrollY,right:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)-window.scrollX,bottom:Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)-window.scrollY}));
+  const peerBox=await peer.boundingBox();checkBounds(peerBox,documentBounds,'selected-peer-fullpage');
+  const viewport=p.viewportSize(),composerBox=await p.locator('#message').boundingBox();
+  checkBounds(composerBox,{left:0,top:0,right:viewport.width,bottom:viewport.height},'composer-viewport');
+  framing.push({selected_peer:{box:peerBox,document_bounds:documentBounds},composer:{box:composerBox,viewport}});
+ }
+ const file=name+'.png';await p.screenshot({path:path.join(out,file),fullPage:true});captures.push({file,sha256:hash(await fs.readFile(path.join(out,file))),state:name,locale:l,framing,source_sha:config.source_sha,wip:config.wip,source_is_clean_committed_candidate:config.clean,viewport:p.viewportSize(),appearance:await p.evaluate(()=>({raw:localStorage.getItem('plugworldim.appearance.v1'),theme:document.documentElement.dataset.theme,density:document.documentElement.dataset.density,font:getComputedStyle(document.documentElement).fontSize})),fixture_project:fixture.project,actual_endpoint:fixture.endpoint,relay_origin:origin,browser:browser.version(),browser_channel:config.browser_channel,default_tls:true});
+}
+async function login(c,user,peer){const p=await c.newPage();p.on('pageerror',()=>errors.push({kind:'pageerror',sanitized:true}));p.on('requestfailed',r=>{if(r.failure()?.errorText?.includes('CERT'))errors.push({kind:'certificate-request-failure',sanitized:true})});await p.goto(origin);await settled(p,'en');await p.getByLabel(t('auth.username','en'),{exact:true}).fill(user.username);await p.getByLabel(t('auth.password','en'),{exact:true}).fill('fixture-password-not-a-real-secret');await p.getByRole('button',{name:t('auth.enter','en'),exact:true}).click();await p.locator('header.top .connection').filter({hasText:exact(t('connection.ready','en'))}).waitFor();await p.locator('button.conversation').filter({has:p.getByText(peer.displayName,{exact:true})}).click();assert.equal(await p.locator('.chat-heading h2').innerText(),peer.displayName);return p;}
+async function language(p,from,to){await p.locator('.rail-footer button').filter({hasText:exact(t('nav.settings',from))}).click();assert.equal(await p.locator('.language-panel legend').innerText(),languageEntry);assert.deepEqual(await p.locator('.language-list button').allTextContents(),[...languageNames]);await p.getByRole('button',{name:languageNames[locales.indexOf(to)],exact:true}).click();await settled(p,to);assert.equal(await p.evaluate(()=>localStorage.getItem('plugworldim.language.v1')),to);await p.locator('.rail nav button').nth(0).click();}
+async function wire(p){return (await events(p)).filter(e=>e.kind==='send').map(e=>({requestId:e.requestId,conversationId:e.conversationId,content:e.content,attempt:e.attempt}));}
+async function retained(to,text,state,draft,appearance,peer){const before=await wire(sender);const from=locale;await language(sender,from,to);locale=to;assert.equal(await sender.locator('#message').inputValue(),draft);assert.equal(await sender.locator('.chat-heading h2').innerText(),peer);assert.equal(await sender.evaluate(()=>localStorage.getItem('plugworldim.appearance.v1')),appearance);await article(sender,text).getByText(t(state),{exact:true}).waitFor();assert.equal(await article(sender,text).count(),1);assert.deepEqual(await wire(sender),before);preservation.push({from,to,text,expected_state_key:state,draft,appearance,selection_peer:peer,send_identities:before.map(e=>e.requestId)});}
+async function sendText(text){await sender.getByLabel(t('chat.message'),{exact:true}).fill(text);await sender.getByRole('button',{name:t('chat.send'),exact:true}).click();}
+try{
+ browser=await chromium.launch({headless:true,...(config.browser_exe?{executablePath:config.browser_exe}:{channel:config.browser_channel})});
+ // Fresh ephemeral contexts: browser default system certificate validation, no ignoreHTTPSErrors.
+ senderContext=await browser.newContext({viewport:{width:1280,height:900}});receiverContext=await browser.newContext({viewport:{width:1280,height:900}});
+ stage='controlled-logins';sender=await login(senderContext,fixture.accounts[0],fixture.accounts[1]);receiver=await login(receiverContext,fixture.accounts[1],fixture.accounts[0]);
+ await sender.locator('.rail-footer button').filter({hasText:exact(t('nav.settings'))}).click();await sender.locator('.theme-options button').nth(1).click();await sender.getByLabel(t('settings.font'),{exact:true}).selectOption('20');await sender.getByLabel(t('settings.spacing'),{exact:true}).selectOption('spacious');const appearance=await sender.evaluate(()=>localStorage.getItem('plugworldim.appearance.v1'));assert.deepEqual(JSON.parse(appearance),{theme:'warm',fontSize:20,density:'spacious'});await sender.locator('.rail nav button').nth(0).click();
+ for(const initial of locales){
+  await language(sender,locale,initial);locale=initial;await language(receiver,receiverLocale,initial);receiverLocale=initial;
+  for(const mode of ['A','B']){
+   const caseId=initial+'-'+mode,text='I18N actual '+caseId+' IM+ Chat 日本語 简体中文 '+crypto.randomUUID();const draft='Owned draft '+caseId+' English 简体中文 日本語';
+   stage=caseId+'-arm-send-switch-SENDING';
+   await control(sender,{mode,text,userId:fixture.accounts[0].userId,clientType:'WEB'});await sendText(text);await article(sender,text).getByText(t('chat.webSending'),{exact:true}).waitFor();await sender.locator('#message').fill(draft);await shot(sender,caseId+'-sending-'+locale,locale,text,'chat.webSending');
+   const next=locales[(locales.indexOf(locale)+1)%3];await retained(next,text,'chat.webSending',draft,appearance,fixture.accounts[1].displayName);await shot(sender,caseId+'-sending-switched-'+locale,locale,text,'chat.webSending');
+   await article(sender,text).getByText(t('chat.webFailed'),{exact:true}).waitFor({timeout:25000});
+   stage=caseId+'-FAILED-original-DB-live-receiver';const firstEvents=await events(sender),first=firstEvents.find(e=>e.kind==='send'&&e.content.text===text);assert(first);uuid(first.requestId);assert.equal(first.conversationId,fixture.conversationId);const before=snapshot(first.requestId);assert.equal(before.messages,mode==='A'?0:1);assert.equal(before.outbox,mode==='A'?0:1);
+   if(mode==='B'){await receiver.getByText(text,{exact:true}).waitFor();await article(receiver,text).getByText(t('chat.webSent',receiverLocale),{exact:true}).waitFor();assert.equal(await article(receiver,text).count(),1);assert(firstEvents.some(e=>e.kind==='actual_ack'&&e.requestId===first.requestId&&e.held));assert.equal(before.rows[0].senderId,fixture.accounts[0].userId);assert.equal(before.rows[0].conversationId,fixture.conversationId);assert.equal(before.rows[0].content,text);await shot(receiver,caseId+'-live-receiver-before-retry',receiverLocale,text,'chat.webSent');}else {assert(firstEvents.some(e=>e.kind==='not_forwarded'&&e.requestId===first.requestId));assert.equal(await receiver.getByText(text,{exact:true}).count(),0);}
+   stage=caseId+'-FAILED-three-locale-retention';for(const target of locales){await retained(target,text,'chat.webFailed',draft,appearance,fixture.accounts[1].displayName);await shot(sender,caseId+'-failed-'+target,target,text,'chat.webFailed');}
+   stage=caseId+'-R2-original-retry-SENT';
+   const secondText=text+' R2';await sendText(secondText);await article(sender,secondText).getByText(t('chat.webSent'),{exact:true}).waitFor();await article(sender,text).getByText(t('chat.webFailed'),{exact:true}).waitFor();await sender.locator('#message').fill(draft);await article(sender,text).getByRole('button',{name:t('chat.retry'),exact:true}).click();await article(sender,text).getByText(t('chat.webSent'),{exact:true}).waitFor();await receiver.getByText(text,{exact:true}).waitFor();await receiver.getByText(secondText,{exact:true}).waitFor();
+   const after=snapshot(first.requestId);assert.equal(after.messages,1);assert.equal(after.outbox,1);assert.equal(after.rows[0].requestId,first.requestId);assert.equal(after.rows[0].senderId,fixture.accounts[0].userId);assert.equal(after.rows[0].conversationId,fixture.conversationId);assert.equal(after.rows[0].content,text);
+   const es=await events(sender),sends=es.filter(e=>e.kind==='send'&&e.content.text===text);assert.equal(sends.length,2);assert.equal(sends[0].requestId,sends[1].requestId);assert.equal(sends[0].conversationId,sends[1].conversationId);assert.deepEqual(sends[0].content,sends[1].content);
+   stage=caseId+'-real-ACK-DB-identity-order';const acks=es.filter(e=>e.kind==='actual_ack'&&e.requestId===first.requestId);assert(acks.at(-1)?.payload.status==='committed');assert.equal(acks.at(-1).held,false);const ack=acks.at(-1).payload;assert.equal(ack.conversationId,fixture.conversationId);assert.equal(ack.messageId,after.rows[0].messageId);assert.equal(String(ack.seq),after.rows[0].seq);assert.equal(Date.parse(ack.createdAt),Date.parse(after.rows[0].createdAt));assert(es.some(e=>e.kind==='actual_created'&&e.payload.messageId===after.rows[0].messageId&&e.payload.content.text===text));if(mode==='B'){assert.deepEqual(acks[0].payload,ack);assert.deepEqual(before.rows,after.rows);}
+   const secondEvent=es.find(e=>e.kind==='send'&&e.content.text===secondText);assert(secondEvent);const second=snapshot(secondEvent.requestId);assert.equal(second.messages,1);assert.equal(second.outbox,1);assert.notEqual(secondEvent.requestId,first.requestId);assert.equal(second.rows[0].senderId,fixture.accounts[0].userId);assert.equal(second.rows[0].conversationId,fixture.conversationId);assert.equal(second.rows[0].content,secondText);assert(mode==='A'?BigInt(second.rows[0].seq)<BigInt(after.rows[0].seq):BigInt(after.rows[0].seq)<BigInt(second.rows[0].seq));
+   stage=caseId+'-SENT-three-locale-retention';for(const target of locales){await retained(target,text,'chat.webSent',draft,appearance,fixture.accounts[1].displayName);await article(sender,secondText).getByText(t('chat.webSent'),{exact:true}).waitFor();await shot(sender,caseId+'-sent-'+target,target,text,'chat.webSent',secondText);}
+   for(const target of locales){await language(receiver,receiverLocale,target);receiverLocale=target;await article(receiver,text).getByText(t('chat.webSent',target),{exact:true}).waitFor();assert.equal(await article(receiver,text).count(),1);assert.equal(await article(receiver,secondText).count(),1);await shot(receiver,caseId+'-receiver-'+target,target,text,'chat.webSent',secondText);}
+   const rendered=await sender.locator('article.message').allTextContents();const firstIndex=rendered.findIndex(v=>v.includes(text)&&!v.includes(secondText)),secondIndex=rendered.findIndex(v=>v.includes(secondText));assert(firstIndex>=0&&secondIndex>=0);assert(mode==='A'?secondIndex<firstIndex:firstIndex<secondIndex);
+   proofs.push({initial_locale:initial,mode,text,requestId:first.requestId,before,after,sends,actualAcks:acks,receiverLiveBeforeRetry:mode==='B',secondText,second,rendered,firstIndex,secondIndex,appearance});
+  }
+ }
+ assert.deepEqual(errors,[]);assert.equal(proofs.length,6);
+ await fs.writeFile(path.join(out,'browser-result.json'),JSON.stringify({result:'PASS_LOCAL_CHECKS',scope:'real existing Go/PG/NATS A/B ordering/live receiver and i18n retention; Architect/independent acceptance pending',source_sha:config.source_sha,wip:config.wip,clean:config.clean,fixture_project:fixture.project,browser:browser.version(),default_browser_tls:true,build_files:config.build_files,source_inputs:config.source_inputs,captures,preservation,proofs,errors},null,2));console.log('PASS_LOCAL_CHECKS actual Go/PG/NATS Web six A/B cases; default Edge TLS; no independent acceptance');
+}catch(e){if(sender){try{await shot(sender,'failure',locale)}catch{}}await fs.writeFile(path.join(out,'browser-result.json'),JSON.stringify({result:'FAIL',sanitized_failure:{stage,name:e.name,code:e.code??null,assertion_operator:e.operator??null,capture_geometry:e.capture_geometry??null,message:'Actual owned browser/DB assertion failed; no auth values or raw browser URLs retained'},source_sha:config.source_sha,wip:config.wip,fixture_project:fixture.project,captures,preservation,proofs,errors},null,2));console.log('FAIL actual Web; retained sanitized browser-result.json');process.exitCode=1;}
+finally{await senderContext?.close();await receiverContext?.close();await browser?.close();}

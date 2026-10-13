@@ -22,9 +22,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 
 import im.platform.client.ui.*
-@Composable fun ConversationList(state:WorkspaceState,open:(String)->Unit){LazyColumn(Modifier.fillMaxSize()){
-            if(state.conversations.isEmpty())item{Panel(Modifier.fillMaxWidth(),state.appearance){Text("Your next conversation starts here",style=MaterialTheme.typography.titleLarge);Text("Find a friend to open a private chat.")}}
+import im.platform.client.ui.i18n.*
+@Composable fun ConversationList(state:WorkspaceState,open:(String)->Unit){
+    val t=useText()
+LazyColumn(Modifier.fillMaxSize()){
+            if(state.conversations.isEmpty())item{Panel(Modifier.fillMaxWidth(),state.appearance){Text(t("chat.next"),style=MaterialTheme.typography.titleLarge);Text(t("chat.addHint"))}}
             items(state.conversations,key={it}){id->Surface(onClick={open(id)},shape=RectangleShape,color=MaterialTheme.colorScheme.surface,modifier=Modifier.fillMaxWidth()){
-                Column(Modifier.padding((16*state.appearance.density).dp)){Text(state.friends.find{it.directConversationId==id}?.user?.displayName?:"Conversation "+id.take(8),fontWeight=FontWeight.SemiBold);Text(if(state.unavailable.contains(id))"Access unavailable"else state.previews[id]?.text?:"No messages yet",maxLines=1,style=MaterialTheme.typography.bodyMedium)}
+                Column(Modifier.padding((16*state.appearance.density).dp)){Text(state.friends.find{it.directConversationId==id}?.user?.displayName?:t("chat.conversationId","id" to id.take(8)),fontWeight=FontWeight.SemiBold);Text(if(state.unavailable.contains(id))t("chat.access")else state.previews[id]?.text?.takeIf{it.isNotEmpty()}?:t("chat.noMessages"),maxLines=1,style=MaterialTheme.typography.bodyMedium)}
             }}
         }}

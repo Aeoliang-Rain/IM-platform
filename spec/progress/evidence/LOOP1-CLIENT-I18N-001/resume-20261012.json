@@ -1,0 +1,58 @@
+{
+  "result": "LOCAL_WIP_VERIFIED_ACCEPTANCE_PENDING",
+  "source_sha": "b52f8b85bc699821f3720e339fcd48e17b2b04b1",
+  "clean_candidate": false,
+  "links": {
+    "android-restart-run1/binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\android-restart-run1\\binding.json",
+      "sha256": "622adc7e9007f7fcb1e33e764075acd4dcd0af0d662352bc9fe0cfce19b79fad"
+    },
+    "native-resume/restart-after.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-resume\\restart-after.json",
+      "sha256": "79143c1b4f1757665102446969c7ef6e33332242d8bc7b9c1ea1a5977d7c82f8"
+    },
+    "native-resume/notification-ja.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-resume\\notification-ja.json",
+      "sha256": "79ab35a10b223e27e3b811c81e82eff27a8f8cf00867f519d60997c8a349266d"
+    },
+    "desktop-before/restored-20261012.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\desktop-before\\restored-20261012.json",
+      "sha256": "9368ba9c470542d310fc21026780db8c0f77ed50d1ae6fe2d61e1b9c5206a31e"
+    },
+    "windows-trust-closed-certutil.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\windows-trust-closed-certutil.json",
+      "sha256": "2bf1d2eb97286e07e0d7534d424b4c370b4e37131e00b605521d83979081f28c"
+    },
+    "web-real-run1/binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\web-real-run1\\binding.json",
+      "sha256": "6230d3c741e790441a177a08dfda7d42eeae12ff4fa02aad28b096c6d4a637fb"
+    },
+    "android-i18n-run7/binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\android-i18n-run7\\binding.json",
+      "sha256": "eb93aab6340da2bbce4463db3dc2ef66117915860909507e7b38b5818854af35"
+    },
+    "language-packs-fix8/manifest.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\language-packs-fix8\\manifest.json",
+      "sha256": "4181b2b402b076eb3cefd9a790e53dfd23c5f88630c9919a8f7b389c195fe3d1"
+    }
+  },
+  "trust": "CLOSED_EXACT_RESTORE",
+  "human_tray": "zh-CN/ja-JP user accepted; explicitly no repeat screenshots",
+  "checks": [
+    "frozen/planning PASS",
+    "architecture all PASS",
+    "25 technology tests PASS",
+    "i18n resource/scheduling/3 pack tests PASS",
+    "Web actual Go/PG/NATS six A/B cases PASS_LOCAL_CHECKS",
+    "Android Compose run7 PASS_LOCAL_CHECKS",
+    "Android true process restart and exact appearance restore PASS_LOCAL_CHECKS",
+    "Desktop installed fix8 offline language switch, ja OS notification, new process ja restore and appearance-byte preservation PASS_LOCAL_CHECKS"
+  ],
+  "pending": [
+    "Clean committed build/source and runtime binding",
+    "Independent Architect and semantic Review",
+    "Exact-head hosted CI",
+    "Protected integration, actual main and safe synchronization"
+  ],
+  "cleanup": "Owned backend already stopped; owned AVD and installed client stopped; known original installed3 files restored; original appearance unchanged; original absent language file restored. No claim of original credential or account DB restoration."
+}

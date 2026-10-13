@@ -59,12 +59,41 @@ pub fn window_control(window:tauri::WebviewWindow,action:String)->Result<(),Stri
     result.map_err(|_|"Window unavailable".into())
 }
 fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){let _=w.show();let _=w.unminimize();let _=w.set_focus();}}
+struct TrayPresentation {open:tauri::menu::MenuItem<tauri::Wry>,hide:tauri::menu::MenuItem<tauri::Wry>,quit:tauri::menu::MenuItem<tauri::Wry>}
+#[tauri::command]
+pub fn tray_text(app:tauri::AppHandle,open:String,hide:String,quit:String,tooltip:String)->Result<(),String>{
+    if [&open,&hide,&quit,&tooltip].iter().any(|value|value.is_empty()||value.chars().count()>80||value.contains(['\r','\n'])){return Err("Tray text invalid".into());}
+    let presentation=app.state::<TrayPresentation>();
+    presentation.open.set_text(open).map_err(|_|"Tray unavailable")?;
+    presentation.hide.set_text(hide).map_err(|_|"Tray unavailable")?;
+    presentation.quit.set_text(quit).map_err(|_|"Tray unavailable")?;
+    app.tray_by_id("im-plus").ok_or("Tray unavailable")?.set_tooltip(Some(tooltip)).map_err(|_|"Tray unavailable".into())
+}
+fn valid_language(value:&str)->bool{matches!(value,"en"|"zh-CN"|"ja-JP")}
+fn load_language(path:&std::path::Path)->String {
+    use std::io::Read;
+    // At most six bytes read: an overlong file is invalid without unbounded allocation.
+    let mut bytes=Vec::new();
+    let result=std::fs::File::open(path).and_then(|file|file.take(6).read_to_end(&mut bytes));
+    if result.is_err()||bytes.len()>5{return "en".into();}
+    match std::str::from_utf8(&bytes){Ok(value) if valid_language(value)=>value.into(),_=>"en".into()}
+}
+fn save_language(path:&std::path::Path,value:&str)->Result<(),String>{
+    if !valid_language(value){return Err("Language invalid".into());}
+    std::fs::create_dir_all(path.parent().ok_or("Language unavailable")?).map_err(|_|"Language unavailable")?;
+    std::fs::write(path,value.as_bytes()).map_err(|_|"Language unavailable".into())
+}
+#[tauri::command]
+pub fn language_load(app:tauri::AppHandle)->String{match app.path().app_data_dir(){Ok(root)=>load_language(&root.join("language.txt")),Err(_)=>"en".into()}}
+#[tauri::command]
+pub fn language_save(app:tauri::AppHandle,value:String)->Result<(),String>{save_language(&app.path().app_data_dir().map_err(|_|"Language unavailable")?.join("language.txt"),&value)}
 pub fn setup(app:&mut tauri::App)->Result<(),Box<dyn std::error::Error>>{
     app.global_shortcut().on_shortcut("Ctrl+Shift+Space",|app,_,event|{if event.state==ShortcutState::Pressed{show(app);}})?;
     let open=tauri::menu::MenuItem::with_id(app,"open","Open IM+",true,None::<&str>)?;
     let hide=tauri::menu::MenuItem::with_id(app,"hide","Hide window",true,None::<&str>)?;
     let quit=tauri::menu::MenuItem::with_id(app,"quit","Quit IM+",true,None::<&str>)?;
     let menu=tauri::menu::Menu::with_items(app,&[&open,&hide,&quit])?;
+    app.manage(TrayPresentation{open,hide,quit});
     let icon=app.default_window_icon().ok_or("Application icon unavailable")?.clone();
     tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){let _=w.hide();}},"quit"=>app.exit(0),_=>{}}).build(app)?;
     Ok(())
@@ -73,6 +102,34 @@ pub fn setup(app:&mut tauri::App)->Result<(),Box<dyn std::error::Error>>{
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn language_owned_file_exact_enum_and_appearance_isolation() {
+        let nonce=std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+        let root=std::env::temp_dir().join(format!("i18n-owned-{}-{nonce}",std::process::id()));
+        std::fs::create_dir(&root).unwrap();
+        struct Owned(std::path::PathBuf);
+        impl Drop for Owned {fn drop(&mut self){let _=std::fs::remove_dir_all(&self.0);}}
+        let _owned=Owned(root.clone());
+        let path=root.join("language.txt");let appearance=root.join("appearance.json");
+        let original=appearance_bytes(&("warm".into(),22,1.2));std::fs::write(&appearance,&original).unwrap();
+        assert_eq!(load_language(&path),"en");
+        for value in ["en","zh-CN","ja-JP"] {
+            save_language(&path,value).unwrap();assert_eq!(std::fs::read(&path).unwrap(),value.as_bytes());
+            assert_eq!(load_language(&path),value);assert_eq!(std::fs::read(&appearance).unwrap(),original);
+        }
+        for value in ["","EN","en-US","zh","ja"," en","en\n","en\r\n","\u{feff}en","ja-jp"] {
+            let before=std::fs::read(&path).unwrap();assert!(save_language(&path,value).is_err());
+            assert_eq!(std::fs::read(&path).unwrap(),before);
+            std::fs::write(&path,value).unwrap();assert_eq!(load_language(&path),"en");
+        }
+        std::fs::write(&path,[0xff,0xfe]).unwrap();assert_eq!(load_language(&path),"en");
+        std::fs::write(&path,vec![b'e';10000]).unwrap();assert_eq!(load_language(&path),"en");
+        let directory=root.join("directory");std::fs::create_dir(&directory).unwrap();
+        assert_eq!(load_language(&directory),"en");assert!(save_language(&directory,"ja-JP").is_err());
+        assert_eq!(std::fs::read(&appearance).unwrap(),original);
+        assert_eq!(std::fs::read_dir(&root).unwrap().count(),3);
+    }
     #[test]
     fn actual_windows_credential_manager_roundtrip() {
         let nonce=std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();

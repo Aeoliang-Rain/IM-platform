@@ -1,3 +1,4 @@
+import {errorKey,translate,type Locale,validLocale} from "../../ui/i18n/resources.js";
 import {Repository} from "../../../../shared/protocol-sdk/src/storage/repository.js";
 import {SyncHttp} from "../../../../shared/protocol-sdk/src/sync/http.js";
 import {decode} from "../../../../shared/protocol-sdk/src/send/wire.js";
@@ -5,17 +6,26 @@ import {accountDatabase} from "../../storage/database.js";
 import {SendApplication,type Session,type Socket} from "../send.js";
 import {SyncApplication} from "../sync/application.js";
 import {Auth,ApiFailure,type Friend,type User,origin} from "./auth.js";
-import {appearance,defaults,nativeFetch,notify,type Appearance} from "./native.js";
-export interface WorkspaceState {appearance:Appearance;busy:boolean;error:string|null;session:Session|null;offlineAccount:string|null;profile:User|null;friends:Friend[];results:User[];conversations:string[];selected:string;messages:ReadonlyArray<ReadonlyArray<string|null>>;connection:string;sync:string;unavailable:readonly string[];page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings";endpoint:string;previews:Record<string,{text:string;time:number}>}
+import {appearance,language,trayText,defaults,nativeFetch,notify,type Appearance} from "./native.js";
+export interface WorkspaceState {language:Locale;languageStored:boolean;appearance:Appearance;busy:boolean;error:string|null;session:Session|null;offlineAccount:string|null;profile:User|null;friends:Friend[];results:User[];conversations:string[];selected:string;messages:ReadonlyArray<ReadonlyArray<string|null>>;connection:string;sync:string;unavailable:readonly string[];page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings";endpoint:string;previews:Record<string,{text:string;time:number}>}
 export class Workspace {
-  state:WorkspaceState={appearance:defaults,busy:false,error:null,session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],page:"Chat",endpoint:"https://localhost:8443",previews:{}};
+  state:WorkspaceState={language:"en",languageStored:true,appearance:defaults,busy:false,error:null,session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],page:"Chat",endpoint:"https://localhost:8443",previews:{}};
   private listeners=new Set<()=>void>();private auth:Auth|null=null;private sync:SyncApplication|null=null;private offlineRepository:Repository|null=null;private generation=0;private operation=0;private detach: (()=>void)[]=[];private repository:Repository|null=null;private listRevision=0;private activity=new Map<string,number>();private friendRevision=0;private friendCursor="";private refreshTimer:ReturnType<typeof setInterval>|null=null;
   observe=(fn:()=>void)=>{this.listeners.add(fn);return()=>{this.listeners.delete(fn);};};
   snapshot=()=>this.state;
   private publish(value:Partial<WorkspaceState>){this.state={...this.state,...value};for(const listener of this.listeners)listener();}
-  async start(){try{this.publish({appearance:await appearance.load()});}catch{this.publish({error:"Appearance could not be loaded"});}}
+  private languageRevision=0;
+  async start(){const revision=this.languageRevision;const value=await language.load();if(revision===this.languageRevision)this.publish({language:value});await this.updateTray();try{this.publish({appearance:await appearance.load()});}catch{this.publish({error:"Appearance could not be loaded"});}}
+  private trayWrites:Promise<void>=Promise.resolve();
+  private updateTray(){const revision=this.languageRevision;
+    this.trayWrites=this.trayWrites.then(async()=>{if(revision!==this.languageRevision)return;const t=(key:string)=>translate(this.state.language,key);try{await trayText(t("tray.open"),t("tray.hide"),t("tray.quit"),t("tray.tooltip"));}catch{if(revision===this.languageRevision)this.publish({error:"Operation unavailable"});}});return this.trayWrites;
+  }
+  private languageWrites:Promise<void>=Promise.resolve();
+  selectLanguage(value:Locale){if(!validLocale(value))return Promise.resolve();const revision=++this.languageRevision;this.publish({language:value,languageStored:true});const tray=this.updateTray();
+    this.languageWrites=this.languageWrites.then(async()=>{try{await language.save(value);if(revision===this.languageRevision)this.publish({languageStored:true});}catch{if(revision===this.languageRevision)this.publish({languageStored:false});}});return Promise.all([this.languageWrites,tray]).then(()=>{});
+  }
   page(page:WorkspaceState["page"]){this.publish({page,error:null});}
-  async testNotification(){try{await notify("IM+","Your workspace notifications are ready.");}catch{this.publish({error:"System notification unavailable"});}}
+  async testNotification(){try{await notify("IM+",translate(this.state.language,"notify.ready"));}catch{this.publish({error:"System notification unavailable"});}}
   private appearanceWrites:Promise<void>=Promise.resolve();
   preferences(value:Appearance){this.publish({appearance:value,error:null});this.appearanceWrites=this.appearanceWrites.then(async()=>{try{await appearance.save(value);}catch{this.publish({error:"Appearance could not be saved"});}});return this.appearanceWrites;}
   private async stop(){this.generation++;if(this.refreshTimer)clearInterval(this.refreshTimer);this.refreshTimer=null;this.detach.forEach(fn=>fn());this.detach=[];const old=this.sync;this.sync=null;this.offlineRepository=null;this.repository=null;this.friendCursor="";this.friendRevision++;this.listRevision++;this.activity.clear();this.publish({session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],previews:{}});await old?.close();}
@@ -32,7 +42,7 @@ export class Workspace {
     const conversations=await repo.conversationIds();if(!active())return;this.publish({session,conversations,error:null});
     this.detach.push(send.observe(s=>{if(active()){this.publish({connection:s.connection,...(s.error?{error:s.error==="storage"?"Local history unavailable":"Protocol error"}:{})});void this.updateList(repo,g);}}));
     this.detach.push(sync.observe(s=>{if(!active())return;this.publish({sync:s.status,unavailable:s.unavailable,...(s.error?{error:"Sync "+s.error}:{})});if(s.error==="authentication")void this.expire();if(s.status==="idle"){void this.updateList(repo,g);void this.refreshFriends(repo,g);}}));
-    this.detach.push(send.observeDelivery(()=>{if(active()&&document.visibilityState!=="visible")void notify("IM+","New activity in your conversations").catch(()=>{if(active())this.publish({error:"System notification unavailable"});});}));
+    this.detach.push(send.observeDelivery(()=>{if(active()&&document.visibilityState!=="visible")void notify("IM+",translate(this.state.language,"notify.activity")).catch(()=>{if(active())this.publish({error:"System notification unavailable"});});}));
     await this.updateList(repo,g);if(!active())return;
     this.publish({selected:"",messages:[]});send.connect(this.state.endpoint.replace(/^https:/,"wss:")+"/v1/ws");
     this.refreshTimer=setInterval(()=>{if(active()&&this.auth?.needsRefresh())void this.refresh();},30000);
@@ -49,7 +59,7 @@ export class Workspace {
   private async updateList(repo:Repository,g:number){
     const revision=++this.listRevision;
     try{const ids=[...new Set([...await repo.conversationIds(),...this.state.friends.map(f=>f.directConversationId)])];
-      const entries=await Promise.all(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??"No messages yet",time},rows] as const;}));
+      const entries=await Promise.all(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??"",time},rows] as const;}));
       if(g!==this.generation||revision!==this.listRevision)return;
       const previews=Object.fromEntries(entries.map(([id,preview])=>[id,preview]));ids.sort((a,b)=>previews[b].time-previews[a].time||a.localeCompare(b));this.publish({conversations:ids,previews,messages:entries.find(e=>e[0]===this.state.selected)?.[2]??[]});
     }catch{if(g===this.generation&&revision===this.listRevision)this.publish({error:"Conversation history unavailable"});}

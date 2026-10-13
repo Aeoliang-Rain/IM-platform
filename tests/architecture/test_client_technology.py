@@ -398,4 +398,47 @@ class ClientTechnologyControls(unittest.TestCase):
                 self.assertTrue(any('CLIENT' in error for error in errors), errors)
                 path.unlink()
 
+    def test_i18n_language_storage_is_narrow_and_phase_bound(self):
+        source = (ROOT/'clients/web/src/ui/language.ts').read_text(encoding='utf-8')
+        code = checker.uncomment_client(source)
+        self.assertEqual([], checker.check_language_storage('clients/web/src/ui/language.ts', code, True))
+        self.assertTrue(checker.check_language_storage('clients/web/src/ui/language.ts', code, False))
+        self.assertFalse(checker.language_product_enabled(self.root))
+        for relative, mutation in (
+            ('clients/web/src/ui/appearance.ts', code),
+            ('clients/web/src/ui/nested/language.ts', code),
+            ('clients/web/src/ui/language.ts', code.replace('plugworldim.language.v1','plugworldim.appearance.v1')),
+            ('clients/web/src/ui/language.ts', code.replace('setItem(LANGUAGE_KEY,value)','setItem(LANGUAGE_KEY,JSON.stringify(value))')),
+            ('clients/web/src/ui/language.ts', code + 'window.localStorage.clear();'),
+            ('clients/web/src/ui/language.ts', code + 'const storage=window.localStorage;'),
+            ('clients/web/src/ui/language.ts', code.replace('validLocale(raw)?raw:"en"','raw.trim()')),
+        ):
+            with self.subTest(relative=relative, mutation=mutation):
+                self.assertTrue(checker.check_language_storage(relative, mutation, True))
+
+    def test_native_language_adapters_fail_closed(self):
+        cases = {
+            'clients/desktop/src/application/ui/native.ts': [('validLocale(value)?value:"en"','value.trim()'), ('"language_save",{value}','"language_save",{value,path:"arbitrary"}')],
+            'clients/desktop/src-tauri/src/desktop_capabilities.rs': [('file.take(6)','file.take(6000)'), ('language.txt','appearance.json'), ('value.as_bytes()','value.trim().as_bytes()'), ('pub fn language_save(app:tauri::AppHandle,value:String)','pub fn language_save(app:tauri::AppHandle,value:String,path:String)')],
+            'clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt': [('putString("language",value)','putString("language",value.trim())'), ('appearance.getString("language",null)','credentials.getString("language",null)'), ('||value=="zh-CN"','||value=="zh"')],
+        }
+        for path, mutations in cases.items():
+            original = (ROOT/path).read_text(encoding='utf-8')
+            self.assertEqual([], checker.check_native_language(path, original, True), path)
+            self.assertTrue(checker.check_native_language(path, original, False), path)
+            for before, after in mutations:
+                self.assertIn(before, original)
+                with self.subTest(path=path, mutation=after):
+                    self.assertTrue(checker.check_native_language(path, original.replace(before,after), True))
+        for path, source in [('clients/desktop/src/storage/preferences.ts','invoke("language_save",{value})'),('clients/mobile/app/src/main/kotlin/im/platform/client/ui/Other.kt','store.edit().putString("language",value)')]:
+            self.assertTrue(checker.check_native_language(path, source, True))
+
+    def test_android_language_test_faults_do_not_exempt_production(self):
+        fault='store.edit().putString("language",value)'
+        self.assertEqual([],checker.check_native_language('clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/AnyFault.kt',fault,False))
+        for path in ('clients/mobile/app/src/main/kotlin/im/platform/client/ui/AnyFault.kt','clients/mobile/app/src/main/kotlin/im/platform/client/ui/androidTest/AnyFault.kt'):
+            self.assertTrue(checker.check_native_language(path,fault,True))
+        source=(ROOT/'clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt').read_text(encoding='utf-8')
+        self.assertTrue(checker.check_native_language('clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt',source,False))
+
 if __name__ == '__main__': unittest.main()

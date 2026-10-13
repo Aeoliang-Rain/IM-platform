@@ -1,0 +1,301 @@
+{
+  "task": "LOOP1-CLIENT-I18N-001",
+  "status": "review",
+  "reviewedRecoverySHA": "b40f3a72d9a2f2401a5a7e3a9f141ba805928b11",
+  "independentResult": "FAIL",
+  "finding": "P2 Desktop green Online incorrectly derives from retained session despite disconnected transport",
+  "report": "# Final independent review: FAIL\n\nReviewed exact clean detached candidate **b40f3a72d9a2f2401a5a7e3a9f141ba805928b11**, parent e829352aa02c3e87d3d01376df4ef1ac2c9ede38. Product range b52f8b85bc699821f3720e339fcd48e17b2b04b1..e829. This fresh reviewer did not implement or fix the product. Source, runtime, UI and trust were read only; writes were restricted to this external output and the reviewer's external Research Recorder. No publication occurred.\n\n## Actionable P2: Desktop connection status contradicts offline state\n\n`clients/desktop/src/ui/components/Navigation.tsx:11` derives the green dot and localized Online label from `s.session`. Disconnecting the Workspace closes transport while preserving the authenticated session. Original native pixels consequently display green Online/在线/オンライン while the conversation reports offline/local history and Send reaches FAILED.\n\nDirect evidence: `acceptance-native-captures/ja-JP-chat-offline-history-maximum.jpg`, `ja-JP-offline-failed-maximum.jpg`, `zh-CN-offline-failed-retained-maximum.jpg`, and `en-settings-offline-maximum.jpg`. All originals were viewed and their hashes checked. This behavior was inherited from the base, not introduced by a new transport change; it nevertheless fails the current truthful connection/status presentation and Desktop Native Architect acceptance scope.\n\nMinimal repair: use the stable connection state for the connection label/dot, retaining session for identity. Alternatively explicitly label this indicator as signed-in status. Do not change authentication, transport, ACK semantics or compare translated strings. Parent accepted this finding and is delegating a fresh Fix context. A new independent review with targeted original disconnected/reconnected pixels is required. This review accepts no subsequent source fix.\n\n## Semantic, authority and Native Architect assessment\n\nThe requested three-client product scope was assessed against canonical architecture, approved ADRs, task acceptance and minimality, including real TypeScript/Kotlin/Rust imports and responsibilities. No additional actionable authority, dependency, ownership, adapter, resource or unnecessary-complexity defect was established. Issue37 is expressly excluded. Three builtins and strict English default/fallback remain the approved present scope; unpublished language artifacts do not authorize downloads or future runtime mechanisms.\n\nPlain resource tables and key/placeholder equivalence, English-owned-key lookup, strict raw locale enums, user-content preservation, bounded error presentation, retained application state, existing save/tray sequencing and revision guards were inspected. Native code owns scalar persistence, not translation/business logic. Appearance storage remains separate. No new core dependency or database/protocol/native business rewrite was found. The frozen normalized Markdown SHA matches efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc; historical PDF provenance also matches.\n\nClient/shared/contracts/architecture trees from 9700c498700d1cfef3b48c445452d87851621c64 to e829 are equivalent. Later Web changes are capture harness changes. b40 adds nine recovery documents/evidence/task-queue changes, with no product changes. Thus the finding applies to both e829 and b40.\n\nThe fresh external audit records **606 checks, zero errors** at both product and final candidate bindings; the final recovery audit records **57 checks, zero errors**. These are bounded evidence-integrity checks, not product acceptance verdicts. See `audit-b40.json`, `recovery-audit-b40.json` and the preserved scripts for exact checked paths and scope.\n\nActual preserved build inputs, compiled renderer, executable/setup, generated NSIS installer script and primary tauri-utils source were inspected and hashed. Unbundled and installed executables have equal 15,529,984-byte lengths and exactly three changed offsets 12256218/12256219/12256220. Substituting the actual Tauri bundle marker UNK with NSS reproduces the installed executable. This establishes the retained installed candidate payload; it does not claim the currently restored older installation is that candidate.\n\nAll 28 original native JPEGs were individually viewed, including all three languages, pages, maximum appearance, authentication, offline/history, FAILED/retry/SENT and process restart/fallback representatives. Original 1283x843 pixels remain preserved. Initial font22 annotation was transparently corrected to actual warm14/.8; the initial Settings pixels support this correction, and separate maximum captures show22. English FAILED selection was reopened after an independently occurring token-refresh rebind; draft retention is explicitly captioned. Neither uninterrupted selection nor draft persistence through process restart is claimed.\n\nControlled native DB receipts establish absence of the controlled text before retry and one durable message/one logical Outbox afterward. They do not establish the initial local wire request ID or replace the full native A/B obligation. Prior accepted STATE evidence remains a separate prerequisite. Human zh/ja tray checks and prior source-equivalent English tray/Japanese notification receipts are bounded continuity evidence; no new OS notification-card screenshot was produced here.\n\nPrior Android independent evidence covers its 19 originals and repair/restart phases; this reviewer additionally viewed representative original Android pixels and checked recorded inventories/source equivalence. Prior Web3 independent report supplies the 69-original pixel decision and bounded A/B evidence, with its reported 776 checks; this reviewer checked its hash-bound evidence, not personally all 69 Web images. Earlier Android failures, Web1 pixel FAIL and Web2 strict-peer FAIL remain preserved and are superseded only within the later reports' stated scope. Prior e5 acceptance is not promoted to final-head acceptance.\n\n## Clean recovery and cleanup honesty\n\nThe nine committed b40 recovery changes were reviewed only after the final candidate notification and clean detached verification. Current task exists uniquely in review; Completion remains PENDING, S1 remains accepted and S2 OPEN. Final records distinguish local evidence, bounded reviews, hosted acceptance and integration. Historical open-trust/WIP notes are superseded rather than erased. Recovery records pass this bounded honesty/authority review, subject to this product FAIL requiring a new fix/review cycle.\n\nKnown installation and appearance/language restoration receipts report exact equality and native process shutdown. No private DB/credential restoration is claimed. Fresh cleanup receipt records original complete CurrentUser74/LocalMachine72 DER sets restored and owned CA absent; backend fixture cleanup reports PASS. The main-preservation receipt records 782 original files unchanged. This reviewer read and hashed those receipts; this is not a claim of a separate live root-store or 782-file main audit by this context.\n\nRecorded local architecture/frozen/planning/technology and deterministic language verification passed. The independent clean e829 RecoveryAcceptance passed using bundled PowerShell7 and explicit Python3; earlier policy/Get-FileHash failures remain in the Recorder. Parent separately reports clean b40 RecoveryAcceptance exit0 PASS. Local verification does not establish exact-head hosted CI acceptance.\n\n## Disposition\n\n**Full current product/Desktop Native Architect verdict: FAIL (one P2).** Recovery honesty/authority/evidence integrity: bounded PASS. No Task DONE or Task/Stage Gate PASS is asserted. Public publication consent, exact final-head hosted required jobs, protected integration and verified main synchronization remain pending obligations, distinct from this product defect. No public push was attempted by this reviewer.\n\nResearch run R-I18N-FINAL-INDEPENDENT-20261012 closes with result FAIL. Its prospective_resume mode explicitly marks pre-registration startup reads as incomplete trace; Recorder validation describes instrumentation integrity only. Final close/validation receipts are stored alongside this report. Parent owns repository recovery updates and the fresh fix/review delegation.\n",
+  "fixSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+  "fixHandoff": "# Fresh Navigation Fix handoff\n\nResult: LOCAL_FIX_COMMITTED; independent review/Native Architect/Task/Gate PASS NOT claimed.\nWriter lease: RELEASED after commit 1115ac496ddfc7f7a8f77166aa5f33b9d460d977. Parent may now write recovery and build from this candidate. No further source writes by this Fix Agent.\nBranch: task/LOOP1-CLIENT-I18N-001\nAssigned root: H:/.codex/worktrees/i18n/IM-platform (git root verified exactly)\nParent candidate: b40f3a72d9a2f2401a5a7e3a9f141ba805928b11\n\nOwned committed files:\n- clients/desktop/src/ui/components/Navigation.tsx\n- tests/clients/gui/desktop_render.mjs\n\nNavigation uses stable connection: ready -> existing connection.ready and green ready dot; binding -> existing connection.connecting and non-ready dot; offline -> existing connection.offlineShort and non-ready dot. Session tooltip and account/identity remain session-derived. No resource keys/dependency/protocol/Auth/Send/retry/native changes.\n\nLocal recorded checks (all exit0 final): ci/check_architecture.py --scope all --json baseline/final; tools/verify_frozen_architecture.py; ci/check_s2_planning.py; tools/verify-loop1-ctrl-002.ps1 -Mode Development with explicit Python3 PATH; full Desktop TypeScript program from actual tsconfig using retained same-version types/dependencies with output only external renderer stage; existing tests/clients/gui/desktop_render.mjs against that compiled frontend in Edge; unittest discover -s tests/architecture; git diff --check. Architecture tests raw count in architecture-tests-final.log. Renderer covers retained-session offline, reconnect ready and disconnect offline, correct dot, identity/tooltip, existing appearance/language/draft/selection/history controls.\n\nInitial isolated typecheck failed module resolution for retained external type paths; corrected explicit .d.ts paths, final full typecheck exit0. Failure is retained in Recorder, not suppressed. Initial read attempted preliminary.md under Research root; actual evidence resolved at sibling acceptance-final-independent/preliminary.md. Pre-run startup reads explicitly incomplete prospective_resume trace, not complete prospective history.\n\nExternal evidence: native-status-repair/startup-check-results.json, final-check-results.json, *-fix.log, *-final.log, renderer-results/results.json. Research run R-I18N-NAVIGATION-FIX-20261012 in i18n-research. Recorder result refers only to local fix run, never product acceptance.\n\nPreserved: existing task/current/recovery/checkpoint bytes, parent-owned external helpers, untracked tests/clients/i18n/.runtime archive; no main writes, no push, no build output/dependency installation in assigned source root, no fixtures/trust/backend/native mutations. Only two tracked paths committed; postcommit tracked state clean.\n\nNext exact actions (parent): rebuild/install exact committed candidate with owned helpers, capture targeted disconnected/reconnected originals with binding; delegate NEW fresh independent Reviewer and Native Architect (not prior reviewer/fixer context); update FAIL recovery/task/current; satisfy applicable exact-head hosted/protected integration/actual-main/safe main synchronization under latest Human publication consent. Task remains review unfinished and S2 OPEN; main synchronization PENDING, main SHA not changed/claimed by this agent.\n",
+  "scope": "Navigation connection display only plus existing renderer regression; no resource/protocol/session/send/state mutation",
+  "publicationAuthorization": "Human explicitly allowed publication after independent review and continuing PR/CI/integration; original images/CA/credentials/unknown main files excluded",
+  "localChecks": [
+    {
+      "check": "architecture",
+      "exit_code": 0
+    },
+    {
+      "check": "architecture-tests",
+      "exit_code": 0
+    },
+    {
+      "check": "diff-check",
+      "exit_code": 0
+    }
+  ],
+  "nativeRuntime": "PASS_LOCAL_CHECKS actual installed fix1115, normal system TLS, real disconnect→en/zh/ja→real reconnect→ja/zh/en; 13 unchanged originals, account/history/draft/appearance retained; no newsend",
+  "trust": "CLOSED 2026-10-12T07:32:02Z; original user74/machine72 complete thumbprint+DER sets restored and verified by fresh process",
+  "webAndroid": "Prior accepted bounded artifacts remain source-equivalent; Native new rail needs targeted repair acceptance",
+  "taskCompletion": "PENDING fresh independent review/exact-head hosted/protected integration/main sync",
+  "artifacts": {
+    "build-binding.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\build-binding.json",
+      "sha256": "3f3d1d52c320898d9845b5c74377f1386397f77b14e7edfd8c3344dbcb63cae9"
+    },
+    "installed.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\installed.json",
+      "sha256": "5202e4d6bf8312d0744abb8206968afebfce40cb60d15d83629a34825348c162"
+    },
+    "fresh-tls.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\fresh-tls.json",
+      "sha256": "27637126ececb5daa66558e0695c52486a955be6e9d0864326b64e7495bd1fee"
+    },
+    "captures/manifest.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\captures\\manifest.json",
+      "sha256": "7d02d1994e3de1b21abf1b7304e0b73c39c90b82f15185fdc268992e6d90e516"
+    },
+    "database-after.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\database-after.json",
+      "sha256": "28723f9118888de49339346e0da021479d12c412dae93d4dd8642f848dbbd8b3"
+    },
+    "restored.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\restored.json",
+      "sha256": "7e9152a256ff932025b13374657d315b2eded4c364fbdfa4071cf7958816da3e"
+    },
+    "machine-trust-lease-closed.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\machine-trust-lease-closed.json",
+      "sha256": "4ae6ff5d8e4a5da8e79c94e83234defb560887ddeb26562195f83281a03b1456"
+    },
+    "acceptance-cleanup-fresh-verification.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\acceptance-cleanup-fresh-verification.json",
+      "sha256": "fc159ce2cac4500bb48192a6df2ba448e81ee94b06641152d468213c2f545f8c"
+    },
+    "acceptance-runtime-launch.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\acceptance-runtime-launch.json",
+      "sha256": "6f8472009cabf353cdf1ac493ad0fecdf3874f06a382d4a46e1453e624ee012f"
+    },
+    "acceptance-runtime-public.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\acceptance-runtime-public.json",
+      "sha256": "00d07f72d7c751ca27d45dda0931d3b75814eada449ace8aa11d9be4441ed5c6"
+    },
+    "installed-marker-correction.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\11\\01a12b31-cc14-7501-939e-af2463e0f507\\native-status-repair\\installed-marker-correction.json",
+      "sha256": "12267b6769ac15e9f9284298356af4c9de73639f2b0f94a4d3dfd092ce270459"
+    }
+  },
+  "targetedNativeManifest": {
+    "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+    "pid": 47444,
+    "originals": "Computer Use data bytes unchanged, no cropping/editing",
+    "captures": [
+      {
+        "file": "en-initial-login.jpg",
+        "sha256": "9204071f4149ca2f7bc351f9fd21b4863441c60a0a5beae9fce75fdcc515b1b6",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual fixed installer, absent language preference default English; seeded warm22 density1.2, native login before controlled fixture"
+      },
+      {
+        "file": "en-ready-chat.jpg",
+        "sha256": "a5c93ab27df22b60df7ea87de4d1f739d01f8328b70dfa0e592bffa71320d7c8",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual normalTLS signed in; green Online, selected Morgan, two server history messages Sent, retained unsent multilingual draft, warm22/1.2"
+      },
+      {
+        "file": "en-offline-settings.jpg",
+        "sha256": "66229a86379b53a08328f6b274bf1ea06635652cd17aae0b3588325e0f511b2c",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "After actual Go offline; non-green Offline rail and Local history header while authenticated account remains, fixed3language order unchanged"
+      },
+      {
+        "file": "en-offline-chat.jpg",
+        "sha256": "0231d99523e48f6d0f770ab854558ecef02763b3c4d259c58741b8736f85002e",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual disconnected transport, Offline rail matches offline chat; account, Morgan selection, two Sent history rows, unsent draft and appearance retained"
+      },
+      {
+        "file": "zh-CN-offline-settings.jpg",
+        "sha256": "f6a293c5c751b5e89d4893ad03be2a17b666f84a4de64ed507dd912f94399d17",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual offline switch to Chinese, non-green 离线, signed-in identity/local history; fixed list English→Chinese→Japanese"
+      },
+      {
+        "file": "zh-CN-offline-chat.jpg",
+        "sha256": "a3a45103e8f74a8d07e13b47033ef9ceff699d2c7edeb9c83ee14338c8eba0fd",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual disconnected Chinese rail 离线 matches chat, Morgan selected/two confirmed server history rows/retained unsent draft, same warm22/1.2"
+      },
+      {
+        "file": "ja-JP-offline-settings.jpg",
+        "sha256": "220cbdf1acaa53e3d15393b710eba5029c93e731cdd4bc0e2936b3858361f8bf",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual disconnected Japanese オフライン non-green rail; real local preference selection and signed-in account, scrollable list visible boundary qualified"
+      },
+      {
+        "file": "ja-JP-offline-chat.jpg",
+        "sha256": "41a38b9073310a633e8fc516d4c836a2c15dafd124428379d3a7abafe698ae1d",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual disconnected Japanese rail/chat both オフライン, Morgan and two Sent history rows + unsent draft retained at warm22/1.2"
+      },
+      {
+        "file": "ja-JP-reconnected-chat.jpg",
+        "sha256": "c11dc6bc10e32b7101d1b90ab87a800add54188651c00ff72f91af4e6f978221",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual successful Reconnect: green オンライン rail agrees connected chat; account, selected Morgan, two existing Sent rows, same unsent draft and appearance retained"
+      },
+      {
+        "file": "zh-CN-reconnected-settings.jpg",
+        "sha256": "dfdb6e4f00542226572251a4ab50e38ea0931c9ed372b5feeb34334f11ddccba",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "After real Reconnect, Chinese green 在线 and updated header; language persisted separately from appearance"
+      },
+      {
+        "file": "zh-CN-reconnected-chat.jpg",
+        "sha256": "977d59e1a4fdbef29b57b774e3534df0e091e5c68f967a580fe7b2b6d5a93ef6",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual reconnected Chinese green 在线 matches chat; account/Morgan/two original Sent history rows/unsent draft retained"
+      },
+      {
+        "file": "en-reconnected-settings.jpg",
+        "sha256": "76a36d1a960bef148340e4b52f69cc0edaa385f3fb2764018de4aaa00211ca33",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual reconnected English Online/updated header; English selected and signed-in identity retained"
+      },
+      {
+        "file": "en-reconnected-chat.jpg",
+        "sha256": "4265ae3e156f60c11374e50a5d4021778e69847a06bc628895c18df20a966e3b",
+        "width": 1283,
+        "height": 843,
+        "window": {
+          "app": "process:H:\\.codex\\toolchains\\client-gui\\installed\\im-client-storage.exe",
+          "id": 50728118,
+          "title": "IM+ · PlugWorldIM"
+        },
+        "sourceSHA": "1115ac496ddfc7f7a8f77166aa5f33b9d460d977",
+        "note": "Actual reconnect retained green Online, connected chat, Avery/Morgan/two original history rows, multilingual unsent draft and warm22/1.2; no new send"
+      }
+    ]
+  },
+  "nativeRestoration": {
+    "originalInstallationAndPreferencesSame": true,
+    "utc": "2026-10-12T07:32:01.5998224Z",
+    "stoppedPid": 47444,
+    "scope": "Only known three files and appearance/language; controlled account data retained, no private DB/credential restoration claim",
+    "result": "PASS"
+  },
+  "freshCleanup": {
+    "scope": "Fresh separate process compares both full original thumbprint+DER sets; no trust mutation",
+    "rootSets": [
+      {
+        "location": "CurrentUser",
+        "completeThumbprintDERSetSame": true,
+        "ownedAbsent": true,
+        "count": 74
+      },
+      {
+        "location": "LocalMachine",
+        "completeThumbprintDERSetSame": true,
+        "ownedAbsent": true,
+        "count": 72
+      }
+    ],
+    "leaseReceipt": "machine-trust-lease-closed.json",
+    "freshPid": 17932,
+    "utc": "2026-10-12T07:34:35.4173981Z",
+    "result": "PASS_LOCAL_CHECKS"
+  },
+  "backendCleanup": "Owned runtime exit0; exact log tail PASS owned fixture cleanup; no unrelated container/volume operation",
+  "retainedFailures": "First elevation launcher cancelled with no certificate import; signed Windows launcher succeeded under same explicit approval. Install helper stale-block parser error before any mutation, corrected and passed. Fix isolated type-resolution first failure retained. No TLS bypass, no fabricated pixel/status, no prior failure promoted.",
+  "next": "NEW fresh independent semantic/Native Architect review of final clean committed recovery candidate; required exact-head CI/protected integration/actual-main/safe sync after PASS under granted publication authorization",
+  "installedMarkerMetadataCorrection": {
+    "result": "PASS_EXACT_EXPECTED_NSIS_PAYLOAD_SHA",
+    "actualInstalledSHA256": "8a60aacf45079f8e4b06540a522ebea2aa9c826bfe8915c53561976c1adf984f",
+    "rawUnbundledSHA256": "68088827defdf24d7e7caf9516de22c31675a0cf69e3237e20c13e9738fae3ee",
+    "markerOffset": 12256194,
+    "verifiedChangedOffsets": [
+      12256218,
+      12256219,
+      12256220
+    ],
+    "originalReportedOffsets": [
+      12256217,
+      12256218,
+      12256219
+    ],
+    "metadataCorrection": "Producer offset metadata used prefix23 rather than24; original installed.json retained. Whole-payload cryptographic equality was correctly checked during actual installation and independently reconstructed here. No raw installed payload retention is newly claimed.",
+    "producerHelperSHA256": "fc65da2568f4eb1c75abafd9c27960e63d76ec9d5c0317a5c88e0bc2c70be31f"
+  }
+}

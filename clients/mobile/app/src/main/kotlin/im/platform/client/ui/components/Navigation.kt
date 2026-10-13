@@ -22,5 +22,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 
 import im.platform.client.ui.*
-@Composable fun Navigation(page:String,navigate:(String)->Unit){NavigationBar{listOf("Chat","Friends","AI","Plugin","Settings").forEachIndexed {i,p->NavigationBarItem(selected=page==p,onClick={navigate(p)},icon={Text(listOf("◫","♧","✧","⊞","⚙")[i])},label={Text(p,maxLines=1,fontSize=12.sp)})}}
+import im.platform.client.ui.i18n.*
+@Composable fun Navigation(page:String,navigate:(String)->Unit){
+    val t=useText()
+NavigationBar{listOf("Chat","Friends","AI","Plugin","Settings").forEachIndexed {i,p->NavigationBarItem(selected=page==p,onClick={navigate(p)},icon={Text(listOf("◫","♧","✧","⊞","⚙")[i])},label={Text(t("nav."+p.lowercase()),maxLines=1,fontSize=12.sp)})}}
 }

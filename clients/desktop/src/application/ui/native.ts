@@ -15,3 +15,10 @@ export const secure={read:(slot:string)=>invoke<string|null>("credential_read",{
 export const windowMaximized=()=>invoke<boolean>("window_maximized");
 export const windowControl=(action:"minimize"|"maximize"|"close"|"drag")=>invoke<void>("window_control",{action});
 export const notify=(title:string,body:string)=>invoke<void>("native_notify",{title,body});
+
+import {validLocale,type Locale} from "../../ui/i18n/resources.js";
+export const language={
+ load:async():Promise<Locale>=>{try {const value=await invoke<unknown>("language_load");return validLocale(value)?value:"en";}catch{return "en";}},
+ save:(value:Locale)=>{if(!validLocale(value))return Promise.reject(new Error("Invalid language"));return invoke<void>("language_save",{value});}
+};
+export const trayText=(open:string,hide:string,quit:string,tooltip:string)=>invoke<void>("tray_text",{open,hide,quit,tooltip});
