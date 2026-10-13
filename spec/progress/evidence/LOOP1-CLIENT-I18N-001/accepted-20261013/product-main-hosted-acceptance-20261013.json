@@ -1,0 +1,42 @@
+{
+  "result": "PASS",
+  "candidateSHA": "82cd512f659873a9d17cbef803da1acb873613cc",
+  "event": "push",
+  "branch": "main",
+  "runId": 38355749163,
+  "runAttempt": 1,
+  "allRequiredJobsSuccess": true,
+  "requiredJobs": [
+    "architecture",
+    "classify",
+    "compatibility",
+    "deploy",
+    "desktop (ubuntu-latest)",
+    "desktop (windows-latest)",
+    "gate",
+    "go",
+    "java",
+    "mobile",
+    "shared",
+    "source_go",
+    "source_java",
+    "web"
+  ],
+  "totalJobs": 14,
+  "platformConditionalSkipsVerified": true,
+  "skippedSteps": [
+    {
+      "job": "desktop (windows-latest)",
+      "step": "Native Tauri prerequisites and approved Rust compiler"
+    },
+    {
+      "job": "desktop (windows-latest)",
+      "step": "Actual TypeScript Repository on SQLx SQLite"
+    },
+    {
+      "job": "desktop (ubuntu-latest)",
+      "step": "Approved Windows GUI assembly and auth controls"
+    }
+  ],
+  "scope": "Actual-main hosted acceptance; synchronization not yet claimed"
+}
