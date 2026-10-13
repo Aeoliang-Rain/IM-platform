@@ -1,0 +1,48 @@
+{
+  "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+  "base": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "result": "PASS",
+  "scope": "3 explicit navigation IDs previously covered semantically in source39 and extra BR entries, now bound to RH293..295",
+  "independence": "Same fresh regular Review helper; no implementation/Fix/specialist involvement; source readonly",
+  "records": [
+    {
+      "id": "RH293",
+      "path": "contracts/database/migrate.py",
+      "line": 105,
+      "column": 5,
+      "actual_source_line": "    except RuntimeError as exc:",
+      "source_sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c",
+      "specific_fault": "Actual psql nonzero exit, missing psql, checksum mismatch, concurrent migration-state guard or forbidden destructive down raises RuntimeError.",
+      "current_ground": "Frozen §11.4 requires independent migration component and canonical DB authority; migrate.py invokes psql ON_ERROR_STOP=1 and atomic BEGIN/advisory-lock/ledger/COMMIT. Task does not change this authority.",
+      "actual_recovery_or_failure": "Print migration error to stderr and return1; __main__ SystemExit makes process fail and Compose service_completed_successfully prevents app start. No applied/pending success fabricated. Other exception types escape; no broad unknown catch.",
+      "result": "PASS"
+    },
+    {
+      "id": "RH294",
+      "path": "tools/build_language_packs.py",
+      "line": 48,
+      "column": 39,
+      "actual_source_line": "        for match in re.finditer(r'(\"(?:[^\"\\\\]|\\\\.)*\") to (\"(?:[^\"\\\\]|\\\\.)*\")',kotlin):",
+      "source_sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1",
+      "specific_fault": "None at this indexed site. Column 39 belongs to regex noncapturing escaped-character grammar within quoted Kotlin key/value extraction; it is not optional-state recovery or exception capture.",
+      "current_ground": "Accepted canonical §6.6 / ADR0012 pure-data locale resources, exact keys and placeholder parity; builder.sources compares extracted Android pairs against full parsed Web/Desktop tables and validate en/zh-CN/ja-JP equality.",
+      "actual_recovery_or_failure": "No catch/fallback occurs. Regex recognizes JSON-style quoted strings and escapes. Missing/malformed/nonmatching Kotlin entry causes table inequality -> ValueError and failing process, duplicate/unsafe entry -> unique_object ValueError; it never silently supplies default translated data. Current artifacts test passed in prior helper run.",
+      "result": "PASS"
+    },
+    {
+      "id": "RH295",
+      "path": "tools/build_language_packs.py",
+      "line": 48,
+      "column": 62,
+      "actual_source_line": "        for match in re.finditer(r'(\"(?:[^\"\\\\]|\\\\.)*\") to (\"(?:[^\"\\\\]|\\\\.)*\")',kotlin):",
+      "source_sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1",
+      "specific_fault": "None at this indexed site. Column 62 belongs to regex noncapturing escaped-character grammar within quoted Kotlin key/value extraction; it is not optional-state recovery or exception capture.",
+      "current_ground": "Accepted canonical §6.6 / ADR0012 pure-data locale resources, exact keys and placeholder parity; builder.sources compares extracted Android pairs against full parsed Web/Desktop tables and validate en/zh-CN/ja-JP equality.",
+      "actual_recovery_or_failure": "No catch/fallback occurs. Regex recognizes JSON-style quoted strings and escapes. Missing/malformed/nonmatching Kotlin entry causes table inequality -> ValueError and failing process, duplicate/unsafe entry -> unique_object ValueError; it never silently supplies default translated data. Current artifacts test passed in prior helper run.",
+      "result": "PASS"
+    }
+  ],
+  "prior_artifacts_immutable": true,
+  "prior_failed_attempt": "R-REGULAR-E229-BACKEND-ADD command assertion failed because navigation RH294 is duplicated at accountSend.ts. Prior finish erroneously PASS; command failure controls outcome. External selector repaired to exact path+ID; no source or archived Recorder edits.",
+  "limitations": "One direct readonly ID inspection before new Recorder run is disclosed prospective_resume; prior full source reads/tests remain evidence in finished R-REGULAR-E229-BACKEND."
+}

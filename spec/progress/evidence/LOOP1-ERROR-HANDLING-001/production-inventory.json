@@ -4,10 +4,10 @@
   "branch": "task/LOOP1-ERROR-HANDLING-001",
   "candidate_binding": "Product bytes SHA256 below bind final candidate; final commit identity supplied by Git/parent handoff. This is implementer inventory, NOT independent acceptance.",
   "counts": {
-    "all": 184,
-    "logic": 117,
+    "all": 185,
+    "logic": 118,
     "data_config_assets_documents": 67,
-    "retained_sites": 294
+    "retained_sites": 302
   },
   "selection": "All tracked backend/clients/deploy/plugins paths excluding tests (including placeholder and build/runtime glue), plus deployed contracts migration runner+2canonicalSQL and language-pack builder. Supporting coverage112/167 does not replace this own scope.",
   "excluded": "SQLite write/Repository/schema/native database/Composer/draft mechanisms read-only EXCLUDED_BY_HUMAN. Narrow Send provenance separately explicitly allowed; no SQL/write/draft change. No unresolved asserted cursor bug: initial contiguous absence0 legitimate; required cursor missing propagates.",
@@ -1102,17 +1102,17 @@
     },
     {
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
-      "sha256": "6de9402a3e95c749856f5df594826e8e132c92ca3154d07e6b1b2993b5852633",
-      "bytes": 5213,
+      "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14",
+      "bytes": 5344,
       "responsibility": "clients/mobile",
       "changed": true,
       "finding": [
-        "EH11",
-        "Only known SyncFailure/SendStorageFailure handled; cancellation and unknown before stale-account guard.",
-        "actual API34 Sync69"
+        "F-ANDROID-READ",
+        "Known SDK direct reads tagged; unknown/schema/mapping/callback/cancellation propagate. Existing initialization projection localized without write recovery changes.",
+        "Actual API34 Sync69+Read33/Send66/original ErrorHandlingInstrumentation"
       ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh narrow F-ANDROID-READ Fix only: current direct read origins and consumer classifier inspected; full candidate semantic review PENDING.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -1165,17 +1165,17 @@
     },
     {
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "sha256": "2d3cb41b766a030ad00471062ddd9ce3775a1fa150a9a1d61d66e043e53ee020",
-      "bytes": 13996,
+      "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65",
+      "bytes": 14513,
       "responsibility": "clients/mobile",
       "changed": true,
       "finding": [
-        "EH12",
-        "Unknown fail() rethrows before account guard; known native/transport/protocol/storage actual operation unavailable remains truthful. Success-only searchComplete, prequery/failure cannot noMatch.",
-        "actual Android errors and existing runtime families"
+        "F-ANDROID-READ",
+        "Known SDK direct reads tagged; unknown/schema/mapping/callback/cancellation propagate. Existing initialization projection localized without write recovery changes.",
+        "Actual API34 Sync69+Read33/Send66/original ErrorHandlingInstrumentation"
       ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh narrow F-ANDROID-READ Fix only: current direct read origins and consumer classifier inspected; full candidate semantic review PENDING.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -2167,6 +2167,17 @@
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
       "kind": "data_config_asset_documentation_or_placeholder",
       "inspection": "Declarative deployment/build/runtime configuration, stylesheet/HTML, schema authority or documentation read; no catch behavior. Current error recovery remains in the listed executable owner. SQL schemas unchanged and reference actual live migration tests."
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a",
+      "bytes": 958,
+      "responsibility": "Android application direct Repository read exception provenance, existing SendStorageFailure consumers",
+      "changed": true,
+      "finding": "F-ANDROID-READ narrow actual known SDK read origins only; no SQL/Repository/native/write/draft change",
+      "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
+      "inspection": "Direct final Repository has no injected callbacks; specified external operational subclasses and existing exact SDK closed prefix only. Generic SQLite/schema/mapper/cancellation errors unchanged. No stack heuristic/framework.",
+      "kind": "logic_or_declaration_or_build_entry"
     }
   ],
   "retained_sites": [
@@ -3757,7 +3768,7 @@
     {
       "id": "RH147",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
-      "line": 40,
+      "line": 41,
       "column": 59,
       "operation": "enqueue",
       "source": "private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}",
@@ -3768,8 +3779,8 @@
     {
       "id": "RH148",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
-      "line": 40,
-      "column": 123,
+      "line": 41,
+      "column": 59,
       "operation": "enqueue",
       "source": "private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}",
       "disposition": "RETAINED",
@@ -3779,7 +3790,7 @@
     {
       "id": "RH149",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
-      "line": 62,
+      "line": 63,
       "column": 22,
       "operation": "active",
       "source": "}catch(error:SyncFailure){if(error.kind==\"unavailable\"){unavailable.add(c);continue};throw error}",
@@ -3790,7 +3801,7 @@
     {
       "id": "RH150",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
-      "line": 65,
+      "line": 66,
       "column": 14,
       "operation": "active",
       "source": "}catch(error:Exception){",
@@ -3801,7 +3812,7 @@
     {
       "id": "RH151",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
-      "line": 84,
+      "line": 85,
       "column": 5,
       "operation": "accountSync",
       "source": "catch(error:Exception){repository.close();throw error}",
@@ -4175,7 +4186,7 @@
     {
       "id": "RH185",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 35,
+      "line": 42,
       "column": 48,
       "operation": "bind",
       "source": "val frame=try{SendWire.decode(raw)}catch(_:WireFailure){null}",
@@ -4186,7 +4197,7 @@
     {
       "id": "RH186",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 41,
+      "line": 48,
       "column": 113,
       "operation": "bind",
       "source": "launch{send.state.collect{s->if(g==generation){publish{it.copy(connection=s.connection,error=s.error?:it.error)};updateList(repo,g)}}}",
@@ -4197,7 +4208,7 @@
     {
       "id": "RH187",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 42,
+      "line": 49,
       "column": 147,
       "operation": "bind",
       "source": "launch{owner.state.collect{s->if(g==generation){publish{it.copy(sync=s.status,unavailable=s.unavailable,error=s.error?.let{\"Sync \"+it}?:it.error)};if(s.error==\"authentication\")expire();if(s.status==\"idle\"){updateList(repo,g);refreshFriends(repo,g)}}}}",
@@ -4208,7 +4219,7 @@
     {
       "id": "RH188",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 47,
+      "line": 54,
       "column": 145,
       "operation": "bind",
       "source": "try{val profile=authOwner!!.profile();if(g!=generation || op!=operation)return;publish{it.copy(profile=profile)};refreshFriends(repo,g)}catch(e:Exception){fail(e,g==generation && op==operation)}",
@@ -4219,7 +4230,7 @@
     {
       "id": "RH189",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 50,
+      "line": 57,
       "column": 23,
       "operation": "refreshFriends",
       "source": "val owner=auth?:return;val revision=++friendRevision",
@@ -4230,7 +4241,7 @@
     {
       "id": "RH190",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 54,
+      "line": 61,
       "column": 10,
       "operation": "refreshFriends",
       "source": "}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==friendRevision)}",
@@ -4241,8 +4252,8 @@
     {
       "id": "RH191",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 54,
-      "column": 49,
+      "line": 61,
+      "column": 10,
       "operation": "refreshFriends",
       "source": "}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==friendRevision)}",
       "disposition": "RETAINED",
@@ -4252,10 +4263,10 @@
     {
       "id": "RH192",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 59,
+      "line": 66,
       "column": 228,
       "operation": "updateList",
-      "source": "val entries=withContext(Dispatchers.IO){(repo.conversationIds()+friendIds).distinct().map{id->val rows=repo.messages(id);val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
+      "source": "val entries=withContext(Dispatchers.IO){(repositoryRead {repo.conversationIds()}+friendIds).distinct().map{id->val rows=repositoryRead {repo.messages(id)};val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4263,10 +4274,10 @@
     {
       "id": "RH193",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 59,
+      "line": 66,
       "column": 288,
       "operation": "updateList",
-      "source": "val entries=withContext(Dispatchers.IO){(repo.conversationIds()+friendIds).distinct().map{id->val rows=repo.messages(id);val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
+      "source": "val entries=withContext(Dispatchers.IO){(repositoryRead {repo.conversationIds()}+friendIds).distinct().map{id->val rows=repositoryRead {repo.messages(id)};val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4274,10 +4285,10 @@
     {
       "id": "RH194",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 59,
+      "line": 66,
       "column": 321,
       "operation": "updateList",
-      "source": "val entries=withContext(Dispatchers.IO){(repo.conversationIds()+friendIds).distinct().map{id->val rows=repo.messages(id);val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
+      "source": "val entries=withContext(Dispatchers.IO){(repositoryRead {repo.conversationIds()}+friendIds).distinct().map{id->val rows=repositoryRead {repo.messages(id)};val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4285,7 +4296,7 @@
     {
       "id": "RH195",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 61,
+      "line": 68,
       "column": 270,
       "operation": "updateList",
       "source": "val previews=entries.associate{it.first to it.second};val ids=previews.keys.sortedWith(compareByDescending<String>{previews[it]!!.time}.thenBy{it});publish{it.copy(conversations=ids,previews=previews,messages=entries.find{row->row.first==it.selected}?.third?:emptyList())}",
@@ -4296,7 +4307,7 @@
     {
       "id": "RH196",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 62,
+      "line": 69,
       "column": 10,
       "operation": "updateList",
       "source": "}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==listRevision);if(g==generation&&revision==listRevision)publish{it.copy(error=\"Conversation history unavailable\")}}",
@@ -4307,8 +4318,8 @@
     {
       "id": "RH197",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 62,
-      "column": 49,
+      "line": 69,
+      "column": 10,
       "operation": "updateList",
       "source": "}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==listRevision);if(g==generation&&revision==listRevision)publish{it.copy(error=\"Conversation history unavailable\")}}",
       "disposition": "RETAINED",
@@ -4318,7 +4329,7 @@
     {
       "id": "RH198",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 69,
+      "line": 76,
       "column": 144,
       "operation": "register",
       "source": "scope.launch{try{Auth(state.value.endpoint,preferences).register(username,password);if(op==operation)publish{it.copy(registered=true)}}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}",
@@ -4329,8 +4340,8 @@
     {
       "id": "RH199",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 69,
-      "column": 183,
+      "line": 76,
+      "column": 144,
       "operation": "register",
       "source": "scope.launch{try{Auth(state.value.endpoint,preferences).register(username,password);if(op==operation)publish{it.copy(registered=true)}}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}",
       "disposition": "RETAINED",
@@ -4340,7 +4351,7 @@
     {
       "id": "RH200",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 71,
+      "line": 78,
       "column": 432,
       "operation": "login",
       "source": "fun login(endpoint:String,username:String,password:String){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{stop();withContext(Dispatchers.IO){auth?.clear()};if(op!=operation)return@launch;val base=serverOrigin(endpoint);publish{it.copy(endpoint=base)};val owner=Auth(base,preferences);auth=owner;val session=owner.login(username,password);if(op==operation)bind(session,op)}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
@@ -4351,10 +4362,10 @@
     {
       "id": "RH201",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 72,
-      "column": 1070,
+      "line": 79,
+      "column": 1072,
       "operation": "restore",
-      "source": "fun restore(endpoint:String){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{stop();val g=generation;val base=serverOrigin(endpoint);publish{it.copy(endpoint=base)};val owner=Auth(base,preferences);auth=owner;val account=withContext(Dispatchers.IO){owner.savedAccount()};if(op!=operation)return@launch;if(account==null){publish{it.copy(error=\"No saved session for this server\")};return@launch};val repo=withContext(Dispatchers.IO){Repository(getApplication(),account).also{it.initialize()}};val ids=withContext(Dispatchers.IO){repo.conversationIds()};val selected=\"\";val messages=withContext(Dispatchers.IO){if(selected.isNotEmpty())repo.messages(selected)else emptyList()};if(op!=operation){repo.close();return@launch};offlineRepository=repo;publish{it.copy(offlineAccount=account,conversations=ids,selected=selected,messages=messages,error=\"Showing saved history while the secure session resumes\")};updateList(repo,g);val session=withContext(Dispatchers.IO){owner.refresh()};if(op==operation)bind(session,op)}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
+      "source": "fun restore(endpoint:String){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{stop();val g=generation;val base=serverOrigin(endpoint);publish{it.copy(endpoint=base)};val owner=Auth(base,preferences);auth=owner;val account=withContext(Dispatchers.IO){owner.savedAccount()};if(op!=operation)return@launch;if(account==null){publish{it.copy(error=\"No saved session for this server\")};return@launch};val repo=withContext(Dispatchers.IO){accountRepository(account)};val ids=withContext(Dispatchers.IO){repositoryRead {repo.conversationIds()}};val selected=\"\";val messages=withContext(Dispatchers.IO){if(selected.isNotEmpty())repositoryRead {repo.messages(selected)}else emptyList()};if(op!=operation){repo.close();return@launch};offlineRepository=repo;publish{it.copy(offlineAccount=account,conversations=ids,selected=selected,messages=messages,error=\"Showing saved history while the secure session resumes\")};updateList(repo,g);val session=withContext(Dispatchers.IO){owner.refresh()};if(op==operation)bind(session,op)}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "This concrete restore operation validates known current Api/Wire/Sync/native-storage/native-capability or actual Android I/O/security fault first; unknown original throws. Its existing generation/op/revision guard gates UI publication only; no replacement account data; failed operation never fake empty result.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4362,7 +4373,7 @@
     {
       "id": "RH202",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 73,
+      "line": 80,
       "column": 220,
       "operation": "refresh",
       "source": "fun refresh(){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{auth?.let{val session=withContext(Dispatchers.IO){it.refresh()};if(op==operation)bind(session,op)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
@@ -4373,7 +4384,7 @@
     {
       "id": "RH203",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 74,
+      "line": 81,
       "column": 216,
       "operation": "expire",
       "source": "fun expire(){val op=++operation;val owner=auth;auth=null;scope.launch{stop();try{withContext(Dispatchers.IO){owner?.clear()};if(op==operation)publish{it.copy(busy=false,error=\"Session expired. Sign in again.\")}}catch(e:Exception){fail(e,op==operation);if(op==operation)publish{it.copy(busy=false,error=\"error.cleanup\")}}}}",
@@ -4384,7 +4395,7 @@
     {
       "id": "RH204",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 75,
+      "line": 82,
       "column": 161,
       "operation": "logout",
       "source": "fun logout(){val op=++operation;scope.launch{publish{it.copy(busy=true)};val owner=auth;auth=null;val remote=async(Dispatchers.IO){try{owner?.logout();null}catch(e:CancellationException){throw e}catch(e:Exception){e}};stop();try{remote.await()?.let{throw it};if(op==operation)publish{it.copy(error=null)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
@@ -4395,8 +4406,8 @@
     {
       "id": "RH205",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 75,
-      "column": 200,
+      "line": 82,
+      "column": 161,
       "operation": "logout",
       "source": "fun logout(){val op=++operation;scope.launch{publish{it.copy(busy=true)};val owner=auth;auth=null;val remote=async(Dispatchers.IO){try{owner?.logout();null}catch(e:CancellationException){throw e}catch(e:Exception){e}};stop();try{remote.await()?.let{throw it};if(op==operation)publish{it.copy(error=null)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
       "disposition": "RETAINED",
@@ -4406,8 +4417,8 @@
     {
       "id": "RH206",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 75,
-      "column": 310,
+      "line": 82,
+      "column": 161,
       "operation": "logout",
       "source": "fun logout(){val op=++operation;scope.launch{publish{it.copy(busy=true)};val owner=auth;auth=null;val remote=async(Dispatchers.IO){try{owner?.logout();null}catch(e:CancellationException){throw e}catch(e:Exception){e}};stop();try{remote.await()?.let{throw it};if(op==operation)publish{it.copy(error=null)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
       "disposition": "RETAINED",
@@ -4417,10 +4428,10 @@
     {
       "id": "RH207",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 77,
-      "column": 359,
+      "line": 84,
+      "column": 376,
       "operation": "open",
-      "source": "fun open(id:String){val owner=sync;val offline=offlineRepository;val g=generation;publish{it.copy(selected=id,messages=emptyList(),error=null)};scope.launch{try{if(offline!=null){val messages=withContext(Dispatchers.IO){offline.messages(id)};if(g==generation&&state.value.selected==id)publish{it.copy(messages=messages)}}else owner?.openConversation(id)}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Sync unavailable; showing local history\")}}}}",
+      "source": "fun open(id:String){val owner=sync;val offline=offlineRepository;val g=generation;publish{it.copy(selected=id,messages=emptyList(),error=null)};scope.launch{try{if(offline!=null){val messages=withContext(Dispatchers.IO){repositoryRead {offline.messages(id)}};if(g==generation&&state.value.selected==id)publish{it.copy(messages=messages)}}else owner?.openConversation(id)}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Sync unavailable; showing local history\")}}}}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "This concrete open operation validates known current Api/Wire/Sync/native-storage/native-capability or actual Android I/O/security fault first; unknown original throws. Its existing generation/op/revision guard gates UI publication only; no replacement account data; failed operation never fake empty result.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4428,8 +4439,8 @@
     {
       "id": "RH208",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 78,
-      "column": 41,
+      "line": 85,
+      "column": 256,
       "operation": "send",
       "source": "fun send(text:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.send(c,text)};if(g==generation){activity[c]=System.currentTimeMillis();repository?.let{updateList(it,g)}}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Message could not be saved\")}}}}",
       "disposition": "RETAINED",
@@ -4439,7 +4450,7 @@
     {
       "id": "RH209",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 78,
+      "line": 85,
       "column": 256,
       "operation": "send",
       "source": "fun send(text:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.send(c,text)};if(g==generation){activity[c]=System.currentTimeMillis();repository?.let{updateList(it,g)}}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Message could not be saved\")}}}}",
@@ -4450,8 +4461,8 @@
     {
       "id": "RH210",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 79,
-      "column": 40,
+      "line": 86,
+      "column": 162,
       "operation": "retry",
       "source": "fun retry(id:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.retry(c,id)}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Retry unavailable\")}}}}",
       "disposition": "RETAINED",
@@ -4461,7 +4472,7 @@
     {
       "id": "RH211",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 79,
+      "line": 86,
       "column": 162,
       "operation": "retry",
       "source": "fun retry(id:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.retry(c,id)}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Retry unavailable\")}}}}",
@@ -4472,8 +4483,8 @@
     {
       "id": "RH212",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 81,
-      "column": 35,
+      "line": 88,
+      "column": 178,
       "operation": "reconnect",
       "source": "fun reconnect(){val owner=sync?:return;val g=generation;scope.launch{try{owner.send.connect(state.value.endpoint.replaceFirst(\"https:\",\"wss:\")+\"/v1/ws\");owner.synchronize()}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Connection unavailable\")}}}}",
       "disposition": "RETAINED",
@@ -4483,7 +4494,7 @@
     {
       "id": "RH213",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 81,
+      "line": 88,
       "column": 178,
       "operation": "reconnect",
       "source": "fun reconnect(){val owner=sync?:return;val g=generation;scope.launch{try{owner.send.connect(state.value.endpoint.replaceFirst(\"https:\",\"wss:\")+\"/v1/ws\");owner.synchronize()}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Connection unavailable\")}}}}",
@@ -4494,8 +4505,8 @@
     {
       "id": "RH214",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 82,
-      "column": 44,
+      "line": 89,
+      "column": 270,
       "operation": "search",
       "source": "fun search(query:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,results=emptyList(),searchComplete=false,error=null)};scope.launch{try{val results=owner.search(query);if(g==generation)publish{it.copy(results=results,searchComplete=true)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
       "disposition": "RETAINED",
@@ -4505,7 +4516,7 @@
     {
       "id": "RH215",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 82,
+      "line": 89,
       "column": 270,
       "operation": "search",
       "source": "fun search(query:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,results=emptyList(),searchComplete=false,error=null)};scope.launch{try{val results=owner.search(query);if(g==generation)publish{it.copy(results=results,searchComplete=true)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
@@ -4516,8 +4527,8 @@
     {
       "id": "RH216",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 83,
-      "column": 38,
+      "line": 90,
+      "column": 378,
       "operation": "add",
       "source": "fun add(id:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,error=null)};scope.launch{try{val c=owner.add(id);if(g!=generation)return@launch;val revision=++friendRevision;val friends=owner.friends();if(g==generation&&owner===auth){if(revision==friendRevision)publish{it.copy(friends=friends,conversations=(it.conversations+c).distinct())};open(c)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
       "disposition": "RETAINED",
@@ -4527,7 +4538,7 @@
     {
       "id": "RH217",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
-      "line": 83,
+      "line": 90,
       "column": 378,
       "operation": "add",
       "source": "fun add(id:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,error=null)};scope.launch{try{val c=owner.add(id);if(g!=generation)return@launch;val revision=++friendRevision;val friends=owner.friends();if(g==generation&&owner===auth){if(revision==friendRevision)publish{it.copy(friends=friends,conversations=(it.conversations+c).distinct())};open(c)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
@@ -5403,6 +5414,94 @@
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Only db.query literal native invocation sanitized read failures from existing database.rs/root adapter become SendStorageFailure with original cause. Native init PRAGMA, cursor, list, history and contiguous failures reach existing truthful failed/unavailable consumers and known queue recovery; unknown values rethrow by identity. Transaction remains original closure, Repository mapping/validation and consumer callbacks execute outside this catch.",
       "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; explicit Human exception-boundary clarification; regular Review770 F1; no SQLite write/draft change."
+    },
+    {
+      "id": "ANDROID-READ-295",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "line": 7,
+      "column": 5,
+      "operation": "direct Repository read",
+      "source": "catch(error:android.database.sqlite.SQLiteDiskIOException){throw SendStorageFailure(error)}",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Specific SDK read operational failure or precise already-closed SDK object -> existing SendStorageFailure with original cause -> truthful Sync failed/storage or Workspace history failure and existing known queue recovery. All other errors propagate. Final Repository read has no callbacks; mapping errors remain unclassified.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "ANDROID-READ-296",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "line": 8,
+      "column": 5,
+      "operation": "direct Repository read",
+      "source": "catch(error:android.database.sqlite.SQLiteDatabaseCorruptException){throw SendStorageFailure(error)}",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Specific SDK read operational failure or precise already-closed SDK object -> existing SendStorageFailure with original cause -> truthful Sync failed/storage or Workspace history failure and existing known queue recovery. All other errors propagate. Final Repository read has no callbacks; mapping errors remain unclassified.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "ANDROID-READ-297",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "line": 9,
+      "column": 5,
+      "operation": "direct Repository read",
+      "source": "catch(error:android.database.sqlite.SQLiteCantOpenDatabaseException){throw SendStorageFailure(error)}",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Specific SDK read operational failure or precise already-closed SDK object -> existing SendStorageFailure with original cause -> truthful Sync failed/storage or Workspace history failure and existing known queue recovery. All other errors propagate. Final Repository read has no callbacks; mapping errors remain unclassified.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "ANDROID-READ-298",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "line": 10,
+      "column": 5,
+      "operation": "direct Repository read",
+      "source": "catch(error:android.database.sqlite.SQLiteDatabaseLockedException){throw SendStorageFailure(error)}",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Specific SDK read operational failure or precise already-closed SDK object -> existing SendStorageFailure with original cause -> truthful Sync failed/storage or Workspace history failure and existing known queue recovery. All other errors propagate. Final Repository read has no callbacks; mapping errors remain unclassified.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "ANDROID-READ-299",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "line": 11,
+      "column": 5,
+      "operation": "direct Repository read",
+      "source": "catch(error:android.database.sqlite.SQLiteAccessPermException){throw SendStorageFailure(error)}",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Specific SDK read operational failure or precise already-closed SDK object -> existing SendStorageFailure with original cause -> truthful Sync failed/storage or Workspace history failure and existing known queue recovery. All other errors propagate. Final Repository read has no callbacks; mapping errors remain unclassified.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "ANDROID-READ-300",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "line": 12,
+      "column": 5,
+      "operation": "direct Repository read",
+      "source": "catch(error:IllegalStateException){",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Specific SDK read operational failure or precise already-closed SDK object -> existing SendStorageFailure with original cause -> truthful Sync failed/storage or Workspace history failure and existing known queue recovery. All other errors propagate. Final Repository read has no callbacks; mapping errors remain unclassified.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "ANDROID-READ-301",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "line": 33,
+      "column": 60,
+      "operation": "existing Repository constructor/initialize projection",
+      "source": "val repo=try {Repository(getApplication(),account)}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Preserve previous raw initialization SQLite failure projection at exact unchanged constructor/initialize call only; existing Operation unavailable and inactive suppression remain. No new write recovery, retry, SQL, transaction or draft behavior.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "ANDROID-READ-302",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "line": 34,
+      "column": 32,
+      "operation": "existing Repository constructor/initialize projection",
+      "source": "try {repo.initialize()}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Preserve previous raw initialization SQLite failure projection at exact unchanged constructor/initialize call only; existing Operation unavailable and inactive suppression remain. No new write recovery, retry, SQL, transaction or draft behavior.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
     }
   ],
   "fix_F1": {
@@ -5425,5 +5524,16 @@
     ],
     "ci_entry": "tests/clients/send/desktop.mjs invokes both scripts; original assertions retained",
     "semantic_coverage": "F1 only. Prior regular Review FAIL did not accept all184 inputs/293 sites. New full regular Review then different new specialized audit required on final SHA."
+  },
+  "fix_F_ANDROID_READ": {
+    "base": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "production_delta": [
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt"
+    ],
+    "fixture": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ReadOriginChecks.kt",
+    "ci_entry": "Existing SyncInstrumentation onStart calls ReadOriginChecks; original69assertions unchanged, separate33read assertions",
+    "limits": "Actual SDK closed cursor/list/history/contiguous, initial Sync failed and known enqueue recovery, Workspace closed/history/schema/stale/identity, initialization blocked SDK open projection demonstrated. Exact fault timing between continuation merge and cursor/contiguous guard was NOT separately induced. Those SAME final Repository methods have actual closed fault proof; unchanged normal205to208pagination continuation ran in original69. No fabricated continuation-fault PASS; no device DiskIOException artificially induced."
   }
 }

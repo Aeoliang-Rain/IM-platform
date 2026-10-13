@@ -1,0 +1,6 @@
+Coordinator interpretation of the existing Human decision, not a new approval:
+Human: 允许仅修正异常边界，SQLite 写入与草稿保持不变
+
+Fresh Fix identified that Workspace.fail's blanket raw SQLiteException allowance would still misclassify unknown read/schema failures after a specific read-origin boundary.
+Authorized narrow structural correction: retain the existing initializer exception projection immediately around the unchanged initialize invocation and remove that blanket allowance from mixed read/application handling. Existing SQL, Repository, writes, transactions, drafts, initialization failure presentation and retirement behavior must remain equivalent. No new write recovery or remediation is authorized. Preserve actual cause and prove unknown read/schema errors at the Workspace consumer retain identity. Do not add origin maps, stack heuristics, general frameworks or production test hooks. If equivalence cannot be demonstrated, stop the conflicting portion and state the smallest question.
+This instruction was delivered to the sole fresh Fix /root/fix_android_read_origin while candidate e2294ac0b8e4d28843ec318416e09f38c4248982 remains unaccepted. Both new reviews and GitHub CI/integration/sync remain pending.

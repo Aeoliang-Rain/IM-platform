@@ -2,7 +2,7 @@
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
 status: review
-owner: fresh Fix Agent /root/fix_read_origin
+owner: fresh Fix Agent /root/fix_android_read_origin
 stage: S2
 gate: S2
 ---
@@ -181,3 +181,9 @@ Human explicit answer: “允许仅修正异常边界，SQLite 写入与草稿�
 Regular Review7700645f54de613c913b306a03824c9c5dc20c09 FAIL F1[P1]: actual native Repository reads bypassed Send origin tag, leaving Sync syncing/queue rejected and history error absent. Original report/hash/checks/repro preserved at spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/. Fresh /root/fix_read_origin repairs only literal native read boundary in existing accountSend accountRepository factory and three production constructor consumers; transaction/SQL/storage/Repository/nativeDB/Composer/draft unchanged. Two read fixtures invoked by original Desktop Send verifier;184production final hashes/294retained sites and65protected inputs bound. Full explanation/commands/failures/limits: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md and verification-history.json.
 
 This Fix is F1 only, not full184semantic acceptance. New final committed task HEAD requires new fresh regular Review then different fresh specialized audit on SAME finalSHA; bothPENDING. Task remainsreview/S2OPEN; nopush/CI/PR/integration/main-sync. LastGood35bd6f5. Sole Fix owns these uncommitted files until committed clean release; main782unknown/2tracked untouched. Recorder R-ERROR-READ-FIX prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013/relatedR-ERROR-REGULAR-7700645; incompleteprestart/directinspection explicitly disclosed. Actual freshDesktopcompile/Auth/literalread/SQLxread/TLSSendSync localPASS; Finalarchitectureall/tests82(oneexisting skip)/planning/frozen/Development recovery PASS in recorded commandhistory; clean committed Acceptance receipt will be external after commit. No newframework/migration or authority exception.
+
+# Fresh regular e229 FAIL and Android read-origin Fix (2026-10-13)
+
+Regular e2294ac0b8e4d28843ec318416e09f38c4248982 FAIL F-ANDROID-READ[P1] is durably immutable at spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac, full report/checks/hashsealed semantic coverage/retained grounds/receipt. Fresh sole /root/fix_android_read_origin repairs direct Android read provenance and preserves existing initialization projection at literal invocations only; all excluded65 inputs unchanged. New185production/302retained navigation inputs bound; final semantic acceptance still pending. Actual API34 Sync69+Read33/Send66/originalerrors, strictDesktopcompile, final architectureall/tests82(oneexisting skip)/frozen/planning/Development local PASS; verification-history.json retains original generated-output guard failure, write/adb denied attempts and explicit retries. Runtime/continuation limitations and exact boundary equivalence in fix-android-read/handoff.md and boundary-scope.txt. No private device/globaltrust/main writes; owned5590 closed, ownedAVD removed, builds preserved external. Clean committed Acceptance/Recorder receipt follows external finalSHA.
+
+Both NEW finalSHA regularReview and different fresh specializedAudit PENDING. Task review/S2OPEN; no push/CI-triggeringPR/integration/main-sync; lastGood35bd6f5. Coordinator must allocate new fresh contexts on exact committed clean task HEAD and then applicable actual hostedCI/protectedintegration/main verification/safe sync. Recorder R-ERROR-ANDROID-READ-FIX prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013 relatedR-ERROR-REGULAR-E2294AC; initial direct readings disclosed, no raw stream edits. Fix-only evidence is neither Task nor Gate acceptance.

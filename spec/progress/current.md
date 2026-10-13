@@ -12,11 +12,11 @@ Execution Status: AWAITING_INDEPENDENT_REGULAR_REVIEW
 
 ## Immediately Relevant Completed Work
 
-I18N accepted administrative baseline35bd6f5 independently recovered by39checks/all11seals. Human full error-governance/production audit implementation received regular Review770 FAIL F1. Fresh Fix repairs only actual native query provenance; new finalSHA reviews pending. Scope clarification allows only exception provenance near excluded SQLite write/draft behavior, which remains unchanged.
+I18N accepted administrative baseline35bd6f5 independently recovered by39checks/all11seals. Regular e2294ac FAIL F-ANDROID-READ is preserved; fresh Android Fix repairs direct read provenance and keeps initialization/write projection equivalent. NEW finalSHA regular Review and separate specialized audit remain PENDING. Scope clarification allows only exception provenance near excluded SQLite write/draft behavior, which remains unchanged.
 
 ## Current Blockers
 
-Regular Review770 FAIL F1 is preserved; fresh F1 Fix local candidate repairs actual native read provenance. New fresh regular Review and separate new error audit, exact-head hosted CI, protected integration, actual-main verification and safe main synchronization all PENDING. No Stage Gate evaluation.
+Regular770FAIL and e229FAIL F-ANDROID-READ preserved. Fresh narrow Android candidate locally verified; new finalSHA independent reviews required. New fresh regular Review and separate new error audit, exact-head hosted CI, protected integration, actual-main verification and safe main synchronization all PENDING. No Stage Gate evaluation.
 
 ## Verification
 
@@ -30,7 +30,7 @@ Fresh F1 Fix: strictDesktopcompile/Auth/literalread/actualSQLxread/originalTLSSe
 
 ## Changed Files or Migrations
 
-Governance/error examples/checklist/task template/handoff plus minimal current Go/Java/Wire/transport/Auth/Send/Sync/workspace/message/search corrections and preserved regression assertions.184production inputs/294retained sites inventoried.65protected inputs byte-equal baseline: Frozen/ADR/contracts, storage/Repository/schema/nativeDB/Composer all unchanged. No migrations or dependencies.
+Governance/error examples/checklist/task template/handoff plus minimal current Go/Java/Wire/transport/Auth/Send/Sync/workspace/message/search corrections and preserved regression assertions.185production inputs/302retained sites inventoried.65protected inputs byte-equal baseline: Frozen/ADR/contracts, storage/Repository/schema/nativeDB/Composer all unchanged. No migrations or dependencies.
 
 ## Known Failures, Risks, and Assumptions
 
@@ -38,7 +38,7 @@ Preserved original defaultcache/metadata guard/generatedoutput guards/legacy mis
 
 ## Next Exact Action
 
-New fresh regular Review must complete all184production/294retained-site semantic coverage, then different fresh uninvolved specialized error audit, both on repaired committed task-branch HEAD and cleancheckout. Original770FAIL is never accepted. No GitHub operation until bothPASS; any fix newSHA repeats both. CI/protectedintegration/main/safesync afterward. Task remains review, S2 OPEN.
+New fresh regular Review must complete all185production/302retained-site semantic coverage, then different fresh uninvolved specialized error audit, both on repaired committed task-branch HEAD and cleancheckout. Original770FAIL is never accepted. No GitHub operation until bothPASS; any fix newSHA repeats both. CI/protectedintegration/main/safesync afterward. Task remains review, S2 OPEN.
 
 ## Last Known Good Commit
 
@@ -50,8 +50,12 @@ New fresh regular Review must complete all184production/294retained-site semanti
 
 ## Uncommitted Changes / Ownership
 
-Task-owned F1 delta from sole fresh Fix Agent /root/fix_read_origin in verified H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001. Fix evidence: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md; original770FAIL preserved. Coordinator receives repaired exact committed SHA/cleanstatus to allocate NEW fresh Review; no other repository writer. Main unknown782files/2trackededits untouched. No owned emulator/backend/fixture/trust lease remains; build outputs external.
+Task-owned Android read delta from sole fresh Fix Agent /root/fix_android_read_origin in verified H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001. Fix evidence: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md; original770FAIL preserved. Coordinator receives repaired exact committed SHA/cleanstatus to allocate NEW fresh Review; no other repository writer. Main unknown782files/2trackededits untouched. No owned emulator/backend/fixture/trust lease remains; build outputs external.
 
 ## Architecture Conflicts / ACP / ADR
 
 None. Additive error audit subordinate to frozen§12. Exact Java task guard omission and existing language checker requiring obsolete blanket catch were repaired only to current accepted responsibilities with negatives; no waiver or Frozen change.
+
+## Latest Android read repair recovery
+
+Fresh /root/fix_android_read_origin: API34 owned5590 Sync69+Read33, Send66, originalerror identity suite, strictDesktopcompile, finalarchitectureall/tests82(oneexisting skip)/frozen/planning/Development local PASS. Scope/actual faults/continuation timing limit/initialization projection equivalence/failures/cleanup: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/handoff.md, input-checks.json, runtime-cleanup.json, verification-history.json. Full immutable e229FAIL attached at regular-review-e2294ac/. Old historical Desktop recovery paragraphs remain prior evidence. New committed taskHEAD SHA delivered by Git/external receipt; clean Acceptance/Recorder not independent acceptance. Both finalSHA reviews PENDING; next new fresh regularReview then different fresh specializedAudit; no push/PR/CI until bothPASS. LastGood35bd6f5, main preservation owned by Coordinator, no synchronization claimed. Owned5590/AVD/build leases cleaned/preserved; sole task writer releases after clean commit.

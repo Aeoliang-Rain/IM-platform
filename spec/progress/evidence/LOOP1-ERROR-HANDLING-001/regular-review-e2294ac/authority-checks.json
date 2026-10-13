@@ -1,0 +1,228 @@
+[
+  {
+    "name": "exact assigned root",
+    "passed": true,
+    "detail": "H:/.codex/worktrees/err/IM-platform"
+  },
+  {
+    "name": "exact candidate HEAD",
+    "passed": true,
+    "detail": "e2294ac0b8e4d28843ec318416e09f38c4248982"
+  },
+  {
+    "name": "clean committed state",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "task unique review",
+    "passed": true,
+    "detail": "unique queue and declared review"
+  },
+  {
+    "name": "changed paths within task scope",
+    "passed": true,
+    "detail": {
+      "changed_count": 96,
+      "paths": [
+        "AGENTS.md",
+        "backend/go/core/auth.go",
+        "backend/go/core/error_handling_test.go",
+        "backend/go/core/message.go",
+        "backend/go/core/outbox.go",
+        "backend/go/core/outbox_test.go",
+        "backend/go/core/sync.go",
+        "backend/go/gateway/error_handling_test.go",
+        "backend/go/gateway/gateway.go",
+        "backend/go/gateway/session.go",
+        "backend/go/main.go",
+        "backend/java/InfraPlaceholder.java",
+        "ci/check_architecture.py",
+        "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+        "clients/desktop/src-tauri/src/lib.rs",
+        "clients/desktop/src/application/accountSend.ts",
+        "clients/desktop/src/application/send.ts",
+        "clients/desktop/src/application/sync/application.ts",
+        "clients/desktop/src/application/ui/auth.ts",
+        "clients/desktop/src/application/ui/native.ts",
+        "clients/desktop/src/application/ui/workspace.ts",
+        "clients/desktop/src/ui/components/Messages.tsx",
+        "clients/desktop/src/ui/components/Shell.tsx",
+        "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/ErrorHandlingInstrumentation.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+        "clients/shared/protocol-sdk/src/send/wire.ts",
+        "clients/shared/protocol-sdk/src/sync/http.ts",
+        "clients/shared/protocol-sdk/src/sync/wire.ts",
+        "clients/web/src/application/client.ts",
+        "clients/web/src/application/http.ts",
+        "clients/web/src/application/repository.ts",
+        "clients/web/src/ui/appearance.ts",
+        "clients/web/src/ui/components/FriendsPanel.tsx",
+        "clients/web/src/ui/components/Messages.tsx",
+        "clients/web/src/ui/language.ts",
+        "spec/governance/error-handling.md",
+        "spec/governance/independent-review.md",
+        "spec/governance/minimality.md",
+        "spec/handoff/agent-context.md",
+        "spec/progress/checkpoints/2026-10-13-error-handling-review-candidate.md",
+        "spec/progress/current.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/commit-ownership-audit.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/excluded-sqlite-handling.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/input-checks.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/ownership-audit.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/verification-history.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/human-boundary-clarification.txt",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-audit.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-handoff.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/instrumentation-limits.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/java-placeholder-authority-assessment.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/message-render-scope.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/production-inventory.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/prompt.txt",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/protected-inputs.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-checks.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-report.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/checks.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/hashes.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/report.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/repro-read-boundaries.mjs",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/runtime-cleanup.json",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/scope-justification.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/search-and-fixture-scope.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/verification-history.json",
+        "spec/tasks/TASK_TEMPLATE.md",
+        "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+        "tests/architecture/test_client_technology.py",
+        "tests/architecture/test_source_boundaries.py",
+        "tests/clients/errors/.gitignore",
+        "tests/clients/errors/desktop_native_reads.mjs",
+        "tests/clients/errors/desktop_reads.mjs",
+        "tests/clients/errors/desktop_render.mjs",
+        "tests/clients/errors/go_live.py",
+        "tests/clients/errors/java.py",
+        "tests/clients/errors/mobile.py",
+        "tests/clients/gui/auth.mjs",
+        "tests/clients/i18n/compiled.mjs",
+        "tests/clients/i18n/scheduling.mjs",
+        "tests/clients/i18n/verify.mjs",
+        "tests/clients/send/desktop.mjs",
+        "tests/clients/sync/desktop.mjs",
+        "tests/clients/sync/shared.mjs",
+        "tests/clients/web/appearance.mjs",
+        "tests/clients/web/regressions.mjs"
+      ]
+    }
+  },
+  {
+    "name": "Frozen Markdown hash",
+    "passed": true,
+    "detail": "efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc"
+  },
+  {
+    "name": "Historical PDF hash",
+    "passed": true,
+    "detail": "546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510"
+  },
+  {
+    "name": "send test assertions unchanged in relocated independent replay",
+    "passed": true,
+    "detail": {
+      "canonical_sha256": "8723370da44c17e272d7c44d4a8bd262fce48078b0415eeb4d53d73277f0cba7",
+      "replay_sha256": "1178a9387f0c381e2fd4e0f09d3c87c60cd46156f341bd8a171e1dfda1c8f5ef"
+    }
+  },
+  {
+    "name": "sync test assertions unchanged in relocated independent replay",
+    "passed": true,
+    "detail": {
+      "canonical_sha256": "b7a5d6fa096a690e73d1e89fe3c028fac2ce2aec4ee2db54b5f0ca0722dc18db",
+      "replay_sha256": "0d9120f48ef10e035242a52b008437078b24c9c70cda9f1a5964c66f3bfe37a3"
+    }
+  },
+  {
+    "name": "F1 preserved prior clients/desktop/src/application/send.ts",
+    "passed": true,
+    "detail": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "name": "F1 preserved prior clients/desktop/src/application/sync/application.ts",
+    "passed": true,
+    "detail": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+  },
+  {
+    "name": "accepted prerequisite exact seal",
+    "passed": true,
+    "detail": "d8d6fe2107a946bbb9aaae7c489863ab000eecf927b0009fc477ebef282dad5a"
+  },
+  {
+    "name": "accepted dependency seal administrative-independent-20261013/report.md",
+    "passed": true,
+    "detail": "0f4a99f379050ce9e556bd3ec92111826d995371363442cc7147aa673bff818c"
+  },
+  {
+    "name": "accepted dependency seal administrative-fix-20261013/checks.json",
+    "passed": true,
+    "detail": "15dc4f9a6e71a78d21e6fc5ccf3ff0f7fe6c725c21328c0772570a5a21728361"
+  },
+  {
+    "name": "accepted dependency seal administrative-independent-fixed-20261013/report.md",
+    "passed": true,
+    "detail": "1defaad963a0d6bbcd4a472045e67ddeb77c1623f1668dad0fc47de37e00fb43"
+  },
+  {
+    "name": "accepted dependency seal admin-hosted-acceptance-20261013.json",
+    "passed": true,
+    "detail": "bb62ddb481ba80ac7d75962d503ff9dfc78b0f887d351ddc55f9a0fec0dd8d9c"
+  },
+  {
+    "name": "accepted dependency seal admin-main-hosted-acceptance-20261013.json",
+    "passed": true,
+    "detail": "8328dbafa848e7493f8caf28280f1b8ca969ee2465c8a4f8fdc6e75199a3bffa"
+  },
+  {
+    "name": "accepted dependency seal admin-protected-merge-20261013.json",
+    "passed": true,
+    "detail": "6039048d44ef14a0f0532eaf09dfba53284473fb5f373bdfea2fbfc1819837c9"
+  },
+  {
+    "name": "accepted dependency seal admin-main-sync-20261013.json",
+    "passed": true,
+    "detail": "edf53a7ea975fce1a921b4b9df4e0704a6fb95a6e2bd859ce5e3d0c2dd2c6e56"
+  },
+  {
+    "name": "accepted dependency seal product-main-sync-20261013.json",
+    "passed": true,
+    "detail": "82ce712a406f89bbfea9e86504fb2edff69efd6b6f3d2a1d1834f07e8e09c5fd"
+  },
+  {
+    "name": "accepted dependency seal accepted-language-pack-delivery-20261013.json",
+    "passed": true,
+    "detail": "a890197b735b52373afd777330bec433722f29c5cac09f859b3bea288c5a88c4"
+  },
+  {
+    "name": "accepted dependency seal native-status-repair/captures/manifest.json",
+    "passed": true,
+    "detail": "7d02d1994e3de1b21abf1b7304e0b73c39c90b82f15185fdc268992e6d90e516"
+  },
+  {
+    "name": "accepted dependency seal recorder-final-validation-20261013.json",
+    "passed": true,
+    "detail": "3ab21342ea6bcf1e40d3f06304a19d292e7057754f50d3c2416611290d0d00a0"
+  },
+  {
+    "name": "current initial product inventory source binding",
+    "passed": true,
+    "detail": "184 current path hashes; hash integrity supplements semantic evidence only"
+  }
+]
