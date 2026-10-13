@@ -1,0 +1,22 @@
+[
+  {
+    "id": "F-SEND-READ",
+    "priority": "P1",
+    "candidate": "697ef28a748354c624af71d9aaf81aa1ec02afae",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "lines": [
+      25,
+      58,
+      59,
+      60,
+      94
+    ],
+    "trigger": "Actual SDK SQLiteException from Repository.messages SQL/schema failure, e.g. missing messages table.",
+    "actual": "refresh/retry call storage {repo.messages}; blanket SQLiteException catch wraps original schema error as SendStorageFailure; operation publishes storage, Workspace fail accepts tag; callback/timer catches can suppress internal defect instead of propagating.",
+    "expected": "Read schema/mapping/programming fault must remain original before active/stale guard; only specific known operational native read failures may project storage.",
+    "repair": "Replace only storage {repo.messages(conversation)} read consumers at refresh58 and retry94 with repositoryRead {repo.messages(conversation)}. Preserve existing storage helper/all literal SQLite write/init calls/SQL/Repository/Composer/drafts byte-equivalent.",
+    "validation": "Add actual owned API34 Send consumer schema-failure identity proof for open/refresh and retry, plus known closed-database storage projection; preserve Send66/Sync69/Read33 existing assertions and stale-account/callback proofs. Prior actualSDK ReadOriginChecks schema fault demonstrated but DOES NOT execute these Send consumers; no freshdevice reproduction claimed here.",
+    "authority": "Human complete error audit + exception-boundary clarification; error-handling.md unknown/internal faults must propagate; WRITE/draft exclusion does not exclude READ.",
+    "reviewer": "/root/regular_review_697ef28"
+  }
+]

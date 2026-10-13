@@ -55,7 +55,7 @@ class SendViewModel(private val repo:Repository, private val session:SendSession
     fun matchesRepository(repository:Repository)=repo===repository
     private fun key(c:String,r:String)="$c/$r"
     private fun publish(value:SendState) { if(!retired) mutableState.value=value }
-    private fun refresh() { publish(mutableState.value.copy(messages=if(conversation.isEmpty()) emptyList() else storage { repo.messages(conversation) })) }
+    private fun refresh() { publish(mutableState.value.copy(messages=if(conversation.isEmpty()) emptyList() else repositoryRead { repo.messages(conversation) })) }
     private suspend fun operation(action:suspend ()->Unit) { lock.withLock { try { action() } catch(error:SendStorageFailure) { publish(mutableState.value.copy(error="storage")); throw error } } }
     private fun callback(action:suspend ()->Unit) { scope.launch { try { operation(action) } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } } }
     suspend fun openConversation(c:String) = operation { if(!retired) { conversation=Wire.uuid(c); refresh() } }
@@ -91,7 +91,7 @@ class SendViewModel(private val repo:Repository, private val session:SendSession
     }
     suspend fun retry(c:String,r:String) = operation {
         check(!retired); val conversation=Wire.uuid(c); val request=Wire.uuid(r)
-        val row=storage { repo.messages(conversation) }.firstOrNull {it[0]==request} ?: error("Unknown send")
+        val row=repositoryRead { repo.messages(conversation) }.firstOrNull {it[0]==request} ?: error("Unknown send")
         require(row[1]==session.userId); if(row[3]!="SENT") begin(LocalMessage(conversation,request,session.userId,row[2]!!))
     }
     private fun begin(m:LocalMessage) {

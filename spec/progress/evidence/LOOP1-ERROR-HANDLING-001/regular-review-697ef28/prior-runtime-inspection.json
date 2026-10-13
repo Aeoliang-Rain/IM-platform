@@ -1,0 +1,789 @@
+[
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 390.0,
+    "command_id": "C-25e01466-36f1-4197-9581-c7bfa110c7ff",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-25e01466-36f1-4197-9581-c7bfa110c7ff.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-25e01466-36f1-4197-9581-c7bfa110c7ff.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "exit_code": 0,
+    "duration_ms": 2453.0,
+    "command_id": "C-45f18359-e4c3-492a-8830-669e809bfc5e",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-45f18359-e4c3-492a-8830-669e809bfc5e.stdout.txt",
+        "equal": false,
+        "redaction_declared": true,
+        "stored_blob_sha256": "24aee07d20638aa1abfdcd988658d077f5e78450b881936c4ff6b449a825956a",
+        "raw_stdout_not_recoverable_after_redaction": true
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-45f18359-e4c3-492a-8830-669e809bfc5e.stderr.txt",
+        "equal": true,
+        "redaction_declared": true,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 375.0,
+    "command_id": "C-2f6f6379-cae3-4c62-a80c-3a136eeb4e89",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-2f6f6379-cae3-4c62-a80c-3a136eeb4e89.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-2f6f6379-cae3-4c62-a80c-3a136eeb4e89.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Development"
+    ],
+    "exit_code": 0,
+    "duration_ms": 25766.0,
+    "command_id": "C-1346fc33-75c0-4e90-a364-6e44d342d3e5",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-1346fc33-75c0-4e90-a364-6e44d342d3e5.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "aa7d3b7a0845ba56af559f834502b66be901f1f12e52ea5c5c3962faf114872b",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-1346fc33-75c0-4e90-a364-6e44d342d3e5.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "exit_code": 0,
+    "duration_ms": 109.0,
+    "command_id": "C-61b57012-d6c3-4553-9235-69f36407307d",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-61b57012-d6c3-4553-9235-69f36407307d.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "8906671a64228ed6d4ed40c8480cd107024d00c33bc456f7379aaeb114965184",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-61b57012-d6c3-4553-9235-69f36407307d.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "6660b55d5ddc23a90bc143d59cd97ee8e2eac08138dcc650f30b3c781c0c994e",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/workspace.py"
+    ],
+    "exit_code": 1,
+    "duration_ms": 266.0,
+    "command_id": "C-17be74dd-2ef8-4ea1-b976-608a30057cc7",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-17be74dd-2ef8-4ea1-b976-608a30057cc7.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-17be74dd-2ef8-4ea1-b976-608a30057cc7.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "8e7a1af9e2c3e0c93bcb956081dca8fb211e9c7c592140599d02f8b39c094f24",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/workspace.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 250.0,
+    "command_id": "C-3c9268a5-eb4a-4946-9f26-d87ff0a74aa2",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-3c9268a5-eb4a-4946-9f26-d87ff0a74aa2.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "dbee25de86095d78f994cfddb0921e9209f61b7911361398d41e96f00a746bf1",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-3c9268a5-eb4a-4946-9f26-d87ff0a74aa2.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/start.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 4234.0,
+    "command_id": "C-d9589e8f-413b-4293-964c-4823564f40df",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-d9589e8f-413b-4293-964c-4823564f40df.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "8c7ab47c9272ef2c2ae11822fcc92cfeef7d9efd92e98c5cacf3e09a418bc70f",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-d9589e8f-413b-4293-964c-4823564f40df.stderr.txt",
+        "equal": false,
+        "redaction_declared": false,
+        "stored_blob_sha256": "0fd7452a018682944391d060b82ff3b286cf25c280162948e77d5db8d5180fdd",
+        "raw_stdout_not_recoverable_after_redaction": true
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tests/clients/gui/native.py",
+      "gradle",
+      "assembleDebug",
+      "assembleDebugAndroidTest"
+    ],
+    "exit_code": 0,
+    "duration_ms": 47328.0,
+    "command_id": "C-7fbd17b6-5f14-4037-ba88-d1c3d8e22947",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-7fbd17b6-5f14-4037-ba88-d1c3d8e22947.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "ddd9547ad034b2c886979c7fcc3258903d142aa6a18ce2fb93d9cdabd4be0310",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-7fbd17b6-5f14-4037-ba88-d1c3d8e22947.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "H:/Android/platform-tools/adb.exe",
+      "-s",
+      "emulator-5590",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 3221226505,
+    "duration_ms": 187.0,
+    "command_id": "C-c7239c22-2bd7-49c5-82ef-f6405832bba5",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-c7239c22-2bd7-49c5-82ef-f6405832bba5.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-c7239c22-2bd7-49c5-82ef-f6405832bba5.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "6e91524c564b9a0f567919a09ab7c47768feda9a7a6dedd93b99adbe0b7418fd",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "H:/Android/platform-tools/adb.exe",
+      "-s",
+      "emulator-5590",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "duration_ms": 172.0,
+    "command_id": "C-be03d4ab-7671-48fc-827a-90b0badd3927",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-be03d4ab-7671-48fc-827a-90b0badd3927.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-be03d4ab-7671-48fc-827a-90b0badd3927.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tests/clients/gui/native.py",
+      "mobile",
+      "--serial",
+      "emulator-5590"
+    ],
+    "exit_code": 0,
+    "duration_ms": 53796.0,
+    "command_id": "C-06666176-698f-4360-a0b8-3e7a9f819542",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-06666176-698f-4360-a0b8-3e7a9f819542.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "61bed5a2a64769f2f356935790f6fa8b98b1177e41b1360dc9bbebf76d129536",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-06666176-698f-4360-a0b8-3e7a9f819542.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": [
+      "INSTRUMENTATION_RESULT: assertions=69",
+      "INSTRUMENTATION_RESULT: readAssertions=21",
+      "INSTRUMENTATION_RESULT: result=PASS",
+      "INSTRUMENTATION_RESULT: sdkInt=34",
+      "INSTRUMENTATION_CODE: -1"
+    ]
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/init.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 266.0,
+    "command_id": "C-4c78072d-1c3c-414a-92b4-f780df461b2d",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-4c78072d-1c3c-414a-92b4-f780df461b2d.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "4a133375a2b37bf50b70356f7c67c5b09338d9454e872ceca3d49b079df6e7d3",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-4c78072d-1c3c-414a-92b4-f780df461b2d.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "node",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/owned-generated-artifacts/clients_desktop_node_modules/typescript/bin/tsc",
+      "--noEmit",
+      "-p",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-read-origin/tsconfig.json"
+    ],
+    "exit_code": 0,
+    "duration_ms": 2172.0,
+    "command_id": "C-83dc2200-7ae5-4329-bc28-97b89e6da737",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-83dc2200-7ae5-4329-bc28-97b89e6da737.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-83dc2200-7ae5-4329-bc28-97b89e6da737.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tests/clients/gui/native.py",
+      "mobile",
+      "--serial",
+      "emulator-5590"
+    ],
+    "exit_code": 0,
+    "duration_ms": 72766.0,
+    "command_id": "C-5b3d20a3-9adb-4481-aaef-52b26a21cbd6",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-5b3d20a3-9adb-4481-aaef-52b26a21cbd6.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "34e9613e4e45ebbb13d76851256129ebce91afd262672434d457be1b30eb58fe",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-5b3d20a3-9adb-4481-aaef-52b26a21cbd6.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": [
+      "INSTRUMENTATION_RESULT: assertions=69",
+      "INSTRUMENTATION_RESULT: readAssertions=33",
+      "INSTRUMENTATION_RESULT: result=PASS",
+      "INSTRUMENTATION_RESULT: sdkInt=34",
+      "INSTRUMENTATION_CODE: -1"
+    ]
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/eol.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 2641.0,
+    "command_id": "C-ee30d685-4b3e-4f60-ba8a-1e7a1eed420b",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-ee30d685-4b3e-4f60-ba8a-1e7a1eed420b.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "14b410c47105d66b18dca0d0518a4aafac0c99cd7ac4b402e10481cbde38d771",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-ee30d685-4b3e-4f60-ba8a-1e7a1eed420b.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tests/clients/gui/native.py",
+      "send-mobile",
+      "--serial",
+      "emulator-5590"
+    ],
+    "exit_code": 0,
+    "duration_ms": 24484.0,
+    "command_id": "C-02505765-e6e8-45cd-a016-1f5b09bb4292",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-02505765-e6e8-45cd-a016-1f5b09bb4292.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "1908cf2edf43fa286fbd0166f2a0600c9af99a08ae18dd9eab88eccde4abeb4d",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-02505765-e6e8-45cd-a016-1f5b09bb4292.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": [
+      "INSTRUMENTATION_RESULT: assertions=66",
+      "INSTRUMENTATION_RESULT: engine=actual Android SDK SQLite + standard verified TLS WSS + StateFlow",
+      "INSTRUMENTATION_RESULT: result=PASS",
+      "INSTRUMENTATION_RESULT: sdkInt=34",
+      "INSTRUMENTATION_CODE: -1"
+    ]
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/architecture",
+      "-v"
+    ],
+    "exit_code": 1,
+    "duration_ms": 23782.0,
+    "command_id": "C-e5a85c11-6303-456a-9f78-04b073a1da35",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-e5a85c11-6303-456a-9f78-04b073a1da35.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-e5a85c11-6303-456a-9f78-04b073a1da35.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "a9b43c452818c2d855f0cd6615e32d671cd56ddcb368b3b07d43df72bfea2836",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/error_replay.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 17125.0,
+    "command_id": "C-3205755f-bb86-4d0a-8099-dff9c44d249d",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-3205755f-bb86-4d0a-8099-dff9c44d249d.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "c1a1b5ff1ad12f83ea98fc10f102fdc81a2740fc29dcad2f10002c84e9f42d9b",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-3205755f-bb86-4d0a-8099-dff9c44d249d.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": [
+      "INSTRUMENTATION_RESULT: result=PASS",
+      "INSTRUMENTATION_RESULT: scope=actual Android unknown HTTPS identity, invalid wire and direct non-storage delivery callback; message invariant and search-state mapping; mixed observer unknown original escapes actual coroutine; genuine SQLite recovery covered by SendInstrumentation",
+      "INSTRUMENTATION_RESULT: sdkInt=34",
+      "INSTRUMENTATION_CODE: -1"
+    ]
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/cleanup.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 6781.0,
+    "command_id": "C-5900f893-ab83-403b-9388-a655f77c43ac",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-5900f893-ab83-403b-9388-a655f77c43ac.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "c1321d8fc1d023d9398debd6111f70e1b242e392d8fda547a45c0c0cfbf8d26e",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-5900f893-ab83-403b-9388-a655f77c43ac.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "exit_code": 0,
+    "duration_ms": 1328.0,
+    "command_id": "C-707e8059-37b6-4aca-8576-4e0c71de2d6e",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-707e8059-37b6-4aca-8576-4e0c71de2d6e.stdout.txt",
+        "equal": false,
+        "redaction_declared": true,
+        "stored_blob_sha256": "24aee07d20638aa1abfdcd988658d077f5e78450b881936c4ff6b449a825956a",
+        "raw_stdout_not_recoverable_after_redaction": true
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-707e8059-37b6-4aca-8576-4e0c71de2d6e.stderr.txt",
+        "equal": true,
+        "redaction_declared": true,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/architecture",
+      "-v"
+    ],
+    "exit_code": 0,
+    "duration_ms": 19984.0,
+    "command_id": "C-0c9b06e1-2e4f-448a-9cd8-c69976e8b912",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-0c9b06e1-2e4f-448a-9cd8-c69976e8b912.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-0c9b06e1-2e4f-448a-9cd8-c69976e8b912.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "af9ebcd2ac02dcee8dccd30431f960f60ea2be613489f4d6209c35bb7b84bd1b",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-read/bind.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 7109.0,
+    "command_id": "C-07b5e1de-d834-4ca6-be77-52b3b6226c2d",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-07b5e1de-d834-4ca6-be77-52b3b6226c2d.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "75781c2cc9ddd620a107c3de560aa18632da8aa1f144f3fa8042d9619742c2ef",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-07b5e1de-d834-4ca6-be77-52b3b6226c2d.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 360.0,
+    "command_id": "C-79c6d45c-07f5-4216-bb4f-14cd43687cdc",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-79c6d45c-07f5-4216-bb4f-14cd43687cdc.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-79c6d45c-07f5-4216-bb4f-14cd43687cdc.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 328.0,
+    "command_id": "C-2c672aa3-2432-4b80-b463-e7511b41ce3c",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-2c672aa3-2432-4b80-b463-e7511b41ce3c.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-2c672aa3-2432-4b80-b463-e7511b41ce3c.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Development"
+    ],
+    "exit_code": 0,
+    "duration_ms": 24797.0,
+    "command_id": "C-43da059b-3f9b-4813-b49d-26f63dd9a480",
+    "blobs_checked": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-43da059b-3f9b-4813-b49d-26f63dd9a480.stdout.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "c2685e0e53282e8fb18a5bdef516c99ff4e4038b2ca29d150b0ac70abd8bd9f3",
+        "raw_stdout_not_recoverable_after_redaction": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-android-read\\research\\runs\\R-ERROR-ANDROID-READ-FIX\\blobs\\C-43da059b-3f9b-4813-b49d-26f63dd9a480.stderr.txt",
+        "equal": true,
+        "redaction_declared": false,
+        "stored_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_not_recoverable_after_redaction": false
+      }
+    ],
+    "runtime_markers": []
+  }
+]

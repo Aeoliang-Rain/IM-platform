@@ -2,7 +2,7 @@
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
 status: review
-owner: fresh Fix Agent /root/fix_android_read_origin
+owner: fresh Fix Agent /root/fix_send_cleanup_roots
 stage: S2
 gate: S2
 ---
@@ -187,3 +187,11 @@ This Fix is F1 only, not full184semantic acceptance. New final committed task HE
 Regular e2294ac0b8e4d28843ec318416e09f38c4248982 FAIL F-ANDROID-READ[P1] is durably immutable at spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac, full report/checks/hashsealed semantic coverage/retained grounds/receipt. Fresh sole /root/fix_android_read_origin repairs direct Android read provenance and preserves existing initialization projection at literal invocations only; all excluded65 inputs unchanged. New185production/302retained navigation inputs bound; final semantic acceptance still pending. Actual API34 Sync69+Read33/Send66/originalerrors, strictDesktopcompile, final architectureall/tests82(oneexisting skip)/frozen/planning/Development local PASS; verification-history.json retains original generated-output guard failure, write/adb denied attempts and explicit retries. Runtime/continuation limitations and exact boundary equivalence in fix-android-read/handoff.md and boundary-scope.txt. No private device/globaltrust/main writes; owned5590 closed, ownedAVD removed, builds preserved external. Clean committed Acceptance/Recorder receipt follows external finalSHA.
 
 Both NEW finalSHA regularReview and different fresh specializedAudit PENDING. Task review/S2OPEN; no push/CI-triggeringPR/integration/main-sync; lastGood35bd6f5. Coordinator must allocate new fresh contexts on exact committed clean task HEAD and then applicable actual hostedCI/protectedintegration/main verification/safe sync. Recorder R-ERROR-ANDROID-READ-FIX prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013 relatedR-ERROR-REGULAR-E2294AC; initial direct readings disclosed, no raw stream edits. Fix-only evidence is neither Task nor Gate acceptance.
+
+# Fresh regular697 FAIL and Send/cleanup-root Fix (2026-10-13)
+
+Regular697ef28 FAIL BOTH F-SEND-READ/F-CLIENT-CLEANUP-ROOT is immutable at regular-review-697ef28/ including full seals/report/coverage/grounds/receipt/helpers/checks. Freshsole /root/fix_send_cleanup_roots repairs ONLY2literalSendreads viaexistingrepositoryRead and3mandatoryHTTPcleanup roots. Existingstoragehelper/ALLwrites/init/SQL/Repository/nativeDB/Composer/drafts unchanged;65protectedcanonicalinputs equalaccepted35bd6f5.185production inputhashes/305retainedsites (old302 plus3necessaryprimarycaptures) current, no independentfinalsemanticPASS claimed.
+
+ActualownedAPI34Send66+newRead21/Sync69+existingRead33/originalerrors, lockedWeb strictbuild/behavior/renderer/appearance/i18n, sharedstrictbuild/originalSend/Sync and exactknownFAILED/unknownprimitive/dualcause/logoutcontrols localPASS. Details/knownfailures/limitations/resourcecleanup/method: fix-send-cleanup/handoff.md, input-checks.json, runtime-cleanup.json, verification-history.json. Nativeerroredstream sameknownroot remainsFAILED; onlydistinctroots usebuilt-inAggregateError, preservingknownclassification onlywhenbothboundaryfaults known; unknownprimary neverreclassified. Actual204nullbody vscontrolledadapterexposedemptybranch explicitly labeled. No newdeps/framework/publiccontract/write policy.
+
+Regular Review finalSHA: PENDING; Specialized Error Audit finalSHA: PENDING. NewcleancommittedtaskHEAD delivered externally; bothNEWfreshcontexts mustreview SAMEfinalSHA, no priorPASS reusable. Next: newfreshregularReview thenDIFFERENTfreshspecialist; no push/CItriggeringPR untilbothPASS, thenexactheadhostedCI/protectedintegration/actualmain/safemain sync. Taskreview/S2OPEN, LastGood35bd6f5, synchronizedresultPENDING. RecorderR-ERROR-SEND-CLEANUP-FIX prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013/relatedR-ERROR-REGULAR-697EF28 incompleteprestart/directread factsdisclosed; finish/validateexternal aftercommit. Own5592/AVD/buildleases released/preserved; mainuntouched; sourcewriter releasesonfinalcleancandidate receipt.

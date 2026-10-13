@@ -17,14 +17,24 @@ export class SyncHttp {
       if(response.redirected || response.headers.get("cache-control")!=="no-store" || !/^application\/json(?:\s*;|$)/i.test(response.headers.get("content-type")??"")) throw new SyncFailure(response.status>=500?"transport":"protocol");
       const reader=response.body?.getReader();if(!reader) throw new SyncFailure("transport");
       const decoder=new TextDecoder("utf-8",{fatal:true});let raw="",size=0;
+      let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;
       try {for(;;){
         let item:ReadableStreamReadResult<Uint8Array>;
-        try{item=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure("transport");throw error;}
+        try{item=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure("transport");throw error;}
         if(item.done)break;size+=item.value.byteLength;if(size>MAX_RESPONSE)throw new SyncFailure("protocol");
-        try{raw+=decoder.decode(item.value,{stream:true});}catch(error){if(error instanceof TypeError)throw new SyncFailure("protocol");throw error;}
+        try{raw+=decoder.decode(item.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure("protocol");throw error;}
       }
-      try{raw+=decoder.decode();}catch(error){if(error instanceof TypeError)throw new SyncFailure("protocol");throw error;}}
-      finally {try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure("transport");throw error;}}
+      try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure("protocol");throw error;}}
+      catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
+        if(primary){
+          if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
+          const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
+          if(primary.error instanceof SyncFailure && (error instanceof TypeError || error instanceof DOMException)){
+            Object.defineProperty(primary.error,"cause",{value:causes});throw primary.error;
+          }
+          throw causes;
+        }
+        if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure("transport");throw error;}}
       if(response.status!==200) {if([400,401,403,426].includes(response.status)) throw errorResponse(raw,requestId,response.status,path.endsWith("conversation"));throw new SyncFailure("transport");}
       return raw;
 

@@ -22,14 +22,33 @@ export class Http {
       if(r.redirected)return invalid();
       if(r.status===204){
         // Browsers may expose an empty stream for a no-content HTTP response.
-        if(r.body){const reader=r.body.getReader();try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(!part.done)return invalid();}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}}
+        if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
+        if(primary){
+          if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
+          const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
+          if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
+            Object.defineProperty(primary.error,"cause",{value:causes});throw primary.error;
+          }
+          throw causes;
+        }
+        if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}}
         return undefined;
       }
       if(r.ok)return invalid();
     }
     if(r.redirected||!/^application\/json(?:\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();
     let raw='';const reader=r.body?.getReader();if(!reader)return invalid();const decoder=new TextDecoder('utf8',{fatal:true});let size=0;
-    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){if(error instanceof TypeError)return invalid();throw error;}}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}
+    let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;
+    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
+        if(primary){
+          if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
+          const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
+          if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
+            Object.defineProperty(primary.error,"cause",{value:causes});throw primary.error;
+          }
+          throw causes;
+        }
+        if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}
     const p=parse(raw,6*1024*1024);
     if(!r.ok){const e=object(p,['requestId','error']);uuid(e.requestId);const detail=e.error as Record<string,unknown>;if(!detail||typeof detail.code!=='string')return invalid();const allowed=['VALIDATION_FAILED','AUTH_REQUIRED','AUTH_TOKEN_INVALID','AUTH_TOKEN_EXPIRED','AUTH_SESSION_REVOKED','AUTH_SESSION_EPOCH_STALE','AUTH_CLIENT_TYPE_MISMATCH','AUTH_REFRESH_REVOKED','AUTH_INVALID_CREDENTIALS','AUTHORIZATION_DENIED','USER_NOT_FOUND','FRIEND_SELF_NOT_ALLOWED','FRIENDSHIP_STATE_CONFLICT','PROTOCOL_VERSION_UNSUPPORTED'];throw new ApiFailure(allowed.includes(detail.code)?detail.code:'REQUEST_FAILED',r.status);}
     return p;

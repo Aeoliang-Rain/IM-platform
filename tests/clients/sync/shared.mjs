@@ -87,3 +87,6 @@ console.log("PASS unknown adapter errors retain identity; known transport remain
  }
 }
 console.log("PASS malformed UTF8 is protocol; stream transport stays failed; unknown stream cause preserved");
+
+const {verifyStreamCleanup}=await import('../errors/stream_cleanup.mjs');
+await verifyStreamCleanup((response,signal)=>new SyncHttp('https://localhost/',session,async()=>response,()=>id).user('0',signal),(error,mode)=>error instanceof SyncFailure&&error.kind===(mode==='protocol-distinct'?'protocol':'transport'),JSON.stringify({...page,events:[],nextCursor:'0'}));

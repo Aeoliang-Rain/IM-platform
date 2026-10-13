@@ -183,3 +183,11 @@ console.log('PASS Web UTF8/read classification and retired refresh unknown-error
  }finally{delete globalThis.__webRenderer}
 }
 console.log("PASS compiled Web renderer three-state/content/identity and truthful successful-empty search; editing query clears old completion");
+
+{
+ const {verifyStreamCleanup}=await import('../errors/stream_cleanup.mjs');
+ const {Http,ApiFailure}=await import(pathToFileURL(process.env.WEB_BUILD_DIR+'/web/src/application/http.js'));
+ const invoke=(path,method)=>(response,signal)=>new Http('https://localhost/',async()=>response).request(path,method,undefined,undefined,signal);
+ await verifyStreamCleanup(invoke('/v1/users/me','GET'),(error,mode)=>error instanceof ApiFailure&&error.code===(mode==='protocol-distinct'?'INVALID_RESPONSE':'CONNECTION_UNAVAILABLE'),'{}');
+ await verifyStreamCleanup(invoke('/v1/auth/logout','POST'),(error,mode)=>error instanceof ApiFailure&&error.code===(mode==='protocol-distinct'?'INVALID_RESPONSE':'CONNECTION_UNAVAILABLE'),'',{logout:true});
+}

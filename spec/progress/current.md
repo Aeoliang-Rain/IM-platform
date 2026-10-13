@@ -8,7 +8,7 @@ Current Batch: LOOP1-ERROR-HANDLING-001
 Batch Status: REVIEW_PENDING
 Current Task: LOOP1-ERROR-HANDLING-001
 Current Task State: review
-Execution Status: AWAITING_INDEPENDENT_REGULAR_REVIEW
+Execution Status: AWAITING_NEW_FINAL_SHA_REGULAR_REVIEW_AND_SPECIALIZED_AUDIT
 
 ## Immediately Relevant Completed Work
 
@@ -59,3 +59,9 @@ None. Additive error audit subordinate to frozen§12. Exact Java task guard omis
 ## Latest Android read repair recovery
 
 Fresh /root/fix_android_read_origin: API34 owned5590 Sync69+Read33, Send66, originalerror identity suite, strictDesktopcompile, finalarchitectureall/tests82(oneexisting skip)/frozen/planning/Development local PASS. Scope/actual faults/continuation timing limit/initialization projection equivalence/failures/cleanup: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/handoff.md, input-checks.json, runtime-cleanup.json, verification-history.json. Full immutable e229FAIL attached at regular-review-e2294ac/. Old historical Desktop recovery paragraphs remain prior evidence. New committed taskHEAD SHA delivered by Git/external receipt; clean Acceptance/Recorder not independent acceptance. Both finalSHA reviews PENDING; next new fresh regularReview then different fresh specializedAudit; no push/PR/CI until bothPASS. LastGood35bd6f5, main preservation owned by Coordinator, no synchronization claimed. Owned5590/AVD/build leases cleaned/preserved; sole task writer releases after clean commit.
+
+## Latest Send read / cleanup-root repair recovery
+
+Freshsole /root/fix_send_cleanup_roots repairsBOTHconfirmed697FAIL, preservedat regular-review-697ef28/. Only2Senddirectreads and3HTTPcleanupboundaries;185production/305retained navigation/protected65 unchanged. ActualownedAPI34Send66+Read21/Sync69+Read33/originalerrors, finallockedWeb/sharednormal/faultcontrols localPASS. Fullcommands/failures/currentrequirements/dualcausejustification/204controlslimits/resources: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-send-cleanup/handoff.md andverification-history.json. Nativeknownsamecancelroot staysFAILED; distinctknownfaults retainFAILED with2cause roots; unknown/primitive rootneverknownclassification. NoSQLitewrite/draft/SQL/Repository/Composer/authority/deps change.
+
+Regular finalSHA Review: PENDING. DIFFERENTfresh Specialized Error Audit: PENDING. Nextnewfreshregular thennewfreshspecialist on SAMEcleancommittedSHA; onlybothPASS permitexactheadrequiredCI/protectedintegration/actualmain/safesync. Taskreview/S2OPEN, lastaccepted35bd6f5; no main sync claimed. CurrentbranchSHA/externalcleanAcceptance/Recorderreceipt followscommit. Ownershipsourcelease releasedaftercleancommit; own5592 closed/exactAVDremoved/buildspreserved; no globaltrust/main change. Mainunknownpreservation remainsCoordinator's lease. No otherrepositorywriter. Startup/directinspection trace incomplete, failures retained, RecorderstructuralPASS isnotacceptance.

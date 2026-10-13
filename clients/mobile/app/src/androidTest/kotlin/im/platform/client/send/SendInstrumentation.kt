@@ -142,7 +142,7 @@ class SendInstrumentation: Instrumentation() {
     override fun onCreate(arguments:Bundle?) {super.onCreate(arguments);args=arguments ?: Bundle();start()}
     override fun onStart() {
         val result=Bundle()
-        try {runBlocking {wire();actualTls();independentRejections();racesAndStorage();pendingRetirement()};result.putString("result","PASS");result.putInt("assertions",assertions);result.putInt("sdkInt",android.os.Build.VERSION.SDK_INT);result.putString("engine","actual Android SDK SQLite + standard verified TLS WSS + StateFlow");finish(Activity.RESULT_OK,result)}
+        try {var readAssertions=0;runBlocking {wire();actualTls();independentRejections();racesAndStorage();pendingRetirement();readAssertions=SendReadChecks(targetContext).run()};result.putInt("sendReadAssertions",readAssertions);result.putString("result","PASS");result.putInt("assertions",assertions);result.putInt("sdkInt",android.os.Build.VERSION.SDK_INT);result.putString("engine","actual Android SDK SQLite + standard verified TLS WSS + StateFlow");finish(Activity.RESULT_OK,result)}
         catch(error:Throwable) {result.putString("phase",phase);result.putString("failure",error.javaClass.simpleName+": "+error.message);result.putString("result","FAIL");result.putInt("assertions",assertions);finish(Activity.RESULT_CANCELED,result)}
     }
 }

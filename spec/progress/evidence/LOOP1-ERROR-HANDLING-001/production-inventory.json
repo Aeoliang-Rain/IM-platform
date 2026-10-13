@@ -7,7 +7,7 @@
     "all": 185,
     "logic": 118,
     "data_config_assets_documents": 67,
-    "retained_sites": 302
+    "retained_sites": 305
   },
   "selection": "All tracked backend/clients/deploy/plugins paths excluding tests (including placeholder and build/runtime glue), plus deployed contracts migration runner+2canonicalSQL and language-pack builder. Supporting coverage112/167 does not replace this own scope.",
   "excluded": "SQLite write/Repository/schema/native database/Composer/draft mechanisms read-only EXCLUDED_BY_HUMAN. Narrow Send provenance separately explicitly allowed; no SQL/write/draft change. No unresolved asserted cursor bug: initial contiguous absence0 legitimate; required cursor missing propagates.",
@@ -1013,17 +1013,17 @@
     },
     {
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
-      "sha256": "76dd63549ae3a30c003dadff83cb2026118b778c0d98d068ba34c1d9416c76b4",
-      "bytes": 11309,
+      "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8",
+      "bytes": 11323,
       "responsibility": "clients/mobile",
       "changed": true,
       "finding": [
-        "EH10",
-        "Only real SQLiteException/current SDK closed-object fault tagged at Repository boundary. Callback/timer unknown original remains observable. Actual SDK root cause retained; write/rollback/draft unchanged.",
-        "actual API34 Send66 + mixed callback instrumentation"
+        "F-SEND-READ",
+        "Only two literal Send reads use existing repositoryRead; excluded helper/all writes unchanged",
+        "Actual API34 Send66+SendRead21/Sync69+Read33/originalerrors; final locked Web/shared runtime PASS"
       ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh sole narrow Fix inspected actual final calls/imports/error gates for BOTH697findings; independent finalSHA full semantic review PENDING.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -1577,17 +1577,17 @@
     },
     {
       "path": "clients/shared/protocol-sdk/src/sync/http.ts",
-      "sha256": "d3003eabb0e0594e11ee6f07773b1578e00f566893683dd00a5858b7b865794f",
-      "bytes": 3604,
+      "sha256": "7a7525c809f29b8f772f0f0378b960387fcac8d71b8175fecdad364eeea57307",
+      "bytes": 4331,
       "responsibility": "clients/shared",
       "changed": true,
       "finding": [
-        "EH08",
-        "Separate stream I/O and UTF8 decode; malformed UTF8 protocol, actual network read transport, unknown original. Desktop supplies current native-origin predicate to avoid Request/Response internal TypeError becoming network.",
-        "shared UTF8/read tests; Desktop native/Auth/Sync"
+        "F-CLIENT-CLEANUP-ROOT",
+        "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
+        "Actual API34 Send66+SendRead21/Sync69+Read33/originalerrors; final locked Web/shared runtime PASS"
       ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh sole narrow Fix inspected actual final calls/imports/error gates for BOTH697findings; independent finalSHA full semantic review PENDING.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -1677,17 +1677,17 @@
     },
     {
       "path": "clients/web/src/application/http.ts",
-      "sha256": "610a525ce3937b7661335d6f288e860cf2658c554a785bbb89c590418a342787",
-      "bytes": 5306,
+      "sha256": "8b349bb74dd0fc5f5fca978c6c6fbeff5632287a6aeee3dfe455c5af15ede3e6",
+      "bytes": 6707,
       "responsibility": "clients/web",
       "changed": true,
       "finding": [
-        "EH08",
-        "Serialize outside actual fetch I/O catch; isolate reader/cancel/decode. Unknown adapters escape; strict204 and malformed UTF8 truthful.",
-        "existing Web behavior/regressions + streams"
+        "F-CLIENT-CLEANUP-ROOT",
+        "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
+        "Actual API34 Send66+SendRead21/Sync69+Read33/originalerrors; final locked Web/shared runtime PASS"
       ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh sole narrow Fix inspected actual final calls/imports/error gates for BOTH697findings; independent finalSHA full semantic review PENDING.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -3377,7 +3377,7 @@
       "operation": "toString",
       "source": "try{return action()}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Human explicit narrow-boundary clarification: genuine current native storage source captured at Repository call only; existing error=storage/rollback recovery and queue liveness preserved. Unknown callback Error/primitive/native string spoof rethrows and idle fails.",
+      "specific_ground_and_recovery": "EXCLUDED_BY_HUMAN unchanged storage helper for literal existing writes/initialize/close only, historical blanket SQLite and exact closed prefix handling preserved verbatim. This Fix removes both read consumers from it; reads now use existing specific SDK operational repositoryRead and raw schema/internal errors propagate. No acceptance claim for excluded SQLite write/draft failure policy.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
@@ -3388,7 +3388,7 @@
       "operation": "toString",
       "source": "catch(error:IllegalStateException){if(error.message?.startsWith(\"attempt to re-open an already-closed object:\")==true)throw SendStorageFailure(error);throw error}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Human explicit narrow-boundary clarification: genuine current native storage source captured at Repository call only; existing error=storage/rollback recovery and queue liveness preserved. Unknown callback Error/primitive/native string spoof rethrows and idle fails.",
+      "specific_ground_and_recovery": "EXCLUDED_BY_HUMAN unchanged storage helper for literal existing writes/initialize/close only, historical blanket SQLite and exact closed prefix handling preserved verbatim. This Fix removes both read consumers from it; reads now use existing specific SDK operational repositoryRead and raw schema/internal errors propagate. No acceptance claim for excluded SQLite write/draft failure policy.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
@@ -3399,7 +3399,7 @@
       "operation": "operation",
       "source": "private suspend fun operation(action:suspend ()->Unit) { lock.withLock { try { action() } catch(error:SendStorageFailure) { publish(mutableState.value.copy(error=\"storage\")); throw error } } }",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Human explicit narrow-boundary clarification: genuine current native storage source captured at Repository call only; existing error=storage/rollback recovery and queue liveness preserved. Unknown callback Error/primitive/native string spoof rethrows and idle fails.",
+      "specific_ground_and_recovery": "Current origin-tagged actual specific SDK operational or exact closed read fault -> existing error=storage/known callback/timer recovery; raw schema/internal read faults and callback bugs remain untagged and escape. Literal excluded write/init policy/tag unchanged. Actual API34 SendRead21 closed/schema consumers plus originalSend66 verify current read provenance without changing writes/drafts.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
@@ -3410,7 +3410,7 @@
       "operation": "callback",
       "source": "private fun callback(action:suspend ()->Unit) { scope.launch { try { operation(action) } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } } }",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Human explicit narrow-boundary clarification: genuine current native storage source captured at Repository call only; existing error=storage/rollback recovery and queue liveness preserved. Unknown callback Error/primitive/native string spoof rethrows and idle fails.",
+      "specific_ground_and_recovery": "Current origin-tagged actual specific SDK operational or exact closed read fault -> existing error=storage/known callback/timer recovery; raw schema/internal read faults and callback bugs remain untagged and escape. Literal excluded write/init policy/tag unchanged. Actual API34 SendRead21 closed/schema consumers plus originalSend66 verify current read provenance without changing writes/drafts.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
@@ -3432,16 +3432,16 @@
       "operation": "dispose",
       "source": "} catch(error:SendStorageFailure) {",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Human explicit narrow-boundary clarification: genuine current native storage source captured at Repository call only; existing error=storage/rollback recovery and queue liveness preserved. Unknown callback Error/primitive/native string spoof rethrows and idle fails.",
+      "specific_ground_and_recovery": "Current origin-tagged actual specific SDK operational or exact closed read fault -> existing error=storage/known callback/timer recovery; raw schema/internal read faults and callback bugs remain untagged and escape. Literal excluded write/init policy/tag unchanged. Actual API34 SendRead21 closed/schema consumers plus originalSend66 verify current read provenance without changing writes/drafts.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
       "id": "RH117",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
       "line": 94,
-      "column": 86,
+      "column": 93,
       "operation": "retry",
-      "source": "val row=storage { repo.messages(conversation) }.firstOrNull {it[0]==request} ?: error(\"Unknown send\")",
+      "source": "val row=repositoryRead { repo.messages(conversation) }.firstOrNull {it[0]==request} ?: error(\"Unknown send\")",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -3465,7 +3465,7 @@
       "operation": "begin",
       "source": "a.timer=scope.launch { delay(timeoutMs); try { operation { fail(k,a) } } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } }",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Human explicit narrow-boundary clarification: genuine current native storage source captured at Repository call only; existing error=storage/rollback recovery and queue liveness preserved. Unknown callback Error/primitive/native string spoof rethrows and idle fails.",
+      "specific_ground_and_recovery": "Current origin-tagged actual specific SDK operational or exact closed read fault -> existing error=storage/known callback/timer recovery; raw schema/internal read faults and callback bugs remain untagged and escape. Literal excluded write/init policy/tag unchanged. Actual API34 SendRead21 closed/schema consumers plus originalSend66 verify current read provenance without changing writes/drafts.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
@@ -4890,10 +4890,10 @@
     {
       "id": "RH249",
       "path": "clients/shared/protocol-sdk/src/sync/http.ts",
-      "line": 22,
+      "line": 23,
       "column": 39,
       "operation": "post",
-      "source": "try{item=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure(\"transport\");throw error;}",
+      "source": "try{item=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure(\"transport\");throw error;}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Actual stream read/cancel I/O TypeError/DOMException only; original operation fails transport, no empty success. Unknown read bugs rethrow. Cleanup cancellation is attempted.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4901,10 +4901,10 @@
     {
       "id": "RH250",
       "path": "clients/shared/protocol-sdk/src/sync/http.ts",
-      "line": 24,
+      "line": 25,
       "column": 60,
       "operation": "post",
-      "source": "try{raw+=decoder.decode(item.value,{stream:true});}catch(error){if(error instanceof TypeError)throw new SyncFailure(\"protocol\");throw error;}",
+      "source": "try{raw+=decoder.decode(item.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure(\"protocol\");throw error;}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4912,10 +4912,10 @@
     {
       "id": "RH251",
       "path": "clients/shared/protocol-sdk/src/sync/http.ts",
-      "line": 26,
+      "line": 27,
       "column": 34,
       "operation": "post",
-      "source": "try{raw+=decoder.decode();}catch(error){if(error instanceof TypeError)throw new SyncFailure(\"protocol\");throw error;}}",
+      "source": "try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure(\"protocol\");throw error;}}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -4923,12 +4923,12 @@
     {
       "id": "RH252",
       "path": "clients/shared/protocol-sdk/src/sync/http.ts",
-      "line": 27,
-      "column": 43,
+      "line": 28,
+      "column": 86,
       "operation": "post",
-      "source": "finally {try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure(\"transport\");throw error;}}",
+      "source": "catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual stream read/cancel I/O TypeError/DOMException only; original operation fails transport, no empty success. Unknown read bugs rethrow. Cleanup cancellation is attempted.",
+      "specific_ground_and_recovery": "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
@@ -5188,9 +5188,9 @@
       "id": "RH276",
       "path": "clients/web/src/application/http.ts",
       "line": 25,
-      "column": 132,
+      "column": 210,
       "operation": "request",
-      "source": "if(r.body){const reader=r.body.getReader();try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}}}",
+      "source": "if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Actual stream read/cancel I/O TypeError/DOMException only; original operation fails transport, no empty success. Unknown read bugs rethrow. Cleanup cancellation is attempted.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -5199,17 +5199,17 @@
       "id": "RH277",
       "path": "clients/web/src/application/http.ts",
       "line": 25,
-      "column": 337,
+      "column": 481,
       "operation": "request",
-      "source": "if(r.body){const reader=r.body.getReader();try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}}}",
+      "source": "if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual stream read/cancel I/O TypeError/DOMException only; original operation fails transport, no empty success. Unknown read bugs rethrow. Cleanup cancellation is attempted.",
+      "specific_ground_and_recovery": "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
       "id": "RH278",
       "path": "clients/web/src/application/http.ts",
-      "line": 30,
+      "line": 39,
       "column": 43,
       "operation": "request",
       "source": "if(r.redirected||!/^application\\/json(?:\\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();",
@@ -5220,7 +5220,7 @@
     {
       "id": "RH279",
       "path": "clients/web/src/application/http.ts",
-      "line": 30,
+      "line": 39,
       "column": 89,
       "operation": "request",
       "source": "if(r.redirected||!/^application\\/json(?:\\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();",
@@ -5231,10 +5231,10 @@
     {
       "id": "RH280",
       "path": "clients/web/src/application/http.ts",
-      "line": 32,
+      "line": 42,
       "column": 94,
       "operation": "request",
-      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){if(error instanceof TypeError)return invalid();throw error;}}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}}",
+      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -5242,10 +5242,10 @@
     {
       "id": "RH281",
       "path": "clients/web/src/application/http.ts",
-      "line": 32,
-      "column": 367,
+      "line": 42,
+      "column": 389,
       "operation": "request",
-      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){if(error instanceof TypeError)return invalid();throw error;}}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}}",
+      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -5253,10 +5253,10 @@
     {
       "id": "RH282",
       "path": "clients/web/src/application/http.ts",
-      "line": 32,
-      "column": 468,
+      "line": 42,
+      "column": 512,
       "operation": "request",
-      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){if(error instanceof TypeError)return invalid();throw error;}}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}}",
+      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -5264,12 +5264,12 @@
     {
       "id": "RH283",
       "path": "clients/web/src/application/http.ts",
-      "line": 32,
-      "column": 577,
+      "line": 42,
+      "column": 687,
       "operation": "request",
-      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){if(error instanceof TypeError)return invalid();throw error;}}finally{try{await reader.cancel();}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}}",
+      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
+      "specific_ground_and_recovery": "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
     },
     {
@@ -5502,6 +5502,39 @@
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Preserve previous raw initialization SQLite failure projection at exact unchanged constructor/initialize call only; existing Operation unavailable and inactive suppression remain. No new write recovery, retry, SQL, transaction or draft behavior.",
       "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; Human exception-boundary clarification and current F-ANDROID-READ; subordinate error governance"
+    },
+    {
+      "id": "CLEANUP-PRIMARY-303",
+      "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+      "line": 28,
+      "column": 7,
+      "source": "catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+      "operation": "response read/decode primary capture for mandatory cleanup",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
+      "authority": "Frozen§6.1/7.4/11 publiccontracts; current F-CLIENT-CLEANUP-ROOT; subordinate error-handling resourcecleanup/root preservation"
+    },
+    {
+      "id": "CLEANUP-PRIMARY-304",
+      "path": "clients/web/src/application/http.ts",
+      "line": 25,
+      "column": 402,
+      "source": "if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+      "operation": "response read/decode primary capture for mandatory cleanup",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
+      "authority": "Frozen§6.1/7.4/11 publiccontracts; current F-CLIENT-CLEANUP-ROOT; subordinate error-handling resourcecleanup/root preservation"
+    },
+    {
+      "id": "CLEANUP-PRIMARY-305",
+      "path": "clients/web/src/application/http.ts",
+      "line": 42,
+      "column": 608,
+      "source": "try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+      "operation": "response read/decode primary capture for mandatory cleanup",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
+      "authority": "Frozen§6.1/7.4/11 publiccontracts; current F-CLIENT-CLEANUP-ROOT; subordinate error-handling resourcecleanup/root preservation"
     }
   ],
   "fix_F1": {
@@ -5535,5 +5568,22 @@
     "fixture": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ReadOriginChecks.kt",
     "ci_entry": "Existing SyncInstrumentation onStart calls ReadOriginChecks; original69assertions unchanged, separate33read assertions",
     "limits": "Actual SDK closed cursor/list/history/contiguous, initial Sync failed and known enqueue recovery, Workspace closed/history/schema/stale/identity, initialization blocked SDK open projection demonstrated. Exact fault timing between continuation merge and cursor/contiguous guard was NOT separately induced. Those SAME final Repository methods have actual closed fault proof; unchanged normal205to208pagination continuation ran in original69. No fabricated continuation-fault PASS; no device DiskIOException artificially induced."
+  },
+  "fix_F_SEND_READ_AND_CLIENT_CLEANUP_ROOT": {
+    "base": "697ef28a748354c624af71d9aaf81aa1ec02afae",
+    "production_delta": [
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+      "clients/shared/protocol-sdk/src/sync/http.ts",
+      "clients/web/src/application/http.ts"
+    ],
+    "production_count": 185,
+    "retained_count": 305,
+    "fixtures": [
+      "tests/clients/errors/stream_cleanup.mjs",
+      "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendReadChecks.kt"
+    ],
+    "actual_CI_hooks": "existing shared Sync shared.mjs; existing Web behavior imports regressions.mjs; existing Android SendInstrumentation appends separateSendReadAssertions21 while preserving66; Sync69+Read33 unchanged",
+    "dual_cause_justification": "Mandatory response reader.cancel always executes; pending primary and raw read/decoder root captured only to prevent cleanup root replacement. SAME native error reported by read/cancel is deduplicated and preserves original existing known transport FAILED or unknown identity. Distinct known read/protocol+known cancel retains exact existing projected kind/code and attaches built-in AggregateError cause with both raw roots. Any unknown root remains unclassified AggregateError with exact raw roots (including null/undefined/string); cleanup-only known native TypeError/DOMException projects existing FAILED, cleanup-only unknown propagates identity. Real distinct decoder Error+cancel AbortError repro requires retaining two roots; no silent secondary swallow, future framework/dependency/API constructor change. Controlled reader override dualknown is distinct from ordinary native errored stream same-root behavior.",
+    "limit": "ActualResponse/ReadableStream and ownedAPI34; controlled read/decoder injection and adapter exposed204stream explicitly labeled, not live browser/installedGUI/GoE2E. Generic SQLite schema exception proven from actualmissing messages table at Sendrefresh/retry; exact raw SDK origin remains unwrapped, same origin passed through active/stale Workspace fail preserves reference. No actual DiskIOException device injection/continuation timing claim."
   }
 }
