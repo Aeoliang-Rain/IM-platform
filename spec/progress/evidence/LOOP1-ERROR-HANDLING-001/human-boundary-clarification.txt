@@ -1,0 +1,4 @@
+Human explicit async answer, conveyed by Coordinator before affected writes:
+允许仅修正异常边界，SQLite 写入与草稿保持不变
+
+Only current error-origin/catch-boundary corrections and necessary consumers are authorized. SQL, Repository, schema, transaction, actual write behavior, Composer and draft remain unchanged. Previous rejected script was not executed; earlier excluded hunks were restored. Both fresh final-SHA reviews remain required before any GitHub operation.

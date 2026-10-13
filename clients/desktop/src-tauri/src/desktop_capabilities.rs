@@ -58,7 +58,7 @@ pub fn window_control(window:tauri::WebviewWindow,action:String)->Result<(),Stri
     };
     result.map_err(|_|"Window unavailable".into())
 }
-fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){let _=w.show();let _=w.unminimize();let _=w.set_focus();}}
+fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){w.show().expect("Window show failed");w.unminimize().expect("Window restore failed");w.set_focus().expect("Window focus failed");}}
 struct TrayPresentation {open:tauri::menu::MenuItem<tauri::Wry>,hide:tauri::menu::MenuItem<tauri::Wry>,quit:tauri::menu::MenuItem<tauri::Wry>}
 #[tauri::command]
 pub fn tray_text(app:tauri::AppHandle,open:String,hide:String,quit:String,tooltip:String)->Result<(),String>{
@@ -95,7 +95,7 @@ pub fn setup(app:&mut tauri::App)->Result<(),Box<dyn std::error::Error>>{
     let menu=tauri::menu::Menu::with_items(app,&[&open,&hide,&quit])?;
     app.manage(TrayPresentation{open,hide,quit});
     let icon=app.default_window_icon().ok_or("Application icon unavailable")?.clone();
-    tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){let _=w.hide();}},"quit"=>app.exit(0),_=>{}}).build(app)?;
+    tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){w.hide().expect("Window hide failed");}},"quit"=>app.exit(0),_=>{}}).build(app)?;
     Ok(())
 }
 

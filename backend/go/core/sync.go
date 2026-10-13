@@ -89,7 +89,10 @@ func syncFailure(w http.ResponseWriter, id string, err error) {
 
 func (s *authService) syncInput(w http.ResponseWriter, r *http.Request, conversation bool) (map[string]json.RawMessage, string, string, claims, bool) {
 	w.Header().Set("Cache-Control", "no-store")
-	id, _ := uuid()
+	id, idErr := uuid()
+	if idErr != nil {
+		panic(idErr)
+	}
 	body, err := syncJSON(r.Body)
 	var fields map[string]json.RawMessage
 	if err == nil {
@@ -251,8 +254,7 @@ func (s *authService) syncUser(w http.ResponseWriter, r *http.Request) {
 		}
 		revision, valid := syncInteger(json.RawMessage(event.Revision), 1)
 		if !valid || revision == 0 || !socialUUIDPattern.MatchString(event.EventID) || !socialUUIDPattern.MatchString(event.SubjectID) || event.Kind != kind {
-			err = errors.New("invalid authoritative metadata")
-			break
+			panic("invalid authoritative metadata")
 		}
 		event.Cursor = s.syncCursor(c.UserID, position)
 		events = append(events, event)
@@ -337,8 +339,7 @@ func (s *authService) syncConversation(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 		if previous == math.MaxInt64 || m.Seq != previous+1 {
-			err = errors.New("noncontiguous authoritative message history")
-			break
+			panic("noncontiguous authoritative message history")
 		}
 		previous = m.Seq
 		messages = append(messages, m)
@@ -451,7 +452,11 @@ func (s *authService) syncAuthenticate(ctx context.Context, tx pgx.Tx, token str
 	err = tx.QueryRow(ctx, `SELECT session_id, client_type, session_epoch, status, expires_at FROM sessions WHERE user_id=$1 AND client_type=$2`, c.UserID, c.ClientType).Scan(&sid, &typ, &epoch, &status, &expiry)
 	if errors.Is(err, pgx.ErrNoRows) {
 		var actualType string
-		if tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
+		lookupErr := tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
+		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
+			return c, lookupErr
+		}
+		if lookupErr == nil && actualType != c.ClientType {
 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
 		}
 		return c, fail(401, "AUTH_SESSION_REVOKED", "Session has been revoked.")
@@ -467,7 +472,11 @@ func (s *authService) syncAuthenticate(ctx context.Context, tx pgx.Tx, token str
 	}
 	if sid != c.SessionID || typ != c.ClientType {
 		var actualType string
-		if tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
+		lookupErr := tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
+		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
+			return c, lookupErr
+		}
+		if lookupErr == nil && actualType != c.ClientType {
 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
 		}
 		return c, fail(401, "AUTH_TOKEN_INVALID", "Access token and session binding disagree.")

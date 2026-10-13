@@ -70,7 +70,11 @@ func (s *authService) authenticate(ctx context.Context, token string) (claims, e
 	err = s.db.QueryRow(ctx, `SELECT session_id, client_type, session_epoch, status, expires_at FROM sessions WHERE user_id=$1 AND client_type=$2`, c.UserID, c.ClientType).Scan(&sid, &typ, &epoch, &status, &expiry)
 	if errors.Is(err, pgx.ErrNoRows) {
 		var actualType string
-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
+		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
+		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
+			return c, lookupErr
+		}
+		if lookupErr == nil && actualType != c.ClientType {
 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
 		}
 		return c, fail(401, "AUTH_SESSION_REVOKED", "Session has been revoked.")
@@ -86,7 +90,11 @@ func (s *authService) authenticate(ctx context.Context, token string) (claims, e
 	}
 	if sid != c.SessionID || typ != c.ClientType {
 		var actualType string
-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
+		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
+		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
+			return c, lookupErr
+		}
+		if lookupErr == nil && actualType != c.ClientType {
 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
 		}
 		return c, fail(401, "AUTH_TOKEN_INVALID", "Access token and session binding disagree.")
@@ -113,13 +121,22 @@ func decode(r *http.Request, dst any) error {
 }
 
 func requestID(_ *http.Request) string {
-	id, _ := uuid()
+	id, err := uuid()
+	if err != nil {
+		panic(err)
+	}
 	return id
 }
 func writeJSON(w http.ResponseWriter, status int, v any) {
+	body, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
-	_ = json.NewEncoder(w).Encode(v)
+	if _, err = w.Write(append(body, '\n')); err != nil {
+		return
+	}
 }
 func writeError(w http.ResponseWriter, r *http.Request, err error) {
 	e := apiError{Status: 500, Code: "INTERNAL_ERROR", Message: "Internal server error."}
@@ -221,7 +238,11 @@ func (s *authService) login(w http.ResponseWriter, r *http.Request) {
 		writeError(w, r, err)
 		return
 	}
-	if bcrypt.CompareHashAndPassword([]byte(hash), passwordMaterial(v.Password)) != nil {
+	if err := bcrypt.CompareHashAndPassword([]byte(hash), passwordMaterial(v.Password)); err != nil {
+		if !errors.Is(err, bcrypt.ErrMismatchedHashAndPassword) {
+			writeError(w, r, err)
+			return
+		}
 		writeError(w, r, fail(401, "AUTH_INVALID_CREDENTIALS", "Credentials are invalid."))
 		return
 	}

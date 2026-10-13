@@ -433,6 +433,22 @@ class ClientTechnologyControls(unittest.TestCase):
         for path, source in [('clients/desktop/src/storage/preferences.ts','invoke("language_save",{value})'),('clients/mobile/app/src/main/kotlin/im/platform/client/ui/Other.kt','store.edit().putString("language",value)')]:
             self.assertTrue(checker.check_native_language(path, source, True))
 
+    def test_native_language_only_known_load_failure_defaults(self):
+        desktop = 'clients/desktop/src/application/ui/native.ts'
+        android = 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt'
+        original = (ROOT/desktop).read_text(encoding='utf-8')
+        self.assertEqual([], checker.check_native_language(desktop, original, True))
+        for before, after in [('catch(error){if(error==="Language unavailable")return "en";throw error;}', 'catch{return "en";}'), ('throw error;', 'return "en";'), ('validLocale(value)?value:"en"', 'value'), ('"language_load"', '"appearance_load"')]:
+            with self.subTest(after=after):
+                self.assertIn(before, original)
+                self.assertTrue(checker.check_native_language(desktop, original.replace(before,after), True))
+        original = (ROOT/android).read_text(encoding='utf-8')
+        self.assertEqual([], checker.check_native_language(android, original, True))
+        for before, after in [('catch(_:ClassCastException){"en"}', 'catch(_:Exception){"en"}'), ('catch(_:ClassCastException){"en"}', 'catch(_:ClassCastException){"ja-JP"}'), ('appearance.getString("language",null)', 'appearance.getString("other",null)')]:
+            with self.subTest(after=after):
+                self.assertIn(before, original)
+                self.assertTrue(checker.check_native_language(android, original.replace(before,after), True))
+
     def test_android_language_test_faults_do_not_exempt_production(self):
         fault='store.edit().putString("language",value)'
         self.assertEqual([],checker.check_native_language('clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/AnyFault.kt',fault,False))

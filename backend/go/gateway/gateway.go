@@ -45,7 +45,15 @@ func validUUID(id string) bool { return requestIDPattern.MatchString(id) }
 func newHub(auth *validator) *hub {
 	return &hub{auth: auth, sessions: make(map[string]map[*connection]bool), client: &http.Client{Timeout: 10 * time.Second}}
 }
-func (c *connection) send(v any) error { c.mu.Lock(); defer c.mu.Unlock(); return c.ws.WriteJSON(v) }
+func (c *connection) send(v any) error {
+	c.mu.Lock()
+	err := c.ws.WriteJSON(v)
+	c.mu.Unlock()
+	if err != nil {
+		c.close()
+	}
+	return err
+}
 func (c *connection) close() {
 	c.once.Do(func() { close(c.done); c.mu.Lock(); _ = c.ws.Close(); c.mu.Unlock() })
 }
@@ -77,7 +85,10 @@ func (h *hub) revoke(sid, reason string) {
 	delete(h.sessions, sid)
 	h.mu.Unlock()
 	for _, c := range conns {
-		id, _ := shared.UUID()
+		id, idErr := shared.UUID()
+		if idErr != nil {
+			panic(idErr)
+		}
 		_ = c.send(frame("session.revoked", id, map[string]string{"sessionId": sid, "reason": reason}))
 		c.close()
 	}
@@ -112,7 +123,10 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 		if len(raw) != 4 {
 			return
 		}
-		b, _ := json.Marshal(raw)
+		b, marshalErr := json.Marshal(raw)
+		if marshalErr != nil {
+			panic(marshalErr)
+		}
 		var e envelope
 		if json.Unmarshal(b, &e) != nil || e.ProtocolVersion != "1.0" || !validUUID(e.RequestID) || len(e.Payload) == 0 {
 			return
@@ -123,7 +137,9 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			if e.Type == "ping" {
-				_ = c.send(frame("pong", e.RequestID, map[string]any{}))
+				if c.send(frame("pong", e.RequestID, map[string]any{})) != nil {
+					return
+				}
 			}
 			continue
 		}
@@ -142,7 +158,9 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			var pfields map[string]any
-			_ = json.Unmarshal(e.Payload, &pfields)
+			if json.Unmarshal(e.Payload, &pfields) != nil {
+				return
+			}
 			if len(pfields) != 1 {
 				h.reject(c, e.RequestID, "VALIDATION_FAILED", "Auth binding payload is invalid.")
 				return
@@ -152,14 +170,17 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 				if ae, ok := err.(shared.Error); ok {
 					h.reject(c, e.RequestID, ae.Code, ae.Message)
 				} else {
-					h.reject(c, e.RequestID, "AUTH_TOKEN_INVALID", "Access token is invalid.")
+					// A database/internal failure does not mean an invalid token.
+					return
 				}
 				return
 			}
 			c.bound = &cl
 			c.token = p.AccessToken
 			h.add(cl.SessionID, c)
-			_ = c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch}))
+			if c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch})) != nil {
+				return
+			}
 			go h.watch(c, cl)
 			continue
 		}
@@ -212,10 +233,15 @@ func writeError(w http.ResponseWriter, r *http.Request, err error) {
 	if v, ok := err.(shared.Error); ok {
 		e = v
 	}
-	id, _ := shared.UUID()
+	id, idErr := shared.UUID()
+	if idErr != nil {
+		panic(idErr)
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(e.Status)
-	_ = json.NewEncoder(w).Encode(map[string]any{"error": map[string]string{"code": e.Code, "message": e.Message}, "requestId": id})
+	if err := json.NewEncoder(w).Encode(map[string]any{"error": map[string]string{"code": e.Code, "message": e.Message}, "requestId": id}); err != nil {
+		return
+	}
 }
 
 // Forward only the canonical frame, using the validated connection's bearer.
@@ -224,7 +250,10 @@ func (h *hub) forward(ctx context.Context, c *connection, e envelope) {
 	var payload struct {
 		ConversationID string `json:"conversationId"`
 	}
-	_ = json.Unmarshal(e.Payload, &payload)
+	if json.Unmarshal(e.Payload, &payload) != nil {
+		c.close()
+		return
+	}
 	key := strings.ToLower(payload.ConversationID) + ":" + strings.ToLower(e.RequestID)
 	c.mu.Lock()
 	if c.origins == nil {

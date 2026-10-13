@@ -1,0 +1,858 @@
+{
+  "root": "H:/.codex/worktrees/err/IM-platform",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "head": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "initial_task_owned_status": [
+    " M spec/progress/current.md",
+    "?? spec/progress/evidence/LOOP1-ERROR-HANDLING-001/prompt.txt",
+    "?? spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-checks.json",
+    "?? spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-report.md",
+    "?? spec/tasks/active/LOOP1-ERROR-HANDLING-001.md"
+  ],
+  "sole_writer_authority": "Coordinator releases fresh worker; no other writer, no main source copy; Human authorizes only task scope. Parent confirms activation/current/recovery ownership.",
+  "scope_audit": "Every listed path individually matches current Task allowed_paths; baseline and actual candidate byte hash bind the audited change. All protected inputs unchanged; main782unknown not in this root.",
+  "count": 84,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "allowed_path": [
+        "AGENTS.md"
+      ],
+      "baseline_sha256": "60aeef1557aea9562b98ec5e18170fef9f03e9d1aaaf2eea08eb72eaf588f065",
+      "candidate_sha256": "1a186d565486fbae73ea0785b4269b5d365d67600c6c08e4d0749e57e6a7e22b",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/core/auth.go",
+      "allowed_path": [
+        "backend/go/core/auth.go"
+      ],
+      "baseline_sha256": "002f8b2e7a230a62a10b1ead1ff7078d1a327e27ce1aa46bada9dae8fbbc1797",
+      "candidate_sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/core/message.go",
+      "allowed_path": [
+        "backend/go/core/message.go"
+      ],
+      "baseline_sha256": "4ae75feb65baa723a1f6c15cbe78ad22f8d10bf116aec3df5d4632504bf9fe97",
+      "candidate_sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/core/outbox.go",
+      "allowed_path": [
+        "backend/go/core/outbox.go"
+      ],
+      "baseline_sha256": "6ddea2bbff66e83c784c46a5948612b67b750c815fdc743bc49a4d189c6e98f6",
+      "candidate_sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/core/outbox_test.go",
+      "allowed_path": [
+        "backend/go/core/*_test.go"
+      ],
+      "baseline_sha256": "86814f9d1916a776464081f7a44562d91c86b6776c35032ca6d827ca00de4f77",
+      "candidate_sha256": "85fd0a901dd65ce3ae52c6ad4d63315c1c928cea64f46baad19674e69962439f",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/core/sync.go",
+      "allowed_path": [
+        "backend/go/core/sync.go"
+      ],
+      "baseline_sha256": "2e137d1bb9a47cb63c0e9e2323d7b88a99315bd6338c41c4292cdd88ab60d60f",
+      "candidate_sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/gateway/gateway.go",
+      "allowed_path": [
+        "backend/go/gateway/gateway.go"
+      ],
+      "baseline_sha256": "ffa56f934dbadf16aa59444a56019a303ab255987c5a544f613020bf6f4bb6bd",
+      "candidate_sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/gateway/session.go",
+      "allowed_path": [
+        "backend/go/gateway/session.go"
+      ],
+      "baseline_sha256": "b4d702c9509a6c5dc053e8172a06e857a06152045d4114fb5fef1e9653a5114b",
+      "candidate_sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/main.go",
+      "allowed_path": [
+        "backend/go/main.go"
+      ],
+      "baseline_sha256": "5d574194d7711ebab84a12425de91da721e568004f6690af90705a55117dc519",
+      "candidate_sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/java/InfraPlaceholder.java",
+      "allowed_path": [
+        "backend/java/InfraPlaceholder.java"
+      ],
+      "baseline_sha256": "de727a38cee8bd53238eda92f16631a7eab64f86a2c2525e15ac83a8720ed0e8",
+      "candidate_sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "ci/check_architecture.py",
+      "allowed_path": [
+        "ci/check_architecture.py"
+      ],
+      "baseline_sha256": "caf2b7cf43ec70e47a00ee3e6f95ec06ae3e345af5618a17df8baea0ff2dedd6",
+      "candidate_sha256": "5ca65a4541ffd93552acadb64b61e3593b3a8500d38158fa87b9ad7e93c84ac7",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "allowed_path": [
+        "clients/desktop/src-tauri/src/desktop_capabilities.rs"
+      ],
+      "baseline_sha256": "bdb08af71e4d7889d76f22d3c90473a247f4e00e6d9c6090e9b8e5620bd211c3",
+      "candidate_sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/lib.rs",
+      "allowed_path": [
+        "clients/desktop/src-tauri/src/lib.rs"
+      ],
+      "baseline_sha256": "e72be77149a81917a918b77b579d4b49ebd1f311c670e563327e0689fb8748db",
+      "candidate_sha256": "4f0b7bf9797c3793203b160434994f0d8ab84d2fdbc156d7c40a812bd5e83630",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src/application/send.ts",
+      "allowed_path": [
+        "clients/desktop/src/application/send.ts"
+      ],
+      "baseline_sha256": "81a5b4370ae1ed8f3d3250aea183592f71cf7ed7917088797a693d1c62348121",
+      "candidate_sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src/application/sync/application.ts",
+      "allowed_path": [
+        "clients/desktop/src/application/sync/*.ts"
+      ],
+      "baseline_sha256": "d4f296296990e5735c89e1e6c0367cbe90e46795aedca2aa970cd2f42bb9aac9",
+      "candidate_sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src/application/ui/auth.ts",
+      "allowed_path": [
+        "clients/desktop/src/application/ui/*.ts"
+      ],
+      "baseline_sha256": "1d46b97270090aaf4fcf5d348388779cfc36f4bddf9026d573c8cf61b914c16a",
+      "candidate_sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src/application/ui/native.ts",
+      "allowed_path": [
+        "clients/desktop/src/application/ui/*.ts"
+      ],
+      "baseline_sha256": "f0f66f0597dec58ddcc346ffd03c77831daa919b349ec5a2fbdcee3f7eb5960a",
+      "candidate_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src/application/ui/workspace.ts",
+      "allowed_path": [
+        "clients/desktop/src/application/ui/*.ts"
+      ],
+      "baseline_sha256": "b0c35efbcf8dd1423fa29e3f1f7867492fd5709161a9cb87f19e5d672b38264b",
+      "candidate_sha256": "6d39b67a61e07ee1165730f0c511f7404b8107d6a2d6c2e181e06fb88d9f5586",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Messages.tsx",
+      "allowed_path": [
+        "clients/desktop/src/ui/components/Messages.tsx"
+      ],
+      "baseline_sha256": "473255889c54e1a4e47514622ee12d1d6a66e04afa1055359b8c04b91a56469f",
+      "candidate_sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Shell.tsx",
+      "allowed_path": [
+        "clients/desktop/src/ui/components/Shell.tsx"
+      ],
+      "baseline_sha256": "1ceb310bf790cc5252b08a75e1e96437bedcb42c98f10ac90575901f9952e047",
+      "candidate_sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/send/*.kt"
+      ],
+      "baseline_sha256": "d345181d1862f0b670e8ec8f8ec6121e60982b2827fecfce05ca3e5d02c8f089",
+      "candidate_sha256": "76dd63549ae3a30c003dadff83cb2026118b778c0d98d068ba34c1d9416c76b4",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/send/*.kt"
+      ],
+      "baseline_sha256": "6c97efb635df0dfcea56f8150dc13c37e29735678a02f60ba5c1c7a080565518",
+      "candidate_sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/send/*.kt"
+      ],
+      "baseline_sha256": "f30cc16abfb35aec50db52b48fc856bf3bd124c58e8d20ea0ac778261c5d3c21",
+      "candidate_sha256": "8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/sync/*.kt"
+      ],
+      "baseline_sha256": "333a234e450bb0daed6c6162bd35f874e4785427e89c322fa066976907555db2",
+      "candidate_sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/sync/*.kt"
+      ],
+      "baseline_sha256": "67f49bb7b9e600bd3bf9d35c9bc8ef6ae8863fb72e504c7c40943930931e9469",
+      "candidate_sha256": "6de9402a3e95c749856f5df594826e8e132c92ca3154d07e6b1b2993b5852633",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/sync/*.kt"
+      ],
+      "baseline_sha256": "2f9eb481482c184fe80e68a2aa58db126c74df62da3f52bb099ccba68572d05b",
+      "candidate_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt"
+      ],
+      "baseline_sha256": "b5301037f45d2a45a68e4eb9ee5998fc9de39d8dd5d16d876e403eefdef90a72",
+      "candidate_sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt"
+      ],
+      "baseline_sha256": "378ab3f20e5d068698ab0d8f6756f311edbe850a6e3f0acb306b017377510411",
+      "candidate_sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt"
+      ],
+      "baseline_sha256": "03261c5bfc08adccaaccc9191c345b512ea84fbbc9a2b6a707ba8e01b558a7a2",
+      "candidate_sha256": "2d3cb41b766a030ad00471062ddd9ce3775a1fa150a9a1d61d66e043e53ee020",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt"
+      ],
+      "baseline_sha256": "0fb4233bde2a7794995932fd3fc54310d56161745ad986639935a6e4f867d124",
+      "candidate_sha256": "87eaf11f01f090f3f05a5187e8867bc77794dee78614fbb8e3c4f82d780663a8",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt"
+      ],
+      "baseline_sha256": "50d4104f878a92a1ea2ce8856dad2b71d6fab6d214409adb267e49f5f6c26574",
+      "candidate_sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+      "allowed_path": [
+        "clients/shared/protocol-sdk/src/send/wire.ts"
+      ],
+      "baseline_sha256": "d980a2fba55ad1c192701e951e3c475df25f0ec3c6b1dd3f1fc7584657bae452",
+      "candidate_sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+      "allowed_path": [
+        "clients/shared/protocol-sdk/src/sync/*.ts"
+      ],
+      "baseline_sha256": "73129567d48826d9da6870b48e0bc4558289eab12df8acf26ab0f75f7589d393",
+      "candidate_sha256": "d3003eabb0e0594e11ee6f07773b1578e00f566893683dd00a5858b7b865794f",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+      "allowed_path": [
+        "clients/shared/protocol-sdk/src/sync/*.ts"
+      ],
+      "baseline_sha256": "0b1381654dc78a2a029c3232831213fc63ade370690cdbd0414dddb4e30876d2",
+      "candidate_sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/web/src/application/client.ts",
+      "allowed_path": [
+        "clients/web/src/application/*.ts"
+      ],
+      "baseline_sha256": "0dbaf39c8a3019a18e4cc5c9939f8990357f4e699a0146fa631f15925ebf93b8",
+      "candidate_sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/web/src/application/http.ts",
+      "allowed_path": [
+        "clients/web/src/application/*.ts"
+      ],
+      "baseline_sha256": "b570aff90f70548aba3952550a42b837c37ff7fa34d09b3d9408f77699b5aceb",
+      "candidate_sha256": "610a525ce3937b7661335d6f288e860cf2658c554a785bbb89c590418a342787",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/web/src/application/repository.ts",
+      "allowed_path": [
+        "clients/web/src/application/*.ts"
+      ],
+      "baseline_sha256": "a42aca39878773317cf1630b439a2d9c69445c804badb3c37d2e5c65d3fd35a4",
+      "candidate_sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/web/src/ui/appearance.ts",
+      "allowed_path": [
+        "clients/web/src/ui/appearance.ts"
+      ],
+      "baseline_sha256": "3d84ffac998d31aec43c5ac6de568513a9f45e861328072e18d0588cf4204a84",
+      "candidate_sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/web/src/ui/components/FriendsPanel.tsx",
+      "allowed_path": [
+        "clients/web/src/ui/components/FriendsPanel.tsx"
+      ],
+      "baseline_sha256": "e5554100bf7f479131d031423490715d7f72238a1dc388d5106072de0d69b9ad",
+      "candidate_sha256": "8d2ca587c2a48140a110ceb978ca84a66876cf87c2a291ce0e486fc88697ec47",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/web/src/ui/components/Messages.tsx",
+      "allowed_path": [
+        "clients/web/src/ui/components/Messages.tsx"
+      ],
+      "baseline_sha256": "2909fe2901601f10ded8c4ccec2a821087a1c1b33041a969a39195841f4af497",
+      "candidate_sha256": "51d5d0219a6e11f99321b45457b5145aa9f8bf705a512ebe14f1b9ac3bad86ad",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/web/src/ui/language.ts",
+      "allowed_path": [
+        "clients/web/src/ui/language.ts"
+      ],
+      "baseline_sha256": "dda92e1f76661c24c5aaf17ce938799200139be6e55367f6dec24fe697f3261d",
+      "candidate_sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/governance/independent-review.md",
+      "allowed_path": [
+        "spec/governance/independent-review.md"
+      ],
+      "baseline_sha256": "838db2f5047c19bee7c6d81a1767b8768a5a8448748cc5bae9747e0c84dfbdbf",
+      "candidate_sha256": "85e5673f7612c2029bef00d9674611f24725707188c5700d5b6d13c37eab37fc",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/governance/minimality.md",
+      "allowed_path": [
+        "spec/governance/minimality.md"
+      ],
+      "baseline_sha256": "45ab30fd15b8866eaa212886059b1c51cd71999df2e48e66b465b95e57eb012b",
+      "candidate_sha256": "8f6db43f66ec6a17929aa915134e881d95bed727490cdcac81106a090662c974",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/handoff/agent-context.md",
+      "allowed_path": [
+        "spec/handoff/agent-context.md"
+      ],
+      "baseline_sha256": "c4ae35a60663ff27001a6b741384c721f8c58c202e424de6bb1a9f1dd710bbeb",
+      "candidate_sha256": "fc458766abb2112e2bd67594d44c0326c888f8c9aa3b26368acfcfd1610566bb",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/current.md",
+      "allowed_path": [
+        "spec/progress/current.md"
+      ],
+      "baseline_sha256": "1690d017ec6fa0b2aed7de6009e45e8c5e174a47779d21f6b4f37bbee59abb56",
+      "candidate_sha256": "4ff2683a435c1c6b26b7e4b938877e8689c3aa6d9d0a70a008c75ae543a27c5c",
+      "owner": "Coordinator task activation/recovery metadata then released sole writer",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/tasks/TASK_TEMPLATE.md",
+      "allowed_path": [
+        "spec/tasks/TASK_TEMPLATE.md"
+      ],
+      "baseline_sha256": "3c29c1c1f1a86c8b3e4f04e6d1b4e06cd2bc407c62b9f8a541836fb5e3acb3f1",
+      "candidate_sha256": "320657641763990955a1797a2c05b7e02f98b09f0e918a13b356b8132cbfd468",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/architecture/test_client_technology.py",
+      "allowed_path": [
+        "tests/architecture/test_client_technology.py"
+      ],
+      "baseline_sha256": "9f916b1acd2c6a414800c8154edca84a176c3c1be8238d4a1bc2ea3b883766de",
+      "candidate_sha256": "915c9e874d84585e5e6a3d07e541e88681d308f0ad4e278f644a5f6fa2053f5b",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/architecture/test_source_boundaries.py",
+      "allowed_path": [
+        "tests/architecture/test_source_boundaries.py"
+      ],
+      "baseline_sha256": "32d24e1fc783fea6db9a5b6f46b216792d06ced6a78fdd44d1ba5edcefc86b85",
+      "candidate_sha256": "0c264eaa2af6d6f1dcb53bfba58442946c949d1c4bee3621451d819e40446a10",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/gui/auth.mjs",
+      "allowed_path": [
+        "tests/clients/gui/auth.mjs"
+      ],
+      "baseline_sha256": "6df977c458dc5484c8093cf653d23c133f32a47d2d6c7fcbe1e34b4c69b26a4c",
+      "candidate_sha256": "8527c708e04673395436e8daccd332aafbecbcdc690da67b8e3bcc5ce657cb80",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/i18n/compiled.mjs",
+      "allowed_path": [
+        "tests/clients/i18n/compiled.mjs"
+      ],
+      "baseline_sha256": "3592b2d04aded5894ba227eb8cc1b42ef28f4f923b0c12e5068fdf92c5b1cb29",
+      "candidate_sha256": "5b020c9f201b2b1f8c5eef4ce5b667942ad332d4ea081a26d25b32cb01c9e0af",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/i18n/scheduling.mjs",
+      "allowed_path": [
+        "tests/clients/i18n/scheduling.mjs"
+      ],
+      "baseline_sha256": "57e01bcd5d01cbc9a2d81e05d9fc2a83c3d98352b3086a217747bbffaf6a6a79",
+      "candidate_sha256": "bd65c85b332717d5b14d67c92e654d21871c636428173d9fa28a087c3273f9f3",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/i18n/verify.mjs",
+      "allowed_path": [
+        "tests/clients/i18n/verify.mjs"
+      ],
+      "baseline_sha256": "b46defae919128fc381e71b412959089bf370ba00e0bdf92dcd8a63e1999d363",
+      "candidate_sha256": "0f9b4812fb776c31ead01d29b808b3b9ea271bb36aa01cc57b3655428d4d646c",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/send/desktop.mjs",
+      "allowed_path": [
+        "tests/clients/send/**"
+      ],
+      "baseline_sha256": "d2f54767aae3261cd629bc53f1c5b69c863fbb6bb761d1418e4ac04334f7bb1a",
+      "candidate_sha256": "69724ef8c7617db577bc90cd44865cfb9efd34c051f18ccf4603fae430fbcea5",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/sync/desktop.mjs",
+      "allowed_path": [
+        "tests/clients/sync/**"
+      ],
+      "baseline_sha256": "9c1c26e2a20e4fc4b522f33e7229f0ddb6893746fa1f27cb69ade03693c69260",
+      "candidate_sha256": "b7a5d6fa096a690e73d1e89fe3c028fac2ce2aec4ee2db54b5f0ca0722dc18db",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/sync/shared.mjs",
+      "allowed_path": [
+        "tests/clients/sync/**"
+      ],
+      "baseline_sha256": "aa2d42fc54480880bc7c13e0e9e03465b8263a0162025f58cce01b7921c1b710",
+      "candidate_sha256": "6a6db6f7fd5c5ba997dedf2835d637c3980e483cb36d610ba2550c9fc24181fc",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/web/appearance.mjs",
+      "allowed_path": [
+        "tests/clients/web/appearance.mjs"
+      ],
+      "baseline_sha256": "643c02597ee09174ea6b1ffbd0842f62008986d9d0d5942b44b6927c19b72e5c",
+      "candidate_sha256": "d7fd880e5233965b57ba202abe55e1ad232ae212ac135587ed50d6db2bdcda98",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/web/regressions.mjs",
+      "allowed_path": [
+        "tests/clients/web/regressions.mjs"
+      ],
+      "baseline_sha256": "bc662b4f7b4dd7098b724059d5e5ddc70b199eb1cd3b9449b8fcb4b6b45a25a0",
+      "candidate_sha256": "ea2ec9873550b80ba8c0fc26364987be3f0a853746e9b3015346b0043e73fd71",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/core/error_handling_test.go",
+      "allowed_path": [
+        "backend/go/core/*_test.go"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "f8adf2ace9dee5d6b6177975cad2ec84518930806ce2809d8e993ed58ac31f26",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "backend/go/gateway/error_handling_test.go",
+      "allowed_path": [
+        "backend/go/gateway/*_test.go"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "4fa45507cb296db2dd951cd921ce201ba47cc2a337c1fee6f8bc01ae3dbbaa9c",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/ErrorHandlingInstrumentation.kt",
+      "allowed_path": [
+        "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "37b77226e59cc7fd5bd307fdca812d70785b1ce922c53e68fb50304124f40cf2",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/governance/error-handling.md",
+      "allowed_path": [
+        "spec/governance/error-handling.md"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "af53355553ad0ed57c5078c3815acacbeae4ff12cabf82ff5eaf32ced80b9d8a",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/checkpoints/2026-10-13-error-handling-review-candidate.md",
+      "allowed_path": [
+        "spec/progress/checkpoints/*error-handling*.md"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "e6861f01c887c4cfaa41ec6c9a8b048cc217b62e8fdc3a8fb6c779d83963ed62",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/excluded-sqlite-handling.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "46acfe842b31e7a7c14469a669995e064417745c08a71a74fbb090f0ef59ba65",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/human-boundary-clarification.txt",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "9ea1120afb9c3b5e5a1c5c9674a8fa71433602309206e1b23f225327b0980b6d",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-audit.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "3fa295e66e95d2e95e89ed79e4159be4c7ccecf397f31daaa5acbc8f67af3da0",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-handoff.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "c534ab7c6bfcef56adc495d1a556aca611746486896683a737b9c369a5e4700f",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/instrumentation-limits.json",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "e5c0e6cbdbf9c28ce9c7c8914b1201eef13f252bbec6828fdca038b2a3ba8fc2",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/java-placeholder-authority-assessment.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "c13eb579e2d573cdfbe55005bfd1a90727065a6393b7ea48a090486b5c0188ae",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/message-render-scope.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "cdbcb6b973d0711d93e8ebc9f18c502e672312b0dcade6d2eba0e7d05bf526b0",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/production-inventory.json",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "80898aa4c674d5dbee23d2c0eb86a481e8b6501bcb7527291026b9fd85136a7f",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/prompt.txt",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "aa099ee739463e81b69740faa173dfa3a314967d043f225c448a609ffa985698",
+      "owner": "Coordinator task activation/recovery metadata then released sole writer",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/protected-inputs.json",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "b2d7c086ec2798f26ceababbc4bf0ee1021b3d5accfd114c41d418cd83b18a82",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-checks.json",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "565a071ec9243ecb52d8cafc53a88dd8240ce5aba6fd8aaea4aa657de8a38fa2",
+      "owner": "Coordinator task activation/recovery metadata then released sole writer",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-report.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "5cf509299adbe8aab829a97d0ac03f66347bea39cf1693029271edc7a070eac0",
+      "owner": "Coordinator task activation/recovery metadata then released sole writer",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/runtime-cleanup.json",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "7bdbb91dda574d37e81827b7e5704069942c3d90534220dbc8a87f68c6b41097",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/scope-justification.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "ad78e5fd0b8a9ba76659b99112fefa31f6d3f8e2f4db89ebf38a5ea853dc0ed6",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/search-and-fixture-scope.md",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "e7dbeea09adf7bff659042b811775da9a943d86b9056b8dba60a02a0f41e319d",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/verification-history.json",
+      "allowed_path": [
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "ee311344070d815543e3dae0d196ee0a822063598afd36ccc48819f3ddbc7e91",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+      "allowed_path": [
+        "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "398fdcc9f8c8c39cfa7c16b3bdb6bbe028d4c66869d5746d859266ce91849d18",
+      "owner": "Coordinator task activation/recovery metadata then released sole writer",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/errors/.gitignore",
+      "allowed_path": [
+        "tests/clients/errors/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "c740db8c5771bc53deca3faf16465ffd78a57c5bc6df70143f0a8f422fb469ab",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/errors/desktop_render.mjs",
+      "allowed_path": [
+        "tests/clients/errors/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "fab2b326902b037420169dc076a0e85db08c49a24d9e1a29aa59cb8778199034",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/errors/go_live.py",
+      "allowed_path": [
+        "tests/clients/errors/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "08b48195eef3f51f85f8cb5a3bb3b4e7bbb377c32dba706c6df9c9a66117ca96",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/errors/java.py",
+      "allowed_path": [
+        "tests/clients/errors/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "cf9c97545fd05ee7d77838f22cc9c4cb1a86adf3882a40b13e171ed504a409fc",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    },
+    {
+      "path": "tests/clients/errors/mobile.py",
+      "allowed_path": [
+        "tests/clients/errors/**"
+      ],
+      "baseline_sha256": "not present at clean baseline",
+      "candidate_sha256": "3231cbf3eb63ccbcaa78609fef24945188c27074b5cdfef79bf2de334bea4525",
+      "owner": "sole Implementation Agent task-scoped change",
+      "unknown_main_adopted": false
+    }
+  ],
+  "automatic_rejection": "Previous staging script rejected before execution for no per-tracked-path ownership/scope verification; this is the exact audit required, not gitadd-all."
+}

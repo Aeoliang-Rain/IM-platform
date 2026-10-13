@@ -1,6 +1,7 @@
 package im.platform.client.send
 import java.io.BufferedInputStream
 import java.io.Closeable
+import java.io.IOException
 import java.net.URI
 import java.nio.ByteBuffer
 import java.nio.charset.CodingErrorAction
@@ -19,6 +20,7 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
     @Volatile private var closed=false
     @Volatile private var socket: SSLSocket?=null
     private val random=SecureRandom()
+    private fun wire(valid:Boolean){if(!valid)throw IOException("Invalid WSS transport frame")}
     init {
         require(uri.scheme=="wss" && uri.host!=null && uri.rawQuery==null && uri.rawFragment==null && uri.rawUserInfo==null) { "Invalid WSS endpoint" }
         Thread({
@@ -33,38 +35,38 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
                 val path=uri.rawPath.ifEmpty { "/" }
                 val header="GET $path HTTP/1.1\r\nHost: $host\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: $key\r\nSec-WebSocket-Version: 13\r\n\r\n"
                 s.outputStream.write(header.toByteArray(Charsets.US_ASCII)); s.outputStream.flush()
-                val bytes=ArrayList<Byte>(); while(bytes.size<16384) { val b=input.read(); require(b>=0); bytes.add(b.toByte()); if(bytes.size>=4 && bytes.takeLast(4)==listOf(13.toByte(),10.toByte(),13.toByte(),10.toByte())) break }
+                val bytes=ArrayList<Byte>(); while(bytes.size<16384) { val b=input.read(); wire(b>=0); bytes.add(b.toByte()); if(bytes.size>=4 && bytes.takeLast(4)==listOf(13.toByte(),10.toByte(),13.toByte(),10.toByte())) break }
                 val lines=bytes.toByteArray().toString(Charsets.US_ASCII).split("\r\n")
-                require(lines.first().matches(Regex("HTTP/1\\.[01] 101(?: .*)?")))
+                wire(lines.first().matches(Regex("HTTP/1\\.[01] 101(?: .*)?")))
                 val headers=mutableMapOf<String,String>()
-                lines.drop(1).filter { it.isNotEmpty() }.forEach { val parts=it.split(':',limit=2); require(parts.size==2); val name=parts[0].lowercase(); require(!headers.containsKey(name)); headers[name]=parts[1].trim() }
+                lines.drop(1).filter { it.isNotEmpty() }.forEach { val parts=it.split(':',limit=2); wire(parts.size==2); val name=parts[0].lowercase(); wire(!headers.containsKey(name)); headers[name]=parts[1].trim() }
                 val accept=Base64.getEncoder().encodeToString(MessageDigest.getInstance("SHA-1").digest((key+"258EAFA5-E914-47DA-95CA-C5AB0DC85B11").toByteArray(Charsets.US_ASCII)))
-                require(headers["sec-websocket-accept"]==accept && headers["upgrade"]?.lowercase()=="websocket" && headers["connection"]?.split(',')?.any { it.trim().equals("upgrade",true) }==true)
-                require(headers["sec-websocket-extensions"]==null && headers["sec-websocket-protocol"]==null)
+                wire(headers["sec-websocket-accept"]==accept && headers["upgrade"]?.lowercase()=="websocket" && headers["connection"]?.split(',')?.any { it.trim().equals("upgrade",true) }==true)
+                wire(headers["sec-websocket-extensions"]==null && headers["sec-websocket-protocol"]==null)
                 s.soTimeout=0; if(closed) return@Thread; opened()
                 val fragments=java.io.ByteArrayOutputStream(); var fragmented=false
-                fun read(): Int { val b=input.read(); require(b>=0); return b }
+                fun read(): Int { val b=input.read(); wire(b>=0); return b }
                 while(!closed) {
-                    val first=read(); val second=read(); require(first and 0x70==0 && second and 0x80==0)
+                    val first=read(); val second=read(); wire(first and 0x70==0 && second and 0x80==0)
                     val fin=first and 0x80!=0; val op=first and 15
                     var length=(second and 127).toLong()
                     if(length==126L) length=((read() shl 8) or read()).toLong()
-                    else if(length==127L) { length=0; repeat(8) { val b=read(); require(length<=131072); length=(length shl 8) or b.toLong() } }
-                    require(length<=131072 && (op<8 || (fin && length<=125)))
-                    val body=ByteArray(length.toInt()); var n=0; while(n<body.size) { val count=input.read(body,n,body.size-n); require(count>0); n+=count }
+                    else if(length==127L) { length=0; repeat(8) { val b=read(); wire(length<=131072); length=(length shl 8) or b.toLong() } }
+                    wire(length<=131072 && (op<8 || (fin && length<=125)))
+                    val body=ByteArray(length.toInt()); var n=0; while(n<body.size) { val count=input.read(body,n,body.size-n); wire(count>0); n+=count }
                     when(op) {
                         8 -> break
                         9 -> frame(10,body)
                         10 -> Unit
                         1,0 -> {
-                            require((op==1 && !fragmented) || (op==0 && fragmented)); require(fragments.size()+body.size<=131072)
+                            wire((op==1 && !fragmented) || (op==0 && fragmented)); wire(fragments.size()+body.size<=131072)
                             fragments.write(body); fragmented=!fin
                             if(fin) { val decoder=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT); message(decoder.decode(ByteBuffer.wrap(fragments.toByteArray())).toString()); fragments.reset() }
                         }
-                        else -> error("Invalid WSS frame")
+                        else -> throw IOException("Invalid WSS frame")
                     }
                 }
-            } catch(_: Exception) { /* No endpoint, token, or frame in exceptions. */ }
+            } catch(_: IOException) { /* Failed transport closes this socket and notifies ended; no frame/credential logging. */ }
             finally { close(); ended() }
         },"im-wss").apply { isDaemon=true; start() }
     }
@@ -77,5 +79,5 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
         bytes.write(ByteArray(body.size) { (body[it].toInt() xor mask[it%4].toInt()).toByte() }); output.write(bytes.toByteArray()); output.flush()
     }
     override fun send(text: String) { frame(1,text.toByteArray(Charsets.UTF_8)) }
-    override fun close() { closed=true; try { socket?.close() } catch(_:Exception) {} }
+    override fun close() { closed=true; try { socket?.close() } catch(_:IOException) { /* close attempted; the connection is already retired. */ } }
 }

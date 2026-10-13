@@ -48,6 +48,7 @@ let stored=null,writes=[];globalThis.window={localStorage:{getItem:key=>{assert.
 for(const raw of [null,"","EN","en-US"," en","en\n","en\uFEFF","ja-jp"]){stored=raw;assert.equal(adapter.loadLanguage(),"en");}
 for(const locale of loaded.web.locales){assert.equal(adapter.saveLanguage(locale),true);assert.equal(adapter.loadLanguage(),locale);assert(Buffer.byteLength(stored)<=5);}
 const count=writes.length;assert.equal(adapter.saveLanguage("en-US"),false);assert.equal(writes.length,count);
-window.localStorage.getItem=()=>{throw new Error("unavailable");};assert.equal(adapter.loadLanguage(),"en");
-window.localStorage.setItem=()=>{throw new Error("unavailable");};assert.equal(adapter.saveLanguage("ja-JP"),false);
+window.localStorage.getItem=()=>{throw new DOMException("unavailable","SecurityError");};assert.equal(adapter.loadLanguage(),"en");
+window.localStorage.setItem=()=>{throw new DOMException("unavailable","SecurityError");};assert.equal(adapter.saveLanguage("ja-JP"),false);
+for(const original of [new Error("controlled unknown storage bug"),"unavailable"]){window.localStorage.getItem=()=>{throw original;};assert.throws(()=>adapter.loadLanguage(),e=>e===original);window.localStorage.setItem=()=>{throw original;};assert.throws(()=>adapter.saveLanguage("ja-JP"),e=>e===original);}
 console.log("PASS resource equivalence/placeholders/fallback negative controls and actual Web adapter unit behavior; native/browser runtime PENDING");

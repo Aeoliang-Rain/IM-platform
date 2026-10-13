@@ -1,5 +1,6 @@
 package im.platform.client.sync
 import androidx.lifecycle.ViewModel
+import im.platform.client.send.SendStorageFailure
 import im.platform.client.send.SendViewModel
 import im.platform.client.send.SendSession
 import im.platform.client.send.Wire as SendWire
@@ -36,7 +37,7 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
         }
         scope.launch {while(isActive){delay(10000);if(send.state.value.connection=="ready" && !stopped && pull==null)enqueue()}}
     }
-    private fun enqueue(){scope.launch {try{synchronize()}catch(_:Exception){/* Failure already observable. */}}}
+    private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}
     suspend fun openConversation(c:String){val selected=SendWire.uuid(c);send.openConversation(selected);opened=selected;synchronize()}
     suspend fun synchronize() {
         if(retired || stopped)return;pending.set(true)
@@ -62,10 +63,12 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
                 }
                 if(active())mutableState.value=SyncState(unavailable=unavailable.toList())
             }catch(error:Exception){
+                if(error is CancellationException)throw error
+                if(error !is SyncFailure && error !is SendStorageFailure)throw error
                 if(!active())return
-                val kind=if(error is SyncFailure)error.kind else "storage"
+                val kind=if(error is SendStorageFailure)"storage"else (error as SyncFailure).kind
                 if(kind=="authentication"){stopped=true;generation++;send.disconnect()}
-                mutableState.value=SyncState("failed",kind,unavailable.toList());throw SyncFailure(kind)
+                mutableState.value=SyncState("failed",kind,unavailable.toList());throw error
             }finally{if(pull===job)pull=null}
         }
     }
@@ -78,5 +81,5 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
 suspend fun accountSync(context:android.content.Context,session:SendSession,endpoint:String):SyncViewModel=withContext(Dispatchers.IO){
     val http=SyncHttps(endpoint,session);val repository=Repository(context,session.userId)
     try{repository.initialize();SyncViewModel(SendViewModel(repository,session,ownsRepository=true),repository,http)}
-    catch(_:Exception){repository.close();throw SyncFailure("storage")}
+    catch(error:Exception){repository.close();throw error}
 }

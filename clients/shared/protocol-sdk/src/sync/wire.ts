@@ -1,8 +1,8 @@
-import {parse,object,uuid,positive,timestamp,content} from "../send/wire.js";
+import {WireFailure,parse,object,uuid,positive,timestamp,content} from "../send/wire.js";
 import type {UserPage,UserEvent,ServerMessage} from "../storage/models.js";
 export const MAX_RESPONSE=6*1024*1024;
 export interface ConversationPage {messages:ServerMessage[];hasMore:boolean}
-const invalid=():never=>{throw new Error("Invalid Sync response");};
+const invalid=():never=>{throw new SyncFailure("protocol","Invalid Sync response");};
 const kinds=["friend.changed","conversation.changed","membership.changed","plugin.changed"];
 export function cursor(v:unknown):string {if(typeof v!=="string" || [...v].length<1 || [...v].length>256) return invalid();return v;}
 function list(v:unknown):unknown[] {if(!Array.isArray(v) || v.length>100) return invalid();return v;}
@@ -20,7 +20,7 @@ export function userPage(raw:string,requestId:string,inputCursor:string):UserPag
     const nextCursor=cursor(p.nextCursor),hasMore=p.hasMore as boolean;
     if(events.length ? nextCursor!==events.at(-1)!.cursor || nextCursor===inputCursor : nextCursor!==inputCursor || hasMore) return invalid();
     return {syncVersion:"1.0",type:"sync.user.page",requestId,events,nextCursor,hasMore};
-  } catch {return invalid();}
+  } catch(error) {if(error instanceof WireFailure) return invalid(); throw error;}
 }
 export function conversationPage(raw:string,requestId:string,conversationId:string,afterSeq:bigint):ConversationPage {
   try {
@@ -35,9 +35,9 @@ export function conversationPage(raw:string,requestId:string,conversationId:stri
     });
     if(p.hasMore && !messages.length) return invalid();
     return {messages,hasMore:p.hasMore as boolean};
-  } catch {return invalid();}
+  } catch(error) {if(error instanceof WireFailure) return invalid(); throw error;}
 }
-export class SyncFailure extends Error {constructor(readonly kind:"authentication"|"unavailable"|"protocol"|"transport"|"storage") {super("Sync "+kind+" failure");}}
+export class SyncFailure extends Error {constructor(readonly kind:"authentication"|"unavailable"|"protocol"|"transport"|"storage",message="Sync "+kind+" failure") {super(message);}}
 export function errorResponse(raw:string,requestId:string,status:number,conversation:boolean):SyncFailure {
   try {
     const p=object(parse(raw,MAX_RESPONSE),["requestId","error"]);if(uuid(p.requestId)!==requestId) return invalid();
@@ -48,7 +48,7 @@ export function errorResponse(raw:string,requestId:string,status:number,conversa
     if(conversation && status===403 && e.code==="AUTHORIZATION_DENIED") return new SyncFailure("unavailable");
     if(status===400 && e.code==="VALIDATION_FAILED" || status===426 && e.code==="PROTOCOL_VERSION_UNSUPPORTED") return new SyncFailure("protocol");
     return invalid();
-  } catch {return new SyncFailure("protocol");}
+  } catch(error) {if(error instanceof WireFailure || error instanceof SyncFailure) return new SyncFailure("protocol"); throw error;}
 }
 export function userRequest(requestId:string,inputCursor:string):string {return JSON.stringify({syncVersion:"1.0",type:"sync.user.request",requestId:uuid(requestId),cursor:cursor(inputCursor),limit:100});}
 export function conversationRequest(requestId:string,c:string,afterSeq:bigint):string {if(afterSeq<0n) return invalid();return JSON.stringify({syncVersion:"1.0",type:"sync.conversation.request",requestId:uuid(requestId),conversationId:uuid(c),afterSeq:"SEQ",limit:100}).replace('"SEQ"',afterSeq.toString());}

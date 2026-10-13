@@ -65,3 +65,25 @@ await assert.rejects(bad.user("0",new AbortController().signal),SyncFailure);
 const frame=json({protocolVersion:"1.0",type:"ping",requestId:id,payload:{}});
 assert.throws(()=>decode(" ".repeat(131073)+frame));
 console.log("PASS: exact Sync correlation/shapes/gap/progress/kinds/numbers, 100x4096 escaped/literal Unicode bounded transport, strict nonstring Sync/WSS enums and WSS bound regression");
+
+// Network I/O boundaries may recover TypeError/AbortError; arbitrary internal
+// Errors from an adapter preserve identity rather than becoming transport.
+{
+ const original=new Error("controlled internal fetch bug");
+ const unknown=new SyncHttp("https://localhost/",session,async()=>{throw original;});
+ await assert.rejects(unknown.user("0",new AbortController().signal),e=>e===original);
+ const transport=new SyncHttp("https://localhost/",session,async()=>{throw new TypeError("controlled native transport unavailable");});
+ await assert.rejects(transport.user("0",new AbortController().signal),e=>e instanceof SyncFailure&&e.kind==="transport");
+}
+console.log("PASS unknown adapter errors retain identity; known transport remains failed");
+
+{
+ const headers={"content-type":"application/json","cache-control":"no-store"};
+ const malformed=new SyncHttp("https://localhost/",session,async()=>new Response(new Uint8Array([0xff]),{headers}));
+ await assert.rejects(malformed.user("0",new AbortController().signal),e=>e instanceof SyncFailure&&e.kind==="protocol");
+ for(const original of [new TypeError("controlled stream network failure"),new Error("controlled unknown stream bug")]){
+  const streamed=new SyncHttp("https://localhost/",session,async()=>new Response(new ReadableStream({start(c){c.error(original);}}),{headers}));
+  await assert.rejects(streamed.user("0",new AbortController().signal),e=>original instanceof TypeError?e instanceof SyncFailure&&e.kind==="transport":e===original);
+ }
+}
+console.log("PASS malformed UTF8 is protocol; stream transport stays failed; unknown stream cause preserved");

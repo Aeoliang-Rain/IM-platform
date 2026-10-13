@@ -31,7 +31,7 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
             (stream?:throw ApiFailure("connection_unavailable","Connection unavailable")).use{val buffer=ByteArray(8192);while(true){val n=it.read(buffer);if(n<0)break;if(output.size()+n>1048576)throw ApiFailure("invalid_server_response","Invalid server response");output.write(buffer,0,n)}}
             val raw=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(output.toByteArray())).toString();val result=Wire.parse(raw,1048576)
             if(status !in 200..299){val code=((result as? Map<*,*>)?.get("error") as? Map<*,*>)?.get("code") as? String;throw ApiFailure(if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"invalid_credentials" else if(status==401)"session_expired" else code?:"request_failed",if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"Invalid username or password" else if(status==401)"Session expired" else code?:"Request failed")};result
-        }catch(e:ApiFailure){throw e}catch(_:Exception){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+        }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.io.IOException){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
     }
     private fun user(v:Any?):User {val o=Wire.obj(v,setOf("userId","username","displayName"));return User(Wire.uuid(o["userId"]),o["username"] as String,o["displayName"] as String)}
     @Synchronized private fun accept(value:Any,g:Long):SendSession {
@@ -40,7 +40,7 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
         require(s["clientType"]=="MOBILE" && s["status"]=="ACTIVE" && t["refreshTokenDelivery"]=="RESPONSE_BODY_FOR_OS_SECURE_STORAGE" && o["replacedExistingSession"] is Boolean)
         val next=SendSession(Wire.uuid(s["userId"]),Wire.uuid(s["sessionId"]),Wire.integer(s["sessionEpoch"]),t["accessToken"] as String);require(next.accessToken.isNotEmpty());val refresh=t["refreshToken"] as String;require(refresh.isNotEmpty());val seconds=Wire.integer(t["accessTokenExpiresInSeconds"]).longValueExact();Wire.integer(t["refreshTokenExpiresInSeconds"])
         val newSlot=endpoint+"/"+next.userId+"/"+next.sessionId
-        try {preferences.write(newSlot,refresh);preferences.write(endpoint+"/current",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(_:Exception){session=null;throw ApiFailure("secure_credential_storage_unavailable","Secure credential storage unavailable")}
+        try {preferences.write(newSlot,refresh);preferences.write(endpoint+"/current",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(error:Exception){session=null;throw error}
         slot=newSlot;session=next;expires=System.currentTimeMillis()+seconds*1000;return next
     }
     suspend fun register(username:String,password:String):User = user(Wire.obj(request("/v1/auth/register","POST",JSONObject().put("username",username).put("password",password).put("displayName",username),false),setOf("user"))["user"])

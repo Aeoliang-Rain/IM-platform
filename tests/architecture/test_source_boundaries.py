@@ -213,6 +213,19 @@ class SourceTests(unittest.TestCase):
             if target.exists():
                 self.put(path, target.read_text(encoding="utf-8"))
 
+    def test_exact_java_placeholder_task_scope_and_no_near_name_waiver(self):
+        self.governance_base()
+        for path, valid in [("backend/java/InfraPlaceholder.java", True),
+                            ("backend/java/Other.java", False),
+                            ("backend/java/InfraPlaceholderOther.java", False)]:
+            with self.subTest(path=path):
+                self.put("spec/tasks/active/TASK.md", "# Inputs\n spec/architecture/README.md SRC-01 allowed_paths\n# Allowed Paths\n- `" + path + "`\n# Goal\nNarrow transport skeleton repair\n")
+                errors = checker.check_governance(self.root)
+                if valid:
+                    self.assertEqual([], errors)
+                else:
+                    self.assert_contains(errors, "conflicting allowed_path " + path)
+
     def test_active_task_path_is_never_architecture_waiver(self):
         self.governance_base()
         self.put("spec/tasks/active/TASK.md", '# Inputs\n spec/architecture/README.md SRC-01 allowed_paths\n# Allowed Paths\n- `backend/go/internal/auth/**`\n- `backend/go/**`\n# Goal\nNew task\n')

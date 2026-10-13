@@ -531,7 +531,7 @@ def check_native_language(relative, text, enabled):
     if relative == ts:
         start = compact.find('exportconstlanguage=')
         part = compact[start:compact.find('exportconsttrayText=', start)]
-        required = ('invoke<unknown>("language_load")', 'validLocale(value)?value:"en"', 'catch{return"en";}', 'if(!validLocale(value))', 'invoke<void>("language_save",{value})')
+        required = ('invoke<unknown>("language_load")', 'validLocale(value)?value:"en"', 'catch(error){if(error==="Languageunavailable")return"en";throwerror;}', 'if(!validLocale(value))', 'invoke<void>("language_save",{value})')
         if any(token not in part for token in required) or re.search(r'credentials?|sqlite|appearance|localStorage|trim\(|toLowerCase\(', part, re.I):
             errors.append(f'CLIENT {relative}: language intent must validate exact enum and use only narrow native commands')
     elif relative == rust:
@@ -546,7 +546,7 @@ def check_native_language(relative, text, enabled):
     else:
         start = compact.find('funloadLanguage('); end = compact.find('privatefunkey(', start)
         part = compact[start:end]
-        required = ('appearance.getString("language",null)', 'value=="en"||value=="zh-CN"||value=="ja-JP"', 'else"en"', 'catch(_:Exception){"en"}', 'require(value=="en"||value=="zh-CN"||value=="ja-JP")', 'appearance.edit().putString("language",value).commit()')
+        required = ('appearance.getString("language",null)', 'value=="en"||value=="zh-CN"||value=="ja-JP"', 'else"en"', 'catch(_:ClassCastException){"en"}', 'require(value=="en"||value=="zh-CN"||value=="ja-JP")', 'appearance.edit().putString("language",value).commit()')
         if any(token not in part for token in required) or re.search(r'credentials?|sqlite|putInt|putFloat|remove\(|clear\(|trim\(|lowercase\(',part,re.I):
             errors.append(f'CLIENT {relative}: language must be one validated String key in existing appearance MODE_PRIVATE store')
     return errors
@@ -739,6 +739,10 @@ def check_governance(root):
                 if allowed.startswith(("backend/go/", "backend/java/")):
                     parts = allowed.split("/")
                     if len(parts) > 3 and parts[2] in SOURCE_DIRS:
+                        continue
+                    if allowed == "backend/java/InfraPlaceholder.java":
+                        # Canonical SRC-06 exact pre-business skeleton; check_java
+                        # still enforces its responsibility and placeholder expiry.
                         continue
                     if len(parts) == 3 and parts[2] in ROOT_FILES[parts[1]]:
                         continue

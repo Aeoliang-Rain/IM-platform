@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -15,10 +16,11 @@ public final class InfraPlaceholder {
         String role = args[0];
         try (ServerSocket server = new ServerSocket(8080)) {
             while (true) {
-                try (Socket socket = server.accept()) {
+                Socket accepted = server.accept();
+                try (Socket socket = accepted) {
                     socket.setSoTimeout(5000);
                     handle(socket, role);
-                } catch (Exception error) {
+                } catch (IOException error) {
                     System.err.println("placeholder request failed: " + error.getClass().getSimpleName());
                 }
             }
@@ -29,7 +31,9 @@ public final class InfraPlaceholder {
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
         String request = reader.readLine();
         if (request == null) return;
-        String path = request.split(" ")[1];
+        String[] parts = request.split(" ");
+        if (parts.length < 2) throw new IOException("malformed request line");
+        String path = parts[1];
         String key = null;
         boolean upgrade = false;
         String line;

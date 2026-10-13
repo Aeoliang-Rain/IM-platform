@@ -7,9 +7,10 @@ import org.json.JSONObject
 
 // Strict subset of JSON used by canonical WSS objects. Integer lexemes never
 // pass through Double; storage conversion happens separately at the Repo edge.
+class WireFailure:IllegalArgumentException("Invalid WSS frame")
 object Wire {
     data class Frame(val type: String, val requestId: String, val payload: Map<String,Any>)
-    private fun invalid(): Nothing = throw IllegalArgumentException("Invalid WSS frame")
+    private fun invalid(): Nothing = throw WireFailure()
     fun uuid(v: Any?): String {
         val s=v as? String ?: invalid()
         if(!s.matches(Regex("[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"))) invalid()
@@ -33,7 +34,7 @@ object Wire {
         val s=v as? String ?: invalid()
         if(!s.matches(Regex("[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})"))) invalid()
         val normalized=s.replace(Regex("(\\.[0-9]{9})[0-9]+"),"$1")
-        try { OffsetDateTime.parse(normalized) } catch(_: Exception) { invalid() }
+        try { OffsetDateTime.parse(normalized) } catch(_: java.time.format.DateTimeParseException) { invalid() }
         return s
     }
     private class Parser(val raw: String,val maxIntegerDigits:Int?=null) {
@@ -86,7 +87,7 @@ object Wire {
                     if(exact.signum()!=0 && (exact.scale()>0 || exact.precision().toLong()-exact.scale().toLong()>maxIntegerDigits)) invalid()
                     exact.toBigIntegerExact()
                 }
-            } catch(_:Exception) { invalid() }
+            } catch(_:ArithmeticException) { invalid() } catch(_:NumberFormatException) { invalid() }
         }
         fun parse(maxLength:Int=131072): Any { if(raw.length>maxLength) invalid(); val v=value(); space(); if(at!=raw.length) invalid(); return v }
     }

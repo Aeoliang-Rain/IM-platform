@@ -3,6 +3,7 @@ package core
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"github.com/nats-io/nats.go"
 	"os"
 	"testing"
@@ -82,7 +83,9 @@ func TestClosedNATSPublicationLeavesOutboxRetryable(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	relaySessionBatch(context.Background(), f.db, nc)
+	if err = relaySessionBatch(context.Background(), f.db, nc); !errors.Is(err, nats.ErrConnectionClosed) {
+		t.Fatalf("lost publisher failure: %v", err)
+	}
 	if f.count(t, `SELECT count(*) FROM outbox_events WHERE conversation_id=$1 AND published_at IS NULL`) != 1 {
 		t.Fatal("failed publisher marked outbox")
 	}

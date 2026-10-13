@@ -11,7 +11,7 @@ const user='10000000-0000-4000-8000-000000000001', sessionId='20000000-0000-4000
 const session={userId:user,sessionId,sessionEpoch:1n,accessToken:'fixture-desktop'};
 const hex=s=>Buffer.from(s,'utf8').toString('hex'),bind=s=>s===null?'~':hex(s);
 function database(account=user) {
-  function call(input) {const r=spawnSync(probe,[root,account],{input,encoding:'utf8',maxBuffer:8*1024*1024});if(r.error)throw r.error;if(r.status)throw new Error('Native storage failed');return r.stdout;}
+  function call(input) {const r=spawnSync(probe,[root,account],{input,encoding:'utf8',maxBuffer:8*1024*1024});if(r.error)throw r.error;if(r.status)throw r.stderr.trim();return r.stdout;}
   return {async transaction(steps){call(steps.map(([sql,args,changes])=>['T',changes??'-',hex(sql),...args.map(bind)].join('\t')).join('\n')+'\n');},async query(sql,args){const raw=call(['Q',hex(sql),...args.map(bind)].join('\t')+'\n').trimEnd();return raw?raw.split(/\r?\n/).map(line=>line.split('\t').map(v=>v==='~'?null:Buffer.from(v,'hex').toString('utf8'))):[];}};
 }
 const repo=new Repository(database());await repo.initialize();
@@ -70,3 +70,27 @@ await delay(600);await app.idle();for(const cid of [c1,c2]) assert.equal((await 
 app=application();await app.openConversation(c);await app.mergeMessages([{conversationId:c,requestId:rejected,senderId:user,content:{kind:'TEXT',text:'denied'},messageId:crypto.randomUUID(),seq:99n,createdAt:'2026-10-03T00:00:00Z'}]);assert.equal(app.state.messages.find(row=>row[0]===rejected)[3],'SENT');await app.retry(c,rejected);assert.equal(app.state.messages.find(row=>row[0]===rejected)[3],'SENT');app.close();assert.deepEqual(app.state.messages,[]);
 const otherRepo=new Repository(database('10000000-0000-4000-8000-000000000002'));await otherRepo.initialize();assert.equal((await otherRepo.messages(c)).length,0);
 console.log('PASS: actual SQLx + builtin WSS TLS send, persisted SENDING, timeout/offline/reject, same-ID restart retry, late ACK/realtime/Sync terminal merge, strict invalid/session checks, transactional rollback, stale socket and account isolation');
+
+// Direct non-storage observer failures retain Error and primitive identity.
+for(const original of [new Error("controlled observer bug"),"controlled unexpected callback value"]){
+ const own=new SendApplication(repo,session,factory,500);
+ assert.throws(()=>own.observe(()=>{throw original;}),error=>error===original);
+ const delivery=new SendApplication(repo,session,factory,500);
+ delivery.observeDelivery(()=>{throw original;});
+ assert.throws(()=>delivery.delivered(c,1n),error=>error===original);
+ // Mixed wrapper origin is proved separately below under Human clarification.
+}
+console.log("PASS direct non-storage observer Error and primitive keep original identity; mixed boundary proof follows");
+
+await import("../errors/desktop_render.mjs");
+
+// The error value itself cannot establish native origin. It is only tagged
+// inside actual Repository calls; observer spoofing the exact native string fails.
+for(const original of [new Error('controlled mixed observer bug'),'controlled primitive','Storage statement rejected']){
+ const own=new SendApplication(repo,session,factory,500);let armed=false;
+ const detach=own.observe(()=>{if(armed)throw original;});armed=true;
+ await assert.rejects(own.openConversation(c),e=>e===original);
+ await assert.rejects(own.idle(),e=>e===original);assert.notEqual(own.state.error,'storage');
+ detach();own.close();
+}
+console.log('PASS mixed wrapper unknown Error/primitive/exact-native-string spoof retain identity; idle fails');

@@ -9,5 +9,8 @@ for(const bad of [null,[],{}, {...defaults,accessToken:'forbidden'}, {...default
 for(const bad of [{...defaults,theme:{toString:()=>"cold"}},{...defaults,density:{toString:()=>"comfortable"}}])assert.throws(()=>validate(bad));
 for(const raw of ['{','x'.repeat(129),JSON.stringify({...defaults,user:'forbidden'})]){data.set('plugworldim.appearance.v1',raw);assert.deepEqual(loadAppearance(),defaults);}
 saveAppearance({theme:'cold',fontSize:20,density:'spacious'});saveAppearance({...loadAppearance(),theme:'warm'});assert.deepEqual(loadAppearance(),{theme:'warm',fontSize:20,density:'spacious'});assert.equal(data.get('unrelated'),'untouched');
-globalThis.window={localStorage:{getItem(){throw Error('Unavailable');},setItem(){throw Error('Unavailable');}}};assert.deepEqual(loadAppearance(),defaults);assert.equal(saveAppearance(defaults),false);
+globalThis.window={localStorage:{getItem(){throw new DOMException('Unavailable','SecurityError');},setItem(){throw new DOMException('Unavailable','SecurityError');}}};assert.deepEqual(loadAppearance(),defaults);assert.equal(saveAppearance(defaults),false);
 console.log('PASS appearance: bounded values, rejection, restart, theme independence, unavailable storage, unrelated key preservation');
+
+for(const original of [new Error("Unavailable"),new TypeError("Invalid appearance"),"Unavailable"]){window.localStorage.getItem=()=>{throw original};assert.throws(()=>loadAppearance(),e=>e===original);window.localStorage.setItem=()=>{throw original};assert.throws(()=>saveAppearance(defaults),e=>e===original);}
+console.log("PASS appearance actual DOMException defaults, unknown Error/TypeError-name spoof/primitive original identity");

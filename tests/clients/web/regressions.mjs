@@ -29,7 +29,7 @@ const page=(request,messages,hasMore=false)=>json({syncVersion:'1.0',type:'sync.
 // Timeout must not lose logical correlation. Unknown/wrong conversation/old
 // socket cannot confirm it; one late durable ACK does, and SENT stays terminal.
 {
- const {client,socket}=await setup(async()=>{throw Error('No initial history pull');},20);
+ const {client,socket}=await setup(async()=>{throw new TypeError('Controlled after-baseline network failure');},20);
  try{
   const rid=client.send('late confirmation');const failed=()=>client.repository.snapshot(c)[0].state==='FAILED';await observe(client,failed);
   const ack={status:'committed',conversationId:c,messageId:id(800),seq:101,createdAt:'2026-10-09T09:00:00Z'};
@@ -134,3 +134,52 @@ console.log('PASS Web regression: late ACK identity, both terminal-page crossing
  }
  console.log('PASS STATE real-contract cache alignment, strict Sync cache rejection, late old friend success/error isolation, cursor projection failure retry, prior login generation isolation');
 }
+
+// Internal bugs propagate with original identity instead of false network/UI data.
+{
+ const original=Error('controlled internal Web adapter bug');
+ const http=new Http('https://regression.invalid',async()=>{throw original;});
+ await assert.rejects(http.request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal),e=>e===original);
+ const client=new WebClient('https://regression.invalid',async()=>{throw original;});
+ await assert.rejects(client.login('fixture','controlled-only-input'),e=>e===original);
+ assert.equal(client.view().session,false);client.dispose();
+ const primitive='controlled unexpected primitive';
+ const value=new Http('https://regression.invalid',async()=>{throw primitive;});
+ await assert.rejects(value.request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal),e=>e===primitive);
+}
+console.log('PASS unknown Web adapter Error and primitive preserve original failure');
+
+{
+ const signal=new AbortController().signal;
+ const invalid=new Http('https://regression.invalid',async()=>new Response(new Uint8Array([0xff]),{headers:{'content-type':'application/json'}}));
+ await assert.rejects(invalid.request('/v1/users/me','GET',undefined,'controlled',signal),e=>e.code==='INVALID_RESPONSE');
+ const streamed=new Http('https://regression.invalid',async()=>new Response(new ReadableStream({start(c){c.error(new TypeError('controlled stream network failure'));}}),{headers:{'content-type':'application/json'}}));
+ await assert.rejects(streamed.request('/v1/users/me','GET',undefined,'controlled',signal),e=>e.code==='CONNECTION_UNAVAILABLE');
+ const original=Error('controlled retired refresh bug');let reject,started;
+ const began=new Promise(r=>{started=r;});const held=new Promise((_,r)=>{reject=r;});
+ const {client}=await setup(async url=>{if(url.endsWith('/auth/refresh/web')){started();return held;}if(url.endsWith('/auth/logout'))return new Response(null,{status:204});throw Error('Unexpected controlled route');});
+ const refreshing=client.refresh();await began;await client.logout();reject(original);
+ await assert.rejects(refreshing,e=>e===original);assert.equal(client.view().session,false);client.dispose();
+}
+console.log('PASS Web UTF8/read classification and retired refresh unknown-error identity without account publication');
+
+// Execute the real compiled JSX with the existing language lookup; context alone is controlled.
+{
+ const {readFileSync,writeFileSync}=await import("node:fs"),{createRequire}=await import("node:module"),{resolve}=await import("node:path");
+ const root=process.env.WEB_BUILD_DIR,require=createRequire(resolve(root,"../clients/web/package.json")),React=require("react"),{renderToStaticMarkup}=require("react-dom/server");
+ const {translate,displayText}=await import(pathToFileURL(root+"/web/src/ui/i18n/resources.js"));
+ globalThis.__webRenderer={React,useText:()=>key=>translate("en",key),useDisplayText:()=>value=>displayText("en",value)};
+ try{
+  const modules={};for(const name of ["Messages","FriendsPanel"]){const code=readFileSync(root+"/web/src/ui/components/"+name+".js","utf8").replace(/^import .*;\r?\n/gm,"");const output=root+"/"+name+"-probe.mjs";writeFileSync(output,"const {React,useText,useDisplayText}=globalThis.__webRenderer;\n"+code);modules[name]=await import(pathToFileURL(output));}
+  const row={requestId:"controlled-request",senderId:u,conversationId:c,content:{kind:"TEXT",text:"controlled body"},state:"SENDING"};
+  const render=m=>renderToStaticMarkup(React.createElement(modules.Messages.Messages,{v:{user:{userId:u}},messages:[m],retry:()=>{}}));
+  for(const state of ["SENDING","SENT","FAILED"])assert.match(render({...row,state}),/controlled body/);
+  for(const invalid of [{...row,state:"UNKNOWN"},{...row,requestId:""},{...row,content:{kind:"TEXT",text:null}}])assert.throws(()=>render(invalid),/Invalid message/);
+  const noMatch=translate("en","friends.noMatch"),base={friends:[],friendsBusy:false,friendsError:"",searchBusy:false,searchError:"",searchResults:[],user:{userId:u}};let searched=true;
+  const props={v:base,search:"alice",setSearch:()=>{},searched:true,setSearched:value=>{searched=value},open:()=>{},loadFriends:async()=>{},searchUsers:async()=>{},addFriend:async()=>{}};
+  const friends=extra=>renderToStaticMarkup(React.createElement(modules.FriendsPanel.FriendsPanel,{...props,...extra}));
+  assert(friends({}).includes(noMatch));assert(!friends({searched:false}).includes(noMatch));assert(!friends({v:{...base,searchError:"CONNECTION_UNAVAILABLE"}}).includes(noMatch));
+  const tree=modules.FriendsPanel.FriendsPanel(props);const find=node=>{if(!node||typeof node!=="object")return null;if(node.type==="input")return node;for(const child of [node.props?.children].flat(Infinity)){const hit=find(child);if(hit)return hit;}return null};find(tree).props.onChange({target:{value:"bob"}});assert.equal(searched,false);
+ }finally{delete globalThis.__webRenderer}
+}
+console.log("PASS compiled Web renderer three-state/content/identity and truthful successful-empty search; editing query clears old completion");

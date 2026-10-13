@@ -17,7 +17,7 @@ class SyncHttps(endpoint:String,private val session:SendSession,
     private val base:String
     fun matchesSession(check:(SendSession)->Boolean)=check(session)
     init {
-        val uri=try {URI(endpoint)} catch(_:Exception){throw SyncFailure("protocol")}
+        val uri=try {URI(endpoint)} catch(_:java.net.URISyntaxException){throw SyncFailure("protocol")}
         if(uri.scheme!="https" || uri.host==null || uri.rawUserInfo!=null || uri.rawQuery!=null || uri.rawFragment!=null || uri.rawPath !in listOf("","/") || session.accessToken.isEmpty() || session.accessToken.any {it=='\r' || it=='\n'}) throw SyncFailure("protocol")
         base=URI("https",null,uri.host,uri.port,null,null,null).toString()
     }
@@ -35,10 +35,10 @@ class SyncHttps(endpoint:String,private val session:SendSession,
                 val stream=(if(status==200)c.inputStream else c.errorStream) ?: throw SyncFailure("transport")
                 val out=java.io.ByteArrayOutputStream()
                 stream.use {val buffer=ByteArray(8192);while(true){val count=it.read(buffer);if(count<0)break;if(out.size()+count>MAX_RESPONSE)throw SyncFailure("protocol");out.write(buffer,0,count)}}
-                val raw=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(out.toByteArray())).toString()
+                val raw=try{Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(out.toByteArray())).toString()}catch(_:java.nio.charset.CharacterCodingException){throw SyncFailure("protocol")}
                 if(status!=200) throw if(status in setOf(400,401,403,426))Wire.error(raw,id,status,path.endsWith("conversation")) else SyncFailure("transport")
                 if(continuation.isActive)continuation.resume(raw)
-            } catch(error:Exception) {if(continuation.isActive)continuation.resumeWithException(if(error is SyncFailure)error else SyncFailure("transport"))}
+            } catch(error:Exception) {if(error is CancellationException)throw error;val failure=if(error is java.io.IOException)SyncFailure("transport")else error;if(continuation.isActive)continuation.resumeWithException(failure)else if(error !is java.io.IOException && error !is SyncFailure)throw error}
             finally {current.getAndSet(null)?.disconnect()}
         }
         continuation.invokeOnCancellation {current.getAndSet(null)?.disconnect();job.cancel()}
