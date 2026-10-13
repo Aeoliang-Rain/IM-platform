@@ -1,0 +1,1135 @@
+{
+  "production_inputs": [
+    {
+      "path": "backend/go/Dockerfile",
+      "sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358"
+    },
+    {
+      "path": "backend/go/config.example.json",
+      "sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628"
+    },
+    {
+      "path": "backend/go/core/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "backend/go/core/auth.go",
+      "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701"
+    },
+    {
+      "path": "backend/go/core/http.go",
+      "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945"
+    },
+    {
+      "path": "backend/go/core/message.go",
+      "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+    },
+    {
+      "path": "backend/go/core/outbox.go",
+      "sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1"
+    },
+    {
+      "path": "backend/go/core/social.go",
+      "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c"
+    },
+    {
+      "path": "backend/go/core/sync.go",
+      "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+    },
+    {
+      "path": "backend/go/gateway/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "backend/go/gateway/gateway.go",
+      "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+    },
+    {
+      "path": "backend/go/gateway/http.go",
+      "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f"
+    },
+    {
+      "path": "backend/go/gateway/session.go",
+      "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f"
+    },
+    {
+      "path": "backend/go/go.mod",
+      "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591"
+    },
+    {
+      "path": "backend/go/go.sum",
+      "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a"
+    },
+    {
+      "path": "backend/go/main.go",
+      "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+    },
+    {
+      "path": "backend/go/plugin-host/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "backend/go/plugin-host/http.go",
+      "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90"
+    },
+    {
+      "path": "backend/go/shared/config.go",
+      "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70"
+    },
+    {
+      "path": "backend/go/shared/infra.go",
+      "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f"
+    },
+    {
+      "path": "backend/go/shared/security.go",
+      "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03"
+    },
+    {
+      "path": "backend/java/Dockerfile",
+      "sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06"
+    },
+    {
+      "path": "backend/java/InfraPlaceholder.java",
+      "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290"
+    },
+    {
+      "path": "backend/java/core/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "backend/java/gateway/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "backend/java/plugin-host/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "clients/desktop/.gitignore",
+      "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+    },
+    {
+      "path": "clients/desktop/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "clients/desktop/README.md",
+      "sha256": "7bc4b810f2989a1fb786093a351cf95176c990ddfb30dd213d21e5507f6f0ccc"
+    },
+    {
+      "path": "clients/desktop/package-lock.json",
+      "sha256": "16f453c2beed2a1bc0ba7becaf3457a1bc310d1faa3451331ef9bff0685ff376"
+    },
+    {
+      "path": "clients/desktop/package.json",
+      "sha256": "e052f11dc52945220cc0d5a334db753e4d41d0fe8d338e9267730cf85a2e8881"
+    },
+    {
+      "path": "clients/desktop/src-tauri/.gitignore",
+      "sha256": "f879bb710d6f5a2934e0b564fe2451a971f16969a268bb6ad040291177c33c97"
+    },
+    {
+      "path": "clients/desktop/src-tauri/Cargo.lock",
+      "sha256": "0af591b07840a2b7ad57d4413a065b78158f7d2b9d4eb688930ee2853b0a0f58"
+    },
+    {
+      "path": "clients/desktop/src-tauri/Cargo.toml",
+      "sha256": "71e8f5feecf92aef9fc37af4b125463fb696ab4bb2de0823461a671773a196fe"
+    },
+    {
+      "path": "clients/desktop/src-tauri/build.rs",
+      "sha256": "8af41c0062014fc594e4bb9899e60ee9930ab57d4cf0c73041ff557d6ec736e6"
+    },
+    {
+      "path": "clients/desktop/src-tauri/icons/icon.ico",
+      "sha256": "73b1fc32c2612d63e14a6d6c0baf2878af39f47a685822e6e62170441454a405"
+    },
+    {
+      "path": "clients/desktop/src-tauri/icons/icon.png",
+      "sha256": "8a0f65d1aeea5c1ed41071bd36f26e8a5c9e9eb9772debabd98c08375fa97350"
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/bin/storage_probe.rs",
+      "sha256": "2e0385845a09feaa8b508f72d1a42449c02e69d2d47f4f6f19a3c18020a0eaa9"
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/database.rs",
+      "sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad"
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6"
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/lib.rs",
+      "sha256": "4f0b7bf9797c3793203b160434994f0d8ab84d2fdbc156d7c40a812bd5e83630"
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/main.rs",
+      "sha256": "56602b9b5147eaa2b143228d5bc0d5118291297930e06b716a408a44b499ec2b"
+    },
+    {
+      "path": "clients/desktop/src-tauri/tauri.conf.json",
+      "sha256": "a2a5f2dd54d0168b6733fdb0642f5a347bd4454300a37a81d12a713da43447df"
+    },
+    {
+      "path": "clients/desktop/src/application/accountSend.ts",
+      "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893"
+    },
+    {
+      "path": "clients/desktop/src/application/send.ts",
+      "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+    },
+    {
+      "path": "clients/desktop/src/application/sync/accountSync.ts",
+      "sha256": "0f542e8af6dae019911169dfe1ff0ddae90cfb944584e8f38b421e0c3035c0e6"
+    },
+    {
+      "path": "clients/desktop/src/application/sync/application.ts",
+      "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+    },
+    {
+      "path": "clients/desktop/src/application/ui/auth.ts",
+      "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+    },
+    {
+      "path": "clients/desktop/src/application/ui/native.ts",
+      "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+    },
+    {
+      "path": "clients/desktop/src/application/ui/workspace.ts",
+      "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+    },
+    {
+      "path": "clients/desktop/src/storage/database.ts",
+      "sha256": "bc40daf644784fb43b60abb8d3f9afc5522c36d735664c8bb75affef4693f6f4"
+    },
+    {
+      "path": "clients/desktop/src/ui/build.config.mjs",
+      "sha256": "4acccc55c794b734f391f81468e7e978a6420dd05c64cb9f2ba3955b2c3a5f0d"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/AIPlaceholder.tsx",
+      "sha256": "6ca11c2ed40f7f697b0bd5ce371838233e1a56ab99a8e6619d40e4bc76cbe090"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/AuthPanel.tsx",
+      "sha256": "ff7aec0dd885a4d20dffadbafdca6032932a52c816b99ea3320002e0130fb890"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Composer.tsx",
+      "sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/ConversationList.tsx",
+      "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/FriendsPanel.tsx",
+      "sha256": "ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Header.tsx",
+      "sha256": "1c9a902cabb864b938974c28cb24c8c4b020f4a9e2441a60cb95d8cc13cb8f3e"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/LanguagePanel.tsx",
+      "sha256": "a2e5f0eac5f1d5887ff8a8c90d5d05e795cd0cab207850af604bfb3e22053204"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Messages.tsx",
+      "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Navigation.tsx",
+      "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/PluginPlaceholder.tsx",
+      "sha256": "b0b98a48008cc22334c1aa321fa3cd41cb5bb59032e544b01ca9800b338d83bb"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/ProfilePanel.tsx",
+      "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/SettingsPanel.tsx",
+      "sha256": "b1e99a6c6887c950a57d473f6627972b847575d0a1e8083d416401e684e68e73"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Shell.tsx",
+      "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/WindowBar.tsx",
+      "sha256": "9fee03a2e5dc2e6ad9627f8ad63c4cfd9c9ea237f67ecc3fefd5bb03c60e5296"
+    },
+    {
+      "path": "clients/desktop/src/ui/composer.ts",
+      "sha256": "c4da6d567a3e8c088d7c20baa5f51a86c118e8c72ec3b4a4f8c1d17146157992"
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/context.tsx",
+      "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/en.ts",
+      "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/ja-JP.ts",
+      "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/resources.ts",
+      "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/zh-CN.ts",
+      "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+    },
+    {
+      "path": "clients/desktop/src/ui/index.html",
+      "sha256": "46103c9c5f35c1a4fdd47fae440faafa0fe5a3a81b3c9aa649ae589696996e76"
+    },
+    {
+      "path": "clients/desktop/src/ui/logo.png",
+      "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+    },
+    {
+      "path": "clients/desktop/src/ui/main.tsx",
+      "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+    },
+    {
+      "path": "clients/desktop/src/ui/react-dom.config.mjs",
+      "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+    },
+    {
+      "path": "clients/desktop/src/ui/react.config.mjs",
+      "sha256": "8c483c11d9f779d78da8981e7e65dd0be91b2ec4c698e7101d389aa09ed6f576"
+    },
+    {
+      "path": "clients/desktop/src/ui/style.css",
+      "sha256": "1db209903281409494e83858549fb5f1d023732afba5e26bb7ee26f3b42aaccc"
+    },
+    {
+      "path": "clients/desktop/tsconfig.json",
+      "sha256": "6619b81336f0c10b451c60bd196573599edaf99bb79c9a3daff7a615e49f4502"
+    },
+    {
+      "path": "clients/mobile/.gitignore",
+      "sha256": "d010c63b31ab924e9fa34a396c0e27e42bcf398bdd727ab64a7639c7add0dc8c"
+    },
+    {
+      "path": "clients/mobile/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "clients/mobile/README.md",
+      "sha256": "340b1e0fd237161c9e78b4bad54f5720b1ac375c1ee13aee2d655f1a23b76838"
+    },
+    {
+      "path": "clients/mobile/app/build.gradle.kts",
+      "sha256": "af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077"
+    },
+    {
+      "path": "clients/mobile/app/src/main/AndroidManifest.xml",
+      "sha256": "fdeed8b057bfdefbe2889d0e0f8f748db3b162af0b7fadd037d3481feb0ff82f"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/MainActivity.kt",
+      "sha256": "5caa0062bc3a749015bd3cce4aa8c37c0996248dba59999ba85a50d8fd53800c"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+      "sha256": "76dd63549ae3a30c003dadff83cb2026118b778c0d98d068ba34c1d9416c76b4"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+      "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+      "sha256": "8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt",
+      "sha256": "42fecb529611f684de99404922938e70148f77b9f19a253f3d7f84457cf93b3e"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+      "sha256": "bbbf179336e1bd358212ebe6dce7a59e226c14b6318b3702d56b2c658d686a6f"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt",
+      "sha256": "4c9453e8ad6c47d46edfa6f61538dc5911d9461c9391509353b8701c29211d05"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+      "sha256": "6de9402a3e95c749856f5df594826e8e132c92ca3154d07e6b1b2993b5852633"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+      "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+      "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Workspace.kt",
+      "sha256": "e4f79ec5b4ef99191a77b5566e403889ff3cdbbfdca9417eed787050504df0bc"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "sha256": "2d3cb41b766a030ad00471062ddd9ce3775a1fa150a9a1d61d66e043e53ee020"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt",
+      "sha256": "670822348f5b1c48850e87c8921a7f1be37e4f3beec61a2a13702161928b125e"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt",
+      "sha256": "876dad90d9ef9e5a361f4fa57ae7db2b3469a5e4a3df92ccc0944696fc43d1a8"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt",
+      "sha256": "db4c523eff6ea3562f6e1968c91d318b711866c8e22df3bf517e43324cf01609"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+      "sha256": "87eaf11f01f090f3f05a5187e8867bc77794dee78614fbb8e3c4f82d780663a8"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Future.kt",
+      "sha256": "2e1d62d9e65d262cc8aa0c0a0c72f5b8c55f0a441133b5af299c150e780a6c27"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/LanguagePanel.kt",
+      "sha256": "689fd7f5435bf32d2c5cf6944df425f87f2f94ba899a32bf5a1ee8cfb5af403e"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Login.kt",
+      "sha256": "cf2b82c82b17f7f1e63a3c4f0c0a15fc2e1c5c8be8b929dd1661cb07407212e9"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+      "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Navigation.kt",
+      "sha256": "2850035864c90e0f25ffa6b9b4b465a3ded57e3e99d12c11b27da87ae865fd86"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Panel.kt",
+      "sha256": "7a29137a26e0acc2958005987b9ca136583345bc6a519c6e94a54858c30a23c1"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt",
+      "sha256": "52f5ad6efd178ce48c8b94bf9df83f017ed852388caf9fc9ac7deaa5792465fa"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Settings.kt",
+      "sha256": "cf22aaaa0ef9e3efd3da001c39af34b81fbbc6679d8ba40eed8fd500598b1332"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt",
+      "sha256": "08f1e70d332812bd0661429102a1992ad51645dcfc81727a6962659ad575008e"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+      "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/en.kt",
+      "sha256": "98500f11535640019290c29e679eda87b3165af94cf92cf8bbeb1ad9dc9d9527"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/jaJP.kt",
+      "sha256": "c093f25b9aca39559174f014835ef291c31b1978a3aff32cd35e4d31806c95de"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/zhCN.kt",
+      "sha256": "d0c48a2bca27d0fb7ae85ac97e35136abd47548764cbe664b9046dc51c906588"
+    },
+    {
+      "path": "clients/mobile/app/src/main/res/drawable/project_logo.png",
+      "sha256": "92f649d217cf503ff0665ce0715e2257402aa881b0f1776eeaa58f8d0cbf07d5"
+    },
+    {
+      "path": "clients/mobile/build.gradle.kts",
+      "sha256": "6a31d62bd097db83ac71cf4deb9a920443c3d7ccd1abf8087eff12740a2decf7"
+    },
+    {
+      "path": "clients/mobile/gradle.properties",
+      "sha256": "0cc66f8565a869c7a56174e75d944254a69015cfbfb9bec3f4762219adb7679f"
+    },
+    {
+      "path": "clients/mobile/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17"
+    },
+    {
+      "path": "clients/mobile/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "7811b7e9709748edc54d01918ac1b2acce8a9884d5cdd29e42d204d7d052dbf1"
+    },
+    {
+      "path": "clients/mobile/gradlew",
+      "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+    },
+    {
+      "path": "clients/mobile/gradlew.bat",
+      "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+    },
+    {
+      "path": "clients/mobile/settings.gradle.kts",
+      "sha256": "3e21709a3a02ecf2cc4d6093d4065e052681930551a9e6ac3e6a7e5095866fde"
+    },
+    {
+      "path": "clients/shared/plugin-sdk/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/.gitignore",
+      "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/README.md",
+      "sha256": "a0a877295c2374071e07f8983e26b3a1a59ebd8b9f3b1a0f5c9ef7f2c870e9d1"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/package-lock.json",
+      "sha256": "910009362f0710052831610dcc0036a53721d107c38db56fea45a006622de897"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/package.json",
+      "sha256": "9e6e79aeb6dbd4010dbe6392272f77e9b1df085ab726c81cc57b635738435bd4"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+      "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/models.ts",
+      "sha256": "6ad58c5240d036ad70b20795ed2fcc015fdbafd5926e453702159327f03463e3"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+      "sha256": "647f45b9589fb91c79ab5b7a9de96c779ce6b575b868d84334773ad9d0f3e09f"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/schema.ts",
+      "sha256": "5761dbc44f0c96ab59b4d28c4a38814de5023ff37220d4864a54e7618c5fb0cd"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+      "sha256": "d3003eabb0e0594e11ee6f07773b1578e00f566893683dd00a5858b7b865794f"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+      "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/tsconfig.json",
+      "sha256": "b61e27b76b179cf1b127a30bed6645e21df1085ebfcbd536e2c19635b3fa1cea"
+    },
+    {
+      "path": "clients/shared/ui/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "clients/web/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "clients/web/package-lock.json",
+      "sha256": "f4a303760dd702f3cf9b4cf87393dde95281b9463d59ba42ca2f879f1603407a"
+    },
+    {
+      "path": "clients/web/package.json",
+      "sha256": "427fe1533d2ff01ced497d9c8d7a8ed522e0c2683ed0439078ec883bf7fb2f79"
+    },
+    {
+      "path": "clients/web/src/application/client.ts",
+      "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+    },
+    {
+      "path": "clients/web/src/application/http.ts",
+      "sha256": "610a525ce3937b7661335d6f288e860cf2658c554a785bbb89c590418a342787"
+    },
+    {
+      "path": "clients/web/src/application/repository.ts",
+      "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+    },
+    {
+      "path": "clients/web/src/ui/appearance.ts",
+      "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a"
+    },
+    {
+      "path": "clients/web/src/ui/build.config.mjs",
+      "sha256": "c14b2f838a2f5d6365dfde23f2f7ae3d5ae9cfeb4646d4334221f526cd6427d3"
+    },
+    {
+      "path": "clients/web/src/ui/components/AuthPanel.tsx",
+      "sha256": "a0013ce3e4a670d9b3f9daa93f9f9609b457c60a8d3cc8ab6d051537ba7aa23f"
+    },
+    {
+      "path": "clients/web/src/ui/components/Composer.tsx",
+      "sha256": "0f8a384f93d39019d6feb850133ee174ec056b8708bc3a81df001d7af70c09a3"
+    },
+    {
+      "path": "clients/web/src/ui/components/ConversationList.tsx",
+      "sha256": "b2c524f8ff1be37710e4b4bf8b6996d45f05c4ca1e15135f6cfeb027b276103d"
+    },
+    {
+      "path": "clients/web/src/ui/components/FriendsPanel.tsx",
+      "sha256": "8d2ca587c2a48140a110ceb978ca84a66876cf87c2a291ce0e486fc88697ec47"
+    },
+    {
+      "path": "clients/web/src/ui/components/Header.tsx",
+      "sha256": "a4ded013e1705605583c34c9e77d694bcc9404c5405cf25afa0bf36fc6511ec4"
+    },
+    {
+      "path": "clients/web/src/ui/components/LanguagePanel.tsx",
+      "sha256": "1d1e466910ee84c384a2e2c00fd0d0603aa4fce277b54ddefef177cdfd648b43"
+    },
+    {
+      "path": "clients/web/src/ui/components/Messages.tsx",
+      "sha256": "51d5d0219a6e11f99321b45457b5145aa9f8bf705a512ebe14f1b9ac3bad86ad"
+    },
+    {
+      "path": "clients/web/src/ui/components/Navigation.tsx",
+      "sha256": "e05683a386dab67e08f9377f83eed2e99316717f8c4df5e8610fa811c81757ca"
+    },
+    {
+      "path": "clients/web/src/ui/components/Placeholder.tsx",
+      "sha256": "80f8dbf23a5c0be3ac6d9e14e5aaf0322fee7e895b6e5d520e739c133dec1b4d"
+    },
+    {
+      "path": "clients/web/src/ui/components/ProfilePanel.tsx",
+      "sha256": "b52ad135f07e0d8ac9a4e045ee1875dec086ee259acd9b9be17882bc540f93cc"
+    },
+    {
+      "path": "clients/web/src/ui/components/SettingsPanel.tsx",
+      "sha256": "5c2e7d89f4c2e4f4775b3880237ee98c17db31d350a675353dea345e0cb206ef"
+    },
+    {
+      "path": "clients/web/src/ui/components/Shell.tsx",
+      "sha256": "27e8b05e6cddf1c9ec246aacafb290c9035af5333f894484e83d5eda2c51d8eb"
+    },
+    {
+      "path": "clients/web/src/ui/components/status.ts",
+      "sha256": "868e6d4d1459f83c8a6dff7580c88aeb4cabb0f027af1e9bf3b67f07c801ff12"
+    },
+    {
+      "path": "clients/web/src/ui/i18n/context.tsx",
+      "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+    },
+    {
+      "path": "clients/web/src/ui/i18n/en.ts",
+      "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+    },
+    {
+      "path": "clients/web/src/ui/i18n/ja-JP.ts",
+      "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+    },
+    {
+      "path": "clients/web/src/ui/i18n/resources.ts",
+      "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+    },
+    {
+      "path": "clients/web/src/ui/i18n/zh-CN.ts",
+      "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+    },
+    {
+      "path": "clients/web/src/ui/index.html",
+      "sha256": "397bf2bbfb9d2e48e9d742e04537525345b2683f492377cc417c81843e5729d9"
+    },
+    {
+      "path": "clients/web/src/ui/language.ts",
+      "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e"
+    },
+    {
+      "path": "clients/web/src/ui/logo.png",
+      "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+    },
+    {
+      "path": "clients/web/src/ui/main.tsx",
+      "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+    },
+    {
+      "path": "clients/web/src/ui/react-dom.config.mjs",
+      "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+    },
+    {
+      "path": "clients/web/src/ui/react.config.mjs",
+      "sha256": "92595c5e2aef4233d0ac7d7de085cfd37eb145af37c0d634f83dd3c8d4e7bc27"
+    },
+    {
+      "path": "clients/web/src/ui/style.css",
+      "sha256": "1f54de7775b87f6f3b99a0d6320ce157118727ea07d0b0d2d7bd2b533a618373"
+    },
+    {
+      "path": "clients/web/tsconfig.json",
+      "sha256": "8309543308d3102d5e0e784fa7c4f523287f0eaa54e3e2d399f9a30c19e8e2d4"
+    },
+    {
+      "path": "contracts/database/migrate.py",
+      "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c"
+    },
+    {
+      "path": "deploy/Caddyfile",
+      "sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3"
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5"
+    },
+    {
+      "path": "deploy/compose.yaml",
+      "sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe"
+    },
+    {
+      "path": "deploy/compose/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "deploy/migrate.Dockerfile",
+      "sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd"
+    },
+    {
+      "path": "deploy/observability/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "deploy/proxy/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "plugins/fixtures/echo/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "plugins/fixtures/poll/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "tools/build_language_packs.py",
+      "sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1"
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.up.sql",
+      "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098"
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.down.sql",
+      "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c"
+    }
+  ],
+  "protected_inputs": [
+    {
+      "path": "clients/desktop/src-tauri/src/database.rs",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/desktop/src/storage/database.ts",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "bc40daf644784fb43b60abb8d3f9afc5522c36d735664c8bb75affef4693f6f4",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Composer.tsx",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/storage/StorageInstrumentation.kt",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "740082dac717a26a0dc2209252a0cceb56a1e789b79421cf013daedfd1284659",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "42fecb529611f684de99404922938e70148f77b9f19a253f3d7f84457cf93b3e",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "bbbf179336e1bd358212ebe6dce7a59e226c14b6318b3702d56b2c658d686a6f",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "4c9453e8ad6c47d46edfa6f61538dc5911d9461c9391509353b8701c29211d05",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "876dad90d9ef9e5a361f4fa57ae7db2b3469a5e4a3df92ccc0944696fc43d1a8",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/models.ts",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "6ad58c5240d036ad70b20795ed2fcc015fdbafd5926e453702159327f03463e3",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "647f45b9589fb91c79ab5b7a9de96c779ce6b575b868d84334773ad9d0f3e09f",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/schema.ts",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "5761dbc44f0c96ab59b4d28c4a38814de5023ff37220d4864a54e7618c5fb0cd",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "clients/web/src/ui/components/Composer.tsx",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "0f8a384f93d39019d6feb850133ee174ec056b8708bc3a81df001d7af70c09a3",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/database/.gitkeep",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/database/README.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "5601e242336708e2c77dea1be5bea621e092fd8d69acdb34bc4cc3f3f939ade6",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/database/migrate.py",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.down.sql",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.up.sql",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/errors/http-errors.schema.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "b063404ea779b28f7fd5a082f8e562409f862342a6986ebf8ff92427fcec784a",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/fixture.schema.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "898980cf3b9eb330aa2fc35bb00e79c966df4fb1ea7e4481b1ace4da73e95aff",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/loop1-exceptions.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "dc40e4abcfad6d3f7f7f02e84d4372783954f1eed907b831d48ffbec5b3f0ccf",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/negative.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "1d6df9be8f11c5cde3e7ca71719c14de57b2d3583cb0abe63d8aa4bda0d711bb",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/positive.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "7eef05b5b77a419a7ef8f36abf88721fd147b7b686c5c7fa4c5fc424fdf76d1c",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/.gitattributes",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "6fa4b33ae92e504a8037d76b1cf06dc52a7ac3b3ef3c0e726b28b514e0a1722f",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/generate.py",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "91b7ce7eca4bcc626a5a4555d897df175aaab651b54128b92c799a550d814b4d",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/golden.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "711dfe2dbb513df45d2b75c5ee9184ae221602ce74c93a1092bcd4a8b834db8d",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/profile-outcomes/go.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "71d986e2b476723b04c033a13ccd7f8d3859e091fac1d5d1deea18132cf54e5a",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/profile-outcomes/java.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "03ba94a6a751c595c7dc9ea7b08cadb0a89ca6ee1ef4de7a9aeb6fdd8547f1b1",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/websocket/.gitattributes",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "9ee6b7ccfcbeaadb0af82fa128a82979b00bdacfc3b6dbbe3bdea8ad28557f23",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/fixtures/websocket/golden.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "8fc5fa751707fcfb6b986bb75746237248212f35552e6063d77d24bd65c0dda4",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/auth-user-friend.openapi.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "bb115fe9cd82010d6cf94b7ee5cf6aaeaf915d072c6e105f70384637c49a14a2",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/auth-user-friend.openapi.validator.js",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "682b5f51c053c9876c16a6bdd92fb8968a50c6df1d4bab44d6e8e184ce9c7ee6",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/build-openapi-3.1-validator.js",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "9fc47cd941496335c9de7f1cdb6c5ce50311f43d8207991cabcda9d358799e96",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/check-openapi-3.1.js",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "bb43ca692d261f03fceccfdb659481cb3d0b59234f7600648e55e07e58f2d04c",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/openapi-3.1-2026-08-03.schema.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "59f106413cb48c31299f96f024c938d3628aed6cd02cd14bcfb2fcaae7a130b6",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/openapi-3.1-lint.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "77f8e8f867a73b306f1dc5599ab0c73f5a8386164556cc0930e931d3814285e8",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/sync.openapi.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "ebecbb1cb6dcbcb592a2a9f623c929200f220796bc70285f867c89f56e0650ca",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/http/verify-auth-user-friend.ps1",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "c1cf4814e32e1a547aba22654f6b7ffeeecc839f0cada353f8d69d2968d1464b",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/plugin-api/.gitkeep",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/plugin-api/README.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "dfcb037d0d9e589de77302d8cb413d0e2c79e74d2db9ef7e59aa3b33cd4da4cb",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/plugin-api/policy-v1.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "fb189cdb9045248d1d6ed7268da625e56e11de3597864268bd6e517f126384cb",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/plugin-api/v1.schema.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "c0376763c5203bd69b7ff3e2cac9a81ec71f9c0f43b4c0cefed608279ac4baad",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/plugin-api/verify.py",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "72c264f897f5edd86764f106fc0f0d7570dd46577b4f37c1e120969130518b22",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/websocket/.gitkeep",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/websocket/README.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "a3ea8ed61084b1c95c5774f8e38b25ff227ee31324453139c014efe2d9e50a37",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/websocket/envelope.schema.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "d03f6aa659338553867614f615175caa128a40102013b618d3ddcf920a8ef3ec",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/websocket/sync-v1.schema.json",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "244eec3c9258ccb44e8e0e1df1763d7a0daa8e052d587a47c4d17636e8ecee37",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "contracts/websocket/verify.py",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "467209ad23a92f830e36fff9c779b63faa31a36d5770f3203a376a7921547106",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/README.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "77d2eb7cc89d6ac1481484ee70a299505c1274731756cc630c7a40a51c45f645",
+      "checkout_eol": "CRLF"
+    },
+    {
+      "path": "spec/architecture/baseline.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "5e777ffbce0489081a2773cf8d5a10f30517aff5905f07a17d5d022d405fcf41",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/.gitkeep",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0001-temporary-s0-bootstrap-acceptance-before-ci-availability.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "bec4d2847511a5f7f4e989c0eef790e4a9cc7620d52c44599eda58555bff937b",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0002-frozen-architecture-canonical-markdown-migration.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "429580611098ca322d57d99a4de170a9e3ab87a15fbce0469c032d4280a7c45a",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0003-architecture-conflict-resolution.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "c534133d7fae0282e228edcdc02d6be60ec651269f39005593bb25695423e9ea",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0004-loop1-friend-403-exception.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "14c9fd580346972a4aeff513fce93d5d00a281c7112ea91b0bd091e278eb48fc",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0005-client-technology-clarification.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "82603bd08eb7ba0d84e726cef8904c1d1c1a26fa5d78b21bc48498042f5cb0f3",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0006-client-ui-architecture.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "44dac99d70009064a1f5ab6598fef82e67b1433f144ceaf040b98d214a8e5fe8",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0007-client-mvp-task-planning.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "049d5fd2a86e78b96a689ea77e9607ffc0b353831c3d077c2ffcd15256290dcf",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0008-sync-https-transport.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "b2f3a02c65687580dd6181bb6a7df04ba890534ab5b14ee7093547c02b9d4103",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0009-client-native-capabilities.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "fc09d64a1c97a54ed8a1dcbae6bc5252b9b197d0cba8150e0f49884d6528451a",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0010-windows-tauri-wss-origin.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "728d91dce56c5d9bfacc7f17e4689d7722a44f9a4aa56e331d717aa5756c12fe",
+      "checkout_eol": "CRLF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0011-web-appearance-storage.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "2fbb72d222f5f6a07b7a8be8f103880d446c565db0131b84c87a917cb47c898a",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/ADR-0012-client-supplement-planning.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "0279863c7d84b2b0316b7c34e96c078ed6b557c19710fbbad2d72c97b4868205",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/client-ui/architecture.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "1ac9bb1f42bda79839f37704e9199bf702e3dd4ce28107417a15844589a36b81",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/decisions/client-ui/design-direction.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "3c58340d96f6ac1db2a3cfdefa3543335419651dba625e393703dc173ee16ee7",
+      "checkout_eol": "LF"
+    },
+    {
+      "path": "spec/architecture/frozen-architecture.md",
+      "canonical_git_bytes_equal_baseline": true,
+      "raw_checkout_sha256": "efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc",
+      "checkout_eol": "LF"
+    }
+  ],
+  "protected_count": 65,
+  "baseline": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "method": "Canonical Git text bytes compare, with raw checkout SHA256 and EOL disclosed; no tracked protected path diff. No claim of scanning main unknown files."
+}

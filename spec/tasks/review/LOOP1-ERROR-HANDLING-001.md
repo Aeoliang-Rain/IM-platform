@@ -2,7 +2,7 @@
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
 status: review
-owner: fresh Implementation Agent
+owner: fresh Fix Agent /root/fix_read_origin
 stage: S2
 gate: S2
 ---
@@ -175,3 +175,9 @@ Coordinator dispatches fresh regular Review on final clean committed SHA, then a
 # Human narrow boundary clarification
 
 Human explicit answer: “允许仅修正异常边界，SQLite 写入与草稿保持不变”. Apply only native error provenance/capture boundary correction in existing Send and necessary Sync/Workspace consumers. No SQL, Repository, schema, transaction, write behavior, Composer or draft change. Preserve real rollback/closed-database/account assertions; add unknown Error/primitive/native-string-spoof observer proofs. One Send-local error-origin tag is necessary because the current mixed wrapper loses actual native-failure provenance; no generic framework/queue/retry is added. Evidence: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/human-boundary-clarification.txt. Earlier rejection/restoration remains historical. Final independent Review/error audit/CI/main sync all pending.
+
+# Fresh regular Review770 FAIL and F1 Fix (2026-10-13)
+
+Regular Review7700645f54de613c913b306a03824c9c5dc20c09 FAIL F1[P1]: actual native Repository reads bypassed Send origin tag, leaving Sync syncing/queue rejected and history error absent. Original report/hash/checks/repro preserved at spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/. Fresh /root/fix_read_origin repairs only literal native read boundary in existing accountSend accountRepository factory and three production constructor consumers; transaction/SQL/storage/Repository/nativeDB/Composer/draft unchanged. Two read fixtures invoked by original Desktop Send verifier;184production final hashes/294retained sites and65protected inputs bound. Full explanation/commands/failures/limits: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md and verification-history.json.
+
+This Fix is F1 only, not full184semantic acceptance. New final committed task HEAD requires new fresh regular Review then different fresh specialized audit on SAME finalSHA; bothPENDING. Task remainsreview/S2OPEN; nopush/CI/PR/integration/main-sync. LastGood35bd6f5. Sole Fix owns these uncommitted files until committed clean release; main782unknown/2tracked untouched. Recorder R-ERROR-READ-FIX prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013/relatedR-ERROR-REGULAR-7700645; incompleteprestart/directinspection explicitly disclosed. Actual freshDesktopcompile/Auth/literalread/SQLxread/TLSSendSync localPASS; Finalarchitectureall/tests82(oneexisting skip)/planning/frozen/Development recovery PASS in recorded commandhistory; clean committed Acceptance receipt will be external after commit. No newframework/migration or authority exception.

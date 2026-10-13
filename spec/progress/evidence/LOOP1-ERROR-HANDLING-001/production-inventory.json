@@ -7,7 +7,7 @@
     "all": 184,
     "logic": 117,
     "data_config_assets_documents": 67,
-    "retained_sites": 293
+    "retained_sites": 294
   },
   "selection": "All tracked backend/clients/deploy/plugins paths excluding tests (including placeholder and build/runtime glue), plus deployed contracts migration runner+2canonicalSQL and language-pack builder. Supporting coverage112/167 does not replace this own scope.",
   "excluded": "SQLite write/Repository/schema/native database/Composer/draft mechanisms read-only EXCLUDED_BY_HUMAN. Narrow Send provenance separately explicitly allowed; no SQL/write/draft change. No unresolved asserted cursor bug: initial contiguous absence0 legitimate; required cursor missing propagates.",
@@ -523,13 +523,17 @@
     },
     {
       "path": "clients/desktop/src/application/accountSend.ts",
-      "sha256": "4a4cf3b8a2e94ab0952f15ef53d69d6193e8243a8d5fa142c20f70784b70a1ab",
-      "bytes": 435,
+      "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893",
+      "bytes": 1177,
       "responsibility": "clients/desktop",
-      "changed": false,
-      "finding": null,
+      "changed": true,
+      "finding": [
+        "F1",
+        "Literal query failure is tagged at existing accountRepository factory; transaction closure and consumer/observer boundaries unchanged.",
+        "desktop_reads + desktop_native_reads + original SQLx/TLS Send/Sync/Auth"
+      ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh F1 Fix inspected actual final account query factory and all three production constructors; all other full-inventory semantic acceptance requires new independent Review.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -605,17 +609,17 @@
     },
     {
       "path": "clients/desktop/src/application/ui/workspace.ts",
-      "sha256": "6d39b67a61e07ee1165730f0c511f7404b8107d6a2d6c2e181e06fb88d9f5586",
-      "bytes": 15805,
+      "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+      "bytes": 15771,
       "responsibility": "clients/desktop",
       "changed": true,
       "finding": [
-        "EH12",
-        "Pure known-source validation precedes guarded UI publication; never publish into replacement account. Native notification only actual capability failure.",
-        "Auth/workspace stale-account/notification proofs"
+        "F1",
+        "Literal query failure is tagged at existing accountRepository factory; transaction closure and consumer/observer boundaries unchanged.",
+        "desktop_reads + desktop_native_reads + original SQLx/TLS Send/Sync/Auth"
       ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh F1 Fix inspected actual final account query factory and all three production constructors; all other full-inventory semantic acceptance requires new independent Review.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -3083,9 +3087,9 @@
       "id": "RH086",
       "path": "clients/desktop/src/application/ui/workspace.ts",
       "line": 80,
-      "column": 918,
+      "column": 904,
       "operation": "restore",
-      "source": "async restore(endpoint:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});try{await this.stop();const g=this.generation,base=origin(endpoint);this.publish({endpoint:base});const auth=new Auth(base);this.auth=auth;const account=await auth.savedAccount();if(op!==this.operation)return;if(!account){this.publish({error:\"No saved session for this server\"});return;}const repo=new Repository(accountDatabase(account));await repo.initialize();const ids=await repo.conversationIds(),selected=\"\",messages:ReadonlyArray<ReadonlyArray<string|null>>=[];if(op!==this.operation)return;this.offlineRepository=repo;this.publish({offlineAccount:account,conversations:ids,selected,messages,error:\"Showing saved history while the secure session resumes\"});await this.updateList(repo,this.generation);const session=await auth.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+      "source": "async restore(endpoint:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});try{await this.stop();const g=this.generation,base=origin(endpoint);this.publish({endpoint:base});const auth=new Auth(base);this.auth=auth;const account=await auth.savedAccount();if(op!==this.operation)return;if(!account){this.publish({error:\"No saved session for this server\"});return;}const repo=accountRepository(account);await repo.initialize();const ids=await repo.conversationIds(),selected=\"\",messages:ReadonlyArray<ReadonlyArray<string|null>>=[];if(op!==this.operation)return;this.offlineRepository=repo;this.publish({offlineAccount:account,conversations:ids,selected,messages,error:\"Showing saved history while the secure session resumes\"});await this.updateList(repo,this.generation);const session=await auth.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "This concrete restore operation validates known current Api/Wire/Sync/native-storage/native-capability or actual Android I/O/security fault first; unknown original throws. Its existing generation/op/revision guard gates UI publication only; no replacement account data; failed operation never fake empty result.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
@@ -5388,6 +5392,38 @@
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
       "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+    },
+    {
+      "id": "RH294",
+      "path": "clients/desktop/src/application/accountSend.ts",
+      "line": 9,
+      "column": 43,
+      "operation": "accountRepository.query",
+      "source": "try{return await db.query(sql,binds);}catch(error){",
+      "disposition": "RETAINED",
+      "specific_ground_and_recovery": "Only db.query literal native invocation sanitized read failures from existing database.rs/root adapter become SendStorageFailure with original cause. Native init PRAGMA, cursor, list, history and contiguous failures reach existing truthful failed/unavailable consumers and known queue recovery; unknown values rethrow by identity. Transaction remains original closure, Repository mapping/validation and consumer callbacks execute outside this catch.",
+      "authority": "Frozen§6.1/6.3/6.4; SP-D-001/SP-I-003; explicit Human exception-boundary clarification; regular Review770 F1; no SQLite write/draft change."
     }
-  ]
+  ],
+  "fix_F1": {
+    "base": "7700645f54de613c913b306a03824c9c5dc20c09",
+    "production_delta": [
+      "clients/desktop/src/application/accountSend.ts",
+      "clients/desktop/src/application/ui/workspace.ts"
+    ],
+    "fixtures": [
+      {
+        "path": "tests/clients/errors/desktop_reads.mjs",
+        "sha256": "ae97b67945856050a20d05877579e977a56f493b71a14d2515682dcd1180d97c",
+        "bytes": 9660
+      },
+      {
+        "path": "tests/clients/errors/desktop_native_reads.mjs",
+        "sha256": "b305d74b005b33cfed9d36d1b422e5de3ae8e7b19308ba13172fcc75b8eacef3",
+        "bytes": 5302
+      }
+    ],
+    "ci_entry": "tests/clients/send/desktop.mjs invokes both scripts; original assertions retained",
+    "semantic_coverage": "F1 only. Prior regular Review FAIL did not accept all184 inputs/293 sites. New full regular Review then different new specialized audit required on final SHA."
+  }
 }

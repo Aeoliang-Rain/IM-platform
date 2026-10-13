@@ -5,6 +5,11 @@ import {tmpdir} from "node:os";
 import {join,resolve} from "node:path";
 import {Repository} from "../../../clients/shared/protocol-sdk/dist/storage/repository.js";
 import {SendApplication} from "../../../clients/desktop/dist/desktop/src/application/send.js";
+// Exercise the production account-query boundary in the same native verifier.
+for(const args of [
+  ["tests/clients/errors/desktop_reads.mjs",new URL("../../../clients/desktop/dist/",import.meta.url).href],
+  ["tests/clients/errors/desktop_native_reads.mjs",new URL("../../../clients/desktop/dist/",import.meta.url).href,process.argv[2]],
+]){const result=spawnSync(process.execPath,args,{encoding:"utf8"});process.stdout.write(result.stdout??"");process.stderr.write(result.stderr??"");assert.equal(result.status,0,"Desktop read-boundary regression failed");}
 const probe=resolve(process.argv[2]), endpoint=process.argv[3];
 const root=mkdtempSync(join(tmpdir(),'im-send-'));
 const user='10000000-0000-4000-8000-000000000001', sessionId='20000000-0000-4000-8000-000000000001', c='30000000-0000-4000-8000-000000000001';

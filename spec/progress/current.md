@@ -12,13 +12,15 @@ Execution Status: AWAITING_INDEPENDENT_REGULAR_REVIEW
 
 ## Immediately Relevant Completed Work
 
-I18N accepted administrative baseline35bd6f5 independently recovered by39checks/all11seals. Human full error-governance/production audit implementation locally verified and ready for fresh independent Review. Scope clarification allows only exception provenance near excluded SQLite write/draft behavior, which remains unchanged.
+I18N accepted administrative baseline35bd6f5 independently recovered by39checks/all11seals. Human full error-governance/production audit implementation received regular Review770 FAIL F1. Fresh Fix repairs only actual native query provenance; new finalSHA reviews pending. Scope clarification allows only exception provenance near excluded SQLite write/draft behavior, which remains unchanged.
 
 ## Current Blockers
 
-No unresolved authorized local implementation failure. Fresh regular Review and separate new error audit, exact-head hosted CI, protected integration, actual-main verification and safe main synchronization all PENDING. No Stage Gate evaluation.
+Regular Review770 FAIL F1 is preserved; fresh F1 Fix local candidate repairs actual native read provenance. New fresh regular Review and separate new error audit, exact-head hosted CI, protected integration, actual-main verification and safe main synchronization all PENDING. No Stage Gate evaluation.
 
 ## Verification
+
+Fresh F1 Fix: strictDesktopcompile/Auth/literalread/actualSQLxread/originalTLSSendSync and architectureall/82tests(oneexisting skip)/frozen/planning/Development recovery local PASS. Exact new command history/failures: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/verification-history.json`; clean committed Acceptance/Recorder receipt is external after final commit. The following broader runtime results are prior Implementation evidence, not freshly rerun by this desktop-only Fix.
 
 - Command: `python -Xutf8 -B ci/check_architecture.py --scope all --json`
   - Result: local PASS;82architecture tests PASS with one existing skip; frozen/planning PASS; live DB_TEST_ENABLE Go and all applicable affected client normal/fault runtime tests PASS.
@@ -28,7 +30,7 @@ No unresolved authorized local implementation failure. Fresh regular Review and 
 
 ## Changed Files or Migrations
 
-Governance/error examples/checklist/task template/handoff plus minimal current Go/Java/Wire/transport/Auth/Send/Sync/workspace/message/search corrections and preserved regression assertions.184production inputs/293retained sites inventoried.65protected inputs byte-equal baseline: Frozen/ADR/contracts, storage/Repository/schema/nativeDB/Composer all unchanged. No migrations or dependencies.
+Governance/error examples/checklist/task template/handoff plus minimal current Go/Java/Wire/transport/Auth/Send/Sync/workspace/message/search corrections and preserved regression assertions.184production inputs/294retained sites inventoried.65protected inputs byte-equal baseline: Frozen/ADR/contracts, storage/Repository/schema/nativeDB/Composer all unchanged. No migrations or dependencies.
 
 ## Known Failures, Risks, and Assumptions
 
@@ -36,7 +38,7 @@ Preserved original defaultcache/metadata guard/generatedoutput guards/legacy mis
 
 ## Next Exact Action
 
-Fresh regular Review, then different fresh uninvolved specialized error audit, both on committed task-branch HEAD and cleancheckout. No GitHub operation until bothPASS; any fix newSHA repeats both. CI/protectedintegration/main/safesync afterward. Task remains review, S2 OPEN.
+New fresh regular Review must complete all184production/294retained-site semantic coverage, then different fresh uninvolved specialized error audit, both on repaired committed task-branch HEAD and cleancheckout. Original770FAIL is never accepted. No GitHub operation until bothPASS; any fix newSHA repeats both. CI/protectedintegration/main/safesync afterward. Task remains review, S2 OPEN.
 
 ## Last Known Good Commit
 
@@ -48,7 +50,7 @@ Fresh regular Review, then different fresh uninvolved specialized error audit, b
 
 ## Uncommitted Changes / Ownership
 
-Task-owned candidate from sole Implementation Agent in verified H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001. Coordinator receives exact committed SHA/cleanstatus to allocate fresh Review; no other repository writer. Main unknown782files/2trackededits untouched. No owned emulator/backend/fixture/trust lease remains; build outputs external.
+Task-owned F1 delta from sole fresh Fix Agent /root/fix_read_origin in verified H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001. Fix evidence: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md; original770FAIL preserved. Coordinator receives repaired exact committed SHA/cleanstatus to allocate NEW fresh Review; no other repository writer. Main unknown782files/2trackededits untouched. No owned emulator/backend/fixture/trust lease remains; build outputs external.
 
 ## Architecture Conflicts / ACP / ADR
 

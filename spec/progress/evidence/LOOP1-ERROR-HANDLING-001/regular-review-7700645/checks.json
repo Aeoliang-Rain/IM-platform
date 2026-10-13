@@ -1,0 +1,137 @@
+[
+  {
+    "name": "Exact candidate",
+    "result": "PASS",
+    "details": "7700645f54de613c913b306a03824c9c5dc20c09"
+  },
+  {
+    "name": "Assigned root",
+    "result": "PASS",
+    "details": "H:/.codex/worktrees/err/IM-platform"
+  },
+  {
+    "name": "Clean",
+    "result": "PASS",
+    "details": ""
+  },
+  {
+    "name": "184 production input hashes",
+    "result": "PASS",
+    "details": {
+      "count": 184,
+      "mismatches": []
+    }
+  },
+  {
+    "name": "85 changed paths task owned scope",
+    "result": "PASS",
+    "details": {
+      "count": 85,
+      "outside": []
+    }
+  },
+  {
+    "name": "65 protected byte equality",
+    "result": "PASS",
+    "details": {
+      "count": 65,
+      "mismatches": []
+    }
+  },
+  {
+    "name": "No dependency/authority delta",
+    "result": "PASS",
+    "details": [
+      "AGENTS.md",
+      "backend/go/core/auth.go",
+      "backend/go/core/error_handling_test.go",
+      "backend/go/core/message.go",
+      "backend/go/core/outbox.go",
+      "backend/go/core/outbox_test.go",
+      "backend/go/core/sync.go",
+      "backend/go/gateway/error_handling_test.go",
+      "backend/go/gateway/gateway.go",
+      "backend/go/gateway/session.go",
+      "backend/go/main.go",
+      "backend/java/InfraPlaceholder.java",
+      "ci/check_architecture.py",
+      "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "clients/desktop/src-tauri/src/lib.rs",
+      "clients/desktop/src/application/send.ts",
+      "clients/desktop/src/application/sync/application.ts",
+      "clients/desktop/src/application/ui/auth.ts",
+      "clients/desktop/src/application/ui/native.ts",
+      "clients/desktop/src/application/ui/workspace.ts",
+      "clients/desktop/src/ui/components/Messages.tsx",
+      "clients/desktop/src/ui/components/Shell.tsx",
+      "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/ErrorHandlingInstrumentation.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+      "clients/shared/protocol-sdk/src/send/wire.ts",
+      "clients/shared/protocol-sdk/src/sync/http.ts",
+      "clients/shared/protocol-sdk/src/sync/wire.ts",
+      "clients/web/src/application/client.ts",
+      "clients/web/src/application/http.ts",
+      "clients/web/src/application/repository.ts",
+      "clients/web/src/ui/appearance.ts",
+      "clients/web/src/ui/components/FriendsPanel.tsx",
+      "clients/web/src/ui/components/Messages.tsx",
+      "clients/web/src/ui/language.ts",
+      "spec/governance/error-handling.md",
+      "spec/governance/independent-review.md",
+      "spec/governance/minimality.md",
+      "spec/handoff/agent-context.md",
+      "spec/progress/checkpoints/2026-10-13-error-handling-review-candidate.md",
+      "spec/progress/current.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/commit-ownership-audit.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/excluded-sqlite-handling.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/human-boundary-clarification.txt",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-audit.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-handoff.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/instrumentation-limits.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/java-placeholder-authority-assessment.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/message-render-scope.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/production-inventory.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/prompt.txt",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/protected-inputs.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-report.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/runtime-cleanup.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/scope-justification.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/search-and-fixture-scope.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/verification-history.json",
+      "spec/tasks/TASK_TEMPLATE.md",
+      "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+      "tests/architecture/test_client_technology.py",
+      "tests/architecture/test_source_boundaries.py",
+      "tests/clients/errors/.gitignore",
+      "tests/clients/errors/desktop_render.mjs",
+      "tests/clients/errors/go_live.py",
+      "tests/clients/errors/java.py",
+      "tests/clients/errors/mobile.py",
+      "tests/clients/gui/auth.mjs",
+      "tests/clients/i18n/compiled.mjs",
+      "tests/clients/i18n/scheduling.mjs",
+      "tests/clients/i18n/verify.mjs",
+      "tests/clients/send/desktop.mjs",
+      "tests/clients/sync/desktop.mjs",
+      "tests/clients/sync/shared.mjs",
+      "tests/clients/web/appearance.mjs",
+      "tests/clients/web/regressions.mjs"
+    ]
+  },
+  {
+    "name": "Main unknown ownership receipt coverage",
+    "result": "NOT_REEXECUTED",
+    "details": "No main inputs copied or modified by this review. 85 scoped candidate changes verified. Full main782/2tracked preservation was implementer/coordinator ownership evidence, not independently re-established by scanning main here."
+  }
+]
