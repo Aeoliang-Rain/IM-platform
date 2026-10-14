@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a337780\inspect.py", line 17, in <module>
+    line=b.decode('utf8').splitlines()[n['current_line']-1];assert line==n['current_source'],(key,line,n['current_source'])
+                                       ~^^^^^^^^^^^^^^^^
+KeyError: 'current_line'

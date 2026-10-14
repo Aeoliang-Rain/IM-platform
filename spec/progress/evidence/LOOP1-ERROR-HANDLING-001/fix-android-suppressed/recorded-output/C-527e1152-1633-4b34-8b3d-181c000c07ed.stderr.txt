@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-android-suppressed\history.py", line 9, in <module>
+    path=run/d[key];dest=D/'recorded-output'/path.name;dest.parent.mkdir(exist_ok=True);b=path.read_bytes();assert hashlib.sha256(b).hexdigest()==d[key.replace('_blob','_sha256')];dest.write_bytes(b);row[key+'_durable']=dest.relative_to(R).as_posix()
+                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

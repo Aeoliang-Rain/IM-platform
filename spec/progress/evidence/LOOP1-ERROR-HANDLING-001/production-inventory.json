@@ -7,7 +7,7 @@
     "all": 185,
     "logic": 118,
     "data_config_assets_documents": 67,
-    "retained_sites": 307
+    "retained_sites": 311
   },
   "selection": "All tracked backend/clients/deploy/plugins paths excluding tests (including placeholder and build/runtime glue), plus deployed contracts migration runner+2canonicalSQL and language-pack builder. Supporting coverage112/167 does not replace this own scope.",
   "excluded": "SQLite writes, schemas, initialization, transaction adapters, Composer and draft mechanisms remain excluded and unchanged. Direct Human reply permits ONLY two contiguous read mappers; no-row0 is legitimate, present invalid sequence fails. Prior RH141/RH244 fake0 finding is now explicitly corrected; no independent final semantic PASS claimed.",
@@ -1082,17 +1082,16 @@
     },
     {
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
-      "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08",
-      "bytes": 3976,
+      "sha256": "7071cc10977ff6fb79af73c1cf241f3d845451f98a107a453c08f5328c6e2d37",
+      "bytes": 4800,
       "responsibility": "clients/mobile",
       "changed": true,
       "finding": [
-        "EH13",
-        "UTF8 CharacterCodingException is protocol before IOException transport; unknown factory exception still escapes if cancellation already won.",
-        "actual API34 unknown factory + malformed UTF8 + Sync TLS"
+        "F-ANDROID-SUPPRESSED-UNKNOWN",
+        "F-RETAINED-GROUND-MISMATCH"
       ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh Fix actual production JVM baseline + Android32 controlled cleanup regressions; independent whole-scope regular/specialized Review still PENDING. Only current HTTP resource/projection boundaries changed.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -1123,13 +1122,16 @@
     },
     {
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f",
-      "bytes": 7829,
+      "sha256": "5a9330d2d308da42345d4fd4d080278b27e05072b35c8e40d02aa1c753d19d72",
+      "bytes": 8599,
       "responsibility": "clients/mobile",
       "changed": true,
-      "finding": null,
+      "finding": [
+        "F-ANDROID-SUPPRESSED-UNKNOWN",
+        "F-RETAINED-GROUND-MISMATCH"
+      ],
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Fresh Fix actual production JVM baseline + Android32 controlled cleanup regressions; independent whole-scope regular/specialized Review still PENDING. Only current HTTP resource/projection boundaries changed.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -3720,52 +3722,52 @@
       "operation": "matchesSession",
       "source": "val uri=try {URI(endpoint)} catch(_:java.net.URISyntaxException){throw SyncFailure(\"protocol\")}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual SyncFailure kind from strict wire/external transport or genuine SendStorageFailure only. unavailable excludes just that conversation; authentication stops retired session; cancellation propagates. Unknown rethrows before active check and operation/idle fails.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Malformed external endpoint URI syntax → Frozen6.1/7.4/11.5 and ADR0009: HTTPS endpoint, no credential URL → Only URISyntaxException becomes protocol failure; accepted endpoint is exact HTTPS origin; internal exceptions propagate.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH143",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
-      "line": 34,
+      "line": 37,
       "column": 120,
       "operation": "post",
       "source": "if(c.getHeaderField(\"Cache-Control\")!=\"no-store\" || c.contentType?.matches(Regex(\"(?i)application/json(?:\\\\s*;.*)?\"))!=true) throw SyncFailure(if(status>=500)\"transport\" else \"protocol\")",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Regex noncapturing group token is a lexical ?: hit, not a fallback → Full navigation inventory must distinguish executable handling → No recovery at this token. The surrounding response metadata guard rejects absent/nonJSON/no-store response under Sync HTTPS contract; it does not fabricate data.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH144",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
-      "line": 35,
+      "line": 38,
       "column": 78,
       "operation": "post",
       "source": "val stream=(if(status==200)c.inputStream else c.errorStream) ?: throw SyncFailure(\"transport\")",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Status-selected SDK response/error stream is absent → Sync HTTPS contract requires an actual bounded JSON response → Absence raises transport SyncFailure, never empty page; mandatory disconnect happens before failure delivery.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH145",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
-      "line": 38,
+      "line": 41,
       "column": 202,
       "operation": "post",
       "source": "val raw=try{Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(out.toByteArray())).toString()}catch(_:java.nio.charset.CharacterCodingException){throw SyncFailure(\"protocol\")}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Actual malformed or unmappable UTF8 response bytes → Existing strict JSON Sync wire contract → CharacterCodingException rejects the response as protocol; no replacement characters or network classification. Unknown decoder errors propagate.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH146",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
-      "line": 41,
+      "line": 47,
       "column": 15,
       "operation": "post",
-      "source": "} catch(error:Exception) {if(error is CancellationException)throw error;val failure=if(error is java.io.IOException)SyncFailure(\"transport\")else error;if(continuation.isActive)continuation.resumeWithException(failure)else if(error !is java.io.IOException && error !is SyncFailure)throw error}",
+      "source": "} catch(error:Exception) {",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual SyncFailure kind from strict wire/external transport or genuine SendStorageFailure only. unavailable excludes just that conversation; authentication stops retired session; cancellation propagates. Unknown rethrows before active check and operation/idle fails.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "SDK IO or protocol failure plus resource close/disconnect failure; cancelled continuation → Current error governance + Frozen6.1/11.5 requires honest known Sync failure, unknown propagation and mandatory cleanup → Only IO/SyncFailure/cancellation with all suppressed cleanup roots genuine IO is recoverable. IO projection points cause to original raw root; mixed unknown becomes standard IllegalStateException(cause=rawprimary), all identities retained acyclic. Inactive mixed unknown throws instead of being discarded; cancellation remains cancellation only when no unknown cleanup. Disconnect executes once before resume.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH147",
@@ -3946,167 +3948,167 @@
     {
       "id": "RH163",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 26,
+      "line": 29,
       "column": 52,
       "operation": "request",
       "source": "if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure(\"session_expired\",\"Session expired\");connection.setRequestProperty(\"Authorization\",\"Bearer \"+token)}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Explicit token override is absent → Auth contract bearer session requirement → Use current authenticated session access token; if neither token exists, raise session_expired before sending, never fake authenticated success.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH164",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 26,
+      "line": 29,
       "column": 74,
       "operation": "request",
       "source": "if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure(\"session_expired\",\"Session expired\");connection.setRequestProperty(\"Authorization\",\"Bearer \"+token)}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Both explicit and current session token absent → Auth contract authenticated request requirement → Raise session_expired before sending; connection still disconnects. No token or endpoint is returned in error.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH165",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 29,
+      "line": 32,
       "column": 98,
       "operation": "request",
       "source": "if(status in 300..399 || connection.contentType?.matches(Regex(\"(?i)application/json(?:\\\\s*;.*)?\"))!=true)throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Regex ?: noncapturing group; no executable fallback → Full inventory distinguishes regex syntax → No recovery at this token. Surrounding no-redirect/content-type guard rejects invalid Auth response as invalid_server_response.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH166",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 31,
+      "line": 34,
       "column": 20,
       "operation": "request",
       "source": "(stream?:throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")).use{val buffer=ByteArray(8192);while(true){val n=it.read(buffer);if(n<0)break;if(output.size()+n>1048576)throw ApiFailure(\"invalid_server_response\",\"Invalid server response\");output.write(buffer,0,n)}}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "SDK stream absent for non204 response → Auth HTTP contract requires actual bounded JSON response → Raise connection_unavailable, never fake empty JSON. 204 actual success remains existing separate branch; cleanup occurs before return.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH167",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 33,
+      "line": 36,
       "column": 258,
       "operation": "request",
       "source": "if(status !in 200..299){val code=((result as? Map<*,*>)?.get(\"error\") as? Map<*,*>)?.get(\"code\") as? String;throw ApiFailure(if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"invalid_credentials\" else if(status==401)\"session_expired\" else code?:\"request_failed\",if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"Invalid username or password\" else if(status==401)\"Session expired\" else code?:\"Request failed\")};result",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Non2xx external server response has no usable canonical error code → Auth HTTP/errors contract retains honest request failure and safe text → 401 maps existing invalid_credentials/session_expired; otherwise present code or existing request_failed safe category. Never treat server failure as success.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH168",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 33,
+      "line": 36,
       "column": 406,
       "operation": "request",
       "source": "if(status !in 200..299){val code=((result as? Map<*,*>)?.get(\"error\") as? Map<*,*>)?.get(\"code\") as? String;throw ApiFailure(if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"invalid_credentials\" else if(status==401)\"session_expired\" else code?:\"request_failed\",if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"Invalid username or password\" else if(status==401)\"Session expired\" else code?:\"Request failed\")};result",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Non2xx error response lacks usable code for display → Auth HTTP/errors privacy rule → Safe request_failed/Request failed message replaces missing code text only; HTTP operation still fails, credentials not printed.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH169",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 34,
+      "line": 39,
       "column": 10,
       "operation": "request",
-      "source": "}catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+      "source": "}catch(error:Exception){",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Known Auth wire/UTF8/IO/ApiFailure with possible resource close/disconnect faults → Error governance requires complete raw roots; Frozen6.1/7.4 and ADR0009 own current HTTPS → Known-only failure retains existing safe kind/message; raw wire/IO projects with cause. Any unknown suppressed cleanup yields standard IllegalStateException(cause=original) rather than ApiFailure so Workspace cannot swallow it. Unknown primary remains original; disconnect executes once before return.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH170",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 34,
-      "column": 38,
+      "line": 42,
+      "column": 58,
       "operation": "request",
-      "source": "}catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+      "source": "val failure=when(error){is ApiFailure->error;is im.platform.client.send.WireFailure,is java.nio.charset.CharacterCodingException->ApiFailure(\"invalid_server_response\",\"Invalid server response\").also{it.initCause(error)};is java.io.IOException->ApiFailure(\"connection_unavailable\",\"Connection unavailable\").also{it.initCause(error)};else->error}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Actual WireFailure from strict parsing of Auth response → Existing Auth JSON/wire contracts → Known parser fault projects invalid_server_response with cause pointing to raw WireFailure. Unknown suppressed cleanup was excluded before this branch; no lost roots.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH171",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 34,
-      "column": 153,
+      "line": 42,
+      "column": 97,
       "operation": "request",
-      "source": "}catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+      "source": "val failure=when(error){is ApiFailure->error;is im.platform.client.send.WireFailure,is java.nio.charset.CharacterCodingException->ApiFailure(\"invalid_server_response\",\"Invalid server response\").also{it.initCause(error)};is java.io.IOException->ApiFailure(\"connection_unavailable\",\"Connection unavailable\").also{it.initCause(error)};else->error}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Actual malformed UTF8 response → Auth JSON wire requires valid UTF8 → CharacterCodingException projects invalid_server_response with original cause, never connection_unavailable; unknown cleanup excluded before projection.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH172",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 34,
-      "column": 274,
+      "line": 42,
+      "column": 233,
       "operation": "request",
-      "source": "}catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+      "source": "val failure=when(error){is ApiFailure->error;is im.platform.client.send.WireFailure,is java.nio.charset.CharacterCodingException->ApiFailure(\"invalid_server_response\",\"Invalid server response\").also{it.initCause(error)};is java.io.IOException->ApiFailure(\"connection_unavailable\",\"Connection unavailable\").also{it.initCause(error)};else->error}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual fatal UTF8 decoder malformed bytes; strict current wire contract rejects as protocol/response, never replacement text or network. Other exceptions rethrow.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Genuine SDK request/stream/close/disconnect IO failure → Frozen6.1/7.4/ADR0009 necessary HTTPS boundary → Known-only IO projects connection_unavailable with original raw IO cause and IO cleanup suppressed identities; unknown cleanup excluded before projection.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH173",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 43,
+      "line": 53,
       "column": 159,
       "operation": "accept",
       "source": "try {preferences.write(newSlot,refresh);preferences.write(endpoint+\"/current\",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(error:Exception){session=null;throw error}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual known external HTTPS/UTF8/wire/OS secure capability failure ends auth operation. Session expires only declared auth rejection; failed credential accept clears local session then original rethrow. Unknown native/programming errors remain original.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Credential acceptance write/removal failure → Frozen7.1/7.4 and ADR0009 OS secure credential/account isolation → Clear local session then rethrow the original secure operation error; no plaintext fallback or newly accepted session.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH174",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 48,
+      "line": 58,
       "column": 83,
       "operation": "restore",
       "source": "suspend fun restore():SendSession? {slot=preferences.read(endpoint+\"/current\")?:return null;return refresh()}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "No saved current credential slot on restore → Auth existing explicit restore lifecycle → Legitimate never-saved account returns null; actual preference errors propagate, no fake logged-in state.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH175",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 49,
+      "line": 59,
       "column": 94,
       "operation": "savedAccount",
       "source": "@Synchronized fun savedAccount():String? {val saved=preferences.read(endpoint+\"/current\")?:return null;require(saved.startsWith(endpoint+\"/\"));val parts=saved.removePrefix(endpoint+\"/\").split('/');require(parts.size==2);Wire.uuid(parts[1]);slot=saved;return Wire.uuid(parts[0])}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Current optional account/selection/empty-conversation/no-last-message state supplies presentation only; errors are classified before publication and never converted into successful empty data.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "No saved current credential slot on savedAccount lookup → Auth per-account secure slot ownership → Absence returns null; present invalid path/account/session values fail validation. No storage error converted to absence.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH176",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 50,
+      "line": 60,
       "column": 91,
       "operation": "refresh",
       "source": "suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure(\"session_expired\",\"Session expired\");try{return accept(request(\"/v1/auth/refresh/native\",\"POST\",metadata().put(\"refreshToken\",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind==\"session_expired\")clear();throw e}}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual known external HTTPS/UTF8/wire/OS secure capability failure ends auth operation. Session expires only declared auth rejection; failed credential accept clears local session then original rethrow. Unknown native/programming errors remain original.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Saved slot has no refresh credential → Auth refresh requires actual refresh token → Raises session_expired; no fabricated token or successful refresh.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH177",
       "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
-      "line": 50,
+      "line": 60,
       "column": 255,
       "operation": "refresh",
       "source": "suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure(\"session_expired\",\"Session expired\");try{return accept(request(\"/v1/auth/refresh/native\",\"POST\",metadata().put(\"refreshToken\",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind==\"session_expired\")clear();throw e}}",
       "disposition": "RETAINED",
-      "specific_ground_and_recovery": "Actual known external HTTPS/UTF8/wire/OS secure capability failure ends auth operation. Session expires only declared auth rejection; failed credential accept clears local session then original rethrow. Unknown native/programming errors remain original.",
-      "authority": "Frozen§5/§6/§7 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+      "specific_ground_and_recovery": "Canonical ApiFailure during refresh of current generation → Auth revocation/expiry and generation isolation → Only same-generation session_expired clears existing local credentials; rethrows failure. Unknown HTTPS cleanup now outside ApiFailure and propagates without expiry misclassification.",
+      "authority": "Frozen6.1/7.1/7.4/11.5; ADR0005/0008/0009; existing HTTPS, Auth/Sync contracts; error-handling governance (no contract change)"
     },
     {
       "id": "RH178",
@@ -5565,6 +5567,50 @@
       "disposition": "RETAINED_NARROWED_AFTER_ACTUAL_FAILURE",
       "specific_ground_and_recovery": "Only actual fs::read ErrorKind::NotFound means absence and returns existing cold/16/1. All other actual IO failures return existing Appearance unavailable; malformed/oversize/bounds retain Appearance invalid. Literal TS consumer tags native origin; Workspace start publishes existing load error. No language fallback authority borrowed.",
       "authority": "Frozen§6.1 / ADR0009 app-owned appearance; ADR0011 only Web fallback, ADR0012 only language fallback; error-handling governance current no fake defaults."
+    },
+    {
+      "id": "RH308",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "line": 44,
+      "column": 19,
+      "source": "} catch(error:Throwable){primary=error;throw error}",
+      "operation": "post",
+      "disposition": "RETAINED",
+      "authority": "Frozen6.1/7.4; ADR0009; current error-handling resource/root requirement",
+      "specific_ground_and_recovery": "Current primary operation failure before mandatory disconnect → Capture original reference, immediately rethrow; finally can preserve both roots without replacing original."
+    },
+    {
+      "id": "RH309",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "line": 45,
+      "column": 68,
+      "source": "finally {try{current.getAndSet(null)?.disconnect()}catch(cleanup:Throwable){val original=primary;if(original==null)throw cleanup;if(cleanup!==original)original.addSuppressed(cleanup)}}",
+      "operation": "post",
+      "disposition": "RETAINED",
+      "authority": "Frozen6.1/7.4; ADR0009; current error-handling resource/root requirement",
+      "specific_ground_and_recovery": "Mandatory disconnect fails after primary or successful operation → No primary: throw actual cleanup. Primary exists: attach distinct cleanup once to original.suppressed; never cause self-cycle or fake success."
+    },
+    {
+      "id": "RH310",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "line": 37,
+      "column": 14,
+      "source": "}catch(error:Throwable){primary=error;throw error}",
+      "operation": "request",
+      "disposition": "RETAINED",
+      "authority": "Frozen6.1/7.4; ADR0009; current error-handling resource/root requirement",
+      "specific_ground_and_recovery": "Current primary operation failure before mandatory disconnect → Capture original reference, immediately rethrow; finally can preserve both roots without replacing original."
+    },
+    {
+      "id": "RH311",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "line": 38,
+      "column": 49,
+      "source": "finally{try{connection.disconnect()}catch(cleanup:Throwable){val original=primary;if(original==null)throw cleanup;if(cleanup!==original)original.addSuppressed(cleanup)}}",
+      "operation": "request",
+      "disposition": "RETAINED",
+      "authority": "Frozen6.1/7.4; ADR0009; current error-handling resource/root requirement",
+      "specific_ground_and_recovery": "Mandatory disconnect fails after primary or successful operation → No primary: throw actual cleanup. Primary exists: attach distinct cleanup once to original.suppressed; never cause self-cycle or fake success."
     }
   ],
   "fix_F1": {
@@ -5663,5 +5709,20 @@
     "new_explicit_appearance_boundary": 1,
     "actual_current_navigation": "fix-appearance-read/current-navigation.json",
     "protection": "fix-appearance-read/protected-inputs.json"
+  },
+  "fix_android_suppressed": {
+    "base": "a337780de5f2ab5d2c8cd43d93c66dac06d53a53",
+    "actor": "/root/fix_android_suppressed_roots",
+    "current_navigation": "fix-android-suppressed/current-navigation.json",
+    "production_delta": [
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt"
+    ],
+    "independent_reviews": "PENDING",
+    "current_navigation_counts": {
+      "records": 311,
+      "executable": 276,
+      "nonexecutable": 35
+    }
   }
 }

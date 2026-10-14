@@ -12,47 +12,48 @@ Execution Status: AWAITING_NEW_FINAL_SHA_REGULAR_REVIEW_AND_SPECIALIZED_AUDIT
 
 ## Immediately Relevant Completed Work
 
-Fresh regular26 FAIL F-APPEARANCE-EXISTS-DEFAULT preserved immutable. Sole new Fix /root/recover_appearance_fix_finish corrects existing literal native appearance read: one read, NotFound-only cold/16/1, other IO existing unavailable. Private path reader solely for owned native testability. Local Fix is not Task/Gate acceptance.
+Fresh regular a337 FAIL two findings preserved immutable. Sole /root/fix_android_suppressed_roots repaired only Android SyncHttps/Auth literal cleanup/projection boundaries: complete raw primary/close/disconnect roots preserved acyclic; mixed unknown escapes even typed primary or inactive continuation. Local Fix evidence is not acceptance.
 
 ## Current Blockers
 
-NEWfinalSHA fresh regular and DIFFERENT NEW specialized audit PENDING; previousSHA PASS not reusable. Exact-head actual required hostedCI/protectedintegration/actualmain/safeH:/IM-platformsync PENDING. No push/CI-triggering PR before both PASS.
+NEW finalSHA full regular and DIFFERENT fresh specialized audit PENDING; priorSHA PASS not reusable. Exact-head hosted required jobs/protectedintegration/actualmain/safe H:/IM-platformsync PENDING. No push/CI-triggering PR before both PASS.
 
 ## Verification
 
-Actual native regression RED before fix, GREEN3/3 library tests after:8appearance cases, language isolation, owned credential manager. Fresh exact-source strictDesktopcompile, actual Rust outcomes through compiledTS controlledIPC/start8cases+unknown identity, existingAuth and currentI18N controls localPASS. Fresh frozen/architectureall/planning/82tests(oneexistingWindowsSkip) PASS. Old and first recovery Development exit1 (missing recovery fields), corrected metadata; re-run Development PASS; committed clean Acceptance is bound by external final receipt. Commands/failures/durations under spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-appearance-read/verification-history.json.
-
 - Command: `python -Xutf8 -B tools/verify_frozen_architecture.py; python -Xutf8 -B ci/check_architecture.py --scope all --json; python -Xutf8 -B ci/check_s2_planning.py; python -Xutf8 -B -m unittest discover -s tests/architecture -v`
-  - Result: PASS (82 tests, one existing Windows skip); Development initial FAIL retained; corrected Development PASS; exact clean candidate Acceptance follows external receipt.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-appearance-read/verification-history.json`
+  - Result: final frozen/architectureall/planning/82architecturetests(one existing WindowsSkip) PASS; durable raw output in history.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-suppressed/verification-history.json`
 - Command: `pwsh -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development`
-  - Result: PASS after correcting required recovery fields; old and initial recovery exit1 retained.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-appearance-read/verification-history.json`
+  - Result: startup and corrected final Development PASS; two missing-history Development failures and collector raw-vs-redacted hash assumption FAIL preserved; committed clean Acceptance follows external receipt.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-suppressed/verification-history.json`
+- Command: `python -Xutf8 -B tests/clients/gui/native.py send-mobile --serial emulator-5598; python -Xutf8 -B tests/clients/gui/native.py mobile --serial emulator-5598`
+  - Result: Send66+Read21 / Sync69+Read33+contiguous18 actual API34 PASS. New HttpCleanupInstrumentation32 and existing ErrorHandlingInstrumentation+32 actual PASS; actual JVM32 PASS. Exact commands/real durations/failures in history.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-suppressed/handoff.md`
 
 ## Changed Files or Migrations
 
-Only native desktop_capabilities.rs appearance read production block/privatepathhelper; focused errors test/evidence/recovery.185product hashes,307distinct navigation records=305original+OutboxRH306+appearanceRH307 (272executable35nonexecutable), never307catches.65protected inputs exact26,63wholebaseline+2priorHumanREAD-only exceptions/SAME SQL/allotherRepo bytes. NoSQLitewrite/draft/schema/init/transactions/nativeDB/Composer/contract/Frozen/ADR/dependency migration.
+Only2production HTTP files + new focused Android test and one existing errors invocation; current185hashes/311 distinct navigation=307preserved+4primary/disconnect catches (276executable35nonexecutable), never311catches.65protected exactpreFix;63wholebaseline+2priorHumanREAD-only exceptions, allotherRepo/SQL equal. NoSQL/schema/init/transactions/writes/nativeDB/Composer/drafts/contracts/Frozen/ADR/dependencies.
 
 ## Known Failures, Risks, and Assumptions
 
-Approval timeout notstarted; native missingfrontendDist compile failure, expectedRED, two i18n dependency/fixture failures retained. Environment corrected, no assertions weakened. InvalidFilename/directory native fixtures are real controlledOSIO, not actualACL denial or installedGUI acceptance. Officialstd producer+compiledconsumer proof separate. PriorGo/nativeclient evidence historical because unchanged; new finalSHA both fullreviews mandatory. Human-deferred social case remains unexecuted/notcanonicalPASS. Old R-FIX-APPEARANCE-READ remains partial after interrupted actor. New R-FIX-APPEARANCE-RECOVERY prospective_resume discloses direct startup gaps and failed ownership-audit optional receipt assumption; original raw events unchanged. Structural validation only, never acceptance.
+Failures retained: synthetic active-streamCancellationException harness hang/verified owned termination; wrongPowerShell-Pargument build; missingcertificate directSend invocation; collector legacy sourceindentation assumption. Correct actualargv/fixture/token comparisons passed without assertion weakening. Default Android HTTPS mixedcleanup incidence unmeasured; actual emulator tests use controlled current SDK producer, originalTLS controls real. Human-deferred social case unexecuted/notcanonicalPASS. Recorder prospective_resume/directstartup+prep/tooltruncation gaps disclosed; structural validity only.
 
 ## Next Exact Action
 
-Coordinator receives committed clean taskHEAD/sealed receipt/sourcelease RELEASED. NEW fresh regular entire185/307/65 -> DIFFERENT NEW specialized SAMEfinalSHA -> onlybothPASS exacthead requiredhostedCI/protectedintegration/actualmain/safeH:/IM-platformsync. AnyFix repeatsboth. Taskdone/S2PASS/mainSHA/sync allPENDING.
+Coordinator receives clean committed taskHEAD/sealedreceipt and RELEASED sourcelease. NEW fresh regular185/311/65 -> DIFFERENT NEW specialized SAMEfinalSHA -> onlybothPASS exactheadrequiredhostedCI/protectedintegration/actualmain/safemain sync. AnyFix repeatsboth. Taskdone/S2PASS/mainSHA/sync PENDING.
 
 ## Last Known Good Commit
 
-`35bd6f5f1091503f95a0282f730ed04233b0b6ea` acceptedI18N. Candidate taskHEAD delivered by Git/externalreceipt, not accepted or synchronized.
+`35bd6f5f1091503f95a0282f730ed04233b0b6ea` acceptedI18N. Taskbranch exactcommitted candidate from Git/externalreceipt, not accepted/synchronized.
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-14-error-handling-appearance-review-candidate.md` local recoverable slice only.
+`spec/progress/checkpoints/2026-10-14-error-handling-android-cleanup-review-candidate.md` local recoverable slice only.
 
 ## Uncommitted Changes / Ownership
 
-Sole freshFix /root/recover_appearance_fix_finish owns enumerated assignedworktree delta until cleancommit/receipt RELEASED; nootherwriter. Root H:/.codex/worktrees/err/IM-platform verifiedexact. Main782unknown/2tracked untouched. Owned native testfiles removed, credentialfixture cleanup; no owned listener/container/device/apptrust/privateconfig/ACL edits. Old generated frontend build preserved externally by recorded cleanup; no further resource cleanup needed. Recovery adoption verified script bytes, 185 hashes/307 tokens/65 protected and 158 sealed copies.
+Sole /root/fix_android_suppressed_roots owns enumerated assignedworktree delta until cleancommit/RELEASEDreceipt. Exactroot H:/.codex/worktrees/err/IM-platform verified. Main782unknown/2tracked untouched. Own5598 closed/reverse empty/isolatedAVD deleted; builds preserved externally. Verified prior63review artifacts+receipt copied immutable; no other source owner or private/globaltrust/ACL writes.
 
 ## Architecture Conflicts / ACP / ADR
 
-None. Component-local current nativeIO readboundary only, approvedRust/Tauri. Freshreviews/hostedCI/integration/actualmain/sync PENDING; S2OPEN.
+None. Necessary current SDK/Kotlin HTTP resource/failure boundary under existing Frozen6.1/ADR9. Bothfreshreviews/hostedCI/integration/main/sync PENDING; S2OPEN.

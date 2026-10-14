@@ -1,0 +1,7 @@
+63 immutable prior review artifacts verified; exact receipt verified
+exact production source H:\.codex\worktrees\err\IM-platform\clients\mobile\app\src\main\kotlin\im\platform\client\sync\Https.kt 32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08
+exact production source H:\.codex\worktrees\err\IM-platform\clients\mobile\app\src\main\kotlin\im\platform\client\ui\Auth.kt 4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f
+REPRO Auth read IO+unknown close => causefree known ApiFailure
+REPRO Auth write IO+unknown close => causefree known ApiFailure
+REPRO Sync IOException+unknown close => known SyncFailure transport
+REPRO Sync SyncFailure+unknown close => known SyncFailure protocol

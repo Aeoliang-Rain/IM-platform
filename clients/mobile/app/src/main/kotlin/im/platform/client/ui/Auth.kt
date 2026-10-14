@@ -19,9 +19,12 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
     private var slot="";private var expires=0L;@Volatile private var generation=0L
     init{serverOrigin(endpoint)}
     private fun metadata()=JSONObject().put("clientType","MOBILE").put("deviceId","im-mobile").put("clientVersion","0.1.0").put("protocolVersion","1")
+    private fun transportCleanup(error:Throwable):Boolean=error is java.io.IOException && error.suppressed.all(::transportCleanup)
     suspend fun request(path:String,method:String="GET",body:JSONObject?=null,authenticated:Boolean=true,accessToken:String?=null):Any=withContext(Dispatchers.IO){
         val connection=URL(endpoint+path).openConnection() as HttpsURLConnection
         try {
+            var primary:Throwable?=null
+            try {
             connection.instanceFollowRedirects=false;connection.requestMethod=method;connection.connectTimeout=15000;connection.readTimeout=15000;connection.useCaches=false;connection.setRequestProperty("Content-Type","application/json")
             if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure("session_expired","Session expired");connection.setRequestProperty("Authorization","Bearer "+token)}
             if(body!=null){connection.doOutput=true;val bytes=body.toString().toByteArray(Charsets.UTF_8);connection.setFixedLengthStreamingMode(bytes.size);connection.outputStream.use {it.write(bytes)}}
@@ -31,7 +34,14 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
             (stream?:throw ApiFailure("connection_unavailable","Connection unavailable")).use{val buffer=ByteArray(8192);while(true){val n=it.read(buffer);if(n<0)break;if(output.size()+n>1048576)throw ApiFailure("invalid_server_response","Invalid server response");output.write(buffer,0,n)}}
             val raw=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(output.toByteArray())).toString();val result=Wire.parse(raw,1048576)
             if(status !in 200..299){val code=((result as? Map<*,*>)?.get("error") as? Map<*,*>)?.get("code") as? String;throw ApiFailure(if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"invalid_credentials" else if(status==401)"session_expired" else code?:"request_failed",if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"Invalid username or password" else if(status==401)"Session expired" else code?:"Request failed")};result
-        }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.io.IOException){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+            }catch(error:Throwable){primary=error;throw error}
+            finally{try{connection.disconnect()}catch(cleanup:Throwable){val original=primary;if(original==null)throw cleanup;if(cleanup!==original)original.addSuppressed(cleanup)}}
+        }catch(error:Exception){
+            val known=error is ApiFailure || error is im.platform.client.send.WireFailure || error is java.io.IOException || error is kotlinx.coroutines.CancellationException
+            if(known && !error.suppressed.all(::transportCleanup))throw IllegalStateException("HTTPS operation and cleanup failed",error)
+            val failure=when(error){is ApiFailure->error;is im.platform.client.send.WireFailure,is java.nio.charset.CharacterCodingException->ApiFailure("invalid_server_response","Invalid server response").also{it.initCause(error)};is java.io.IOException->ApiFailure("connection_unavailable","Connection unavailable").also{it.initCause(error)};else->error}
+            throw failure
+        }
     }
     private fun user(v:Any?):User {val o=Wire.obj(v,setOf("userId","username","displayName"));return User(Wire.uuid(o["userId"]),o["username"] as String,o["displayName"] as String)}
     @Synchronized private fun accept(value:Any,g:Long):SendSession {

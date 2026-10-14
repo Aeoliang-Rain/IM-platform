@@ -23,6 +23,7 @@ class ErrorHandlingInstrumentation:Instrumentation(){
  override fun onStart(){
   val result=Bundle()
   try{runBlocking{
+   result.putInt("httpCleanupChecks",HttpCleanupChecks.run(Auth("https://localhost",Preferences(targetContext))))
    val original=IllegalStateException("controlled internal HTTPS adapter bug")
    val user=UUID.randomUUID().toString();val session=SendSession(user,UUID.randomUUID().toString(),BigInteger.ONE,"controlled-test-only")
    val unknown=SyncHttps("https://localhost/",session,connection={throw original})
