@@ -1,0 +1,14 @@
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/MainActivity.kt
+1: package im.platform.client
+2: import android.os.Bundle
+3: import androidx.activity.ComponentActivity
+4: import androidx.activity.compose.setContent
+5: import im.platform.client.ui.Workspace
+6: class MainActivity : ComponentActivity() {
+7:     override fun onCreate(savedInstanceState: Bundle?) {
+8:         super.onCreate(savedInstanceState)
+9:         actionBar?.hide()
+10:         setContent { Workspace() }
+11:     }
+12: }

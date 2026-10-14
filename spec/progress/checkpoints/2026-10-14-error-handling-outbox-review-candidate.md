@@ -1,0 +1,7 @@
+# Local Outbox mixed-root repair recovery point
+
+Task LOOP1-ERROR-HANDLING-001 review/S2OPEN, task/LOOP1-ERROR-HANDLING-001. Pre-Fix input a292f516f622651ae62595163e479c13fff78c1d; last accepted35bd6f5f1091503f95a0282f730ed04233b0b6ea. New clean committed candidate identity is task branch HEAD delivered with external sealed Fix receipt. This checkpoint is a local stable vertical slice, never Task/Stage acceptance.
+
+Fresh specialized a292 FAIL mixed network+XX000 Outbox masking repaired in existing local retry boundary only. Actual default producer and actualRelay red/green; unknown/mixed propagates original full error, allknown transport retry/cancellation/pending behavior retained. allGo/race/vet +actual disposable PG/NATS localPASS.185production hashes/306distinct retained navigation tokens(305original +newly recorded retryboundary),271executable35nonexecutable. Protected65 equals a292,63baselinewhole+2prior Human permittedREADmapper exceptions. No contract/schema/transaction/write/draft/framework/dependency transition. All4owned fixture projects empty and3unique migrate tags removed.
+
+New finalSHA both independent reviews PENDING, then exact-head required hostedCI/protectedintegration/actual-main CI/safeH:/IM-platform synchronization PENDING; no push/PR/Taskdone/StagePASS. Details, failures, Recorder trace gaps and ownership: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-outbox-mixed/handoff.md. Old regular/special originals/seals preserved immutably; main unknown work untouched.

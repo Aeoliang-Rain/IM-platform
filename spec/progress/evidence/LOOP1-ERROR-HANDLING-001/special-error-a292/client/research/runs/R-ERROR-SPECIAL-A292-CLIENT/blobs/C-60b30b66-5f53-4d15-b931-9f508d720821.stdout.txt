@@ -1,0 +1,299 @@
+
+FILE clients/desktop/src-tauri/src/bin/storage_probe.rs
+1: // Private test transport: hex strings preserve SQL/bind bytes, no dependencies,
+2: // business models, network listeners or product protocol. Each T input batch
+3: // invokes the SAME atomic adapter used by the Tauri command exactly once.
+4: use im_client_storage::database;
+5: use std::io::{self, Read};
+6: fn decode(value: &str) -> Result<String, String> {
+7:     if value.len()%2!=0 { return Err("Invalid hex".into()) }
+8:     let bytes: Result<Vec<u8>,_> = (0..value.len()).step_by(2).map(|i|u8::from_str_radix(&value[i..i+2],16)).collect();
+9:     String::from_utf8(bytes.map_err(|_|"Invalid hex")?).map_err(|_|"Invalid UTF8".into())
+10: }
+11: fn encode(value: &str) -> String { value.as_bytes().iter().map(|b|format!("{b:02x}")).collect() }
+12: async fn execute() -> Result<(),String> {
+13:     let args: Vec<String> = std::env::args().collect();
+14:     if args.len()!=3 { return Err("Expected isolated root and account".into()) }
+15: 
+16:     let mut input=String::new(); io::stdin().read_to_string(&mut input).map_err(|_|"Input failed")?;
+17:     let lines: Vec<Vec<&str>> = input.lines().map(|l|l.split('\t').collect()).collect();
+18:     if lines.first().and_then(|l|l.first())==Some(&"Q") {
+19:         let mut connection=database::open_read_only(args[1].clone().into(),&args[2]).await?;
+20:         let line=&lines[0];
+21:         if lines.len()!=1 || line.len()<2 { return Err("Invalid query".into()) }
+22:         let sql=decode(line[1])?;
+23:         let binds: Result<Vec<_>,String>=line[2..].iter().map(|v| if *v=="~" { Ok(None) } else { decode(v).map(Some) }).collect();
+24:         for row in database::query(&mut connection,&sql,binds?).await? {
+25:             println!("{}",row.iter().map(|v|v.as_ref().map(|s|encode(s)).unwrap_or("~".into())).collect::<Vec<_>>().join("\t"));
+26:         }
+27:     } else {
+28:         let mut connection=database::open(args[1].clone().into(),&args[2]).await?;
+29:         let mut statements=Vec::new();
+30:         for line in lines {
+31:             if line.len()<3 || line[0]!="T" { return Err("Invalid transaction".into()) }
+32:             let expected=if line[1]=="-" { None } else { Some(line[1].parse().map_err(|_|"Invalid row assertion")?) };
+33:             let binds: Result<Vec<_>,String>=line[3..].iter().map(|v|if *v=="~" { Ok(None) } else { decode(v).map(Some) }).collect();
+34:             statements.push((decode(line[2])?,binds?,expected));
+35:         }
+36:         database::transaction(&mut connection,statements).await?;
+37:         println!("OK");
+38:     }
+39:     Ok(())
+40: }
+41: fn main() {
+42:     if let Err(error)=tauri::async_runtime::block_on(execute()) { eprintln!("{error}"); std::process::exit(1) }
+43: }
+
+FILE clients/desktop/src-tauri/src/database.rs
+1: use sqlx::{Connection, Row, SqliteConnection, TypeInfo, ValueRef};
+2: use sqlx::sqlite::SqliteConnectOptions;
+3: use std::{path::PathBuf, time::Duration};
+4: 
+5: pub type Statement = (String, Vec<Option<String>>, Option<u64>);
+6: pub async fn open(root: PathBuf, account: &str) -> Result<SqliteConnection, String> {
+7:     // UUID filenames prevent directory traversal/aliases and keep accounts apart.
+8:     if account.len() != 36 || !account.chars().enumerate().all(|(i,c)|
+9:         if [8,13,18,23].contains(&i) { c=='-' } else { c.is_ascii_hexdigit() }) {
+10:         return Err("Invalid account identity".into());
+11:     }
+12:     std::fs::create_dir_all(&root).map_err(|_| "Storage directory unavailable")?;
+13:     let options = SqliteConnectOptions::new()
+14:         .filename(root.join(format!("im-{}.sqlite",account.to_ascii_lowercase())))
+15:         .create_if_missing(true).busy_timeout(Duration::from_secs(5));
+16:     SqliteConnection::connect_with(&options).await.map_err(|_| "Storage open failed".into())
+17: }
+18: pub async fn open_read_only(root: PathBuf, account: &str) -> Result<SqliteConnection, String> {
+19:     // Ensure the account's empty file can exist before its first migration,
+20:     // then reopen physically read-only: even caller PRAGMAs cannot enable writes.
+21:     open(root.clone(), account).await?.close().await.map_err(|_| "Storage close failed")?;
+22:     let options = SqliteConnectOptions::new()
+23:         .filename(root.join(format!("im-{}.sqlite", account.to_ascii_lowercase())))
+24:         .read_only(true).busy_timeout(Duration::from_secs(5));
+25:     SqliteConnection::connect_with(&options).await.map_err(|_| "Storage read open failed".into())
+26: }
+27: pub async fn transaction(connection: &mut SqliteConnection, statements: Vec<Statement>) -> Result<(), String> {
+28:     let mut tx = connection.begin().await.map_err(|_| "Transaction start failed")?;
+29:     for (sql, binds, expected) in statements {
+30:         let mut query = sqlx::query(&sql);
+31:         for value in binds { query = query.bind(value); }
+32:         match query.execute(&mut *tx).await {
+33:             Ok(result) if expected.is_none() || expected == Some(result.rows_affected()) => (),
+34:             _ => {
+35:                 tx.rollback().await.map_err(|_| "Transaction rollback failed")?;
+36:                 return Err("Storage statement rejected".into());
+37:             }
+38:         }
+39:     }
+40:     tx.commit().await.map_err(|_| "Transaction commit failed".into())
+41: }
+42: pub async fn query(connection: &mut SqliteConnection, sql: &str, binds: Vec<Option<String>>) -> Result<Vec<Vec<Option<String>>>, String> {
+43:     // The product query command is read-only. SQLite query_only applies to this
+44:     // connection; transaction commands open their own connection.
+45:     sqlx::query("PRAGMA query_only=ON").execute(&mut *connection).await.map_err(|_| "Read-only setup failed")?;
+46:     let mut query = sqlx::query(sql);
+47:     for value in binds { query=query.bind(value); }
+48:     let result = query.fetch_all(&mut *connection).await;
+49:     sqlx::query("PRAGMA query_only=OFF").execute(&mut *connection).await.map_err(|_| "Read-only reset failed")?;
+50:     let rows = result.map_err(|_| "Storage query rejected")?;
+51:     rows.iter().map(|row| (0..row.len()).map(|i| {
+52:         let value = row.try_get_raw(i).map_err(|_| "Storage result unavailable".to_string())?;
+53:         match value.type_info().name() {
+54:             "INTEGER" => row.try_get::<Option<i64>,_>(i).map(|v|v.map(|n|n.to_string())),
+55:             _ => row.try_get::<Option<String>,_>(i),
+56:         }.map_err(|_| "Storage result type rejected".to_string())
+57:     }).collect()).collect()
+58: }
+
+FILE clients/desktop/src-tauri/src/desktop_capabilities.rs
+1: //! Generic Windows adapters. Auth/protocol/Repository decisions stay TypeScript.
+2: use std::collections::BTreeMap;
+3: use tauri::Manager;
+4: use tauri_plugin_notification::NotificationExt;
+5: use tauri_plugin_global_shortcut::{GlobalShortcutExt,ShortcutState};
+6: const MAX_BODY:usize=4*1024*1024;
+7: #[tauri::command]
+8: pub async fn native_https(url:String,method:String,headers:BTreeMap<String,String>,body:Vec<u8>)->Result<(u16,BTreeMap<String,String>,Vec<u8>),String>{
+9:     let url=reqwest::Url::parse(&url).map_err(|_|"HTTPS request invalid")?;
+10:     if url.scheme()!="https" || url.host_str().is_none() || !url.username().is_empty() || url.password().is_some() || url.fragment().is_some() || body.len()>MAX_BODY {return Err("HTTPS request invalid".into());}
+11:     if url.query_pairs().any(|(name,_)|matches!(name.to_ascii_lowercase().as_str(),"token"|"access_token"|"accesstoken"|"refresh_token"|"refreshtoken"|"password"|"credential")){return Err("Credential query forbidden".into());}
+12:     let method=reqwest::Method::from_bytes(method.as_bytes()).map_err(|_|"HTTPS method invalid")?;
+13:     if ![reqwest::Method::GET,reqwest::Method::POST,reqwest::Method::PUT].contains(&method) || headers.len()>16{return Err("HTTPS request invalid".into());}
+14:     let client=reqwest::Client::builder().https_only(true).redirect(reqwest::redirect::Policy::none()).timeout(std::time::Duration::from_secs(15)).build().map_err(|_|"HTTPS transport unavailable")?;
+15:     let mut request=client.request(method,url).body(body);
+16:     for (name,value) in headers {
+17:         if !["authorization","content-type","accept"].contains(&name.to_ascii_lowercase().as_str()) || value.len()>8192 || value.contains(['\r','\n']){return Err("HTTPS headers invalid".into());}
+18:         request=request.header(name,value);
+19:     }
+20:     let mut response=request.send().await.map_err(|_|"HTTPS transport unavailable")?;
+21:     let status=response.status().as_u16();
+22:     if (300..400).contains(&status){return Err("HTTPS redirects forbidden".into());}
+23:     let response_headers:BTreeMap<String,String>=response.headers().iter().filter_map(|(k,v)|v.to_str().ok().map(|v|(k.as_str().to_owned(),v.to_owned()))).collect();
+24:     if response.content_length().map(|n|n>MAX_BODY as u64).unwrap_or(false){return Err("HTTPS response too large".into());}
+25:     let mut bytes=Vec::new();while let Some(chunk)=response.chunk().await.map_err(|_|"HTTPS transport unavailable")? {if bytes.len()+chunk.len()>MAX_BODY{return Err("HTTPS response too large".into());}bytes.extend_from_slice(&chunk);}
+26:     Ok((status,response_headers,bytes))
+27: }
+28: fn entry(slot:&str)->Result<keyring::Entry,String>{
+29:     if slot.is_empty() || slot.len()>240 || slot.contains(['\r','\n']) {return Err("Credential slot invalid".into());}
+30:     keyring::Entry::new("im.platform.desktop",slot).map_err(|_|"Secure credential storage unavailable".into())
+31: }
+32: #[tauri::command]
+33: pub fn credential_read(slot:String)->Result<Option<String>,String>{match entry(&slot)?.get_password(){Ok(value)=>Ok(Some(value)),Err(keyring::Error::NoEntry)=>Ok(None),Err(_)=>Err("Secure credential storage unavailable".into())}}
+34: #[tauri::command]
+35: pub fn credential_write(slot:String,value:String)->Result<(),String>{if value.is_empty()||value.len()>8192{return Err("Credential value invalid".into());}entry(&slot)?.set_password(&value).map_err(|_|"Secure credential storage unavailable".into())}
+36: #[tauri::command]
+37: pub fn credential_remove(slot:String)->Result<(),String>{match entry(&slot)?.delete_credential(){Ok(())|Err(keyring::Error::NoEntry)=>Ok(()),Err(_)=>Err("Secure credential storage unavailable".into())}}
+38: fn appearance_path(app:&tauri::AppHandle)->Result<std::path::PathBuf,String>{Ok(app.path().app_data_dir().map_err(|_|"Appearance unavailable")?.join("appearance.json"))}
+39: type Appearance=(String,u8,f64);
+40: fn valid_appearance(value:&Appearance)->bool{matches!(value.0.as_str(),"cold"|"warm")&&(14..=22).contains(&value.1)&&[0.8,1.0,1.2].iter().any(|v|(value.2-v).abs()<0.001)}
+41: fn appearance_bytes(value:&Appearance)->Vec<u8>{format!("[\"{}\",{},{}]",value.0,value.1,value.2).into_bytes()}
+42: #[tauri::command]
+43: pub fn appearance_load(app:tauri::AppHandle)->Result<Appearance,String>{let p=appearance_path(&app)?;if !p.exists(){return Ok(("cold".into(),16,1.0));}let bytes=std::fs::read(p).map_err(|_|"Appearance unavailable")?;if bytes.len()>64{return Err("Appearance invalid".into());}for theme in ["cold","warm"]{for font in 14..=22{for density in [0.8,1.0,1.2]{let value=(theme.to_owned(),font,density);if appearance_bytes(&value)==bytes{return Ok(value);}}}}Err("Appearance invalid".into())}
+44: #[tauri::command]
+45: pub fn appearance_save(app:tauri::AppHandle,mut value:Appearance)->Result<(),String>{if !valid_appearance(&value){return Err("Appearance invalid".into());}value.2=[0.8,1.0,1.2].into_iter().find(|v|(value.2-v).abs()<0.001).ok_or("Appearance invalid")?;let p=appearance_path(&app)?;std::fs::create_dir_all(p.parent().ok_or("Appearance unavailable")?).map_err(|_|"Appearance unavailable")?;std::fs::write(p,appearance_bytes(&value)).map_err(|_|"Appearance unavailable".into())}
+46: #[tauri::command]
+47: pub fn native_notify(app:tauri::AppHandle,title:String,body:String)->Result<(),String>{if title.chars().count()>80||body.chars().count()>300{return Err("Notification invalid".into());}app.notification().builder().title(title).body(body).show().map_err(|_|"Notification unavailable".into())}
+48: #[tauri::command]
+49: pub fn window_maximized(window:tauri::WebviewWindow)->Result<bool,String>{window.is_maximized().map_err(|_|"Window unavailable".into())}
+50: #[tauri::command]
+51: pub fn window_control(window:tauri::WebviewWindow,action:String)->Result<(),String>{
+52:     let result=match action.as_str(){
+53:         "minimize"=>window.minimize(),
+54:         "maximize"=>if window.is_maximized().map_err(|_|"Window unavailable")?{window.unmaximize()}else{window.maximize()},
+55:         "close"=>window.close(),
+56:         "drag"=>window.start_dragging(),
+57:         _=>return Err("Window action invalid".into()),
+58:     };
+59:     result.map_err(|_|"Window unavailable".into())
+60: }
+61: fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){w.show().expect("Window show failed");w.unminimize().expect("Window restore failed");w.set_focus().expect("Window focus failed");}}
+62: struct TrayPresentation {open:tauri::menu::MenuItem<tauri::Wry>,hide:tauri::menu::MenuItem<tauri::Wry>,quit:tauri::menu::MenuItem<tauri::Wry>}
+63: #[tauri::command]
+64: pub fn tray_text(app:tauri::AppHandle,open:String,hide:String,quit:String,tooltip:String)->Result<(),String>{
+65:     if [&open,&hide,&quit,&tooltip].iter().any(|value|value.is_empty()||value.chars().count()>80||value.contains(['\r','\n'])){return Err("Tray text invalid".into());}
+66:     let presentation=app.state::<TrayPresentation>();
+67:     presentation.open.set_text(open).map_err(|_|"Tray unavailable")?;
+68:     presentation.hide.set_text(hide).map_err(|_|"Tray unavailable")?;
+69:     presentation.quit.set_text(quit).map_err(|_|"Tray unavailable")?;
+70:     app.tray_by_id("im-plus").ok_or("Tray unavailable")?.set_tooltip(Some(tooltip)).map_err(|_|"Tray unavailable".into())
+71: }
+72: fn valid_language(value:&str)->bool{matches!(value,"en"|"zh-CN"|"ja-JP")}
+73: fn load_language(path:&std::path::Path)->String {
+74:     use std::io::Read;
+75:     // At most six bytes read: an overlong file is invalid without unbounded allocation.
+76:     let mut bytes=Vec::new();
+77:     let result=std::fs::File::open(path).and_then(|file|file.take(6).read_to_end(&mut bytes));
+78:     if result.is_err()||bytes.len()>5{return "en".into();}
+79:     match std::str::from_utf8(&bytes){Ok(value) if valid_language(value)=>value.into(),_=>"en".into()}
+80: }
+81: fn save_language(path:&std::path::Path,value:&str)->Result<(),String>{
+82:     if !valid_language(value){return Err("Language invalid".into());}
+83:     std::fs::create_dir_all(path.parent().ok_or("Language unavailable")?).map_err(|_|"Language unavailable")?;
+84:     std::fs::write(path,value.as_bytes()).map_err(|_|"Language unavailable".into())
+85: }
+86: #[tauri::command]
+87: pub fn language_load(app:tauri::AppHandle)->String{match app.path().app_data_dir(){Ok(root)=>load_language(&root.join("language.txt")),Err(_)=>"en".into()}}
+88: #[tauri::command]
+89: pub fn language_save(app:tauri::AppHandle,value:String)->Result<(),String>{save_language(&app.path().app_data_dir().map_err(|_|"Language unavailable")?.join("language.txt"),&value)}
+90: pub fn setup(app:&mut tauri::App)->Result<(),Box<dyn std::error::Error>>{
+91:     app.global_shortcut().on_shortcut("Ctrl+Shift+Space",|app,_,event|{if event.state==ShortcutState::Pressed{show(app);}})?;
+92:     let open=tauri::menu::MenuItem::with_id(app,"open","Open IM+",true,None::<&str>)?;
+93:     let hide=tauri::menu::MenuItem::with_id(app,"hide","Hide window",true,None::<&str>)?;
+94:     let quit=tauri::menu::MenuItem::with_id(app,"quit","Quit IM+",true,None::<&str>)?;
+95:     let menu=tauri::menu::Menu::with_items(app,&[&open,&hide,&quit])?;
+96:     app.manage(TrayPresentation{open,hide,quit});
+97:     let icon=app.default_window_icon().ok_or("Application icon unavailable")?.clone();
+98:     tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){w.hide().expect("Window hide failed");}},"quit"=>app.exit(0),_=>{}}).build(app)?;
+99:     Ok(())
+100: }
+101: 
+102: #[cfg(test)]
+103: mod tests {
+104:     use super::*;
+105: 
+106:     #[test]
+107:     fn language_owned_file_exact_enum_and_appearance_isolation() {
+108:         let nonce=std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+109:         let root=std::env::temp_dir().join(format!("i18n-owned-{}-{nonce}",std::process::id()));
+110:         std::fs::create_dir(&root).unwrap();
+111:         struct Owned(std::path::PathBuf);
+112:         impl Drop for Owned {fn drop(&mut self){let _=std::fs::remove_dir_all(&self.0);}}
+113:         let _owned=Owned(root.clone());
+114:         let path=root.join("language.txt");let appearance=root.join("appearance.json");
+115:         let original=appearance_bytes(&("warm".into(),22,1.2));std::fs::write(&appearance,&original).unwrap();
+116:         assert_eq!(load_language(&path),"en");
+117:         for value in ["en","zh-CN","ja-JP"] {
+118:             save_language(&path,value).unwrap();assert_eq!(std::fs::read(&path).unwrap(),value.as_bytes());
+119:             assert_eq!(load_language(&path),value);assert_eq!(std::fs::read(&appearance).unwrap(),original);
+120:         }
+121:         for value in ["","EN","en-US","zh","ja"," en","en\n","en\r\n","\u{feff}en","ja-jp"] {
+122:             let before=std::fs::read(&path).unwrap();assert!(save_language(&path,value).is_err());
+123:             assert_eq!(std::fs::read(&path).unwrap(),before);
+124:             std::fs::write(&path,value).unwrap();assert_eq!(load_language(&path),"en");
+125:         }
+126:         std::fs::write(&path,[0xff,0xfe]).unwrap();assert_eq!(load_language(&path),"en");
+127:         std::fs::write(&path,vec![b'e';10000]).unwrap();assert_eq!(load_language(&path),"en");
+128:         let directory=root.join("directory");std::fs::create_dir(&directory).unwrap();
+129:         assert_eq!(load_language(&directory),"en");assert!(save_language(&directory,"ja-JP").is_err());
+130:         assert_eq!(std::fs::read(&appearance).unwrap(),original);
+131:         assert_eq!(std::fs::read_dir(&root).unwrap().count(),3);
+132:     }
+133:     #[test]
+134:     fn actual_windows_credential_manager_roundtrip() {
+135:         let nonce=std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+136:         let slot=format!("https://gui-owned-fixture.invalid/{}/{nonce}",std::process::id());
+137:         assert_eq!(credential_read(slot.clone()).unwrap(),None);
+138:         struct Owned(String);
+139:         impl Drop for Owned {fn drop(&mut self){let _=credential_remove(self.0.clone());}}
+140:         let cleanup=Owned(slot.clone());
+141:         credential_write(slot.clone(),"gui-owned-fixture-refresh-value".into()).unwrap();
+142:         assert_eq!(credential_read(slot.clone()).unwrap().as_deref(),Some("gui-owned-fixture-refresh-value"));
+143:         credential_write(slot.clone(),"gui-owned-fixture-rotated-value".into()).unwrap();
+144:         assert_eq!(credential_read(slot.clone()).unwrap().as_deref(),Some("gui-owned-fixture-rotated-value"));
+145:         credential_remove(slot.clone()).unwrap();
+146:         assert_eq!(credential_read(slot).unwrap(),None);
+147:         drop(cleanup);
+148:     }
+149: }
+
+FILE clients/desktop/src-tauri/src/lib.rs
+1: pub mod database;
+2: #[cfg(windows)]
+3: mod desktop_capabilities;
+4: use std::path::PathBuf;
+5: use tauri::Manager;
+6: 
+7: // Commands carry only generic SQL/bindings/row-count assertions. No models,
+8: // migration, identity decisions or Repository orchestration lives in Rust.
+9: fn root(app: &tauri::AppHandle) -> Result<PathBuf, String> {
+10:     app.path().app_data_dir().map_err(|_| "Storage directory unavailable".into())
+11: }
+12: #[tauri::command]
+13: async fn database_transaction(app: tauri::AppHandle, account_id: String,
+14:     statements: Vec<database::Statement>) -> Result<(), String> {
+15:     let mut connection = database::open(root(&app)?, &account_id).await?;
+16:     database::transaction(&mut connection, statements).await
+17: }
+18: #[tauri::command]
+19: async fn database_query(app: tauri::AppHandle, account_id: String,
+20:     sql: String, binds: Vec<Option<String>>) -> Result<Vec<Vec<Option<String>>>, String> {
+21:     let mut connection = database::open_read_only(root(&app)?, &account_id).await?;
+22:     database::query(&mut connection, &sql, binds).await
+23: }
+24: pub fn run() {
+25:     #[cfg(not(windows))]
+26:     let builder=tauri::Builder::default()
+27:         .invoke_handler(tauri::generate_handler![database_transaction, database_query])
+28:         ;
+29:     #[cfg(windows)]
+30:     let builder=tauri::Builder::default()
+31:         .plugin(tauri_plugin_notification::init())
+32:         .plugin(tauri_plugin_global_shortcut::Builder::new().build())
+33:         .setup(desktop_capabilities::setup)
+34:         .on_window_event(|window,event|if let tauri::WindowEvent::CloseRequested{api,..}=event {api.prevent_close();window.hide().expect("Window hide failed");})
+35:         .invoke_handler(tauri::generate_handler![database_transaction,database_query,desktop_capabilities::native_https,desktop_capabilities::credential_read,desktop_capabilities::credential_write,desktop_capabilities::credential_remove,desktop_capabilities::appearance_load,desktop_capabilities::appearance_save,desktop_capabilities::language_load,desktop_capabilities::language_save,desktop_capabilities::tray_text,desktop_capabilities::native_notify,desktop_capabilities::window_control,desktop_capabilities::window_maximized]);
+36:     builder.run(tauri::generate_context!())
+37:         .expect("Tauri startup failed");
+38: }
+
+FILE clients/desktop/src-tauri/src/main.rs
+1: fn main() { im_client_storage::run() }

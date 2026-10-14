@@ -1,0 +1,51 @@
+{
+  "candidate": "a292f516f622651ae62595163e479c13fff78c1d",
+  "rows": [
+    {
+      "command": {
+        "started_at": "2026-10-13T08:50:36.413014Z",
+        "argv": [
+          "python",
+          "-Xutf8",
+          "-B",
+          "tests/clients/errors/go_live.py"
+        ],
+        "command_id": "C-3f868fe1-81b3-43ef-90dc-b7504443ee56",
+        "cwd": ".",
+        "secret_redaction_applied": true,
+        "finished_at": "2026-10-13T08:51:31.993901Z",
+        "duration_ms": 55563.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "stderr_blob": "blobs/C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stderr.txt",
+        "stderr_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+        "stdout_blob": "blobs/C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stdout.txt",
+        "stdout_sha256": "27354decd3ab66350c7a724b27e0248426f13813e30dcbf3c300b085d5591b67"
+      },
+      "verified_stored_hashes": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\implementation-research\\runs\\R-ERROR-IMPLEMENTATION-20261013\\blobs\\C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stdout.txt",
+          "actual_stored_sha256": "c7ade5f6cb98bfd398a9f88c51efef5124ef68b4ca5ca24ff13796dffeff785e",
+          "recorded_raw_sha256": "27354decd3ab66350c7a724b27e0248426f13813e30dcbf3c300b085d5591b67",
+          "stored_matches_recorded_raw": false
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\implementation-research\\runs\\R-ERROR-IMPLEMENTATION-20261013\\blobs\\C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stderr.txt",
+          "actual_stored_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+          "recorded_raw_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+          "stored_matches_recorded_raw": true
+        }
+      },
+      "observed_skip_lines": [],
+      "deferred_human_lines": [
+        "    social_test.go:209: DISPOSITION friend-add-authorization-denied DEFERRED_BY_HUMAN; runtime not executed; does not count as canonical PASS"
+      ],
+      "observed_summary": [
+        "PASS actual disposable PostgreSQL/NATS full Go suite with DB_TEST_ENABLE=1",
+        "Owned integration containers/volumes removed"
+      ],
+      "fresh_runtime": false
+    }
+  ],
+  "independently_verified": "Stored prior redacted output hashes and no server/runner/deploy/schema delta since770 verified. Prior live test result is historical corroboration only; no new PG/NATS execution claimed. Unredacted raw stdout is unavailable."
+}

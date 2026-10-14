@@ -1,0 +1,206 @@
+
+FILE 25 clients\desktop\src\ui\build.config.mjs HASH 4acccc55c794b734f391f81468e7e978a6420dd05c64cb9f2ba3955b2c3a5f0d
+1: // Copy approved runtime distributions and static assets; no bundler/runtime.
+2: // Explicit Node standard library for build-time copies; never a guest runtime.
+3: const {mkdir,copyFile,cp}=process.getBuiltinModule("fs").promises;
+4: await mkdir("dist/vendor",{recursive:true});
+5: for(const name of ["index.html","style.css","logo.png"])await copyFile("src/ui/"+name,"dist/"+name);
+6: for(const name of ["react","react-dom"])await copyFile("src/ui/"+name+".config.mjs","dist/"+name+".mjs");
+7: await copyFile("node_modules/react/umd/react.production.min.js","dist/vendor/react.js");
+8: await copyFile("node_modules/react-dom/umd/react-dom.production.min.js","dist/vendor/react-dom.js");
+9: await cp("node_modules/@tauri-apps/api","dist/vendor/tauri",{recursive:true});
+
+FILE 26 clients\desktop\src\ui\components\AIPlaceholder.tsx HASH 6ca11c2ed40f7f697b0bd5ce371838233e1a56ab99a8e6619d40e4bc76cbe090
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function AIPlaceholder({}:{}){
+7:   const t=useText();
+8: return <section className="page-content"><div className="glass future"><div className="orb">✧</div><p className="eyebrow">{t("ai.eyebrow")}</p><h2>{t("ai.title")}</h2><p>{t("ai.description")}</p><span className="badge">{t("ai.later")}</span><p className="muted">{t("ai.detail")}</p></div></section>;
+9: }
+
+FILE 27 clients\desktop\src\ui\components\AuthPanel.tsx HASH ff7aec0dd885a4d20dffadbafdca6032932a52c816b99ea3320002e0130fb890
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function AuthPanel({s,registering,setRegistering,confirmation,setConfirmation,registered,setRegistered,username,setUsername,password,setPassword,register,login,restore,run}:{s:Pick<WorkspaceState,"busy"|"endpoint">;registering:boolean;setRegistering:(value:boolean)=>void;confirmation:string;setConfirmation:(value:string)=>void;registered:boolean;setRegistered:(value:boolean)=>void;username:string;setUsername:(value:string)=>void;password[REDACTED];setPassword:(value:string)=>void;register:(user:string,password[REDACTED],confirmation:string)=>Promise<boolean>;login:(endpoint:string,user:string,password[REDACTED];restore:(endpoint:string)=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+7:   const t=useText();
+8: return <section className="login-layout"><div className="welcome"><img className="login-logo" src="logo.png" alt={t("brand.logo")}/><p className="eyebrow">{t("auth.welcomeEyebrow")}</p><h2>{t("auth.stayClose")}<br/>{t("auth.thinkBeyond")}</h2><p>{t("auth.description")}</p></div><form className="glass login" onSubmit={e=>{e.preventDefault();if(registering){run(register(username,password,confirmation).then(ok=>{if(ok){setRegistered(true);setRegistering(false);setPassword("");setConfirmation("");}}));}else{run(login(s.endpoint,username,password));setPassword("");}}}><p className="eyebrow">{registering?t("auth.join"):t("auth.welcomeBack")}</p><h2>{registering?t("auth.createTitle"):t("auth.openTitle")}</h2>{registered&&!registering&&<p role="status">{t("auth.created")}</p>}<label>{t("auth.username")}<input autoComplete="username" value={username} onChange={e=>setUsername(e.target.value)} required minLength={registering?3:undefined} maxLength={64} pattern={registering?"[A-Za-z0-9][A-Za-z0-9._-]*":undefined}/></label><label>{t("auth.password")}<input type="password" autoComplete={registering?"new-password":"current-password"} value={password} onChange={e=>setPassword(e.target.value)} required minLength={registering?12:undefined} maxLength={256}/></label>{registering&&<><label>{t("auth.confirmPassword")}<input type="password" autoComplete="new-password" value={confirmation} onChange={e=>setConfirmation(e.target.value)} required maxLength={256}/></label><small>{t("auth.passwordHint")}</small></>}<button className="primary" disabled={s.busy||!username||!password||(registering&&!confirmation)}>{s.busy?t("auth.wait"):registering?t("auth.create"):t("auth.signIn")}</button><button type="button" className="quiet" disabled={s.busy} onClick={()=>{setRegistering(!registering);setPassword("");setConfirmation("");setRegistered(false);}}>{registering?t("auth.existing"):t("auth.new")}</button>{!registering&&<button type="button" className="quiet resume" disabled={s.busy} onClick={()=>run(restore(s.endpoint))}>{t("auth.resume")}</button>}</form></section>;
+9: }
+
+FILE 28 clients\desktop\src\ui\components\Composer.tsx HASH ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: import {resizedComposerHeight} from "../composer.js";
+7: export function Composer({s,draft,setDraft,send,run,textarea,composerHeight,setComposerHeight,resize}:{s:Pick<WorkspaceState,"selected"|"session">;draft:string;setDraft:(value:string)=>void;send:(text:string)=>Promise<void>;run:(promise:Promise<unknown>)=>void;textarea:React.RefObject<HTMLTextAreaElement>;composerHeight:number;setComposerHeight:React.Dispatch<React.SetStateAction<number>>;resize:React.MutableRefObject<{y:number;height:number}|null>}){
+8:   const t=useText();
+9: return <><form className="composer" onSubmit={e=>{e.preventDefault();if(draft.trim()){run(send(draft));setDraft("");}}}><label className="sr-only" htmlFor="message">{t("chat.message")}</label><div className="composer-editor"><textarea ref={textarea} style={{height:composerHeight}} id="message" placeholder={t("chat.write")} value={draft} maxLength={4096} disabled={!s.selected||!s.session} onChange={e=>setDraft(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();if(draft.trim()){run(send(draft));setDraft("");}}}}/><button type="button" className="composer-resize" aria-label={t("chat.resize")} title={t("chat.drag")} onPointerDown={e=>{if(e.button!==0)return;e.preventDefault();resize.current={y:e.clientY,height:textarea.current?.getBoundingClientRect().height??composerHeight};e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e=>{if(resize.current)setComposerHeight(resizedComposerHeight(resize.current.height,resize.current.y,e.clientY));}} onPointerUp={()=>{resize.current=null;}} onPointerCancel={()=>{resize.current=null;}} onLostPointerCapture={()=>{resize.current=null;}} onKeyDown={e=>{if(e.key==="ArrowUp"||e.key==="ArrowDown"){e.preventDefault();setComposerHeight(value=>resizedComposerHeight(value,0,e.key==="ArrowUp"?-10:10));}}}><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 13 8-8m-3 8 3-3"/></svg></button></div><button className="primary" disabled={!s.selected||!s.session||!draft.trim()}>{t("chat.send")}</button></form><p className="composer-help">{t("chat.keyboard")}</p></>;
+10: }
+
+FILE 29 clients\desktop\src\ui\components\ConversationList.tsx HASH 6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function ConversationList({s,page,open,run}:{s:Pick<WorkspaceState,"conversations"|"friends"|"previews"|"selected"|"unavailable">;page:(page:WorkspaceState["page"])=>void;open:(id:string)=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+7:   const t=useText();
+8: return <aside className="conversation-list glass"><div className="section-heading"><h2>{t("chat.messages")}</h2><button className="quiet" onClick={()=>page("Friends")}>{t("chat.new")}</button></div><p className="muted list-caption">{t("chat.caption")}</p>{s.conversations.length===0?<div className="empty"><span>◫</span><h3>{t("chat.next")}</h3><p>{t("chat.addHint")}</p><button onClick={()=>page("Friends")}>{t("chat.find")}</button></div>:s.conversations.map(id=>{const f=s.friends.find(f=>f.directConversationId===id);return <button key={id} className={s.selected===id?"conversation active":"conversation"} onClick={()=>run(open(id))}><span className="avatar">{f?.user.displayName[0]??"#"}</span><div><strong>{f?.user.displayName??t("chat.conversationId",{id:id.slice(0,8)})}</strong><small>{s.unavailable.includes(id)?t("chat.access"):s.previews[id]?.text||t("chat.noMessages")}</small></div></button>;})}</aside>;
+9: }
+
+FILE 30 clients\desktop\src\ui\components\FriendsPanel.tsx HASH ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function FriendsPanel({s,query,setQuery,search,add,open,run}:{s:Pick<WorkspaceState,"busy"|"friends"|"offlineAccount"|"results"|"session">;query:string;setQuery:(value:string)=>void;search:(query:string)=>Promise<void>;add:(id:string)=>Promise<void>;open:(id:string)=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+7:   const t=useText();
+8: return <section className="page-content"><div className="glass panel"><p className="eyebrow">{t("friends.eyebrow")}</p><h2>{t("friends.reach")}</h2><p className="muted">{t("friends.exact")}</p><form className="search" onSubmit={e=>{e.preventDefault();run(search(query));}}><input aria-label={t("friends.searchLabel")} value={query} onChange={e=>setQuery(e.target.value)} required/><button className="primary" disabled={s.busy||!s.session}>{s.busy?t("friends.searching"):t("friends.search")}</button></form>{s.results.length===0&&query&&<p className="muted">{t("friends.check")}</p>}{s.results.map(u=><div className="person" key={u.userId}><span className="avatar">{u.displayName[0]}</span><div><strong>{u.displayName}</strong><small>@{u.username}</small></div><button disabled={!s.session||u.userId===(s.session?.userId??s.offlineAccount)||s.busy} onClick={()=>run(add(u.userId))}>{t("friends.add")}</button></div>)}</div><div className="glass panel"><h2>{t("friends.your")}<small>{s.friends.length}</small></h2>{s.friends.length===0?<p className="muted">{t("friends.grow")}</p>:s.friends.map(f=><div className="person" key={f.friendshipId}><span className="avatar">{f.user.displayName[0]}</span><div><strong>{f.user.displayName}</strong><small>@{f.user.username}</small></div><button onClick={()=>run(open(f.directConversationId))}>{t("chat.message")}</button></div>)}</div></section>;
+9: }
+
+FILE 31 clients\desktop\src\ui\components\Header.tsx HASH 1c9a902cabb864b938974c28cb24c8c4b020f4a9e2441a60cb95d8cc13cb8f3e
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function Header({s,prefs,preferences,run}:{s:Pick<WorkspaceState,"connection"|"offlineAccount"|"page"|"session"|"sync">;prefs:Appearance;preferences:(value:Appearance)=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+7:   const t=useText();
+8: return <header className="topbar"><div><small className="eyebrow">{t("header.connected")}</small><h1>{(s.session||s.offlineAccount||!["Chat","Friends"].includes(s.page))?t("nav."+s.page.toLowerCase()):t("header.title")}</h1></div><div className="top-actions"><span className="sync">{s.sync==="syncing"?t("sync.syncing"):s.sync==="failed"?t("sync.attention"):s.connection==="offline"?t("sync.local"):t("sync.current")}</span><button className="quiet" onClick={()=>run(preferences({...prefs,theme:prefs.theme==="cold"?"warm":"cold"}))}>{prefs.theme==="cold"?t("settings.cold"):t("settings.warm")}</button></div></header>;
+9: }
+
+FILE 32 clients\desktop\src\ui\components\LanguagePanel.tsx HASH a2e5f0eac5f1d5887ff8a8c90d5d05e795cd0cab207850af604bfb3e22053204
+1: import React from "react";
+2: import {useText} from "../i18n/context.js";
+3: import {languageEntry,languageNames,locales,type Locale} from "../i18n/resources.js";
+4: export function LanguagePanel({language,selectLanguage,languageStored}:{language:Locale;selectLanguage:(value:Locale)=>Promise<void>;languageStored:boolean}){const t=useText();
+5:  return <fieldset className="language-panel"><legend>{languageEntry}</legend><div className="language-list" role="group" aria-label={languageEntry}>{locales.map((value,index)=><button type="button" key={value} lang={value} aria-pressed={language===value} onClick={()=>void selectLanguage(value)}>{languageNames[index]}</button>)}</div><p role="status" className={languageStored?"muted":"notice"}>{t(languageStored?"language.saved":"language.failed")}</p></fieldset>;
+6: }
+
+FILE 33 clients\desktop\src\ui\components\Messages.tsx HASH 628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5
+1: import {LanguageContext,useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: function stateKey(state:string|null):string {switch(state){case "SENT":return "chat.sent";case "SENDING":return "chat.sending";case "FAILED":return "chat.failed";default:throw new Error("Unknown message state");}}
+7: export function Messages({s,retry,run}:{s:Pick<WorkspaceState,"messages"|"offlineAccount"|"selected"|"session">;retry:(id:string)=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+8:   const t=useText();const locale=React.useContext(LanguageContext);
+9: return <div className="messages" role="log" aria-live="polite">{!s.selected?<div className="empty"><span>✧</span><h3>{t("chat.place")}</h3><p>{t("chat.choose")}</p></div>:s.messages.length===0?<div className="empty"><h3>{t("chat.fresh")}</h3><p>{t("chat.hello")}</p></div>:s.messages.map(m=>{const identity=m[0]??m[4];if(identity==null)throw new Error("Message identity missing");if(m[2]==null)throw new Error("Message content missing");const key=stateKey(m[3]);return <div key={identity} className={m[1]===(s.session?.userId??s.offlineAccount)?"message own":"message"}><div className="bubble">{m[2]}</div><small>{m[6]?new Date(m[6]).toLocaleTimeString(locale,{hour:"2-digit",minute:"2-digit"}):t("chat.now")} · {t(key)}{m[3]==="FAILED"&&m[1]===(s.session?.userId??s.offlineAccount)&&m[0]&&<button disabled={!s.session} onClick={()=>run(retry(m[0]!))}>{t("chat.retry")}</button>}</small></div>;})}</div>;
+10: }
+
+FILE 34 clients\desktop\src\ui\components\Navigation.tsx HASH 03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function Navigation({s,page:navigate}:{s:Pick<WorkspaceState,"page"|"profile"|"session"|"connection">;page:(page:WorkspaceState["page"])=>void}){
+7:   const t=useText();
+8: return <aside className="rail"><div className="brand" aria-label={t("brand.name")}><img src="logo.png" alt={t("brand.logo")}/>IM<span>+</span></div><div className="brand-caption">PLUGWORLDIM</div>
+9:       <nav aria-label={t("nav.main")}>{(["Chat","Friends","AI","Plugin"] as const).map((page,i)=><button key={page} className={s.page===page?"nav selected":"nav"} onClick={()=>navigate(page)}><span className="nav-icon" aria-hidden="true">{["◫","♧","✧","⊞"][i]}</span>{t("nav."+page.toLowerCase())}{page==="AI"&&<small>{t("nav.soon")}</small>}</button>)}</nav>
+10:       <div className="rail-bottom"><div className="connection" title={s.session?t("nav.signedIn"):t("nav.local")}><span className={"dot "+(s.connection==="ready"?"ready":"offline")}/>{s.connection==="ready"?t("connection.ready"):s.connection==="binding"?t("connection.connecting"):t("connection.offlineShort")}</div><button className="nav" onClick={()=>navigate("Settings")}>{t("nav.settings")}</button><div className="identity"><span className="avatar">{s.profile?.displayName[0]??"+"}</span><div><strong>{s.profile?.displayName??t("nav.workspace")}</strong><small>{s.session?t("nav.personal"):t("nav.signIn")}</small></div></div></div>
+11:     </aside>;
+12: }
+
+FILE 35 clients\desktop\src\ui\components\PluginPlaceholder.tsx HASH b0b98a48008cc22334c1aa321fa3cd41cb5bb59032e544b01ca9800b338d83bb
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function PluginPlaceholder({}:{}){
+7:   const t=useText();
+8: return <section className="page-content"><div className="glass panel"><p className="eyebrow">{t("plugin.eyebrow")}</p><h2>{t("plugin.title")}</h2><p>{t("plugin.description")}</p><div className="empty"><span>⊞</span><h3>{t("plugin.unavailable")}</h3><p>{t("plugin.detail")}</p></div><span className="badge">{t("plugin.badge")}</span></div></section>;
+9: }
+
+FILE 36 clients\desktop\src\ui\components\ProfilePanel.tsx HASH 1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: export function ProfilePanel({s,refresh,disconnect,reconnect,testNotification,logout,run}:{s:Pick<WorkspaceState,"profile"|"session"|"offlineAccount"|"busy">;refresh:()=>Promise<void>;disconnect:()=>void;reconnect:()=>Promise<void>;testNotification:()=>Promise<void>;logout:()=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+5:   const t=useText();return <div className="glass panel"><h2>{t("profile.session")}</h2><div className="person"><span className="avatar">{s.profile?.displayName[0]??"+"}</span><div><strong>{s.profile?.displayName??t("profile.unavailable")}</strong><small>{s.profile?"@"+s.profile.username:s.session?t("profile.reconnect"):t("profile.signIn")}</small></div></div><div className="button-row"><button disabled={s.busy||(!s.session&&!s.offlineAccount)} onClick={()=>run(refresh())}>{t("auth.refresh")}</button><button disabled={!s.session} onClick={()=>disconnect()}>{t("auth.offline")}</button><button disabled={!s.session} onClick={()=>run(reconnect())}>{t("auth.reconnect")}</button><button onClick={()=>run(testNotification())}>{t("auth.testNotification")}</button><button className="danger" disabled={s.busy||(!s.session&&!s.offlineAccount)} onClick={()=>run(logout())}>{t("auth.signOut")}</button></div><p className="muted">{t("profile.shortcut")}</p></div>;}
+
+FILE 37 clients\desktop\src\ui\components\SettingsPanel.tsx HASH b1e99a6c6887c950a57d473f6627972b847575d0a1e8083d416401e684e68e73
+1: import {LanguagePanel} from "./LanguagePanel.js";
+2: import type {Locale} from "../i18n/resources.js";
+3: import {useText} from "../i18n/context.js";
+4: import {ProfilePanel} from "./ProfilePanel.js";
+5: import React from "react";
+6: import type {WorkspaceState} from "../../application/ui/workspace.js";
+7: import type {Appearance} from "../../application/ui/native.js";
+8: import type {Friend} from "../../application/ui/auth.js";
+9: export function SettingsPanel({language,selectLanguage,languageStored,s,prefs,preferences,refresh,disconnect,reconnect,testNotification,logout,run}:{language:Locale;selectLanguage:(value:Locale)=>Promise<void>;languageStored:boolean;s:Pick<WorkspaceState,"busy"|"offlineAccount"|"profile"|"session">;prefs:Appearance;preferences:(value:Appearance)=>Promise<void>;refresh:()=>Promise<void>;disconnect:()=>void;reconnect:()=>Promise<void>;testNotification:()=>Promise<void>;logout:()=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+10:   const t=useText();
+11: return <section className="page-content settings"><div className="glass panel"><p className="eyebrow">{t("settings.eyebrow")}</p><LanguagePanel language={language} selectLanguage={selectLanguage} languageStored={languageStored}/><h2>{t("settings.appearance")}</h2><p className="muted">{t("settings.independent")}</p><fieldset><legend>{t("settings.theme")}</legend><div className="theme-choices">{(["cold","warm"] as const).map(theme=><button key={theme} className={prefs.theme===theme?"theme-choice active":"theme-choice"} aria-pressed={prefs.theme===theme} onClick={()=>run(preferences({...prefs,theme:theme}))}><span className={"swatch "+theme}/><strong>{theme==="cold"?t("settings.cold"):t("settings.warm")}</strong><small>{theme==="cold"?t("settings.coldHint"):t("settings.warmHint")}</small></button>)}</div></fieldset><label>{t("settings.font")}<strong>{prefs.fontSize}px</strong><input type="range" min="14" max="22" step="1" value={prefs.fontSize} onChange={e=>run(preferences({...prefs,fontSize:Number(e.target.value)}))}/></label><label>{t("settings.spacing")}<strong>{prefs.density===0.8?t("settings.compact"):prefs.density===1.2?t("settings.comfort"):t("settings.standard")}</strong><input type="range" min="0.8" max="1.2" step="0.2" value={prefs.density} onChange={e=>run(preferences({...prefs,density:Number(e.target.value)}))}/></label><p className="muted">{t("settings.saved")}</p></div><ProfilePanel s={s} refresh={refresh} disconnect={disconnect} reconnect={reconnect} testNotification={testNotification} logout={logout} run={run}/></section>;
+12: }
+
+FILE 38 clients\desktop\src\ui\components\Shell.tsx HASH e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4
+1: import {LanguageContext,useText,useDisplayText} from "../i18n/context.js";
+2: import {WindowBar} from "./WindowBar.js";
+3: import {Navigation} from "./Navigation.js";
+4: import {Header} from "./Header.js";
+5: import {AuthPanel} from "./AuthPanel.js";
+6: import {ConversationList} from "./ConversationList.js";
+7: import {Messages} from "./Messages.js";
+8: import {Composer} from "./Composer.js";
+9: import {FriendsPanel} from "./FriendsPanel.js";
+10: import {AIPlaceholder} from "./AIPlaceholder.js";
+11: import {PluginPlaceholder} from "./PluginPlaceholder.js";
+12: import {SettingsPanel} from "./SettingsPanel.js";
+13: import React,{useEffect,useRef,useState,useSyncExternalStore} from "react";
+14: import {Workspace} from "../../application/ui/workspace.js";
+15: import {windowControl,windowMaximized} from "../../application/ui/native.js";
+16: import {resizedComposerHeight} from "../composer.js";
+17: const app=new Workspace();
+18: export function Shell(){const s=useSyncExternalStore(app.observe,app.snapshot);
+19:  useEffect(()=>{document.documentElement.lang=s.language;},[s.language]);
+20:  return <LanguageContext.Provider value={s.language}><WorkspaceShell/></LanguageContext.Provider>;
+21: }
+22: function WorkspaceShell(){const t=useText();const display=useDisplayText();
+23:   const s=useSyncExternalStore(app.observe,app.snapshot),[registering,setRegistering]=useState(false),[confirmation,setConfirmation]=useState(""),[registered,setRegistered]=useState(false),[username,setUsername]=useState(""),[password,setPassword]=useState(""),[query,setQuery]=useState(""),[draft,setDraft]=useState(""),[maximized,setMaximized]=useState(false);
+24:   const [composerHeight,setComposerHeight]=useState(72),textarea=useRef<HTMLTextAreaElement>(null),resize=useRef<{y:number;height:number}|null>(null);
+25:   useEffect(()=>{void app.start();},[]);
+26:   useEffect(()=>{let active=true;const refresh=()=>{void windowMaximized().then(value=>{if(active)setMaximized(value);});};refresh();window.addEventListener("resize",refresh);return()=>{active=false;window.removeEventListener("resize",refresh);};},[]);
+27:   const add=app.add.bind(app),disconnect=app.disconnect.bind(app),login=app.login.bind(app),logout=app.logout.bind(app),open=app.open.bind(app),page=app.page.bind(app),preferences=app.preferences.bind(app),reconnect=app.reconnect.bind(app),refresh=app.refresh.bind(app),register=app.register.bind(app),restore=app.restore.bind(app),retry=app.retry.bind(app),search=app.search.bind(app),send=app.send.bind(app),testNotification=app.testNotification.bind(app);
+28:   const prefs=s.appearance,friend=s.friends.find(f=>f.directConversationId===s.selected),title=friend?.user.displayName??(s.selected?t("chat.conversationId",{id:s.selected.slice(0,8)}):t("chat.your"));
+29:   const run=(p:Promise<unknown>)=>{void p;};
+30:   const authenticated=!!(s.session||s.offlineAccount);
+31:   return <div className={"app-window "+prefs.theme} style={{"--font":prefs.fontSize+"px","--density":prefs.density} as React.CSSProperties}>
+32:     <WindowBar maximized={maximized} windowControl={windowControl} run={run}/>
+33:     <div className={"workspace "+(authenticated?"authenticated":"anonymous")}>
+34:     {authenticated&&<Navigation s={s} page={page}/>}<main>
+35:       {authenticated&&<Header s={s} prefs={prefs} preferences={preferences} run={run}/>}
+36:       {s.error&&<div className="notice" role="alert"><span>{display(s.error)}</span>{s.session&&<button disabled={!s.session} onClick={()=>run(reconnect())}>{t("auth.reconnect")}</button>}</div>}
+37:       {!authenticated?<AuthPanel s={s} registering={registering} setRegistering={setRegistering} confirmation={confirmation} setConfirmation={setConfirmation} registered={registered} setRegistered={setRegistered} username={username} setUsername={setUsername} password[REDACTED] setPassword={setPassword} register={register} login={login} restore={restore} run={run}/>:
+38:       s.page==="Chat"?<section className="chat-layout"><ConversationList s={s} page={page} open={open} run={run}/>
+39:       <div className="chat-pane glass">{s.selected&&<><div className="chat-heading"><span className="avatar">{friend?.user.displayName[0]??"#"}</span><div><h2>{title}</h2><small>{s.connection==="ready"?t("sync.connected"):t("sync.offline")}</small></div><button className="quiet" disabled={!s.session} onClick={()=>run(reconnect())}>{t("auth.reconnect")}</button></div><Messages s={s} retry={retry} run={run}/><Composer s={s} draft={draft} setDraft={setDraft} send={send} run={run} textarea={textarea} composerHeight={composerHeight} setComposerHeight={setComposerHeight} resize={resize}/></>}</div></section>:
+40:       s.page==="Friends"?<FriendsPanel s={s} query={query} setQuery={setQuery} search={search} add={add} open={open} run={run}/>:
+41:       s.page==="AI"?<AIPlaceholder />:
+42:       s.page==="Plugin"?<PluginPlaceholder />:
+43:       <SettingsPanel selectLanguage={app.selectLanguage.bind(app)} language={s.language} languageStored={s.languageStored} s={s} prefs={prefs} preferences={preferences} refresh={refresh} disconnect={disconnect} reconnect={reconnect} testNotification={testNotification} logout={logout} run={run}/>}
+44:     </main></div></div>;
+45: }
+46: 
+
+FILE 39 clients\desktop\src\ui\components\WindowBar.tsx HASH 9fee03a2e5dc2e6ad9627f8ad63c4cfd9c9ea237f67ecc3fefd5bb03c60e5296
+1: import {useText} from "../i18n/context.js";
+2: import React from "react";
+3: import type {WorkspaceState} from "../../application/ui/workspace.js";
+4: import type {Appearance} from "../../application/ui/native.js";
+5: import type {Friend} from "../../application/ui/auth.js";
+6: export function WindowBar({maximized,windowControl,run}:{maximized:boolean;windowControl:(action:"drag"|"maximize"|"minimize"|"close")=>Promise<void>;run:(promise:Promise<unknown>)=>void}){
+7:   const t=useText();
+8: return <div className="window-bar"><div className="window-drag" onPointerDown={e=>{if(e.button===0)run(windowControl("drag"));}} onDoubleClick={()=>run(windowControl("maximize"))}><img src="logo.png" alt=""/><span>IM+ · PlugWorldIM</span></div><div className="window-actions"><button title={t("window.minimize")} aria-label={t("window.minimize")} onClick={()=>run(windowControl("minimize"))}>−</button><button title={maximized?t("window.restore"):t("window.maximize")} aria-label={maximized?t("window.restore"):t("window.maximize")} onClick={()=>run(windowControl("maximize"))}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">{maximized?<><path d="M8 5V4a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-1"/><rect x="4" y="7" width="13" height="13" rx="1"/></>:<rect x="5" y="5" width="14" height="14" rx="1"/>}</svg></button><button className="window-close" aria-label={t("window.close")} onClick={()=>run(windowControl("close"))}>×</button></div></div>;
+9: }
+
+FILE 40 clients\desktop\src\ui\composer.ts HASH c4da6d567a3e8c088d7c20baa5f51a86c118e8c72ec3b4a4f8c1d17146157992
+1: export function resizedComposerHeight(height:number,startY:number,currentY:number){return Math.max(42,Math.min(150,height+startY-currentY));}

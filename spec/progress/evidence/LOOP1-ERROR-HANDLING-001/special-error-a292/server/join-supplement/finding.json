@@ -1,0 +1,67 @@
+{
+  "candidate": "a292f516f622651ae62595163e479c13fff78c1d",
+  "result": "FAIL",
+  "findings": [
+    {
+      "id": "F-OUTBOX-MIXED-CONNECT-ROOT",
+      "priority": 1,
+      "path": "backend/go/core/outbox.go",
+      "line": 29,
+      "trigger": "Actual default pgxpool Begin returns ConnectError errors.Join IPv6 network refusal + IPv4 internalXX000",
+      "masking": "errors.As finds one network branch; wholeerror logged/retried and unknownSQLSTATE hidden until cancellation",
+      "present_requirement": "error-handling.md unknown/internal propagation; Frozen5.2 knownOutbox recovery",
+      "smallest_fix": "Local existingboundary classify only completeknowntransport tree; return originalcompleteerror if anyunknownbranch",
+      "actual_reproduction": "join_probe.go and outbox_probe.go both0 demonstratingactualproducer and actualproductconsumer; noDial/Lookup/customcallback injection",
+      "runtime_limit": "ControlledPG wireendpoint, not realPG/TLS deploymentacceptance"
+    }
+  ],
+  "source_input_hashes": [
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\core\\outbox.go",
+      "sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1"
+    },
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\core\\message.go",
+      "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+    },
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\main.go",
+      "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+    },
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\shared\\config.go",
+      "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\pgconn\\pgconn.go",
+      "sha256": "08dbe55fb43ac2938e09f055cc864fcb7a95116d5e8ff0cc1178ad2a002f9245"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\pgconn\\errors.go",
+      "sha256": "401d20942ba44b9663c4bf7ad9a22dbab1b24ec2529da57eb9030253870e72d2"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\pgxpool\\pool.go",
+      "sha256": "88fc943102cb2283b15ab2d5b4d412eb9fa4db91e2d572f2d8fd32fd848a282f"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\tx.go",
+      "sha256": "c5ef70c013e1bc4c3a2883dc7249b8d9818e95b43b847c5038a44977ff665157"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\conn.go",
+      "sha256": "65ca1e5301b0fe4321a52465b6720bc8c1fd8591e329d556098b75dd8719b92e"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\rows.go",
+      "sha256": "14985518a35b5a90cfb9d8479e0f10e7a564b05a00e70e898079b3ce91227deb"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\nats-io\\nats.go@v1.43.0\\nats.go",
+      "sha256": "de14b5ed0954af8e7fd10e3e3047e942d5650f46ee0c1a6a86173327b613dbc3"
+    }
+  ],
+  "prior_server_pass_superseded": true,
+  "original_server_receipt_sha256": "8ecf87f6426387f1919b485d6ddd0c8d00c9a28bddd6b1136379b08dd8d8046f",
+  "git_status": ""
+}

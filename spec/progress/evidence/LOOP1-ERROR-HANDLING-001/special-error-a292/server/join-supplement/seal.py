@@ -1,0 +1,7 @@
+from pathlib import Path
+import hashlib,json,subprocess
+O=Path(__file__).parent;sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();D=O/'research/runs/R-SERVER-JOIN-A292';es=[json.loads(l) for l in (D/'events.jsonl').read_text().splitlines()];assert es[-1]['event_type']=='run_finished' and es[-1]['data']['result']=='FAIL'
+started={e['data']['command_id']:e['data'] for e in es if e['event_type']=='command_started'};commands=[{**started[e['data']['command_id']],**e['data']} for e in es if e['event_type']=='command_finished'];(O/'commands.json').write_text(json.dumps(commands,indent=2)+'\n')
+head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip();status=subprocess.check_output(['git','status','--porcelain'],text=True).strip();assert head=='a292f516f622651ae62595163e479c13fff78c1d' and not status
+j={'candidate':head,'result':'FAIL','finding':'F-OUTBOX-MIXED-CONNECT-ROOT','final_clean_status':status,'supersedes_earlier_server_PASS':True,'original_server_receipt_sha256':sha(O.parent/'final-receipt.json'),'recorder_finished_structural':True,'recorder_events':11,'complete_prospective_trace':False,'files':{str(p.relative_to(O)).replace('\\','/'):sha(p) for p in O.rglob('*') if p.is_file() and p.name!='sealed-receipt.json'}}
+(O/'sealed-receipt.json').write_text(json.dumps(j,indent=2)+'\n');print('SEALED FAIL',sha(O/'sealed-receipt.json'),len(j['files']),'files,clean',notstatus if False else not status)

@@ -1,0 +1,65 @@
+{
+  "observed_prior_commands": [
+    {
+      "command": {
+        "started_at": "2026-10-13T08:50:36.413014Z",
+        "argv": [
+          "python",
+          "-Xutf8",
+          "-B",
+          "tests/clients/errors/go_live.py"
+        ],
+        "command_id": "C-3f868fe1-81b3-43ef-90dc-b7504443ee56",
+        "cwd": ".",
+        "secret_redaction_applied": true,
+        "finished_at": "2026-10-13T08:51:31.993901Z",
+        "duration_ms": 55563.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "stderr_blob": "blobs/C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stderr.txt",
+        "stderr_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+        "stdout_blob": "blobs/C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stdout.txt",
+        "stdout_sha256": "27354decd3ab66350c7a724b27e0248426f13813e30dcbf3c300b085d5591b67"
+      },
+      "stored_blobs": [
+        {
+          "which": "stdout",
+          "actual_stored_sha256": "c7ade5f6cb98bfd398a9f88c51efef5124ef68b4ca5ca24ff13796dffeff785e",
+          "expected_prior_sealed_stored_sha256": "c7ade5f6cb98bfd398a9f88c51efef5124ef68b4ca5ca24ff13796dffeff785e",
+          "recorded_raw_sha256": "27354decd3ab66350c7a724b27e0248426f13813e30dcbf3c300b085d5591b67",
+          "equal_raw_hash": false,
+          "redaction_declared": true,
+          "unredacted_raw_output_available": false
+        },
+        {
+          "which": "stderr",
+          "actual_stored_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+          "expected_prior_sealed_stored_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+          "recorded_raw_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+          "equal_raw_hash": true,
+          "redaction_declared": true,
+          "unredacted_raw_output_available": true
+        }
+      ],
+      "observed_skips": [],
+      "disposition": [
+        "    social_test.go:209: DISPOSITION friend-add-authorization-denied DEFERRED_BY_HUMAN; runtime not executed; does not count as canonical PASS"
+      ],
+      "pass_lines": [
+        "    --- PASS: TestCanonicalSocialFixturesAndAtomicity/friend-target-not-found (0.00s)",
+        "    --- PASS: TestCanonicalSocialFixturesAndAtomicity/friend-self-rejected (0.00s)",
+        "--- PASS: TestConcurrentReverseFriendAdd (0.23s)",
+        "    social_test.go:209: DISPOSITION friend-add-authorization-denied DEFERRED_BY_HUMAN; runtime not executed; does not count as canonical PASS",
+        "--- PASS: TestSocialLoop1Applicability (0.01s)",
+        "--- PASS: TestSocialMutationRechecksSessionAfterUserLock (0.27s)",
+        "PASS",
+        "PASS actual disposable PostgreSQL/NATS full Go suite with DB_TEST_ENABLE=1"
+      ],
+      "fresh_runtime": false
+    }
+  ],
+  "server_source_range": "7700645..a292f516f622651ae62595163e479c13fff78c1d",
+  "server_source_changed": [],
+  "current_runner_sha256": "08b48195eef3f51f85f8cb5a3bb3b4e7bbb377c32dba706c6df9c9a66117ca96",
+  "qualification": "Prior controlled disposable PG/NATS evidence exact recorded blob hashes verified; unchanged server source since initialcandidate7700645. Not freshly rerun; ordinary fresh Go tests independently run in server helper with explicit live SKIPs. DEFERRED friend403 remains notPASS."
+}

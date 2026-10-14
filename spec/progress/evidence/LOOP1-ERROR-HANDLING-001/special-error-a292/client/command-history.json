@@ -1,0 +1,746 @@
+[
+  {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-Content spec/architecture/frozen-architecture.md; Get-Content spec/architecture/decisions/ADR-000{3,5,6,8,9}*.md; Get-Content spec/architecture/decisions/ADR-001{0,1,2}*.md; Get-Content spec/domain/*.md; Get-Content spec/invariants/*.md; Get-Content spec/acceptance/client-gui.md; Get-Content spec/acceptance/client-supplement.md; Get-Content contracts/errors/*.json; Get-Content contracts/websocket/*.json; Get-Content contracts/http/*.yaml"
+    ],
+    "command_id": "C-ac8a44a3-f98c-4f8a-a183-5ac861f95e9b",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-ac8a44a3-f98c-4f8a-a183-5ac861f95e9b",
+    "duration_ms": 2000.0,
+    "exit_code": 1,
+    "result": "FAIL",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-ac8a44a3-f98c-4f8a-a183-5ac861f95e9b.stderr.txt",
+    "stderr_sha256": "370046699df7f715848dd1edb0568d816ece8160c9103bab4c1f162467080156",
+    "stdout_blob": "blobs/C-ac8a44a3-f98c-4f8a-a183-5ac861f95e9b.stdout.txt",
+    "stdout_sha256": "948279b0c032ab3299df23105a8564894fa0b96eb6c85a7b0d8b7798408ddce1"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "authority"
+    ],
+    "command_id": "C-80203097-c740-40cb-a091-b2a12f6970e0",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-80203097-c740-40cb-a091-b2a12f6970e0",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-80203097-c740-40cb-a091-b2a12f6970e0.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-80203097-c740-40cb-a091-b2a12f6970e0.stdout.txt",
+    "stdout_sha256": "08d2cd4038a8cd9d9e9bcae03b7ed72d5d0e4159de38a0844a153ccc031dc422"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "protocol-sdk/src"
+    ],
+    "command_id": "C-40f60f3d-9ca5-4b98-8814-2f49d4d7b2d3",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-40f60f3d-9ca5-4b98-8814-2f49d4d7b2d3",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-40f60f3d-9ca5-4b98-8814-2f49d4d7b2d3.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-40f60f3d-9ca5-4b98-8814-2f49d4d7b2d3.stdout.txt",
+    "stdout_sha256": "ed174a26cbdaeccb2e617103f926dcf257df75b3f0e3684e561db52958d9118c"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "desktop/src/application"
+    ],
+    "command_id": "C-62653db1-e027-489c-8b32-5c68be5b331c",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-62653db1-e027-489c-8b32-5c68be5b331c",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-62653db1-e027-489c-8b32-5c68be5b331c.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-62653db1-e027-489c-8b32-5c68be5b331c.stdout.txt",
+    "stdout_sha256": "768f86573104f9988fb6de34aaad3bd872aa75bd138ddffec27957becb183f8c"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "desktop/src-tauri/src"
+    ],
+    "command_id": "C-60b30b66-5f53-4d15-b931-9f508d720821",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-60b30b66-5f53-4d15-b931-9f508d720821",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-60b30b66-5f53-4d15-b931-9f508d720821.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-60b30b66-5f53-4d15-b931-9f508d720821.stdout.txt",
+    "stdout_sha256": "268f1fde9fce8c4eb2a30c8068fefdd1338b2b66106cd71465be08210342f93c"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/send"
+    ],
+    "command_id": "C-894a8ac6-d364-46c7-bf85-28954a7a62f7",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-894a8ac6-d364-46c7-bf85-28954a7a62f7",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-894a8ac6-d364-46c7-bf85-28954a7a62f7.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-894a8ac6-d364-46c7-bf85-28954a7a62f7.stdout.txt",
+    "stdout_sha256": "a140da23e88870ab940ab099b982483f8b7096145cf7009ab008814a64d0745e"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/sync"
+    ],
+    "command_id": "C-414daf2b-ab82-404a-8925-8277d206747d",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-414daf2b-ab82-404a-8925-8277d206747d",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-414daf2b-ab82-404a-8925-8277d206747d.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-414daf2b-ab82-404a-8925-8277d206747d.stdout.txt",
+    "stdout_sha256": "51ec6fe60131e4b8be15f3bc3303365a1285372c23bf37476c0787a0b38542cf"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/ui/WorkspaceViewModel.kt"
+    ],
+    "command_id": "C-2c4fee79-08a1-4d84-8d15-659a400cca98",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-2c4fee79-08a1-4d84-8d15-659a400cca98",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-2c4fee79-08a1-4d84-8d15-659a400cca98.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-2c4fee79-08a1-4d84-8d15-659a400cca98.stdout.txt",
+    "stdout_sha256": "603b0a9221741737b103400335aaa2b69e73e2ea4f1818e016cc6174845f7e0e"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/ui/Auth.kt"
+    ],
+    "command_id": "C-666e8611-b1b5-480c-b463-ae8e6468a2b4",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-666e8611-b1b5-480c-b463-ae8e6468a2b4",
+    "duration_ms": 63.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-666e8611-b1b5-480c-b463-ae8e6468a2b4.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-666e8611-b1b5-480c-b463-ae8e6468a2b4.stdout.txt",
+    "stdout_sha256": "2a9c84f0882fe7e74ea576b160dd5225e796aa383928941cd8487ff524f8fc23"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/ui/Preferences.kt"
+    ],
+    "command_id": "C-70edf404-b7d7-4739-99c2-6359f3caae7a",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-70edf404-b7d7-4739-99c2-6359f3caae7a",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-70edf404-b7d7-4739-99c2-6359f3caae7a.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-70edf404-b7d7-4739-99c2-6359f3caae7a.stdout.txt",
+    "stdout_sha256": "cb50ee0cf5807a58597c0d3912781811de49e5e13e23a0d1df82bd218af80814"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "application/ui/auth.ts"
+    ],
+    "command_id": "C-09f9b722-1fda-454e-bc15-185c372b90fd",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-09f9b722-1fda-454e-bc15-185c372b90fd",
+    "duration_ms": 31.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-09f9b722-1fda-454e-bc15-185c372b90fd.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-09f9b722-1fda-454e-bc15-185c372b90fd.stdout.txt",
+    "stdout_sha256": "8aee4109d601591648a2ab86306fc0d612904b4cdfc7f15059a1a17893ceb03f"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "sync/application.ts"
+    ],
+    "command_id": "C-380df609-1076-49b7-9d4d-6d8ed0b4020f",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-380df609-1076-49b7-9d4d-6d8ed0b4020f",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-380df609-1076-49b7-9d4d-6d8ed0b4020f.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-380df609-1076-49b7-9d4d-6d8ed0b4020f.stdout.txt",
+    "stdout_sha256": "27186970df5fea965a8cccfe5fc095ffc7f95215badc35a9be6f86347279dea6"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/storage"
+    ],
+    "command_id": "C-0eeecb59-98c3-4f5d-b93a-9a8644606ead",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-0eeecb59-98c3-4f5d-b93a-9a8644606ead",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-0eeecb59-98c3-4f5d-b93a-9a8644606ead.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-0eeecb59-98c3-4f5d-b93a-9a8644606ead.stdout.txt",
+    "stdout_sha256": "1ece49f58bc73ce4c242af1843a62d741ae42b62300ad40644033299822a9823"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "desktop/src/ui/components"
+    ],
+    "command_id": "C-0a897c5c-d528-4ab4-868f-d84c60f7c547",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-0a897c5c-d528-4ab4-868f-d84c60f7c547",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-0a897c5c-d528-4ab4-868f-d84c60f7c547.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-0a897c5c-d528-4ab4-868f-d84c60f7c547.stdout.txt",
+    "stdout_sha256": "3da791e449c8e61379a7869a742378207b3782bb3e1a8dffe0ebc0a2de5e6510"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/ui/components"
+    ],
+    "command_id": "C-e29aed2b-6e08-4942-a241-31c849be9fb2",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-e29aed2b-6e08-4942-a241-31c849be9fb2",
+    "duration_ms": 63.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": true,
+    "stderr_blob": "blobs/C-e29aed2b-6e08-4942-a241-31c849be9fb2.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-e29aed2b-6e08-4942-a241-31c849be9fb2.stdout.txt",
+    "stdout_sha256": "13e5a69ff0148cc42970a776c79805e27efc89b989298d0d6093addd50b64b63"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "i18n/resources.ts"
+    ],
+    "command_id": "C-060b4f59-1ec6-47eb-98c5-cc2e779a6f7b",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-060b4f59-1ec6-47eb-98c5-cc2e779a6f7b",
+    "duration_ms": 31.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-060b4f59-1ec6-47eb-98c5-cc2e779a6f7b.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-060b4f59-1ec6-47eb-98c5-cc2e779a6f7b.stdout.txt",
+    "stdout_sha256": "7d3f1bc42bb727aee3bebf13c7b83ad7d7387e936f8692a3ead63645369d68e8"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "i18n/Resources.kt"
+    ],
+    "command_id": "C-01e9c9bf-fa1d-4b73-b588-eb9d7358478b",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-01e9c9bf-fa1d-4b73-b588-eb9d7358478b",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-01e9c9bf-fa1d-4b73-b588-eb9d7358478b.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-01e9c9bf-fa1d-4b73-b588-eb9d7358478b.stdout.txt",
+    "stdout_sha256": "93a6a56ad8b26337363c8ec01832da660c4dfb69234f2ec0bffb2dc9b82267d4"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "application/ui/native.ts"
+    ],
+    "command_id": "C-0b50f6b8-5f60-4d29-bb18-f8b2bf384ae0",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-0b50f6b8-5f60-4d29-bb18-f8b2bf384ae0",
+    "duration_ms": 47.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-0b50f6b8-5f60-4d29-bb18-f8b2bf384ae0.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-0b50f6b8-5f60-4d29-bb18-f8b2bf384ae0.stdout.txt",
+    "stdout_sha256": "a0fa3f1a1dcd2a6fe328ef24e607351f1cd70033ad60b0948404ef68999d9163"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/rest.py"
+    ],
+    "command_id": "C-ce0f2cbb-44f4-4e32-b0ad-0ab6fd0da0b2",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-ce0f2cbb-44f4-4e32-b0ad-0ab6fd0da0b2",
+    "duration_ms": 78.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-ce0f2cbb-44f4-4e32-b0ad-0ab6fd0da0b2.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-ce0f2cbb-44f4-4e32-b0ad-0ab6fd0da0b2.stdout.txt",
+    "stdout_sha256": "d96696a9b2e60db496c15615aaa4bb5e1093aaf7b34fc3687661feccc6a0f383"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "MainActivity"
+    ],
+    "command_id": "C-7940d4bc-0d5f-42ef-964f-d0928143d5c0",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-7940d4bc-0d5f-42ef-964f-d0928143d5c0",
+    "duration_ms": 46.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-7940d4bc-0d5f-42ef-964f-d0928143d5c0.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-7940d4bc-0d5f-42ef-964f-d0928143d5c0.stdout.txt",
+    "stdout_sha256": "53df37553c7a6f8bedbfe26a1cf249831119381d945d5558b97dc3c6b5e83079"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/read.py",
+      "client/ui/Workspace.kt"
+    ],
+    "command_id": "C-56994a64-efe7-49d8-b16e-61c661baea43",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-56994a64-efe7-49d8-b16e-61c661baea43",
+    "duration_ms": 31.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-56994a64-efe7-49d8-b16e-61c661baea43.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-56994a64-efe7-49d8-b16e-61c661baea43.stdout.txt",
+    "stdout_sha256": "b827fdcc5d7b11d3f7583ef0ac49139a8aad2a3e2e3f0ebc08e5f5ee85946eda"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/check.py"
+    ],
+    "command_id": "C-32e89175-b9f2-464e-8984-fef24c4e225f",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-32e89175-b9f2-464e-8984-fef24c4e225f",
+    "duration_ms": 282.0,
+    "exit_code": 1,
+    "result": "FAIL",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-32e89175-b9f2-464e-8984-fef24c4e225f.stderr.txt",
+    "stderr_sha256": "02597d5272f38f0b5a52a51b3d0c6cd4db194a339ba95c8aa27edbbf7b31ec5d",
+    "stdout_blob": "blobs/C-32e89175-b9f2-464e-8984-fef24c4e225f.stdout.txt",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/check.py"
+    ],
+    "command_id": "C-88839356-8a80-485a-acc7-8e9067f055f8",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-88839356-8a80-485a-acc7-8e9067f055f8",
+    "duration_ms": 2422.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-88839356-8a80-485a-acc7-8e9067f055f8.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-88839356-8a80-485a-acc7-8e9067f055f8.stdout.txt",
+    "stdout_sha256": "56bc942464fb9602467ad1e4c21e3dfd3b38da1e470ca5013038acb288cc6fe4"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/regular-review-a292-recovery2/fixture/tests/clients/errors/desktop_reads.mjs"
+    ],
+    "command_id": "C-032f96af-ea06-4c57-ac85-4aa2a9109b2a",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-032f96af-ea06-4c57-ac85-4aa2a9109b2a",
+    "duration_ms": 297.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-032f96af-ea06-4c57-ac85-4aa2a9109b2a.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-032f96af-ea06-4c57-ac85-4aa2a9109b2a.stdout.txt",
+    "stdout_sha256": "9e3e4e415fe1e17df1e3fe6d1ff80f83d087b152b37d4de17291bbfd39555e75"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/regular-review-a292-recovery2/fixture/tests/clients/gui/auth.mjs"
+    ],
+    "command_id": "C-7aa46489-1948-41b2-a7a1-b6fa30ceb4bd",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-7aa46489-1948-41b2-a7a1-b6fa30ceb4bd",
+    "duration_ms": 172.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-7aa46489-1948-41b2-a7a1-b6fa30ceb4bd.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-7aa46489-1948-41b2-a7a1-b6fa30ceb4bd.stdout.txt",
+    "stdout_sha256": "1e64ca7cf33b7a1236fb3c196b29cef8e8216af1c9416e4ed76a4daa5a129de2"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/controls.mjs"
+    ],
+    "command_id": "C-5cbc7af6-7516-45d4-9178-b6f8de39e598",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-5cbc7af6-7516-45d4-9178-b6f8de39e598",
+    "duration_ms": 78.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-5cbc7af6-7516-45d4-9178-b6f8de39e598.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-5cbc7af6-7516-45d4-9178-b6f8de39e598.stdout.txt",
+    "stdout_sha256": "0f40c379e777728065d91015104d8f877df881c7acb683a33155ce4938e318d5"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "../regular-review-a292-recovery2/fixture/tests/clients/errors/desktop_render.mjs"
+    ],
+    "command_id": "C-9b47bc6d-7bcd-4ffd-86f0-4539c824a034",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-9b47bc6d-7bcd-4ffd-86f0-4539c824a034",
+    "duration_ms": 47.0,
+    "exit_code": 1,
+    "result": "FAIL",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-9b47bc6d-7bcd-4ffd-86f0-4539c824a034.stderr.txt",
+    "stderr_sha256": "99a3b724de7b224f7068dd5069126d5b80a0a65705e7d818c32492f222a7a8c3",
+    "stdout_blob": "blobs/C-9b47bc6d-7bcd-4ffd-86f0-4539c824a034.stdout.txt",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/render.mjs"
+    ],
+    "command_id": "C-c6839d54-6de7-40c7-ab34-c5b21cd37fe2",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-c6839d54-6de7-40c7-ab34-c5b21cd37fe2",
+    "duration_ms": 218.0,
+    "exit_code": 1,
+    "result": "FAIL",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-c6839d54-6de7-40c7-ab34-c5b21cd37fe2.stderr.txt",
+    "stderr_sha256": "b116f4a83613ea995c4a62bd5f20d430c04bc4cca740a631000f05b09c1b5ef5",
+    "stdout_blob": "blobs/C-c6839d54-6de7-40c7-ab34-c5b21cd37fe2.stdout.txt",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/render.mjs"
+    ],
+    "command_id": "C-debe77fb-c235-41ae-9070-c299af3376e9",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-debe77fb-c235-41ae-9070-c299af3376e9",
+    "duration_ms": 125.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-debe77fb-c235-41ae-9070-c299af3376e9.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-debe77fb-c235-41ae-9070-c299af3376e9.stdout.txt",
+    "stdout_sha256": "0f8eebe8982a8f2e59072bb629c75b04d503594b918aa3dc3361cf421375c022"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/map.py"
+    ],
+    "command_id": "C-87985867-8b2c-4f0a-83df-6c25d82cbee5",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-87985867-8b2c-4f0a-83df-6c25d82cbee5",
+    "duration_ms": 109.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-87985867-8b2c-4f0a-83df-6c25d82cbee5.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-87985867-8b2c-4f0a-83df-6c25d82cbee5.stdout.txt",
+    "stdout_sha256": "3056f259810e53ded7a71345ab19e9ace22d83dde30ec6ce1e9b5251b2dc5f90"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/final-bind.py"
+    ],
+    "command_id": "C-be17aefc-24c3-4841-a75d-df3cf004445b",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-be17aefc-24c3-4841-a75d-df3cf004445b",
+    "duration_ms": 94.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-be17aefc-24c3-4841-a75d-df3cf004445b.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-be17aefc-24c3-4841-a75d-df3cf004445b.stdout.txt",
+    "stdout_sha256": "b94fa46d1bfa24e3bcd7e7f3f3cafb72f5d84ab827bfd0ea60477231ec01aaaf"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/data.py"
+    ],
+    "command_id": "C-ecb6f3e4-0549-43fb-971d-acc3301b07eb",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-ecb6f3e4-0549-43fb-971d-acc3301b07eb",
+    "duration_ms": 94.0,
+    "exit_code": 1,
+    "result": "FAIL",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-ecb6f3e4-0549-43fb-971d-acc3301b07eb.stderr.txt",
+    "stderr_sha256": "40b94dc7a1702e207f1fa94865d79bb8188af3466dcfbffcf863ffbcc42903c0",
+    "stdout_blob": "blobs/C-ecb6f3e4-0549-43fb-971d-acc3301b07eb.stdout.txt",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/data.py"
+    ],
+    "command_id": "C-189c112b-8cf9-4797-9641-50b05b89b4ba",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  {
+    "command_id": "C-189c112b-8cf9-4797-9641-50b05b89b4ba",
+    "duration_ms": 94.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-189c112b-8cf9-4797-9641-50b05b89b4ba.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_blob": "blobs/C-189c112b-8cf9-4797-9641-50b05b89b4ba.stdout.txt",
+    "stdout_sha256": "8e465986603ac1bcf05b64334bbf8154a0c5a2065ca3759925aa789f64769551"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/error-audit-a292/client/report.py"
+    ],
+    "command_id": "C-ba674954-67e8-48ed-9800-7d016195f1ec",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  }
+]

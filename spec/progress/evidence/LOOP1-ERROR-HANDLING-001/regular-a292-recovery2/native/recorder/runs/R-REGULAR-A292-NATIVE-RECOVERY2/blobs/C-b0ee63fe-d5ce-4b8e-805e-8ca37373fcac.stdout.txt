@@ -1,0 +1,63 @@
+
+FILE spec\progress\evidence\LOOP1-ERROR-HANDLING-001\fix-cause-read\negative-control-qa.json
+{
+  "finding": "Source-QA weakness in three newly added negative assertions; not an invented runtime failure",
+  "prior_code": "val failure = try { repo.contiguous(conversation); error(\"invalid present sequence accepted\") } catch (error: Exception) { error }",
+  "fixed_code": "val failure = try { repo.contiguous(conversation); null } catch (error: Exception) { error }",
+  "prior_evidence_limit": "Initial3new malformed-value checks unreliable because they could catch their own success assertion. Earlier actual69+33 and normal/emptyNULL exactmessage/stack controls unaffected. All final18 now freshly reliable.",
+  "current_source_sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2",
+  "current_test_apk_sha256": "3ee95cb2381519954021d992f885a85d3aa3bb13018a11a63586c78b54c79887",
+  "actual_final_command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+  "actual_final_command": {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "tests/clients/gui/native.py",
+      "mobile",
+      "--serial",
+      "emulator-5596"
+    ],
+    "command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+    "cwd": ".",
+    "secret_redaction_applied": false
+  },
+  "actual_final_result": {
+    "command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+    "duration_ms": 52219.0,
+    "exit_code": 0,
+    "result": "PASS",
+    "secret_redaction_applied": false,
+    "stderr_blob": "blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stderr.txt",
+    "stderr_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+    "stdout_blob": "blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stdout.txt",
+    "stdout_sha256": "edd38fdfaf44a6db659194d0fcf16dde7e9951b8431933dd29816d3775c92263"
+  },
+  "true_output": "69 original Sync,33 Read,18 current contiguous; resultPASS/API34/code-1; raw blob bound above"
+}
+
+FILE spec\progress\evidence\LOOP1-ERROR-HANDLING-001\fix-cause-read\handoff.md
+# Fresh cause-cycle / contiguous READ mapper Fix
+
+Fresh sole writer /root/fix_cause_cycle_read_scope; verified managed root H:/.codex/worktrees/err/IM-platform and task/LOOP1-ERROR-HANDLING-001; clean dispatched b5ea1350cd1909582029c6258d17b37f5354e594. Last accepted main35bd6f5f1091503f95a0282f730ed04233b0b6ea. Original b5 regular FAIL is preserved byte-for-byte in ../regular-review-b5ea135: all sealed final-receipt entries verified, full185/305 coverage/grounds/checks/history/helper seals. Prior770/e229/697 evidence unchanged. Narrow local Fix evidence is not Task/S2 or independent acceptance.
+
+Human scope: exact two-read-mapper question/direct reply “允许仅修正这两个只读映射” preserved unchanged in human-read-mapper-scope.txt, SHAa96354894806a4d0e5a268a5517aad081ae111f7a495de66473bb41722b8a1b5; Coordinator interpretation separately identified. Task allowed_paths/Forbidden amended BEFORE source writes. Fix Recorder decision HD-35ccb8dc-c635-48f0-88c3-e29cdb9a141a, Coordinator HD-2fe74dbe-4ec6-4046-b661-3cf3970365e6. ONLY shared/mobile Repository.contiguous READ mapping authorized; SQL/schema/init/transaction/write/nativeDB/Composer/draft/Frozen/contracts/dependencies unchanged.
+
+F-CLEANUP-CAUSE-CYCLE: ONLY3 existing dual-known branches now create distinct same-kind/message SyncFailure or same-code/status ApiFailure. Existing AggregateError contains both ORIGINAL causes. Direct size/illegal204 validation root no longer refers back to thrown projection. Same-root/normal/single-known/single-unknown/unknown+known/distinctprimitive behavior unchanged; no new constructor API/framework/retry/dependency. Existing stream_cleanup fixture adds shared size, Web JSON size and Web controlled adapter-exposed illegal204 stream +knowncancel. Assertions prove exactcategory, separate primary object/no backlink, both roots/cancel once; all old read/decode/cleanup/knownsame/unknownsame/distinctknown/undefined/null/string controls retained. Existing Sync/Web CI hooks retained. Current SDK consumer verifies actual failed/protocol or transport state/idle/no writes for same/distinct/direct faults. Native204 Response(null) normal is distinguished from controlled adapter-exposed body; no livebrowser acceptance claim.
+
+F-CONTIGUOUS-READ-DEFAULT: no-row alone returns0. Existing shared column must be non-null canonical nonnegative decimal within signed64 storage range. Android requires non-null canonicaldecimal; original toLong rejects out-of-range. Invalid present data fails normally, never becomes0 or known storage recovery. Only2contiguous READ methods differ; all bytes outside methods and SAMEreadSQL equal acceptedbaseline. protected-read-scope.json binds65:63wholeinputs equal,2explicitREADexceptions. ALLSQL/schema/init/transactions/writefunctions/nativeadapter/Composer/drafts/Frozen/ADR/contracts/dependencies unchanged. Current persisted prefix validation does not introduce a generic validator or migration.
+
+Actual local affected results: locked shared strictcompile +originalSend/Sync, full lockedWeb build/behavior/renderer/appearance/i18n, strictDesktoplockedcompile, literal origin queries, actual unchangedSQLxadapter origin+contiguous controls PASS. OwnedAPI34 Sync69+Read33+NEWcontiguous18; Send66+Read21 PASS. Normal absent0/0/7/exact9007199254740993/signed64max retained. SQLx and Android canonical conversations table accepts controlled emptyTEXT; current read fails. NULL uses deliberately malformed nullable table, NEVERcanonicalNOTNULL claim. Android true SDK query/stack and mapping not SendStorageFailure verified. Onlyowned fixture databases mutated. No physicaldiskIO/continuationtiming/installedGUI/GoE2E/broadunchangedruntime acceptance claimed.
+
+Preserved failures/gaps: initial direct startup/document/status/diff and guessed missingpaths around Recorder disclosed incompleteprospective_resume. Initial assignedTaskwrite sandboxdenied then explicitauthorizedretryPASS. Windows source newline translation restored exactcommitted convention before finalproof. FirstWebguard fails on ownAndroidgeneratedbinaries; exactownedoutputs preservedexternal, no waiver, originalverifier rerunPASS. Guessed bundlednpm.cmd nonexistent: Recordercommand_started C-4dd090bd-e13c-41d4-ad6e-ba0092ccc9b0 lacksfinished command; process exit/duration unavailable, launch raisedWinError2. Actualnpm strictcompile retryPASS. Externalcompiledruntime first lacked existing @tauri-apps/api; its exactlocked dependencies supplied and literalcontrolsPASS. InitialnewSQLxfixture trimEnd collapsed newline-onlyemptycolumn into no-row, missingrejectionFAIL; repaired TESTdecoder preserves separator/asserts actualonecolumn [[""]] before currentproductionfailure, rerunPASS. Priorreviewer2columnemptyTEXT/typeproof remainsvalid; no faithful prioronecolumntrimEnd claim. No productionadapter change. Source TestQA found the initial three NEW malformed-value controls could catch their own success assertion: earlier three checks are UNRELIABLE, not a fabricated runtimeFAIL. Original/fixed snippets plus final source/APK/actual command hashes preserved in negative-control-qa.json. Fixed null-on-success ensures accepted invalid reads FAIL; final5596 actual Sync69+Read33+contiguous18 PASS. Exact empty/NULL message/stack initial controls were already reliable. Initial largehandoffwrite escalation timedout BEFORElaunch; short retry only, not unsafe-policy rejection. Final5596 firstbuild succeeded but readiness guard rejected not-yet-booted emulator; directdefault-sandbox adb queries denied mkdir, explicit authorized actualboot1/ce_availabletrue query + original verifier retryPASS. Finalcleanup killed5596/removedexactAVD, then parentrmdir stopped on empty oldowned5594remnant; verified originalreceipt/resolvedroot/nochildren, removedemptyonly and preservedfinalbuilds. Allfailed commands/gaps retained without rawstream editing.
+
+Recorder R-ERROR-CAUSE-READ-FIX prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013 relatedR-ERROR-REGULAR-B5EA135; prestart/directinspection incomplete/unmatchedlaunch disclosed. Mutations/tests/verifiers routed wherepossible; cleancommit Acceptance/Recorderfinish/structuralvalidation in externalsealed finalreceipt. Recorder is not Task acceptance or completeprospective trace.
+
+Owned5594/5596 reverse rules removed/emulatorsclosed/exact ownedAVDs removed after resolvedroot/namechecks, build/cache preservedoutside source. No existingdevice/private data/systemtrust/backend/main mutation. Main782unknown/2tracked preserved by Coordinator; no adoption. Task exactcommittedHEAD delivered by Git/externalreceipt, no push/PR/CI/integration/main sync. NEWfreshregular then DIFFERENTfreshspecialist must review SAMEfinalcleanSHA; bothPENDING. OnlybothPASS permit exactheadrequiredhostedCI/protectedintegration/actualmain/safe H:/IM-platform sync. S2OPEN/taskreview; solewriter releases after cleanfinalreceipt. Final frozen/architectureall/82tests(oneexisting skip)/planning/Development/cleanAcceptance results recorded in verification-history/externalreceipt.
+
+Final recovery first rejected missing exact Markdown Command/Result/Evidence/backtick SHA/checkpoint fields after current.md compaction. Restored the original required field format, kept history durable and reran the unchanged verifier; no guard waiver. Final architectureall/frozen/planning/82tests(oneexisting skip) had already passed; no changed production bytes thereafter.
+
+Recovery-format evidence history first raised duplicate command_id keyword TypeError after Markdown fields were restored; fixed dictionary merge serialization only. Original missing-evidence-path recovery failure/rerun preserved; no product delta.
+
+Commit diff-check stopped before staging because the pre-existing new stream_cleanup fixture had CRLF treated as trailing whitespace on edited lines. Normalized ONLY that owned test fixture to LF; assertions/semantics and all production/protected bytes unchanged. Failure preserved, node syntax check and default diff-check retry recorded.
+

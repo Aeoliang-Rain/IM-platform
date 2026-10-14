@@ -1,0 +1,38 @@
+receipt server/final-receipt.json keys ['actor', 'role', 'result', 'candidate', 'baseline', 'branch', 'git_root', 'final_git_status', 'coverage_inputs', 'original305_records_mapped', 'five_specialized_classes_inspected', 'recorders', 'artifact_sha256', 'limits', 'mutations']
+receipt server/join-supplement/sealed-receipt.json keys ['candidate', 'result', 'finding', 'final_clean_status', 'supersedes_earlier_server_PASS', 'original_server_receipt_sha256', 'recorder_finished_structural', 'recorder_events', 'complete_prospective_trace', 'files']
+receipt client/sealed-receipt.json keys ['role', 'identity', 'sha', 'result', 'files', 'records', 'executable', 'nonexecutable', 'findings', 'source_lease', 'clean_status', 'recorder', 'final_event_hash', 'files_sha256']
+receipt client/navigation-supplement/sealed-receipt.json keys ['sha', 'source_lease', 'findings', 'result', 'corrected_files', 'final_event_hash', 'recorder', 'corrected_records', 'files_sha256', 'corrected_nonexecutable', 'corrected_executable']
+{
+  "result": "FAIL",
+  "candidate_sha": "a292f516f622651ae62595163e479c13fff78c1d",
+  "coverage185": true,
+  "original305unique_composites": true,
+  "precise305unique_actual_token_coordinates": true,
+  "executable": 270,
+  "nonexecutable": 35,
+  "duplicate_original_ID_strings": {
+    "RH294": [
+      "tools/build_language_packs.py",
+      "clients/desktop/src/application/accountSend.ts"
+    ]
+  },
+  "corrected_navigation": "4helper classification corrections in newimmutable addendum; no source change, originalsealed evidence retained.",
+  "findings": [
+    {
+      "id": "F-OUTBOX-MIXED-CONNECT-ROOT",
+      "priority": 1,
+      "path": "backend/go/core/outbox.go",
+      "line": 29,
+      "trigger": "Actual default pgxpool Begin returns ConnectError errors.Join IPv6 network refusal + IPv4 internalXX000",
+      "masking": "errors.As finds one network branch; wholeerror logged/retried and unknownSQLSTATE hidden until cancellation",
+      "present_requirement": "error-handling.md unknown/internal propagation; Frozen5.2 knownOutbox recovery",
+      "smallest_fix": "Local existingboundary classify only completeknowntransport tree; return originalcompleteerror if anyunknownbranch",
+      "actual_reproduction": "join_probe.go and outbox_probe.go both0 demonstratingactualproducer and actualproductconsumer; noDial/Lookup/customcallback injection",
+      "runtime_limit": "ControlledPG wireendpoint, not realPG/TLS deploymentacceptance"
+    }
+  ],
+  "helper_seals_checked": 186,
+  "prior_server_PASS_superseded": true,
+  "task_acceptance": "PENDING_NEW_FIX_NEW_REGULAR_NEW_SPECIAL_THEN_CI_INTEGRATION_MAIN_SYNC",
+  "source_lease": "READ_ONLY_UNTIL_FINAL_SEAL"
+}

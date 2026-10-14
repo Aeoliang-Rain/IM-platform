@@ -1,0 +1,85 @@
+
+FILE spec/progress/evidence/LOOP1-ERROR-HANDLING-001/prompt.txt
+请在当前仓库完成以下工作。遵守 AGENTS.md 的启动、架构保护、任务队列、工作树、独立审查、Research Recorder、CI 和主仓库同步要求。不要处理 SQLite 写入失败或相关草稿保护问题。
+
+本次目标：补充禁止无意义防御性编程和静默兜底的规则，增加一个提交 GitHub CI 前的独立审查环节，并立即对现有生产代码进行全量审查与修复。
+
+一、增加独立审查环节
+
+流程必须为：
+
+实现 → 常规独立 Review → 新增独立审查 → 提交 GitHub 进行 CI。
+
+新增审查由一个全新、未参与当前候选实现、Fix 或常规 Review 的 Agent 执行，专门检查：
+
+- 没有当前需求依据的防御性检查、异常捕获和兼容分支。
+- 空 catch、catch 后返回空值或默认值、Promise.catch 忽略错误等静默兜底。
+- 为避免报错或崩溃，把未知异常转换为成功、正常状态或不准确的错误类别。
+- 仅打印日志后继续运行，却没有恢复正确状态的异常处理。
+- 重复捕获、无意义的错误包装，以及掩盖根因的处理层。
+
+新增审查 FAIL 时，禁止 push、创建或更新会触发该候选 CI 的 PR。由新的 Fix Agent 修复，再由新的常规 Review Agent 审查；常规 Review PASS 后，再由新的独立 Agent 执行新增审查。重复此循环，直到新增审查 PASS。
+
+每次修复形成新候选 SHA，两项审查都必须覆盖最终候选，不能沿用旧 SHA 的 PASS。新增环节只设在提交 GitHub CI 前，不在每次编辑或每条命令前重复执行。它不能代替现有 Review、CI、受保护集成和主仓库同步。
+
+二、补充 spec 规则与最小示例
+
+按现有规范职责更新相关治理文档、审查清单和任务模板，使新流程可恢复、可执行、可验收。若涉及 Frozen Architecture，遵循既有架构变更与冻结流程，不建立第二份权威，也不先实施再追认。
+
+明确规定：
+
+对于未知异常、内部编程错误和不变量破坏，不允许为了维持运行而吞错、返回假数据或假正常状态。应让错误沿正常调用链传播，使测试、操作或进程明确失败；需要崩溃时允许崩溃，随后定位并修复真实问题，不预先堆叠兜底代码掩盖问题。
+
+保留现行架构和契约明确要求的错误处理，例如事务回滚、资源清理、网络失败后的 FAILED 状态、协议拒绝、账号隔离和提交结果不确定性保护。每个保留的捕获或回退必须说明具体故障、当前依据及实际恢复行为；“避免崩溃”“提高健壮性”“以后可能需要”不能单独成为依据。
+
+文档至少包含以下正确、错误最小示例，并解释原因：
+
+错误示例：吞掉内部异常。
+```csharp
+try {
+  applyUpdate(event);
+} catch {}
+```
+
+正确示例：让错误传播，修复真实缺陷。
+```scss
+applyUpdate(event);
+```
+
+错误示例：失败伪装成正常空结果。
+```kotlin
+try {
+  return await loadData();
+} catch {
+  return [];
+}
+```
+
+正确示例：保留真实失败结果。
+```csharp
+return await loadData();
+```
+
+不要新增通用错误处理框架、日志平台、重试框架或与当前需求无关的抽象。
+
+三、立即执行全量审查与修复
+
+按 AGENTS.md 恢复唯一 Current Task；不得绕过未完成任务。按既有治理机制建立或安排本次专用任务，明确审查范围、allowed_paths、验收与验证命令。所有实现写入 assigned Codex worktree，保留主仓库未知改动。
+
+审查范围覆盖当前全部生产代码，包括 Go 服务端、Web、Desktop、Android、共享 SDK 及必要原生适配器。不要只检查此前列出的几个文件，也不要为了凑数量删除有契约依据的错误处理。
+
+逐项记录位置、触发条件、错误被如何掩盖、最小修复及验证方式，随后直接修复。重点检查 Outbox 错误丢弃、Gateway WSS 写失败忽略、Android WSS 空 catch、桌面回调与窗口操作吞错、宽泛捕获导致错误分类失真。
+
+对实际修复运行必要验证：证明错误能正确传播或按既定契约处理，原有正常行为仍成立。不得通过放宽断言、删除验收、伪造 PASS 或修改契约来使检查通过。
+
+完成常规独立 Review 和新增独立审查的循环后，才提交 GitHub CI；继续完成适用 exact-head CI、受保护集成和 H:/IM-platform 安全同步。同步验证完成前不得报告任务完成。
+
+最终简洁报告修复项、具有明确依据的保留项、独立审查与 CI 结果、任务分支及候选/main SHA、同步结果和剩余限制。全程不处理 SQLite 写入失败问题。
+
+
+FILE spec/progress/evidence/LOOP1-ERROR-HANDLING-001/human-boundary-clarification.txt
+Human explicit async answer, conveyed by Coordinator before affected writes:
+允许仅修正异常边界，SQLite 写入与草稿保持不变
+
+Only current error-origin/catch-boundary corrections and necessary consumers are authorized. SQL, Repository, schema, transaction, actual write behavior, Composer and draft remain unchanged. Previous rejected script was not executed; earlier excluded hunks were restored. Both fresh final-SHA reviews remain required before any GitHub operation.
+

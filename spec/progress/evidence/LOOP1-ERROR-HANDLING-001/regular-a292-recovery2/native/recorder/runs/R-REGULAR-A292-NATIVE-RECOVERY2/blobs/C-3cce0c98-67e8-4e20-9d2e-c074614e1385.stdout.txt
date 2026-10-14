@@ -1,0 +1,248 @@
+
+FILE spec\architecture\decisions\ADR-0008-sync-https-transport.md
+# ADR-0008：公开 Sync HTTPS 拉取绑定
+
+状态：Human-approved freeze candidate；仅经 fresh independent Review、精确候选 hosted CI、protected integration/actual-main 核验及 H:/IM-platform 同步后生效。
+日期：2026-10-03
+批准来源：spec/progress/evidence/LOOP1-SYNC-TRANSPORT-001/human-authorization.txt
+任务：LOOP1-SYNC-TRANSPORT-001
+semantic_change=true；版本 v1.1 不变。
+
+## 动机与最小决定
+
+SYNC 的四种现有 JSON 形状已有 contracts/websocket/sync-v1.schema.json，但无公开传输绑定。Human 授权先提出并冻结公开 Sync 方案；Go 产品代码另待本前置接受后展示具体方案并取得同意。
+
+新增两个 HTTPS POST 拉取操作 /v1/sync/user 与 /v1/sync/conversation。机器权威为 contracts/http/sync.openapi.json，外部引用现有 UserRequest/UserPage/ConversationRequest/ConversationPage、Bearer 与 HTTP ErrorResponse。WSS 保留实时/ACK，不新增 envelope/type；Core 保有 Sync、成员/用户授权和 PostgreSQL 查询；Gateway 沿用公开 HTTP 代理，不写业务。无新语言、framework/runtime/dependency、服务、DB 对象或通用协议层。
+
+每次请求验证数据库权威 Session；身份只来自 Bearer。用户 cursor 初值 0，随后是当前用户绑定、可跨其 Session 重放的 opaque token，客户端只作相等比较。无效/外账号 token 返回既有400 VALIDATION_FAILED；当前 Loop 1 不引入 cursor 过期、保留窗口或重置协议。user events 仍为四种低频 metadata，排除 Message/Session；边界可把内存/持久化内部 cursor_id 投影为外部 event.cursor 与 nextCursor，无需修改 producer payload/schema。
+
+任何现有正整数 limit 均接受，先精确取 min(limit,100)，再作有界转换；查询最多 effectiveLimit+1 合格项，返回不超过 effectiveLimit。空页终止且 user nextCursor 保持请求 cursor；非空 user 页 nextCursor 为末事件 cursor 并前进。hasMore 仅表示当前读取有额外已提交合格项，不能产生无限无进展页。用户流必须是稳定已提交前缀，不能跳过并发较低序号晚提交；conversation 顺序从 afterSeq+1 连续前进，超 head 空页终止。不改变客户端数据/cursor 同事务或 contiguous_seq/gap 语义。
+
+成功和已解码有效 UUID 的错误响应 echo 请求 body requestId；不可关联的格式错误用 server UUID。错误码/状态仅沿用既有目录，未知服务器或基础设施失败为 non-2xx transport failure，不冒充成功页、不引入错误码。Query 参数一律拒绝，凭据/正文不进入日志/错误；响应 no-store。具体优先级/字段/状态以公开契约为准。不存在/非成员会话统一403避免泄露；权限由 Core 每请求判定。
+
+## 影响、兼容与回滚
+
+新增传输操作，不改现有四形状、Auth API、WSS/ACK、数据库/迁移、存储、客户端技术政策或安全边界。旧 schema/oracle 离线向量保持原样且仍有效；opaque token 的具体编码是后续 Core 边界实现细节，不能反向定义契约。冻结正文增加 §11.5（绑定），baseline 保存旧 canonical hash16e9c7b4 与批准来源。历史 PDF/ADR/失败/Recorder 不改。
+
+候选未接受前不得作为 Go/client 产品实现授权；接受后依然必须先向 Human 展示 Go 实现方案并取得同意。规则接受不代表实际 Sync 服务存在，不解除 SYNC backlog 的 runtime 输入阻塞。新任务只有这一个当前已证明必要的前置，不实例化未来产品/UI 层。撤销未接受候选即可回滚；生效后的调整走新决定与独立接受，不重写历史。
+
+## Human 分页修正（2026-10-03）
+
+100 仅限制单页，不限制总同步条数或页数。客户端每页数据与游标/连续序号事务提交成功后，若 hasMore=true，用户流使用 nextCursor、会话流使用已提交无 gap 前缀的 afterSeq 继续拉取，直到 hasMore=false；不得以固定总条数或总页数提前截断。终止页表示该次读取可见的已提交最新状态，不保证终止后的新写入已经同步；后续实时流/再次同步承担新变化。
+
+新增批准来源：spec/progress/evidence/LOOP1-SYNC-TRANSPORT-001/paging-revision/human-authorization.txt。只冻结持续分页语义与后续验收要求，当前不实现客户端循环。旧候选 Review 不覆盖修正后 SHA；仍待新独立 Review/精确 HEAD CI/集成同步。
+
+
+FILE spec\architecture\decisions\ADR-0009-client-native-capabilities.md
+# ADR-0009：最小原生 GUI 能力与外观存储
+
+状态：Human-approved freeze candidate；APPROVED_PENDING_FREEZE。新独立 Review、适用 exact-head hosted CI、protected integration/actual-main 验证及安全同步至 H:/IM-platform 后才生效。
+日期：2026-10-04
+任务：LOOP1-CLIENT-NATIVE-ARCH-001
+批准来源：spec/progress/evidence/LOOP1-CLIENT-GUI-001/readiness/human-decisions.md 与 authority-gap.md；本任务 approval.md 保存精确批准与范围。
+semantic_change=true；保留 v1.1。
+
+## 当前需要与决策
+
+已接受 GUI 要求原生 refresh persistence、HTTPS auth/Sync、真实通知/tray/global shortcut 与持久化外观。现 Desktop 是存储宿主；SyncHttp 已支持 injected fetch。Human 单独批准八个装配文件范围后明确批准该最小前置方案并继续。范围许可不是技术权威；本 ADR 冻结具体选型。
+
+Desktop 首次真实验收目标是 Windows。必要 Rust 限于 clients/desktop/src-tauri；批准 reqwest 原生 HTTPS、keyring/Windows Credential Manager refresh credential、官方 tauri-plugin-notification 与 tauri-plugin-global-shortcut；tray 使用已有 Tauri feature。相较手写 Win32 FFI，这些窄适配器直接满足当前职责。产品实施时将具体支持的版本/features 锁定于 Cargo.lock 并独立 Review；本次不安装依赖、不预言测试结果，不授权额外前端 plugin package、其他 OS 或替代库。
+
+HTTPS 使用系统证书/主机名验证，仅 HTTPS、禁重定向，保持应用序列化 request bytes/headers 与响应 status/headers/body bytes，不解释协议。禁止证书绕过、token query/logging 或 backend/CORS 替代入口。TypeScript UI/auth application 通过既有 SyncHttp injected-fetch 与规范 auth 调用组合传输；原生层不拥有 login/refresh/logout 编排、request schema、Repository、ACK/retry/Sync 或业务授权；既有 WSS/protocol 职责不变。
+
+Desktop keyring 按 app/account/session 隔离 refresh credential；TypeScript 持有 auth lifecycle、账号隔离及 replacement/logout/expiry cleanup intent。存储失败不得明文降级；access credential 为临时。官方 notification/global-shortcut 仅提供 OS presentation/input，应用决定动作。Windows 通知验收必须使用已安装、有自身身份的客户端包，开发 PowerShell toast 不可代替；tray/shortcut 同样需要真实客户端行为。
+
+Desktop app-owned app_data JSON、Android SDK SharedPreferences 只持久化 Cold AI/Warm Creative theme 与 font-size/density 标量。外观存储不得包含 credential/message/sync cursor/account Repository data，与账号 SQLite 分离。
+
+Android 使用 Android Keystore AES/GCM 非导出密钥保护 refresh credential，SDK SharedPreferences 仅存 ciphertext 及必要 IV/metadata；Kotlin 持有 auth lifecycle/cleanup/account isolation，无明文降级。SDK HttpsURLConnection 使用系统证书/主机名验证、HTTPS-only、禁重定向及 exact serialized bytes；不增加 network/ORM/JS runtime/bridge/codegen dependency。Kotlin 等价 Repository/protocol/model 行为仍依据同一 canonical contracts/fixtures 和真实 Android Studio emulator 验收。
+
+## 最小性、权威与兼容
+
+只增加当前 GUI 必需的适配器/外观选型，不增加 generic framework、未来 OS 机制或 plugin runtime。TypeScript/Kotlin 保留 application/business/Repository/protocol 职责；Desktop SQLx 原子事务意图不变。无 database schema、ACK、public API、compatibility、backend/CORS、AI、plugin sandbox/security boundary 或 source dependency direction 改动。
+
+canonical §6.1/§6.5/native_packages 枚举窄权威；ADR-0005 仍为基础 stack/policy marker，ADR-0009 为追加谱系。先前 canonical ef90846ba380df14086795a3c58aef43f6503447fe0cb83ee2d0772d725d8e03、PDF546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510、v1.1、旧 ADR/历史证据不变。
+
+## 生效与回滚
+
+GUI 依赖本任务，在独立接受、集成、actual-main 验证及安全同步前仍为 backlog。S1 PASS/S2 OPEN；local/Recorder PASS 不是 Task/Stage 接受。FAIL 在授权范围修复后由新独立 Agent Review。本次无数据/产品迁移；生效后修正需新批准 ADR 与独立接受，保留历史。
+
+## Human 指定统一候选批次（2026-10-04；取代单独前置接受时序）
+
+最新精确 Human 指令：完成GUI任务后统一审查推送。来源：spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/unified-batch.md，原始 prompt 与 SHA 记录于 linked Recorder P-UNIFIED-20261004。
+
+此指令只对本次已明确批准的 native/appearance freeze + LOOP1-CLIENT-GUI-001 授权统一本地候选准备：GUI 可以使用本 ADR 已批准并写入本地 frozen candidate 的具体选择继续实现，不等待单独 native Task 接受/推送。此前“GUI 保持 backlog 直到前置独立接受”时序被本精确指令取代；不是取消独立 Review/CI，也不是认定候选权威已正式生效。canonical §6.1 候选待接受及 §2.3 全局流程不改，本窄 ACP/ADR 指令不扩展到其他任务。
+
+native Task 仍为 review/pending，GUI 按实际输入经过 backlog -> ready -> active；已接受 SQLITE/UI-ARCH/SEND/SYNC 依赖不变，native 同批候选依赖例外明确追溯到上述 Human 指令。既有八个装配路径、选型、契约/存储/安全/ACK/职责边界不变，不新增技术。完成完整 GUI 与截图/Architect 审阅后，对精确完整候选进行 fresh independent Review，统一推送、适用 exact-head hosted CI、protected integration/actual-main 验证与安全主仓库同步；两任务 done、正式生效及 S2 Gate 判断均延后到各自适用接受条件满足。此前独立 native Review 已取消，不能记为 PASS；无 hosted 接受或推送事实。
+
+
+## Latest Human standalone-first order (2026-10-07)
+
+Human selected LOOP1-CLIENT-NATIVE-ARCH-001 and instructed: 先完成这项任务，然后再次尝试Windows验证. Evidence: spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/completion-20261007/human-order.md and exact human-order.txt. This supersedes only the preceding unified native/GUI batch acceptance/publication timing: independently complete this authority-only native freeze, protected integration/actual-main audit/safe main synchronization, then retry Windows validation. Existing GUI candidate91598049dfb0bf4360b0ce8bdbc4598606db1407/PR24 remains review, not integrated or accepted. Original approved native choices and canonical a6b1670/PDF546915/v1.1 remain unchanged; no new technical or product authority. Original timing evidence is historical and preserved. Task remains review until applicable independent acceptance and synchronization; S2 remains OPEN.
+
+
+## Native freeze accepted discovery (2026-10-08)
+
+Native authority freeze independently accepted: candidate `89cacae924be7ae3e85c13779e99f9f463d2c6f8`, protected PR25 actual main `6a87751087de5b4063445d0fba9fe94534507a57` and safe main synchronization PASS. Exact candidate push37656041487/PR37656059375 and actual-main37657410444:5selected jobs SUCCESS,8classifier-false normally inactive, nofailedsteps. Fresh candidate Review and new same-role actual-main audit are independently bound to their exact SHA; canonical a6b1670/PDF546915/v1.1 unchanged. Task branch task/LOOP1-CLIENT-NATIVE-ARCH-001-close; receipt preserves781unknown files/status/index and recovery/s1-handoff-20261001 branch. Source approval choices unchanged; no product/contract/schema/ACK/security change, no GUI/Windows/S2 PASS. Earlier pending/blocked statements are preserved historical snapshots. Evidence: spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/acceptance-20261008/acceptance.md.
+
+
+FILE spec\architecture\decisions\ADR-0010-windows-tauri-wss-origin.md
+# ADR-0010: Windows Tauri WSS Origin exception
+
+Status: Exact bounded authority f2f35f26089bc27d4bebe665327f36b2496ee4b8 independently accepted (run37725245354); bounded Gateway product79ec independently reviewed and scoped hosted CI accepted (run37726202795). Full GUI candidate/integration/main synchronization pending. Date: 2026-10-08. Task: LOOP1-CLIENT-GUI-001. Exact Human approval and bounded path expansion: spec/progress/evidence/LOOP1-CLIENT-GUI-001/windows-origin20261008/approval.json.
+
+## Present requirement and observed failure
+
+Accepted GUI/native requirements require real Windows Tauri WSS SEND/reconnect with existing Go Gateway. Actual installed native Login/profile/HTTP Sync succeeds under default system TLS in the actual desktop Explorer context. Controlled default-TLS ClientWebSocket opens with absent Origin; identical endpoint with Origin http://tauri.localhost rejects403. Gateway currently uses gorilla websocket.Upgrader{} default same-host check. Windows Tauri2 production origin is http://tauri.localhost; required native client is cross-host to the authenticated localhost Gateway. Evidence default-tls.json/wss-origin.json and reviewable proposal.diff. Source responsibility remains Gateway connection/transport admission, separate from Core business.
+
+## Approved narrow decision
+
+Allow exactly the serialized Origin http://tauri.localhost in Go Gateway WebSocket upgrade. Preserve existing absent-Origin and same-host behaviors, reject unrelated cross-host origins, and retain mandatory auth.bind, token/session/authorization, query-token prohibition, protocol parsing, TLS/hostname checks, durable ACK/retry/Sync semantics. This is an explicit bounded security admission exception; an Origin never establishes identity or authorization.
+
+No wildcard origins, blanket CheckOrigin=true, reverse-proxy Origin stripping, TLS bypass, credential cookies or query tokens, backend HTTP/CORS replacement auth/Sync entry point, new native WSS adapter/dependency, alternate frontend host or future-platform origins. Existing approved Go/gorilla/Tauri/TypeScript choices and source direction remain; no new dependency/framework, public API/schema, storage migration or ACK change.
+
+## Implementation scope and acceptance
+
+Human explicitly expands current Task allowed_paths to this decision record, backend/go/gateway/gateway.go and focused backend/go/gateway/origin_test.go, in addition to existing GUI/evidence/recovery paths. Canonical Markdown/PDF/version and contracts remain byte-frozen. Independently Review this exact decision candidate and its applicable exact-head hosted checks before dependent product implementation; no local statement is hosted acceptance. New product fix receives a fresh independent reviewer and existing GUI full acceptance/protected integration/actual-main/safe synchronization chain before Task done.
+
+Implementation must retain the original locked Gorilla default CheckOrigin implementation for every request except exactly one serialized Origin http://tauri.localhost. Do not reimplement its parser or replace its ASCII-only host comparison with Unicode folding.
+
+Focused tests must prove Kelvin-sign Unicode host mismatch rejection in addition to absent/same-host/Tauri upgrade acceptance and unrelated or lookalike host rejection, while accepted connections still need auth.bind. Actual native Windows must bind and demonstrate committed SEND, unchanged retry identity/convergence and reconnect under default TLS; existing gateway auth/protocol checks remain applicable. Screenshots alone do not establish ACK semantics.
+
+Rollback removes only this exact Origin admission exception after approval and independent acceptance; no data migration. Broader Origin or native transport changes require a new decision. S2 remains OPEN. Before authority candidate acceptance affected repair is BLOCKED_BY_ARCHITECTURE; unaffected verification may continue.
+
+## Independent authority acceptance discovery (2026-10-08)
+
+The bounded decision/proposal at clean f2f35f26089bc27d4bebe665327f36b2496ee4b8 is accepted by fresh /root/origin_authority_final_review and exact hosted push run37725245354: five selected jobs success, eight correctly inactive. Original report/CI receipt hashes and exact copies: spec/progress/evidence/LOOP1-CLIENT-GUI-001/gateway-origin-fix20261008/authority-binding.json. Earlier pending status describes the pre-acceptance candidate. Dependent bounded Gateway implementation may proceed; product fix still requires new independent Review and applicable exact-head CI, and full GUI/integration/synchronization before task completion. Canonical/public contracts remain unchanged.
+
+## Bounded product acceptance discovery (2026-10-08)
+
+Fresh independent Gateway Review accepts79ec62c73b6681b4a544869051722a85521b9b4e and exact incremental push37726202795 selected6success/7correctinactive. Original report/hosted addendum/CI and classify receipts preserved byte-exact in GUI evidence win20261008/gateway-review. Actual native strict TLS/WSS SEND/retry/reconnect and presentation evidence follow in win20261008; this discovery does not replace fullGUI Review/full-range CI/protected integration/actual-main/safe-sync. Earlier implementation-pending descriptions retain historical ordering; exact decision scope and canonical/contracts unchanged. S2 OPEN.
+
+
+FILE spec\architecture\decisions\ADR-0011-web-appearance-storage.md
+# ADR-0011：Web 外观偏好的最小本地存储
+
+状态：Human-approved candidate；APPROVED_PENDING_FREEZE，未独立接受/生效。
+日期：2026-10-09
+任务：LOOP1-WEB-001
+批准来源：`spec/progress/evidence/LOOP1-WEB-001/freeze-20261009/human-approval.txt`；`human-approval.json` 记录直接 Human 答复与已提交方案 e35c425a90a851540e140078274126ac65606e3e。
+精确答复：批准最小前置方案并继续。
+semantic_change=true，版本 v1.1。
+
+## 当前责任与决定
+
+已冻结 UI 设计要求重启保持主题/字号/密度，而 Web 聊天仅内存；此前具体外观存储未冻结，守卫与 CI 空骨架阻止产品实现。Human 批准 readiness-20261008/proposal.md 的最小浏览器原生 localStorage 与七个前置文件权限，后在暂停后明确继续。不引入库或第二数据层；这些权限不授权其他架构选择。
+
+唯一适配器 clients/web/src/ui/appearance.ts；唯一 key plugworldim.appearance.v1。版本由 key 标识，JSON exact keys 恰好 theme/fontSize/density：theme cold（Cold AI）或 warm（Warm Creative）；fontSize 14/16/18/20；density compact/comfortable/spacious；默认 cold/16/comfortable。读写均严格验证对象/字段/枚举和最大序列化长度128字符，禁止额外属性。只以固定 key 调用 window.localStorage.getItem/setItem；不导出底层存储或任意 key/任意数据接口。写入为验证后这三个字段的显式投影。 malformed/超长/不可用时回退默认内存外观，不清空其他 origin key；主题修改保持字号/密度。
+
+外观不是账号数据：禁止 message/history/user/session/access/refresh credential/endpoint/conversation/cursor 或其他业务数据持久化。Web Repository/消息始终内存，不加载离线历史。保留禁止 SQLite、IndexedDB、其他浏览器存储、未批准 framework/runtime/dependency/bridge。原生 Desktop/Android 技术、协议、ACK、Sync、公共契约、安全边界与依赖方向不变。
+
+## 前置控制与效力
+
+canonical §6.5 和原客户端 policy 的 web_appearance 描述本决定；baseline 记录 exact digest、上一 accepted canonical a6b1670与批准链接，原 PDF546915不变。guard fail closed：授权链接/哈希/policy不匹配、其他存储路径、任意 key/别名/额外字段和业务持久化均拒绝。静态检查不替代真实行为或语义独立 Review。
+
+已批准 workflow 通过与原 classifier 相同 base/head、--no-renames 含删除的 tests/clients/web/ diff，将变化仅 OR 入 web/architecture；所有输出每 key 一次，其他选择和 CI aggregate gate 原规则不变。Web 与兼容 Web入口执行同一实际 verifier。当前没有产品：仅真实非 symlink 空 .gitkeep、Task唯一backlog/appearance_prerequisite、可信base也无产品允许 PREREQUISITE_SKELETON_ONLY，这不是 Web build/behavior PASS。出现任何产品/部分脚手架则要求完整必需输入、锁定 install、实际 build、behavior/appearance测试及source guard；失败无骨架 fallback。删除已经存在的产品不能重获骨架例外。该阶段控制仅为先验收冻结再实现的当前顺序，产品存在即退出。
+
+fresh independent Review -> applicable exact-head hosted CI -> protected integration -> actual-main verification -> H:/IM-platform safe synchronization 全部完成后才生效；此前 Web backlog 不激活。本候选本地检查/Recorder有效不等于 Task或S2 PASS，截图/Architect Approval/独立产品 Review/真实CI仍完整保留。最新 Human endpoint：Web完整接受并安全同步后停止于S2 Gate前，不对S2 Stage Gate操作；CI aggregate gate必需机制保留。
+
+## 最小性、迁移与回滚
+
+无新库、服务、schema或用户数据迁移。固定一个窄适配器/三个标量直接满足当前重启偏好需要。verifier 将 Web/现有 shared 构建输入复制到一次性系统临时目录安装/构建，以免第三方 node_modules 进入 active source/dependency guard；这只隔离验证输出，不创建仓库或产品复制根。
+
+生效前失败只修复候选并保留已接受 main。生效后的权限/存储纠正须新 Human/Architect批准及独立验收；不得重写旧 ADR、FAIL、Recorder、PDF。v1 key没有用户业务数据，不授权旧key迁移/清除、远程同步或以后版本兼容机制。
+
+
+FILE spec\architecture\decisions\ADR-0012-client-supplement-planning.md
+# ADR-0012：S2 客户端补充任务规划与语言偏好窄授权
+
+状态：Human-approved candidate，APPROVED_PENDING_FREEZE；独立Review/精确hosted CI/受保护集成/actual-main验证/H:/IM-platform同步后才正式生效。
+日期：2026-10-10
+任务：LOOP1-CLIENT-SUPPLEMENT-PLAN-001
+批准来源：`spec/progress/evidence/LOOP1-CLIENT-SUPPLEMENT-PLAN-001/human-request.txt`；直接Human原请求和继续事实见authorization.md。
+semantic_change=true；沿用v1.1。
+
+## 动机、基线与决定
+
+Web已独立接受并同步，Human明确要求三项串行S2补充，不将已有低层能力或截图等同新端到端故障证明。基线最新行政main b4d271c/PR30，Web产品a1b154d/PR29；实际源码、accepted证据、逐项缺口见client-supplement.md基线表。原SOURCE/Repository/Auth/Send/Sync边界保留。
+
+链为 LOOP1-WEB-001 → LOOP1-CLIENT-STATE-001 → LOOP1-CLIENT-UI-REF-001 → LOOP1-CLIENT-I18N-001 → S2 Gate。三个产品分别独立Task Spec/backlog；前项须独立接受、集成和主仓库同步后方可激活，STATE同时依赖本规划正式接受。S2既有门禁条件与三个新增完成项共同必需。本轮仅规划及其Review/CI/合入同步；三项不实施、不激活，S2 Gate OPEN且不评估。
+
+## 强制目标与验收
+
+### STATE
+
+以最新三端实现和已有验收为基线，逐项记录现有能力、证据和待补齐内容，将以下要求写入任务目标与强制验收。
+
+1. 消息可靠性的两个核心场景：
+   A. 首次发送未在服务端提交，发送方超时显示 FAILED，用户点击重发后完成首次持久化并收敛为 SENT。
+   B. 首次发送已在服务端提交，接收方已获得消息，发送方因成功确认丢失或延迟显示 FAILED；用户重发后获得原始提交结果，原消息收敛为 SENT。
+
+2. 同一逻辑消息的每次重发复用原始 request_id、conversation_id、发送者身份和消息内容。服务端已有提交时返回原始 messageId、seq、createdAt；最终对应一条持久化消息、一条逻辑 Outbox 和各客户端的一条消息展示。
+
+3. 覆盖 SENDING、FAILED、重发按钮和 SENT 的真实界面状态。FAILED 表达当前尝试未获得成功确认；迟到 ACK、实时消息和适用 Sync 均通过既有收敛入口更新原消息，SENT 保持终态。核对 Gateway/Core 超时与提交结果未知路径，使其处理符合实际提交结果和现行契约。
+
+4. 同一会话的已确认消息以服务端 seq 为最终排序依据，覆盖：
+   - R1 首次未提交，R2 先成功提交，R1 后重发成功：最终顺序为 R2、R1。
+   - R1 首次已提交但确认超时，R2 随后提交，R1 再获得确认：最终顺序为 R1、R2。
+   验证 UI 在 ACK、实时事件、Sync 交叉到达后保持正确身份、状态和顺序。
+
+5. Desktop/Mobile 覆盖保留本地消息时的重启重发，以及受控测试中从全新账号本地数据库和初始同步游标恢复的流程。验证已提交历史按 seq 恢复，后续新消息使用新的 request_id 和服务端分配的序号，序号连续性与渲染顺序正确。Web 按当前页面内存生命周期和已接受的在线消息同步规则验收。
+
+6. 补齐三端好友变更同步。明确既有好友查询和 User Sync 的触发、消费及界面刷新链路；任一端添加好友后，其余在线端最终更新好友列表、对应私聊和名称展示，并验证断线恢复与账号切换后的正确结果。
+
+7. 使用真实服务端、数据库和客户端的受控故障注入验证上述链路。场景 B 同时取得服务端持久提交、接收方获得消息、发送方 FAILED、重发后原消息 SENT 的证据；分别核对存储记录、请求身份、序号、Outbox 和实际渲染。
+
+
+### UI-REF
+
+以任务一验收后的三端产品树为行为和视觉基线，规划并验收各端现有页面、组件和展示状态的职责拆分。
+
+1. 根据实际源码拆分应用入口、Shell、导航、认证、会话列表、消息展示、输入区域、好友及设置等现有职责，明确入口挂载、组件输入输出、状态归属和导入方向。
+
+2. 保持各端独立视觉实现及现有 Auth、Repository、Send、Sync 职责边界，共享现有协议、类型和适用展示语义。
+
+3. 将组件展示文案、应用状态标识与业务判断建立清晰边界，为后续语言资源提取提供稳定接口。
+
+4. 建立拆分前后的页面、入口、功能和测试覆盖对照表。完整回归现有客户端能力及任务一新增场景，验证状态保持、事件绑定、账号隔离、同步、重发、排序和外观设置的行为等价。
+
+5. 完成各端构建、适用自动化测试、真实运行截图和 Architect 审查，以功能完整、行为等价和视觉基线保持作为验收结果。
+
+
+### I18N
+
+依赖任务二完成，提取三端现有用户可见文案，建立英语、简体中文和日语的独立语言资源。
+
+1. 统一语言标识 en、zh-CN、ja-JP，以及跨端文案语义和占位参数。Web/Desktop 使用 TypeScript 侧纯数据语言资源，Android 使用现有 Kotlin/Compose 技术栈下的等价资源映射。
+
+2. 覆盖页面文本、按钮、输入提示、校验与错误提示、连接及同步状态、无障碍标签，以及已有系统通知和托盘文案。将状态逻辑使用的稳定标识与翻译后的显示文本分离。
+
+3. Settings 增加固定入口“Language / 语言 / 言語”，使用固定顺序的滚动选择列表：
+   English → 简体中文 → 日本語。
+   选项名称保持各自语言，切换后即时更新当前界面，本地保存并恢复语言选择。
+
+4. 将语言选择的本地持久化范围、存储位置、字段和校验规则纳入三端偏好适配器的明确架构授权，保证现有外观配置继续有效，主题、字号、间距和语言独立保持。
+
+5. 建立语言键完整性、占位参数一致性和英文回退验证；覆盖切换后的页面状态、消息状态、布局可读性及本地偏好恢复，完成三种语言的适用截图和 Architect 验收。
+
+
+## 明确语言偏好架构
+
+语言偏好为设备/宿主应用范围，跨账号保持、无云同步，独立于credential、账号SQLite、消息和Sync cursor。默认 en；只允许大小写精确的 en、zh-CN、ja-JP，不trim、不接受系统locale猜测或任意别名。缺失/非法/超长/存储不可用回退内存en，写失败诚实显示且不覆盖其他偏好或清除其他key。固定三端位置：Web仅新增 src/ui/language.ts 以原生 localStorage固定key plugworldim.language.v1读取/写入raw UTF-8 enum（最长5bytes），不改plugworldim.appearance.v1三字段；Desktop TypeScript native.ts持有language意图，desktop_capabilities.rs仅窄language_load/save字符串枚举校验及app_data/language.txt读写raw UTF-8（最多5bytes、无BOM/换行），appearance.json三项tuple原字节继续可读；Android Preferences.kt在既有MODE_PRIVATE appearance SharedPreferences只增String key language（最多5UTF-8bytes），保留theme/fontSize/density键和值。theme仅cold/warm；Web fontSize14/16/18/20、density compact/comfortable/spacious；Desktop/Android既有fontSize14..22、density0.8/1.0/1.2及默认cold/16/1继续有效。四标量语义各自独立，但Web/Desktop外观record仍三项，不合并为四字段记录。当前三字段appearance守卫不得提前放宽；只有I18N依赖独立接受+集成同步且任务active/review/done、client_supplement_phase: i18n_product才可实现语言adapter及对应窄源码guard。STATE/UI-REF和本规划不获得语言持久化产品许可。
+
+语言资源是TS/Kotlin纯数据映射，跨端键/占位参数语义一致；已有native通知/tray显示文本由TypeScript应用选择后交现有native presentation，native不拥有翻译/业务决定。英文回退、固定入口/滚动列表、即时更新及本地恢复完整验收；不批准第三方i18n/state/network/runtime/ORM库。
+
+## 效力、兼容、迁移及回滚
+
+canonical§6/15/19/20/附录A落实决定，baseline当前hash与supplement谱系绑定旧accepted2ba864fc。ADR-0007原只增GUI/WEB→Gate的历史范围保留；新链在ADR12正式生效后追加取代直接边，既有GUI/Web/S1接受保持。旧ADR、PDF、checkpoint、FAIL、Recorder不可变。无contract/schema/ACK/security/后端职责变更；STATE只按现契约修真实路径，矛盾按架构流程阻止受影响实现，不发明rejection/成功语义。本规划无产品/数据迁移，未来语言存储以独立标量位置兼容旧appearance字节，无清库、云同步或全局格式迁移。
+
+machine policy绑定依赖和未来窄授权，guard真正解析queue/status/依赖及done证据字段，S2 prerequisite function以隔离正负fixture测试；本次不对actual S2评估。CI classifier现ci改动full matrix保留，任务治理路径必需architecture/source_go/source_java；缺失/失败/异常skip不能接受。独立Reviewer必须读真实完成证据，字段PASS不是独立接受。生效前候选失败修复复审；生效后纠正需新批准/独立接受，不重写历史。
+
+## 最小性与完成
+
+单行政Task、三明确产品Task、直接标准库校验，无通用编排/抽象层/新库/未来产品。完成须clean committed candidate、fresh independent Reviewer与必要Architect、exact-head hosted required jobs、protected merge、actual-main audit和主仓库未知work保存安全同步；记录branch/SHA/证据/checkpoint后本控制任务才done。产品仍backlog，S2 OPEN；Recorder不是接受。
+
+
+## 正式生效发现（2026-10-10）
+
+上方Human-approved candidate / APPROVED_PENDING_FREEZE为候选时点历史；当前状态Human-approved，APPROVED。规划规范在candidate 8b52a56403a5a761a12d94e4fabf4f2cf82f63d0 / protectedPR31 actualmain 9f99cfda1cecfc85c0acf3ae8db979f622c97a02独立Review/精确hosted/actual-main/主仓库安全同步接受，spec/progress/evidence/LOOP1-CLIENT-SUPPLEMENT-PLAN-001/acceptance/acceptance.md提供完整原件。正文决定与canonical当前hash不变。三产品仍backlog、语言仅I18N正式phase可实施；S2 OPEN。本行政状态记录另待独立接受，不提前声称其未来SHA通过。
+

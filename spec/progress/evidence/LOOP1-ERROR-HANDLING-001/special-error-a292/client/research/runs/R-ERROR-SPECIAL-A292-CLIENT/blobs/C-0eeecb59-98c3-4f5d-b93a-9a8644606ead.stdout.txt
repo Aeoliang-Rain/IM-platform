@@ -1,0 +1,173 @@
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt
+1: package im.platform.client.storage
+2: // Internal storage models; canonical wire authority remains contracts/.
+3: data class LocalMessage(val conversationId: String, val requestId: String, val senderId: String, val text: String)
+4: data class ServerMessage(val conversationId: String, val requestId: String?, val senderId: String, val text: String,
+5:     val messageId: String, val seq: Long, val createdAt: String)
+6: data class Committed(val conversationId: String, val messageId: String, val seq: Long, val createdAt: String)
+7: data class UserEvent(val kind: String, val subjectId: String, val revision: Long)
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt
+1: package im.platform.client.storage
+2: import android.content.Context
+3: import android.database.sqlite.SQLiteDatabase
+4: import java.io.Closeable
+5: 
+6: class Repository(context: Context, accountId: String) : Closeable {
+7:     private val db: SQLiteDatabase
+8:     init {
+9:         require(accountId.matches(Regex("[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}")))
+10:         val file = context.getDatabasePath("im-" + accountId.lowercase() + ".sqlite")
+11:         file.parentFile!!.mkdirs()
+12:         db = SQLiteDatabase.openOrCreateDatabase(file, null)
+13:     }
+14:     fun initialize(failMigration: Boolean = false) {
+15:         val version = db.version
+16:         require(version in 0..2) { "Unsupported schema version" }
+17:         if (version == 2) return
+18:         transaction {
+19:             if (version == 0) Schema.v1.forEach { db.execSQL(it) }
+20:             if (failMigration) db.execSQL("INSERT INTO __fault_missing_table VALUES(1)")
+21:             Schema.v2.forEach { db.execSQL(it) }
+22:         }
+23:     }
+24:     private fun transaction(block: () -> Unit) {
+25:         db.beginTransaction()
+26:         try { block(); db.setTransactionSuccessful() } finally { db.endTransaction() }
+27:     }
+28:     internal fun query(sql: String, args: Array<String> = emptyArray()): List<List<String?>> {
+29:         db.rawQuery(sql,args).use { cursor ->
+30:             val rows = mutableListOf<List<String?>>()
+31:             while (cursor.moveToNext()) rows.add((0 until cursor.columnCount).map { if(cursor.isNull(it)) null else cursor.getString(it) })
+32:             return rows
+33:         }
+34:     }
+35:     private fun checkText(text: String) { require(text.isNotEmpty() && text.codePointCount(0, text.length) <= 4096) }
+36:     private fun execute(sql: String, args: Array<out Any?> = emptyArray()) { db.execSQL(sql,args) }
+37:     private fun advance(c: String) {
+38:         execute("INSERT INTO conversations(conversation_id) VALUES(?) ON CONFLICT DO NOTHING", arrayOf(c))
+39:         execute("""WITH RECURSIVE prefix(n) AS (
+40:             SELECT contiguous_seq FROM conversations WHERE conversation_id=?
+41:             UNION ALL SELECT n+1 FROM prefix WHERE n<9223372036854775807 AND EXISTS(SELECT 1 FROM messages WHERE conversation_id=? AND server_seq=n+1)
+42:             ) UPDATE conversations SET contiguous_seq=(SELECT MAX(n) FROM prefix) WHERE conversation_id=?""",arrayOf(c,c,c))
+43:     }
+44:     fun localSend(m: LocalMessage) {
+45:         checkText(m.text)
+46:         transaction {
+47:             val old=query("SELECT sender_id,content FROM messages WHERE conversation_id=? AND request_id=?", arrayOf(m.conversationId,m.requestId))
+48:             require(old.isEmpty() || old[0]==listOf(m.senderId,m.text)) { "Local identity/content conflict" }
+49:             execute("""INSERT INTO messages(conversation_id,request_id,sender_id,content,state) VALUES(?,?,?,?,'SENDING')
+50:                 ON CONFLICT(conversation_id,request_id) DO UPDATE SET state=CASE WHEN messages.state='SENT' THEN 'SENT' ELSE 'SENDING' END""",
+51:                 arrayOf(m.conversationId,m.requestId,m.senderId,m.text))
+52:         }
+53:     }
+54:     fun markFailed(c: String, requestId: String) {
+55:         transaction {
+56:             require(query("SELECT 1 FROM messages WHERE conversation_id=? AND request_id=?",arrayOf(c,requestId)).size==1)
+57:             execute("UPDATE messages SET state=CASE WHEN state='SENT' THEN 'SENT' ELSE 'FAILED' END WHERE conversation_id=? AND request_id=?",arrayOf(c,requestId))
+58:         }
+59:     }
+60:     private fun materialize(m: ServerMessage) {
+61:         checkText(m.text); require(m.seq>0)
+62:         // Android rawQuery binds selectionArgs as non-null strings. Realtime
+63:         // has no request identity, so omit that predicate rather than fake one.
+64:         val identity = if (m.requestId != null) "(conversation_id=? AND request_id=?) OR " else ""
+65:         val binds = if (m.requestId != null) arrayOf(m.conversationId,m.requestId,m.messageId,m.conversationId,m.seq.toString())
+66:             else arrayOf(m.messageId,m.conversationId,m.seq.toString())
+67:         val rows = query("SELECT conversation_id,request_id,sender_id,content,server_message_id,server_seq,server_time " +
+68:             "FROM messages WHERE " + identity + "server_message_id=? OR (conversation_id=? AND server_seq=?)", binds)
+69:         rows.forEach { r ->
+70:             require(r[0]==m.conversationId && r[2]==m.senderId && r[3]==m.text &&
+71:                 (r[1]==null || m.requestId==null || r[1]==m.requestId) &&
+72:                 (r[4]==null || r[4]==m.messageId) && (r[5]==null || r[5]==m.seq.toString()) &&
+73:                 (r[6]==null || r[6]==m.createdAt)) { "Durable identity/content conflict" }
+74:         }
+75:         if(m.requestId!=null) {
+76:             execute("""DELETE FROM messages WHERE server_message_id=? AND request_id IS NULL AND
+77:                 EXISTS(SELECT 1 FROM messages WHERE conversation_id=? AND request_id=?)""",arrayOf(m.messageId,m.conversationId,m.requestId))
+78:             execute("UPDATE messages SET request_id=? WHERE server_message_id=? AND request_id IS NULL",arrayOf(m.requestId,m.messageId))
+79:         }
+80:         execute("""INSERT INTO messages(conversation_id,request_id,sender_id,content,state,server_message_id,server_seq,server_time)
+81:             VALUES(?,?,?,?,'SENT',?,?,?) ON CONFLICT DO UPDATE SET state='SENT',server_message_id=excluded.server_message_id,
+82:             server_seq=excluded.server_seq,server_time=excluded.server_time,request_id=COALESCE(messages.request_id,excluded.request_id)""",
+83:             arrayOf(m.conversationId,m.requestId,m.senderId,m.text,m.messageId,m.seq.toString(),m.createdAt))
+84:     }
+85:     fun syncMessages(messages: List<ServerMessage>, failBeforeAdvance: Boolean = false) {
+86:         require(messages.all { it.requestId!=null })
+87:         transaction {
+88:             messages.forEach { materialize(it) }
+89:             if(failBeforeAdvance) execute("INSERT INTO __fault_missing_table VALUES(1)")
+90:             messages.map { it.conversationId }.distinct().forEach { advance(it) }
+91:         }
+92:     }
+93:     fun realtime(m: ServerMessage, failBeforeAdvance: Boolean = false) {
+94:         require(m.requestId==null) { "Realtime payload has no send request identity" }
+95:         transaction {
+96:             materialize(m)
+97:             if(failBeforeAdvance) execute("INSERT INTO __fault_missing_table VALUES(1)")
+98:             advance(m.conversationId)
+99:         }
+100:     }
+101:     fun committedAck(requestId: String, ack: Committed) {
+102:         require(ack.seq>0)
+103:         transaction {
+104:             val local=query("SELECT sender_id,content,server_message_id,server_seq,server_time FROM messages WHERE conversation_id=? AND request_id=?",
+105:                 arrayOf(ack.conversationId,requestId)).single()
+106:             val rows=query("""SELECT conversation_id,request_id,sender_id,content,server_message_id,server_seq,server_time
+107:                 FROM messages WHERE server_message_id=? OR (conversation_id=? AND server_seq=?) OR (conversation_id=? AND request_id=?)""",
+108:                 arrayOf(ack.messageId,ack.conversationId,ack.seq.toString(),ack.conversationId,requestId))
+109:             rows.forEach { r ->
+110:                 require(r[0]==ack.conversationId && r[2]==local[0] && r[3]==local[1] &&
+111:                     (r[1]==null || r[1]==requestId) && (r[4]==null || r[4]==ack.messageId) &&
+112:                     (r[5]==null || r[5]==ack.seq.toString()) && (r[6]==null || r[6]==ack.createdAt))
+113:             }
+114:             execute("DELETE FROM messages WHERE server_message_id=? AND request_id IS NULL",arrayOf(ack.messageId))
+115:             execute("UPDATE messages SET state='SENT',server_message_id=?,server_seq=?,server_time=? WHERE conversation_id=? AND request_id=?",
+116:                 arrayOf(ack.messageId,ack.seq.toString(),ack.createdAt,ack.conversationId,requestId))
+117:             advance(ack.conversationId)
+118:         }
+119:     }
+120:     fun userPage(events: List<UserEvent>, nextCursor: String, expectedCursor: String, failBeforeAdvance: Boolean=false) {
+121:         require(nextCursor.isNotEmpty() && nextCursor.codePointCount(0, nextCursor.length)<=256)
+122:         require(events.all { it.kind in listOf("friend.changed","conversation.changed","membership.changed","plugin.changed") && it.revision>0 })
+123:         transaction {
+124:             require(cursor()==expectedCursor) { "Stale user page" }
+125:             events.forEach { execute("""INSERT INTO user_state VALUES(?,?,?) ON CONFLICT(kind,subject_id)
+126:                 DO UPDATE SET revision=MAX(user_state.revision,excluded.revision)""",arrayOf(it.kind,it.subjectId,it.revision.toString())) }
+127:             if(failBeforeAdvance) execute("INSERT INTO __fault_missing_table VALUES(1)")
+128:             execute("UPDATE user_cursor SET cursor=? WHERE singleton=1",arrayOf(nextCursor))
+129:         }
+130:     }
+131:     fun messages(c: String) = query("""SELECT request_id,sender_id,content,state,server_message_id,CAST(server_seq AS TEXT),server_time
+132:         FROM messages WHERE conversation_id=? ORDER BY server_seq IS NULL,server_seq,local_id""", arrayOf(c))
+133:     fun contiguous(c: String): Long {
+134:         val rows = query("SELECT contiguous_seq FROM conversations WHERE conversation_id=?",arrayOf(c))
+135:         if (rows.isEmpty()) return 0L
+136:         val value = checkNotNull(rows.first().first()) { "Invalid contiguous sequence" }
+137:         check(value.matches(Regex("0|[1-9][0-9]*"))) { "Invalid contiguous sequence" }
+138:         return value.toLong()
+139:     }
+140:     fun conversationIds() = query("SELECT conversation_id FROM conversations UNION SELECT conversation_id FROM messages UNION SELECT subject_id FROM user_state WHERE kind IN ('conversation.changed','membership.changed') ORDER BY 1").map { it.single()!! }
+141:     fun cursor() = query("SELECT cursor FROM user_cursor WHERE singleton=1").single().single()!!
+142:     override fun close() { db.close() }
+143: }
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt
+1: package im.platform.client.storage
+2: object Schema {
+3:     val v1 = listOf(
+4:         """CREATE TABLE messages(local_id INTEGER PRIMARY KEY,conversation_id TEXT NOT NULL,request_id TEXT,
+5:         sender_id TEXT NOT NULL,content TEXT NOT NULL,state TEXT NOT NULL CHECK(state IN ('SENDING','SENT','FAILED')),
+6:         server_message_id TEXT,server_seq INTEGER CHECK(server_seq IS NULL OR server_seq>0),server_time TEXT,
+7:         CHECK((state='SENT')=(server_message_id IS NOT NULL)),
+8:         CHECK((server_message_id IS NULL)=(server_seq IS NULL)),
+9:         CHECK((server_message_id IS NULL)=(server_time IS NULL)),
+10:         UNIQUE(conversation_id,request_id),UNIQUE(server_message_id),UNIQUE(conversation_id,server_seq))""",
+11:         "CREATE TABLE conversations(conversation_id TEXT PRIMARY KEY,contiguous_seq INTEGER NOT NULL DEFAULT 0 CHECK(contiguous_seq>=0))",
+12:         "PRAGMA user_version=1")
+13:     val v2 = listOf(
+14:         "CREATE TABLE user_state(kind TEXT NOT NULL,subject_id TEXT NOT NULL,revision INTEGER NOT NULL,PRIMARY KEY(kind,subject_id))",
+15:         "CREATE TABLE user_cursor(singleton INTEGER PRIMARY KEY CHECK(singleton=1),cursor TEXT NOT NULL)",
+16:         "INSERT INTO user_cursor VALUES(1,'0')", "PRAGMA user_version=2")
+17: }

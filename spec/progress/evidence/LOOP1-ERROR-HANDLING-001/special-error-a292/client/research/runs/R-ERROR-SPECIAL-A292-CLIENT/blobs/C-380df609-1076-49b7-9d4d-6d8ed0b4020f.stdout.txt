@@ -1,0 +1,69 @@
+
+FILE clients/desktop/src/application/sync/application.ts
+1: import {uuid} from "../../../../shared/protocol-sdk/src/send/wire.js";
+2: import {SendStorageFailure,SendApplication} from "../send.js";
+3: import {SyncHttp} from "../../../../shared/protocol-sdk/src/sync/http.js";
+4: import {SyncFailure} from "../../../../shared/protocol-sdk/src/sync/wire.js";
+5: export interface SyncState {status:"idle"|"syncing"|"failed"|"retired";error:string|null;unavailable:readonly string[]}
+6: export class SyncApplication {
+7:   private opened="";
+8:   private generation=0;private retired=false;private stopped=false;private controller=new AbortController();
+9:   private queue:Promise<void>=Promise.resolve();private requested=false;private listeners=new Set<(s:SyncState)=>void>();
+10:   private detach:()=>void;private detachDelivery:()=>void;private wasReady=false;private poll:ReturnType<typeof setInterval>;
+11:   private current:SyncState={status:"idle",error:null,unavailable:[]};
+12:   constructor(readonly send:SendApplication,private http:SyncHttp) {
+13:     if(!http.matchesSession(s=>send.matchesSession(s))) throw new SyncFailure("authentication");
+14:     this.detachDelivery=send.observeDelivery(()=>{if(send.state.connection==="ready") void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});});
+15:     this.detach=send.observe(s=>{
+16:       const ready=s.connection==="ready";
+17:       if(!ready && this.wasReady){this.generation++;this.requested=false;this.controller.abort();this.controller=new AbortController();if(!this.stopped)this.publish({status:"idle",error:null,unavailable:this.current.unavailable});}
+18:       if(ready && !this.wasReady && !this.stopped) void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});
+19:       this.wasReady=ready;
+20:     });
+21:     // Low-frequency metadata changes have no message-delivery trigger.
+22:     this.poll=setInterval(()=>{if(send.state.connection==="ready"&&!this.stopped)void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});},10000);
+23:   }
+24:   get state():SyncState{return this.current;}
+25:   observe(listener:(s:SyncState)=>void):()=>void{this.listeners.add(listener);listener(this.current);return()=>this.listeners.delete(listener);}
+26:   private publish(s:SyncState){if(this.retired)return;this.current=Object.freeze({...s,unavailable:Object.freeze([...s.unavailable])});for(const l of this.listeners)l(this.current);}
+27:   async openConversation(c:string):Promise<void>{const selected=uuid(c);await this.send.openConversation(selected);this.opened=selected;await this.synchronize();}
+28:   synchronize():Promise<void>{
+29:     if(this.retired || this.stopped)return Promise.resolve();
+30:     this.requested=true;
+31:     const job=this.queue.then(async()=>{
+32:       if(!this.requested || this.retired || this.stopped)return;
+33:       this.requested=false;const g=this.generation,signal=this.controller.signal;
+34:       const active=()=>!this.retired && !this.stopped && this.generation===g && !signal.aborted;
+35:       this.publish({status:"syncing",error:null,unavailable:[]});
+36:       const unavailable:string[]=[];
+37:       try{
+38:         do{
+39:           if(!active())return;const cursor=await this.send.repository.cursor(),page=await this.http.user(cursor,signal);
+40:           if(!active())return;await this.send.mergeUserPage(page,cursor,active);if(!active())return;
+41:           if(!page.hasMore)break;
+42:           if(await this.send.repository.cursor()===cursor)throw new SyncFailure("protocol");
+43:         }while(active());
+44:         for(const c of new Set([...(await this.send.repository.conversationIds()),...(this.opened?[this.opened]:[])])){
+45:           try{
+46:             do{
+47:               if(!active())return;const after=await this.send.repository.contiguous(c),page=await this.http.conversation(c,after,signal);
+48:               if(!active())return;await this.send.mergeMessages(page.messages,active);if(!active())return;
+49:               if(!page.hasMore)break;
+50:               if(await this.send.repository.contiguous(c)<=after)throw new SyncFailure("protocol");
+51:             }while(active());
+52:           }catch(error){if(error instanceof SyncFailure && error.kind==="unavailable"){unavailable.push(c);continue;}throw error;}
+53:         }
+54:         if(active())this.publish({status:"idle",error:null,unavailable});
+55:       }catch(error){
+56:         if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;
+57:         if(!active())return;
+58:         const kind=error instanceof SendStorageFailure?"storage":error.kind;
+59:         if(kind==="authentication"){this.stopped=true;this.generation++;this.controller.abort();this.send.disconnect();}
+60:         this.publish({status:"failed",error:kind,unavailable});throw error;
+61:       }
+62:     });
+63:     this.queue=job.catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});return job;
+64:   }
+65:   async idle(){await this.queue;await this.send.idle();}
+66:   async close(){if(this.retired)return;this.retired=true;clearInterval(this.poll);this.generation++;this.controller.abort();this.detach();this.detachDelivery();this.listeners.clear();this.current={status:"retired",error:null,unavailable:[]};this.send.close();await this.queue;await this.send.idle();}
+67: }

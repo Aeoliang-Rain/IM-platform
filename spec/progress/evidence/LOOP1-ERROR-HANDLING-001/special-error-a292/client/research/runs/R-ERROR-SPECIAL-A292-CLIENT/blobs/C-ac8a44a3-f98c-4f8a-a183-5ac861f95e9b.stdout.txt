@@ -1,0 +1,1544 @@
+# 闈㈠悜鍗佷竾绾у湪绾胯繛鎺ョ殑鍙墿灞曞垎甯冨紡鍗虫椂閫氫俊骞冲彴
+
+**鏋舵瀯鍩虹嚎 v1.1 路 Frozen Architecture 路 Loop 1 鎵ц鐗?*
+
+**姝ｅ紡鏋舵瀯鏂规 路 Loop 1 鍙墽琛屽熀绾?路 AI Agent 宸ヤ綔鎵嬪唽**
+
+## 鍐崇瓥鐘舵€?
+鏈枃浠舵妸褰撳墠瀵硅瘽涓凡鍐荤粨鐨勬灦鏋勫喅绛栧浐鍖栦负鍞竴鎵ц鍩虹嚎銆傛柊 Agent 鍙嵁姝ゅ惎鍔紝浣嗕笉寰楃粫杩?contracts/ 涓殑鏈哄櫒鍙獙璇佸叕鍏卞绾︼紝涔熶笉寰楁妸鏈潵鐩爣鍐欐垚褰撳墠鑳藉姏銆?
+| 鏂囨。灞炴€?| 鍊?|
+| --- | --- |
+| 鐗堟湰 | v1.1 |
+| 鍩虹嚎鏃ユ湡 | 2026-09-30锛堝師濮嬪熀绾?2026-09-19锛?|
+| 鎵ц鍛ㄦ湡 | Loop 1: 涓変釜鏈?/ 12 鍛ㄩ绠楃獥鍙?|
+| 鎺ㄨ繘鏈哄埗 | 閲岀▼纰戦棬绂侀┍鍔紱Gate 鎻愬墠閫氳繃鍗冲彲绔嬪嵆杩涘叆涓嬩竴闃舵 |
+| 褰撳墠瀹归噺楠屾敹 | 鍗曟満 8C / 16GB / 3TB锛?000 authenticated WSS users |
+| 鏈潵瀹归噺鐩爣 | Loop 2: 鍙屾満鍗佷竾璁よ瘉杩炴帴銆丯+1銆佸畾鍚戣矾鐢变笌楂樼骇鍒嗗竷寮忕姸鎬?|
+
+閫傜敤瀵硅薄锛氭灦鏋勮礋璐ｄ汉銆佸疄鐜?Agent銆佹祴璇?Agent銆丷eviewer銆丆I/CD 缁存姢鑰呫€?瑙勮寖鎬у叧閿瘝锛歁UST / MUST NOT 琛ㄧず涓嶅彲杩濆弽锛汼HOULD 琛ㄧず榛樿閬靛惊锛汳AY 琛ㄧず鍏佽浣嗛潪蹇呴渶銆?
+## 鐩綍
+
+鐜拌绔犺妭鍙婇檮褰曠储寮曪紱鍘?PDF 椤电爜浠呯敤浜庡巻鍙叉潵婧愬畾浣嶏紝涓嶉檺鍒剁幇琛岃鑼冪殑淇銆倂1.1 鍐茬獊娑堣В渚濇嵁 ADR-0003锛涘巻鍙叉牸寮忚縼绉讳粛鐢?ADR-0002 璁板綍銆?
+- [0. 鎵ц鎽樿](#section-0) 路 鍘?PDF 绗?5 椤?- [1. 椤圭洰鐩爣銆佹垚鍔熷畾涔変笌杈圭晫](#section-1) 路 鍘?PDF 绗?6 椤?  - [1.1 鐩爣](#section-1-1) 路 鍘?PDF 绗?6 椤?  - [1.2 Loop 1 鎴愬姛瀹氫箟](#section-1-2) 路 鍘?PDF 绗?6 椤?  - [1.3 闈炵洰鏍囦笌寤跺悗椤筣(#section-1-3) 路 鍘?PDF 绗?6 椤?- [2. 鍐荤粨鏋舵瀯鍘熷垯涓庡彉鏇存不鐞哴(#section-2) 路 鍘?PDF 绗?7 椤?  - [2.1 Frozen Architecture 鍙樻洿鍗忚](#section-2-1) 路 鍘?PDF 绗?7 椤?  - [2.2 鏉冨▉椤哄簭](#section-2-2) 路 鍘?PDF 绗?7 椤?- [3. 绯荤粺鎬讳綋鏋舵瀯涓庨儴缃插崟鍏僝(#section-3) 路 鍘?PDF 绗?8 椤?  - [3.1 涓変釜鐗╃悊閮ㄧ讲鍗曞厓](#section-3-1) 路 鍘?PDF 绗?8 椤?  - [3.2 杩愯 profile](#section-3-2) 路 鍘?PDF 绗?8 椤?  - [3.3 Loop 1 鍗曟満閮ㄧ讲](#section-3-3) 路 鍘?PDF 绗?8 椤?- [4. 棰嗗煙妯″瀷涓庝笟鍔′笉鍙橀噺](#section-4) 路 鍘?PDF 绗?9 椤?  - [4.1 璐﹀彿涓?Session](#section-4-1) 路 鍘?PDF 绗?9 椤?  - [4.2 濂藉弸涓庡敮涓€绉佽亰](#section-4-2) 路 鍘?PDF 绗?9 椤?  - [4.3 缇よ亰鏈€灏忓疄鐜癩(#section-4-3) 路 鍘?PDF 绗?9 椤?  - [4.4 娑堟伅韬唤涓庡簭鍙穄(#section-4-4) 路 鍘?PDF 绗?9 椤?- [5. 娑堟伅鍐欏叆銆丱utbox 涓庡疄鏃?fan-out](#section-5) 路 鍘?PDF 绗?10 椤?  - [5.1 鍙戦€佷簨鍔(#section-5-1) 路 鍘?PDF 绗?10 椤?  - [5.2 NATS 涓?Gateway fan-out](#section-5-2) 路 鍘?PDF 绗?10 椤?  - [5.3 缇よ亰 fan-out](#section-5-3) 路 鍘?PDF 绗?10 椤?- [6. 瀹㈡埛绔姸鎬併€佹湰鍦板瓨鍌ㄤ笌绂荤嚎鍚屾](#section-6) 路 鍘?PDF 绗?11 椤?  - [6.1 涓夌宸紓](#section-6-1) 路 鍘?PDF 绗?11 椤?  - [6.2 Optimistic write 涓庣姸鎬佹満](#section-6-2) 路 鍘?PDF 绗?11 椤?  - [6.3 SQLite 浜嬪姟涓嶅彉閲廬(#section-6-3) 路 鍘?PDF 绗?11 椤?  - [6.4 鍙屽眰 Cursor](#section-6-4) 路 鍘?PDF 绗?11 椤?  - [6.6 Web 瀹屾垚鍚庣殑 S2 瀹㈡埛绔ˉ鍏匽(#section-6-6)
+- [7. HTTPS/WSS/TLS 涓庤璇佸崗璁甝(#section-7) 路 鍘?PDF 绗?12 椤?  - [7.1 鐧诲綍涓?Token](#section-7-1) 路 鍘?PDF 绗?12 椤?  - [7.2 WSS 鐘舵€佹満](#section-7-2) 路 鍘?PDF 绗?12 椤?  - [7.3 Session 缂撳瓨涓€鑷存€(#section-7-3) 路 鍘?PDF 绗?12 椤?  - [7.4 浼犺緭涓庢棩蹇楀畨鍏╙(#section-7-4) 路 鍘?PDF 绗?12 椤?- [8. 鎻掍欢骞冲彴鏋舵瀯](#section-8) 路 鍘?PDF 绗?13 椤?  - [8.1 鍖呯粨鏋勪笌鍏叡 API](#section-8-1) 路 鍘?PDF 绗?13 椤?  - [8.2 Custom Render Bundle](#section-8-2) 路 鍘?PDF 绗?13 椤?  - [8.3 WASM 鍚庣 Sandbox](#section-8-3) 路 鍘?PDF 绗?13 椤?- [9. 鎻掍欢鐗堟湰銆佺儹鎻掓嫈涓庡洖婊歖(#section-9) 路 鍘?PDF 绗?14 椤?  - [9.1 瀹夎](#section-9-1) 路 鍘?PDF 绗?14 椤?  - [9.2 鍗囩骇涓庡弻鐗堟湰鍏卞瓨](#section-9-2) 路 鍘?PDF 绗?14 椤?  - [9.3 Disable / Uninstall / Purge](#section-9-3) 路 鍘?PDF 绗?14 椤?  - [9.4 瀹樻柟鍏煎 fixtures](#section-9-4) 路 鍘?PDF 绗?14 椤?- [10. Monorepo 涓庤鑼冩帶鍒堕潰](#section-10) 路 鍘?PDF 绗?15 椤?  - [10.1 spec/ 鍚勭洰褰曠殑鑱岃矗](#section-10-1) 路 鍘?PDF 绗?15 椤?- [11. 鍏叡濂戠害涓庡弻鍚庣瀹炵幇](#section-11) 路 鍘?PDF 绗?16 椤?  - [11.1 鍞竴鏉冨▉](#section-11-1) 路 鍘?PDF 绗?16 椤?  - [11.2 绛変环鑰岄潪鍚屾瀯](#section-11-2) 路 鍘?PDF 绗?16 椤?  - [11.3 Golden Contract Tests](#section-11-3) 路 鍘?PDF 绗?16 椤?  - [11.4 鏁版嵁搴撹縼绉籡(#section-11-4) 路 鍘?PDF 绗?16 椤?  - [11.5 鍏紑 Sync HTTPS 缁戝畾](#section-11-5)
+- [12. AI Development Loop](#section-12) 路 鍘?PDF 绗?17 椤?  - [12.1 Task Spec 妯℃澘](#section-12-1) 路 鍘?PDF 绗?17 椤?  - [12.2 鐘舵€侀槦鍒梋(#section-12-2) 路 鍘?PDF 绗?17 椤?  - [12.3 Git 宸ヤ綔妯″紡](#section-12-3) 路 鍘?PDF 绗?17 椤?- [13. Agent 鍚姩涓庝氦鎺ュ崗璁甝(#section-13) 路 鍘?PDF 绗?18 椤?  - [13.1 寮哄埗璇诲彇椤哄簭](#section-13-1) 路 鍘?PDF 绗?18 椤?  - [13.2 Handoff 蹇呭～椤筣(#section-13-2) 路 鍘?PDF 绗?18 椤?  - [13.3 Checkpoint 瑙勫垯](#section-13-3) 路 鍘?PDF 绗?18 椤?- [14. CI/CD 鐙珛鏍￠獙鏋舵瀯](#section-14) 路 鍘?PDF 绗?19 椤?  - [14.1 璺緞鎰熺煡瑙勫垯](#section-14-1) 路 鍘?PDF 绗?19 椤?  - [14.2 娴佹按绾垮眰娆(#section-14-2) 路 鍘?PDF 绗?19 椤?  - [14.3 鍏煎鐭╅樀](#section-14-3) 路 鍘?PDF 绗?19 椤?  - [14.4 CI 涓?Agent 鐨勪俊浠昏竟鐣宂(#section-14-4) 路 鍘?PDF 绗?19 椤?- [15. Loop 1: 12 鍛ㄩ绠椼€侀噷绋嬬闂ㄧ椹卞姩](#section-15) 路 鍘?PDF 绗?20 椤?- [16. Loop 1 鎬ц兘涓庡彲闈犳€ч獙鏀禲(#section-16) 路 鍘?PDF 绗?21 椤?  - [16.1 鍥哄畾鐜涓庤繛鎺ュ畾涔塢(#section-16-1) 路 鍘?PDF 绗?21 椤?  - [16.2 蹇呮祴鍦烘櫙](#section-16-2) 路 鍘?PDF 绗?21 椤?  - [16.3 瑙傛祴鎸囨爣](#section-16-3) 路 鍘?PDF 绗?21 椤?  - [16.4 Gate 鍒ゅ畾](#section-16-4) 路 鍘?PDF 绗?21 椤?- [17. Release銆佽縼绉讳笌鍥炴粴瑙勫垯](#section-17) 路 鍘?PDF 绗?22 椤?  - [17.1 Release Manifest](#section-17-1) 路 鍘?PDF 绗?22 椤?  - [17.2 鍙戝竷瑙勫垯](#section-17-2) 路 鍘?PDF 绗?22 椤?  - [17.3 鏁版嵁搴撹縼绉籡(#section-17-3) 路 鍘?PDF 绗?22 椤?  - [17.4 鍥炴粴](#section-17-4) 路 鍘?PDF 绗?22 椤?  - [17.5 鍙戝竷澶辫触鍒ゅ畾](#section-17-5) 路 鍘?PDF 绗?22 椤?- [18. 鍙娴嬫€с€佸畨鍏ㄤ笌杩愮淮鍩虹嚎](#section-18) 路 鍘?PDF 绗?23 椤?  - [18.1 鍏宠仈鏍囪瘑](#section-18-1) 路 鍘?PDF 绗?23 椤?  - [18.2 鍋ュ悍涓庡氨缁猐(#section-18-2) 路 鍘?PDF 绗?23 椤?  - [18.3 瀹夊叏娓呭崟](#section-18-3) 路 鍘?PDF 绗?23 椤?  - [18.4 鍛婅浼樺厛绾(#section-18-4) 路 鍘?PDF 绗?23 椤?- [19. 绗竴鎵?Agent 鍙墽琛屼换鍔(#section-19) 路 鍘?PDF 绗?24 椤?- [20. 鍚庣画浠诲姟闃熷垪涓庝緷璧朷(#section-20) 路 鍘?PDF 绗?25 椤?  - [20.1 渚濊禆绾緥](#section-20-1) 路 鍘?PDF 绗?25 椤?- [21. Agent 棣栨棩鎵ц娓呭崟](#section-21) 路 鍘?PDF 绗?26 椤?  - [21.1 绗?0-2 灏忔椂](#section-21-1) 路 鍘?PDF 绗?26 椤?  - [21.2 绗竴涓疄鐜板洖鍚圿(#section-21-2) 路 鍘?PDF 绗?26 椤?  - [21.3 Agent 鐨勫仠姝㈡潯浠禲(#section-21-3) 路 鍘?PDF 绗?26 椤?- [闄勫綍 A. Gate Checklist](#appendix-a) 路 鍘?PDF 绗?27 椤?- [闄勫綍 B. 鍐荤粨涓嶅彉閲忛€熸煡](#appendix-b) 路 鍘?PDF 绗?28 椤?
+<a id="section-0"></a>
+## 0. 鎵ц鎽樿
+
+鏈」鐩瀯寤轰竴涓墠鍚庣鍒嗙銆佸绔€佸瀹炵幇銆佹彃浠朵竴绛夊叕姘戠殑鍒嗗竷寮忓嵆鏃堕€氫俊骞冲彴銆傞鐩腑鐨勨€滃崄涓囩骇鈥濇弿杩板钩鍙扮殑鎵╁睍鏂瑰悜锛屼笉绛変簬 Loop 1 宸查獙鏀跺崄涓囪繛鎺ャ€侺oop 1 鍏堢敤鍗曟満 8C/16GB/3TB 瀹屾垚 5000 涓湡瀹炶璇?WSS 鐢ㄦ埛鐨勬纭€т笌瀹归噺鍩虹嚎锛涢€氳繃鍚庯紝鍙屾満鍗佷竾杩炴帴姝ｅ紡楠屾敹寤跺悗鑷?Loop 2銆?
+```mermaid
+flowchart LR
+  Web["Web<br/>涓存椂鍐呭瓨鎬?]
+  Desktop["Desktop<br/>SQLite"]
+  Mobile["Mobile<br/>SQLite"]
+  UI["Plugin UI Host<br/>澹版槑寮?UI + Render Bundle"]
+  Gateway["TLS Proxy / Gateway<br/>HTTPS + WSS"]
+  Core["Core 妯″潡鍖栧崟浣?br/>Auth / IM / Sync"]
+  Plugin["Plugin Host<br/>WASM Sandbox"]
+  PG["PostgreSQL<br/>浜嬪疄鏉ユ簮 + Outbox"]
+  NATS["NATS<br/>瀹炴椂浜嬩欢鎬荤嚎"]
+  Web --> Gateway
+  Desktop --> Gateway
+  Mobile --> Gateway
+  UI --> Gateway
+  Gateway --> Core
+  Core --> Plugin
+  Core --> PG
+  Core --> NATS
+  NATS --> Gateway
+```
+
+> 鍥?0-1 鎬讳綋閫昏緫鏋舵瀯锛歅ostgreSQL 鏄簨瀹炴潵婧愶紝NATS 鏄疄鏃堕€氱煡鎬荤嚎锛汫ateway 鍙壙鎷呮帴鍏ヤ笌 fan-out銆?
+> 瀹炴椂璺緞涓?Core 鐨?Outbox dispatcher 鈫?NATS 鈫?Gateway锛汸ostgreSQL 鍐欏叆鐢?Core 浜嬪姟璐熻矗銆傚巻鍙?PDF 鐨?NATS 鈫?PostgreSQL 绠ご鍙繚鐣欏湪鍘嗗彶鏉ユ簮涓紝涓嶄唬琛ㄧ幇琛岃繍琛屼緷璧栥€?
+#### 鍥涙潯鎬荤翰
+
+1. contracts/ 鏄満鍣ㄥ彲楠岃瘉鍏叡濂戠害鐨勫敮涓€鏉ユ簮锛涙€讳綋鏉冨▉椤哄簭瑙?搂2.2锛孏o 涓?Java/Spring 鏄嫭绔嬪疄鐜帮紱
+2. 娑堟伅鍙潬鎬ф潵鑷?PostgreSQL + Outbox + Sync锛屼笉鏉ヨ嚜 NATS锛?3. Agent 鍙敼浠ｇ爜浣嗘棤鏉冭嚜琛屽甯冩纭紝CI 鏄嫭绔嬩簨瀹炶鍒わ紱
+4. 鏈粡鏋舵瀯鍐崇瓥娴佺▼锛屼换浣?Agent 涓嶅緱淇敼 frozen architecture銆?
+| 缁村害 | Loop 1 蹇呴』瀹屾垚 | 鏄庣‘涓嶈繘鍏?Loop 1 |
+| --- | --- | --- |
+| 涓氬姟 | 璐﹀彿銆佹悳绱€佹渶灏忓ソ鍙嬨€佸敮涓€绉佽亰銆佹渶灏忕兢鑱娿€佺函鏂囨湰銆佹彃浠舵秷鎭?| 闊宠棰戙€佹枃浠躲€佹湅鍙嬪湀銆佽秴绾х兢銆侀檶鐢熶汉鎷夌兢 |
+| 瀹㈡埛绔?| Web 涓存椂鎬侊紱Desktop/Mobile SQLite銆佺绾垮巻鍙层€乷ptimistic write | Web 鏈湴鍘嗗彶鏁版嵁搴擄紱绂荤嚎鍒涘缓闇€瑕佹湇鍔＄纭鐨勪笟鍔℃搷浣?|
+| 鍚庣 | Go 涓?Java/Spring 涓ゅ鐙珛 profile锛岃涓虹瓑浠?| Go/Java 娣峰悎闆嗙兢鐢熶骇娴侀噺 |
+| 瀹归噺 | 鍗曟満 5000 authenticated WSS users | 鍙屾満 100000 姝ｅ紡楠屾敹銆丯+1 婊¤礋杞?|
+| 鍩虹璁炬柦 | PostgreSQL銆丆ore NATS銆乀LS Proxy銆丏ocker Compose | 涓衡€滅湅璧锋潵鍒嗗竷寮忊€濊€岄鍏堝姞鍏?Redis/Kafka/鍒嗗簱鍒嗚〃 |
+
+<a id="section-1"></a>
+## 1. 椤圭洰鐩爣銆佹垚鍔熷畾涔変笌杈圭晫
+
+<a id="section-1-1"></a>
+### 1.1 鐩爣
+
+- 浠?HTTPS/WSS/TLS 鎻愪緵鐪熷疄璁よ瘉銆佸绔悓姝ョ殑鍗虫椂閫氫俊绾靛悜闂幆銆?
+- 鐢ㄥ悓涓€濂楀叕鍏卞绾﹁瘉鏄?Go 涓?Java/Spring 涓ゅ鐙珛鍚庣鍙浛鎹紝瀹㈡埛绔棤闇€鏀瑰姩銆?
+- 鎶婃彃浠跺钩鍙颁綔涓轰竴绛夊叕姘戯細WASM 鍚庣 sandbox + 鍏ㄥ鎴风 UI Extension + 缁忓鏌ョ殑 Custom Render Bundle銆?
+- 寤虹珛 AI 鍏ㄦ祦绋嬭嚜鍔ㄥ寲寮€鍙戠殑鎺у埗闈紝浣挎柊 Agent 鍙€氳繃 spec + contracts + progress + tasks 鍗冲彲鎭㈠宸ヤ綔銆?
+- 浠ラ棬绂佸拰鑷姩鍖栬瘉鎹┍鍔ㄨ繘搴︼紱12 鍛ㄦ槸棰勭畻锛屼笉鏄瓑寰呮棩鍘嗐€?
+<a id="section-1-2"></a>
+### 1.2 Loop 1 鎴愬姛瀹氫箟
+
+| 楠屾敹鍩?| 涓嶅彲鐪佺暐鐨勮瘉鎹?|
+| --- | --- |
+| 涓氬姟 E2E | 娉ㄥ唽/鐧诲綍 -> 鎼滅储 -> 娣诲姞濂藉弸 -> 鑷姩鍑虹幇鍞竴绉佽亰 -> 鏂囨湰娑堟伅 -> 浠庡ソ鍙嬪垪琛ㄥ垱寤虹兢鑱?-> 缇ゆ秷鎭?-> 瀹夎/浣跨敤鎻掍欢 |
+| 娑堟伅姝ｇ‘鎬?| ACK 浠呭湪 durable commit 鍚庯紱鍚屼竴 request_id 閲嶈瘯涓嶄骇鐢熼噸澶嶉€昏緫娑堟伅锛涚绾挎仮澶嶆棤姘镐箙 gap |
+| 瀹㈡埛绔?| Desktop/Mobile SQLite 浜嬪姟 UPSERT锛汼ENDING/SENT/FAILED锛沇eb 涓嶄繚瀛樺巻鍙?|
+| 瀹炵幇绛変环 | Go profile 涓?Java profile 鍒嗗埆閫氳繃鍚屼竴 Golden Contract Tests锛涘鎴风涓嶆敼浠ｇ爜 |
+| 宸ョ▼浣撶郴 | path-aware CI銆佸吋瀹圭煩闃点€佽縼绉绘祴璇曘€佹彃浠?fixture銆丷elease Manifest銆乺ollback rehearsal |
+| 瀹归噺 | 鍗曟満 8C/16GB/3TB锛?000 涓凡瀹屾垚 TLS/WSS/auth.bind/session validation 鐨勫湪绾跨敤鎴?|
+
+<a id="section-1-3"></a>
+### 1.3 闈炵洰鏍囦笌寤跺悗椤?
+#### Loop 2 鑼冨洿
+
+鍙屾満姝ｅ紡閮ㄧ讲涓庡崄涓?authenticated WSS connections锛汵+1 failover锛汫ateway targeted routing锛涙洿楂樼骇鐨勫垎甯冨紡Session/Presence锛涜秴绾х兢锛涜繘涓€姝ユ按骞虫墿灞曘€侺oop 1 鏂囨。涓庝唬鐮佸彲浠ラ鐣欐墿灞曠偣锛屼絾涓嶅緱浠ユ鎵╁ぇ褰撳墠瀹炵幇鑼冨洿銆?
+Loop 1 涓嶆妸 Redis銆並afka銆佸垎搴撳垎琛ㄣ€佽嚜鍔ㄦ暟鎹簱鍒囦富瑙嗕负蹇呴€夐」銆傚彧鏈夊熀浜庡帇娴嬨€佹晠闅滆瘉鎹拰鏂?ADR 鎵嶈兘寮曞叆銆備袱鑺傜偣鐜涓嶅叿澶囧畨鍏ㄨ嚜鍔?quorum failover 鏉′欢锛涚敓浜х骇鑷姩鍒囦富椤荤瓑寰呯涓夋柟 witness 鎴栨洿澶氳妭鐐广€?
+<a id="section-2"></a>
+## 2. 鍐荤粨鏋舵瀯鍘熷垯涓庡彉鏇存不鐞?
+| ID | 鍐荤粨鍐崇瓥 | 寮哄埗绾︽潫 |
+| --- | --- | --- |
+| F-01 | 鍏叡濂戠害鍞竴鏉冨▉ | HTTPS銆乄SS銆侀敊璇爜銆侀鍩熻涔夈€丼ync銆丳lugin API 鍏堝畾涔夛紝涓や釜鍚庣涓嶅緱鍚勮嚜鍙戞槑 |
+| F-02 | 鍙屽悗绔嫭绔嬪疄鐜?| 100% Go profile 鎴?100% Java/Spring profile锛汱oop 1 涓嶆贩璺?|
+| F-03 | PostgreSQL 鏄簨瀹炴潵婧?| 娑堟伅銆佷細璇濄€丼ession銆佹彃浠剁姸鎬佹寔涔呭寲锛汵ATS 涓簨浠朵笉鑳介€犳垚姘镐箙鏁版嵁缂哄け |
+| F-04 | Transactional Outbox | message 涓?outbox 鍚屼竴浜嬪姟锛汚CK 琛ㄧず durable commit |
+| F-05 | Gateway 杞讳笟鍔?| 鎺ュ叆銆侀壌鏉冪粦瀹氥€佽繛鎺ユ敞鍐屻€侀檺娴併€佸崗璁矾鐢便€乴ocal fan-out锛涗笟鍔¤鍒欏湪 Core |
+| F-06 | 鍙屽眰鍚屾娓告爣 | 鐢ㄦ埛浣庨鐘舵€佺敤 user_sync_cursor锛涙秷鎭敤 conversation seq + contiguous_seq |
+| F-07 | 瀹㈡埛绔樊寮?| Web memory only锛汥esktop/Mobile SQLite materialized view |
+| F-08 | 鎻掍欢鏈€灏忔潈闄?| 鎵€鏈夎兘鍔涚粡 capability/permission锛汻ender Bundle 瀹℃煡 + sandbox锛涗笉鍙洿鎺ヨЕ杈惧涓绘晱鎰熻祫婧?|
+| F-09 | 闂ㄧ椹卞姩 | Gate PASS 绔嬪嵆鍓嶈繘锛汫ate FAIL 蹇呴』鐣欏湪闃舵淇 |
+| F-10 | CI 鐙珛瑁佸垽 | Agent 鐨勮嚜妫€涓嶆槸楠屾敹锛涘悎骞朵笌鍙戝竷鍙緷鎹嫭绔嬫祦姘寸嚎璇佹嵁 |
+
+<a id="section-2-1"></a>
+### 2.1 Frozen Architecture 鍙樻洿鍗忚
+
+- 绂佹锛氭湭缁忔槑纭壒鍑嗙洿鎺ヤ慨鏀?frozen spec / contracts / DB invariants / plugin security boundary
+- 鍏佽锛氬垱寤?Architecture Change Proposal (ACP) 鎴?ADR 鑽夋
+- 娴佺▼锛氭彁鍑哄姩鏈?-> 褰卞搷鍒嗘瀽 -> 鍏煎/杩佺Щ/鍥炴粴鏂规 -> 鏋舵瀯璐熻矗浜烘壒鍑?-> 淇鐜拌姝ｆ枃鍙婂熀绾?-> 鎸夊奖鍝嶆洿鏂板绾︼紙浠呭湪鎺堟潈鏀瑰彉濂戠害鏃讹級涓庢墽琛岀害鏉?-> 鐙珛 Review 涓庨€傜敤 CI -> 瀹炴柦杩佺Щ骞堕獙璇併€備笉寰椾互灏氬緟杩佺Щ瀹炵幇杩濆弽鏂拌鍒欎负鐢辨案涔呰眮鍏嶏紱瑙勫垯浜や粯鍜屼骇鍝佹渶缁堝悎瑙勫垎鍒獙鏀躲€?
+Agent 閬囧埌涓?frozen architecture 鍐茬獊鐨勪换鍔℃椂蹇呴』鍋滄璇ュ啿绐侀儴鍒嗭紝鍦ㄤ换鍔¤褰曚腑鏍囪 BLOCKED_BY_ARCHITECTURE锛屽苟鎻愬嚭鏈€灏忓喅绛栭棶棰樸€備笉寰楃敤鈥滃疄鐜版柟渚库€濅綔涓洪潤榛樻敼鍙樺崗璁€佸敮涓€绾︽潫銆丄CK 璇箟鎴栧畨鍏ㄨ竟鐣岀殑鐞嗙敱銆?
+<a id="section-2-2"></a>
+### 2.2 鏉冨▉椤哄簭
+
+1. 鏈?Frozen Architecture锛堢敱 spec/architecture/README.md 涓?baseline.md 瑙ｆ瀽锛夊強 spec/architecture/decisions/ 鐨勫凡鎵瑰噯 ADR / frozen decision銆侫DR 璁板綍鍔ㄦ満銆佹壒鍑嗘潵婧愬拰杩佺Щ锛涙壒鍑嗙殑鐜拌瑙勫垯蹇呴』钀藉疄鍒版鏂囥€傚悓绛夋潈濞佸瓨鍦ㄦ棤娉曟秷瑙ｇ殑瀹炶川鍐茬獊鏃跺仠姝㈠啿绐侀儴鍒嗗苟鎻愬嚭鏈€灏忓喅绛栭棶棰樸€?
+2. contracts/ (鏈哄櫒鍙獙璇佺殑鍏叡濂戠害)
+
+3. spec/domain/ + spec/invariants/
+
+4. spec/acceptance/ (Gate 涓庨獙鏀惰瘉鎹?
+
+5. spec/tasks/ (浠诲姟灞€閮ㄨ寖鍥?
+
+6. implementation (涓嶅緱鍙嶅悜瀹氫箟濂戠害)
+
+### 2.3 Agent 鎶€鏈€夊瀷鏉冮檺锛堟墍鏈変换鍔￠€傜敤锛?
+Agent 娌℃湁鏈巿鏉冩妧鏈€夊瀷鏉冦€傜紪绋嬭瑷€銆乁I/application/client/cross-platform framework銆乺untime銆乨atabase/local database銆丱RM銆乶etwork framework銆両PC/RPC銆乻tate management framework銆乸lugin runtime銆乻erialization framework銆乵essage queue銆乧ache銆乻torage engine銆乶ative bridge銆乤uthentication framework銆乵ajor infrastructure dependency锛屼互鍙婂舰鎴愰暱鏈熸灦鏋勮€﹀悎鐨勬牳蹇冪涓夋柟搴擄紝閮藉繀椤诲叿鏈夌幇琛?Frozen Architecture銆乤pproved ADR銆乧ontracts 鎴栨槑纭?Human 鏋舵瀯鍐冲畾鐨勫厖鍒嗘巿鏉冦€?
+绛旀涓嶆槑纭椂鍞竴鍚堟硶椤哄簭鏄細鍋滄鍙楀奖鍝嶅疄鐜?鈫?鏍囪 BLOCKED_BY_ARCHITECTURE 鈫?鏈€灏忓喅绛栭棶棰樹笌褰卞搷鑼冨洿 鈫?Architect / Human 鏄庣‘鍐冲畾 鈫?鍐欏叆 Frozen Architecture / approved ADR 鈫?蹇呰 machine guard 鈫?鏂扮嫭绔?Review + applicable 绮剧‘鍊欓€?hosted CI 鈫?鍐冲畾姝ｅ紡鐢熸晥 鈫?浜у搧瀹炵幇銆傚彲缁х画涓嶄緷璧栬鍐冲畾鐨勫凡鎵瑰噯宸ヤ綔銆傜姝㈠厛瀹炵幇銆佹祴璇曢€氳繃鍚庡啀淇敼鏋舵瀯杩借銆?
+鈥滅啛鎮夈€佸凡瀹夎銆佹柟渚裤€佹祦琛屻€佷唬鐮佸皯銆佷互鍓嶅け璐ュ疄鐜扮敤杩囥€乀ask Spec 鏈姝€乤llowed_paths 鍏佽銆丆I PASS鈥濋兘涓嶈兘鎺堟潈锛涙湭绂佹 鈮?宸叉壒鍑嗐€俢hat銆乭andoff銆乼ask notes銆乧urrent.md銆乮mplementation README銆乻ource comments 涓嶈兘浠ｆ浛鏉冨▉灞傘€俆ask Spec 鍙兘鏀剁獎鑼冨洿銆佹寚瀹氬凡鎺堟潈缁嗚妭/娴嬭瘯/璺緞锛屼笉鑳借嚜琛屽垱閫犳妧鏈爤銆佹鏋躲€乺untime銆佹暟鎹簱銆佽法骞冲彴绛栫暐銆佹湇鍔¤竟鐣屾垨鍗忚銆俁eviewer 蹇呴』閫愰」鍥炵瓟鏂扮殑鏁忔劅閫夊瀷鏉ヨ嚜鍝釜宸叉帴鍙楁潈濞佹潯娆?ADR锛涙棤娉曡拷婧垯 Review FAIL銆傛満鍣ㄦ鏌ュ彧琛ュ厖璇箟 Review锛涙墽琛岃绾﹁ spec/governance/technology-selection.md銆?
+<a id="section-3"></a>
+## 3. 绯荤粺鎬讳綋鏋舵瀯涓庨儴缃插崟鍏?
+```mermaid
+flowchart LR
+  Web["Web<br/>涓存椂鍐呭瓨鎬?]
+  Desktop["Desktop<br/>SQLite"]
+  Mobile["Mobile<br/>SQLite"]
+  UI["Plugin UI Host<br/>澹版槑寮?UI + Render Bundle"]
+  Gateway["TLS Proxy / Gateway<br/>HTTPS + WSS"]
+  Core["Core 妯″潡鍖栧崟浣?br/>Auth / IM / Sync"]
+  Plugin["Plugin Host<br/>WASM Sandbox"]
+  PG["PostgreSQL<br/>浜嬪疄鏉ユ簮 + Outbox"]
+  NATS["NATS<br/>瀹炴椂浜嬩欢鎬荤嚎"]
+  Web --> Gateway
+  Desktop --> Gateway
+  Mobile --> Gateway
+  UI --> Gateway
+  Gateway --> Core
+  Core --> Plugin
+  Core --> PG
+  Core --> NATS
+  NATS --> Gateway
+```
+
+> 鍥?3-1 閫昏緫缁勪欢鍥俱€?
+> 瀹炴椂璺緞涓?Core 鐨?Outbox dispatcher 鈫?NATS 鈫?Gateway锛汸ostgreSQL 鍐欏叆鐢?Core 浜嬪姟璐熻矗銆傚巻鍙?PDF 鐨?NATS 鈫?PostgreSQL 绠ご鍙繚鐣欏湪鍘嗗彶鏉ユ簮涓紝涓嶄唬琛ㄧ幇琛岃繍琛屼緷璧栥€?
+<a id="section-3-1"></a>
+### 3.1 涓変釜鐗╃悊閮ㄧ讲鍗曞厓
+
+| 閮ㄧ讲鍗曞厓 | 鑱岃矗 | 鏄庣‘涓嶈礋璐?|
+| --- | --- | --- |
+| gateway | TLS 涔嬪悗鐨?WSS 鐢熷懡鍛ㄦ湡銆乤uth.bind銆乻ession/cache 鏍￠獙銆乧onnection registry銆佸崗璁矾鐢便€乴ocal fan-out銆乭eartbeat/闄愭祦 | 濂藉弸/缇ゆ垚鍛樿鍒欍€佹秷鎭寔涔呭寲銆佹彃浠朵笟鍔￠€昏緫 |
+| core | Auth銆丼ession銆乁ser銆丗riendship銆丆onversation銆丮essage銆丼ync銆丱utbox锛涙ā鍧楀寲鍗曚綋 | 涓嶅彲淇℃彃浠舵墽琛岋紱澶ч噺 socket 杩炴帴鐘舵€?|
+| plugin-host | WASM runtime銆佷簨浠跺垎娲俱€佺粡鎺堟潈鐨?Query/Action Host bridge銆佽祫婧愰檺鍒躲€佺啍鏂€佺紪璇戠紦瀛?| 涓嶅彲淇?WASM 鐩存帴璁块棶鏁版嵁搴?鏂囦欢/浠绘剰缃戠粶锛涚粫杩?Core 涓氬姟鎺堟潈锛涙垚涓?IM 涓婚摼鍗曠偣 |
+
+<a id="section-3-2"></a>
+### 3.2 杩愯 profile
+
+```text
+docker compose --profile go up
+# gateway-go + core-go + plugin-host-go adapter + shared PostgreSQL/NATS/TLS
+docker compose --profile java up
+# gateway-java + core-java + plugin-host adapter + same canonical schema/contracts
+```
+
+profile 鐨勭洰鏍囨槸琛屼负鍙浛鎹紱鏈嶅姟鍐呴儴婧愮爜缁撴瀯鍙互涓嶅悓锛屼絾 搂3 鑱岃矗銆伮?0 鏈嶅姟婧愮爜褰掑睘鍜屼緷璧栨柟鍚戝叡鍚岀害鏉熶袱涓悗绔€侴o 涓?Java 鍙娇鐢ㄥ悇鑷儻鐢ㄧ殑妗嗘灦鍜岀粍缁囨柟寮忥紝浣嗗繀椤诲叡浜細鍏叡濂戠害銆佹暟鎹簱杩佺Щ璇箟銆侀敊璇爜銆佹祴璇曞悜閲忋€佹彃浠?API銆丷elease Manifest 鏍煎紡銆?
+Go/Java 鍙噰鐢ㄤ笉鍚屽唴閮ㄧ粍缁囨柟寮忥紝浣嗘墍鏈夋柊澧炴鏋躲€丱RM銆乺untime銆佹牳蹇冧緷璧栧繀椤诲厛閬靛畧 搂2.3锛涚粨鏋勮嚜鐢变笉鏄妧鏈€夊瀷鎺堟潈銆?
+<a id="section-3-3"></a>
+### 3.3 Loop 1 鍗曟満閮ㄧ讲
+
+| 灞?| Loop 1 鍗曟満閮ㄧ讲瑙勫垯 |
+| --- | --- |
+| 鍏ュ彛 | TLS reverse proxy 鏆撮湶 HTTPS/WSS锛涢儴缃?smoke銆丒2E銆佸閲忎笌鍙戝竷楠屾敹娴侀噺缁忚繃鐪熷疄鍏ュ彛銆傚崟鍏冨拰闅旂闆嗘垚娴嬭瘯鍙洿鎺ヨ闂娴嬬粍浠讹紝浣嗕笉寰楁浛浠ｅ叆鍙ｉ獙鏀?|
+| 鏈嶅姟 | 浠呭惎鍔ㄤ竴涓悗绔?profile锛沢ateway/core/plugin-host 涓哄彲鐙珛鍚姩鐨勯儴缃茶鑹层€傚彲澶嶇敤涓€涓瀯寤哄埗鍝佹寜瑙掕壊鍚姩锛涗笉寮哄埗涓変釜 module 鎴栦笁涓?binary锛岀姝㈡妸婧愮爜鑱岃矗娣蜂负涓€涓笟鍔″寘 |
+| 鏁版嵁 | PostgreSQL 鍗曞疄渚嬶紱鎵€鏈?migration 鏈?forward/rollback 瑙勫垯 |
+| 浜嬩欢 | Core NATS锛岄粯璁ら潪浜嬪疄鏉ユ簮锛汷utbox dispatcher 鍙噸鏀?|
+| 瀛樺偍 | 3TB 鏄満鍣ㄥ閲忕害鏉燂紝涓嶄唬琛ㄦ祴璇曞繀椤诲～婊★紱璁板綍瀹為檯鍗犵敤涓庡闀?|
+
+<a id="section-4"></a>
+## 4. 棰嗗煙妯″瀷涓庝笟鍔′笉鍙橀噺
+
+```mermaid
+flowchart LR
+  User["User<br/>user_id<br/>username / display_name"]
+  Session["Session<br/>client_type / epoch<br/>ACTIVE / REVOKED"]
+  Friendship["Friendship<br/>low_user / high_user<br/>UNIQUE pair"]
+  Conversation["Conversation<br/>DIRECT / GROUP<br/>seq allocator"]
+  Member["ConversationMember<br/>role / joined_at"]
+  Message["Message<br/>request_id / seq<br/>TEXT / PLUGIN"]
+  Instance["PluginInstance<br/>active / desired status"]
+  Artifact["PluginArtifact<br/>version / hashes<br/>immutable"]
+  Outbox["OutboxEvent<br/>aggregate / payload<br/>published_at"]
+  KV["PluginKV<br/>schema_version<br/>conversation scope"]
+  User -->|"鏈夋晥妲戒綅 1 : 0..3"| Session
+  User --> Friendship
+  Friendship -->|"pair 鈫?direct"| Conversation
+  User -->|"member"| Member
+  Member -->|"1 : N"| Message
+  Message -->|"N : 1"| Conversation
+  Message -->|"1 : 1 logical message.created"| Outbox
+  Instance -->|"N : 1"| Artifact
+  Instance -->|"1 : N"| KV
+```
+
+> 鍥?4-1 UML 棰嗗煙鍏崇郴姒傝銆傚瓧娈典粎鏄剧ず鍏抽敭涓嶅彉閲忥紱瀹屾暣 schema 鐢?contracts/database 绠＄悊銆?
+<a id="section-4-1"></a>
+### 4.1 璐﹀彿涓?Session
+
+姣忎釜鐢ㄦ埛鎷ユ湁 WEB銆丏ESKTOP銆丮OBILE 涓変釜鐧诲綍妲戒綅銆傛瘡绉?client_type 鍚屾椂鏈€澶氫竴涓湁鏁?Session锛屼絾涓夌绔彲鍚屾椂鐧诲綍銆傚悓绔柊鐧诲綍蹇呴』鍦ㄤ簨鍔′腑鎾ら攢鏃?Session 骞堕€掑 session_epoch銆侾ostgreSQL 鏄櫥褰曠姸鎬佹潈濞侊紱Gateway 鍐呭瓨鏄湪绾胯繛鎺ヤ笌璺敱缂撳瓨銆?
+- 姣忎釜 (user_id, client_type) 鏈€澶氫竴涓湁鏁堟Ы浣嶏紱褰撳墠 contracts/database 瀹氫箟涓烘瘡妲戒竴琛岋紝鏇挎崲鏃跺師瀛愯疆鎹?session_id 涓?epoch銆傛湰鍥句笉瀹氫箟鍘嗗彶 Session 鎬婚噺鎴栧彟琛屽垱寤哄巻鍙茶〃銆?- Access Token: user_id, session_id, client_type, session_epoch, iat, exp
+- Refresh Token: 鍙瓨 hash锛屽彲鐙珛鎾ら攢
+- WSS: 鍏堝缓绔?TLS/WebSocket锛屽啀鍙戦€?auth.bind锛涚姝?token 鏀?URL query
+
+<a id="section-4-2"></a>
+### 4.2 濂藉弸涓庡敮涓€绉佽亰
+
+Loop 1 涓嶅仛濂藉弸鐢宠瀹℃壒銆傛坊鍔犲ソ鍙嬭〃绀哄嵆鏃跺缓绔嬪弻鍚戝叧绯伙紝骞跺湪鍚屼竴浜嬪姟涓垱寤烘垨鍙栧緱鍞竴 DIRECT Conversation銆傚ソ鍙嬪叧绯讳娇鐢ㄨ鑼冨寲鏃犲悜 pair锛歭ow=min(A,B)銆乭igh=max(A,B)銆?
+- friendships: UNIQUE(user_low_id, user_high_id)
+- DIRECT conversation: UNIQUE(direct_user_low_id, direct_user_high_id)
+- 浜嬪姟: friendship + direct conversation + two members + sync events + outbox -> COMMIT
+
+<a id="section-4-3"></a>
+### 4.3 缇よ亰鏈€灏忓疄鐜?
+鍙戣捣鑰呭彧鑳戒粠鑷繁鐨勫ソ鍙嬪垪琛ㄩ€夋嫨鎴愬憳銆傚垱寤鸿姹傚繀椤诲甫 request_id 浠ラ伩鍏嶇綉缁滈噸璇曢噸澶嶅缓缇ゃ€備簨鍔″啓鍏?GROUP Conversation銆佹垚鍛樸€佺敤鎴风姸鎬佸悓姝ヤ簨浠朵笌 outbox銆侺oop 1 涓嶅惈閭€璇烽摼鎺ャ€佷簩缁寸爜銆侀檶鐢熶汉鎷夌兢銆佸鏉傜鐞嗗憳瀹℃壒銆?
+<a id="section-4-4"></a>
+### 4.4 娑堟伅韬唤涓庡簭鍙?
+| 韬唤 | 绾︽潫 | 鐢ㄩ€?|
+| --- | --- | --- |
+| 瀹㈡埛绔€昏緫韬唤 | UNIQUE(conversation_id, request_id) | SQLite 鏈湴鍙戦€併€丄CK銆侀噸璇曘€丼ync 鏀舵暃 |
+| 鏈嶅姟绔箓绛夎韩浠?| UNIQUE(sender_id, conversation_id, request_id) | 璺ㄩ噸璇?鑺傜偣閬垮厤閲嶅閫昏緫娑堟伅 |
+| 鏈嶅姟绔寮忚韩浠?| UNIQUE(server_message_id) | 鍏ㄥ眬璁板綍韬唤 |
+| 椤哄簭 | UNIQUE(conversation_id, seq) | 浼氳瘽鍐呭崟璋冮€掑銆佺己鍙ｆ娴嬩笌鍘嗗彶鍒嗛〉 |
+
+<a id="section-5"></a>
+## 5. 娑堟伅鍐欏叆銆丱utbox 涓庡疄鏃?fan-out
+
+```mermaid
+sequenceDiagram
+  participant Sender as 鍙戦€佺
+  participant Gateway
+  participant Core
+  participant PG as PostgreSQL
+  participant Bus as Outbox/NATS
+  participant Receiver as 鎺ユ敹绔?  Sender->>Gateway: message.send(request_id)
+  Gateway->>Core: 杞彂缁戝畾韬唤涓庡彂閫佽姹?  Core->>Core: 鏍￠獙鎴愬憳鏉冮檺涓庝笟鍔¤鍒?  Core->>PG: BEGIN / seq / message / outbox
+  PG-->>Core: COMMIT 鎴愬姛
+  Core-->>Gateway: ACK = durable commit
+  Gateway-->>Sender: 杞彂 ACK
+  Core->>PG: Outbox dispatcher 璇诲彇宸叉彁浜や簨浠?  Core->>Bus: dispatcher 鍙噸璇曞彂甯?  Bus->>Gateway: message.created
+  Gateway->>Receiver: local fan-out
+```
+
+> 鍥?5-1 绉佽亰娑堟伅鏃跺簭鍥俱€侫CK 鐨勫敮涓€鎴愬姛璇箟鏄?message 涓?outbox 宸叉寔涔呭寲鎻愪氦銆?
+<a id="section-5-1"></a>
+### 5.1 鍙戦€佷簨鍔?
+1. BEGIN
+2. 鏍￠獙 sender 鏄?conversation member
+3. 骞傜瓑鏌ヨ/鍐茬獊澶勭悊 (sender_id, conversation_id, request_id)
+4. 閿佸畾/鏇存柊 conversation sequence row
+5. INSERT message(seq, ...)
+6. INSERT outbox_event(message.created, ...)
+7. COMMIT
+8. 杩斿洖 ACK(message_id, seq, server_created_at)
+
+绗竴杞?sequence row 鍏佽鎴愪负鐑棬浼氳瘽鐑偣锛屽洜涓哄畠鏈€鐩磋涓旀槗楠岃瘉銆傚彧鏈夊帇娴嬭瘉鏄庣珵浜変笉鍙帴鍙楁椂锛屾墠閫氳繃 ADR 璇勪及 range allocation 绛夋紨杩涙柟妗堛€?
+<a id="section-5-2"></a>
+### 5.2 NATS 涓?Gateway fan-out
+
+- Outbox dispatcher 鍙戝竷 message.created 鍒?NATS锛屽苟浠ュ彲閲嶈瘯鏂瑰紡鏍囪 published銆?
+- Gateway 璁㈤槄闇€瑕佺殑瀹炴椂浜嬩欢锛屽苟鍙悜鏈満娲昏穬杩炴帴 fan-out銆?
+- 鏀朵欢浜虹殑鎵€鏈夊湪绾跨銆佸彂閫佽€呯殑鍏朵粬鍦ㄧ嚎绔帴鏀?message.created锛涘彂閫佺鍘熻繛鎺ョ敱 ACK 鏀舵暃銆?
+- NATS 浜嬩欢鍙噸澶嶏紝娑堣垂鑰呭繀椤诲箓绛夛紱NATS 浜嬩欢鍙煭鏆傞敊杩囷紝Sync 蹇呴』鏈€缁堣ˉ榻愩€?
+- Loop 1 涓嶆妸 NATS JetStream 浣滀负娑堟伅浜嬪疄鏉ユ簮锛屼篃涓嶄负姣忎釜缇ゆ垚鍛樺啓涓€鏉℃寔涔呮姇閫掕褰曘€傛秷鎭啓涓€娆★紝鍦ㄧ嚎绔敱
+
+Gateway 璇绘墿鏁ｃ€?
+<a id="section-5-3"></a>
+### 5.3 缇よ亰 fan-out
+
+GROUP 娑堟伅浠嶅彧鍐欎竴鏉?message 鍜屼竴鏉?outbox 浜嬩欢銆侴ateway 鏍规嵁浼氳瘽鍦ㄧ嚎鎴愬憳鎵ц local fan-out銆傛櫘閫氱兢鏈€澶ф垚鍛樻暟涓嶅湪璁捐闃舵鎷嶈剳琚嬪浐瀹氾紝搴旂敱 10/50/200/500 鎴愬憳绛夐樁姊祴璇曠粨鏋滃喅瀹氥€?
+#### 娑堟伅姝ｇ‘鎬х孩绾?
+lost committed messages = 0锛沝uplicate logical messages = 0锛泈rong conversation delivery = 0锛沺ermanent seq gap = 0锛汚CK-before-commit = 0銆?
+<a id="section-6"></a>
+## 6. 瀹㈡埛绔姸鎬併€佹湰鍦板瓨鍌ㄤ笌绂荤嚎鍚屾
+
+<a id="section-6-1"></a>
+### 6.1 涓夌宸紓
+
+| 瀹㈡埛绔?| 鏈湴鎸佷箙鍖?| 绂荤嚎鍘嗗彶 | 鍚姩琛屼负 |
+| --- | --- | --- | --- |
+| Web | 鏃犺亰澶?DB锛汳emory only | 涓嶈ˉ鑱婂ぉ鍘嗗彶锛涚櫥褰曞悗鑾峰彇褰撳墠濂藉弸/浼氳瘽鐘舵€?| HTTPS 鐧诲綍 -> WSS auth.bind -> 浠呭睍绀烘湰浼氳瘽瀹炴椂鏁版嵁 |
+| Desktop | 鎸夎处鍙风嫭绔?SQLite + OS secure token storage | 鏀寔 | 鍏堣 SQLite 绔嬪嵆娓叉煋锛屽啀鍚庡彴鍚屾 |
+| Mobile | 鎸夎处鍙风嫭绔?SQLite + OS secure token storage | 鏀寔 | 鍏堣 SQLite 绔嬪嵆娓叉煋锛屽啀鍚庡彴鍚屾 |
+
+
+#### 宸叉壒鍑嗗鎴风鎶€鏈爤涓庤竟鐣岋紙Human-approved v1.1 clarification锛?
+- Web = React + TypeScript锛涗粎涓存椂鍦ㄧ嚎 Memory only锛涙棤 SQLite銆佹棤鑱婂ぉ鍘嗗彶鎸佷箙鍖栥€佹棤绂荤嚎鍘嗗彶鍔犺浇锛涢€氳繃 HTTPS + WSS 閫氫俊锛岄〉闈㈢敓鍛藉懆鏈熺粨鏉熷悗涓嶄繚璇佹秷鎭姸鎬佷繚鐣欍€?- Desktop = Tauri + React + TypeScript锛沀I 鐙珛瀹炵幇锛涘叡浜崗璁€佹ā鍨嬨€侀€傜敤 hooks銆丏esign Token 鍜?UI 璇箟锛屼笉鍏变韩瀹屾暣 React 瑙嗚缁勪欢锛圓DR-0006锛夛紱鎸夎处鍙?SQLite銆佺绾垮巻鍙层€乷ptimistic send銆丼ENDING/SENT/FAILED銆丄CK 鍥炲啓銆乺etry 澶嶇敤 request_id銆丼ync 鏀舵暃銆?- Desktop 蹇呰 Rust/native 浠ｇ爜浠呴檺 `clients/desktop/src-tauri/**`锛屼粎浣滀负 SQLite native access銆丱S secure storage銆佸繀瑕佹枃浠剁郴缁熺瓑绯荤粺鑳藉姏鐨?native adapter锛涘鎴风涓氬姟灞傘€丷epository API銆乸rotocol/model/plugin SDK 浠嶄负 TypeScript锛屼笉寰楄縼鍏?Rust銆侱esktop SQLite native boundary 浣跨敤 Tauri + SQLx(SQLite)锛汿ypeScript 鎸佹湁鍏变韩 Repository銆佹ā鍨嬪拰浜嬪姟鎰忓浘锛孯ust 浠呮彁渚涙暟鎹簱杩炴帴銆佹煡璇㈠拰鍘熷瓙 transaction adapter銆備笉寰楅€氳繃澶氫釜鐙珛 tauri-plugin-sql execute() 璋冪敤妯℃嫙璺ㄨ皟鐢ㄤ簨鍔°€係QLx 浠ュ鐨?SQLite crate/plugin/library 鏈壒鍑嗐€?- Mobile = Android + Kotlin + Jetpack Compose锛汬uman 鏄庣‘绉婚櫎 Mobile TypeScript 鎶€鏈爤锛屽叿浣?framework 涓嶅啀 TBD銆侫ndroid Studio emulator 涓虹湡瀹?Android 楠岃瘉鐜锛涙寜璐﹀彿 SQLite銆佺绾垮巻鍙层€乷ptimistic send銆丄CK/retry/Sync 涓庡叾浠栧鎴风鐩稿悓銆?- Mobile 鍦?`clients/mobile/**` 浣跨敤 Kotlin 绛変环妯″瀷銆丷epository 璇箟銆佸崗璁?鎻掍欢閫傞厤涓?data/domain 琛屼负锛屾湇浠庡悓涓€ canonical contracts/fixtures锛涗笉瑕佹眰鐩存帴澶嶇敤 TypeScript SDK銆備紭鍏?Android SDK 鑷甫 SQLite 浜嬪姟鑳藉姏锛屼笉鎺堟潈 Room銆佺涓夋柟 SQLite/ORM/network library 鎴栧叾浠栨灦鏋勬晱鎰熶緷璧栥€備笉寰椾负鍏变韩浠ｇ爜鑷鍔犲叆 JS runtime銆乀S/JS bridge銆乧odegen 鎴栨妸 shared 灞傛敼鍐欐垚璺ㄧ native銆傚畬鏁?Mobile acceptance 鏈弧瓒虫椂 S2 Gate OPEN锛汥esktop host/mock 涓嶈兘鍐掑厖 Android emulator acceptance銆?- `clients/shared/{protocol-sdk,plugin-sdk,ui}/` 鍙?Web/Desktop shared models銆丷epository銆乨ata/domain logic 淇濇寔 TypeScript 鐢熸€併€侻obile 浠ュ悓涓€鍏叡濂戠害涓?fixtures 楠岃瘉绛変环琛屼负锛涗笉鍒涘缓鏂板叕鍏卞绾︺€備繚鐣欑幇鏈夌洰褰曟潈濞侊紝鏃犳棤鎰忎箟鎼縼銆係2 涓嶅疄鐜?S4 WASM host銆乵arketplace 鎴栧畬鏁?lifecycle銆?- Dart/Flutter 涓嶅睘浜庡綋鍓嶆壒鍑?active client 鎶€鏈爤锛涘巻鍙?PR7/Review/FAIL/Recorder/evidence 淇濈暀锛屼絾 PR7 涓嶆彁渚涙巿鏉冩垨鏂?TypeScript acceptance銆?
+鏈哄櫒妫€鏌ヨ鍙栦笅鍒楀凡鎵瑰噯鎶€鏈爣璇嗭紱鏍囧噯鍖呭悕浠呭搴斾笂杩版樉寮忔爤鍙婂繀瑕?type/build bindings锛屼笉鎺堟潈棰濆妗嗘灦銆乺untime銆佹暟鎹簱椹卞姩鎴栧師鐢熶緷璧栥€傛瘡涓灦鏋勬晱鎰熸柊渚濊禆浠嶉』鐙珛 Review 杩芥函鎺堟潈銆侫ndroid SDK銆丟radle銆並otlin/Compose compiler/plugin銆佹爣鍑?Compose UI 涓?Android activity binding 鏄墍閫夋爤鐨勫繀瑕佸伐绋嬫爣璇嗭紝浠呴檺 Mobile锛涗笉鎺堟潈鍏朵粬 Kotlin frameworks銆丱RM銆佺綉缁滄垨 plugin runtimes銆?
+#### 鏈€灏忓師鐢?GUI 鑳藉姏涓庡瑙傚瓨鍌紙Human-approved ADR-0009锛涙帴鍙楀緟瀹屾垚锛?
+Desktop 棣栨鐪熷疄楠屾敹鐩爣涓?Windows銆傚繀瑕?Rust 浠嶉檺瀹氬湪 clients/desktop/src-tauri/**锛歳eqwest 鎻愪緵鍘熺敓 HTTPS锛屼娇鐢ㄧ郴缁熻瘉涔︿笌涓绘満鍚嶉獙璇併€佸彧鍏佽 HTTPS銆佺姝㈤噸瀹氬悜銆佷繚鎸佸簲鐢ㄥ簭鍒楀寲鐨勮姹?bytes/headers 涓庤繑鍥?status/headers/body bytes锛屼笉瑙ｉ噴涓氬姟鍗忚锛沰eyring 閫氳繃 Windows Credential Manager 鎸佷箙鍖?app/account/session 闅旂鐨?refresh credential锛涘畼鏂?tauri-plugin-notification 涓?tauri-plugin-global-shortcut 鎻愪緵 OS 閫氱煡/杈撳叆锛宼ray 浣跨敤宸叉湁 Tauri tray feature銆俆ypeScript UI/auth application 閫氳繃鏃㈡湁 SyncHttp injected-fetch 涓庤鑼?auth 璋冪敤缁勫悎浼犺緭锛涘師鐢熷眰涓嶆嫢鏈夎璇佺紪鎺掋€丷epository銆乸rotocol schema銆佹巿鏉冩垨 ACK/retry/Sync 鍐崇瓥銆傜姝㈣瘉涔︾粫杩囥€乧redential query/logging銆佹槑鏂囧嚟鎹檷绾у強 backend/CORS/public API 鏀瑰姩銆傚叿浣撶増鏈?features 鍦ㄤ骇鍝佸疄鐜版椂鍐欏叆 Cargo.lock 骞剁嫭绔?Review锛涘彧鎵瑰噯鍒楀嚭鐨?crate families锛屼笉鎵瑰噯棰濆鍓嶇 plugin package銆?
+Android 浣跨敤 SDK HttpsURLConnection 鎻愪緵绛変环鐨勭郴缁熻瘉涔?涓绘満鍚嶉獙璇併€丠TTPS-only銆佺閲嶅畾鍚戝強 exact serialized bytes 浼犺緭锛涗娇鐢?Android Keystore AES/GCM 闈炲鍑哄瘑閽ヤ繚鎶?refresh credential锛孲DK SharedPreferences 浠呭瓨 ciphertext 涓庡繀瑕?IV/metadata銆侹otlin 淇濇湁 auth lifecycle/cleanup intent/account isolation 涓庡悓涓€ contracts/fixtures 涓嬬殑 Repository/protocol/model 琛屼负銆侱esktop/Android 鍑嵁瀛樺偍澶辫触涓嶅緱鏄庢枃闄嶇骇锛沘ccess credential 淇濇寔涓存椂锛屾浛鎹?logout/expiry 娓呯悊璇箟浠嶇敱搴旂敤灞傚喅瀹氥€?
+澶栬鎸佷箙鍖栦粎鍏佽 Desktop app-owned app_data JSON 涓?Android SDK SharedPreferences 涓殑 Cold AI/Warm Creative theme銆乫ont-size/density 鏍囬噺锛屼笉瀛?credential/message/sync cursor/account Repository data銆係QLx/SDK SQLite 鍘熷瓙浜嬪姟銆乄SS銆佸叕鍏卞绾︺€佸畨鍏ㄨ竟鐣屽強渚濊禆鏂瑰悜涓嶅彉锛涗笉鎺堟潈鍏朵粬 OS parity銆乶etwork/ORM/JS bridge 鎴栨湭鏉?plugin runtime銆侫DR-0009 椤荤粡鏂扮嫭绔?Review銆侀€傜敤 exact-head hosted CI銆乸rotected integration/actual-main 楠岃瘉鍙婁富浠撳簱鍚屾鎵嶇敓鏁堬紱鍊欓€変笉鏄骇鍝佸疄鏂芥潈濞併€?
+<!-- client-technology-policy -->
+```json
+{
+  "decision": "ADR-0005-client-technology-clarification",
+  "languages": [
+    "TypeScript",
+    "JavaScript",
+    "Rust",
+    "Kotlin"
+  ],
+  "frameworks": [
+    "React",
+    "Tauri",
+    "Jetpack Compose"
+  ],
+  "runtimes": [
+    "Tauri",
+    "Android"
+  ],
+  "packages": [
+    "typescript",
+    "react",
+    "react-dom",
+    "@types/react",
+    "@types/react-dom",
+    "@tauri-apps/api",
+    "@tauri-apps/cli"
+  ],
+  "native_packages": [
+    "tauri",
+    "tauri-build",
+    "sqlx",
+    "reqwest",
+    "keyring",
+    "tauri-plugin-notification",
+    "tauri-plugin-global-shortcut"
+  ],
+  "mobile_framework": "Jetpack Compose",
+  "native_boundary": "clients/desktop/src-tauri/",
+  "mobile_languages": [
+    "Kotlin"
+  ],
+  "mobile_runtimes": [
+    "Android"
+  ],
+  "mobile_frameworks": [
+    "Jetpack Compose"
+  ],
+  "mobile_plugins": [
+    "com.android.application",
+    "com.android.library",
+    "org.jetbrains.kotlin.android",
+    "org.jetbrains.kotlin.plugin.compose"
+  ],
+  "mobile_dependencies": [
+    "com.android.tools.build:gradle",
+    "org.jetbrains.kotlin:kotlin-gradle-plugin",
+    "org.jetbrains.kotlin:compose-compiler-gradle-plugin",
+    "org.jetbrains.kotlin:kotlin-stdlib",
+    "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+    "org.jetbrains.kotlin:kotlin-test",
+    "androidx.activity:activity-compose",
+    "androidx.compose:compose-bom",
+    "androidx.compose.runtime:runtime",
+    "androidx.compose.ui:ui",
+    "androidx.compose.ui:ui-tooling",
+    "androidx.compose.ui:ui-tooling-preview",
+    "androidx.compose.foundation:foundation",
+    "androidx.compose.animation:animation",
+    "androidx.compose.material3:material3",
+    "androidx.lifecycle:lifecycle-viewmodel-compose",
+    "androidx.lifecycle:lifecycle-runtime-compose",
+    "androidx.navigation:navigation-compose",
+    "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+    "org.jetbrains.kotlinx:kotlinx-coroutines-android"
+  ],
+  "mobile_tooling": [
+    "Android SDK",
+    "Android Studio",
+    "Gradle",
+    "android-actions/setup-android",
+    "gradle/actions/setup-gradle",
+    "reactivecircus/android-emulator-runner"
+  ],
+  "mobile_import_prefixes": [
+    "android.",
+    "kotlin.",
+    "java.",
+    "javax.",
+    "org.json.",
+    "org.xml.",
+    "org.w3c.",
+    "androidx.compose.",
+    "androidx.activity.",
+    "androidx.lifecycle.",
+    "androidx.navigation.",
+    "kotlinx.coroutines."
+  ],
+  "web_appearance": {
+    "decision": "ADR-0011-web-appearance-storage",
+    "adapter": "clients/web/src/ui/appearance.ts",
+    "storage": "localStorage",
+    "key": "plugworldim.appearance.v1",
+    "fields": [
+      "theme",
+      "fontSize",
+      "density"
+    ],
+    "themes": [
+      "cold",
+      "warm"
+    ],
+    "font_sizes": [
+      14,
+      16,
+      18,
+      20
+    ],
+    "densities": [
+      "compact",
+      "comfortable",
+      "spacious"
+    ],
+    "max_serialized_length": 128,
+    "defaults": {
+      "theme": "cold",
+      "fontSize": 16,
+      "density": "comfortable"
+    }
+  }
+}
+```
+
+JavaScript 浠呬负 TypeScript 鐢熸€佺殑蹇呰閰嶇疆/鏋勫缓浜掓搷浣滐紱Web/Desktop/shared 瀹㈡埛绔笟鍔?API/protocol/model/plugin SDK 蹇呴』 TypeScript锛汳obile 鐨勭瓑浠峰疄鐜颁负 Kotlin銆俁ust 浠呬笂杩?native adapter銆傛鏍囪瘑琛ㄤ笉鎺堟潈 Node/Bun/Deno 绛変骇鍝?runtime锛孲QLite native driver 浠呮壒鍑?Desktop SQLx(SQLite)銆侻obile 宸叉壒鍑?Android Kotlin + Jetpack Compose锛孉ndroid Studio emulator 楠岃瘉锛汚ndroid 宸ョ▼鏍囪瘑涓嶆槸鍏朵粬妗嗘灦鎴栫涓夋柟鏍稿績渚濊禆鐨勯€夊瀷鎺堟潈銆?
+<a id="section-6-2"></a>
+### 6.2 Optimistic write 涓庣姸鎬佹満
+
+浠ヤ笅 SQLite 鎸佷箙鐘舵€佹満閫傜敤浜?Desktop/Mobile锛沇eb 浣跨敤鍐呭瓨鎬佹敹鏁涳紝涓嶅紩鍏ヨ亰澶╁巻鍙叉暟鎹簱銆?
+1. 鐢ㄦ埛鐐瑰嚮鍙戦€?2. -> 鐢熸垚涓嶅彲鍙?request_id
+3. -> SQLite 浜嬪姟 UPSERT锛宻tate=SENDING
+4. -> UI 绔嬪嵆娓叉煋
+5. -> WSS message.send
+6. -> ACK: SENT + server_message_id + seq + server_time
+7. -> timeout/offline: FAILED
+8. -> Retry: 澶嶇敤鐩稿悓 request_id锛孎AILED -> SENDING
+
+FAILED 浠呰〃绀哄綋鍓嶅皾璇曟病鏈夋敹鍒版垚鍔熺‘璁わ紝涓嶈瘉鏄庢湇鍔＄鏈彁浜ゃ€係ENT 鏄粓鎬侊紝涓嶈兘鍊掗€€鍒?FAILED銆係ync 鑻ョ湅鍒版湰鍦癋AILED 浣嗘湇鍔＄宸叉湁鐩稿悓 (conversation_id, request_id)锛屽繀椤?UPSERT 涓?SENT锛岃€屼笉鏄柊澧炰竴琛屻€?
+<a id="section-6-3"></a>
+### 6.3 SQLite 浜嬪姟涓嶅彉閲?
+- UNIQUE(conversation_id, request_id)
+- UNIQUE(server_message_id) WHERE server_message_id IS NOT NULL
+- UNIQUE(conversation_id, server_seq) WHERE server_seq IS NOT NULL
+- 鎵€鏈夋湰鍦板彂閫?/ ACK / WSS realtime / Sync 鍧囪蛋浜嬪姟 UPSERT
+- 涓氬姟鏁版嵁鍙樻洿涓?cursor / contiguous_seq 鎺ㄨ繘蹇呴』鍦ㄥ悓涓€浜嬪姟
+
+```mermaid
+flowchart LR
+  Start["鍚姩<br/>璇诲彇 SQLite 骞舵覆鏌?] --> Connect["杩炴帴<br/>HTTPS + WSS"]
+  Connect --> UserSync["鐢ㄦ埛鐘舵€佸悓姝?br/>user_sync_cursor"]
+  UserSync --> GapSync["娑堟伅缂哄彛鍚屾<br/>conversation seq"]
+  UserSync --> Tx["鍚屼竴 SQLite 浜嬪姟<br/>UPSERT 鏁版嵁 + 鎺ㄨ繘 cursor / contiguous_seq"]
+  GapSync --> Tx
+```
+
+> WSS 瀹炴椂娴佷笌 Sync 琛ュ伩娴佸厑璁镐氦鍙夛紝闈犲敮涓€绾︽潫鍜屼簨鍔℃敹鏁涳紝涓嶆殏鍋滃疄鏃舵帹閫併€?>
+> 鍥?6-1 鍙屽眰鍚屾涓庢湰鍦版敹鏁涖€?
+<a id="section-6-4"></a>
+### 6.4 鍙屽眰 Cursor
+
+user_sync_cursor 鍙壙杞?friend銆乧onversation銆乵embership銆乸lugin 绛変綆棰戠敤鎴风姸鎬併€傛秷鎭笉杩涘叆鐢ㄦ埛绾т簨浠舵祦锛屼互閬垮厤缇ゆ秷鎭寜鎴愬憳鍐欐斁澶с€傛瘡涓細璇濈淮鎶?contiguous_seq锛屽彧鏈夋湰鍦颁粠鏃у€煎紑濮嬭繛缁棤缂哄彛鏃舵墠鑳藉墠绉汇€?
+### 6.5 瀹㈡埛绔?UI 鏋舵瀯涓?GUI 楠屾敹锛圚uman-approved ADR-0006 鍊欓€夛級
+
+浠ヤ笅 Human 鍐冲畾寰呮柊鐙珛 Review銆佺簿纭€欓€?hosted CI銆侀泦鎴愪笌瀹為檯 main 鏍搁獙鍚庣敓鏁堬紱姝ゅ墠涓嶅緱鎹€欓€夊惎鍔ㄤ骇鍝佸疄鐜般€傝ˉ鍏呰璁¤鏄庝綅浜?`spec/architecture/decisions/client-ui/architecture.md` 鍜?`design-direction.md`锛汫UI 楠屾敹瑙勭害涓?`spec/acceptance/client-gui.md`锛涜繖浜涗粠灞炰簬鏈鏂囧拰 ADR-0006锛屼笉鏄浜?canonical 鎴栧叕鍏?wire/schema 鏉冨▉銆?
+- 浜у搧鏋勭晫 IM+ / PlugWorldIM锛汚daptive Glass Workspace锛涜瑙夐噸鐐?50% Future AI Communication / 30% Productivity Tool / 20% Developer Extensibility銆傜畝娲併€佺幓鐠冨眰娆°€丄I-native銆佹ā鍧楀寲銆佸彲閰嶇疆锛涜姣斾緥涓嶆槸鍔熻兘鑳藉姏鎵胯銆侻inimal Glassmorphism 浣跨敤 translucent surface銆乻ubtle border銆乥lur銆乴ayered depth 琛ㄨ揪灞傛锛涚姝俊鎭爢鐮屻€佸鏉?Dashboard銆佽繃搴?Cyber/HUD銆侀噸搴﹀彂鍏?闇撹櫣/绮掑瓙/澶嶆潅 3D 鍜屼负鐐妧娣诲姞瑙嗚鍏冪礌銆?- 涓や富棰?Cold AI锛堝喎钃濄€佺传鑹叉笎鍙樸€佹繁鑹茬幓鐠冿級鍜?Warm Creative锛堟殩鑹叉笎鍙樸€佹煍鍜岀幓鐠冦€佷翰鍜岋級銆傚叡浜?Logo銆佸搧鐗屻€丩ayout銆丆omponent semantic锛涗富棰樺垏鎹㈠彧鏀瑰彉 Color token銆傜敤鎴风嫭绔嬫湰鍦拌缃?Typography/Spacing锛涙彃浠朵笉寰椾慨鏀逛富瀵艰埅銆佸搧鐗屾牳蹇冩垨鍩虹 UI 璇箟銆備富棰樺垏鎹笉寰楅噸缃瓧浣?闂磋窛锛涜璁″€?鍍忕礌甯冨眬鍜屽叿浣撳亸濂藉瓨鍌ㄦ満鍒剁敱鍚庣画鍙楁帶 GUI Task 缁欏嚭锛屼笉鎺堟潈 Web 鑱婂ぉ鎸佷箙鍖栥€傚彲璇绘€?鐒︾偣/鐘舵€佷笉鑳戒粎闈犻鑹叉垨閫忔槑鏁堟灉琛ㄨ揪銆?- Application Shell 鎷ユ湁 Chat / Friends / AI / Plugin 涓€绾у鑸紱鏈潵浠呭鎴风鍙楁帶浠诲姟鍙鍔?Settings/Profile锛涙彃浠朵笉寰楁柊澧炰竴绾у鑸垨鐩存帴鎺у埗 Shell銆侰hat 璐熻矗 Conversation List/View/Message锛涘ソ鍙嬫悳绱€佸叧绯汇€佹坊鍔犲睘 Friends銆侫I 浠呭叆鍙?鎻掑浘/鏂藉伐涓紝涓嶅惈 AI chat銆丄gent銆丷AG銆乀ool Calling銆丄PI 鎴栧亣 AI 鏁版嵁銆侾lugin 涓?Installed Plugins/Status/Entry 涓汉鑳藉姏闈㈡澘锛涚己澶辫兘鍔涜瘹瀹炴樉绀烘湭寮€鏀撅紝涓嶅埗閫犲亣鏁版嵁锛涗笉鏄晢搴楁垨 Marketplace銆?- Web React/TypeScript 宸ョ▼鍒嗗眰涓?Shell/routing銆佸畾鍒朵笟鍔＄粍浠躲€乭ooks/data/state 鍜?Repository/protocol adapter锛涢粯璁?useState/useReducer/Context/custom hooks銆備笉閫夋嫨绗笁鏂?router/data/state 搴擄紱Zustand/Redux/MobX 鎴栨晱鎰熷簱闇€鍗曠嫭 ADR 鎵瑰噯銆傚熀纭€ icon/accessibility/utility 绫诲埆骞堕潪鍏蜂綋鍖呯殑 blanket approval锛涗笉寰楃粦瀹氬畬鏁翠笟鍔?UI framework銆?- Desktop Tauri/React/TypeScript 鐙珛 UI锛屽畾浣嶈垝閫傘€侀珮棰戙€佺敓浜у姏锛屽厑璁稿悗缁彈鎺т换鍔℃彁渚涙洿涓板瘜甯冨眬/浜や簰/鏈湴鑳藉姏灞曠ず銆傚叡浜?protocol-sdk/plugin-sdk/models銆丷epository 琛屼负銆侀€傜敤骞冲彴涓珛 hooks銆丏esign Token/UI semantic锛涗笉鍏变韩瀹屾暣 Button/MessageBubble/ChatWindow銆侻obile 鍒嗕韩瑙勮寖鍜?canonical contracts/fixtures锛岄€氳繃 Kotlin 绛変环瀹炵幇锛屼笉瑕佹眰澶嶇敤 TS hook/SDK/缁勪欢銆傜幇琛?SQLx/TypeScript 鍘熷瓙閫傞厤杈圭晫涓嶅彉銆?- Mobile Compose UI 鍚?ViewModel 鍙戝嚭鎰忓浘锛沄iewModel 璋冪敤 Repository 骞堕€氳繃 StateFlow 鏆撮湶鐘舵€侊紱Compose 鐢熷懡鍛ㄦ湡鎰熺煡鍦拌瀵?StateFlow銆俁epository 濮旀墭 SDK SQLite 涓庢巿鏉?WSS/protocol adapter銆侸etpack Navigation Compose 绠＄悊瀹夸富瀵艰埅锛涗粎鏄庣‘ state/navigation 鎵€闇€渚濊禆鎸夋湰鑺?machine policy锛汚ndroid Studio emulator 楠屾敹锛屼笉鎺堟潈棰濆 Room/ORM/network/runtime/bridge/codegen銆?- UI 鍙樉绀鸿瀵熺姸鎬佸苟鍙戝嚭鎰忓浘锛汻epository 鎷ユ湁鏈湴 materialized data/浜嬪姟鏀舵暃锛宲rotocol 灞傞伒寰?contracts/锛沀I 涓嶇洿杩?SQLite銆佷笉鑷鎺ㄨ繘 cursor/contiguous_seq銆佷笉浼€?ACK/SENT銆佷笉鍐冲畾鏈嶅姟绔潈闄愩€侱esktop/Mobile 鏈湴鍏堟樉绀哄啀鑳屾櫙 Sync锛汼ENDING/SENT/FAILED銆乺etry 澶嶇敤 request_id銆丼ENT 涓嶅洖閫€銆佸け璐ヤ笌鏈嶅姟绔簨浠舵敹鏁涖€佹暟鎹笌 cursor 鍘熷瓙鎬ф部鐢?搂6.2-6.4銆俉eb memory only銆佹棤绂荤嚎鍘嗗彶锛涜处鍙峰垏鎹笉鏄剧ず鏃ц处鍙锋暟鎹€?- S2 涓嶄笅杞?鎵ц鎻掍欢 UI 浠ｇ爜銆佷笉鍔ㄦ€佸姞杞?娉ㄥ叆浠绘剰杩滅▼缁勪欢銆佷笉瀹炵幇 Renderer/runtime/瀹夎绯荤粺銆傛湭鏉ュ０鏄庡紡 poll 鎻忚堪鏄柟鍚戯紝涓嶆槸鏂板绾︺€侶uman 鏄庣‘涓婅堪浠ｇ爜鎵ц绂佷护浠呴檺 S2锛汼4 淇濈暀 搂8.2 瀹℃煡鍔犳矙绠?Custom Render Bundle/鐧藉悕鍗?Bridge銆佺鍚?hash/schema/API/鏉冮檺/CSP/璧勬簮/鍏ュ彛鏍￠獙鍙婂巻鍙茬増鏈粦瀹氾紱鏈妭涓嶅垹闄ゆ垨鏀惧瀹冧滑銆傛彃浠朵笉鑳芥帶鍒跺涓诲鑸€?- 鍚庣画 GUI 瑕嗙洊鐜版湁 contracts/ 鐨?Auth login/refresh/logout/session-expired銆乁ser info銆丗riend search/add銆丆onversation list/open銆丮essage send/receive/state銆丼ync state锛涗紶杈?瀛楁鏉ヨ嚜鐜拌 OpenAPI/WSS锛屼笉鍙戞槑 HTTP route 鎴?AI/Plugin API銆傛棤 AI 鍔熻兘銆丳lugin runtime銆丮arketplace 瀹炵幇銆?- GUI Task acceptance 蹇呴』鍚湡瀹炶繍琛屾埅鍥?-> Architect Review -> 淇/閲嶆柊鎴浘 -> Architect Approval锛屽苟淇濈暀鐙珛瀹炵幇 Review銆佺簿纭€欓€?CI 涓庨泦鎴?main 鏍搁獙銆俉eb 鎴浘瑕嗙洊 Login/Chat/Friends/AI Placeholder/Plugin Page锛汥esktop 瑕嗙洊涓荤獥鍙?Chat/Friends/Offline History/鐪熷疄 Notification-Tray/Theme锛汳obile 涓虹湡瀹?Android emulator Login/Chat/Friends/Offline History/Sync 鐘舵€?Theme銆備袱涓婚/鍙楁敮鎸佸瓧浣撻棿璺濆彉鍖栦笌鐩稿叧鍔犺浇/绌?閿欒/浼氳瘽澶辨晥/绂荤嚎鐘舵€侀渶瀹為檯璇佹嵁锛涘眬閮ㄤ换鍔℃槑纭墿浣欒寖鍥达紝涓嶅緱瀹ｇО鍏ㄥ鎴风 PASS銆?- 鎴浘缁戝畾 Task銆佸€欓€?SHA/build/runtime銆佸睆骞曠姸鎬?灏哄銆乼heme/閰嶇疆銆佸彲閲嶅姝ラ銆佹枃浠?hash锛涗娇鐢ㄥ彈鎺ф棤绉樺瘑鏁版嵁銆侫rchitect 鍐崇瓥缁戝畾鍚屼竴鍊欓€夊拰鎴浘闆嗭紝澶辫触鐣欐湭瀹屾垚锛涘奖鍝嶅凡鎵瑰噯瑙嗚鐨勬敼鍔ㄥ繀椤婚噸鏂版埅鍥炬壒鍑嗐€傛埅鍥句笉鑳借瘉鏄?ACK/浜嬪姟/骞傜瓑锛屼笉鏇夸唬琛屼负/鏉冮檺/濂戠害/婧愮爜渚濊禆娴嬭瘯锛汿ask PASS 涓嶇瓑浜?S2 Gate PASS銆?
+GUI 鍘熺敓/澶栬瀹炵幇閬靛畧 搂6.1 / ADR-0009 鐨勭獎閫傞厤杈圭晫銆侱esktop 棣栨楠屾敹涓?Windows锛涚湡瀹為€氱煡璇佹嵁蹇呴』鏉ヨ嚜宸插畨瑁呬笖鏈夎嚜韬韩浠界殑瀹㈡埛绔寘锛屽紑鍙?PowerShell toast 涓嶅彲浠ｆ浛銆倀ray/global shortcut 闇€鐪熷疄瀹㈡埛绔涓猴紝Mobile 浠嶉渶 Android Studio emulator銆傝閫夊瀷涓嶈眮鍏嶆埅鍥?Architect Review/Approval銆佺嫭绔嬪疄鐜?Review 涓?exact-head CI銆?
+#### Web 澶栬瀛樺偍锛圚uman-approved ADR-0011锛汚PPROVED_PENDING_FREEZE锛?
+Human 宸叉壒鍑嗘渶灏忓墠缃柟妗堝苟缁х画銆俉eb 浠呭厑璁稿涓婚€傞厤鍣?`clients/web/src/ui/appearance.ts` 浣跨敤娴忚鍣ㄥ師鐢?localStorage锛屽浐瀹氫笖鍞竴 key 涓?`plugworldim.appearance.v1`锛涜褰曟伆濂戒笁涓爣閲?`theme`銆乣fontSize`銆乣density`锛屼笉鍚増鏈瓧娈碉紙鐗堟湰鐢?key 鏍囪瘑锛夈€侰old AI/Warm Creative 鐨勫唴閮ㄥ€间负 `cold`/`warm`锛宖ontSize 涓?14/16/18/20锛宒ensity 涓?compact/comfortable/spacious锛涢粯璁?cold/16/comfortable銆傝鍐欓兘楠岃瘉 exact keys 涓庢灇涓撅紝搴忓垪鍖栨渶澶?128 涓瓧绗︼紱闈炴硶銆佽秴闀裤€佷笉鍙敤瀛樺偍鍥為€€鍐呭瓨榛樿鍊硷紝涓嶆竻鐞嗗叾浠?origin key銆備富棰樺垏鎹㈠彧鏀瑰彉 theme锛屼笉閲嶇疆瀛椾綋鎴栧瘑搴︺€傞€傞厤鍣ㄤ笉鎺ユ敹/鍐欏叆娑堟伅銆佸巻鍙层€佺敤鎴枫€佷細璇濄€佸嚟鎹€佺鐐广€佷笟鍔＄姸鎬佹垨 Sync cursor锛涚姝?SQLite銆両ndexedDB銆佸叾浠栨祻瑙堝櫒鎸佷箙鍖栧強浠绘剰 key/棰濆灞炴€с€俉eb Repository/娑堟伅浠嶄粎鍐呭瓨锛屾棤绂荤嚎鍘嗗彶锛涗笉鎺堟潈浠讳綍鏂颁緷璧栥€乺outer/state/data 妗嗘灦鎴?runtime/bridge銆?
+鏈哄櫒瀹堝崼缁戝畾鏈妭 policy銆乥aseline Web ADR/鎵瑰噯鏉ユ簮銆佸敮涓€閫傞厤鍣ㄣ€佸浐瀹?key銆佺洿鎺?getItem/setItem 鍙婁笁涓瓧娈垫姇褰憋紱琛屼负楠屾敹杩橀』鎵ц鐪熷疄閫傞厤鍣ㄧ殑姝ｈ礋渚嬨€佷笉鍙敤瀛樺偍/閲嶅惎涓庝富棰樼嫭绔嬫€ф鏌ワ紝骞剁敱鐙珛 Reviewer 妫€鏌ュ疄闄呴€昏緫銆傚墠缃?CI 鍙湪 Web 瀹屽叏绌洪鏋躲€乀ask backlog/鏄庣‘澶栬鍓嶇疆銆佸彲淇¤姣旇緝 base 鏃犱骇鍝佹椂鍏佽 PREREQUISITE_SKELETON_ONLY锛涗换浣曚骇鍝?閮ㄥ垎鑴氭墜鏋舵垨鍒犻櫎鏃㈡湁浜у搧閮戒笉鑳介檷绾т负绌洪鏋躲€備骇鍝?CI 蹇呴』閿佸畾渚濊禆銆佸疄闄?build銆佽涓?澶栬涓庢簮鐮佸畧鍗€傛柊鐙珛 Review銆佺簿纭?HEAD hosted CI銆佸彈淇濇姢闆嗘垚/actual-main 楠岃瘉鍜屼富浠撳簱瀹夊叏鍚屾鍓嶏紝姝ゅ€欓€変笉鐢熸晥銆佷笉瀹炴柦 Web 浜у搧銆?
+<a id="section-6-6"></a>
+### 6.6 Web 瀹屾垚鍚庣殑 S2 瀹㈡埛绔ˉ鍏咃紙Human-approved ADR-0012锛涘€欓€夊緟鐙珛鎺ュ彈锛?
+鏈疆鐩存帴 Human 瑙勫垝鎺堟潈瑙?`spec/progress/evidence/LOOP1-CLIENT-SUPPLEMENT-PLAN-001/human-request.txt`銆侫DR-0007 鍘熸湁浠诲姟鍙婃帴鍙楃粨鏋滀繚鎸侊紱鍏?WEB鈫扴2 Gate 鐨勭洿鎺ヨ竟琚互涓嬩覆琛岄摼杩藉姞鏇夸唬锛歀OOP1-WEB-001 鈫?LOOP1-CLIENT-STATE-001 鈫?LOOP1-CLIENT-UI-REF-001 鈫?LOOP1-CLIENT-I18N-001 鈫?S2 Gate銆備笁涓柊澧炰骇鍝佷换鍔″潎S2/backlog锛涙瘡椤逛粎鍦ㄥ墠椤圭嫭绔嬫帴鍙椼€乸rotected integration/actual-main楠岃瘉鍜孒:/IM-platform鍚屾瀹屾垚鍚庢縺娲伙紱STATE鍙︿緷璧栨湰瑙勫垝姝ｅ紡鐢熸晥銆傛湰杞粎瑙勫垝鍙婂叾鎺ュ彈/闆嗘垚/鍚屾锛屼笉瀹炴柦鏂颁骇鍝侊紝S2 Gate OPEN銆?
+#### STATE锛氭秷鎭姸鎬併€佸箓绛夐噸鍙戜笌濂藉弸鍚屾
+
+浠ユ渶鏂颁笁绔疄鐜板拰宸叉湁楠屾敹涓哄熀绾匡紝閫愰」璁板綍鐜版湁鑳藉姏銆佽瘉鎹拰寰呰ˉ榻愬唴瀹癸紝灏嗕互涓嬭姹傚啓鍏ヤ换鍔＄洰鏍囦笌寮哄埗楠屾敹銆?
+1. 娑堟伅鍙潬鎬х殑涓や釜鏍稿績鍦烘櫙锛?   A. 棣栨鍙戦€佹湭鍦ㄦ湇鍔＄鎻愪氦锛屽彂閫佹柟瓒呮椂鏄剧ず FAILED锛岀敤鎴风偣鍑婚噸鍙戝悗瀹屾垚棣栨鎸佷箙鍖栧苟鏀舵暃涓?SENT銆?   B. 棣栨鍙戦€佸凡鍦ㄦ湇鍔＄鎻愪氦锛屾帴鏀舵柟宸茶幏寰楁秷鎭紝鍙戦€佹柟鍥犳垚鍔熺‘璁や涪澶辨垨寤惰繜鏄剧ず FAILED锛涚敤鎴烽噸鍙戝悗鑾峰緱鍘熷鎻愪氦缁撴灉锛屽師娑堟伅鏀舵暃涓?SENT銆?
+2. 鍚屼竴閫昏緫娑堟伅鐨勬瘡娆￠噸鍙戝鐢ㄥ師濮?request_id銆乧onversation_id銆佸彂閫佽€呰韩浠藉拰娑堟伅鍐呭銆傛湇鍔＄宸叉湁鎻愪氦鏃惰繑鍥炲師濮?messageId銆乻eq銆乧reatedAt锛涙渶缁堝搴斾竴鏉℃寔涔呭寲娑堟伅銆佷竴鏉￠€昏緫 Outbox 鍜屽悇瀹㈡埛绔殑涓€鏉℃秷鎭睍绀恒€?
+3. 瑕嗙洊 SENDING銆丗AILED銆侀噸鍙戞寜閽拰 SENT 鐨勭湡瀹炵晫闈㈢姸鎬併€侳AILED 琛ㄨ揪褰撳墠灏濊瘯鏈幏寰楁垚鍔熺‘璁わ紱杩熷埌 ACK銆佸疄鏃舵秷鎭拰閫傜敤 Sync 鍧囬€氳繃鏃㈡湁鏀舵暃鍏ュ彛鏇存柊鍘熸秷鎭紝SENT 淇濇寔缁堟€併€傛牳瀵?Gateway/Core 瓒呮椂涓庢彁浜ょ粨鏋滄湭鐭ヨ矾寰勶紝浣垮叾澶勭悊绗﹀悎瀹為檯鎻愪氦缁撴灉鍜岀幇琛屽绾︺€?
+4. 鍚屼竴浼氳瘽鐨勫凡纭娑堟伅浠ユ湇鍔＄ seq 涓烘渶缁堟帓搴忎緷鎹紝瑕嗙洊锛?   - R1 棣栨鏈彁浜わ紝R2 鍏堟垚鍔熸彁浜わ紝R1 鍚庨噸鍙戞垚鍔燂細鏈€缁堥『搴忎负 R2銆丷1銆?   - R1 棣栨宸叉彁浜や絾纭瓒呮椂锛孯2 闅忓悗鎻愪氦锛孯1 鍐嶈幏寰楃‘璁わ細鏈€缁堥『搴忎负 R1銆丷2銆?   楠岃瘉 UI 鍦?ACK銆佸疄鏃朵簨浠躲€丼ync 浜ゅ弶鍒拌揪鍚庝繚鎸佹纭韩浠姐€佺姸鎬佸拰椤哄簭銆?
+5. Desktop/Mobile 瑕嗙洊淇濈暀鏈湴娑堟伅鏃剁殑閲嶅惎閲嶅彂锛屼互鍙婂彈鎺ф祴璇曚腑浠庡叏鏂拌处鍙锋湰鍦版暟鎹簱鍜屽垵濮嬪悓姝ユ父鏍囨仮澶嶇殑娴佺▼銆傞獙璇佸凡鎻愪氦鍘嗗彶鎸?seq 鎭㈠锛屽悗缁柊娑堟伅浣跨敤鏂扮殑 request_id 鍜屾湇鍔＄鍒嗛厤鐨勫簭鍙凤紝搴忓彿杩炵画鎬т笌娓叉煋椤哄簭姝ｇ‘銆俉eb 鎸夊綋鍓嶉〉闈㈠唴瀛樼敓鍛藉懆鏈熷拰宸叉帴鍙楃殑鍦ㄧ嚎娑堟伅鍚屾瑙勫垯楠屾敹銆?
+6. 琛ラ綈涓夌濂藉弸鍙樻洿鍚屾銆傛槑纭棦鏈夊ソ鍙嬫煡璇㈠拰 User Sync 鐨勮Е鍙戙€佹秷璐瑰強鐣岄潰鍒锋柊閾捐矾锛涗换涓€绔坊鍔犲ソ鍙嬪悗锛屽叾浣欏湪绾跨鏈€缁堟洿鏂板ソ鍙嬪垪琛ㄣ€佸搴旂鑱婂拰鍚嶇О灞曠ず锛屽苟楠岃瘉鏂嚎鎭㈠涓庤处鍙峰垏鎹㈠悗鐨勬纭粨鏋溿€?
+7. 浣跨敤鐪熷疄鏈嶅姟绔€佹暟鎹簱鍜屽鎴风鐨勫彈鎺ф晠闅滄敞鍏ラ獙璇佷笂杩伴摼璺€傚満鏅?B 鍚屾椂鍙栧緱鏈嶅姟绔寔涔呮彁浜ゃ€佹帴鏀舵柟鑾峰緱娑堟伅銆佸彂閫佹柟 FAILED銆侀噸鍙戝悗鍘熸秷鎭?SENT 鐨勮瘉鎹紱鍒嗗埆鏍稿瀛樺偍璁板綍銆佽姹傝韩浠姐€佸簭鍙枫€丱utbox 鍜屽疄闄呮覆鏌撱€?
+
+#### UI-REF锛氱粍浠舵媶鍒嗕笌瀹屾暣鎬?
+浠ヤ换鍔′竴楠屾敹鍚庣殑涓夌浜у搧鏍戜负琛屼负鍜岃瑙夊熀绾匡紝瑙勫垝骞堕獙鏀跺悇绔幇鏈夐〉闈€佺粍浠跺拰灞曠ず鐘舵€佺殑鑱岃矗鎷嗗垎銆?
+1. 鏍规嵁瀹為檯婧愮爜鎷嗗垎搴旂敤鍏ュ彛銆丼hell銆佸鑸€佽璇併€佷細璇濆垪琛ㄣ€佹秷鎭睍绀恒€佽緭鍏ュ尯鍩熴€佸ソ鍙嬪強璁剧疆绛夌幇鏈夎亴璐ｏ紝鏄庣‘鍏ュ彛鎸傝浇銆佺粍浠惰緭鍏ヨ緭鍑恒€佺姸鎬佸綊灞炲拰瀵煎叆鏂瑰悜銆?
+2. 淇濇寔鍚勭鐙珛瑙嗚瀹炵幇鍙婄幇鏈?Auth銆丷epository銆丼end銆丼ync 鑱岃矗杈圭晫锛屽叡浜幇鏈夊崗璁€佺被鍨嬪拰閫傜敤灞曠ず璇箟銆?
+3. 灏嗙粍浠跺睍绀烘枃妗堛€佸簲鐢ㄧ姸鎬佹爣璇嗕笌涓氬姟鍒ゆ柇寤虹珛娓呮櫚杈圭晫锛屼负鍚庣画璇█璧勬簮鎻愬彇鎻愪緵绋冲畾鎺ュ彛銆?
+4. 寤虹珛鎷嗗垎鍓嶅悗鐨勯〉闈€佸叆鍙ｃ€佸姛鑳藉拰娴嬭瘯瑕嗙洊瀵圭収琛ㄣ€傚畬鏁村洖褰掔幇鏈夊鎴风鑳藉姏鍙婁换鍔′竴鏂板鍦烘櫙锛岄獙璇佺姸鎬佷繚鎸併€佷簨浠剁粦瀹氥€佽处鍙烽殧绂汇€佸悓姝ャ€侀噸鍙戙€佹帓搴忓拰澶栬璁剧疆鐨勮涓虹瓑浠枫€?
+5. 瀹屾垚鍚勭鏋勫缓銆侀€傜敤鑷姩鍖栨祴璇曘€佺湡瀹炶繍琛屾埅鍥惧拰 Architect 瀹℃煡锛屼互鍔熻兘瀹屾暣銆佽涓虹瓑浠峰拰瑙嗚鍩虹嚎淇濇寔浣滀负楠屾敹缁撴灉銆?
+
+#### I18N锛氫笁绔浗闄呭寲鎷嗗寘
+
+渚濊禆浠诲姟浜屽畬鎴愶紝鎻愬彇涓夌鐜版湁鐢ㄦ埛鍙鏂囨锛屽缓绔嬭嫳璇€佺畝浣撲腑鏂囧拰鏃ヨ鐨勭嫭绔嬭瑷€璧勬簮銆?
+1. 缁熶竴璇█鏍囪瘑 en銆亃h-CN銆乯a-JP锛屼互鍙婅法绔枃妗堣涔夊拰鍗犱綅鍙傛暟銆俉eb/Desktop 浣跨敤 TypeScript 渚х函鏁版嵁璇█璧勬簮锛孉ndroid 浣跨敤鐜版湁 Kotlin/Compose 鎶€鏈爤涓嬬殑绛変环璧勬簮鏄犲皠銆?
+2. 瑕嗙洊椤甸潰鏂囨湰銆佹寜閽€佽緭鍏ユ彁绀恒€佹牎楠屼笌閿欒鎻愮ず銆佽繛鎺ュ強鍚屾鐘舵€併€佹棤闅滅鏍囩锛屼互鍙婂凡鏈夌郴缁熼€氱煡鍜屾墭鐩樻枃妗堛€傚皢鐘舵€侀€昏緫浣跨敤鐨勭ǔ瀹氭爣璇嗕笌缈昏瘧鍚庣殑鏄剧ず鏂囨湰鍒嗙銆?
+3. Settings 澧炲姞鍥哄畾鍏ュ彛鈥淟anguage / 璇█ / 瑷€瑾炩€濓紝浣跨敤鍥哄畾椤哄簭鐨勬粴鍔ㄩ€夋嫨鍒楄〃锛?   English 鈫?绠€浣撲腑鏂?鈫?鏃ユ湰瑾炪€?   閫夐」鍚嶇О淇濇寔鍚勮嚜璇█锛屽垏鎹㈠悗鍗虫椂鏇存柊褰撳墠鐣岄潰锛屾湰鍦颁繚瀛樺苟鎭㈠璇█閫夋嫨銆?
+4. 灏嗚瑷€閫夋嫨鐨勬湰鍦版寔涔呭寲鑼冨洿銆佸瓨鍌ㄤ綅缃€佸瓧娈靛拰鏍￠獙瑙勫垯绾冲叆涓夌鍋忓ソ閫傞厤鍣ㄧ殑鏄庣‘鏋舵瀯鎺堟潈锛屼繚璇佺幇鏈夊瑙傞厤缃户缁湁鏁堬紝涓婚銆佸瓧鍙枫€侀棿璺濆拰璇█鐙珛淇濇寔銆?
+5. 寤虹珛璇█閿畬鏁存€с€佸崰浣嶅弬鏁颁竴鑷存€у拰鑻辨枃鍥為€€楠岃瘉锛涜鐩栧垏鎹㈠悗鐨勯〉闈㈢姸鎬併€佹秷鎭姸鎬併€佸竷灞€鍙鎬у強鏈湴鍋忓ソ鎭㈠锛屽畬鎴愪笁绉嶈瑷€鐨勯€傜敤鎴浘鍜?Architect 楠屾敹銆?
+
+#### 璇█鍋忓ソ绐勬巿鏉冧笌闃舵
+
+璇█鍋忓ソ涓鸿澶?瀹夸富搴旂敤鑼冨洿锛岃法璐﹀彿淇濇寔銆佹棤浜戝悓姝ワ紝鐙珛浜巆redential銆佽处鍙稴QLite銆佹秷鎭拰Sync cursor銆傞粯璁?en锛涘彧鍏佽澶у皬鍐欑簿纭殑 en銆亃h-CN銆乯a-JP锛屼笉trim銆佷笉鎺ュ彈绯荤粺locale鐚滄祴鎴栦换鎰忓埆鍚嶃€傜己澶?闈炴硶/瓒呴暱/瀛樺偍涓嶅彲鐢ㄥ洖閫€鍐呭瓨en锛屽啓澶辫触璇氬疄鏄剧ず涓斾笉瑕嗙洊鍏朵粬鍋忓ソ鎴栨竻闄ゅ叾浠杒ey銆傚浐瀹氫笁绔綅缃細Web浠呮柊澧?src/ui/language.ts 浠ュ師鐢?localStorage鍥哄畾key plugworldim.language.v1璇诲彇/鍐欏叆raw UTF-8 enum锛堟渶闀?bytes锛夛紝涓嶆敼plugworldim.appearance.v1涓夊瓧娈碉紱Desktop TypeScript native.ts鎸佹湁language鎰忓浘锛宒esktop_capabilities.rs浠呯獎language_load/save瀛楃涓叉灇涓炬牎楠屽強app_data/language.txt璇诲啓raw UTF-8锛堟渶澶?bytes銆佹棤BOM/鎹㈣锛夛紝appearance.json涓夐」tuple鍘熷瓧鑺傜户缁彲璇伙紱Android Preferences.kt鍦ㄦ棦鏈塎ODE_PRIVATE appearance SharedPreferences鍙String key language锛堟渶澶?UTF-8bytes锛夛紝淇濈暀theme/fontSize/density閿拰鍊笺€倀heme浠卌old/warm锛沇eb fontSize14/16/18/20銆乨ensity compact/comfortable/spacious锛汥esktop/Android鏃㈡湁fontSize14..22銆乨ensity0.8/1.0/1.2鍙婇粯璁old/16/1缁х画鏈夋晥銆傚洓鏍囬噺璇箟鍚勮嚜鐙珛锛屼絾Web/Desktop澶栬record浠嶄笁椤癸紝涓嶅悎骞朵负鍥涘瓧娈佃褰曘€傚綋鍓嶄笁瀛楁appearance瀹堝崼涓嶅緱鎻愬墠鏀惧锛涘彧鏈塈18N渚濊禆鐙珛鎺ュ彈+闆嗘垚鍚屾涓斾换鍔ctive/review/done銆乧lient_supplement_phase: i18n_product鎵嶅彲瀹炵幇璇█adapter鍙婂搴旂獎婧愮爜guard銆係TATE/UI-REF鍜屾湰瑙勫垝涓嶈幏寰楄瑷€鎸佷箙鍖栦骇鍝佽鍙€?
+Web/Desktop鑻辫銆佺畝涓€佹棩璇祫婧愪负TypeScript绾暟鎹紱Mobile涓篕otlin/Compose绛変环绾暟鎹槧灏勶紝涓嶅畨瑁卛18n/runtime/妗ユ帴搴撱€傞€氱煡/tray鍥哄畾鏄剧ず鏂囨鍚屾牱鎻愬彇锛孌esktop搴旂敤灞傛牴鎹甽anguage閫夋嫨宸叉壒鍑嗙函鏁版嵁骞跺皢鏄剧ず鏂囨湰浼犵粰鐜版湁native presentation锛沶ative涓嶆嫢鏈夊崗璁€佷笟鍔″垽鏂垨缈昏瘧鐘舵€併€傜炕璇戦敭/鍗犱綅鍙傛暟璺ㄧ鍚屼箟锛屾湭鐭ラ敭鎴栫己澶眑ocale椤瑰洖閫€鑻辨枃锛堣嫳鏂囬敭缂哄け涓洪獙鏀禙AIL锛夛紱绋冲畾鐘舵€佹爣璇嗕笉鍙備笌缈昏瘧銆佷笉鐢辨樉绀哄瓧绗︿覆鍒ゆ柇涓氬姟銆?
+<!-- client-supplement-policy -->
+```json
+{
+  "decision": "ADR-0012-client-supplement-planning",
+  "planning_task": "LOOP1-CLIENT-SUPPLEMENT-PLAN-001",
+  "stage": "S2",
+  "chain": [
+    "LOOP1-WEB-001",
+    "LOOP1-CLIENT-STATE-001",
+    "LOOP1-CLIENT-UI-REF-001",
+    "LOOP1-CLIENT-I18N-001"
+  ],
+  "gate_prerequisites": [
+    "LOOP1-CLIENT-SQLITE-001",
+    "LOOP1-CLIENT-UI-ARCH-001",
+    "LOOP1-CLIENT-SEND-001",
+    "LOOP1-SYNC-001",
+    "LOOP1-CLIENT-GUI-001",
+    "LOOP1-WEB-001",
+    "LOOP1-CLIENT-STATE-001",
+    "LOOP1-CLIENT-UI-REF-001",
+    "LOOP1-CLIENT-I18N-001"
+  ],
+  "language": {
+    "activation_task": "LOOP1-CLIENT-I18N-001",
+    "activation_phase": "i18n_product",
+    "locales": [
+      "en",
+      "zh-CN",
+      "ja-JP"
+    ],
+    "default": "en",
+    "names": [
+      "English",
+      "绠€浣撲腑鏂?,
+      "鏃ユ湰瑾?
+    ],
+    "entry": "Language / 璇█ / 瑷€瑾?,
+    "web": {
+      "adapter": "clients/web/src/ui/language.ts",
+      "key": "plugworldim.language.v1",
+      "storage": "localStorage",
+      "field": "language",
+      "format": "raw UTF-8 enum",
+      "max_bytes": 5
+    },
+    "desktop": {
+      "adapter": "clients/desktop/src/application/ui/native.ts",
+      "native_adapter": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "storage": "app_data/language.txt",
+      "field": "language",
+      "format": "raw UTF-8 enum",
+      "max_bytes": 5
+    },
+    "mobile": {
+      "adapter": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+      "storage": "SharedPreferences appearance MODE_PRIVATE",
+      "key": "language",
+      "field": "language",
+      "format": "String enum",
+      "max_bytes": 5
+    }
+  }
+}
+```
+
+鏈満鍣╬olicy鍙粦瀹氳鍒?涓茶渚濊禆/鏈潵璇█绐勬巿鏉冿紝涓嶅缓绔嬫柊鍏叡濂戠害銆傚疄闄呬骇鍝侀渶姣忛」鐙珛鐪熷疄杩愯涓庡瓨鍌?鍗忚璇佹嵁銆佹埅鍥?Architect鎵瑰噯銆乫resh independent Review銆佺簿纭€欓€塰osted CI鍜屽畨鍏ㄥ悓姝ャ€傛柊澧炰换鍔＄殑瀹屾垚metadata涓庣湡瀹炶瘉鎹繀椤诲悓鏃跺彲鏍稿锛涘啓PASS鏂囨湰涓嶈兘浠ｆ浛鐙珛鎺ュ彈銆係2 Gate鍘熸墍鏈夋潯浠朵笌涓変釜鏂板瀹屾垚椤瑰叡鍚岀敓鏁堬紝灏氭湭瀹屾垚浠讳竴椤逛笉鑳絊tage PASS銆?
+<a id="section-7"></a>
+## 7. HTTPS/WSS/TLS 涓庤璇佸崗璁?
+<a id="section-7-1"></a>
+### 7.1 鐧诲綍涓?Token
+
+- 鐧诲綍绔偣銆佸瓧娈靛悕銆佺増鏈笌浼犺緭褰㈢姸鐢?contracts/http/ 瀹氫箟锛堝綋鍓嶄负 POST /v1/auth/login锛夈€傛湰绔?snake_case 棰嗗煙鍚嶇О涓嶆槸鍙︿竴濂?wire schema銆?
+- Access Token 鐭湡銆丷efresh Token 闀挎湡锛涘叿浣撴椂闀挎槸閰嶇疆锛屼笉鍐欐杩涘崗璁€?
+- Web 浼樺厛浣跨敤 HttpOnly Secure Cookie 鎸佹湁 Refresh Token锛涘師鐢熺浣跨敤 OS secure storage銆?
+- 鏄惧紡 logout 鎾ら攢 Session銆丷efresh Token 涓?WSS锛涢€€鍑虹櫥褰曚笉绛変簬绔嬪嵆鍒犻櫎鏈湴 SQLite銆?
+<a id="section-7-2"></a>
+### 7.2 WSS 鐘舵€佹満
+
+1. TCP/TLS -> WebSocket Upgrade -> UNAUTHENTICATED
+2. UNAUTHENTICATED 鍙厑璁?auth.bind 涓?ping/pong
+3. auth.bind 鏍￠獙绛惧悕銆乪xp銆乻ession_id銆乧lient_type銆乻ession_epoch
+4. 鎴愬姛 -> AUTHENTICATED锛宻ocket 姘镐箙缁戝畾 user/session/client_type
+5. 鍚岀鏂扮櫥褰?-> session.revoked -> 鎺ㄩ€佹棫杩炴帴 -> close
+
+<a id="section-7-3"></a>
+### 7.3 Session 缂撳瓨涓€鑷存€?
+Core 鍦?Session 鍒涘缓/鎾ら攢浜嬪姟涓啓 outbox锛汫ateway 缁?NATS 鏇存柊鍐呭瓨鏄犲皠 (user_id, client_type) ->session_id/epoch/connection_id銆傛瘡鏉℃秷鎭笉鏌ヨ PostgreSQL銆傚疄鏃舵挙閿€浜嬩欢鏄綋楠屼紭鍖栵紱姣忔鏂扮粦瀹?閲嶈繛蹇呴』楠岃瘉鏁版嵁搴撴潈濞?Session ID 涓?epoch锛屾嫆缁濇棫鍑嵁锛涗笉寰楁妸瀹炴椂鎾ら攢浜嬩欢浣滀负鍞竴鏈夋晥鎬ф潵婧愩€侴ateway 鍙嫢鏈夐獙璇?杩炴帴鑳藉姏锛涙敞鍐屻€佺櫥褰曘€佸埛鏂般€侀€€鍑恒€丼ession 鍐欎簨鍔″強鍏?Outbox 灞炰簬 Core锛屼笉鑳介€氳繃鍏变韩瀹屾暣 Auth 鏈嶅姟缁曡繃杈圭晫銆?
+<a id="section-7-4"></a>
+### 7.4 浼犺緭涓庢棩蹇楀畨鍏?
+| 瑙勫垯 | 瑕佹眰 |
+| --- | --- |
+| 浼犺緭 | 鐢熶骇鍏ュ彛浠?HTTPS/WSS/TLS锛涚鐢ㄦ槑鏂囧洖閫€ |
+| Token | 绂佹鏀?URL query锛涚姝㈠啓搴旂敤鏃ュ織/trace锛涢敊璇搷搴斾笉寰楀洖鏄?|
+| 瀵嗙爜 | 鍙瓨寮哄搱甯岋紱鍑瘉涓庢櫘閫氱敤鎴疯祫鏂欏垎绂?|
+| 鎻掍欢 | 姘镐笉鍚?Custom Renderer 鏆撮湶璁よ瘉 token 鎴?SQLite 鐩磋繛 |
+| 鏃ュ織 | request_id/message_id 鍙娴嬶紱娑堟伅姝ｆ枃榛樿涓嶈繘鍏ョ粨鏋勫寲鏃ュ織 |
+
+<a id="section-8"></a>
+## 8. 鎻掍欢骞冲彴鏋舵瀯
+
+<a id="section-8-1"></a>
+### 8.1 鍖呯粨鏋勪笌鍏叡 API
+
+```text
+plugin.pkg
+鈹溾攢鈹€ manifest.json
+鈹溾攢鈹€ backend/plugin.wasm
+鈹斺攢鈹€ ui/
+鈹溾攢鈹€ render.bundle.js
+鈹溾攢鈹€ render.css
+鈹斺攢鈹€ assets/
+```
+
+Plugin API v1 = Events + Queries + Actions + UI Host API
+
+| 闈?| 鑳藉姏 | 绾︽潫 |
+| --- | --- | --- |
+| Events | message.created銆乵ember.joined銆乸lugin lifecycle 绛?| 浠呰闃?manifest 澹版槑涓斿凡鎺堟潈鐨勪簨浠?|
+| Queries | 璇诲彇琚巿鏉冪殑浼氳瘽銆佹垚鍛樸€佹秷鎭€佹彃浠剁鏈夌姸鎬?| 鍙銆佸垎椤点€侀檺棰濓紱涓嶅彲鐩存帴璁块棶 Core 鍐呴儴鏈嶅姟/DB |
+| Actions | 鍙戦€佹秷鎭€佹洿鏂版彃浠剁姸鎬併€佽Е鍙戝厑璁哥殑 UI 琛屼负 | 姣忎釜 Action 閲嶆柊閴存潈銆佸箓绛変笌瀹¤ |
+| UI Host | Page/Modal/Panel/Menu/Form/Toolbar/Message Renderer 绛?| 瀹屾暣 UI 鎵╁睍鑳藉姏涓嶇瓑浜庡涓?OS 鏉冮檺 |
+
+<a id="section-8-2"></a>
+### 8.2 Custom Render Bundle
+
+鎵€鏈夊鎴风閮芥敮鎸佸０鏄庡紡 UI 涓?Custom Render Bundle 涓ゆ。銆傝嚜瀹氫箟鍖呭湪鍔犺浇鍓嶅繀椤诲畬鎴?package hash銆佺鍚嶃€乵anifest schema銆丳lugin API 鍏煎銆佹潈闄愩€佸ぇ灏?璧勬簮銆丆SP 涓庡叆鍙ｆ鏌ワ紱杩愯鏃跺湪 sandbox iframe 鎴?isolated WebView 涓墽琛岋紝骞朵笖鍙兘閫氳繃鐧藉悕鍗?Plugin Bridge 璋冪敤 Host API銆?
+#### 涓嶅彲鍙樺埗鍝?
+UNIQUE(plugin_id, version)銆傚悓涓€鐗堟湰鐨?package/backend/renderer hash 鍙樺寲蹇呴』鎷掔粷銆傛秷鎭暟鎹笌娓叉煋浠ｇ爜鍒嗙锛屽巻鍙叉彃浠舵秷鎭惡甯?plugin_id銆乸lugin_version銆乺enderer 涓?fallback TEXT锛涘鎴风蹇呴』淇濈暀浠嶈鍘嗗彶娑堟伅寮曠敤鐨勬棫 renderer銆?
+<a id="section-8-3"></a>
+### 8.3 WASM 鍚庣 Sandbox
+
+- 榛樿涓嶅彲璁块棶鏁版嵁搴撱€佹湇鍔″櫒鏂囦欢銆佷换鎰?socket銆佸叾浠栨彃浠跺唴瀛樸€?
+- 璧勬簮杈圭晫鍖呮嫭 CPU/鎵ц鏃堕暱銆佸唴瀛樸€佸苟鍙戙€佸瓨鍌ㄩ厤棰濅笌缃戠粶绛栫暐銆?
+- 鎸佷箙鐘舵€佸湪 PostgreSQL plugin_kv锛沇ASM 鎵ц灏介噺鏃犵姸鎬侊紝鍙紦瀛樼紪璇?module銆?
+- 杩炵画 timeout/panic/limit violation 杈鹃槇鍊煎悗 AUTO_DISABLED锛屽苟閫氱煡 Conversation Owner锛汭M 涓婚摼缁х画宸ヤ綔銆?
+<a id="section-9"></a>
+## 9. 鎻掍欢鐗堟湰銆佺儹鎻掓嫈涓庡洖婊?
+```mermaid
+flowchart LR
+  subgraph Artifact["涓嶅彲鍙樺埗鍝?]
+    Uploaded["UPLOADED"] --> Validating["VALIDATING"] --> Verified["VERIFIED"]
+  end
+  Verified -.->|"瀹夎鍓嶆彁锛屼笉鏄悓涓€鐘舵€佹満"| Installing
+  subgraph Instance["Conversation 瀹炰緥"]
+    Installing["INSTALLING"] --> Enabled["ENABLED"]
+  Enabled --> Disabled["DISABLED"] --> Uninstalled["UNINSTALLED"] --> Retained["RETAINED"] --> Purged["PURGED"]
+  Disabled -->|"re-enable"| Enabled
+  end
+  Exception["寮傚父鏃佽矾<br/>VALIDATION / INSTALL / RUNTIME / ROLLBACK_FAILED"]
+  Upgrade["鍗囩骇<br/>鏃х増淇濇寔 ENABLED 鈫?蹇収/杩佺Щ/鍋ュ悍妫€鏌?鈫?鍘熷瓙鍒囨崲锛涘け璐ュ洖婊?]
+  %% 寮傚父鍙婂崌绾т粛閬靛惊姝ｆ枃鍜?canonical lifecycle contracts銆?```
+
+> 鍥?9-1 鎻掍欢鍒跺搧涓庡疄渚嬬敓鍛藉懆鏈熴€侫rtifact 鐘舵€佸拰 Conversation 涓?Instance 鐘舵€佸繀椤诲垎绂汇€?
+<a id="section-9-1"></a>
+### 9.1 瀹夎
+
+1. 妫€鏌ュ畨瑁呮潈闄?-> Artifact VERIFIED -> API compatibility -> 鏉冮檺纭
+2. BEGIN: plugin_instance=INSTALLING + grants + sync_event + outbox -> COMMIT
+3. 寮傛: preload WASM + client bundle fetch + health check
+4. 鎴愬姛: ENABLED锛涘け璐? INSTALL_FAILED锛屼笉褰卞搷 IM 涓绘湇鍔?
+<a id="section-9-2"></a>
+### 9.2 鍗囩骇涓庡弻鐗堟湰鍏卞瓨
+
+Plugin Instance 缁存姢 active_version銆乨esired_version銆乸revious_version銆傚崌绾ф湡闂存棫鐗堜繚鎸佹湇鍔★細瀹夎鏂扮増 -> plugin_kv 蹇収 -> storage migration -> backend/renderer 鍋ュ悍妫€鏌?-> 鍘熷瓙鍒囨崲銆備换浣曚竴姝ュけ璐ラ兘鎭㈠蹇収骞剁户缁棫鐗堛€侭ackend WASM 涓?Renderer Bundle 灞炰簬鍚屼竴鍒跺搧鐗堟湰锛屼笉鍏佽鎷嗗紑鍗囩骇銆?
+<a id="section-9-3"></a>
+### 9.3 Disable / Uninstall / Purge
+
+| 鎿嶄綔 | 杩愯琛屼负 | 鏁版嵁 |
+| --- | --- | --- |
+| DISABLE | 鍋滄鎺ユ敹鏂颁簨浠朵笌浜х敓 Action锛岄殣钘忓叆鍙ｏ紝鍙噸鏂?enable | 淇濈暀 |
+| UNINSTALL | Conversation 涓嶅啀鎸佹湁娲诲姩瀹炰緥 | 榛樿 RETAINED |
+| PURGE | 鏄惧紡涓嶅彲閫嗘竻鐞嗘搷浣滐紱闇€瑕侀珮鏉冮檺鍜屽璁?| 鍒犻櫎鍓嶅繀椤荤‘璁や繚鐣欑瓥鐣ワ紱涓嶅緱鍒犻櫎浠嶈鍘嗗彶娑堟伅寮曠敤涓斿繀椤讳繚鐣欑殑 renderer |
+
+<a id="section-9-4"></a>
+### 9.4 瀹樻柟鍏煎 fixtures
+
+Loop 1 蹇呴』鎻愪緵 Echo Plugin 鍜?Poll Plugin銆侲cho 楠岃瘉 event -> WASM -> action -> message锛汸oll 楠岃瘉 PLUGIN message銆丆ustom Renderer銆乸lugin storage銆佸鎴风 UI 浜や簰涓?fallback TEXT銆傝繖涓や釜鎻掍欢杩涘叆鎸佺画鍏煎鐭╅樀銆?
+<a id="section-10"></a>
+## 10. Monorepo 涓庤鑼冩帶鍒堕潰
+
+```text
+/
+鈹溾攢鈹€ spec/
+鈹?鈹溾攢鈹€ architecture/
+鈹?鈹?鈹溾攢鈹€ README.md + baseline.md # resolver 涓庡畬鏁存€у厓鏁版嵁
+鈹?鈹?鈹溾攢鈹€ frozen-architecture.md # 鍞竴鐜拌姝ｆ枃
+鈹?鈹?鈹斺攢鈹€ decisions/ # ADR + frozen decisions
+鈹?鈹溾攢鈹€ domain/ # auth/user/friend/conversation/message/sync/plugin
+鈹?鈹溾攢鈹€ invariants/ # 璺ㄨ瑷€涓嶅彲鍙橀噺
+鈹?鈹溾攢鈹€ acceptance/ # loop-1.md + stage gates
+鈹?鈹溾攢鈹€ progress/
+鈹?鈹?鈹溾攢鈹€ current.md
+鈹?鈹?鈹斺攢鈹€ checkpoints/
+鈹?鈹溾攢鈹€ handoff/agent-context.md
+鈹?鈹斺攢鈹€ tasks/{backlog,ready,active,review,done}/
+鈹溾攢鈹€ contracts/
+鈹?鈹溾攢鈹€ http/
+鈹?鈹溾攢鈹€ websocket/
+鈹?鈹溾攢鈹€ errors/
+鈹?鈹溾攢鈹€ database/
+鈹?鈹溾攢鈹€ plugin-api/
+鈹?鈹斺攢鈹€ fixtures/ # golden vectors / old clients / plugins
+鈹溾攢鈹€ backend/
+鈹?鈹溾攢鈹€ go/{gateway,core,plugin-host,tests,shared}/
+鈹?鈹斺攢鈹€ java/{gateway,core,plugin-host,tests,shared}/
+鈹溾攢鈹€ clients/
+鈹?鈹溾攢鈹€ shared/{protocol-sdk,plugin-sdk,ui}/
+鈹?鈹溾攢鈹€ web/
+鈹?鈹溾攢鈹€ desktop/
+鈹?鈹斺攢鈹€ mobile/
+鈹溾攢鈹€ plugins/fixtures/{echo,poll}/
+鈹溾攢鈹€ tests/{contract,integration,e2e,compatibility,load}/
+鈹溾攢鈹€ deploy/{compose,proxy,observability}/
+鈹溾攢鈹€ ci/
+鈹斺攢鈹€ tools/
+```
+
+### 鏈嶅姟婧愮爜涓庝緷璧栬鍒欙紙Go / Java 鍏卞悓閫傜敤锛?
+- **SRC-01**锛歚backend/<language>/gateway/**` 鍙疄鐜?搂3.1 Gateway锛沗core/**` 鎷ユ湁 Auth/Session 鍐欎簨鍔°€乁ser/Friend/Conversation/Message/Sync/Outbox锛沗plugin-host/**` 鎷ユ湁鍙楁帶鎻掍欢鎵ц涓庝唬鐞嗐€備笟鍔℃簮鐮?MUST 浣嶄簬瀵瑰簲鏈嶅姟鑼冨洿锛屼笉鑳芥斁鍦ㄨ瑷€鏍圭洰褰曟垨鏈壒鍑嗙殑 `internal/**` 涓氬姟鐩綍銆?- **SRC-02**锛氳瑷€鏍圭洰褰曞彧鐧藉悕鍗曞厑璁稿叆鍙ｈ閰嶏紙Go `main.go`銆丣ava `Main.java`锛夈€佹ā鍧?渚濊禆/鏋勫缓鏂囦欢锛圙o `go.mod`/`go.sum`锛孞ava `pom.xml` 鎴?Gradle 閰嶇疆锛夈€丏ockerfile銆丷EADME.md銆乧onfig.example.json 鍙婃牴鍏ュ彛娴嬭瘯锛圙o `main_test.go`銆丣ava `MainTest.java`锛夈€傚叆鍙ｅ彧鑳借鍙栭厤缃€侀€夋嫨瑙掕壊銆佽繛鎺ヤ緷璧栥€佸惎鍔?鍏抽棴瀵瑰簲鏈嶅姟锛涗笉寰楀疄鐜拌矾鐢变笟鍔°€丄uth 鏈嶅姟鎴?Session 鍐欓€昏緫銆傛牴娴嬭瘯浠呴獙璇佽閰嶏紝鏈嶅姟娴嬭瘯涓庤亴璐ｅ悓杩佹垨缃簬 `tests/**`锛涗笉鑳戒互娴嬭瘯鏂囦欢鍚嶈棌涓氬姟瀹炵幇銆傛柊澧炴牴婧愮爜渚嬪蹇呴』鍏堟槑纭壒鍑嗐€佸垪鍏ユ鏌ュ櫒鐧藉悕鍗曞苟闄愬畾鐢ㄩ€斻€?- **SRC-03**锛歚shared/**` 鍙壙杞介厤缃鍙栥€佹棩蹇椼€佽繛鎺ュ缓绔嬨€侀€氱敤缂栬В鐮併€佸瘑鐮佸/浠ょ墝鍘熻鍜岀敱 canonical contracts 绾︽潫鐨勪紶杈撴暟鎹被鍨嬨€傚叡浜寘 MUST NOT 鎵胯浇瀹屾暣 Auth 鏈嶅姟銆佹敞鍐?鐧诲綍/鍒锋柊/閫€鍑烘祦绋嬨€丼ession 鍐欎簨鍔°€佷笟鍔′粨鍌ㄣ€佹潈闄?鎴愬憳鍐崇瓥銆丱utbox 涓氬姟缂栨帓锛屼害涓嶅緱鍙嶅悜渚濊禆浠讳綍鏈嶅姟鍖呫€侴ateway 鐨勫彧璇绘潈濞?Session 鏍￠獙褰?Gateway锛汣ore 淇濇湁鍐欎簨鍔°€傚叡浜笉鏄粫杩囪亴璐ｇ殑鍚庨棬銆?- **SRC-04**锛氭湇鍔″彲渚濊禆鍏变韩鏀寔涓庢湰鏈嶅姟鍐呴儴鍖咃紱浠讳綍鏈嶅姟 MUST NOT 鐩存帴 import/渚濊禆鍙︿竴鏈嶅姟鍐呴儴瀹炵幇銆傛湇鍔￠棿閫氳繃鐜版湁鎺堟潈鐨?HTTP/WSS/浜嬩欢/鍙楁帶 Host bridge 杈圭晫鍗忎綔锛涗笉鍥犳簮鐮佹暣鏀规柊澧?RPC銆佸叕鍏卞绾︺€乵odule 鎴栧熀纭€璁炬柦銆傛牴瑁呴厤鍙緷璧栧悇鏈嶅姟鐨勬渶灏忓惎鍔ㄦ帴鍙ｏ紝娴嬭瘯鍙法鏈嶅姟浣滈粦鐩掔粍鍚堥獙璇侊紝鍧囦笉寰楁垚涓鸿繍琛屾湡涓氬姟鍙嶅悜渚濊禆銆?- **SRC-05**锛欸o 涓?Java 鍙娇鐢ㄤ笉鍚岀殑鏈嶅姟鍐呴儴鍖?妯″潡/绾跨▼缁勭粐锛涘叡鍚岃亴璐ｃ€佺墿鐞嗚鑹插拰涓婅堪婧愮爜杈圭晫涓嶅彲琚€滆涓虹瓑浠封€濊眮鍏嶃€備笉寮哄埗涓?module銆佷笁 binary 鎴栧灞傛灦鏋勩€俁eviewer 妫€鏌ュ疄闄呰亴璐ｅ拰 import 鍥撅紝涓嶅彧鐪嬫枃浠跺悕鎴栫洰褰曞瓨鍦ㄣ€?- **SRC-06**锛歋0 鍘嗗彶鍗犱綅鐧藉悕鍗曚负 Go `backend/go/main.go` 涓?Java `backend/java/InfraPlaceholder.java` 鐨勯潪涓氬姟鍚姩/鍋ュ悍/transport echo 楠ㄦ灦锛涙竻鍗曚笉鍏佽鍏舵壙杞戒笟鍔°€傛寜鍚庣鍒嗗埆閫€鍑猴細璇ュ悗绔涓€娆′笟鍔″疄鐜板紑濮嬪嵆绉婚櫎涓氬姟璺緞鐨勫崰浣嶈眮鍏嶏紱鍙︿竴鍚庣浠嶆寜鏄庣‘鍗犱綅娓呭崟楠岃瘉锛屼笉鑳芥案涔呰烦杩囩粨鏋勮鍒欍€傛柊瑙勫垯鏆撮湶鐨勬棫瀹炵幇鍋忕蹇呴』鍦ㄨ縼绉讳换鍔℃秷闄わ紝涓嶈兘 grandfather銆傚崟娆¤法鏈嶅姟杩佺Щ闇€ Task Spec 鏄庣‘鍒楀嚭杩佺Щ鏂囦欢/鑱岃矗銆佽寖鍥村拰閫€鍑烘潯浠躲€?- **SRC-07**锛歍ask `allowed_paths` 浠呴檺瀹氬彲淇敼鑼冨洿锛屼笉鏄灦鏋勮眮鍏嶃€傛櫘閫氫笟鍔′换鍔℃寜鏈嶅姟鑱岃矗鏀剁獎锛涚粨鏋?渚濊禆妫€鏌ュ拰琛屼负娴嬭瘯鍏卞悓楠屾敹銆傝鑼冨啿绐佸繀椤诲湪瀹炵幇鍓嶅崌绾э紝绂佹浜嬪悗淇敼鏋舵瀯杩借閿欒甯冨眬銆?
+<a id="section-10-1"></a>
+### 10.1 spec/ 鍚勭洰褰曠殑鑱岃矗
+
+| 璺緞 | 鍥炵瓟鐨勯棶棰?| 绂佹鍐呭 |
+| --- | --- | --- |
+| architecture/decisions | 涓轰粈涔堣繖鏍疯璁★紝鍝簺宸茬粡鍐荤粨锛?| 涓存椂瀹炵幇绗旇 |
+| domain | 涓氬姟瀵硅薄涓庤涓烘槸浠€涔堬紵 | 鏌愯瑷€鐨勭被缁撴瀯 |
+| invariants | 鏃犺瀹炵幇濡備綍閮藉繀椤绘垚绔嬩粈涔堬紵 | 鎬ц兘鐚滄祴 |
+| acceptance | 鎬庢牱鍒ゅ畾闃舵/Loop 閫氳繃锛?| 涓嶅彲楠岃瘉鐨勨€滃熀鏈畬鎴愨€?|
+| progress/current.md | 鐜板湪鏁翠綋鍦ㄥ摢閲岋紵鏈€鍚庡凡楠岃瘉鐘舵€佹槸浠€涔堬紵 | 浠诲姟缁嗚妭鍫嗙Н |
+| checkpoints | 绋冲畾閲岀▼纰戠殑鍙仮澶嶅揩鐓ф槸浠€涔堬紵 | 姣忔灏忕紪杈戞棩蹇?|
+| handoff/agent-context.md | 鏂?Agent 鍏堢煡閬撲粈涔堬紵 | 閲嶅鍏ㄩ儴鏂囨。 |
+| tasks | 涓嬩竴浠跺彲鎵ц宸ヤ綔鏄粈涔堬紵鍏佽淇敼鍝噷锛?| 鏋舵瀯鑷敱鍙戞尌 |
+
+<a id="section-11"></a>
+## 11. 鍏叡濂戠害涓庡弻鍚庣瀹炵幇
+
+<a id="section-11-1"></a>
+### 11.1 鍞竴鏉冨▉
+
+Canonical Contracts 浣嶄簬 contracts/锛屽悓鏃堕┍鍔?Go銆丣ava/Spring 鍜屽鎴风 SDK銆傚绾﹀寘鍚?OpenAPI/HTTP銆乄SS envelope 涓庢秷鎭被鍨嬨€侀敊璇爜銆佸崗璁増鏈笌 capabilities銆佹暟鎹簱 schema/migrations銆丳lugin API銆丟olden Test Vectors銆傚疄鐜颁唬鐮佷笉寰楁垚涓哄弽鍚戞潈濞併€?
+<a id="section-11-2"></a>
+### 11.2 绛変环鑰岄潪鍚屾瀯
+
+| 蹇呴』鐩稿悓 | 鍏佽涓嶅悓 |
+| --- | --- |
+| HTTP/WSS 鍙瀵熻涓恒€侀敊璇爜銆佷簨鍔¤涔夈€佸箓绛夈€侀『搴忋€丼ync銆佹彃浠舵潈闄愩€佹暟鎹簱缁撴灉锛浡?/搂10 鏈嶅姟鑱岃矗銆佹簮鐮佸綊灞炲拰渚濊禆鏂瑰悜 | 鏈嶅姟鍐呴儴妗嗘灦銆佸寘缁撴瀯銆佷緷璧栨敞鍏ャ€丱RM/SQL 宸ュ叿銆佺嚎绋?鍗忕▼妯″瀷銆佸唴閮ㄦ帴鍙?|
+| Release Manifest銆佸仴搴锋鏌ャ€乵etrics 鏍囩銆佹棩蹇楀叧鑱斿瓧娈?| 鍐呴儴妯″潡鍚嶇О涓庝唬鐮侀鏍?|
+
+鍐呴儴缁撴瀯鍙笉鍚屼笉绛変簬鍙嚜琛岄€夊瀷锛浡?.3 閫傜敤浜庢墍鏈夋柊澧?architecture-sensitive framework銆丱RM銆乺untime 涓庢牳蹇冧緷璧栥€偮?1.2 鐨勫彲涓嶅悓鏍忕洰浠呰〃绀哄湪鍚勮嚜宸叉壒鍑嗘妧鏈喅瀹氬唴涓嶈姹傚悓鏋勩€?
+<a id="section-11-3"></a>
+### 11.3 Golden Contract Tests
+
+```text
+鍚屼竴 fixture 杈撳叆 -> Go profile -> 瑙勮寖鍖栫粨鏋?A
+鍚屼竴 fixture 杈撳叆 -> Java profile -> 瑙勮寖鍖栫粨鏋?B
+鏂█ A == Canonical Expected && B == Canonical Expected
+蹇呴』瑕嗙洊锛歛uth/session銆乫riend/direct uniqueness銆乬roup idempotency銆乵essage ACK/outbox銆乺etry銆乻ync gap銆乸lugin permissions銆乪rrors/version negotiation
+```
+
+<a id="section-11-4"></a>
+### 11.4 鏁版嵁搴撹縼绉?
+涓ゅ鍚庣鍏变韩鏁版嵁搴撹涔夛紝浣嗗崟娆￠儴缃插彧杩愯涓€涓?profile銆俶igration 鐢辩嫭绔嬭縼绉荤粍浠舵墽琛岋紝涓嶅厑璁稿簲鐢ㄥ疄渚嬬珵浜夋墽琛屻€傛墍鏈夊吋瀹圭獥鍙ｅ唴鐨勬湇鍔′笌瀹㈡埛绔?fixture 蹇呴』閫氳繃 migration 娴嬭瘯銆傜牬鍧忔€?schema 鍙樻洿閲囩敤 expand -> migrate/backfill-> switch -> contract锛屽鐗堟湰鍏卞瓨鏈熼棿绂佹鍏堝垹鏃у瓧娈点€?
+<a id="section-11-5"></a>
+### 11.5 鍏紑 Sync HTTPS 缁戝畾锛圚uman-approved ADR-0008 鍊欓€夛級
+
+鍏紑鎷夊彇閫氳繃 HTTPS POST /v1/sync/user 涓?/v1/sync/conversation锛涘敮涓€鏈哄櫒鏉冨▉ contracts/http/sync.openapi.json锛屽鐢ㄧ幇鏈夊洓绉?Sync v1 褰㈢姸鍜屾棦鏈?Bearer/HTTP 閿欒鐩綍銆俉SS realtime/ACK 淇濇寔鍘熶箟锛屼笉娣诲姞 Sync envelope銆侴ateway 浠呬唬鐞嗭紝Core 璐熻矗姣忚姹傛暟鎹簱鏉冨▉ Session銆佺敤鎴烽殧绂汇€佷細璇濇垚鍛樻巿鏉冦€佺ǔ瀹氬凡鎻愪氦鍒嗛〉锛涙棤鏂版湇鍔?渚濊禆/鏁版嵁搴撳璞°€?
+鐢ㄦ埛鍒濆€?cursor 涓?0锛屽悗缁?opaque cursor 缁戝畾璁よ瘉鐢ㄦ埛銆佸彲璺ㄥ叾 Session 閲嶆斁锛涘鎴风涓嶈В鏋?鎺掑簭銆備粎 friend/conversation/membership/plugin metadata锛涙秷鎭粛浣跨敤浼氳瘽 seq銆傚唴閮?cursor_id 鍙湪鍝嶅簲鎶曞奖涓?external event.cursor/nextCursor锛屾棦鏈?producer payload/schema 涓嶆敼銆備换鎰忔鏁存暟 limit 浠嶅悎娉曪紝effectiveLimit=min(limit,100)锛屽厛绮剧‘鍙?cap 鍐嶆湁鐣岃浆鎹€傜┖椤?terminal锛坲ser 淇濇寔杈撳叆 cursor锛夛紱闈炵┖ user nextCursor=鏈簨浠?cursor 涓斿墠杩涳紱hasMore 瑕佹眰闈炵┖杩涘睍涓斿瓨鍦ㄩ澶栧凡鎻愪氦鍚堟牸椤癸紝涓嶈兘璺宠繃骞跺彂鏅氭彁浜ゃ€備細璇濇秷鎭粠 afterSeq+1 鏈夊簭杩炵画锛涘鎴风浠呰法鏃?gap 鍓嶇紑鎺ㄨ繘 contiguous_seq锛屾暟鎹?cursor 鍚屼簨鍔′笉鍙樸€?
+100 浠呴檺鍒跺崟椤碉紝涓嶉檺鍒舵€诲悓姝ユ潯鏁版垨椤垫暟銆傚鎴风姣忛〉鏁版嵁涓庢父鏍?杩炵画搴忓彿浜嬪姟鎻愪氦鎴愬姛鍚庯紝鑻?hasMore=true锛岀敤鎴锋祦浣跨敤 nextCursor銆佷細璇濇祦浣跨敤宸叉彁浜ゆ棤 gap 鍓嶇紑鐨?afterSeq 缁х画鎷夊彇锛岀洿鍒?hasMore=false锛涗笉寰椾互鍥哄畾鎬绘潯鏁版垨鎬婚〉鏁版彁鍓嶆埅鏂€傜粓姝㈤〉琛ㄧず璇ユ璇诲彇鍙鐨勫凡鎻愪氦鏈€鏂扮姸鎬侊紝涓嶄繚璇佺粓姝㈠悗鐨勬柊鍐欏叆宸茬粡鍚屾锛涘悗缁疄鏃舵祦/鍐嶆鍚屾鎵挎媴鏂板彉鍖栥€?
+鎴愬姛/鍙В鐮佹湁鏁?requestId 鐨?canonical error 涓?body UUID 鍏宠仈锛涗笉鍙叧鑱旀牸寮忛敊璇敤 server UUID銆傚叿浣撹璇併€佸瓧娈点€侀敊璇爜/鐘舵€併€佽祫婧愮晫闄愬拰鍏宠仈琛屼负浠?contracts/ 涓哄噯锛屼笉浠庡疄鐜版帹瀵笺€傛棤鏁?澶栬处鍙?cursor 400 VALIDATION_FAILED锛屼笉瀛樺湪/闈炴垚鍛樹細璇?03 AUTHORIZATION_DENIED銆傛湭鍒楀叆閿欒鐩綍鐨勬湇鍔″櫒/浼犺緭澶辫触涓嶅緱鍐掑厖鎴愬姛椤垫垨鎺ㄨ繘 cursor銆傛煡璇㈠弬鏁扮姝紝鍏ュ彛 HTTPS銆佹棩蹇?閿欒鏃犲嚟鎹紝鍝嶅簲 no-store銆?
+鎵瑰噯鏉ユ簮涓庡吋瀹?杩佺Щ瑙?ADR-0008銆傛缁戝畾浠呯粡 fresh independent Review銆佺簿纭€欓€?hosted CI銆乸rotected integration/actual-main 涓庝富浠撳簱鍚屾鍚庣敓鏁堬紱鎺ュ彈鍚庝粛椤诲睍绀哄叿浣?Go 鍏ュ彛瀹炵幇鏂规骞跺彇寰?Human 鍚屾剰鎵嶅彲鍐?Go 浜у搧浠ｇ爜銆係YNC 浠嶉』鐪熷疄鏈嶅姟涓庡鎴风鐙珛鎺ュ彈锛涙湰鍓嶇疆涓嶇瓑浜?Task SYNC/S2 Gate PASS銆?
+<a id="section-12"></a>
+## 12. AI Development Loop
+
+```mermaid
+flowchart LR
+  Context["璇诲彇涓婁笅鏂?] --> Repo["鎭㈠鐪熷疄浠诲姟鐘舵€?] --> Plan["PLAN"] --> Implement["鏂?Implementation Agent"] --> Test["鏈湴楠岃瘉 + 鍊欓€夋彁浜?] --> Review["鏂扮嫭绔?Review Agent"]
+  Review -->|"FAIL"| Failure["鏂?Fix Agent锛涙巿鏉冭寖鍥村唴淇"]
+  Failure --> Test
+  Review -->|"PASS"| CI["閫傜敤鐪熷疄 CI锛涙牳瀵?head SHA 涓庡繀璺戜綔涓?]
+  CI -->|"FAIL"| Failure
+  CI -->|"PASS"| Complete["鎺ュ彈浠诲姟锛涙洿鏂伴槦鍒?璇佹嵁/current/checkpoint"]
+  Complete --> Handoff["HANDOFF / 涓嬩竴渚濊禆婊¤冻浠诲姟"]
+```
+
+> 瀹炵幇/淇涓庢帴鍙楀€欓€夌殑 Review 蹇呴』鏄湡瀹炰笉鍚岀殑鏂颁笂涓嬫枃锛涘悓涓€涓婁笅鏂囨敼瑙掕壊鍚嶄笉鏄嫭绔嬪鏌ャ€傚崟鍐欒€咃紱鏅€氬け璐ヨ繘鍏ヤ慨澶嶄笌鏂扮殑鐙珛 Review 寰幆銆傞獙鏀朵緷鎹槸鏉冨▉瑙勮寖銆佸绾︺€佸€欓€?diff銆佺粨鏋?渚濊禆/鏈€灏忔€ф鏌ュ強鐪熷疄娴嬭瘯缁撴灉銆?>
+> 鍥?12-1 Agent 宸ヤ綔娴併€傚紑鍙戣嚜鍔ㄥ寲鍜?CI/CD 鏄袱涓嫭绔嬬郴缁熴€?
+<a id="section-12-1"></a>
+### 12.1 Task Spec 妯℃澘
+
+```text
+task_id: LOOP1-MSG-003
+goal: implement WSS text message sending
+inputs:
+ - spec/architecture/README.md # resolve 搂3/搂10/搂11 + Minimality Contract
+ - spec/domain/messaging.md
+ - spec/invariants/messaging.md
+ - contracts/websocket/
+allowed_paths:
+ - backend/go/core/message/**
+ - backend/go/core/outbox/**
+ - backend/go/tests/**
+acceptance:
+ - applicable source ownership and dependency checks pass
+ - contract tests pass
+ - retry is idempotent
+ - ACK only after durable commit
+forbidden:
+ - change public contract
+ - change DB contract without migration
+ - modify Java implementation
+```
+
+<a id="section-12-2"></a>
+### 12.2 鐘舵€侀槦鍒?
+backlog -> ready -> active -> review -> done
+
+- 杩涘叆 ready: inputs 瀹屾暣銆佷緷璧栧畬鎴愩€侀獙鏀跺彲鎵ц
+- 杩涘叆 active: 鍒嗛厤鍞竴 owner/agent銆佸缓绔?task branch
+- 杩涘叆 review: 瀹炵幇瀹屾垚 + 鏈湴鏈€灏忛獙璇?+ handoff 瀹屾暣
+- 杩涘叆 done: 瀵圭簿纭€欓€夌殑閫傜敤鐪熷疄 CI PASS + 鏂扮嫭绔?review 鎺ュ彈 + progress 鏇存柊锛汿ask PASS 涓嶇瓑浜庢暣涓?Stage Gate PASS銆侫DR-0001 涓存椂 bootstrap 鏈哄埗浠呭湪 LOOP1-CI-001 operational 涓?done 鍓嶆湁鏁堬紝鐜板凡澶辨晥锛屼笉寰楁仮澶嶄负缁曡繃鏂瑰紡銆?
+<a id="section-12-3"></a>
+### 12.3 Git 宸ヤ綔妯″紡
+
+閲囩敤 main + task/锛屼笉寮曞叆澶嶆潅 GitFlow銆傛瘡涓换鍔＄嫭绔嬪垎鏀€佹渶灏忔彁浜ゃ€丆I銆丷eview 鍚庡悎骞躲€侫gent 涓嶅緱闀挎湡鍫嗙Н璺ㄤ换鍔℃敼鍔紝涔熶笉寰椾负浜嗚 CI 鍙樼豢鑰屼慨鏀规棤鍏虫祴璇曟垨鍏叡濂戠害銆?
+<a id="section-13"></a>
+## 13. Agent 鍚姩涓庝氦鎺ュ崗璁?
+<a id="section-13-1"></a>
+### 13.1 寮哄埗璇诲彇椤哄簭
+
+| 椤哄簭 | 蹇呴』璇诲彇 | 閫€鍑烘潯浠?|
+| --- | --- | --- |
+| 1 | spec/handoff/agent-context.md | 鐞嗚В椤圭洰杈圭晫銆乫rozen decisions 涓庡伐浣滄柟寮?|
+| 2 | spec/progress/current.md | 鐭ラ亾褰撳墠 Stage銆丟ate銆佹渶鍚庡凡楠岃瘉commit銆乥lockers |
+| 3 | 鎸?current.md 鐨勭簿纭?Current Task ID 鏌ユ壘 backlog/ready/active/review/done锛屽繀椤诲敮涓€涓?status 鍖归厤 | review 缁х画鐙珛瀹℃煡/淇锛沘ctive 缁х画瀹炵幇锛況eady 楠屼緷璧栧悗婵€娲伙紱backlog 淇濇寔闃诲锛涗粎褰撳墠 done 涓旀棤鏈畬褰撳墠浠诲姟鎵嶆寜渚濊禆閫変笅涓€浠诲姟锛岀姝?active 涓虹┖灏辫烦浠诲姟 |
+| 4 | resolver/hash銆佺幇琛屽喕缁撴鏂囬€傜敤 搂3/搂10/搂11銆佹壒鍑?ADR銆丮inimality 鍙婁换鍔″紩鐢ㄧ殑 domain/invariants/acceptance/contracts | 鑳藉杩拌亴璐ｃ€佹簮鐮?渚濊禆杈圭晫銆佷笉鍙彉閲忋€佽緭鍏ヨ緭鍑轰笌楠屾敹 |
+| 5 | git status銆佸綋鍓?diff銆佹渶杩戞彁浜?| 璇嗗埆鐢ㄦ埛/鍓?Agent 鏈畬鎴愭敼鍔紝涓嶈鐩?|
+| 6 | 鏈€灏忓熀绾块獙璇?| 纭浠撳簱鐘舵€佸彲缁х画锛涘け璐ュ垯璁板綍鑰岄潪鐩叉敼 |
+| 7 | PLAN -> IMPLEMENT -> TEST -> REVIEW | 浠呭湪鎺堟潈璺緞涓庝换鍔¤寖鍥村唴宸ヤ綔 |
+
+<a id="section-13-2"></a>
+### 13.2 Handoff 蹇呭～椤?
+- Current task / stage / gate
+- Completed work
+- Files and migrations changed
+- Tests: command + result + evidence location
+- Known failures / risks / assumptions
+- Next exact action
+- Last known good commit
+- Uncommitted changes and ownership
+- Architecture conflicts or ACP/ADR required
+
+<a id="section-13-3"></a>
+### 13.3 Checkpoint 瑙勫垯
+
+绋冲畾 Gate銆侀噸瑕佺旱鍚戦摼璺€乻chema/contract 鐗堟湰鍒囨崲鎴栧彲鎭㈠鍙戝竷鐐瑰繀椤荤敓鎴?checkpoint銆俢heckpoint 璁板綍 commit銆乧ontract version銆乵igration level銆乮mage digests銆乫ixture versions銆侀€氳繃鐨?Gate 涓庡凡鐭ラ檺鍒躲€俢urrent.md 濮嬬粓鎸囧悜鏈€鏂?checkpoint锛岃€屼笉鏄鍒跺叾鍏ㄩ儴鍐呭銆?
+#### 宕╂簝鎭㈠鐩爣
+
+鏂扮殑 Agent 涓嶆壂鎻忔暣涓粨搴撻噸鏂扮寽鏋舵瀯銆傚畠閫氳繃 agent-context -> current -> 绮剧‘ Current Task 鐨勭湡瀹為槦鍒楃姸鎬?-> referenced specs/contracts -> git status/diff/commits 鍦ㄤ竴涓彲鎺т笂涓嬫枃涓仮澶嶅伐浣溿€?
+<a id="section-14"></a>
+## 14. CI/CD 鐙珛鏍￠獙鏋舵瀯
+
+```mermaid
+flowchart LR
+  Diff["Diff 鍒嗙被"]
+  Diff --> GoPath["backend/go/**"]
+  Diff --> JavaPath["backend/java/**"]
+  Diff --> Shared["contracts/** / DB / shared SDK"]
+  Diff --> Rules["architecture / Agent / task template / acceptance / checker"]
+  Rules --> Structure["瑙勮寖 + 婧愮爜褰掑睘 + 渚濊禆 + 瑙﹀彂璐熶緥"]
+  GoCI --> Structure
+  JavaCI --> Structure
+  Structure --> Gate
+  GoPath --> GoCI["Go CI<br/>unit + integration<br/>contract"]
+  JavaPath --> JavaCI["Java CI<br/>unit + integration<br/>contract"]
+  Shared --> Matrix["鍏ㄥ钩鍙板吋瀹圭煩闃?br/>Go + Java + clients<br/>plugin + migration"]
+  Matrix --> Artifacts["鍙噸澶嶅埗鍝?br/>闀滃儚 / 瀹㈡埛绔?]
+  Matrix --> Smoke["Staging Smoke"]
+  Artifacts --> Smoke
+  Smoke --> Gate["Release Gate<br/>manifest + rollback"]
+```
+
+> Agent 璐熻矗鎻愬嚭鍙樻洿锛汣I 鐙珛楠岃瘉浜嬪疄銆侫gent 鏃犳潈鑷瀹ｅ竷 Gate 閫氳繃銆?>
+> 鍥?14-1 Path-aware CI DAG銆傚垎绫诲垎鏀浉浜掔嫭绔嬶紱鍏叡濂戠害/schema/shared SDK 鍙樻洿鎸夎〃瑙﹀彂鍏煎鐭╅樀锛岃鑼冧笌妫€鏌ュ櫒鍙樻洿蹇呴』瑙﹀彂閫傜敤鏋舵瀯妫€鏌ャ€傞儴缃?鍙戝竷鑺傜偣琛ㄧず鐩稿簲闃舵瑕佹眰锛屼笉鎶婃湭鏉ュ彂甯冭兘鍔涘啋鍏呭綋鍓?skeleton銆?
+<a id="section-14-1"></a>
+### 14.1 璺緞鎰熺煡瑙勫垯
+
+| 鍙樻洿璺緞 | 蹇呰窇浣滀笟 |
+| --- | --- |
+| backend/go/** | Go lint/unit/integration/contract锛涗笉榛樿璺?Java |
+| backend/java/** | Java lint/unit/integration/contract锛涗笉榛樿璺?Go |
+| clients/web/** | Web unit/build/protocol/plugin UI tests |
+| clients/desktop/** 鎴?clients/mobile/** | architecture/client technology guard + 瀵瑰簲瀹㈡埛绔?+ SQLite migration + protocol tests |
+| contracts/**銆佹暟鎹簱杩佺Щ銆乻hared protocol/plugin SDK | Go + Java + Web + Desktop + Mobile + old client fixtures + plugin fixtures + migration compatibility |
+| deploy/**銆乧i/**銆?github/workflows/** | 鎸夊綋鍓嶉樁娈垫墽琛?compose/manifest/security/smoke/rollback validation锛屽苟楠岃瘉鍒嗙被涓?Gate |
+| spec/architecture/**銆丄gent 鍏ュ彛銆乭andoff銆佹椿鍔ㄤ换鍔?妯℃澘/batch銆乤cceptance銆佹灦鏋勬鏌ュ櫒涓庢祴璇?| baseline/resolver/ADR 涓€鑷存€с€佹椿鍔ㄥ紩鐢ㄣ€佹簮鐮佸綊灞炪€丟o/Java 閫傜敤闃舵渚濊禆妫€鏌ャ€佽Е鍙戜笌姝ｈ礋鎺у埗锛汳arkdown-only 涓嶈兘鍏ㄩ儴璺宠繃 |
+
+<a id="section-14-2"></a>
+### 14.2 娴佹按绾垮眰娆?
+static/lint -> unit -> contract -> integration -> compatibility -> build
+-> immutable artifacts -> SBOM/signature -> staging deploy -> smoke/E2E
+-> release gate -> canary/controlled rollout -> observe -> complete or rollback
+
+<a id="section-14-3"></a>
+### 14.3 鍏煎鐭╅樀
+
+瀹屾暣鍏煎闃舵鐨勬渶浣庣煩闃靛寘鍚?Client Protocol v1銆乿2銆丠EAD锛涘湪鐩稿簲鍗忚涓庡鎴风鐗堟湰灏氭湭瀹氫箟鐨勬棭鏈熼樁娈碉紝鍙兘鏄庣‘鎶ュ憡鐜版湁濂戠害鍚戦噺/鍗犱綅妫€鏌ワ紝涓嶈兘铏氭瀯 v2 鎴栧０绉板凡閫氳繃瀹屾暣鐭╅樀锛涘悗缁樁娈典笉寰楁案涔呰眮鍏嶃€侴o/Java profile锛汦cho/Poll 鎻掍欢 fixture锛汼QLite old schema fixtures銆傛湇鍔＄鍙淮鎶や竴涓綋鍓嶅疄鐜扮増鏈笌鏈夐檺鍏煎绐楀彛銆俵atest/recommended/min_supported 蹇呴』鍦?Release Manifest 涓樉寮忓０鏄庯紝瀹㈡埛绔増鏈彿涓?protocol_version 涓嶇粦瀹氥€?
+<a id="section-14-4"></a>
+### 14.4 CI 涓?Agent 鐨勪俊浠昏竟鐣?
+Agent 鍙繍琛屾湰鍦版祴璇曞苟鎻愪氦璇佹嵁锛屼絾 Gate 鍙兘鐢遍殧绂?Runner 浠庡共鍑€ checkout 閲嶅缓鍚庡垽瀹氥€傛牳瀵圭簿纭?head SHA銆佽姹傝繍琛岀殑浣滀笟鍙婂疄闄呯粨鏋滐紱蹇呰窇浣滀笟缂哄け銆佸紓甯?skip銆佸け璐ユ垨鍙栨秷鍧囦笉婊¤冻 Gate銆傛祴璇曠幆澧冩湭鍚敤瀵艰嚧鐨?skip 涓嶆槸闆嗘垚 PASS锛涙棫鎻愪氦鐨勭豢鑹蹭笉瑕嗙洊鏂板瑕佹眰銆傚巻鍙?ADR-0001 鐨勯€傜敤鍙婂け鏁堟潯浠惰 搂12.2銆備换浣曢渶瑕佽烦杩囨祴璇曘€侀噸褰?golden fixture銆侀檷浣庨槇鍊兼垨鏇存敼楠屾敹椤圭殑鍔ㄤ綔閮借涓烘灦鏋?楠屾敹鍙樻洿锛屽繀椤诲崟鐙鎵广€?
+<a id="section-15"></a>
+## 15. Loop 1: 12 鍛ㄩ绠椼€侀噷绋嬬闂ㄧ椹卞姩
+
+```mermaid
+flowchart LR
+  S0["S0<br/>鎺у埗闈?br/>W1<br/>Gate PASS"] --> S1["S1<br/>Go 绾靛垏<br/>W2-3<br/>Gate PASS"]
+  S1 --> S2["S2<br/>瀹㈡埛绔悓姝?br/>W4-5<br/>Gate PASS"]
+  S2 --> S3["S3<br/>Java 绛変环<br/>W6-7<br/>Gate PASS"]
+  S3 --> S4["S4<br/>鎻掍欢骞冲彴<br/>W8-9<br/>Gate PASS"]
+  S4 --> S5["S5<br/>宸ョ▼纭寲<br/>W10<br/>Gate PASS"]
+  S5 --> S6["S6<br/>5k RC<br/>W11-12<br/>Gate PASS"]
+```
+
+> 鎻愬墠閫氳繃鍗崇珛鍗宠繘鍏ヤ笅涓€闃舵锛涗换浣曞繀闇€椤瑰け璐ュ垯鐣欏湪褰撳墠闃舵淇銆傚懆鏁颁粎鏄绠楃獥鍙ｃ€?>
+> 鍥?15-1 渚濊禆鍥捐€岄潪鍥哄畾鐢樼壒鍥俱€傚懆鏁拌〃绀洪绠楃獥鍙ｏ紱Gate 鍐冲畾瀹為檯鍓嶈繘鏃堕棿銆傚師鍥惧湪 S0 鑷?S6 涓冧釜闃舵涓嬫柟鍧囨爣鏈?Gate PASS锛涙澶勫垎鍒疆浜庡搴旈樁娈佃妭鐐圭殑鏈锛岄樁娈甸棿绠ご浠嶅彧琛ㄧず鍘熷浘鐨勫墠杩涙柟鍚戙€?
+#### Execution Policy
+
+This loop is milestone-gated, not calendar-gated. A stage MAY begin immediately once all acceptance criteria of the previous stage pass. Agents MUST NOT wait for a scheduled date after Gate PASS, and MUST NOT advance while any required criterion is failed or unresolved.
+
+| 闃舵 | 棰勭畻绐楀彛 | 鑼冨洿 | Gate 璇佹嵁 |
+| --- | --- | --- | --- |
+| S0 鎺у埗闈?| W1 | Monorepo銆乻pec/contracts/tasks/progress銆丆I skeleton銆丆ompose銆丳ostgreSQL/NATS/TLS锛涘喕缁?HTTP/WSS/Error/Session/Message/Sync/Plugin API v1 | 鏂?Agent 浠呴潬鎺у埗闈㈠彲瀹氫綅椤圭洰銆佺姸鎬併€佷笅涓€浠诲姟锛涘绾?lint 涓?skeleton CI PASS |
+| S1 Go 绾靛悜閾捐矾 | W2-3 | 娉ㄥ唽/鐧诲綍銆乄SS銆佹悳绱€佸ソ鍙嬨€佸敮涓€绉佽亰銆佹枃鏈彂閫併€丄CK銆佹寔涔呭寲銆丱utbox銆丯ATS | A 鎼滅储/娣诲姞 B 鍚庡彂 hello锛孊 瀹炴椂鏀跺埌锛沜ontract/integration PASS |
+| S2 瀹㈡埛绔笌Sync | W4-5 | Desktop/Mobile SQLite銆乷ptimistic/retry/Sync 鍜屽畬鏁?Loop1 GUI锛沇eb memory-only 瀹屾暣 GUI锛沇EB鍚嶴TATE鈫扷I-REF鈫扞18N | 鏃㈡湁ACK/gap/涔卞簭GUI鏉′欢涓庝笁涓柊澧炰换鍔＄嫭绔嬫帴鍙椼€侀泦鎴愩€佷富浠撳簱鍚屾鍏卞悓蹇呴渶锛涚湡瀹炴晠闅?缁勪欢瀹屾暣鎬?涓夎瑷€涓嶢rchitect璇佹嵁 |
+| S3 Java 绛変环 | W6-7 | Auth/Session/User/Friend/Conversation/Message/Sync/Outbox/NATS | 涓?profile 鍚屼竴 Golden Tests PASS锛涘鎴风闆舵敼鍔ㄥ垏鎹?|
+| S4 鎻掍欢骞冲彴 | W8-9 | Registry銆丮anifest銆丳ermission銆乄ASM銆乁I Host銆丷ender Bundle銆佺敓鍛藉懆鏈熴€丒cho/Poll | 涓や釜 fixture 鍦ㄤ笁绔笌鍙屽悗绔吋瀹癸紱sandbox/鏉冮檺璐熶緥 PASS |
+| S5 宸ョ▼纭寲 | W10 | path-aware CI銆乧ompatibility matrix銆乵igration/plugin tests銆丷elease Manifest銆乺ollback/security | Compatibility CI 鍙鐜帮紱鏃犵‖缂栫爜璺宠繃锛涘洖婊氭紨缁?PASS |
+| S6 鎬ц兘涓?RC | W11-12 | 500/1000/2500/5000 闃舵鍘嬫祴銆乸rofile銆佷慨澶嶃€乻oak銆丷C銆乤rchitecture snapshot | 鍗曟満 5k authenticated WSS Gate PASS锛涙纭€ч浂绾㈢嚎杩濅緥锛汻C 鍙洖婊?|
+
+S2琛ュ厖涓茶鍓嶇疆锛歀OOP1-WEB-001 鈫?LOOP1-CLIENT-STATE-001 鈫?LOOP1-CLIENT-UI-REF-001 鈫?LOOP1-CLIENT-I18N-001 鈫?S2 Gate锛涙瘡椤圭嫭绔嬫帴鍙椼€侀泦鎴愩€佷富浠撳簱鍚屾涓庢棫闂ㄧ鏉′欢鍏卞悓蹇呴渶銆?
+<a id="section-16"></a>
+## 16. Loop 1 鎬ц兘涓庡彲闈犳€ч獙鏀?
+<a id="section-16-1"></a>
+### 16.1 鍥哄畾鐜涓庤繛鎺ュ畾涔?
+| 椤?| Loop 1 瀹氫箟 |
+| --- | --- |
+| 琚祴鏈?| 鍗曟満 8C / 16GB / 3TB锛涜褰?OS銆佸唴鏍搞€佸鍣ㄩ檺鍒躲€佹枃浠舵弿杩扮銆佺綉缁滃弬鏁?|
+| 杩炴帴鏁?| 5000 authenticated WSS users锛屼笉鏄┖ TCP socket |
+| 璁よ瘉閾?| TLS -> WebSocket Upgrade -> auth.bind -> Session validation -> Gateway registry -> heartbeat |
+| 鍏ュ彛 | Load Generator 蹇呴』缁忚繃 TLS reverse proxy / 鐪熷疄鍏ュ彛 |
+| 鍚庣 | Go profile 涓?Java profile 鍒嗗紑娴嬭瘯銆佸垎寮€鍑烘姤鍛?|
+| 闃舵 | 500 -> 1000 -> 2500 -> 5000锛涙瘡绾хǔ瀹氬悗鎵嶄笂涓€绾?|
+
+<a id="section-16-2"></a>
+### 16.2 蹇呮祴鍦烘櫙
+
+| 鍦烘櫙 | 鎿嶄綔 | 姝ｇ‘鎬ф柇瑷€ |
+| --- | --- | --- |
+| 杩炴帴 soak | 缁存寔 5000 璁よ瘉杩炴帴涓?heartbeat | 寮傚父鏂繛鍙В閲婏紱FD/鍐呭瓨/CPU 鏃犳棤鐣屽闀?|
+| 绉佽亰 | 閰嶇疆娲昏穬鐜囥€侀鐜囥€丄CK/鎶曢€掗噰鏍?| 鏃?ACK-before-commit銆佹棤閲嶅閫昏緫娑堟伅銆佹棤閿欐姇 |
+| 缇よ亰 | 10/50/200/500 鎴愬憳姊害锛屽湪绾挎瘮渚嬪彲閰嶇疆 | 鍗曟秷鎭崟鎸佷箙璁板綍锛宖an-out 鏁伴噺姝ｇ‘ |
+| 閲嶈瘯 | 閲嶅 request_id銆丄CK 涓㈠け銆佺綉缁滀腑鏂?| 鏈€缁堜竴鏉￠€昏緫娑堟伅锛屽鎴风 SENT |
+| 绂荤嚎 Sync | seq 100 绂荤嚎锛屾湇鍔″櫒鍒?500锛涘埗閫犱贡搴忓拰閲嶅 | 101..500 瀹屾暣銆佹棤姘镐箙 gap銆乧ontiguous_seq=500 |
+| 閲嶈繛椋庢毚 | 鎵归噺鏂紑鍚庢寚鏁伴€€閬?+ jitter 閲嶈繛 | 鍏ュ彛鍙仮澶嶏紝鏃犲悓姝ラ洩宕?|
+
+<a id="section-16-3"></a>
+### 16.3 瑙傛祴鎸囨爣
+
+鑷冲皯璁板綍 connections銆乭andshake/auth success銆丆PU銆丷SS銆丟C銆丗D銆乶etwork銆丳ostgreSQL transaction/lock/latency/throughput銆丱utbox lag銆丯ATS throughput銆丄CK p50/p95/p99銆乨elivery p50/p95/p99銆丼ync latency/gaps銆乸lugin runtime failures銆傛暟鍊?SLO 闄?5000 杩炴帴涓庢纭€х孩绾垮锛屼互瀹炴祴鍩虹嚎鍜?acceptance 鏂囦欢涓哄噯锛屼笉鍦ㄦ鍑┖鍐荤粨銆?
+<a id="section-16-4"></a>
+### 16.4 Gate 鍒ゅ畾
+
+#### S6 PASS
+
+5000 涓璇?WSS 鐢ㄦ埛杈惧埌瑙勫畾 soak 鏃堕暱锛涙墍鏈夋纭€х孩绾夸负 0锛涜祫婧愭棤鏃犵晫澧為暱锛涗袱 profile 鍧囨湁鍙鐜板疄楠屾姤鍛婏紱浠讳綍闄嶇骇銆侀檺鍒舵垨鐡堕琚褰曪紱Release Candidate銆乵anifest銆乵igration 涓?rollback rehearsal 鍏ㄩ儴閫氳繃銆?
+<a id="section-17"></a>
+## 17. Release銆佽縼绉讳笌鍥炴粴瑙勫垯
+
+<a id="section-17-1"></a>
+### 17.1 Release Manifest
+
+```text
+release_id / git_commit / build_time
+backend_profile: go | java
+container_digests / client_artifact_hashes
+contract_version / protocol_versions / plugin_api_version
+db_migration_level / sqlite_schema_versions
+min_supported_client / recommended_client
+feature_flags / rollout plan / rollback target
+verification evidence links
+```
+
+<a id="section-17-2"></a>
+### 17.2 鍙戝竷瑙勫垯
+
+- 鍒跺搧涓嶅彲鍙橈細鍚屼竴鐗堟湰鍙蜂笉寰楄鐩栭暅鍍忋€佸鎴风鍖呮垨鎻掍欢鍖呫€?
+- 浠庡悓涓€宸查獙璇?commit 鏋勫缓涓€娆★紝鎸夌幆澧冩彁鍗囧埗鍝侊紱绂佹鐢熶骇鐜閲嶆柊鏋勫缓銆?
+- 鍏?migration compatibility锛屽啀鏈嶅姟绔紝鍐嶅鎴风锛涙敮鎸佺獥鍙ｅ唴鏃у鎴风蹇呴』缁х画宸ヤ綔銆?
+- staging smoke/E2E銆佸吋瀹圭煩闃点€乻ecurity銆乺ollback rehearsal 鏈€氳繃涓嶅緱鍙戝竷銆?
+- Go 涓?Java profile 鐨勫彂甯冪浉浜掔嫭绔嬶紝浣嗛兘澹版槑鍚屼竴 contract version銆?
+<a id="section-17-3"></a>
+### 17.3 鏁版嵁搴撹縼绉?
+| 闃舵 | 鍏佽鍔ㄤ綔 | 绂佹鍔ㄤ綔 |
+| --- | --- | --- |
+| Expand | 鏂板 nullable/鏈夐粯璁ゅ€煎瓧娈点€佹柊琛ㄣ€佹柊绱㈠紩锛堣瘎浼伴攣锛?| 鍒犻櫎/閲嶅懡鍚嶆棫瀛楁 |
+| Migrate | 鍙噸鍏?backfill銆佸弻鍐?鍙岃鍏煎銆侀獙璇佽鏁颁笌绾︽潫 | 涓€娆℃€т笉鍙仮澶嶆暟鎹敼鍐?|
+| Switch | 鏈嶅姟寮€濮嬩娇鐢ㄦ柊缁撴瀯锛屾棫缁撴瀯浠嶄繚鐣欎竴涓吋瀹圭獥鍙?| 娣峰悎鐗堟湰灏氬湪杩愯鏃?contract |
+| Contract | 璇佹嵁璇佹槑鏃犳棫鐗堟湰渚濊禆鍚庡垹闄ゆ棫缁撴瀯 | 鏃犲浠?鏃犲洖婊氱偣鐩存帴娓呯悊 |
+
+<a id="section-17-4"></a>
+### 17.4 鍥炴粴
+
+搴旂敤鍥炴粴蹇呴』鎸囧悜 manifest 涓凡楠岃瘉鐨勫墠涓€涓嶅彲鍙樺埗鍝併€傛暟鎹簱鑻ュ凡杩涘叆涓嶅彲閫嗛樁娈碉紝涓嶅緱鐩茬洰鍥炴粴浜岃繘鍒讹紱搴斾紭鍏坒orward-fix 鎴栦娇鐢ㄩ鍏堥獙璇佺殑 down migration銆傛彃浠跺崌绾т緷闈?previous_version + plugin_kv 蹇収鍥炴粴銆傚鎴风 SQLite migration 蹇呴』淇濈暀鍗囩骇 fixture锛屾棤娉曞畨鍏?down-migrate 鏃堕噰鐢ㄥ悜鍓嶄慨澶嶃€?
+<a id="section-17-5"></a>
+### 17.5 鍙戝竷澶辫触鍒ゅ畾
+
+鍑虹幇璁よ瘉澶辫触鐜囧紓甯搞€丄CK/鎶曢€掗敊璇€丱utbox lag 鎸佺画澧為暱銆乻chema 鍏煎澶辫触銆佹彃浠?sandbox 瓒婃潈銆佽祫婧愭棤鐣屽闀挎垨姝ｇ‘鎬х孩绾夸换涓€闈為浂鏃讹紝绔嬪嵆鍋滄 rollout锛屽苟鎸?manifest 鎵ц鍥炴粴/forward-fix銆備簨鏁呭悗鐢熸垚 checkpoint 涓?ADR/淇浠诲姟銆?
+<a id="section-18"></a>
+## 18. 鍙娴嬫€с€佸畨鍏ㄤ笌杩愮淮鍩虹嚎
+
+<a id="section-18-1"></a>
+### 18.1 鍏宠仈鏍囪瘑
+
+鎵€鏈夐摼璺娇鐢?request_id銆乻erver_message_id銆乧onversation_id銆乻ession_id锛堣劚鏁忥級銆乷utbox_event_id銆乸lugin_instance_id 鍏宠仈銆俆race 璺?Gateway/Core/DB/Outbox/NATS/Plugin Host 浼犳挱锛屾秷鎭鏂囬粯璁や笉閲囬泦锛泃oken 涓ョ杩涘叆鏃ュ織鎴?trace锛屼笌 搂7.4 涓€鑷淬€?
+<a id="section-18-2"></a>
+### 18.2 鍋ュ悍涓庡氨缁?
+| 鎺㈤拡 | 鍚箟 |
+| --- | --- |
+| liveness | 杩涚▼浜嬩欢寰幆浠嶅伐浣滐紱涓嶅緱鍥犱笅娓哥煭鏆傚け璐ュ弽澶嶉噸鍚?|
+| readiness | 鑳芥帴鍙楁柊娴侀噺锛氫緷璧栬繛鎺ャ€乵igration level銆乧ontract version 鍧囨弧瓒?|
+| degraded | 鎻掍欢骞冲彴/NATS 灞€閮ㄥけ璐ヤ絾 IM durable path 鍙敤锛涙槑纭毚闇诧紝涓嶄吉瑁?healthy |
+
+<a id="section-18-3"></a>
+### 18.3 瀹夊叏娓呭崟
+
+- TLS 閰嶇疆銆佷緷璧?SBOM銆侀暅鍍?鎻掍欢绛惧悕銆乻ecret 鎵弿銆佹渶灏忓鍣ㄦ潈闄愮撼鍏?CI銆?
+- WSS 閴存潈鍓嶅彧鍏佽 auth.bind/ping/pong锛涙瘡鏉′笟鍔″懡浠ゆ牎楠岀粦瀹?Session 涓庢潈闄愩€?
+- 濂藉弸銆佺兢鎴愬憳銆佹秷鎭€佹彃浠?Action 閮芥湁鏈嶅姟绔巿鏉冿紱涓嶅彲鐩镐俊瀹㈡埛绔?UI 闅愯棌銆?
+- Custom Renderer 浣跨敤 CSP銆侀殧绂?origin/WebView銆丅ridge 鐧藉悕鍗曘€侀厤棰濓紱涓嶅彲璁块棶 Host DOM銆乼oken銆佷换鎰忕綉缁溿€佹湰鍦版枃浠朵笌杩涚▼銆?
+- WASM 浣跨敤鐕冩枡/瓒呮椂/鍐呭瓨闄愬埗涓庣啍鏂紱鎻掍欢鏁呴殰涓嶅緱鎷栧灝 Core銆?
+<a id="section-18-4"></a>
+### 18.4 鍛婅浼樺厛绾?
+P0: 鏁版嵁涓㈠け/閿欐姇/瓒婃潈/ACK-before-commit锛汸1: 澶ч潰绉璇?杩炴帴/Sync 澶辫触銆丱utbox 鍫靛锛汸2: 璧勬簮寮傚父銆佹彃浠惰嚜鍔ㄧ鐢ㄣ€佸崟绔吋瀹归€€鍖栵紱P3: 闈為樆濉炴€ц兘涓庡紑鍙戜綋楠岄棶棰樸€傛瘡涓憡璀﹀繀椤诲叧鑱?runbook銆乷wner 涓庢渶杩戝凡鐭ヨ壇濂?checkpoint銆?
+<a id="section-19"></a>
+## 19. 绗竴鎵?Agent 鍙墽琛屼换鍔?
+浠诲姟蹇呴』閫愪釜杩涘叆 ready銆係0 Gate 鏈€氳繃鍓嶏紝S1 浠诲姟涓嶅緱 active锛涗緷姝ょ被鎺ㄣ€備笅闈㈡竻鍗曟槸闃舵瑙勫垝锛屼笉鏄幇琛岄槦鍒楀揩鐓э紱鎸?Task Spec 鐨勭湡瀹炰緷璧栭€夋嫨锛屼笉浠ヨ〃鏍?鏂囦欢鍚嶉『搴忎唬鏇夸緷璧栥€備笉鎺堟潈骞惰淇敼鍚屼竴濂戠害銆?
+| Task ID | 鐩爣 | 闃舵 | 浜や粯鐗?| 楠屾敹 |
+| --- | --- | --- | --- | --- |
+| LOOP1-CTRL-001 | 寤虹珛 Monorepo 涓庤鑼冪洰褰?| S0 | repo skeleton; spec/ contracts/tasks/ progress/锛汻EADME 浠呮寚鍚戞潈濞佸叆鍙?| 鐩綍 lint PASS锛涙棤閲嶅鏉冨▉鏂囨。 |
+| LOOP1-CTRL-002 | 缂栧啓 agent-context/current/task 妯℃澘 | S0 | handoff銆乸rogress銆乼ask schema | 鏂?Agent dry-run 鑳芥寜椤哄簭鎭㈠ |
+| LOOP1-CONTRACT-001 | 鍐荤粨 HTTP Auth/User/Friend 濂戠害 | S0 | OpenAPI + errors + golden fixtures | schema lint锛涙/璐熶緥榻愬叏 |
+| LOOP1-CONTRACT-002 | 鍐荤粨 WSS Envelope/Auth/Message 濂戠害 | S0 | auth.bind/ack銆乵essage.send/ack/created銆乻ession.revoked | contract generator/tests PASS |
+| LOOP1-CONTRACT-003 | 鍐荤粨 Sync 涓?Plugin API v1 | S0 | user cursor銆乧onversation seq銆丒vents/Queries/Actions/UI Host | fixtures 瑕嗙洊閲嶅/涔卞簭/鏉冮檺鎷掔粷 |
+| LOOP1-DB-001 | 寤虹珛 canonical schema 涓巑igration runner | S0 | users/sessions/friendships/conversations/members/messages/outbox/plugins | 鍞竴绾︽潫涓庤縼绉绘祴璇?PASS |
+| LOOP1-INFRA-001 | Compose + PostgreSQL +NATS + TLS Proxy | S0 | go/java profile skeleton銆佺湡瀹?TLS鍏ュ彛 | clean checkout 涓€閿惎鍔?+smoke |
+| LOOP1-CI-001 | Path-aware CI skeleton | S0 | diff classifier銆丟o/Java/client/shared jobs | 璺緞鐭╅樀鍗曞厓娴嬭瘯 PASS |
+| LOOP1-GO-AUTH-001 | Go Auth/Session 绾靛垏 | S1 | login/refresh/logout銆乻lot銆乪poch銆乤uth.bind | 鍚岀鏇挎崲鏃?Session锛涘绔苟瀛?|
+| LOOP1-GO-SOCIAL-001 | Go 鎼滅储/濂藉弸/鍞竴绉佽亰浜嬪姟 | S1 | normalized pair銆乨irect uniqueness銆乻ync/outbox | 骞跺彂浜掑姞鏈€缁?1 friendship+ 1 direct |
+| LOOP1-GO-MSG-001 | Go 鏂囨湰娑堟伅 + seq +outbox | S1 | durable ACK銆乮dempotency銆乨ispatcher銆丯ATS | ACK 涓㈠け閲嶈瘯涓嶉噸澶嶏紱鎺ユ敹绔疄鏃舵敹鍒?|
+| LOOP1-E2E-001 | 棣栨潯绾靛悜 E2E | S1 | A 鐧诲綍鎼滅储娣诲姞 B 骞跺彂閫?hello | 浠?TLS 鍏ュ彛杩愯锛涜瘉鎹綊妗?|
+| LOOP1-CLIENT-SQLITE-001 | SQLite schema 涓?repository | S2 | UNIQUE(conversation_id, request_id)銆乁PSERT銆乵igration fixture | 鍥涙潯鍏ュ彛鍧囧箓绛夋敹鏁?|
+| LOOP1-CLIENT-UI-ARCH-001 | 瀹㈡埛绔?UI 鏋舵瀯鍐荤粨 | S2 | 涓夌鑱岃矗銆丄daptive Glass Workspace銆佹埅鍥鹃┍鍔?Architect Review | 鐙珛 Review/CI 涓?main 鏍搁獙鍚庡喕缁擄紱涓嶄唬鏇?GUI 瀹炵幇 |
+| LOOP1-CLIENT-SEND-001 | Optimistic send 鐘舵€佹満 | S2 | SENDING/SENT/FAILED/retry | SENT 涓嶅€掗€€锛況etry 澶嶇敤request_id |
+| LOOP1-SYNC-001 | 鍙屽眰绂荤嚎鍚屾 | S2 | user cursor + per-conversation contiguous_seq | 涔卞簭/閲嶅/浜ゅ弶瀹炴椂娴佹棤gap |
+| LOOP1-CLIENT-GUI-001 | Desktop/Mobile 瀹屾暣 Loop1 GUI | S2 | Login/session銆丆hat銆丗riends銆丄I Placeholder銆丳lugin capability/unavailable銆丼ettings/Profile銆佸弻涓婚/鏈湴瀛椾綋闂磋窛銆丱ffline History銆丼ENDING/SENT/FAILED/retry銆丼ync/reconnect銆丏esktop notification/tray/shortcut銆丄ndroid emulator | CLIENT-UI-ARCH 涓?spec/acceptance/client-gui.md锛涚湡瀹炴埅鍥?Architect Review/淇閲嶆媿/Approval锛屽啀鐙珛 Review銆佺簿纭?HEAD CI銆乸rotected main 鏍搁獙 |
+| LOOP1-WEB-001 | Web 瀹屾暣 Loop1 GUI | S2 | React + TypeScript锛沵emory only锛汣hat/Friends/AI Placeholder/Plugin/Settings/Profile銆佸弻涓婚鍜屾湰鍦板瓧浣?闂磋窛 | 鏃?SQLite/绂荤嚎鍘嗗彶锛涢伒瀹?CLIENT-UI-ARCH銆乧lient-gui 鎴浘楠屾敹鍜岀嫭绔?Review/绮剧‘ HEAD CI/main 鏍搁獙 |
+
+| LOOP1-CLIENT-STATE-001 | 娑堟伅鐘舵€併€佸箓绛夐噸鍙戜笌濂藉弸鍚屾 | S2 | 搂6.6 A/B銆乻eq鎺掑簭銆侀噸鍚?cleanDB鎭㈠銆佽法绔ソ鍙?| 鐪熷疄鏈嶅姟/DB/涓夌璇佹嵁銆佺嫭绔婻eview/CI/闆嗘垚鍚屾 |
+| LOOP1-CLIENT-UI-REF-001 | 缁勪欢鑱岃矗鎷嗗垎涓庡畬鏁存€ч獙璇?| S2 | 搂6.6 椤甸潰/鍏ュ彛/缁勪欢/鐘舵€?import鍜岃鐩栧鐓?| STATE鍚庤涓虹瓑浠?瑙嗚淇濇寔銆佹埅鍥?Architect/鐙珛鎺ュ彈鍚屾 |
+| LOOP1-CLIENT-I18N-001 | 涓夌鍥介檯鍖栨媶鍖?| S2 | 搂6.6 en/zh-CN/ja-JP銆佸浐瀹氳瑷€鍏ュ彛/鍋忓ソ | UI-REF鍚庨敭/鍙傛暟/鍥為€€/涓夎瑷€鎴浘/Architect/鐙珛鎺ュ彈鍚屾 |
+
+### S2 鏈€灏忎换鍔′緷璧栦笌鎵ц椤哄簭锛圚uman-approved ADR-0007锛?
+LOOP1-CLIENT-SQLITE-001锛堝凡鎺ュ彈锛?鈫?LOOP1-CLIENT-UI-ARCH-001锛圲I 鍐荤粨宸叉帴鍙楋紝褰撳墠瑙勫垝琛ュ厖鍙﹁楠屾敹锛?鈫?LOOP1-CLIENT-SEND-001 鈫?LOOP1-SYNC-001 鈫?LOOP1-CLIENT-GUI-001 鈫?LOOP1-WEB-001 鈫?LOOP1-CLIENT-STATE-001 鈫?LOOP1-CLIENT-UI-REF-001 鈫?LOOP1-CLIENT-I18N-001 鈫?S2 Gate銆?
+ADR-0007褰撴椂鍙柊澧炰竴涓骇鍝?UI ID LOOP1-CLIENT-GUI-001锛汚DR-0012杩藉姞涓変釜S2浜у搧ID锛屽師鎺ュ彈鍘嗗彶涓嶆挙閿€銆侱esktop/Mobile GUI 鐙珛杈圭晫鍖呭惈涓婅堪瀹屾暣鐣岄潰鍙婃棦鏈夊彂閫?鍚屾缂栨帓鐨勫彲瑙傚療鐘舵€侊紝涓嶉噸鏂板疄鐜?SQLite銆佸彂閫佹垨 Sync 棰嗗煙閫昏緫銆侴UI 鏄庣‘渚濊禆 SQLITE銆乁I-ARCH銆丼END銆丼YNC 鍥涗釜宸叉帴鍙椾换鍔★紱Web 瀹屾暣 GUI 浣跨敤鍘?LOOP1-WEB-001 涓斿湪 GUI 鍚庢墽琛屻€傚悇浠诲姟鍦ㄧ湡瀹為槦鍒椾腑鍞竴瀛樺湪锛屼緷璧栨湭鎺ュ彈涓嶅緱婵€娲伙紱姝ゅ墠ADR-0007 Human endpoint涓哄巻鍙诧紱鏈疆ADR-0012 endpoint涓鸿鍒掔嫭绔嬫帴鍙?闆嗘垚鍚屾鍚庡仠姝紝鏂颁笁涓换鍔′繚鎸乥acklog锛孲2 OPEN銆?
+GUI/Web 鍧囬』寮曠敤 spec/acceptance/client-gui.md 鍜?CLIENT-UI-ARCH锛屽畬鎴愮湡瀹炶繍琛屾埅鍥?鈫?Architect Review 鈫?淇 鈫?閲嶆柊鎴浘 鈫?Architect Approval 鈫?fresh independent Review 鈫?exact-head applicable hosted CI 鈫?protected integration/actual-main verification銆係2 涓嶅疄鐜?AI API/chat/Agent/RAG銆丳lugin runtime銆丮arketplace銆丼4 renderer 鎴栨柊鍏叡 API锛沇eb 濮嬬粓 React/TypeScript memory only銆乶o SQLite銆乶o offline history銆傚亸濂戒粎瀛樺瑙傝缃紝涓嶆巿鏉冭亰澶╂寔涔呭寲锛涙湭鍐荤粨鍏蜂綋瀛樺偍鏈哄埗鎸?搂2.3 鍏堝喅绛栧悗瀹炵幇銆?
+<a id="section-20"></a>
+## 20. 鍚庣画浠诲姟闃熷垪涓庝緷璧?
+| Task ID | 渚濊禆 | 鐩爣 | Gate |
+| --- | --- | --- | --- |
+| LOOP1-CLIENT-UI-ARCH-001 | LOOP1-CLIENT-SQLITE-001 | UI architecture 鍐荤粨涓庡綋鍓?MVP 瑙勫垝琛ュ厖楠屾敹 | S2 |
+| LOOP1-CLIENT-SEND-001 | LOOP1-CLIENT-SQLITE-001 + LOOP1-CLIENT-UI-ARCH-001 | Desktop/Mobile 鍙戦€佺紪鎺掞紱Repository 鍏堟寔涔呭寲鍐?WSS锛孉CK/realtime/Sync 鏀舵暃銆丗AILED/retry 鍚?ID | S2 |
+| LOOP1-SYNC-001 | LOOP1-CLIENT-SEND-001 | 鍙屽眰 Sync 缂栨帓鍙婃柇绾块噸杩烇紱淇濈暀棰嗗煙鑱岃矗 | S2 |
+| LOOP1-CLIENT-GUI-001 | LOOP1-CLIENT-SQLITE-001 + LOOP1-CLIENT-UI-ARCH-001 + LOOP1-CLIENT-SEND-001 + LOOP1-SYNC-001 | Desktop/Mobile 瀹屾暣 GUI锛汣LIENT-UI-ARCH銆乧lient-gui 鎴浘/Architect/鐙珛 Review/CI/main 楠屾敹 | S2 |
+| LOOP1-WEB-001 | LOOP1-CLIENT-GUI-001 | Web 瀹屾暣 Loop1 GUI锛汻eact/TypeScript memory only锛屾棤 SQLite/绂荤嚎鍘嗗彶锛屽悓涓€鎴浘楠屾敹 | S2 |
+| LOOP1-CLIENT-STATE-001 | LOOP1-WEB-001 + LOOP1-CLIENT-SUPPLEMENT-PLAN-001姝ｅ紡鐢熸晥 | 搂6.6鐪熷疄A/B銆佹帓搴忔仮澶嶅拰濂藉弸鍚屾 | S2 |
+| LOOP1-CLIENT-UI-REF-001 | LOOP1-CLIENT-STATE-001鐙珛鎺ュ彈/闆嗘垚/鍚屾 | 搂6.6缁勪欢鎷嗗垎涓庡叏鍥炲綊/Architect | S2 |
+| LOOP1-CLIENT-I18N-001 | LOOP1-CLIENT-UI-REF-001鐙珛鎺ュ彈/闆嗘垚/鍚屾 | 搂6.6涓夎瑷€璧勬簮涓庢湰鍦拌瑷€鍋忓ソ/Architect | S2 |
+| LOOP1-JAVA-AUTH-001 | S2 PASS + Auth contracts | Java/Spring Auth/Session 绛変环瀹炵幇 | S3 |
+| LOOP1-JAVA-IM-001 | Java Auth + IM contracts | Friend/Conversation/Message/Sync/Outbox/NATS | S3 |
+| LOOP1-PARITY-001 | Go + Java core + S2 PASS | Golden parity锛涘悓涓€瀹㈡埛绔埗鍝?浠ｇ爜鏃犻渶涓氬姟淇敼鍒囨崲 Go/Java profile锛孏UI 涓嶆敼鍐欏崗璁紝涓?profile 褰撳墠鍏抽敭绾靛悜娴佺▼閫氳繃 | S3 |
+| LOOP1-PLUGIN-REG-001 | Plugin API v1 | Registry銆乮mmutable artifact銆乿alidation | S4 |
+| LOOP1-PLUGIN-WASM-001 | Registry | WASM host銆乸ermissions銆乴imits銆乧ircuit breaker | S4 |
+| LOOP1-PLUGIN-UI-001 | Registry + client hosts | Declarative UI/Render Bundle review/sandbox锛涢伒瀹?CLIENT-UI-ARCH锛岀姝㈡帶鍒朵竴绾у鑸紱鐪熷疄瀹夸富 UI 璇佹嵁锛屾樉钁楄瑙夊彉鍖栨寜 client-gui Architect 鎴浘楠屾敹 | S4 |
+| LOOP1-PLUGIN-LIFE-001 | WASM/UI | install/enable/disable/uninstall/upgrade/rollback | S4 |
+| LOOP1-PLUGIN-FIX-001 | Plugin runtime | Echo/Poll 鍦?Web/Desktop/Mobile 鐪熷疄瀹夸富 UI 涓庝袱 profile 楠岃瘉锛涚湡瀹炶繍琛岃瘉鎹強閫傜敤 Architect 鎴浘鎵瑰噯 | S4 |
+| LOOP1-COMPAT-001 | S4 PASS | Web/Desktop/Android 涓?old-client 鍏煎鐭╅樀銆丼QLite migration銆乁I/theme/local preference 涓?Plugin UI compatibility | S5 |
+| LOOP1-RELEASE-001 | compat CI | Desktop/Android 瀹為檯鍒跺搧銆乄eb 鍒跺搧銆乵anifest/hash/signing銆乮nstall/upgrade/rollback smoke 鍜?staging rehearsal | S5 |
+| LOOP1-LOAD-001 | S5 PASS | Go load generator + scenarios + evidence format | S6 |
+| LOOP1-LOAD-GO-001 | load harness | Go 500->5000 benchmark/soak | S6 |
+| LOOP1-LOAD-JAVA-001 | load harness | Java 500->5000 benchmark/soak | S6 |
+| LOOP1-RC-001 | all gates | 涓夌鏈€缁堝彲杩愯鍒跺搧銆佸叧閿?GUI smoke锛涚浉瀵规渶杩?Architect-approved 鎴浘闆嗘湁瀹炶川瑙嗚鍙樺寲鍒欓噸鎷嶅苟鎵瑰噯锛涙渶缁?5k/RC/rollback/architecture snapshot锛屽閲忚礋杞界敱 harness 鎵挎媴锛屼笉鎶?GUI 鑷姩鍖栨斁鍏?5000 WSS 鐑矾寰?| Loop 1 |
+
+<a id="section-20-1"></a>
+### 20.1 渚濊禆绾緥
+
+- 鍏堝绾︿笌涓嶅彉閲忥紝鍚庡疄鐜帮紱鍏?Go reference vertical slice锛屽悗瀹㈡埛绔紝鍐?Java parity銆?
+- 鎻掍欢骞冲彴涓嶅緱鎶㈣窇鍒?IM 涓婚摼绋冲畾涔嬪墠锛涘吋瀹?CI 涓嶅緱寤跺悗鍒板彂甯冨墠涓存椂琛ャ€?
+- 鎬ц兘浼樺寲蹇呴』鏈?profile/metric 璇佹嵁鍜屽洖褰掓祴璇曪紱绂佹鍏堝姞鍩虹璁炬柦鍐嶆壘闂銆?
+- 鎻愬墠瀹屾垚褰㈡垚 schedule buffer锛屽苟绔嬪嵆鎺ㄨ繘涓嬩竴 Gate锛屼笉鍋氭棤楠屾敹浠峰€肩殑棰濆鍔熻兘銆?
+<a id="section-21"></a>
+## 21. Agent 棣栨棩鎵ц娓呭崟
+
+<a id="section-21-1"></a>
+### 21.1 绗?0-2 灏忔椂
+
+| 鍔ㄤ綔 | 杈撳嚭 |
+| --- | --- |
+| 鎸夌 13 绔犺鍙栭『搴忔仮澶嶄笂涓嬫枃 | 涓€娈典笉瓒呰繃 10 琛岀殑鐞嗚В鎽樿锛屽紩鐢ㄥ綋鍓?Stage/Gate/Task |
+| 妫€鏌?git status/diff 涓庣洰褰曠幇鐘?| 鏄庣‘鏈彁浜ゆ敼鍔ㄥ綊灞烇紝涓嶈鐩?|
+| 杩愯鏈€灏?verification | 璁板綍鍛戒护銆佺粨鏋溿€佽€楁椂锛涘け璐ュ垯鍐?blocker |
+| 纭 Task Spec 鐨?allowed_paths/forbidden | 浠讳綍鍐茬獊鍏堝崌绾э紝涓嶆墿澶ц寖鍥?|
+
+<a id="section-21-2"></a>
+### 21.2 绗竴涓疄鐜板洖鍚?
+- PLAN: 浠?acceptance 鍊掓帹鏈€灏忓疄鐜颁笌娴嬭瘯
+- IMPLEMENT: 鍙敼 allowed_paths锛涘厛鍐?鏇存柊娴嬭瘯鍚戦噺
+- TEST: unit -> contract -> integration 鐨勬渶灏忕浉鍏抽泦鍚?- REVIEW: 鏂扮嫭绔?Reviewer 閲嶆柊璇诲彇鏉冨▉杈撳叆锛屾鏌ヨ涓恒€佽亴璐ｅ綊灞炪€佷緷璧栨柟鍚戙€佹渶灏忔€с€乨iff 涓庝笉鍙橀噺锛涘疄鐜拌€呰嚜妫€涓嶈兘鏇夸唬
+- HANDOFF: 鏇存柊 task + current.md锛汫ate 鐐圭敓鎴?checkpoint
+
+<a id="section-21-3"></a>
+### 21.3 Agent 鐨勫仠姝㈡潯浠?
+- 闇€瑕佹敼鍙?frozen architecture銆佸叕鍏卞绾︽垨瀹夊叏杈圭晫锛屼絾娌℃湁鎵瑰噯鐨?ADR銆?
+- 鍙戠幇褰撳墠浠诲姟浼氳鐩栦粬浜烘湭鎻愪氦鏀瑰姩锛屼笖鏃犳硶瀹夊叏闅旂銆?
+- 楠屾敹鏍囧噯涓嶅彲鎵ц鎴栫浉浜掔煕鐩撅紱蹇呴』鍏堜慨 Task Spec銆?
+- 杩佺Щ/鍥炴粴瀛樺湪涓嶅彲閫嗘暟鎹闄╀笖鏃犳槑纭巿鏉冦€?
+#### 寮€濮嬪伐浣滅殑鏈€鐭矾寰?
+濡傛灉浠撳簱灏氫负绌猴細棰嗗彇 LOOP1-CTRL-001銆傚畬鎴愬悗绔嬪嵆鍒涘缓 LOOP1-CTRL-002銆佷笁椤?Contract 浠诲姟銆丏B/Infra/CI skeleton锛屽苟浠?S0 Gate 涓虹涓€鐩爣銆備笉寰楃洿鎺ュ紑濮嬭亰澶?UI 鎴栨彃浠跺姛鑳姐€?
+<a id="appendix-a"></a>
+## 闄勫綍 A. Gate Checklist
+
+| Gate | 鍏ㄩ儴涓?PASS 鎵嶅彲鍓嶈繘 |
+| --- | --- |
+| S0 | spec/contracts/tasks/progress 瀹屾暣锛汣I/Compose/TLS/PostgreSQL/NATS skeleton锛汚gent dry-run 鍙仮澶嶏紱鏃犻噸澶嶆潈濞?|
+| S1 | Go Auth -> Friend -> Direct -> Message 鍏ㄩ摼锛沝urable ACK/outbox/NATS锛沜ontract/integration/E2E PASS |
+| S2 | SQLITE/UI-ARCH/SEND/SYNC/CLIENT-GUI/WEB鍙奓OOP1-CLIENT-STATE-001銆丩OOP1-CLIENT-UI-REF-001銆丩OOP1-CLIENT-I18N-001鍏ㄩ儴鐙珛鎺ュ彈銆侀泦鎴愪笌涓讳粨搴撳悓姝ワ紱Desktop/Mobile 瀹屾暣 Loop1 GUI锛學eb memory only/no SQLite/no offline history锛沜lient-gui 鐪熷疄鎴浘/Architect Approval銆乫resh independent Review銆佺簿纭?HEAD CI/main 楠岃瘉锛汚CK 涓㈠け/绂荤嚎 gap/涔卞簭閲嶅 PASS |
+| S3 | Java 鏍稿績绛変环锛汫o/Java Golden Tests锛涘鎴风闆朵慨鏀?profile switch |
+| S4 | Registry/WASM/UI/Render Bundle/lifecycle锛汦cho/Poll锛涙潈闄愪笌 sandbox 璐熶緥 |
+| S5 | Path-aware CI銆佸叏骞冲彴 compatibility銆乵igration銆乵anifest銆乻ecurity銆乺ollback rehearsal |
+| S6 | 涓?profile 鍚勮嚜 500->5000锛沘uthenticated WSS锛泂oak锛涙纭€х孩绾?0锛汻C 鍙洖婊?|
+
+#### 閫氱敤 Gate 鏉′欢
+
+- 鍔熻兘/浜や粯鐗╁畬鎴愪笖涓?Task Spec 涓€鑷淬€?
+- 鑷姩鍖栨祴璇曞湪骞插噣鐜閫氳繃锛屽吋瀹规€ф湭鐮村潖锛涢€傜敤婧愮爜/渚濊禆/瑙勮寖妫€鏌ラ€氳繃锛屾柊鐙珛 Review 涓庣簿纭€欓€?hosted CI 鏈夋晥銆?
+- 鏃犳湭澶勭悊 blocker銆佹湭鎵瑰噯鏋舵瀯鍋忕鎴栭殣钘?skip銆?
+- spec/progress/current.md 宸叉洿鏂帮紝璇佹嵁鍙畾浣嶃€?
+- 褰㈡垚鍙仮澶?checkpoint锛岃褰?last known good commit銆?
+<a id="appendix-b"></a>
+## 闄勫綍 B. 鍐荤粨涓嶅彉閲忛€熸煡
+
+| 鍩?| 涓嶅彉閲?|
+| --- | --- |
+| Session | 鍚?user/client_type 鏈€澶氫竴涓湁鏁?Session锛涗笉鍚?client_type 鍙悓鏃剁櫥褰曪紱epoch 浣挎棫绔け鏁?|
+| Friend | 瑙勮寖鍖?pair 鍞竴锛涘ソ鍙嬩笌鍞竴 DIRECT Conversation 鍚屼簨鍔?|
+| Group | 鎴愬憳鍙兘鏉ヨ嚜鍙戣捣鑰呭ソ鍙嬪垪琛紱create request 骞傜瓑 |
+| Message | ACK=durable commit锛沜onversation 鍐?seq 鍗曡皟锛涙湇鍔＄骞傜瓑 key 鍚?sender/conversation/request |
+| Outbox | 涓庝笟鍔℃暟鎹悓浜嬪姟锛汵ATS 鍙噸澶?鐭殏閬楁紡锛汼ync 淇濊瘉鏈€缁堝畬鏁?|
+| SQLite | UNIQUE(conversation_id, request_id)锛涙墍鏈夊叆鍙ｄ簨鍔?UPSERT锛汼ENT 涓嶅洖閫€ |
+| Sync | user cursor 鍙浣庨鐘舵€侊紱娑堟伅鎸?conversation seq锛沜ontiguous_seq 涓嶈法 gap |
+| Web | 鏃犺亰澶?DB銆佹棤绂荤嚎鍘嗗彶锛涢〉闈㈢敓鍛藉懆鏈熶箣澶栦笉淇濊瘉娑堟伅鐘舵€?|
+| Plugin | 鐗堟湰鍒跺搧涓嶅彲鍙橈紱鏉冮檺鏈€灏忓寲锛沇ASM/renderer sandbox锛涘悗绔笌 renderer 鍚岀増鏈師瀛愮粦瀹?|
+| Architecture | 搂2.2 鏉冨▉椤哄簭锛沜ontracts/ 鏄満鍣ㄥ彲楠岃瘉鍏叡濂戠害鍞竴鏉ユ簮锛浡?/搂10 鏈嶅姟鑱岃矗/婧愮爜褰掑睘/渚濊禆鍏卞悓绾︽潫 Go/Java锛沘llowed_paths 涓嶈眮鍏嶆灦鏋?|
+| CI | 鍚庣璺緞鎰熺煡锛泂hared contract/schema/SDK 鍙樻洿瑙﹀彂鍏煎鐭╅樀锛涜鑼?Agent/妯℃澘/妫€鏌ュ櫒鍙樻洿瑙﹀彂閫傜敤鏋舵瀯楠岃瘉锛涘繀璺戜綔涓氱己澶?澶辫触/寮傚父 skip 涓嶈兘 PASS |
+| Release | 涓嶅彲鍙樺埗鍝?+ manifest锛沞xpand/migrate/switch/contract锛涘彂甯冨墠楠岃瘉鍥炴粴 |
+
+#### 鏂囨。缁撴潫
+
+鏈柟妗堟槸 Loop 1 鐨勬寮忔墽琛屽熀绾裤€備换浣曟柊澧炵洰鏍囧繀椤诲厛杩涘叆 backlog锛涗换浣曟灦鏋勫彉鏇村繀椤昏蛋 ACP/ADR锛涗换浣曢樁娈靛墠杩涘繀椤讳互 Gate 璇佹嵁涓哄噯銆?
+Human-approved client clarification under ADR-0005: version remains v1.1; canonical bytes/hash changed; immutable historical PDF and older ADR/evidence unchanged. PR7 withdrawn implementation deviation is not architecture authority. No public contract/ACK/Sync/security/compatibility change.
+# Auth, User, and Friend Domain Input
+
+This document supplies semantic input to `LOOP1-CONTRACT-001`. Names used below identify domain concepts only; they do not define public wire fields, implementation classes, or database tables.
+
+| Rule ID | Domain statement | Source |
+| --- | --- | --- |
+| AUF-D-001 | A user MUST have exactly three login slots: WEB, DESKTOP, and MOBILE; at most one Session for a given user and client type may be valid at a time. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-D-002 | Sessions for different client types MAY be valid concurrently for the same user. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-D-003 | A new login for the same user and client type MUST revoke the previous Session and advance the session epoch in one transaction. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-D-004 | PostgreSQL MUST remain authoritative for login state; Gateway memory is only an online-connection and routing cache. | Architecture Baseline v1.0, chapters 2 (F-03), 4.1, and 7.3. |
+| AUF-D-005 | A friendship MUST be represented by one normalized unordered user pair, so `(A,B)` and `(B,A)` denote the same friendship. | Architecture Baseline v1.0, chapter 4.2 and appendix B (Friend). |
+| AUF-D-006 | Adding a friend in Loop 1 MUST immediately establish the bidirectional friendship and create or reuse the pair's single DIRECT Conversation in the same transaction. | Architecture Baseline v1.0, chapter 4.2 and appendix B (Friend). |
+| AUF-D-007 | Loop 1 MUST NOT introduce a friend-request approval flow. | Architecture Baseline v1.0, chapter 4.2. |
+| AUF-D-008 | A successful explicit logout MUST revoke the Session and Refresh Token and close its WSS connection; it MUST NOT be specified as deletion of local client history. | Architecture Baseline v1.0, chapter 7.1. |
+| AUF-D-009 | Production authentication transport MUST use HTTPS/WSS/TLS; tokens MUST NOT be accepted from a URL query or written to logs or traces, and error responses MUST NOT reveal token material. | Architecture Baseline v1.0, chapter 7.4. |
+# Messaging Domain Input
+
+This document supplies semantic input to `LOOP1-CONTRACT-002`. Names used below identify domain concepts only; they do not define public wire fields, implementation classes, or database tables.
+
+| Rule ID | Domain statement | Source |
+| --- | --- | --- |
+| MSG-D-001 | A client request identity MUST be unique within a Conversation and is the identity reused by retry and local convergence. | Architecture Baseline v1.0, chapter 4.4. |
+| MSG-D-002 | The server idempotency identity MUST include sender, Conversation, and client request identity; the server message identity MUST be globally unique. | Architecture Baseline v1.0, chapter 4.4 and appendix B (Message). |
+| MSG-D-003 | Conversation sequence numbers MUST be unique and monotonically increasing within each Conversation. | Architecture Baseline v1.0, chapter 4.4 and appendix B (Message). |
+| MSG-D-004 | Message send MUST authorize the sender as a Conversation member before persistence. | Architecture Baseline v1.0, chapter 5.1. |
+| MSG-D-005 | Sequence allocation, Message persistence, and the matching Outbox event MUST commit atomically; a successful ACK MUST mean that durable commit has completed. | Architecture Baseline v1.0, chapters 2 (F-04) and 5.1, and appendix B (Message, Outbox). |
+| MSG-D-006 | Outbox delivery and NATS delivery MAY repeat or be briefly missed; consumers MUST be idempotent and Sync MUST provide eventual completeness. | Architecture Baseline v1.0, chapter 5.2 and appendix B (Outbox). |
+| MSG-D-007 | Gateway MUST fan out only to locally active connections and MUST NOT own friendship, membership, persistence, or plugin business rules. | Architecture Baseline v1.0, chapters 2 (F-05) and 5.2. |
+| MSG-D-008 | A GROUP send MUST create one logical Message and one Outbox event; it MUST NOT create one persistent message record per member. | Architecture Baseline v1.0, chapter 5.3. |
+| MSG-D-009 | Loop 1 MUST NOT treat NATS JetStream as the message source of truth. | Architecture Baseline v1.0, chapters 2 (F-03) and 5.2. |
+# Sync and Plugin Domain Input
+
+This document supplies semantic input to `LOOP1-CONTRACT-003`. Names used below identify domain concepts only; they do not define public wire fields, implementation classes, or database tables.
+
+| Rule ID | Domain statement | Source |
+| --- | --- | --- |
+| SP-D-001 | Web MUST remain memory-only and MUST NOT claim offline history; Desktop and Mobile MUST use per-account local materialized views and render local state before background Sync. | Architecture Baseline v1.0, chapters 2 (F-07) and 6.1, and appendix B (Web). |
+| SP-D-002 | A local optimistic send MUST create one client request identity, persist SENDING before transmission, converge to SENT after ACK, and reuse the same request identity when retrying FAILED. | Architecture Baseline v1.0, chapter 6.2. |
+| SP-D-003 | SENT MUST be terminal and MUST NOT regress to FAILED; FAILED means only that the current attempt lacks success confirmation. | Architecture Baseline v1.0, chapter 6.2 and appendix B (SQLite). |
+| SP-D-004 | User Sync cursor MUST cover only low-frequency user-level state; message state MUST use per-Conversation sequence and contiguous sequence tracking. | Architecture Baseline v1.0, chapters 2 (F-06) and 6.4, and appendix B (Sync). |
+| SP-D-005 | Sync MUST advance a per-Conversation contiguous sequence only across a gap-free prefix; duplicate and out-of-order input MUST converge without skipping a gap. | Architecture Baseline v1.0, chapter 6.4 and appendix B (Sync). |
+| SP-D-006 | All local send, ACK, realtime, and Sync write paths MUST converge through transactional upsert; data and cursor advancement MUST commit together. | Architecture Baseline v1.0, chapter 6.3. |
+| SP-D-007 | Plugin API v1 MUST expose Events, Queries, Actions, and UI Host surfaces, each constrained by declared capability and permission. | Architecture Baseline v1.0, chapters 2 (F-08) and 8.1. |
+| SP-D-008 | Queries MUST be read-only, paginated, and limited; each Action MUST be re-authorized, idempotent, and audited; plugins MUST NOT call Core internals or databases directly. | Architecture Baseline v1.0, chapter 8.1. |
+| SP-D-009 | A custom renderer MUST pass package hash, signature, manifest-schema, API-compatibility, permission, resource-size, CSP, and entry-point checks before loading, and MUST run in the stated UI sandbox. | Architecture Baseline v1.0, chapter 8.2. |
+| SP-D-010 | A plugin artifact identified by plugin and version MUST be immutable; backend and renderer MUST remain version-bound, and history MUST retain the renderer needed by referenced messages plus fallback text. | Architecture Baseline v1.0, chapter 8.2 and appendix B (Plugin). |
+| SP-D-011 | WASM execution MUST default-deny database, server-file, arbitrary-network, and other-plugin-memory access and MUST enforce CPU/time, memory, concurrency, storage, and network limits. | Architecture Baseline v1.0, chapter 8.3 and appendix B (Plugin). |
+| SP-D-012 | Plugin artifact lifecycle and Conversation-scoped instance lifecycle MUST remain distinct; upgrade MUST keep the old version serving until snapshot, migration, paired health checks, and atomic switch succeed, and MUST roll back on failure. | Architecture Baseline v1.0, chapters 9.1 and 9.2. |
+| SP-D-013 | DISABLE MUST preserve data, UNINSTALL MUST default to RETAINED, and PURGE MUST require an explicit irreversible operation with elevated permission, audit, and a confirmed retention policy. | Architecture Baseline v1.0, chapter 9.3. |
+# Auth, User, and Friend Invariants
+
+These invariants constrain future contracts without prescribing wire shape or persistence schema. Machine-verifiable public authority remains exclusively under `contracts/`.
+
+| Rule ID | Invariant | Source |
+| --- | --- | --- |
+| AUF-I-001 | A contract MUST make it impossible to represent more than one valid Session for the same user and client type. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-I-002 | Same-slot relogin MUST invalidate the old epoch before the new Session is accepted; an old token MUST NOT reconnect successfully. | Architecture Baseline v1.0, chapters 4.1, 7.2, and 7.3, and appendix B (Session). |
+| AUF-I-003 | WSS MUST remain UNAUTHENTICATED until auth.bind succeeds and MUST permit only auth.bind plus ping/pong in that state. | Architecture Baseline v1.0, chapter 7.2. |
+| AUF-I-004 | Authenticated WSS state MUST bind user, Session, and client type, and a same-slot revocation MUST produce session.revoked before connection close. | Architecture Baseline v1.0, chapter 7.2. |
+| AUF-I-005 | Friendship identity MUST be order-independent, and one normalized pair MUST map to one friendship and one DIRECT Conversation. | Architecture Baseline v1.0, chapter 4.2 and appendix B (Friend). |
+| AUF-I-006 | Friendship creation, DIRECT Conversation creation or reuse, both memberships, Sync events, and Outbox effects MUST form one atomic outcome. | Architecture Baseline v1.0, chapter 4.2. |
+| AUF-I-007 | Authentication secrets MUST NOT be exposed through query parameters, logs, traces, or error responses. | Architecture Baseline v1.0, chapter 7.4. |
+# Messaging Invariants
+
+These invariants constrain future contracts without prescribing wire shape or persistence schema. Machine-verifiable public authority remains exclusively under `contracts/`.
+
+| Rule ID | Invariant | Source |
+| --- | --- | --- |
+| MSG-I-001 | Repeating a send with the same server idempotency identity MUST converge on the same logical Message and MUST NOT allocate another Conversation sequence. | Architecture Baseline v1.0, chapters 4.4 and 5.1. |
+| MSG-I-002 | A successful message ACK MUST NOT be observable before the Message and matching Outbox event are durably committed. | Architecture Baseline v1.0, chapters 2 (F-04) and 5.1, and appendix B (Message). |
+| MSG-I-003 | Every committed logical Message MUST have exactly one logical Outbox event, even when publication delivery is retried. | Architecture Baseline v1.0, chapters 4 (Figure 4-1), 5.1, and 5.2. |
+| MSG-I-004 | No recipient MUST receive a Message for the wrong Conversation, and no permanent sequence gap may remain after Sync convergence. | Architecture Baseline v1.0, chapter 5.3 (message correctness red lines). |
+| MSG-I-005 | Duplicate NATS delivery MUST NOT create a duplicate logical Message or duplicate client materialization. | Architecture Baseline v1.0, chapter 5.2 and appendix B (Outbox). |
+| MSG-I-006 | A send by a non-member MUST be rejected before persistence and before a success ACK. | Architecture Baseline v1.0, chapter 5.1. |
+| MSG-I-007 | GROUP fan-out MUST remain an online delivery concern and MUST NOT alter the single-Message, single-Outbox persistence outcome. | Architecture Baseline v1.0, chapter 5.3. |
+# Sync and Plugin Invariants
+
+These invariants constrain future contracts without prescribing wire shape or persistence schema. Machine-verifiable public authority remains exclusively under `contracts/`.
+
+| Rule ID | Invariant | Source |
+| --- | --- | --- |
+| SP-I-001 | Duplicate or out-of-order Sync input MUST be idempotent, and contiguous sequence MUST NOT advance across a missing sequence. | Architecture Baseline v1.0, chapters 6.3 and 6.4, and appendix B (Sync). |
+| SP-I-002 | When Sync observes a server Message matching a locally FAILED send identity, it MUST converge that local item to SENT rather than create another item. | Architecture Baseline v1.0, chapter 6.2. |
+| SP-I-003 | Local materialized data and its corresponding cursor or contiguous-sequence advance MUST commit atomically. | Architecture Baseline v1.0, chapter 6.3. |
+| SP-I-004 | User-level cursor input MUST NOT contain Message events. | Architecture Baseline v1.0, chapter 6.4. |
+| SP-I-005 | Plugin capability or permission denial MUST prevent the Event subscription, Query, Action, or UI behavior without granting an alternate direct access path. | Architecture Baseline v1.0, chapters 2 (F-08) and 8.1. |
+| SP-I-006 | Query operations MUST NOT mutate state; each Action MUST be re-authorized at execution, MUST be idempotent, and MUST be auditable. | Architecture Baseline v1.0, chapter 8.1. |
+| SP-I-007 | A changed package, backend, or renderer hash under an existing plugin version MUST be rejected. | Architecture Baseline v1.0, chapter 8.2 and appendix B (Plugin). |
+| SP-I-008 | WASM and custom-renderer execution MUST remain sandboxed with least privilege and MUST NOT directly reach host-sensitive resources. | Architecture Baseline v1.0, chapters 8.2 and 8.3, and appendix B (Plugin). |
+| SP-I-009 | Upgrade MUST NOT split backend and renderer versions and MUST leave the previous version serviceable until atomic switch; any failed step MUST restore the snapshot and continue the old version. | Architecture Baseline v1.0, chapter 9.2. |
+| SP-I-010 | DISABLE and UNINSTALL MUST NOT purge retained data; PURGE MUST NOT occur implicitly. | Architecture Baseline v1.0, chapter 9.3. |
+# GUI 楠屾敹瑙勮寖
+
+鐘舵€侊細宸插喕缁撱€侶uman 鎵瑰噯鐨勮璁″唴瀹瑰凡鍦ㄥ€欓€?3cc754涓嶱R12瀹為檯 main4f18d222锛岀粡鏂伴矞鐙珛 Review銆佺簿纭?HEAD 鎵樼 CI 鍜屼富浠撳簱鍚屾鎺ュ彈銆傞獙鏀惰瘉鎹細`spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/accepted-freeze/acceptance.md`銆傛湰鐘舵€佽褰曚笉鍚姩 GUI 瀹炵幇锛孲2 Gate 浠嶄负 OPEN銆?
+## 蹇呴渶楠屾敹閾?
+GUI 瀹炵幇 鈫?鐪熷疄杩愯鎴浘 鈫?Architect Review 鈫?闄愬畾鑼冨洿淇 鈫?鏂版埅鍥?鈫?Architect Approval 鈫?鏂扮殑鐙珛鍊欓€?Review 涓庨€傜敤鐨勭簿纭?HEAD 鎵樼 CI 鈫?鍙椾繚鎶ょ殑闆嗘垚/涓讳粨搴撻獙璇?鈫?GUI Task PASS銆傚悇椤瑰鏌ュ彲鍏变韩璇佹嵁锛屼絾涓嶈兘鍙栨秷褰兼鐙珛鐨勪箟鍔°€侫rchitect 鎵瑰噯灞曠ず鏁堟灉锛涚嫭绔?Review 瀹℃煡瀹炵幇銆佹潈濞佸拰鏈€灏忔€э紱CI 鍒ゅ畾閫傜敤鐨勫彲鎵ц妫€鏌ャ€備换浣曞崟椤归兘涓嶈兘寤虹珛 S2 Gate PASS銆備粨搴撹瀹氱殑瀹屾暣楠屾敹涓庨泦鎴愬畬鎴愬墠锛屼笉寰楄繘鍏?done銆?
+鎴浘鏄?Task 楠屾敹瑕佹眰锛屼笉鏄彲閫夎璁″弽棣堛€傛瘡涓?GUI Task 蹇呴』鍦ㄥ疄鐜板墠澹版槑鍏ュ彛/杩愯鐜鐭╅樀鍜岃瘉鎹矾寰勩€傚繀椤绘崟鑾风湡瀹炲鎴风杩愯鐢婚潰锛屼笉鎺ュ彈 mockup 鎴栫紪杈戣繃鐨勫浘鐗囥€傝褰?Task ID銆佸€欓€?SHA銆佹簮浠ｇ爜/鏋勫缓鏉ユ簮銆佸钩鍙?杩愯鐜鐗堟湰銆佷笉鍚瀵嗙殑璐﹀彿/娴嬭瘯 fixture 鏍囪瘑銆侀〉闈?鐘舵€併€佽鍙?绐楀彛/璁惧灏哄銆佷富棰樺拰瀛椾綋/闂磋窛璁剧疆銆佺簿纭鐜版楠わ紝浠ュ強鍥剧墖鏂囦欢鍚?鍝堝笇銆傚浘鐗囦笉寰楀寘鍚湡瀹炲嚟鎹€佷护鐗屽睍绀烘垨绉佷汉鐢ㄦ埛鏁版嵁锛涗娇鐢ㄥ彈鎺?fixtures銆?
+## 鏈€浣庤鐩栫煩闃?
+| 瀹㈡埛绔?| 蹇呴渶杩愯璇佹嵁 |
+| --- | --- |
+| Web | 鐪熷疄娴忚鍣ㄤ腑鐨勭櫥褰曘€丆hat銆丗riends銆丄I 鍗犱綅銆丳lugin 椤甸潰 |
+| Desktop | 鐪熷疄 Tauri 瀹㈡埛绔腑鐨勪富绐楀彛銆丆hat銆丗riends銆佺绾垮巻鍙层€侀€氱煡/鎵樼洏銆佷富棰?|
+| Mobile | 鐪熷疄 Android Studio 妯℃嫙鍣ㄤ腑鐨勭櫥褰曘€丆hat銆丗riends銆佺绾垮巻鍙层€丼ync 鐘舵€併€佷富棰?|
+
+Cold AI 鍜?Warm Creative 閮藉繀椤诲睍绀轰竴鑷寸殑甯冨眬/璇箟锛涘竷灞€鍙楀奖鍝嶆椂锛岃鐩栨敮鎸佺殑瀛椾綋/闂磋窛鏋佸€笺€傝法绔叡鏈夊叆鍙ｉ』灞曠ず鍚勭瀹為檯瀹夸富甯冨眬銆侱esktop 閫氱煡/鎵樼洏璇佹嵁椤诲寘鍚湡瀹炲師鐢熻〃闈㈠拰澶嶇幇姝ラ锛屼粎鐢诲湪搴旂敤鍐呬笉鑳芥浛浠ｃ€侻obile 璇佹嵁椤绘爣鏄庢ā鎷熷櫒/璁惧/API锛涘涓绘祴璇曟垨 mock 椤甸潰涓嶈兘鏇夸唬銆?
+姣忎釜鑼冨洿鍐呴〉闈㈤』瑕嗙洊鏈夋剰涔変笖鐩稿叧鐨勫姞杞姐€佺┖銆侀敊璇拰鎴愬姛鐘舵€併€傝璇侀』瑕嗙洊 refresh/logout/session-expired锛屼笖涓嶆毚闇插嚟鎹€侰hat 椤诲睍绀虹湡瀹?SENDING/SENT/FAILED銆侀噸璇曡韩浠藉拰鏀舵暃琛屼负锛屽苟鐢卞彲鎵ц鍗忚/瀛樺偍璇佹嵁鏀寔锛涙埅鍥炬湰韬笉鑳借瘉鏄?durable ACK銆佸幓閲嶆垨鍘熷瓙鎬с€傜绾?Sync 椤昏鐩栧彈鎺ф柇寮€/閲嶈繛锛沇eb 涓嶅緱瀹ｇО鎸佷箙鍖栨垨绂荤嚎鍘嗗彶銆備富棰?鍋忓ソ椤诲湪鍏佽鐨勬湰鍦扮敓鍛藉懆鏈熷唴淇濈暀锛屼笉寰楁殫绀轰笟鍔℃暟鎹寔涔呭寲銆?
+鑻ユ煇涓檺瀹?GUI Task 鏈疄鐜板叏閮ㄧ煩闃电晫闈紝蹇呴』鍦ㄦ縺娲诲墠浜?Task Spec 鏄庣‘璇ュ垏鐗囧拰鍓╀綑浠诲姟銆傜己澶辫瘉鎹笉寰楄浣滄暣涓鎴风楠屾敹銆侾lugin/AI 鑳藉姏涓嶅彲鐢ㄦ椂锛屾埅鍥鹃』濡傚疄灞曠ず棰勭暀鍏ュ彛銆佸崰浣嶆垨涓嶅彲鐢ㄧ姸鎬併€備笉寰椾吉閫犲彲宸ヤ綔鐨勬帶浠舵垨 AI/鎻掍欢鏁版嵁銆?
+## Architect 鍐崇瓥涓庝慨澶嶅惊鐜?
+Architect Review 璁板綍绮剧‘鍊欓€?SHA銆佹埅鍥炬竻鍗?鍝堝笇銆丳ASS/FAIL 鍐崇瓥銆佸叿浣撻€愰〉闈㈤棶棰樸€佹墍妫€鏌ョ殑淇℃伅灞傜骇/瀵艰埅/鍙鎬?涓婚/閰嶇疆瑙勫垯锛屼互鍙婂鏌ヨ€呰韩浠姐€侳AIL 鏃朵繚鎸佷换鍔℃湭瀹屾垚锛屽湪 allowed_paths 鍐呬慨澶嶅苟閲嶆柊鎴浘銆傛棦鏈夋埅鍥句笌闂璁板綍淇濇寔涓嶅彲鍙橈紱鎵瑰噯蹇呴』鏍囨槑鏈€鏂拌鎺ュ彈鐨勬埅鍥鹃泦鍜屾瀯寤恒€傚悗缁瑙夈€佺姸鎬佹垨浠ｇ爜鍙樻洿褰卞搷宸叉壒鍑嗚瘉鎹椂锛屽繀椤婚噸鏂版崟鑾峰苟鍐嶆鎵瑰噯銆傛湭鍙楀奖鍝嶇殑鏃у浘鍙互闄勫搱甯屽拰鐞嗙敱寮曠敤锛屼絾涓嶅緱閲嶆柊鏍囦负鏂版埅鍥俱€?
+鏂扮殑鐙珛 Reviewer 妫€鏌ュ疄闄?Repository/鍗忚/鐘舵€?鍘熺敓鑱岃矗銆佹簮鐮佸鍏ャ€佹渶灏忔€с€佸叕鍏卞绾﹀拰瀹夊叏杈圭晫銆傛墍鏈夋柊澧炴晱鎰熶緷璧栧繀椤诲彲杩芥函鑷冲凡鎺ュ彈鐨勮鑼冩灦鏋?ADR锛涙埅鍥捐川閲忎笉鑳戒娇妗嗘灦鎴栧绾﹀彉鏇村悎娉曞寲銆傞€傜敤 CI 蹇呴』瀵瑰簲绮剧‘琚鏌ュ€欓€?SHA 鍜屾纭殑蹇呴渶浠诲姟锛涚己澶便€佸け璐ャ€佸彇娑堟垨寮傚父璺宠繃鐨勪换鍔′笉鑳藉缓绔?PASS銆?
+## 璇佹嵁涓庨棴鐜?
+鍦?spec/progress/evidence/<GUI_TASK_ID>/ 涓嬩繚瀛樻埅鍥炬竻鍗曘€佸師濮嬪浘鐗囥€丄rchitect 鍐崇瓥銆佷慨澶嶈凯浠ｃ€佺嫭绔?Review 涓庢墭绠￠獙鏀躲€俆ask handoff 璁板綍鍛戒护銆侀€€鍑虹爜/鏃堕暱銆佸凡鐭ュけ璐ュ拰鏈€鍚庡凡鐭ヨ壇濂?SHA锛沜urrent.md 鍙摼鎺ョ畝娲佹仮澶嶇姸鎬佷笌鏈€鏂扮ǔ瀹?checkpoint銆傝瑙夎瘉鎹』缁戝畾鍒伴泦鎴愬悗鐨勪骇鍝佹爲锛屽０鏄庡畬鎴愬墠椤昏褰曚换鍔″垎鏀?鎻愪氦/鍚屾缁撴灉/涓讳粨搴?SHA銆備笉鎺ュ彈 Photoshop 鎴栫敓鎴愬浘鐗囦綔涓鸿繍琛岃瘉鏄庯紝涓嶄互鎴浘鏇夸唬 CI锛屼笉鍥犲崟涓?GUI Task 鎺ㄨ繘 Stage銆?
+## MVP 浠诲姟褰掑睘锛圓DR-0007 瑙勫垝鍊欓€夛級
+
+鏂板涓斿敮涓€浜у搧 UI ID 涓?LOOP1-CLIENT-GUI-001锛圖esktop/Mobile锛夛紱Web 瀹屾暣 Loop1 GUI 浣跨敤鏃㈡湁 LOOP1-WEB-001銆備袱鑰呭潎瑕嗙洊 Login/session銆丆hat銆丗riends銆丄I Placeholder銆丳lugin capability/unavailable銆丼ettings/Profile銆丆old AI/Warm Creative銆佹湰鍦板瓧浣?闂磋窛涓庣湡瀹炲彂閫?閲嶈繛鐘舵€併€侱esktop/Mobile 杩樿鐩?Offline History銆丼ync锛孌esktop 鐪熷疄閫氱煡/鎵樼洏/蹇嵎閿紝Mobile Android Studio emulator锛沇eb 鏃?SQLite/绂荤嚎鍘嗗彶锛屼笉鎸佷箙鍖栬亰澶┿€?
+S3 PARITY銆丼4 PLUGIN-UI/FIX銆丼5 COMPAT/RELEASE銆丼6 RC 鍦ㄥ悇鑷棦鏈?acceptance 鎵挎帴閫傜敤 GUI 瑕佹眰锛岃鍒欒 canonical 搂20锛涗笉鏂板 GUI E2E/parity/plugin/release/soak Task銆傚疄璐ㄨ瑙夊彉鍖栭』閽堝鏈€杩?Architect-approved set 閲嶆柊鎴浘鎵瑰噯锛涘閲忔祴璇曠敱 load harness 鎵挎媴锛孏UI 鑷姩鍖栦笉杩涘叆 5000 WSS 鐑矾寰勩€傛湰娈甸殢 ADR-0007 鐙珛鎺ュ彈鍚庣敓鏁堬紱鏃㈡湁鎴浘涓庢灦鏋勯獙鏀惰姹備笉闄嶄綆銆?
+## Web 鍚?S2 琛ュ厖锛圓DR-0012鍊欓€夛級
+
+鍘烥UI/Web鎺ュ彈淇濇寔銆傛寮忕敓鏁堝悗杩藉姞WEB鈫扴TATE鈫扷I-REF鈫扞18N鈫扴2 Gate锛涘畬鏁磋姹傝canonical搂6.6鍙妔pec/acceptance/client-supplement.md銆備笁浜у搧浠诲姟backlog銆侀€愰」鐙珛鎺ュ彈/闆嗘垚/涓讳粨搴撳悓姝ュ悗婵€娲讳笅椤癸紱鏈涓嶅疄鏂斤紝S2 OPEN銆傜嫭绔嬭瑙?Repository/Auth/Send/Sync鑱岃矗涓庡師鎴浘/Architect/Review/hosted/main閾惧叡鍚屼繚鐣欍€係TATE鐪熷疄A/B/鎺掑簭/鎭㈠/璺ㄧ濂藉弸锛孶IREF瀹屾暣瀵圭収鍥炲綊鍜岃瑙夊熀绾匡紝I18N涓夌函鏁版嵁璇█/鍥哄畾鍏ュ彛/鐙珛鍋忓ソ绐勬巿鏉冨潎蹇呴渶銆?
+# S2 瀹㈡埛绔ˉ鍏呴獙鏀?
+浠庡睘浜巆anonical搂6.6/搂15/搂19/搂20/闄勫綍A鍙奌uman-approved ADR12鍊欓€夛紱姝ｅ紡鐢熸晥渚濊禆鏈鍒掔嫭绔嬫帴鍙?闆嗘垚/涓讳粨搴撳悓姝ャ€傚叕鍏辨満鍣ㄥ绾﹀敮涓€contracts/銆傛柊浠诲姟鍧嘼acklog/S2 OPEN銆?
+## 瀹為檯鍩虹嚎涓庤瘉鎹紙璧风偣 b4d271c锛?
+| 鑳藉姏 | 褰撳墠瀹為檯瀹炵幇涓庤瘉鎹?| 鏂颁换鍔″繀椤昏ˉ榻?楠岃瘉 |
+| --- | --- | --- |
+| 閲嶅彂/鐘舵€?| Desktop send.ts銆丮obile SendViewModel.kt浠嶳epository鍘焤ow璇昏韩浠?content锛泂hared/Kotlin Repository.markFailed涓嶅€掗€€SENT銆乧ommittedAck/realtime/Sync UPSERT銆俉EB repository.ts鍐呭瓨sameID/terminal銆乧lient.ts淇濈暀杩熷埌ACK韬唤 | 鏃㈡湁鍗曞厓/鍙楁帶TLS鍚戦噺涓嶆槸涓夌鐪熷疄A/B鑱斿悎璇佹嵁锛涢€愮鍚屼竴logical娑堟伅/鍗昈utbox/鐪熷疄FAILED鍐峉ENT |
+| 鏈嶅姟绔彁浜?| core/message.go宸叉湁message+seq+outbox浜嬪姟銆侀噸澶嶆煡璇㈠師messageId/seq/createdAt銆乧ontent鍐茬獊鎷掔粷锛沢ateway10s HTTP timeout銆乧ore Commit(ctx)鏈煡缁撴灉璺緞寰呴€愰」瀹¤ | 棣栨鏈彁浜や笌宸叉彁浜ょ‘璁や涪澶卞繀椤诲彈鎺у尯鍒嗭紱鏈煡commit涓嶄吉鎴愬姛锛屼篃涓嶈兘鎶婂凡鎻愪氦浜嬪疄浼€犱负鏃爌ersist rejected |
+| 鎺掑簭 | shared Repository.messages涓嶮obile Repository.messages ORDER BY server_seq IS NULL,server_seq,local_id锛沇eb snapshot鎺掑簭bigint seq | 涓ょR1/R2鐪熷疄娓叉煋韬唤/seq/鐘舵€佸湪ACK/realtime/Sync浜ゅ弶鍚庢纭?|
+| 鎸佷箙鎭㈠ | Desktop accountDatabase/SQLx涓嶢ndroid account SQLite銆乺estore鏄剧ずsaved history锛汼ync浠巆ursor0杩炵画鍒嗛〉 | 鍚岃处鍙蜂繚鐣欐湰鍦癋AILED閲嶅惎retry銆佸叏鏂拌璐﹀彿DB/鍒濆cursor鎭㈠瀹屾暣鍘嗗彶+鏂皉equest/seq锛屽彧澶勭悊鍙楁帶fixture DB涓嶅垹鐪熷疄鐢ㄦ埛 |
+| Web鐢熷懡鍛ㄦ湡 | memory Repository銆佹棤initial history锛沚aseline live window/held terminal crossing/ACK-only gap宸瞨egression鎺ュ彈 | A/B/椤哄簭閬靛畧鍚岄〉闈€佸凡鏈夊湪绾縲indow Sync锛涗笉鑳戒负娴嬭瘯鏂板鍘嗗彶DB/鍏ㄩ噺backfill |
+| 濂藉弸 | Web login/refresh/add璋冪敤loadFriends锛屾棤User Sync锛況ealtime鎸夊凡鐭riends杩囨护銆侱esktop Workspace/Mobile WorkspaceViewModel bind/add璋冪敤Auth.friends锛汼ync userPage瀛榤etadata锛宨dle浠卽pdateList锛屾湭閲嶆柊鍒锋柊friend/user鍚嶇О锛沀serSync鍦╞ound/reconnect/open/delivery瑙﹀彂 | 琛ラ綈鏃犳秷鎭害鑳芥渶缁堣Е鍙慤serSync鈫抍onsumer鈫掑ソ鍙?绉佽亰/name UI閾撅紱涓夌娣诲姞銆佸叾浠栧湪绾跨銆佹柇绾挎仮澶?鍒囪处鍙?|
+| 椤甸潰/缁勪欢 | Web/desktop src/ui/main.tsx鍏ュ彛鍚玈hell/page/local state锛汳obile MainActivity.kt鎸傝浇Workspace.kt锛屽唴鍚獳uth/Chat/Friends/Settings缁勫悎锛涘悇绔嫭绔嬭瑙?| 婵€娲籙IREF鏃朵互STATE鎺ュ彈鏍戝啀娆℃灇涓惧疄闄卐ntry/缁勪欢杈撳叆杈撳嚭/state/import锛岃涓鸿瑙夊畬鏁村鐓?|
+| 鏄剧ず/鐘舵€?| Web View.connection鐢ㄤ腑鏂団€滃湪绾库€濅笖transmit鍒ゆ柇瀹冿紱native搴旂敤error/preview鑻辫鍐呭祵銆丮obile ApiFailure.kind鐨勨€淪ession expired鈥濅篃鍙備笌鍒ゅ畾 | UIREF鍏堢ǔ瀹欼D涓巇isplay鍒嗙锛汭18N绂佹translated strings杩涘叆涓氬姟鏉′欢 |
+| 鍋忓ソ | Web appearance.ts v1 exact3keys锛汥esktop native.ts+desktop_capabilities appearance.json3tuple锛汚ndroid Preferences appearance SharedPrefs3keys | 璇█鐙珛浣嶇疆/鏍囬噺淇濇寔theme/font/density锛岄潪娉?涓嶅彲鐢ㄥ強涓夎瑷€readability鎭㈠ |
+
+鎺ュ彈鍘熶欢锛歚spec/progress/evidence/LOOP1-SYNC-001/acceptance/acceptance.md`锛圥R22 main2351a293锛涚湡瀹濪esktopSQLx/GoTLS/PG锛孧obileAPI34濂戠害fixture62 controls锛涗笉澹扮ОMobile-to-Go锛夛紱`spec/progress/evidence/LOOP1-CLIENT-GUI-001/closure20261008/`锛圥R24 mainb14bf107銆乄indows43鍘熷浘/鐪熷疄native銆丄ndroidAPI34銆佺嫭绔婻eview/CI锛夛紱`spec/progress/evidence/LOOP1-WEB-001/product-closure-20261009/acceptance-originals.zip`鍙妎riginal-bindings.json锛圥R29 maina1b154d锛孉rchitectE52 originals銆佽涔?delta/hosted鎺ュ彈锛夈€侾R30鍙鏀挎仮澶嶏紝鏈€鏂癿ain b4d271c銆傜己鍙ｈ〃琛ㄧず褰撳墠婧愮爜瑙傚療锛屼笉鎾ら攢鍘熻寖鍥存帴鍙楋紝涓嶅０绉版湭鎵ц鐨勬柊浜у搧楠屾敹PASS銆?
+## LOOP1-CLIENT-STATE-001 寮哄埗楠屾敹
+
+浠ユ渶鏂颁笁绔疄鐜板拰宸叉湁楠屾敹涓哄熀绾匡紝閫愰」璁板綍鐜版湁鑳藉姏銆佽瘉鎹拰寰呰ˉ榻愬唴瀹癸紝灏嗕互涓嬭姹傚啓鍏ヤ换鍔＄洰鏍囦笌寮哄埗楠屾敹銆?
+1. 娑堟伅鍙潬鎬х殑涓や釜鏍稿績鍦烘櫙锛?   A. 棣栨鍙戦€佹湭鍦ㄦ湇鍔＄鎻愪氦锛屽彂閫佹柟瓒呮椂鏄剧ず FAILED锛岀敤鎴风偣鍑婚噸鍙戝悗瀹屾垚棣栨鎸佷箙鍖栧苟鏀舵暃涓?SENT銆?   B. 棣栨鍙戦€佸凡鍦ㄦ湇鍔＄鎻愪氦锛屾帴鏀舵柟宸茶幏寰楁秷鎭紝鍙戦€佹柟鍥犳垚鍔熺‘璁や涪澶辨垨寤惰繜鏄剧ず FAILED锛涚敤鎴烽噸鍙戝悗鑾峰緱鍘熷鎻愪氦缁撴灉锛屽師娑堟伅鏀舵暃涓?SENT銆?
+2. 鍚屼竴閫昏緫娑堟伅鐨勬瘡娆￠噸鍙戝鐢ㄥ師濮?request_id銆乧onversation_id銆佸彂閫佽€呰韩浠藉拰娑堟伅鍐呭銆傛湇鍔＄宸叉湁鎻愪氦鏃惰繑鍥炲師濮?messageId銆乻eq銆乧reatedAt锛涙渶缁堝搴斾竴鏉℃寔涔呭寲娑堟伅銆佷竴鏉￠€昏緫 Outbox 鍜屽悇瀹㈡埛绔殑涓€鏉℃秷鎭睍绀恒€?
+3. 瑕嗙洊 SENDING銆丗AILED銆侀噸鍙戞寜閽拰 SENT 鐨勭湡瀹炵晫闈㈢姸鎬併€侳AILED 琛ㄨ揪褰撳墠灏濊瘯鏈幏寰楁垚鍔熺‘璁わ紱杩熷埌 ACK銆佸疄鏃舵秷鎭拰閫傜敤 Sync 鍧囬€氳繃鏃㈡湁鏀舵暃鍏ュ彛鏇存柊鍘熸秷鎭紝SENT 淇濇寔缁堟€併€傛牳瀵?Gateway/Core 瓒呮椂涓庢彁浜ょ粨鏋滄湭鐭ヨ矾寰勶紝浣垮叾澶勭悊绗﹀悎瀹為檯鎻愪氦缁撴灉鍜岀幇琛屽绾︺€?
+4. 鍚屼竴浼氳瘽鐨勫凡纭娑堟伅浠ユ湇鍔＄ seq 涓烘渶缁堟帓搴忎緷鎹紝瑕嗙洊锛?   - R1 棣栨鏈彁浜わ紝R2 鍏堟垚鍔熸彁浜わ紝R1 鍚庨噸鍙戞垚鍔燂細鏈€缁堥『搴忎负 R2銆丷1銆?   - R1 棣栨宸叉彁浜や絾纭瓒呮椂锛孯2 闅忓悗鎻愪氦锛孯1 鍐嶈幏寰楃‘璁わ細鏈€缁堥『搴忎负 R1銆丷2銆?   楠岃瘉 UI 鍦?ACK銆佸疄鏃朵簨浠躲€丼ync 浜ゅ弶鍒拌揪鍚庝繚鎸佹纭韩浠姐€佺姸鎬佸拰椤哄簭銆?
+5. Desktop/Mobile 瑕嗙洊淇濈暀鏈湴娑堟伅鏃剁殑閲嶅惎閲嶅彂锛屼互鍙婂彈鎺ф祴璇曚腑浠庡叏鏂拌处鍙锋湰鍦版暟鎹簱鍜屽垵濮嬪悓姝ユ父鏍囨仮澶嶇殑娴佺▼銆傞獙璇佸凡鎻愪氦鍘嗗彶鎸?seq 鎭㈠锛屽悗缁柊娑堟伅浣跨敤鏂扮殑 request_id 鍜屾湇鍔＄鍒嗛厤鐨勫簭鍙凤紝搴忓彿杩炵画鎬т笌娓叉煋椤哄簭姝ｇ‘銆俉eb 鎸夊綋鍓嶉〉闈㈠唴瀛樼敓鍛藉懆鏈熷拰宸叉帴鍙楃殑鍦ㄧ嚎娑堟伅鍚屾瑙勫垯楠屾敹銆?
+6. 琛ラ綈涓夌濂藉弸鍙樻洿鍚屾銆傛槑纭棦鏈夊ソ鍙嬫煡璇㈠拰 User Sync 鐨勮Е鍙戙€佹秷璐瑰強鐣岄潰鍒锋柊閾捐矾锛涗换涓€绔坊鍔犲ソ鍙嬪悗锛屽叾浣欏湪绾跨鏈€缁堟洿鏂板ソ鍙嬪垪琛ㄣ€佸搴旂鑱婂拰鍚嶇О灞曠ず锛屽苟楠岃瘉鏂嚎鎭㈠涓庤处鍙峰垏鎹㈠悗鐨勬纭粨鏋溿€?
+7. 浣跨敤鐪熷疄鏈嶅姟绔€佹暟鎹簱鍜屽鎴风鐨勫彈鎺ф晠闅滄敞鍏ラ獙璇佷笂杩伴摼璺€傚満鏅?B 鍚屾椂鍙栧緱鏈嶅姟绔寔涔呮彁浜ゃ€佹帴鏀舵柟鑾峰緱娑堟伅銆佸彂閫佹柟 FAILED銆侀噸鍙戝悗鍘熸秷鎭?SENT 鐨勮瘉鎹紱鍒嗗埆鏍稿瀛樺偍璁板綍銆佽姹傝韩浠姐€佸簭鍙枫€丱utbox 鍜屽疄闄呮覆鏌撱€?
+
+鏁呴殰娉ㄥ叆浠呭彈鎺ixture銆佺湡瀹濭o profile/PostgreSQL/NATS/TLS鍏ュ彛鍙婄湡瀹炴祻瑙堝櫒/宸插畨瑁匴indows Tauri/Android Studio emulator锛泃est proxy/held-response鎷︽埅浠呭彈鎺у彂閫佹柟confirmation锛屼笉鏀圭敓浜у绾︺€侫璇佹槑棣栨0娑堟伅/0Outbox锛汢璇佹槑鎻愪氦鍞竴璁板綍+鎺ユ敹鏂瑰疄闄呭緱鍒?鍙戦€佹柟鐪熷疄FAILED锛堢‘璁よ矾寰勫彈鎺т涪澶?寤惰繜锛?鐐瑰嚮retry鍘熸秷鎭疭ENT锛涙寔涔呭寲snapshot涓巖equest/conversation/sender/content銆乷riginalACK涓夊厓缁勩€丱utbox logical count鍙婂疄闄卹ender bind鍚屽€欓€?fixture/scenario銆傝嚜鍔⊿ync鑻ュ厛纭涓嶈兘璁′綔FAILED/retry璇佹嵁锛涘彈鎺у畨鎺抰iming骞跺悓鏃惰褰昐ync/瀹炴椂璺緞鎭㈠銆傞噸澶峱ublication涓嶇瓑浜庡涓猯ogicalOutbox銆備繚瀛樺師濮嬪け璐ワ紝涓嶇敤mock鎴浘璇佹槑鎸佷箙鍖栥€?
+## LOOP1-CLIENT-UI-REF-001 寮哄埗楠屾敹
+
+浠ヤ换鍔′竴楠屾敹鍚庣殑涓夌浜у搧鏍戜负琛屼负鍜岃瑙夊熀绾匡紝瑙勫垝骞堕獙鏀跺悇绔幇鏈夐〉闈€佺粍浠跺拰灞曠ず鐘舵€佺殑鑱岃矗鎷嗗垎銆?
+1. 鏍规嵁瀹為檯婧愮爜鎷嗗垎搴旂敤鍏ュ彛銆丼hell銆佸鑸€佽璇併€佷細璇濆垪琛ㄣ€佹秷鎭睍绀恒€佽緭鍏ュ尯鍩熴€佸ソ鍙嬪強璁剧疆绛夌幇鏈夎亴璐ｏ紝鏄庣‘鍏ュ彛鎸傝浇銆佺粍浠惰緭鍏ヨ緭鍑恒€佺姸鎬佸綊灞炲拰瀵煎叆鏂瑰悜銆?
+2. 淇濇寔鍚勭鐙珛瑙嗚瀹炵幇鍙婄幇鏈?Auth銆丷epository銆丼end銆丼ync 鑱岃矗杈圭晫锛屽叡浜幇鏈夊崗璁€佺被鍨嬪拰閫傜敤灞曠ず璇箟銆?
+3. 灏嗙粍浠跺睍绀烘枃妗堛€佸簲鐢ㄧ姸鎬佹爣璇嗕笌涓氬姟鍒ゆ柇寤虹珛娓呮櫚杈圭晫锛屼负鍚庣画璇█璧勬簮鎻愬彇鎻愪緵绋冲畾鎺ュ彛銆?
+4. 寤虹珛鎷嗗垎鍓嶅悗鐨勯〉闈€佸叆鍙ｃ€佸姛鑳藉拰娴嬭瘯瑕嗙洊瀵圭収琛ㄣ€傚畬鏁村洖褰掔幇鏈夊鎴风鑳藉姏鍙婁换鍔′竴鏂板鍦烘櫙锛岄獙璇佺姸鎬佷繚鎸併€佷簨浠剁粦瀹氥€佽处鍙烽殧绂汇€佸悓姝ャ€侀噸鍙戙€佹帓搴忓拰澶栬璁剧疆鐨勮涓虹瓑浠枫€?
+5. 瀹屾垚鍚勭鏋勫缓銆侀€傜敤鑷姩鍖栨祴璇曘€佺湡瀹炶繍琛屾埅鍥惧拰 Architect 瀹℃煡锛屼互鍔熻兘瀹屾暣銆佽涓虹瓑浠峰拰瑙嗚鍩虹嚎淇濇寔浣滀负楠屾敹缁撴灉銆?
+
+瀵圭収琛ㄦ寜绔垪actual entry/鎸傝浇銆丼hell/navigation銆丄uth/register/login/refresh/logout/expiry銆乧onversation list/view/message/composer銆丗riends/search/add銆丄I鍗犱綅/Plugin unavailable銆丼ettings/Profile銆乤ppearance銆丱fflineHistory/Sync鍙奃esktop閫氱煡/tray/shortcut锛涘搴旀棫鏂版枃浠躲€佽緭鍏ヨ緭鍑恒€佺姸鎬佸綊灞炪€佷簨浠?璁㈤槄娓呯悊銆乮mport鏂瑰悜銆佹祴璇?鐪熷疄鎴浘鍜屾壒鍑嗐€備笉涓轰簡鎷嗗垎鏂板generic store/鎬荤嚎/framework銆傜姸鎬佷笌鏂囨湰杈圭晫蹇呴』鍖呭惈Web鈥滃湪绾库€濅笟鍔″垽鏂強native error鍒嗙被锛屽崗璁?Repository state淇濇寔绋冲畾ID銆傚鐢⊿TATE宸叉帴鍙楁晠闅渉arness骞跺畬鏁村洖褰掞紝涓嶉噸鍐欏叾宸叉帴鍙楀師浠躲€?
+## LOOP1-CLIENT-I18N-001 寮哄埗楠屾敹
+
+渚濊禆浠诲姟浜屽畬鎴愶紝鎻愬彇涓夌鐜版湁鐢ㄦ埛鍙鏂囨锛屽缓绔嬭嫳璇€佺畝浣撲腑鏂囧拰鏃ヨ鐨勭嫭绔嬭瑷€璧勬簮銆?
+1. 缁熶竴璇█鏍囪瘑 en銆亃h-CN銆乯a-JP锛屼互鍙婅法绔枃妗堣涔夊拰鍗犱綅鍙傛暟銆俉eb/Desktop 浣跨敤 TypeScript 渚х函鏁版嵁璇█璧勬簮锛孉ndroid 浣跨敤鐜版湁 Kotlin/Compose 鎶€鏈爤涓嬬殑绛変环璧勬簮鏄犲皠銆?
+2. 瑕嗙洊椤甸潰鏂囨湰銆佹寜閽€佽緭鍏ユ彁绀恒€佹牎楠屼笌閿欒鎻愮ず銆佽繛鎺ュ強鍚屾鐘舵€併€佹棤闅滅鏍囩锛屼互鍙婂凡鏈夌郴缁熼€氱煡鍜屾墭鐩樻枃妗堛€傚皢鐘舵€侀€昏緫浣跨敤鐨勭ǔ瀹氭爣璇嗕笌缈昏瘧鍚庣殑鏄剧ず鏂囨湰鍒嗙銆?
+3. Settings 澧炲姞鍥哄畾鍏ュ彛鈥淟anguage / 璇█ / 瑷€瑾炩€濓紝浣跨敤鍥哄畾椤哄簭鐨勬粴鍔ㄩ€夋嫨鍒楄〃锛?   English 鈫?绠€浣撲腑鏂?鈫?鏃ユ湰瑾炪€?   閫夐」鍚嶇О淇濇寔鍚勮嚜璇█锛屽垏鎹㈠悗鍗虫椂鏇存柊褰撳墠鐣岄潰锛屾湰鍦颁繚瀛樺苟鎭㈠璇█閫夋嫨銆?
+4. 灏嗚瑷€閫夋嫨鐨勬湰鍦版寔涔呭寲鑼冨洿銆佸瓨鍌ㄤ綅缃€佸瓧娈靛拰鏍￠獙瑙勫垯绾冲叆涓夌鍋忓ソ閫傞厤鍣ㄧ殑鏄庣‘鏋舵瀯鎺堟潈锛屼繚璇佺幇鏈夊瑙傞厤缃户缁湁鏁堬紝涓婚銆佸瓧鍙枫€侀棿璺濆拰璇█鐙珛淇濇寔銆?
+5. 寤虹珛璇█閿畬鏁存€с€佸崰浣嶅弬鏁颁竴鑷存€у拰鑻辨枃鍥為€€楠岃瘉锛涜鐩栧垏鎹㈠悗鐨勯〉闈㈢姸鎬併€佹秷鎭姸鎬併€佸竷灞€鍙鎬у強鏈湴鍋忓ソ鎭㈠锛屽畬鎴愪笁绉嶈瑷€鐨勯€傜敤鎴浘鍜?Architect 楠屾敹銆?
+
+璇█鍋忓ソ涓鸿澶?瀹夸富搴旂敤鑼冨洿锛岃法璐﹀彿淇濇寔銆佹棤浜戝悓姝ワ紝鐙珛浜巆redential銆佽处鍙稴QLite銆佹秷鎭拰Sync cursor銆傞粯璁?en锛涘彧鍏佽澶у皬鍐欑簿纭殑 en銆亃h-CN銆乯a-JP锛屼笉trim銆佷笉鎺ュ彈绯荤粺locale鐚滄祴鎴栦换鎰忓埆鍚嶃€傜己澶?闈炴硶/瓒呴暱/瀛樺偍涓嶅彲鐢ㄥ洖閫€鍐呭瓨en锛屽啓澶辫触璇氬疄鏄剧ず涓斾笉瑕嗙洊鍏朵粬鍋忓ソ鎴栨竻闄ゅ叾浠杒ey銆傚浐瀹氫笁绔綅缃細Web浠呮柊澧?src/ui/language.ts 浠ュ師鐢?localStorage鍥哄畾key plugworldim.language.v1璇诲彇/鍐欏叆raw UTF-8 enum锛堟渶闀?bytes锛夛紝涓嶆敼plugworldim.appearance.v1涓夊瓧娈碉紱Desktop TypeScript native.ts鎸佹湁language鎰忓浘锛宒esktop_capabilities.rs浠呯獎language_load/save瀛楃涓叉灇涓炬牎楠屽強app_data/language.txt璇诲啓raw UTF-8锛堟渶澶?bytes銆佹棤BOM/鎹㈣锛夛紝appearance.json涓夐」tuple鍘熷瓧鑺傜户缁彲璇伙紱Android Preferences.kt鍦ㄦ棦鏈塎ODE_PRIVATE appearance SharedPreferences鍙String key language锛堟渶澶?UTF-8bytes锛夛紝淇濈暀theme/fontSize/density閿拰鍊笺€倀heme浠卌old/warm锛沇eb fontSize14/16/18/20銆乨ensity compact/comfortable/spacious锛汥esktop/Android鏃㈡湁fontSize14..22銆乨ensity0.8/1.0/1.2鍙婇粯璁old/16/1缁х画鏈夋晥銆傚洓鏍囬噺璇箟鍚勮嚜鐙珛锛屼絾Web/Desktop澶栬record浠嶄笁椤癸紝涓嶅悎骞朵负鍥涘瓧娈佃褰曘€傚綋鍓嶄笁瀛楁appearance瀹堝崼涓嶅緱鎻愬墠鏀惧锛涘彧鏈塈18N渚濊禆鐙珛鎺ュ彈+闆嗘垚鍚屾涓斾换鍔ctive/review/done銆乧lient_supplement_phase: i18n_product鎵嶅彲瀹炵幇璇█adapter鍙婂搴旂獎婧愮爜guard銆係TATE/UI-REF鍜屾湰瑙勫垝涓嶈幏寰楄瑷€鎸佷箙鍖栦骇鍝佽鍙€?
+TS/Kotlin璧勬簮閿畇et涓庢瘡閿崰浣嶅弬鏁皊et蹇呴』涓€鑷达紱鏈煡locale/闈炴硶鏈湴鍊煎洖閫€en锛涚己locale閿洖閫€en骞舵湁negative娴嬭瘯锛岃嫳鏂囧熀纭€閿己澶盕AIL銆傝緭鍑烘枃妗堜笉鑳戒慨鏀箇ire/error code銆佺敤鎴锋秷鎭?鍚嶇О鍐呭鎴杛equest ID銆傛瘡璇█娑电洊鍏ㄩ儴瀹為檯鍏ュ彛/鍔犺浇绌洪敊/杩炴帴Sync/message鐘舵€?accessibility/宸叉湁绯荤粺閫氱煡tray锛涘浐瀹歀anguage鍏ュ彛鍙婁笁鏈悕椤哄簭婊氬姩鍒楄〃鍦ㄤ笁涓瑷€涓嬪彲杈俱€傚嵆鏃跺垏鎹笉涓raft/selected/history/send鐘舵€佹垨璁㈤槄锛屼笉閲嶇疆鍏朵粬鍋忓ソ锛涢噸鍚湰鍦版仮澶嶅強invalid/unavailable鐢ㄧ湡瀹為€傞厤鍣ㄩ獙璇併€傛埅鍥剧湡瀹炰笁绔拰涓夎瑷€锛屽繀瑕佺獎viewport/瀛楀彿瀵嗗害鏋佸€间繚鎸佸彲璇汇€佸浘鏂?鍙傛暟涓嶆孩鍑猴紝Architect鐙珛缁戝畾鍊欓€夋壒鍑嗐€?
+## 鐙珛闂幆涓嶴2鍓嶇疆
+
+娌跨敤client-gui瀹屾暣鎴浘鈫扐rchitect Review鈫掍慨澶嶉噸鎷嶁啋Approval銆乫resh independent semantic Review銆乪xact-head applicable hosted CI銆乸rotected integration/actual-main鍜宻afe H:/IM-platform鍚屾銆傛瘡鏂颁换鍔one蹇呴』鍦═ask Completion Metadata鍐欏疄闄卌andidate/main SHA銆丳ASS涓庣嫭绔媟eview/hosted/main sync璇佹嵁璺緞锛汻eviewer璇昏瘉鎹唴瀹逛笌瀹為檯jobs/checkout/鍙椾繚鎶ゅ悎鍏?淇濆瓨鏈煡work锛屽瓧娈垫湰韬笉鎻愪緵鎺ュ彈銆?
+椤哄簭WEB鈫扴TATE鈫扷I-REF鈫扞18N鈫扴2 Gate锛屽墠椤圭嫭绔嬫帴鍙?闆嗘垚鍚屾鍚庢墠鑳芥縺娲诲悗椤癸紱STATE鍙︿緷璧栨湰瑙勫垝姝ｅ紡鐢熸晥銆侴ate浠嶉渶鏃QLITE/UI-ARCH/SEND/SYNC/GUI/WEB鍜屾墍鏈夋棫瑕佹眰銆佷笁涓柊瀹屾垚椤瑰強deferred helper閫傜敤楠屾敹銆傝鍒掓垨鍗昑ask PASS涓嶈兘S2 PASS銆傛湰娆′粎鐙珛鎺ュ彈瑙勫垝銆佷笁涓猙acklog浜や粯锛屼笉璇勪及瀹為檯Stage Gate銆?
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/errors/http-errors.schema.json",
+  "title": "Canonical HTTP error contract",
+  "$defs": {
+    "ErrorCode": {
+      "type": "string",
+      "enum": [
+        "VALIDATION_FAILED",
+        "AUTH_REQUIRED",
+        "AUTH_INVALID_CREDENTIALS",
+        "AUTH_TOKEN_INVALID",
+        "AUTH_TOKEN_EXPIRED",
+        "AUTH_SESSION_REVOKED",
+        "AUTH_SESSION_EPOCH_STALE",
+        "AUTH_CLIENT_TYPE_MISMATCH",
+        "AUTH_REFRESH_REVOKED",
+        "AUTHORIZATION_DENIED",
+        "PROTOCOL_VERSION_UNSUPPORTED",
+        "USERNAME_ALREADY_EXISTS",
+        "USER_NOT_FOUND",
+        "FRIEND_SELF_NOT_ALLOWED",
+        "FRIENDSHIP_STATE_CONFLICT"
+      ]
+    },
+    "FieldViolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "reason"],
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["error", "requestId"],
+      "properties": {
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "message"],
+          "properties": {
+            "code": { "$ref": "#/$defs/ErrorCode" },
+            "message": { "type": "string", "minLength": 1 },
+            "violations": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/FieldViolation" }
+            }
+          }
+        },
+        "requestId": { "type": "string", "minLength": 1 }
+      },
+      "description": "Messages and violations must never contain passwords, access tokens, refresh tokens, cookies, or other authentication material."
+    }
+  },
+  "$ref": "#/$defs/ErrorResponse"
+}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/envelope.schema.json",
+  "title": "WSS protocol v1 envelope",
+  "description": "TLS and WebSocket upgrade precede auth.bind. Access tokens are carried only in auth.bind payload, never a URL. Success message.ack is emitted only after atomic durable Message and Outbox commit. A retry under sender/conversation/requestId returns the same messageId, seq and createdAt.",
+  "oneOf": [
+    { "$ref": "#/$defs/AuthBind" },
+    { "$ref": "#/$defs/AuthAck" },
+    { "$ref": "#/$defs/MessageSend" },
+    { "$ref": "#/$defs/MessageAck" },
+    { "$ref": "#/$defs/MessageCreated" },
+    { "$ref": "#/$defs/SessionRevoked" },
+    { "$ref": "#/$defs/Ping" },
+    { "$ref": "#/$defs/Pong" }
+  ],
+  "$defs": {
+    "Id": { "type": "string", "format": "uuid" },
+    "Timestamp": { "type": "string", "format": "date-time" },
+    "Base": {
+      "type": "object",
+      "required": ["protocolVersion", "type", "requestId", "payload"],
+      "properties": {
+        "protocolVersion": { "const": "1.0" },
+        "type": { "type": "string" },
+        "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object" }
+      }
+    },
+    "Error": {
+      "type": "object", "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "AUTHORIZATION_DENIED", "PROTOCOL_VERSION_UNSUPPORTED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] },
+        "message": { "type": "string", "minLength": 1 }
+      },
+      "description": "Must not include credentials, tokens or message content."
+    },
+    "AuthError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "PROTOCOL_VERSION_UNSUPPORTED"] } } }] },
+    "MessageError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_SESSION_REVOKED", "AUTHORIZATION_DENIED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] } } }] },
+    "AuthBind": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.bind" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["accessToken"], "properties": { "accessToken": { "type": "string", "minLength": 1 } } }
+      }}]
+    },
+    "AuthAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [
+          { "type": "object", "additionalProperties": false, "required": ["status", "userId", "sessionId", "clientType", "sessionEpoch"], "properties": { "status": { "const": "bound" }, "userId": { "$ref": "#/$defs/Id" }, "sessionId": { "$ref": "#/$defs/Id" }, "clientType": { "enum": ["WEB", "DESKTOP", "MOBILE"] }, "sessionEpoch": { "type": "integer", "minimum": 1 } } },
+          { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/AuthError" } } }
+        ] }
+      }}]
+    },
+    "TextContent": { "type": "object", "additionalProperties": false, "required": ["kind", "text"], "properties": { "kind": { "const": "TEXT" }, "text": { "type": "string", "minLength": 1, "maxLength": 4096 } } },
+    "MessageSend": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.send" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "Committed": { "type": "object", "additionalProperties": false, "required": ["status", "conversationId", "messageId", "seq", "createdAt"], "properties": { "status": { "const": "committed" }, "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" } } },
+    "MessageAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [ { "$ref": "#/$defs/Committed" }, { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/MessageError" } } } ] }
+      }}]
+    },
+    "MessageCreated": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.created" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "messageId", "senderId", "seq", "createdAt", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "senderId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "SessionRevoked": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "session.revoked" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["sessionId", "reason"], "properties": { "sessionId": { "$ref": "#/$defs/Id" }, "reason": { "enum": ["LOGOUT", "REPLACED", "REVOKED"] } } }
+      }}]
+    },
+    "Ping": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "ping" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] },
+    "Pong": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "pong" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] }
+  }
+}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/sync-v1.schema.json",
+  "title": "Sync v1 request and response contract",
+  "description": "User cursor carries only low-frequency friend, conversation, membership and plugin state. Message history uses a per-conversation sequence. Cursor and materialized data commit atomically on a client.",
+  "oneOf": [
+    {"$ref":"#/$defs/UserRequest"}, {"$ref":"#/$defs/UserPage"},
+    {"$ref":"#/$defs/ConversationRequest"}, {"$ref":"#/$defs/ConversationPage"}
+  ],
+  "$defs": {
+    "Id": {"type":"string","format":"uuid"},
+    "Seq": {"type":"integer","minimum":0},
+    "PositiveSeq": {"type":"integer","minimum":1},
+    "Cursor": {"type":"string","minLength":1,"maxLength":256},
+    "UserRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","cursor","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.request"},"requestId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"limit":{"type":"integer","minimum":1}}},
+    "UserEvent": {"type":"object","additionalProperties":false,"required":["eventId","cursor","kind","subjectId","revision"],"properties":{"eventId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"kind":{"enum":["friend.changed","conversation.changed","membership.changed","plugin.changed"]},"subjectId":{"$ref":"#/$defs/Id"},"revision":{"$ref":"#/$defs/PositiveSeq"}}},
+    "UserPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","events","nextCursor","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.page"},"requestId":{"$ref":"#/$defs/Id"},"events":{"type":"array","items":{"$ref":"#/$defs/UserEvent"}},"nextCursor":{"$ref":"#/$defs/Cursor"},"hasMore":{"type":"boolean"}}},
+    "ConversationRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","afterSeq","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.request"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"afterSeq":{"$ref":"#/$defs/Seq"},"limit":{"type":"integer","minimum":1}}},
+    "Message": {"type":"object","additionalProperties":false,"required":["conversationId","seq","messageId","senderId","requestId","createdAt","content"],"properties":{"conversationId":{"$ref":"#/$defs/Id"},"seq":{"$ref":"#/$defs/PositiveSeq"},"messageId":{"$ref":"#/$defs/Id"},"senderId":{"$ref":"#/$defs/Id"},"requestId":{"$ref":"#/$defs/Id"},"createdAt":{"type":"string","format":"date-time"},"content":{"type":"object","additionalProperties":false,"required":["kind","text"],"properties":{"kind":{"const":"TEXT"},"text":{"type":"string","minLength":1,"maxLength":4096}}}}},
+    "ConversationPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","messages","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.page"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"messages":{"type":"array","items":{"$ref":"#/$defs/Message"}},"hasMore":{"type":"boolean"}}}
+  }
+}

@@ -1,0 +1,54 @@
+diff --git a/clients/desktop/src-tauri/src/desktop_capabilities.rs b/clients/desktop/src-tauri/src/desktop_capabilities.rs
+index 075aa27..1524ede 100644
+--- a/clients/desktop/src-tauri/src/desktop_capabilities.rs
++++ b/clients/desktop/src-tauri/src/desktop_capabilities.rs
+@@ -58,7 +58,7 @@ pub fn window_control(window:tauri::WebviewWindow,action:String)->Result<(),Stri
+     };
+     result.map_err(|_|"Window unavailable".into())
+ }
+-fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){let _=w.show();let _=w.unminimize();let _=w.set_focus();}}
++fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){w.show().expect("Window show failed");w.unminimize().expect("Window restore failed");w.set_focus().expect("Window focus failed");}}
+ struct TrayPresentation {open:tauri::menu::MenuItem<tauri::Wry>,hide:tauri::menu::MenuItem<tauri::Wry>,quit:tauri::menu::MenuItem<tauri::Wry>}
+ #[tauri::command]
+ pub fn tray_text(app:tauri::AppHandle,open:String,hide:String,quit:String,tooltip:String)->Result<(),String>{
+@@ -95,7 +95,7 @@ pub fn setup(app:&mut tauri::App)->Result<(),Box<dyn std::error::Error>>{
+     let menu=tauri::menu::Menu::with_items(app,&[&open,&hide,&quit])?;
+     app.manage(TrayPresentation{open,hide,quit});
+     let icon=app.default_window_icon().ok_or("Application icon unavailable")?.clone();
+-    tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){let _=w.hide();}},"quit"=>app.exit(0),_=>{}}).build(app)?;
++    tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){w.hide().expect("Window hide failed");}},"quit"=>app.exit(0),_=>{}}).build(app)?;
+     Ok(())
+ }
+ 
+diff --git a/clients/desktop/src-tauri/src/lib.rs b/clients/desktop/src-tauri/src/lib.rs
+index 1465829..c632cb1 100644
+--- a/clients/desktop/src-tauri/src/lib.rs
++++ b/clients/desktop/src-tauri/src/lib.rs
+@@ -31,7 +31,7 @@ pub fn run() {
+         .plugin(tauri_plugin_notification::init())
+         .plugin(tauri_plugin_global_shortcut::Builder::new().build())
+         .setup(desktop_capabilities::setup)
+-        .on_window_event(|window,event|if let tauri::WindowEvent::CloseRequested{api,..}=event {api.prevent_close();let _=window.hide();})
++        .on_window_event(|window,event|if let tauri::WindowEvent::CloseRequested{api,..}=event {api.prevent_close();window.hide().expect("Window hide failed");})
+         .invoke_handler(tauri::generate_handler![database_transaction,database_query,desktop_capabilities::native_https,desktop_capabilities::credential_read,desktop_capabilities::credential_write,desktop_capabilities::credential_remove,desktop_capabilities::appearance_load,desktop_capabilities::appearance_save,desktop_capabilities::language_load,desktop_capabilities::language_save,desktop_capabilities::tray_text,desktop_capabilities::native_notify,desktop_capabilities::window_control,desktop_capabilities::window_maximized]);
+     builder.run(tauri::generate_context!())
+         .expect("Tauri startup failed");
+diff --git a/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt b/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt
+index 658da53..a935111 100644
+--- a/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt
++++ b/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt
+@@ -130,7 +130,13 @@ class Repository(context: Context, accountId: String) : Closeable {
+     }
+     fun messages(c: String) = query("""SELECT request_id,sender_id,content,state,server_message_id,CAST(server_seq AS TEXT),server_time
+         FROM messages WHERE conversation_id=? ORDER BY server_seq IS NULL,server_seq,local_id""", arrayOf(c))
+-    fun contiguous(c: String) = query("SELECT contiguous_seq FROM conversations WHERE conversation_id=?",arrayOf(c)).firstOrNull()?.first()?.toLong() ?: 0L
++    fun contiguous(c: String): Long {
++        val rows = query("SELECT contiguous_seq FROM conversations WHERE conversation_id=?",arrayOf(c))
++        if (rows.isEmpty()) return 0L
++        val value = checkNotNull(rows.first().first()) { "Invalid contiguous sequence" }
++        check(value.matches(Regex("0|[1-9][0-9]*"))) { "Invalid contiguous sequence" }
++        return value.toLong()
++    }
+     fun conversationIds() = query("SELECT conversation_id FROM conversations UNION SELECT conversation_id FROM messages UNION SELECT subject_id FROM user_state WHERE kind IN ('conversation.changed','membership.changed') ORDER BY 1").map { it.single()!! }
+     fun cursor() = query("SELECT cursor FROM user_cursor WHERE singleton=1").single().single()!!
+     override fun close() { db.close() }

@@ -2,7 +2,7 @@
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
 status: review
-owner: fresh Fix Agent /root/fix_cause_cycle_read_scope
+owner: fresh Fix Agent /root/fix_outbox_mixed_roots
 stage: S2
 gate: S2
 ---
@@ -205,3 +205,11 @@ Regular b5ea135 FAIL F-CLEANUP-CAUSE-CYCLE and F-CONTIGUOUS-READ-DEFAULT preserv
 # Fresh b5 repair local handoff
 
 Both b5 findings repaired within pre-amended Human scope. Only3HTTP dual-known projections and2contiguousREAD mappings;185inputhashes/305navigation; protected63equal+2READmethod exceptions with allotherbytes/readSQL equal. No false all65unchanged statement applies to this newcandidate; older paragraphs preserve earliercandidate history. Current local lockedshared/Web/strictDesktop/literal/actualSQLx and API34 Sync69+Read33+contiguous18/Send66+Read21 PASS; finalstatic/recovery/history/failures/resources in fix-cause-read/handoff.md and verification-history.json. New finalSHA regular and DIFFERENTfreshspecialist bothPENDING, then exactheadhostedCI/protectedintegration/actualmain/safesync; no push/Taskdone/StagePASS. Taskbranch exactSHA/cleanAcceptance/Recorderreceipt external after cleancommit. LastGood35bd6f5. Own5594/5596closed/buildspreserved; mainuntouched. SoleFix sourcelease releases after finalcleanreceipt.
+
+# Fresh specialized a292 FAIL / local Outbox mixed-root repair (2026-10-14)
+
+Regular a292 PASS is old-candidate only; fresh specialized a292 FAIL F-OUTBOX-MIXED-CONNECT-ROOT is immutable at special-error-a292/, all332 seals verified; old regular at regular-a292-recovery2/, all355 seals verified. Sole new Fix /root/fix_outbox_mixed_roots repairs only existing Outbox transport predicate and core regression tests. Actual default pgx DNS/Dial joins IPv6 network refusal with IPv4 XX000; mixed/unknown return original complete error instead of log/retry, pure known transport continues existing pending retry/cancel. Actual regression red before fix then green, allGo/race/vet and actual disposable PG/NATS DB_TEST_ENABLE=1 localPASS. No new categories/framework/dependencies/SQL/public contracts or excluded SQLite write/draft change.
+
+Current185 product hashes/306 precise token records (305 historical plus1 previously omitted retry boundary,271executable35nonexecutable) and all65 protected bytes equal a292:63wholebaseline +2prior permittedREADexceptions. Durable exact commands/results/failures/resources/protection/limits in fix-outbox-mixed/handoff.md and verification-history.json. Final candidate identity is exact committed task branch HEAD bound by external sealed Fix receipt; clean committed Acceptance/Recorder finish follow. Taskreview/S2OPEN/lastgood35bd6f5. Sourcewriter owns only enumerated delta until clean final receipt releases lease; main unknown work untouched.
+
+Both NEW finalSHA fresh regular Review and DIFFERENT NEW specialized audit PENDING. Any further Fix repeats both. No push/PR/CI/integration/main sync until reviews PASS; after bothPASS exact-head actual required hostedjobs, protectedintegration, actual-main and safeH:/IM-platform synchronization remain required. Synchronization/mainSHA PENDING; no Taskdone/StagePASS. RecorderR-ERROR-OUTBOX-MIXED-FIX prospective_resume incompleteprestart, relatedR-ERROR-SPECIAL-A292; raw old streams immutable. Fourowned ephemeral projects empty/3owned migrate tags removed; no private process/device/hosts/trust write.

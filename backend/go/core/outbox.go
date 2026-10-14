@@ -2,7 +2,6 @@ package core
 
 import (
 	"context"
-	"errors"
 	"log"
 	"net"
 	"time"
@@ -25,8 +24,7 @@ func RelaySessionRevocations(ctx context.Context, db *pgxpool.Pool, nc *nats.Con
 				if ctx.Err() != nil {
 					return ctx.Err()
 				}
-				var network net.Error
-				if errors.Is(err, nats.ErrConnectionClosed) || errors.Is(err, nats.ErrDisconnected) || errors.Is(err, nats.ErrTimeout) || errors.Is(err, context.DeadlineExceeded) || errors.As(err, &network) {
+				if outboxTransportFailure(err) {
 					log.Print("Outbox transport batch failed; pending events retained for next tick")
 					continue
 				}
@@ -34,6 +32,39 @@ func RelaySessionRevocations(ctx context.Context, db *pgxpool.Pool, nc *nats.Con
 			}
 		}
 	}
+}
+
+// pgx may join failures from multiple connection attempts. Retry only when
+// every branch is a known transport fault; keep the original error for callers.
+func outboxTransportFailure(err error) bool {
+	known := false
+	for err != nil {
+		if joined, ok := err.(interface{ Unwrap() []error }); ok {
+			branches := joined.Unwrap()
+			if len(branches) == 0 {
+				return false
+			}
+			for _, branch := range branches {
+				if !outboxTransportFailure(branch) {
+					return false
+				}
+			}
+			return true
+		}
+		if _, ok := err.(net.Error); ok {
+			// net.OpError wraps a syscall error that does not itself implement net.Error.
+			known = true
+		}
+		if err == nats.ErrConnectionClosed || err == nats.ErrDisconnected || err == nats.ErrTimeout || err == context.DeadlineExceeded {
+			known = true
+		}
+		if wrapped, ok := err.(interface{ Unwrap() error }); ok {
+			err = wrapped.Unwrap()
+			continue
+		}
+		return known
+	}
+	return false
 }
 
 func relaySessionBatch(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) error {

@@ -1,0 +1,75 @@
+SOURCE QA currenthash 4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2
+package im.platform.client.sync
+
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import im.platform.client.storage.Repository
+import im.platform.client.send.SendStorageFailure
+import im.platform.client.send.repositoryRead
+import java.util.UUID
+
+// Actual SDK SQLite owned fixtures; NULL uses a deliberately malformed table,
+// never a claim that the canonical NOT NULL schema accepts NULL.
+internal class ContiguousReadChecks(private val context: Context) {
+    private var assertions = 0
+    private fun verify(value: Boolean) { check(value); assertions++ }
+    fun run(): Int {
+        val user = UUID.randomUUID().toString()
+        val conversation = UUID.randomUUID().toString()
+        val repo = Repository(context,user)
+        repo.initialize()
+        val field = Repository::class.java.getDeclaredField("db").apply { isAccessible = true }
+        val db = field.get(repo) as SQLiteDatabase
+        try {
+            verify(repo.contiguous(conversation) == 0L)
+            db.execSQL("INSERT INTO conversations(conversation_id,contiguous_seq) VALUES(?,?)",arrayOf(conversation,"0"))
+            for (value in listOf("0","7","9007199254740993","9223372036854775807")) {
+                db.execSQL("UPDATE conversations SET contiguous_seq=? WHERE conversation_id=?",arrayOf(value,conversation))
+                verify(repo.contiguous(conversation) == value.toLong())
+            }
+            db.execSQL("UPDATE conversations SET contiguous_seq=? WHERE conversation_id=?",arrayOf("",conversation))
+            verify(repo.query("SELECT CAST(contiguous_seq AS TEXT),typeof(contiguous_seq) FROM conversations WHERE conversation_id=?",arrayOf(conversation)).single() == listOf("","text"))
+            val empty = try { repositoryRead { repo.contiguous(conversation) }; error("empty present sequence accepted") } catch (error: IllegalStateException) { error }
+            verify(empty !is SendStorageFailure)
+            verify(empty.message == "Invalid contiguous sequence")
+            verify(empty.stackTrace.any { it.className == Repository::class.java.name && it.methodName == "contiguous" })
+            // Test-only schema replacement isolates the previous nullable Elvis path.
+            db.execSQL("DROP TABLE conversations")
+            db.execSQL("CREATE TABLE conversations(conversation_id TEXT PRIMARY KEY,contiguous_seq INTEGER)")
+            db.execSQL("INSERT INTO conversations VALUES(?,NULL)",arrayOf(conversation))
+            verify(repo.query("SELECT contiguous_seq FROM conversations WHERE conversation_id=?",arrayOf(conversation)).single() == listOf(null))
+            val nullValue = try { repositoryRead { repo.contiguous(conversation) }; error("NULL present sequence accepted") } catch (error: IllegalStateException) { error }
+            verify(nullValue !is SendStorageFailure)
+            verify(nullValue.message == "Invalid contiguous sequence")
+            verify(nullValue.stackTrace.any { it.className == Repository::class.java.name && it.methodName == "contiguous" })
+            for (value in listOf("-1","1.5","9223372036854775808")) {
+                db.execSQL("UPDATE conversations SET contiguous_seq=? WHERE conversation_id=?",arrayOf(value,conversation))
+                val failure = try { repo.contiguous(conversation); null } catch (error: Exception) { error }
+                verify(failure is IllegalStateException || failure is NumberFormatException)
+            }
+            db.execSQL("DELETE FROM conversations")
+            verify(repo.contiguous(conversation) == 0L)
+        } finally {
+            repo.close()
+            verify(context.deleteDatabase("im-$user.sqlite"))
+        }
+        return assertions
+    }
+}
+
+eventkeys dict_keys(['data', 'event_hash', 'event_type', 'previous_event_hash', 'role', 'run_id', 'schema_version', 'seq', 'task_id', 'timestamp'])
+LASTEVENT {'data': {'diff_sha256': '20f94677c4e329d91e475a63a7ca1d4b7302b4315e398160c546e12ce7aba44b', 'final_head_sha': 'a292f516f622651ae62595163e479c13fff78c1d', 'result': 'PASS', 'secret_redaction_applied': True}, 'event_hash': 'e197fd9b9cf405c69a3c049c4b5f66bea95ec3d64aad5ddd37d115ec32f01767', 'event_type': 'run_finished', 'previous_event_hash': 'b83c3d7f3a21725b9a571ec1291dcb1f3bd2ccaf8995ad66d8bf87d47572d0bf', 'role': 'fix', 'run_id': 'R-ERROR-CAUSE-READ-FIX', 'schema_version': '1.0.0', 'seq': 125, 'task_id': 'LOOP1-ERROR-HANDLING-001', 'timestamp': '2026-10-13T13:58:35.857121Z'}
+{'data': {'argv': ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'mobile', '--serial', 'emulator-5594'], 'command_id': 'C-f871fa1c-d113-4c05-9a7c-a75098ccbe00', 'cwd': '.', 'secret_redaction_applied': False}, 'event_hash': '8e16e25eab5caf91c66b33f80ae2c4fe299c2c7aebd773e580b48669578061c6', 'event_type': 'command_started', 'previous_event_hash': '4d3e208c96263f20c0c9da8db5f479a3fc57c4b9be0d91a13161624a62da6f01', 'role': 'fix', 'run_id': 'R-ERROR-CAUSE-READ-FIX', 'schema_version': '1.0.0', 'seq': 31, 'task_id': 'LOOP1-ERROR-HANDLING-001', 'timestamp': '2026-10-13T13:17:19.090982Z'}
+{'data': {'argv': ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'send-mobile', '--serial', 'emulator-5594'], 'command_id': 'C-c2dcfa92-07fa-4cd4-9c83-1e265280abf4', 'cwd': '.', 'secret_redaction_applied': False}, 'event_hash': 'd50c31f2982d05fe3b6d2be4f09cc6e099cc930e9d86d6a6b921770148ca8bd3', 'event_type': 'command_started', 'previous_event_hash': 'e8d62073c506345aaecc4ab8f03f2ef42d3eca58a3d2e96de79b63f96520f4c6', 'role': 'fix', 'run_id': 'R-ERROR-CAUSE-READ-FIX', 'schema_version': '1.0.0', 'seq': 41, 'task_id': 'LOOP1-ERROR-HANDLING-001', 'timestamp': '2026-10-13T13:21:29.849355Z'}
+{'data': {'argv': ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'mobile', '--serial', 'emulator-5596'], 'command_id': 'C-37f07ebc-3bba-412c-ae8a-bc04987ad4dd', 'cwd': '.', 'secret_redaction_applied': False}, 'event_hash': 'a76d6bf22dccd85caaf323bb14cec7eac6e68f0b5b3b7d18c748ad52a6502eec', 'event_type': 'command_started', 'previous_event_hash': '1f6441712fc30bd678ec3c39211e40a99a931e94179cd3b9603139c6cab3c7e8', 'role': 'fix', 'run_id': 'R-ERROR-CAUSE-READ-FIX', 'schema_version': '1.0.0', 'seq': 74, 'task_id': 'LOOP1-ERROR-HANDLING-001', 'timestamp': '2026-10-13T13:36:54.509398Z'}
+{'data': {'argv': ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'mobile', '--serial', 'emulator-5596'], 'command_id': 'C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a', 'cwd': '.', 'secret_redaction_applied': False}, 'event_hash': 'adecc7937d606b3e66055cecfc2e8b196358d1524cc3645572122dad8e1147d1', 'event_type': 'command_started', 'previous_event_hash': 'f585c0abb455be00d4c2bf8bca40b16d4c37aae1dcbfefcd2edf1d13a7119e2f', 'role': 'fix', 'run_id': 'R-ERROR-CAUSE-READ-FIX', 'schema_version': '1.0.0', 'seq': 84, 'task_id': 'LOOP1-ERROR-HANDLING-001', 'timestamp': '2026-10-13T13:40:23.514636Z'}
+{'data': {'command_id': 'C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a', 'duration_ms': 52219.0, 'exit_code': 0, 'result': 'PASS', 'secret_redaction_applied': False, 'stderr_blob': 'blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stderr.txt', 'stderr_sha256': '7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6', 'stdout_blob': 'blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stdout.txt', 'stdout_sha256': 'edd38fdfaf44a6db659194d0fcf16dde7e9951b8431933dd29816d3775c92263'}, 'event_hash': 'e84b42a34d0b88f21801304a5a3af2224cbd7be04418be5633b0f30c63e9ef4e', 'event_type': 'command_finished', 'previous_event_hash': 'adecc7937d606b3e66055cecfc2e8b196358d1524cc3645572122dad8e1147d1', 'role': 'fix', 'run_id': 'R-ERROR-CAUSE-READ-FIX', 'schema_version': '1.0.0', 'seq': 85, 'task_id': 'LOOP1-ERROR-HANDLING-001', 'timestamp': '2026-10-13T13:41:15.741965Z'}
+APK C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-cause-read\owned-build-artifacts\clients_mobile_app_build\outputs\apk\debug\app-debug.apk 1a7c447e933eacd24ae8f56ec125ae4c784c4a28b09686ee02665c7c0b9cd493 finalQA match False
+APK C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-cause-read\owned-build-artifacts\clients_mobile_app_build\outputs\apk\androidTest\debug\app-debug-androidTest.apk fcc88f1ef24d7735fb2c6ce6e69ec99443dcdb1c9ea0c5b09f3ef4ae2e9776db finalQA match False
+APK C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-cause-read\owned-final-android-build-artifacts\clients_mobile_app_build\outputs\apk\debug\app-debug.apk 1a7c447e933eacd24ae8f56ec125ae4c784c4a28b09686ee02665c7c0b9cd493 finalQA match False
+APK C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-cause-read\owned-final-android-build-artifacts\clients_mobile_app_build\outputs\apk\androidTest\debug\app-debug-androidTest.apk 3ee95cb2381519954021d992f885a85d3aa3bb13018a11a63586c78b54c79887 finalQA match True
+PRIORLOCAL ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'mobile', '--serial', 'emulator-5594'] 0 113891
+PRIORLOCAL ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'send-mobile', '--serial', 'emulator-5594'] 0 24672
+PRIORLOCAL ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'mobile', '--serial', 'emulator-5596'] 1 53860
+PRIORLOCAL ['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe', '-Xutf8', '-B', 'tests/clients/gui/native.py', 'mobile', '--serial', 'emulator-5596'] 0 52484
+SEALED 24 LIMIT priorfix runtime evidence; no fresh execution

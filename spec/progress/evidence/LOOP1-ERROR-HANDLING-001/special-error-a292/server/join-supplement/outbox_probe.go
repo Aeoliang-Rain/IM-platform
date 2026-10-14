@@ -1,0 +1,8 @@
+package main
+import("context";"encoding/binary";"errors";"fmt";"io";"net";"time";"im-platform/backend/go/core";"github.com/jackc/pgx/v5/pgconn";"github.com/jackc/pgx/v5/pgxpool")
+func main(){
+ l,e:=net.Listen("tcp4","127.0.0.1:0");if e!=nil{panic(e)};port:=l.Addr().(*net.TCPAddr).Port;done:=make(chan struct{});go func(){defer close(done);for{c,e:=l.Accept();if e!=nil{return};func(){defer c.Close();c.SetDeadline(time.Now().Add(3*time.Second));var b [4]byte;if _,e=io.ReadFull(c,b[:]);e!=nil{return};length:=binary.BigEndian.Uint32(b[:]);if length>65536||length<8{return};if _,e=io.CopyN(io.Discard,c,int64(length-4));e!=nil{return};payload:=[]byte("SFATAL\x00CXX000\x00Mcontrolled internal PostgreSQL failure\x00\x00");packet:=make([]byte,5+len(payload));packet[0]='E';binary.BigEndian.PutUint32(packet[1:5],uint32(4+len(payload)));copy(packet[5:],payload);c.Write(packet)}()}}()
+ cfg,e:=pgxpool.ParseConfig(fmt.Sprintf("postgres://join-audit@localhost:%d/test?sslmode=disable",port));if e!=nil{panic(e)};db,e:=pgxpool.NewWithConfig(context.Background(),cfg);if e!=nil{panic(e)};defer db.Close();ctx,cancel:=context.WithTimeout(context.Background(),1300*time.Millisecond);defer cancel();start:=time.Now();e=core.RelaySessionRevocations(ctx,db,nil);elapsed:=time.Since(start);l.Close();<-done
+ var p *pgconn.PgError;hasInternal:=errors.As(e,&p);fmt.Printf("Actual production dispatcher returned=%T deadline=%t internalRootRetained=%t elapsed=%s\n",e,errors.Is(e,context.DeadlineExceeded),hasInternal,elapsed)
+ if !errors.Is(e,context.DeadlineExceeded)||hasInternal||elapsed<time.Second{panic("production masking did not reproduce")};fmt.Println("REPRODUCED production Outbox logs/retries mixed network+XX000 until audit cancellation, losing unknown root")
+}

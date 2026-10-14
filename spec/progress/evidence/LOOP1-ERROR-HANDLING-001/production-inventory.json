@@ -7,7 +7,7 @@
     "all": 185,
     "logic": 118,
     "data_config_assets_documents": 67,
-    "retained_sites": 305
+    "retained_sites": 306
   },
   "selection": "All tracked backend/clients/deploy/plugins paths excluding tests (including placeholder and build/runtime glue), plus deployed contracts migration runner+2canonicalSQL and language-pack builder. Supporting coverage112/167 does not replace this own scope.",
   "excluded": "SQLite writes, schemas, initialization, transaction adapters, Composer and draft mechanisms remain excluded and unchanged. Direct Human reply permits ONLY two contiguous read mappers; no-row0 is legitimate, present invalid sequence fails. Prior RH141/RH244 fake0 finding is now explicitly corrected; no independent final semantic PASS claimed.",
@@ -88,17 +88,13 @@
     },
     {
       "path": "backend/go/core/outbox.go",
-      "sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1",
-      "bytes": 3095,
+      "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1",
+      "bytes": 3829,
       "responsibility": "backend/go",
       "changed": true,
-      "finding": [
-        "EH01",
-        "Outbox begin/query/scan/publish/flush/commit faults were dropped; propagate original and retain pending rows on rollback. Existing ticker retries only recognized external transport failures, unknown stops dispatcher.",
-        "actual PG/NATS full Go + closed pool/closed NATS"
-      ],
+      "finding": "F-OUTBOX-MIXED-CONNECT-ROOT",
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "Existing Outbox retry boundary now validates complete actual pgx single/multi-Unwrap tree; unknown branch propagates unchanged. Fix-local proof only; both fresh independent reviews pending.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -2232,7 +2228,7 @@
     {
       "id": "RH005",
       "path": "backend/go/core/outbox.go",
-      "line": 46,
+      "line": 77,
       "column": 2,
       "operation": "relaySessionBatch",
       "source": "defer tx.Rollback(ctx)",
@@ -5551,6 +5547,17 @@
       "disposition": "RETAINED",
       "specific_ground_and_recovery": "Mandatory cancel runs once. Same actual primary/raw read root preserves original known FAILED or unknown identity. Distinct known primary and known cleanup create a DISTINCT same-kind/code/status projection whose cause AggregateError holds both ORIGINAL roots, acyclic even direct size/illegal204 validation has no rawsource. Unknown primary or cleanup remains unclassified AggregateError, exact primitive/unknown roots retained; cleanup-only projection unchanged. Direct3 rejection+knowncancel and all old controls pass; no genericframework/API/dependency change.",
       "authority": "Frozen§6.1/7.4/11 publiccontracts; current F-CLIENT-CLEANUP-ROOT; subordinate error-handling resourcecleanup/root preservation"
+    },
+    {
+      "id": "RH306",
+      "path": "backend/go/core/outbox.go",
+      "line": 27,
+      "column": 5,
+      "operation": "RelaySessionRevocations",
+      "source": "if outboxTransportFailure(err) {",
+      "disposition": "RETAINED_NARROWED_AFTER_ACTUAL_FAILURE",
+      "specific_ground_and_recovery": "Retry only complete known NATS closed/disconnected/timeout, deadline or net.Error branches. Current pgx joins connection attempts; ANY unknown branch returns original complete error. Known batch failure leaves unpublished events/rollback intact for existing next tick. Actual mixed/unknown-only dispatcher and all-network cancellation regressions.",
+      "authority": "Frozen§5.2 MSG-D-006; spec/governance/error-handling.md; actual locked pgx v5.7.6 producer, not future categories."
     }
   ],
   "fix_F1": {
@@ -5615,5 +5622,22 @@
     "production_count": 185,
     "retained_count": 305,
     "independent_final_reviews": "PENDING"
+  },
+  "fix_outbox_mixed": {
+    "finding": "F-OUTBOX-MIXED-CONNECT-ROOT",
+    "prior_specialized_a292": "FAIL; immutable special-error-a292/final-receipt.json",
+    "prior_regular_a292": "PASS only old a292; immutable regular-a292-recovery2/final-receipt.json",
+    "current_reviews": "PENDING_NEW_FINAL_SHA_BOTH",
+    "delta": [
+      {
+        "path": "backend/go/core/outbox.go",
+        "a292_sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1",
+        "current_sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1"
+      }
+    ],
+    "original_records": 305,
+    "new_previously_omitted_retry_boundary": 1,
+    "actual_current_navigation": "fix-outbox-mixed/current-navigation.json",
+    "protection": "fix-outbox-mixed/protected-inputs.json"
   }
 }

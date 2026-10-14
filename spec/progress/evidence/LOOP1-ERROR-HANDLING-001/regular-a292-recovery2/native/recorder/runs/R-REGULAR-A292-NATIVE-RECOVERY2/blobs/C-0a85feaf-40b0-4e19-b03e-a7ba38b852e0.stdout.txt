@@ -1,0 +1,363 @@
+
+FILE 59 clients\mobile\app\src\main\kotlin\im\platform\client\send\SendViewModel.kt HASH 979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8
+1: package im.platform.client.send
+2: import androidx.lifecycle.ViewModel
+3: import im.platform.client.storage.Repository
+4: import im.platform.client.storage.LocalMessage
+5: import im.platform.client.storage.ServerMessage
+6: import im.platform.client.storage.Committed
+7: import im.platform.client.storage.UserEvent
+8: import java.util.concurrent.CopyOnWriteArraySet
+9: import kotlinx.coroutines.*
+10: import kotlinx.coroutines.flow.MutableStateFlow
+11: import kotlinx.coroutines.flow.StateFlow
+12: import kotlinx.coroutines.flow.asStateFlow
+13: import kotlinx.coroutines.sync.Mutex
+14: import kotlinx.coroutines.sync.withLock
+15: import java.math.BigInteger
+16: import java.net.URI
+17: import java.util.UUID
+18: import org.json.JSONObject
+19: 
+20: data class SendSession(val userId:String,val sessionId:String,val sessionEpoch:BigInteger,val accessToken[REDACTED] {
+21:     override fun toString()="SendSession(credentials redacted)"
+22: }
+23: internal class SendStorageFailure(cause:Exception):IllegalStateException("Send storage operation failed",cause)
+24: private fun <T> storage(action:()->T):T {
+25:     try{return action()}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}
+26:     catch(error:IllegalStateException){if(error.message?.startsWith("attempt to re-open an already-closed object:")==true)throw SendStorageFailure(error);throw error}
+27: }
+28: data class SendState(val connection:String="offline",val messages:List<List<String?>> = emptyList(),val error:String?=null)
+29: // One ViewModel belongs to one authenticated account. The supplied Repository
+30: // uses that account's existing SDK SQLite; it remains the sole storage writer.
+31: class SendViewModel(private val repo:Repository, private val session:SendSession,
+32:     private val factory:(String,()->Unit,(String)->Unit,()->Unit)->SendSocket = { url,open,message,end -> Wss(url,open,message,end) },
+33:     private val timeoutMs:Long=15000, private val id:()->String={UUID.randomUUID().toString()}, private val ownsRepository:Boolean=false): ViewModel() {
+34:     private val scope=CoroutineScope(SupervisorJob()+Dispatchers.IO)
+35:     private val lock=Mutex()
+36:     private val mutableState=MutableStateFlow(SendState())
+37:     val state:StateFlow<SendState> = mutableState.asStateFlow()
+38:     private var socket:SendSocket?=null
+39:     private var generation=0L
+40:     private var binding=""
+41:     private var bound=false
+42:     private var retired=false
+43:     private val deliveries=CopyOnWriteArraySet<(String,Long)->Unit>()
+44:     fun observeDelivery(listener:(String,Long)->Unit):()->Unit {deliveries.add(listener); return {deliveries.remove(listener); Unit}}
+45:     private fun delivered(c:String,n:Long) {if(!retired) deliveries.forEach {it(c,n)}}
+46:     private var conversation=""
+47:     private data class Attempt(val message:LocalMessage,val generation:Long,var sent:Boolean=false,var timer:Job?=null)
+48:     private val attempts=mutableMapOf<String,Attempt>()
+49:     private val known=mutableSetOf<String>()
+50:     // null means this RID has identified multiple Conversations on this socket;
+51:     // retain that fact after ACK/timeout until the connection is retired.
+52:     private val requestConversations=mutableMapOf<String,String?>()
+53:     init { require(Wire.uuid(session.userId)==session.userId && Wire.uuid(session.sessionId)==session.sessionId && session.sessionEpoch.signum()>0 && session.accessToken.isNotEmpty() && timeoutMs>0) }
+54:     fun matchesSession(s:SendSession)=session==s
+55:     fun matchesRepository(repository:Repository)=repo===repository
+56:     private fun key(c:String,r:String)="$c/$r"
+57:     private fun publish(value:SendState) { if(!retired) mutableState.value=value }
+58:     private fun refresh() { publish(mutableState.value.copy(messages=if(conversation.isEmpty()) emptyList() else repositoryRead { repo.messages(conversation) })) }
+59:     private suspend fun operation(action:suspend ()->Unit) { lock.withLock { try { action() } catch(error:SendStorageFailure) { publish(mutableState.value.copy(error="storage")); throw error } } }
+60:     private fun callback(action:suspend ()->Unit) { scope.launch { try { operation(action) } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } } }
+61:     suspend fun openConversation(c:String) = operation { if(!retired) { conversation=Wire.uuid(c); refresh() } }
+62:     suspend fun connect(endpoint:String) = operation {
+63:         check(!retired); val uri=URI(endpoint); require(uri.scheme=="wss" && uri.host!=null && uri.rawQuery==null && uri.rawFragment==null && uri.rawUserInfo==null) { "Invalid WSS endpoint" }
+64:         disconnectNow(); generation++; val g=generation; binding=Wire.uuid(id()); val bind=binding
+65:         publish(mutableState.value.copy(connection="binding"))
+66:         socket=factory(endpoint,{callback { if(g==generation && !retired)try{socket?.send(Wire.envelope("auth.bind",bind,JSONObject().put("accessToken",session.accessToken)))}catch(_:java.io.IOException){disconnectNow()} }},
+67:             {raw -> callback { if(g==generation && !retired) receive(raw,g) }},{callback { if(g==generation && !retired) disconnectNow() }})
+68:     }
+69:     private fun disconnectNow() {
+70:         generation++; bound=false; requestConversations.clear(); val old=socket; socket=null; old?.close()
+71:         publish(mutableState.value.copy(connection="offline"))
+72:         val pending=attempts.values.toList(); attempts.clear(); pending.forEach { it.timer?.cancel(); storage { repo.markFailed(it.message.conversationId,it.message.requestId) } }; refresh()
+73:     }
+74:     suspend fun disconnect() = operation { disconnectNow() }
+75:     suspend fun dispose() = lock.withLock {
+76:         retired=true; deliveries.clear(); mutableState.value=SendState(error=mutableState.value.error)
+77:         try {
+78:             try { disconnectNow() } finally { if(ownsRepository) storage { repo.close() } }
+79:         } catch(error:SendStorageFailure) {
+80:             mutableState.value=SendState(error="storage"); throw error
+81:         } finally {
+82:             attempts.values.forEach { it.timer?.cancel() }; attempts.clear(); scope.cancel()
+83:         }
+84:     }
+85:     override fun onCleared() {
+86:         socket?.close(); retired=true; deliveries.clear(); requestConversations.clear(); mutableState.value=SendState()
+87:         scope.launch { try { lock.withLock { if(ownsRepository) storage { repo.close() } } } finally { scope.cancel() } }
+88:     }
+89:     suspend fun send(c:String,text:String):String {
+90:         val r=Wire.uuid(id()); val m=LocalMessage(Wire.uuid(c),r,session.userId,Wire.text(text)); operation { begin(m) }; return r
+91:     }
+92:     suspend fun retry(c:String,r:String) = operation {
+93:         check(!retired); val conversation=Wire.uuid(c); val request=Wire.uuid(r)
+94:         val row=repositoryRead { repo.messages(conversation) }.firstOrNull {it[0]==request} ?: error("Unknown send")
+95:         require(row[1]==session.userId); if(row[3]!="SENT") begin(LocalMessage(conversation,request,session.userId,row[2]!!))
+96:     }
+97:     private fun begin(m:LocalMessage) {
+98:         check(!retired); storage { repo.localSend(m) }; known.add(key(m.conversationId,m.requestId)); refresh()
+99:         val k=key(m.conversationId,m.requestId); attempts[k]?.timer?.cancel(); val a=Attempt(m,generation); attempts[k]=a
+100:         if(!bound || socket==null) { fail(k,a); return }
+101:         try { socket!!.send(Wire.envelope("message.send",m.requestId,JSONObject().put("conversationId",m.conversationId).put("content",JSONObject().put("kind","TEXT").put("text",m.text)))); a.sent=true }
+102:         catch(_:java.io.IOException) { fail(k,a); return }
+103:         val priorConversation=requestConversations[m.requestId]
+104:         requestConversations[m.requestId]=if(!requestConversations.containsKey(m.requestId) || priorConversation==m.conversationId) m.conversationId else null
+105:         a.timer=scope.launch { delay(timeoutMs); try { operation { fail(k,a) } } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } }
+106:     }
+107:     private fun fail(k:String,a:Attempt) { if(attempts[k]!==a) return; attempts.remove(k); storage { repo.markFailed(a.message.conversationId,a.message.requestId) }; refresh() }
+108:     private fun clear(c:String,r:String) { attempts.remove(key(c,r))?.timer?.cancel() }
+109:     private fun protocolFailure() { disconnectNow(); publish(mutableState.value.copy(error="protocol")) }
+110:     private fun receive(raw:String,g:Long) {
+111:         val f=try {Wire.decode(raw)} catch(_:WireFailure) {protocolFailure(); return}; val p=f.payload
+112:         if(f.type=="ping") {try{socket?.send(Wire.envelope("pong",f.requestId,JSONObject()))}catch(_:java.io.IOException){disconnectNow()};return}; if(f.type=="pong") return
+113:         if(f.type=="auth.ack") {
+114:             if(f.requestId!=binding || p["status"]!="bound" || p["userId"]!=session.userId || p["sessionId"]!=session.sessionId || p["sessionEpoch"]!=session.sessionEpoch || p["clientType"]!="MOBILE" || bound) {protocolFailure(); return}
+115:             bound=true; publish(mutableState.value.copy(connection="ready")); return
+116:         }
+117:         if(!bound) {protocolFailure(); return}
+118:         if(f.type=="session.revoked") { if(p["sessionId"]!=session.sessionId) protocolFailure() else disconnectNow(); return }
+119:         if(f.type=="message.created") {
+120:             val content=p["content"] as Map<*,*>
+121:             val m=ServerMessage(p["conversationId"] as String,f.requestId,p["senderId"] as String,content["text"] as String,p["messageId"] as String,(p["seq"] as BigInteger).longValueExact(),p["createdAt"] as String)
+122:             storage { repo.syncMessages(listOf(m)) }; clear(m.conversationId,m.requestId!!); refresh(); delivered(m.conversationId,m.seq); return
+123:         }
+124:         if(f.type=="message.ack") {
+125:             if(p["status"]=="rejected") {
+126:                 // No Conversation is present: leave ambiguous attempts to their own ACK/timer.
+127:                 val matches=attempts.filter { (_,a) -> a.message.requestId==f.requestId && a.sent && a.generation==g }
+128:                 if(matches.size==1) { val (k,a)=matches.entries.single(); if(requestConversations[f.requestId]==a.message.conversationId) fail(k,a) }
+129:             }
+130:             else { val c=p["conversationId"] as String; if(key(c,f.requestId) !in known) return
+131:                 storage { repo.committedAck(f.requestId,Committed(c,p["messageId"] as String,(p["seq"] as BigInteger).longValueExact(),p["createdAt"] as String)) }; clear(c,f.requestId); refresh(); delivered(c,(p["seq"] as BigInteger).longValueExact()) }
+132:         }
+133:     }
+134:     suspend fun mergeMessages(messages:List<ServerMessage>,active:()->Boolean={true},failBeforeAdvance:Boolean=false) = operation { if(!retired && active()) {storage { repo.syncMessages(messages,failBeforeAdvance) }; messages.forEach {clear(it.conversationId,it.requestId!!)}; refresh()} }
+135:     suspend fun mergeUserPage(events:List<UserEvent>,nextCursor:String,expectedCursor:String,active:()->Boolean,failBeforeAdvance:Boolean=false) = operation {if(!retired && active()) storage { repo.userPage(events,nextCursor,expectedCursor,failBeforeAdvance) }}
+136: }
+137: 
+138: // Account binding is fixed by the authenticated session, never a selected path.
+139: suspend fun accountSend(context:android.content.Context,session:SendSession):SendViewModel = withContext(Dispatchers.IO) {
+140:     val repository=Repository(context,Wire.uuid(session.userId))
+141:     try {storage{repository.initialize()};SendViewModel(repository,session,ownsRepository=true)} catch(error:Exception) {repository.close();throw error}
+142: }
+
+FILE 60 clients\mobile\app\src\main\kotlin\im\platform\client\send\Wire.kt HASH 3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7
+1: package im.platform.client.send
+2: import java.math.BigDecimal
+3: import java.math.BigInteger
+4: import java.time.OffsetDateTime
+5: import java.util.UUID
+6: import org.json.JSONObject
+7: 
+8: // Strict subset of JSON used by canonical WSS objects. Integer lexemes never
+9: // pass through Double; storage conversion happens separately at the Repo edge.
+10: class WireFailure:IllegalArgumentException("Invalid WSS frame")
+11: object Wire {
+12:     data class Frame(val type: String, val requestId: String, val payload: Map<String,Any>)
+13:     private fun invalid(): Nothing = throw WireFailure()
+14:     fun uuid(v: Any?): String {
+15:         val s=v as? String ?: invalid()
+16:         if(!s.matches(Regex("[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"))) invalid()
+17:         return UUID.fromString(s).toString()
+18:     }
+19:     fun text(v: Any?): String {
+20:         val s=v as? String ?: invalid()
+21:         if(s.isEmpty() || s.codePointCount(0,s.length)>4096) invalid()
+22:         return s
+23:     }
+24:     fun integer(v: Any?): BigInteger {
+25:         val n=v as? BigInteger ?: invalid()
+26:         if(n.signum()<=0) invalid()
+27:         return n
+28:     }
+29:     fun obj(v: Any?, keys: Set<String>): Map<String,Any> {
+30:         if(v !is Map<*,*> || v.keys!=keys) invalid()
+31:         return keys.associateWith { v[it] ?: invalid() }
+32:     }
+33:     fun time(v: Any?): String {
+34:         val s=v as? String ?: invalid()
+35:         if(!s.matches(Regex("[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})"))) invalid()
+36:         val normalized=s.replace(Regex("(\\.[0-9]{9})[0-9]+"),"$1")
+37:         try { OffsetDateTime.parse(normalized) } catch(_: java.time.format.DateTimeParseException) { invalid() }
+38:         return s
+39:     }
+40:     private class Parser(val raw: String,val maxIntegerDigits:Int?=null) {
+41:         var at=0
+42:         fun space() { while(at<raw.length && raw[at] in " \t\r\n") at++ }
+43:         fun string(): String {
+44:             if(at>=raw.length || raw[at++]!='"') invalid()
+45:             val out=StringBuilder()
+46:             while(at<raw.length) {
+47:                 val c=raw[at++]
+48:                 if(c=='"') return out.toString()
+49:                 if(c<' ') invalid()
+50:                 if(c!='\\') out.append(c) else {
+51:                     if(at>=raw.length) invalid()
+52:                     when(val e=raw[at++]) {
+53:                         '"','\\','/' -> out.append(e)
+54:                         'b' -> out.append('\b'); 'f' -> out.append('\u000c'); 'n' -> out.append('\n'); 'r' -> out.append('\r'); 't' -> out.append('\t')
+55:                         'u' -> { if(at+4>raw.length) invalid(); val hex=raw.substring(at,at+4); if(!hex.matches(Regex("[0-9a-fA-F]{4}"))) invalid(); out.append(hex.toInt(16).toChar()); at+=4 }
+56:                         else -> invalid()
+57:                     }
+58:                 }
+59:             }
+60:             invalid()
+61:         }
+62:         fun value(depth: Int=0): Any {
+63:             if(depth>32) invalid(); space(); if(at>=raw.length) invalid()
+64:             if(raw[at]=='"') return string()
+65:             if(raw[at]=='{') {
+66:                 at++; space(); val out=mutableMapOf<String,Any>()
+67:                 if(at<raw.length && raw[at]!='}') while(true) {
+68:                     space(); val key=string(); if(out.containsKey(key)) invalid(); space()
+69:                     if(at>=raw.length || raw[at++]!=':') invalid(); out[key]=value(depth+1); space()
+70:                     if(at>=raw.length || raw[at]!=',') break; at++
+71:                 }
+72:                 if(at>=raw.length || raw[at++]!='}') invalid(); return out
+73:             }
+74:             if(raw[at]=='[') {
+75:                 at++; space(); val out=mutableListOf<Any>()
+76:                 if(at<raw.length && raw[at]!=']') while(true) { out.add(value(depth+1)); space(); if(at>=raw.length || raw[at]!=',') break; at++ }
+77:                 if(at>=raw.length || raw[at++]!=']') invalid(); return out
+78:             }
+79:             if(raw.startsWith("true",at)) {at+=4;return true}
+80:             if(raw.startsWith("false",at)) {at+=5;return false}
+81:             val m=Regex("-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?").find(raw,at)
+82:             if(m==null || m.range.first!=at) invalid(); at=m.range.last+1
+83:             return try {
+84:                 val number=BigDecimal(m.value)
+85:                 if(maxIntegerDigits==null) number.toBigIntegerExact() else {
+86:                     val exact=number.stripTrailingZeros()
+87:                     if(exact.signum()!=0 && (exact.scale()>0 || exact.precision().toLong()-exact.scale().toLong()>maxIntegerDigits)) invalid()
+88:                     exact.toBigIntegerExact()
+89:                 }
+90:             } catch(_:ArithmeticException) { invalid() } catch(_:NumberFormatException) { invalid() }
+91:         }
+92:         fun parse(maxLength:Int=131072): Any { if(raw.length>maxLength) invalid(); val v=value(); space(); if(at!=raw.length) invalid(); return v }
+93:     }
+94:     fun parse(raw:String,maxLength:Int=131072,maxIntegerDigits:Int?=null):Any = Parser(raw,maxIntegerDigits).parse(maxLength)
+95:     private val authErrors=setOf("VALIDATION_FAILED","AUTH_TOKEN_INVALID","AUTH_TOKEN_EXPIRED","AUTH_SESSION_REVOKED","AUTH_SESSION_EPOCH_STALE","AUTH_CLIENT_TYPE_MISMATCH","PROTOCOL_VERSION_UNSUPPORTED")
+96:     private val sendErrors=setOf("VALIDATION_FAILED","AUTH_REQUIRED","AUTH_SESSION_REVOKED","AUTHORIZATION_DENIED","MESSAGE_REQUEST_CONFLICT","MESSAGE_COMMIT_FAILED")
+97:     fun decode(raw: String): Frame {
+98:         val e=obj(Parser(raw).parse(),setOf("protocolVersion","type","requestId","payload"))
+99:         if(e["protocolVersion"]!="1.0") invalid()
+100:         val type=e["type"] as? String ?: invalid(); val id=uuid(e["requestId"])
+101:         fun rejected(codes: Set<String>): Map<String,Any> {
+102:             val p=obj(e["payload"],setOf("status","error")); val error=obj(p["error"],setOf("code","message"))
+103:             if(p["status"]!="rejected" || error["code"] !in codes || error["message"] !is String || (error["message"] as String).isEmpty()) invalid()
+104:             return p
+105:         }
+106:         val status=(e["payload"] as? Map<*,*>)?.get("status")
+107:         val p=when(type) {
+108:             "auth.ack" -> if(status=="rejected") rejected(authErrors) else {
+109:                 val p=obj(e["payload"],setOf("status","userId","sessionId","clientType","sessionEpoch"))
+110:                 if(p["status"]!="bound" || p["clientType"] !in setOf("WEB","DESKTOP","MOBILE")) invalid()
+111:                 p+mapOf("userId" to uuid(p["userId"]),"sessionId" to uuid(p["sessionId"]),"sessionEpoch" to integer(p["sessionEpoch"]))
+112:             }
+113:             "message.ack" -> if(status=="rejected") rejected(sendErrors) else {
+114:                 val p=obj(e["payload"],setOf("status","conversationId","messageId","seq","createdAt")); if(p["status"]!="committed") invalid()
+115:                 p+mapOf("conversationId" to uuid(p["conversationId"]),"messageId" to uuid(p["messageId"]),"seq" to integer(p["seq"]),"createdAt" to time(p["createdAt"]))
+116:             }
+117:             "message.created" -> {
+118:                 val p=obj(e["payload"],setOf("conversationId","messageId","senderId","seq","createdAt","content"))
+119:                 val content=obj(p["content"],setOf("kind","text")); if(content["kind"]!="TEXT") invalid(); text(content["text"])
+120:                 p+mapOf("conversationId" to uuid(p["conversationId"]),"messageId" to uuid(p["messageId"]),"senderId" to uuid(p["senderId"]),"seq" to integer(p["seq"]),"createdAt" to time(p["createdAt"]))
+121:             }
+122:             "session.revoked" -> {
+123:                 val p=obj(e["payload"],setOf("sessionId","reason")); if(p["reason"] !in setOf("LOGOUT","REPLACED","REVOKED")) invalid()
+124:                 p+mapOf("sessionId" to uuid(p["sessionId"]))
+125:             }
+126:             "ping","pong" -> obj(e["payload"],emptySet())
+127:             else -> invalid()
+128:         }
+129:         return Frame(type,id,p)
+130:     }
+131:     fun envelope(type: String,id: String,payload: JSONObject) = JSONObject().put("protocolVersion","1.0").put("type",type).put("requestId",uuid(id)).put("payload",payload).toString()
+132: }
+
+FILE 61 clients\mobile\app\src\main\kotlin\im\platform\client\send\Wss.kt HASH 8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44
+1: package im.platform.client.send
+2: import java.io.BufferedInputStream
+3: import java.io.Closeable
+4: import java.io.IOException
+5: import java.net.URI
+6: import java.nio.ByteBuffer
+7: import java.nio.charset.CodingErrorAction
+8: import java.security.MessageDigest
+9: import java.security.SecureRandom
+10: import java.util.Base64
+11: import javax.net.ssl.SSLSocket
+12: import javax.net.ssl.SSLSocketFactory
+13: 
+14: interface SendSocket: Closeable { fun send(text: String) }
+15: // Android's standard TLS socket plus the narrow RFC6455 text/control framing
+16: // needed here. Platform trust and HTTPS hostname verification are mandatory.
+17: class Wss(endpoint: String, private val opened: ()->Unit, private val message:(String)->Unit, private val ended:()->Unit,
+18:     private val tls: SSLSocketFactory=SSLSocketFactory.getDefault() as SSLSocketFactory): SendSocket {
+19:     private val uri=URI(endpoint)
+20:     @Volatile private var closed=false
+21:     @Volatile private var socket: SSLSocket?=null
+22:     private val random=SecureRandom()
+23:     private fun wire(valid:Boolean){if(!valid)throw IOException("Invalid WSS transport frame")}
+24:     init {
+25:         require(uri.scheme=="wss" && uri.host!=null && uri.rawQuery==null && uri.rawFragment==null && uri.rawUserInfo==null) { "Invalid WSS endpoint" }
+26:         Thread({
+27:             try {
+28:                 val s=tls.createSocket(uri.host,if(uri.port<0) 443 else uri.port) as SSLSocket
+29:                 socket=s; if(closed) { s.close(); return@Thread }
+30:                 s.soTimeout=15000
+31:                 val parameters=s.sslParameters; parameters.endpointIdentificationAlgorithm="HTTPS"; s.sslParameters=parameters; s.startHandshake()
+32:                 val input=BufferedInputStream(s.inputStream)
+33:                 val key=Base64.getEncoder().encodeToString(ByteArray(16).also(random::nextBytes))
+34:                 val host=uri.host+(if(uri.port<0) "" else ":${uri.port}")
+35:                 val path=uri.rawPath.ifEmpty { "/" }
+36:                 val header="GET $path HTTP/1.1\r\nHost: $host\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: $key\r\nSec-WebSocket-Version: 13\r\n\r\n"
+37:                 s.outputStream.write(header.toByteArray(Charsets.US_ASCII)); s.outputStream.flush()
+38:                 val bytes=ArrayList<Byte>(); while(bytes.size<16384) { val b=input.read(); wire(b>=0); bytes.add(b.toByte()); if(bytes.size>=4 && bytes.takeLast(4)==listOf(13.toByte(),10.toByte(),13.toByte(),10.toByte())) break }
+39:                 val lines=bytes.toByteArray().toString(Charsets.US_ASCII).split("\r\n")
+40:                 wire(lines.first().matches(Regex("HTTP/1\\.[01] 101(?: .*)?")))
+41:                 val headers=mutableMapOf<String,String>()
+42:                 lines.drop(1).filter { it.isNotEmpty() }.forEach { val parts=it.split(':',limit=2); wire(parts.size==2); val name=parts[0].lowercase(); wire(!headers.containsKey(name)); headers[name]=parts[1].trim() }
+43:                 val accept=Base64.getEncoder().encodeToString(MessageDigest.getInstance("SHA-1").digest((key+"258EAFA5-E914-47DA-95CA-C5AB0DC85B11").toByteArray(Charsets.US_ASCII)))
+44:                 wire(headers["sec-websocket-accept"]==accept && headers["upgrade"]?.lowercase()=="websocket" && headers["connection"]?.split(',')?.any { it.trim().equals("upgrade",true) }==true)
+45:                 wire(headers["sec-websocket-extensions"]==null && headers["sec-websocket-protocol"]==null)
+46:                 s.soTimeout=0; if(closed) return@Thread; opened()
+47:                 val fragments=java.io.ByteArrayOutputStream(); var fragmented=false
+48:                 fun read(): Int { val b=input.read(); wire(b>=0); return b }
+49:                 while(!closed) {
+50:                     val first=read(); val second=read(); wire(first and 0x70==0 && second and 0x80==0)
+51:                     val fin=first and 0x80!=0; val op=first and 15
+52:                     var length=(second and 127).toLong()
+53:                     if(length==126L) length=((read() shl 8) or read()).toLong()
+54:                     else if(length==127L) { length=0; repeat(8) { val b=read(); wire(length<=131072); length=(length shl 8) or b.toLong() } }
+55:                     wire(length<=131072 && (op<8 || (fin && length<=125)))
+56:                     val body=ByteArray(length.toInt()); var n=0; while(n<body.size) { val count=input.read(body,n,body.size-n); wire(count>0); n+=count }
+57:                     when(op) {
+58:                         8 -> break
+59:                         9 -> frame(10,body)
+60:                         10 -> Unit
+61:                         1,0 -> {
+62:                             wire((op==1 && !fragmented) || (op==0 && fragmented)); wire(fragments.size()+body.size<=131072)
+63:                             fragments.write(body); fragmented=!fin
+64:                             if(fin) { val decoder=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT); message(decoder.decode(ByteBuffer.wrap(fragments.toByteArray())).toString()); fragments.reset() }
+65:                         }
+66:                         else -> throw IOException("Invalid WSS frame")
+67:                     }
+68:                 }
+69:             } catch(_: IOException) { /* Failed transport closes this socket and notifies ended; no frame/credential logging. */ }
+70:             finally { close(); ended() }
+71:         },"im-wss").apply { isDaemon=true; start() }
+72:     }
+73:     @Synchronized private fun frame(op: Int,body: ByteArray) {
+74:         check(!closed); val s=socket ?: error("WSS unavailable")
+75:         val output=s.outputStream; val bytes=java.io.ByteArrayOutputStream(); bytes.write(0x80 or op)
+76:         when { body.size<126 -> bytes.write(0x80 or body.size); body.size<=65535 -> {bytes.write(0x80 or 126); bytes.write(body.size ushr 8); bytes.write(body.size and 255)}
+77:             else -> {bytes.write(0x80 or 127); repeat(4) {bytes.write(0)}; for(shift in listOf(24,16,8,0)) bytes.write(body.size ushr shift and 255)} }
+78:         val mask=ByteArray(4).also(random::nextBytes); bytes.write(mask)
+79:         bytes.write(ByteArray(body.size) { (body[it].toInt() xor mask[it%4].toInt()).toByte() }); output.write(bytes.toByteArray()); output.flush()
+80:     }
+81:     override fun send(text: String) { frame(1,text.toByteArray(Charsets.UTF_8)) }
+82:     override fun close() { closed=true; try { socket?.close() } catch(_:IOException) { /* close attempted; the connection is already retired. */ } }
+83: }

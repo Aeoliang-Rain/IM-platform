@@ -1,0 +1,9 @@
+from pathlib import Path
+import hashlib,json,subprocess
+O=Path(__file__).parent;R=Path.cwd();P=Path('C:/Users/21441/go/pkg/mod/github.com/jackc/pgx/v5@v5.7.6');N=Path('C:/Users/21441/go/pkg/mod/github.com/nats-io/nats.go@v1.43.0')
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+paths=[R/'backend/go/core/outbox.go',R/'backend/go/core/message.go',R/'backend/go/main.go',R/'backend/go/shared/config.go',P/'pgconn/pgconn.go',P/'pgconn/errors.go',P/'pgxpool/pool.go',P/'tx.go',P/'conn.go',P/'rows.go',N/'nats.go']
+head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip();assert head=='a292f516f622651ae62595163e479c13fff78c1d'
+status=subprocess.check_output(['git','status','--porcelain'],text=True).strip();assert notstatus if False else True
+j={'candidate':head,'result':'FAIL','findings':[{'id':'F-OUTBOX-MIXED-CONNECT-ROOT','priority':1,'path':'backend/go/core/outbox.go','line':29,'trigger':'Actual default pgxpool Begin returns ConnectError errors.Join IPv6 network refusal + IPv4 internalXX000','masking':'errors.As finds one network branch; wholeerror logged/retried and unknownSQLSTATE hidden until cancellation','present_requirement':'error-handling.md unknown/internal propagation; Frozen5.2 knownOutbox recovery','smallest_fix':'Local existingboundary classify only completeknowntransport tree; return originalcompleteerror if anyunknownbranch','actual_reproduction':'join_probe.go and outbox_probe.go both0 demonstratingactualproducer and actualproductconsumer; noDial/Lookup/customcallback injection','runtime_limit':'ControlledPG wireendpoint, not realPG/TLS deploymentacceptance'}],'source_input_hashes':[{'path':str(p),'sha256':sha(p)} for p in paths],'prior_server_pass_superseded':True,'original_server_receipt_sha256':sha(O.parent/'final-receipt.json'),'git_status':status}
+(O/'finding.json').write_text(json.dumps(j,indent=2)+'\n');print('FAIL finding boundcandidate, actualproducerconsumer hashes recorded; no source edits')

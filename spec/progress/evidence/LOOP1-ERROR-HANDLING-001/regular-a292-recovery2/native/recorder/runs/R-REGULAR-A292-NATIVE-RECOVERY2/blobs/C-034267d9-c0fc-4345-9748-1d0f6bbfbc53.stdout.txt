@@ -1,0 +1,161 @@
+
+FILE spec\governance\minimality.md
+# Minimality Contract
+
+Every additional abstraction must pay rent. This is a development and review rule subordinate to Frozen Architecture, approved ADRs, public contracts, invariants, acceptance criteria, and the current Task Spec. It creates no product requirement or authority to rewrite a contract.
+
+Implement the smallest direct mechanism that satisfies current approved requirements, invariants, acceptance criteria, and observed implementation constraints. A new interface, layer, framework, dependency, option, database object, worker, service, compatibility layer, or extension point needs a present responsibility. Possible future reuse, future stages, elegance, and generic “best practice” are insufficient on their own.
+
+When a less direct mechanism is needed, identify the current requirement or observed failure it serves, why the simpler path falls short, and the smallest added mechanism. Record measurements where performance or reliability motivates the change, and a removal or replacement condition if the mechanism is provisional. Do not use lines of code as a decision rule.
+
+Necessary boundaries and abstractions remain valid: for example, a real transaction boundary, shared Go/Java observable contract checks, an existing plugin capability boundary, or required Outbox reliability. Prefer one direct path when only one behavior exists. Do not add a strategy/factory hierarchy for a hypothetical second implementation, compatibility for nonexistent versions, or Loop 2 infrastructure in Loop 1 without current evidence and the required architecture approval.
+
+The Frozen Architecture already applies this judgment: Loop 2 goals do not expand Loop 1 implementation scope (chapter 1.3); Redis, Kafka, sharding, and automatic failover require fault or load evidence and an approved ADR (chapter 1.3); the simple conversation sequence row is allowed to be hot until load testing proves contention unacceptable (chapter 5); tasks do not grant architectural discretion, and agents stop at architecture conflicts (chapters 2 and 21). This document does not reinterpret those decisions or permanently ban a technology.
+
+## Independent review
+
+Alongside correctness, security, contracts, and acceptance, review added complexity against current responsibility. Inspect abstractions without current consumers; production code for future stages; new dependencies; strategy, factory, or framework layers for one current path; speculative compatibility or infrastructure; and production mechanisms whose removal would leave every approved acceptance criterion satisfied.
+
+Ask: **If this code or abstraction were removed or simplified, would every currently approved acceptance criterion still pass?** If yes, request deletion or simplification, or a concrete current requirement and evidence justifying it. A finding must cite that requirement or evidence gap and the affected code. Personal style preference and a raw size or LOC threshold are not findings. Reviewers cannot change product requirements, public contracts, or Frozen Architecture; a conflict follows the approved architecture process.
+
+Complexity delta (files, production/test lines, dependencies, public symbols, configuration, database objects, services) may help focus review. It is a signal, never an automatic score or FAIL.
+
+## 无依据防御与静默兜底
+
+执行 [错误处理治理](error-handling.md)：未知异常、内部编程错误和不变量破坏正常传播，使操作/测试/进程明确失败，必要时允许崩溃。不能假空数据/默认成功/错误分类失真/只日志继续；每项保留捕获或回退须说明具体故障、当前依据及真实恢复。只用现行必要机制，不添加通用错误/日志/重试框架。
+
+
+FILE spec\governance\execution-boundaries.md
+# Executing canonical source boundaries
+
+This subordinate execution guide does not create a second architecture authority. Resolve/hash-check spec/architecture/README.md -> baseline.md; business tasks read canonical §3/§10 SRC-01 through SRC-07/§11. These sections decide responsibility, root assembly/build/test whitelist, minimal shared support, import direction and separate backend placeholder expiry.
+
+allowed_paths limits writes and cannot waive higher authority. Ordinary tasks name service responsibility areas and presently required specific tests/assembly files. Escalate conflicts before implementation. A temporary migration records actual source/destination file/responsibility map, authorization, scope and acceptance exit before edits. No post-implementation architecture legalization.
+
+Acceptance combines canonical behavior/security/transaction fixtures with applicable ownership/import checks. Inspect actual logic and runtime graph: directory names and passing behavior cannot prove responsibility. Shared support cannot hide complete Auth/session-write business. Backend equivalence never exempts these rules; the Minimality Contract justifies only presently necessary interfaces/dependencies.
+
+## Current transition and recovery
+
+Stage001 is bounded done under v1.1. Stage002 propagates execution inputs. Stage003 must implement and independently verify effective ownership/dependency/task/trigger checks with negative controls and Java stage fixtures. These tools are bounded accepted at2afeac8/run36726926394: ci/check_architecture.py --scope all --json and tests/architecture, with evidence003/hosted-acceptance.md; Go remediation product candidate d0ae52f5615320790ae7039cb48831873de6f486 is independently reviewed and accepted by hosted run36744072690; evidence004/final-hosted-acceptance.md. Historical stage003 source_go/Gate FAIL was expected before migration and remains preserved. Applicable source/dependency checks remain mandatory; no grandfather exception. Administrative closure candidate still requires a new independent Review and exact-head hosted verification; S1 product Gate remains OPEN. Stage004 bound accepted exact checker commands before migration and eliminated I01 old Go deviations; see evidence004/conflict-closure-supplement.md. Stage003 expected Go failures permit stage004, but do not prove Go compliance or batch/S1 Gate PASS. No grandfather exception.
+
+The stage004 language-wide scope is a single migration authorization ending at batch completion. Its actual file/responsibility map precedes edits. Social/Message/E2E activation waits for the entire remediation batch and final exact-head hosted acceptance. Original Auth remains historical done under old checks. Resolve the unique current task; no parallel unique Current Task or normal business resumption.
+
+## Future Java task creation
+
+Canonical §20 supplies planning IDs; actual queue dependencies and TASK_TEMPLATE.md govern readiness. Before future S3 Java activation use canonical contracts and §3/§10/§11, the same service boundaries, exact narrow task paths and accepted structural/dependency commands. Choose Java service-internal structure independently; Go layout is not authority. No mandate for three modules/binaries or extra layers. The explicit Java S0 placeholder is checked now; its own first business implementation expires its allowance. Go expiry never forces early Java business or a permanent Java skip.
+
+## Technology authorization
+
+Read `spec/governance/technology-selection.md` and canonical §2.3 / §6.1 before implementation or Review. Every new architecture-sensitive language/framework/runtime/core dependency requires traceable accepted Frozen Architecture / approved ADR authority. Missing decision: stop affected work BLOCKED_BY_ARCHITECTURE -> smallest question -> Human/Architect decision -> freeze -> fresh independent Review/applicable exact-head hosted CI -> implementation. Task text/allowed_paths/tests cannot approve selection. Reviewer FAIL on absent authority; inspect real imports/native responsibility beyond static guards. Desktop native SQLite is explicitly Tauri + SQLx(SQLite) with atomic transaction adapter; TypeScript holds Repository/models/transaction intent. No separate tauri-plugin-sql execute-call transactions. Mobile is Android Kotlin + Jetpack Compose, validated on Android Studio emulator. Mobile models/Repository/protocol/plugin adapters implement equivalent behavior under the same canonical contracts/fixtures; direct TypeScript SDK reuse is not required. Web/Desktop/shared stay TypeScript. Android SDK/Gradle/Kotlin/Compose engineering identifiers do not authorize Room/ORM/network libraries, JS runtime/bridge/codegen or shared native rewrite.
+
+
+FILE spec\governance\independent-review.md
+# Independent candidate Review checklist
+
+This checklist executes canonical §12-14/§21 and SRC-01 through SRC-07; it does not redefine architecture/contracts. A fresh Review Agent who neither implemented nor fixed the candidate reads unique current task, canonical hash/ADRs, task inputs, Minimality Contract and diff. Record independence, exact reviewed SHA/branch/range and clean committed checkout method. Renaming roles is not independence.
+
+- Check behavioral fixtures, transaction/ACK/Session/epoch/Sync invariants, authorization, security negative cases and actual live test enable conditions/skips. Tokens/passwords cannot appear in query, logs, traces or errors.
+- Inspect real service responsibility, root assembly whitelist, shared support semantics and runtime import graph against canonical §3/§10/§11. Reject cross-service internal imports, shared reverse imports, full Auth hidden in shared, business disguised as tests or task globs treated as waivers.
+- Check exact write scope, migration file/responsibility map, temporary authorization/exit and effective positive/negative structural checks. Directory/file names and observable equivalence alone are insufficient.
+- Apply separate backend stages. Java placeholder rules apply now; future Java business uses canonical boundaries and expiry, never Go layout. Stage003 exposes old Go deviations for stage004, not grandfathering.
+- Review interfaces/exports/dependencies against present responsibility and Minimality Contract; no speculative layers or future infrastructure.
+- Verify task queue/status uniqueness, dependencies, recovery and evidence; preserve historical PDF/done/checkpoints/Recorder. Check current accepted baseline discovery.
+- Verify exact final candidate hosted head, changed-path job selection and actual required conclusions. Execution-rule Markdown changes require applicable checks; missing/failed/cancelled/anomalously skipped jobs fail acceptance. Old CI and expired ADR-0001 cannot substitute.
+- Distinguish bounded stages from product, batch and S1 Gate. Stage003 checker effectiveness can pass while old Go fails; final migration must pass applicable structure/live regression.
+
+FAIL remains unfinished: fresh Fix Agent repairs within authorized scope, then a new Review Agent reviews the candidate. Local independent PASS still requires applicable hosted CI before closure. An irreducible authority conflict blocks its dependent portion and records the smallest decision question.
+
+## Technology authorization
+
+Read `spec/governance/technology-selection.md` and canonical §2.3 / §6.1 before implementation or Review. Every new architecture-sensitive language/framework/runtime/core dependency requires traceable accepted Frozen Architecture / approved ADR authority. Missing decision: stop affected work BLOCKED_BY_ARCHITECTURE -> smallest question -> Human/Architect decision -> freeze -> fresh independent Review/applicable exact-head hosted CI -> implementation. Task text/allowed_paths/tests cannot approve selection. Reviewer FAIL on absent authority; inspect real imports/native responsibility beyond static guards. Desktop native SQLite is explicitly Tauri + SQLx(SQLite) with atomic transaction adapter; TypeScript holds Repository/models/transaction intent. No separate tauri-plugin-sql execute-call transactions. Mobile is Android Kotlin + Jetpack Compose, validated on Android Studio emulator. Mobile models/Repository/protocol/plugin adapters implement equivalent behavior under the same canonical contracts/fixtures; direct TypeScript SDK reuse is not required. Web/Desktop/shared stay TypeScript. Android SDK/Gradle/Kotlin/Compose engineering identifiers do not authorize Room/ORM/network libraries, JS runtime/bridge/codegen or shared native rewrite.
+
+## 提交 GitHub CI 前的错误处理专项审查
+
+常规独立 Review PASS 后，按 [error-handling.md](error-handling.md) 委派一个全新、未参与当前候选实现/Fix/常规 Review 的 Agent；两项都覆盖最终候选 SHA。检查无依据防御/兼容、空 catch/默认假数据/Promise 忽略、未知异常分类失真、日志后未恢复、重复捕获/包装/根因丢失，核对逐文件 inventory 与每个保留 catch/回退依据。证据须含身份/独立性、SHA/branch/range、clean committed checkout、命令/退出码/时长、结果/发现/保留理由。
+
+专项 FAIL 禁止 push 或创建/更新触发该候选 CI 的 PR；新 Fix → 新常规 Review → 新专项 Agent 循环，不能沿用旧 SHA PASS。此环节只设在提交 GitHub CI 前，不能替代 hosted CI、protected integration、actual-main 或安全主仓库同步。权威冲突按既有架构流程停止受影响部分。
+
+
+FILE spec\governance\technology-selection.md
+# Architecture-sensitive technology selection
+
+This execution rule applies to every present and future task, under canonical §2.2 and §2.3. It creates no product contract or alternative architecture authority.
+
+An Agent has no unapproved technology-selection authority. A sufficiently explicit current Frozen Architecture, approved ADR, contracts or Human architecture decision must answer the proposed selection. Long-term decisions must be recorded in Frozen Architecture / approved ADR and independently accepted before product implementation. Categories include programming language, UI/application/client/cross-platform framework, runtime, database/local database, ORM, networking framework, IPC/RPC, state management, plugin runtime, serialization, message queue, cache, storage engine, native bridge, authentication framework, major infrastructure dependency and any core third-party library creating long-term coupling.
+
+If authority does not provide a sufficiently clear answer: stop only affected work, mark `BLOCKED_BY_ARCHITECTURE`, record the smallest question and impact, obtain Architect/Human decision, freeze that decision in the canonical body / approved ADR, add applicable machine guards, obtain fresh independent Review and applicable exact-head hosted CI, then resume product implementation. Complete independent already-authorized work while the blocked portion waits. Never implement first and amend authority after tests to legalize the result.
+
+Familiarity, installed tools, convenience, popularity, fewer lines, a withdrawn attempt, absence of a prohibition, Task Spec text, allowed_paths and CI PASS are not approval. Unprohibited does not mean approved. Chat, handoff, progress, implementation README and source comments alone cannot freeze a long-term decision. Task Specs narrow scope and select already-authorized details; they cannot invent a language, framework, runtime, database, platform strategy, service boundary or protocol. Permitted Go/Java internal structural variation does not confer permission to select a new sensitive technology.
+
+Every Reviewer traces each new sensitive language/framework/dependency to a precise accepted canonical clause or ADR. If this trace fails, Review FAIL. Machine checks supplement this semantic obligation, never replace it.
+
+For client tasks, declare choices in `# Technology Authorization` using `client_framework:`, `client_runtime:`, `client_language:` and `client_dependency:` (one name per line; `TBD` is a blocker, not approval). The checker resolves the canonical client policy and rejects unapproved declarations even when paths permit them or tests pass. Approval comes from authority, never the declaration. Free-form decisions and disguised dependencies still require semantic Review.
+
+Current client policy is canonical §6.1 and ADR-0005: React/TypeScript Web; Tauri/React/TypeScript Desktop with necessary Rust only in clients/desktop/src-tauri; Android Kotlin + Jetpack Compose Mobile; Web/Desktop/shared protocol/plugin/model/Repository/domain/UI direction TypeScript. Mobile equivalent behavior/models/adapters follow the same contracts/fixtures, without mandatory TS SDK reuse. Desktop native SQLite is approved as Tauri + SQLx(SQLite); TypeScript holds Repository/models/transaction intent and Rust only database connections/queries/atomic transaction adapter. Separate tauri-plugin-sql execute() calls cannot emulate a cross-call transaction. Android Studio emulator validates Mobile Android runtime. Only necessary Android SDK/Gradle/Kotlin/Compose engineering identifiers and built-in SDK SQLite follow that choice; no arbitrary Room/ORM/network libs, JS runtime/bridge/codegen or shared native rewrite. Standard package names for the explicitly chosen stack and its type/build bindings are enumerated in canonical policy; this is not permission for other frameworks, state managers, bridges or runtime libraries. No S4 implementation is authorized by reusable SDK direction.
+
+
+FILE spec\governance\error-handling.md
+# 错误处理与提交 GitHub CI 前的独立专项审查
+
+本治理执行 Human 2026-10-13 请求，从属于 Frozen Architecture、approved ADR、contracts、domain/invariants 与 acceptance。它补充 canonical §12–14，不替代任何权威，不改变公开错误、ACK、兼容或安全语义。发生权威冲突，停止受影响工作并按既有架构流程记录最小问题；不得先实施再追认。
+
+## 实现规则
+
+未知异常、内部编程错误、不变量破坏 MUST 沿正常调用链传播，使操作、测试或进程明确失败。需要崩溃时允许崩溃，随后定位真实缺陷。MUST NOT 用空 catch、忽略 Promise rejection、假空数据、默认成功/正常状态、失真错误类别或仅打印日志继续掩盖错误。不得重复捕获、无依据包装、吞掉原始异常或堆叠未来兼容/兜底层。可在已批准边界安全投影已知故障，避免泄露凭据；隐私要求不授权把未知编程错误变成网络/协议/存储失败。
+
+保留当前架构/契约要求的事务回滚、资源清理、网络失败后的 FAILED、协议拒绝、账号隔离、提交结果不确定保护和冻结偏好默认。每项捕获/回退说明 **具体故障 → 当前依据 → 实际恢复/失败行为**；例如回滚保留未发布 Outbox，下次现有 tick 重试，或写失败关闭连接使客户端通过 timeout/retry/Sync 收敛。“避免崩溃”“提高健壮性”“以后可能需要”均不能单独成立。捕获边界尽量只包含会产生该已知故障的外部操作，内部回调/验证/状态发布不得借用它的异常类别。
+
+串行队列可在已知失败后继续调度，但原操作必须真实失败；未知错误不能被清除后让 idle/后续操作伪装 PASS。取消和账号退休只允许丢弃已知过期结果，不能吞掉内部 bug。资源清理必须执行；清理失败若不可恢复应传播，不替换未知根因。不得新增通用错误框架、日志平台、重试框架、未来功能或无当前依据抽象。
+
+## 最小示例
+
+错误：吞掉内部异常，状态可能只更新了一半，调用者却继续运行。
+
+```typescript
+try {
+  applyUpdate(event);
+} catch {}
+```
+
+正确：让测试/操作显式失败，再修复真实缺陷。
+
+```typescript
+applyUpdate(event);
+```
+
+错误：把加载失败伪装成正常空结果，使使用者无法区分没有数据与故障。
+
+```typescript
+try {
+  return await loadData();
+} catch {
+  return [];
+}
+```
+
+正确：保留真实失败结果，由正常调用链承担它。
+
+```typescript
+return await loadData();
+```
+
+示例只表达既有 TypeScript 语义，不授权新技术、业务机制或 contracts 变更。
+
+## 独立提交门禁
+
+实现与必要本地验证/提交 → **常规独立 Review** → **新的独立错误处理专项审查** → 提交 GitHub CI → 适用 exact-head CI → protected integration → actual-main 验证 → H:/IM-platform 安全同步。只有最后同步验证完成才可 done；Task PASS 不等于 Stage Gate PASS。
+
+专项审查 Agent MUST 是全新上下文，且未参与当前候选实现、Fix 或常规 Review。常规 Reviewer 与专项审查者不能是同一 Agent；改角色名不构成独立性。常规 PASS 后才运行专项审查，专项审查仅在提交 GitHub CI 前设置一次，不在每次编辑/命令之前重复。
+
+任一审查 FAIL 时候选未完成；专项 FAIL 明确禁止 push、创建或更新会触发该候选 CI 的 PR。新 Fix Agent 修复 → 新常规 Review Agent → 又一个新专项审查 Agent，循环至两项都 PASS。任何修复形成新 SHA，两项必须重审 **最终 SHA**；旧 SHA 的 PASS 不可沿用。通过后仍要核对真实 hosted head、changed-path 必需作业与结果；missing/failed/cancelled/anomalous skip 不是 PASS。
+
+## 专项清单与证据
+
+- 逐文件覆盖任务的生产范围，包括没有 grep 命中的文件及必要原生适配器；记录路径、输入 SHA-256、职责、实际检查结果与候选 hash。
+- 查无当前依据的防御检查、兼容分支、空 catch/空默认、Promise 忽略、错误分类失真、日志后错误运行、重复捕获/包装/根因丢失。
+- 逐项记录位置、触发条件、如何掩盖、最小修复及真实验证；逐个保留 catch/回退列具体故障、当前依据、恢复行为，不能仅按文件概括。
+- 检查实现逻辑/导入/责任和 Minimality，不因局部测试绿而删必要事务/FAILED/账号/不确定提交保护；不改 contracts 或削弱旧断言。
+- 记录角色/身份/新上下文与未参与声明、精确 SHA/branch/diff range、干净 committed checkout 方法、命令/退出码/时长、PASS/FAIL、发现及保留理由、证据 hash/路径。
+
+Task Spec 与 current.md 必须能恢复两项审查状态及下一动作。Research Recorder 记录可观察工作，与产品接受分开；Recorder PASS、自评或本地测试不能替代独立审查、CI 或集成。
+

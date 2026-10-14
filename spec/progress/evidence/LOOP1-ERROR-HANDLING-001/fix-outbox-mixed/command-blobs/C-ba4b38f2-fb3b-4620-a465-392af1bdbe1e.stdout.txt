@@ -1,0 +1,51 @@
+=== RUN   TestOutboxBatchAndDispatcherDoNotDiscardClosedPoolFailure
+--- PASS: TestOutboxBatchAndDispatcherDoNotDiscardClosedPoolFailure (0.50s)
+=== RUN   TestOutboxMixedDefaultConnectErrorPropagates
+    outbox_transport_test.go:123: default mixed driver roots preserved by actual Relay in 501.7768ms
+--- PASS: TestOutboxMixedDefaultConnectErrorPropagates (0.52s)
+=== RUN   TestOutboxInternalOnlyDefaultConnectErrorPropagates
+--- PASS: TestOutboxInternalOnlyDefaultConnectErrorPropagates (0.50s)
+=== RUN   TestOutboxAllNetworkDefaultConnectErrorsRetryUntilCancellation
+2026/10/14 13:10:08 Outbox transport batch failed; pending events retained for next tick
+2026/10/14 13:10:09 Outbox transport batch failed; pending events retained for next tick
+--- PASS: TestOutboxAllNetworkDefaultConnectErrorsRetryUntilCancellation (1.30s)
+=== RUN   TestOutboxCompleteTransportClassification
+=== RUN   TestOutboxCompleteTransportClassification/network_syscall_wrapper
+=== RUN   TestOutboxCompleteTransportClassification/wrapped_network
+=== RUN   TestOutboxCompleteTransportClassification/closed_NATS
+=== RUN   TestOutboxCompleteTransportClassification/disconnected_NATS
+=== RUN   TestOutboxCompleteTransportClassification/NATS_timeout
+=== RUN   TestOutboxCompleteTransportClassification/deadline
+=== RUN   TestOutboxCompleteTransportClassification/all_known_joined
+=== RUN   TestOutboxCompleteTransportClassification/nested_known_joined
+=== RUN   TestOutboxCompleteTransportClassification/unknown_only
+=== RUN   TestOutboxCompleteTransportClassification/internal_PG_only
+=== RUN   TestOutboxCompleteTransportClassification/wrapped_internal
+=== RUN   TestOutboxCompleteTransportClassification/known_first_mixed
+=== RUN   TestOutboxCompleteTransportClassification/unknown_first_mixed
+=== RUN   TestOutboxCompleteTransportClassification/known_deadline_mixed
+=== RUN   TestOutboxCompleteTransportClassification/known_NATS_mixed
+=== RUN   TestOutboxCompleteTransportClassification/wrapped_nested_mixed
+=== RUN   TestOutboxCompleteTransportClassification/network_wrapper_around_mixed
+=== RUN   TestOutboxCompleteTransportClassification/normal_cancellation
+--- PASS: TestOutboxCompleteTransportClassification (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/network_syscall_wrapper (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/wrapped_network (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/closed_NATS (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/disconnected_NATS (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/NATS_timeout (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/deadline (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/all_known_joined (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/nested_known_joined (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/unknown_only (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/internal_PG_only (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/wrapped_internal (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/known_first_mixed (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/unknown_first_mixed (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/known_deadline_mixed (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/known_NATS_mixed (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/wrapped_nested_mixed (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/network_wrapper_around_mixed (0.00s)
+    --- PASS: TestOutboxCompleteTransportClassification/normal_cancellation (0.00s)
+PASS
+ok  	im-platform/backend/go/core	4.654s

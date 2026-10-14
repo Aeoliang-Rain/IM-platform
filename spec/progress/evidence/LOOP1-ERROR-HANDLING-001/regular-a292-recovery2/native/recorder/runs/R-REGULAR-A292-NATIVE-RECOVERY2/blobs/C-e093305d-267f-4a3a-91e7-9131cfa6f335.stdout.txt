@@ -1,0 +1,149 @@
+
+FILE 70 clients\mobile\app\src\main\kotlin\im\platform\client\ui\Workspace.kt HASH e4f79ec5b4ef99191a77b5566e403889ff3cdbbfdca9417eed787050504df0bc
+1: package im.platform.client.ui
+2: import androidx.compose.runtime.*
+3: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+4: import androidx.lifecycle.viewmodel.compose.viewModel
+5: import im.platform.client.ui.components.Shell
+6: import im.platform.client.ui.i18n.LocalLanguage
+7: 
+8: @Composable fun Workspace(vm:WorkspaceViewModel=viewModel()){
+9:     val state by vm.state.collectAsStateWithLifecycle()
+10:     CompositionLocalProvider(LocalLanguage provides state.language){Shell(state,language=vm::language,add=vm::add,appearance=vm::appearance,closeConversation=vm::closeConversation,disconnect=vm::disconnect,login=vm::login,logout=vm::logout,open=vm::open,reconnect=vm::reconnect,refresh=vm::refresh,register=vm::register,restore=vm::restore,retry=vm::retry,search=vm::search,send=vm::send)}
+11: }
+
+FILE 71 clients\mobile\app\src\main\kotlin\im\platform\client\ui\WorkspaceViewModel.kt HASH 0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65
+1: package im.platform.client.ui
+2: import android.app.Application
+3: import im.platform.client.ui.i18n.errorKey
+4: import androidx.lifecycle.AndroidViewModel
+5: import im.platform.client.send.*
+6: import im.platform.client.send.Wire as SendWire
+7: import im.platform.client.storage.Repository
+8: import im.platform.client.sync.*
+9: import kotlinx.coroutines.*
+10: import kotlinx.coroutines.flow.*
+11: import kotlinx.coroutines.sync.Mutex
+12: import kotlinx.coroutines.sync.withLock
+13: data class ConversationPreview(val text:String,val time:Long)
+14: data class WorkspaceState(val language:String="en",val languageStored:Boolean=true,val appearance:Appearance=Appearance(),val busy:Boolean=false,val error:String?=null,val session:SendSession?=null,val offlineAccount:String?=null,val profile:User?=null,val friends:List<Friend> = emptyList(),val results:List<User> = emptyList(),val searchComplete:Boolean=false,val conversations:List<String> = emptyList(),val selected:String="",val messages:List<List<String?>> = emptyList(),val connection:String="offline",val sync:String="idle",val unavailable:List<String> = emptyList(),val endpoint:String="https://localhost:8443",val previews:Map<String,ConversationPreview> = emptyMap(),val registered:Boolean=false)
+15: class WorkspaceViewModel(application:Application):AndroidViewModel(application) {
+16:     private val scope=CoroutineScope(SupervisorJob()+Dispatchers.Main.immediate)
+17:     private val preferences=Preferences(application)
+18:     private var friendRevision=0L;private var friendCursor="";private var repository:Repository?=null;private var listRevision=0L;private val activity=mutableMapOf<String,Long>()
+19:     private var auth:Auth?=null;private var sync:SyncViewModel?=null;private var offlineRepository:Repository?=null;private var generation=0L;private var operation=0L;private var observers:Job?=null;private var refreshTimer:Job?=null
+20:     private val mutable=MutableStateFlow(WorkspaceState());val state:StateFlow<WorkspaceState> = mutable.asStateFlow()
+21:     private fun publish(change:(WorkspaceState)->WorkspaceState){mutable.value=change(mutable.value)}
+22:     private var languageRevision=0L
+23:     init{val revision=languageRevision;scope.launch{val language=withContext(Dispatchers.IO){preferences.loadLanguage()};if(revision==languageRevision)publish{it.copy(language=language)};try{val value=withContext(Dispatchers.IO){preferences.loadAppearance()};publish{it.copy(appearance=value)}}catch(e:Exception){fail(e);publish{it.copy(error="error.appearanceLoad")}}}}
+24:     private val languageWrites=Mutex()
+25:     fun language(value:String){if(!im.platform.client.ui.i18n.validLocale(value))return;val revision=++languageRevision;publish{it.copy(language=value,languageStored=true)};scope.launch{languageWrites.withLock{try{withContext(Dispatchers.IO){preferences.saveLanguage(value)};publish{if(revision==languageRevision)it.copy(languageStored=true)else it}}catch(e:Exception){fail(e);publish{if(revision==languageRevision)it.copy(languageStored=false)else it}}}}}
+26:     private val appearanceWrites=Mutex()
+27:     fun appearance(value:Appearance){publish{it.copy(appearance=value,error=null)};scope.launch{appearanceWrites.withLock{try{withContext(Dispatchers.IO){preferences.saveAppearance(value)}}catch(e:Exception){fail(e);publish{it.copy(error="Appearance could not be saved")}}}}}
+28:     private suspend fun stop(){generation++;listRevision++;repository=null;friendCursor="";friendRevision++;activity.clear();refreshTimer?.cancel();refreshTimer=null;observers?.cancel();observers=null;val old=sync;sync=null;val offline=offlineRepository;offlineRepository=null;publish{WorkspaceState(language=it.language,languageStored=it.languageStored,appearance=it.appearance,endpoint=it.endpoint,busy=it.busy)};withContext(Dispatchers.IO){old?.dispose();offline?.close()}}
+29:     private fun fail(e:Exception,active:Boolean=true){if(e !is ApiFailure && e !is SyncFailure && e !is WireFailure && e !is SendStorageFailure && e !is java.io.IOException && e !is java.security.GeneralSecurityException)throw e;if(!active)return;publish{it.copy(error=if(e is ApiFailure)e.message else "Operation unavailable")};if(e is ApiFailure&&e.kind=="session_expired")expire()}
+30:     private fun accountRepository(account:String):Repository {
+31:         // Preserve the existing initialization failure projection at its actual
+32:         // invocation. No Repository operation, write recovery or SQL changes.
+33:         val repo=try {Repository(getApplication(),account)}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}
+34:         try {repo.initialize()}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}
+35:         return repo
+36:     }
+37:     private suspend fun bind(session:SendSession,op:Long){
+38:         if(op!=operation)return;stop();if(op!=operation)return;val g=generation;val authOwner=auth
+39:         val repo=withContext(Dispatchers.IO){accountRepository(session.userId)}
+40:         if(g!=generation || op!=operation){repo.close();return}
+41:         val send=SendViewModel(repo,session,factory={url,open,message,end->Wss(url,open,{raw->
+42:             val frame=try{SendWire.decode(raw)}catch(_:WireFailure){null}
+43:             if(frame?.type=="session.revoked" || frame?.type=="auth.ack" && frame.payload["status"]=="rejected")scope.launch{if(g==generation)expire()}else message(raw)
+44:         },end)},ownsRepository=true)
+45:         repository=repo;val owner=SyncViewModel(send,repo,SyncHttps(state.value.endpoint,session));sync=owner
+46:         val ids=withContext(Dispatchers.IO){repositoryRead {repo.conversationIds()}};if(g!=generation || op!=operation)return;publish{it.copy(session=session,conversations=ids,selected="",error=null)}
+47:         observers=scope.launch {
+48:             launch{send.state.collect{s->if(g==generation){publish{it.copy(connection=s.connection,error=s.error?:it.error)};updateList(repo,g)}}}
+49:             launch{owner.state.collect{s->if(g==generation){publish{it.copy(sync=s.status,unavailable=s.unavailable,error=s.error?.let{"Sync "+it}?:it.error)};if(s.error=="authentication")expire();if(s.status=="idle"){updateList(repo,g);refreshFriends(repo,g)}}}}
+50:         }
+51:         updateList(repo,g);if(g!=generation)return
+52:         send.connect(state.value.endpoint.replaceFirst("https:","wss:")+"/v1/ws")
+53:         refreshTimer=scope.launch{while(isActive){delay(30000);if(g==generation && auth?.needsRefresh()==true && !state.value.busy)refresh()}}
+54:         try{val profile=authOwner!!.profile();if(g!=generation || op!=operation)return;publish{it.copy(profile=profile)};refreshFriends(repo,g)}catch(e:Exception){fail(e,g==generation && op==operation)}
+55:     }
+56:     private suspend fun refreshFriends(repo:Repository,g:Long){
+57:         val owner=auth?:return;val revision=++friendRevision
+58:         try{val cursor=withContext(Dispatchers.IO){repositoryRead {repo.cursor()}};if(g!=generation||cursor==friendCursor)return
+59:             val friends=owner.friends();if(g!=generation||owner!==auth||revision!=friendRevision)return
+60:             friendCursor=cursor;publish{it.copy(friends=friends)};updateList(repo,g)
+61:         }catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==friendRevision)}
+62:     }
+63:     private suspend fun updateList(repo:Repository,g:Long){
+64:         val revision=++listRevision
+65:         try {val friendIds=state.value.friends.map{it.directConversationId};val localActivity=activity.toMap()
+66:             val entries=withContext(Dispatchers.IO){(repositoryRead {repo.conversationIds()}+friendIds).distinct().map{id->val rows=repositoryRead {repo.messages(id)};val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:"",maxOf(time,localActivity[id]?:0L)),rows)}}
+67:             if(g!=generation||revision!=listRevision)return
+68:             val previews=entries.associate{it.first to it.second};val ids=previews.keys.sortedWith(compareByDescending<String>{previews[it]!!.time}.thenBy{it});publish{it.copy(conversations=ids,previews=previews,messages=entries.find{row->row.first==it.selected}?.third?:emptyList())}
+69:         }catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==listRevision);if(g==generation&&revision==listRevision)publish{it.copy(error="Conversation history unavailable")}}
+70:     }
+71:     fun register(username:String,password[REDACTED],confirmation:String){
+72:         if(state.value.busy)return
+73:         if(password!=confirmation){publish{it.copy(error="Passwords do not match")};return}
+74:         if(!Regex("^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$").matches(username)||password.codePointCount(0,password.length) !in 12..256){publish{it.copy(error="Use a 3–64 character username and a 12–256 character password")};return}
+75:         val op=++operation;publish{it.copy(busy=true,error=null,registered=false)}
+76:         scope.launch{try{Auth(state.value.endpoint,preferences).register(username,password);if(op==operation)publish{it.copy(registered=true)}}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}
+77:     }
+78:     fun login(endpoint:String,username:String,password[REDACTED];val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{stop();withContext(Dispatchers.IO){auth?.clear()};if(op!=operation)return@launch;val base=serverOrigin(endpoint);publish{it.copy(endpoint=base)};val owner=Auth(base,preferences);auth=owner;val session=owner.login(username,password);if(op==operation)bind(session,op)}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}
+79:     fun restore(endpoint:String){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{stop();val g=generation;val base=serverOrigin(endpoint);publish{it.copy(endpoint=base)};val owner=Auth(base,preferences);auth=owner;val account=withContext(Dispatchers.IO){owner.savedAccount()};if(op!=operation)return@launch;if(account==null){publish{it.copy(error="No saved session for this server")};return@launch};val repo=withContext(Dispatchers.IO){accountRepository(account)};val ids=withContext(Dispatchers.IO){repositoryRead {repo.conversationIds()}};val selected="";val messages=withContext(Dispatchers.IO){if(selected.isNotEmpty())repositoryRead {repo.messages(selected)}else emptyList()};if(op!=operation){repo.close();return@launch};offlineRepository=repo;publish{it.copy(offlineAccount=account,conversations=ids,selected=selected,messages=messages,error="Showing saved history while the secure session resumes")};updateList(repo,g);val session=withContext(Dispatchers.IO){owner.refresh()};if(op==operation)bind(session,op)}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}
+80:     fun refresh(){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{auth?.let{val session=withContext(Dispatchers.IO){it.refresh()};if(op==operation)bind(session,op)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}
+81:     fun expire(){val op=++operation;val owner=auth;auth=null;scope.launch{stop();try{withContext(Dispatchers.IO){owner?.clear()};if(op==operation)publish{it.copy(busy=false,error="Session expired. Sign in again.")}}catch(e:Exception){fail(e,op==operation);if(op==operation)publish{it.copy(busy=false,error="error.cleanup")}}}}
+82:     fun logout(){val op=++operation;scope.launch{publish{it.copy(busy=true)};val owner=auth;auth=null;val remote=async(Dispatchers.IO){try{owner?.logout();null}catch(e:CancellationException){throw e}catch(e:Exception){e}};stop();try{remote.await()?.let{throw it};if(op==operation)publish{it.copy(error=null)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}
+83:     fun closeConversation(){publish{it.copy(selected="",messages=emptyList())}}
+84:     fun open(id:String){val owner=sync;val offline=offlineRepository;val g=generation;publish{it.copy(selected=id,messages=emptyList(),error=null)};scope.launch{try{if(offline!=null){val messages=withContext(Dispatchers.IO){repositoryRead {offline.messages(id)}};if(g==generation&&state.value.selected==id)publish{it.copy(messages=messages)}}else owner?.openConversation(id)}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error="Sync unavailable; showing local history")}}}}
+85:     fun send(text:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.send(c,text)};if(g==generation){activity[c]=System.currentTimeMillis();repository?.let{updateList(it,g)}}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error="Message could not be saved")}}}}
+86:     fun retry(id:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.retry(c,id)}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error="Retry unavailable")}}}}
+87:     fun disconnect(){scope.launch{sync?.send?.disconnect()}}
+88:     fun reconnect(){val owner=sync?:return;val g=generation;scope.launch{try{owner.send.connect(state.value.endpoint.replaceFirst("https:","wss:")+"/v1/ws");owner.synchronize()}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error="Connection unavailable")}}}}
+89:     fun search(query:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,results=emptyList(),searchComplete=false,error=null)};scope.launch{try{val results=owner.search(query);if(g==generation)publish{it.copy(results=results,searchComplete=true)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}
+90:     fun add(id:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,error=null)};scope.launch{try{val c=owner.add(id);if(g!=generation)return@launch;val revision=++friendRevision;val friends=owner.friends();if(g==generation&&owner===auth){if(revision==friendRevision)publish{it.copy(friends=friends,conversations=(it.conversations+c).distinct())};open(c)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}
+91:     override fun onCleared(){generation++;observers?.cancel();refreshTimer?.cancel();val owner=sync;val offline=offlineRepository;sync=null;offlineRepository=null;scope.launch{try{withContext(Dispatchers.IO){owner?.dispose();offline?.close()}}finally{scope.cancel()}}}
+92: }
+
+FILE 72 clients\mobile\app\src\main\kotlin\im\platform\client\ui\components\Chat.kt HASH 670822348f5b1c48850e87c8921a7f1be37e4f3beec61a2a13702161928b125e
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun Chat(state:WorkspaceState,open:(String)->Unit,reconnect:()->Unit,retry:(String)->Unit,send:(String)->Unit,draft:String,setDraft:(String)->Unit) {
+27:     val t=useText()
+28: 
+29:     if(state.selected.isEmpty()){
+30:         ConversationList(state,open);return
+31:     }
+32:     val selected=state.friends.find{it.directConversationId==state.selected};val spacing=(10*state.appearance.density).dp
+33:     Column(Modifier.fillMaxSize(),verticalArrangement=Arrangement.spacedBy(spacing)){
+34:         if(state.conversations.isEmpty()){Panel(Modifier.fillMaxWidth(),state.appearance){Text(t("chat.next"),style=MaterialTheme.typography.titleLarge);Text(t("chat.addHint"))}}else {
+35:             Row(verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(selected?.user?.displayName?:t("chat.conversation"),style=MaterialTheme.typography.titleMedium);Text(if(state.connection=="ready")t("sync.automatic")else t("sync.offline"),style=MaterialTheme.typography.bodyMedium)};TextButton(onClick=reconnect,enabled=state.session!=null){Text(t("auth.reconnect"))}}
+36:         }
+37:         Messages(state,spacing,retry,Modifier.weight(1f))
+38:         Composer(state,draft,setDraft,send){setDraft("")};Spacer(Modifier.height(5.dp))
+39:     }
+40: }

@@ -1,0 +1,27 @@
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt
+1: package im.platform.client.ui.i18n
+2: import androidx.compose.runtime.*
+3: val LocalLanguage=staticCompositionLocalOf { "en" }
+4: val locales=listOf("en","zh-CN","ja-JP")
+5: val languageNames=listOf("English","简体中文","日本語")
+6: const val languageEntry="Language / 语言 / 言語"
+7: fun validLocale(value:String?)=value=="en"||value=="zh-CN"||value=="ja-JP"
+8: val resources:Map<String,Map<String,String>> = mapOf("en" to en,"zh-CN" to zhCN,"ja-JP" to jaJP)
+9: fun translate(locale:String?,key:String,params:Map<String,Any> = emptyMap(),data:Map<String,Map<String,String>> = resources):String {
+10:  val language=if(validLocale(locale))locale else "en"
+11:  check(data["en"]?.containsKey(key)==true){"Missing English language key: "+key}
+12:  val template=data[language]?.get(key)?:data["en"]?.get(key)?:error("Missing English language key: "+key)
+13:  return Regex("\\{([A-Za-z]+)\\}").replace(template){match->params[match.groupValues[1]]?.toString()?:match.value}
+14: }
+15: class TextLookup(private val locale:String){operator fun invoke(key:String,vararg params:Pair<String,Any>)=translate(locale,key,params.toMap())}
+16: @Composable fun useText():TextLookup=TextLookup(LocalLanguage.current)
+17: val errorKeys=mapOf("USER_NOT_FOUND" to "error.userNotFound","FRIEND_SELF_NOT_ALLOWED" to "error.friendSelf","FRIENDSHIP_STATE_CONFLICT" to "error.friendState","session_expired" to "auth.expired","invalid_credentials" to "error.credentials","connection_unavailable" to "error.connection","invalid_server_response" to "error.response","request_failed" to "error.request","secure_credential_storage_unavailable" to "error.secure","secure_credential_metadata_invalid" to "error.secureMetadata","use_an_https_server_origin" to "error.https","VALIDATION_FAILED" to "error.validation","AUTHORIZATION_DENIED" to "error.denied","MESSAGE_REQUEST_CONFLICT" to "error.conflict","MESSAGE_COMMIT_FAILED" to "error.commit","USERNAME_ALREADY_EXISTS" to "error.usernameExists","PROTOCOL_VERSION_UNSUPPORTED" to "error.protocol","AUTH_REQUIRED" to "error.authentication","AUTH_TOKEN_INVALID" to "auth.expired","AUTH_TOKEN_EXPIRED" to "auth.expired","AUTH_SESSION_REVOKED" to "auth.expired","AUTH_SESSION_EPOCH_STALE" to "auth.expired","AUTH_CLIENT_TYPE_MISMATCH" to "auth.expired","storage" to "error.history","protocol" to "connection.protocol_error","authentication" to "error.authentication","transport" to "error.connection","response" to "error.response")
+18: fun errorKey(kind:String)=errorKeys[kind]?:"error.request"
+19: 
+20: val sourceDisplayKeys=mapOf("Chat" to "nav.chat","Friends" to "nav.friends","AI" to "nav.ai","Plugin" to "nav.plugin","Settings" to "nav.settings","Protocol error" to "connection.protocol_error","仅接收本页实时消息 · 不补历史" to "sync.webWindow","正在补齐本页在线消息…" to "sync.webLoading","本页在线消息已同步 · 不补历史" to "sync.webCurrent","同步失败，重连或重新打开会话重试" to "sync.webFailed","无效响应未改变已确认消息" to "sync.invalid","Session expired. Sign in again." to "auth.expired","会话已过期，请重新登录。" to "auth.expired","会话已被替换，请重新登录。" to "auth.replaced","会话已过期或在其他网页被替换，请重新登录。" to "auth.revoked","已登录 · 消息仅保留在当前页面内存" to "auth.loggedIn","正在刷新会话…" to "auth.refreshing","会话已刷新" to "auth.refreshed","会话刷新失败，请重试或重新登录。" to "auth.refreshFailed","已退出登录。" to "auth.loggedOut","本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。" to "auth.logoutUnconfirmed","Invalid username or password" to "auth.invalidCredentials","账号或密码不正确。" to "auth.invalidCredentials","登录失败，请检查网络后重试。" to "auth.loginFailed","好友已添加，唯一私聊已建立" to "friends.added","好友加载失败，可重试。" to "friends.failed","好友同步失败，可重试或重连。" to "friends.syncFailed","搜索失败，请检查用户名后重试。" to "friends.searchFailed","添加好友失败，请重试。" to "friends.addFailed","个人资料加载失败，可重试。" to "profile.failed","Appearance could not be loaded" to "error.appearanceLoad","Appearance could not be saved" to "error.appearanceSave","System notification unavailable" to "error.notification","Local history unavailable" to "error.history","Conversation history unavailable" to "error.conversationHistory","Operation unavailable" to "error.operation","Passwords do not match" to "error.passwordMismatch","Use a 3–64 character username and a 12–256 character password" to "error.registration","No saved session for this server" to "error.noSession","Showing saved history while the secure session resumes" to "error.resuming","Session expired; secure credential cleanup failed" to "error.cleanup","Sync unavailable; showing local history" to "error.syncLocal","Message could not be saved" to "error.saveMessage","Retry unavailable" to "error.retry","Connection unavailable" to "error.connection","Use an HTTPS server origin" to "error.https","Invalid server response" to "error.response","Secure credential storage unavailable" to "error.secure","Secure credential metadata invalid" to "error.secureMetadata","Request failed" to "error.request","Session expired" to "auth.expired","会话已失效，请重新登录。" to "auth.expired")
+21: fun displayText(locale:String,value:String):String {
+22:  if(value.isEmpty())return ""
+23:  if(value.startsWith("Sync "))return translate(locale,"error.sync",mapOf("reason" to translate(locale,errorKey(value.substring(5)))))
+24:  return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources["en"]!!.containsKey(value))value else "error.operation")
+25: }

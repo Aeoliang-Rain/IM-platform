@@ -1,0 +1,22 @@
+Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\dist\node_modules\react\cjs\react.development.js:1618
+  return dispatcher.useContext(Context);
+                    ^
+
+TypeError: Cannot read properties of null (reading 'useContext')
+    at Object.useContext (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\dist\node_modules\react\cjs\react.development.js:1618:21)
+    at useText (file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/regular-review-a292-recovery2/fixture/clients/desktop/dist/desktop/src/ui/i18n/context.js:4:50)
+    at Messages (file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/regular-review-a292-recovery2/fixture/clients/desktop/dist/desktop/src/ui/components/Messages.js:10:15)
+    at renderWithHooks (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5662:16)
+    at renderIndeterminateComponent (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5736:15)
+    at renderElement (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5961:7)
+    at renderNodeDestructiveImpl (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:6119:11)
+    at renderNodeDestructive (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:6091:14)
+    at retryTask (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:6543:5)
+    at performWork (C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\fixture\clients\desktop\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:6591:7)
+
+Node.js v24.19.0

@@ -1,0 +1,70 @@
+218
+[
+  {
+    "id": "RH025",
+    "path": "clients/desktop/src-tauri/src/bin/storage_probe.rs",
+    "line": 25,
+    "column": 74,
+    "operation": "module",
+    "source": "println!(\"{}\",row.iter().map(|v|v.as_ref().map(|s|encode(s)).unwrap_or(\"~\".into())).collect::<Vec<_>>().join(\"\\t\"));",
+    "disposition": "RETAINED",
+    "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
+    "authority": "Frozen\u00a75/\u00a76/\u00a77 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+  },
+  {
+    "id": "RH026",
+    "path": "clients/desktop/src-tauri/src/database.rs",
+    "line": 34,
+    "column": 13,
+    "operation": "module",
+    "source": "_ => {",
+    "disposition": "RETAINED",
+    "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
+    "authority": "Frozen\u00a75/\u00a76/\u00a77 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+  },
+  {
+    "id": "RH027",
+    "path": "clients/desktop/src-tauri/src/database.rs",
+    "line": 55,
+    "column": 13,
+    "operation": "module",
+    "source": "_ => row.try_get::<Option<String>,_>(i),",
+    "disposition": "RETAINED",
+    "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
+    "authority": "Frozen\u00a75/\u00a76/\u00a77 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+  },
+  {
+    "id": "RH028",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 24,
+    "column": 60,
+    "operation": "module",
+    "source": "if response.content_length().map(|n|n>MAX_BODY as u64).unwrap_or(false){return Err(\"HTTPS response too large\".into());}",
+    "disposition": "RETAINED",
+    "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
+    "authority": "Frozen\u00a75/\u00a76/\u00a77 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+  },
+  {
+    "id": "RH029",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 57,
+    "column": 9,
+    "operation": "module",
+    "source": "_=>return Err(\"Window action invalid\".into()),",
+    "disposition": "RETAINED",
+    "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
+    "authority": "Frozen\u00a75/\u00a76/\u00a77 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+  },
+  {
+    "id": "RH030",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 79,
+    "column": 88,
+    "operation": "module",
+    "source": "match std::str::from_utf8(&bytes){Ok(value) if valid_language(value)=>value.into(),_=>\"en\".into()}",
+    "disposition": "RETAINED",
+    "specific_ground_and_recovery": "Current optional/empty external metadata or resource state, exact expression recorded; no exception caught as normal data. Original failures propagate via error return, exception or failing process.",
+    "authority": "Frozen\u00a75/\u00a76/\u00a77 + canonical contracts; ADR0011/0012 for explicit preferences; Human boundary clarification only for Send native provenance"
+  }
+]
+Counter({'clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt': 38, 'clients/desktop/src/application/ui/workspace.ts': 25, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt': 15, 'clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt': 14, 'clients/desktop/src/application/ui/native.ts': 12, 'clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt': 12, 'clients/desktop/src/application/ui/auth.ts': 11, 'clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt': 11, 'clients/desktop/src/application/send.ts': 8, 'clients/desktop/src/application/sync/application.ts': 6, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt': 6, 'clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt': 6, 'clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt': 5, 'clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt': 5, 'clients/desktop/src-tauri/src/desktop_capabilities.rs': 4, 'clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt': 4, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt': 4, 'clients/desktop/src/ui/components/Messages.tsx': 3, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt': 3, 'clients/desktop/src-tauri/src/database.rs': 2, 'clients/desktop/src/ui/components/ConversationList.tsx': 2, 'clients/desktop/src/ui/components/Navigation.tsx': 2, 'clients/desktop/src/ui/components/ProfilePanel.tsx': 2, 'clients/desktop/src/ui/components/Shell.tsx': 2, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt': 2, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt': 2, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt': 2, 'clients/desktop/src-tauri/src/bin/storage_probe.rs': 1, 'clients/desktop/src/ui/components/Composer.tsx': 1, 'clients/desktop/src/ui/components/FriendsPanel.tsx': 1, 'clients/desktop/src/ui/i18n/resources.ts': 1, 'clients/mobile/app/build.gradle.kts': 1, 'clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt': 1, 'clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt': 1, 'clients/mobile/gradlew': 1, 'clients/mobile/gradlew.bat': 1, 'clients/desktop/src/application/accountSend.ts': 1})

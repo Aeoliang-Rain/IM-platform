@@ -1,0 +1,34 @@
+
+FILE 7 clients\desktop\src-tauri\Cargo.toml HASH 71e8f5feecf92aef9fc37af4b125463fb696ab4bb2de0823461a671773a196fe
+1: [package]
+2: name = "im-client-storage"
+3: version = "0.1.0"
+4: edition = "2021"
+5: default-run = "im-client-storage"
+6: 
+7: [lib]
+8: name = "im_client_storage"
+9: path = "src/lib.rs"
+10: 
+11: [dependencies]
+12: tauri = { version = "2", features = [] }
+13: sqlx = { version = "0.8", default-features = false, features = ["sqlite", "runtime-tokio"] }
+14: 
+15: [build-dependencies]
+16: tauri-build = { version = "2", features = [] }
+17: 
+18: [target.'cfg(windows)'.dependencies]
+19: tauri = { version = "2", features = ["tray-icon"] }
+20: reqwest = { version = "0.12", default-features = false, features = ["native-tls"] }
+21: keyring = { version = "3", default-features = false, features = ["windows-native"] }
+22: tauri-plugin-notification = "2"
+23: tauri-plugin-global-shortcut = "2"
+
+FILE 8 clients\desktop\src-tauri\build.rs HASH 8af41c0062014fc594e4bb9899e60ee9930ab57d4cf0c73041ff557d6ec736e6
+1: fn main() { tauri_build::build() }
+
+FILE 9 clients\desktop\src-tauri\icons\icon.ico HASH 73b1fc32c2612d63e14a6d6c0baf2878af39f47a685822e6e62170441454a405
+BINARY 122429 00000100070010100000000020003c030000760000001818
+
+FILE 10 clients\desktop\src-tauri\icons\icon.png HASH 8a0f65d1aeea5c1ed41071bd36f26e8a5c9e9eb9772debabd98c08375fa97350
+BINARY 80441 89504e470d0a1a0a0000000d494844520000010000000100

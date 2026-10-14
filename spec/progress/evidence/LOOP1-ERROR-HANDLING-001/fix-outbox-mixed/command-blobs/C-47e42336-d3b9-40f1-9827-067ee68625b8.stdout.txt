@@ -1,0 +1,53 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 591B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from migrate.Dockerfile
+#2 transferring dockerfile: 229B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-alpine
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 401B done
+#5 DONE 0.0s
+
+#6 [1/4] FROM docker.io/library/python:3.12-alpine@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111
+#6 resolve docker.io/library/python:3.12-alpine@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111 0.0s done
+#6 DONE 0.0s
+
+#7 [2/4] RUN apk add --no-cache postgresql-client
+#7 CACHED
+
+#8 [3/4] WORKDIR /work
+#8 CACHED
+
+#9 [4/4] COPY contracts/database /work/contracts/database
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 exporting manifest sha256:019bbdc99b94c609d7f31b6bb4fe3d5831dcf69c45b17067968d8dd7991e22ce 0.0s done
+#10 exporting config sha256:42da28722dd7707e2d2e327108f5feaa75072766540d3c63d1c3590ec31c9386 0.0s done
+#10 exporting attestation manifest sha256:5e605df914f2313ea0fca593795e2bd8ec06ac3b8966c5285561ec06c9f40d5d 0.0s done
+#10 exporting manifest list sha256:690ef1029c8f771180514f3b6ab5b5efe6e23e0132ef23326510cf4b287704c9
+#10 exporting manifest list sha256:690ef1029c8f771180514f3b6ab5b5efe6e23e0132ef23326510cf4b287704c9 0.0s done
+#10 naming to docker.io/library/im-error-tests-9910b23c09ed-migrate:latest done
+#10 unpacking to docker.io/library/im-error-tests-9910b23c09ed-migrate:latest done
+#10 DONE 0.1s
+
+#11 resolving provenance for metadata file
+#11 DONE 0.0s
+FAIL	im-platform/backend/go [setup failed]
+FAIL	im-platform/backend/go/core [setup failed]
+FAIL	im-platform/backend/go/gateway [setup failed]
+FAIL	im-platform/backend/go/plugin-host [setup failed]
+FAIL	im-platform/backend/go/shared [setup failed]
+FAIL	im-platform/backend/go/tests [setup failed]
+FAIL
+Owned integration containers/volumes removed

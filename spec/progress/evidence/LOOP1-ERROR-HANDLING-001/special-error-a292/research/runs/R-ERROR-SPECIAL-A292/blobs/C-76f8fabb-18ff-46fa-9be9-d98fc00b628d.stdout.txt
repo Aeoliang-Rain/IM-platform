@@ -1,0 +1,332 @@
+
+FILE clients/web/src/ui/components/Shell.tsx
+import {LanguageContext,useText,useDisplayText} from "../i18n/context.js";
+import {Navigation} from "./Navigation.js";
+import {Header} from "./Header.js";
+import {AuthPanel} from "./AuthPanel.js";
+import {ConversationList} from "./ConversationList.js";
+import {Messages} from "./Messages.js";
+import {Composer} from "./Composer.js";
+import {FriendsPanel} from "./FriendsPanel.js";
+import {Placeholder} from "./Placeholder.js";
+import {SettingsPanel} from "./SettingsPanel.js";
+import {ProfilePanel} from "./ProfilePanel.js";
+import React,{useState,useEffect,useSyncExternalStore} from 'react';
+import {WebClient} from '../../application/client.js';
+import {loadAppearance,saveAppearance} from '../appearance.js';
+import type {Appearance} from '../appearance.js';
+const client=new WebClient(window.location.origin);
+import {loadLanguage,saveLanguage} from "../language.js";
+import {validLocale,type Locale} from "../i18n/resources.js";
+export function Shell(){const [locale,setLocale]=useState(loadLanguage),[languageStored,setLanguageStored]=useState(true);
+ function selectLanguage(value:Locale){if(!validLocale(value))return;setLocale(value);setLanguageStored(saveLanguage(value));}
+ useEffect(()=>{document.documentElement.lang=locale;},[locale]);
+ return <LanguageContext.Provider value={locale}><WorkspaceShell locale={locale} selectLanguage={selectLanguage} languageStored={languageStored}/></LanguageContext.Provider>;
+}
+function WorkspaceShell({locale,selectLanguage,languageStored}:{locale:Locale;selectLanguage:(value:Locale)=>void;languageStored:boolean}){
+ const t=useText();const display=useDisplayText();
+  const v=useSyncExternalStore(client.subscribe,client.view);const [page,setPage]=useState<"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile">('Chat'),[prefs,setPrefs]=useState(loadAppearance),[stored,setStored]=useState(true),[username,setUsername]=useState(''),[password,setPassword]=useState(''),[search,setSearch]=useState(''),[searched,setSearched]=useState(false),[text,setText]=useState('');
+  useEffect(()=>{document.documentElement.dataset.theme=prefs.theme;document.documentElement.dataset.density=prefs.density;document.documentElement.style.setProperty('--font-size',prefs.fontSize+'px');},[prefs]);
+  useEffect(()=>{if(!v.session){setPage('Chat');setText('');setSearch('');setSearched(false);setUsername('');setPassword('');}},[v.session]);
+  const loadProfile=client.loadProfile.bind(client),logout=client.logout.bind(client),refresh=client.refresh.bind(client),loadFriends=client.loadFriends.bind(client),reconnect=client.reconnect.bind(client),retry=client.retry.bind(client),send=client.send.bind(client),searchUsers=client.search.bind(client),addFriend=client.addFriend.bind(client),login=client.login.bind(client);
+  function appearance(p:Partial<Appearance>){const next={...prefs,...p};setPrefs(next);setStored(saveAppearance(next));}
+  function open(c:string){client.open(c);setPage('Chat');}
+  const selected=v.friends.find(f=>f.directConversationId===v.selected),messages=client.repository.snapshot(v.selected);
+  return <div className="workspace">
+    <Navigation page={page} setPage={setPage} v={v} loadProfile={loadProfile}/>
+    <div className="main"><Header page={page} setPage={setPage} v={v} logout={logout}/>
+    {!v.session&&page!=='Settings'?<AuthPanel v={v} username={username} setUsername={setUsername} password[REDACTED] setPassword={setPassword} login={login} refresh={refresh}/>:
+    page==='Chat'?<section className="chat-layout"><ConversationList v={v} open={open} setPage={setPage} loadFriends={loadFriends}/><div className="chat-view">{selected?<><div className="chat-heading"><span className="avatar">{selected.user.displayName.slice(0,1)}</span><div><h2>{selected.user.displayName}</h2><p>{t("chat.webLive")}</p></div><button onClick={()=>reconnect()}>{t("auth.reconnect")}</button></div>{v.sync&&<p className="sync" role="status">{display(v.sync)}</p>}<Messages v={v} messages={messages} retry={retry}/><Composer text={text} setText={setText} send={send}/></>:<div className="empty chat-empty"><span>◌</span><h2>{t("chat.place")}</h2><p>{t("chat.choose")}</p></div>}</div></section>:
+    page==='Friends'?<FriendsPanel v={v} search={search} setSearch={setSearch} searched={searched} setSearched={setSearched} open={open} loadFriends={loadFriends} searchUsers={searchUsers} addFriend={addFriend}/>:
+    page==='AI'||page==='Plugin'?<Placeholder page={page} setPage={setPage}/>:
+    page==='Settings'?<SettingsPanel locale={locale} selectLanguage={selectLanguage} languageStored={languageStored} prefs={prefs} appearance={appearance} stored={stored}/>:
+    <ProfilePanel v={v} loadProfile={loadProfile} refresh={refresh} logout={logout}/>}
+    </div></div>;
+}
+
+
+
+FILE clients/web/src/ui/i18n/context.tsx
+import React from "react";
+import {translate,displayText,type Locale} from "./resources.js";
+export const LanguageContext=React.createContext<Locale>("en");
+export function useText(){const locale=React.useContext(LanguageContext);return (key:string,params:Record<string,string|number>={})=>translate(locale,key,params);}
+export function useDisplayText(){const locale=React.useContext(LanguageContext);return (value:string)=>displayText(locale,value);}
+
+
+FILE clients/web/src/ui/i18n/resources.ts
+import en from "./en.js";
+import zhCN from "./zh-CN.js";
+import jaJP from "./ja-JP.js";
+export type Locale="en"|"zh-CN"|"ja-JP";
+export const locales:readonly Locale[]=["en","zh-CN","ja-JP"];
+export const languageNames=["English","简体中文","日本語"] as const;
+export const languageEntry="Language / 语言 / 言語";
+export function validLocale(value:unknown):value is Locale{return value==="en"||value==="zh-CN"||value==="ja-JP";}
+export const resources:Record<Locale,Record<string,string>>={en,"zh-CN":zhCN,"ja-JP":jaJP};
+// Display-only lookup. Wire values, user text and stable application IDs never pass through this function.
+export function translate(locale:unknown,key:string,params:Record<string,string|number>={},data=resources):string {
+ const language=validLocale(locale)?locale:"en";
+ if(!Object.hasOwn(data.en,key))throw new Error("Missing English language key: "+key);
+ const table=data[language];
+ const template=table&&Object.hasOwn(table,key)?table[key]:data.en[key];
+ if(template===undefined)throw new Error("Missing English language key: "+key);
+ return template.replace(/\{([A-Za-z]+)\}/g,(_,name:string)=>String(params[name]??"{"+name+"}"));
+}
+export const errorKeys:Record<string,string>={"USER_NOT_FOUND":"error.userNotFound","FRIEND_SELF_NOT_ALLOWED":"error.friendSelf","FRIENDSHIP_STATE_CONFLICT":"error.friendState",session_expired:"auth.expired",invalid_credentials:"error.credentials",connection_unavailable:"error.connection",invalid_server_response:"error.response",request_failed:"error.request",secure_credential_storage_unavailable:"error.secure",secure_credential_metadata_invalid:"error.secureMetadata",use_an_https_server_origin:"error.https",VALIDATION_FAILED:"error.validation",AUTHORIZATION_DENIED:"error.denied",MESSAGE_REQUEST_CONFLICT:"error.conflict",MESSAGE_COMMIT_FAILED:"error.commit",USERNAME_ALREADY_EXISTS:"error.usernameExists",PROTOCOL_VERSION_UNSUPPORTED:"error.protocol",AUTH_REQUIRED:"error.authentication",AUTH_TOKEN_INVALID:"auth.expired",AUTH_TOKEN_EXPIRED:"auth.expired",AUTH_SESSION_REVOKED:"auth.expired",AUTH_SESSION_EPOCH_STALE:"auth.expired",AUTH_CLIENT_TYPE_MISMATCH:"auth.expired",storage:"error.history",protocol:"connection.protocol_error",authentication:"error.authentication",transport:"error.connection",response:"error.response"};
+export function errorKey(kind:string):string{return Object.hasOwn(errorKeys,kind)?errorKeys[kind]:"error.request";}
+export const sourceDisplayKeys:Record<string,string>={"Chat": "nav.chat", "Friends": "nav.friends", "AI": "nav.ai", "Plugin": "nav.plugin", "Settings": "nav.settings", "Protocol error": "connection.protocol_error", "仅接收本页实时消息 · 不补历史": "sync.webWindow", "正在补齐本页在线消息…": "sync.webLoading", "本页在线消息已同步 · 不补历史": "sync.webCurrent", "同步失败，重连或重新打开会话重试": "sync.webFailed", "无效响应未改变已确认消息": "sync.invalid", "Session expired. Sign in again.": "auth.expired", "会话已过期，请重新登录。": "auth.expired", "会话已被替换，请重新登录。": "auth.replaced", "会话已过期或在其他网页被替换，请重新登录。": "auth.revoked", "已登录 · 消息仅保留在当前页面内存": "auth.loggedIn", "正在刷新会话…": "auth.refreshing", "会话已刷新": "auth.refreshed", "会话刷新失败，请重试或重新登录。": "auth.refreshFailed", "已退出登录。": "auth.loggedOut", "本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。": "auth.logoutUnconfirmed", "Invalid username or password": "auth.invalidCredentials", "账号或密码不正确。": "auth.invalidCredentials", "登录失败，请检查网络后重试。": "auth.loginFailed", "好友已添加，唯一私聊已建立": "friends.added", "好友加载失败，可重试。": "friends.failed", "好友同步失败，可重试或重连。": "friends.syncFailed", "搜索失败，请检查用户名后重试。": "friends.searchFailed", "添加好友失败，请重试。": "friends.addFailed", "个人资料加载失败，可重试。": "profile.failed", "Appearance could not be loaded": "error.appearanceLoad", "Appearance could not be saved": "error.appearanceSave", "System notification unavailable": "error.notification", "Local history unavailable": "error.history", "Conversation history unavailable": "error.conversationHistory", "Operation unavailable": "error.operation", "Passwords do not match": "error.passwordMismatch", "Use a 3–64 character username and a 12–256 character password": "error.registration", "No saved session for this server": "error.noSession", "Showing saved history while the secure session resumes": "error.resuming", "Session expired; secure credential cleanup failed": "error.cleanup", "Sync unavailable; showing local history": "error.syncLocal", "Message could not be saved": "error.saveMessage", "Retry unavailable": "error.retry", "Connection unavailable": "error.connection", "Use an HTTPS server origin": "error.https", "Invalid server response": "error.response", "Secure credential storage unavailable": "error.secure", "Secure credential metadata invalid": "error.secureMetadata", "Request failed": "error.request", "Session expired": "auth.expired", "会话已失效，请重新登录。": "auth.expired"};
+export function displayText(locale:unknown,value:string):string {
+ if(value==="")return "";
+ if(value.startsWith("Sync "))return translate(locale,"error.sync",{reason:translate(locale,errorKey(value.slice(5)))});
+ const key=Object.hasOwn(sourceDisplayKeys,value)?sourceDisplayKeys[value]:Object.hasOwn(errorKeys,value)?errorKeys[value]:Object.hasOwn(resources.en,value)?value:"error.operation";
+ return translate(locale,key);
+}
+
+
+FILE clients/web/src/ui/components/status.ts
+import type {Connection} from "../../application/client.js";
+export const connectionText:Record<Connection,string>={idle:"未连接",ready:"在线",connecting:"正在连接",failed:"连接失败",protocol_error:"协议错误",offline:"连接已断开"};
+
+
+FILE tests/clients/errors/stream_cleanup.mjs
+import assert from 'node:assert/strict';
+// Execute actual Response/ReadableStream readers. Dual read faults are controlled
+// reader overrides; ordinary native errored streams report the same root twice.
+export async function verifyStreamCleanup(invoke,known,body,{logout=false}={}) {
+ const response=stream=>{const r=new Response(logout?null:stream,{status:logout?204:200,headers:{'content-type':'application/json','cache-control':'no-store'}});if(logout&&stream)Object.defineProperty(r,'body',{value:stream});return r;};
+ const signal=()=>new AbortController().signal;
+ let cancellations=0;
+ const normal=new ReadableStream({start(c){if(!logout)c.enqueue(new TextEncoder().encode(body));c.close();},cancel(){cancellations++;}});
+ const getNormal=normal.getReader.bind(normal);let normalCancel=0;normal.getReader=()=>{const reader=getNormal(),cancel=reader.cancel.bind(reader);reader.cancel=(...args)=>{normalCancel++;return cancel(...args);};return reader;};
+ await invoke(response(normal),signal());assert.equal(normalCancel,1); // Completed stream cancel need not invoke underlying cancel.
+ if(logout)await invoke(new Response(null,{status:204}),signal());
+ const cleanup=new DOMException('controlled cleanup failure','AbortError');
+ const original=new Error('controlled internal read failure');
+ const decoder=TextDecoder.prototype.decode;
+ for(const mode of ['cleanup-only','cleanup-unknown','decoder-distinct','protocol-distinct','read-distinct','read-single','same-known','same-unknown','distinct-known','undefined-distinct','null-distinct','primitive-distinct','direct-validation']) {
+  if(logout&&(mode==='decoder-distinct'||mode==='protocol-distinct'))continue; // 204 path never decodes.
+  let calls=0;
+  const primary=mode==='distinct-known'?new TypeError('controlled network read'):mode==='undefined-distinct'?undefined:mode==='null-distinct'?null:mode==='primitive-distinct'?'controlled primitive':original;
+  let stream;
+  if(mode.startsWith('same-'))stream=new ReadableStream({start(c){c.error(mode==='same-known'?new TypeError('native stream network failure'):original);}});
+  else {
+   stream=new ReadableStream({start(c){if(mode==='direct-validation')c.enqueue(new Uint8Array(logout?1:6*1024*1024+1));else if(!logout)c.enqueue(new TextEncoder().encode(body));},cancel(){calls++;if(mode==='cleanup-unknown')throw original;if(mode!=='read-single')throw cleanup;}});
+   const get=stream.getReader.bind(stream);
+   stream.getReader=()=>{const reader=get();if(mode!=='decoder-distinct'&&mode!=='protocol-distinct'&&mode!=='direct-validation')reader.read=async()=>{if(mode.startsWith('cleanup-'))return {done:true,value:undefined};throw primary;};return reader;};
+  }
+  const protocol=new TypeError('controlled invalid UTF8');
+  if(mode==='decoder-distinct'||mode==='protocol-distinct')TextDecoder.prototype.decode=function(){throw mode==='protocol-distinct'?protocol:original;};
+  try {
+   await assert.rejects(invoke(response(stream),signal()),error=>{
+    if(mode==='cleanup-only'||mode==='same-known')return known(error,mode)&&!(error instanceof AggregateError);
+    if(mode==='cleanup-unknown'||mode==='read-single'||mode==='same-unknown')return error===original;
+    const allKnown=mode==='distinct-known'||mode==='protocol-distinct'||mode==='direct-validation';
+    if(allKnown)assert.equal(known(error,mode),true,'two actual known boundary faults retain FAILED classification');
+    else {assert(error instanceof AggregateError,'unknown primary must escape known classification');assert.equal(known(error,mode),false);}
+    const roots=allKnown?error.cause:error;assert(roots instanceof AggregateError);assert.equal(roots.errors.length,2);
+    if(mode==='direct-validation'){assert.equal(known(roots.errors[0],mode),true);assert.notEqual(roots.errors[0],error);assert.equal(roots.errors[0].cause,undefined);}else assert.equal(roots.errors[0],mode==='protocol-distinct'?protocol:mode==='decoder-distinct'?original:primary);
+    assert.notEqual(roots.errors[1],error);assert.notEqual(roots.errors[0]?.cause,roots,'raw primary cannot point back to aggregate');assert.equal(roots.errors[1],cleanup);return true;
+   });
+   if(!mode.startsWith('same-'))assert.equal(calls,1,'cleanup executed exactly once');
+  }finally{TextDecoder.prototype.decode=decoder;}
+ }
+ console.log('PASS stream cleanup normal/single/known same root/unknown same root/distinct dual roots'+(logout?' (actual204 status; controlled adapter-exposed empty stream)':''));
+}
+
+
+FILE tests/clients/web/regressions.mjs
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+const {WebClient}=await import(pathToFileURL(process.env.WEB_BUILD_DIR+'/web/src/application/client.js'));
+const {Http}=await import(pathToFileURL(process.env.WEB_BUILD_DIR+'/web/src/application/http.js'));
+const id=n=>'10000000-0000-4000-8000-'+String(n).padStart(12,'0'),c=id(3),u=id(1),peer=id(2),sid=id(4);
+const auth={session:{userId:u,sessionId:sid,clientType:'WEB',sessionEpoch:1,status:'ACTIVE'},tokens:{accessToken[REDACTED],accessTokenExpiresInSeconds:3600,refreshTokenDelivery:'HTTP_ONLY_SECURE_COOKIE'},replacedExistingSession:false};
+const json=(p,status=200)=>new Response(JSON.stringify(p),{status,headers:{'content-type':'application/json','cache-control':'no-store'}});
+const frame=(type,r,p)=>JSON.stringify({protocolVersion:'1.0',type,requestId:r,payload:p});
+const message=seq=>({conversationId:c,requestId:id(100+seq),messageId:id(300+seq),senderId:peer,seq,createdAt:'2026-10-09T09:00:00Z',content:{kind:'TEXT',text:'sequence '+seq}});
+const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve};};
+function observe(client,predicate){if(predicate())return Promise.resolve();return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{off();reject(Error('Expected client observation did not occur'));},2000);const off=client.subscribe(()=>{if(predicate()){clearTimeout(timer);off();resolve();}});});}
+async function setup(handler,timeout=10000){
+ const sockets=[];const api=async(url,options)=>{
+  if(url.endsWith('/auth/login'))return json(auth);
+  if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});
+  if(url.endsWith('/friends'))return json({friends:[{user:{userId:peer,username:'bob',displayName:'Bob'},friendshipId:id(6),directConversationId:c}]});
+  if(url.endsWith('/sync/user')){const b=JSON.parse(options.body);return json({syncVersion:'1.0',type:'sync.user.page',requestId:b.requestId,events:[],nextCursor:b.cursor,hasMore:false});}
+  return handler(url,options);
+ };
+ const factory=()=>{const socket={sent:[],send(raw){this.sent.push(JSON.parse(raw));},close(){this.onclose?.();}};sockets.push(socket);return socket;};
+ const client=new WebClient('https://regression.invalid',api,factory,timeout);
+ await client.login('alice','controlled-password');await observe(client,()=>client.view().friends.length===1);
+ const socket=sockets.at(-1);socket.onopen();const bind=socket.sent.at(-1);
+ socket.onmessage({data:frame('auth.ack',bind.requestId,{status:'bound',userId:u,sessionId:sid,clientType:'WEB',sessionEpoch:1})});client.open(c);
+ return {client,socket};
+}
+const created=(socket,seq)=>{const {requestId,...payload}=message(seq);socket.onmessage({data:frame('message.created',requestId,payload)});};
+const page=(request,messages,hasMore=false)=>json({syncVersion:'1.0',type:'sync.conversation.page',requestId:request.requestId,conversationId:c,messages,hasMore});
+// Timeout must not lose logical correlation. Unknown/wrong conversation/old
+// socket cannot confirm it; one late durable ACK does, and SENT stays terminal.
+{
+ const {client,socket}=await setup(async()=>{throw new TypeError('Controlled after-baseline network failure');},20);
+ try{
+  const rid=client.send('late confirmation');const failed=()=>client.repository.snapshot(c)[0].state==='FAILED';await observe(client,failed);
+  const ack={status:'committed',conversationId:c,messageId:id(800),seq:101,createdAt:'2026-10-09T09:00:00Z'};
+  socket.onmessage({data:frame('message.ack',id(999),ack)});assert(failed());
+  socket.onmessage({data:frame('message.ack',rid,{...ack,conversationId:id(999)})});assert(failed());
+  socket.onmessage({data:frame('message.ack',rid,ack)});assert.equal(client.repository.snapshot(c)[0].state,'SENT');assert.equal(client.repository.snapshot(c)[0].messageId,ack.messageId);
+  socket.onmessage({data:frame('message.ack',rid,{status:'rejected',error:{code:'AUTHORIZATION_DENIED',message:'Controlled denial'}})});assert.equal(client.repository.snapshot(c)[0].state,'SENT');
+  client.reconnect();socket.onmessage({data:frame('message.created',id(999),{...message(102),content:{kind:'TEXT',text:'stale socket'}})});assert.equal(client.repository.snapshot(c).length,1);
+  await client.logout();socket.onmessage({data:frame('message.ack',rid,ack)});assert.equal(client.repository.snapshot(c).length,0);
+ }finally{client.dispose();}
+}
+// Hold terminal page101. Realtime either expands downward99/gap100 or upward
+// 103/gap102 while in flight. Superseded request must not be dropped.
+for(const late of [99,103]){
+ const hold=deferred(),began=deferred(),pulls=[];
+ const {client,socket}=await setup(async(url,options)=>{assert(url.endsWith('/sync/conversation'));const request=JSON.parse(options.body);pulls.push(request);
+  if(pulls.length===1){began.resolve();return hold.promise.then(()=>page(request,[]));}
+  const seqs=late===99?[100,101]:[102,103];return page(request,seqs.filter(v=>v>request.afterSeq).map(message));
+ });
+ try{
+  created(socket,101);await began.promise;assert.equal(pulls[0].afterSeq,101);created(socket,late);assert.equal(client.repository.after(c),late===99?99n:101n);
+  const done=observe(client,()=>client.view().sync==='本页在线消息已同步 · 不补历史');hold.resolve();await done;
+  assert.deepEqual(pulls.map(v=>v.afterSeq),late===99?[101,99]:[101,101]);assert.equal(client.repository.after(c),late===99?101n:103n);assert.deepEqual(client.repository.snapshot(c).map(v=>Number(v.seq)),late===99?[99,100,101]:[101,102,103]);
+ }finally{hold.resolve();client.dispose();}
+}
+// Durable ACKs alone can expose a live gap. Both an idle Sync and a held
+// terminal response must compensate it without realtime/reconnect/timeout.
+for(const held of [false,true]){
+ const hold=deferred(),began=deferred(),pulls=[];let second;
+ const {client,socket}=await setup(async(url,options)=>{assert(url.endsWith('/sync/conversation'));const request=JSON.parse(options.body);pulls.push(request);
+  if(pulls.length===1){began.resolve();if(held)await hold.promise;return page(request,[]);}
+  return page(request,[message(102),second]);
+ });
+ try{
+  const ack=(rid,seq,n)=>socket.onmessage({data:frame('message.ack',rid,{status:'committed',conversationId:c,messageId:id(n),seq,createdAt:'2026-10-09T09:00:00Z'})});
+  const first=client.send('first ACK');ack(first,101,901);await began.promise;
+  if(!held)await observe(client,()=>client.view().sync==='本页在线消息已同步 · 不补历史');
+  const rid=client.send('second ACK');second={...message(103),requestId:rid,messageId:id(903),senderId:u,content:{kind:'TEXT',text:'second ACK'}};
+  socket.onmessage({data:frame('message.ack',id(999),{status:'committed',conversationId:c,messageId:id(999),seq:103,createdAt:'2026-10-09T09:00:00Z'})});assert.equal(pulls.length,1);
+  const done=observe(client,()=>client.repository.after(c)===103n&&client.view().sync==='本页在线消息已同步 · 不补历史');ack(rid,103,903);if(held)hold.resolve();await done;
+  assert.deepEqual(pulls.map(v=>v.afterSeq),[101,101]);assert.deepEqual(client.repository.snapshot(c).map(v=>Number(v.seq)),[101,102,103]);
+ }finally{hold.resolve();client.dispose();}
+}
+// Legal multi-page response commits each page; malformed later page is atomic
+// and must leave both rows/prefix from the prior committed page unchanged.
+{
+ let mode='bad',calls=[];const {client,socket}=await setup(async(url,options)=>{assert(url.endsWith('/sync/conversation'));const request=JSON.parse(options.body);calls.push(request.afterSeq);
+  if(request.afterSeq===101)return page(request,[message(102)],true);
+  if(mode==='bad')return page(request,[message(103),{...message(104),messageId:message(102).messageId}]);
+  return page(request,[message(103),message(104)]);
+ });
+ try{created(socket,101);await observe(client,()=>client.view().sync.includes('同步失败'));assert.deepEqual(calls,[101,102]);assert.equal(client.repository.after(c),102n);assert.deepEqual(client.repository.snapshot(c).map(v=>Number(v.seq)),[101,102]);mode='ok';await client.sync(c);assert.equal(client.repository.after(c),104n);assert.deepEqual(calls,[101,102,102]);assert.equal(client.repository.snapshot(c).length,4);}finally{client.dispose();}
+}
+// A stable terminal response missing a known gap is failure, not a busy loop
+// or false success; an explicit retry can recover it without moving over gap.
+{
+ const hold=deferred(),began=deferred();let calls=0,repair=false;
+ const {client,socket}=await setup(async(url,options)=>{assert(url.endsWith('/sync/conversation'));const request=JSON.parse(options.body);calls++;if(calls===1){began.resolve();await hold.promise;}return page(request,repair?[message(102),message(103)]:[]);});
+ try{created(socket,101);await began.promise;created(socket,103);const failed=observe(client,()=>client.view().sync.includes('同步失败'));hold.resolve();await failed;assert.equal(calls,2);assert.equal(client.repository.after(c),101n);repair=true;await client.sync(c);assert.equal(client.repository.after(c),103n);}finally{hold.resolve();client.dispose();}
+}
+// Only logout POST204/null body bypasses JSON; every other JSON endpoint and
+// invented successful200 logout are rejected. Genuine failure stays honest.
+{
+ const signal=new AbortController().signal;
+ const http=new Http('https://regression.invalid',async()=>new Response(null,{status:204}));
+ assert.equal(await http.request('/v1/auth/logout','POST',undefined,'controlled-access',signal),undefined);
+ const streamResponse=bytes=>({status:204,ok:true,redirected:false,body:new ReadableStream({start(controller){if(bytes)controller.enqueue(new Uint8Array([1]));controller.close();}})});
+ const empty=new Http('https://regression.invalid',async()=>streamResponse(false));assert.equal(await empty.request('/v1/auth/logout','POST',undefined,'controlled-access',signal),undefined);
+ const illegal=new Http('https://regression.invalid',async()=>streamResponse(true));await assert.rejects(()=>illegal.request('/v1/auth/logout','POST',undefined,'controlled-access',signal));
+ const broken=new Http('https://regression.invalid',async()=>({status:204,ok:true,redirected:false,body:new ReadableStream({start(controller){controller.error(Error('Controlled read failure'));}})}));await assert.rejects(()=>broken.request('/v1/auth/logout','POST',undefined,'controlled-access',signal));
+ await assert.rejects(()=>http.request('/v1/users/me','GET',undefined,'controlled-access',signal));
+ const fake=new Http('https://regression.invalid',async()=>json({revoked:true}));await assert.rejects(()=>fake.request('/v1/auth/logout','POST',undefined,'controlled-access',signal));
+ for(const success of [true,false]){const {client}=await setup(async url=>{assert(url.endsWith('/auth/logout'));return success?new Response(null,{status:204}):json({requestId:id(999),error:{code:'AUTH_SESSION_REVOKED',message:'Controlled rejection'}},401);});try{await client.logout();assert.equal(client.view().session,false);assert.equal(client.view().notice,success?'已退出登录。':'本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。');}finally{client.dispose();}}
+}
+console.log('PASS Web regression: late ACK identity, both terminal-page crossing directions, continued pagination/atomic failed-page rollback, stable missing-gap failure/retry, strict legal logout204 and genuine failure');
+// STATE friend projection: late old responses/errors cannot overwrite new
+// snapshots; failed canonical projection does not consume the UserSync cursor.
+{
+ const {SyncHttp}=await import(pathToFileURL(process.env.WEB_BUILD_DIR+'/shared/protocol-sdk/src/sync/http.js'));
+ const validWithoutCache=new Http('https://regression.invalid',async()=>new Response(JSON.stringify({user:{userId:u,username:'alice',displayName:'Alice'}}),{headers:{'content-type':'application/json'}}));
+ assert.equal((await validWithoutCache.request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal)).user.userId,u);
+ for(const fetcher of [async()=>new Response('{}',{headers:{'content-type':'text/plain'}}),async()=>new Response('{broken',{headers:{'content-type':'application/json'}})])await assert.rejects(()=>new Http('https://regression.invalid',fetcher).request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal));
+ const sync=new SyncHttp('https://regression.invalid',{userId:u,sessionId:sid,sessionEpoch:1n,accessToken[REDACTED],async(_url,options)=>{const b=JSON.parse(options.body);return new Response(JSON.stringify({syncVersion:'1.0',type:'sync.user.page',requestId:b.requestId,events:[],nextCursor:b.cursor,hasMore:false}),{headers:{'content-type':'application/json'}});});
+ await assert.rejects(()=>sync.user('0',new AbortController().signal));
+ const list=n=>({friends:[{user:{userId:id(n),username:'peer'+n,displayName:'Peer '+n},friendshipId:id(60+n),directConversationId:id(80+n)}]});
+ for(const staleError of [false,true]){
+  const old=deferred();let count=0;
+  const api=async url=>{if(url.endsWith('/auth/login'))return json(auth);if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});if(url.endsWith('/friends'))return ++count===1?old.promise:json(list(7));throw Error('Unexpected path');};
+  const client=new WebClient('https://regression.invalid',api,()=>({close(){},send(){}}));
+  try{await client.login('alice','controlled');await client.loadFriends();assert.equal(client.view().friends[0].user.userId,id(7));old.resolve(staleError?json({requestId:id(999),error:{code:'VALIDATION_FAILED'}},400):json(list(2)));await new Promise(r=>setTimeout(r,0));assert.equal(client.view().friends[0].user.userId,id(7));assert.equal(client.view().friendsError,'');}finally{old.resolve(json(list(2)));client.dispose();}
+ }
+ {
+  let projectionFail=true;const cursors=[];
+  const api=async(url,options)=>{if(url.endsWith('/auth/login'))return json(auth);if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});if(url.endsWith('/friends'))return cursors.length&&projectionFail?json({requestId:id(999),error:{code:'VALIDATION_FAILED'}},400):json(list(cursors.length?7:2));if(url.endsWith('/sync/user')){const b=JSON.parse(options.body);cursors.push(b.cursor);return json({syncVersion:'1.0',type:'sync.user.page',requestId:b.requestId,events:[{eventId:id(30),cursor:'opaque-friend-1',kind:'friend.changed',subjectId:id(7),revision:1}],nextCursor:'opaque-friend-1',hasMore:false});}throw Error('Unexpected path');};
+  const client=new WebClient('https://regression.invalid',api,()=>({close(){},send(){}}));
+  try{await client.login('alice','controlled');await new Promise(r=>setTimeout(r,0));await client.syncFriends();assert.equal(client.userCursor,'0');assert.equal(client.view().friends[0].user.userId,peer);projectionFail=false;await client.syncFriends();assert.deepEqual(cursors,['0','0']);assert.equal(client.userCursor,'opaque-friend-1');assert.equal(client.view().friends[0].user.userId,id(7));}finally{client.dispose();}
+ }
+ {
+  const old=deferred();let friendsCount=0;
+  const client=new WebClient('https://regression.invalid',async url=>{if(url.endsWith('/auth/login'))return json(auth);if(url.endsWith('/users/me'))return json({user:{userId:u,username:'alice',displayName:'Alice'}});if(url.endsWith('/friends'))return ++friendsCount===1?old.promise:json(list(7));if(url.endsWith('/auth/logout'))return new Response(null,{status:204});throw Error('Unexpected path');},()=>({close(){},send(){}}));
+  try{await client.login('alice','controlled');await client.logout();await client.login('alice','controlled');await new Promise(r=>setTimeout(r,0));old.resolve(json(list(2)));await new Promise(r=>setTimeout(r,0));assert.equal(client.view().friends[0].user.userId,id(7));}finally{old.resolve(json(list(2)));client.dispose();}
+ }
+ console.log('PASS STATE real-contract cache alignment, strict Sync cache rejection, late old friend success/error isolation, cursor projection failure retry, prior login generation isolation');
+}
+
+// Internal bugs propagate with original identity instead of false network/UI data.
+{
+ const original=Error('controlled internal Web adapter bug');
+ const http=new Http('https://regression.invalid',async()=>{throw original;});
+ await assert.rejects(http.request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal),e=>e===original);
+ const client=new WebClient('https://regression.invalid',async()=>{throw original;});
+ await assert.rejects(client.login('fixture','controlled-only-input'),e=>e===original);
+ assert.equal(client.view().session,false);client.dispose();
+ const primitive='controlled unexpected primitive';
+ const value=new Http('https://regression.invalid',async()=>{throw primitive;});
+ await assert.rejects(value.request('/v1/users/me','GET',undefined,'controlled',new AbortController().signal),e=>e===primitive);
+}
+console.log('PASS unknown Web adapter Error and primitive preserve original failure');
+
+{
+ const signal=new AbortController().signal;
+ const invalid=new Http('https://regression.invalid',async()=>new Response(new Uint8Array([0xff]),{headers:{'content-type':'application/json'}}));
+ await assert.rejects(invalid.request('/v1/users/me','GET',undefined,'controlled',signal),e=>e.code==='INVALID_RESPONSE');
+ const streamed=new Http('https://regression.invalid',async()=>new Response(new ReadableStream({start(c){c.error(new TypeError('controlled stream network failure'));}}),{headers:{'content-type':'application/json'}}));
+ await assert.rejects(streamed.request('/v1/users/me','GET',undefined,'controlled',signal),e=>e.code==='CONNECTION_UNAVAILABLE');
+ const original=Error('controlled retired refresh bug');let reject,started;
+ const began=new Promise(r=>{started=r;});const held=new Promise((_,r)=>{reject=r;});
+ const {client}=await setup(async url=>{if(url.endsWith('/auth/refresh/web')){started();return held;}if(url.endsWith('/auth/logout'))return new Response(null,{status:204});throw Error('Unexpected controlled route');});
+ const refreshing=client.refresh();await began;await client.logout();reject(original);
+ await assert.rejects(refreshing,e=>e===original);assert.equal(client.view().session,false);client.dispose();
+}
+console.log('PASS Web UTF8/read classification and retired refresh unknown-error identity without account publication');
+
+// Execute the real compiled JSX with the existing language lookup; context alone is controlled.
+{
+ const {readFileSync,writeFileSync}=await import("node:fs"),{createRequire}=await import("node:module"),{resolve}=await import("node:path");
+ const root=process.env.WEB_BUILD_DIR,require=createRequire(resolve(root,"../clients/web/package.json")),React=require("react"),{renderToStaticMarkup}=require("react-dom/server");
+ const {translate,displayText}=await import(pathToFileURL(root+"/web/src/ui/i18n/resources.js"));
+ globalThis.__webRenderer={React,useText:()=>key=>translate("en",key),useDisplayText:()=>value=>displayText("en",value)};
+ try{
+  const modules={};for(const name of ["Messages","FriendsPanel"]){const code=readFileSync(root+"/web/src/ui/components/"+name+".js","utf8").replace(/^import .*;\r?\n/gm,"");const output=root+"/"+name+"-probe.mjs";writeFileSync(output,"const {React,useText,useDisplayText}=globalThis.__webRenderer;\n"+code);modules[name]=await import(pathToFileURL(output));}
+  const row={requestId:"controlled-request",senderId:u,conversationId:c,content:{kind:"TEXT",text:"controlled body"},state:"SENDING"};
+  const render=m=>renderToStaticMarkup(React.createElement(modules.Messages.Messages,{v:{user:{userId:u}},messages:[m],retry:()=>{}}));
+  for(const state of ["SENDING","SENT","FAILED"])assert.match(render({...row,state}),/controlled body/);
+  for(const invalid of [{...row,state:"UNKNOWN"},{...row,requestId:""},{...row,content:{kind:"TEXT",text:null}}])assert.throws(()=>render(invalid),/Invalid message/);
+  const noMatch=translate("en","friends.noMatch"),base={friends:[],friendsBusy:false,friendsError:"",searchBusy:false,searchError:"",searchResults:[],user:{userId:u}};let searched=true;
+  const props={v:base,search:"alice",setSearch:()=>{},searched:true,setSearched:value=>{searched=value},open:()=>{},loadFriends:async()=>{},searchUsers:async()=>{},addFriend:async()=>{}};
+  const friends=extra=>renderToStaticMarkup(React.createElement(modules.FriendsPanel.FriendsPanel,{...props,...extra}));
+  assert(friends({}).includes(noMatch));assert(!friends({searched:false}).includes(noMatch));assert(!friends({v:{...base,searchError:"CONNECTION_UNAVAILABLE"}}).includes(noMatch));
+  const tree=modules.FriendsPanel.FriendsPanel(props);const find=node=>{if(!node||typeof node!=="object")return null;if(node.type==="input")return node;for(const child of [node.props?.children].flat(Infinity)){const hit=find(child);if(hit)return hit;}return null};find(tree).props.onChange({target:{value:"bob"}});assert.equal(searched,false);
+ }finally{delete globalThis.__webRenderer}
+}
+console.log("PASS compiled Web renderer three-state/content/identity and truthful successful-empty search; editing query clears old completion");
+
+{
+ const {verifyStreamCleanup}=await import('../errors/stream_cleanup.mjs');
+ const {Http,ApiFailure}=await import(pathToFileURL(process.env.WEB_BUILD_DIR+'/web/src/application/http.js'));
+ const invoke=(path,method)=>(response,signal)=>new Http('https://localhost/',async()=>response).request(path,method,undefined,undefined,signal);
+ await verifyStreamCleanup(invoke('/v1/users/me','GET'),(error,mode)=>error instanceof ApiFailure&&error.code===((mode==='protocol-distinct'||mode==='direct-validation')?'INVALID_RESPONSE':'CONNECTION_UNAVAILABLE'),'{}');
+ await verifyStreamCleanup(invoke('/v1/auth/logout','POST'),(error,mode)=>error instanceof ApiFailure&&error.code===((mode==='protocol-distinct'||mode==='direct-validation')?'INVALID_RESPONSE':'CONNECTION_UNAVAILABLE'),'',{logout:true});
+}
+

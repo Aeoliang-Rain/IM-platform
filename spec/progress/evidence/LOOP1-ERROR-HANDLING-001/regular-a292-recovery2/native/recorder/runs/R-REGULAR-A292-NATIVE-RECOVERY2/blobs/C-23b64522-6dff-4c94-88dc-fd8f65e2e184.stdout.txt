@@ -1,0 +1,151 @@
+
+FILE 46 clients\desktop\src\ui\index.html HASH 46103c9c5f35c1a4fdd47fae440faafa0fe5a3a81b3c9aa649ae589696996e76
+1: <!doctype html>
+2: <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IM+ · Your conversations</title><link rel="stylesheet" href="style.css">
+3: <script type="importmap">{"imports":{"react":"./react.mjs","react-dom/client":"./react-dom.mjs","@tauri-apps/api/core":"./vendor/tauri/core.js"}}</script>
+4: <script src="vendor/react.js"></script><script src="vendor/react-dom.js"></script></head><body><div id="root"></div><script type="module" src="desktop/src/ui/main.js"></script></body></html>
+
+FILE 47 clients\desktop\src\ui\logo.png HASH efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2
+BINARY 1797658 89504e470d0a1a0a0000000d49484452000004e6000004e6
+
+FILE 48 clients\desktop\src\ui\main.tsx HASH d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3
+1: import React from "react";
+2: import {createRoot} from "react-dom/client";
+3: import {Shell} from "./components/Shell.js";
+4: createRoot(document.getElementById("root")!).render(<Shell/>);
+
+FILE 49 clients\desktop\src\ui\react-dom.config.mjs HASH 676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5
+1: export const {createRoot}=globalThis.ReactDOM;
+
+FILE 50 clients\desktop\src\ui\react.config.mjs HASH 8c483c11d9f779d78da8981e7e65dd0be91b2ec4c698e7101d389aa09ed6f576
+1: export default globalThis.React;
+2: export const {useState,useEffect,useRef,useSyncExternalStore}=globalThis.React;
+
+FILE 51 clients\desktop\src\ui\style.css HASH 1db209903281409494e83858549fb5f1d023732afba5e26bb7ee26f3b42aaccc
+1: *{box-sizing:border-box}html,body,#root{height:100%;margin:0}body{font-family:"Segoe UI",system-ui,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.55}.workspace{--bg:#e8edf6;--surface:rgba(255,255,255,.75);--ink:#17283f;--muted:#536781;--line:#cbd6e7;--accent:#285bc2;--accent-soft:#dae5ff;--glow:#c7d8f9;--danger:#a93243;display:flex;min-height:100%;color:var(--ink);background:radial-gradient(ellipse at 90% 5%,var(--glow),transparent 65%),var(--bg);font-size:var(--font,16px);line-height:1.45}.workspace.warm{--bg:#f4ece7;--surface:rgba(255,253,248,.78);--ink:#392c32;--muted:#775f64;--line:#ddcec9;--accent:#aa4c39;--accent-soft:#f8ded2;--glow:#f3d1bd;--danger:#a02e44}.rail{width:212px;flex-shrink:0;border-right:1px solid var(--line);background:var(--surface);padding:30px 16px;display:flex;flex-direction:column}.brand{font-size:34px;font-weight:800;letter-spacing:-2px;padding:0 16px}.brand span{color:var(--accent)}.brand-caption{letter-spacing:2.4px;font-size:9px;font-weight:700;padding:0 16px;margin:0 0 40px;color:var(--muted)}nav{display:grid;gap:7px}.nav{display:flex;align-items:center;gap:13px;background:none;border:0;text-align:left;border-radius:12px;color:var(--muted);padding:calc(13px * var(--density));font-weight:600}.nav-icon{font-size:23px;width:25px}.nav.selected{background:var(--accent-soft);color:var(--accent)}.nav small{font-size:8px;border:1px solid var(--line);border-radius:5px;padding:3px;margin-left:auto}.rail-bottom{margin-top:auto;padding-top:40px}.connection{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--muted);margin:10px 16px}.dot{background:#a17d45;border-radius:50%;width:7px;height:7px}.dot.ready{background:#248054}.identity{display:flex;gap:10px;align-items:center;border-top:1px solid var(--line);padding:20px 3px 0;margin-top:20px;font-size:12px}.identity small,.person small,.conversation small{display:block;color:var(--muted);font-size:.8em;margin-top:3px}.avatar{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-weight:700;flex-shrink:0}.identity strong{font-size:12px}main{width:calc(100% - 212px);padding:28px;display:flex;flex-direction:column}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:20px}.eyebrow{letter-spacing:2px;font-size:10px;font-weight:700;color:var(--muted);margin:0 0 7px}h1{margin:0;font-size:27px;letter-spacing:-.8px}h2{font-size:1.25em;margin:0 0 10px;letter-spacing:-.5px}h3{font-size:1em;margin:12px 0 7px}.top-actions{display:flex;gap:16px;align-items:center}.sync{font-size:12px;color:var(--muted)}button{border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);padding:9px 14px}button:hover{border-color:var(--accent);color:var(--accent)}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.quiet{border:0;background:transparent;color:var(--muted)}.primary{background:var(--accent);color:white;border-color:var(--accent);font-weight:600}.primary:hover{background:var(--ink);color:white}.danger{color:var(--danger)}.glass{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 25px #1c345009}.notice{display:flex;justify-content:space-between;align-items:center;gap:20px;border:1px solid var(--danger);color:var(--danger);background:var(--surface);padding:12px 18px;border-radius:12px;margin-bottom:18px;font-size:14px}.muted{color:var(--muted)}.login-layout{display:flex;align-items:center;justify-content:center;gap:8%;flex:1;padding:30px 4%}.welcome{max-width:400px}.welcome h2{font-size:clamp(32px,4vw,55px);line-height:1.15;letter-spacing:-2px;margin:20px 0}.welcome>p:not(.eyebrow){max-width:320px;color:var(--muted)}.orb{display:grid;place-items:center;width:90px;height:90px;border:1px solid var(--line);border-radius:28px;font-size:60px;color:var(--accent);background:linear-gradient(135deg,var(--surface),var(--accent-soft));margin-bottom:32px}.feature-row{display:flex;gap:8px;font-size:10px;margin-top:30px;color:var(--muted)}.feature-row span{border:1px solid var(--line);padding:8px;border-radius:20px}.login{padding:35px;max-width:390px;min-width:340px;display:grid;gap:16px}.login p{margin:0}.login label,.settings label{display:grid;gap:7px;font-size:.85em;font-weight:600}.login input,.search input{border:1px solid var(--line);padding:12px;background:var(--surface);border-radius:9px;color:var(--ink);width:100%;min-width:0}.login small{font-size:10px}.chat-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;flex:1;min-height:550px;height:calc(100vh - 130px)}.conversation-list{padding:20px 12px;overflow:auto}.section-heading{display:flex;justify-content:space-between;align-items:center;padding:0 8px}.section-heading h2{margin:0}.section-heading button{font-size:12px;padding:5px}.list-caption{font-size:12px;margin:10px 8px 25px}.conversation{display:flex;gap:12px;align-items:center;text-align:left;border:0;background:transparent;width:100%;padding:calc(14px * var(--density));margin:4px 0}.conversation strong{font-size:.9em}.conversation.active{background:var(--accent-soft);border:1px solid var(--line)}.chat-pane{display:flex;flex-direction:column;min-height:0;overflow:hidden}.chat-heading{display:flex;align-items:center;gap:12px;padding:20px 24px;border-bottom:1px solid var(--line)}.chat-heading h2{font-size:1em;margin:0}.chat-heading small{font-size:.7em;color:var(--muted)}.chat-heading button{margin-left:auto;font-size:12px}.messages{flex:1;min-height:180px;overflow:auto;padding:calc(24px * var(--density));display:flex;flex-direction:column;gap:calc(18px * var(--density))}.message{max-width:78%;align-self:flex-start}.message.own{align-self:flex-end;text-align:right}.bubble{background:var(--bg);border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:calc(11px * var(--density)) calc(16px * var(--density));white-space:pre-wrap;overflow-wrap:anywhere;text-align:left}.own .bubble{background:var(--accent-soft);border-radius:14px 14px 4px 14px}.message small{display:block;font-size:.65em;color:var(--muted);margin-top:6px}.message small button{padding:2px 6px;margin-left:8px;font-size:inherit}.composer{display:flex;gap:10px;margin:0 20px;padding:10px;border:1px solid var(--line);border-radius:13px;background:var(--surface)}.composer textarea{background:none;border:0;resize:vertical;min-height:42px;max-height:150px;color:var(--ink);padding:8px;flex:1;min-width:0}.composer button{align-self:flex-end}.composer-help{margin:8px 24px 14px;font-size:10px;color:var(--muted)}.empty{padding:40px 16px;color:var(--muted);text-align:center;margin:auto}.empty>span{font-size:40px;color:var(--accent);font-weight:300}.empty p{font-size:.8em;max-width:320px;margin:0 auto 20px}.page-content{display:grid;gap:22px;max-width:960px;width:100%;margin:0 auto;padding:8px 0}.panel{padding:calc(30px * var(--density))}.panel>p{font-size:.85em}.search{display:flex;gap:12px;margin:25px 0}.person{display:flex;align-items:center;gap:12px;padding:calc(15px * var(--density)) 0;border-bottom:1px solid var(--line)}.person>button{margin-left:auto}.person strong{font-size:.9em}.future{padding:70px 30px;text-align:center;display:flex;align-items:center;flex-direction:column}.future h2{font-size:2em}.future p{max-width:490px}.future .muted{font-size:.75em;margin-top:30px}.badge{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:7px 12px;font-size:11px}.settings{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}fieldset{border:0;padding:0;margin:25px 0}legend{font-size:.8em;font-weight:600;margin-bottom:12px}.theme-choices{display:flex;gap:12px}.theme-choice{display:flex;flex:1;flex-direction:column;gap:8px;text-align:left;padding:14px}.theme-choice.active{border:2px solid var(--accent)}.theme-choice small{font-size:9px;color:var(--muted)}.swatch{height:40px;width:100%;border-radius:8px}.swatch.cold{background:linear-gradient(120deg,#b8cef4,#e9eff9)}.swatch.warm{background:linear-gradient(120deg,#f0c1a5,#f8e9e2)}.settings label{margin:20px 0}.settings input{accent-color:var(--accent);width:100%;margin:10px 0}.button-row{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}@media(max-width:1000px){.rail{width:175px}main{width:calc(100% - 175px);padding:20px}.chat-layout{grid-template-columns:225px 1fr;gap:12px}.settings{grid-template-columns:1fr}.login-layout{gap:25px;padding:10px}.welcome h2{font-size:34px}.login{min-width:300px;padding:25px}.topbar .eyebrow{letter-spacing:1px}.sync{display:none}}@media(prefers-reduced-transparency:reduce){.workspace{--surface:#fff}}
+2: .theme-choice small,.login small,.composer-help,.feature-row,.eyebrow{font-size:max(12px,.8em)}.theme-choice small{color:var(--ink)}.connection,.sync,.list-caption,.identity,.identity strong,.chat-heading button{font-size:max(12px,.8em)}.message small{font-size:max(12px,.75em)}
+3: 
+4: /* Fixed viewport; individual content panes own scrolling. */
+5: html,body,#root{overflow:hidden}
+6: .app-window{height:100%;display:flex;flex-direction:column;font-size:var(--font,16px);--bg:#e8edf6;--surface:rgba(255,255,255,.75);--ink:#17283f;--muted:#536781;--line:#cbd6e7;--accent:#285bc2;--accent-soft:#dae5ff;color:var(--ink);background:var(--bg)}
+7: .app-window.warm{--bg:#f4ece7;--surface:rgba(255,253,248,.78);--ink:#392c32;--muted:#775f64;--line:#ddcec9;--accent:#aa4c39;--accent-soft:#f8ded2}
+8: .window-bar{height:38px;flex:none;display:flex;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);font-size:12px}.window-drag{display:flex;align-items:center;gap:8px;flex:1;padding:0 14px;user-select:none}.window-drag img{width:24px;height:24px;pointer-events:none}.window-actions{display:flex}.window-actions button{border:0;border-radius:0;background:transparent;width:46px;padding:0;font-size:20px;color:var(--ink)}.window-actions .window-close:hover{background:#b32a3b;color:white}
+9: .workspace{flex:1;min-height:0;height:auto;overflow:hidden;font-size:inherit}.app-window.warm .workspace{--bg:#f4ece7;--surface:rgba(255,253,248,.78);--ink:#392c32;--muted:#775f64;--line:#ddcec9;--accent:#aa4c39;--accent-soft:#f8ded2;--glow:#f3d1bd;--danger:#a02e44}
+10: main{flex:1;width:auto;min-width:0;min-height:0;padding:clamp(16px,2vh,28px)}.rail{min-height:0;padding:20px 12px;overflow:auto}.brand{display:flex;align-items:center;padding:0 4px}.brand img{width:44px;height:44px;margin-right:6px}.brand-caption{padding:0 6px;margin-bottom:26px}.rail-bottom{padding-top:16px}
+11: .anonymous main{padding:18px 30px;overflow:hidden}.login-layout{min-height:0;padding:0;gap:6%;overflow:hidden}.login{min-width:320px;max-width:430px;width:43%;padding:clamp(16px,3vh,30px);gap:clamp(7px,1.2vh,13px)}.login h2{margin:0}.login label{gap:4px}.login input{padding:8px 12px}.login button{padding:8px 12px}.login .quiet{font-size:.8em}.login-logo{width:clamp(100px,18vh,180px);height:auto}.welcome h2{margin:14px 0;font-size:clamp(32px,4vw,50px)}.welcome>p{margin:10px 0}.notice{flex:none;margin-bottom:10px}
+12: .topbar{flex:none;margin-bottom:16px}.chat-layout{flex:1;height:auto;min-height:0;grid-template-columns:minmax(220px,280px) minmax(0,1fr)}.messages{min-height:0}.conversation div{min-width:0}.conversation small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}.page-content{overflow:auto;min-height:0}
+13: @media(max-height:750px){.login-logo{width:100px}.welcome h2{font-size:36px}.login{gap:7px;padding:16px 22px}.login input{padding:6px 10px}.anonymous main{padding:12px 24px}.welcome .eyebrow{display:none}}
+14: 
+15: /* Conversation rows touch and fill their list column. */
+16: .conversation-list{padding:0;border-radius:0}.conversation-list .section-heading{padding:20px 20px 0}.conversation-list .list-caption{margin:10px 20px 20px}.conversation,.conversation.active{width:100%;margin:0;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:calc(16px * var(--density))}.window-actions button svg{vertical-align:middle}
+17: 
+18: /* Keep native wheel scrolling without visible scrollbars. */
+19: .app-window,.app-window *{scrollbar-width:none}.app-window::-webkit-scrollbar,.app-window *::-webkit-scrollbar{display:none}
+20: .window-actions button:hover,.window-actions button:focus-visible{background:rgba(0,0,0,.08);color:var(--ink)}.window-actions .window-close:hover{background:#b32a3b;color:white}
+21: .composer-editor{position:relative;display:flex;flex:1;min-width:0}.composer textarea{resize:none;width:100%;padding-right:24px}.composer .composer-resize{position:absolute;right:3px;bottom:3px;width:20px;height:20px;padding:0;border:0;border-radius:2px;background:transparent;color:var(--muted);cursor:ns-resize;touch-action:none}.composer-resize svg{pointer-events:none}
+22: 
+23: .language-panel{min-width:0;margin-block:16px}.language-list{max-height:150px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}.language-list button{text-align:start;white-space:normal;overflow-wrap:anywhere;flex-shrink:0}.language-list button[aria-pressed=true]{outline:2px solid currentColor;outline-offset:-2px}
+
+FILE 52 clients\desktop\tsconfig.json HASH 6619b81336f0c10b451c60bd196573599edaf99bb79c9a3daff7a615e49f4502
+1: {
+2:   "compilerOptions": {
+3:     "target": "ES2022",
+4:     "module": "NodeNext",
+5:     "moduleResolution": "NodeNext",
+6:     "strict": true,
+7:     "outDir": "dist",
+8:     "jsx": "react",
+9:     "lib": ["ES2022", "ESNext.Disposable", "DOM", "DOM.Iterable"],
+10:     "esModuleInterop": true
+11:   },
+12:   "include": [
+13:     "src/storage/**/*.ts",
+14:     "../shared/protocol-sdk/src/storage/**/*.ts",
+15:     "src/application/**/*.ts",
+16:     "../shared/protocol-sdk/src/send/**/*.ts",
+17:     "src/ui/**/*.tsx"
+18:   ]
+19: }
+
+FILE 53 clients\mobile\.gitignore HASH d010c63b31ab924e9fa34a396c0e27e42bcf398bdd727ab64a7639c7add0dc8c
+1: .gradle/
+2: .kotlin/
+3: build/
+4: app/build/
+5: local.properties
+
+FILE 54 clients\mobile\.gitkeep HASH 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+1: 
+
+FILE 55 clients\mobile\README.md HASH 340b1e0fd237161c9e78b4bad54f5720b1ac375c1ee13aee2d655f1a23b76838
+1: # Android storage slice
+2: 
+3: Approved Android Kotlin + Jetpack Compose, built-in Android SDK SQLite; no Room, network library, JS bridge or third-party testing framework. Canonical §6.1 and ADR-0005 authorize equivalent Kotlin models/Repository behavior using the same contracts/fixtures.
+4: 
+5: Build toolchain: Gradle8.9, AGP8.7.0, Kotlin/Compose compiler2.1.10, JDK17, compile/targetSDK35, minSDK34. Necessary Compose foundation/activity binding provides only a minimal validation host. Version compatibility: https://developer.android.com/build/releases/agp-8-7-0-release-notes and https://kotlinlang.org/docs/gradle-configure-project.html . Debug instrumentation uses the built-in android.app.Instrumentation runner.
+6: 
+7: From repository root: python -B tools/verify_client_sqlite.py --scope mobile --serial emulator-5554
+8: IM_CLIENT_GRADLE may explicitly select an actual verified Gradle executable when the wrapper download is unavailable; evidence must name the fallback, and clean hosted CI still runs the official pinned wrapper. Set JAVA_HOME/ANDROID_HOME for your actual tools and select the exact real emulator serial. Missing build/runtime or failed instrumentation fails; host/mock and skipped execution never pass. APK installation targets only that explicit emulator. The verifier does not start/stop user AVDs. Local Coordinator tooling creates a separate hidden task AVD outside the checkout; existing user AVD remains untouched.
+9: 
+10: Canonical golden.json is copied byte-identically into test assets and validated against contracts. v1.sql is the independent retained old-schema fixture copied from tests/clients/sqlite/v1.sql. Instrumentation checks canonical normalized results plus migration rollback/history preservation, reopen, account isolation, identity/content conflicts, realtime-first ACK/Sync merging, terminal SENT and actual data/contiguous rollback. Synthetic local.failed fixture steps omit message content; the fixture harness seeds the matching local message before the FAILED observation, using the same case's server message. This does not change product input or wire schema.
+11: 
+12: This task establishes storage foundation, not full send/retry/Sync UI or S2 Gate PASS. Token storage and network orchestration are untouched.
+13: 
+14: Minimum-runtime proof: targeted UPSERT requires SQLite3.24 (2018); targetless ON CONFLICT DO UPDATE requires3.35 (2021). Android API26 ships3.18, API30 ships3.28, API31-33 ships3.32, and API34 ships3.39 or3.42. API34 is the first SDK minimum satisfying every current statement; CI and the actual verifier exercise API34, including fresh install and data-clear rerun. This corrects an unaccepted minSDK26 engineering binding; canonical public protocol compatibility and schema remain unchanged. Sources: https://developer.android.com/reference/android/database/sqlite/package-summary and https://www.sqlite.org/lang_upsert.html .
+15: Text validation counts Unicode codepoints, matching the unchanged JSON Schema4096-character limit; actual two-platform tests accept4096 supplementary characters and reject4097 with durable state unchanged.
+
+FILE 56 clients\mobile\app\build.gradle.kts HASH af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077
+1: plugins {
+2:     id("com.android.application")
+3:     id("org.jetbrains.kotlin.android")
+4:     id("org.jetbrains.kotlin.plugin.compose")
+5: }
+6: android {
+7:     namespace = "im.platform.client"
+8:     compileSdk = 35
+9:     defaultConfig {
+10:         applicationId = "im.platform.client"
+11:         minSdk = 34
+12:         targetSdk = 35
+13:         versionCode = 1
+14:         versionName = "0.1"
+15:         testInstrumentationRunner = providers.gradleProperty("imSendInstrumentation").orNull ?: "im.platform.client.storage.StorageInstrumentation"
+16:     }
+17:     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
+18:     kotlinOptions { jvmTarget = "17" }
+19:     buildFeatures { compose = true }
+20: }
+21: dependencies {
+22:     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+23:     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+24:     implementation("androidx.navigation:navigation-compose:2.8.5")
+25:     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+26:     implementation(platform("androidx.compose:compose-bom:2024.12.01"))
+27:     implementation("androidx.activity:activity-compose:1.9.3")
+28:     implementation("androidx.compose.foundation:foundation:1.7.6")
+29:     implementation("androidx.compose.material3:material3:1.3.1")
+30: }
+
+FILE 57 clients\mobile\app\src\main\AndroidManifest.xml HASH fdeed8b057bfdefbe2889d0e0f8f748db3b162af0b7fadd037d3481feb0ff82f
+1: <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+2:   <uses-permission android:name="android.permission.INTERNET"/>
+3:   <application android:label="IM Plus" android:icon="@drawable/project_logo" android:allowBackup="false">
+4:     <activity android:name=".MainActivity" android:exported="true">
+5:       <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+6:     </activity>
+7:   </application>
+8: </manifest>
+
+FILE 58 clients\mobile\app\src\main\kotlin\im\platform\client\MainActivity.kt HASH 5caa0062bc3a749015bd3cce4aa8c37c0996248dba59999ba85a50d8fd53800c
+1: package im.platform.client
+2: import android.os.Bundle
+3: import androidx.activity.ComponentActivity
+4: import androidx.activity.compose.setContent
+5: import im.platform.client.ui.Workspace
+6: class MainActivity : ComponentActivity() {
+7:     override fun onCreate(savedInstanceState: Bundle?) {
+8:         super.onCreate(savedInstanceState)
+9:         actionBar?.hide()
+10:         setContent { Workspace() }
+11:     }
+12: }

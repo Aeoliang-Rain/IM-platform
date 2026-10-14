@@ -1,0 +1,334 @@
+{
+  "candidate": "a292f516f622651ae62595163e479c13fff78c1d",
+  "baseline": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "git_root": "H:/.codex/worktrees/err/IM-platform",
+  "clean": true,
+  "file_count": 36,
+  "files": [
+    {
+      "path": "backend/go/Dockerfile",
+      "sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358",
+      "bytes": 208,
+      "inventory_sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/config.example.json",
+      "sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628",
+      "bytes": 253,
+      "inventory_sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/core/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/core/auth.go",
+      "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701",
+      "bytes": 18436,
+      "inventory_sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/core/http.go",
+      "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945",
+      "bytes": 451,
+      "inventory_sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/core/message.go",
+      "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029",
+      "bytes": 7229,
+      "inventory_sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/core/outbox.go",
+      "sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1",
+      "bytes": 3095,
+      "inventory_sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/core/social.go",
+      "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c",
+      "bytes": 8667,
+      "inventory_sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/core/sync.go",
+      "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842",
+      "bytes": 19874,
+      "inventory_sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/gateway/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/gateway/gateway.go",
+      "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa",
+      "bytes": 10088,
+      "inventory_sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/gateway/http.go",
+      "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f",
+      "bytes": 1733,
+      "inventory_sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/gateway/session.go",
+      "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f",
+      "bytes": 2990,
+      "inventory_sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/go.mod",
+      "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591",
+      "bytes": 632,
+      "inventory_sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/go.sum",
+      "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a",
+      "bytes": 3470,
+      "inventory_sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/main.go",
+      "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7",
+      "bytes": 1715,
+      "inventory_sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/plugin-host/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/plugin-host/http.go",
+      "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90",
+      "bytes": 212,
+      "inventory_sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/shared/config.go",
+      "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70",
+      "bytes": 2417,
+      "inventory_sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/shared/infra.go",
+      "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f",
+      "bytes": 478,
+      "inventory_sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/go/shared/security.go",
+      "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03",
+      "bytes": 2836,
+      "inventory_sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03",
+      "full_read": true,
+      "result": "Full file read with call-chain/import inspection. Core owns transactions and durable ACK; Gateway owns validation/proxy/connection retirement; shared contains support; main assembles roles. Errors fail via return, safe failed response or panic. No speculative future mechanism.",
+      "issues": []
+    },
+    {
+      "path": "backend/java/Dockerfile",
+      "sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06",
+      "bytes": 255,
+      "inventory_sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "backend/java/InfraPlaceholder.java",
+      "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290",
+      "bytes": 3226,
+      "inventory_sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290",
+      "full_read": true,
+      "result": "Full transport skeleton read: accept outside IOException catch, try-with-resources per socket, IOException failure retires request; unchecked failure propagates. Compiled actual handle fault controls independently executed.",
+      "issues": []
+    },
+    {
+      "path": "backend/java/core/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "backend/java/gateway/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "backend/java/plugin-host/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "contracts/database/migrate.py",
+      "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c",
+      "bytes": 4175,
+      "inventory_sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c",
+      "full_read": true,
+      "result": "Full executable migration runner read: ON_ERROR_STOP subprocess failure raises; atomic transaction and advisory lock; explicit down authorization; caught RuntimeError prints failure and exits1; other errors propagate. No false migration success.",
+      "issues": []
+    },
+    {
+      "path": "deploy/Caddyfile",
+      "sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3",
+      "bytes": 69,
+      "inventory_sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5",
+      "bytes": 1754,
+      "inventory_sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "deploy/compose.yaml",
+      "sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe",
+      "bytes": 3260,
+      "inventory_sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "deploy/compose/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "deploy/migrate.Dockerfile",
+      "sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd",
+      "bytes": 182,
+      "inventory_sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd",
+      "full_read": true,
+      "result": "Full declaration/configuration/document text read, build and role wiring reconciled: build failure exits Docker stage; compose requires successful migration and healthy dependencies; TLS only publishes proxy; no hidden runtime fallback.",
+      "issues": []
+    },
+    {
+      "path": "deploy/observability/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "deploy/proxy/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "inventory_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "full_read": true,
+      "result": "Exact placeholder bytes inspected; no executable handling or implemented business.",
+      "issues": []
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.up.sql",
+      "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "bytes": 7630,
+      "inventory_sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "full_read": true,
+      "result": "Full canonical SQL read only: checks/foreign keys/uniques/triggers reject violation, atomic migration runner owns commit. No exception suppression; no schema or write change authorized.",
+      "issues": []
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.down.sql",
+      "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "bytes": 494,
+      "inventory_sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "full_read": true,
+      "result": "Full canonical SQL read only: checks/foreign keys/uniques/triggers reject violation, atomic migration runner owns commit. No exception suppression; no schema or write change authorized.",
+      "issues": []
+    }
+  ]
+}
