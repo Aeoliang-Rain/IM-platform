@@ -1,0 +1,334 @@
+package shared
+
+import (
+	"encoding/json"
+	"errors"
+	"io"
+	"os"
+	"path/filepath"
+	"strings"
+
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+// Runtime settings are read from an operator-provided file. The file names the
+// credential files; it never contains the PostgreSQL password or JWT key.
+type RuntimeConfig struct {
+	PostgresHost         string `json:"postgresHost"`
+	PostgresPort         uint16 `json:"postgresPort"`
+	PostgresUser         string `json:"postgresUser"`
+	PostgresDatabase     string `json:"postgresDatabase"`
+	PostgresPasswordFile string `json:"postgresPasswordFile"`
+	JWTSigningKeyFile    string `json:"jwtSigningKeyFile"`
+	CoreURL              string `json:"coreUrl"`
+	NATSURL              string `json:"natsUrl"`
+}
+
+func ReadConfig(path string) (RuntimeConfig, []byte, *pgxpool.Config, error) {
+	var cfg RuntimeConfig
+	if path == "" {
+		return cfg, nil, nil, errors.New("IM_CONFIG_FILE is required")
+	}
+	f, err := os.Open(path)
+	if err != nil {
+		return cfg, nil, nil, err
+	}
+	defer f.Close()
+	d := json.NewDecoder(f)
+	d.DisallowUnknownFields()
+	if err = d.Decode(&cfg); err != nil {
+		return cfg, nil, nil, err
+	}
+	if d.Decode(new(any)) != io.EOF {
+		return cfg, nil, nil, errors.New("runtime configuration has trailing content")
+	}
+	if cfg.PostgresHost == "" || cfg.PostgresPort == 0 || cfg.PostgresUser == "" || cfg.PostgresDatabase == "" || cfg.PostgresPasswordFile == "" || cfg.JWTSigningKeyFile == "" || cfg.CoreURL == "" || cfg.NATSURL == "" {
+		return cfg, nil, nil, errors.New("runtime configuration is incomplete")
+	}
+	resolve := func(p string) string {
+		if filepath.IsAbs(p) {
+			return p
+		}
+		return filepath.Join(filepath.Dir(path), p)
+	}
+	password, err := os.ReadFile(resolve(cfg.PostgresPasswordFile))
+	if err != nil {
+		return cfg, nil, nil, err
+	}
+	key, err := os.ReadFile(resolve(cfg.JWTSigningKeyFile))
+	if err != nil {
+		return cfg, nil, nil, err
+	}
+	passwordText := strings.TrimSpace(string(password))
+	key = []byte(strings.TrimSpace(string(key)))
+	if passwordText == "" || len(key) < 32 {
+		return cfg, nil, nil, errors.New("runtime credentials are invalid")
+	}
+	pg, err := pgxpool.ParseConfig("")
+	if err != nil {
+		return cfg, nil, nil, err
+	}
+	pg.ConnConfig.Host = cfg.PostgresHost
+	pg.ConnConfig.Port = cfg.PostgresPort
+	pg.ConnConfig.User = cfg.PostgresUser
+	pg.ConnConfig.Database = cfg.PostgresDatabase
+	pg.ConnConfig.Password[REDACTED]
+	return cfg, key, pg, nil
+}
+package shared
+
+import (
+	"fmt"
+	"net/http"
+)
+
+// InfraMux is the existing non-business role health and transport probe.
+func InfraMux(role string) *http.ServeMux {
+	m := http.NewServeMux()
+	m.HandleFunc("/__infra/health", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != "GET" {
+			http.Error(w, "method not allowed", 405)
+			return
+		}
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		fmt.Fprintf(w, "profile=go role=%s\n", role)
+	})
+	return m
+}
+package shared
+
+import (
+	"crypto/hmac"
+	"crypto/rand"
+	"crypto/sha256"
+	"encoding/base64"
+	"encoding/hex"
+	"encoding/json"
+	"strings"
+	"time"
+)
+
+type Claims struct {
+	UserID       string `json:"user_id"`
+	SessionID    string `json:"session_id"`
+	ClientType   string `json:"client_type"`
+	SessionEpoch int64  `json:"session_epoch"`
+	IssuedAt     int64  `json:"iat"`
+	ExpiresAt    int64  `json:"exp"`
+}
+
+type Error struct {
+	Status  int
+	Code    string
+	Message string
+}
+
+func (e Error) Error() string { return e.Code }
+
+func Fail(status int, code, message string) error { return Error{status, code, message} }
+
+type Codec struct {
+	Key []byte
+	Now func() time.Time
+}
+
+func RandomToken(n int) (string, error) {
+	b := make([]byte, n)
+	if _, err := rand.Read(b); err != nil {
+		return "", err
+	}
+	return base64.RawURLEncoding.EncodeToString(b), nil
+}
+
+func UUID() (string, error) {
+	b := make([]byte, 16)
+	if _, err := rand.Read(b); err != nil {
+		return "", err
+	}
+	b[6] = b[6]&0x0f | 0x40
+	b[8] = b[8]&0x3f | 0x80
+	h := hex.EncodeToString(b)
+	return h[:8] + "-" + h[8:12] + "-" + h[12:16] + "-" + h[16:20] + "-" + h[20:], nil
+}
+
+func HashToken(token string) string {
+	h := sha256.Sum256([]byte(token))
+	return hex.EncodeToString(h[:])
+}
+
+// Prehash keeps bcrypt's 72-byte input limit from truncating valid passwords.
+func (s *Codec) Sign(c Claims) (string, error) {
+	head := base64.RawURLEncoding.EncodeToString([]byte(`{"alg":"HS256","typ":"JWT"}`))
+	payload, err := json.Marshal(c)
+	if err != nil {
+		return "", err
+	}
+	data := head + "." + base64.RawURLEncoding.EncodeToString(payload)
+	mac := hmac.New(sha256.New, s.Key)
+	mac.Write([]byte(data))
+	return data + "." + base64.RawURLEncoding.EncodeToString(mac.Sum(nil)), nil
+}
+
+func (s *Codec) Parse(token string) (Claims, error) {
+	var c Claims
+	parts := strings.Split(token, ".")
+	if len(parts) != 3 || parts[0] != base64.RawURLEncoding.EncodeToString([]byte(`{"alg":"HS256","typ":"JWT"}`)) {
+		return c, Fail(401, "AUTH_TOKEN_INVALID", "Access token is invalid.")
+	}
+	mac := hmac.New(sha256.New, s.Key)
+	mac.Write([]byte(parts[0] + "." + parts[1]))
+	sig, err := base64.RawURLEncoding.DecodeString(parts[2])
+	if err != nil || !hmac.Equal(sig, mac.Sum(nil)) {
+		return c, Fail(401, "AUTH_TOKEN_INVALID", "Access token is invalid.")
+	}
+	payload, err := base64.RawURLEncoding.DecodeString(parts[1])
+	if err != nil || json.Unmarshal(payload, &c) != nil || c.UserID == "" || c.SessionID == "" || c.SessionEpoch < 1 || !ValidClient(c.ClientType) || c.IssuedAt < 1 || c.ExpiresAt <= c.IssuedAt {
+		return c, Fail(401, "AUTH_TOKEN_INVALID", "Access token is invalid.")
+	}
+	if s.Now().Unix() >= c.ExpiresAt {
+		return c, Fail(401, "AUTH_TOKEN_EXPIRED", "Access token has expired.")
+	}
+	return c, nil
+}
+
+func ValidClient(t string) bool { return t == "WEB" || t == "DESKTOP" || t == "MOBILE" }
+package main
+
+import (
+	"context"
+	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/nats-io/nats.go"
+	"im-platform/backend/go/core"
+	"im-platform/backend/go/gateway"
+	pluginhost "im-platform/backend/go/plugin-host"
+	"im-platform/backend/go/shared"
+	"log"
+	"net/http"
+	"os"
+	"time"
+)
+
+func main() {
+	if len(os.Args) != 2 {
+		log.Fatal("expected gateway, core, or plugin-host role")
+	}
+	role := os.Args[1]
+	if role != "gateway" && role != "core" && role != "plugin-host" {
+		log.Fatal("unknown role")
+	}
+	if role == "plugin-host" {
+		log.Fatal(http.ListenAndServe(":8080", pluginhost.NewHandler()))
+	}
+	path := os.Getenv("IM_CONFIG_FILE")
+	if path == "" {
+		path = "/run/im-config/config.json"
+	}
+	cfg, key, pg, err := shared.ReadConfig(path)
+	if err != nil {
+		log.Fatal("Go runtime configuration unavailable")
+	}
+	db, err := pgxpool.NewWithConfig(context.Background(), pg)
+	if err != nil {
+		log.Fatal("database configuration failed")
+	}
+	defer db.Close()
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	err = db.Ping(ctx)
+	cancel()
+	if err != nil {
+		log.Fatal("database unavailable")
+	}
+	nc, err := nats.Connect(cfg.NATSURL, nats.MaxReconnects(-1))
+	if err != nil {
+		log.Fatal("NATS unavailable")
+	}
+	defer nc.Close()
+	var h http.Handler
+	if role == "core" {
+		ctx, stop := context.WithCancel(context.Background())
+		defer stop()
+		go func() {
+			if core.RelaySessionRevocations(ctx, db, nc) != nil && ctx.Err() == nil {
+				log.Fatal("Outbox dispatcher failed")
+			}
+		}()
+		h = core.NewHandler(db, key)
+	} else {
+		h, err = gateway.NewHandler(db, key, nc, cfg.CoreURL)
+		if err != nil {
+			log.Fatal("gateway configuration failed")
+		}
+	}
+	log.Fatal(http.ListenAndServe(":8080", h))
+}
+package pluginhost
+
+import (
+	"im-platform/backend/go/shared"
+	"net/http"
+)
+
+// No plugin business is introduced in this Auth remediation.
+func NewHandler() http.Handler { return shared.InfraMux("plugin-host") }
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.Base64;
+
+public final class InfraPlaceholder {
+    public static void main(String[] args) throws Exception {
+        if (args.length != 1 || !(args[0].equals("gateway") || args[0].equals("core") || args[0].equals("plugin-host"))) {
+            throw new IllegalArgumentException("expected gateway, core, or plugin-host role");
+        }
+        String role = args[0];
+        try (ServerSocket server = new ServerSocket(8080)) {
+            while (true) {
+                Socket accepted = server.accept();
+                try (Socket socket = accepted) {
+                    socket.setSoTimeout(5000);
+                    handle(socket, role);
+                } catch (IOException error) {
+                    System.err.println("placeholder request failed: " + error.getClass().getSimpleName());
+                }
+            }
+        }
+    }
+
+    private static void handle(Socket socket, String role) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
+        String request = reader.readLine();
+        if (request == null) return;
+        String[] parts = request.split(" ");
+        if (parts.length < 2) throw new IOException("malformed request line");
+        String path = parts[1];
+        String key = null;
+        boolean upgrade = false;
+        String line;
+        while ((line = reader.readLine()) != null && !line.isEmpty()) {
+            int colon = line.indexOf(':');
+            if (colon < 0) continue;
+            String name = line.substring(0, colon).trim();
+            String value = line.substring(colon + 1).trim();
+            if (name.equalsIgnoreCase("Sec-WebSocket-Key")) key = value;
+            if (name.equalsIgnoreCase("Upgrade") && value.equalsIgnoreCase("websocket")) upgrade = true;
+        }
+        OutputStream out = socket.getOutputStream();
+        if (role.equals("gateway") && path.equals("/__infra/ws") && upgrade && key != null) {
+            byte[] digest = MessageDigest.getInstance("SHA-1").digest((key + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").getBytes(StandardCharsets.US_ASCII));
+            String accept = Base64.getEncoder().encodeToString(digest);
+            out.write(("HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: " + accept + "\r\n\r\n").getBytes(StandardCharsets.US_ASCII));
+        } else if (path.equals("/__infra/health")) {
+            byte[] body = ("profile=java role=" + role + "\n").getBytes(StandardCharsets.UTF_8);
+            out.write(("HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: " + body.length + "\r\nConnection: close\r\n\r\n").getBytes(StandardCharsets.US_ASCII));
+            out.write(body);
+        } else {
+            out.write("HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n".getBytes(StandardCharsets.US_ASCII));
+        }
+        out.flush();
+    }
+}

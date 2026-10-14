@@ -7,7 +7,7 @@
     "all": 185,
     "logic": 118,
     "data_config_assets_documents": 67,
-    "retained_sites": 306
+    "retained_sites": 307
   },
   "selection": "All tracked backend/clients/deploy/plugins paths excluding tests (including placeholder and build/runtime glue), plus deployed contracts migration runner+2canonicalSQL and language-pack builder. Supporting coverage112/167 does not replace this own scope.",
   "excluded": "SQLite writes, schemas, initialization, transaction adapters, Composer and draft mechanisms remain excluded and unchanged. Direct Human reply permits ONLY two contiguous read mappers; no-row0 is legitimate, present invalid sequence fails. Prior RH141/RH244 fake0 finding is now explicitly corrected; no independent final semantic PASS claimed.",
@@ -467,17 +467,13 @@
     },
     {
       "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
-      "sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6",
-      "bytes": 12238,
+      "sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9",
+      "bytes": 14466,
       "responsibility": "clients/desktop",
       "changed": true,
-      "finding": [
-        "EH18",
-        "Native window/tray hide/show/focus failures now explicit expect instead of let_=continue. Current close-to-tray normal behavior retained.",
-        "actual Rust compilation/tests, compiled normal renderer"
-      ],
+      "finding": "F-APPEARANCE-EXISTS-DEFAULT",
       "acceptance": "PENDING_INDEPENDENT_REVIEW_AND_AUDIT",
-      "inspection": "Full substantive production logic read across startup/audit/fix batches; current bytes re-read and inventoried. Vendor Gradle launchers: relevant environment/failure/exit paths inspected; no claim of manual review of license bytes.",
+      "inspection": "One actual read; genuine NotFound default only; all other IO errors existing unavailable. Present private path helper for owned actual native read tests only. Fix-local evidence, fresh independent reviews pending.",
       "kind": "logic_or_declaration_or_build_entry"
     },
     {
@@ -2492,7 +2488,7 @@
     {
       "id": "RH029",
       "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
-      "line": 57,
+      "line": 58,
       "column": 9,
       "operation": "module",
       "source": "_=>return Err(\"Window action invalid\".into()),",
@@ -2503,7 +2499,7 @@
     {
       "id": "RH030",
       "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
-      "line": 79,
+      "line": 80,
       "column": 88,
       "operation": "module",
       "source": "match std::str::from_utf8(&bytes){Ok(value) if valid_language(value)=>value.into(),_=>\"en\".into()}",
@@ -2514,7 +2510,7 @@
     {
       "id": "RH031",
       "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
-      "line": 98,
+      "line": 99,
       "column": 292,
       "operation": "module",
       "source": "tauri::tray::TrayIconBuilder::with_id(\"im-plus\").icon(icon).tooltip(\"IM+ · Your workspace\").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){\"open\"=>show(app),\"hide\"=>{if let Some(w)=app.get_webview_window(\"main\"){w.hide().expect(\"Window hide failed\");}},\"quit\"=>app.exit(0),_=>{}}).build(app)?;",
@@ -5558,6 +5554,17 @@
       "disposition": "RETAINED_NARROWED_AFTER_ACTUAL_FAILURE",
       "specific_ground_and_recovery": "Retry only complete known NATS closed/disconnected/timeout, deadline or net.Error branches. Current pgx joins connection attempts; ANY unknown branch returns original complete error. Known batch failure leaves unpublished events/rollback intact for existing next tick. Actual mixed/unknown-only dispatcher and all-network cancellation regressions.",
       "authority": "Frozen§5.2 MSG-D-006; spec/governance/error-handling.md; actual locked pgx v5.7.6 producer, not future categories."
+    },
+    {
+      "id": "RH307",
+      "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "line": 44,
+      "column": 77,
+      "operation": "load_appearance",
+      "source": "fn load_appearance(p:&std::path::Path)->Result<Appearance,String>{let bytes=match std::fs::read(p){Ok(bytes)=>bytes,Err(error) if error.kind()==std::io::ErrorKind::NotFound=>return Ok((\"cold\".into(),16,1.0)),Err(_)=>return Err(\"Appearance unavailable\".into())};if bytes.len()>64{return Err(\"Appearance invalid\".into());}for theme in [\"cold\",\"warm\"]{for font in 14..=22{for density in [0.8,1.0,1.2]{let value=(theme.to_owned(),font,density);if appearance_bytes(&value)==bytes{return Ok(value);}}}}Err(\"Appearance invalid\".into())}",
+      "disposition": "RETAINED_NARROWED_AFTER_ACTUAL_FAILURE",
+      "specific_ground_and_recovery": "Only actual fs::read ErrorKind::NotFound means absence and returns existing cold/16/1. All other actual IO failures return existing Appearance unavailable; malformed/oversize/bounds retain Appearance invalid. Literal TS consumer tags native origin; Workspace start publishes existing load error. No language fallback authority borrowed.",
+      "authority": "Frozen§6.1 / ADR0009 app-owned appearance; ADR0011 only Web fallback, ADR0012 only language fallback; error-handling governance current no fake defaults."
     }
   ],
   "fix_F1": {
@@ -5639,5 +5646,22 @@
     "new_previously_omitted_retry_boundary": 1,
     "actual_current_navigation": "fix-outbox-mixed/current-navigation.json",
     "protection": "fix-outbox-mixed/protected-inputs.json"
+  },
+  "fix_appearance_read": {
+    "finding": "F-APPEARANCE-EXISTS-DEFAULT",
+    "prior_regular_26a2941": "FAIL preserved regular-review-26a2941/final-receipt.json",
+    "current_reviews": "PENDING_NEW_FINAL_SHA_BOTH",
+    "delta": [
+      {
+        "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+        "old_sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6",
+        "current_sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9"
+      }
+    ],
+    "original_records": 305,
+    "prior_added_outbox_boundary": 1,
+    "new_explicit_appearance_boundary": 1,
+    "actual_current_navigation": "fix-appearance-read/current-navigation.json",
+    "protection": "fix-appearance-read/protected-inputs.json"
   }
 }

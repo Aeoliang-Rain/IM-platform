@@ -1,0 +1,17 @@
+Owned GUI/native mode=rust
+
+running 3 tests
+APPEARANCE_RESULT absent ok ["cold",16,1]
+APPEARANCE_RESULT valid ok ["warm",22,1.2]
+APPEARANCE_RESULT invalid error Appearance invalid
+APPEARANCE_RESULT invalid error Appearance invalid
+APPEARANCE_RESULT invalid error Appearance invalid
+APPEARANCE_RESULT invalid error Appearance invalid
+APPEARANCE_RESULT directory error Appearance unavailable
+APPEARANCE_RESULT invalid_filename error Appearance unavailable
+test desktop_capabilities::tests::appearance_owned_reads_distinguish_absence_invalid_and_io_failure ... ok
+test desktop_capabilities::tests::actual_windows_credential_manager_roundtrip ... ok
+test desktop_capabilities::tests::language_owned_file_exact_enum_and_appearance_isolation ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+

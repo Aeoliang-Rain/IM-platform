@@ -1,0 +1,384 @@
+# ADR-0003: Whole-document architecture conflict resolution and executable service boundaries
+
+Status: Human-approved bounded conflict resolution; canonical revision and downstream product remediation independently accepted; administrative candidate independently accepted; final state-record confirmation follows current.md.
+Date: 2026-09-30
+Approval source: spec/progress/evidence/LOOP1-ARCH-REMEDIATION-001/approval-and-recovery.md; visible Human four-stage instruction and registered prompt P-ddf5a00c-27a1-412c-ad9b-2305e1aad734 (delegation plus exact approval excerpt, not complete Human prompt).
+
+## Motivation and authority
+
+Frozen v1.0 搂3 assigns Gateway/Core/plugin-host responsibilities while 搂12 exemplifies root internal business packages and 搂11 allows unspecified internal variation. The historical Markdown migration retained diagram arrows and workflow expressions that conflict with operative invariants and current approved governance. Audit coverage and individual determinate resolutions are in the task conflict ledger. This approval is NOT approval for arbitrary product redesign or any changed public contract, database, ACK/Sync, compatibility or security boundary.
+
+## Decision
+
+Revise the current canonical body to v1.1, not merely append this ADR. 搂搂3/10/11/12 now enforce shared service ownership and dependency direction across Go/Java with language-specific internal structures. Root assembly/build/testing exceptions and minimal shared support are explicit; complete Auth/session-write business cannot be shared into Gateway. No three-module/three-binary/multi-layer requirement is created. S0 exceptions are per backend and expire at first business implementation.
+
+Correct diagrams and examples to existing current semantics: Core persistence and membership decisions, Outbox-to-NATS-to-Gateway, post-commit Gateway ACK forwarding, single logical message-created Outbox, effective Session slots, separate plugin artifact/instance states. Clarify native SQLite versus Web, token prohibition, current-versus-future stage scope, precise current-task recovery, fresh independent Review/fix loops, real CI head/job acceptance and stage-appropriate checks. Concrete wire/schema authority remains contracts/.
+
+## Normative effect and baseline
+
+semantic_change=true: source-boundary and governance ambiguity is tightened into executable rules. Existing product invariants are restated without changing their meaning. The v1.0 PDF-to-Markdown migration remains historical representation_only/semantic_change=false under ADR-0002. Its PDF and historical Markdown hashes remain recorded separately from the actual current Markdown SHA. Historical ADRs, reviews, checkpoints and Recorder evidence are never rewritten.
+
+## Migration and validation
+
+Four sequential tasks repair authority, execution constraints, effective checkers/CI, then Go implementation. Stage-one verifier preserves hash checks and replaces historical arrow/figure/format counts with section-bound graph/structure checks and negative controls. Stage three supplies product ownership/import/trigger tests; until stage four repairs old Go violations those are expected failures, never a permanent exception or product PASS. Java remains stage-appropriate and its future business boundaries are tested with fixtures.
+
+Each bounded stage needs new independent Review and applicable CI. Final batch acceptance requires final candidate exact-head hosted CI, all applicable live regressions, no unresolved blocker and recovery checkpoint. Historical Auth acceptance remains valid for its old requirements. Rollback of this candidate is a new corrective commit/approved decision; do not rewrite historical source/evidence or discard Auth implementation. No data migration or public-wire migration is needed.
+
+## Actual bounded acceptance point
+
+Fresh stage-one Review accepted a09f4fbb1dc497c46c8dc0b8901b0417c534fb2d. Hosted run 36714913796 accepted exact head 3e6e89fa2b378f1fcb4c944466fef2e3bc905379, all ten jobs successful; evidence spec/progress/evidence/LOOP1-ARCH-REMEDIATION-001/hosted-acceptance.md and task001 done. This discovery update preserves decision/approval/history. Stages002-004 and product/batch/S1 acceptance remain outstanding.
+
+## Current completion discovery (2026-10-01)
+
+The preceding bounded acceptance paragraph records the stage-one historical point, not current pending work. Tasks001-003 are done; Task004 remainsreview with accepted product candidate d0ae52f5615320790ae7039cb48831873de6f486 / hosted36744072690 with fresh independent revocation Review. See evidence004/final-hosted-acceptance.md and conflict-closure-supplement.md. This administrative candidate requires new independent Review and exact-head hosted verification before final batch closure. Canonical v1.1 semantics/hash/approval, historical migrations and PDF remain unchanged; S1 product Gate OPEN.
+
+### Accepted administrative closure discovery (2026-10-01)
+
+Four tasks done after NEW independent CLI Review exactf4fdd82f8f3179034fb74700c1b4e9aa43e4637e and hosted36749210695 SUCCESS (five required successes/eight inactive skips), plus product d0ae52f independent Review/hosted36744072690 SUCCESS. The final state-record commit requires NEW independent Review and exact-head hosted confirmation before final delivery, captured externally at H:/.codex/worktrees/architecture-remediation/final-acceptance-research/final-acceptance-summary.json. S1 product Gate OPEN; no downstream business activated. Earlier bounded/product checkpoint text remains historical. This is discovery only; approved decisions, source, hash and migration history are unchanged.
+# ADR-0005: Client technology clarification and universal selection governance
+
+Status: Human-approved clarification independently accepted at e7c80c7 under bounded Human GString waiver; final administrative confirmation pending before S2 activation.
+Date: 2026-10-01
+Approval source: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/approval-and-recovery.md; full explicit Human instruction human-approved-request.txt and supplemental human-desktop-sqlx-mobile-emulator-decision.txt in the same directory (raw-byte SHA25691033f339f337105bc70f45b20c312b8ed2490d01c0b1607e197cda6e09c770b; normalized prompt SHA25678aa2191a4f3614185781a17ebd5204c949312d3a8eb159435af469d0d1929b5; Recorder P-CLIENT-SQLX-DECISION-20261001).
+
+## Motivation and decision
+
+PR7 implemented Dart SQLite despite missing architecture authorization. PR8 restored main3f352a8e465c0c4b093cca8e5f404ea587550b6e to accepted pre-PR7 tree. The withdrawn attempt and its tests/reviews are historical evidence, not authority or new acceptance.
+
+Canonical 搂2.3 freezes universal no-unapproved-technology governance; 搂6.1 freezes React/TypeScript memory-only Web, Tauri/React/TypeScript SQLite Desktop and Android Kotlin + Jetpack Compose SQLite Mobile. Web/Desktop/shared protocol/plugin/models/Repository/domain/UI remain TypeScript, necessary Desktop Rust is confined to clients/desktop/src-tauri. Mobile uses Kotlin equivalent models/Repository/behavior/adapters under the SAME canonical contracts/fixtures; no mandatory direct TypeScript SDK reuse, new public contract, JS runtime/bridge/codegen or shared native rewrite. Android Studio emulator validates the real Mobile runtime; host tests/mocks cannot replace it. Android SDK/Gradle/Kotlin/Compose engineering identifiers and built-in Android SQLite access follow the approved stack, not arbitrary Room/ORM/network/native dependencies.
+
+Supplemental Desktop approval remains Tauri + SQLx(SQLite). TypeScript holds shared Repository/models/transaction intent; Rust only connections, queries and atomic transaction adapter. Independent tauri-plugin-sql execute() calls MUST NOT simulate a cross-call transaction. Other sensitive dependency choices remain subject to 搂2.3.
+
+Approval chain: original full Human instruction -> supplemental Desktop SQLx/emulator instruction -> NEW exact Human answer 鈥渕oblie鏄庣‘涓簁otlin jetpack compose锛岀Щ闄oblie ts鎶€鏈爤鈥? Latest answer supersedes ONLY the original Mobile TS/TBD/direct-TS-reuse clauses. Raw evidence: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/human-mobile-kotlin-compose-decision.txt; raw-byte SHA2561901f6dcd93069a19b6a88f5249858c8017ad36c71d61a109cbbad2ec5e9c061; normalized Recorder SHA256863da9423040acffa2c11b7e67d6c71673f5d7aeb7edd26954108884b5705dd4; prompt P-CLIENT-MOBILE-KOTLIN-20261001. Candidate188d24a / canonical ac042107 was superseded before independent acceptance, never an accepted baseline. Previous accepted canonical83d124b remains the lineage. Original prompt, approval/recovery and finished Recorder archives remain immutable.
+
+Missing sensitive decision: stop affected work -> smallest question -> Human/Architect -> frozen body/approved ADR -> machine guards -> fresh independent Review/applicable exact-head hosted CI -> product implementation. Task text, allowed_paths, familiarity/popularity/installed tools or passing tests cannot authorize a technology. Go/Java internal variation does not bypass this universal rule.
+
+## Normative effect and compatibility
+
+semantic_change=true: this is a Human-approved architecture clarification, not a representation-only migration. Version remains v1.1; canonical bytes and hash change. Previous canonical SHA25683d124bba4b9c605ae29b637e1ea6f8aa55ec4fb7cc6f631f7c069c6f1f77c2e is preserved in manifest revision history. PDF546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510 remains byte-for-byte unchanged. Older ADRs, checkpoints, PR7/FAIL/Review/Recorder/evidence are immutable. No contract, server schema, ACK/Sync, security or compatibility semantics change. S1 PASS; S2 OPEN.
+
+## Implementation, effectiveness and migration
+
+This bounded prerequisite changes authority, execution governance and existing checker/classifier/CI only, without S2 product code or dependencies. Source/dependency/import/config/workflow/task declaration controls inspect active clients; historical evidence is excluded by exact active path ownership, never deletion. Direct static checks supplement mandatory semantic independent Review of language/dependency authority and Rust responsibility.
+
+New independent Review of clean committed candidate and real applicable exact-head hosted CI must accept this prerequisite before task done or S2 activation. Local/Recorder PASS cannot establish Task/S2 PASS. Acceptance SHA/run/effective point are pending and must be recorded by Coordinator truthfully after acceptance. S4/Java/Loop2 are not advanced. New S2 tasks require fresh authorized TypeScript/Kotlin implementation Review/CI; PR7 cannot be restored or reused as acceptance.
+
+## Rollback
+
+Before acceptance, retain accepted main and repair candidate on FAIL. After acceptance, any authority correction uses a Human-approved corrective ADR and new independently reviewed commit; do not rewrite historical commits/evidence/PDF or silently restore Dart. There is no product/data migration in this prerequisite.
+
+Prompt raw-byte vs Recorder LF-normalized hashes are distinguished in spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/prompt-hash-normalization.md; original approval/recovery and prompt bytes are preserved.
+
+## Accepted clarification discovery (2026-10-01)
+
+Fresh independent Review accepts clean e7c80c726d4799ba3ddab026266be638c9e6b252 under scoped Human GString waiver; original4b5 Review FAIL immutable. Exactpush36881391141 selected5SUCCESS/8correctinactive and PR36881397009 all13/every stepSUCCESS. Canonicalaa2398020beeda5f7f9456aac346da57bd8b75212192123c943c35dfdc80f84c/PDF546915 unchanged. ADR0005 effective at accepted prerequisite. Evidence: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/2026-10-01-coordinator-resume/acceptance.md. Earlier pending paragraphs are historical; later administrative closure needs NEW independent Review/exactHEADCI before S2activation. No product/contract change; S1PASS/S2OPEN.
+# ADR-0008锛氬叕寮€ Sync HTTPS 鎷夊彇缁戝畾
+
+鐘舵€侊細Human-approved freeze candidate锛涗粎缁?fresh independent Review銆佺簿纭€欓€?hosted CI銆乸rotected integration/actual-main 鏍搁獙鍙?H:/IM-platform 鍚屾鍚庣敓鏁堛€?鏃ユ湡锛?026-10-03
+鎵瑰噯鏉ユ簮锛歴pec/progress/evidence/LOOP1-SYNC-TRANSPORT-001/human-authorization.txt
+浠诲姟锛歀OOP1-SYNC-TRANSPORT-001
+semantic_change=true锛涚増鏈?v1.1 涓嶅彉銆?
+## 鍔ㄦ満涓庢渶灏忓喅瀹?
+SYNC 鐨勫洓绉嶇幇鏈?JSON 褰㈢姸宸叉湁 contracts/websocket/sync-v1.schema.json锛屼絾鏃犲叕寮€浼犺緭缁戝畾銆侶uman 鎺堟潈鍏堟彁鍑哄苟鍐荤粨鍏紑 Sync 鏂规锛汫o 浜у搧浠ｇ爜鍙﹀緟鏈墠缃帴鍙楀悗灞曠ず鍏蜂綋鏂规骞跺彇寰楀悓鎰忋€?
+鏂板涓や釜 HTTPS POST 鎷夊彇鎿嶄綔 /v1/sync/user 涓?/v1/sync/conversation銆傛満鍣ㄦ潈濞佷负 contracts/http/sync.openapi.json锛屽閮ㄥ紩鐢ㄧ幇鏈?UserRequest/UserPage/ConversationRequest/ConversationPage銆丅earer 涓?HTTP ErrorResponse銆俉SS 淇濈暀瀹炴椂/ACK锛屼笉鏂板 envelope/type锛汣ore 淇濇湁 Sync銆佹垚鍛?鐢ㄦ埛鎺堟潈鍜?PostgreSQL 鏌ヨ锛汫ateway 娌跨敤鍏紑 HTTP 浠ｇ悊锛屼笉鍐欎笟鍔°€傛棤鏂拌瑷€銆乫ramework/runtime/dependency銆佹湇鍔°€丏B 瀵硅薄鎴栭€氱敤鍗忚灞傘€?
+姣忔璇锋眰楠岃瘉鏁版嵁搴撴潈濞?Session锛涜韩浠藉彧鏉ヨ嚜 Bearer銆傜敤鎴?cursor 鍒濆€?0锛岄殢鍚庢槸褰撳墠鐢ㄦ埛缁戝畾銆佸彲璺ㄥ叾 Session 閲嶆斁鐨?opaque token锛屽鎴风鍙綔鐩哥瓑姣旇緝銆傛棤鏁?澶栬处鍙?token 杩斿洖鏃㈡湁400 VALIDATION_FAILED锛涘綋鍓?Loop 1 涓嶅紩鍏?cursor 杩囨湡銆佷繚鐣欑獥鍙ｆ垨閲嶇疆鍗忚銆倁ser events 浠嶄负鍥涚浣庨 metadata锛屾帓闄?Message/Session锛涜竟鐣屽彲鎶婂唴瀛?鎸佷箙鍖栧唴閮?cursor_id 鎶曞奖涓哄閮?event.cursor 涓?nextCursor锛屾棤闇€淇敼 producer payload/schema銆?
+浠讳綍鐜版湁姝ｆ暣鏁?limit 鍧囨帴鍙楋紝鍏堢簿纭彇 min(limit,100)锛屽啀浣滄湁鐣岃浆鎹紱鏌ヨ鏈€澶?effectiveLimit+1 鍚堟牸椤癸紝杩斿洖涓嶈秴杩?effectiveLimit銆傜┖椤电粓姝笖 user nextCursor 淇濇寔璇锋眰 cursor锛涢潪绌?user 椤?nextCursor 涓烘湯浜嬩欢 cursor 骞跺墠杩涖€俬asMore 浠呰〃绀哄綋鍓嶈鍙栨湁棰濆宸叉彁浜ゅ悎鏍奸」锛屼笉鑳戒骇鐢熸棤闄愭棤杩涘睍椤点€傜敤鎴锋祦蹇呴』鏄ǔ瀹氬凡鎻愪氦鍓嶇紑锛屼笉鑳借烦杩囧苟鍙戣緝浣庡簭鍙锋櫄鎻愪氦锛沜onversation 椤哄簭浠?afterSeq+1 杩炵画鍓嶈繘锛岃秴 head 绌洪〉缁堟銆備笉鏀瑰彉瀹㈡埛绔暟鎹?cursor 鍚屼簨鍔℃垨 contiguous_seq/gap 璇箟銆?
+鎴愬姛鍜屽凡瑙ｇ爜鏈夋晥 UUID 鐨勯敊璇搷搴?echo 璇锋眰 body requestId锛涗笉鍙叧鑱旂殑鏍煎紡閿欒鐢?server UUID銆傞敊璇爜/鐘舵€佷粎娌跨敤鏃㈡湁鐩綍锛屾湭鐭ユ湇鍔″櫒鎴栧熀纭€璁炬柦澶辫触涓?non-2xx transport failure锛屼笉鍐掑厖鎴愬姛椤点€佷笉寮曞叆閿欒鐮併€俀uery 鍙傛暟涓€寰嬫嫆缁濓紝鍑嵁/姝ｆ枃涓嶈繘鍏ユ棩蹇?閿欒锛涘搷搴?no-store銆傚叿浣撲紭鍏堢骇/瀛楁/鐘舵€佷互鍏紑濂戠害涓哄噯銆備笉瀛樺湪/闈炴垚鍛樹細璇濈粺涓€403閬垮厤娉勯湶锛涙潈闄愮敱 Core 姣忚姹傚垽瀹氥€?
+## 褰卞搷銆佸吋瀹逛笌鍥炴粴
+
+鏂板浼犺緭鎿嶄綔锛屼笉鏀圭幇鏈夊洓褰㈢姸銆丄uth API銆乄SS/ACK銆佹暟鎹簱/杩佺Щ銆佸瓨鍌ㄣ€佸鎴风鎶€鏈斂绛栨垨瀹夊叏杈圭晫銆傛棫 schema/oracle 绂荤嚎鍚戦噺淇濇寔鍘熸牱涓斾粛鏈夋晥锛沷paque token 鐨勫叿浣撶紪鐮佹槸鍚庣画 Core 杈圭晫瀹炵幇缁嗚妭锛屼笉鑳藉弽鍚戝畾涔夊绾︺€傚喕缁撴鏂囧鍔?搂11.5锛堢粦瀹氾級锛宐aseline 淇濆瓨鏃?canonical hash16e9c7b4 涓庢壒鍑嗘潵婧愩€傚巻鍙?PDF/ADR/澶辫触/Recorder 涓嶆敼銆?
+鍊欓€夋湭鎺ュ彈鍓嶄笉寰椾綔涓?Go/client 浜у搧瀹炵幇鎺堟潈锛涙帴鍙楀悗渚濈劧蹇呴』鍏堝悜 Human 灞曠ず Go 瀹炵幇鏂规骞跺彇寰楀悓鎰忋€傝鍒欐帴鍙椾笉浠ｈ〃瀹為檯 Sync 鏈嶅姟瀛樺湪锛屼笉瑙ｉ櫎 SYNC backlog 鐨?runtime 杈撳叆闃诲銆傛柊浠诲姟鍙湁杩欎竴涓綋鍓嶅凡璇佹槑蹇呰鐨勫墠缃紝涓嶅疄渚嬪寲鏈潵浜у搧/UI 灞傘€傛挙閿€鏈帴鍙楀€欓€夊嵆鍙洖婊氾紱鐢熸晥鍚庣殑璋冩暣璧版柊鍐冲畾涓庣嫭绔嬫帴鍙楋紝涓嶉噸鍐欏巻鍙层€?
+## Human 鍒嗛〉淇锛?026-10-03锛?
+100 浠呴檺鍒跺崟椤碉紝涓嶉檺鍒舵€诲悓姝ユ潯鏁版垨椤垫暟銆傚鎴风姣忛〉鏁版嵁涓庢父鏍?杩炵画搴忓彿浜嬪姟鎻愪氦鎴愬姛鍚庯紝鑻?hasMore=true锛岀敤鎴锋祦浣跨敤 nextCursor銆佷細璇濇祦浣跨敤宸叉彁浜ゆ棤 gap 鍓嶇紑鐨?afterSeq 缁х画鎷夊彇锛岀洿鍒?hasMore=false锛涗笉寰椾互鍥哄畾鎬绘潯鏁版垨鎬婚〉鏁版彁鍓嶆埅鏂€傜粓姝㈤〉琛ㄧず璇ユ璇诲彇鍙鐨勫凡鎻愪氦鏈€鏂扮姸鎬侊紝涓嶄繚璇佺粓姝㈠悗鐨勬柊鍐欏叆宸茬粡鍚屾锛涘悗缁疄鏃舵祦/鍐嶆鍚屾鎵挎媴鏂板彉鍖栥€?
+鏂板鎵瑰噯鏉ユ簮锛歴pec/progress/evidence/LOOP1-SYNC-TRANSPORT-001/paging-revision/human-authorization.txt銆傚彧鍐荤粨鎸佺画鍒嗛〉璇箟涓庡悗缁獙鏀惰姹傦紝褰撳墠涓嶅疄鐜板鎴风寰幆銆傛棫鍊欓€?Review 涓嶈鐩栦慨姝ｅ悗 SHA锛涗粛寰呮柊鐙珛 Review/绮剧‘ HEAD CI/闆嗘垚鍚屾銆?
+  Failure --> Test
+  Review -->|"PASS"| CI["閫傜敤鐪熷疄 CI锛涙牳瀵?head SHA 涓庡繀璺戜綔涓?]
+  CI -->|"FAIL"| Failure
+  CI -->|"PASS"| Complete["鎺ュ彈浠诲姟锛涙洿鏂伴槦鍒?璇佹嵁/current/checkpoint"]
+  Complete --> Handoff["HANDOFF / 涓嬩竴渚濊禆婊¤冻浠诲姟"]
+```
+
+> 瀹炵幇/淇涓庢帴鍙楀€欓€夌殑 Review 蹇呴』鏄湡瀹炰笉鍚岀殑鏂颁笂涓嬫枃锛涘悓涓€涓婁笅鏂囨敼瑙掕壊鍚嶄笉鏄嫭绔嬪鏌ャ€傚崟鍐欒€咃紱鏅€氬け璐ヨ繘鍏ヤ慨澶嶄笌鏂扮殑鐙珛 Review 寰幆銆傞獙鏀朵緷鎹槸鏉冨▉瑙勮寖銆佸绾︺€佸€欓€?diff銆佺粨鏋?渚濊禆/鏈€灏忔€ф鏌ュ強鐪熷疄娴嬭瘯缁撴灉銆?>
+> 鍥?12-1 Agent 宸ヤ綔娴併€傚紑鍙戣嚜鍔ㄥ寲鍜?CI/CD 鏄袱涓嫭绔嬬郴缁熴€?
+<a id="section-12-1"></a>
+### 12.1 Task Spec 妯℃澘
+
+```text
+task_id: LOOP1-MSG-003
+goal: implement WSS text message sending
+inputs:
+ - spec/architecture/README.md # resolve 搂3/搂10/搂11 + Minimality Contract
+ - spec/domain/messaging.md
+ - spec/invariants/messaging.md
+ - contracts/websocket/
+allowed_paths:
+ - backend/go/core/message/**
+ - backend/go/core/outbox/**
+ - backend/go/tests/**
+acceptance:
+ - applicable source ownership and dependency checks pass
+ - contract tests pass
+ - retry is idempotent
+ - ACK only after durable commit
+forbidden:
+ - change public contract
+ - change DB contract without migration
+ - modify Java implementation
+```
+
+<a id="section-12-2"></a>
+### 12.2 鐘舵€侀槦鍒?
+backlog -> ready -> active -> review -> done
+
+CREATE TABLE users (
+    user_id uuid PRIMARY KEY,
+    username text NOT NULL UNIQUE,
+    display_name text NOT NULL,
+    password_hash text NOT NULL,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    CHECK (length(username) > 0),
+    CHECK (length(password_hash) > 0)
+);
+
+-- The slot row is replaced atomically on login: session_id rotates and epoch rises.
+CREATE TABLE sessions (
+    user_id uuid NOT NULL REFERENCES users(user_id),
+    client_type text NOT NULL CHECK (client_type IN ('WEB', 'DESKTOP', 'MOBILE')),
+    session_id uuid NOT NULL UNIQUE,
+    session_epoch bigint NOT NULL CHECK (session_epoch > 0),
+    refresh_token_hash text,
+    status text NOT NULL CHECK (status IN ('ACTIVE', 'REVOKED')),
+    device_id text NOT NULL,
+    expires_at timestamptz NOT NULL,
+    updated_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (user_id, client_type),
+    CHECK (status <> 'ACTIVE' OR refresh_token_hash IS NOT NULL)
+);
+
+CREATE TABLE conversations (
+    conversation_id uuid PRIMARY KEY,
+    kind text NOT NULL CHECK (kind IN ('DIRECT', 'GROUP')),
+    direct_user_low_id uuid REFERENCES users(user_id),
+    direct_user_high_id uuid REFERENCES users(user_id),
+    next_seq bigint NOT NULL DEFAULT 1 CHECK (next_seq > 0),
+    created_by uuid NOT NULL REFERENCES users(user_id),
+    group_create_request_id uuid,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    CHECK ((kind = 'DIRECT' AND direct_user_low_id IS NOT NULL AND direct_user_high_id IS NOT NULL
+            AND direct_user_low_id < direct_user_high_id AND group_create_request_id IS NULL)
+        OR (kind = 'GROUP' AND direct_user_low_id IS NULL AND direct_user_high_id IS NULL
+            AND group_create_request_id IS NOT NULL)),
+    UNIQUE (conversation_id, direct_user_low_id, direct_user_high_id),
+    UNIQUE (direct_user_low_id, direct_user_high_id),
+    UNIQUE (created_by, group_create_request_id)
+);
+
+CREATE TABLE friendships (
+    user_low_id uuid NOT NULL REFERENCES users(user_id),
+    user_high_id uuid NOT NULL REFERENCES users(user_id),
+    direct_conversation_id uuid NOT NULL UNIQUE,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (user_low_id, user_high_id),
+    CHECK (user_low_id < user_high_id),
+    FOREIGN KEY (direct_conversation_id, user_low_id, user_high_id)
+        REFERENCES conversations(conversation_id, direct_user_low_id, direct_user_high_id)
+);
+
+CREATE TABLE conversation_members (
+    conversation_id uuid NOT NULL REFERENCES conversations(conversation_id),
+    user_id uuid NOT NULL REFERENCES users(user_id),
+    role text NOT NULL CHECK (role IN ('OWNER', 'MEMBER')),
+    joined_at timestamptz NOT NULL DEFAULT now(),
+    left_at timestamptz,
+    PRIMARY KEY (conversation_id, user_id)
+);
+
+CREATE TABLE plugin_artifacts (
+    plugin_id text NOT NULL,
+    version text NOT NULL,
+    package_hash text NOT NULL,
+    backend_hash text NOT NULL,
+    renderer_hash text NOT NULL,
+    manifest jsonb NOT NULL,
+    status text NOT NULL CHECK (status IN ('UPLOADED', 'VALIDATING', 'VERIFIED', 'REJECTED')),
+    created_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (plugin_id, version),
+    CHECK (length(plugin_id) > 0 AND length(version) > 0),
+    CHECK (length(package_hash) > 0 AND length(backend_hash) > 0 AND length(renderer_hash) > 0)
+);
+
+CREATE FUNCTION reject_plugin_artifact_mutation() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+    IF (OLD.plugin_id, OLD.version, OLD.package_hash, OLD.backend_hash, OLD.renderer_hash, OLD.manifest)
+       IS DISTINCT FROM
+       (NEW.plugin_id, NEW.version, NEW.package_hash, NEW.backend_hash, NEW.renderer_hash, NEW.manifest) THEN
+        RAISE EXCEPTION 'plugin artifact identity and bytes are immutable';
+    END IF;
+    RETURN NEW;
+END $$;
+CREATE TRIGGER plugin_artifact_immutable BEFORE UPDATE ON plugin_artifacts
+    FOR EACH ROW EXECUTE FUNCTION reject_plugin_artifact_mutation();
+
+CREATE FUNCTION reject_plugin_artifact_delete() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+    RAISE EXCEPTION 'plugin artifact versions cannot be deleted';
+END $$;
+CREATE TRIGGER plugin_artifact_no_delete BEFORE DELETE ON plugin_artifacts
+    FOR EACH ROW EXECUTE FUNCTION reject_plugin_artifact_delete();
+
+CREATE TABLE plugin_instances (
+    conversation_id uuid NOT NULL REFERENCES conversations(conversation_id),
+    plugin_id text NOT NULL,
+    active_version text,
+    desired_version text,
+    previous_version text,
+    status text NOT NULL CHECK (status IN ('INSTALLING', 'ENABLED', 'DISABLED', 'INSTALL_FAILED', 'AUTO_DISABLED', 'UNINSTALLED', 'RETAINED', 'PURGED')),
+    grants jsonb NOT NULL DEFAULT '{}'::jsonb,
+    updated_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (conversation_id, plugin_id),
+    FOREIGN KEY (plugin_id, active_version) REFERENCES plugin_artifacts(plugin_id, version),
+    FOREIGN KEY (plugin_id, desired_version) REFERENCES plugin_artifacts(plugin_id, version),
+    FOREIGN KEY (plugin_id, previous_version) REFERENCES plugin_artifacts(plugin_id, version)
+);
+
+CREATE TABLE plugin_kv (
+    conversation_id uuid NOT NULL,
+    plugin_id text NOT NULL,
+    key text NOT NULL,
+    value jsonb NOT NULL,
+    schema_version integer NOT NULL CHECK (schema_version > 0),
+    PRIMARY KEY (conversation_id, plugin_id, key),
+    FOREIGN KEY (conversation_id, plugin_id) REFERENCES plugin_instances(conversation_id, plugin_id)
+);
+
+CREATE TABLE messages (
+    server_message_id uuid PRIMARY KEY,
+    conversation_id uuid NOT NULL REFERENCES conversations(conversation_id),
+    sender_id uuid NOT NULL REFERENCES users(user_id),
+    request_id uuid NOT NULL,
+    seq bigint NOT NULL CHECK (seq > 0),
+    kind text NOT NULL CHECK (kind IN ('TEXT', 'PLUGIN')),
+    text_body text,
+    plugin_id text,
+    plugin_version text,
+    fallback_text text,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    UNIQUE (conversation_id, request_id),
+    UNIQUE (sender_id, conversation_id, request_id),
+    UNIQUE (conversation_id, seq),
+    UNIQUE (server_message_id, conversation_id),
+    FOREIGN KEY (plugin_id, plugin_version) REFERENCES plugin_artifacts(plugin_id, version),
+    CHECK ((kind = 'TEXT' AND text_body IS NOT NULL AND plugin_id IS NULL AND plugin_version IS NULL)
+        OR (kind = 'PLUGIN' AND plugin_id IS NOT NULL AND plugin_version IS NOT NULL AND fallback_text IS NOT NULL))
+);
+
+CREATE TABLE outbox_events (
+    event_id uuid PRIMARY KEY,
+    aggregate_type text NOT NULL,
+    aggregate_id uuid NOT NULL,
+    event_type text NOT NULL,
+    conversation_id uuid REFERENCES conversations(conversation_id),
+    message_id uuid,
+    payload jsonb NOT NULL,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    published_at timestamptz,
+    attempts integer NOT NULL DEFAULT 0 CHECK (attempts >= 0),
+    FOREIGN KEY (message_id, conversation_id) REFERENCES messages(server_message_id, conversation_id),
+    CHECK ((event_type = 'message.created' AND message_id IS NOT NULL AND conversation_id IS NOT NULL)
+        OR (event_type <> 'message.created' AND message_id IS NULL))
+);
+CREATE UNIQUE INDEX outbox_one_message_created ON outbox_events(message_id) WHERE event_type = 'message.created';
+CREATE INDEX outbox_unpublished ON outbox_events(created_at, event_id) WHERE published_at IS NULL;
+
+CREATE TABLE user_sync_events (
+    user_id uuid NOT NULL REFERENCES users(user_id),
+    cursor_id bigint GENERATED ALWAYS AS IDENTITY,
+    event_type text NOT NULL CHECK (event_type IN ('friend.changed', 'conversation.changed', 'membership.changed', 'plugin.changed', 'session.revoked')),
+    payload jsonb NOT NULL,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (user_id, cursor_id)
+);
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/envelope.schema.json",
+  "title": "WSS protocol v1 envelope",
+  "description": "TLS and WebSocket upgrade precede auth.bind. Access tokens are carried only in auth.bind payload, never a URL. Success message.ack is emitted only after atomic durable Message and Outbox commit. A retry under sender/conversation/requestId returns the same messageId, seq and createdAt.",
+  "oneOf": [
+    { "$ref": "#/$defs/AuthBind" },
+    { "$ref": "#/$defs/AuthAck" },
+    { "$ref": "#/$defs/MessageSend" },
+    { "$ref": "#/$defs/MessageAck" },
+    { "$ref": "#/$defs/MessageCreated" },
+    { "$ref": "#/$defs/SessionRevoked" },
+    { "$ref": "#/$defs/Ping" },
+    { "$ref": "#/$defs/Pong" }
+  ],
+  "$defs": {
+    "Id": { "type": "string", "format": "uuid" },
+    "Timestamp": { "type": "string", "format": "date-time" },
+    "Base": {
+      "type": "object",
+      "required": ["protocolVersion", "type", "requestId", "payload"],
+      "properties": {
+        "protocolVersion": { "const": "1.0" },
+        "type": { "type": "string" },
+        "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object" }
+      }
+    },
+    "Error": {
+      "type": "object", "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "AUTHORIZATION_DENIED", "PROTOCOL_VERSION_UNSUPPORTED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] },
+        "message": { "type": "string", "minLength": 1 }
+      },
+      "description": "Must not include credentials, tokens or message content."
+    },
+    "AuthError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "PROTOCOL_VERSION_UNSUPPORTED"] } } }] },
+    "MessageError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_SESSION_REVOKED", "AUTHORIZATION_DENIED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] } } }] },
+    "AuthBind": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.bind" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["accessToken"], "properties": { "accessToken": { "type": "string", "minLength": 1 } } }
+      }}]
+    },
+    "AuthAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [
+          { "type": "object", "additionalProperties": false, "required": ["status", "userId", "sessionId", "clientType", "sessionEpoch"], "properties": { "status": { "const": "bound" }, "userId": { "$ref": "#/$defs/Id" }, "sessionId": { "$ref": "#/$defs/Id" }, "clientType": { "enum": ["WEB", "DESKTOP", "MOBILE"] }, "sessionEpoch": { "type": "integer", "minimum": 1 } } },
+          { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/AuthError" } } }
+        ] }
+      }}]
+    },
+    "TextContent": { "type": "object", "additionalProperties": false, "required": ["kind", "text"], "properties": { "kind": { "const": "TEXT" }, "text": { "type": "string", "minLength": 1, "maxLength": 4096 } } },
+    "MessageSend": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.send" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "Committed": { "type": "object", "additionalProperties": false, "required": ["status", "conversationId", "messageId", "seq", "createdAt"], "properties": { "status": { "const": "committed" }, "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" } } },
+    "MessageAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [ { "$ref": "#/$defs/Committed" }, { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/MessageError" } } } ] }
+      }}]
+    },
+    "MessageCreated": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.created" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "messageId", "senderId", "seq", "createdAt", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "senderId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "SessionRevoked": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "session.revoked" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["sessionId", "reason"], "properties": { "sessionId": { "$ref": "#/$defs/Id" }, "reason": { "enum": ["LOGOUT", "REPLACED", "REVOKED"] } } }
+      }}]
+    },
+    "Ping": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "ping" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] },
+    "Pong": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "pong" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] }
+  }
+}

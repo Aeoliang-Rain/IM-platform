@@ -1,0 +1,174 @@
+{
+  "tracked_runtime_roots": 221,
+  "current_inventory": 185,
+  "excluded_tests": [
+    {
+      "path": "backend/go/core/error_handling_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/core/message_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/core/outbox_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/core/outbox_transport_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/core/rollback_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/core/social_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/core/sync_http_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/core/sync_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/gateway/error_handling_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/gateway/message_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/gateway/origin_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/gateway/session_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/shared/config_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/shared/security_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/tests/.gitkeep",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/tests/auth_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/tests/contract_fixture_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/tests/message_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/tests/revocation_fallback_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/tests/runtime_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/go/tests/social_test.go",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "backend/java/tests/.gitkeep",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/desktop/src-tauri/tests/storage.rs",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/assets/golden.json",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/assets/v1.sql",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendReadChecks.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/storage/StorageInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ContiguousReadChecks.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ReadOriginChecks.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/SyncInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/ErrorHandlingInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiTrustRollbackInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nComposeInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nPreferencesInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nRestartInstrumentation.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefFixtureTrust.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefTLSNegative.kt",
+      "reason": "Explicit test/fixture source or test placeholder; inspected as validation support, not runtime production"
+    }
+  ],
+  "remaining_production_omissions": [],
+  "extra_runtime_inputs": [
+    "contracts/database/migrate.py",
+    "contracts/database/migrations/0001_initial.up.sql",
+    "contracts/database/migrations/0001_initial.down.sql",
+    "tools/build_language_packs.py"
+  ],
+  "note": "Independently actual tracked-tree root comparison; empty plugin SDK/fixtures are still included. Read all helper coverage and checked own assembly/import graph. Test/evidence/governance/verification tools not product runtime."
+}

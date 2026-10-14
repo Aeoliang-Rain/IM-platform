@@ -1,0 +1,3062 @@
+[
+  {
+    "identity": "1|backend/go/core/auth.go|RH001",
+    "path": "backend/go/core/auth.go",
+    "line": 262,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701"
+  },
+  {
+    "identity": "2|backend/go/core/auth.go|RH002",
+    "path": "backend/go/core/auth.go",
+    "line": 394,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701"
+  },
+  {
+    "identity": "3|backend/go/core/auth.go|RH003",
+    "path": "backend/go/core/auth.go",
+    "line": 459,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(r.Context())",
+    "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701"
+  },
+  {
+    "identity": "4|backend/go/core/message.go|RH004",
+    "path": "backend/go/core/message.go",
+    "line": 135,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+  },
+  {
+    "identity": "5|backend/go/core/outbox.go|RH005",
+    "path": "backend/go/core/outbox.go",
+    "line": 77,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1"
+  },
+  {
+    "identity": "6|backend/go/core/social.go|RH006",
+    "path": "backend/go/core/social.go",
+    "line": 70,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer rows.Close()",
+    "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c"
+  },
+  {
+    "identity": "7|backend/go/core/social.go|RH007",
+    "path": "backend/go/core/social.go",
+    "line": 108,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c"
+  },
+  {
+    "identity": "8|backend/go/core/sync.go|RH008",
+    "path": "backend/go/core/sync.go",
+    "line": 24,
+    "column": 52,
+    "token": "?:",
+    "executable": false,
+    "source": "var syncNumber = regexp.MustCompile(`^(-?)([0-9]+)(?:\\.([0-9]+))?(?:[eE]([+-]?[0-9]+))?$`)",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+  },
+  {
+    "identity": "9|backend/go/core/sync.go|RH009",
+    "path": "backend/go/core/sync.go",
+    "line": 24,
+    "column": 67,
+    "token": "?:",
+    "executable": false,
+    "source": "var syncNumber = regexp.MustCompile(`^(-?)([0-9]+)(?:\\.([0-9]+))?(?:[eE]([+-]?[0-9]+))?$`)",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+  },
+  {
+    "identity": "10|backend/go/core/sync.go|RH010",
+    "path": "backend/go/core/sync.go",
+    "line": 207,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+  },
+  {
+    "identity": "11|backend/go/core/sync.go|RH011",
+    "path": "backend/go/core/sync.go",
+    "line": 305,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+  },
+  {
+    "identity": "12|backend/go/core/sync.go|RH012",
+    "path": "backend/go/core/sync.go",
+    "line": 399,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer tx.Rollback(ctx)",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+  },
+  {
+    "identity": "13|backend/go/gateway/gateway.go|RH013",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 58,
+    "column": 49,
+    "token": "_ =",
+    "executable": true,
+    "source": "\tc.once.Do(func() { close(c.done); c.mu.Lock(); _ = c.ws.Close(); c.mu.Unlock() })",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "14|backend/go/gateway/gateway.go|RH014",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 92,
+    "column": 3,
+    "token": "_ =",
+    "executable": true,
+    "source": "\t\t_ = c.send(frame(\"session.revoked\", id, map[string]string{\"sessionId\": sid, \"reason\": reason}))",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "15|backend/go/gateway/gateway.go|RH015",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 149,
+    "column": 6,
+    "token": "_ =",
+    "executable": true,
+    "source": "\t\t\t\t\t_ = c.send(frame(\"message.ack\", e.RequestID, map[string]any{\"status\": \"rejected\", \"error\": map[string]string{\"code\": \"AUTH_REQUIRED\", \"message\": \"Request rejected\"}}))",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "16|backend/go/gateway/gateway.go|RH016",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 207,
+    "column": 2,
+    "token": "_ =",
+    "executable": true,
+    "source": "\t_ = c.send(frame(\"auth.ack\", id, map[string]any{\"status\": \"rejected\", \"error\": map[string]string{\"code\": code, \"message\": \"Request rejected\"}}))",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "17|backend/go/gateway/gateway.go|RH017",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 266,
+    "column": 3,
+    "token": "_ =",
+    "executable": true,
+    "source": "\t\t_ = c.send(frame(\"message.ack\", e.RequestID, map[string]any{\"status\": \"rejected\", \"error\": map[string]string{\"code\": \"MESSAGE_COMMIT_FAILED\", \"message\": \"Request rejected\"}}))",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "18|backend/go/gateway/gateway.go|RH018",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 285,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer response.Body.Close()",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "19|backend/go/gateway/gateway.go|RH019",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 303,
+    "column": 2,
+    "token": "_ =",
+    "executable": true,
+    "source": "\t_ = c.send(ack)",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "20|backend/go/gateway/gateway.go|RH020",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 355,
+    "column": 4,
+    "token": "_ =",
+    "executable": true,
+    "source": "\t\t\t_ = c.send(e)",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa"
+  },
+  {
+    "identity": "21|backend/go/main.go|RH021",
+    "path": "backend/go/main.go",
+    "line": 40,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer db.Close()",
+    "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+  },
+  {
+    "identity": "22|backend/go/main.go|RH022",
+    "path": "backend/go/main.go",
+    "line": 51,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer nc.Close()",
+    "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+  },
+  {
+    "identity": "23|backend/go/shared/config.go|RH023",
+    "path": "backend/go/shared/config.go",
+    "line": 36,
+    "column": 2,
+    "token": "defer",
+    "executable": true,
+    "source": "\tdefer f.Close()",
+    "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70"
+  },
+  {
+    "identity": "24|backend/java/InfraPlaceholder.java|RH024",
+    "path": "backend/java/InfraPlaceholder.java",
+    "line": 23,
+    "column": 19,
+    "token": "catch",
+    "executable": true,
+    "source": "                } catch (IOException error) {",
+    "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290"
+  },
+  {
+    "identity": "25|clients/desktop/src-tauri/src/bin/storage_probe.rs|RH025",
+    "path": "clients/desktop/src-tauri/src/bin/storage_probe.rs",
+    "line": 25,
+    "column": 74,
+    "token": "unwrap_or",
+    "executable": true,
+    "source": "            println!(\"{}\",row.iter().map(|v|v.as_ref().map(|s|encode(s)).unwrap_or(\"~\".into())).collect::<Vec<_>>().join(\"\\t\"));",
+    "sha256": "2e0385845a09feaa8b508f72d1a42449c02e69d2d47f4f6f19a3c18020a0eaa9"
+  },
+  {
+    "identity": "26|clients/desktop/src-tauri/src/database.rs|RH026",
+    "path": "clients/desktop/src-tauri/src/database.rs",
+    "line": 34,
+    "column": 13,
+    "token": "_ =>",
+    "executable": true,
+    "source": "            _ => {",
+    "sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad"
+  },
+  {
+    "identity": "27|clients/desktop/src-tauri/src/database.rs|RH027",
+    "path": "clients/desktop/src-tauri/src/database.rs",
+    "line": 55,
+    "column": 13,
+    "token": "_ =>",
+    "executable": true,
+    "source": "            _ => row.try_get::<Option<String>,_>(i),",
+    "sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad"
+  },
+  {
+    "identity": "28|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH028",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 24,
+    "column": 60,
+    "token": "unwrap_or",
+    "executable": true,
+    "source": "    if response.content_length().map(|n|n>MAX_BODY as u64).unwrap_or(false){return Err(\"HTTPS response too large\".into());}",
+    "sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6"
+  },
+  {
+    "identity": "29|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH029",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 57,
+    "column": 9,
+    "token": "_=>",
+    "executable": true,
+    "source": "        _=>return Err(\"Window action invalid\".into()),",
+    "sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6"
+  },
+  {
+    "identity": "30|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH030",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 79,
+    "column": 88,
+    "token": "_=>",
+    "executable": true,
+    "source": "    match std::str::from_utf8(&bytes){Ok(value) if valid_language(value)=>value.into(),_=>\"en\".into()}",
+    "sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6"
+  },
+  {
+    "identity": "31|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH031",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 98,
+    "column": 292,
+    "token": "_=>",
+    "executable": true,
+    "source": "    tauri::tray::TrayIconBuilder::with_id(\"im-plus\").icon(icon).tooltip(\"IM+ · Your workspace\").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){\"open\"=>show(app),\"hide\"=>{if let Some(w)=app.get_webview_window(\"main\"){w.hide().expect(\"Window hide failed\");}},\"quit\"=>app.exit(0),_=>{}}).build(app)?;",
+    "sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6"
+  },
+  {
+    "identity": "32|clients/desktop/src/application/send.ts|RH034",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 45,
+    "column": 32,
+    "token": "catch",
+    "executable": true,
+    "source": "    try{return await action();}catch(error){",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "33|clients/desktop/src/application/send.ts|RH035",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 52,
+    "column": 23,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.queue=result.catch(error=>{if(!(error instanceof SendStorageFailure))throw error;this.publish({...this.current,error:\"storage\"});});",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "34|clients/desktop/src/application/send.ts|RH036",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 71,
+    "column": 135,
+    "token": "catch",
+    "executable": true,
+    "source": "    socket.onopen=()=>{if(active()) { try { socket.send(envelope(\"auth.bind\",this.binding,{accessToken:this.session.accessToken})); } catch(error) {if(!(error instanceof DOMException))throw error;this.disconnect();} }};",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "35|clients/desktop/src/application/send.ts|RH037",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 72,
+    "column": 212,
+    "token": "catch",
+    "executable": true,
+    "source": "    socket.onmessage=event=>{if(active()) void this.serial(async()=>{if(!active()) return; if(typeof event.data!==\"string\") { this.protocolFailure(); return; } try { await this.receive(event.data,generation); } catch(error) { if(error instanceof WireFailure) this.protocolFailure(); else throw error; }}).catch(error=>{if(!(error instanceof SendStorageFailure))throw error;});};",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "36|clients/desktop/src/application/send.ts|RH038",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 72,
+    "column": 306,
+    "token": "catch",
+    "executable": true,
+    "source": "    socket.onmessage=event=>{if(active()) void this.serial(async()=>{if(!active()) return; if(typeof event.data!==\"string\") { this.protocolFailure(); return; } try { await this.receive(event.data,generation); } catch(error) { if(error instanceof WireFailure) this.protocolFailure(); else throw error; }}).catch(error=>{if(!(error instanceof SendStorageFailure))throw error;});};",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "37|clients/desktop/src/application/send.ts|RH039",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 82,
+    "column": 168,
+    "token": "catch",
+    "executable": true,
+    "source": "      void this.serial(async()=>{await this.storage(()=>this.repository.markFailed(attempt.message.conversationId,attempt.message.requestId)); await this.refresh();}).catch(error=>{if(!(error instanceof SendStorageFailure))throw error;});",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "38|clients/desktop/src/application/send.ts|RH040",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 112,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error) {if(!(error instanceof DOMException))throw error;await this.fail(key,attempt);return;}",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "39|clients/desktop/src/application/send.ts|RH041",
+    "path": "clients/desktop/src/application/send.ts",
+    "line": 115,
+    "column": 80,
+    "token": "catch",
+    "executable": true,
+    "source": "    attempt.timer=setTimeout(()=>{void this.serial(()=>this.fail(key,attempt)).catch(error=>{if(!(error instanceof SendStorageFailure))throw error;});},this.timeoutMs);",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+  },
+  {
+    "identity": "40|clients/desktop/src/application/sync/application.ts|RH042",
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "line": 14,
+    "column": 111,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.detachDelivery=send.observeDelivery(()=>{if(send.state.connection===\"ready\") void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});});",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+  },
+  {
+    "identity": "41|clients/desktop/src/application/sync/application.ts|RH043",
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "line": 18,
+    "column": 76,
+    "token": "catch",
+    "executable": true,
+    "source": "      if(ready && !this.wasReady && !this.stopped) void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+  },
+  {
+    "identity": "42|clients/desktop/src/application/sync/application.ts|RH044",
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "line": 22,
+    "column": 106,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.poll=setInterval(()=>{if(send.state.connection===\"ready\"&&!this.stopped)void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});},10000);",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+  },
+  {
+    "identity": "43|clients/desktop/src/application/sync/application.ts|RH045",
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "line": 52,
+    "column": 12,
+    "token": "catch",
+    "executable": true,
+    "source": "          }catch(error){if(error instanceof SyncFailure && error.kind===\"unavailable\"){unavailable.push(c);continue;}throw error;}",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+  },
+  {
+    "identity": "44|clients/desktop/src/application/sync/application.ts|RH046",
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "line": 55,
+    "column": 8,
+    "token": "catch",
+    "executable": true,
+    "source": "      }catch(error){",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+  },
+  {
+    "identity": "45|clients/desktop/src/application/sync/application.ts|RH047",
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "line": 63,
+    "column": 20,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.queue=job.catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});return job;",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+  },
+  {
+    "identity": "46|clients/desktop/src/application/ui/auth.ts|RH048",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 13,
+    "column": 46,
+    "token": "?:",
+    "executable": false,
+    "source": "  async request(path:string,method=\"GET\",body?:unknown,authenticated=true):Promise<unknown>{",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "47|clients/desktop/src/application/ui/auth.ts|RH049",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 17,
+    "column": 170,
+    "token": "catch",
+    "executable": true,
+    "source": "    let response:Response;try{response=await nativeFetch(this.endpoint+path,{method,headers,...(body===undefined?{}:{body:encoded}),redirect:\"error\",cache:\"no-store\"});}catch(error){if(error instanceof WireFailure)throw new ApiFailure(\"invalid_server_response\",\"Invalid server response\");if(error instanceof NativeTransportFailure || error instanceof DOMException)throw new ApiFailure(\"connection_unavailable\",\"Connection unavailable\");throw error;}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "48|clients/desktop/src/application/ui/auth.ts|RH050",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 19,
+    "column": 29,
+    "token": "?:",
+    "executable": false,
+    "source": "    if(!/^application\\/json(?:\\s*;|$)/i.test(response.headers.get(\"content-type\")??\"\"))throw new ApiFailure(\"invalid_server_response\",\"Invalid server response\");",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "49|clients/desktop/src/application/ui/auth.ts|RH051",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 19,
+    "column": 82,
+    "token": "??",
+    "executable": true,
+    "source": "    if(!/^application\\/json(?:\\s*;|$)/i.test(response.headers.get(\"content-type\")??\"\"))throw new ApiFailure(\"invalid_server_response\",\"Invalid server response\");",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "50|clients/desktop/src/application/ui/auth.ts|RH052",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 20,
+    "column": 122,
+    "token": "catch",
+    "executable": true,
+    "source": "    const bytes=await response.arrayBuffer();let raw:string;try{raw=new TextDecoder(\"utf-8\",{fatal:true}).decode(bytes);}catch(error){if(error instanceof TypeError)throw new ApiFailure(\"invalid_server_response\",\"Invalid server response\");throw error;}let data:unknown;try{data=parse(raw,1048576);}catch(error){if(error instanceof WireFailure)throw new ApiFailure(\"invalid_server_response\",\"Invalid server response\");throw error;}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "51|clients/desktop/src/application/ui/auth.ts|RH053",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 20,
+    "column": 298,
+    "token": "catch",
+    "executable": true,
+    "source": "    const bytes=await response.arrayBuffer();let raw:string;try{raw=new TextDecoder(\"utf-8\",{fatal:true}).decode(bytes);}catch(error){if(error instanceof TypeError)throw new ApiFailure(\"invalid_server_response\",\"Invalid server response\");throw error;}let data:unknown;try{data=parse(raw,1048576);}catch(error){if(error instanceof WireFailure)throw new ApiFailure(\"invalid_server_response\",\"Invalid server response\");throw error;}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "52|clients/desktop/src/application/ui/auth.ts|RH054",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 21,
+    "column": 48,
+    "token": "?:",
+    "executable": false,
+    "source": "    if(!response.ok){const code=(data as {error?:{code?:unknown}})?.error?.code;throw new ApiFailure(response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"invalid_credentials\":response.status===401?\"session_expired\":typeof code===\"string\"?code:\"request_failed\",response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"Invalid username or password\":response.status===401?\"Session expired\":typeof code===\"string\"?code:\"Request failed\");}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "53|clients/desktop/src/application/ui/auth.ts|RH055",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 21,
+    "column": 55,
+    "token": "?:",
+    "executable": false,
+    "source": "    if(!response.ok){const code=(data as {error?:{code?:unknown}})?.error?.code;throw new ApiFailure(response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"invalid_credentials\":response.status===401?\"session_expired\":typeof code===\"string\"?code:\"request_failed\",response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"Invalid username or password\":response.status===401?\"Session expired\":typeof code===\"string\"?code:\"Request failed\");}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "54|clients/desktop/src/application/ui/auth.ts|RH056",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 33,
+    "column": 24,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.storage=write.catch(error=>{if(!(error instanceof ApiFailure) && !(error instanceof NativeCapabilityFailure))throw error;});try{await write;}catch(error){this.session=null;if(error instanceof NativeCapabilityFailure && error.code===\"Secure credential storage unavailable\")throw new ApiFailure(\"secure_credential_storage_unavailable\",\"Secure credential storage unavailable\");throw error;}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "55|clients/desktop/src/application/ui/auth.ts|RH057",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 33,
+    "column": 151,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.storage=write.catch(error=>{if(!(error instanceof ApiFailure) && !(error instanceof NativeCapabilityFailure))throw error;});try{await write;}catch(error){this.session=null;if(error instanceof NativeCapabilityFailure && error.code===\"Secure credential storage unavailable\")throw new ApiFailure(\"secure_credential_storage_unavailable\",\"Secure credential storage unavailable\");throw error;}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "56|clients/desktop/src/application/ui/auth.ts|RH058",
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "line": 40,
+    "column": 396,
+    "token": "catch",
+    "executable": true,
+    "source": "  async refresh():Promise<Session>{const g=this.generation;const token=await secure.read(this.slot);if(g!==this.generation)throw new ApiFailure(\"session_expired\",\"Session expired\");if(!token){await this.clear();throw new ApiFailure(\"session_expired\",\"Session expired\");}try{return await this.accept(await this.request(\"/v1/auth/refresh/native\",\"POST\",{refreshToken:token,...metadata},false),g);}catch(error){if(g===this.generation&&error instanceof ApiFailure&&error.kind===\"session_expired\")await this.clear();throw error;}}",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600"
+  },
+  {
+    "identity": "57|clients/desktop/src/application/ui/native.ts|RH059",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 16,
+    "column": 3,
+    "token": "catch",
+    "executable": true,
+    "source": "  catch(error){if(error===\"HTTPS transport unavailable\")throw new NativeTransportFailure(error);if(error===\"HTTPS redirects forbidden\" || error===\"HTTPS response too large\")throw new WireFailure();throw error;}",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "58|clients/desktop/src/application/ui/native.ts|RH060",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 22,
+    "column": 143,
+    "token": "catch",
+    "executable": true,
+    "source": " load:async()=>{let value:[Appearance[\"theme\"],number,number];try{value=await invoke<[Appearance[\"theme\"],number,number]>(\"appearance_load\");}catch(error){nativeFailure(error,[\"Appearance unavailable\",\"Appearance invalid\"]);}const [theme,fontSize,density]=value;return {theme,fontSize,density};},",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "59|clients/desktop/src/application/ui/native.ts|RH061",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 23,
+    "column": 127,
+    "token": "catch",
+    "executable": true,
+    "source": " save:async(value:Appearance)=>{try{await invoke<void>(\"appearance_save\",{value:[value.theme,value.fontSize,value.density]});}catch(error){nativeFailure(error,[\"Appearance unavailable\"]);}}",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "60|clients/desktop/src/application/ui/native.ts|RH062",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 27,
+    "column": 92,
+    "token": "catch",
+    "executable": true,
+    "source": " read:async(slot:string)=>{try{return await invoke<string|null>(\"credential_read\",{slot});}catch(error){nativeFailure(error,[\"Secure credential storage unavailable\"]);}},",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "61|clients/desktop/src/application/ui/native.ts|RH063",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 28,
+    "column": 99,
+    "token": "catch",
+    "executable": true,
+    "source": " write:async(slot:string,value:string)=>{try{await invoke<void>(\"credential_write\",{slot,value});}catch(error){nativeFailure(error,[\"Secure credential storage unavailable\"]);}},",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "62|clients/desktop/src/application/ui/native.ts|RH064",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 29,
+    "column": 82,
+    "token": "catch",
+    "executable": true,
+    "source": " remove:async(slot:string)=>{try{await invoke<void>(\"credential_remove\",{slot});}catch(error){nativeFailure(error,[\"Secure credential storage unavailable\"]);}}",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "63|clients/desktop/src/application/ui/native.ts|RH065",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 31,
+    "column": 94,
+    "token": "catch",
+    "executable": true,
+    "source": "export const windowMaximized=async()=>{try{return await invoke<boolean>(\"window_maximized\");}catch(error){nativeFailure(error,[\"Window unavailable\"]);}};",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "64|clients/desktop/src/application/ui/native.ts|RH066",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 32,
+    "column": 132,
+    "token": "catch",
+    "executable": true,
+    "source": "export const windowControl=async(action:\"minimize\"|\"maximize\"|\"close\"|\"drag\")=>{try{await invoke<void>(\"window_control\",{action});}catch(error){nativeFailure(error,[\"Window unavailable\"]);}};",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "65|clients/desktop/src/application/ui/native.ts|RH067",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 33,
+    "column": 109,
+    "token": "catch",
+    "executable": true,
+    "source": "export const notify=async(title:string,body:string)=>{try{await invoke<void>(\"native_notify\",{title,body});}catch(error){nativeFailure(error,[\"Notification unavailable\"]);}};",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "66|clients/desktop/src/application/ui/native.ts|RH068",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 36,
+    "column": 126,
+    "token": "catch",
+    "executable": true,
+    "source": " load:async():Promise<Locale>=>{try{const value=await invoke<unknown>(\"language_load\");return validLocale(value)?value:\"en\";}catch(error){if(error===\"Language unavailable\")return \"en\";throw error;}},",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "67|clients/desktop/src/application/ui/native.ts|RH069",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 37,
+    "column": 137,
+    "token": "catch",
+    "executable": true,
+    "source": " save:async(value:Locale)=>{if(!validLocale(value))throw new Error(\"Invalid language\");try{await invoke<void>(\"language_save\",{value});}catch(error){nativeFailure(error,[\"Language unavailable\"]);}}",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "68|clients/desktop/src/application/ui/native.ts|RH070",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "line": 39,
+    "column": 145,
+    "token": "catch",
+    "executable": true,
+    "source": "export const trayText=async(open:string,hide:string,quit:string,tooltip:string)=>{try{await invoke<void>(\"tray_text\",{open,hide,quit,tooltip});}catch(error){nativeFailure(error,[\"Tray unavailable\"]);}};",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+  },
+  {
+    "identity": "69|clients/desktop/src/application/ui/workspace.ts|RH071",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 19,
+    "column": 235,
+    "token": "catch",
+    "executable": true,
+    "source": "  async start(){const revision=this.languageRevision;const value=await language.load();if(revision===this.languageRevision)this.publish({language:value});await this.updateTray();try{this.publish({appearance:await appearance.load()});}catch(error){this.failure(error);this.publish({error:\"Appearance could not be loaded\"});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "70|clients/desktop/src/application/ui/workspace.ts|RH072",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 22,
+    "column": 236,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.trayWrites=this.trayWrites.then(async()=>{if(revision!==this.languageRevision)return;const t=(key:string)=>translate(this.state.language,key);try{await trayText(t(\"tray.open\"),t(\"tray.hide\"),t(\"tray.quit\"),t(\"tray.tooltip\"));}catch(error){this.failure(error);if(revision===this.languageRevision)this.publish({error:\"Operation unavailable\"});}});return this.trayWrites;",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "71|clients/desktop/src/application/ui/workspace.ts|RH073",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 26,
+    "column": 164,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.languageWrites=this.languageWrites.then(async()=>{try{await language.save(value);if(revision===this.languageRevision)this.publish({languageStored:true});}catch(error){this.failure(error);if(revision===this.languageRevision)this.publish({languageStored:false});}});return Promise.all([this.languageWrites,tray]).then(()=>{});",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "72|clients/desktop/src/application/ui/workspace.ts|RH074",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 29,
+    "column": 99,
+    "token": "catch",
+    "executable": true,
+    "source": "  async testNotification(){try{await notify(\"IM+\",translate(this.state.language,\"notify.ready\"));}catch(error){this.failure(error);this.publish({error:\"System notification unavailable\"});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "73|clients/desktop/src/application/ui/workspace.ts|RH075",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 31,
+    "column": 170,
+    "token": "catch",
+    "executable": true,
+    "source": "  preferences(value:Appearance){this.publish({appearance:value,error:null});this.appearanceWrites=this.appearanceWrites.then(async()=>{try{await appearance.save(value);}catch(error){this.failure(error);this.publish({error:\"Appearance could not be saved\"});}});return this.appearanceWrites;}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "74|clients/desktop/src/application/ui/workspace.ts|RH076",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 35,
+    "column": 175,
+    "token": "catch",
+    "executable": true,
+    "source": "    ws.onmessage=event=>{try{const frame=decode(event.data);if(frame.type===\"session.revoked\"||frame.type===\"auth.ack\"&&frame.payload.status===\"rejected\"){expired();return;}}catch(error){if(!(error instanceof WireFailure))throw error;/* Send owns invalid wire rejection. */}onmessage?.(event);};",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "75|clients/desktop/src/application/ui/workspace.ts|RH077",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 46,
+    "column": 166,
+    "token": "catch",
+    "executable": true,
+    "source": "    this.detach.push(send.observeDelivery(()=>{if(active()&&document.visibilityState!==\"visible\")void notify(\"IM+\",translate(this.state.language,\"notify.activity\")).catch(error=>{if(!(error instanceof NativeCapabilityFailure))throw error;if(active())this.publish({error:\"System notification unavailable\"});});}));",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "76|clients/desktop/src/application/ui/workspace.ts|RH078",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 50,
+    "column": 125,
+    "token": "catch",
+    "executable": true,
+    "source": "    try{const profile=await owner!.profile();if(!active())return;this.publish({profile});await this.refreshFriends(repo,g);}catch(error){this.failure(error,active());}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "77|clients/desktop/src/application/ui/workspace.ts|RH079",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 57,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(error){this.failure(error,g===this.generation&&revision===this.friendRevision);}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "78|clients/desktop/src/application/ui/workspace.ts|RH080",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 66,
+    "column": 199,
+    "token": "??",
+    "executable": true,
+    "source": "      const entries=await Promise.all(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??\"\",time},rows] as const;}));",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "79|clients/desktop/src/application/ui/workspace.ts|RH081",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 66,
+    "column": 230,
+    "token": "??",
+    "executable": true,
+    "source": "      const entries=await Promise.all(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??\"\",time},rows] as const;}));",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "80|clients/desktop/src/application/ui/workspace.ts|RH082",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 68,
+    "column": 253,
+    "token": "??",
+    "executable": true,
+    "source": "      const previews=Object.fromEntries(entries.map(([id,preview])=>[id,preview]));ids.sort((a,b)=>previews[b].time-previews[a].time||a.localeCompare(b));this.publish({conversations:ids,previews,messages:entries.find(e=>e[0]===this.state.selected)?.[2]??[]});",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "81|clients/desktop/src/application/ui/workspace.ts|RH083",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 69,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(error){this.failure(error,g===this.generation&&revision===this.listRevision);if(g===this.generation&&revision===this.listRevision)this.publish({error:\"Conversation history unavailable\"});}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "82|clients/desktop/src/application/ui/workspace.ts|RH084",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 77,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error){this.failure(error,op===this.operation);return false;}finally{if(op===this.operation)this.publish({busy:false});}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "83|clients/desktop/src/application/ui/workspace.ts|RH085",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 79,
+    "column": 458,
+    "token": "catch",
+    "executable": true,
+    "source": "  async login(endpoint:string,username:string,password:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});await this.stop();const g=this.generation;try{await this.auth?.clear();if(op!==this.operation)return;const base=origin(endpoint);this.publish({endpoint:base});const owner=new Auth(base);this.auth=owner;const session=await owner.login(username,password);if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "84|clients/desktop/src/application/ui/workspace.ts|RH086",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 80,
+    "column": 904,
+    "token": "catch",
+    "executable": true,
+    "source": "  async restore(endpoint:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});try{await this.stop();const g=this.generation,base=origin(endpoint);this.publish({endpoint:base});const auth=new Auth(base);this.auth=auth;const account=await auth.savedAccount();if(op!==this.operation)return;if(!account){this.publish({error:\"No saved session for this server\"});return;}const repo=accountRepository(account);await repo.initialize();const ids=await repo.conversationIds(),selected=\"\",messages:ReadonlyArray<ReadonlyArray<string|null>>=[];if(op!==this.operation)return;this.offlineRepository=repo;this.publish({offlineAccount:account,conversations:ids,selected,messages,error:\"Showing saved history while the secure session resumes\"});await this.updateList(repo,this.generation);const session=await auth.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "85|clients/desktop/src/application/ui/workspace.ts|RH087",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 81,
+    "column": 252,
+    "token": "catch",
+    "executable": true,
+    "source": "  async refresh(){if(this.state.busy||!this.auth)return;const op=++this.operation;const owner=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const session=await owner.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "86|clients/desktop/src/application/ui/workspace.ts|RH088",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 82,
+    "column": 119,
+    "token": "catch",
+    "executable": true,
+    "source": "  async expire(){const op=++this.operation,owner=this.auth;this.auth=null;await this.stop();try{await owner?.clear();}catch(error){this.failure(error,op===this.operation);/* Surface secure cleanup failure. */if(op===this.operation)this.publish({busy:false,error:\"Session expired; secure credential cleanup failed\"});return;}if(op===this.operation)this.publish({busy:false,error:\"Session expired. Sign in again.\"});}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "87|clients/desktop/src/application/ui/workspace.ts|RH089",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 83,
+    "column": 246,
+    "token": "catch",
+    "executable": true,
+    "source": "  async logout(){const op=++this.operation;this.publish({busy:true});const auth=this.auth;this.auth=null;const request=auth?.logout();await this.stop();const g=this.generation;try{await request;if(op===this.operation)this.publish({error:null});}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "88|clients/desktop/src/application/ui/workspace.ts|RH090",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 85,
+    "column": 407,
+    "token": "catch",
+    "executable": true,
+    "source": "  async open(id:string){if(this.state.page===\"Chat\"&&this.state.selected===id){this.closeConversation();return;}const g=this.generation;this.publish({selected:id,page:\"Chat\",messages:[],error:null});try{if(this.offlineRepository){const messages=await this.offlineRepository.messages(id);if(g===this.generation&&this.state.selected===id)this.publish({messages});}else await this.sync?.openConversation(id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Sync unavailable; showing local history\"});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "89|clients/desktop/src/application/ui/workspace.ts|RH091",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 86,
+    "column": 293,
+    "token": "catch",
+    "executable": true,
+    "source": "  async send(text:string){if(!this.state.selected||!this.sync)return;const g=this.generation,owner=this.sync;try{const id=this.state.selected;await owner.send.send(id,text);if(g===this.generation){this.activity.set(id,Date.now());if(this.repository)await this.updateList(this.repository,g);}}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Message could not be saved\"});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "90|clients/desktop/src/application/ui/workspace.ts|RH092",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 87,
+    "column": 135,
+    "token": "catch",
+    "executable": true,
+    "source": "  async retry(id:string){const g=this.generation,owner=this.sync;if(!owner)return;try{await owner.send.retry(this.state.selected,id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Retry unavailable\"});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "91|clients/desktop/src/application/ui/workspace.ts|RH093",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 88,
+    "column": 184,
+    "token": "catch",
+    "executable": true,
+    "source": "  async reconnect(){const g=this.generation,owner=this.sync;if(!owner)return;try{owner.send.connect(this.state.endpoint.replace(/^https:/,\"wss:\")+\"/v1/ws\");await owner.synchronize();}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Connection unavailable\"});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "92|clients/desktop/src/application/ui/workspace.ts|RH094",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 90,
+    "column": 229,
+    "token": "catch",
+    "executable": true,
+    "source": "  async search(query:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,results:[],error:null});try{const results=await auth.search(query);if(g===this.generation)this.publish({results});}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "93|clients/desktop/src/application/ui/workspace.ts|RH095",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "line": 91,
+    "column": 473,
+    "token": "catch",
+    "executable": true,
+    "source": "  async add(id:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const conversation=await auth.add(id);if(g!==this.generation)return;const revision=++this.friendRevision;const friends=await auth.friends();if(g!==this.generation||auth!==this.auth)return;if(revision===this.friendRevision)this.publish({friends,conversations:[...new Set([...this.state.conversations,conversation])]});await this.open(conversation);}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+  },
+  {
+    "identity": "94|clients/desktop/src/ui/components/Composer.tsx|RH096",
+    "path": "clients/desktop/src/ui/components/Composer.tsx",
+    "line": 9,
+    "column": 798,
+    "token": "??",
+    "executable": true,
+    "source": "return <><form className=\"composer\" onSubmit={e=>{e.preventDefault();if(draft.trim()){run(send(draft));setDraft(\"\");}}}><label className=\"sr-only\" htmlFor=\"message\">{t(\"chat.message\")}</label><div className=\"composer-editor\"><textarea ref={textarea} style={{height:composerHeight}} id=\"message\" placeholder={t(\"chat.write\")} value={draft} maxLength={4096} disabled={!s.selected||!s.session} onChange={e=>setDraft(e.target.value)} onKeyDown={e=>{if(e.key===\"Enter\"&&!e.shiftKey){e.preventDefault();if(draft.trim()){run(send(draft));setDraft(\"\");}}}}/><button type=\"button\" className=\"composer-resize\" aria-label={t(\"chat.resize\")} title={t(\"chat.drag\")} onPointerDown={e=>{if(e.button!==0)return;e.preventDefault();resize.current={y:e.clientY,height:textarea.current?.getBoundingClientRect().height??composerHeight};e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e=>{if(resize.current)setComposerHeight(resizedComposerHeight(resize.current.height,resize.current.y,e.clientY));}} onPointerUp={()=>{resize.current=null;}} onPointerCancel={()=>{resize.current=null;}} onLostPointerCapture={()=>{resize.current=null;}} onKeyDown={e=>{if(e.key===\"ArrowUp\"||e.key===\"ArrowDown\"){e.preventDefault();setComposerHeight(value=>resizedComposerHeight(value,0,e.key===\"ArrowUp\"?-10:10));}}}><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" aria-hidden=\"true\"><path d=\"m5 13 8-8m-3 8 3-3\"/></svg></button></div><button className=\"primary\" disabled={!s.selected||!s.session||!draft.trim()}>{t(\"chat.send\")}</button></form><p className=\"composer-help\">{t(\"chat.keyboard\")}</p></>;",
+    "sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202"
+  },
+  {
+    "identity": "95|clients/desktop/src/ui/components/ConversationList.tsx|RH097",
+    "path": "clients/desktop/src/ui/components/ConversationList.tsx",
+    "line": 8,
+    "column": 687,
+    "token": "??",
+    "executable": true,
+    "source": "return <aside className=\"conversation-list glass\"><div className=\"section-heading\"><h2>{t(\"chat.messages\")}</h2><button className=\"quiet\" onClick={()=>page(\"Friends\")}>{t(\"chat.new\")}</button></div><p className=\"muted list-caption\">{t(\"chat.caption\")}</p>{s.conversations.length===0?<div className=\"empty\"><span>◫</span><h3>{t(\"chat.next\")}</h3><p>{t(\"chat.addHint\")}</p><button onClick={()=>page(\"Friends\")}>{t(\"chat.find\")}</button></div>:s.conversations.map(id=>{const f=s.friends.find(f=>f.directConversationId===id);return <button key={id} className={s.selected===id?\"conversation active\":\"conversation\"} onClick={()=>run(open(id))}><span className=\"avatar\">{f?.user.displayName[0]??\"#\"}</span><div><strong>{f?.user.displayName??t(\"chat.conversationId\",{id:id.slice(0,8)})}</strong><small>{s.unavailable.includes(id)?t(\"chat.access\"):s.previews[id]?.text||t(\"chat.noMessages\")}</small></div></button>;})}</aside>;",
+    "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418"
+  },
+  {
+    "identity": "96|clients/desktop/src/ui/components/ConversationList.tsx|RH098",
+    "path": "clients/desktop/src/ui/components/ConversationList.tsx",
+    "line": 8,
+    "column": 733,
+    "token": "??",
+    "executable": true,
+    "source": "return <aside className=\"conversation-list glass\"><div className=\"section-heading\"><h2>{t(\"chat.messages\")}</h2><button className=\"quiet\" onClick={()=>page(\"Friends\")}>{t(\"chat.new\")}</button></div><p className=\"muted list-caption\">{t(\"chat.caption\")}</p>{s.conversations.length===0?<div className=\"empty\"><span>◫</span><h3>{t(\"chat.next\")}</h3><p>{t(\"chat.addHint\")}</p><button onClick={()=>page(\"Friends\")}>{t(\"chat.find\")}</button></div>:s.conversations.map(id=>{const f=s.friends.find(f=>f.directConversationId===id);return <button key={id} className={s.selected===id?\"conversation active\":\"conversation\"} onClick={()=>run(open(id))}><span className=\"avatar\">{f?.user.displayName[0]??\"#\"}</span><div><strong>{f?.user.displayName??t(\"chat.conversationId\",{id:id.slice(0,8)})}</strong><small>{s.unavailable.includes(id)?t(\"chat.access\"):s.previews[id]?.text||t(\"chat.noMessages\")}</small></div></button>;})}</aside>;",
+    "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418"
+  },
+  {
+    "identity": "97|clients/desktop/src/ui/components/FriendsPanel.tsx|RH099",
+    "path": "clients/desktop/src/ui/components/FriendsPanel.tsx",
+    "line": 8,
+    "column": 820,
+    "token": "??",
+    "executable": true,
+    "source": "return <section className=\"page-content\"><div className=\"glass panel\"><p className=\"eyebrow\">{t(\"friends.eyebrow\")}</p><h2>{t(\"friends.reach\")}</h2><p className=\"muted\">{t(\"friends.exact\")}</p><form className=\"search\" onSubmit={e=>{e.preventDefault();run(search(query));}}><input aria-label={t(\"friends.searchLabel\")} value={query} onChange={e=>setQuery(e.target.value)} required/><button className=\"primary\" disabled={s.busy||!s.session}>{s.busy?t(\"friends.searching\"):t(\"friends.search\")}</button></form>{s.results.length===0&&query&&<p className=\"muted\">{t(\"friends.check\")}</p>}{s.results.map(u=><div className=\"person\" key={u.userId}><span className=\"avatar\">{u.displayName[0]}</span><div><strong>{u.displayName}</strong><small>@{u.username}</small></div><button disabled={!s.session||u.userId===(s.session?.userId??s.offlineAccount)||s.busy} onClick={()=>run(add(u.userId))}>{t(\"friends.add\")}</button></div>)}</div><div className=\"glass panel\"><h2>{t(\"friends.your\")}<small>{s.friends.length}</small></h2>{s.friends.length===0?<p className=\"muted\">{t(\"friends.grow\")}</p>:s.friends.map(f=><div className=\"person\" key={f.friendshipId}><span className=\"avatar\">{f.user.displayName[0]}</span><div><strong>{f.user.displayName}</strong><small>@{f.user.username}</small></div><button onClick={()=>run(open(f.directConversationId))}>{t(\"chat.message\")}</button></div>)}</div></section>;",
+    "sha256": "ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f"
+  },
+  {
+    "identity": "98|clients/desktop/src/ui/components/Messages.tsx|RH100",
+    "path": "clients/desktop/src/ui/components/Messages.tsx",
+    "line": 9,
+    "column": 312,
+    "token": "??",
+    "executable": true,
+    "source": "return <div className=\"messages\" role=\"log\" aria-live=\"polite\">{!s.selected?<div className=\"empty\"><span>✧</span><h3>{t(\"chat.place\")}</h3><p>{t(\"chat.choose\")}</p></div>:s.messages.length===0?<div className=\"empty\"><h3>{t(\"chat.fresh\")}</h3><p>{t(\"chat.hello\")}</p></div>:s.messages.map(m=>{const identity=m[0]??m[4];if(identity==null)throw new Error(\"Message identity missing\");if(m[2]==null)throw new Error(\"Message content missing\");const key=stateKey(m[3]);return <div key={identity} className={m[1]===(s.session?.userId??s.offlineAccount)?\"message own\":\"message\"}><div className=\"bubble\">{m[2]}</div><small>{m[6]?new Date(m[6]).toLocaleTimeString(locale,{hour:\"2-digit\",minute:\"2-digit\"}):t(\"chat.now\")} · {t(key)}{m[3]===\"FAILED\"&&m[1]===(s.session?.userId??s.offlineAccount)&&m[0]&&<button disabled={!s.session} onClick={()=>run(retry(m[0]!))}>{t(\"chat.retry\")}</button>}</small></div>;})}</div>;",
+    "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5"
+  },
+  {
+    "identity": "99|clients/desktop/src/ui/components/Messages.tsx|RH101",
+    "path": "clients/desktop/src/ui/components/Messages.tsx",
+    "line": 9,
+    "column": 526,
+    "token": "??",
+    "executable": true,
+    "source": "return <div className=\"messages\" role=\"log\" aria-live=\"polite\">{!s.selected?<div className=\"empty\"><span>✧</span><h3>{t(\"chat.place\")}</h3><p>{t(\"chat.choose\")}</p></div>:s.messages.length===0?<div className=\"empty\"><h3>{t(\"chat.fresh\")}</h3><p>{t(\"chat.hello\")}</p></div>:s.messages.map(m=>{const identity=m[0]??m[4];if(identity==null)throw new Error(\"Message identity missing\");if(m[2]==null)throw new Error(\"Message content missing\");const key=stateKey(m[3]);return <div key={identity} className={m[1]===(s.session?.userId??s.offlineAccount)?\"message own\":\"message\"}><div className=\"bubble\">{m[2]}</div><small>{m[6]?new Date(m[6]).toLocaleTimeString(locale,{hour:\"2-digit\",minute:\"2-digit\"}):t(\"chat.now\")} · {t(key)}{m[3]===\"FAILED\"&&m[1]===(s.session?.userId??s.offlineAccount)&&m[0]&&<button disabled={!s.session} onClick={()=>run(retry(m[0]!))}>{t(\"chat.retry\")}</button>}</small></div>;})}</div>;",
+    "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5"
+  },
+  {
+    "identity": "100|clients/desktop/src/ui/components/Messages.tsx|RH102",
+    "path": "clients/desktop/src/ui/components/Messages.tsx",
+    "line": 9,
+    "column": 764,
+    "token": "??",
+    "executable": true,
+    "source": "return <div className=\"messages\" role=\"log\" aria-live=\"polite\">{!s.selected?<div className=\"empty\"><span>✧</span><h3>{t(\"chat.place\")}</h3><p>{t(\"chat.choose\")}</p></div>:s.messages.length===0?<div className=\"empty\"><h3>{t(\"chat.fresh\")}</h3><p>{t(\"chat.hello\")}</p></div>:s.messages.map(m=>{const identity=m[0]??m[4];if(identity==null)throw new Error(\"Message identity missing\");if(m[2]==null)throw new Error(\"Message content missing\");const key=stateKey(m[3]);return <div key={identity} className={m[1]===(s.session?.userId??s.offlineAccount)?\"message own\":\"message\"}><div className=\"bubble\">{m[2]}</div><small>{m[6]?new Date(m[6]).toLocaleTimeString(locale,{hour:\"2-digit\",minute:\"2-digit\"}):t(\"chat.now\")} · {t(key)}{m[3]===\"FAILED\"&&m[1]===(s.session?.userId??s.offlineAccount)&&m[0]&&<button disabled={!s.session} onClick={()=>run(retry(m[0]!))}>{t(\"chat.retry\")}</button>}</small></div>;})}</div>;",
+    "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5"
+  },
+  {
+    "identity": "101|clients/desktop/src/ui/components/Navigation.tsx|RH103",
+    "path": "clients/desktop/src/ui/components/Navigation.tsx",
+    "line": 10,
+    "column": 481,
+    "token": "??",
+    "executable": true,
+    "source": "      <div className=\"rail-bottom\"><div className=\"connection\" title={s.session?t(\"nav.signedIn\"):t(\"nav.local\")}><span className={\"dot \"+(s.connection===\"ready\"?\"ready\":\"offline\")}/>{s.connection===\"ready\"?t(\"connection.ready\"):s.connection===\"binding\"?t(\"connection.connecting\"):t(\"connection.offlineShort\")}</div><button className=\"nav\" onClick={()=>navigate(\"Settings\")}>{t(\"nav.settings\")}</button><div className=\"identity\"><span className=\"avatar\">{s.profile?.displayName[0]??\"+\"}</span><div><strong>{s.profile?.displayName??t(\"nav.workspace\")}</strong><small>{s.session?t(\"nav.personal\"):t(\"nav.signIn\")}</small></div></div></div>",
+    "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c"
+  },
+  {
+    "identity": "102|clients/desktop/src/ui/components/Navigation.tsx|RH104",
+    "path": "clients/desktop/src/ui/components/Navigation.tsx",
+    "line": 10,
+    "column": 530,
+    "token": "??",
+    "executable": true,
+    "source": "      <div className=\"rail-bottom\"><div className=\"connection\" title={s.session?t(\"nav.signedIn\"):t(\"nav.local\")}><span className={\"dot \"+(s.connection===\"ready\"?\"ready\":\"offline\")}/>{s.connection===\"ready\"?t(\"connection.ready\"):s.connection===\"binding\"?t(\"connection.connecting\"):t(\"connection.offlineShort\")}</div><button className=\"nav\" onClick={()=>navigate(\"Settings\")}>{t(\"nav.settings\")}</button><div className=\"identity\"><span className=\"avatar\">{s.profile?.displayName[0]??\"+\"}</span><div><strong>{s.profile?.displayName??t(\"nav.workspace\")}</strong><small>{s.session?t(\"nav.personal\"):t(\"nav.signIn\")}</small></div></div></div>",
+    "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c"
+  },
+  {
+    "identity": "103|clients/desktop/src/ui/components/ProfilePanel.tsx|RH105",
+    "path": "clients/desktop/src/ui/components/ProfilePanel.tsx",
+    "line": 5,
+    "column": 163,
+    "token": "??",
+    "executable": true,
+    "source": "  const t=useText();return <div className=\"glass panel\"><h2>{t(\"profile.session\")}</h2><div className=\"person\"><span className=\"avatar\">{s.profile?.displayName[0]??\"+\"}</span><div><strong>{s.profile?.displayName??t(\"profile.unavailable\")}</strong><small>{s.profile?\"@\"+s.profile.username:s.session?t(\"profile.reconnect\"):t(\"profile.signIn\")}</small></div></div><div className=\"button-row\"><button disabled={s.busy||(!s.session&&!s.offlineAccount)} onClick={()=>run(refresh())}>{t(\"auth.refresh\")}</button><button disabled={!s.session} onClick={()=>disconnect()}>{t(\"auth.offline\")}</button><button disabled={!s.session} onClick={()=>run(reconnect())}>{t(\"auth.reconnect\")}</button><button onClick={()=>run(testNotification())}>{t(\"auth.testNotification\")}</button><button className=\"danger\" disabled={s.busy||(!s.session&&!s.offlineAccount)} onClick={()=>run(logout())}>{t(\"auth.signOut\")}</button></div><p className=\"muted\">{t(\"profile.shortcut\")}</p></div>;}",
+    "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c"
+  },
+  {
+    "identity": "104|clients/desktop/src/ui/components/ProfilePanel.tsx|RH106",
+    "path": "clients/desktop/src/ui/components/ProfilePanel.tsx",
+    "line": 5,
+    "column": 212,
+    "token": "??",
+    "executable": true,
+    "source": "  const t=useText();return <div className=\"glass panel\"><h2>{t(\"profile.session\")}</h2><div className=\"person\"><span className=\"avatar\">{s.profile?.displayName[0]??\"+\"}</span><div><strong>{s.profile?.displayName??t(\"profile.unavailable\")}</strong><small>{s.profile?\"@\"+s.profile.username:s.session?t(\"profile.reconnect\"):t(\"profile.signIn\")}</small></div></div><div className=\"button-row\"><button disabled={s.busy||(!s.session&&!s.offlineAccount)} onClick={()=>run(refresh())}>{t(\"auth.refresh\")}</button><button disabled={!s.session} onClick={()=>disconnect()}>{t(\"auth.offline\")}</button><button disabled={!s.session} onClick={()=>run(reconnect())}>{t(\"auth.reconnect\")}</button><button onClick={()=>run(testNotification())}>{t(\"auth.testNotification\")}</button><button className=\"danger\" disabled={s.busy||(!s.session&&!s.offlineAccount)} onClick={()=>run(logout())}>{t(\"auth.signOut\")}</button></div><p className=\"muted\">{t(\"profile.shortcut\")}</p></div>;}",
+    "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c"
+  },
+  {
+    "identity": "105|clients/desktop/src/ui/components/Shell.tsx|RH107",
+    "path": "clients/desktop/src/ui/components/Shell.tsx",
+    "line": 28,
+    "column": 120,
+    "token": "??",
+    "executable": true,
+    "source": "  const prefs=s.appearance,friend=s.friends.find(f=>f.directConversationId===s.selected),title=friend?.user.displayName??(s.selected?t(\"chat.conversationId\",{id:s.selected.slice(0,8)}):t(\"chat.your\"));",
+    "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4"
+  },
+  {
+    "identity": "106|clients/desktop/src/ui/components/Shell.tsx|RH108",
+    "path": "clients/desktop/src/ui/components/Shell.tsx",
+    "line": 39,
+    "column": 138,
+    "token": "??",
+    "executable": true,
+    "source": "      <div className=\"chat-pane glass\">{s.selected&&<><div className=\"chat-heading\"><span className=\"avatar\">{friend?.user.displayName[0]??\"#\"}</span><div><h2>{title}</h2><small>{s.connection===\"ready\"?t(\"sync.connected\"):t(\"sync.offline\")}</small></div><button className=\"quiet\" disabled={!s.session} onClick={()=>run(reconnect())}>{t(\"auth.reconnect\")}</button></div><Messages s={s} retry={retry} run={run}/><Composer s={s} draft={draft} setDraft={setDraft} send={send} run={run} textarea={textarea} composerHeight={composerHeight} setComposerHeight={setComposerHeight} resize={resize}/></>}</div></section>:",
+    "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4"
+  },
+  {
+    "identity": "107|clients/desktop/src/ui/i18n/resources.ts|RH109",
+    "path": "clients/desktop/src/ui/i18n/resources.ts",
+    "line": 17,
+    "column": 81,
+    "token": "??",
+    "executable": true,
+    "source": " return template.replace(/\\{([A-Za-z]+)\\}/g,(_,name:string)=>String(params[name]??\"{\"+name+\"}\"));",
+    "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+  },
+  {
+    "identity": "108|clients/mobile/app/build.gradle.kts|RH110",
+    "path": "clients/mobile/app/build.gradle.kts",
+    "line": 15,
+    "column": 94,
+    "token": "?:",
+    "executable": true,
+    "source": "        testInstrumentationRunner = providers.gradleProperty(\"imSendInstrumentation\").orNull ?: \"im.platform.client.storage.StorageInstrumentation\"",
+    "sha256": "af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077"
+  },
+  {
+    "identity": "109|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH111",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 25,
+    "column": 25,
+    "token": "catch",
+    "executable": true,
+    "source": "    try{return action()}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "110|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH112",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 26,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:IllegalStateException){if(error.message?.startsWith(\"attempt to re-open an already-closed object:\")==true)throw SendStorageFailure(error);throw error}",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "111|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH113",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 59,
+    "column": 95,
+    "token": "catch",
+    "executable": true,
+    "source": "    private suspend fun operation(action:suspend ()->Unit) { lock.withLock { try { action() } catch(error:SendStorageFailure) { publish(mutableState.value.copy(error=\"storage\")); throw error } } }",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "112|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH114",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 60,
+    "column": 94,
+    "token": "catch",
+    "executable": true,
+    "source": "    private fun callback(action:suspend ()->Unit) { scope.launch { try { operation(action) } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } } }",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "113|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH115",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 66,
+    "column": 176,
+    "token": "catch",
+    "executable": true,
+    "source": "        socket=factory(endpoint,{callback { if(g==generation && !retired)try{socket?.send(Wire.envelope(\"auth.bind\",bind,JSONObject().put(\"accessToken\",session.accessToken)))}catch(_:java.io.IOException){disconnectNow()} }},",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "114|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH116",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 79,
+    "column": 11,
+    "token": "catch",
+    "executable": true,
+    "source": "        } catch(error:SendStorageFailure) {",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "115|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH117",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 94,
+    "column": 93,
+    "token": "?:",
+    "executable": true,
+    "source": "        val row=repositoryRead { repo.messages(conversation) }.firstOrNull {it[0]==request} ?: error(\"Unknown send\")",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "116|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH118",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 102,
+    "column": 9,
+    "token": "catch",
+    "executable": true,
+    "source": "        catch(_:java.io.IOException) { fail(k,a); return }",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "117|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH119",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 105,
+    "column": 82,
+    "token": "catch",
+    "executable": true,
+    "source": "        a.timer=scope.launch { delay(timeoutMs); try { operation { fail(k,a) } } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } }",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "118|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH120",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 111,
+    "column": 38,
+    "token": "catch",
+    "executable": true,
+    "source": "        val f=try {Wire.decode(raw)} catch(_:WireFailure) {protocolFailure(); return}; val p=f.payload",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "119|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH121",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 112,
+    "column": 94,
+    "token": "catch",
+    "executable": true,
+    "source": "        if(f.type==\"ping\") {try{socket?.send(Wire.envelope(\"pong\",f.requestId,JSONObject()))}catch(_:java.io.IOException){disconnectNow()};return}; if(f.type==\"pong\") return",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "120|clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt|RH122",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "line": 141,
+    "column": 98,
+    "token": "catch",
+    "executable": true,
+    "source": "    try {storage{repository.initialize()};SendViewModel(repository,session,ownsRepository=true)} catch(error:Exception) {repository.close();throw error}",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+  },
+  {
+    "identity": "121|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH123",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 15,
+    "column": 28,
+    "token": "?:",
+    "executable": true,
+    "source": "        val s=v as? String ?: invalid()",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "122|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH124",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 20,
+    "column": 28,
+    "token": "?:",
+    "executable": true,
+    "source": "        val s=v as? String ?: invalid()",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "123|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH125",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 25,
+    "column": 32,
+    "token": "?:",
+    "executable": true,
+    "source": "        val n=v as? BigInteger ?: invalid()",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "124|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH126",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 31,
+    "column": 43,
+    "token": "?:",
+    "executable": true,
+    "source": "        return keys.associateWith { v[it] ?: invalid() }",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "125|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH127",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 34,
+    "column": 28,
+    "token": "?:",
+    "executable": true,
+    "source": "        val s=v as? String ?: invalid()",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "126|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH128",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 35,
+    "column": 87,
+    "token": "?:",
+    "executable": false,
+    "source": "        if(!s.matches(Regex(\"[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\\\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})\"))) invalid()",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "127|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH129",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 35,
+    "column": 101,
+    "token": "?:",
+    "executable": false,
+    "source": "        if(!s.matches(Regex(\"[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\\\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})\"))) invalid()",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "128|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH130",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 37,
+    "column": 50,
+    "token": "catch",
+    "executable": true,
+    "source": "        try { OffsetDateTime.parse(normalized) } catch(_: java.time.format.DateTimeParseException) { invalid() }",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "129|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH131",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 81,
+    "column": 29,
+    "token": "?:",
+    "executable": false,
+    "source": "            val m=Regex(\"-?(?:0|[1-9][0-9]*)(?:\\\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\").find(raw,at)",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "130|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH132",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 81,
+    "column": 46,
+    "token": "?:",
+    "executable": false,
+    "source": "            val m=Regex(\"-?(?:0|[1-9][0-9]*)(?:\\\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\").find(raw,at)",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "131|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH133",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 81,
+    "column": 60,
+    "token": "?:",
+    "executable": false,
+    "source": "            val m=Regex(\"-?(?:0|[1-9][0-9]*)(?:\\\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\").find(raw,at)",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "132|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH134",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 90,
+    "column": 15,
+    "token": "catch",
+    "executable": true,
+    "source": "            } catch(_:ArithmeticException) { invalid() } catch(_:NumberFormatException) { invalid() }",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "133|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH135",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 90,
+    "column": 58,
+    "token": "catch",
+    "executable": true,
+    "source": "            } catch(_:ArithmeticException) { invalid() } catch(_:NumberFormatException) { invalid() }",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "134|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt|RH136",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "line": 100,
+    "column": 39,
+    "token": "?:",
+    "executable": true,
+    "source": "        val type=e[\"type\"] as? String ?: invalid(); val id=uuid(e[\"requestId\"])",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+  },
+  {
+    "identity": "135|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt|RH137",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "line": 40,
+    "column": 69,
+    "token": "?:",
+    "executable": false,
+    "source": "                wire(lines.first().matches(Regex(\"HTTP/1\\\\.[01] 101(?: .*)?\")))",
+    "sha256": "8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44"
+  },
+  {
+    "identity": "136|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt|RH138",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "line": 69,
+    "column": 15,
+    "token": "catch",
+    "executable": true,
+    "source": "            } catch(_: IOException) { /* Failed transport closes this socket and notifies ended; no frame/credential logging. */ }",
+    "sha256": "8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44"
+  },
+  {
+    "identity": "137|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt|RH139",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "line": 74,
+    "column": 38,
+    "token": "?:",
+    "executable": true,
+    "source": "        check(!closed); val s=socket ?: error(\"WSS unavailable\")",
+    "sha256": "8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44"
+  },
+  {
+    "identity": "138|clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt|RH140",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "line": 82,
+    "column": 65,
+    "token": "catch",
+    "executable": true,
+    "source": "    override fun close() { closed=true; try { socket?.close() } catch(_:IOException) { /* close attempted; the connection is already retired. */ } }",
+    "sha256": "8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44"
+  },
+  {
+    "identity": "139|clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt|RH141",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+    "line": 135,
+    "column": 29,
+    "token": "return 0L",
+    "executable": true,
+    "source": "        if (rows.isEmpty()) return 0L",
+    "sha256": "1a1e1a02300d5eef6f376410709b344a7049cc5e02bf17dc08342477d5489c66"
+  },
+  {
+    "identity": "140|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt|RH142",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "line": 20,
+    "column": 37,
+    "token": "catch",
+    "executable": true,
+    "source": "        val uri=try {URI(endpoint)} catch(_:java.net.URISyntaxException){throw SyncFailure(\"protocol\")}",
+    "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08"
+  },
+  {
+    "identity": "141|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt|RH143",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "line": 34,
+    "column": 120,
+    "token": "?:",
+    "executable": false,
+    "source": "                if(c.getHeaderField(\"Cache-Control\")!=\"no-store\" || c.contentType?.matches(Regex(\"(?i)application/json(?:\\\\s*;.*)?\"))!=true) throw SyncFailure(if(status>=500)\"transport\" else \"protocol\")",
+    "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08"
+  },
+  {
+    "identity": "142|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt|RH144",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "line": 35,
+    "column": 78,
+    "token": "?:",
+    "executable": true,
+    "source": "                val stream=(if(status==200)c.inputStream else c.errorStream) ?: throw SyncFailure(\"transport\")",
+    "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08"
+  },
+  {
+    "identity": "143|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt|RH145",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "line": 38,
+    "column": 202,
+    "token": "catch",
+    "executable": true,
+    "source": "                val raw=try{Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(out.toByteArray())).toString()}catch(_:java.nio.charset.CharacterCodingException){throw SyncFailure(\"protocol\")}",
+    "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08"
+  },
+  {
+    "identity": "144|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt|RH146",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "line": 41,
+    "column": 15,
+    "token": "catch",
+    "executable": true,
+    "source": "            } catch(error:Exception) {if(error is CancellationException)throw error;val failure=if(error is java.io.IOException)SyncFailure(\"transport\")else error;if(continuation.isActive)continuation.resumeWithException(failure)else if(error !is java.io.IOException && error !is SyncFailure)throw error}",
+    "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08"
+  },
+  {
+    "identity": "145|clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt|RH147",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "line": 41,
+    "column": 59,
+    "token": "catch",
+    "executable": true,
+    "source": "    private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}",
+    "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+  },
+  {
+    "identity": "146|clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt|RH148",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "line": 41,
+    "column": 123,
+    "token": "catch",
+    "executable": true,
+    "source": "    private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}",
+    "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+  },
+  {
+    "identity": "147|clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt|RH149",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "line": 63,
+    "column": 22,
+    "token": "catch",
+    "executable": true,
+    "source": "                    }catch(error:SyncFailure){if(error.kind==\"unavailable\"){unavailable.add(c);continue};throw error}",
+    "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+  },
+  {
+    "identity": "148|clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt|RH150",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "line": 66,
+    "column": 14,
+    "token": "catch",
+    "executable": true,
+    "source": "            }catch(error:Exception){",
+    "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+  },
+  {
+    "identity": "149|clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt|RH151",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "line": 85,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:Exception){repository.close();throw error}",
+    "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+  },
+  {
+    "identity": "150|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH152",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 13,
+    "column": 59,
+    "token": "?:",
+    "executable": true,
+    "source": "    private fun cursor(v:Any?):String {val s=v as? String ?: invalid();if(s.isEmpty() || s.codePointCount(0,s.length)>256) invalid();return s}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "151|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH153",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 14,
+    "column": 59,
+    "token": "?:",
+    "executable": true,
+    "source": "    private fun list(v:Any?):List<*> {val l=v as? List<*> ?: invalid();if(l.size>100) invalid();return l}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "152|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH154",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 24,
+    "column": 113,
+    "token": "?:",
+    "executable": true,
+    "source": "            val eventId=SendWire.uuid(e[\"eventId\"]);val token=cursor(e[\"cursor\"]);val kind=e[\"kind\"] as? String ?: invalid()",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "153|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH155",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 31,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "154|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH156",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 31,
+    "column": 61,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "155|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH157",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 45,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "156|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH158",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 45,
+    "column": 61,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "157|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH159",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 48,
+    "column": 39,
+    "token": "?:",
+    "executable": true,
+    "source": "        val e=p[\"error\"] as? Map<*,*> ?: invalid();if(e.keys.any {it !in setOf(\"code\",\"message\",\"violations\")} || e[\"message\"] !is String || (e[\"message\"] as String).isEmpty()) invalid()",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "158|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH160",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 49,
+    "column": 71,
+    "token": "?:",
+    "executable": true,
+    "source": "        if(e.containsKey(\"violations\")) {(e[\"violations\"] as? List<*> ?: invalid()).forEach {v->val f=SendWire.obj(v,setOf(\"field\",\"reason\"));if(f.values.any {it !is String || it.isEmpty()}) invalid()}}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "159|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH161",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 56,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(_:im.platform.client.send.WireFailure){SyncFailure(\"protocol\")}catch(_:SyncFailure){SyncFailure(\"protocol\")}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "160|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH162",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 56,
+    "column": 75,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(_:im.platform.client.send.WireFailure){SyncFailure(\"protocol\")}catch(_:SyncFailure){SyncFailure(\"protocol\")}",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+  },
+  {
+    "identity": "161|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH163",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 26,
+    "column": 52,
+    "token": "?:",
+    "executable": true,
+    "source": "            if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure(\"session_expired\",\"Session expired\");connection.setRequestProperty(\"Authorization\",\"Bearer \"+token)}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "162|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH164",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 26,
+    "column": 74,
+    "token": "?:",
+    "executable": true,
+    "source": "            if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure(\"session_expired\",\"Session expired\");connection.setRequestProperty(\"Authorization\",\"Bearer \"+token)}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "163|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH165",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 29,
+    "column": 98,
+    "token": "?:",
+    "executable": false,
+    "source": "            if(status in 300..399 || connection.contentType?.matches(Regex(\"(?i)application/json(?:\\\\s*;.*)?\"))!=true)throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "164|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH166",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 31,
+    "column": 20,
+    "token": "?:",
+    "executable": true,
+    "source": "            (stream?:throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")).use{val buffer=ByteArray(8192);while(true){val n=it.read(buffer);if(n<0)break;if(output.size()+n>1048576)throw ApiFailure(\"invalid_server_response\",\"Invalid server response\");output.write(buffer,0,n)}}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "165|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH167",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 33,
+    "column": 258,
+    "token": "?:",
+    "executable": true,
+    "source": "            if(status !in 200..299){val code=((result as? Map<*,*>)?.get(\"error\") as? Map<*,*>)?.get(\"code\") as? String;throw ApiFailure(if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"invalid_credentials\" else if(status==401)\"session_expired\" else code?:\"request_failed\",if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"Invalid username or password\" else if(status==401)\"Session expired\" else code?:\"Request failed\")};result",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "166|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH168",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 33,
+    "column": 406,
+    "token": "?:",
+    "executable": true,
+    "source": "            if(status !in 200..299){val code=((result as? Map<*,*>)?.get(\"error\") as? Map<*,*>)?.get(\"code\") as? String;throw ApiFailure(if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"invalid_credentials\" else if(status==401)\"session_expired\" else code?:\"request_failed\",if(status==401 && code==\"AUTH_INVALID_CREDENTIALS\")\"Invalid username or password\" else if(status==401)\"Session expired\" else code?:\"Request failed\")};result",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "167|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH169",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 34,
+    "column": 10,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "168|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH170",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 34,
+    "column": 38,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "169|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH171",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 34,
+    "column": 153,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "170|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH172",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 34,
+    "column": 274,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure(\"invalid_server_response\",\"Invalid server response\")}catch(_:java.io.IOException){throw ApiFailure(\"connection_unavailable\",\"Connection unavailable\")}finally{connection.disconnect()}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "171|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH173",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 43,
+    "column": 159,
+    "token": "catch",
+    "executable": true,
+    "source": "        try {preferences.write(newSlot,refresh);preferences.write(endpoint+\"/current\",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(error:Exception){session=null;throw error}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "172|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH174",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 48,
+    "column": 83,
+    "token": "?:",
+    "executable": true,
+    "source": "    suspend fun restore():SendSession? {slot=preferences.read(endpoint+\"/current\")?:return null;return refresh()}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "173|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH175",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 49,
+    "column": 94,
+    "token": "?:",
+    "executable": true,
+    "source": "    @Synchronized fun savedAccount():String? {val saved=preferences.read(endpoint+\"/current\")?:return null;require(saved.startsWith(endpoint+\"/\"));val parts=saved.removePrefix(endpoint+\"/\").split('/');require(parts.size==2);Wire.uuid(parts[1]);slot=saved;return Wire.uuid(parts[0])}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "174|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH176",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 50,
+    "column": 91,
+    "token": "?:",
+    "executable": true,
+    "source": "    suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure(\"session_expired\",\"Session expired\");try{return accept(request(\"/v1/auth/refresh/native\",\"POST\",metadata().put(\"refreshToken\",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind==\"session_expired\")clear();throw e}}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "175|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt|RH177",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "line": 50,
+    "column": 255,
+    "token": "catch",
+    "executable": true,
+    "source": "    suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure(\"session_expired\",\"Session expired\");try{return accept(request(\"/v1/auth/refresh/native\",\"POST\",metadata().put(\"refreshToken\",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind==\"session_expired\")clear();throw e}}",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f"
+  },
+  {
+    "identity": "176|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt|RH178",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+    "line": 15,
+    "column": 170,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun loadAppearance():Appearance {val value=try{Appearance(appearance.getString(\"theme\",\"cold\")!!,appearance.getInt(\"fontSize\",16),appearance.getFloat(\"density\",1f))}catch(_:ClassCastException){throw ApiFailure(\"error.appearanceLoad\")};try{validate(value)}catch(_:IllegalArgumentException){throw ApiFailure(\"error.appearanceLoad\")};return value}",
+    "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+  },
+  {
+    "identity": "177|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt|RH179",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+    "line": 15,
+    "column": 260,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun loadAppearance():Appearance {val value=try{Appearance(appearance.getString(\"theme\",\"cold\")!!,appearance.getInt(\"fontSize\",16),appearance.getFloat(\"density\",1f))}catch(_:ClassCastException){throw ApiFailure(\"error.appearanceLoad\")};try{validate(value)}catch(_:IllegalArgumentException){throw ApiFailure(\"error.appearanceLoad\")};return value}",
+    "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+  },
+  {
+    "identity": "178|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt|RH180",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+    "line": 18,
+    "column": 149,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun loadLanguage():String=try {val value=appearance.getString(\"language\",null);if(value==\"en\"||value==\"zh-CN\"||value==\"ja-JP\")value!! else \"en\"}catch(_:ClassCastException){\"en\"}",
+    "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+  },
+  {
+    "identity": "179|clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt|RH181",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+    "line": 25,
+    "column": 92,
+    "token": "?:",
+    "executable": true,
+    "source": "    @Synchronized fun read(slot:String):String? {val saved=credentials.getString(slot,null)?:return null;val parts=saved.split(':');require(parts.size==2);val cipher=Cipher.getInstance(\"AES/GCM/NoPadding\");cipher.init(Cipher.DECRYPT_MODE,key(),GCMParameterSpec(128,Base64.getDecoder().decode(parts[0])));cipher.updateAAD(slot.toByteArray());return cipher.doFinal(Base64.getDecoder().decode(parts[1])).toString(Charsets.UTF_8)}",
+    "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+  },
+  {
+    "identity": "180|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH182",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 23,
+    "column": 295,
+    "token": "catch",
+    "executable": true,
+    "source": "    init{val revision=languageRevision;scope.launch{val language=withContext(Dispatchers.IO){preferences.loadLanguage()};if(revision==languageRevision)publish{it.copy(language=language)};try{val value=withContext(Dispatchers.IO){preferences.loadAppearance()};publish{it.copy(appearance=value)}}catch(e:Exception){fail(e);publish{it.copy(error=\"error.appearanceLoad\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "181|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH183",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 25,
+    "column": 351,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun language(value:String){if(!im.platform.client.ui.i18n.validLocale(value))return;val revision=++languageRevision;publish{it.copy(language=value,languageStored=true)};scope.launch{languageWrites.withLock{try{withContext(Dispatchers.IO){preferences.saveLanguage(value)};publish{if(revision==languageRevision)it.copy(languageStored=true)else it}}catch(e:Exception){fail(e);publish{if(revision==languageRevision)it.copy(languageStored=false)else it}}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "182|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH184",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 27,
+    "column": 190,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun appearance(value:Appearance){publish{it.copy(appearance=value,error=null)};scope.launch{appearanceWrites.withLock{try{withContext(Dispatchers.IO){preferences.saveAppearance(value)}}catch(e:Exception){fail(e);publish{it.copy(error=\"Appearance could not be saved\")}}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "183|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH185",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 42,
+    "column": 48,
+    "token": "catch",
+    "executable": true,
+    "source": "            val frame=try{SendWire.decode(raw)}catch(_:WireFailure){null}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "184|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH186",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 48,
+    "column": 113,
+    "token": "?:",
+    "executable": true,
+    "source": "            launch{send.state.collect{s->if(g==generation){publish{it.copy(connection=s.connection,error=s.error?:it.error)};updateList(repo,g)}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "185|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH187",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 49,
+    "column": 147,
+    "token": "?:",
+    "executable": true,
+    "source": "            launch{owner.state.collect{s->if(g==generation){publish{it.copy(sync=s.status,unavailable=s.unavailable,error=s.error?.let{\"Sync \"+it}?:it.error)};if(s.error==\"authentication\")expire();if(s.status==\"idle\"){updateList(repo,g);refreshFriends(repo,g)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "186|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH188",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 54,
+    "column": 145,
+    "token": "catch",
+    "executable": true,
+    "source": "        try{val profile=authOwner!!.profile();if(g!=generation || op!=operation)return;publish{it.copy(profile=profile)};refreshFriends(repo,g)}catch(e:Exception){fail(e,g==generation && op==operation)}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "187|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH189",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 57,
+    "column": 23,
+    "token": "?:",
+    "executable": true,
+    "source": "        val owner=auth?:return;val revision=++friendRevision",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "188|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH190",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 61,
+    "column": 10,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==friendRevision)}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "189|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH191",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 61,
+    "column": 49,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==friendRevision)}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "190|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH192",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 66,
+    "column": 262,
+    "token": "?:",
+    "executable": true,
+    "source": "            val entries=withContext(Dispatchers.IO){(repositoryRead {repo.conversationIds()}+friendIds).distinct().map{id->val rows=repositoryRead {repo.messages(id)};val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "191|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH193",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 66,
+    "column": 322,
+    "token": "?:",
+    "executable": true,
+    "source": "            val entries=withContext(Dispatchers.IO){(repositoryRead {repo.conversationIds()}+friendIds).distinct().map{id->val rows=repositoryRead {repo.messages(id)};val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "192|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH194",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 66,
+    "column": 355,
+    "token": "?:",
+    "executable": true,
+    "source": "            val entries=withContext(Dispatchers.IO){(repositoryRead {repo.conversationIds()}+friendIds).distinct().map{id->val rows=repositoryRead {repo.messages(id)};val time=rows.mapNotNull{it[6]?.let{v->java.time.Instant.parse(v).toEpochMilli()}}.maxOrNull()?:0L;Triple(id,ConversationPreview(rows.lastOrNull()?.get(2)?:\"\",maxOf(time,localActivity[id]?:0L)),rows)}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "193|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH195",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 68,
+    "column": 270,
+    "token": "?:",
+    "executable": true,
+    "source": "            val previews=entries.associate{it.first to it.second};val ids=previews.keys.sortedWith(compareByDescending<String>{previews[it]!!.time}.thenBy{it});publish{it.copy(conversations=ids,previews=previews,messages=entries.find{row->row.first==it.selected}?.third?:emptyList())}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "194|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH196",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 69,
+    "column": 10,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==listRevision);if(g==generation&&revision==listRevision)publish{it.copy(error=\"Conversation history unavailable\")}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "195|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH197",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 69,
+    "column": 49,
+    "token": "catch",
+    "executable": true,
+    "source": "        }catch(e:CancellationException){throw e}catch(e:Exception){fail(e,g==generation&&revision==listRevision);if(g==generation&&revision==listRevision)publish{it.copy(error=\"Conversation history unavailable\")}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "196|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH198",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 76,
+    "column": 144,
+    "token": "catch",
+    "executable": true,
+    "source": "        scope.launch{try{Auth(state.value.endpoint,preferences).register(username,password);if(op==operation)publish{it.copy(registered=true)}}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "197|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH199",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 76,
+    "column": 183,
+    "token": "catch",
+    "executable": true,
+    "source": "        scope.launch{try{Auth(state.value.endpoint,preferences).register(username,password);if(op==operation)publish{it.copy(registered=true)}}catch(e:CancellationException){throw e}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "198|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH200",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 78,
+    "column": 432,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun login(endpoint:String,username:String,password:String){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{stop();withContext(Dispatchers.IO){auth?.clear()};if(op!=operation)return@launch;val base=serverOrigin(endpoint);publish{it.copy(endpoint=base)};val owner=Auth(base,preferences);auth=owner;val session=owner.login(username,password);if(op==operation)bind(session,op)}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "199|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH201",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 79,
+    "column": 1072,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun restore(endpoint:String){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{stop();val g=generation;val base=serverOrigin(endpoint);publish{it.copy(endpoint=base)};val owner=Auth(base,preferences);auth=owner;val account=withContext(Dispatchers.IO){owner.savedAccount()};if(op!=operation)return@launch;if(account==null){publish{it.copy(error=\"No saved session for this server\")};return@launch};val repo=withContext(Dispatchers.IO){accountRepository(account)};val ids=withContext(Dispatchers.IO){repositoryRead {repo.conversationIds()}};val selected=\"\";val messages=withContext(Dispatchers.IO){if(selected.isNotEmpty())repositoryRead {repo.messages(selected)}else emptyList()};if(op!=operation){repo.close();return@launch};offlineRepository=repo;publish{it.copy(offlineAccount=account,conversations=ids,selected=selected,messages=messages,error=\"Showing saved history while the secure session resumes\")};updateList(repo,g);val session=withContext(Dispatchers.IO){owner.refresh()};if(op==operation)bind(session,op)}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "200|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH202",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 80,
+    "column": 220,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun refresh(){if(state.value.busy)return;val op=++operation;scope.launch{publish{it.copy(busy=true,error=null)};try{auth?.let{val session=withContext(Dispatchers.IO){it.refresh()};if(op==operation)bind(session,op)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "201|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH203",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 81,
+    "column": 216,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun expire(){val op=++operation;val owner=auth;auth=null;scope.launch{stop();try{withContext(Dispatchers.IO){owner?.clear()};if(op==operation)publish{it.copy(busy=false,error=\"Session expired. Sign in again.\")}}catch(e:Exception){fail(e,op==operation);if(op==operation)publish{it.copy(busy=false,error=\"error.cleanup\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "202|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH204",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 82,
+    "column": 161,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun logout(){val op=++operation;scope.launch{publish{it.copy(busy=true)};val owner=auth;auth=null;val remote=async(Dispatchers.IO){try{owner?.logout();null}catch(e:CancellationException){throw e}catch(e:Exception){e}};stop();try{remote.await()?.let{throw it};if(op==operation)publish{it.copy(error=null)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "203|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH205",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 82,
+    "column": 200,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun logout(){val op=++operation;scope.launch{publish{it.copy(busy=true)};val owner=auth;auth=null;val remote=async(Dispatchers.IO){try{owner?.logout();null}catch(e:CancellationException){throw e}catch(e:Exception){e}};stop();try{remote.await()?.let{throw it};if(op==operation)publish{it.copy(error=null)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "204|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH206",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 82,
+    "column": 310,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun logout(){val op=++operation;scope.launch{publish{it.copy(busy=true)};val owner=auth;auth=null;val remote=async(Dispatchers.IO){try{owner?.logout();null}catch(e:CancellationException){throw e}catch(e:Exception){e}};stop();try{remote.await()?.let{throw it};if(op==operation)publish{it.copy(error=null)}}catch(e:Exception){fail(e,op==operation)}finally{if(op==operation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "205|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH207",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 84,
+    "column": 376,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun open(id:String){val owner=sync;val offline=offlineRepository;val g=generation;publish{it.copy(selected=id,messages=emptyList(),error=null)};scope.launch{try{if(offline!=null){val messages=withContext(Dispatchers.IO){repositoryRead {offline.messages(id)}};if(g==generation&&state.value.selected==id)publish{it.copy(messages=messages)}}else owner?.openConversation(id)}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Sync unavailable; showing local history\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "206|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH208",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 85,
+    "column": 256,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun send(text:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.send(c,text)};if(g==generation){activity[c]=System.currentTimeMillis();repository?.let{updateList(it,g)}}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Message could not be saved\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "207|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH209",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 85,
+    "column": 41,
+    "token": "?:",
+    "executable": true,
+    "source": "    fun send(text:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.send(c,text)};if(g==generation){activity[c]=System.currentTimeMillis();repository?.let{updateList(it,g)}}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Message could not be saved\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "208|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH210",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 86,
+    "column": 162,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun retry(id:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.retry(c,id)}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Retry unavailable\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "209|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH211",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 86,
+    "column": 40,
+    "token": "?:",
+    "executable": true,
+    "source": "    fun retry(id:String){val owner=sync?:return;val c=state.value.selected;val g=generation;scope.launch{try{withContext(Dispatchers.IO){owner.send.retry(c,id)}}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Retry unavailable\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "210|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH212",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 88,
+    "column": 178,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun reconnect(){val owner=sync?:return;val g=generation;scope.launch{try{owner.send.connect(state.value.endpoint.replaceFirst(\"https:\",\"wss:\")+\"/v1/ws\");owner.synchronize()}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Connection unavailable\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "211|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH213",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 88,
+    "column": 35,
+    "token": "?:",
+    "executable": true,
+    "source": "    fun reconnect(){val owner=sync?:return;val g=generation;scope.launch{try{owner.send.connect(state.value.endpoint.replaceFirst(\"https:\",\"wss:\")+\"/v1/ws\");owner.synchronize()}catch(e:Exception){fail(e,g==generation);if(g==generation)publish{it.copy(error=\"Connection unavailable\")}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "212|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH214",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 89,
+    "column": 270,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun search(query:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,results=emptyList(),searchComplete=false,error=null)};scope.launch{try{val results=owner.search(query);if(g==generation)publish{it.copy(results=results,searchComplete=true)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "213|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH215",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 89,
+    "column": 44,
+    "token": "?:",
+    "executable": true,
+    "source": "    fun search(query:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,results=emptyList(),searchComplete=false,error=null)};scope.launch{try{val results=owner.search(query);if(g==generation)publish{it.copy(results=results,searchComplete=true)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "214|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH216",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 90,
+    "column": 378,
+    "token": "catch",
+    "executable": true,
+    "source": "    fun add(id:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,error=null)};scope.launch{try{val c=owner.add(id);if(g!=generation)return@launch;val revision=++friendRevision;val friends=owner.friends();if(g==generation&&owner===auth){if(revision==friendRevision)publish{it.copy(friends=friends,conversations=(it.conversations+c).distinct())};open(c)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "215|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|RH217",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 90,
+    "column": 38,
+    "token": "?:",
+    "executable": true,
+    "source": "    fun add(id:String){val owner=auth?:return;val g=generation;publish{it.copy(busy=true,error=null)};scope.launch{try{val c=owner.add(id);if(g!=generation)return@launch;val revision=++friendRevision;val friends=owner.friends();if(g==generation&&owner===auth){if(revision==friendRevision)publish{it.copy(friends=friends,conversations=(it.conversations+c).distinct())};open(c)}}catch(e:Exception){fail(e,g==generation)}finally{if(g==generation)publish{it.copy(busy=false)}}}}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "216|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt|RH218",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt",
+    "line": 35,
+    "column": 123,
+    "token": "?:",
+    "executable": true,
+    "source": "            Row(verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(selected?.user?.displayName?:t(\"chat.conversation\"),style=MaterialTheme.typography.titleMedium);Text(if(state.connection==\"ready\")t(\"sync.automatic\")else t(\"sync.offline\"),style=MaterialTheme.typography.bodyMedium)};TextButton(onClick=reconnect,enabled=state.session!=null){Text(t(\"auth.reconnect\"))}}",
+    "sha256": "670822348f5b1c48850e87c8921a7f1be37e4f3beec61a2a13702161928b125e"
+  },
+  {
+    "identity": "217|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt|RH219",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt",
+    "line": 31,
+    "column": 147,
+    "token": "?:",
+    "executable": true,
+    "source": "                Column(Modifier.padding((16*state.appearance.density).dp)){Text(state.friends.find{it.directConversationId==id}?.user?.displayName?:t(\"chat.conversationId\",\"id\" to id.take(8)),fontWeight=FontWeight.SemiBold);Text(if(state.unavailable.contains(id))t(\"chat.access\")else state.previews[id]?.text?.takeIf{it.isNotEmpty()}?:t(\"chat.noMessages\"),maxLines=1,style=MaterialTheme.typography.bodyMedium)}",
+    "sha256": "db4c523eff6ea3562f6e1968c91d318b711866c8e22df3bf517e43324cf01609"
+  },
+  {
+    "identity": "218|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt|RH220",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt",
+    "line": 31,
+    "column": 334,
+    "token": "?:",
+    "executable": true,
+    "source": "                Column(Modifier.padding((16*state.appearance.density).dp)){Text(state.friends.find{it.directConversationId==id}?.user?.displayName?:t(\"chat.conversationId\",\"id\" to id.take(8)),fontWeight=FontWeight.SemiBold);Text(if(state.unavailable.contains(id))t(\"chat.access\")else state.previews[id]?.text?.takeIf{it.isNotEmpty()}?:t(\"chat.noMessages\"),maxLines=1,style=MaterialTheme.typography.bodyMedium)}",
+    "sha256": "db4c523eff6ea3562f6e1968c91d318b711866c8e22df3bf517e43324cf01609"
+  },
+  {
+    "identity": "219|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt|RH221",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+    "line": 28,
+    "column": 62,
+    "token": "?:",
+    "executable": true,
+    "source": "internal fun messageIdentity(row:List<String?>):String=row[0]?:row[4]?:error(\"Message identity missing\")",
+    "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c"
+  },
+  {
+    "identity": "220|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt|RH222",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+    "line": 28,
+    "column": 70,
+    "token": "?:",
+    "executable": true,
+    "source": "internal fun messageIdentity(row:List<String?>):String=row[0]?:row[4]?:error(\"Message identity missing\")",
+    "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c"
+  },
+  {
+    "identity": "221|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt|RH223",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+    "line": 34,
+    "column": 100,
+    "token": "?:",
+    "executable": true,
+    "source": "            items(state.messages,key={messageIdentity(it)}){m->val own=m[1]==(state.session?.userId?:state.offlineAccount);Column(Modifier.fillMaxWidth(),horizontalAlignment=if(own)Alignment.End else Alignment.Start){Surface(color=if(own)MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.surface,shape=RoundedCornerShape(14.dp),modifier=Modifier.widthIn(max=310.dp)){Text(messageBody(m),modifier=Modifier.padding((14*state.appearance.density).dp))};Row(verticalAlignment=Alignment.CenterVertically){Text(t(messageState(m[3])),style=MaterialTheme.typography.bodyMedium);if(own&&m[3]==\"FAILED\"&&m[0]!=null)TextButton(onClick={retry(m[0]!!)},enabled=state.session!=null){Text(t(\"chat.retry\"))}}}}",
+    "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c"
+  },
+  {
+    "identity": "222|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt|RH224",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt",
+    "line": 29,
+    "column": 161,
+    "token": "?:",
+    "executable": true,
+    "source": "val p=state.appearance;    Panel(Modifier.fillMaxWidth(),p){Text(t(\"profile.session\"),style=MaterialTheme.typography.titleLarge);Text(state.profile?.displayName?:t(\"profile.unavailable\"),fontWeight=FontWeight.SemiBold);Text(state.profile?.let{\"@\"+it.username}?:(if(state.session!=null)t(\"profile.reconnect\")else t(\"profile.signIn\")));FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){OutlinedButton(onClick=refresh,enabled=!state.busy&&(state.session!=null||state.offlineAccount!=null)){Text(t(\"auth.refresh\"))};OutlinedButton(onClick=disconnect,enabled=state.session!=null){Text(t(\"auth.offline\"))}};FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){OutlinedButton(onClick=reconnect,enabled=state.session!=null){Text(t(\"auth.reconnect\"))};Button(onClick=logout,enabled=!state.busy&&(state.session!=null||state.offlineAccount!=null)){Text(t(\"auth.signOut\"))}}}}",
+    "sha256": "52f5ad6efd178ce48c8b94bf9df83f017ed852388caf9fc9ac7deaa5792465fa"
+  },
+  {
+    "identity": "223|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt|RH225",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt",
+    "line": 29,
+    "column": 260,
+    "token": "?:",
+    "executable": true,
+    "source": "val p=state.appearance;    Panel(Modifier.fillMaxWidth(),p){Text(t(\"profile.session\"),style=MaterialTheme.typography.titleLarge);Text(state.profile?.displayName?:t(\"profile.unavailable\"),fontWeight=FontWeight.SemiBold);Text(state.profile?.let{\"@\"+it.username}?:(if(state.session!=null)t(\"profile.reconnect\")else t(\"profile.signIn\")));FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){OutlinedButton(onClick=refresh,enabled=!state.busy&&(state.session!=null||state.offlineAccount!=null)){Text(t(\"auth.refresh\"))};OutlinedButton(onClick=disconnect,enabled=state.session!=null){Text(t(\"auth.offline\"))}};FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){OutlinedButton(onClick=reconnect,enabled=state.session!=null){Text(t(\"auth.reconnect\"))};Button(onClick=logout,enabled=!state.busy&&(state.session!=null||state.offlineAccount!=null)){Text(t(\"auth.signOut\"))}}}}",
+    "sha256": "52f5ad6efd178ce48c8b94bf9df83f017ed852388caf9fc9ac7deaa5792465fa"
+  },
+  {
+    "identity": "224|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt|RH226",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt",
+    "line": 34,
+    "column": 123,
+    "token": "?:",
+    "executable": true,
+    "source": "        val nav=rememberNavController();val entry by nav.currentBackStackEntryAsState();val page=entry?.destination?.route?:\"Chat\"",
+    "sha256": "08f1e70d332812bd0661429102a1992ad51645dcfc81727a6962659ad575008e"
+  },
+  {
+    "identity": "225|clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt|RH227",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt",
+    "line": 42,
+    "column": 471,
+    "token": "?:",
+    "executable": true,
+    "source": "        Scaffold(containerColor=scheme.background,topBar={Column(Modifier.fillMaxWidth().padding(horizontal=20.dp,vertical=10.dp)){Row(verticalAlignment=Alignment.CenterVertically){if(inConversation)TextButton(onClick=closeConversation,modifier=Modifier.semantics{contentDescription=t(\"nav.back\")}){Text(\"←\",fontSize=MaterialTheme.typography.labelLarge.fontSize*1.5f)};Text(if(inConversation)state.friends.find{it.directConversationId==state.selected}?.user?.displayName?:t(\"chat.conversation\") else t(\"nav.\"+page.lowercase()),Modifier.weight(1f),style=MaterialTheme.typography.titleLarge);Text(if(state.sync==\"syncing\")t(\"sync.syncing\")else if(state.connection==\"ready\")t(\"connection.connected\")else t(\"connection.offlineShort\"),fontSize=12.sp,modifier=Modifier.padding(start=8.dp))}}},bottomBar={if(!inConversation)Navigation(page){p->nav.navigate(p){launchSingleTop=true;popUpTo(\"Chat\"){saveState=true};restoreState=true}}}) {padding->",
+    "sha256": "08f1e70d332812bd0661429102a1992ad51645dcfc81727a6962659ad575008e"
+  },
+  {
+    "identity": "226|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH228",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 12,
+    "column": 39,
+    "token": "?:",
+    "executable": true,
+    "source": " val template=data[language]?.get(key)?:data[\"en\"]?.get(key)?:error(\"Missing English language key: \"+key)",
+    "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+  },
+  {
+    "identity": "227|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH229",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 12,
+    "column": 61,
+    "token": "?:",
+    "executable": true,
+    "source": " val template=data[language]?.get(key)?:data[\"en\"]?.get(key)?:error(\"Missing English language key: \"+key)",
+    "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+  },
+  {
+    "identity": "228|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH230",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 13,
+    "column": 101,
+    "token": "?:",
+    "executable": true,
+    "source": " return Regex(\"\\\\{([A-Za-z]+)\\\\}\").replace(template){match->params[match.groupValues[1]]?.toString()?:match.value}",
+    "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+  },
+  {
+    "identity": "229|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH231",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 18,
+    "column": 42,
+    "token": "?:",
+    "executable": true,
+    "source": "fun errorKey(kind:String)=errorKeys[kind]?:\"error.request\"",
+    "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+  },
+  {
+    "identity": "230|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH232",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 24,
+    "column": 50,
+    "token": "?:",
+    "executable": true,
+    "source": " return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources[\"en\"]!!.containsKey(value))value else \"error.operation\")",
+    "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+  },
+  {
+    "identity": "231|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH233",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 24,
+    "column": 68,
+    "token": "?:",
+    "executable": true,
+    "source": " return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources[\"en\"]!!.containsKey(value))value else \"error.operation\")",
+    "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+  },
+  {
+    "identity": "232|clients/mobile/gradlew|RH234",
+    "path": "clients/mobile/gradlew",
+    "line": 7,
+    "column": 29,
+    "token": "except",
+    "executable": false,
+    "source": "# you may not use this file except in compliance with the License.",
+    "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+  },
+  {
+    "identity": "233|clients/mobile/gradlew.bat|RH235",
+    "path": "clients/mobile/gradlew.bat",
+    "line": 5,
+    "column": 32,
+    "token": "except",
+    "executable": false,
+    "source": "@rem you may not use this file except in compliance with the License.",
+    "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+  },
+  {
+    "identity": "234|clients/shared/protocol-sdk/src/send/wire.ts|RH236",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 20,
+    "column": 69,
+    "token": "?:",
+    "executable": false,
+    "source": "  if (typeof v !== \"string\" || !/^\\d{4}-\\d\\d-\\d\\d[Tt]\\d\\d:\\d\\d:\\d\\d(?:\\.\\d+)?(?:[Zz]|[+-]\\d\\d:\\d\\d)$/.test(v) || !Number.isFinite(Date.parse(v))) return invalid();",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "235|clients/shared/protocol-sdk/src/send/wire.ts|RH237",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 20,
+    "column": 79,
+    "token": "?:",
+    "executable": false,
+    "source": "  if (typeof v !== \"string\" || !/^\\d{4}-\\d\\d-\\d\\d[Tt]\\d\\d:\\d\\d:\\d\\d(?:\\.\\d+)?(?:[Zz]|[+-]\\d\\d:\\d\\d)$/.test(v) || !Number.isFinite(Date.parse(v))) return invalid();",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "236|clients/shared/protocol-sdk/src/send/wire.ts|RH238",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 35,
+    "column": 59,
+    "token": "??",
+    "executable": true,
+    "source": "  const whitespace=()=>{ while(/[\\x20\\t\\r\\n]/.test(raw[at]??\"x\")) at++; };",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "237|clients/shared/protocol-sdk/src/send/wire.ts|RH239",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 39,
+    "column": 81,
+    "token": "catch",
+    "executable": true,
+    "source": "      if(raw[at]==='\"') { at++; try { return JSON.parse(raw.slice(start,at)); } catch(error) { if(error instanceof SyntaxError) return invalid(); throw error; } }",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "238|clients/shared/protocol-sdk/src/send/wire.ts|RH240",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 64,
+    "column": 45,
+    "token": "?:",
+    "executable": false,
+    "source": "      const number=raw.slice(at).match(/^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?/);",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "239|clients/shared/protocol-sdk/src/send/wire.ts|RH241",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 64,
+    "column": 59,
+    "token": "?:",
+    "executable": false,
+    "source": "      const number=raw.slice(at).match(/^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?/);",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "240|clients/shared/protocol-sdk/src/send/wire.ts|RH242",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 64,
+    "column": 69,
+    "token": "?:",
+    "executable": false,
+    "source": "      const number=raw.slice(at).match(/^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?/);",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "241|clients/shared/protocol-sdk/src/send/wire.ts|RH243",
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "line": 65,
+    "column": 114,
+    "token": "??",
+    "executable": true,
+    "source": "      if(number) { at+=number[0].length; const parts=number[0].toLowerCase().split(\"e\"), exponent=Number(parts[1]??\"0\");",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+  },
+  {
+    "identity": "242|clients/shared/protocol-sdk/src/storage/repository.ts|RH244",
+    "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+    "line": 129,
+    "column": 5,
+    "token": "if",
+    "executable": true,
+    "source": "    if (rows.length === 0) return 0n;",
+    "sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c"
+  },
+  {
+    "identity": "243|clients/shared/protocol-sdk/src/sync/http.ts|RH245",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 10,
+    "column": 44,
+    "token": "catch",
+    "executable": true,
+    "source": "    let url:URL;try{url=new URL(endpoint);}catch(error){if(error instanceof TypeError)throw new SyncFailure(\"protocol\");throw error;}",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "244|clients/shared/protocol-sdk/src/sync/http.ts|RH246",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 16,
+    "column": 217,
+    "token": "catch",
+    "executable": true,
+    "source": "    try {response=await this.fetcher(this.base+path,{method:\"POST\",headers:{\"Authorization\":\"Bearer \"+this.token,\"Content-Type\":\"application/json\"},body,signal,redirect:\"error\",credentials:\"omit\",cache:\"no-store\"});}catch(error){if(error instanceof WireFailure)throw new SyncFailure(\"protocol\");if(this.transport(error))throw new SyncFailure(\"transport\");throw error;}",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "245|clients/shared/protocol-sdk/src/sync/http.ts|RH247",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 17,
+    "column": 108,
+    "token": "?:",
+    "executable": false,
+    "source": "      if(response.redirected || response.headers.get(\"cache-control\")!==\"no-store\" || !/^application\\/json(?:\\s*;|$)/i.test(response.headers.get(\"content-type\")??\"\")) throw new SyncFailure(response.status>=500?\"transport\":\"protocol\");",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "246|clients/shared/protocol-sdk/src/sync/http.ts|RH248",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 17,
+    "column": 161,
+    "token": "??",
+    "executable": true,
+    "source": "      if(response.redirected || response.headers.get(\"cache-control\")!==\"no-store\" || !/^application\\/json(?:\\s*;|$)/i.test(response.headers.get(\"content-type\")??\"\")) throw new SyncFailure(response.status>=500?\"transport\":\"protocol\");",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "247|clients/shared/protocol-sdk/src/sync/http.ts|RH249",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 23,
+    "column": 39,
+    "token": "catch",
+    "executable": true,
+    "source": "        try{item=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure(\"transport\");throw error;}",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "248|clients/shared/protocol-sdk/src/sync/http.ts|RH250",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 25,
+    "column": 60,
+    "token": "catch",
+    "executable": true,
+    "source": "        try{raw+=decoder.decode(item.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure(\"protocol\");throw error;}",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "249|clients/shared/protocol-sdk/src/sync/http.ts|RH251",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 27,
+    "column": 34,
+    "token": "catch",
+    "executable": true,
+    "source": "      try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure(\"protocol\");throw error;}}",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "250|clients/shared/protocol-sdk/src/sync/http.ts|RH252",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 28,
+    "column": 86,
+    "token": "catch",
+    "executable": true,
+    "source": "      catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "251|clients/shared/protocol-sdk/src/sync/wire.ts|RH253",
+    "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+    "line": 23,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "  } catch(error) {if(error instanceof WireFailure) return invalid(); throw error;}",
+    "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50"
+  },
+  {
+    "identity": "252|clients/shared/protocol-sdk/src/sync/wire.ts|RH254",
+    "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+    "line": 38,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "  } catch(error) {if(error instanceof WireFailure) return invalid(); throw error;}",
+    "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50"
+  },
+  {
+    "identity": "253|clients/shared/protocol-sdk/src/sync/wire.ts|RH255",
+    "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+    "line": 51,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "  } catch(error) {if(error instanceof WireFailure || error instanceof SyncFailure) return new SyncFailure(\"protocol\"); throw error;}",
+    "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50"
+  },
+  {
+    "identity": "254|clients/web/src/application/client.ts|RH256",
+    "path": "clients/web/src/application/client.ts",
+    "line": 9,
+    "column": 109,
+    "token": "?:",
+    "executable": false,
+    "source": "export interface View {session:boolean;authBusy:boolean;notice:string;connection:Connection;sync:string;user?:User;friends:Friend[];friendsBusy:boolean;friendsError:string;profileBusy:boolean;profileError:string;searchBusy:boolean;searchError:string;searchResults:User[];selected:string;revision:number}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "255|clients/web/src/application/client.ts|RH257",
+    "path": "clients/web/src/application/client.ts",
+    "line": 13,
+    "column": 56,
+    "token": "?:",
+    "executable": false,
+    "source": "  private listeners=new Set<()=>void>();private session?:Session;private generation=0;private abort=new AbortController();private socket?:WebSocket;private friendRevision=0;private userCursor=\"0\";private userSyncing=false;private userPoll?:ReturnType<typeof setInterval>;private reconnectTimer?:ReturnType<typeof setTimeout>;private refreshTimer?:ReturnType<typeof setTimeout>;private pending=new Map<string,{conversation:string;timer:ReturnType<typeof setTimeout>}>();private opened=new Set<string>();private syncing=new Map<string,{again:boolean}>();private bind='';private device=crypto.randomUUID();private refreshing?:Promise<void>;",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "256|clients/web/src/application/client.ts|RH258",
+    "path": "clients/web/src/application/client.ts",
+    "line": 13,
+    "column": 137,
+    "token": "?:",
+    "executable": false,
+    "source": "  private listeners=new Set<()=>void>();private session?:Session;private generation=0;private abort=new AbortController();private socket?:WebSocket;private friendRevision=0;private userCursor=\"0\";private userSyncing=false;private userPoll?:ReturnType<typeof setInterval>;private reconnectTimer?:ReturnType<typeof setTimeout>;private refreshTimer?:ReturnType<typeof setTimeout>;private pending=new Map<string,{conversation:string;timer:ReturnType<typeof setTimeout>}>();private opened=new Set<string>();private syncing=new Map<string,{again:boolean}>();private bind='';private device=crypto.randomUUID();private refreshing?:Promise<void>;",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "257|clients/web/src/application/client.ts|RH259",
+    "path": "clients/web/src/application/client.ts",
+    "line": 13,
+    "column": 239,
+    "token": "?:",
+    "executable": false,
+    "source": "  private listeners=new Set<()=>void>();private session?:Session;private generation=0;private abort=new AbortController();private socket?:WebSocket;private friendRevision=0;private userCursor=\"0\";private userSyncing=false;private userPoll?:ReturnType<typeof setInterval>;private reconnectTimer?:ReturnType<typeof setTimeout>;private refreshTimer?:ReturnType<typeof setTimeout>;private pending=new Map<string,{conversation:string;timer:ReturnType<typeof setTimeout>}>();private opened=new Set<string>();private syncing=new Map<string,{again:boolean}>();private bind='';private device=crypto.randomUUID();private refreshing?:Promise<void>;",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "258|clients/web/src/application/client.ts|RH260",
+    "path": "clients/web/src/application/client.ts",
+    "line": 13,
+    "column": 294,
+    "token": "?:",
+    "executable": false,
+    "source": "  private listeners=new Set<()=>void>();private session?:Session;private generation=0;private abort=new AbortController();private socket?:WebSocket;private friendRevision=0;private userCursor=\"0\";private userSyncing=false;private userPoll?:ReturnType<typeof setInterval>;private reconnectTimer?:ReturnType<typeof setTimeout>;private refreshTimer?:ReturnType<typeof setTimeout>;private pending=new Map<string,{conversation:string;timer:ReturnType<typeof setTimeout>}>();private opened=new Set<string>();private syncing=new Map<string,{again:boolean}>();private bind='';private device=crypto.randomUUID();private refreshing?:Promise<void>;",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "259|clients/web/src/application/client.ts|RH261",
+    "path": "clients/web/src/application/client.ts",
+    "line": 13,
+    "column": 346,
+    "token": "?:",
+    "executable": false,
+    "source": "  private listeners=new Set<()=>void>();private session?:Session;private generation=0;private abort=new AbortController();private socket?:WebSocket;private friendRevision=0;private userCursor=\"0\";private userSyncing=false;private userPoll?:ReturnType<typeof setInterval>;private reconnectTimer?:ReturnType<typeof setTimeout>;private refreshTimer?:ReturnType<typeof setTimeout>;private pending=new Map<string,{conversation:string;timer:ReturnType<typeof setTimeout>}>();private opened=new Set<string>();private syncing=new Map<string,{again:boolean}>();private bind='';private device=crypto.randomUUID();private refreshing?:Promise<void>;",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "260|clients/web/src/application/client.ts|RH262",
+    "path": "clients/web/src/application/client.ts",
+    "line": 13,
+    "column": 622,
+    "token": "?:",
+    "executable": false,
+    "source": "  private listeners=new Set<()=>void>();private session?:Session;private generation=0;private abort=new AbortController();private socket?:WebSocket;private friendRevision=0;private userCursor=\"0\";private userSyncing=false;private userPoll?:ReturnType<typeof setInterval>;private reconnectTimer?:ReturnType<typeof setTimeout>;private refreshTimer?:ReturnType<typeof setTimeout>;private pending=new Map<string,{conversation:string;timer:ReturnType<typeof setTimeout>}>();private opened=new Set<string>();private syncing=new Map<string,{again:boolean}>();private bind='';private device=crypto.randomUUID();private refreshing?:Promise<void>;",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "261|clients/web/src/application/client.ts|RH263",
+    "path": "clients/web/src/application/client.ts",
+    "line": 23,
+    "column": 430,
+    "token": "catch",
+    "executable": true,
+    "source": "  async login(username:string,password:string){this.clear('');const g=this.generation;this.publish({authBusy:true});try {const s=auth(await this.http.request('/v1/auth/login','POST',{...this.metadata(),username,password},undefined,this.abort.signal));if(!this.alive(g))return;this.session=s;this.publish({session:true,authBusy:false,notice:'已登录 · 消息仅保留在当前页面内存'});this.connected();void this.loadFriends();void this.loadProfile();}catch(e){this.error(e,g);if(this.alive(g))this.publish({authBusy:false,notice:e instanceof ApiFailure&&e.status===401?'账号或密码不正确。':'登录失败，请检查网络后重试。'});}}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "262|clients/web/src/application/client.ts|RH264",
+    "path": "clients/web/src/application/client.ts",
+    "line": 24,
+    "column": 632,
+    "token": "catch",
+    "executable": true,
+    "source": "  async refresh(){if(this.refreshing)return this.refreshing;const g=this.generation;this.publish({authBusy:true,notice:'正在刷新会话…'});this.refreshing=(async()=>{try {const s=auth(await this.http.request('/v1/auth/refresh/web','POST',this.metadata(),undefined,this.abort.signal));if(!this.alive(g))return;if(this.session&&(s.userId!==this.session.userId||s.sessionId!==this.session.sessionId||s.sessionEpoch!==this.session.sessionEpoch)){this.clear('会话已被替换，请重新登录。');return;}this.session=s;this.publish({session:true,authBusy:false,notice:'会话已刷新'});this.socket?.close();this.connected();void this.loadFriends();void this.loadProfile();}catch(e){this.error(e,g);if(this.alive(g))this.publish({authBusy:false,notice:'会话刷新失败，请重试或重新登录。'});}finally{this.refreshing=undefined;}})();return this.refreshing;}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "263|clients/web/src/application/client.ts|RH265",
+    "path": "clients/web/src/application/client.ts",
+    "line": 25,
+    "column": 248,
+    "token": "catch",
+    "executable": true,
+    "source": "  async logout(){const s=this.session,g=this.generation;const signal=this.abort.signal;this.publish({authBusy:true});try {if(s)await this.http.request('/v1/auth/logout','POST',undefined,s.accessToken,signal);if(this.alive(g))this.clear('已退出登录。');}catch(e){if(!(e instanceof ApiFailure || e instanceof SyncFailure || e instanceof WireFailure))throw e;if(this.alive(g)){this.clear('本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。');}}}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "264|clients/web/src/application/client.ts|RH266",
+    "path": "clients/web/src/application/client.ts",
+    "line": 26,
+    "column": 362,
+    "token": "catch",
+    "executable": true,
+    "source": "  async loadProfile(){const s=this.session,g=this.generation;if(!s)return;this.publish({profileBusy:true,profileError:''});try{const p=object(await this.http.request('/v1/users/me','GET',undefined,s.accessToken,this.abort.signal),['user']),u=user(p.user);if(u.userId!==s.userId)throw new WireFailure();if(this.alive(g))this.publish({user:u,profileBusy:false});}catch(e){this.error(e,g);if(this.alive(g))this.publish({profileBusy:false,profileError:'个人资料加载失败，可重试。'});}}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "265|clients/web/src/application/client.ts|RH267",
+    "path": "clients/web/src/application/client.ts",
+    "line": 27,
+    "column": 435,
+    "token": "catch",
+    "executable": true,
+    "source": "  async loadFriends(){const revision=++this.friendRevision;const s=this.session,g=this.generation;if(!s)return;this.publish({friendsBusy:true,friendsError:''});try{const list=friends(await this.http.request('/v1/friends','GET',undefined,s.accessToken,this.abort.signal));if(list.some(f=>f.user.userId===s.userId))throw new WireFailure();if(this.alive(g)&&revision===this.friendRevision)this.publish({friends:list,friendsBusy:false});}catch(e){this.error(e,g);if(this.alive(g)&&revision===this.friendRevision)this.publish({friendsBusy:false,friendsError:'好友加载失败，可重试。'});}}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "266|clients/web/src/application/client.ts|RH268",
+    "path": "clients/web/src/application/client.ts",
+    "line": 28,
+    "column": 480,
+    "token": "catch",
+    "executable": true,
+    "source": "  async search(username:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:'',searchResults:[]});try{const p=object(await this.http.request('/v1/users/search?username='+encodeURIComponent(username),'GET',undefined,s.accessToken,this.abort.signal),['users']);if(!Array.isArray(p.users)||p.users.length>1)throw new WireFailure();const users=p.users.map(user);if(this.alive(g))this.publish({searchBusy:false,searchResults:users});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'搜索失败，请检查用户名后重试。'});}}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "267|clients/web/src/application/client.ts|RH269",
+    "path": "clients/web/src/application/client.ts",
+    "line": 29,
+    "column": 902,
+    "token": "catch",
+    "executable": true,
+    "source": "  async addFriend(id:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:''});try{const p=object(await this.http.request('/v1/friends/'+uuid(id),'PUT',undefined,s.accessToken,this.abort.signal),['friendshipId','normalizedPair','directConversationId','memberUserIds','created']);uuid(p.friendshipId);const pair=object(p.normalizedPair,['lowUserId','highUserId']);if(!Array.isArray(p.memberUserIds)||p.memberUserIds.length!==2||new Set(p.memberUserIds).size!==2||!p.memberUserIds.includes(s.userId)||!p.memberUserIds.includes(id)||uuid(pair.lowUserId)!==[s.userId,id].sort()[0]||uuid(pair.highUserId)!==[s.userId,id].sort()[1]||typeof p.created!=='boolean')throw new WireFailure();const c=uuid(p.directConversationId);if(!this.alive(g))return;await this.loadFriends();if(this.alive(g))this.publish({searchBusy:false,notice:'好友已添加，唯一私聊已建立',selected:c});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'添加好友失败，请重试。'});}}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "268|clients/web/src/application/client.ts|RH270",
+    "path": "clients/web/src/application/client.ts",
+    "line": 33,
+    "column": 546,
+    "token": "catch",
+    "executable": true,
+    "source": "  private transmit(c:string,r:string){const m=this.repository.snapshot(c).find(v=>v.requestId===r);if(!m)return;this.opened.add(c);this.publish();if(this.state.connection!=='ready'||!this.socket){this.repository.fail(c,r);this.publish();return;}try {this.socket.send(envelope('message.send',r,{conversationId:c,content:m.content}));const g=this.generation;const timer=setTimeout(()=>{if(this.alive(g)){this.pending.delete(r);this.repository.fail(c,r);this.publish();void this.sync(c);}},this.timeout);this.pending.set(r,{conversation:c,timer});}catch(error){if(!(error instanceof DOMException))throw error;this.repository.fail(c,r);this.publish();}}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "269|clients/web/src/application/client.ts|RH271",
+    "path": "clients/web/src/application/client.ts",
+    "line": 35,
+    "column": 334,
+    "token": "catch",
+    "executable": true,
+    "source": "  private connected(){const s=this.session,g=this.generation;if(!s)return;clearTimeout(this.refreshTimer);const wait=Math.max(1,s.expires-Date.now()-30000);this.refreshTimer=setTimeout(()=>void this.refresh(),wait);const url=this.http.origin.replace('https:','wss:')+'/v1/ws';let socket:WebSocket;try{socket=this.socketFactory(url);}catch(error){if(!(error instanceof DOMException))throw error;this.publish({connection:'failed'});return;}this.socket=socket;this.bind=crypto.randomUUID();const bind=this.bind;this.publish({connection:'connecting'});const current=()=>this.alive(g)&&this.socket===socket;",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "270|clients/web/src/application/client.ts|RH272",
+    "path": "clients/web/src/application/client.ts",
+    "line": 54,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(error){if(!(error instanceof WireFailure))throw error;socket.close();this.publish({connection:'protocol_error',sync:'无效响应未改变已确认消息'});}};",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "271|clients/web/src/application/client.ts|RH273",
+    "path": "clients/web/src/application/client.ts",
+    "line": 69,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(e){this.error(e,g);if(this.alive(g))this.publish({friendsError:'好友同步失败，可重试或重连。'});}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "272|clients/web/src/application/client.ts|RH274",
+    "path": "clients/web/src/application/client.ts",
+    "line": 90,
+    "column": 6,
+    "token": "catch",
+    "executable": true,
+    "source": "    }catch(e){this.error(e,g);if(this.alive(g))this.publish({sync:'同步失败，重连或重新打开会话重试'});}",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+  },
+  {
+    "identity": "273|clients/web/src/application/http.ts|RH275",
+    "path": "clients/web/src/application/http.ts",
+    "line": 20,
+    "column": 246,
+    "token": "catch",
+    "executable": true,
+    "source": "    let r:Response;try {r=await this.fetcher(this.origin+path,{method,body:encoded,headers:{'Content-Type':'application/json',...(token?{'Authorization':'Bearer '+token}:{})},credentials:'same-origin',redirect:'error',cache:'no-store',signal});}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure('CONNECTION_UNAVAILABLE',0);throw error;}",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "274|clients/web/src/application/http.ts|RH276",
+    "path": "clients/web/src/application/http.ts",
+    "line": 25,
+    "column": 210,
+    "token": "catch",
+    "executable": true,
+    "source": "        if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "275|clients/web/src/application/http.ts|RH277",
+    "path": "clients/web/src/application/http.ts",
+    "line": 25,
+    "column": 481,
+    "token": "catch",
+    "executable": true,
+    "source": "        if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "276|clients/web/src/application/http.ts|RH278",
+    "path": "clients/web/src/application/http.ts",
+    "line": 40,
+    "column": 43,
+    "token": "?:",
+    "executable": false,
+    "source": "    if(r.redirected||!/^application\\/json(?:\\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "277|clients/web/src/application/http.ts|RH279",
+    "path": "clients/web/src/application/http.ts",
+    "line": 40,
+    "column": 89,
+    "token": "??",
+    "executable": true,
+    "source": "    if(r.redirected||!/^application\\/json(?:\\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "278|clients/web/src/application/http.ts|RH280",
+    "path": "clients/web/src/application/http.ts",
+    "line": 43,
+    "column": 94,
+    "token": "catch",
+    "executable": true,
+    "source": "    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "279|clients/web/src/application/http.ts|RH281",
+    "path": "clients/web/src/application/http.ts",
+    "line": 43,
+    "column": 389,
+    "token": "catch",
+    "executable": true,
+    "source": "    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "280|clients/web/src/application/http.ts|RH282",
+    "path": "clients/web/src/application/http.ts",
+    "line": 43,
+    "column": 512,
+    "token": "catch",
+    "executable": true,
+    "source": "    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "281|clients/web/src/application/http.ts|RH283",
+    "path": "clients/web/src/application/http.ts",
+    "line": 43,
+    "column": 687,
+    "token": "catch",
+    "executable": true,
+    "source": "    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "282|clients/web/src/application/repository.ts|RH284",
+    "path": "clients/web/src/application/repository.ts",
+    "line": 3,
+    "column": 69,
+    "token": "?:",
+    "executable": false,
+    "source": "export interface Message extends LocalMessage {state:State;messageId?:string;seq?:bigint;createdAt?:string}",
+    "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+  },
+  {
+    "identity": "283|clients/web/src/application/repository.ts|RH285",
+    "path": "clients/web/src/application/repository.ts",
+    "line": 3,
+    "column": 81,
+    "token": "?:",
+    "executable": false,
+    "source": "export interface Message extends LocalMessage {state:State;messageId?:string;seq?:bigint;createdAt?:string}",
+    "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+  },
+  {
+    "identity": "284|clients/web/src/application/repository.ts|RH286",
+    "path": "clients/web/src/application/repository.ts",
+    "line": 3,
+    "column": 99,
+    "token": "?:",
+    "executable": false,
+    "source": "export interface Message extends LocalMessage {state:State;messageId?:string;seq?:bigint;createdAt?:string}",
+    "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+  },
+  {
+    "identity": "285|clients/web/src/application/repository.ts|RH287",
+    "path": "clients/web/src/application/repository.ts",
+    "line": 11,
+    "column": 45,
+    "token": "??",
+    "executable": true,
+    "source": "  after(c:string){return this.cursors.get(c)??0n;}",
+    "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+  },
+  {
+    "identity": "286|clients/web/src/ui/appearance.ts|RH288",
+    "path": "clients/web/src/ui/appearance.ts",
+    "line": 12,
+    "column": 141,
+    "token": "catch",
+    "executable": true,
+    "source": "  try {const raw=window.localStorage.getItem(APPEARANCE_KEY);if(!raw||raw.length>128)return {...defaults};return validate(JSON.parse(raw));}catch(error){if(error instanceof DOMException || error instanceof SyntaxError || error instanceof InvalidAppearance)return {...defaults};throw error;}",
+    "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a"
+  },
+  {
+    "identity": "287|clients/web/src/ui/appearance.ts|RH289",
+    "path": "clients/web/src/ui/appearance.ts",
+    "line": 16,
+    "column": 153,
+    "token": "catch",
+    "executable": true,
+    "source": "  try {window.localStorage.setItem(APPEARANCE_KEY, JSON.stringify({theme: valid.theme, fontSize: valid.fontSize, density: valid.density}));return true;}catch(error){if(error instanceof DOMException)return false;throw error;}",
+    "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a"
+  },
+  {
+    "identity": "288|clients/web/src/ui/i18n/resources.ts|RH290",
+    "path": "clients/web/src/ui/i18n/resources.ts",
+    "line": 17,
+    "column": 81,
+    "token": "??",
+    "executable": true,
+    "source": " return template.replace(/\\{([A-Za-z]+)\\}/g,(_,name:string)=>String(params[name]??\"{\"+name+\"}\"));",
+    "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+  },
+  {
+    "identity": "289|clients/web/src/ui/language.ts|RH291",
+    "path": "clients/web/src/ui/language.ts",
+    "line": 4,
+    "column": 93,
+    "token": "catch",
+    "executable": true,
+    "source": " try {const raw=window.localStorage.getItem(LANGUAGE_KEY);return validLocale(raw)?raw:\"en\";}catch(error){if(error instanceof DOMException)return \"en\";throw error;}",
+    "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e"
+  },
+  {
+    "identity": "290|clients/web/src/ui/language.ts|RH292",
+    "path": "clients/web/src/ui/language.ts",
+    "line": 8,
+    "column": 68,
+    "token": "catch",
+    "executable": true,
+    "source": " try {window.localStorage.setItem(LANGUAGE_KEY,value);return true;}catch(error){if(error instanceof DOMException)return false;throw error;}",
+    "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e"
+  },
+  {
+    "identity": "291|contracts/database/migrate.py|RH293",
+    "path": "contracts/database/migrate.py",
+    "line": 105,
+    "column": 5,
+    "token": "except",
+    "executable": true,
+    "source": "    except RuntimeError as exc:",
+    "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c"
+  },
+  {
+    "identity": "292|tools/build_language_packs.py|RH294",
+    "path": "tools/build_language_packs.py",
+    "line": 48,
+    "column": 39,
+    "token": "?:",
+    "executable": false,
+    "source": "        for match in re.finditer(r'(\"(?:[^\"\\\\]|\\\\.)*\") to (\"(?:[^\"\\\\]|\\\\.)*\")',kotlin):",
+    "sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1"
+  },
+  {
+    "identity": "293|tools/build_language_packs.py|RH295",
+    "path": "tools/build_language_packs.py",
+    "line": 48,
+    "column": 62,
+    "token": "?:",
+    "executable": false,
+    "source": "        for match in re.finditer(r'(\"(?:[^\"\\\\]|\\\\.)*\") to (\"(?:[^\"\\\\]|\\\\.)*\")',kotlin):",
+    "sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1"
+  },
+  {
+    "identity": "294|clients/desktop/src/application/accountSend.ts|RH294",
+    "path": "clients/desktop/src/application/accountSend.ts",
+    "line": 9,
+    "column": 43,
+    "token": "catch",
+    "executable": true,
+    "source": "    try{return await db.query(sql,binds);}catch(error){",
+    "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893"
+  },
+  {
+    "identity": "295|clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt|ANDROID-READ-295",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "line": 7,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:android.database.sqlite.SQLiteDiskIOException){throw SendStorageFailure(error)}",
+    "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+  },
+  {
+    "identity": "296|clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt|ANDROID-READ-296",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "line": 8,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:android.database.sqlite.SQLiteDatabaseCorruptException){throw SendStorageFailure(error)}",
+    "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+  },
+  {
+    "identity": "297|clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt|ANDROID-READ-297",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "line": 9,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:android.database.sqlite.SQLiteCantOpenDatabaseException){throw SendStorageFailure(error)}",
+    "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+  },
+  {
+    "identity": "298|clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt|ANDROID-READ-298",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "line": 10,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:android.database.sqlite.SQLiteDatabaseLockedException){throw SendStorageFailure(error)}",
+    "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+  },
+  {
+    "identity": "299|clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt|ANDROID-READ-299",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "line": 11,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:android.database.sqlite.SQLiteAccessPermException){throw SendStorageFailure(error)}",
+    "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+  },
+  {
+    "identity": "300|clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt|ANDROID-READ-300",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "line": 12,
+    "column": 5,
+    "token": "catch",
+    "executable": true,
+    "source": "    catch(error:IllegalStateException){",
+    "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+  },
+  {
+    "identity": "301|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|ANDROID-READ-301",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 33,
+    "column": 60,
+    "token": "catch",
+    "executable": true,
+    "source": "        val repo=try {Repository(getApplication(),account)}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "302|clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt|ANDROID-READ-302",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "line": 34,
+    "column": 32,
+    "token": "catch",
+    "executable": true,
+    "source": "        try {repo.initialize()}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65"
+  },
+  {
+    "identity": "303|clients/shared/protocol-sdk/src/sync/http.ts|CLEANUP-PRIMARY-303",
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "line": 28,
+    "column": 7,
+    "token": "catch",
+    "executable": true,
+    "source": "      catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+  },
+  {
+    "identity": "304|clients/web/src/application/http.ts|CLEANUP-PRIMARY-304",
+    "path": "clients/web/src/application/http.ts",
+    "line": 25,
+    "column": 402,
+    "token": "catch",
+    "executable": true,
+    "source": "        if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "305|clients/web/src/application/http.ts|CLEANUP-PRIMARY-305",
+    "path": "clients/web/src/application/http.ts",
+    "line": 43,
+    "column": 608,
+    "token": "catch",
+    "executable": true,
+    "source": "    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure(\"CONNECTION_UNAVAILABLE\",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+  },
+  {
+    "identity": "306|backend/go/core/outbox.go|RH306",
+    "path": "backend/go/core/outbox.go",
+    "line": 27,
+    "column": 5,
+    "token": "if",
+    "executable": true,
+    "source": "\t\t\t\tif outboxTransportFailure(err) {",
+    "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1"
+  }
+]

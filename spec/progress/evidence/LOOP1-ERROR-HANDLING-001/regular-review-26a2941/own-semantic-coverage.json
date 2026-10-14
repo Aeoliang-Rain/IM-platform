@@ -1,0 +1,1172 @@
+[
+  {
+    "path": "clients/desktop/.gitignore",
+    "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/README.md",
+    "sha256": "7bc4b810f2989a1fb786093a351cf95176c990ddfb30dd213d21e5507f6f0ccc",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/package-lock.json",
+    "sha256": "16f453c2beed2a1bc0ba7becaf3457a1bc310d1faa3451331ef9bff0685ff376",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Parsed entire locked npm package graph, package metadata checked against current approved React/TypeScript/Tauri frontend tools. No dependency delta or runtime framework added.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/package.json",
+    "sha256": "e052f11dc52945220cc0d5a334db753e4d41d0fe8d338e9267730cf85a2e8881",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/application/accountSend.ts",
+    "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import { accountDatabase } from \"../storage/database.js\";",
+      "import { Repository } from \"../../../shared/protocol-sdk/src/storage/repository.js\";",
+      "import { SendApplication, SendStorageFailure, type Session } from \"./send.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/application/send.ts",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import { Repository } from \"../../../shared/protocol-sdk/src/storage/repository.js\";",
+      "import type { LocalMessage, ServerMessage, Committed, UserPage } from \"../../../shared/protocol-sdk/src/storage/models.js\";",
+      "import { WireFailure, content, decode, envelope, uuid } from \"../../../shared/protocol-sdk/src/send/wire.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/application/sync/accountSync.ts",
+    "sha256": "0f542e8af6dae019911169dfe1ff0ddae90cfb944584e8f38b421e0c3035c0e6",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {accountSend} from \"../accountSend.js\";",
+      "import type {Session} from \"../send.js\";",
+      "import {SyncHttp} from \"../../../../shared/protocol-sdk/src/sync/http.js\";",
+      "import {SyncApplication} from \"./application.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {uuid} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import {SendStorageFailure,SendApplication} from \"../send.js\";",
+      "import {SyncHttp} from \"../../../../shared/protocol-sdk/src/sync/http.js\";",
+      "import {SyncFailure} from \"../../../../shared/protocol-sdk/src/sync/wire.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {WireFailure,object,parse,positive,uuid} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import type {Session} from \"../send.js\";",
+      "import {NativeCapabilityFailure,NativeTransportFailure,nativeFetch,secure} from \"./native.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {WireFailure} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import {invoke} from \"@tauri-apps/api/core\";",
+      "from arbitrary callback values.",
+      "import {validLocale,type Locale} from \"../../ui/i18n/resources.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {errorKey,translate,type Locale,validLocale} from \"../../ui/i18n/resources.js\";",
+      "import {Repository} from \"../../../../shared/protocol-sdk/src/storage/repository.js\";",
+      "import {SyncFailure} from \"../../../../shared/protocol-sdk/src/sync/wire.js\";",
+      "import {SyncHttp} from \"../../../../shared/protocol-sdk/src/sync/http.js\";",
+      "import {WireFailure,decode} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import {accountRepository} from \"../accountSend.js\";",
+      "import {SendStorageFailure,SendApplication,type Session,type Socket} from \"../send.js\";",
+      "import {SyncApplication} from \"../sync/application.js\";",
+      "import {Auth,ApiFailure,type Friend,type User,origin} from \"./auth.js\";",
+      "import {NativeCapabilityFailure,NativeTransportFailure,appearance,language,trayText,defaults,nativeFetch,notify,type Appearance} from \"./native.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/storage/database.ts",
+    "sha256": "bc40daf644784fb43b60abb8d3f9afc5522c36d735664c8bb75affef4693f6f4",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full storage models/schema/native intent direction read. Existing SQLite writes and transaction/draft policies excluded and byte-protected. ONLY explicitly Human-permitted contiguous READ change treats absent row0, present malformed/noncanonical/out-of-signed64 values throw; same SQL and every other Repository byte unchanged.",
+    "imports": [
+      "import { invoke } from \"@tauri-apps/api/core\";",
+      "import type { Bind, Database, Statement } from \"../../../shared/protocol-sdk/src/storage/models.js\";",
+      "from the bound session, never a caller-selected path."
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/build.config.mjs",
+    "sha256": "4acccc55c794b734f391f81468e7e978a6420dd05c64cb9f2ba3955b2c3a5f0d",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/AIPlaceholder.tsx",
+    "sha256": "6ca11c2ed40f7f697b0bd5ce371838233e1a56ab99a8e6619d40e4bc76cbe090",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/AuthPanel.tsx",
+    "sha256": "ff7aec0dd885a4d20dffadbafdca6032932a52c816b99ea3320002e0130fb890",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Composer.tsx",
+    "sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";",
+      "import {resizedComposerHeight} from \"../composer.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/ConversationList.tsx",
+    "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/FriendsPanel.tsx",
+    "sha256": "ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Header.tsx",
+    "sha256": "1c9a902cabb864b938974c28cb24c8c4b020f4a9e2441a60cb95d8cc13cb8f3e",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/LanguagePanel.tsx",
+    "sha256": "a2e5f0eac5f1d5887ff8a8c90d5d05e795cd0cab207850af604bfb3e22053204",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import React from \"react\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import {languageEntry,languageNames,locales,type Locale} from \"../i18n/resources.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Messages.tsx",
+    "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {LanguageContext,useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Navigation.tsx",
+    "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/PluginPlaceholder.tsx",
+    "sha256": "b0b98a48008cc22334c1aa321fa3cd41cb5bb59032e544b01ca9800b338d83bb",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/ProfilePanel.tsx",
+    "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/SettingsPanel.tsx",
+    "sha256": "b1e99a6c6887c950a57d473f6627972b847575d0a1e8083d416401e684e68e73",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {LanguagePanel} from \"./LanguagePanel.js\";",
+      "import type {Locale} from \"../i18n/resources.js\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import {ProfilePanel} from \"./ProfilePanel.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Shell.tsx",
+    "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {LanguageContext,useText,useDisplayText} from \"../i18n/context.js\";",
+      "import {WindowBar} from \"./WindowBar.js\";",
+      "import {Navigation} from \"./Navigation.js\";",
+      "import {Header} from \"./Header.js\";",
+      "import {AuthPanel} from \"./AuthPanel.js\";",
+      "import {ConversationList} from \"./ConversationList.js\";",
+      "import {Messages} from \"./Messages.js\";",
+      "import {Composer} from \"./Composer.js\";",
+      "import {FriendsPanel} from \"./FriendsPanel.js\";",
+      "import {AIPlaceholder} from \"./AIPlaceholder.js\";",
+      "import {PluginPlaceholder} from \"./PluginPlaceholder.js\";",
+      "import {SettingsPanel} from \"./SettingsPanel.js\";",
+      "import React,{useEffect,useRef,useState,useSyncExternalStore} from \"react\";",
+      "import {Workspace} from \"../../application/ui/workspace.js\";",
+      "import {windowControl,windowMaximized} from \"../../application/ui/native.js\";",
+      "import {resizedComposerHeight} from \"../composer.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/components/WindowBar.tsx",
+    "sha256": "9fee03a2e5dc2e6ad9627f8ad63c4cfd9c9ea237f67ecc3fefd5bb03c60e5296",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/composer.ts",
+    "sha256": "c4da6d567a3e8c088d7c20baa5f51a86c118e8c72ec3b4a4f8c1d17146157992",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/context.tsx",
+    "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [
+      "import React from \"react\";",
+      "import {translate,displayText,type Locale} from \"./resources.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/en.ts",
+    "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [
+      "use a secure browser cookie; messages and account data stay in memory.\","
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/ja-JP.ts",
+    "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/resources.ts",
+    "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [
+      "import en from \"./en.js\";",
+      "import zhCN from \"./zh-CN.js\";",
+      "import jaJP from \"./ja-JP.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/zh-CN.ts",
+    "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/index.html",
+    "sha256": "46103c9c5f35c1a4fdd47fae440faafa0fe5a3a81b3c9aa649ae589696996e76",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/logo.png",
+    "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Binary static logo inspected as tracked PNG asset, no executable fault handling; unchanged current assembly copies it.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/main.tsx",
+    "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import React from \"react\";",
+      "import {createRoot} from \"react-dom/client\";",
+      "import {Shell} from \"./components/Shell.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/react-dom.config.mjs",
+    "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/react.config.mjs",
+    "sha256": "8c483c11d9f779d78da8981e7e65dd0be91b2ec4c698e7101d389aa09ed6f576",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/src/ui/style.css",
+    "sha256": "1db209903281409494e83858549fb5f1d023732afba5e26bb7ee26f3b42aaccc",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/desktop/tsconfig.json",
+    "sha256": "6619b81336f0c10b451c60bd196573599edaf99bb79c9a3daff7a615e49f4502",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/.gitignore",
+    "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/README.md",
+    "sha256": "a0a877295c2374071e07f8983e26b3a1a59ebd8b9f3b1a0f5c9ef7f2c870e9d1",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [
+      "use safe `number` or exact built-in `bigint`; larger integers require `bigint` to avoid already-rounded JS values. SQLite adapter binds decimal strings and `contiguous()` returns `bigint`. Current signed64 SQLite capacity is checked locally; this does not add a public protocol maximum or implement a wire parser. Native Rust receives only string parameters, no BigInt serialization change."
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/package-lock.json",
+    "sha256": "910009362f0710052831610dcc0036a53721d107c38db56fea45a006622de897",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Parsed entire locked npm package graph, package metadata checked against current approved React/TypeScript/Tauri frontend tools. No dependency delta or runtime framework added.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/package.json",
+    "sha256": "9e6e79aeb6dbd4010dbe6392272f77e9b1df085ab726c81cc57b635738435bd4",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full exact protocol parser read: integer precision, duplicate-key/depth/length/string checks satisfy canonical wire; SyntaxError only at JSON string literal parse projects WireFailure. Unknown errors propagate. Optional parser lexemes are grammar defaults, no false data.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/storage/models.ts",
+    "sha256": "6ad58c5240d036ad70b20795ed2fcc015fdbafd5926e453702159327f03463e3",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full storage models/schema/native intent direction read. Existing SQLite writes and transaction/draft policies excluded and byte-protected. ONLY explicitly Human-permitted contiguous READ change treats absent row0, present malformed/noncanonical/out-of-signed64 values throw; same SQL and every other Repository byte unchanged.",
+    "imports": [
+      "use exact bigint."
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+    "sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full storage models/schema/native intent direction read. Existing SQLite writes and transaction/draft policies excluded and byte-protected. ONLY explicitly Human-permitted contiguous READ change treats absent row0, present malformed/noncanonical/out-of-signed64 values throw; same SQL and every other Repository byte unchanged.",
+    "imports": [
+      "import type { Bind, Committed, Database, LocalMessage, RealtimeMessage, ServerMessage, Sequence, Statement, UserPage } from \"./models.js\";",
+      "import { v1, v2 } from \"./schema.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/storage/schema.ts",
+    "sha256": "5761dbc44f0c96ab59b4d28c4a38814de5023ff37220d4864a54e7618c5fb0cd",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full storage models/schema/native intent direction read. Existing SQLite writes and transaction/draft policies excluded and byte-protected. ONLY explicitly Human-permitted contiguous READ change treats absent row0, present malformed/noncanonical/out-of-signed64 values throw; same SQL and every other Repository byte unchanged.",
+    "imports": [
+      "import type { Statement } from \"./models.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full strict HTTPS status/cache/correlation/pagination/parser responsibility read. Reader and fatal UTF8 operations are narrow known external boundaries. Mandatory cancel preserves same root and distinct root aggregation; fresh projection avoids cause cycle. Unknown stream/decoder/cleanup errors escape classified recovery. No data or cursor fabricated.",
+    "imports": [
+      "import {WireFailure} from \"../send/wire.js\";",
+      "import {MAX_RESPONSE,SyncFailure,errorResponse,userRequest,conversationRequest,userPage,conversationPage} from \"./wire.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+    "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full strict HTTPS status/cache/correlation/pagination/parser responsibility read. Reader and fatal UTF8 operations are narrow known external boundaries. Mandatory cancel preserves same root and distinct root aggregation; fresh projection avoids cause cycle. Unknown stream/decoder/cleanup errors escape classified recovery. No data or cursor fabricated.",
+    "imports": [
+      "import {WireFailure,parse,object,uuid,positive,timestamp,content} from \"../send/wire.js\";",
+      "import type {UserPage,UserEvent,ServerMessage} from \"../storage/models.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/protocol-sdk/tsconfig.json",
+    "sha256": "b61e27b76b179cf1b127a30bed6645e21df1085ebfcbd536e2c19635b3fa1cea",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/shared/ui/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/package-lock.json",
+    "sha256": "f4a303760dd702f3cf9b4cf87393dde95281b9463d59ba42ca2f879f1603407a",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Parsed entire locked npm package graph, package metadata checked against current approved React/TypeScript/Tauri frontend tools. No dependency delta or runtime framework added.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/package.json",
+    "sha256": "427fe1533d2ff01ced497d9c8d7a8ed522e0c2683ed0439078ec883bf7fb2f79",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/application/client.ts",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {WireFailure,decode,envelope,object,uuid,content} from '../../../shared/protocol-sdk/src/send/wire.js';",
+      "import {SyncHttp} from '../../../shared/protocol-sdk/src/sync/http.js';",
+      "import {SyncFailure} from '../../../shared/protocol-sdk/src/sync/wire.js';",
+      "import type {Committed,RealtimeMessage} from '../../../shared/protocol-sdk/src/storage/models.js';",
+      "import {Http,auth,user,friends,ApiFailure} from './http.js';",
+      "import type {User,Friend,Session} from './http.js';",
+      "import {MemoryRepository} from './repository.js';",
+      "from the committed live prefix, never from initial history."
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/application/http.ts",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {object,uuid,parse,positive} from '../../../shared/protocol-sdk/src/send/wire.js';"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/application/repository.ts",
+    "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full literal producer/consumer and state sequence read. HTTP and WSS known external failures retain failed/error/retirement UI; unknown observer/validation/mapper/adapter roots escape before account-stale checks. Serial known failures recover scheduling while original operation rejects; unknown queue remains rejected. Native read tagging occurs at literal invoke; no cross-service/native business ownership.",
+    "imports": [
+      "import {WireFailure} from '../../../shared/protocol-sdk/src/send/wire.js';",
+      "import type {LocalMessage,ServerMessage,Committed,RealtimeMessage,State} from '../../../shared/protocol-sdk/src/storage/models.js';"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/appearance.ts",
+    "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full fixed-key three-field browser adapter read. ADR11 explicitly permits absent/malformed/unavailable in-memory defaults. Only native DOMException, parse SyntaxError, local InvalidAppearance are handled; arbitrary TypeError/Error/primitive escapes. Save validation outside boundary and false only real DOMException informs UI.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/build.config.mjs",
+    "sha256": "c14b2f838a2f5d6365dfde23f2f7ae3d5ae9cfeb4646d4334221f526cd6427d3",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/AuthPanel.tsx",
+    "sha256": "a0013ce3e4a670d9b3f9daa93f9f9609b457c60a8d3cc8ab6d051537ba7aa23f",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/Composer.tsx",
+    "sha256": "0f8a384f93d39019d6feb850133ee174ec056b8708bc3a81df001d7af70c09a3",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/ConversationList.tsx",
+    "sha256": "b2c524f8ff1be37710e4b4bf8b6996d45f05c4ca1e15135f6cfeb027b276103d",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/FriendsPanel.tsx",
+    "sha256": "8d2ca587c2a48140a110ceb978ca84a66876cf87c2a291ce0e486fc88697ec47",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/Header.tsx",
+    "sha256": "a4ded013e1705605583c34c9e77d694bcc9404c5405cf25afa0bf36fc6511ec4",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";",
+      "import {connectionText} from \"./status.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/LanguagePanel.tsx",
+    "sha256": "1d1e466910ee84c384a2e2c00fd0d0603aa4fce277b54ddefef177cdfd648b43",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import React from \"react\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import {languageEntry,languageNames,locales,type Locale} from \"../i18n/resources.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/Messages.tsx",
+    "sha256": "51d5d0219a6e11f99321b45457b5145aa9f8bf705a512ebe14f1b9ac3bad86ad",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";",
+      "import type {MemoryRepository} from \"../../application/repository.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/Navigation.tsx",
+    "sha256": "e05683a386dab67e08f9377f83eed2e99316717f8c4df5e8610fa811c81757ca",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/Placeholder.tsx",
+    "sha256": "80f8dbf23a5c0be3ac6d9e14e5aaf0322fee7e895b6e5d520e739c133dec1b4d",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/ProfilePanel.tsx",
+    "sha256": "b52ad135f07e0d8ac9a4e045ee1875dec086ee259acd9b9be17882bc540f93cc",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/SettingsPanel.tsx",
+    "sha256": "5c2e7d89f4c2e4f4775b3880237ee98c17db31d350a675353dea345e0cb206ef",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {LanguagePanel} from \"./LanguagePanel.js\";",
+      "import type {Locale} from \"../i18n/resources.js\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {Appearance} from \"../appearance.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/Shell.tsx",
+    "sha256": "27e8b05e6cddf1c9ec246aacafb290c9035af5333f894484e83d5eda2c51d8eb",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import {LanguageContext,useText,useDisplayText} from \"../i18n/context.js\";",
+      "import {Navigation} from \"./Navigation.js\";",
+      "import {Header} from \"./Header.js\";",
+      "import {AuthPanel} from \"./AuthPanel.js\";",
+      "import {ConversationList} from \"./ConversationList.js\";",
+      "import {Messages} from \"./Messages.js\";",
+      "import {Composer} from \"./Composer.js\";",
+      "import {FriendsPanel} from \"./FriendsPanel.js\";",
+      "import {Placeholder} from \"./Placeholder.js\";",
+      "import {SettingsPanel} from \"./SettingsPanel.js\";",
+      "import {ProfilePanel} from \"./ProfilePanel.js\";",
+      "import React,{useState,useEffect,useSyncExternalStore} from 'react';",
+      "import {WebClient} from '../../application/client.js';",
+      "import {loadAppearance,saveAppearance} from '../appearance.js';",
+      "import type {Appearance} from '../appearance.js';",
+      "import {loadLanguage,saveLanguage} from \"../language.js\";",
+      "import {validLocale,type Locale} from \"../i18n/resources.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/components/status.ts",
+    "sha256": "868e6d4d1459f83c8a6dff7580c88aeb4cabb0f027af1e9bf3b67f07c801ff12",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import type {Connection} from \"../../application/client.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/i18n/context.tsx",
+    "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [
+      "import React from \"react\";",
+      "import {translate,displayText,type Locale} from \"./resources.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/i18n/en.ts",
+    "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [
+      "use a secure browser cookie; messages and account data stay in memory.\","
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/i18n/ja-JP.ts",
+    "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/i18n/resources.ts",
+    "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [
+      "import en from \"./en.js\";",
+      "import zhCN from \"./zh-CN.js\";",
+      "import jaJP from \"./ja-JP.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/i18n/zh-CN.ts",
+    "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure language table/resource/context read: display-only fixed locale/key lookup, English fallback permitted by Frozen6.6/ADR12; English missing key throws. Missing presentation parameter remains visible placeholder; no business-value fallback or state rewriting.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/index.html",
+    "sha256": "397bf2bbfb9d2e48e9d742e04537525345b2683f492377cc417c81843e5729d9",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/language.ts",
+    "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full fixed-key locale adapter read. ADR12 exact locale, missing/invalid and actual DOMException default en; save false on genuine unavailable only; unknown escapes and unrelated keys untouched.",
+    "imports": [
+      "import {validLocale,type Locale} from \"./i18n/resources.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/logo.png",
+    "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Binary static logo inspected as tracked PNG asset, no executable fault handling; unchanged current assembly copies it.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/main.tsx",
+    "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full actual JSX/mount/props/event path read. Required message content/identity/state throw on invariant breaks; optional profile/preview/selection placeholders represent current absence only. Unknown Promise rejections exposed to normal host failure; no catch conversion. Composer/draft unchanged excluded policy.",
+    "imports": [
+      "import React from \"react\";",
+      "import {createRoot} from \"react-dom/client\";",
+      "import {Shell} from \"./components/Shell.js\";"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/react-dom.config.mjs",
+    "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/react.config.mjs",
+    "sha256": "92595c5e2aef4233d0ac7d7de085cfd37eb145af37c0d634f83dd3c8d4e7bc27",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/src/ui/style.css",
+    "sha256": "1f54de7775b87f6f3b99a0d6320ce157118727ea07d0b0d2d7bd2b533a618373",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "clients/web/tsconfig.json",
+    "sha256": "8309543308d3102d5e0e784fa7c4f523287f0eaa54e3e2d399f9a30c19e8e2d4",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "contracts/database/migrate.py",
+    "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full transaction/checksum/advisory-lock migration runner read. psql ON_ERROR_STOP/nonzero raises, concurrency/checksum/data-loss guards fail, CLI known RuntimeError prints and exits1; other exceptions escape. No fictitious completed migration.",
+    "imports": [
+      "from __future__ import annotations",
+      "import argparse",
+      "import hashlib",
+      "import pathlib",
+      "import shutil",
+      "import subprocess",
+      "import sys",
+      "from the canonical SQL\")",
+      "from canonical SQL\")"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "deploy/Caddyfile",
+    "sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full runtime composition/proxy/build read: role-isolated Go/Java profiles, migration prerequisite, PostgreSQL authoritative, ordinary NATS delivery, sole Caddy TLS entry, read-only config; health/exit failures block startup. No fallback alternate role or speculative infrastructure.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "deploy/README.md",
+    "sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full runtime composition/proxy/build read: role-isolated Go/Java profiles, migration prerequisite, PostgreSQL authoritative, ordinary NATS delivery, sole Caddy TLS entry, read-only config; health/exit failures block startup. No fallback alternate role or speculative infrastructure.",
+    "imports": [
+      "from PowerShell 7 to build disposable isolated projects and verify running services, migration, Core NATS, HTTPS, and a WebSocket upgrade through actual TLS. The smoke cleans up its own projects and volumes."
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "deploy/compose.yaml",
+    "sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full runtime composition/proxy/build read: role-isolated Go/Java profiles, migration prerequisite, PostgreSQL authoritative, ordinary NATS delivery, sole Caddy TLS entry, read-only config; health/exit failures block startup. No fallback alternate role or speculative infrastructure.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "deploy/compose/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full runtime composition/proxy/build read: role-isolated Go/Java profiles, migration prerequisite, PostgreSQL authoritative, ordinary NATS delivery, sole Caddy TLS entry, read-only config; health/exit failures block startup. No fallback alternate role or speculative infrastructure.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "deploy/migrate.Dockerfile",
+    "sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full runtime composition/proxy/build read: role-isolated Go/Java profiles, migration prerequisite, PostgreSQL authoritative, ordinary NATS delivery, sole Caddy TLS entry, read-only config; health/exit failures block startup. No fallback alternate role or speculative infrastructure.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "deploy/observability/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full runtime composition/proxy/build read: role-isolated Go/Java profiles, migration prerequisite, PostgreSQL authoritative, ordinary NATS delivery, sole Caddy TLS entry, read-only config; health/exit failures block startup. No fallback alternate role or speculative infrastructure.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "deploy/proxy/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full runtime composition/proxy/build read: role-isolated Go/Java profiles, migration prerequisite, PostgreSQL authoritative, ordinary NATS delivery, sole Caddy TLS entry, read-only config; health/exit failures block startup. No fallback alternate role or speculative infrastructure.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "tools/build_language_packs.py",
+    "sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full pure-resource deterministic builder read. Reject duplicate/unsafe keys, cross-end table/parameter mismatch and unknown owned output. Temporary atomic replace cleanup preserves required errors; no swallowed failed build.",
+    "imports": [
+      "import argparse",
+      "import hashlib",
+      "import json",
+      "from pathlib import Path",
+      "import re",
+      "import tempfile"
+    ],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "contracts/database/migrations/0001_initial.up.sql",
+    "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  },
+  {
+    "path": "contracts/database/migrations/0001_initial.down.sql",
+    "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+    "reviewed_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "identity": "/root/regular_review_26a2941",
+    "actual_semantic_assessment": "Full current build/config/README/empty placeholder/static CSS/HTML read. Explicit current mount/import mapping and readonly field/dependency boundaries maintained; build errors propagate; no executable silent fallback or future feature.",
+    "imports": [],
+    "result": "NO_ADDITIONAL_FINDING"
+  }
+]

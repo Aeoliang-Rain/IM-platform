@@ -1,0 +1,234 @@
+[
+  {
+    "path": "backend/go/Dockerfile",
+    "sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Existing Go isolated build/image and role entrypoint; unchanged dependencies/runtime.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/config.example.json",
+    "sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Role connection and credential-file names only; no credential plaintext/token or speculative configuration.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/http.go",
+    "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Core assembly exposes public Auth/Social/Sync and private send/history; shared health only. No Gateway import or misplaced transaction.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/outbox.go",
+    "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Read full relay/batch/classifier. Every Begin/query/scan/rows/publish/flush/update/commit failure returns actual err. Deferred rollback leaves unpublished work for next existing tick; potential duplicate publish is canonical. Classifier directly unwraps; every joined child classified independently, so mixed PgError XX000+network is false. A direct net.OpError retains transport evidence through syscall wrapper; current default transport producer supplies that structure. No errors.As any-descendant shortcut. Unknown/closed-pool fault returns to main and stops process; recognized transient net/NATS/deadline retries without marker commit. No new queue/retry architecture.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/http.go",
+    "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Gateway startup subscribes and flushes NATS or fails; canonical revocation consumer and per-user fanout; public /v1 reverse proxy to Core. Existing nonbusiness infra upgrade probe. No session writes, Core import or plugin execution.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/session.go",
+    "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Readonly authoritative slot and auxiliary client-type lookup; non-NoRows returned as actual fault. revocationReason defaults REVOKED on unavailable/unrecognized authority but closes/revokes connection; cannot claim LOGOUT/REPLACED without recorded matching identity. Appropriate conservative safety state under AUF-I-002/004.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/go.mod",
+    "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Existing approved Go pgx/NATS/gorilla/bcrypt supporting runtime; no added dependency or coupling.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/go.sum",
+    "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Read complete dependency checksum manifest; no runtime handlers and unchanged task delta.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/main.go",
+    "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Only config/dependency connect/Ping/role handler assembly; root imports service minimal starts. Existing startup faults fatal sanitized text; relay unknown error fatal, known parent cancel expected retirement. PostgreSQL/NATS closure after process retirement; no business routes or transaction.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/plugin-host/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/plugin-host/http.go",
+    "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Health-only nonbusiness placeholder; no S4 WASM/query/action behavior or runtime/dependency speculation.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/config.go",
+    "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Readonly config/credential loading returns external failures; trailing data/incomplete config/credential minimum explicit failure. No full Auth or business. Readonly close error has no mutation/commit or successful persistence claim.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/infra.go",
+    "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Existing nonbusiness health role text and 405; failed response write means external health probe fails, no persistent effects.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/java/Dockerfile",
+    "sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Existing javac/runtime class entrypoint bounded skeleton; no new framework.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/java/InfraPlaceholder.java",
+    "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Full class read. Bounded SRC-06 socket/health/upgrade skeleton only. accept outside per-peer IOException recovery. Malformed request explicitly IOException; accepted peer timeout/truncation/write/close failure closes peer via resource and logs sanitized class then listener can accept next peer. Runtime/algorithm exceptions escape main, listener closed. No business activation.",
+    "inspection": "full source semantic read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/java/core/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/java/gateway/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/java/plugin-host/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "clients/shared/plugin-sdk/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "plugins/fixtures/echo/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "plugins/fixtures/poll/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate_sha": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+    "responsibility": "Byte-read empty placeholder only; no executable handlers/imports/fallbacks.",
+    "inspection": "empty placeholder byte read",
+    "result": "NO_ACTIONABLE_FINDING"
+  }
+]

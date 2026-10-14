@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-26a2941\verify_inputs.py", line 30, in <module>
+    tokens.append(dict(identity=x['composite_identity'],path=x['path'],line=line,column=col,token=token,executable=x['executable'],source=text,sha256=x['source_sha256']))
+                                ~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'composite_identity'
