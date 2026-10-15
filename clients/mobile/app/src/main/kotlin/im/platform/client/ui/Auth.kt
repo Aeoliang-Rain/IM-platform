@@ -57,7 +57,14 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
     suspend fun login(username:String,password:String):SendSession {val g=generation;return accept(request("/v1/auth/login","POST",metadata().put("username",username).put("password",password),false),g)}
     suspend fun restore():SendSession? {slot=preferences.read(endpoint+"/current")?:return null;return refresh()}
     @Synchronized fun savedAccount():String? {val saved=preferences.read(endpoint+"/current")?:return null;require(saved.startsWith(endpoint+"/"));val parts=saved.removePrefix(endpoint+"/").split('/');require(parts.size==2);Wire.uuid(parts[1]);slot=saved;return Wire.uuid(parts[0])}
-    suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure("session_expired","Session expired");try{return accept(request("/v1/auth/refresh/native","POST",metadata().put("refreshToken",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind=="session_expired")clear();throw e}}
+    suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure("session_expired","Session expired");try{return accept(request("/v1/auth/refresh/native","POST",metadata().put("refreshToken",refresh),false),g)}catch(e:ApiFailure){
+        if(g==generation && e.kind=="session_expired")try{clear()}catch(cleanup:Throwable){
+            if(cleanup===e)throw e
+            val failure=if(transportCleanup(cleanup))java.io.IOException("Refresh cleanup failed",e) else IllegalStateException("Refresh cleanup failed",e)
+            failure.addSuppressed(cleanup);throw failure
+        }
+        throw e
+    }}
     fun needsRefresh()=session!=null && System.currentTimeMillis()>expires-60000
     @Synchronized fun clear(){generation++;session=null;if(slot.isNotEmpty())preferences.remove(slot);slot="";preferences.remove(endpoint+"/current")}
     suspend fun logout(){val token=session?.accessToken;clear();if(token!=null)request("/v1/auth/logout","POST",accessToken=token)}

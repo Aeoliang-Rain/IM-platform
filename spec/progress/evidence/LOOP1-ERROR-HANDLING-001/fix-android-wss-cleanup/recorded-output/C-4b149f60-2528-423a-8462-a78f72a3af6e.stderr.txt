@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-android-wss-cleanup\restart.py", line 4, in <module>
+    p=avd/'config.ini';s=p.read_text();s=re.sub(r'disk.dataPartition.size=.*','disk.dataPartition.size=2G',s);assert 'disk.dataPartition.size=2G' in s;p.write_text(s)
+                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

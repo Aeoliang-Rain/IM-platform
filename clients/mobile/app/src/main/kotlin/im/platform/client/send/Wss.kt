@@ -24,9 +24,17 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
     init {
         require(uri.scheme=="wss" && uri.host!=null && uri.rawQuery==null && uri.rawFragment==null && uri.rawUserInfo==null) { "Invalid WSS endpoint" }
         Thread({
+            var failure: Throwable?=null
+            var recoverable=true
+            var inObserver=false
+            fun retain(error: Throwable) {
+                val primary=failure
+                failure=if(primary==null || primary===error) error
+                    else IllegalStateException("WSS lifecycle failed",primary).also { it.addSuppressed(error) }
+            }
             try {
                 val s=tls.createSocket(uri.host,if(uri.port<0) 443 else uri.port) as SSLSocket
-                socket=s; if(closed) { s.close(); return@Thread }
+                socket=s; if(closed) return@Thread
                 s.soTimeout=15000
                 val parameters=s.sslParameters; parameters.endpointIdentificationAlgorithm="HTTPS"; s.sslParameters=parameters; s.startHandshake()
                 val input=BufferedInputStream(s.inputStream)
@@ -43,7 +51,7 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
                 val accept=Base64.getEncoder().encodeToString(MessageDigest.getInstance("SHA-1").digest((key+"258EAFA5-E914-47DA-95CA-C5AB0DC85B11").toByteArray(Charsets.US_ASCII)))
                 wire(headers["sec-websocket-accept"]==accept && headers["upgrade"]?.lowercase()=="websocket" && headers["connection"]?.split(',')?.any { it.trim().equals("upgrade",true) }==true)
                 wire(headers["sec-websocket-extensions"]==null && headers["sec-websocket-protocol"]==null)
-                s.soTimeout=0; if(closed) return@Thread; opened()
+                s.soTimeout=0; if(closed) return@Thread; inObserver=true; opened(); inObserver=false
                 val fragments=java.io.ByteArrayOutputStream(); var fragmented=false
                 fun read(): Int { val b=input.read(); wire(b>=0); return b }
                 while(!closed) {
@@ -61,13 +69,20 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
                         1,0 -> {
                             wire((op==1 && !fragmented) || (op==0 && fragmented)); wire(fragments.size()+body.size<=131072)
                             fragments.write(body); fragmented=!fin
-                            if(fin) { val decoder=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT); message(decoder.decode(ByteBuffer.wrap(fragments.toByteArray())).toString()); fragments.reset() }
+                            if(fin) { val decoder=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT); val text=decoder.decode(ByteBuffer.wrap(fragments.toByteArray())).toString(); inObserver=true; message(text); inObserver=false; fragments.reset() }
                         }
                         else -> throw IOException("Invalid WSS frame")
                     }
                 }
-            } catch(_: IOException) { /* Failed transport closes this socket and notifies ended; no frame/credential logging. */ }
-            finally { close(); ended() }
+            } catch(error: Throwable) {
+                failure=error; recoverable=!inObserver && error is IOException
+            } finally {
+                try { retireSocket() } catch(error: Throwable) {
+                    retain(error); recoverable=recoverable && error is IOException
+                }
+                try { ended() } catch(error: Throwable) { retain(error); recoverable=false }
+                failure?.let { if(!recoverable) throw it }
+            }
         },"im-wss").apply { isDaemon=true; start() }
     }
     @Synchronized private fun frame(op: Int,body: ByteArray) {
@@ -79,5 +94,8 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
         bytes.write(ByteArray(body.size) { (body[it].toInt() xor mask[it%4].toInt()).toByte() }); output.write(bytes.toByteArray()); output.flush()
     }
     override fun send(text: String) { frame(1,text.toByteArray(Charsets.UTF_8)) }
-    override fun close() { closed=true; try { socket?.close() } catch(_:IOException) { /* close attempted; the connection is already retired. */ } }
+    @Synchronized private fun retireSocket() {
+        closed=true; val retiring=socket; socket=null; retiring?.close()
+    }
+    override fun close() { try { retireSocket() } catch(_:IOException) { /* The retired transport cannot send again. */ } }
 }

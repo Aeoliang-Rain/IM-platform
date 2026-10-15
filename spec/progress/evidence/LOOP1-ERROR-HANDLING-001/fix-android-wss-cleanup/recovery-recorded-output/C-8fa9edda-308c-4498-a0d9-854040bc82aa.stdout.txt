@@ -1,0 +1,12 @@
+[
+    {
+        "ProcessId":  48600,
+        "Name":  "python.exe",
+        "CommandLine":  "\"C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" -Xutf8 -B C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/recover-wss-desktop-finish/run.py powershell -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \\\"*fix-android-wss-cleanup*\\\" -and $_.Name -notin @(\\\"powershell.exe\\\",\\\"pwsh.exe\\\") } | Select-Object ProcessId,Name,CommandLine | ConvertTo-Json -Depth 3\""
+    },
+    {
+        "ProcessId":  50868,
+        "Name":  "python.exe",
+        "CommandLine":  "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -Xutf8 -B H:\\.codex\\worktrees\\err\\IM-platform\\tools\\research\\recorder.py run-command --research-root C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\recover-wss-desktop-finish\\research --run-id R-RECOVER-WSS-DESKTOP-FINISH -- powershell -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \\\"*fix-android-wss-cleanup*\\\" -and $_.Name -notin @(\\\"powershell.exe\\\",\\\"pwsh.exe\\\") } | Select-Object ProcessId,Name,CommandLine | ConvertTo-Json -Depth 3\""
+    }
+]

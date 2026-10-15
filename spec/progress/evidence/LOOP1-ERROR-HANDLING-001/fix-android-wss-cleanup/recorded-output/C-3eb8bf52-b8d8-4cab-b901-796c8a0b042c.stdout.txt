@@ -1,0 +1,7 @@
+F-DESKTOP-LOGOUT-MIXED: known remote ApiFailure settles logout before unknown credential cleanup; later unknown lost; no unhandled rejection
+actual Workspace.logout consumer: resolved undefined; error REQUEST_FAILED; busy false; cleanup unknown absent
+CONTROL remote success + unknown cleanup: actual Auth.logout rejects original identity
+F-DESKTOP-LIST-MIXED: actual updateList Promise.all consumes later unknown read; operation resolves known history error
+CONTROL lone unknown read: updateList rejects original identity
+CONFIRMED literal invoke -> accountDatabase.query -> accountRepository origin tag -> Repository.messages -> Workspace.updateList: known-first native read rejection masks unknown-later IPC root
+4 affected production/consumer observations + 2 unknown identity controls; no SQLite transaction/write or private storage

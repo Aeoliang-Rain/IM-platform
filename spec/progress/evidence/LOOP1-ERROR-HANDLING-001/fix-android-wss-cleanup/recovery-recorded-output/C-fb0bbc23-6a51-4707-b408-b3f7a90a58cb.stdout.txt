@@ -1,0 +1,5 @@
+
+C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\recover-wss-desktop-finish\android-refresh\Main.kt:12:20: error: argument type mismatch: actual type is 'kotlin.Throwable?', but 'java.lang.Exception?' was expected.
+ val p=Preferences(cleanup);val owner=Auth("https://fixture.invalid",p);owner.savedAccount();val error=try{owner.refresh();error("unexpected success")}catch(e:Throwable){e};val graph=roots(error);val primary=graph.filterIsInstance<ApiFailure>().single();check(primary.kind=="session_expired");check(owner.session==null)
+                   ^^^^^^^
+

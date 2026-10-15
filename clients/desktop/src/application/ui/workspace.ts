@@ -57,13 +57,19 @@ export class Workspace {
     }catch(error){this.failure(error,g===this.generation&&revision===this.friendRevision);}
   }
   private failure(error:unknown,active=true){
-    if(!(error instanceof ApiFailure || error instanceof WireFailure || error instanceof SyncFailure || error instanceof SendStorageFailure || error instanceof NativeCapabilityFailure))throw error;
+    const failures=error instanceof AggregateError?error.errors:[error];
+    if(!failures.length || !failures.every(root=>root instanceof ApiFailure || root instanceof WireFailure || root instanceof SyncFailure || root instanceof SendStorageFailure || root instanceof NativeCapabilityFailure))throw error;
     if(!active)return;
-    this.publish({error:error instanceof ApiFailure?error.message:"Operation unavailable"});if(error instanceof ApiFailure&&error.kind==="session_expired")void this.expire();}
+    const authentication=error instanceof ApiFailure?error:undefined;
+    this.publish({error:authentication?authentication.message:"Operation unavailable"});if(authentication?.kind==="session_expired")void this.expire();}
   private async updateList(repo:Repository,g:number){
     const revision=++this.listRevision;
     try{const ids=[...new Set([...await repo.conversationIds(),...this.state.friends.map(f=>f.directConversationId)])];
-      const entries=await Promise.all(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??"",time},rows] as const;}));
+      const settled=await Promise.allSettled(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??"",time},rows] as const;}));
+      const failures=[...new Set(settled.filter(result=>result.status==="rejected").map(result=>result.reason))];
+      if(failures.length===1)throw failures[0];
+      if(failures.length>1)throw new AggregateError(failures,"Conversation history failed");
+      const entries=settled.filter(result=>result.status==="fulfilled").map(result=>result.value);
       if(g!==this.generation||revision!==this.listRevision)return;
       const previews=Object.fromEntries(entries.map(([id,preview])=>[id,preview]));ids.sort((a,b)=>previews[b].time-previews[a].time||a.localeCompare(b));this.publish({conversations:ids,previews,messages:entries.find(e=>e[0]===this.state.selected)?.[2]??[]});
     }catch(error){this.failure(error,g===this.generation&&revision===this.listRevision);if(g===this.generation&&revision===this.listRevision)this.publish({error:"Conversation history unavailable"});}

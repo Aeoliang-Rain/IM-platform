@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\recover-wss-desktop-finish\refresh-bind-recovered.py", line 16, in <module>
+    prev=next(x['sha256'] for x in inv['files'] if x['path']==path);assert sha(old.encode())==prev,(path,sha(old.encode()),prev)
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('clients/desktop/src/application/ui/workspace.ts', 'b2d8cd47fe2581741e50b9369ef3e995702c561aeb24b74f97a05f7ac0644ff1', '67b5a180f6d48c582809eb2a63b7d785f5c540c8c48182eff239e169f5bf9d5c')

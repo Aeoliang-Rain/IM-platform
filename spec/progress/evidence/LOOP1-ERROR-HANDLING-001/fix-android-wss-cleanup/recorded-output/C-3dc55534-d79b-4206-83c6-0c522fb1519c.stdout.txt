@@ -1,0 +1,25 @@
+EXACT PRODUCTION Wss.kt SHA256 f1fb508628382cfb391e5e236c64ba62aa219122e3651e97ca6b315c0bff9372
+EXIT 0 SECONDS 5.67200000000048
+WSS-CHECK unknown-primary-unknown-close PASS
+WSS-CHECK Error-primary-unknown-close PASS
+WSS-CHECK known-IO-primary-unknown-close PASS
+WSS-CHECK unknown-primary-only PASS
+WSS-CHECK Error-primary-only PASS
+WSS-CHECK known-IO-primary PASS
+WSS-CHECK dual-known-IO PASS
+WSS-CHECK unknown-primary-known-close PASS
+WSS-CHECK normal PASS
+WSS-CHECK close-only-unknown PASS
+WSS-CHECK close-only-Error PASS
+WSS-CHECK close-only-known PASS
+WSS-CHECK ended-unknown PASS
+WSS-CHECK ended-IO-is-observer PASS
+WSS-CHECK primary-close-ended PASS
+WSS-CHECK opened-unknown PASS
+WSS-CHECK opened-IO-is-observer PASS
+WSS-CHECK message-unknown PASS
+WSS-CHECK message-IO-is-observer PASS
+WSS-CHECK same-primary-close PASS
+WSS-CHECK cancel-known PASS
+WSS-RESULT=21
+EXIT 0 SECONDS 0.31199999999989814

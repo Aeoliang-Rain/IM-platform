@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\recover-wss-desktop-finish\precommit.py", line 7, in <module>
+    assert git('rev-parse','--show-toplevel').decode().strip().replace('\\','/').lower()==str(R).lower();assert git('rev-parse','HEAD').decode().strip()==B
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

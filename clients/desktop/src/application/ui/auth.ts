@@ -37,10 +37,18 @@ export class Auth {
   async login(username:string,password:string){const g=this.generation;return this.accept(await this.request("/v1/auth/login","POST",{username,password,...metadata},false),g);}
   async restore():Promise<Session|null>{return await this.savedAccount()?this.refresh():null;}
   async savedAccount():Promise<string|null>{const g=this.generation,slot=await secure.read(this.endpoint+"/current");if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!slot)return null;if(!slot.startsWith(this.endpoint+"/"))throw new ApiFailure("secure_credential_metadata_invalid","Secure credential metadata invalid");const parts=slot.slice(this.endpoint.length+1).split("/");if(parts.length!==2)throw new ApiFailure("secure_credential_metadata_invalid","Secure credential metadata invalid");uuid(parts[1]);this.slot=slot;return uuid(parts[0]);}
-  async refresh():Promise<Session>{const g=this.generation;const token=await secure.read(this.slot);if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!token){await this.clear();throw new ApiFailure("session_expired","Session expired");}try{return await this.accept(await this.request("/v1/auth/refresh/native","POST",{refreshToken:token,...metadata},false),g);}catch(error){if(g===this.generation&&error instanceof ApiFailure&&error.kind==="session_expired")await this.clear();throw error;}}
+  async refresh():Promise<Session>{const g=this.generation;const token=await secure.read(this.slot);if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!token){await this.clear();throw new ApiFailure("session_expired","Session expired");}try{return await this.accept(await this.request("/v1/auth/refresh/native","POST",{refreshToken:token,...metadata},false),g);}catch(error){if(g===this.generation&&error instanceof ApiFailure&&error.kind==="session_expired"){
+      try{await this.clear();}catch(cleanup){if(cleanup===error)throw error;throw new AggregateError([error,cleanup],"Refresh cleanup failed");}
+    }throw error;}}
   needsRefresh(){return !!this.session && Date.now()>this.expires-60000;}
   async clear(){this.generation++;this.session=null;await this.storage;const slot=this.slot;this.slot="";if(slot)await secure.remove(slot);await secure.remove(this.endpoint+"/current");}
-  async logout(){const remote=this.session?this.request("/v1/auth/logout","POST",{}):Promise.resolve();await Promise.all([this.clear(),remote]);}
+  async logout(){
+    const remote=this.session?this.request("/v1/auth/logout","POST",{}):Promise.resolve();
+    const settled=await Promise.allSettled([this.clear(),remote]);
+    const failures=[...new Set(settled.filter(result=>result.status==="rejected").map(result=>result.reason))];
+    if(failures.length===1)throw failures[0];
+    if(failures.length>1)throw new AggregateError(failures,"Logout failed");
+  }
   async profile():Promise<User>{const o=object(await this.request("/v1/users/me"),["user"]);return user(o.user);}
   async friends():Promise<Friend[]>{const o=object(await this.request("/v1/friends"),["friends"]);if(!Array.isArray(o.friends))throw new ApiFailure("invalid_server_response","Invalid server response");return o.friends.map(v=>{const f=object(v,["user","friendshipId","directConversationId"]);return {user:user(f.user),friendshipId:uuid(f.friendshipId),directConversationId:uuid(f.directConversationId)};});}
   async search(query:string):Promise<User[]>{const o=object(await this.request("/v1/users/search?username="+encodeURIComponent(query)),["users"]);if(!Array.isArray(o.users))throw new ApiFailure("invalid_server_response","Invalid server response");return o.users.map(user);}

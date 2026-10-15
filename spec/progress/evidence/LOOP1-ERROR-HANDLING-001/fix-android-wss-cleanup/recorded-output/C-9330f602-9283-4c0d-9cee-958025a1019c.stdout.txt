@@ -1,0 +1,13 @@
+logout known-first late unknown PASS
+logout unknown-first late known PASS
+logout cleanup known-first late unknown PASS
+logout cleanup unknown-first late known PASS
+logout dual-known roots PASS
+logout remote known-only PASS
+logout cleanup known-only PASS
+logout unknown-only identity PASS
+logout same identity PASS
+logout normal PASS
+Workspace logout mixed rejects/busy reset PASS
+Workspace logout dual-known honest error PASS
+Workspace logout normal PASS
