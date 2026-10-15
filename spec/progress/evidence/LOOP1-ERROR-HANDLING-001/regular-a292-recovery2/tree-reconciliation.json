@@ -1,0 +1,353 @@
+{
+  "tracked_root_inputs": 220,
+  "excluded_test_inputs": [
+    {
+      "path": "backend/go/core/error_handling_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/core/message_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/core/outbox_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/core/rollback_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/core/social_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/core/sync_http_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/core/sync_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/gateway/error_handling_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/gateway/message_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/gateway/origin_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/gateway/session_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/shared/config_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/shared/security_test.go",
+      "reason": "Go behavior test, not production"
+    },
+    {
+      "path": "backend/go/tests/.gitkeep",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "backend/go/tests/auth_test.go",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "backend/go/tests/contract_fixture_test.go",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "backend/go/tests/message_test.go",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "backend/go/tests/revocation_fallback_test.go",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "backend/go/tests/runtime_test.go",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "backend/go/tests/social_test.go",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "backend/java/tests/.gitkeep",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "clients/desktop/src-tauri/tests/storage.rs",
+      "reason": "Service/native test input or placeholder, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/assets/golden.json",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/assets/v1.sql",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendReadChecks.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/storage/StorageInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ContiguousReadChecks.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ReadOriginChecks.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/SyncInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/ErrorHandlingInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiTrustRollbackInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nComposeInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nPreferencesInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nRestartInstrumentation.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefFixtureTrust.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefTLSNegative.kt",
+      "reason": "Android instrumentation tests/assets, not production"
+    }
+  ],
+  "independently_selected_production": [
+    "backend/go/Dockerfile",
+    "backend/go/config.example.json",
+    "backend/go/core/.gitkeep",
+    "backend/go/core/auth.go",
+    "backend/go/core/http.go",
+    "backend/go/core/message.go",
+    "backend/go/core/outbox.go",
+    "backend/go/core/social.go",
+    "backend/go/core/sync.go",
+    "backend/go/gateway/.gitkeep",
+    "backend/go/gateway/gateway.go",
+    "backend/go/gateway/http.go",
+    "backend/go/gateway/session.go",
+    "backend/go/go.mod",
+    "backend/go/go.sum",
+    "backend/go/main.go",
+    "backend/go/plugin-host/.gitkeep",
+    "backend/go/plugin-host/http.go",
+    "backend/go/shared/config.go",
+    "backend/go/shared/infra.go",
+    "backend/go/shared/security.go",
+    "backend/java/Dockerfile",
+    "backend/java/InfraPlaceholder.java",
+    "backend/java/core/.gitkeep",
+    "backend/java/gateway/.gitkeep",
+    "backend/java/plugin-host/.gitkeep",
+    "clients/desktop/.gitignore",
+    "clients/desktop/.gitkeep",
+    "clients/desktop/README.md",
+    "clients/desktop/package-lock.json",
+    "clients/desktop/package.json",
+    "clients/desktop/src-tauri/.gitignore",
+    "clients/desktop/src-tauri/Cargo.lock",
+    "clients/desktop/src-tauri/Cargo.toml",
+    "clients/desktop/src-tauri/build.rs",
+    "clients/desktop/src-tauri/icons/icon.ico",
+    "clients/desktop/src-tauri/icons/icon.png",
+    "clients/desktop/src-tauri/src/bin/storage_probe.rs",
+    "clients/desktop/src-tauri/src/database.rs",
+    "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "clients/desktop/src-tauri/src/lib.rs",
+    "clients/desktop/src-tauri/src/main.rs",
+    "clients/desktop/src-tauri/tauri.conf.json",
+    "clients/desktop/src/application/accountSend.ts",
+    "clients/desktop/src/application/send.ts",
+    "clients/desktop/src/application/sync/accountSync.ts",
+    "clients/desktop/src/application/sync/application.ts",
+    "clients/desktop/src/application/ui/auth.ts",
+    "clients/desktop/src/application/ui/native.ts",
+    "clients/desktop/src/application/ui/workspace.ts",
+    "clients/desktop/src/storage/database.ts",
+    "clients/desktop/src/ui/build.config.mjs",
+    "clients/desktop/src/ui/components/AIPlaceholder.tsx",
+    "clients/desktop/src/ui/components/AuthPanel.tsx",
+    "clients/desktop/src/ui/components/Composer.tsx",
+    "clients/desktop/src/ui/components/ConversationList.tsx",
+    "clients/desktop/src/ui/components/FriendsPanel.tsx",
+    "clients/desktop/src/ui/components/Header.tsx",
+    "clients/desktop/src/ui/components/LanguagePanel.tsx",
+    "clients/desktop/src/ui/components/Messages.tsx",
+    "clients/desktop/src/ui/components/Navigation.tsx",
+    "clients/desktop/src/ui/components/PluginPlaceholder.tsx",
+    "clients/desktop/src/ui/components/ProfilePanel.tsx",
+    "clients/desktop/src/ui/components/SettingsPanel.tsx",
+    "clients/desktop/src/ui/components/Shell.tsx",
+    "clients/desktop/src/ui/components/WindowBar.tsx",
+    "clients/desktop/src/ui/composer.ts",
+    "clients/desktop/src/ui/i18n/context.tsx",
+    "clients/desktop/src/ui/i18n/en.ts",
+    "clients/desktop/src/ui/i18n/ja-JP.ts",
+    "clients/desktop/src/ui/i18n/resources.ts",
+    "clients/desktop/src/ui/i18n/zh-CN.ts",
+    "clients/desktop/src/ui/index.html",
+    "clients/desktop/src/ui/logo.png",
+    "clients/desktop/src/ui/main.tsx",
+    "clients/desktop/src/ui/react-dom.config.mjs",
+    "clients/desktop/src/ui/react.config.mjs",
+    "clients/desktop/src/ui/style.css",
+    "clients/desktop/tsconfig.json",
+    "clients/mobile/.gitignore",
+    "clients/mobile/.gitkeep",
+    "clients/mobile/README.md",
+    "clients/mobile/app/build.gradle.kts",
+    "clients/mobile/app/src/main/AndroidManifest.xml",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/MainActivity.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Workspace.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Future.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/LanguagePanel.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Login.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Navigation.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Panel.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Settings.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/en.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/jaJP.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/zhCN.kt",
+    "clients/mobile/app/src/main/res/drawable/project_logo.png",
+    "clients/mobile/build.gradle.kts",
+    "clients/mobile/gradle.properties",
+    "clients/mobile/gradle/wrapper/gradle-wrapper.jar",
+    "clients/mobile/gradle/wrapper/gradle-wrapper.properties",
+    "clients/mobile/gradlew",
+    "clients/mobile/gradlew.bat",
+    "clients/mobile/settings.gradle.kts",
+    "clients/shared/plugin-sdk/.gitkeep",
+    "clients/shared/protocol-sdk/.gitignore",
+    "clients/shared/protocol-sdk/.gitkeep",
+    "clients/shared/protocol-sdk/README.md",
+    "clients/shared/protocol-sdk/package-lock.json",
+    "clients/shared/protocol-sdk/package.json",
+    "clients/shared/protocol-sdk/src/send/wire.ts",
+    "clients/shared/protocol-sdk/src/storage/models.ts",
+    "clients/shared/protocol-sdk/src/storage/repository.ts",
+    "clients/shared/protocol-sdk/src/storage/schema.ts",
+    "clients/shared/protocol-sdk/src/sync/http.ts",
+    "clients/shared/protocol-sdk/src/sync/wire.ts",
+    "clients/shared/protocol-sdk/tsconfig.json",
+    "clients/shared/ui/.gitkeep",
+    "clients/web/.gitkeep",
+    "clients/web/package-lock.json",
+    "clients/web/package.json",
+    "clients/web/src/application/client.ts",
+    "clients/web/src/application/http.ts",
+    "clients/web/src/application/repository.ts",
+    "clients/web/src/ui/appearance.ts",
+    "clients/web/src/ui/build.config.mjs",
+    "clients/web/src/ui/components/AuthPanel.tsx",
+    "clients/web/src/ui/components/Composer.tsx",
+    "clients/web/src/ui/components/ConversationList.tsx",
+    "clients/web/src/ui/components/FriendsPanel.tsx",
+    "clients/web/src/ui/components/Header.tsx",
+    "clients/web/src/ui/components/LanguagePanel.tsx",
+    "clients/web/src/ui/components/Messages.tsx",
+    "clients/web/src/ui/components/Navigation.tsx",
+    "clients/web/src/ui/components/Placeholder.tsx",
+    "clients/web/src/ui/components/ProfilePanel.tsx",
+    "clients/web/src/ui/components/SettingsPanel.tsx",
+    "clients/web/src/ui/components/Shell.tsx",
+    "clients/web/src/ui/components/status.ts",
+    "clients/web/src/ui/i18n/context.tsx",
+    "clients/web/src/ui/i18n/en.ts",
+    "clients/web/src/ui/i18n/ja-JP.ts",
+    "clients/web/src/ui/i18n/resources.ts",
+    "clients/web/src/ui/i18n/zh-CN.ts",
+    "clients/web/src/ui/index.html",
+    "clients/web/src/ui/language.ts",
+    "clients/web/src/ui/logo.png",
+    "clients/web/src/ui/main.tsx",
+    "clients/web/src/ui/react-dom.config.mjs",
+    "clients/web/src/ui/react.config.mjs",
+    "clients/web/src/ui/style.css",
+    "clients/web/tsconfig.json",
+    "deploy/Caddyfile",
+    "deploy/README.md",
+    "deploy/compose.yaml",
+    "deploy/compose/.gitkeep",
+    "deploy/migrate.Dockerfile",
+    "deploy/observability/.gitkeep",
+    "deploy/proxy/.gitkeep",
+    "plugins/fixtures/echo/.gitkeep",
+    "plugins/fixtures/poll/.gitkeep",
+    "contracts/database/migrations/0001_initial.up.sql",
+    "contracts/database/migrations/0001_initial.down.sql",
+    "contracts/database/migrate.py",
+    "tools/build_language_packs.py"
+  ],
+  "count": 185,
+  "missing_inventory": [],
+  "inventory_overreach": [],
+  "root_assembly_test": "backend/go/main_test.go included as canonical SRC02 whitelist support; service business tests excluded",
+  "extra_responsibility": "Canonical migration executables and deterministic language packaging are current deployment/build support, included and read-only"
+}

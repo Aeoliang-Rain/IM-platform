@@ -1,0 +1,25 @@
+[
+  {
+    "id": "F-APPEARANCE-EXISTS-DEFAULT",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 43,
+    "source": "pub fn appearance_load(app:tauri::AppHandle)->Result<Appearance,String>{let p=appearance_path(&app)?;if !p.exists(){return Ok((\"cold\".into(),16,1.0));}let bytes=std::fs::read(p).map_err(|_|\"Appearance unavailable\")?;if bytes.len()>64{return Err(\"Appearance invalid\".into());}for theme in [\"cold\",\"warm\"]{for font in 14..=22{for density in [0.8,1.0,1.2]{let value=(theme.to_owned(),font,density);if appearance_bytes(&value)==bytes{return Ok(value);}}}}Err(\"Appearance invalid\".into())}",
+    "decision": "FAIL",
+    "basis": {
+      "id": "F-APPEARANCE-EXISTS-DEFAULT",
+      "priority": 2,
+      "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "line": 43,
+      "source_sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6",
+      "candidate": "26a2941024c561d711d0d572b82f0f0f7a46d984",
+      "trigger": "Actual app-owned appearance.json path or parent metadata unavailable, e.g. normal Windows filesystem permission denial. appearance_path obtains app_data_dir Path without performing file-access validation. No invented callback or malformed test return is needed.",
+      "actual_producer": "std::path::Path::exists performs filesystem metadata query and converts an IO error to false, documented by Rust standard library. This producer receives the actual app-owned path returned by appearance_path.",
+      "consumer_effect": "The false result enters missing-file branch returning Ok(cold,16,1). Registered appearance_load IPC feeds TypeScript appearance.load, which destructures successful tuple; nativeFailure and caller error state are bypassed. Existing persisted preference cannot be loaded, but operation reports normal successful defaults.",
+      "authority": "Task all current production error audit; spec/governance/error-handling.md forbids normal defaults concealing failures. Frozen6.1/ADR9 authorize app-owned appearance and actual missing defaults; ADR11 unavailable defaults concern Web, ADR12 unavailable defaults concern language; neither approves Desktop appearance IO errors as absent.",
+      "minimal_fix": "Read appearance.json once; default only IO ErrorKind::NotFound; project other read failures to existing Appearance unavailable. Preserve tuple serialization/validation and all SQLite/draft bytes. Add focused missing-file vs actual metadata/read error control without changing trust/device/global ACL.",
+      "proof_method": "Source-level actual producer/IPC/TS consumer proof plus official OS-independent Rust API documentation; no Windows ACL mutation or fresh native runtime execution. Reachable when filesystem denies metadata on legitimate app-owned file/parent; runtime incidence not measured.",
+      "primary_source": "https://doc.rust-lang.org/std/path/struct.Path.html#method.exists",
+      "prior_verdict": "No inherited acceptance; earlier NO_FINDING was preliminary before supplemental non-navigation check."
+    }
+  }
+]

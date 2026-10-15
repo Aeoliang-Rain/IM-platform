@@ -1,0 +1,55 @@
+{
+  "candidate_sha": "a292f516f622651ae62595163e479c13fff78c1d",
+  "base": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "production_files": 185,
+  "original_inventory_navigation_records": 305,
+  "original_distinct_id_strings": 304,
+  "duplicate_original_id_labels": {
+    "RH294": [
+      "tools/build_language_packs.py",
+      "clients/desktop/src/application/accountSend.ts"
+    ]
+  },
+  "review_record_identity": "Each immutable original entry receives REVIEW-SITE-001..305, retains original_id/path/entry ordinal. (original_id,path) identifies all305 records including two RH294 entries. No original data edited or silently dropped.",
+  "distinct_verified_token_coordinates": 305,
+  "executable_navigation_sites": 270,
+  "nonexecutable_regex_comment_type_hits": 35,
+  "partition_counts": {
+    "own": {
+      "files": 48,
+      "records": 60,
+      "executable": 43,
+      "nonexecutable": 17
+    },
+    "server": {
+      "files": 39,
+      "records": 27,
+      "executable": 23,
+      "nonexecutable": 4
+    },
+    "native": {
+      "files": 98,
+      "records": 218,
+      "executable": 204,
+      "nonexecutable": 14
+    }
+  },
+  "excluded_write_native_db_policy_ids": [
+    "RH026",
+    "RH027",
+    "RH096",
+    "RH111",
+    "RH112"
+  ],
+  "navigation_corrections": 276,
+  "adjudication": "Original file/line/source text and IDs identify retained evidence, but some operation labels/columns were stale or conflated catch/Elvis, and RH294 label was reused in different files. Independent original-record-to-actual-token mapping preserves every distinct semantic site; no missing file/site or hidden failure remained. The corrected immutable review addendum supplies precise operations/fault/current authority/recovery and disambiguates both RH294 entries by original ordinal/path. Task requires precise site coverage, not globally unique label syntax. Navigation inaccuracy alone is not a product or Task acceptance blocker once full evidence is reconciled. Original artifacts are unchanged; no production Fix needed. 305 is an inventory record count, never305 unique label strings or305 actual catch blocks.",
+  "standards_findings": [],
+  "task_spec_findings": [],
+  "source_status_after": "",
+  "source_lease": "RELEASED_READ_ONLY_REVIEW",
+  "overall_regular_result": "PASS",
+  "specialized_audit": "PENDING_DIFFERENT_FRESH_CONTEXT_SAME_FINAL_SHA",
+  "hostedCI_protectedIntegration_actualMain_safeSync": "PENDING",
+  "stage_gate": "S2 OPEN"
+}

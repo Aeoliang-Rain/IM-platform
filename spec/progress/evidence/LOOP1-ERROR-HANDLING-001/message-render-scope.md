@@ -1,0 +1,3 @@
+# Before-edit scope authorization and present justification
+
+Coordinator explicitly added the two exact existing Message UI files before edits after full-production inspection found: Android required content null becomes empty text; Desktop/Android unknown state becomes FAILED; Desktop missing logical IDs becomes list index. These violate existing message/body/state/identity invariants; necessary nullable server ACK fields and legitimate SENDING rows stay valid. No Repository, SQL/schema, storage write, Composer or draft edits. Test normal valid projections plus invalid body/state/identity, using actual compiled Desktop component rendering and real Android API34 instrumentation. This is not arbitrary defensive checking or a second contract authority.

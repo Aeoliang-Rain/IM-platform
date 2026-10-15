@@ -17,14 +17,17 @@ class SyncHttps(endpoint:String,private val session:SendSession,
     private val base:String
     fun matchesSession(check:(SendSession)->Boolean)=check(session)
     init {
-        val uri=try {URI(endpoint)} catch(_:Exception){throw SyncFailure("protocol")}
+        val uri=try {URI(endpoint)} catch(_:java.net.URISyntaxException){throw SyncFailure("protocol")}
         if(uri.scheme!="https" || uri.host==null || uri.rawUserInfo!=null || uri.rawQuery!=null || uri.rawFragment!=null || uri.rawPath !in listOf("","/") || session.accessToken.isEmpty() || session.accessToken.any {it=='\r' || it=='\n'}) throw SyncFailure("protocol")
         base=URI("https",null,uri.host,uri.port,null,null,null).toString()
     }
+    private fun transportCleanup(error:Throwable):Boolean=error is java.io.IOException && error.suppressed.all(::transportCleanup)
     private suspend fun post(path:String,body:String,id:String):String=suspendCancellableCoroutine {continuation->
         val current=AtomicReference<HttpsURLConnection?>()
         val job=CoroutineScope(continuation.context).launch(Dispatchers.IO) {
             try {
+                var primary:Throwable?=null
+                val raw=try {
                 val c=connection(URL(base+path));current.set(c)
                 if(!continuation.isActive) return@launch
                 c.instanceFollowRedirects=false;c.requestMethod="POST";c.connectTimeout=15000;c.readTimeout=15000;c.useCaches=false;c.doOutput=true
@@ -35,13 +38,20 @@ class SyncHttps(endpoint:String,private val session:SendSession,
                 val stream=(if(status==200)c.inputStream else c.errorStream) ?: throw SyncFailure("transport")
                 val out=java.io.ByteArrayOutputStream()
                 stream.use {val buffer=ByteArray(8192);while(true){val count=it.read(buffer);if(count<0)break;if(out.size()+count>MAX_RESPONSE)throw SyncFailure("protocol");out.write(buffer,0,count)}}
-                val raw=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(out.toByteArray())).toString()
+                val raw=try{Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(out.toByteArray())).toString()}catch(_:java.nio.charset.CharacterCodingException){throw SyncFailure("protocol")}
                 if(status!=200) throw if(status in setOf(400,401,403,426))Wire.error(raw,id,status,path.endsWith("conversation")) else SyncFailure("transport")
+                raw
+                } catch(error:Throwable){primary=error;throw error}
+                finally {try{current.getAndSet(null)?.disconnect()}catch(cleanup:Throwable){val original=primary;if(original==null)throw cleanup;if(cleanup!==original)original.addSuppressed(cleanup)}}
                 if(continuation.isActive)continuation.resume(raw)
-            } catch(error:Exception) {if(continuation.isActive)continuation.resumeWithException(if(error is SyncFailure)error else SyncFailure("transport"))}
-            finally {current.getAndSet(null)?.disconnect()}
+            } catch(error:Exception) {
+                val known=(error is java.io.IOException || error is SyncFailure || error is CancellationException) && error.suppressed.all(::transportCleanup)
+                val failure=if(!known && (error is java.io.IOException || error is SyncFailure || error is CancellationException))IllegalStateException("HTTPS operation and cleanup failed",error)else if(error is java.io.IOException)SyncFailure("transport").also{it.initCause(error)}else error
+                if(failure is CancellationException)throw failure
+                if(continuation.isActive)continuation.resumeWithException(failure)else if(!known)throw failure
+            }
         }
-        continuation.invokeOnCancellation {current.getAndSet(null)?.disconnect();job.cancel()}
+        continuation.invokeOnCancellation {try{current.getAndSet(null)?.disconnect()}finally{job.cancel()}}
     }
     suspend fun user(cursor:String):UserPage {val request=id();return Wire.user(post("/v1/sync/user",Wire.userRequest(request,cursor),request),request,cursor)}
     suspend fun conversation(c:String,after:Long):ConversationPage {val request=id();return Wire.conversation(post("/v1/sync/conversation",Wire.conversationRequest(request,c,after),request),request,c,after)}

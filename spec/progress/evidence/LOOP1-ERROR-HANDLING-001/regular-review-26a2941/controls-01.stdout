@@ -1,0 +1,5 @@
+PASS: exact Sync correlation/shapes/gap/progress/kinds/numbers, 100x4096 escaped/literal Unicode bounded transport, strict nonstring Sync/WSS enums and WSS bound regression
+PASS unknown adapter errors retain identity; known transport remains failed
+PASS malformed UTF8 is protocol; stream transport stays failed; unknown stream cause preserved
+PASS stream cleanup normal/single/known same root/unknown same root/distinct dual roots
+PASS contiguous mapper: absent row zero, exact valid signed64 prefixes, invalid present rows fail without writes

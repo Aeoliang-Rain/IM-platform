@@ -1,0 +1,423 @@
+
+FILE clients/shared/protocol-sdk/src/send/wire.ts
+1: // Canonical schema: contracts/websocket/envelope.schema.json. No wire library.
+2: export type ObjectValue = { [key: string]: unknown };
+3: export class WireFailure extends Error {constructor(){super("Invalid WSS frame");}}
+4: const invalid = (): never => { throw new WireFailure(); };
+5: export function object(v: unknown, keys: string[]): ObjectValue {
+6:   if (!v || typeof v !== "object" || Array.isArray(v)) return invalid();
+7:   const o = v as ObjectValue;
+8:   if (Object.keys(o).length !== keys.length || keys.some(k => !Object.hasOwn(o,k))) return invalid();
+9:   return o;
+10: }
+11: export function uuid(v: unknown): string {
+12:   if (typeof v !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v)) return invalid();
+13:   return v.toLowerCase();
+14: }
+15: export function positive(v: unknown): bigint {
+16:   if (typeof v !== "bigint" || v < 1n) return invalid();
+17:   return v;
+18: }
+19: export function timestamp(v: unknown): string {
+20:   if (typeof v !== "string" || !/^\d{4}-\d\d-\d\d[Tt]\d\d:\d\d:\d\d(?:\.\d+)?(?:[Zz]|[+-]\d\d:\d\d)$/.test(v) || !Number.isFinite(Date.parse(v))) return invalid();
+21:   const date = v.slice(0,10), day = Number(date.slice(8)), month = Number(date.slice(5,7)), year = Number(date.slice(0,4));
+22:   if (month<1 || month>12 || day<1 || day>new Date(Date.UTC(year,month,0)).getUTCDate()) return invalid();
+23:   return v;
+24: }
+25: export function content(v: unknown): {kind: "TEXT"; text: string} {
+26:   const o=object(v,["kind","text"]);
+27:   if(o.kind!=="TEXT" || typeof o.text!=="string" || [...o.text].length<1 || [...o.text].length>4096) return invalid();
+28:   return {kind:"TEXT",text:o.text};
+29: }
+30: // Parse integers before JavaScript Number can round them. Reject duplicate keys,
+31: // exponent/fraction values where the canonical fields require positive integers.
+32: export function parse(raw: string, maxLength=131072): unknown {
+33:   if(raw.length>maxLength) return invalid();
+34:   let at=0, depth=0;
+35:   const whitespace=()=>{ while(/[\x20\t\r\n]/.test(raw[at]??"x")) at++; };
+36:   function string(): string {
+37:     const start=at++;
+38:     while(at<raw.length) {
+39:       if(raw[at]==='"') { at++; try { return JSON.parse(raw.slice(start,at)); } catch(error) { if(error instanceof SyntaxError) return invalid(); throw error; } }
+40:       if(raw[at]==="\\") at++;
+41:       at++;
+42:     }
+43:     return invalid();
+44:   }
+45:   function value(): unknown {
+46:     whitespace(); if(++depth>32) return invalid();
+47:     let out: unknown;
+48:     if(raw[at]==='"') out=string();
+49:     else if(raw[at]==="{") {
+50:       at++; const o: ObjectValue=Object.create(null); whitespace();
+51:       if(raw[at]!=="}") for(;;) {
+52:         whitespace(); if(raw[at]!=='"') return invalid(); const k=string();
+53:         if(Object.hasOwn(o,k)) return invalid(); whitespace(); if(raw[at++]!==":") return invalid(); o[k]=value(); whitespace();
+54:         if(raw[at]!==",") break; at++;
+55:       }
+56:       if(raw[at++]!=="}") return invalid(); out=o;
+57:     } else if(raw[at]==="[") {
+58:       at++; const items: unknown[]=[]; whitespace();
+59:       if(raw[at]!=="]") for(;;) { items.push(value()); whitespace(); if(raw[at]!==",") break; at++; }
+60:       if(raw[at++]!=="]") return invalid(); out=items;
+61:     } else if(raw.startsWith("true",at)) { at+=4; out=true;
+62:     } else if(raw.startsWith("false",at)) { at+=5; out=false;
+63:     } else {
+64:       const number=raw.slice(at).match(/^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/);
+65:       if(number) { at+=number[0].length; const parts=number[0].toLowerCase().split("e"), exponent=Number(parts[1]??"0");
+66:         const [whole,fraction=""]=parts[0].split("."); const scale=fraction.length-exponent;
+67:         if(!Number.isSafeInteger(exponent) || Math.abs(exponent)>131072) return invalid();
+68:         const digits=BigInt(whole+fraction);
+69:         out=scale<=0?digits*10n**BigInt(-scale):digits%10n**BigInt(scale)===0n?digits/10n**BigInt(scale):Number(number[0]); }
+70:       else return invalid();
+71:     }
+72:     depth--; return out;
+73:   }
+74:   const out=value(); whitespace(); if(at!==raw.length) return invalid(); return out;
+75: }
+76: export interface Frame { type: string; requestId: string; payload: ObjectValue }
+77: const authErrors=["VALIDATION_FAILED","AUTH_TOKEN_INVALID","AUTH_TOKEN_EXPIRED","AUTH_SESSION_REVOKED","AUTH_SESSION_EPOCH_STALE","AUTH_CLIENT_TYPE_MISMATCH","PROTOCOL_VERSION_UNSUPPORTED"];
+78: const messageErrors=["VALIDATION_FAILED","AUTH_REQUIRED","AUTH_SESSION_REVOKED","AUTHORIZATION_DENIED","MESSAGE_REQUEST_CONFLICT","MESSAGE_COMMIT_FAILED"];
+79: export function decode(raw: string): Frame {
+80:   const e=object(parse(raw),["protocolVersion","type","requestId","payload"]);
+81:   if(e.protocolVersion!=="1.0" || typeof e.type!=="string") return invalid();
+82:   const requestId=uuid(e.requestId); let p: ObjectValue;
+83:   function rejected(codes: string[]): ObjectValue {
+84:     const p=object(e.payload,["status","error"]), error=object(p.error,["code","message"]);
+85:     if(p.status!=="rejected" || typeof error.code!=="string" || !codes.includes(error.code) || typeof error.message!=="string" || !error.message) return invalid();
+86:     return p;
+87:   }
+88:   switch(e.type) {
+89:     case "auth.ack":
+90:       if((e.payload as ObjectValue)?.status==="rejected") p=rejected(authErrors);
+91:       else { p=object(e.payload,["status","userId","sessionId","clientType","sessionEpoch"]); if(p.status!=="bound" || typeof p.clientType!=="string" || !["WEB","DESKTOP","MOBILE"].includes(p.clientType)) return invalid(); p.userId=uuid(p.userId); p.sessionId=uuid(p.sessionId); p.sessionEpoch=positive(p.sessionEpoch); }
+92:       break;
+93:     case "message.ack":
+94:       if((e.payload as ObjectValue)?.status==="rejected") p=rejected(messageErrors);
+95:       else { p=object(e.payload,["status","conversationId","messageId","seq","createdAt"]); if(p.status!=="committed") return invalid(); p.conversationId=uuid(p.conversationId); p.messageId=uuid(p.messageId); p.seq=positive(p.seq); p.createdAt=timestamp(p.createdAt); }
+96:       break;
+97:     case "message.created":
+98:       p=object(e.payload,["conversationId","messageId","senderId","seq","createdAt","content"]); p.conversationId=uuid(p.conversationId); p.messageId=uuid(p.messageId); p.senderId=uuid(p.senderId); p.seq=positive(p.seq); p.createdAt=timestamp(p.createdAt); p.content=content(p.content); break;
+99:     case "session.revoked":
+100:       p=object(e.payload,["sessionId","reason"]); p.sessionId=uuid(p.sessionId); if(typeof p.reason!=="string" || !["LOGOUT","REPLACED","REVOKED"].includes(p.reason)) return invalid(); break;
+101:     case "ping": case "pong": p=object(e.payload,[]); break;
+102:     default: return invalid();
+103:   }
+104:   return {type:e.type,requestId,payload:p};
+105: }
+106: export function envelope(type: "auth.bind" | "message.send" | "ping" | "pong", requestId: string, payload: unknown): string {
+107:   return JSON.stringify({protocolVersion:"1.0",type,requestId:uuid(requestId),payload});
+108: }
+
+FILE clients/shared/protocol-sdk/src/storage/models.ts
+1: // Internal materialized models; wire authority remains contracts/.
+2: // Safe numeric inputs remain convenient; larger SQLite integers use exact bigint.
+3: export type Sequence = number | bigint;
+4: export type State = "SENDING" | "SENT" | "FAILED";
+5: export interface LocalMessage {
+6:   conversationId: string; requestId: string; senderId: string;
+7:   content: { kind: "TEXT"; text: string };
+8: }
+9: export interface ServerMessage extends LocalMessage {
+10:   messageId: string; seq: Sequence; createdAt: string;
+11: }
+12: export interface RealtimeMessage extends Omit<ServerMessage, "requestId"> {}
+13: export interface Committed {
+14:   status: "committed"; conversationId: string; messageId: string;
+15:   seq: Sequence; createdAt: string;
+16: }
+17: export interface UserEvent {
+18:   eventId: string; cursor: string;
+19:   kind: "friend.changed" | "conversation.changed" | "membership.changed" | "plugin.changed";
+20:   subjectId: string; revision: Sequence;
+21: }
+22: export interface UserPage {
+23:   syncVersion: "1.0"; type: "sync.user.page"; requestId: string;
+24:   events: UserEvent[]; nextCursor: string; hasMore: boolean;
+25: }
+26: export type Bind = string | null;
+27: // All steps go through ONE native transaction. expectedChanges is a generic
+28: // row-count assertion; a mismatch rolls back the entire intent.
+29: export type Statement = [sql: string, binds: Bind[], expectedChanges: number | null];
+30: export interface Database {
+31:   transaction(statements: Statement[]): Promise<void>;
+32:   query(sql: string, binds: Bind[]): Promise<(string | null)[][]>;
+33: }
+
+FILE clients/shared/protocol-sdk/src/storage/repository.ts
+1: import type { Bind, Committed, Database, LocalMessage, RealtimeMessage, ServerMessage, Sequence, Statement, UserPage } from "./models.js";
+2: import { v1, v2 } from "./schema.js";
+3: 
+4: function text(m: LocalMessage | RealtimeMessage): string {
+5:   if (m.content.kind !== "TEXT" || !m.content.text || [...m.content.text].length > 4096) throw new Error("Invalid text");
+6:   return m.content.text;
+7: }
+8: function seq(n: Sequence): string {
+9:   // Numbers outside the safe range may already have rounded before this call.
+10:   if (typeof n === "number" && !Number.isSafeInteger(n)) throw new Error("Use bigint for exact sequence");
+11:   const value = BigInt(n);
+12:   if (value < 1n || value > 9223372036854775807n) throw new Error("Sequence outside SQLite integer storage");
+13:   return value.toString();
+14: }
+15: const step = (sql: string, binds: Bind[] = [], expected: number | null = null): Statement => [sql, binds, expected];
+16: // An assertion is an UPDATE with a predicate over the SAME transaction snapshot.
+17: // Every account has exactly one cursor row; no schema-level business trigger.
+18: const assert = (condition: string, binds: Bind[]): Statement =>
+19:   step("UPDATE user_cursor SET cursor=cursor WHERE singleton=1 AND (" + condition + ")", binds, 1);
+20: function advance(conversationId: string): Statement[] {
+21:   return [
+22:     step("INSERT INTO conversations(conversation_id) VALUES(?) ON CONFLICT DO NOTHING", [conversationId]),
+23:     step(`WITH RECURSIVE prefix(n) AS (
+24:       SELECT contiguous_seq FROM conversations WHERE conversation_id=?
+25:       UNION ALL SELECT n+1 FROM prefix WHERE n<9223372036854775807 AND EXISTS(
+26:         SELECT 1 FROM messages WHERE conversation_id=? AND server_seq=n+1)
+27:     ) UPDATE conversations SET contiguous_seq=(SELECT MAX(n) FROM prefix) WHERE conversation_id=?`,
+28:     [conversationId, conversationId, conversationId], 1),
+29:   ];
+30: }
+31: export class Repository {
+32:   constructor(readonly db: Database) {}
+33:   async initialize(): Promise<void> {
+34:     const version = Number((await this.db.query("PRAGMA user_version", []))[0][0]);
+35:     if (![0,1,2].includes(version)) throw new Error("Unsupported local schema version");
+36:     if (version === 2) return;
+37:     await this.db.transaction([...(version === 0 ? v1 : []), ...v2]);
+38:   }
+39:   async localSend(m: LocalMessage): Promise<void> {
+40:     await this.db.transaction([step(`INSERT INTO messages(conversation_id,request_id,sender_id,content,state)
+41:       VALUES(?,?,?,?,'SENDING') ON CONFLICT(conversation_id,request_id) DO UPDATE SET
+42:       state=CASE WHEN messages.state='SENT' THEN 'SENT' ELSE 'SENDING' END
+43:       WHERE messages.sender_id=excluded.sender_id AND messages.content=excluded.content`,
+44:       [m.conversationId,m.requestId,m.senderId,text(m)],1)]);
+45:   }
+46:   async markFailed(conversationId: string, requestId: string): Promise<void> {
+47:     await this.db.transaction([step(`UPDATE messages SET state=CASE WHEN state='SENT' THEN 'SENT' ELSE 'FAILED' END
+48:       WHERE conversation_id=? AND request_id=?`, [conversationId,requestId],1)]);
+49:   }
+50:   private materialize(m: ServerMessage | RealtimeMessage, requestId: string | null): Statement[] {
+51:     const values: Bind[] = [m.conversationId,requestId,m.senderId,text(m),m.messageId,seq(m.seq),m.createdAt];
+52:     // Check every durable identity/content before an unknown realtime row can
+53:     // be merged. No INSERT OR REPLACE may erase a conflicting committed row.
+54:     const guards: Statement[] = [
+55:       assert(`NOT EXISTS(SELECT 1 FROM messages WHERE
+56:         ((conversation_id=? AND request_id=?) OR server_message_id=? OR (conversation_id=? AND server_seq=?))
+57:         AND (conversation_id<>? OR sender_id<>? OR content<>? OR
+58:           (request_id IS NOT NULL AND ? IS NOT NULL AND request_id<>?) OR
+59:           (server_message_id IS NOT NULL AND server_message_id<>?) OR
+60:           (server_seq IS NOT NULL AND server_seq<>?) OR
+61:           (server_time IS NOT NULL AND server_time<>?)))`,
+62:       [m.conversationId,requestId,m.messageId,m.conversationId,seq(m.seq),
+63:        m.conversationId,m.senderId,text(m),requestId,requestId,m.messageId,seq(m.seq),m.createdAt]),
+64:     ];
+65:     if (requestId !== null) {
+66:       guards.push(step("DELETE FROM messages WHERE server_message_id=? AND request_id IS NULL AND EXISTS(SELECT 1 FROM messages WHERE conversation_id=? AND request_id=?)",
+67:         [m.messageId,m.conversationId,requestId]));
+68:       // If no local row exists, first attach the request to an existing realtime row.
+69:       guards.push(step("UPDATE messages SET request_id=? WHERE server_message_id=? AND request_id IS NULL",
+70:         [requestId,m.messageId]));
+71:     }
+72:     guards.push(step(`INSERT INTO messages(conversation_id,request_id,sender_id,content,state,server_message_id,server_seq,server_time)
+73:       VALUES(?,?,?,?,'SENT',?,?,?)
+74:       ON CONFLICT DO UPDATE SET
+75:         state='SENT', server_message_id=excluded.server_message_id,
+76:         server_seq=excluded.server_seq, server_time=excluded.server_time,
+77:         request_id=COALESCE(messages.request_id,excluded.request_id)`,values,1));
+78:     return guards;
+79:   }
+80:   async syncMessages(messages: ServerMessage[], failBeforeAdvance = false): Promise<void> {
+81:     const statements = messages.flatMap(m => this.materialize(m,m.requestId));
+82:     if (failBeforeAdvance) statements.push(step("INSERT INTO __fault_injection_missing_table VALUES(1)"));
+83:     for (const id of new Set(messages.map(m => m.conversationId))) statements.push(...advance(id));
+84:     await this.db.transaction(statements);
+85:   }
+86:   async realtime(m: RealtimeMessage, failBeforeAdvance = false): Promise<void> {
+87:     const statements = this.materialize(m,null);
+88:     if (failBeforeAdvance) statements.push(step("INSERT INTO __fault_injection_missing_table VALUES(1)"));
+89:     await this.db.transaction([...statements,...advance(m.conversationId)]);
+90:   }
+91:   async committedAck(requestId: string, ack: Committed): Promise<void> {
+92:     if (ack.status !== "committed") throw new Error("Only durable committed ACK accepted");
+93:     const c = ack.conversationId, id = ack.messageId, n = seq(ack.seq), time = ack.createdAt;
+94:     await this.db.transaction([
+95:       assert("EXISTS(SELECT 1 FROM messages WHERE conversation_id=? AND request_id=?)",[c,requestId]),
+96:       assert(`NOT EXISTS(SELECT 1 FROM messages s JOIN messages l ON l.conversation_id=? AND l.request_id=?
+97:         WHERE (s.server_message_id=? OR (s.conversation_id=? AND s.server_seq=?) OR s.local_id=l.local_id)
+98:         AND (s.conversation_id<>? OR s.sender_id<>l.sender_id OR s.content<>l.content OR
+99:           (s.request_id IS NOT NULL AND s.request_id<>?) OR
+100:           (s.server_message_id IS NOT NULL AND s.server_message_id<>?) OR
+101:           (s.server_seq IS NOT NULL AND s.server_seq<>?) OR
+102:           (s.server_time IS NOT NULL AND s.server_time<>?)))`,
+103:         [c,requestId,id,c,n,c,requestId,id,n,time]),
+104:       step("DELETE FROM messages WHERE server_message_id=? AND request_id IS NULL",[id]),
+105:       step("UPDATE messages SET state='SENT',server_message_id=?,server_seq=?,server_time=? WHERE conversation_id=? AND request_id=?",
+106:         [id,n,time,c,requestId],1),
+107:       ...advance(c),
+108:     ]);
+109:   }
+110:   async userPage(page: UserPage, expectedCursor: string, failBeforeAdvance = false): Promise<void> {
+111:     if (page.syncVersion !== "1.0" || page.type !== "sync.user.page" || !page.nextCursor || [...page.nextCursor].length > 256) throw new Error("Invalid user page");
+112:     const statements: Statement[] = [assert("cursor=?", [expectedCursor])];
+113:     for (const event of page.events) {
+114:       if (!["friend.changed","conversation.changed","membership.changed","plugin.changed"].includes(event.kind)) throw new Error("Message in user cursor");
+115:       const revision = seq(event.revision);
+116:       statements.push(step(`INSERT INTO user_state VALUES(?,?,?) ON CONFLICT(kind,subject_id)
+117:         DO UPDATE SET revision=MAX(user_state.revision,excluded.revision)`,[event.kind,event.subjectId,revision],1));
+118:     }
+119:     if (failBeforeAdvance) statements.push(step("INSERT INTO __fault_injection_missing_table VALUES(1)"));
+120:     statements.push(step("UPDATE user_cursor SET cursor=? WHERE singleton=1 AND cursor=?", [page.nextCursor,expectedCursor],1));
+121:     await this.db.transaction(statements);
+122:   }
+123:   async messages(conversationId: string): Promise<(string | null)[][]> {
+124:     return this.db.query(`SELECT request_id,sender_id,content,state,server_message_id,CAST(server_seq AS TEXT),server_time
+125:       FROM messages WHERE conversation_id=? ORDER BY server_seq IS NULL,server_seq,local_id`,[conversationId]);
+126:   }
+127:   async contiguous(conversationId: string): Promise<bigint> {
+128:     const rows = await this.db.query("SELECT CAST(contiguous_seq AS TEXT) FROM conversations WHERE conversation_id=?",[conversationId]);
+129:     if (rows.length === 0) return 0n;
+130:     const value = rows[0][0];
+131:     if (typeof value !== "string" || !/^(0|[1-9][0-9]*)$/.test(value)) throw new Error("Invalid contiguous sequence");
+132:     const sequence = BigInt(value);
+133:     if (sequence > 9223372036854775807n) throw new Error("Invalid contiguous sequence");
+134:     return sequence;
+135:   }
+136:   async conversationIds(): Promise<string[]> {
+137:     return (await this.db.query("SELECT conversation_id FROM conversations UNION SELECT conversation_id FROM messages UNION SELECT subject_id FROM user_state WHERE kind IN ('conversation.changed','membership.changed') ORDER BY 1", [])).map(r=>r[0]!);
+138:   }
+139:   async cursor(): Promise<string> { return (await this.db.query("SELECT cursor FROM user_cursor WHERE singleton=1",[]))[0][0]!; }
+140: }
+
+FILE clients/shared/protocol-sdk/src/storage/schema.ts
+1: import type { Statement } from "./models.js";
+2: 
+3: // v1 is the retained old-schema fixture; v2 adds user materialization/cursor.
+4: // Fresh creation and forward migration both run in a single native transaction.
+5: export const v1: Statement[] = [
+6:   [`CREATE TABLE messages (
+7:     local_id INTEGER PRIMARY KEY,
+8:     conversation_id TEXT NOT NULL,
+9:     request_id TEXT,
+10:     sender_id TEXT NOT NULL,
+11:     content TEXT NOT NULL,
+12:     state TEXT NOT NULL CHECK(state IN ('SENDING','SENT','FAILED')),
+13:     server_message_id TEXT,
+14:     server_seq INTEGER CHECK(server_seq IS NULL OR server_seq > 0),
+15:     server_time TEXT,
+16:     CHECK((state='SENT') = (server_message_id IS NOT NULL)),
+17:     CHECK((server_message_id IS NULL) = (server_seq IS NULL)),
+18:     CHECK((server_message_id IS NULL) = (server_time IS NULL)),
+19:     UNIQUE(conversation_id,request_id),
+20:     UNIQUE(server_message_id),
+21:     UNIQUE(conversation_id,server_seq)
+22:   )`, [], null],
+23:   ["CREATE TABLE conversations (conversation_id TEXT PRIMARY KEY, contiguous_seq INTEGER NOT NULL DEFAULT 0 CHECK(contiguous_seq>=0))", [], null],
+24:   ["PRAGMA user_version=1", [], null],
+25: ];
+26: export const v2: Statement[] = [
+27:   ["CREATE TABLE user_state (kind TEXT NOT NULL, subject_id TEXT NOT NULL, revision INTEGER NOT NULL, PRIMARY KEY(kind,subject_id))", [], null],
+28:   ["CREATE TABLE user_cursor (singleton INTEGER PRIMARY KEY CHECK(singleton=1), cursor TEXT NOT NULL)", [], null],
+29:   ["INSERT INTO user_cursor VALUES(1,'0')", [], 1],
+30:   ["PRAGMA user_version=2", [], null],
+31: ];
+
+FILE clients/shared/protocol-sdk/src/sync/http.ts
+1: import {WireFailure} from "../send/wire.js";
+2: import {MAX_RESPONSE,SyncFailure,errorResponse,userRequest,conversationRequest,userPage,conversationPage} from "./wire.js";
+3: export interface SyncSession {userId:string;sessionId:string;sessionEpoch:bigint;accessToken[REDACTED]
+4: export class SyncHttp {
+5:   private readonly session:Readonly<SyncSession>;
+6:   matchesSession(check:(s:Readonly<SyncSession>)=>boolean):boolean{return check(this.session);}
+7:   private readonly base:string;private readonly token:string;
+8:   constructor(endpoint:string,session:SyncSession,private fetcher:typeof fetch=fetch,private id:()=>string=()=>crypto.randomUUID(),private transport:(error:unknown)=>boolean=error=>error instanceof TypeError || error instanceof DOMException) {
+9:     this.session=Object.freeze({...session});const accessToken[REDACTED];
+10:     let url:URL;try{url=new URL(endpoint);}catch(error){if(error instanceof TypeError)throw new SyncFailure("protocol");throw error;}
+11:     if(url.protocol!=="https:" || !url.hostname || url.username || url.password || url.search || url.hash || url.pathname!=="/" || !accessToken || /[\r\n]/.test(accessToken)) throw new SyncFailure("protocol");
+12:     this.base=url.origin;this.token=accessToken;
+13:   }
+14:   private async post(path:string,body:string,requestId:string,signal:AbortSignal):Promise<string> {
+15:     let response:Response;
+16:     try {response=await this.fetcher(this.base+path,{method:"POST",headers:{"Authorization":"Bearer "+this.token,"Content-Type":"application/json"},body,signal,redirect:"error",credentials:"omit",cache:"no-store"});}catch(error){if(error instanceof WireFailure)throw new SyncFailure("protocol");if(this.transport(error))throw new SyncFailure("transport");throw error;}
+17:       if(response.redirected || response.headers.get("cache-control")!=="no-store" || !/^application\/json(?:\s*;|$)/i.test(response.headers.get("content-type")??"")) throw new SyncFailure(response.status>=500?"transport":"protocol");
+18:       const reader=response.body?.getReader();if(!reader) throw new SyncFailure("transport");
+19:       const decoder=new TextDecoder("utf-8",{fatal:true});let raw="",size=0;
+20:       let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;
+21:       try {for(;;){
+22:         let item:ReadableStreamReadResult<Uint8Array>;
+23:         try{item=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure("transport");throw error;}
+24:         if(item.done)break;size+=item.value.byteLength;if(size>MAX_RESPONSE)throw new SyncFailure("protocol");
+25:         try{raw+=decoder.decode(item.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure("protocol");throw error;}
+26:       }
+27:       try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)throw new SyncFailure("protocol");throw error;}}
+28:       catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
+29:         if(primary){
+30:           if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
+31:           const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
+32:           if(primary.error instanceof SyncFailure && (error instanceof TypeError || error instanceof DOMException)){
+33:             const failure=new SyncFailure(primary.error.kind,primary.error.message);
+34:             Object.defineProperty(failure,"cause",{value:causes});throw failure;
+35:           }
+36:           throw causes;
+37:         }
+38:         if(error instanceof TypeError || error instanceof DOMException)throw new SyncFailure("transport");throw error;}}
+39:       if(response.status!==200) {if([400,401,403,426].includes(response.status)) throw errorResponse(raw,requestId,response.status,path.endsWith("conversation"));throw new SyncFailure("transport");}
+40:       return raw;
+41: 
+42:   }
+43:   async user(inputCursor:string,signal:AbortSignal) {const requestId=this.id();return userPage(await this.post("/v1/sync/user",userRequest(requestId,inputCursor),requestId,signal),requestId,inputCursor);}
+44:   async conversation(c:string,afterSeq:bigint,signal:AbortSignal) {const requestId=this.id();return conversationPage(await this.post("/v1/sync/conversation",conversationRequest(requestId,c,afterSeq),requestId,signal),requestId,c,afterSeq);}
+45: }
+
+FILE clients/shared/protocol-sdk/src/sync/wire.ts
+1: import {WireFailure,parse,object,uuid,positive,timestamp,content} from "../send/wire.js";
+2: import type {UserPage,UserEvent,ServerMessage} from "../storage/models.js";
+3: export const MAX_RESPONSE=6*1024*1024;
+4: export interface ConversationPage {messages:ServerMessage[];hasMore:boolean}
+5: const invalid=():never=>{throw new SyncFailure("protocol","Invalid Sync response");};
+6: const kinds=["friend.changed","conversation.changed","membership.changed","plugin.changed"];
+7: export function cursor(v:unknown):string {if(typeof v!=="string" || [...v].length<1 || [...v].length>256) return invalid();return v;}
+8: function list(v:unknown):unknown[] {if(!Array.isArray(v) || v.length>100) return invalid();return v;}
+9: function base(raw:string,keys:string[],requestId:string,type:string) {const p=object(parse(raw,MAX_RESPONSE),keys);if(p.syncVersion!=="1.0" || p.type!==type || uuid(p.requestId)!==requestId || typeof p.hasMore!=="boolean") return invalid();return p;}
+10: export function userPage(raw:string,requestId:string,inputCursor:string):UserPage {
+11:   try {
+12:     const p=base(raw,["syncVersion","type","requestId","events","nextCursor","hasMore"],requestId,"sync.user.page");
+13:     const ids=new Set<string>(), cursors=new Set<string>();
+14:     const events=list(p.events).map(v=>{const e=object(v,["eventId","cursor","kind","subjectId","revision"]);
+15:       const eventId=uuid(e.eventId), token=cursor(e.cursor);
+16:       if(ids.has(eventId) || cursors.has(token) || token===inputCursor || typeof e.kind!=="string" || !kinds.includes(e.kind)) return invalid();
+17:       ids.add(eventId);cursors.add(token);
+18:       return {eventId,cursor:token,kind:e.kind,subjectId:uuid(e.subjectId),revision:positive(e.revision)} as UserEvent;
+19:     });
+20:     const nextCursor=cursor(p.nextCursor),hasMore=p.hasMore as boolean;
+21:     if(events.length ? nextCursor!==events.at(-1)!.cursor || nextCursor===inputCursor : nextCursor!==inputCursor || hasMore) return invalid();
+22:     return {syncVersion:"1.0",type:"sync.user.page",requestId,events,nextCursor,hasMore};
+23:   } catch(error) {if(error instanceof WireFailure) return invalid(); throw error;}
+24: }
+25: export function conversationPage(raw:string,requestId:string,conversationId:string,afterSeq:bigint):ConversationPage {
+26:   try {
+27:     const p=base(raw,["syncVersion","type","requestId","conversationId","messages","hasMore"],requestId,"sync.conversation.page");
+28:     if(uuid(p.conversationId)!==conversationId) return invalid();
+29:     let next=afterSeq+1n;const ids=new Set<string>(),requests=new Set<string>();
+30:     const messages=list(p.messages).map(v=>{const m=object(v,["conversationId","seq","messageId","senderId","requestId","createdAt","content"]);
+31:       const messageId=uuid(m.messageId),rid=uuid(m.requestId),seq=positive(m.seq);
+32:       if(uuid(m.conversationId)!==conversationId || seq!==next++ || ids.has(messageId) || requests.has(rid)) return invalid();
+33:       ids.add(messageId);requests.add(rid);
+34:       return {conversationId,seq,messageId,senderId:uuid(m.senderId),requestId:rid,createdAt:timestamp(m.createdAt),content:content(m.content)};
+35:     });
+36:     if(p.hasMore && !messages.length) return invalid();
+37:     return {messages,hasMore:p.hasMore as boolean};
+38:   } catch(error) {if(error instanceof WireFailure) return invalid(); throw error;}
+39: }
+40: export class SyncFailure extends Error {constructor(readonly kind:"authentication"|"unavailable"|"protocol"|"transport"|"storage",message="Sync "+kind+" failure") {super(message);}}
+41: export function errorResponse(raw:string,requestId:string,status:number,conversation:boolean):SyncFailure {
+42:   try {
+43:     const p=object(parse(raw,MAX_RESPONSE),["requestId","error"]);if(uuid(p.requestId)!==requestId) return invalid();
+44:     const e=p.error as Record<string,unknown>;if(!e || typeof e!=="object" || Array.isArray(e) || Object.keys(e).some(k=>!["code","message","violations"].includes(k)) || typeof e.message!=="string" || !e.message) return invalid();
+45:     if(e.violations!==undefined) {if(!Array.isArray(e.violations)) return invalid();for(const v of e.violations){const f=object(v,["field","reason"]);if(typeof f.field!=="string" || !f.field || typeof f.reason!=="string" || !f.reason) return invalid();}}
+46:     if(typeof e.code!=="string") return invalid();
+47:     if(status===401 && ["AUTH_REQUIRED","AUTH_TOKEN_INVALID","AUTH_TOKEN_EXPIRED","AUTH_SESSION_REVOKED","AUTH_SESSION_EPOCH_STALE","AUTH_CLIENT_TYPE_MISMATCH"].includes(e.code)) return new SyncFailure("authentication");
+48:     if(conversation && status===403 && e.code==="AUTHORIZATION_DENIED") return new SyncFailure("unavailable");
+49:     if(status===400 && e.code==="VALIDATION_FAILED" || status===426 && e.code==="PROTOCOL_VERSION_UNSUPPORTED") return new SyncFailure("protocol");
+50:     return invalid();
+51:   } catch(error) {if(error instanceof WireFailure || error instanceof SyncFailure) return new SyncFailure("protocol"); throw error;}
+52: }
+53: export function userRequest(requestId:string,inputCursor:string):string {return JSON.stringify({syncVersion:"1.0",type:"sync.user.request",requestId:uuid(requestId),cursor:cursor(inputCursor),limit:100});}
+54: export function conversationRequest(requestId:string,c:string,afterSeq:bigint):string {if(afterSeq<0n) return invalid();return JSON.stringify({syncVersion:"1.0",type:"sync.conversation.request",requestId:uuid(requestId),conversationId:uuid(c),afterSeq:"SEQ",limit:100}).replace('"SEQ"',afterSeq.toString());}

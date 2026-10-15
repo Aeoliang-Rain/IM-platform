@@ -23,7 +23,7 @@ func newMessageCommitError(err error) error {
 	if errors.Is(err, pgx.ErrTxCommitRollback) || (errors.As(err, &rejection) && rejection.Code == "P0001") {
 		return err
 	}
-	return fmt.Errorf("%w: %v", errCommitUnknown, err)
+	return fmt.Errorf("%w: %w", errCommitUnknown, err)
 }
 
 type textContent struct {
@@ -151,7 +151,7 @@ func (s *authService) commitMessage(ctx context.Context, c claims, v sendFrame) 
 			return m, fail(409, "MESSAGE_REQUEST_CONFLICT", "Request rejected")
 		}
 		if err = tx.Commit(ctx); err != nil {
-			err = fmt.Errorf("%w: %v", errCommitUnknown, err)
+			err = fmt.Errorf("%w: %w", errCommitUnknown, err)
 		}
 		return m, err
 	}

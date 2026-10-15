@@ -1,0 +1,81 @@
+{
+  "sha": "a292f516f622651ae62595163e479c13fff78c1d",
+  "native_protected_checked": [
+    "clients/desktop/src-tauri/src/database.rs",
+    "clients/desktop/src/storage/database.ts",
+    "clients/desktop/src/ui/components/Composer.tsx",
+    "clients/mobile/app/src/androidTest/kotlin/im/platform/client/storage/StorageInstrumentation.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt"
+  ],
+  "priorFix_commands": [
+    {
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "tests/clients/gui/native.py",
+          "mobile",
+          "--serial",
+          "emulator-5596"
+        ],
+        "command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+        "duration_ms": 52219.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stderr.txt",
+        "stderr_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "stdout_blob": "blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stdout.txt",
+        "stdout_sha256": "edd38fdfaf44a6db659194d0fcf16dde7e9951b8431933dd29816d3775c92263"
+      },
+      "observed": [
+        "assertions=69",
+        "readAssertions=33",
+        "contiguousReadAssertions=18"
+      ]
+    },
+    {
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "tests/clients/gui/native.py",
+          "send-mobile",
+          "--serial",
+          "emulator-5594"
+        ],
+        "command_id": "C-c2dcfa92-07fa-4cd4-9c83-1e265280abf4",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-c2dcfa92-07fa-4cd4-9c83-1e265280abf4",
+        "duration_ms": 24359.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-c2dcfa92-07fa-4cd4-9c83-1e265280abf4.stderr.txt",
+        "stderr_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "stdout_blob": "blobs/C-c2dcfa92-07fa-4cd4-9c83-1e265280abf4.stdout.txt",
+        "stdout_sha256": "36e81e78fc73c48b1744857e073200fb9aa3092e411748f1684b480259d16a57"
+      },
+      "observed": [
+        "assertions=66",
+        "sendReadAssertions=21"
+      ]
+    }
+  ],
+  "current_QA_source_sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2",
+  "current_final_test_apk_sha256": "3ee95cb2381519954021d992f885a85d3aa3bb13018a11a63586c78b54c79887",
+  "limits": "Previous actual Fix runtime independently read/hash bound; not this reviewer execution. Send preserved testAPK later replaced by Sync builds, command/output hashes establish prior66+21 execution, not a newAPK source attestation. Initial3malformedchecks unreliable; only correctedfinal18 accepted as supporting evidence. Broad Rust/native prior evidence not freshly rerun."
+}

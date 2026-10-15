@@ -1,0 +1,22 @@
+Get-Content : A positional parameter cannot be found that accepts argument '3,5,6,8,9'.
+At line:1 char:55
++ ... tecture.md; Get-Content spec/architecture/decisions/ADR-000{3,5,6,8,9 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-Content], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+ 
+Get-Content : A positional parameter cannot be found that accepts argument '0,1,2'.
+At line:1 char:119
++ ... 6,8,9}*.md; Get-Content spec/architecture/decisions/ADR-001{0,1,2}*.m ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-Content], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+ 
+Get-Content : An object at the specified path contracts/http/*.yaml does not exist, or has been filtered by the -Includ
+e or -Exclude parameter.
+At line:1 char:413
++ ... Content contracts/websocket/*.json; Get-Content contracts/http/*.yaml
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (System.String[]:String[]) [Get-Content], Exception
+    + FullyQualifiedErrorId : ItemNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+ 

@@ -1,0 +1,5 @@
+Exact production Https.kt SHA256 32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08
+OBSERVED im.platform.client.sync.SyncFailure kind=transport
+primary suppressed cleanup identity=true
+projected cause=null suppressedCount=0
+REPRODUCED: actual production SyncHttps discards unknown cleanup root and projects mixed failure as known transport

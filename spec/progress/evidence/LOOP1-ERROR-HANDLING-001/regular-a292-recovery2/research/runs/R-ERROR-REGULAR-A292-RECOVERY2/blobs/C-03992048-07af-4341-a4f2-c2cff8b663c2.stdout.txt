@@ -1,0 +1,115 @@
+{"argv": ["C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe", "-Xutf8", "-B", "tools/verify_frozen_architecture.py"], "exit_code": 0, "elapsed_seconds": 0.3589999999999236}
+PASS: v1.1 current SHA/PDF provenance/ADR and section-bound semantic structure; historical migration semantic_change=false; current revision semantic_change=true
+
+
+{"argv": ["C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe", "-Xutf8", "-B", "ci/check_architecture.py", "--scope", "all", "--json"], "exit_code": 0, "elapsed_seconds": 15.938000000000102}
+2",
+          "SELECT count(*) FROM conversations WHERE direct_user_low_id=$1 AND direct_user_high_id=$2",
+          "SELECT count(*) FROM conversation_members WHERE conversation_id=$1",
+          "reverse concurrent add did not converge for %s",
+          "../../../contracts/fixtures/auth-user-friend/loop1-exceptions.json",
+          "json:\"loop\"",
+          "json:\"scenarioId\"",
+          "json:\"status\"",
+          "json:\"runtimeAcceptanceRequired\"",
+          "json:\"countsAsPass\"",
+          "json:\"exceptions\"",
+          "Loop1",
+          "unexpected applicability profile",
+          "friend-add-authorization-denied",
+          "DEFERRED_BY_HUMAN",
+          "unapproved exception",
+          "../../../contracts/fixtures/auth-user-friend/negative.json",
+          "DISPOSITION friend-add-authorization-denied DEFERRED_BY_HUMAN; runtime not executed; does not count as canonical PASS",
+          "SELECT user_id FROM users WHERE user_id=$1 FOR UPDATE",
+          "PUT",
+          "/v1/friends/",
+          "SELECT count(*) FROM pg_stat_activity WHERE datname=current_database() AND wait_event_type='Lock' AND query LIKE 'SELECT user_id FROM users WHERE user_id=%'",
+          "Social request did not wait for account lock",
+          "UPDATE sessions SET expires_at=now()-interval '1 second' WHERE user_id=$1 AND client_type='WEB'",
+          "error",
+          "code",
+          "AUTH_SESSION_REVOKED",
+          "expired Session accepted after lock",
+          "request did not unblock",
+          "SELECT count(*) FROM friendships WHERE user_low_id=$1 OR user_high_id=$1",
+          "SELECT count(*) FROM user_sync_events WHERE user_id=$1",
+          "SELECT count(*) FROM outbox_events WHERE aggregate_type='user' AND aggregate_id=$1",
+          "rejected Session left social effects"
+        ]
+      }
+    ],
+    "java": [
+      {
+        "path": "InfraPlaceholder.java",
+        "owner": "root",
+        "package": "",
+        "strings": [
+          "gateway",
+          "core",
+          "plugin-host",
+          "expected gateway, core, or plugin-host role",
+          "placeholder request failed: ",
+          " ",
+          "malformed request line",
+          "Sec-WebSocket-Key",
+          "Upgrade",
+          "websocket",
+          "gateway",
+          "/__infra/ws",
+          "SHA-1",
+          "258EAFA5-E914-47DA-95CA-C5AB0DC85B11",
+          "HTTP/1.1 101 Switching Protocols\\r\\nUpgrade: websocket\\r\\nConnection: Upgrade\\r\\nSec-WebSocket-Accept: ",
+          "\\r\\n\\r\\n",
+          "/__infra/health",
+          "profile=java role=",
+          "\\n",
+          "HTTP/1.1 200 OK\\r\\nContent-Type: text/plain; charset=utf-8\\r\\nContent-Length: ",
+          "\\r\\nConnection: close\\r\\n\\r\\n",
+          "HTTP/1.1 404 Not Found\\r\\nContent-Length: 0\\r\\nConnection: close\\r\\n\\r\\n"
+        ],
+        "types": [
+          "InfraPlaceholder"
+        ]
+      }
+    ]
+  }
+}
+
+
+{"argv": ["C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe", "-Xutf8", "-B", "ci/check_s2_planning.py"], "exit_code": 0, "elapsed_seconds": 0.3430000000000746}
+PASS: planning queue/authority/dependencies; OPEN Stage Gate not evaluated
+
+
+{"argv": ["C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe", "-Xutf8", "-B", "-m", "unittest", "discover", "-s", "tests/architecture", "-v"], "exit_code": 0, "elapsed_seconds": 34.187999999999874}
+
+import_cannot_bypass_dependency) ... ok
+test_legal_single_module_go_runtime_and_blackbox_test (test_source_boundaries.SourceTests.test_legal_single_module_go_runtime_and_blackbox_test) ... ok
+test_main_whitelisted_name_cannot_hide_business (test_source_boundaries.SourceTests.test_main_whitelisted_name_cannot_hide_business) ... ok
+test_placeholder_exit_and_business_not_permanent_exception (test_source_boundaries.SourceTests.test_placeholder_exit_and_business_not_permanent_exception) ... ok
+test_plain_bullet_task_path_checked_and_legal_core_accepted (test_source_boundaries.SourceTests.test_plain_bullet_task_path_checked_and_legal_core_accepted) ... ok
+test_real_old_go_layout_rejected_without_name_hardcoding (test_source_boundaries.SourceTests.test_real_old_go_layout_rejected_without_name_hardcoding) ... ok
+test_root_new_business_and_unapproved_internal (test_source_boundaries.SourceTests.test_root_new_business_and_unapproved_internal) ... ok
+test_root_test_name_cannot_hide_business (test_source_boundaries.SourceTests.test_root_test_name_cannot_hide_business) ... ok
+test_shared_generic_repository_call_rejected_without_sql_literal (test_source_boundaries.SourceTests.test_shared_generic_repository_call_rejected_without_sql_literal) ... ok
+test_shared_java_connection_factory_is_support_not_repository (test_source_boundaries.SourceTests.test_shared_java_connection_factory_is_support_not_repository) ... ok
+test_shared_reverse_dependency_and_moved_full_auth (test_source_boundaries.SourceTests.test_shared_reverse_dependency_and_moved_full_auth) ... ok
+test_syntax_failure_cannot_be_skipped (test_source_boundaries.SourceTests.test_syntax_failure_cannot_be_skipped) ... ok
+test_workflow_missing_commands_dependencies_and_suppression_rejected (test_source_boundaries.SourceTests.test_workflow_missing_commands_dependencies_and_suppression_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 82 tests in 32.347s
+
+OK (skipped=1)
+
+{"argv": ["C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe", "-NoProfile", "-File", "tools/verify-loop1-ctrl-002.ps1", "-Mode", "Development"], "exit_code": 0, "elapsed_seconds": 26.797000000000025}
+NON-ACCEPTANCE DEVELOPMENT MODE: dirty worktree is permitted; this output MUST NOT be used as acceptance evidence.
+PASS: generic repository recovery verified task=LOOP1-ERROR-HANDLING-001 state=review mode=Development queues=5 task_specs=36.
+GIT: branch=task/LOOP1-ERROR-HANDLING-001 status_entries=0 diff_lines=0 recent_commits=5.
+
+
+{"argv": ["C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe", "-NoProfile", "-File", "tools/verify-loop1-ctrl-002.ps1", "-Mode", "Acceptance"], "exit_code": 0, "elapsed_seconds": 26.6400000000001}
+PASS: generic repository recovery verified task=LOOP1-ERROR-HANDLING-001 state=review mode=Acceptance queues=5 task_specs=36.
+GIT: branch=task/LOOP1-ERROR-HANDLING-001 status_entries=0 diff_lines=0 recent_commits=5.
+
+

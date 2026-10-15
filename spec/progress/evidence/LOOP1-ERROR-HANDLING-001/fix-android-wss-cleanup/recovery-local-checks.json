@@ -1,0 +1,90 @@
+{
+  "candidate_binding": "Final task HEAD via external final receipt after clean commit",
+  "baseline": "8f5f2b4275652d8e3fdff343d6a286ac805ad14a",
+  "final_checks": [
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.0
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 2.92200000000048
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.8279999999995198
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 20.79700000000048
+    },
+    {
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 20.125
+    }
+  ],
+  "production_inputs": 185,
+  "navigation": {
+    "records": 318,
+    "executable": 283,
+    "nonexecutable": 35
+  },
+  "protected_inputs": 65,
+  "production_delta": [
+    "clients/desktop/src/application/ui/auth.ts",
+    "clients/desktop/src/application/ui/workspace.ts",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt"
+  ],
+  "frozen_unchanged": true,
+  "old80_reconstruction_verified": true,
+  "current_native_refresh": 5,
+  "current_native_HttpCleanup": 32,
+  "current_native_WssCleanup": 21,
+  "current_JVM_Wss": 21,
+  "current_JVM_refresh": 5,
+  "current_Desktop_focused": 37,
+  "independent_regular": "PENDING",
+  "independent_specialized": "PENDING",
+  "CI_main_sync": "PENDING"
+}

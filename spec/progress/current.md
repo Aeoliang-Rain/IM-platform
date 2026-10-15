@@ -4,56 +4,53 @@ Current Loop: Loop 1
 Current Stage: S2
 Current Gate: S2
 Gate Status: OPEN
-Current Batch: LOOP1-CLIENT-I18N-001
-Batch Status: DONE
-Current Task: LOOP1-CLIENT-I18N-001
-Current Task State: done
-Execution Status: ADMINISTRATIVE_CLOSURE_REVIEW_PENDING
-Owned Trust Lease: CLOSED; exact own CA absent both stores. Dated Oct12 restoration PASS, later Oct13 unrelated user-root difference preserved.
+Current Batch: LOOP1-ERROR-HANDLING-001
+Batch Status: REVIEW_PENDING
+Current Task: LOOP1-ERROR-HANDLING-001
+Current Task State: review
+Execution Status: AWAITING_NEW_FINAL_SHA_REGULAR_REVIEW_AND_SPECIALIZED_AUDIT
 
 ## Immediately Relevant Completed Work
 
-Three-end i18n product independently accepted exact99a2dd70fa6c70a69762663ccc7ce38b20013d63; Native Architect PASS including fixed offline indicator. Protected PR38 integrated actual82cd512f659873a9d17cbef803da1acb873613cc. Exact candidate38354231620 and actual-main38355749163 all14 jobs SUCCESS. H:/IM-platform safe sync PASS all782 original unknown files/status/index/branch preserved. Separate en/ja artifacts generated from actual82, NOT_PUBLISHED. Full history/index: spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/acceptance-manifest.json.
+Formal fresh regular e186054 FAIL F1/F2 archived315+receipt. Fresh sole Fix /root/fix_retirement_gateway repairs actual Desktop retirement consumers/final observer roots and Gateway DB-unavailable false revocation. Current185/339(304 executable35 nonexecutable)/65protected bound; only2 production files differ e186, Android59graph unchanged. Actual fresh Desktop39+owner12+parallel37/Auth and Go default producer/closedpool/internal/genuine invalidation controls PASS; real PG16/NATS2.10 fullGo noSKIP, finalrace/vet PASS. Full current method/results/limits: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/handoff.md.
 
 ## Current Blockers
 
-No product blocker. Administrative closure still requires fresh independent bounded Review, exact-head hosted CI/protected integration/actual-main verification/safe sync and external final seal. Issue37 explicitly excluded, no next task selected.
+NEW complete regular then DIFFERENT NEW specialized audit SAME final clean SHA PENDING. Exact-head hosted CI/protected integration/actual-main/safe H:/IM-platform synchronization PENDING. No push/CI-triggering PR before both reviews PASS. Taskdone/S2PASS forbidden; local evidence is not acceptance.
 
 ## Verification
 
-- Command: `& "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe" -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: PASS (exit 0), retained fresh independent product-candidate verification; administrative closure remains pending.
-  - Evidence: `spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/independent-checks.json`
-
-- Fresh independent clean candidate checks: frozen architecture, S2 planning, architecture all, recovery Acceptance, language-pack verification/three unit tests and actual resource/adapter/Workspace checks PASS; spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/independent-checks.json.
-- Exact99 pull_request hosted run38354231620 and actual82 push run38355749163: all14 required jobs SUCCESS; raw jobs/runs and platform conditional-skip audit in spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013.
-- Guarded main integration: PASS782 original bytes/status/cached diff/index flags/branch; spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/product-main-sync-20261013.json.
-- Actual82 clean standalone pack builder: PASS deterministic keys/placeholders/body/size/digest; spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/accepted-language-pack-delivery-20261013.json. Packages not published.
+- Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
+  - Result: fresh final current frozen/PDF/architectureall/planning/82tests PASS; local only, one existing Windows skip.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/final-static.json`
+- Command: `pwsh -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development`
+  - Result: fresh final current Development PASS; clean committed Acceptance/postclean follows sealed external receipt; local only.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/command-history.json`
 
 ## Changed Files or Migrations
 
-Three-end language presentation/resources/preferences and standalone pack builder already accepted/synced; final Desktop Navigation connection indicator repair. Current changes only accepted evidence/index, task review->done, current/checkpoint. No contract/schema/security/dependency change.
+Production only Desktop ui/workspace.ts and Go gateway/gateway.go relativee186. Focused actual tests and F2 false fixture/expectation correction; no weakening genuine revoked/replaced/logout/expiry/write-failure assertions. Inventory/navigation/evidence/recovery metadata only.65protected exacte186:63wholeaccepted35 plus2prior Human READmapper exceptions; SQL/allotherRepo bytes unchanged. No Android/Auth/Prefs/nativeDB/SQL/write/Composer/draft/Frozen/ADR/contracts/security/ACK/dependency change.
 
 ## Known Failures, Risks, and Assumptions
 
-Prior Android/Web pixels/native indicator/transport/trust/build metadata failures retained and bounded repairs independently accepted. No fabricated full native A/B/OS notification-card/new first-send RID proof. Oct12 full root restoration PASS is dated; Oct13 own CA absent, machine72 unchanged, user72 has two OTHER removed roots (unknown owner/cause, preserved); strict fresh equality audit FAIL retained. Research prospective_resume/incomplete trace and recorder lock collision with unavailable one finish/duration disclosed, not silently repaired. Task PASS is not S2 Gate PASS.
+Preserved cwd failure, expectedRED, newtest mistaken observer-only identity, real0A000 preceding intendedscan, oldclosedpoolfalseREVOKED expectation, cross-drive generated-pyc move failure; exact fixes/limits in handoff. Own latest live-driver snapshots do not reconstruct unavailable first per-child timing; outer raw failure output preserved. Startup/direct diagnostic/helper/truncated-read gaps disclosed. Qualified old API34graphs are not new runtime observations. Local full-scope bindings are not independent semantic acceptance.
 
 ## Next Exact Action
 
-Commit closure in assigned task worktree; delegate fresh independent bounded administrative Review; require exact-head hosted/protected PR/actual-main/safe main sync and external final seal. Do not implementissue37, repeat user-accepted zh/ja tray or activate next Task.
+Final static/Development PASS. Complete task-owned clean commit/Acceptance/postclean and sealed RELEASED receipt. Coordinator NEW complete regular185/339/65 -> DIFFERENT NEW specialist SAME finalSHA; any Fix repeats both. BothPASS then exact-head required hostedCI/protectedintegration/actual-main/safe main sync. All acceptance/mainSHA/synchronization PENDING.
 
 ## Last Known Good Commit
 
-`82cd512f659873a9d17cbef803da1acb873613cc`: protected integrated product actual-main all14 SUCCESS, safely synchronized H:/IM-platform. Branch task/LOOP1-CLIENT-I18N-001 now based on this accepted main.
+`35bd6f5f1091503f95a0282f730ed04233b0b6ea` accepted I18N/main. Candidate exact committed task HEAD is externally sealed; candidate commit is not main acceptance/sync.
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-13-loop1-client-i18n-001-accepted.md`; product proof spec/progress/evidence/LOOP1-CLIENT-I18N-001/accepted-20261013/acceptance-manifest.json. Administrative confirmation remains pending at this source generation; consume later exact-bound external final seal without recursively rewriting accepted evidence.
+`spec/progress/checkpoints/2026-10-15-error-handling-retirement-gateway-review-candidate.md` local recovery only.
 
 ## Uncommitted Changes / Ownership
 
-Parent sole writer owns administrative closure in H:/.codex/worktrees/i18n/IM-platform, task/LOOP1-CLIENT-I18N-001; known tests/clients/i18n/.runtime generated artifacts remain untracked/excluded. Product source synchronized. All782 unknown main files preserved, never adopted. No live owned trust/native/backend lease. Fresh reviewer read-only.
+Sole /root/fix_retirement_gateway owns this iteration until clean commit/released receipt. Exact assigned root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001. Main H:/IM-platform782unknown/two tracked edits untouched. Own disposable PG/NATS resources removed by verified labels; owned generated bytecode preserved externally. No private device/globaltrust/ACL/main write.
 
 ## Architecture Conflicts / ACP / ADR
 
-None. Frozen/ADR12 unchanged; S1 PASS/S2 OPEN. Builtin3/en default/fallback retained under latest Human scope; unpublished packs and issue37 exclusion explicit. Administrative acceptance does not reopen or advance stage gates.
+None. Existing authorized TypeScript/Go and literal lifecycle boundaries only. Both final reviews/CI/integration/main/sync PENDING; S2 OPEN.

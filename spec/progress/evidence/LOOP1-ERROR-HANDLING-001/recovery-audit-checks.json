@@ -1,0 +1,227 @@
+{
+  "result": "PASS",
+  "scope": "Read-only recovery acceptance integrity; not new error task review, no runtime/trust mutation.",
+  "seal_sha256": "d8d6fe2107a946bbb9aaae7c489863ab000eecf927b0009fc477ebef282dad5a",
+  "actual_main": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "checks": [
+    {
+      "name": "seal:administrative-independent-20261013/report.md",
+      "pass_": true,
+      "detail": "0f4a99f379050ce9e556bd3ec92111826d995371363442cc7147aa673bff818c"
+    },
+    {
+      "name": "seal:administrative-fix-20261013/checks.json",
+      "pass_": true,
+      "detail": "15dc4f9a6e71a78d21e6fc5ccf3ff0f7fe6c725c21328c0772570a5a21728361"
+    },
+    {
+      "name": "seal:administrative-independent-fixed-20261013/report.md",
+      "pass_": true,
+      "detail": "1defaad963a0d6bbcd4a472045e67ddeb77c1623f1668dad0fc47de37e00fb43"
+    },
+    {
+      "name": "seal:admin-hosted-acceptance-20261013.json",
+      "pass_": true,
+      "detail": "bb62ddb481ba80ac7d75962d503ff9dfc78b0f887d351ddc55f9a0fec0dd8d9c"
+    },
+    {
+      "name": "seal:admin-main-hosted-acceptance-20261013.json",
+      "pass_": true,
+      "detail": "8328dbafa848e7493f8caf28280f1b8ca969ee2465c8a4f8fdc6e75199a3bffa"
+    },
+    {
+      "name": "seal:admin-protected-merge-20261013.json",
+      "pass_": true,
+      "detail": "6039048d44ef14a0f0532eaf09dfba53284473fb5f373bdfea2fbfc1819837c9"
+    },
+    {
+      "name": "seal:admin-main-sync-20261013.json",
+      "pass_": true,
+      "detail": "edf53a7ea975fce1a921b4b9df4e0704a6fb95a6e2bd859ce5e3d0c2dd2c6e56"
+    },
+    {
+      "name": "seal:product-main-sync-20261013.json",
+      "pass_": true,
+      "detail": "82ce712a406f89bbfea9e86504fb2edff69efd6b6f3d2a1d1834f07e8e09c5fd"
+    },
+    {
+      "name": "seal:accepted-language-pack-delivery-20261013.json",
+      "pass_": true,
+      "detail": "a890197b735b52373afd777330bec433722f29c5cac09f859b3bea288c5a88c4"
+    },
+    {
+      "name": "seal:native-status-repair/captures/manifest.json",
+      "pass_": true,
+      "detail": "7d02d1994e3de1b21abf1b7304e0b73c39c90b82f15185fdc268992e6d90e516"
+    },
+    {
+      "name": "seal:recorder-final-validation-20261013.json",
+      "pass_": true,
+      "detail": "3ab21342ea6bcf1e40d3f06304a19d292e7057754f50d3c2416611290d0d00a0"
+    },
+    {
+      "name": "assigned root",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "assigned exact head",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "main exact head",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "assigned clean",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "closure and merged trees equal",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "spec/architecture/frozen-architecture.md",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "scalable-distributed-im-architecture.pdf",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "unique done task",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr raw run hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr raw jobs hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr exact run",
+      "pass_": true,
+      "detail": {
+        "head": "d23cb3a7677ecb82aa8f9bde1e2a15202ab7c4cb",
+        "event": "pull_request",
+        "id": 38360464235
+      }
+    },
+    {
+      "name": "admin-pr required architecture",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr required classify",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr required gate",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr required source_go",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr required source_java",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-pr only expected skips",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main raw run hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main raw jobs hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main exact run",
+      "pass_": true,
+      "detail": {
+        "head": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+        "event": "push",
+        "id": 38360750403
+      }
+    },
+    {
+      "name": "admin-main required architecture",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main required classify",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main required gate",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main required source_go",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main required source_java",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "admin-main only expected skips",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "PR39 merged exact",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "safe main sync receipt",
+      "pass_": true,
+      "detail": {
+        "result": "PASS",
+        "beforeHead": "82cd512f659873a9d17cbef803da1acb873613cc",
+        "mainSHA": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+        "branchPreserved": "recovery/s1-handoff-20261001",
+        "changedTaskPaths": 21,
+        "originalUnknownFiles": 782,
+        "checks": {
+          "head": true,
+          "branch": true,
+          "status": true,
+          "cachedDiff": true,
+          "original782Bytes": true,
+          "unrelatedIndexFlags": true
+        },
+        "method": "Existing accepted tree/index then guarded current-branch ref update; unknown bytes/status/index flags preserved"
+      }
+    }
+  ]
+}

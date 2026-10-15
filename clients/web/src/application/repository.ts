@@ -1,3 +1,4 @@
+import {WireFailure} from '../../../shared/protocol-sdk/src/send/wire.js';
 import type {LocalMessage,ServerMessage,Committed,RealtimeMessage,State} from '../../../shared/protocol-sdk/src/storage/models.js';
 export interface Message extends LocalMessage {state:State;messageId?:string;seq?:bigint;createdAt?:string}
 export class MemoryRepository {
@@ -20,14 +21,14 @@ export class MemoryRepository {
   page(c:string,after:bigint,messages:ServerMessage[]){
     // Validate entire page against the current view before publishing anything.
     let next=after+1n;const draft=new MemoryRepository();draft.rows=this.rows.map(m=>({...m,content:{...m.content}}));draft.cursors=new Map(this.cursors);draft.starts=new Map(this.starts);
-    for(const m of messages){if(m.conversationId!==c||BigInt(m.seq)!==next++)throw new Error('Sync gap');draft.commit(m);}
+    for(const m of messages){if(m.conversationId!==c||BigInt(m.seq)!==next++)throw new WireFailure();draft.commit(m);}
     this.rows=draft.rows;this.cursors=draft.cursors;this.starts=draft.starts;
   }
   private commit(m:ServerMessage){
     const seq=BigInt(m.seq);
     const existing=this.rows.find(v=>v.conversationId===m.conversationId&&v.requestId===m.requestId);
     const collision=this.rows.find(v=>(v.messageId===m.messageId||v.conversationId===m.conversationId&&v.seq===seq)&&v!==existing);
-    if(collision||existing&&(existing.senderId!==m.senderId||existing.content.text!==m.content.text||existing.state==="SENT"&&(existing.messageId!==m.messageId||existing.seq!==seq)))throw new Error('Conflicting committed identity');
+    if(collision||existing&&(existing.senderId!==m.senderId||existing.content.text!==m.content.text||existing.state==="SENT"&&(existing.messageId!==m.messageId||existing.seq!==seq)))throw new WireFailure();
     const row:Message={...m,content:{...m.content},seq,state:"SENT"};
     if(existing)Object.assign(existing,row);else this.rows.push(row);
     const oldStart=this.starts.get(m.conversationId);const start=oldStart===undefined||seq<oldStart?seq:oldStart;this.starts.set(m.conversationId,start);

@@ -17,3 +17,7 @@ Alongside correctness, security, contracts, and acceptance, review added complex
 Ask: **If this code or abstraction were removed or simplified, would every currently approved acceptance criterion still pass?** If yes, request deletion or simplification, or a concrete current requirement and evidence justifying it. A finding must cite that requirement or evidence gap and the affected code. Personal style preference and a raw size or LOC threshold are not findings. Reviewers cannot change product requirements, public contracts, or Frozen Architecture; a conflict follows the approved architecture process.
 
 Complexity delta (files, production/test lines, dependencies, public symbols, configuration, database objects, services) may help focus review. It is a signal, never an automatic score or FAIL.
+
+## 无依据防御与静默兜底
+
+执行 [错误处理治理](error-handling.md)：未知异常、内部编程错误和不变量破坏正常传播，使操作/测试/进程明确失败，必要时允许崩溃。不能假空数据/默认成功/错误分类失真/只日志继续；每项保留捕获或回退须说明具体故障、当前依据及真实恢复。只用现行必要机制，不添加通用错误/日志/重试框架。

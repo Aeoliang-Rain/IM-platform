@@ -1,0 +1,442 @@
+[
+  {
+    "composite_identity": "28|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH028",
+    "ordinal": 28,
+    "id": "RH028",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 24,
+    "column": 60,
+    "actual_source": "    if response.content_length().map(|n|n>MAX_BODY as u64).unwrap_or(false){return Err(\"HTTPS response too large\".into());}",
+    "source_sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: if response.content_length().map(|n|n>MAX_BODY as u64).unwrap_or(false){return Err(\"HTTPS response too large\".into());}",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "Response omits Content-Length; content_length() returns None",
+      "present_authority": "Frozen6.1; ADR0009 existing narrow native adapter",
+      "actual_recovery_or_failure": "None makes only the preallocation size guard false. Chunk-by-chunk MAX_BODY enforcement still rejects oversize bytes; no native error is caught at this expression."
+    }
+  },
+  {
+    "composite_identity": "29|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH029",
+    "ordinal": 29,
+    "id": "RH029",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 58,
+    "column": 9,
+    "actual_source": "        _=>return Err(\"Window action invalid\".into()),",
+    "source_sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: _=>return Err(\"Window action invalid\".into()),",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "window_control receives action outside the four authorized strings",
+      "present_authority": "Frozen6.1; ADR0009 existing narrow native adapter",
+      "actual_recovery_or_failure": "Return Window action invalid and reject the command; do not perform an OS action or substitute success."
+    }
+  },
+  {
+    "composite_identity": "30|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH030",
+    "ordinal": 30,
+    "id": "RH030",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 80,
+    "column": 88,
+    "actual_source": "    match std::str::from_utf8(&bytes){Ok(value) if valid_language(value)=>value.into(),_=>\"en\".into()}",
+    "source_sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: match std::str::from_utf8(&bytes){Ok(value) if valid_language(value)=>value.into(),_=>\"en\".into()}",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "Language file bytes fail UTF8 or exact en/zh-CN/ja-JP enum",
+      "present_authority": "Frozen6.6; ADR0012 literal locale resources and display-only interpolation",
+      "actual_recovery_or_failure": "Return en as expressly authorized invalid language fallback. Does not handle window/credential/native command errors."
+    }
+  },
+  {
+    "composite_identity": "31|clients/desktop/src-tauri/src/desktop_capabilities.rs|RH031",
+    "ordinal": 31,
+    "id": "RH031",
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "line": 99,
+    "column": 292,
+    "actual_source": "    tauri::tray::TrayIconBuilder::with_id(\"im-plus\").icon(icon).tooltip(\"IM+ · Your workspace\").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){\"open\"=>show(app),\"hide\"=>{if let Some(w)=app.get_webview_window(\"main\"){w.hide().expect(\"Window hide failed\");}},\"quit\"=>app.exit(0),_=>{}}).build(app)?;",
+    "source_sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: tauri::tray::TrayIconBuilder::with_id(\"im-plus\").icon(icon).tooltip(\"IM+ · Your workspace\").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){\"open\"=>show(app),\"hide\"=>{if let Some(w)=app.get_webview_window(\"main\"){w.hide().expect(\"Window hide failed\");}},\"quit\"=>app.exit(0),_=>{}}).build(app)?;",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "Tray menu event ID differs from open/hide/quit",
+      "present_authority": "Frozen6.1; ADR0009 existing narrow native adapter",
+      "actual_recovery_or_failure": "No app action for an unowned menu ID. Current owned IDs dispatch show/hide/exit; window failures panic. This is menu dispatch, not capability-failure recovery."
+    }
+  },
+  {
+    "composite_identity": "107|clients/desktop/src/ui/i18n/resources.ts|RH109",
+    "ordinal": 107,
+    "id": "RH109",
+    "path": "clients/desktop/src/ui/i18n/resources.ts",
+    "line": 17,
+    "column": 81,
+    "actual_source": " return template.replace(/\\{([A-Za-z]+)\\}/g,(_,name:string)=>String(params[name]??\"{\"+name+\"}\"));",
+    "source_sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: return template.replace(/\\{([A-Za-z]+)\\}/g,(_,name:string)=>String(params[name]??\"{\"+name+\"}\"));",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "Display interpolation parameter is missing from params by placeholder name",
+      "present_authority": "Frozen6.6; ADR0012 literal locale resources and display-only interpolation",
+      "actual_recovery_or_failure": "String(params[name] ?? literal placeholder) keeps the placeholder visible. No native operation occurs; missing English resource key throws before interpolation."
+    }
+  },
+  {
+    "composite_identity": "150|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH152",
+    "ordinal": 150,
+    "id": "RH152",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 13,
+    "column": 59,
+    "actual_source": "    private fun cursor(v:Any?):String {val s=v as? String ?: invalid();if(s.isEmpty() || s.codePointCount(0,s.length)>256) invalid();return s}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: private fun cursor(v:Any?):String {val s=v as? String ?: invalid();if(s.isEmpty() || s.codePointCount(0,s.length)>256) invalid();return s}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "cursor value is not a nonempty string <=256 codepoints",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "throw SyncFailure(protocol), never an empty cursor; unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "151|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH153",
+    "ordinal": 151,
+    "id": "RH153",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 14,
+    "column": 59,
+    "actual_source": "    private fun list(v:Any?):List<*> {val l=v as? List<*> ?: invalid();if(l.size>100) invalid();return l}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: private fun list(v:Any?):List<*> {val l=v as? List<*> ?: invalid();if(l.size>100) invalid();return l}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "messages/events is not an array or exceeds page cap100",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "throw SyncFailure(protocol), never an empty page; unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "152|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH154",
+    "ordinal": 152,
+    "id": "RH154",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 24,
+    "column": 113,
+    "actual_source": "            val eventId=SendWire.uuid(e[\"eventId\"]);val token=cursor(e[\"cursor\"]);val kind=e[\"kind\"] as? String ?: invalid()",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: val eventId=SendWire.uuid(e[\"eventId\"]);val token=cursor(e[\"cursor\"]);val kind=e[\"kind\"] as? String ?: invalid()",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "user event kind is not a String",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "throw SyncFailure(protocol), never a UI placeholder; unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "153|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH155",
+    "ordinal": 153,
+    "id": "RH155",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 31,
+    "column": 6,
+    "actual_source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "user page parser raises actual SendWire.WireFailure",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "convert only this known peer-invalid category to SyncFailure(protocol); unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "154|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH156",
+    "ordinal": 154,
+    "id": "RH156",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 31,
+    "column": 61,
+    "actual_source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "user event revision cannot fit existing signed64 storage",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "ArithmeticException becomes SyncFailure(protocol), not a fabricated revision; unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "155|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH157",
+    "ordinal": 155,
+    "id": "RH157",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 45,
+    "column": 6,
+    "actual_source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "conversation page parser raises actual SendWire.WireFailure",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "convert known invalid external message/page to SyncFailure(protocol); unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "156|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH158",
+    "ordinal": 156,
+    "id": "RH158",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 45,
+    "column": 61,
+    "actual_source": "    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "external message seq cannot fit existing signed64 storage",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "ArithmeticException becomes SyncFailure(protocol); do not materialize the page; unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "157|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH159",
+    "ordinal": 157,
+    "id": "RH159",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 48,
+    "column": 39,
+    "actual_source": "        val e=p[\"error\"] as? Map<*,*> ?: invalid();if(e.keys.any {it !in setOf(\"code\",\"message\",\"violations\")} || e[\"message\"] !is String || (e[\"message\"] as String).isEmpty()) invalid()",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: val e=p[\"error\"] as? Map<*,*> ?: invalid();if(e.keys.any {it !in setOf(\"code\",\"message\",\"violations\")} || e[\"message\"] !is String || (e[\"message\"] as String).isEmpty()) invalid()",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "error object or violation is not the required map/list shape",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "reject malformed error as SyncFailure(protocol); unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "158|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH160",
+    "ordinal": 158,
+    "id": "RH160",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 49,
+    "column": 71,
+    "actual_source": "        if(e.containsKey(\"violations\")) {(e[\"violations\"] as? List<*> ?: invalid()).forEach {v->val f=SendWire.obj(v,setOf(\"field\",\"reason\"));if(f.values.any {it !is String || it.isEmpty()}) invalid()}}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: if(e.containsKey(\"violations\")) {(e[\"violations\"] as? List<*> ?: invalid()).forEach {v->val f=SendWire.obj(v,setOf(\"field\",\"reason\"));if(f.values.any {it !is String || it.isEmpty()}) invalid()}}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "violation field object values are not nonempty strings",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "reject malformed error as SyncFailure(protocol); unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "159|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH161",
+    "ordinal": 159,
+    "id": "RH161",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 56,
+    "column": 6,
+    "actual_source": "    }catch(_:im.platform.client.send.WireFailure){SyncFailure(\"protocol\")}catch(_:SyncFailure){SyncFailure(\"protocol\")}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: }catch(_:im.platform.client.send.WireFailure){SyncFailure(\"protocol\")}catch(_:SyncFailure){SyncFailure(\"protocol\")}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "error response strict parser raises SendWire.WireFailure",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "return SyncFailure(protocol), no successful request; unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "160|clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt|RH162",
+    "ordinal": 160,
+    "id": "RH162",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "line": 56,
+    "column": 75,
+    "actual_source": "    }catch(_:im.platform.client.send.WireFailure){SyncFailure(\"protocol\")}catch(_:SyncFailure){SyncFailure(\"protocol\")}",
+    "source_sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "supplied_ground": {
+      "specific_fault": "Explicit optional presentation identity/profile/selection/value at exact expression below. Trigger source: }catch(_:im.platform.client.send.WireFailure){SyncFailure(\"protocol\")}catch(_:SyncFailure){SyncFailure(\"protocol\")}",
+      "present_authority": "Frozen6.5; ADR0006/0012; current client UI state/identity acceptance.",
+      "actual_recovery_or_failure": "Normal absence gives current UI label/placeholder; required message identity/body/state explicitly throw. No caught operation replaced by success. Async UI promise is unhandled rejection on unknown failure, not silent catch."
+    },
+    "independent_correction": {
+      "specific_fault": "error response validation itself raises SyncFailure",
+      "present_authority": "contracts/websocket/sync-v1.schema.json and contracts/http/sync.openapi.json; Frozen11.5 and SP-I-001/004",
+      "actual_recovery_or_failure": "return the known protocol failure category; valid401/403 paths return authentication/unavailable without throwing; unrecognized exceptions escape and no UI label/data fallback exists at this site."
+    }
+  },
+  {
+    "composite_identity": "226|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH228",
+    "ordinal": 226,
+    "id": "RH228",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 12,
+    "column": 39,
+    "actual_source": " val template=data[language]?.get(key)?:data[\"en\"]?.get(key)?:error(\"Missing English language key: \"+key)",
+    "source_sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: val template=data[language]?.get(key)?:data[\"en\"]?.get(key)?:error(\"Missing English language key: \"+key)",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "Selected locale table or requested translation key is absent",
+      "present_authority": "Frozen6.6; ADR0012 literal locale resources and display-only interpolation",
+      "actual_recovery_or_failure": "Use English entry only; does not catch native capabilities. Explicit English key check at line11 remains mandatory."
+    }
+  },
+  {
+    "composite_identity": "227|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH229",
+    "ordinal": 227,
+    "id": "RH229",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 12,
+    "column": 61,
+    "actual_source": " val template=data[language]?.get(key)?:data[\"en\"]?.get(key)?:error(\"Missing English language key: \"+key)",
+    "source_sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: val template=data[language]?.get(key)?:data[\"en\"]?.get(key)?:error(\"Missing English language key: \"+key)",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "English base entry unexpectedly absent after fallback lookup",
+      "present_authority": "Frozen6.6; ADR0012 literal locale resources and display-only interpolation",
+      "actual_recovery_or_failure": "Call error and fail the operation. This Elvis is a mandatory-base invariant failure, not a silent English/native fallback."
+    }
+  },
+  {
+    "composite_identity": "229|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH231",
+    "ordinal": 229,
+    "id": "RH231",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 18,
+    "column": 42,
+    "actual_source": "fun errorKey(kind:String)=errorKeys[kind]?:\"error.request\"",
+    "source_sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: fun errorKey(kind:String)=errorKeys[kind]?:\"error.request\"",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "Display error kind is not present in errorKeys map",
+      "present_authority": "Frozen6.6; ADR0012 literal locale resources and display-only interpolation",
+      "actual_recovery_or_failure": "Return error.request translation key for display only. Does not change thrown exception type or actual operation result."
+    }
+  },
+  {
+    "composite_identity": "230|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH232",
+    "ordinal": 230,
+    "id": "RH232",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 24,
+    "column": 50,
+    "actual_source": " return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources[\"en\"]!!.containsKey(value))value else \"error.operation\")",
+    "source_sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources[\"en\"]!!.containsKey(value))value else \"error.operation\")",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "A source display phrase has no sourceDisplayKeys entry",
+      "present_authority": "Frozen6.6; ADR0012 literal locale resources and display-only interpolation",
+      "actual_recovery_or_failure": "Try errorKeys for the same display value, then existing English key or error.operation display key. Actual unknown operations are filtered/propagated earlier; no native call here."
+    }
+  },
+  {
+    "composite_identity": "231|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH233",
+    "ordinal": 231,
+    "id": "RH233",
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "line": 24,
+    "column": 68,
+    "actual_source": " return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources[\"en\"]!!.containsKey(value))value else \"error.operation\")",
+    "source_sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12",
+    "supplied_ground": {
+      "specific_fault": "Exact sanctioned native capability or malformed/missing local preference/locale/key/presentation data at expression below. Trigger source: return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources[\"en\"]!!.containsKey(value))value else \"error.operation\")",
+      "present_authority": "Frozen6.1/6.5; ADR0009/0012; error-handling; native command producer/consumer exact strings reviewed.",
+      "actual_recovery_or_failure": "Literal sanitized native error tags only; known OS capability fails honestly. Missing/invalid/unavailable language uses accepted en; English key missing throws. Optional header/NoEntry/menu absence are explicit boundary states, unknown command errors propagate."
+    },
+    "independent_correction": {
+      "specific_fault": "A display value is neither source phrase nor known error key",
+      "present_authority": "Frozen6.6; ADR0012 literal locale resources and display-only interpolation",
+      "actual_recovery_or_failure": "Use existing English resource key when available, otherwise error.operation display key. No credential/OS recovery is performed."
+    }
+  },
+  {
+    "composite_identity": "242|clients/shared/protocol-sdk/src/storage/repository.ts|RH244",
+    "ordinal": 242,
+    "id": "RH244",
+    "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+    "line": 129,
+    "column": 5,
+    "actual_source": "    if (rows.length === 0) return 0n;",
+    "source_sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c",
+    "supplied_ground": {
+      "specific_fault": "Existing SQLite write/native adapter or Composer/draft responsibility at exact source below. Trigger source: if (rows.length === 0) return 0n;",
+      "present_authority": "Human SQLite write/draft exclusion; Task Forbidden; Frozen6.3.",
+      "actual_recovery_or_failure": "EXCLUDED_UNCHANGED_POLICY: independently scope/hash checked; no fresh positive approval of SQLite write or draft fallback."
+    },
+    "independent_correction": {
+      "specific_fault": "Conversation SELECT returns no row versus existing null/invalid/noncanonical/out-of-range contiguous value",
+      "present_authority": "Direct Human two contiguous READ-mapper exception; Frozen6.3/6.4; SP-I-001",
+      "actual_recovery_or_failure": "No rows returns0n; present bad value throws. This mapper changed from accepted base by explicit Human approval; it is NOT EXCLUDED_UNCHANGED. Complete SELECT SQL and all other Repository bytes are independently equal to accepted base."
+    }
+  }
+]

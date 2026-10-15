@@ -1,0 +1,175 @@
+{
+  "result": "FAIL_REGULAR_REVIEW",
+  "actor": "/root/regular_review_b5ea135",
+  "independence": "Fresh independent regularReviewer neverimplemented/fixed/priorreviewed candidate beforedispatch; helpersfreshregularonly;noneeligiblefutureSpecialized",
+  "candidate_sha": "b5ea1350cd1909582029c6258d17b37f5354e594",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "root": "H:/.codex/worktrees/err/IM-platform",
+  "base": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "diff_range": "35bd6f5f1091503f95a0282f730ed04233b0b6ea..b5ea1350cd1909582029c6258d17b37f5354e594",
+  "clean_checkout_method": "assignedmanagedtaskcommittedcheckout;head/root/branch/statuscheckedbeforeandafter;nosourcewrites",
+  "status": "",
+  "fullcoverage": {
+    "production": 185,
+    "exactinventory_sites": 305,
+    "coverage_actual_semantics": true,
+    "extra_grounds": {
+      "own": 51,
+      "backend": 35,
+      "mobile": 7
+    },
+    "falsepositive_syntax_declarations_licenses_explicit": true
+  },
+  "findings": [
+    "F-CLEANUP-CAUSE-CYCLE[P2]",
+    "F-CONTIGUOUS-READ-DEFAULT[P2]"
+  ],
+  "scope": "171allowedchanges,65protectedinputs equalbase; READmapperfault doesnotauthorizeoutsidepathwrite",
+  "tests": "Freshfrozen/architectureall/planning/Acceptance/82architectures(oneexisting skip)/strictcurrentsharedWebcompile/cleanupnormalfaultcontrolsPASS;exactcycleandnativecontiguousreprosconfirmfindings",
+  "recorder": {
+    "run": "R-ERROR-REGULAR-B5EA135",
+    "result": "FAIL",
+    "finish": true,
+    "validation": "PASS_STRUCTURAL_ONLY",
+    "trace": "prospective_resume incomplete startup/directsource/authoritychecks; initialmainread correctedassignedtask, externalharnesssyntax/ESM/mapping failuresretained"
+  },
+  "limitations": [
+    "No fresh Android/device/Rust/Go broad runtime; prior actual evidence inspected honestly",
+    "SQLxexistingbinary hashbound and same protectedadapter; controlledexternalfixture invalidread data not productionwritepolicy",
+    "NULLcursor nativeproof usesmalformedschema;canonicalNOTNULL unchanged; Androidempty throws, nullablemapperonly sourceproof",
+    "NoSpecializedPASS/CI/integration/actualmain/mainsync/taskdone/S2GatePASS"
+  ],
+  "next": "FreshFix threeHTTPblocks+directprotocolcontrols. SharedREADmapperrepair needs explicitHuman allowedpath/Forbidden exception BEFOREsourcewrites. Newfreshregular thenDIFFERENTnewfreshspecialist exactsamefinalSHA, thenactual14requiredhostedjobs/protectedintegration/main/safesync",
+  "sourcelease": "READ_ONLY_RELEASED",
+  "resources": "No source/Gitrefs/main/GitHub/device/trust mutation; no liveprocess/DBfixturelease; externalcompiledprobes and ownedcursorfixture retainedas evidence",
+  "entries": [
+    {
+      "file": "report.md",
+      "sha256": "231bbfb854bf9f78225eb9ad88423bb925fe3c67de05c30dfcd85819716943ea"
+    },
+    {
+      "file": "findings.json",
+      "sha256": "c505c3ed882be526691a80c235c8c93f3e1f6b8fd435e3f6482aedc5f868b6dd"
+    },
+    {
+      "file": "aggregation.json",
+      "sha256": "27654f8e2a584269491dfd9ef413449e153e261f5bc326547fae677095b72db1"
+    },
+    {
+      "file": "semantic-coverage.json",
+      "sha256": "47166edd751524096355fd5f2233876840ece01f73070b806f98943ccdc5e886"
+    },
+    {
+      "file": "retained-grounds.json",
+      "sha256": "4fc8d7b16e8da16595f6c1667b9cd3f32e9bc736bd4397cd919411f4ede660c3"
+    },
+    {
+      "file": "own-semantic-coverage.json",
+      "sha256": "2d2a84d6e4cd029c57c2df4248ab9cc936b6b324393a91ad496e593d091b4b7e"
+    },
+    {
+      "file": "own-retained-grounds.json",
+      "sha256": "54a6b90c7bb5e98a76a3009a0265c21f4a844bf7317e771ae295ff0e92fd7cf8"
+    },
+    {
+      "file": "additional-grounds.json",
+      "sha256": "64f54d17697056e38892fb014629bc20af2915894a5747975de9f1ae0baf50c0"
+    },
+    {
+      "file": "protected-checks.json",
+      "sha256": "583caf3ca86c4db300a6197136fa799d639f6144cbdb9fc0bbbb53ce8b5f5140"
+    },
+    {
+      "file": "input-checks.json",
+      "sha256": "5f80c562d1d3ba2b7540d6b051a29cd444aa0fce40f247ce222ce27c9c99ef5e"
+    },
+    {
+      "file": "prerequisite-seals.json",
+      "sha256": "4f1761980d6c7f02ac6e32e0b44cd35d6936de4462a00ee17ace817f67c8610b"
+    },
+    {
+      "file": "governance-assessment.json",
+      "sha256": "277ec561fe4b8bd20eefb9ed482f45d017a2c52034b16f413e828c1b244b96ea"
+    },
+    {
+      "file": "checks.json",
+      "sha256": "aab0e93a39ca5642368d04e60f2a54ac53c541551500a6830c0afba12909cb18"
+    },
+    {
+      "file": "declarative-checks.json",
+      "sha256": "e72e1d23d7845044556b51d10bb72943d6b2fb7a0f3c2d4658b90884482db2be"
+    },
+    {
+      "file": "cycle-repro.mjs",
+      "sha256": "c8d318ea733d3a57c511fdf20bd05ed9f6d8b2bdac4b13a8fec5764467ca44fd"
+    },
+    {
+      "file": "cursor-repro.mjs",
+      "sha256": "1090d1837e1d1b5e2c24111f465e0fd9f376ac03bbcf126c09b81aa8c53f9aa1"
+    },
+    {
+      "file": "checks.py",
+      "sha256": "bc9737d1e2d7c5861f0d18af1d81c2f146558a9affacdbecb775ea0f08c8ce50"
+    },
+    {
+      "file": "own_evidence.py",
+      "sha256": "d76f1c7fad69342a6803de7280f4ff98c58e62d3b373de617db0b81dfe9b1086"
+    },
+    {
+      "file": "aggregate.py",
+      "sha256": "747808a1812da025444c5a1ce0f1675220f91815c3bcb33799385a16578ea2fc"
+    },
+    {
+      "file": "add-read-finding.py",
+      "sha256": "73db7680b018ad2046ce83f97f3cec85ce88846a2143193290094c283c29ab16"
+    },
+    {
+      "file": "extra.py",
+      "sha256": "877af7707a42201103451e85cf7ebe78eee6e36169d190a34c779de2ba386463"
+    },
+    {
+      "file": "backend/report.json",
+      "sha256": "e2f43a9af371d5e7c011eba9045cb9daf74adf69dc8a53649c73ef2eefb1a822"
+    },
+    {
+      "file": "backend/source-coverage.json",
+      "sha256": "87f6c1771d5950180d337d6d0a168a4f68708ba33809e8653e6a5fba6a6c7476"
+    },
+    {
+      "file": "backend/retained-sites.json",
+      "sha256": "2731c6a936a3e6b632df96ed7ede9f6cdf76ee022f8b37fdb991f4ae3e1b6b7e"
+    },
+    {
+      "file": "backend/navigation-addendum.json",
+      "sha256": "2faa4678ccece2db014be009aec08d302fb7821d51c39a44c738d89fec4aa9a2"
+    },
+    {
+      "file": "backend/prior-live-inspection.json",
+      "sha256": "da3c4b4e6e7eacdcca879cf4004e359e1fc586cbc86f61502b4c82230d45fdd1"
+    },
+    {
+      "file": "backend/sealed-receipt.json",
+      "sha256": "48797729e005fecf0788f142a29918afd2235de564126cf2089f67465c61821d"
+    },
+    {
+      "file": "mobile/report.json",
+      "sha256": "73e97437106ac68dff90a4166b13a815f408effedbb627c8486a02431561ef02"
+    },
+    {
+      "file": "mobile/receipt.json",
+      "sha256": "2cebb315c77c3b519003180cd46e995f2f5fe5d86c553811f077231ab3710564"
+    },
+    {
+      "file": "research/runs/R-ERROR-REGULAR-B5EA135/metadata.json",
+      "sha256": "4f1a061d8498c11beb570fa3e1eb540c59d961680fc892ffae7fd2e3f3318ca9"
+    },
+    {
+      "file": "research/runs/R-ERROR-REGULAR-B5EA135/events.jsonl",
+      "sha256": "7b8bb3e27569d63ea22bed41a8c7714680efbd1d7dbcb64173d65c5bc124fc4b"
+    },
+    {
+      "file": "research/runs/R-ERROR-REGULAR-B5EA135/summary.json",
+      "sha256": "7890e56ac5c43f6f6fd6f454b48008a385e4c613bd910464c09e0d1606188f1c"
+    }
+  ]
+}

@@ -2,9 +2,12 @@ package tests
 
 import (
 	"context"
+	"github.com/jackc/pgx/v5"
+	"net"
 	"net/http/httptest"
 	"os"
 	"strings"
+	"sync/atomic"
 	"testing"
 	"time"
 
@@ -115,8 +118,8 @@ func TestPostgresRevocationFallbackWithoutNATS(t *testing.T) {
 	}
 }
 
-// Token expiry and Session authority failure must still notify and close, even
-// without a business revocation fact or realtime event.
+// Token expiry retains its known invalidation frame. Database transport failure
+// closes the unverified connection without inventing a Session revocation fact.
 func TestPostgresFallbackExpiryAndDatabaseFailureClose(t *testing.T) {
 	if os.Getenv("DB_TEST_ENABLE") != "1" {
 		t.Skip("set DB_TEST_ENABLE=1 with migrated disposable PostgreSQL")
@@ -132,7 +135,26 @@ func TestPostgresFallbackExpiryAndDatabaseFailureClose(t *testing.T) {
 			if err = db.Ping(ctx); err != nil {
 				t.Fatal(err)
 			}
-			gatewayDB, err := pgxpool.New(ctx, "")
+			listener, err := net.Listen("tcp4", "127.0.0.1:0")
+			if err != nil {
+				t.Fatal(err)
+			}
+			defer listener.Close()
+			port := uint16(listener.Addr().(*net.TCPAddr).Port)
+			var unavailable atomic.Bool
+			cfg, err := pgxpool.ParseConfig("")
+			if err != nil {
+				t.Fatal(err)
+			}
+			cfg.BeforeConnect = func(_ context.Context, config *pgx.ConnConfig) error {
+				if unavailable.Load() {
+					config.Host = "127.0.0.1"
+					config.Port = port
+					config.Fallbacks = nil
+				}
+				return nil
+			}
+			gatewayDB, err := pgxpool.NewWithConfig(ctx, cfg)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -183,9 +205,24 @@ func TestPostgresFallbackExpiryAndDatabaseFailureClose(t *testing.T) {
 				t.Fatal("bind failed")
 			}
 			if cause == "database" {
-				gatewayDB.Close()
+				// Keep the live pool valid; its next default pgx Dial sees a real
+				// unavailable transport, rather than an internal use-after-close.
+				if err = listener.Close(); err != nil {
+					t.Fatal(err)
+				}
+				unavailable.Store(true)
+				gatewayDB.Reset()
 			}
 			_ = conn.SetReadDeadline(time.Now().Add(4 * time.Second))
+			if cause == "database" {
+				if err = conn.ReadJSON(&event); err == nil {
+					t.Fatalf("unavailable database invented a frame: %v", event)
+				}
+				if failure, ok := err.(net.Error); ok && failure.Timeout() {
+					t.Fatal("unverified socket remained open")
+				}
+				return
+			}
 			if err = conn.ReadJSON(&event); err != nil {
 				t.Fatal(err)
 			}

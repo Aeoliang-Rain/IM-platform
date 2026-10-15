@@ -1,0 +1,106 @@
+{
+  "root": "H:/.codex/worktrees/err/IM-platform",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "base_candidate": "7700645f54de613c913b306a03824c9c5dc20c09",
+  "initial_state": "clean dispatch Recorder initial_state; parent released prior writers",
+  "allowed_and_owned_paths": [
+    {
+      "path": "clients/desktop/src/application/accountSend.ts",
+      "allowed_path": "clients/desktop/src/application/accountSend.ts",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893"
+    },
+    {
+      "path": "clients/desktop/src/application/ui/workspace.ts",
+      "allowed_path": "clients/desktop/src/application/ui/*.ts",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c"
+    },
+    {
+      "path": "spec/progress/current.md",
+      "allowed_path": "spec/progress/current.md",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "599206a6c4b514e803ad832447ca2701a96081a4997ea00ca3c942fe571a1ec6"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "e2077023998dacd57c5f7fabf904b87d2f68e4ec514e7a0a28a6924e00ceba71"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/input-checks.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "3cd2eb7eed17ca3b35cb03dec8e24f591123168214c6b5c7d77549f99e0a9ef8"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/ownership-audit.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "self-unavailable"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/verification-history.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "3fa8bc2d67f809f3b1fdee6ee40b2bbbc6b14157b3b550545fb732d795995f2b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/production-inventory.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "db7116cdd296d02be934ce0b206caf58f8b0eee26d6f333eea4d22861a80df8b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/checks.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "1252b179dbfc49d7aa281eae7c9a0c9f87059fa98729b46517d390a726491379"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/hashes.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "a218942edbfa2a1586cbcd3879378a90b58d32637f49a6fd72688539a65a581f"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/report.md",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "0d74f3d3d27626409f916cbd9a2d5d4a4bd2093e1f78599b0389871640db3b04"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/repro-read-boundaries.mjs",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "ba88e9374b3a5902bbb953c10694c51a42cfd76054a9a18f783b3c963457f912"
+    },
+    {
+      "path": "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+      "allowed_path": "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "113974f7eef6950565fbffd1c5313363badcdb8a6b8f0205dcfbcbe2d7c55ab0"
+    },
+    {
+      "path": "tests/clients/errors/desktop_native_reads.mjs",
+      "allowed_path": "tests/clients/errors/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "b305d74b005b33cfed9d36d1b422e5de3ae8e7b19308ba13172fcc75b8eacef3"
+    },
+    {
+      "path": "tests/clients/errors/desktop_reads.mjs",
+      "allowed_path": "tests/clients/errors/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "ae97b67945856050a20d05877579e977a56f493b71a14d2515682dcd1180d97c"
+    },
+    {
+      "path": "tests/clients/send/desktop.mjs",
+      "allowed_path": "tests/clients/send/**",
+      "owner": "fresh sole Fix /root/fix_read_origin; dispatched clean770, no competing writer",
+      "sha256": "8723370da44c17e272d7c44d4a8bd262fce48078b0415eeb4d53d73277f0cba7"
+    }
+  ],
+  "main": "Never written/copied;782unknown/2tracked preservation belongs to existing Coordinator snapshot",
+  "permission_timeout": "First apply_patch timed out; no write applied; permitted single retry worked. No auto-review rejection."
+}

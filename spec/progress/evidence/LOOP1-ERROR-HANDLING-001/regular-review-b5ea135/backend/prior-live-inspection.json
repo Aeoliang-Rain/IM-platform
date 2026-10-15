@@ -1,0 +1,68 @@
+[
+  {
+    "argv": [
+      "python",
+      "-Xutf8",
+      "-B",
+      "tests/clients/errors/java.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 1422.0,
+    "command_id": "C-b257d79d-1ac3-4d2e-aad1-08f0c50f7b3f",
+    "fresh_run_by_reviewer": false,
+    "blobs": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\implementation-research\\runs\\R-ERROR-IMPLEMENTATION-20261013\\blobs\\C-b257d79d-1ac3-4d2e-aad1-08f0c50f7b3f.stdout.txt",
+        "stored_sha256": "7695a04931ed1ead893e70386ba400ff2ba0b2888cef8eb6efd74d1989b211cd",
+        "recorded_raw_sha256": "7695a04931ed1ead893e70386ba400ff2ba0b2888cef8eb6efd74d1989b211cd",
+        "equal": true,
+        "redaction_declared": false
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\implementation-research\\runs\\R-ERROR-IMPLEMENTATION-20261013\\blobs\\C-b257d79d-1ac3-4d2e-aad1-08f0c50f7b3f.stderr.txt",
+        "stored_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "recorded_raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "equal": true,
+        "redaction_declared": false
+      }
+    ],
+    "actual_runtime_markers": [
+      "PASS compiled actual Java health/malformed IO rejection/original unknown failure"
+    ],
+    "assessment": "Prior implementation actual runtime evidence supports unchanged candidate backend bytes; not fresh exact-head acceptance. Go fixture drives DB_TEST_ENABLE=1 disposable PG/NATS; no false counted deferred friend403. Java harness invokes actual private handle and static accept/catch proof, not live listener network IO integration."
+  },
+  {
+    "argv": [
+      "python",
+      "-Xutf8",
+      "-B",
+      "tests/clients/errors/go_live.py"
+    ],
+    "exit_code": 0,
+    "duration_ms": 55563.0,
+    "command_id": "C-3f868fe1-81b3-43ef-90dc-b7504443ee56",
+    "fresh_run_by_reviewer": false,
+    "blobs": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\implementation-research\\runs\\R-ERROR-IMPLEMENTATION-20261013\\blobs\\C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stdout.txt",
+        "stored_sha256": "c7ade5f6cb98bfd398a9f88c51efef5124ef68b4ca5ca24ff13796dffeff785e",
+        "recorded_raw_sha256": "27354decd3ab66350c7a724b27e0248426f13813e30dcbf3c300b085d5591b67",
+        "equal": false,
+        "redaction_declared": true
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\implementation-research\\runs\\R-ERROR-IMPLEMENTATION-20261013\\blobs\\C-3f868fe1-81b3-43ef-90dc-b7504443ee56.stderr.txt",
+        "stored_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+        "recorded_raw_sha256": "e5685ace54caf40f634e3e3d39371d7e9a84ccd1d0dd3009641265a334b732b1",
+        "equal": true,
+        "redaction_declared": true
+      }
+    ],
+    "actual_runtime_markers": [
+      "    social_test.go:209: DISPOSITION friend-add-authorization-denied DEFERRED_BY_HUMAN; runtime not executed; does not count as canonical PASS",
+      "PASS actual disposable PostgreSQL/NATS full Go suite with DB_TEST_ENABLE=1",
+      "Owned integration containers/volumes removed"
+    ],
+    "assessment": "Prior implementation actual runtime evidence supports unchanged candidate backend bytes; not fresh exact-head acceptance. Go fixture drives DB_TEST_ENABLE=1 disposable PG/NATS; no false counted deferred friend403. Java harness invokes actual private handle and static accept/catch proof, not live listener network IO integration."
+  }
+]

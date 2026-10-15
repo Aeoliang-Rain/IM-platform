@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-outbox-mixed\evidence.py", line 32, in <module>
+    assert f['path']=='backend/go/core/outbox.go';delta.append({'path':f['path'],'a292_sha256':f['sha256'],'current_sha256':h});f.update(sha256=h,bytes=len(b),changed=True,finding='F-OUTBOX-MIXED-CONNECT-ROOT',inspection='Existing Outbox retry boundary now validates complete actual pgx single/multi-Unwrap tree; unknown branch propagates unchanged. Fix-local proof only; both fresh independent reviews pending.')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

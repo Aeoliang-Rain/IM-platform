@@ -1,0 +1,50 @@
+{
+  "candidate": "a292f516f622651ae62595163e479c13fff78c1d",
+  "observed_paths": [
+    {
+      "path": "backend/go/core/auth.go",
+      "sites": "authenticate two secondary lookups; login bcrypt; decode/writeJSON/writeError; search ErrNoRows",
+      "assessment": "Only ErrNoRows and actual bcrypt mismatch project known business outcomes. Unknown lookup/hash errors propagate to failed safe response. JSON encode/entropy panic. Search no-row is true absence; DB failure is never empty result."
+    },
+    {
+      "path": "backend/go/core/message.go",
+      "sites": "newMessageCommitError/sendMessage/commitMessage",
+      "assessment": "Only confirmed rollback or testedP0001 permits known failed commit. Unknown commit is multi-%w preserving uncertainty marker and original error;503 no rejection. Precommit DB/entropy/internal failure has failed ack, not success; required protocol projection preserves no committed message meaning."
+    },
+    {
+      "path": "backend/go/core/outbox.go",
+      "sites": "RelaySessionRevocations/relaySessionBatch",
+      "assessment": "Only NATS connection/disconnect/timeout, deadline or net.Error retry pending batch. Every other error returns and main fatal exits. No log-only continuation of programming error; no new retry abstraction."
+    },
+    {
+      "path": "backend/go/core/sync.go",
+      "sites": "syncFailure/syncInput/syncInteger/syncJSONNumber/authoritative scans",
+      "assessment": "Unknown servers return non2xx503 per ADR0008. Malformed external bodies reject400; panic on authoritative invalid metadata/gaps. Number saturation is exact min(limit,100)/afterSeq cap, not fake empty data. peek end sentinel is followed by outer ReadByte preserving nonEOF input failure."
+    },
+    {
+      "path": "backend/go/gateway/gateway.go",
+      "sites": "serve/watch/forward/fanout",
+      "assessment": "Malformed external frames close; unknown bind error closes without invalid-token classification. watch failures retire live binding with conservativeREVOKED, not inventedLOGOUT/REPLACED; db authority checked on subsequent bind. Forward transport/malformed Core responses preserve uncertain origin and suppress rejection/ACK. fanout rejects malformed external bus bytes without declaring delivery success, Sync supplies durable completeness."
+    },
+    {
+      "path": "backend/go/gateway/session.go",
+      "sites": "authenticate/revocationReason",
+      "assessment": "Unknown lookup propagates; only exact current bound-user/session committed revocation suppliesLOGOUT/REPLACED. Missing/query/error/unknown reason uses conservative local retirement; no fabricated business reason."
+    },
+    {
+      "path": "backend/go/main.go",
+      "sites": "configuration/dependency/dispatcher/listener Fatal",
+      "assessment": "Fatal generic text intentionally safe projections avoid secret material; process exits1 rather than logs-and-continues. Source of failure remains operation boundary; no successful startup fallback."
+    },
+    {
+      "path": "backend/go/shared/security.go",
+      "sites": "UUID/RandomToken/Sign/Parse",
+      "assessment": "Entropy/sign errors return; unknown internal callbacks not enclosed by catch. Malformed/tampered/expired external token gives explicit known protocol auth rejection; HMAC Write cannot fail by library contract."
+    },
+    {
+      "path": "backend/java/InfraPlaceholder.java",
+      "sites": "main/handle",
+      "assessment": "IOException catch only surrounds accepted request. Socket failure cleanup complete; listener accept outside. Runtime/crypto/internal exceptions propagate. Java remains infra skeleton with no S3 business activation."
+    }
+  ]
+}

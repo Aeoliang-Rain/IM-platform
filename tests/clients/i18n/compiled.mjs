@@ -32,7 +32,8 @@ export async function verifyCompiledI18n(build){
   for(const raw of [null,'','EN','en-US','zh',' en','en\n','\uFEFFen']){value=raw;assert.equal(adapter.loadLanguage(),'en')}
   for(const locale of module.locales){assert.equal(adapter.saveLanguage(locale),true);assert.equal(adapter.loadLanguage(),locale);assert(Buffer.byteLength(value)<=5)}
   const before=writes;assert.equal(adapter.saveLanguage('en-US'),false);assert.equal(writes,before);
-  window.localStorage.getItem=()=>{throw Error('unavailable')};assert.equal(adapter.loadLanguage(),'en');window.localStorage.setItem=()=>{throw Error('unavailable')};assert.equal(adapter.saveLanguage('ja-JP'),false);
+  window.localStorage.getItem=()=>{throw new DOMException('unavailable','SecurityError')};assert.equal(adapter.loadLanguage(),'en');window.localStorage.setItem=()=>{throw new DOMException('unavailable','SecurityError')};assert.equal(adapter.saveLanguage('ja-JP'),false);
+  for(const original of [new Error("controlled compiled adapter bug"),"unavailable"]){window.localStorage.getItem=()=>{throw original};assert.throws(()=>adapter.loadLanguage(),e=>e===original);window.localStorage.setItem=()=>{throw original};assert.throws(()=>adapter.saveLanguage("ja-JP"),e=>e===original);}
  }finally{if(previous===undefined)delete globalThis.window;else globalThis.window=previous}
  console.log('PASS compiled i18n resource equivalence/negative controls/Web adapter; native and browser acceptance separate');
 }

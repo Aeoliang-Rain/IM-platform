@@ -1,0 +1,457 @@
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun Chat(state:WorkspaceState,open:(String)->Unit,reconnect:()->Unit,retry:(String)->Unit,send:(String)->Unit,draft:String,setDraft:(String)->Unit) {
+27:     val t=useText()
+28: 
+29:     if(state.selected.isEmpty()){
+30:         ConversationList(state,open);return
+31:     }
+32:     val selected=state.friends.find{it.directConversationId==state.selected};val spacing=(10*state.appearance.density).dp
+33:     Column(Modifier.fillMaxSize(),verticalArrangement=Arrangement.spacedBy(spacing)){
+34:         if(state.conversations.isEmpty()){Panel(Modifier.fillMaxWidth(),state.appearance){Text(t("chat.next"),style=MaterialTheme.typography.titleLarge);Text(t("chat.addHint"))}}else {
+35:             Row(verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(selected?.user?.displayName?:t("chat.conversation"),style=MaterialTheme.typography.titleMedium);Text(if(state.connection=="ready")t("sync.automatic")else t("sync.offline"),style=MaterialTheme.typography.bodyMedium)};TextButton(onClick=reconnect,enabled=state.session!=null){Text(t("auth.reconnect"))}}
+36:         }
+37:         Messages(state,spacing,retry,Modifier.weight(1f))
+38:         Composer(state,draft,setDraft,send){setDraft("")};Spacer(Modifier.height(5.dp))
+39:     }
+40: }
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun Composer(state:WorkspaceState,draft:String,change:(String)->Unit,send:(String)->Unit,clear:()->Unit){
+27:     val t=useText()
+28:         Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)){OutlinedTextField(value=draft,onValueChange={if(it.codePointCount(0,it.length)<=4096)change(it)},label={Text(t("chat.message"))},modifier=Modifier.weight(1f),enabled=state.selected.isNotEmpty()&&state.session!=null,maxLines=3);Button(onClick={send(draft);clear()},enabled=state.selected.isNotEmpty()&&state.session!=null&&draft.isNotBlank()){Text(t("chat.send"))}}}
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun ConversationList(state:WorkspaceState,open:(String)->Unit){
+27:     val t=useText()
+28: LazyColumn(Modifier.fillMaxSize()){
+29:             if(state.conversations.isEmpty())item{Panel(Modifier.fillMaxWidth(),state.appearance){Text(t("chat.next"),style=MaterialTheme.typography.titleLarge);Text(t("chat.addHint"))}}
+30:             items(state.conversations,key={it}){id->Surface(onClick={open(id)},shape=RectangleShape,color=MaterialTheme.colorScheme.surface,modifier=Modifier.fillMaxWidth()){
+31:                 Column(Modifier.padding((16*state.appearance.density).dp)){Text(state.friends.find{it.directConversationId==id}?.user?.displayName?:t("chat.conversationId","id" to id.take(8)),fontWeight=FontWeight.SemiBold);Text(if(state.unavailable.contains(id))t("chat.access")else state.previews[id]?.text?.takeIf{it.isNotEmpty()}?:t("chat.noMessages"),maxLines=1,style=MaterialTheme.typography.bodyMedium)}
+32:             }}
+33:         }}
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: internal fun noSearchMatch(state:WorkspaceState,query:String,submitted:String?) = submitted==query && query.isNotBlank() && state.searchComplete && state.results.isEmpty() && !state.busy && state.error==null
+27: @Composable fun Friends(state:WorkspaceState,add:(String)->Unit,search:(String)->Unit,open:(String)->Unit) {
+28:     val t=useText()
+29: 
+30:     var query by remember{mutableStateOf("")}
+31:     var submitted by remember{mutableStateOf<String?>(null)}
+32:     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)){
+33:         Panel(Modifier.fillMaxWidth(),state.appearance){Text(t("friends.reach"),style=MaterialTheme.typography.titleLarge);Text(t("friends.exact"),style=MaterialTheme.typography.bodyMedium);OutlinedTextField(value=query,onValueChange={query=it},label={Text(t("auth.username"))},singleLine=true,modifier=Modifier.fillMaxWidth());Button(onClick={submitted=query;search(query)},enabled=state.session!=null&&!state.busy&&query.isNotBlank()){Text(if(state.busy)t("friends.searching")else t("friends.search"))};state.results.forEach{u->Row(verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(u.displayName,fontWeight=FontWeight.SemiBold);Text("@"+u.username,style=MaterialTheme.typography.bodyMedium)};TextButton(onClick={add(u.userId)},enabled=state.session!=null&&u.userId!=state.session?.userId&&!state.busy){Text(t("friends.add"))}}};if(noSearchMatch(state,query,submitted))Text(t("friends.noMatch"),style=MaterialTheme.typography.bodyMedium)}
+34:         Panel(Modifier.fillMaxWidth(),state.appearance){Text(t("friends.your"),style=MaterialTheme.typography.titleLarge);if(state.friends.isEmpty())Text(t("friends.grow"));state.friends.forEach{f->Row(verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(f.user.displayName,fontWeight=FontWeight.SemiBold);Text("@"+f.user.username,style=MaterialTheme.typography.bodyMedium)};TextButton(onClick={open(f.directConversationId)}){Text(t("chat.message"))}}}}
+35:     }
+36: }
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Future.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun Future(symbol:String,title:String,description:String,detail:String,prefs:Appearance){
+27:     val t=useText()
+28: Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)){Panel(Modifier.fillMaxWidth(),prefs){Text(symbol,fontSize=60.sp,color=MaterialTheme.colorScheme.primary);Text(title,style=MaterialTheme.typography.titleLarge);Text(description);AssistChip(onClick={},label={Text(t("ai.later"))});Text(detail,style=MaterialTheme.typography.bodyMedium)}}}
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/LanguagePanel.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.Composable
+3: import androidx.compose.foundation.layout.*
+4: import androidx.compose.foundation.lazy.LazyColumn
+5: import androidx.compose.foundation.lazy.itemsIndexed
+6: import androidx.compose.material3.*
+7: import androidx.compose.ui.Modifier
+8: import androidx.compose.ui.unit.dp
+9: import im.platform.client.ui.Appearance
+10: import im.platform.client.ui.i18n.*
+11: @Composable fun LanguagePanel(language:String,stored:Boolean,select:(String)->Unit,prefs:Appearance){val t=useText()
+12:  Panel(Modifier.fillMaxWidth(),prefs){Text(languageEntry,style=MaterialTheme.typography.titleMedium)
+13:   LazyColumn(Modifier.fillMaxWidth().height(150.dp)){itemsIndexed(locales,key={_,locale->locale}){index,locale->FilterChip(selected=language==locale,onClick={select(locale)},label={Text(languageNames[index])})}}
+14:   Text(t(if(stored)"language.saved" else "language.failed"),color=if(stored)MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.error)
+15:  }
+16: }
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Login.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun Login(state:WorkspaceState,login:(String,String,String)->Unit,register:(String,String,String)->Unit,restore:(String)->Unit) {
+27:     val t=useText()
+28: 
+29:     var registering by remember{mutableStateOf(false)};var username by remember{mutableStateOf("")};var password by remember{mutableStateOf("")};var confirmation by remember{mutableStateOf("")}
+30:     LaunchedEffect(state.registered){if(state.registered){registering=false;password[REDACTED];confirmation=""}}
+31:     Column(Modifier.fillMaxWidth().imePadding().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(14.dp)){
+32:         Text(t("auth.stayCloseMobile"),fontSize=(state.appearance.fontSize+10).sp,lineHeight=((state.appearance.fontSize+10)*1.25f).sp,fontWeight=FontWeight.Bold)
+33:         Panel(Modifier.fillMaxWidth(),state.appearance){
+34:             Text(if(registering)t("auth.createTitle")else t("auth.openTitle"),style=MaterialTheme.typography.titleLarge)
+35:             if(state.registered&&!registering)Text(t("auth.created"))
+36:             OutlinedTextField(value=username,onValueChange={username=it},label={Text(t("auth.username"))},singleLine=true,modifier=Modifier.fillMaxWidth())
+37:             OutlinedTextField(value=password,onValueChange={password[REDACTED],label={Text(t("auth.password"))},visualTransformation=PasswordVisualTransformation(),singleLine=true,modifier=Modifier.fillMaxWidth())
+38:             if(registering){OutlinedTextField(value=confirmation,onValueChange={confirmation=it},label={Text(t("auth.confirmPassword"))},visualTransformation=PasswordVisualTransformation(),singleLine=true,modifier=Modifier.fillMaxWidth());Text(t("auth.passwordHint"),style=MaterialTheme.typography.bodyMedium)}
+39:             Button(onClick={if(registering)register(username,password,confirmation)else{login(state.endpoint,username,password);password[REDACTED],enabled=!state.busy&&username.isNotEmpty()&&password.isNotEmpty()&&(!registering||confirmation.isNotEmpty()),modifier=Modifier.fillMaxWidth()){Text(if(state.busy)t("auth.wait")else if(registering)t("auth.create")else t("auth.signIn"))}
+40:             TextButton(onClick={registering=!registering;password[REDACTED];confirmation=""},enabled=!state.busy,modifier=Modifier.fillMaxWidth()){Text(if(registering)t("auth.existing")else t("auth.new"))}
+41:             if(!registering)TextButton(onClick={restore(state.endpoint)},enabled=!state.busy,modifier=Modifier.fillMaxWidth()){Text(t("auth.resume"))}
+42:         }
+43:     }
+44: }
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: import androidx.compose.ui.unit.Dp
+27: internal fun messageBody(row:List<String?>):String=checkNotNull(row[2]){"Message content missing"}
+28: internal fun messageIdentity(row:List<String?>):String=row[0]?:row[4]?:error("Message identity missing")
+29: internal fun messageState(value:String?):String=when(value){"SENT"->"chat.sent";"SENDING"->"chat.sending";"FAILED"->"chat.failed";else->error("Unknown message state")}
+30: @Composable fun Messages(state:WorkspaceState,spacing:Dp,retry:(String)->Unit,modifier:Modifier){
+31:     val t=useText()
+32: LazyColumn(modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(spacing)) {
+33:             if(state.messages.isEmpty())item{Column(Modifier.fillMaxWidth().padding(35.dp),horizontalAlignment=Alignment.CenterHorizontally){Text(if(state.selected.isEmpty())t("chat.place")else t("chat.fresh"),style=MaterialTheme.typography.titleMedium);Text(if(state.selected.isEmpty())t("chat.choose")else t("chat.hello"),style=MaterialTheme.typography.bodyMedium)}}
+34:             items(state.messages,key={messageIdentity(it)}){m->val own=m[1]==(state.session?.userId?:state.offlineAccount);Column(Modifier.fillMaxWidth(),horizontalAlignment=if(own)Alignment.End else Alignment.Start){Surface(color=if(own)MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.surface,shape=RoundedCornerShape(14.dp),modifier=Modifier.widthIn(max=310.dp)){Text(messageBody(m),modifier=Modifier.padding((14*state.appearance.density).dp))};Row(verticalAlignment=Alignment.CenterVertically){Text(t(messageState(m[3])),style=MaterialTheme.typography.bodyMedium);if(own&&m[3]=="FAILED"&&m[0]!=null)TextButton(onClick={retry(m[0]!!)},enabled=state.session!=null){Text(t("chat.retry"))}}}}
+35:         }}
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Navigation.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun Navigation(page:String,navigate:(String)->Unit){
+27:     val t=useText()
+28: NavigationBar{listOf("Chat","Friends","AI","Plugin","Settings").forEachIndexed {i,p->NavigationBarItem(selected=page==p,onClick={navigate(p)},icon={Text(listOf("◫","♧","✧","⊞","⚙")[i])},label={Text(t("nav."+p.lowercase()),maxLines=1,fontSize=12.sp)})}}
+29: }
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Panel.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: @Composable fun Panel(modifier:Modifier=Modifier,appearance:Appearance,content:@Composable ColumnScope.()->Unit){Surface(modifier=modifier,shape=RoundedCornerShape(20.dp),color=MaterialTheme.colorScheme.surface,border=BorderStroke(1.dp,MaterialTheme.colorScheme.outlineVariant)){Column(Modifier.padding((20*appearance.density).dp),verticalArrangement=Arrangement.spacedBy((12*appearance.density).dp),content=content)}}
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @OptIn(ExperimentalLayoutApi::class)
+27: @Composable fun ProfilePanel(state:WorkspaceState,disconnect:()->Unit,logout:()->Unit,reconnect:()->Unit,refresh:()->Unit){
+28:     val t=useText()
+29: val p=state.appearance;    Panel(Modifier.fillMaxWidth(),p){Text(t("profile.session"),style=MaterialTheme.typography.titleLarge);Text(state.profile?.displayName?:t("profile.unavailable"),fontWeight=FontWeight.SemiBold);Text(state.profile?.let{"@"+it.username}?:(if(state.session!=null)t("profile.reconnect")else t("profile.signIn")));FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){OutlinedButton(onClick=refresh,enabled=!state.busy&&(state.session!=null||state.offlineAccount!=null)){Text(t("auth.refresh"))};OutlinedButton(onClick=disconnect,enabled=state.session!=null){Text(t("auth.offline"))}};FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){OutlinedButton(onClick=reconnect,enabled=state.session!=null){Text(t("auth.reconnect"))};Button(onClick=logout,enabled=!state.busy&&(state.session!=null||state.offlineAccount!=null)){Text(t("auth.signOut"))}}}}
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Settings.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @OptIn(ExperimentalLayoutApi::class)
+27: @Composable fun Settings(state:WorkspaceState,language:(String)->Unit,appearance:(Appearance)->Unit,disconnect:()->Unit,logout:()->Unit,reconnect:()->Unit,refresh:()->Unit){
+28:     val t=useText()
+29: val p=state.appearance;Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)){
+30:     LanguagePanel(state.language,state.languageStored,language,p)
+31:     Panel(Modifier.fillMaxWidth(),p){Text(t("settings.appearance"),style=MaterialTheme.typography.titleLarge);Text(t("settings.independentMobile"),style=MaterialTheme.typography.bodyMedium);Row(verticalAlignment=Alignment.CenterVertically){Text(t("settings.themeShort"),Modifier.weight(1f));TextButton(onClick={appearance(p.copy(theme=if(p.theme=="warm")"cold"else"warm"))}){Text(if(p.theme=="warm")t("settings.warm")else t("settings.cold"),fontSize=14.sp)}};Row(verticalAlignment=Alignment.CenterVertically){Text(t("settings.fontValue","size" to p.fontSize),Modifier.weight(1f));OutlinedButton(onClick={appearance(p.copy(fontSize=p.fontSize-1))},enabled=p.fontSize>14){Text("−")};Spacer(Modifier.width(8.dp));OutlinedButton(onClick={appearance(p.copy(fontSize=p.fontSize+1))},enabled=p.fontSize<22){Text("+")}};Text(t("settings.spacing"));FlowRow(horizontalArrangement=Arrangement.spacedBy(6.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){listOf(.8f,1f,1.2f).forEachIndexed{i,d->FilterChip(selected=kotlin.math.abs(p.density-d)<.01f,onClick={appearance(p.copy(density=d))},label={Text(listOf(t("settings.compact"),t("settings.standard"),t("settings.comfort"))[i],fontSize=12.sp)})}};Text(t("settings.savedMobile"),style=MaterialTheme.typography.bodyMedium)}
+32:     ProfilePanel(state,disconnect,logout,reconnect,refresh)
+33: }}
+
+FILE clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt
+1: package im.platform.client.ui.components
+2: import androidx.compose.runtime.*
+3: import androidx.activity.compose.BackHandler
+4: import androidx.compose.foundation.*
+5: import androidx.compose.foundation.layout.*
+6: import androidx.compose.foundation.lazy.LazyColumn
+7: import androidx.compose.foundation.lazy.items
+8: import androidx.compose.foundation.shape.RoundedCornerShape
+9: import androidx.compose.material3.*
+10: import androidx.compose.ui.Modifier
+11: import androidx.compose.ui.semantics.semantics
+12: import androidx.compose.ui.semantics.contentDescription
+13: import androidx.compose.ui.Alignment
+14: import androidx.compose.ui.graphics.Color
+15: import androidx.compose.ui.graphics.RectangleShape
+16: import androidx.compose.ui.text.font.FontWeight
+17: import androidx.compose.ui.text.input.PasswordVisualTransformation
+18: import androidx.compose.ui.unit.dp
+19: import androidx.compose.ui.unit.sp
+20: import androidx.lifecycle.compose.collectAsStateWithLifecycle
+21: import androidx.lifecycle.viewmodel.compose.viewModel
+22: import androidx.navigation.compose.*
+23: 
+24: import im.platform.client.ui.*
+25: import im.platform.client.ui.i18n.*
+26: @Composable fun Shell(state:WorkspaceState,language:(String)->Unit,closeConversation:()->Unit,open:(String)->Unit,reconnect:()->Unit,login:(String,String,String)->Unit,register:(String,String,String)->Unit,restore:(String)->Unit,send:(String)->Unit,retry:(String)->Unit,search:(String)->Unit,add:(String)->Unit,appearance:(Appearance)->Unit,refresh:()->Unit,disconnect:()->Unit,logout:()->Unit) {
+27:     var draft by remember(state.session?.userId,state.offlineAccount){mutableStateOf("")}
+28:     val t=useText()
+29: 
+30:     val prefs=state.appearance;val warm=prefs.theme=="warm"
+31:     val scheme=lightColorScheme(primary=if(warm)Color(0xffaa4c39)else Color(0xff285bc2),background=if(warm)Color(0xfff4ece7)else Color(0xffe8edf6),surface=if(warm)Color(0xfffffbf6)else Color(0xfff8faff),onSurface=if(warm)Color(0xff392c32)else Color(0xff17283f),onBackground=if(warm)Color(0xff392c32)else Color(0xff17283f),secondaryContainer=if(warm)Color(0xfff8ded2)else Color(0xffdae5ff))
+32:     val typography=Typography(bodyLarge=Typography().bodyLarge.copy(fontSize=prefs.fontSize.sp),bodyMedium=Typography().bodyMedium.copy(fontSize=(prefs.fontSize-2).sp),titleLarge=Typography().titleLarge.copy(fontSize=(prefs.fontSize+6).sp),titleMedium=Typography().titleMedium.copy(fontSize=(prefs.fontSize+2).sp),labelLarge=Typography().labelLarge.copy(fontSize=(prefs.fontSize-2).sp))
+33:     MaterialTheme(colorScheme=scheme,typography=typography) {
+34:         val nav=rememberNavController();val entry by nav.currentBackStackEntryAsState();val page=entry?.destination?.route?:"Chat"
+35:         val authenticated=state.session!=null||state.offlineAccount!=null
+36:         val inConversation=page=="Chat"&&state.selected.isNotEmpty()
+37:         BackHandler(enabled=inConversation){closeConversation()}
+38:         if(!authenticated){Column(Modifier.fillMaxSize().background(scheme.background).statusBarsPadding().navigationBarsPadding().padding(20.dp)){
+39:             state.error?.let{Text(displayText(LocalLanguage.current,it),color=scheme.error,modifier=Modifier.padding(vertical=8.dp))}
+40:             Login(state,login,register,restore)
+41:         };return@MaterialTheme}
+42:         Scaffold(containerColor=scheme.background,topBar={Column(Modifier.fillMaxWidth().padding(horizontal=20.dp,vertical=10.dp)){Row(verticalAlignment=Alignment.CenterVertically){if(inConversation)TextButton(onClick=closeConversation,modifier=Modifier.semantics{contentDescription=t("nav.back")}){Text("←",fontSize=MaterialTheme.typography.labelLarge.fontSize*1.5f)};Text(if(inConversation)state.friends.find{it.directConversationId==state.selected}?.user?.displayName?:t("chat.conversation") else t("nav."+page.lowercase()),Modifier.weight(1f),style=MaterialTheme.typography.titleLarge);Text(if(state.sync=="syncing")t("sync.syncing")else if(state.connection=="ready")t("connection.connected")else t("connection.offlineShort"),fontSize=12.sp,modifier=Modifier.padding(start=8.dp))}}},bottomBar={if(!inConversation)Navigation(page){p->nav.navigate(p){launchSingleTop=true;popUpTo("Chat"){saveState=true};restoreState=true}}}) {padding->
+43:             Column(Modifier.fillMaxSize().padding(padding).padding(horizontal=if(page=="Chat"&&!inConversation)0.dp else 16.dp)) {
+44:                 state.error?.let{Surface(color=scheme.errorContainer,shape=RoundedCornerShape(12.dp),modifier=Modifier.fillMaxWidth().padding(bottom=12.dp)){Column(Modifier.padding(12.dp)){Text(displayText(LocalLanguage.current,it),color=scheme.onErrorContainer);if(state.session!=null || state.offlineAccount!=null)TextButton(onClick=reconnect,enabled=state.session!=null){Text(t("auth.reconnect"))}}}}
+45:                 NavHost(navController=nav,startDestination="Chat",modifier=Modifier.weight(1f)) {
+46:                     composable("Chat"){if(state.session==null && state.offlineAccount==null)Login(state,login,register,restore)else Chat(state,open,reconnect,retry,send,draft,{draft=it})}
+47:                     composable("Friends"){if(state.session==null && state.offlineAccount==null)Login(state,login,register,restore)else Friends(state,add,search){id->open(id);nav.navigate("Chat"){launchSingleTop=true}}}
+48:                     composable("AI"){Future("✧",t("ai.title"),t("ai.description"),t("ai.detail"),prefs)}
+49:                     composable("Plugin"){Future("⊞",t("plugin.workspace"),t("plugin.unavailable"),t("plugin.detail"),prefs)}
+50:                     composable("Settings"){Settings(state,language,appearance,disconnect,logout,reconnect,refresh)}
+51:                 }
+52:             }
+53:         }
+54:     }
+55: }

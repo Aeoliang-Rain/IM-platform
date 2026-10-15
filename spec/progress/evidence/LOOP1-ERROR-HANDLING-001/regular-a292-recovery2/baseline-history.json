@@ -1,0 +1,74 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.3589999999999236
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 15.938000000000102
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.3430000000000746
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/architecture",
+      "-v"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 34.187999999999874
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Development"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 26.797000000000025
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Acceptance"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 26.6400000000001
+  }
+]

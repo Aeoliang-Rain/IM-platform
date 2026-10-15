@@ -1,0 +1,65 @@
+{
+  "sha": "a292f516f622651ae62595163e479c13fff78c1d",
+  "seals_verified": [
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\candidate.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\acceptance.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\command-history.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\recorder-finish-receipt.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\cleanup.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\cleanup-final.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\negative-control-qa.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\instrumentation-warning-receipt.json",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\probe-sha256.txt",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-cause-read\\commit-paths.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\authority-inputs.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\cleanup-final.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\cleanup.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\handoff.md",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\human-read-mapper-scope.txt",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\input-checks.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\instrumentation-gaps.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\instrumentation-warning-receipt.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\negative-control-qa.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\ownership-audit.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\probe-sha256.txt",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\protected-read-scope.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\shared-output-preservation.json",
+    "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-cause-read\\verification-history.json"
+  ],
+  "qa": {
+    "finding": "Source-QA weakness in three newly added negative assertions; not an invented runtime failure",
+    "prior_code": "val failure = try { repo.contiguous(conversation); error(\"invalid present sequence accepted\") } catch (error: Exception) { error }",
+    "fixed_code": "val failure = try { repo.contiguous(conversation); null } catch (error: Exception) { error }",
+    "prior_evidence_limit": "Initial3new malformed-value checks unreliable because they could catch their own success assertion. Earlier actual69+33 and normal/emptyNULL exactmessage/stack controls unaffected. All final18 now freshly reliable.",
+    "current_source_sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2",
+    "current_test_apk_sha256": "3ee95cb2381519954021d992f885a85d3aa3bb13018a11a63586c78b54c79887",
+    "actual_final_command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+    "actual_final_command": {
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tests/clients/gui/native.py",
+        "mobile",
+        "--serial",
+        "emulator-5596"
+      ],
+      "command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+      "cwd": ".",
+      "secret_redaction_applied": false
+    },
+    "actual_final_result": {
+      "command_id": "C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a",
+      "duration_ms": 52219.0,
+      "exit_code": 0,
+      "result": "PASS",
+      "secret_redaction_applied": false,
+      "stderr_blob": "blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stderr.txt",
+      "stderr_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "stdout_blob": "blobs/C-aae68e51-bd47-4d1f-9f0a-51fa62fe2a2a.stdout.txt",
+      "stdout_sha256": "edd38fdfaf44a6db659194d0fcf16dde7e9951b8431933dd29816d3775c92263"
+    },
+    "true_output": "69 original Sync,33 Read,18 current contiguous; resultPASS/API34/code-1; raw blob bound above"
+  },
+  "classification": "prior Fix execution evidence, freshly read/hash checked; not this reviewer runtime"
+}

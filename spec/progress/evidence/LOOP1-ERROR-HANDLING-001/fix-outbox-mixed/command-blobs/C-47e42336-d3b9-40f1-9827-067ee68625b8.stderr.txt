@@ -1,0 +1,85 @@
+ Image im-error-tests-9910b23c09ed-migrate Building 
+ Image im-error-tests-9910b23c09ed-migrate Built 
+ Network im-error-tests-9910b23c09ed_default Creating 
+ Network im-error-tests-9910b23c09ed_default Created 
+ Volume im-error-tests-9910b23c09ed_postgres-data Creating 
+ Volume im-error-tests-9910b23c09ed_postgres-data Created 
+ Container im-error-tests-9910b23c09ed-nats-1 Creating 
+ Container im-error-tests-9910b23c09ed-postgres-1 Creating 
+ Container im-error-tests-9910b23c09ed-nats-1 Created 
+ Container im-error-tests-9910b23c09ed-postgres-1 Created 
+ Container im-error-tests-9910b23c09ed-migrate-1 Creating 
+ Container im-error-tests-9910b23c09ed-migrate-1 Created 
+ Container im-error-tests-9910b23c09ed-nats-1 Starting 
+ Container im-error-tests-9910b23c09ed-postgres-1 Starting 
+ Container im-error-tests-9910b23c09ed-nats-1 Started 
+ Container im-error-tests-9910b23c09ed-postgres-1 Started 
+ Container im-error-tests-9910b23c09ed-postgres-1 Waiting 
+ Container im-error-tests-9910b23c09ed-postgres-1 Healthy 
+ Container im-error-tests-9910b23c09ed-migrate-1 Starting 
+ Container im-error-tests-9910b23c09ed-migrate-1 Started 
+go: downloading github.com/gorilla/websocket v1.5.3
+go: downloading github.com/jackc/pgx/v5 v5.7.6
+go: downloading github.com/nats-io/nats.go v1.43.0
+go: downloading golang.org/x/crypto v0.39.0
+# im-platform/backend/go
+main.go:5:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go
+main.go:6:2: github.com/nats-io/nats.go@v1.43.0: Get "https://proxy.golang.org/github.com/nats-io/nats.go/@v/v1.43.0.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go
+core/auth.go:15:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go
+core/auth.go:16:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go
+core/auth.go:18:2: golang.org/x/crypto@v0.39.0: Get "https://proxy.golang.org/golang.org/x/crypto/@v/v0.39.0.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go
+gateway/gateway.go:14:2: github.com/gorilla/websocket@v1.5.3: Get "https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/core
+core/auth.go:15:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/core
+core/auth.go:16:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/core
+main.go:5:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/core
+main.go:6:2: github.com/nats-io/nats.go@v1.43.0: Get "https://proxy.golang.org/github.com/nats-io/nats.go/@v/v1.43.0.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/core
+core/auth.go:18:2: golang.org/x/crypto@v0.39.0: Get "https://proxy.golang.org/golang.org/x/crypto/@v/v0.39.0.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/gateway
+gateway/gateway.go:14:2: github.com/gorilla/websocket@v1.5.3: Get "https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/gateway
+core/auth.go:15:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/gateway
+main.go:5:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/gateway
+main.go:6:2: github.com/nats-io/nats.go@v1.43.0: Get "https://proxy.golang.org/github.com/nats-io/nats.go/@v/v1.43.0.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/plugin-host
+main.go:5:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/shared
+main.go:5:2: github.com/jackc/pgx/v5@v5.7.6: Get "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.7.6.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+# im-platform/backend/go/tests
+gateway/gateway.go:14:2: github.com/gorilla/websocket@v1.5.3: Get "https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip": dial tcp: lookup proxy.golang.org on 127.0.0.11:53: no such host
+ Container im-error-tests-9910b23c09ed-nats-1 Stopping 
+ Container im-error-tests-9910b23c09ed-migrate-1 Stopping 
+ Container im-error-tests-9910b23c09ed-migrate-1 Stopped 
+ Container im-error-tests-9910b23c09ed-migrate-1 Removing 
+ Container im-error-tests-9910b23c09ed-migrate-1 Removed 
+ Container im-error-tests-9910b23c09ed-postgres-1 Stopping 
+ Container im-error-tests-9910b23c09ed-nats-1 Stopped 
+ Container im-error-tests-9910b23c09ed-nats-1 Removing 
+ Container im-error-tests-9910b23c09ed-nats-1 Removed 
+ Container im-error-tests-9910b23c09ed-postgres-1 Stopped 
+ Container im-error-tests-9910b23c09ed-postgres-1 Removing 
+ Container im-error-tests-9910b23c09ed-postgres-1 Removed 
+ Network im-error-tests-9910b23c09ed_default Removing 
+ Volume im-error-tests-9910b23c09ed_postgres-data Removing 
+ Volume im-error-tests-9910b23c09ed_postgres-data Removed 
+ Network im-error-tests-9910b23c09ed_default Removed 
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\err\IM-platform\tests\clients\errors\go_live.py", line 24, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "H:\.codex\worktrees\err\IM-platform\tests\clients\errors\go_live.py", line 15, in main
+    subprocess.run([docker,"run","--rm","--label","im.error-task="+project,"--network",project+"_default","--env-file",str(private),"-v",str(ROOT)+":/workspace:ro","-w","/workspace/backend/go","golang:1.25-alpine","go","test","-mod=readonly","-count=1","-v","./..."],env=env,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:/Program Files/Docker/Docker/resources/bin/docker.exe', 'run', '--rm', '--label', 'im.error-task=im-error-tests-9910b23c09ed', '--network', 'im-error-tests-9910b23c09ed_default', '--env-file', 'C:\\Users\\21441\\AppData\\Local\\Temp\\error-live-env-sqk0zs_9\\fixture.env', '-v', 'H:\\.codex\\worktrees\\err\\IM-platform:/workspace:ro', '-w', '/workspace/backend/go', 'golang:1.25-alpine', 'go', 'test', '-mod=readonly', '-count=1', '-v', './...']' returned non-zero exit status 1.

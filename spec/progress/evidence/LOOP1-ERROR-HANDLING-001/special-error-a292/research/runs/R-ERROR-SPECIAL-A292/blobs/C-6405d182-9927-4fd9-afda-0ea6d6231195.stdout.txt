@@ -1,0 +1,175 @@
+evidence.py
+finding.json
+join_probe.go
+outbox_probe.go
+prompt.txt
+report.md
+research
+{
+  "sha": "a292f516f622651ae62595163e479c13fff78c1d",
+  "identity": "/root/error_audit_a292/client_special",
+  "scope": "Navigation correction supplement only; independently exact source checked",
+  "result": "SPECIALIZED_CLIENT_SUBSET_PASS_UNCHANGED_PRODUCT_FINDINGS",
+  "findings": [],
+  "original_immutable_receipt_sha256": "941ab4cd86f66f9918b32d41eca07edf3a922eebb6b1f80bfbe03eab460e2930",
+  "old_counts": {
+    "executable": 221,
+    "nonexecutable": 18
+  },
+  "corrected_counts": {
+    "files": 112,
+    "records": 239,
+    "executable": 219,
+    "nonexecutable": 20
+  },
+  "corrections": [
+    {
+      "original_ordinal": 46,
+      "composite_identity": "46|clients/desktop/src/application/ui/auth.ts|RH048",
+      "id": "RH048",
+      "path": "clients/desktop/src/application/ui/auth.ts",
+      "line": 13,
+      "column": 46,
+      "token": "?:",
+      "source": "async request(path:string,method=\"GET\",body?:unknown,authenticated=true):Promise<unknown>{",
+      "source_sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600",
+      "candidate_sha": "a292f516f622651ae62595163e479c13fff78c1d",
+      "previous_executable": true,
+      "executable": false,
+      "token_class": "typescript_optional_property_or_parameter_type",
+      "specific_fault": "Optional TypeScript body parameter type declaration; no runtime exception/fault handling.",
+      "present_authority": "Task error audit separates type declarations from runtime handling.",
+      "actual_recovery_or_failure": "Non-executable optional parameter grammar, not fake success fallback.",
+      "disposition": "NON_EXECUTABLE_RECORD"
+    },
+    {
+      "original_ordinal": 52,
+      "composite_identity": "52|clients/desktop/src/application/ui/auth.ts|RH054",
+      "id": "RH054",
+      "path": "clients/desktop/src/application/ui/auth.ts",
+      "line": 21,
+      "column": 48,
+      "token": "?:",
+      "source": "if(!response.ok){const code=(data as {error?:{code?:unknown}})?.error?.code;throw new ApiFailure(response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"invalid_credentials\":response.status===401?\"session_expired\":typeof code===\"string\"?code:\"request_failed\",response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"Invalid username or password\":response.status===401?\"Session expired\":typeof code===\"string\"?code:\"Request failed\");}",
+      "source_sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600",
+      "candidate_sha": "a292f516f622651ae62595163e479c13fff78c1d",
+      "previous_executable": true,
+      "executable": false,
+      "token_class": "typescript_optional_property_or_parameter_type",
+      "specific_fault": "Optional error property in TypeScript type assertion only; no runtime exception/default at this token.",
+      "present_authority": "Task inventory lexical/executable distinction; contracts/errors for actual rejection.",
+      "actual_recovery_or_failure": "Non-executable assertion type grammar; runtime server rejection handling remains separately assessed.",
+      "disposition": "NON_EXECUTABLE_RECORD"
+    },
+    {
+      "original_ordinal": 53,
+      "composite_identity": "53|clients/desktop/src/application/ui/auth.ts|RH055",
+      "id": "RH055",
+      "path": "clients/desktop/src/application/ui/auth.ts",
+      "line": 21,
+      "column": 55,
+      "token": "?:",
+      "source": "if(!response.ok){const code=(data as {error?:{code?:unknown}})?.error?.code;throw new ApiFailure(response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"invalid_credentials\":response.status===401?\"session_expired\":typeof code===\"string\"?code:\"request_failed\",response.status===401&&code===\"AUTH_INVALID_CREDENTIALS\"?\"Invalid username or password\":response.status===401?\"Session expired\":typeof code===\"string\"?code:\"Request failed\");}",
+      "source_sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600",
+      "candidate_sha": "a292f516f622651ae62595163e479c13fff78c1d",
+      "previous_executable": true,
+      "executable": false,
+      "token_class": "typescript_optional_property_or_parameter_type",
+      "specific_fault": "Optional code property in TypeScript type assertion only; no runtime exception/default at this token.",
+      "present_authority": "Task inventory lexical/executable distinction; contracts/errors for actual rejection.",
+      "actual_recovery_or_failure": "Non-executable assertion type grammar; no error recovery caused by optional-property type syntax.",
+      "disposition": "NON_EXECUTABLE_RECORD"
+    },
+    {
+      "original_ordinal": 228,
+      "composite_identity": "228|clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt|RH230",
+      "id": "RH230",
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+      "line": 13,
+      "column": 101,
+      "token": "?:",
+      "source": "return Regex(\"\\\\{([A-Za-z]+)\\\\}\").replace(template){match->params[match.groupValues[1]]?.toString()?:match.value}",
+      "source_sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12",
+      "candidate_sha": "a292f516f622651ae62595163e479c13fff78c1d",
+      "previous_executable": false,
+      "executable": true,
+      "token_class": "runtime_elvis_fallback",
+      "specific_fault": "Display interpolation parameter absent from params map: params[match.groupValues[1]] is null, so optional toString yields null.",
+      "present_authority": "ADR0012 language placeholder/display-only semantics; Frozen6.6; resources are presentation-only.",
+      "actual_recovery_or_failure": "Runtime Elvis fallback keeps match.value, the original literal placeholder, visibly in display text. It neither creates business data nor falsely reports successful operation.",
+      "disposition": "RETAINED_CURRENT_GROUND"
+    }
+  ],
+  "source_lease": "RELEASED",
+  "clean_status": "",
+  "instrumentation": "Own supplemental run; same uninvolved specialist context, not new independent review. Delegated audit-correction prompt, default register source label human does not imply direct Human speech; prestart run setup gap explicitly prospective_resume. Original finished run/sealed artifacts unchanged."
+}
+FILE finding.json
+{
+  "candidate": "a292f516f622651ae62595163e479c13fff78c1d",
+  "result": "FAIL",
+  "findings": [
+    {
+      "id": "F-OUTBOX-MIXED-CONNECT-ROOT",
+      "priority": 1,
+      "path": "backend/go/core/outbox.go",
+      "line": 29,
+      "trigger": "Actual default pgxpool Begin returns ConnectError errors.Join IPv6 network refusal + IPv4 internalXX000",
+      "masking": "errors.As finds one network branch; wholeerror logged/retried and unknownSQLSTATE hidden until cancellation",
+      "present_requirement": "error-handling.md unknown/internal propagation; Frozen5.2 knownOutbox recovery",
+      "smallest_fix": "Local existingboundary classify only completeknowntransport tree; return originalcompleteerror if anyunknownbranch",
+      "actual_reproduction": "join_probe.go and outbox_probe.go both0 demonstratingactualproducer and actualproductconsumer; noDial/Lookup/customcallback injection",
+      "runtime_limit": "ControlledPG wireendpoint, not realPG/TLS deploymentacceptance"
+    }
+  ],
+  "source_input_hashes": [
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\core\\outbox.go",
+      "sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1"
+    },
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\core\\message.go",
+      "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+    },
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\main.go",
+      "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+    },
+    {
+      "path": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go\\shared\\config.go",
+      "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\pgconn\\pgconn.go",
+      "sha256": "08dbe55fb43ac2938e09f055cc864fcb7a95116d5e8ff0cc1178ad2a002f9245"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\pgconn\\errors.go",
+      "sha256": "401d20942ba44b9663c4bf7ad9a22dbab1b24ec2529da57eb9030253870e72d2"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\pgxpool\\pool.go",
+      "sha256": "88fc943102cb2283b15ab2d5b4d412eb9fa4db91e2d572f2d8fd32fd848a282f"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\tx.go",
+      "sha256": "c5ef70c013e1bc4c3a2883dc7249b8d9818e95b43b847c5038a44977ff665157"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\conn.go",
+      "sha256": "65ca1e5301b0fe4321a52465b6720bc8c1fd8591e329d556098b75dd8719b92e"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\jackc\\pgx\\v5@v5.7.6\\rows.go",
+      "sha256": "14985518a35b5a90cfb9d8479e0f10e7a564b05a00e70e898079b3ce91227deb"
+    },
+    {
+      "path": "C:\\Users\\21441\\go\\pkg\\mod\\github.com\\nats-io\\nats.go@v1.43.0\\nats.go",
+      "sha256": "de14b5ed0954af8e7fd10e3e3047e942d5650f46ee0c1a6a86173327b613dbc3"
+    }
+  ],
+  "prior_server_pass_superseded": true,
+  "original_server_receipt_sha256": "8ecf87f6426387f1919b485d6ddd0c8d00c9a28bddd6b1136379b08dd8d8046f",
+  "git_status": ""
+}
+

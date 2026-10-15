@@ -1,0 +1,70 @@
+RH107 Shell.tsx 28 120 const prefs=s.appearance,friend=s.friends.find(f=>f.directConversationId===s.selected),title=friend?.user.displayName??(s.selected?t("chat.conversationId",{id:s.selected.slice(0,8)}):t("chat.your"));
+RH108 Shell.tsx 39 138 <div className="chat-pane glass">{s.selected&&<><div className="chat-heading"><span className="avatar">{friend?.user.displayName[0]??"#"}</span><div><h2>{title}</h2><small>{s.connection==="ready"?t("sync.connected"):t("sync.offline")}</small></div><button className="quiet" disabled={!s.session} onClick={()=>run(reconnect())}>{t("auth.reconnect")}</button></div><Messages s={s} retry={retry} run={run}/><Composer s={s} draft={draft} setDraft={setDraft} send={send} run={run} textarea={textarea} composerHeight={composerHeight} setComposerHeight={setComposerHeight} resize={resize}/></>}</div></section>:
+RH109 resources.ts 17 81 return template.replace(/\{([A-Za-z]+)\}/g,(_,name:string)=>String(params[name]??"{"+name+"}"));
+RH110 build.gradle.kts 15 94 testInstrumentationRunner = providers.gradleProperty("imSendInstrumentation").orNull ?: "im.platform.client.storage.StorageInstrumentation"
+RH111 SendViewModel.kt 25 25 try{return action()}catch(error:android.database.sqlite.SQLiteException){throw SendStorageFailure(error)}
+RH112 SendViewModel.kt 26 5 catch(error:IllegalStateException){if(error.message?.startsWith("attempt to re-open an already-closed object:")==true)throw SendStorageFailure(error);throw error}
+RH113 SendViewModel.kt 59 95 private suspend fun operation(action:suspend ()->Unit) { lock.withLock { try { action() } catch(error:SendStorageFailure) { publish(mutableState.value.copy(error="storage")); throw error } } }
+RH114 SendViewModel.kt 60 94 private fun callback(action:suspend ()->Unit) { scope.launch { try { operation(action) } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } } }
+RH115 SendViewModel.kt 66 176 socket=factory(endpoint,{callback { if(g==generation && !retired)try{socket?.send(Wire.envelope("auth.bind",bind,JSONObject().put("accessToken",session.accessToken)))}catch(_:java.io.IOException){disconnectNow()} }},
+RH116 SendViewModel.kt 79 11 } catch(error:SendStorageFailure) {
+RH117 SendViewModel.kt 94 93 val row=repositoryRead { repo.messages(conversation) }.firstOrNull {it[0]==request} ?: error("Unknown send")
+RH118 SendViewModel.kt 102 9 catch(_:java.io.IOException) { fail(k,a); return }
+RH119 SendViewModel.kt 105 82 a.timer=scope.launch { delay(timeoutMs); try { operation { fail(k,a) } } catch(_:SendStorageFailure) { /* Existing native rollback and storage failure state remain observable. */ } }
+RH120 SendViewModel.kt 111 38 val f=try {Wire.decode(raw)} catch(_:WireFailure) {protocolFailure(); return}; val p=f.payload
+RH121 SendViewModel.kt 112 94 if(f.type=="ping") {try{socket?.send(Wire.envelope("pong",f.requestId,JSONObject()))}catch(_:java.io.IOException){disconnectNow()};return}; if(f.type=="pong") return
+RH122 SendViewModel.kt 141 98 try {storage{repository.initialize()};SendViewModel(repository,session,ownsRepository=true)} catch(error:Exception) {repository.close();throw error}
+RH123 Wire.kt 15 28 val s=v as? String ?: invalid()
+RH124 Wire.kt 20 28 val s=v as? String ?: invalid()
+RH125 Wire.kt 25 32 val n=v as? BigInteger ?: invalid()
+RH126 Wire.kt 31 43 return keys.associateWith { v[it] ?: invalid() }
+RH127 Wire.kt 34 28 val s=v as? String ?: invalid()
+RH128 Wire.kt 35 87 if(!s.matches(Regex("[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})"))) invalid()
+RH129 Wire.kt 35 101 if(!s.matches(Regex("[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})"))) invalid()
+RH130 Wire.kt 37 50 try { OffsetDateTime.parse(normalized) } catch(_: java.time.format.DateTimeParseException) { invalid() }
+RH131 Wire.kt 81 29 val m=Regex("-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?").find(raw,at)
+RH132 Wire.kt 81 46 val m=Regex("-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?").find(raw,at)
+RH133 Wire.kt 81 60 val m=Regex("-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?").find(raw,at)
+RH134 Wire.kt 90 15 } catch(_:ArithmeticException) { invalid() } catch(_:NumberFormatException) { invalid() }
+RH135 Wire.kt 90 58 } catch(_:ArithmeticException) { invalid() } catch(_:NumberFormatException) { invalid() }
+RH136 Wire.kt 100 39 val type=e["type"] as? String ?: invalid(); val id=uuid(e["requestId"])
+RH137 Wss.kt 40 69 wire(lines.first().matches(Regex("HTTP/1\\.[01] 101(?: .*)?")))
+RH138 Wss.kt 69 15 } catch(_: IOException) { /* Failed transport closes this socket and notifies ended; no frame/credential logging. */ }
+RH139 Wss.kt 74 38 check(!closed); val s=socket ?: error("WSS unavailable")
+RH140 Wss.kt 82 65 override fun close() { closed=true; try { socket?.close() } catch(_:IOException) { /* close attempted; the connection is already retired. */ } }
+RH141 Repository.kt 135 9 if (rows.isEmpty()) return 0L
+RH142 Https.kt 20 37 val uri=try {URI(endpoint)} catch(_:java.net.URISyntaxException){throw SyncFailure("protocol")}
+RH143 Https.kt 34 120 if(c.getHeaderField("Cache-Control")!="no-store" || c.contentType?.matches(Regex("(?i)application/json(?:\\s*;.*)?"))!=true) throw SyncFailure(if(status>=500)"transport" else "protocol")
+RH144 Https.kt 35 78 val stream=(if(status==200)c.inputStream else c.errorStream) ?: throw SyncFailure("transport")
+RH145 Https.kt 38 202 val raw=try{Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(out.toByteArray())).toString()}catch(_:java.nio.charset.CharacterCodingException){throw SyncFailure("protocol")}
+RH146 Https.kt 41 15 } catch(error:Exception) {if(error is CancellationException)throw error;val failure=if(error is java.io.IOException)SyncFailure("transport")else error;if(continuation.isActive)continuation.resumeWithException(failure)else if(error !is java.io.IOException && error !is SyncFailure)throw error}
+RH147 SyncViewModel.kt 41 59 private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}
+RH148 SyncViewModel.kt 41 59 private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}
+RH149 SyncViewModel.kt 63 22 }catch(error:SyncFailure){if(error.kind=="unavailable"){unavailable.add(c);continue};throw error}
+RH150 SyncViewModel.kt 66 14 }catch(error:Exception){
+RH151 SyncViewModel.kt 85 5 catch(error:Exception){repository.close();throw error}
+RH152 Wire.kt 13 59 private fun cursor(v:Any?):String {val s=v as? String ?: invalid();if(s.isEmpty() || s.codePointCount(0,s.length)>256) invalid();return s}
+RH153 Wire.kt 14 59 private fun list(v:Any?):List<*> {val l=v as? List<*> ?: invalid();if(l.size>100) invalid();return l}
+RH154 Wire.kt 24 113 val eventId=SendWire.uuid(e["eventId"]);val token=cursor(e["cursor"]);val kind=e["kind"] as? String ?: invalid()
+RH155 Wire.kt 31 6 }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}
+RH156 Wire.kt 31 61 }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}
+RH157 Wire.kt 45 6 }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}
+RH158 Wire.kt 45 61 }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}
+RH159 Wire.kt 48 39 val e=p["error"] as? Map<*,*> ?: invalid();if(e.keys.any {it !in setOf("code","message","violations")} || e["message"] !is String || (e["message"] as String).isEmpty()) invalid()
+RH160 Wire.kt 49 71 if(e.containsKey("violations")) {(e["violations"] as? List<*> ?: invalid()).forEach {v->val f=SendWire.obj(v,setOf("field","reason"));if(f.values.any {it !is String || it.isEmpty()}) invalid()}}
+RH161 Wire.kt 56 6 }catch(_:im.platform.client.send.WireFailure){SyncFailure("protocol")}catch(_:SyncFailure){SyncFailure("protocol")}
+RH162 Wire.kt 56 75 }catch(_:im.platform.client.send.WireFailure){SyncFailure("protocol")}catch(_:SyncFailure){SyncFailure("protocol")}
+RH163 Auth.kt 26 52 if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure("session_expired","Session expired");connection.setRequestProperty("Authorization","Bearer "+token)}
+RH164 Auth.kt 26 74 if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure("session_expired","Session expired");connection.setRequestProperty("Authorization","Bearer "+token)}
+RH165 Auth.kt 29 98 if(status in 300..399 || connection.contentType?.matches(Regex("(?i)application/json(?:\\s*;.*)?"))!=true)throw ApiFailure("invalid_server_response","Invalid server response")
+RH166 Auth.kt 31 20 (stream?:throw ApiFailure("connection_unavailable","Connection unavailable")).use{val buffer=ByteArray(8192);while(true){val n=it.read(buffer);if(n<0)break;if(output.size()+n>1048576)throw ApiFailure("invalid_server_response","Invalid server response");output.write(buffer,0,n)}}
+RH167 Auth.kt 33 258 if(status !in 200..299){val code=((result as? Map<*,*>)?.get("error") as? Map<*,*>)?.get("code") as? String;throw ApiFailure(if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"invalid_credentials" else if(status==401)"session_expired" else code?:"request_failed",if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"Invalid username or password" else if(status==401)"Session expired" else code?:"Request failed")};result
+RH168 Auth.kt 33 406 if(status !in 200..299){val code=((result as? Map<*,*>)?.get("error") as? Map<*,*>)?.get("code") as? String;throw ApiFailure(if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"invalid_credentials" else if(status==401)"session_expired" else code?:"request_failed",if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"Invalid username or password" else if(status==401)"Session expired" else code?:"Request failed")};result
+RH169 Auth.kt 34 10 }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.io.IOException){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+RH170 Auth.kt 34 38 }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.io.IOException){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+RH171 Auth.kt 34 153 }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.io.IOException){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+RH172 Auth.kt 34 274 }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.io.IOException){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+RH173 Auth.kt 43 159 try {preferences.write(newSlot,refresh);preferences.write(endpoint+"/current",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(error:Exception){session=null;throw error}
+RH174 Auth.kt 48 83 suspend fun restore():SendSession? {slot=preferences.read(endpoint+"/current")?:return null;return refresh()}
+RH175 Auth.kt 49 94 @Synchronized fun savedAccount():String? {val saved=preferences.read(endpoint+"/current")?:return null;require(saved.startsWith(endpoint+"/"));val parts=saved.removePrefix(endpoint+"/").split('/');require(parts.size==2);Wire.uuid(parts[1]);slot=saved;return Wire.uuid(parts[0])}
+RH176 Auth.kt 50 91 suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure("session_expired","Session expired");try{return accept(request("/v1/auth/refresh/native","POST",metadata().put("refreshToken",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind=="session_expired")clear();throw e}}

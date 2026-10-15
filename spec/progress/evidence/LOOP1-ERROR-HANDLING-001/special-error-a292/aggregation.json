@@ -1,0 +1,34 @@
+{
+  "result": "FAIL",
+  "candidate_sha": "a292f516f622651ae62595163e479c13fff78c1d",
+  "coverage185": true,
+  "original305unique_composites": true,
+  "precise305unique_actual_token_coordinates": true,
+  "executable": 270,
+  "nonexecutable": 35,
+  "duplicate_original_ID_strings": {
+    "RH294": [
+      "tools/build_language_packs.py",
+      "clients/desktop/src/application/accountSend.ts"
+    ]
+  },
+  "corrected_navigation": "4helper classification corrections in newimmutable addendum; no source change, originalsealed evidence retained.",
+  "findings": [
+    {
+      "id": "F-OUTBOX-MIXED-CONNECT-ROOT",
+      "priority": 1,
+      "path": "backend/go/core/outbox.go",
+      "line": 29,
+      "trigger": "Actual default pgxpool Begin returns ConnectError errors.Join IPv6 network refusal + IPv4 internalXX000",
+      "masking": "errors.As finds one network branch; wholeerror logged/retried and unknownSQLSTATE hidden until cancellation",
+      "present_requirement": "error-handling.md unknown/internal propagation; Frozen5.2 knownOutbox recovery",
+      "smallest_fix": "Local existingboundary classify only completeknowntransport tree; return originalcompleteerror if anyunknownbranch",
+      "actual_reproduction": "join_probe.go and outbox_probe.go both0 demonstratingactualproducer and actualproductconsumer; noDial/Lookup/customcallback injection",
+      "runtime_limit": "ControlledPG wireendpoint, not realPG/TLS deploymentacceptance"
+    }
+  ],
+  "helper_seals_checked": 186,
+  "prior_server_PASS_superseded": true,
+  "task_acceptance": "PENDING_NEW_FIX_NEW_REGULAR_NEW_SPECIAL_THEN_CI_INTEGRATION_MAIN_SYNC",
+  "source_lease": "RELEASED"
+}

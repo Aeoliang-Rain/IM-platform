@@ -1,6 +1,7 @@
 import { Repository } from "../../../shared/protocol-sdk/src/storage/repository.js";
 import type { LocalMessage, ServerMessage, Committed, UserPage } from "../../../shared/protocol-sdk/src/storage/models.js";
-import { content, decode, envelope, uuid } from "../../../shared/protocol-sdk/src/send/wire.js";
+import { WireFailure, content, decode, envelope, uuid } from "../../../shared/protocol-sdk/src/send/wire.js";
+export class SendStorageFailure extends Error {constructor(cause:unknown){super("Send storage operation failed",{cause});}}
 export interface Session { userId: string; sessionId: string; sessionEpoch: bigint; accessToken: string }
 export interface Socket {
   onopen: ((event:Event)=>void)|null; onmessage: ((event:MessageEvent<unknown>)=>void)|null;
@@ -34,20 +35,26 @@ export class SendApplication {
   get state(): SendState { return this.current; }
   observe(listener:(state:SendState)=>void): ()=>void { this.listeners.add(listener); listener(this.current); return ()=>this.listeners.delete(listener); }
   observeDelivery(listener:(conversationId:string,seq:bigint)=>void):()=>void { this.deliveries.add(listener); return ()=>this.deliveries.delete(listener); }
-  private delivered(c:string,n:bigint):void { if(!this.retired) for(const listener of this.deliveries) {try {listener(c,n);} catch {/* Commit already completed. */}} }
+  private delivered(c:string,n:bigint):void { if(!this.retired) for(const listener of this.deliveries) listener(c,n); }
   private publish(state: SendState): void {
     if(this.retired) return;
     this.current=Object.freeze({...state,messages:Object.freeze(state.messages.map(r=>Object.freeze([...r])))});
-    for(const listener of this.listeners) { try { listener(this.current); } catch { /* Observers do not own the transaction. */ } }
+    for(const listener of this.listeners) listener(this.current);
+  }
+  private async storage<T>(action:()=>Promise<T>):Promise<T> {
+    try{return await action();}catch(error){
+      if(typeof error==="string" && ["Storage directory unavailable","Storage open failed","Storage read open failed","Transaction start failed","Transaction rollback failed","Transaction commit failed","Storage statement rejected","Storage query rejected","Storage result unavailable","Storage result type rejected","Read-only setup failed","Read-only reset failed"].includes(error))throw new SendStorageFailure(error);
+      throw error;
+    }
   }
   private serial(action:()=>Promise<void>): Promise<void> {
     const result=this.queue.then(action);
-    this.queue=result.catch(()=>{this.publish({...this.current,error:"storage"});});
+    this.queue=result.catch(error=>{if(!(error instanceof SendStorageFailure))throw error;this.publish({...this.current,error:"storage"});});
     return result;
   }
   async idle(): Promise<void> { await this.queue; }
   private async refresh(): Promise<void> {
-    const messages=this.conversation?await this.repository.messages(this.conversation):[];
+    const messages=this.conversation?await this.storage(()=>this.repository.messages(this.conversation)):[];
     this.publish({...this.current,messages});
   }
   async openConversation(conversationId:string): Promise<void> {
@@ -55,24 +62,24 @@ export class SendApplication {
   }
   connect(endpoint:string): void {
     if(this.retired) throw new Error("Send application retired");
-    let url: URL; try { url=new URL(endpoint); } catch { throw new Error("Invalid WSS endpoint"); }
+    const url=new URL(endpoint);
     if(url.protocol!=="wss:" || url.username || url.password || url.search || url.hash) throw new Error("Invalid WSS endpoint");
     this.disconnect(); const generation=++this.generation; this.binding=uuid(this.id()); this.bound=false;
     const socket=this.factory(url.href); this.socket=socket;
     this.publish({...this.current,connection:"binding"});
     const active=()=>!this.retired && this.socket===socket && this.generation===generation;
-    socket.onopen=()=>{if(active()) { try { socket.send(envelope("auth.bind",this.binding,{accessToken:this.session.accessToken})); } catch { this.disconnect(); } }};
-    socket.onmessage=event=>{if(active()) void this.serial(async()=>{if(!active()) return; if(typeof event.data!=="string") { this.protocolFailure(); return; } try { await this.receive(event.data,generation); } catch(error) { if(error instanceof Error && error.message==="Invalid WSS frame") this.protocolFailure(); else throw new Error("Send storage operation failed"); }}).catch(()=>{});};
+    socket.onopen=()=>{if(active()) { try { socket.send(envelope("auth.bind",this.binding,{accessToken:this.session.accessToken})); } catch(error) {if(!(error instanceof DOMException))throw error;this.disconnect();} }};
+    socket.onmessage=event=>{if(active()) void this.serial(async()=>{if(!active()) return; if(typeof event.data!=="string") { this.protocolFailure(); return; } try { await this.receive(event.data,generation); } catch(error) { if(error instanceof WireFailure) this.protocolFailure(); else throw error; }}).catch(error=>{if(!(error instanceof SendStorageFailure))throw error;});};
     socket.onerror=socket.onclose=()=>{if(active()) this.disconnect();};
   }
   private protocolFailure(): void { this.disconnect(); this.publish({...this.current,error:"protocol"}); }
   disconnect(): void {
     const old=this.socket; this.socket=null; this.bound=false; this.generation++; this.requestConversations.clear();
-    if(old) { old.onopen=old.onmessage=old.onclose=old.onerror=null; try { old.close(); } catch { /* Already closed. */ } }
+    if(old) { old.onopen=old.onmessage=old.onclose=old.onerror=null; old.close(); }
     this.publish({...this.current,connection:"offline"});
     for(const [key,attempt] of this.attempts) {
       if(attempt.timer) clearTimeout(attempt.timer); this.attempts.delete(key);
-      void this.serial(async()=>{await this.repository.markFailed(attempt.message.conversationId,attempt.message.requestId); await this.refresh();}).catch(()=>{});
+      void this.serial(async()=>{await this.storage(()=>this.repository.markFailed(attempt.message.conversationId,attempt.message.requestId)); await this.refresh();}).catch(error=>{if(!(error instanceof SendStorageFailure))throw error;});
     }
   }
   close(): void { this.disconnect(); this.retired=true; this.listeners.clear(); this.deliveries.clear(); this.current={connection:"offline",messages:[],error:null}; }
@@ -84,7 +91,7 @@ export class SendApplication {
   async retry(conversationId:string,requestId:string): Promise<void> {
     await this.serial(async()=>{
       if(this.retired) throw new Error("Send application retired");
-      const c=uuid(conversationId), r=uuid(requestId), row=(await this.repository.messages(c)).find(row=>row[0]===r);
+      const c=uuid(conversationId), r=uuid(requestId), row=(await this.storage(()=>this.repository.messages(c))).find(row=>row[0]===r);
       if(!row || row[1]!==this.session.userId) throw new Error("Unknown own send");
       if(row[3]==="SENT") return;
       await this.begin({conversationId:c,requestId:r,senderId:row[1]!,content:content({kind:"TEXT",text:row[2]})});
@@ -94,7 +101,7 @@ export class SendApplication {
   private key(message:Pick<LocalMessage,"conversationId"|"requestId">): string { return message.conversationId+"/"+message.requestId; }
   private async begin(message:LocalMessage): Promise<void> {
     if(this.retired) throw new Error("Send application retired");
-    await this.repository.localSend(message);
+    await this.storage(()=>this.repository.localSend(message));
     this.known.set(this.key(message),message); await this.refresh();
     if(this.retired) return;
     const key=this.key(message), prior=this.attempts.get(key); if(prior?.timer) clearTimeout(prior.timer);
@@ -102,14 +109,14 @@ export class SendApplication {
     this.attempts.set(key,attempt);
     if(!this.bound || !this.socket) { await this.fail(key,attempt); return; }
     try { this.socket.send(envelope("message.send",message.requestId,{conversationId:message.conversationId,content:message.content})); attempt.sent=true; }
-    catch { await this.fail(key,attempt); return; }
+    catch(error) {if(!(error instanceof DOMException))throw error;await this.fail(key,attempt);return;}
     const priorConversation=this.requestConversations.get(message.requestId);
     this.requestConversations.set(message.requestId,priorConversation===undefined || priorConversation===message.conversationId ? message.conversationId : null);
-    attempt.timer=setTimeout(()=>{void this.serial(()=>this.fail(key,attempt)).catch(()=>{});},this.timeoutMs);
+    attempt.timer=setTimeout(()=>{void this.serial(()=>this.fail(key,attempt)).catch(error=>{if(!(error instanceof SendStorageFailure))throw error;});},this.timeoutMs);
   }
   private async fail(key:string,attempt:{message:LocalMessage}): Promise<void> {
     if(this.attempts.get(key)!==attempt) return;
-    this.attempts.delete(key); await this.repository.markFailed(attempt.message.conversationId,attempt.message.requestId); await this.refresh();
+    this.attempts.delete(key); await this.storage(()=>this.repository.markFailed(attempt.message.conversationId,attempt.message.requestId)); await this.refresh();
   }
   private clear(c:string,r:string): void { const key=c+"/"+r, a=this.attempts.get(key); if(a?.timer) clearTimeout(a.timer); this.attempts.delete(key); }
   private async receive(raw:string,generation:number): Promise<void> {
@@ -124,7 +131,7 @@ export class SendApplication {
     if(frame.type==="session.revoked") { if(p.sessionId!==this.session.sessionId) this.protocolFailure(); else this.disconnect(); return; }
     if(frame.type==="message.created") {
       const message={...p,requestId:frame.requestId} as unknown as ServerMessage;
-      await this.repository.syncMessages([message]); this.clear(message.conversationId,message.requestId); await this.refresh(); this.delivered(message.conversationId,BigInt(message.seq)); return;
+      await this.storage(()=>this.repository.syncMessages([message])); this.clear(message.conversationId,message.requestId); await this.refresh(); this.delivered(message.conversationId,BigInt(message.seq)); return;
     }
     if(frame.type==="message.ack") {
       if(p.status==="rejected") {
@@ -137,15 +144,15 @@ export class SendApplication {
         // An ACK only confirms a send issued by this application; retry reloads
         // the durable intent after restart. Realtime/Sync own other deliveries.
         if(!this.known.has(key)) return;
-        await this.repository.committedAck(frame.requestId,p as unknown as Committed); this.clear(c,frame.requestId); await this.refresh(); this.delivered(c,p.seq as bigint);
+        await this.storage(()=>this.repository.committedAck(frame.requestId,p as unknown as Committed)); this.clear(c,frame.requestId); await this.refresh(); this.delivered(c,p.seq as bigint);
       }
     }
   }
   async mergeMessages(messages:ServerMessage[], active:()=>boolean=()=>true, failBeforeAdvance=false): Promise<void> {
-    return this.serial(async()=>{if(this.retired || !active()) return; await this.repository.syncMessages(messages,failBeforeAdvance); for(const m of messages) this.clear(m.conversationId,m.requestId); await this.refresh();});
+    return this.serial(async()=>{if(this.retired || !active()) return; await this.storage(()=>this.repository.syncMessages(messages,failBeforeAdvance)); for(const m of messages) this.clear(m.conversationId,m.requestId); await this.refresh();});
   }
   async mergeUserPage(page:UserPage,expectedCursor:string,active:()=>boolean,failBeforeAdvance=false):Promise<void> {
-    return this.serial(async()=>{if(this.retired || !active()) return; await this.repository.userPage(page,expectedCursor,failBeforeAdvance);});
+    return this.serial(async()=>{if(this.retired || !active()) return; await this.storage(()=>this.repository.userPage(page,expectedCursor,failBeforeAdvance));});
   }
 
 }

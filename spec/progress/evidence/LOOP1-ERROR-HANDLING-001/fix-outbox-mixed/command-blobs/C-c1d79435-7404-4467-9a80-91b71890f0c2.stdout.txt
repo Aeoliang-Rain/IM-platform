@@ -1,0 +1,8 @@
+=== RUN   TestOutboxMixedDefaultConnectErrorPropagates
+2026/10/14 13:04:21 Outbox transport batch failed; pending events retained for next tick
+2026/10/14 13:04:21 Outbox transport batch failed; pending events retained for next tick
+    outbox_transport_test.go:82: dispatcher lost complete mixed driver error: context.deadlineExceededError context deadline exceeded
+--- FAIL: TestOutboxMixedDefaultConnectErrorPropagates (1.32s)
+FAIL
+FAIL	im-platform/backend/go/core	1.905s
+FAIL

@@ -1,0 +1,218 @@
+
+FILE spec\domain\auth-user-friend.md
+# Auth, User, and Friend Domain Input
+
+This document supplies semantic input to `LOOP1-CONTRACT-001`. Names used below identify domain concepts only; they do not define public wire fields, implementation classes, or database tables.
+
+| Rule ID | Domain statement | Source |
+| --- | --- | --- |
+| AUF-D-001 | A user MUST have exactly three login slots: WEB, DESKTOP, and MOBILE; at most one Session for a given user and client type may be valid at a time. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-D-002 | Sessions for different client types MAY be valid concurrently for the same user. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-D-003 | A new login for the same user and client type MUST revoke the previous Session and advance the session epoch in one transaction. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-D-004 | PostgreSQL MUST remain authoritative for login state; Gateway memory is only an online-connection and routing cache. | Architecture Baseline v1.0, chapters 2 (F-03), 4.1, and 7.3. |
+| AUF-D-005 | A friendship MUST be represented by one normalized unordered user pair, so `(A,B)` and `(B,A)` denote the same friendship. | Architecture Baseline v1.0, chapter 4.2 and appendix B (Friend). |
+| AUF-D-006 | Adding a friend in Loop 1 MUST immediately establish the bidirectional friendship and create or reuse the pair's single DIRECT Conversation in the same transaction. | Architecture Baseline v1.0, chapter 4.2 and appendix B (Friend). |
+| AUF-D-007 | Loop 1 MUST NOT introduce a friend-request approval flow. | Architecture Baseline v1.0, chapter 4.2. |
+| AUF-D-008 | A successful explicit logout MUST revoke the Session and Refresh Token and close its WSS connection; it MUST NOT be specified as deletion of local client history. | Architecture Baseline v1.0, chapter 7.1. |
+| AUF-D-009 | Production authentication transport MUST use HTTPS/WSS/TLS; tokens MUST NOT be accepted from a URL query or written to logs or traces, and error responses MUST NOT reveal token material. | Architecture Baseline v1.0, chapter 7.4. |
+
+
+FILE spec\domain\messaging.md
+# Messaging Domain Input
+
+This document supplies semantic input to `LOOP1-CONTRACT-002`. Names used below identify domain concepts only; they do not define public wire fields, implementation classes, or database tables.
+
+| Rule ID | Domain statement | Source |
+| --- | --- | --- |
+| MSG-D-001 | A client request identity MUST be unique within a Conversation and is the identity reused by retry and local convergence. | Architecture Baseline v1.0, chapter 4.4. |
+| MSG-D-002 | The server idempotency identity MUST include sender, Conversation, and client request identity; the server message identity MUST be globally unique. | Architecture Baseline v1.0, chapter 4.4 and appendix B (Message). |
+| MSG-D-003 | Conversation sequence numbers MUST be unique and monotonically increasing within each Conversation. | Architecture Baseline v1.0, chapter 4.4 and appendix B (Message). |
+| MSG-D-004 | Message send MUST authorize the sender as a Conversation member before persistence. | Architecture Baseline v1.0, chapter 5.1. |
+| MSG-D-005 | Sequence allocation, Message persistence, and the matching Outbox event MUST commit atomically; a successful ACK MUST mean that durable commit has completed. | Architecture Baseline v1.0, chapters 2 (F-04) and 5.1, and appendix B (Message, Outbox). |
+| MSG-D-006 | Outbox delivery and NATS delivery MAY repeat or be briefly missed; consumers MUST be idempotent and Sync MUST provide eventual completeness. | Architecture Baseline v1.0, chapter 5.2 and appendix B (Outbox). |
+| MSG-D-007 | Gateway MUST fan out only to locally active connections and MUST NOT own friendship, membership, persistence, or plugin business rules. | Architecture Baseline v1.0, chapters 2 (F-05) and 5.2. |
+| MSG-D-008 | A GROUP send MUST create one logical Message and one Outbox event; it MUST NOT create one persistent message record per member. | Architecture Baseline v1.0, chapter 5.3. |
+| MSG-D-009 | Loop 1 MUST NOT treat NATS JetStream as the message source of truth. | Architecture Baseline v1.0, chapters 2 (F-03) and 5.2. |
+
+
+FILE spec\domain\sync-plugin.md
+# Sync and Plugin Domain Input
+
+This document supplies semantic input to `LOOP1-CONTRACT-003`. Names used below identify domain concepts only; they do not define public wire fields, implementation classes, or database tables.
+
+| Rule ID | Domain statement | Source |
+| --- | --- | --- |
+| SP-D-001 | Web MUST remain memory-only and MUST NOT claim offline history; Desktop and Mobile MUST use per-account local materialized views and render local state before background Sync. | Architecture Baseline v1.0, chapters 2 (F-07) and 6.1, and appendix B (Web). |
+| SP-D-002 | A local optimistic send MUST create one client request identity, persist SENDING before transmission, converge to SENT after ACK, and reuse the same request identity when retrying FAILED. | Architecture Baseline v1.0, chapter 6.2. |
+| SP-D-003 | SENT MUST be terminal and MUST NOT regress to FAILED; FAILED means only that the current attempt lacks success confirmation. | Architecture Baseline v1.0, chapter 6.2 and appendix B (SQLite). |
+| SP-D-004 | User Sync cursor MUST cover only low-frequency user-level state; message state MUST use per-Conversation sequence and contiguous sequence tracking. | Architecture Baseline v1.0, chapters 2 (F-06) and 6.4, and appendix B (Sync). |
+| SP-D-005 | Sync MUST advance a per-Conversation contiguous sequence only across a gap-free prefix; duplicate and out-of-order input MUST converge without skipping a gap. | Architecture Baseline v1.0, chapter 6.4 and appendix B (Sync). |
+| SP-D-006 | All local send, ACK, realtime, and Sync write paths MUST converge through transactional upsert; data and cursor advancement MUST commit together. | Architecture Baseline v1.0, chapter 6.3. |
+| SP-D-007 | Plugin API v1 MUST expose Events, Queries, Actions, and UI Host surfaces, each constrained by declared capability and permission. | Architecture Baseline v1.0, chapters 2 (F-08) and 8.1. |
+| SP-D-008 | Queries MUST be read-only, paginated, and limited; each Action MUST be re-authorized, idempotent, and audited; plugins MUST NOT call Core internals or databases directly. | Architecture Baseline v1.0, chapter 8.1. |
+| SP-D-009 | A custom renderer MUST pass package hash, signature, manifest-schema, API-compatibility, permission, resource-size, CSP, and entry-point checks before loading, and MUST run in the stated UI sandbox. | Architecture Baseline v1.0, chapter 8.2. |
+| SP-D-010 | A plugin artifact identified by plugin and version MUST be immutable; backend and renderer MUST remain version-bound, and history MUST retain the renderer needed by referenced messages plus fallback text. | Architecture Baseline v1.0, chapter 8.2 and appendix B (Plugin). |
+| SP-D-011 | WASM execution MUST default-deny database, server-file, arbitrary-network, and other-plugin-memory access and MUST enforce CPU/time, memory, concurrency, storage, and network limits. | Architecture Baseline v1.0, chapter 8.3 and appendix B (Plugin). |
+| SP-D-012 | Plugin artifact lifecycle and Conversation-scoped instance lifecycle MUST remain distinct; upgrade MUST keep the old version serving until snapshot, migration, paired health checks, and atomic switch succeed, and MUST roll back on failure. | Architecture Baseline v1.0, chapters 9.1 and 9.2. |
+| SP-D-013 | DISABLE MUST preserve data, UNINSTALL MUST default to RETAINED, and PURGE MUST require an explicit irreversible operation with elevated permission, audit, and a confirmed retention policy. | Architecture Baseline v1.0, chapter 9.3. |
+
+
+FILE spec\invariants\auth-user-friend.md
+# Auth, User, and Friend Invariants
+
+These invariants constrain future contracts without prescribing wire shape or persistence schema. Machine-verifiable public authority remains exclusively under `contracts/`.
+
+| Rule ID | Invariant | Source |
+| --- | --- | --- |
+| AUF-I-001 | A contract MUST make it impossible to represent more than one valid Session for the same user and client type. | Architecture Baseline v1.0, chapter 4.1 and appendix B (Session). |
+| AUF-I-002 | Same-slot relogin MUST invalidate the old epoch before the new Session is accepted; an old token MUST NOT reconnect successfully. | Architecture Baseline v1.0, chapters 4.1, 7.2, and 7.3, and appendix B (Session). |
+| AUF-I-003 | WSS MUST remain UNAUTHENTICATED until auth.bind succeeds and MUST permit only auth.bind plus ping/pong in that state. | Architecture Baseline v1.0, chapter 7.2. |
+| AUF-I-004 | Authenticated WSS state MUST bind user, Session, and client type, and a same-slot revocation MUST produce session.revoked before connection close. | Architecture Baseline v1.0, chapter 7.2. |
+| AUF-I-005 | Friendship identity MUST be order-independent, and one normalized pair MUST map to one friendship and one DIRECT Conversation. | Architecture Baseline v1.0, chapter 4.2 and appendix B (Friend). |
+| AUF-I-006 | Friendship creation, DIRECT Conversation creation or reuse, both memberships, Sync events, and Outbox effects MUST form one atomic outcome. | Architecture Baseline v1.0, chapter 4.2. |
+| AUF-I-007 | Authentication secrets MUST NOT be exposed through query parameters, logs, traces, or error responses. | Architecture Baseline v1.0, chapter 7.4. |
+
+
+FILE spec\invariants\messaging.md
+# Messaging Invariants
+
+These invariants constrain future contracts without prescribing wire shape or persistence schema. Machine-verifiable public authority remains exclusively under `contracts/`.
+
+| Rule ID | Invariant | Source |
+| --- | --- | --- |
+| MSG-I-001 | Repeating a send with the same server idempotency identity MUST converge on the same logical Message and MUST NOT allocate another Conversation sequence. | Architecture Baseline v1.0, chapters 4.4 and 5.1. |
+| MSG-I-002 | A successful message ACK MUST NOT be observable before the Message and matching Outbox event are durably committed. | Architecture Baseline v1.0, chapters 2 (F-04) and 5.1, and appendix B (Message). |
+| MSG-I-003 | Every committed logical Message MUST have exactly one logical Outbox event, even when publication delivery is retried. | Architecture Baseline v1.0, chapters 4 (Figure 4-1), 5.1, and 5.2. |
+| MSG-I-004 | No recipient MUST receive a Message for the wrong Conversation, and no permanent sequence gap may remain after Sync convergence. | Architecture Baseline v1.0, chapter 5.3 (message correctness red lines). |
+| MSG-I-005 | Duplicate NATS delivery MUST NOT create a duplicate logical Message or duplicate client materialization. | Architecture Baseline v1.0, chapter 5.2 and appendix B (Outbox). |
+| MSG-I-006 | A send by a non-member MUST be rejected before persistence and before a success ACK. | Architecture Baseline v1.0, chapter 5.1. |
+| MSG-I-007 | GROUP fan-out MUST remain an online delivery concern and MUST NOT alter the single-Message, single-Outbox persistence outcome. | Architecture Baseline v1.0, chapter 5.3. |
+
+
+FILE spec\invariants\sync-plugin.md
+# Sync and Plugin Invariants
+
+These invariants constrain future contracts without prescribing wire shape or persistence schema. Machine-verifiable public authority remains exclusively under `contracts/`.
+
+| Rule ID | Invariant | Source |
+| --- | --- | --- |
+| SP-I-001 | Duplicate or out-of-order Sync input MUST be idempotent, and contiguous sequence MUST NOT advance across a missing sequence. | Architecture Baseline v1.0, chapters 6.3 and 6.4, and appendix B (Sync). |
+| SP-I-002 | When Sync observes a server Message matching a locally FAILED send identity, it MUST converge that local item to SENT rather than create another item. | Architecture Baseline v1.0, chapter 6.2. |
+| SP-I-003 | Local materialized data and its corresponding cursor or contiguous-sequence advance MUST commit atomically. | Architecture Baseline v1.0, chapter 6.3. |
+| SP-I-004 | User-level cursor input MUST NOT contain Message events. | Architecture Baseline v1.0, chapter 6.4. |
+| SP-I-005 | Plugin capability or permission denial MUST prevent the Event subscription, Query, Action, or UI behavior without granting an alternate direct access path. | Architecture Baseline v1.0, chapters 2 (F-08) and 8.1. |
+| SP-I-006 | Query operations MUST NOT mutate state; each Action MUST be re-authorized at execution, MUST be idempotent, and MUST be auditable. | Architecture Baseline v1.0, chapter 8.1. |
+| SP-I-007 | A changed package, backend, or renderer hash under an existing plugin version MUST be rejected. | Architecture Baseline v1.0, chapter 8.2 and appendix B (Plugin). |
+| SP-I-008 | WASM and custom-renderer execution MUST remain sandboxed with least privilege and MUST NOT directly reach host-sensitive resources. | Architecture Baseline v1.0, chapters 8.2 and 8.3, and appendix B (Plugin). |
+| SP-I-009 | Upgrade MUST NOT split backend and renderer versions and MUST leave the previous version serviceable until atomic switch; any failed step MUST restore the snapshot and continue the old version. | Architecture Baseline v1.0, chapter 9.2. |
+| SP-I-010 | DISABLE and UNINSTALL MUST NOT purge retained data; PURGE MUST NOT occur implicitly. | Architecture Baseline v1.0, chapter 9.3. |
+
+
+FILE spec\architecture\decisions\ADR-0003-architecture-conflict-resolution.md
+# ADR-0003: Whole-document architecture conflict resolution and executable service boundaries
+
+Status: Human-approved bounded conflict resolution; canonical revision and downstream product remediation independently accepted; administrative candidate independently accepted; final state-record confirmation follows current.md.
+Date: 2026-09-30
+Approval source: spec/progress/evidence/LOOP1-ARCH-REMEDIATION-001/approval-and-recovery.md; visible Human four-stage instruction and registered prompt P-ddf5a00c-27a1-412c-ad9b-2305e1aad734 (delegation plus exact approval excerpt, not complete Human prompt).
+
+## Motivation and authority
+
+Frozen v1.0 §3 assigns Gateway/Core/plugin-host responsibilities while §12 exemplifies root internal business packages and §11 allows unspecified internal variation. The historical Markdown migration retained diagram arrows and workflow expressions that conflict with operative invariants and current approved governance. Audit coverage and individual determinate resolutions are in the task conflict ledger. This approval is NOT approval for arbitrary product redesign or any changed public contract, database, ACK/Sync, compatibility or security boundary.
+
+## Decision
+
+Revise the current canonical body to v1.1, not merely append this ADR. §§3/10/11/12 now enforce shared service ownership and dependency direction across Go/Java with language-specific internal structures. Root assembly/build/testing exceptions and minimal shared support are explicit; complete Auth/session-write business cannot be shared into Gateway. No three-module/three-binary/multi-layer requirement is created. S0 exceptions are per backend and expire at first business implementation.
+
+Correct diagrams and examples to existing current semantics: Core persistence and membership decisions, Outbox-to-NATS-to-Gateway, post-commit Gateway ACK forwarding, single logical message-created Outbox, effective Session slots, separate plugin artifact/instance states. Clarify native SQLite versus Web, token prohibition, current-versus-future stage scope, precise current-task recovery, fresh independent Review/fix loops, real CI head/job acceptance and stage-appropriate checks. Concrete wire/schema authority remains contracts/.
+
+## Normative effect and baseline
+
+semantic_change=true: source-boundary and governance ambiguity is tightened into executable rules. Existing product invariants are restated without changing their meaning. The v1.0 PDF-to-Markdown migration remains historical representation_only/semantic_change=false under ADR-0002. Its PDF and historical Markdown hashes remain recorded separately from the actual current Markdown SHA. Historical ADRs, reviews, checkpoints and Recorder evidence are never rewritten.
+
+## Migration and validation
+
+Four sequential tasks repair authority, execution constraints, effective checkers/CI, then Go implementation. Stage-one verifier preserves hash checks and replaces historical arrow/figure/format counts with section-bound graph/structure checks and negative controls. Stage three supplies product ownership/import/trigger tests; until stage four repairs old Go violations those are expected failures, never a permanent exception or product PASS. Java remains stage-appropriate and its future business boundaries are tested with fixtures.
+
+Each bounded stage needs new independent Review and applicable CI. Final batch acceptance requires final candidate exact-head hosted CI, all applicable live regressions, no unresolved blocker and recovery checkpoint. Historical Auth acceptance remains valid for its old requirements. Rollback of this candidate is a new corrective commit/approved decision; do not rewrite historical source/evidence or discard Auth implementation. No data migration or public-wire migration is needed.
+
+## Actual bounded acceptance point
+
+Fresh stage-one Review accepted a09f4fbb1dc497c46c8dc0b8901b0417c534fb2d. Hosted run 36714913796 accepted exact head 3e6e89fa2b378f1fcb4c944466fef2e3bc905379, all ten jobs successful; evidence spec/progress/evidence/LOOP1-ARCH-REMEDIATION-001/hosted-acceptance.md and task001 done. This discovery update preserves decision/approval/history. Stages002-004 and product/batch/S1 acceptance remain outstanding.
+
+## Current completion discovery (2026-10-01)
+
+The preceding bounded acceptance paragraph records the stage-one historical point, not current pending work. Tasks001-003 are done; Task004 remainsreview with accepted product candidate d0ae52f5615320790ae7039cb48831873de6f486 / hosted36744072690 with fresh independent revocation Review. See evidence004/final-hosted-acceptance.md and conflict-closure-supplement.md. This administrative candidate requires new independent Review and exact-head hosted verification before final batch closure. Canonical v1.1 semantics/hash/approval, historical migrations and PDF remain unchanged; S1 product Gate OPEN.
+
+### Accepted administrative closure discovery (2026-10-01)
+
+Four tasks done after NEW independent CLI Review exactf4fdd82f8f3179034fb74700c1b4e9aa43e4637e and hosted36749210695 SUCCESS (five required successes/eight inactive skips), plus product d0ae52f independent Review/hosted36744072690 SUCCESS. The final state-record commit requires NEW independent Review and exact-head hosted confirmation before final delivery, captured externally at H:/.codex/worktrees/architecture-remediation/final-acceptance-research/final-acceptance-summary.json. S1 product Gate OPEN; no downstream business activated. Earlier bounded/product checkpoint text remains historical. This is discovery only; approved decisions, source, hash and migration history are unchanged.
+
+
+FILE spec\architecture\decisions\ADR-0005-client-technology-clarification.md
+# ADR-0005: Client technology clarification and universal selection governance
+
+Status: Human-approved clarification independently accepted at e7c80c7 under bounded Human GString waiver; final administrative confirmation pending before S2 activation.
+Date: 2026-10-01
+Approval source: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/approval-and-recovery.md; full explicit Human instruction human-approved-request.txt and supplemental human-desktop-sqlx-mobile-emulator-decision.txt in the same directory (raw-byte SHA25691033f339f337105bc70f45b20c312b8ed2490d01c0b1607e197cda6e09c770b; normalized prompt SHA25678aa2191a4f3614185781a17ebd5204c949312d3a8eb159435af469d0d1929b5; Recorder P-CLIENT-SQLX-DECISION-20261001).
+
+## Motivation and decision
+
+PR7 implemented Dart SQLite despite missing architecture authorization. PR8 restored main3f352a8e465c0c4b093cca8e5f404ea587550b6e to accepted pre-PR7 tree. The withdrawn attempt and its tests/reviews are historical evidence, not authority or new acceptance.
+
+Canonical §2.3 freezes universal no-unapproved-technology governance; §6.1 freezes React/TypeScript memory-only Web, Tauri/React/TypeScript SQLite Desktop and Android Kotlin + Jetpack Compose SQLite Mobile. Web/Desktop/shared protocol/plugin/models/Repository/domain/UI remain TypeScript, necessary Desktop Rust is confined to clients/desktop/src-tauri. Mobile uses Kotlin equivalent models/Repository/behavior/adapters under the SAME canonical contracts/fixtures; no mandatory direct TypeScript SDK reuse, new public contract, JS runtime/bridge/codegen or shared native rewrite. Android Studio emulator validates the real Mobile runtime; host tests/mocks cannot replace it. Android SDK/Gradle/Kotlin/Compose engineering identifiers and built-in Android SQLite access follow the approved stack, not arbitrary Room/ORM/network/native dependencies.
+
+Supplemental Desktop approval remains Tauri + SQLx(SQLite). TypeScript holds shared Repository/models/transaction intent; Rust only connections, queries and atomic transaction adapter. Independent tauri-plugin-sql execute() calls MUST NOT simulate a cross-call transaction. Other sensitive dependency choices remain subject to §2.3.
+
+Approval chain: original full Human instruction -> supplemental Desktop SQLx/emulator instruction -> NEW exact Human answer “moblie明确为kotlin jetpack compose，移除moblie ts技术栈”. Latest answer supersedes ONLY the original Mobile TS/TBD/direct-TS-reuse clauses. Raw evidence: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/human-mobile-kotlin-compose-decision.txt; raw-byte SHA2561901f6dcd93069a19b6a88f5249858c8017ad36c71d61a109cbbad2ec5e9c061; normalized Recorder SHA256863da9423040acffa2c11b7e67d6c71673f5d7aeb7edd26954108884b5705dd4; prompt P-CLIENT-MOBILE-KOTLIN-20261001. Candidate188d24a / canonical ac042107 was superseded before independent acceptance, never an accepted baseline. Previous accepted canonical83d124b remains the lineage. Original prompt, approval/recovery and finished Recorder archives remain immutable.
+
+Missing sensitive decision: stop affected work -> smallest question -> Human/Architect -> frozen body/approved ADR -> machine guards -> fresh independent Review/applicable exact-head hosted CI -> product implementation. Task text, allowed_paths, familiarity/popularity/installed tools or passing tests cannot authorize a technology. Go/Java internal variation does not bypass this universal rule.
+
+## Normative effect and compatibility
+
+semantic_change=true: this is a Human-approved architecture clarification, not a representation-only migration. Version remains v1.1; canonical bytes and hash change. Previous canonical SHA25683d124bba4b9c605ae29b637e1ea6f8aa55ec4fb7cc6f631f7c069c6f1f77c2e is preserved in manifest revision history. PDF546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510 remains byte-for-byte unchanged. Older ADRs, checkpoints, PR7/FAIL/Review/Recorder/evidence are immutable. No contract, server schema, ACK/Sync, security or compatibility semantics change. S1 PASS; S2 OPEN.
+
+## Implementation, effectiveness and migration
+
+This bounded prerequisite changes authority, execution governance and existing checker/classifier/CI only, without S2 product code or dependencies. Source/dependency/import/config/workflow/task declaration controls inspect active clients; historical evidence is excluded by exact active path ownership, never deletion. Direct static checks supplement mandatory semantic independent Review of language/dependency authority and Rust responsibility.
+
+New independent Review of clean committed candidate and real applicable exact-head hosted CI must accept this prerequisite before task done or S2 activation. Local/Recorder PASS cannot establish Task/S2 PASS. Acceptance SHA/run/effective point are pending and must be recorded by Coordinator truthfully after acceptance. S4/Java/Loop2 are not advanced. New S2 tasks require fresh authorized TypeScript/Kotlin implementation Review/CI; PR7 cannot be restored or reused as acceptance.
+
+## Rollback
+
+Before acceptance, retain accepted main and repair candidate on FAIL. After acceptance, any authority correction uses a Human-approved corrective ADR and new independently reviewed commit; do not rewrite historical commits/evidence/PDF or silently restore Dart. There is no product/data migration in this prerequisite.
+
+Prompt raw-byte vs Recorder LF-normalized hashes are distinguished in spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/prompt-hash-normalization.md; original approval/recovery and prompt bytes are preserved.
+
+## Accepted clarification discovery (2026-10-01)
+
+Fresh independent Review accepts clean e7c80c726d4799ba3ddab026266be638c9e6b252 under scoped Human GString waiver; original4b5 Review FAIL immutable. Exactpush36881391141 selected5SUCCESS/8correctinactive and PR36881397009 all13/every stepSUCCESS. Canonicalaa2398020beeda5f7f9456aac346da57bd8b75212192123c943c35dfdc80f84c/PDF546915 unchanged. ADR0005 effective at accepted prerequisite. Evidence: spec/progress/evidence/LOOP1-CLIENT-ARCH-CLARIFICATION-001/2026-10-01-coordinator-resume/acceptance.md. Earlier pending paragraphs are historical; later administrative closure needs NEW independent Review/exactHEADCI before S2activation. No product/contract change; S1PASS/S2OPEN.
+
+
+FILE spec\architecture\decisions\ADR-0006-client-ui-architecture.md
+# ADR-0006：客户端 UI 架构与截图验收
+
+状态：已冻结。Human 批准的设计内容已在候选33cc754与PR12实际 main4f18d222，经新鲜独立 Review、精确 HEAD 托管 CI 和主仓库同步接受。验收证据：`spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/accepted-freeze/acceptance.md`。本状态记录不启动 GUI 实现，S2 Gate 仍为 OPEN。
+日期：2026-10-03
+批准来源：spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/human-request.txt
+补充决定：spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/human-supplement.txt
+
+## 动机与明确决策
+
+Human 要求在 GUI 实现前冻结三端 UI 架构、Adaptive Glass Workspace 设计方向，以及由截图驱动的 Architect 验收。请求明确选择 Desktop 独立 UI、React 内置状态机制和 Mobile ViewModel/StateFlow/Jetpack Navigation Compose。后续 Human 答复将 UI 代码执行禁令限定于 S2，保留 S4 经审查的沙箱 Render Bundle。工作树补充说明授权：没有分配时，在 Codex 设置的工作树目录中自主分配受管理工作树。新增 Human 要求「架构文档用中文编写」，本 ADR 与三份新交付文档据此使用中文。
+
+规范 §6.5 记录全部规范性决定；从属架构/设计文档解释这些要求，不建立另一份规范权威。§6.1 原完整组件复用规则改为各端独立视觉实现，共享协议、模型、适用 hooks、Token 和 UI 语义。不共享 Button/MessageBubble/ChatWindow。Mobile Kotlin 等价行为保持不变；批准的 Navigation/Lifecycle/StateFlow 依赖仅在规范机器策略中限定列出，供未来已批准任务使用。Web 路由以及通用图标/无障碍/工具库类别未选择任何新增具体包。不选择状态管理框架、AI API 或 Plugin 运行时。
+
+## 规范效力与兼容性
+
+semantic_change=true。保留 v1.1。规范正文及哈希已由此前候选更新；已接受输入 aa2398020beeda5f7f9456aac346da57bd8b75212192123c943c35dfdc80f84c 在 baseline.md 中保留为 UI 修订谱系，客户端基础技术来源仍为 ADR-0005。基础修订元数据、ADR-0001 至 ADR-0005、原 PDF546915、PR7/PR8 历史及既有 FAIL/豁免/证据保持不可变。§8.2 安全校验、sandbox、Bridge 和插件契约保持完整；S2 不实现 renderer、下载、安装或运行时。不改变 wire contract、ACK、兼容性、存储 schema、安全权限或后端。不涉及产品/数据迁移。本次中文修订不改变规范正文或其候选哈希。
+
+## 初始交付与生效点
+
+交付文档为 decisions/client-ui/architecture.md、decisions/client-ui/design-direction.md 和 spec/acceptance/client-gui.md。GUI 任务必须要求绑定候选 SHA 的真实运行截图清单、Architect 审查/修复/重拍/批准、独立语义实现 Review，以及适用的精确 HEAD 托管 CI。截图批准不替代这些检查，也不能建立 S2 PASS。
+
+冻结仅在新的独立干净候选 Review、适用的精确 HEAD 托管 CI、被接受的集成与实际 main 验证之后生效。此前已接受 main 仍是最后已知良好提交，产品实现不得将候选当作已接受权威。Reviewer 须检查规范变更、从属文档、精确写入范围、机器策略依赖新增及历史谱系保留。如实记录生效 SHA/CI/main 和受保护同步结果之后，任务才可 done；保留 S1 PASS/S2 OPEN。不激活 SEND/SYNC/WEB 任务。
+
+## 最小性与回滚
+
+范围为三份文档、限定的规范/ADR/索引/清单修订和 Human 要求的 AGENTS 补充；不实现组件、Token 引擎、库安装、插件运行时或 AI。新增工程标识仅服务明确的 Mobile 状态/导航设计，不授权 Room、网络或测试框架。生效前，在已接受 main 不变的情况下修复候选；生效后修正必须使用 Human 批准的纠正 ADR 和新的独立验收，不得重写历史、PDF 或 Recorder。
+

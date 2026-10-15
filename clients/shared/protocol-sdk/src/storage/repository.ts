@@ -126,7 +126,12 @@ export class Repository {
   }
   async contiguous(conversationId: string): Promise<bigint> {
     const rows = await this.db.query("SELECT CAST(contiguous_seq AS TEXT) FROM conversations WHERE conversation_id=?",[conversationId]);
-    return BigInt(rows[0]?.[0] ?? "0");
+    if (rows.length === 0) return 0n;
+    const value = rows[0][0];
+    if (typeof value !== "string" || !/^(0|[1-9][0-9]*)$/.test(value)) throw new Error("Invalid contiguous sequence");
+    const sequence = BigInt(value);
+    if (sequence > 9223372036854775807n) throw new Error("Invalid contiguous sequence");
+    return sequence;
   }
   async conversationIds(): Promise<string[]> {
     return (await this.db.query("SELECT conversation_id FROM conversations UNION SELECT conversation_id FROM messages UNION SELECT subject_id FROM user_state WHERE kind IN ('conversation.changed','membership.changed') ORDER BY 1", [])).map(r=>r[0]!);

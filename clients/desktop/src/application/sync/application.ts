@@ -1,5 +1,5 @@
 import {uuid} from "../../../../shared/protocol-sdk/src/send/wire.js";
-import {SendApplication} from "../send.js";
+import {SendStorageFailure,SendApplication} from "../send.js";
 import {SyncHttp} from "../../../../shared/protocol-sdk/src/sync/http.js";
 import {SyncFailure} from "../../../../shared/protocol-sdk/src/sync/wire.js";
 export interface SyncState {status:"idle"|"syncing"|"failed"|"retired";error:string|null;unavailable:readonly string[]}
@@ -11,19 +11,19 @@ export class SyncApplication {
   private current:SyncState={status:"idle",error:null,unavailable:[]};
   constructor(readonly send:SendApplication,private http:SyncHttp) {
     if(!http.matchesSession(s=>send.matchesSession(s))) throw new SyncFailure("authentication");
-    this.detachDelivery=send.observeDelivery(()=>{if(send.state.connection==="ready") void this.synchronize().catch(()=>{});});
+    this.detachDelivery=send.observeDelivery(()=>{if(send.state.connection==="ready") void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});});
     this.detach=send.observe(s=>{
       const ready=s.connection==="ready";
       if(!ready && this.wasReady){this.generation++;this.requested=false;this.controller.abort();this.controller=new AbortController();if(!this.stopped)this.publish({status:"idle",error:null,unavailable:this.current.unavailable});}
-      if(ready && !this.wasReady && !this.stopped) void this.synchronize().catch(()=>{});
+      if(ready && !this.wasReady && !this.stopped) void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});
       this.wasReady=ready;
     });
     // Low-frequency metadata changes have no message-delivery trigger.
-    this.poll=setInterval(()=>{if(send.state.connection==="ready"&&!this.stopped)void this.synchronize().catch(()=>{});},10000);
+    this.poll=setInterval(()=>{if(send.state.connection==="ready"&&!this.stopped)void this.synchronize().catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});},10000);
   }
   get state():SyncState{return this.current;}
   observe(listener:(s:SyncState)=>void):()=>void{this.listeners.add(listener);listener(this.current);return()=>this.listeners.delete(listener);}
-  private publish(s:SyncState){if(this.retired)return;this.current=Object.freeze({...s,unavailable:Object.freeze([...s.unavailable])});for(const l of this.listeners){try{l(this.current);}catch{/* Observer owns no commit. */}}}
+  private publish(s:SyncState){if(this.retired)return;this.current=Object.freeze({...s,unavailable:Object.freeze([...s.unavailable])});for(const l of this.listeners)l(this.current);}
   async openConversation(c:string):Promise<void>{const selected=uuid(c);await this.send.openConversation(selected);this.opened=selected;await this.synchronize();}
   synchronize():Promise<void>{
     if(this.retired || this.stopped)return Promise.resolve();
@@ -53,13 +53,14 @@ export class SyncApplication {
         }
         if(active())this.publish({status:"idle",error:null,unavailable});
       }catch(error){
+        if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;
         if(!active())return;
-        const kind=error instanceof SyncFailure?error.kind:"storage";
+        const kind=error instanceof SendStorageFailure?"storage":error.kind;
         if(kind==="authentication"){this.stopped=true;this.generation++;this.controller.abort();this.send.disconnect();}
-        this.publish({status:"failed",error:kind,unavailable});throw new SyncFailure(kind);
+        this.publish({status:"failed",error:kind,unavailable});throw error;
       }
     });
-    this.queue=job.catch(()=>{});return job;
+    this.queue=job.catch(error=>{if(!(error instanceof SyncFailure || error instanceof SendStorageFailure))throw error;});return job;
   }
   async idle(){await this.queue;await this.send.idle();}
   async close(){if(this.retired)return;this.retired=true;clearInterval(this.poll);this.generation++;this.controller.abort();this.detach();this.detachDelivery();this.listeners.clear();this.current={status:"retired",error:null,unavailable:[]};this.send.close();await this.queue;await this.send.idle();}

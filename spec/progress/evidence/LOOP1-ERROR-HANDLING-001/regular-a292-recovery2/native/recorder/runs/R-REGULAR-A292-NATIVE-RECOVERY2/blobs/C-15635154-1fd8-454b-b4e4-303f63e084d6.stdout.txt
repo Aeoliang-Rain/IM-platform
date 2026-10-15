@@ -1,0 +1,105 @@
+
+FILE 11 clients\desktop\src-tauri\src\bin\storage_probe.rs HASH 2e0385845a09feaa8b508f72d1a42449c02e69d2d47f4f6f19a3c18020a0eaa9
+1: // Private test transport: hex strings preserve SQL/bind bytes, no dependencies,
+2: // business models, network listeners or product protocol. Each T input batch
+3: // invokes the SAME atomic adapter used by the Tauri command exactly once.
+4: use im_client_storage::database;
+5: use std::io::{self, Read};
+6: fn decode(value: &str) -> Result<String, String> {
+7:     if value.len()%2!=0 { return Err("Invalid hex".into()) }
+8:     let bytes: Result<Vec<u8>,_> = (0..value.len()).step_by(2).map(|i|u8::from_str_radix(&value[i..i+2],16)).collect();
+9:     String::from_utf8(bytes.map_err(|_|"Invalid hex")?).map_err(|_|"Invalid UTF8".into())
+10: }
+11: fn encode(value: &str) -> String { value.as_bytes().iter().map(|b|format!("{b:02x}")).collect() }
+12: async fn execute() -> Result<(),String> {
+13:     let args: Vec<String> = std::env::args().collect();
+14:     if args.len()!=3 { return Err("Expected isolated root and account".into()) }
+15: 
+16:     let mut input=String::new(); io::stdin().read_to_string(&mut input).map_err(|_|"Input failed")?;
+17:     let lines: Vec<Vec<&str>> = input.lines().map(|l|l.split('\t').collect()).collect();
+18:     if lines.first().and_then(|l|l.first())==Some(&"Q") {
+19:         let mut connection=database::open_read_only(args[1].clone().into(),&args[2]).await?;
+20:         let line=&lines[0];
+21:         if lines.len()!=1 || line.len()<2 { return Err("Invalid query".into()) }
+22:         let sql=decode(line[1])?;
+23:         let binds: Result<Vec<_>,String>=line[2..].iter().map(|v| if *v=="~" { Ok(None) } else { decode(v).map(Some) }).collect();
+24:         for row in database::query(&mut connection,&sql,binds?).await? {
+25:             println!("{}",row.iter().map(|v|v.as_ref().map(|s|encode(s)).unwrap_or("~".into())).collect::<Vec<_>>().join("\t"));
+26:         }
+27:     } else {
+28:         let mut connection=database::open(args[1].clone().into(),&args[2]).await?;
+29:         let mut statements=Vec::new();
+30:         for line in lines {
+31:             if line.len()<3 || line[0]!="T" { return Err("Invalid transaction".into()) }
+32:             let expected=if line[1]=="-" { None } else { Some(line[1].parse().map_err(|_|"Invalid row assertion")?) };
+33:             let binds: Result<Vec<_>,String>=line[3..].iter().map(|v|if *v=="~" { Ok(None) } else { decode(v).map(Some) }).collect();
+34:             statements.push((decode(line[2])?,binds?,expected));
+35:         }
+36:         database::transaction(&mut connection,statements).await?;
+37:         println!("OK");
+38:     }
+39:     Ok(())
+40: }
+41: fn main() {
+42:     if let Err(error)=tauri::async_runtime::block_on(execute()) { eprintln!("{error}"); std::process::exit(1) }
+43: }
+
+FILE 12 clients\desktop\src-tauri\src\database.rs HASH ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad
+1: use sqlx::{Connection, Row, SqliteConnection, TypeInfo, ValueRef};
+2: use sqlx::sqlite::SqliteConnectOptions;
+3: use std::{path::PathBuf, time::Duration};
+4: 
+5: pub type Statement = (String, Vec<Option<String>>, Option<u64>);
+6: pub async fn open(root: PathBuf, account: &str) -> Result<SqliteConnection, String> {
+7:     // UUID filenames prevent directory traversal/aliases and keep accounts apart.
+8:     if account.len() != 36 || !account.chars().enumerate().all(|(i,c)|
+9:         if [8,13,18,23].contains(&i) { c=='-' } else { c.is_ascii_hexdigit() }) {
+10:         return Err("Invalid account identity".into());
+11:     }
+12:     std::fs::create_dir_all(&root).map_err(|_| "Storage directory unavailable")?;
+13:     let options = SqliteConnectOptions::new()
+14:         .filename(root.join(format!("im-{}.sqlite",account.to_ascii_lowercase())))
+15:         .create_if_missing(true).busy_timeout(Duration::from_secs(5));
+16:     SqliteConnection::connect_with(&options).await.map_err(|_| "Storage open failed".into())
+17: }
+18: pub async fn open_read_only(root: PathBuf, account: &str) -> Result<SqliteConnection, String> {
+19:     // Ensure the account's empty file can exist before its first migration,
+20:     // then reopen physically read-only: even caller PRAGMAs cannot enable writes.
+21:     open(root.clone(), account).await?.close().await.map_err(|_| "Storage close failed")?;
+22:     let options = SqliteConnectOptions::new()
+23:         .filename(root.join(format!("im-{}.sqlite", account.to_ascii_lowercase())))
+24:         .read_only(true).busy_timeout(Duration::from_secs(5));
+25:     SqliteConnection::connect_with(&options).await.map_err(|_| "Storage read open failed".into())
+26: }
+27: pub async fn transaction(connection: &mut SqliteConnection, statements: Vec<Statement>) -> Result<(), String> {
+28:     let mut tx = connection.begin().await.map_err(|_| "Transaction start failed")?;
+29:     for (sql, binds, expected) in statements {
+30:         let mut query = sqlx::query(&sql);
+31:         for value in binds { query = query.bind(value); }
+32:         match query.execute(&mut *tx).await {
+33:             Ok(result) if expected.is_none() || expected == Some(result.rows_affected()) => (),
+34:             _ => {
+35:                 tx.rollback().await.map_err(|_| "Transaction rollback failed")?;
+36:                 return Err("Storage statement rejected".into());
+37:             }
+38:         }
+39:     }
+40:     tx.commit().await.map_err(|_| "Transaction commit failed".into())
+41: }
+42: pub async fn query(connection: &mut SqliteConnection, sql: &str, binds: Vec<Option<String>>) -> Result<Vec<Vec<Option<String>>>, String> {
+43:     // The product query command is read-only. SQLite query_only applies to this
+44:     // connection; transaction commands open their own connection.
+45:     sqlx::query("PRAGMA query_only=ON").execute(&mut *connection).await.map_err(|_| "Read-only setup failed")?;
+46:     let mut query = sqlx::query(sql);
+47:     for value in binds { query=query.bind(value); }
+48:     let result = query.fetch_all(&mut *connection).await;
+49:     sqlx::query("PRAGMA query_only=OFF").execute(&mut *connection).await.map_err(|_| "Read-only reset failed")?;
+50:     let rows = result.map_err(|_| "Storage query rejected")?;
+51:     rows.iter().map(|row| (0..row.len()).map(|i| {
+52:         let value = row.try_get_raw(i).map_err(|_| "Storage result unavailable".to_string())?;
+53:         match value.type_info().name() {
+54:             "INTEGER" => row.try_get::<Option<i64>,_>(i).map(|v|v.map(|n|n.to_string())),
+55:             _ => row.try_get::<Option<String>,_>(i),
+56:         }.map_err(|_| "Storage result type rejected".to_string())
+57:     }).collect()).collect()
+58: }

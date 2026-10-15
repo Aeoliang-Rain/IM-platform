@@ -1,0 +1,46 @@
+node:internal/child_process:1143
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+Error: spawnSync H:\.codex\worktrees\err\IM-platform\undefined ENOENT
+    at Object.spawnSync (node:internal/child_process:1143:20)
+    at spawnSync (node:child_process:911:24)
+    at call (file:///H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_native_reads.mjs:14:35)
+    at Object.invoke (file:///H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_native_reads.mjs:18:52)
+    at invoke (file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-wss-cleanup/desktop-build/node_modules/@tauri-apps/api/core.js:1:70)
+    at Object.query (file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-wss-cleanup/desktop-build/desktop/src/storage/database.js:6:32)
+    at Object.query (file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-wss-cleanup/desktop-build/desktop/src/application/accountSend.js:10:33)
+    at Repository.initialize (file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-wss-cleanup/desktop-build/shared/protocol-sdk/src/storage/repository.js:36:47)
+    at file:///H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_native_reads.mjs:25:46 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'spawnSync H:\\.codex\\worktrees\\err\\IM-platform\\undefined',
+  path: 'H:\\.codex\\worktrees\\err\\IM-platform\\undefined',
+  spawnargs: [
+    'C:\\Users\\21441\\AppData\\Local\\Temp\\im-error-read-SWMcLT',
+    'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'
+  ]
+}
+
+Node.js v24.16.0
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Desktop read-boundary regression failed
+
+1 !== 0
+
+    at file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-android-wss-cleanup/send.mjs:12:155
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

@@ -1,0 +1,459 @@
+
+FILE spec/architecture/decisions/ADR-0006-client-ui-architecture.md
+# ADR-0006：客户端 UI 架构与截图验收
+
+状态：已冻结。Human 批准的设计内容已在候选33cc754与PR12实际 main4f18d222，经新鲜独立 Review、精确 HEAD 托管 CI 和主仓库同步接受。验收证据：`spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/accepted-freeze/acceptance.md`。本状态记录不启动 GUI 实现，S2 Gate 仍为 OPEN。
+日期：2026-10-03
+批准来源：spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/human-request.txt
+补充决定：spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/human-supplement.txt
+
+## 动机与明确决策
+
+Human 要求在 GUI 实现前冻结三端 UI 架构、Adaptive Glass Workspace 设计方向，以及由截图驱动的 Architect 验收。请求明确选择 Desktop 独立 UI、React 内置状态机制和 Mobile ViewModel/StateFlow/Jetpack Navigation Compose。后续 Human 答复将 UI 代码执行禁令限定于 S2，保留 S4 经审查的沙箱 Render Bundle。工作树补充说明授权：没有分配时，在 Codex 设置的工作树目录中自主分配受管理工作树。新增 Human 要求「架构文档用中文编写」，本 ADR 与三份新交付文档据此使用中文。
+
+规范 §6.5 记录全部规范性决定；从属架构/设计文档解释这些要求，不建立另一份规范权威。§6.1 原完整组件复用规则改为各端独立视觉实现，共享协议、模型、适用 hooks、Token 和 UI 语义。不共享 Button/MessageBubble/ChatWindow。Mobile Kotlin 等价行为保持不变；批准的 Navigation/Lifecycle/StateFlow 依赖仅在规范机器策略中限定列出，供未来已批准任务使用。Web 路由以及通用图标/无障碍/工具库类别未选择任何新增具体包。不选择状态管理框架、AI API 或 Plugin 运行时。
+
+## 规范效力与兼容性
+
+semantic_change=true。保留 v1.1。规范正文及哈希已由此前候选更新；已接受输入 aa2398020beeda5f7f9456aac346da57bd8b75212192123c943c35dfdc80f84c 在 baseline.md 中保留为 UI 修订谱系，客户端基础技术来源仍为 ADR-0005。基础修订元数据、ADR-0001 至 ADR-0005、原 PDF546915、PR7/PR8 历史及既有 FAIL/豁免/证据保持不可变。§8.2 安全校验、sandbox、Bridge 和插件契约保持完整；S2 不实现 renderer、下载、安装或运行时。不改变 wire contract、ACK、兼容性、存储 schema、安全权限或后端。不涉及产品/数据迁移。本次中文修订不改变规范正文或其候选哈希。
+
+## 初始交付与生效点
+
+交付文档为 decisions/client-ui/architecture.md、decisions/client-ui/design-direction.md 和 spec/acceptance/client-gui.md。GUI 任务必须要求绑定候选 SHA 的真实运行截图清单、Architect 审查/修复/重拍/批准、独立语义实现 Review，以及适用的精确 HEAD 托管 CI。截图批准不替代这些检查，也不能建立 S2 PASS。
+
+冻结仅在新的独立干净候选 Review、适用的精确 HEAD 托管 CI、被接受的集成与实际 main 验证之后生效。此前已接受 main 仍是最后已知良好提交，产品实现不得将候选当作已接受权威。Reviewer 须检查规范变更、从属文档、精确写入范围、机器策略依赖新增及历史谱系保留。如实记录生效 SHA/CI/main 和受保护同步结果之后，任务才可 done；保留 S1 PASS/S2 OPEN。不激活 SEND/SYNC/WEB 任务。
+
+## 最小性与回滚
+
+范围为三份文档、限定的规范/ADR/索引/清单修订和 Human 要求的 AGENTS 补充；不实现组件、Token 引擎、库安装、插件运行时或 AI。新增工程标识仅服务明确的 Mobile 状态/导航设计，不授权 Room、网络或测试框架。生效前，在已接受 main 不变的情况下修复候选；生效后修正必须使用 Human 批准的纠正 ADR 和新的独立验收，不得重写历史、PDF 或 Recorder。
+
+
+FILE spec/architecture/decisions/ADR-0009-client-native-capabilities.md
+# ADR-0009：最小原生 GUI 能力与外观存储
+
+状态：Human-approved freeze candidate；APPROVED_PENDING_FREEZE。新独立 Review、适用 exact-head hosted CI、protected integration/actual-main 验证及安全同步至 H:/IM-platform 后才生效。
+日期：2026-10-04
+任务：LOOP1-CLIENT-NATIVE-ARCH-001
+批准来源：spec/progress/evidence/LOOP1-CLIENT-GUI-001/readiness/human-decisions.md 与 authority-gap.md；本任务 approval.md 保存精确批准与范围。
+semantic_change=true；保留 v1.1。
+
+## 当前需要与决策
+
+已接受 GUI 要求原生 refresh persistence、HTTPS auth/Sync、真实通知/tray/global shortcut 与持久化外观。现 Desktop 是存储宿主；SyncHttp 已支持 injected fetch。Human 单独批准八个装配文件范围后明确批准该最小前置方案并继续。范围许可不是技术权威；本 ADR 冻结具体选型。
+
+Desktop 首次真实验收目标是 Windows。必要 Rust 限于 clients/desktop/src-tauri；批准 reqwest 原生 HTTPS、keyring/Windows Credential Manager refresh credential、官方 tauri-plugin-notification 与 tauri-plugin-global-shortcut；tray 使用已有 Tauri feature。相较手写 Win32 FFI，这些窄适配器直接满足当前职责。产品实施时将具体支持的版本/features 锁定于 Cargo.lock 并独立 Review；本次不安装依赖、不预言测试结果，不授权额外前端 plugin package、其他 OS 或替代库。
+
+HTTPS 使用系统证书/主机名验证，仅 HTTPS、禁重定向，保持应用序列化 request bytes/headers 与响应 status/headers/body bytes，不解释协议。禁止证书绕过、token query/logging 或 backend/CORS 替代入口。TypeScript UI/auth application 通过既有 SyncHttp injected-fetch 与规范 auth 调用组合传输；原生层不拥有 login/refresh/logout 编排、request schema、Repository、ACK/retry/Sync 或业务授权；既有 WSS/protocol 职责不变。
+
+Desktop keyring 按 app/account/session 隔离 refresh credential；TypeScript 持有 auth lifecycle、账号隔离及 replacement/logout/expiry cleanup intent。存储失败不得明文降级；access credential 为临时。官方 notification/global-shortcut 仅提供 OS presentation/input，应用决定动作。Windows 通知验收必须使用已安装、有自身身份的客户端包，开发 PowerShell toast 不可代替；tray/shortcut 同样需要真实客户端行为。
+
+Desktop app-owned app_data JSON、Android SDK SharedPreferences 只持久化 Cold AI/Warm Creative theme 与 font-size/density 标量。外观存储不得包含 credential/message/sync cursor/account Repository data，与账号 SQLite 分离。
+
+Android 使用 Android Keystore AES/GCM 非导出密钥保护 refresh credential，SDK SharedPreferences 仅存 ciphertext 及必要 IV/metadata；Kotlin 持有 auth lifecycle/cleanup/account isolation，无明文降级。SDK HttpsURLConnection 使用系统证书/主机名验证、HTTPS-only、禁重定向及 exact serialized bytes；不增加 network/ORM/JS runtime/bridge/codegen dependency。Kotlin 等价 Repository/protocol/model 行为仍依据同一 canonical contracts/fixtures 和真实 Android Studio emulator 验收。
+
+## 最小性、权威与兼容
+
+只增加当前 GUI 必需的适配器/外观选型，不增加 generic framework、未来 OS 机制或 plugin runtime。TypeScript/Kotlin 保留 application/business/Repository/protocol 职责；Desktop SQLx 原子事务意图不变。无 database schema、ACK、public API、compatibility、backend/CORS、AI、plugin sandbox/security boundary 或 source dependency direction 改动。
+
+canonical §6.1/§6.5/native_packages 枚举窄权威；ADR-0005 仍为基础 stack/policy marker，ADR-0009 为追加谱系。先前 canonical ef90846ba380df14086795a3c58aef43f6503447fe0cb83ee2d0772d725d8e03、PDF546915f639f30cd294f11390da3ade2ce6a85b620bf55727c2a90ca6017d7510、v1.1、旧 ADR/历史证据不变。
+
+## 生效与回滚
+
+GUI 依赖本任务，在独立接受、集成、actual-main 验证及安全同步前仍为 backlog。S1 PASS/S2 OPEN；local/Recorder PASS 不是 Task/Stage 接受。FAIL 在授权范围修复后由新独立 Agent Review。本次无数据/产品迁移；生效后修正需新批准 ADR 与独立接受，保留历史。
+
+## Human 指定统一候选批次（2026-10-04；取代单独前置接受时序）
+
+最新精确 Human 指令：完成GUI任务后统一审查推送。来源：spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/unified-batch.md，原始 prompt 与 SHA 记录于 linked Recorder P-UNIFIED-20261004。
+
+此指令只对本次已明确批准的 native/appearance freeze + LOOP1-CLIENT-GUI-001 授权统一本地候选准备：GUI 可以使用本 ADR 已批准并写入本地 frozen candidate 的具体选择继续实现，不等待单独 native Task 接受/推送。此前“GUI 保持 backlog 直到前置独立接受”时序被本精确指令取代；不是取消独立 Review/CI，也不是认定候选权威已正式生效。canonical §6.1 候选待接受及 §2.3 全局流程不改，本窄 ACP/ADR 指令不扩展到其他任务。
+
+native Task 仍为 review/pending，GUI 按实际输入经过 backlog -> ready -> active；已接受 SQLITE/UI-ARCH/SEND/SYNC 依赖不变，native 同批候选依赖例外明确追溯到上述 Human 指令。既有八个装配路径、选型、契约/存储/安全/ACK/职责边界不变，不新增技术。完成完整 GUI 与截图/Architect 审阅后，对精确完整候选进行 fresh independent Review，统一推送、适用 exact-head hosted CI、protected integration/actual-main 验证与安全主仓库同步；两任务 done、正式生效及 S2 Gate 判断均延后到各自适用接受条件满足。此前独立 native Review 已取消，不能记为 PASS；无 hosted 接受或推送事实。
+
+
+## Latest Human standalone-first order (2026-10-07)
+
+Human selected LOOP1-CLIENT-NATIVE-ARCH-001 and instructed: 先完成这项任务，然后再次尝试Windows验证. Evidence: spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/completion-20261007/human-order.md and exact human-order.txt. This supersedes only the preceding unified native/GUI batch acceptance/publication timing: independently complete this authority-only native freeze, protected integration/actual-main audit/safe main synchronization, then retry Windows validation. Existing GUI candidate91598049dfb0bf4360b0ce8bdbc4598606db1407/PR24 remains review, not integrated or accepted. Original approved native choices and canonical a6b1670/PDF546915/v1.1 remain unchanged; no new technical or product authority. Original timing evidence is historical and preserved. Task remains review until applicable independent acceptance and synchronization; S2 remains OPEN.
+
+
+## Native freeze accepted discovery (2026-10-08)
+
+Native authority freeze independently accepted: candidate `89cacae924be7ae3e85c13779e99f9f463d2c6f8`, protected PR25 actual main `6a87751087de5b4063445d0fba9fe94534507a57` and safe main synchronization PASS. Exact candidate push37656041487/PR37656059375 and actual-main37657410444:5selected jobs SUCCESS,8classifier-false normally inactive, nofailedsteps. Fresh candidate Review and new same-role actual-main audit are independently bound to their exact SHA; canonical a6b1670/PDF546915/v1.1 unchanged. Task branch task/LOOP1-CLIENT-NATIVE-ARCH-001-close; receipt preserves781unknown files/status/index and recovery/s1-handoff-20261001 branch. Source approval choices unchanged; no product/contract/schema/ACK/security change, no GUI/Windows/S2 PASS. Earlier pending/blocked statements are preserved historical snapshots. Evidence: spec/progress/evidence/LOOP1-CLIENT-NATIVE-ARCH-001/acceptance-20261008/acceptance.md.
+
+
+FILE spec/architecture/decisions/ADR-0010-windows-tauri-wss-origin.md
+# ADR-0010: Windows Tauri WSS Origin exception
+
+Status: Exact bounded authority f2f35f26089bc27d4bebe665327f36b2496ee4b8 independently accepted (run37725245354); bounded Gateway product79ec independently reviewed and scoped hosted CI accepted (run37726202795). Full GUI candidate/integration/main synchronization pending. Date: 2026-10-08. Task: LOOP1-CLIENT-GUI-001. Exact Human approval and bounded path expansion: spec/progress/evidence/LOOP1-CLIENT-GUI-001/windows-origin20261008/approval.json.
+
+## Present requirement and observed failure
+
+Accepted GUI/native requirements require real Windows Tauri WSS SEND/reconnect with existing Go Gateway. Actual installed native Login/profile/HTTP Sync succeeds under default system TLS in the actual desktop Explorer context. Controlled default-TLS ClientWebSocket opens with absent Origin; identical endpoint with Origin http://tauri.localhost rejects403. Gateway currently uses gorilla websocket.Upgrader{} default same-host check. Windows Tauri2 production origin is http://tauri.localhost; required native client is cross-host to the authenticated localhost Gateway. Evidence default-tls.json/wss-origin.json and reviewable proposal.diff. Source responsibility remains Gateway connection/transport admission, separate from Core business.
+
+## Approved narrow decision
+
+Allow exactly the serialized Origin http://tauri.localhost in Go Gateway WebSocket upgrade. Preserve existing absent-Origin and same-host behaviors, reject unrelated cross-host origins, and retain mandatory auth.bind, token/session/authorization, query-token prohibition, protocol parsing, TLS/hostname checks, durable ACK/retry/Sync semantics. This is an explicit bounded security admission exception; an Origin never establishes identity or authorization.
+
+No wildcard origins, blanket CheckOrigin=true, reverse-proxy Origin stripping, TLS bypass, credential cookies or query tokens, backend HTTP/CORS replacement auth/Sync entry point, new native WSS adapter/dependency, alternate frontend host or future-platform origins. Existing approved Go/gorilla/Tauri/TypeScript choices and source direction remain; no new dependency/framework, public API/schema, storage migration or ACK change.
+
+## Implementation scope and acceptance
+
+Human explicitly expands current Task allowed_paths to this decision record, backend/go/gateway/gateway.go and focused backend/go/gateway/origin_test.go, in addition to existing GUI/evidence/recovery paths. Canonical Markdown/PDF/version and contracts remain byte-frozen. Independently Review this exact decision candidate and its applicable exact-head hosted checks before dependent product implementation; no local statement is hosted acceptance. New product fix receives a fresh independent reviewer and existing GUI full acceptance/protected integration/actual-main/safe synchronization chain before Task done.
+
+Implementation must retain the original locked Gorilla default CheckOrigin implementation for every request except exactly one serialized Origin http://tauri.localhost. Do not reimplement its parser or replace its ASCII-only host comparison with Unicode folding.
+
+Focused tests must prove Kelvin-sign Unicode host mismatch rejection in addition to absent/same-host/Tauri upgrade acceptance and unrelated or lookalike host rejection, while accepted connections still need auth.bind. Actual native Windows must bind and demonstrate committed SEND, unchanged retry identity/convergence and reconnect under default TLS; existing gateway auth/protocol checks remain applicable. Screenshots alone do not establish ACK semantics.
+
+Rollback removes only this exact Origin admission exception after approval and independent acceptance; no data migration. Broader Origin or native transport changes require a new decision. S2 remains OPEN. Before authority candidate acceptance affected repair is BLOCKED_BY_ARCHITECTURE; unaffected verification may continue.
+
+## Independent authority acceptance discovery (2026-10-08)
+
+The bounded decision/proposal at clean f2f35f26089bc27d4bebe665327f36b2496ee4b8 is accepted by fresh /root/origin_authority_final_review and exact hosted push run37725245354: five selected jobs success, eight correctly inactive. Original report/CI receipt hashes and exact copies: spec/progress/evidence/LOOP1-CLIENT-GUI-001/gateway-origin-fix20261008/authority-binding.json. Earlier pending status describes the pre-acceptance candidate. Dependent bounded Gateway implementation may proceed; product fix still requires new independent Review and applicable exact-head CI, and full GUI/integration/synchronization before task completion. Canonical/public contracts remain unchanged.
+
+## Bounded product acceptance discovery (2026-10-08)
+
+Fresh independent Gateway Review accepts79ec62c73b6681b4a544869051722a85521b9b4e and exact incremental push37726202795 selected6success/7correctinactive. Original report/hosted addendum/CI and classify receipts preserved byte-exact in GUI evidence win20261008/gateway-review. Actual native strict TLS/WSS SEND/retry/reconnect and presentation evidence follow in win20261008; this discovery does not replace fullGUI Review/full-range CI/protected integration/actual-main/safe-sync. Earlier implementation-pending descriptions retain historical ordering; exact decision scope and canonical/contracts unchanged. S2 OPEN.
+
+
+FILE spec/architecture/decisions/ADR-0011-web-appearance-storage.md
+# ADR-0011：Web 外观偏好的最小本地存储
+
+状态：Human-approved candidate；APPROVED_PENDING_FREEZE，未独立接受/生效。
+日期：2026-10-09
+任务：LOOP1-WEB-001
+批准来源：`spec/progress/evidence/LOOP1-WEB-001/freeze-20261009/human-approval.txt`；`human-approval.json` 记录直接 Human 答复与已提交方案 e35c425a90a851540e140078274126ac65606e3e。
+精确答复：批准最小前置方案并继续。
+semantic_change=true，版本 v1.1。
+
+## 当前责任与决定
+
+已冻结 UI 设计要求重启保持主题/字号/密度，而 Web 聊天仅内存；此前具体外观存储未冻结，守卫与 CI 空骨架阻止产品实现。Human 批准 readiness-20261008/proposal.md 的最小浏览器原生 localStorage 与七个前置文件权限，后在暂停后明确继续。不引入库或第二数据层；这些权限不授权其他架构选择。
+
+唯一适配器 clients/web/src/ui/appearance.ts；唯一 key plugworldim.appearance.v1。版本由 key 标识，JSON exact keys 恰好 theme/fontSize/density：theme cold（Cold AI）或 warm（Warm Creative）；fontSize 14/16/18/20；density compact/comfortable/spacious；默认 cold/16/comfortable。读写均严格验证对象/字段/枚举和最大序列化长度128字符，禁止额外属性。只以固定 key 调用 window.localStorage.getItem/setItem；不导出底层存储或任意 key/任意数据接口。写入为验证后这三个字段的显式投影。 malformed/超长/不可用时回退默认内存外观，不清空其他 origin key；主题修改保持字号/密度。
+
+外观不是账号数据：禁止 message/history/user/session/access/refresh credential/endpoint/conversation/cursor 或其他业务数据持久化。Web Repository/消息始终内存，不加载离线历史。保留禁止 SQLite、IndexedDB、其他浏览器存储、未批准 framework/runtime/dependency/bridge。原生 Desktop/Android 技术、协议、ACK、Sync、公共契约、安全边界与依赖方向不变。
+
+## 前置控制与效力
+
+canonical §6.5 和原客户端 policy 的 web_appearance 描述本决定；baseline 记录 exact digest、上一 accepted canonical a6b1670与批准链接，原 PDF546915不变。guard fail closed：授权链接/哈希/policy不匹配、其他存储路径、任意 key/别名/额外字段和业务持久化均拒绝。静态检查不替代真实行为或语义独立 Review。
+
+已批准 workflow 通过与原 classifier 相同 base/head、--no-renames 含删除的 tests/clients/web/ diff，将变化仅 OR 入 web/architecture；所有输出每 key 一次，其他选择和 CI aggregate gate 原规则不变。Web 与兼容 Web入口执行同一实际 verifier。当前没有产品：仅真实非 symlink 空 .gitkeep、Task唯一backlog/appearance_prerequisite、可信base也无产品允许 PREREQUISITE_SKELETON_ONLY，这不是 Web build/behavior PASS。出现任何产品/部分脚手架则要求完整必需输入、锁定 install、实际 build、behavior/appearance测试及source guard；失败无骨架 fallback。删除已经存在的产品不能重获骨架例外。该阶段控制仅为先验收冻结再实现的当前顺序，产品存在即退出。
+
+fresh independent Review -> applicable exact-head hosted CI -> protected integration -> actual-main verification -> H:/IM-platform safe synchronization 全部完成后才生效；此前 Web backlog 不激活。本候选本地检查/Recorder有效不等于 Task或S2 PASS，截图/Architect Approval/独立产品 Review/真实CI仍完整保留。最新 Human endpoint：Web完整接受并安全同步后停止于S2 Gate前，不对S2 Stage Gate操作；CI aggregate gate必需机制保留。
+
+## 最小性、迁移与回滚
+
+无新库、服务、schema或用户数据迁移。固定一个窄适配器/三个标量直接满足当前重启偏好需要。verifier 将 Web/现有 shared 构建输入复制到一次性系统临时目录安装/构建，以免第三方 node_modules 进入 active source/dependency guard；这只隔离验证输出，不创建仓库或产品复制根。
+
+生效前失败只修复候选并保留已接受 main。生效后的权限/存储纠正须新 Human/Architect批准及独立验收；不得重写旧 ADR、FAIL、Recorder、PDF。v1 key没有用户业务数据，不授权旧key迁移/清除、远程同步或以后版本兼容机制。
+
+
+FILE spec/architecture/decisions/ADR-0012-client-supplement-planning.md
+# ADR-0012：S2 客户端补充任务规划与语言偏好窄授权
+
+状态：Human-approved candidate，APPROVED_PENDING_FREEZE；独立Review/精确hosted CI/受保护集成/actual-main验证/H:/IM-platform同步后才正式生效。
+日期：2026-10-10
+任务：LOOP1-CLIENT-SUPPLEMENT-PLAN-001
+批准来源：`spec/progress/evidence/LOOP1-CLIENT-SUPPLEMENT-PLAN-001/human-request.txt`；直接Human原请求和继续事实见authorization.md。
+semantic_change=true；沿用v1.1。
+
+## 动机、基线与决定
+
+Web已独立接受并同步，Human明确要求三项串行S2补充，不将已有低层能力或截图等同新端到端故障证明。基线最新行政main b4d271c/PR30，Web产品a1b154d/PR29；实际源码、accepted证据、逐项缺口见client-supplement.md基线表。原SOURCE/Repository/Auth/Send/Sync边界保留。
+
+链为 LOOP1-WEB-001 → LOOP1-CLIENT-STATE-001 → LOOP1-CLIENT-UI-REF-001 → LOOP1-CLIENT-I18N-001 → S2 Gate。三个产品分别独立Task Spec/backlog；前项须独立接受、集成和主仓库同步后方可激活，STATE同时依赖本规划正式接受。S2既有门禁条件与三个新增完成项共同必需。本轮仅规划及其Review/CI/合入同步；三项不实施、不激活，S2 Gate OPEN且不评估。
+
+## 强制目标与验收
+
+### STATE
+
+以最新三端实现和已有验收为基线，逐项记录现有能力、证据和待补齐内容，将以下要求写入任务目标与强制验收。
+
+1. 消息可靠性的两个核心场景：
+   A. 首次发送未在服务端提交，发送方超时显示 FAILED，用户点击重发后完成首次持久化并收敛为 SENT。
+   B. 首次发送已在服务端提交，接收方已获得消息，发送方因成功确认丢失或延迟显示 FAILED；用户重发后获得原始提交结果，原消息收敛为 SENT。
+
+2. 同一逻辑消息的每次重发复用原始 request_id、conversation_id、发送者身份和消息内容。服务端已有提交时返回原始 messageId、seq、createdAt；最终对应一条持久化消息、一条逻辑 Outbox 和各客户端的一条消息展示。
+
+3. 覆盖 SENDING、FAILED、重发按钮和 SENT 的真实界面状态。FAILED 表达当前尝试未获得成功确认；迟到 ACK、实时消息和适用 Sync 均通过既有收敛入口更新原消息，SENT 保持终态。核对 Gateway/Core 超时与提交结果未知路径，使其处理符合实际提交结果和现行契约。
+
+4. 同一会话的已确认消息以服务端 seq 为最终排序依据，覆盖：
+   - R1 首次未提交，R2 先成功提交，R1 后重发成功：最终顺序为 R2、R1。
+   - R1 首次已提交但确认超时，R2 随后提交，R1 再获得确认：最终顺序为 R1、R2。
+   验证 UI 在 ACK、实时事件、Sync 交叉到达后保持正确身份、状态和顺序。
+
+5. Desktop/Mobile 覆盖保留本地消息时的重启重发，以及受控测试中从全新账号本地数据库和初始同步游标恢复的流程。验证已提交历史按 seq 恢复，后续新消息使用新的 request_id 和服务端分配的序号，序号连续性与渲染顺序正确。Web 按当前页面内存生命周期和已接受的在线消息同步规则验收。
+
+6. 补齐三端好友变更同步。明确既有好友查询和 User Sync 的触发、消费及界面刷新链路；任一端添加好友后，其余在线端最终更新好友列表、对应私聊和名称展示，并验证断线恢复与账号切换后的正确结果。
+
+7. 使用真实服务端、数据库和客户端的受控故障注入验证上述链路。场景 B 同时取得服务端持久提交、接收方获得消息、发送方 FAILED、重发后原消息 SENT 的证据；分别核对存储记录、请求身份、序号、Outbox 和实际渲染。
+
+
+### UI-REF
+
+以任务一验收后的三端产品树为行为和视觉基线，规划并验收各端现有页面、组件和展示状态的职责拆分。
+
+1. 根据实际源码拆分应用入口、Shell、导航、认证、会话列表、消息展示、输入区域、好友及设置等现有职责，明确入口挂载、组件输入输出、状态归属和导入方向。
+
+2. 保持各端独立视觉实现及现有 Auth、Repository、Send、Sync 职责边界，共享现有协议、类型和适用展示语义。
+
+3. 将组件展示文案、应用状态标识与业务判断建立清晰边界，为后续语言资源提取提供稳定接口。
+
+4. 建立拆分前后的页面、入口、功能和测试覆盖对照表。完整回归现有客户端能力及任务一新增场景，验证状态保持、事件绑定、账号隔离、同步、重发、排序和外观设置的行为等价。
+
+5. 完成各端构建、适用自动化测试、真实运行截图和 Architect 审查，以功能完整、行为等价和视觉基线保持作为验收结果。
+
+
+### I18N
+
+依赖任务二完成，提取三端现有用户可见文案，建立英语、简体中文和日语的独立语言资源。
+
+1. 统一语言标识 en、zh-CN、ja-JP，以及跨端文案语义和占位参数。Web/Desktop 使用 TypeScript 侧纯数据语言资源，Android 使用现有 Kotlin/Compose 技术栈下的等价资源映射。
+
+2. 覆盖页面文本、按钮、输入提示、校验与错误提示、连接及同步状态、无障碍标签，以及已有系统通知和托盘文案。将状态逻辑使用的稳定标识与翻译后的显示文本分离。
+
+3. Settings 增加固定入口“Language / 语言 / 言語”，使用固定顺序的滚动选择列表：
+   English → 简体中文 → 日本語。
+   选项名称保持各自语言，切换后即时更新当前界面，本地保存并恢复语言选择。
+
+4. 将语言选择的本地持久化范围、存储位置、字段和校验规则纳入三端偏好适配器的明确架构授权，保证现有外观配置继续有效，主题、字号、间距和语言独立保持。
+
+5. 建立语言键完整性、占位参数一致性和英文回退验证；覆盖切换后的页面状态、消息状态、布局可读性及本地偏好恢复，完成三种语言的适用截图和 Architect 验收。
+
+
+## 明确语言偏好架构
+
+语言偏好为设备/宿主应用范围，跨账号保持、无云同步，独立于credential、账号SQLite、消息和Sync cursor。默认 en；只允许大小写精确的 en、zh-CN、ja-JP，不trim、不接受系统locale猜测或任意别名。缺失/非法/超长/存储不可用回退内存en，写失败诚实显示且不覆盖其他偏好或清除其他key。固定三端位置：Web仅新增 src/ui/language.ts 以原生 localStorage固定key plugworldim.language.v1读取/写入raw UTF-8 enum（最长5bytes），不改plugworldim.appearance.v1三字段；Desktop TypeScript native.ts持有language意图，desktop_capabilities.rs仅窄language_load/save字符串枚举校验及app_data/language.txt读写raw UTF-8（最多5bytes、无BOM/换行），appearance.json三项tuple原字节继续可读；Android Preferences.kt在既有MODE_PRIVATE appearance SharedPreferences只增String key language（最多5UTF-8bytes），保留theme/fontSize/density键和值。theme仅cold/warm；Web fontSize14/16/18/20、density compact/comfortable/spacious；Desktop/Android既有fontSize14..22、density0.8/1.0/1.2及默认cold/16/1继续有效。四标量语义各自独立，但Web/Desktop外观record仍三项，不合并为四字段记录。当前三字段appearance守卫不得提前放宽；只有I18N依赖独立接受+集成同步且任务active/review/done、client_supplement_phase: i18n_product才可实现语言adapter及对应窄源码guard。STATE/UI-REF和本规划不获得语言持久化产品许可。
+
+语言资源是TS/Kotlin纯数据映射，跨端键/占位参数语义一致；已有native通知/tray显示文本由TypeScript应用选择后交现有native presentation，native不拥有翻译/业务决定。英文回退、固定入口/滚动列表、即时更新及本地恢复完整验收；不批准第三方i18n/state/network/runtime/ORM库。
+
+## 效力、兼容、迁移及回滚
+
+canonical§6/15/19/20/附录A落实决定，baseline当前hash与supplement谱系绑定旧accepted2ba864fc。ADR-0007原只增GUI/WEB→Gate的历史范围保留；新链在ADR12正式生效后追加取代直接边，既有GUI/Web/S1接受保持。旧ADR、PDF、checkpoint、FAIL、Recorder不可变。无contract/schema/ACK/security/后端职责变更；STATE只按现契约修真实路径，矛盾按架构流程阻止受影响实现，不发明rejection/成功语义。本规划无产品/数据迁移，未来语言存储以独立标量位置兼容旧appearance字节，无清库、云同步或全局格式迁移。
+
+machine policy绑定依赖和未来窄授权，guard真正解析queue/status/依赖及done证据字段，S2 prerequisite function以隔离正负fixture测试；本次不对actual S2评估。CI classifier现ci改动full matrix保留，任务治理路径必需architecture/source_go/source_java；缺失/失败/异常skip不能接受。独立Reviewer必须读真实完成证据，字段PASS不是独立接受。生效前候选失败修复复审；生效后纠正需新批准/独立接受，不重写历史。
+
+## 最小性与完成
+
+单行政Task、三明确产品Task、直接标准库校验，无通用编排/抽象层/新库/未来产品。完成须clean committed candidate、fresh independent Reviewer与必要Architect、exact-head hosted required jobs、protected merge、actual-main audit和主仓库未知work保存安全同步；记录branch/SHA/证据/checkpoint后本控制任务才done。产品仍backlog，S2 OPEN；Recorder不是接受。
+
+
+## 正式生效发现（2026-10-10）
+
+上方Human-approved candidate / APPROVED_PENDING_FREEZE为候选时点历史；当前状态Human-approved，APPROVED。规划规范在candidate 8b52a56403a5a761a12d94e4fabf4f2cf82f63d0 / protectedPR31 actualmain 9f99cfda1cecfc85c0acf3ae8db979f622c97a02独立Review/精确hosted/actual-main/主仓库安全同步接受，spec/progress/evidence/LOOP1-CLIENT-SUPPLEMENT-PLAN-001/acceptance/acceptance.md提供完整原件。正文决定与canonical当前hash不变。三产品仍backlog、语言仅I18N正式phase可实施；S2 OPEN。本行政状态记录另待独立接受，不提前声称其未来SHA通过。
+
+
+FILE spec/acceptance/client-gui.md
+# GUI 验收规范
+
+状态：已冻结。Human 批准的设计内容已在候选33cc754与PR12实际 main4f18d222，经新鲜独立 Review、精确 HEAD 托管 CI 和主仓库同步接受。验收证据：`spec/progress/evidence/LOOP1-CLIENT-UI-ARCH-001/accepted-freeze/acceptance.md`。本状态记录不启动 GUI 实现，S2 Gate 仍为 OPEN。
+
+## 必需验收链
+
+GUI 实现 → 真实运行截图 → Architect Review → 限定范围修复 → 新截图 → Architect Approval → 新的独立候选 Review 与适用的精确 HEAD 托管 CI → 受保护的集成/主仓库验证 → GUI Task PASS。各项审查可共享证据，但不能取消彼此独立的义务。Architect 批准展示效果；独立 Review 审查实现、权威和最小性；CI 判定适用的可执行检查。任何单项都不能建立 S2 Gate PASS。仓库规定的完整验收与集成完成前，不得进入 done。
+
+截图是 Task 验收要求，不是可选设计反馈。每个 GUI Task 必须在实现前声明入口/运行环境矩阵和证据路径。必须捕获真实客户端运行画面，不接受 mockup 或编辑过的图片。记录 Task ID、候选 SHA、源代码/构建来源、平台/运行环境版本、不含秘密的账号/测试 fixture 标识、页面/状态、视口/窗口/设备尺寸、主题和字体/间距设置、精确复现步骤，以及图片文件名/哈希。图片不得包含真实凭据、令牌展示或私人用户数据；使用受控 fixtures。
+
+## 最低覆盖矩阵
+
+| 客户端 | 必需运行证据 |
+| --- | --- |
+| Web | 真实浏览器中的登录、Chat、Friends、AI 占位、Plugin 页面 |
+| Desktop | 真实 Tauri 客户端中的主窗口、Chat、Friends、离线历史、通知/托盘、主题 |
+| Mobile | 真实 Android Studio 模拟器中的登录、Chat、Friends、离线历史、Sync 状态、主题 |
+
+Cold AI 和 Warm Creative 都必须展示一致的布局/语义；布局受影响时，覆盖支持的字体/间距极值。跨端共有入口须展示各端实际宿主布局。Desktop 通知/托盘证据须包含真实原生表面和复现步骤，仅画在应用内不能替代。Mobile 证据须标明模拟器/设备/API；宿主测试或 mock 页面不能替代。
+
+每个范围内页面须覆盖有意义且相关的加载、空、错误和成功状态。认证须覆盖 refresh/logout/session-expired，且不暴露凭据。Chat 须展示真实 SENDING/SENT/FAILED、重试身份和收敛行为，并由可执行协议/存储证据支持；截图本身不能证明 durable ACK、去重或原子性。离线/Sync 须覆盖受控断开/重连；Web 不得宣称持久化或离线历史。主题/偏好须在允许的本地生命周期内保留，不得暗示业务数据持久化。
+
+若某个限定 GUI Task 未实现全部矩阵界面，必须在激活前于 Task Spec 明确该切片和剩余任务。缺失证据不得计作整个客户端验收。Plugin/AI 能力不可用时，截图须如实展示预留入口、占位或不可用状态。不得伪造可工作的控件或 AI/插件数据。
+
+## Architect 决策与修复循环
+
+Architect Review 记录精确候选 SHA、截图清单/哈希、PASS/FAIL 决策、具体逐页面问题、所检查的信息层级/导航/可读性/主题/配置规则，以及审查者身份。FAIL 时保持任务未完成，在 allowed_paths 内修复并重新截图。既有截图与问题记录保持不可变；批准必须标明最新被接受的截图集和构建。后续视觉、状态或代码变更影响已批准证据时，必须重新捕获并再次批准。未受影响的旧图可以附哈希和理由引用，但不得重新标为新截图。
+
+新的独立 Reviewer 检查实际 Repository/协议/状态/原生职责、源码导入、最小性、公共契约和安全边界。所有新增敏感依赖必须可追溯至已接受的规范架构/ADR；截图质量不能使框架或契约变更合法化。适用 CI 必须对应精确被审查候选 SHA 和正确的必需任务；缺失、失败、取消或异常跳过的任务不能建立 PASS。
+
+## 证据与闭环
+
+在 spec/progress/evidence/<GUI_TASK_ID>/ 下保存截图清单、原始图片、Architect 决策、修复迭代、独立 Review 与托管验收。Task handoff 记录命令、退出码/时长、已知失败和最后已知良好 SHA；current.md 只链接简洁恢复状态与最新稳定 checkpoint。视觉证据须绑定到集成后的产品树，声明完成前须记录任务分支/提交/同步结果/主仓库 SHA。不接受 Photoshop 或生成图片作为运行证明，不以截图替代 CI，不因单个 GUI Task 推进 Stage。
+
+## MVP 任务归属（ADR-0007 规划候选）
+
+新增且唯一产品 UI ID 为 LOOP1-CLIENT-GUI-001（Desktop/Mobile）；Web 完整 Loop1 GUI 使用既有 LOOP1-WEB-001。两者均覆盖 Login/session、Chat、Friends、AI Placeholder、Plugin capability/unavailable、Settings/Profile、Cold AI/Warm Creative、本地字体/间距与真实发送/重连状态。Desktop/Mobile 还覆盖 Offline History、Sync，Desktop 真实通知/托盘/快捷键，Mobile Android Studio emulator；Web 无 SQLite/离线历史，不持久化聊天。
+
+S3 PARITY、S4 PLUGIN-UI/FIX、S5 COMPAT/RELEASE、S6 RC 在各自既有 acceptance 承接适用 GUI 要求，规则见 canonical §20；不新增 GUI E2E/parity/plugin/release/soak Task。实质视觉变化须针对最近 Architect-approved set 重新截图批准；容量测试由 load harness 承担，GUI 自动化不进入 5000 WSS 热路径。本段随 ADR-0007 独立接受后生效；既有截图与架构验收要求不降低。
+
+## Web 后 S2 补充（ADR-0012候选）
+
+原GUI/Web接受保持。正式生效后追加WEB→STATE→UI-REF→I18N→S2 Gate；完整要求见canonical§6.6及spec/acceptance/client-supplement.md。三产品任务backlog、逐项独立接受/集成/主仓库同步后激活下项；本次不实施，S2 OPEN。独立视觉/Repository/Auth/Send/Sync职责与原截图/Architect/Review/hosted/main链共同保留。STATE真实A/B/排序/恢复/跨端好友，UIREF完整对照回归和视觉基线，I18N三纯数据语言/固定入口/独立偏好窄授权均必需。
+
+
+FILE spec/acceptance/client-supplement.md
+# S2 客户端补充验收
+
+从属于canonical§6.6/§15/§19/§20/附录A及Human-approved ADR12候选；正式生效依赖本规划独立接受/集成/主仓库同步。公共机器契约唯一contracts/。新任务均backlog/S2 OPEN。
+
+## 实际基线与证据（起点 b4d271c）
+
+| 能力 | 当前实际实现与证据 | 新任务必须补齐/验证 |
+| --- | --- | --- |
+| 重发/状态 | Desktop send.ts、Mobile SendViewModel.kt从Repository原row读身份/content；shared/Kotlin Repository.markFailed不倒退SENT、committedAck/realtime/Sync UPSERT。WEB repository.ts内存sameID/terminal、client.ts保留迟到ACK身份 | 既有单元/受控TLS向量不是三端真实A/B联合证据；逐端同一logical消息/单Outbox/真实FAILED再SENT |
+| 服务端提交 | core/message.go已有message+seq+outbox事务、重复查询原messageId/seq/createdAt、content冲突拒绝；gateway10s HTTP timeout、core Commit(ctx)未知结果路径待逐项审计 | 首次未提交与已提交确认丢失必须受控区分；未知commit不伪成功，也不能把已提交事实伪造为无persist rejected |
+| 排序 | shared Repository.messages与Mobile Repository.messages ORDER BY server_seq IS NULL,server_seq,local_id；Web snapshot排序bigint seq | 两种R1/R2真实渲染身份/seq/状态在ACK/realtime/Sync交叉后正确 |
+| 持久恢复 | Desktop accountDatabase/SQLx与Android account SQLite、restore显示saved history；Sync从cursor0连续分页 | 同账号保留本地FAILED重启retry、全新该账号DB/初始cursor恢复完整历史+新request/seq，只处理受控fixture DB不删真实用户 |
+| Web生命周期 | memory Repository、无initial history；baseline live window/held terminal crossing/ACK-only gap已regression接受 | A/B/顺序遵守同页面、已有在线window Sync；不能为测试新增历史DB/全量backfill |
+| 好友 | Web login/refresh/add调用loadFriends，无User Sync；realtime按已知friends过滤。Desktop Workspace/Mobile WorkspaceViewModel bind/add调用Auth.friends；Sync userPage存metadata，idle仅updateList，未重新刷新friend/user名称；UserSync在bound/reconnect/open/delivery触发 | 补齐无消息亦能最终触发UserSync→consumer→好友/私聊/name UI链；三端添加、其他在线端、断线恢复/切账号 |
+| 页面/组件 | Web/desktop src/ui/main.tsx入口含Shell/page/local state；Mobile MainActivity.kt挂载Workspace.kt，内含Auth/Chat/Friends/Settings组合；各端独立视觉 | 激活UIREF时以STATE接受树再次枚举实际entry/组件输入输出/state/import，行为视觉完整对照 |
+| 显示/状态 | Web View.connection用中文“在线”且transmit判断它；native应用error/preview英语内嵌、Mobile ApiFailure.kind的“Session expired”也参与判定 | UIREF先稳定ID与display分离；I18N禁止translated strings进入业务条件 |
+| 偏好 | Web appearance.ts v1 exact3keys；Desktop native.ts+desktop_capabilities appearance.json3tuple；Android Preferences appearance SharedPrefs3keys | 语言独立位置/标量保持theme/font/density，非法/不可用及三语言readability恢复 |
+
+接受原件：`spec/progress/evidence/LOOP1-SYNC-001/acceptance/acceptance.md`（PR22 main2351a293；真实DesktopSQLx/GoTLS/PG，MobileAPI34契约fixture62 controls；不声称Mobile-to-Go）；`spec/progress/evidence/LOOP1-CLIENT-GUI-001/closure20261008/`（PR24 mainb14bf107、Windows43原图/真实native、AndroidAPI34、独立Review/CI）；`spec/progress/evidence/LOOP1-WEB-001/product-closure-20261009/acceptance-originals.zip`及original-bindings.json（PR29 maina1b154d，ArchitectE52 originals、语义/delta/hosted接受）。PR30只行政恢复，最新main b4d271c。缺口表表示当前源码观察，不撤销原范围接受，不声称未执行的新产品验收PASS。
+
+## LOOP1-CLIENT-STATE-001 强制验收
+
+以最新三端实现和已有验收为基线，逐项记录现有能力、证据和待补齐内容，将以下要求写入任务目标与强制验收。
+
+1. 消息可靠性的两个核心场景：
+   A. 首次发送未在服务端提交，发送方超时显示 FAILED，用户点击重发后完成首次持久化并收敛为 SENT。
+   B. 首次发送已在服务端提交，接收方已获得消息，发送方因成功确认丢失或延迟显示 FAILED；用户重发后获得原始提交结果，原消息收敛为 SENT。
+
+2. 同一逻辑消息的每次重发复用原始 request_id、conversation_id、发送者身份和消息内容。服务端已有提交时返回原始 messageId、seq、createdAt；最终对应一条持久化消息、一条逻辑 Outbox 和各客户端的一条消息展示。
+
+3. 覆盖 SENDING、FAILED、重发按钮和 SENT 的真实界面状态。FAILED 表达当前尝试未获得成功确认；迟到 ACK、实时消息和适用 Sync 均通过既有收敛入口更新原消息，SENT 保持终态。核对 Gateway/Core 超时与提交结果未知路径，使其处理符合实际提交结果和现行契约。
+
+4. 同一会话的已确认消息以服务端 seq 为最终排序依据，覆盖：
+   - R1 首次未提交，R2 先成功提交，R1 后重发成功：最终顺序为 R2、R1。
+   - R1 首次已提交但确认超时，R2 随后提交，R1 再获得确认：最终顺序为 R1、R2。
+   验证 UI 在 ACK、实时事件、Sync 交叉到达后保持正确身份、状态和顺序。
+
+5. Desktop/Mobile 覆盖保留本地消息时的重启重发，以及受控测试中从全新账号本地数据库和初始同步游标恢复的流程。验证已提交历史按 seq 恢复，后续新消息使用新的 request_id 和服务端分配的序号，序号连续性与渲染顺序正确。Web 按当前页面内存生命周期和已接受的在线消息同步规则验收。
+
+6. 补齐三端好友变更同步。明确既有好友查询和 User Sync 的触发、消费及界面刷新链路；任一端添加好友后，其余在线端最终更新好友列表、对应私聊和名称展示，并验证断线恢复与账号切换后的正确结果。
+
+7. 使用真实服务端、数据库和客户端的受控故障注入验证上述链路。场景 B 同时取得服务端持久提交、接收方获得消息、发送方 FAILED、重发后原消息 SENT 的证据；分别核对存储记录、请求身份、序号、Outbox 和实际渲染。
+
+
+故障注入仅受控fixture、真实Go profile/PostgreSQL/NATS/TLS入口及真实浏览器/已安装Windows Tauri/Android Studio emulator；test proxy/held-response拦截仅受控发送方confirmation，不改生产契约。A证明首次0消息/0Outbox；B证明提交唯一记录+接收方实际得到+发送方真实FAILED（确认路径受控丢失/延迟）+点击retry原消息SENT；持久化snapshot与request/conversation/sender/content、originalACK三元组、Outbox logical count及实际render bind同候选/fixture/scenario。自动Sync若先确认不能计作FAILED/retry证据；受控安排timing并同时记录Sync/实时路径恢复。重复publication不等于多个logicalOutbox。保存原始失败，不用mock截图证明持久化。
+
+## LOOP1-CLIENT-UI-REF-001 强制验收
+
+以任务一验收后的三端产品树为行为和视觉基线，规划并验收各端现有页面、组件和展示状态的职责拆分。
+
+1. 根据实际源码拆分应用入口、Shell、导航、认证、会话列表、消息展示、输入区域、好友及设置等现有职责，明确入口挂载、组件输入输出、状态归属和导入方向。
+
+2. 保持各端独立视觉实现及现有 Auth、Repository、Send、Sync 职责边界，共享现有协议、类型和适用展示语义。
+
+3. 将组件展示文案、应用状态标识与业务判断建立清晰边界，为后续语言资源提取提供稳定接口。
+
+4. 建立拆分前后的页面、入口、功能和测试覆盖对照表。完整回归现有客户端能力及任务一新增场景，验证状态保持、事件绑定、账号隔离、同步、重发、排序和外观设置的行为等价。
+
+5. 完成各端构建、适用自动化测试、真实运行截图和 Architect 审查，以功能完整、行为等价和视觉基线保持作为验收结果。
+
+
+对照表按端列actual entry/挂载、Shell/navigation、Auth/register/login/refresh/logout/expiry、conversation list/view/message/composer、Friends/search/add、AI占位/Plugin unavailable、Settings/Profile、appearance、OfflineHistory/Sync及Desktop通知/tray/shortcut；对应旧新文件、输入输出、状态归属、事件/订阅清理、import方向、测试/真实截图和批准。不为了拆分新增generic store/总线/framework。状态与文本边界必须包含Web“在线”业务判断及native error分类，协议/Repository state保持稳定ID。复用STATE已接受故障harness并完整回归，不重写其已接受原件。
+
+## LOOP1-CLIENT-I18N-001 强制验收
+
+依赖任务二完成，提取三端现有用户可见文案，建立英语、简体中文和日语的独立语言资源。
+
+1. 统一语言标识 en、zh-CN、ja-JP，以及跨端文案语义和占位参数。Web/Desktop 使用 TypeScript 侧纯数据语言资源，Android 使用现有 Kotlin/Compose 技术栈下的等价资源映射。
+
+2. 覆盖页面文本、按钮、输入提示、校验与错误提示、连接及同步状态、无障碍标签，以及已有系统通知和托盘文案。将状态逻辑使用的稳定标识与翻译后的显示文本分离。
+
+3. Settings 增加固定入口“Language / 语言 / 言語”，使用固定顺序的滚动选择列表：
+   English → 简体中文 → 日本語。
+   选项名称保持各自语言，切换后即时更新当前界面，本地保存并恢复语言选择。
+
+4. 将语言选择的本地持久化范围、存储位置、字段和校验规则纳入三端偏好适配器的明确架构授权，保证现有外观配置继续有效，主题、字号、间距和语言独立保持。
+
+5. 建立语言键完整性、占位参数一致性和英文回退验证；覆盖切换后的页面状态、消息状态、布局可读性及本地偏好恢复，完成三种语言的适用截图和 Architect 验收。
+
+
+语言偏好为设备/宿主应用范围，跨账号保持、无云同步，独立于credential、账号SQLite、消息和Sync cursor。默认 en；只允许大小写精确的 en、zh-CN、ja-JP，不trim、不接受系统locale猜测或任意别名。缺失/非法/超长/存储不可用回退内存en，写失败诚实显示且不覆盖其他偏好或清除其他key。固定三端位置：Web仅新增 src/ui/language.ts 以原生 localStorage固定key plugworldim.language.v1读取/写入raw UTF-8 enum（最长5bytes），不改plugworldim.appearance.v1三字段；Desktop TypeScript native.ts持有language意图，desktop_capabilities.rs仅窄language_load/save字符串枚举校验及app_data/language.txt读写raw UTF-8（最多5bytes、无BOM/换行），appearance.json三项tuple原字节继续可读；Android Preferences.kt在既有MODE_PRIVATE appearance SharedPreferences只增String key language（最多5UTF-8bytes），保留theme/fontSize/density键和值。theme仅cold/warm；Web fontSize14/16/18/20、density compact/comfortable/spacious；Desktop/Android既有fontSize14..22、density0.8/1.0/1.2及默认cold/16/1继续有效。四标量语义各自独立，但Web/Desktop外观record仍三项，不合并为四字段记录。当前三字段appearance守卫不得提前放宽；只有I18N依赖独立接受+集成同步且任务active/review/done、client_supplement_phase: i18n_product才可实现语言adapter及对应窄源码guard。STATE/UI-REF和本规划不获得语言持久化产品许可。
+
+TS/Kotlin资源键set与每键占位参数set必须一致；未知locale/非法本地值回退en；缺locale键回退en并有negative测试，英文基础键缺失FAIL。输出文案不能修改wire/error code、用户消息/名称内容或request ID。每语言涵盖全部实际入口/加载空错/连接Sync/message状态/accessibility/已有系统通知tray；固定Language入口及三本名顺序滚动列表在三个语言下可达。即时切换不丢draft/selected/history/send状态或订阅，不重置其他偏好；重启本地恢复及invalid/unavailable用真实适配器验证。截图真实三端和三语言，必要窄viewport/字号密度极值保持可读、图文/参数不溢出，Architect独立绑定候选批准。
+
+## 独立闭环与S2前置
+
+沿用client-gui完整截图→Architect Review→修复重拍→Approval、fresh independent semantic Review、exact-head applicable hosted CI、protected integration/actual-main和safe H:/IM-platform同步。每新任务done必须在Task Completion Metadata写实际candidate/main SHA、PASS与独立review/hosted/main sync证据路径；Reviewer读证据内容与实际jobs/checkout/受保护合入/保存未知work，字段本身不提供接受。
+
+顺序WEB→STATE→UI-REF→I18N→S2 Gate，前项独立接受/集成同步后才能激活后项；STATE另依赖本规划正式生效。Gate仍需旧SQLITE/UI-ARCH/SEND/SYNC/GUI/WEB和所有旧要求、三个新完成项及deferred helper适用验收。规划或单Task PASS不能S2 PASS。本次仅独立接受规划、三个backlog交付，不评估实际Stage Gate。
+
+
+FILE spec/acceptance/s0-auth-user-friend.md
+# S0 Auth, User, and Friend Contract Checks
+
+These checks are executable requirements for the future canonical contract runner. They define observable cases and assertions, not endpoint paths, wire fields, classes, or storage schema.
+
+| Rule ID | Executable contract check | Source |
+| --- | --- | --- |
+| AUF-A-001 | Given one valid Session in a login slot, when the same user logs in again for that client type, the fixture runner MUST assert that the old epoch can no longer authenticate and the new Session can; the same test MUST assert that other client types remain valid. | Architecture Baseline v1.0, chapters 4.1, 7.2, and 7.3, and appendix B (Session). |
+| AUF-A-002 | Given an unauthenticated WSS connection, the negative fixture runner MUST reject every operation other than auth.bind and ping/pong; after valid binding it MUST assert the authenticated state is bound to user, Session, and client type. | Architecture Baseline v1.0, chapter 7.2. |
+| AUF-A-003 | Given an active same-slot connection, when a replacement login commits, the fixture runner MUST observe session.revoked followed by closure and MUST reject reconnect with the old token. | Architecture Baseline v1.0, chapters 7.2 and 7.3. |
+| AUF-A-004 | Given users A and B, adding A-to-B and then B-to-A MUST converge to one normalized friendship and one DIRECT Conversation; fixtures MUST reject a second distinct relationship for the same unordered pair. | Architecture Baseline v1.0, chapter 4.2 and appendix B (Friend). |
+| AUF-A-005 | The friend-add contract fixture MUST demonstrate immediate bidirectional success and MUST NOT expose a pending approval state. | Architecture Baseline v1.0, chapter 4.2. |
+| AUF-A-006 | Logout fixtures MUST assert Session and Refresh Token revocation plus WSS closure, while making no assertion that local client history is deleted. | Architecture Baseline v1.0, chapter 7.1. |
+| AUF-A-007 | Security fixtures MUST reject tokens in URL query input and MUST assert that responses and captured structured logs contain no token or password material. | Architecture Baseline v1.0, chapter 7.4. |
+| AUF-A-008 | Both backend profiles MUST run the same positive and negative fixtures and normalize to the same observable auth, friendship, error, and transaction outcomes. | Architecture Baseline v1.0, chapter 11.2 and chapter 11.3. |
+
+## Current implementation acceptance overlay
+
+Source labels above preserve original S0 semantic input provenance, not selection of an old active baseline. Current implementation resolves/hash-checks spec/architecture/README.md/baseline.md and applies canonical §3/§10 SRC-01 through SRC-07/§11 plus spec/governance/execution-boundaries.md. Unchanged behavioral cases require applicable source ownership/import checks and fresh Review using spec/governance/independent-review.md. allowed_paths and behavioral parity never waive structure.
+
+Stage-three effective checkers are bounded accepted at2afeac8/run36726926394; execute ci/check_architecture.py --scope all --json and tests/architecture with evidence003/hosted-acceptance.md. Go remediation product candidate d0ae52f5615320790ae7039cb48831873de6f486 is independently reviewed and accepted by hosted run36744072690; evidence004/final-hosted-acceptance.md. Historical stage003 source_go/Gate FAIL was expected before migration and remains preserved. Applicable source/dependency checks remain mandatory; no grandfather exception. Administrative closure candidate still requires a new independent Review and exact-head hosted verification; S1 product Gate remains OPEN. No follow-on business is activated by this discovery update. Check each backend stage: Java placeholder now and full Java boundaries at first business implementation. Record actual integration enable conditions/services/skips; unexecuted integration is not PASS. Verify hosted head/required jobs; historical S0/Auth acceptance does not cover new rules.
+
+## Human-approved Loop1 exception: friend403
+
+ADR-0004-loop1-friend-403-exception.md and contracts/fixtures/auth-user-friend/loop1-exceptions.json exempt only friend-add-authorization-denied from Loop1 implementation/runtime acceptance. OpenAPI403 placeholder and full future golden expectation remain unchanged. Report DEFERRED_BY_HUMAN separately; never count it PASS or claim every canonical case executed. AUF-A-008 profile equivalence applies to required stage cases; all other applicable checks remain required. FRIEND-AUTHORIZATION-403 remains a later-iteration TODO requiring approved credential/permission context, exact403/noeffects tests and fresh independent Review/CI. This scope decision does not waive401/422, membership/plugin authorization or transaction invariants.
+
+
+FILE spec/acceptance/s0-messaging.md
+# S0 Messaging Contract Checks
+
+These checks are executable requirements for the future canonical contract runner. They define observable cases and assertions, not wire fields, classes, or storage schema.
+
+| Rule ID | Executable contract check | Source |
+| --- | --- | --- |
+| MSG-A-001 | Given an authorized member send, the runner MUST withhold success ACK until a fault-injection probe confirms durable Message and Outbox commit; rollback before commit MUST produce no success ACK. | Architecture Baseline v1.0, chapters 2 (F-04) and 5.1, and appendix B (Message). |
+| MSG-A-002 | Given repeated sends with the same sender, Conversation, and client request identity, the runner MUST assert one logical Message, one Conversation sequence, and a stable successful outcome. | Architecture Baseline v1.0, chapters 4.4, 5.1, and 11.3. |
+| MSG-A-003 | Given the same client request identity in different Conversations, the runner MUST treat each Conversation-scoped request independently while preserving globally unique server Message identity. | Architecture Baseline v1.0, chapter 4.4. |
+| MSG-A-004 | Given a sender who is not a Conversation member, the negative fixture MUST assert rejection, no Message, no Outbox event, and no success ACK. | Architecture Baseline v1.0, chapter 5.1. |
+| MSG-A-005 | Given duplicate and out-of-order NATS delivery, the runner MUST assert idempotent consumer behavior, no duplicate logical Message, and eventual completeness through Sync. | Architecture Baseline v1.0, chapter 5.2 and appendix B (Outbox). |
+| MSG-A-006 | Given a GROUP send, the runner MUST assert one logical Message and one Outbox event regardless of member count, with local online fan-out treated separately from persistence. | Architecture Baseline v1.0, chapter 5.3. |
+| MSG-A-007 | Correctness fixtures MUST assert zero lost committed Messages, zero duplicate logical Messages, zero wrong-Conversation deliveries, zero permanent sequence gaps, and zero ACK-before-commit cases. | Architecture Baseline v1.0, chapter 5.3 (message correctness red lines). |
+| MSG-A-008 | Both backend profiles MUST consume identical fixtures and normalize to the same ACK, idempotency, authorization, ordering, error, and transaction outcomes. | Architecture Baseline v1.0, chapter 11.2 and chapter 11.3. |
+
+## Current implementation acceptance overlay
+
+Source labels above preserve original S0 semantic input provenance, not selection of an old active baseline. Current implementation resolves/hash-checks spec/architecture/README.md/baseline.md and applies canonical §3/§10 SRC-01 through SRC-07/§11 plus spec/governance/execution-boundaries.md. Unchanged behavioral cases require applicable source ownership/import checks and fresh Review using spec/governance/independent-review.md. allowed_paths and behavioral parity never waive structure.
+
+Stage-three effective checkers are bounded accepted at2afeac8/run36726926394; execute ci/check_architecture.py --scope all --json and tests/architecture with evidence003/hosted-acceptance.md. Go remediation product candidate d0ae52f5615320790ae7039cb48831873de6f486 is independently reviewed and accepted by hosted run36744072690; evidence004/final-hosted-acceptance.md. Historical stage003 source_go/Gate FAIL was expected before migration and remains preserved. Applicable source/dependency checks remain mandatory; no grandfather exception. Administrative closure candidate still requires a new independent Review and exact-head hosted verification; S1 product Gate remains OPEN. No follow-on business is activated by this discovery update. Check each backend stage: Java placeholder now and full Java boundaries at first business implementation. Record actual integration enable conditions/services/skips; unexecuted integration is not PASS. Verify hosted head/required jobs; historical S0/Auth acceptance does not cover new rules.
+
+
+FILE spec/acceptance/s0-sync-plugin.md
+# S0 Sync and Plugin Contract Checks
+
+These checks are executable requirements for the future canonical contract runner. They define observable cases and assertions, not wire fields, classes, or storage schema.
+
+| Rule ID | Executable contract check | Source |
+| --- | --- | --- |
+| SP-A-001 | Given duplicate and out-of-order per-Conversation inputs with a gap, the runner MUST assert idempotent materialization and that contiguous sequence stops before the gap; after the missing input arrives it MUST advance across the now-complete prefix. | Architecture Baseline v1.0, chapters 6.3 and 6.4, and appendix B (Sync). |
+| SP-A-002 | Given a locally FAILED item and a matching server Message, the runner MUST assert convergence to SENT without an additional local item; SENT MUST remain terminal under later timeout input. | Architecture Baseline v1.0, chapter 6.2 and appendix B (SQLite). |
+| SP-A-003 | Fault injection between local materialization and cursor advancement MUST roll back both effects; retry MUST converge by transactional upsert. | Architecture Baseline v1.0, chapter 6.3. |
+| SP-A-004 | A user-cursor fixture containing a Message event MUST be rejected; low-frequency friend, Conversation, membership, and plugin state fixtures MUST advance only the user cursor. | Architecture Baseline v1.0, chapter 6.4. |
+| SP-A-005 | Permission-negative fixtures MUST deny undeclared Event subscriptions, unauthorized Queries, unauthorized Actions, and unavailable UI capabilities, with no direct Core or database bypass. | Architecture Baseline v1.0, chapters 2 (F-08) and 8.1. |
+| SP-A-006 | Query fixtures MUST assert read-only, paginated, limited behavior; Action fixtures MUST assert execution-time re-authorization, idempotent outcomes, and audit evidence. | Architecture Baseline v1.0, chapter 8.1. |
+| SP-A-007 | Artifact fixtures MUST reject a changed package, backend, or renderer hash for an existing plugin/version identity and MUST reject backend-renderer version splitting. | Architecture Baseline v1.0, chapter 8.2 and appendix B (Plugin). |
+| SP-A-008 | Renderer-negative fixtures MUST reject failures of hash, signature, manifest schema, API compatibility, permission, resource-size, CSP, or entry-point checks; runtime probes MUST verify the declared UI sandbox boundary. | Architecture Baseline v1.0, chapter 8.2. |
+| SP-A-009 | WASM-negative fixtures MUST verify default denial of database, server-file, arbitrary-network, and other-plugin-memory access plus enforcement of resource limits and AUTO_DISABLED threshold behavior. | Architecture Baseline v1.0, chapter 8.3. |
+| SP-A-010 | Upgrade fixtures MUST keep the old version serving until snapshot, migration, paired health checks, and atomic switch succeed; failure at each step MUST restore the snapshot and continue the old version. | Architecture Baseline v1.0, chapter 9.2. |
+| SP-A-011 | Lifecycle fixtures MUST assert that DISABLE preserves data, UNINSTALL defaults to RETAINED, and PURGE requires an explicit elevated, audited, retention-confirmed operation. | Architecture Baseline v1.0, chapter 9.3. |
+| SP-A-012 | Golden fixtures MUST include duplicate, out-of-order, gap, and permission-denial cases and MUST normalize to identical Sync and Plugin outcomes across both backend profiles. | Architecture Baseline v1.0, chapter 11.2 and chapter 11.3. |
+| SP-A-013 | Given repeated execution of the same Action, the runner MUST assert one idempotent observable outcome with no duplicate side effect and MUST retain audit evidence for every execution attempt. | Architecture Baseline v1.0, chapter 8.1. |
+
+## Current implementation acceptance overlay
+
+Source labels above preserve original S0 semantic input provenance, not selection of an old active baseline. Current implementation resolves/hash-checks spec/architecture/README.md/baseline.md and applies canonical §3/§10 SRC-01 through SRC-07/§11 plus spec/governance/execution-boundaries.md. Unchanged behavioral cases require applicable source ownership/import checks and fresh Review using spec/governance/independent-review.md. allowed_paths and behavioral parity never waive structure.
+
+Stage-three effective checkers are bounded accepted at2afeac8/run36726926394; execute ci/check_architecture.py --scope all --json and tests/architecture with evidence003/hosted-acceptance.md. Go remediation product candidate d0ae52f5615320790ae7039cb48831873de6f486 is independently reviewed and accepted by hosted run36744072690; evidence004/final-hosted-acceptance.md. Historical stage003 source_go/Gate FAIL was expected before migration and remains preserved. Applicable source/dependency checks remain mandatory; no grandfather exception. Administrative closure candidate still requires a new independent Review and exact-head hosted verification; S1 product Gate remains OPEN. No follow-on business is activated by this discovery update. Check each backend stage: Java placeholder now and full Java boundaries at first business implementation. Record actual integration enable conditions/services/skips; unexecuted integration is not PASS. Verify hosted head/required jobs; historical S0/Auth acceptance does not cover new rules.
+

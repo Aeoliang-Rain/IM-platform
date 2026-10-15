@@ -1,0 +1,853 @@
+{
+  "assigned_root": "H:/.codex/worktrees/err/IM-platform",
+  "task_branch": "task/LOOP1-ERROR-HANDLING-001",
+  "base": "b5ea1350cd1909582029c6258d17b37f5354e594",
+  "git_common_dir": "H:/IM-platform/.git",
+  "git_index": "H:/IM-platform/.git/worktrees/IM-platform60/index",
+  "only_owned_paths": [
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ContiguousReadChecks.kt",
+      "allowed_path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/SyncInstrumentation.kt",
+      "allowed_path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "8929a0c6494ecbaa40a9655b7b35c3ff185b19c17d199f8b0d1567ef96ebf9d0"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+      "allowed_path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "1a1e1a02300d5eef6f376410709b344a7049cc5e02bf17dc08342477d5489c66"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+      "allowed_path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c"
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+      "allowed_path": "clients/shared/protocol-sdk/src/sync/*.ts",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+    },
+    {
+      "path": "clients/web/src/application/http.ts",
+      "allowed_path": "clients/web/src/application/*.ts",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+    },
+    {
+      "path": "spec/progress/checkpoints/2026-10-13-error-handling-review-candidate.md",
+      "allowed_path": "spec/progress/checkpoints/*error-handling*.md",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "ab179d5eea8f5eeb1a9efd009d9eee2ff1409189c59bfd92f3e14be75f2999b8"
+    },
+    {
+      "path": "spec/progress/current.md",
+      "allowed_path": "spec/progress/current.md",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "59442367ac359c60cf1484cce34a1958a91ded891e6c15c9d1c85593dce92f8f"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/authority-inputs.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "51838d2892d970fc5ee2488a57f63e261069a185761d67be545e2fb3bb1fa8c8"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/cleanup-final.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "b15ac8e88dd643341e761d2a1fda636e1c283e8d9b69f0fd1e63352f3cf8145c"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/cleanup.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "982a888283384a0df4fa938d20a616f49dc79a2091d972c1ed121f2cc7501230"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/handoff.md",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "881e427ecd20a15bafc5e4f9c03c1f9a93bdee04794ebfded8805e481e6927ef"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/human-read-mapper-scope.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "a96354894806a4d0e5a268a5517aad081ae111f7a495de66473bb41722b8a1b5"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/input-checks.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "fd368b6ecbc81199a9690da8a9bd55fd9dbf632c8cb65da612f9dbb51cc31abe"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/instrumentation-gaps.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d0153ce8dbf1863bb559a5232d560a9ed6217865e7285a18a4e208f4b9547941"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/instrumentation-warning-receipt.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "0736a9b7a36d1826b1257e3b440951291d8261b5e8a416ab1a4d57553305490c"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/negative-control-qa.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "cafe209bdfe40969a921f7b2244e75076ffd13907a9406f73f1753d667aa91b5"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/ownership-audit.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "self-unavailable"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/probe-sha256.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "ca7514a7cc3154c170adff02e4dbcdf977418cd1f0ad719b6b1e67797aeb8bd9"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/protected-read-scope.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "8c20e012265a950304329c2ad11066ba742b495e07b5becbddf8fcae242c08ba"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/shared-output-preservation.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "80704d80bc0fa52e7b098234899de47c3795bea7a02c1d264f2cf3094ece3907"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-cause-read/verification-history.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "553c9cdaf296670ec19e7926303f0daddd9eec40671025061abe84ad4f939a49"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/production-inventory.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "01309e5e2fd515af0f3ecf3856fe978d46b64ea71a5a4f1b2fabeed53e499a4a"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/protected-inputs.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "41eb45a77f478c8c7d81ee149062a56fa86ce4d3ed06230d7cae42a0dd292e78"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/add-read-finding.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "73db7680b018ad2046ce83f97f3cec85ce88846a2143193290094c283c29ab16"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/additional-grounds.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "64f54d17697056e38892fb014629bc20af2915894a5747975de9f1ae0baf50c0"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/aggregate.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "747808a1812da025444c5a1ce0f1675220f91815c3bcb33799385a16578ea2fc"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/aggregation.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "27654f8e2a584269491dfd9ef413449e153e261f5bc326547fae677095b72db1"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/delegation-prompt.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "aca26f0e8a733a5b16f6eb59fd33cb8196c693ce26f39a2df05fe99362c58093"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/inspect.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "451c269996911cb7f93fcaa4fe6e246eebfe4cc97654a4cf3d0b032eac49dc0b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/navigation-addendum.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "2faa4678ccece2db014be009aec08d302fb7821d51c39a44c738d89fec4aa9a2"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/prior-live-inspection.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "da3c4b4e6e7eacdcca879cf4004e359e1fc586cbc86f61502b4c82230d45fdd1"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/prompt.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4d242341bc0455108004a7eedc0c39f112cc9132f0f1c99beb65d25d4a23bb82"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/report.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e2f43a9af371d5e7c011eba9045cb9daf74adf69dc8a53649c73ef2eefb1a822"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/report.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "5ed3cbeae7f49f48e6defa64850f8ec8e28e96d43ee4f8e8b52621c0071c2880"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/prompts/P-ERROR-REGULAR-B5EA135-BACKEND-DELEGATION/metadata.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "742ace1ad117ad842d8639ed9c0c304dcadf048c87c1be1d767f01e9e86b4be7"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/prompts/P-ERROR-REGULAR-B5EA135-BACKEND-DELEGATION/prompt.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "aca26f0e8a733a5b16f6eb59fd33cb8196c693ce26f39a2df05fe99362c58093"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/prompts/P-ERROR-REGULAR-B5EA135-BACKEND/metadata.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "bab739d1478b6257a6f6bffeceb74e0e1f34f10a65c273eb8e9bea9a13132077"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/prompts/P-ERROR-REGULAR-B5EA135-BACKEND/prompt.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "88dd0448d362689b9d932af1c64393455f58e71329a8c1dda7502b8833f24116"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-07976563-b574-46ea-8511-1b952e496ae4.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-07976563-b574-46ea-8511-1b952e496ae4.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "0989732e009789f2a6e196fdd349f451b95a3345530d15b3e1f8f431c75ad9e0"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-43bde397-0ccf-4d08-9cde-472b13b6f3cc.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-43bde397-0ccf-4d08-9cde-472b13b6f3cc.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "52341ad8f6c196e1d53070d6b47e5e2dfa413b4b8bdbb44f7abc0c8f97d042f9"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-5ef2370a-3a64-49f5-923d-e90fa651b50f.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-5ef2370a-3a64-49f5-923d-e90fa651b50f.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-987ff3a3-7485-4eb4-aaf1-b2716f375e26.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "3bd4cf7df358bb01f01ee4ac33505e1c57546972cbb4983efbbd53f154baf5dd"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-987ff3a3-7485-4eb4-aaf1-b2716f375e26.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-9b2f9e1c-d38d-4c3d-b982-248fbab38013.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-9b2f9e1c-d38d-4c3d-b982-248fbab38013.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "42417f43c8bbdeb24a501501e61f7379176bb859b93ddd77d314a48c83f07637"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-b39ac266-d0fe-4d51-8724-93b003e8a507.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-b39ac266-d0fe-4d51-8724-93b003e8a507.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "f6a959e0488dfb8e20f0ba79cfe8b2897795ca5ffcbab2ce01c3b5758d92c0c2"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-e6691d88-ea74-43b5-a3d5-37496e53e338.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e192a12cf01889a406811435d249d3983bc92e1374ea895966e1bf585b8f1522"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/blobs/C-e6691d88-ea74-43b5-a3d5-37496e53e338.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/diff.patch",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/events.jsonl",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "813979cd9126523465f6368e120c60331a5c242e873fff695a906f8eeb481802"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/final_state.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "0d510ffd3f5836bd69a4f426f5af7f43319235e5649cfc2407bf87a44a61c97d"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/initial_state.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "177afae5cb046c700dc7e4250a4030a95e9e12963f873f6bef928e3683dc2d4d"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/metadata.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "3453dbef2c89274805b3dd64d1e0120337a66f6a4c14e3958835767ecaef14f7"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/research/runs/R-ERROR-REGULAR-B5EA135-BACKEND/summary.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "a861111205db2c0652da3e2e405c1f48f46d0153985b608516c070e85228edbd"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/retained-sites.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "2731c6a936a3e6b632df96ed7ede9f6cdf76ee022f8b37fdb991f4ae3e1b6b7e"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/seal.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "2ee6b40d3f0bee729801c9305722b8e3676f4e317cf937015edbda3c9273b728"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/sealed-receipt.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "48797729e005fecf0788f142a29918afd2235de564126cf2089f67465c61821d"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/backend/source-coverage.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "87f6c1771d5950180d337d6d0a168a4f68708ba33809e8653e6a5fba6a6c7476"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/checks.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "aab0e93a39ca5642368d04e60f2a54ac53c541551500a6830c0afba12909cb18"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/checks.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "bc9737d1e2d7c5861f0d18af1d81c2f146558a9affacdbecb775ea0f08c8ce50"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/cursor-repro.mjs",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "1090d1837e1d1b5e2c24111f465e0fd9f376ac03bbcf126c09b81aa8c53f9aa1"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/cycle-repro.mjs",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "c8d318ea733d3a57c511fdf20bd05ed9f6d8b2bdac4b13a8fec5764467ca44fd"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/declarative-checks.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e72e1d23d7845044556b51d10bb72943d6b2fb7a0f3c2d4658b90884482db2be"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/extra.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "877af7707a42201103451e85cf7ebe78eee6e36169d190a34c779de2ba386463"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/final-receipt.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "3cf94086621c9d72c9591bb840bf0c7ca3f0f12f48888120e32557bee957ada5"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/findings.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "c505c3ed882be526691a80c235c8c93f3e1f6b8fd435e3f6482aedc5f868b6dd"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/governance-assessment.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "277ec561fe4b8bd20eefb9ed482f45d017a2c52034b16f413e828c1b244b96ea"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/input-checks.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "5f80c562d1d3ba2b7540d6b051a29cd444aa0fce40f247ce222ce27c9c99ef5e"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/authority.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "68286d575e62003b8fde0c970f54318142def3e27923b2e2b5cf913f3df363a2"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/finalize.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "59619cab391b41042460702e623b6fbb67e4c706708351b22d45514708a5bbd5"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/prompt.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4dc9140c4867393d83ae3d005e36e541f88a5900c1c8551ab2fcb7d44027efbc"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/read.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "f9e617104368d53ef9cbe48946edd2f7f9eed7e3ca6f5b32f6a43bd30f409976"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/receipt.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "2cebb315c77c3b519003180cd46e995f2f5fe5d86c553811f077231ab3710564"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/report.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "73e97437106ac68dff90a4166b13a815f408effedbb627c8486a02431561ef02"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/report.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "39cf35e81c636c21e6990f9a3a628a1c400313ff14685d225c5faa47ac5e475b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/prompts/P-REGULAR-MOBILE-B5EA135/metadata.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "cf5d903d3278d217a73f7b433a06cb4d1d0c32781a80c2af92074d8a59cf30b6"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/prompts/P-REGULAR-MOBILE-B5EA135/prompt.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "1b97441738bb1e5b182198491631ebb0d4916ac6f64705725b7a31bd40278c38"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/blobs/C-37d9dff2-46be-4e2d-95be-ddf4a3de41ea.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/blobs/C-37d9dff2-46be-4e2d-95be-ddf4a3de41ea.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e1a074431d9db3069ae0c25bb6642e2ac62c943afd07e30b79468ee5458c0317"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/blobs/C-86ff7878-4170-4805-9703-43282a03c6ab.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/blobs/C-86ff7878-4170-4805-9703-43282a03c6ab.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/blobs/C-94bd28ff-5f44-4571-a78b-3017b9c7163d.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/blobs/C-94bd28ff-5f44-4571-a78b-3017b9c7163d.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "934c8d4a4862310b67f814db16e45e74c685d5adf6aa697c23e5f19d5430dadc"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/diff.patch",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/events.jsonl",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "764f2c491a089f9db5b7bf74bee0a4ebc7f2d0d1b96998a38f722bda37a366ec"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/final_state.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "10f4aa6bc15c8715480ab30e1f264f7e85f30daec0c2b353b16814b63ceb7923"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/initial_state.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "18453ed17f6cd808a818bd23ab9cbc97032271a51dac8c297c8e5b8c92f30387"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/metadata.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "7d0d37963e25cd7b8a7c01a00d50cc171fa1a04793c181afb23210fe9f23025a"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/research/runs/R-REGULAR-MOBILE-B5EA135/summary.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "9d6b9d575249cf8205e2e456712e8623b25ab90af963996553311c0947af0c4b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/seal.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "6d298d4871587ca318ece20d851fbe9e10e6c7a92c33d444b07a76176f19d0a7"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/mobile/verify_report.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "3896ea792bb657f4d78458ba37726e54beee5e1887cf520888eda34ad012daaa"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/own-retained-grounds.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "54a6b90c7bb5e98a76a3009a0265c21f4a844bf7317e771ae295ff0e92fd7cf8"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/own-semantic-coverage.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "2d2a84d6e4cd029c57c2df4248ab9cc936b6b324393a91ad496e593d091b4b7e"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/own_evidence.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d76f1c7fad69342a6803de7280f4ff98c58e62d3b373de617db0b81dfe9b1086"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/prerequisite-seals.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4f1761980d6c7f02ac6e32e0b44cd35d6936de4462a00ee17ace817f67c8610b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/protected-checks.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "583caf3ca86c4db300a6197136fa799d639f6144cbdb9fc0bbbb53ce8b5f5140"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/report.md",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "231bbfb854bf9f78225eb9ad88423bb925fe3c67de05c30dfcd85819716943ea"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/prompts/P-ERROR-REGULAR-B5EA135/metadata.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d922f97cc6bd204541ee00b911206f1e78e4f7a29c23ece717f6b0b30cfaf68f"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/prompts/P-ERROR-REGULAR-B5EA135/prompt.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "aa099ee739463e81b69740faa173dfa3a314967d043f225c448a609ffa985698"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-1dc48787-fba0-463d-bbee-cd20dbec8144.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-1dc48787-fba0-463d-bbee-cd20dbec8144.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "fcfa41fb8c3485c75c7c1578b24f19f043bd3e1440f94e290b32f413b311761d"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-37bb30f7-86af-42a3-ae87-4d480ec84289.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "76f7ab2b0027ca30b13c0fedc0977a0776ec0e13510ce68749f45a2c3cfe5139"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-37bb30f7-86af-42a3-ae87-4d480ec84289.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e06349122fa75c9388babace2acbed3d8abc378b41175a56292aad4f99fb887d"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-44c866ba-79be-457b-a141-135360d80c63.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-44c866ba-79be-457b-a141-135360d80c63.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "704a6f4dd2f8d4ab097c3a6a542bd68664d211deacebd67afaad33b5e231f720"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-66979246-6f18-4d4c-81b0-e7bc709a34f5.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-66979246-6f18-4d4c-81b0-e7bc709a34f5.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "b27855ae830a421ac40040a384c7596b98cab30b0c7d8d3b8f7c766c590f1cbe"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-74eae7a7-a04e-4b39-9331-4b2a8d77ffa1.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-74eae7a7-a04e-4b39-9331-4b2a8d77ffa1.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-8c140a19-b308-4c9d-940d-eae6dc42f325.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-8c140a19-b308-4c9d-940d-eae6dc42f325.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d0074f874dc1f7081ec96a152e96ce0eaa82686a9c64dafadc6ab1ddc31f6d08"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-9c49486c-1401-424f-81b5-3a1f8bb33a2e.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "c1a816ece523c0219902ee1daa3749e374e5f9d275c062cb2c2935541f8373d1"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-9c49486c-1401-424f-81b5-3a1f8bb33a2e.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-ac67798d-c019-4b84-b327-630b252e85ec.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-ac67798d-c019-4b84-b327-630b252e85ec.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "04a9998ad2bb5d9876716d991543178c3249f4b9890be3177572f23ef99e75a4"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-b768f8c7-8609-43e6-b041-36ea98ab6d5f.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-b768f8c7-8609-43e6-b041-36ea98ab6d5f.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d55bf3712fd3f6c40cd8e8951819d55d7a511eab556009045e50b3a63158e95b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-d0ad1db0-0365-4baf-98dd-28f7f0b8cdf2.stderr.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/blobs/C-d0ad1db0-0365-4baf-98dd-28f7f0b8cdf2.stdout.txt",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "05ae9a8ab4ffc115ffb1c6a7d95935ab418a2dccf56ab5f95330931334d31ad6"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/diff.patch",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/events.jsonl",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "7b8bb3e27569d63ea22bed41a8c7714680efbd1d7dbcb64173d65c5bc124fc4b"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/final_state.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "1f30c2e80477e8d857bec1f383e512a457159b9c5dedd7c9cc71820c92b5c026"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/initial_state.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d51df9b41592109d044046c5444301522bda3d92902ba0a23f5ffb2ab8b6a6d7"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/metadata.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4f1a061d8498c11beb570fa3e1eb540c59d961680fc892ffae7fd2e3f3318ca9"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/research/runs/R-ERROR-REGULAR-B5EA135/summary.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "7890e56ac5c43f6f6fd6f454b48008a385e4c613bd910464c09e0d1606188f1c"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/retained-grounds.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4fc8d7b16e8da16595f6c1667b9cd3f32e9bc736bd4397cd919411f4ede660c3"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/seal.py",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "99e9d003274fa9bc00f04b510ba6fd6fd3f8353c9c9c274fbd3679d39d476e1d"
+    },
+    {
+      "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-b5ea135/semantic-coverage.json",
+      "allowed_path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "47166edd751524096355fd5f2233876840ece01f73070b806f98943ccdc5e886"
+    },
+    {
+      "path": "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+      "allowed_path": "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "ae260f0453426de73a25c436afc5ba1983902e30e7e8a9ef56f80c194492ab8c"
+    },
+    {
+      "path": "tests/clients/errors/contiguous_native_reads.mjs",
+      "allowed_path": "tests/clients/errors/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "315ad563f4cd0cd85155ab302697da7e4f45e28a47b5a08ffca9a6c6e3779d17"
+    },
+    {
+      "path": "tests/clients/errors/desktop_native_reads.mjs",
+      "allowed_path": "tests/clients/errors/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "b84791e933f3bd6ad91b403ef07075d89910a6ced407f9c5da1bce66f500cc6e"
+    },
+    {
+      "path": "tests/clients/errors/desktop_reads.mjs",
+      "allowed_path": "tests/clients/errors/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "f5fe9f4a64e64771588a3faac010c5678c0b0327a5317de0c705f2da8adb914d"
+    },
+    {
+      "path": "tests/clients/errors/stream_cleanup.mjs",
+      "allowed_path": "tests/clients/errors/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4e83e15f8850b2d396c1b67ceb46b9d081d8a255fd28ab44f84c56a6c5444c43"
+    },
+    {
+      "path": "tests/clients/sync/shared.mjs",
+      "allowed_path": "tests/clients/sync/**",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "d02bea2ba8f736015682177f1eaf9de15de764b9c153f812d7de86f2e0bafae3"
+    },
+    {
+      "path": "tests/clients/web/regressions.mjs",
+      "allowed_path": "tests/clients/web/regressions.mjs",
+      "owner": "Sole freshFix /root/fix_cause_cycle_read_scope; dispatchedcleanb5; Task scope2READ amended beforewrites",
+      "sha256": "4ba42a8305ed9571db26fa8003e9f260b2fa27fde5863965df31876758cadfa6"
+    }
+  ],
+  "proof": "Only3HTTPbranches+2authorizedREADmethods, allotherbytes/SQLwrite/nativeDB/etc unchanged",
+  "original_assertions_retained": true,
+  "main": "Never mutated/adopted;Coordinator preserves unknownmainwork",
+  "reviews": "BothnewfinalSHA PENDING; nopush/PR/CI/integration/sync"
+}

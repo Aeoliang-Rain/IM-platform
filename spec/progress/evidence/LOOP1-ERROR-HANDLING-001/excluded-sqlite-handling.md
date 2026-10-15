@@ -1,0 +1,9 @@
+# SQLite handling explicitly EXCLUDED_BY_HUMAN
+
+Automatic approval review rejected execution of external error_adjust.py because its Android SendViewModel SQLite catch adjustment entered Human's forbidden SQLite write-failure/draft-protection scope. The rejected script was not executed. Coordinator authorized only restoration of earlier task-owned affected hunks to baseline, not a repackaged adjustment. This restoration resets operation/callback/timer/disposal/account-initialization handling and native storage-fault fixture shape. Product database/schema/Repository/Composer are untouched.
+
+Existing excluded broad storage-operation wrappers can still obscure unknown exceptions passing through that wrapper. This is a concrete residual limitation, not justified PASS or hidden full-production remediation. Unknown callback tests outside the excluded wrapper, transport/parser fixes and inventory remain in scope. Independent reviewers must distinguish excluded handling from successfully corrected paths. No approval to repair SQLite failure/draft protection has been inferred.
+
+Desktop task-owned serial-storage handler and detached storage-operation catches were also restored to their baseline. Direct observer catch deletion remains. Mixed-wrapper unknown Error/primitive misclassification and fake idle are explicitly residual, not PASS; external mixed-boundary-proposal/proposal.diff is NOT APPLIED pending narrow Human clarification.
+
+Later direct Human clarification allows only exception boundaries/provenance. The narrowly authorized Send origin tag and necessary consumers are now applied after Recorder registration; unchanged SQL/Repository/schema/transaction/Composer/draft hashes must be checked. Earlier proposal/rejection/restoration are historical, not rewritten. Real known SQLite failure assertions and new unknown/spoof proofs must all pass before final candidate; independent acceptance still pending.

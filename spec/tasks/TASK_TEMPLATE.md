@@ -30,6 +30,12 @@ State one bounded outcome.
 - List exact presently required assembly/build/test/support exceptions within SRC rules. allowed_paths is never an architecture waiver.
 - Temporary migration: name source/destination files, responsibility, approval, scope and acceptance exit before edits; unresolved conflicts escalate before implementation.
 
+# Error Handling Review
+
+- Inventory the current production scope with per-file hashes, responsibility and actual results. Record each finding (location/trigger/masking/minimal repair/test) and every retained catch/fallback (specific fault/current authority/real recovery). Unknown exceptions, programming errors and invariant breaks propagate; no false empty/success/category or generic error/log/retry framework.
+- Read `spec/governance/error-handling.md`. Record regular Review and different fresh specialist audit identities, independence, final SHA/branch/range/clean checkout, commands/results/durations and durable evidence.
+- Implementation → fresh regular Review → different fresh pre-CI error audit → GitHub CI. Audit FAIL forbids push/CI-triggering PR creation or update; fresh Fix/new regular Review/new specialist repeat. Every repair SHA requires both reviews on final SHA; no old PASS reuse. This gate occurs only before GitHub CI, supplements canonical authority and preserves architecture conflict process/integration/main sync.
+
 # Acceptance
 
 - State independently verifiable behavior plus applicable ownership, root whitelist and service/shared dependency outcomes.

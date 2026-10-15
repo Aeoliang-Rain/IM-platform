@@ -1,0 +1,35 @@
+logout known-first late unknown PASS
+logout unknown-first late known PASS
+logout cleanup known-first late unknown PASS
+logout cleanup unknown-first late known PASS
+logout dual-known roots PASS
+logout remote known-only PASS
+logout cleanup known-only PASS
+logout unknown-only identity PASS
+logout same identity PASS
+logout normal PASS
+Workspace logout mixed rejects/busy reset PASS
+Workspace logout dual-known honest error PASS
+Workspace logout normal PASS
+list known-first late unknown PASS
+list unknown-first late known PASS
+list reverse known-first late unknown PASS
+list dual-known history error PASS
+list known-only history error PASS
+list unknown-only identity PASS
+list normal rows/order PASS
+retired list known failure no stale state PASS
+retired list mixed unknown still rejects PASS
+refresh successful cleanup original primary PASS
+refresh unknown cleanup preserves known primary PASS
+refresh known cleanup distinct roots PASS
+refresh same primary identity PASS
+Workspace refresh mixed roots rejects/busy reset PASS
+Workspace refresh dual-known no new cleanup retry PASS
+refresh falsy cleanup 0 PASS
+falsy primitive sibling 0 logout/list preserve roots PASS
+refresh falsy cleanup null PASS
+falsy primitive sibling null logout/list preserve roots PASS
+refresh falsy cleanup undefined PASS
+falsy primitive sibling undefined logout/list preserve roots PASS
+DESKTOP-PARALLEL-CHECKS=37 PASS; actual compiled consumers/literal IPC; no live SQLite or private credential operations

@@ -1,0 +1,118 @@
+diff --git a/clients/desktop/src/application/ui/auth.ts b/clients/desktop/src/application/ui/auth.ts
+index f8fd378e..3eb68aa5 100644
+--- a/clients/desktop/src/application/ui/auth.ts
++++ b/clients/desktop/src/application/ui/auth.ts
+@@ -37,10 +37,18 @@ export class Auth {
+   async login(username:string,password[REDACTED] g=this.generation;return this.accept(await this.request("/v1/auth/login","POST",{username,password,...metadata},false),g);}
+   async restore():Promise<Session|null>{return await this.savedAccount()?this.refresh():null;}
+   async savedAccount():Promise<string|null>{const g=this.generation,slot=await secure.read(this.endpoint+"/current");if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!slot)return null;if(!slot.startsWith(this.endpoint+"/"))throw new ApiFailure("secure_credential_metadata_invalid","Secure credential metadata invalid");const parts=slot.slice(this.endpoint.length+1).split("/");if(parts.length!==2)throw new ApiFailure("secure_credential_metadata_invalid","Secure credential metadata invalid");uuid(parts[1]);this.slot=slot;return uuid(parts[0]);}
+-  async refresh():Promise<Session>{const g=this.generation;const token=await secure.read(this.slot);if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!token){await this.clear();throw new ApiFailure("session_expired","Session expired");}try{return await this.accept(await this.request("/v1/auth/refresh/native","POST",{refreshToken[REDACTED],...metadata},false),g);}catch(error){if(g===this.generation&&error instanceof ApiFailure&&error.kind==="session_expired")await this.clear();throw error;}}
++  async refresh():Promise<Session>{const g=this.generation;const token=await secure.read(this.slot);if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!token){await this.clear();throw new ApiFailure("session_expired","Session expired");}try{return await this.accept(await this.request("/v1/auth/refresh/native","POST",{refreshToken[REDACTED],...metadata},false),g);}catch(error){if(g===this.generation&&error instanceof ApiFailure&&error.kind==="session_expired"){
++      try{await this.clear();}catch(cleanup){if(cleanup===error)throw error;throw new AggregateError([error,cleanup],"Refresh cleanup failed");}
++    }throw error;}}
+   needsRefresh(){return !!this.session && Date.now()>this.expires-60000;}
+   async clear(){this.generation++;this.session=null;await this.storage;const slot=this.slot;this.slot="";if(slot)await secure.remove(slot);await secure.remove(this.endpoint+"/current");}
+-  async logout(){const remote=this.session?this.request("/v1/auth/logout","POST",{}):Promise.resolve();await Promise.all([this.clear(),remote]);}
++  async logout(){
++    const remote=this.session?this.request("/v1/auth/logout","POST",{}):Promise.resolve();
++    const settled=await Promise.allSettled([this.clear(),remote]);
++    const failures=[...new Set(settled.filter(result=>result.status==="rejected").map(result=>result.reason))];
++    if(failures.length===1)throw failures[0];
++    if(failures.length>1)throw new AggregateError(failures,"Logout failed");
++  }
+   async profile():Promise<User>{const o=object(await this.request("/v1/users/me"),["user"]);return user(o.user);}
+   async friends():Promise<Friend[]>{const o=object(await this.request("/v1/friends"),["friends"]);if(!Array.isArray(o.friends))throw new ApiFailure("invalid_server_response","Invalid server response");return o.friends.map(v=>{const f=object(v,["user","friendshipId","directConversationId"]);return {user:user(f.user),friendshipId:uuid(f.friendshipId),directConversationId:uuid(f.directConversationId)};});}
+   async search(query:string):Promise<User[]>{const o=object(await this.request("/v1/users/search?username="+encodeURIComponent(query)),["users"]);if(!Array.isArray(o.users))throw new ApiFailure("invalid_server_response","Invalid server response");return o.users.map(user);}
+diff --git a/clients/desktop/src/application/ui/workspace.ts b/clients/desktop/src/application/ui/workspace.ts
+index 69231cd2..9179c540 100644
+--- a/clients/desktop/src/application/ui/workspace.ts
++++ b/clients/desktop/src/application/ui/workspace.ts
+@@ -57,13 +57,19 @@ export class Workspace {
+     }catch(error){this.failure(error,g===this.generation&&revision===this.friendRevision);}
+   }
+   private failure(error:unknown,active=true){
+-    if(!(error instanceof ApiFailure || error instanceof WireFailure || error instanceof SyncFailure || error instanceof SendStorageFailure || error instanceof NativeCapabilityFailure))throw error;
++    const failures=error instanceof AggregateError?error.errors:[error];
++    if(!failures.length || !failures.every(root=>root instanceof ApiFailure || root instanceof WireFailure || root instanceof SyncFailure || root instanceof SendStorageFailure || root instanceof NativeCapabilityFailure))throw error;
+     if(!active)return;
+-    this.publish({error:error instanceof ApiFailure?error.message:"Operation unavailable"});if(error instanceof ApiFailure&&error.kind==="session_expired")void this.expire();}
++    const authentication=error instanceof ApiFailure?error:undefined;
++    this.publish({error:authentication?authentication.message:"Operation unavailable"});if(authentication?.kind==="session_expired")void this.expire();}
+   private async updateList(repo:Repository,g:number){
+     const revision=++this.listRevision;
+     try{const ids=[...new Set([...await repo.conversationIds(),...this.state.friends.map(f=>f.directConversationId)])];
+-      const entries=await Promise.all(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??"",time},rows] as const;}));
++      const settled=await Promise.allSettled(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??"",time},rows] as const;}));
++      const failures=[...new Set(settled.filter(result=>result.status==="rejected").map(result=>result.reason))];
++      if(failures.length===1)throw failures[0];
++      if(failures.length>1)throw new AggregateError(failures,"Conversation history failed");
++      const entries=settled.filter(result=>result.status==="fulfilled").map(result=>result.value);
+       if(g!==this.generation||revision!==this.listRevision)return;
+       const previews=Object.fromEntries(entries.map(([id,preview])=>[id,preview]));ids.sort((a,b)=>previews[b].time-previews[a].time||a.localeCompare(b));this.publish({conversations:ids,previews,messages:entries.find(e=>e[0]===this.state.selected)?.[2]??[]});
+     }catch(error){this.failure(error,g===this.generation&&revision===this.listRevision);if(g===this.generation&&revision===this.listRevision)this.publish({error:"Conversation history unavailable"});}
+diff --git a/clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt b/clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt
+index 33d10b72..f408a47a 100644
+--- a/clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt
++++ b/clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt
+@@ -24,9 +24,17 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
+     init {
+         require(uri.scheme=="wss" && uri.host!=null && uri.rawQuery==null && uri.rawFragment==null && uri.rawUserInfo==null) { "Invalid WSS endpoint" }
+         Thread({
++            var failure: Throwable?=null
++            var recoverable=true
++            var inObserver=false
++            fun retain(error: Throwable) {
++                val primary=failure
++                failure=if(primary==null || primary===error) error
++                    else IllegalStateException("WSS lifecycle failed",primary).also { it.addSuppressed(error) }
++            }
+             try {
+                 val s=tls.createSocket(uri.host,if(uri.port<0) 443 else uri.port) as SSLSocket
+-                socket=s; if(closed) { s.close(); return@Thread }
++                socket=s; if(closed) return@Thread
+                 s.soTimeout=15000
+                 val parameters=s.sslParameters; parameters.endpointIdentificationAlgorithm="HTTPS"; s.sslParameters=parameters; s.startHandshake()
+                 val input=BufferedInputStream(s.inputStream)
+@@ -43,7 +51,7 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
+                 val accept=Base64.getEncoder().encodeToString(MessageDigest.getInstance("SHA-1").digest((key+"258EAFA5-E914-47DA-95CA-C5AB0DC85B11").toByteArray(Charsets.US_ASCII)))
+                 wire(headers["sec-websocket-accept"]==accept && headers["upgrade"]?.lowercase()=="websocket" && headers["connection"]?.split(',')?.any { it.trim().equals("upgrade",true) }==true)
+                 wire(headers["sec-websocket-extensions"]==null && headers["sec-websocket-protocol"]==null)
+-                s.soTimeout=0; if(closed) return@Thread; opened()
++                s.soTimeout=0; if(closed) return@Thread; inObserver=true; opened(); inObserver=false
+                 val fragments=java.io.ByteArrayOutputStream(); var fragmented=false
+                 fun read(): Int { val b=input.read(); wire(b>=0); return b }
+                 while(!closed) {
+@@ -61,13 +69,20 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
+                         1,0 -> {
+                             wire((op==1 && !fragmented) || (op==0 && fragmented)); wire(fragments.size()+body.size<=131072)
+                             fragments.write(body); fragmented=!fin
+-                            if(fin) { val decoder=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT); message(decoder.decode(ByteBuffer.wrap(fragments.toByteArray())).toString()); fragments.reset() }
++                            if(fin) { val decoder=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT); val text=decoder.decode(ByteBuffer.wrap(fragments.toByteArray())).toString(); inObserver=true; message(text); inObserver=false; fragments.reset() }
+                         }
+                         else -> throw IOException("Invalid WSS frame")
+                     }
+                 }
+-            } catch(_: IOException) { /* Failed transport closes this socket and notifies ended; no frame/credential logging. */ }
+-            finally { close(); ended() }
++            } catch(error: Throwable) {
++                failure=error; recoverable=!inObserver && error is IOException
++            } finally {
++                try { retireSocket() } catch(error: Throwable) {
++                    retain(error); recoverable=recoverable && error is IOException
++                }
++                try { ended() } catch(error: Throwable) { retain(error); recoverable=false }
++                failure?.let { if(!recoverable) throw it }
++            }
+         },"im-wss").apply { isDaemon=true; start() }
+     }
+     @Synchronized private fun frame(op: Int,body: ByteArray) {
+@@ -79,5 +94,8 @@ class Wss(endpoint: String, private val opened: ()->Unit, private val message:(S
+         bytes.write(ByteArray(body.size) { (body[it].toInt() xor mask[it%4].toInt()).toByte() }); output.write(bytes.toByteArray()); output.flush()
+     }
+     override fun send(text: String) { frame(1,text.toByteArray(Charsets.UTF_8)) }
+-    override fun close() { closed=true; try { socket?.close() } catch(_:IOException) { /* close attempted; the connection is already retired. */ } }
++    @Synchronized private fun retireSocket() {
++        closed=true; val retiring=socket; socket=null; retiring?.close()
++    }
++    override fun close() { try { retireSocket() } catch(_:IOException) { /* The retired transport cannot send again. */ } }
+ }

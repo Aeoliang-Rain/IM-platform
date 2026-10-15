@@ -65,3 +65,39 @@ await assert.rejects(bad.user("0",new AbortController().signal),SyncFailure);
 const frame=json({protocolVersion:"1.0",type:"ping",requestId:id,payload:{}});
 assert.throws(()=>decode(" ".repeat(131073)+frame));
 console.log("PASS: exact Sync correlation/shapes/gap/progress/kinds/numbers, 100x4096 escaped/literal Unicode bounded transport, strict nonstring Sync/WSS enums and WSS bound regression");
+
+// Network I/O boundaries may recover TypeError/AbortError; arbitrary internal
+// Errors from an adapter preserve identity rather than becoming transport.
+{
+ const original=new Error("controlled internal fetch bug");
+ const unknown=new SyncHttp("https://localhost/",session,async()=>{throw original;});
+ await assert.rejects(unknown.user("0",new AbortController().signal),e=>e===original);
+ const transport=new SyncHttp("https://localhost/",session,async()=>{throw new TypeError("controlled native transport unavailable");});
+ await assert.rejects(transport.user("0",new AbortController().signal),e=>e instanceof SyncFailure&&e.kind==="transport");
+}
+console.log("PASS unknown adapter errors retain identity; known transport remains failed");
+
+{
+ const headers={"content-type":"application/json","cache-control":"no-store"};
+ const malformed=new SyncHttp("https://localhost/",session,async()=>new Response(new Uint8Array([0xff]),{headers}));
+ await assert.rejects(malformed.user("0",new AbortController().signal),e=>e instanceof SyncFailure&&e.kind==="protocol");
+ for(const original of [new TypeError("controlled stream network failure"),new Error("controlled unknown stream bug")]){
+  const streamed=new SyncHttp("https://localhost/",session,async()=>new Response(new ReadableStream({start(c){c.error(original);}}),{headers}));
+  await assert.rejects(streamed.user("0",new AbortController().signal),e=>original instanceof TypeError?e instanceof SyncFailure&&e.kind==="transport":e===original);
+ }
+}
+console.log("PASS malformed UTF8 is protocol; stream transport stays failed; unknown stream cause preserved");
+
+const {verifyStreamCleanup}=await import('../errors/stream_cleanup.mjs');
+await verifyStreamCleanup((response,signal)=>new SyncHttp('https://localhost/',session,async()=>response,()=>id).user('0',signal),(error,mode)=>error instanceof SyncFailure&&error.kind===((mode==='protocol-distinct'||mode==='direct-validation')?'protocol':'transport'),JSON.stringify({...page,events:[],nextCursor:'0'}));
+
+{
+ const {Repository}=await import('../../../clients/shared/protocol-sdk/dist/storage/repository.js');
+ for(const [rows,value] of [[[],0n],[[['0']],0n],[[['7']],7n],[[['9007199254740993']],9007199254740993n],[[['9223372036854775807']],9223372036854775807n]]) {
+  const repo=new Repository({query:async()=>rows,transaction:async()=>assert.fail('read must not write')});assert.equal(await repo.contiguous(c),value);
+ }
+ for(const rows of [[['']],[[null]],[[]],[[' 0']],[['+0']],[['01']],[['-1']],[['1.5']],[['9223372036854775808']]]) {
+  const repo=new Repository({query:async()=>rows,transaction:async()=>assert.fail('read must not write')});await assert.rejects(repo.contiguous(c),/Invalid contiguous sequence/);
+ }
+ console.log('PASS contiguous mapper: absent row zero, exact valid signed64 prefixes, invalid present rows fail without writes');
+}

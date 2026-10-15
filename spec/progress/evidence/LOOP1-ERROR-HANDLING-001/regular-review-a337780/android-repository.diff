@@ -1,0 +1,19 @@
+diff --git a/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt b/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt
+index 658da53a..a9351115 100644
+--- a/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt
++++ b/clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt
+@@ -130,7 +130,13 @@ class Repository(context: Context, accountId: String) : Closeable {
+     }
+     fun messages(c: String) = query("""SELECT request_id,sender_id,content,state,server_message_id,CAST(server_seq AS TEXT),server_time
+         FROM messages WHERE conversation_id=? ORDER BY server_seq IS NULL,server_seq,local_id""", arrayOf(c))
+-    fun contiguous(c: String) = query("SELECT contiguous_seq FROM conversations WHERE conversation_id=?",arrayOf(c)).firstOrNull()?.first()?.toLong() ?: 0L
++    fun contiguous(c: String): Long {
++        val rows = query("SELECT contiguous_seq FROM conversations WHERE conversation_id=?",arrayOf(c))
++        if (rows.isEmpty()) return 0L
++        val value = checkNotNull(rows.first().first()) { "Invalid contiguous sequence" }
++        check(value.matches(Regex("0|[1-9][0-9]*"))) { "Invalid contiguous sequence" }
++        return value.toLong()
++    }
+     fun conversationIds() = query("SELECT conversation_id FROM conversations UNION SELECT conversation_id FROM messages UNION SELECT subject_id FROM user_state WHERE kind IN ('conversation.changed','membership.changed') ORDER BY 1").map { it.single()!! }
+     fun cursor() = query("SELECT cursor FROM user_cursor WHERE singleton=1").single().single()!!
+     override fun close() { db.close() }

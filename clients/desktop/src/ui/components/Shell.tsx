@@ -23,10 +23,10 @@ function WorkspaceShell(){const t=useText();const display=useDisplayText();
   const s=useSyncExternalStore(app.observe,app.snapshot),[registering,setRegistering]=useState(false),[confirmation,setConfirmation]=useState(""),[registered,setRegistered]=useState(false),[username,setUsername]=useState(""),[password,setPassword]=useState(""),[query,setQuery]=useState(""),[draft,setDraft]=useState(""),[maximized,setMaximized]=useState(false);
   const [composerHeight,setComposerHeight]=useState(72),textarea=useRef<HTMLTextAreaElement>(null),resize=useRef<{y:number;height:number}|null>(null);
   useEffect(()=>{void app.start();},[]);
-  useEffect(()=>{let active=true;const refresh=()=>{void windowMaximized().then(value=>{if(active)setMaximized(value);}).catch(()=>{});};refresh();window.addEventListener("resize",refresh);return()=>{active=false;window.removeEventListener("resize",refresh);};},[]);
+  useEffect(()=>{let active=true;const refresh=()=>{void windowMaximized().then(value=>{if(active)setMaximized(value);});};refresh();window.addEventListener("resize",refresh);return()=>{active=false;window.removeEventListener("resize",refresh);};},[]);
   const add=app.add.bind(app),disconnect=app.disconnect.bind(app),login=app.login.bind(app),logout=app.logout.bind(app),open=app.open.bind(app),page=app.page.bind(app),preferences=app.preferences.bind(app),reconnect=app.reconnect.bind(app),refresh=app.refresh.bind(app),register=app.register.bind(app),restore=app.restore.bind(app),retry=app.retry.bind(app),search=app.search.bind(app),send=app.send.bind(app),testNotification=app.testNotification.bind(app);
   const prefs=s.appearance,friend=s.friends.find(f=>f.directConversationId===s.selected),title=friend?.user.displayName??(s.selected?t("chat.conversationId",{id:s.selected.slice(0,8)}):t("chat.your"));
-  const run=(p:Promise<unknown>)=>{void p.catch(()=>{});};
+  const run=(p:Promise<unknown>)=>{void p;};
   const authenticated=!!(s.session||s.offlineAccount);
   return <div className={"app-window "+prefs.theme} style={{"--font":prefs.fontSize+"px","--density":prefs.density} as React.CSSProperties}>
     <WindowBar maximized={maximized} windowControl={windowControl} run={run}/>

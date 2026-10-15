@@ -1,0 +1,26 @@
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'H:\.codex\worktrees\err\IM-platform\clients\mobile\app\build.gradle.kts' line: 1
+
+* What went wrong:
+An exception occurred applying plugin request [id: 'com.android.application']
+> Failed to apply plugin 'com.android.internal.application'.
+   > Failed to create service 'com.android.build.gradle.internal.services.AndroidLocationsBuildService_409fd49c-de54-4ff6-814a-0e16e87a6687'.
+      > Could not create an instance of type com.android.build.gradle.internal.services.AndroidLocationsBuildService.
+         > Could not create provider for value source AndroidLocationsBuildService.AndroidDirectoryCreator.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 7s
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-android-wss-cleanup\runtime.py", line 4, in <module>
+    subprocess.run([PY,'-Xutf8','-B',str(R/'tests/clients/gui/native.py'),'gradle','-PimSendInstrumentation='+runner,'assembleDebug','assembleDebugAndroidTest'],cwd=R,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe', '-Xutf8', '-B', 'H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\gui\\native.py', 'gradle', '-PimSendInstrumentation=im.platform.client.send.WssCleanupInstrumentation', 'assembleDebug', 'assembleDebugAndroidTest']' returned non-zero exit status 1.

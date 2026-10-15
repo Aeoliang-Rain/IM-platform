@@ -5,6 +5,8 @@ import (
 	"context"
 	"encoding/json"
 	"io"
+	"log"
+	"net"
 	"net/http"
 	"regexp"
 	"strings"
@@ -45,7 +47,15 @@ func validUUID(id string) bool { return requestIDPattern.MatchString(id) }
 func newHub(auth *validator) *hub {
 	return &hub{auth: auth, sessions: make(map[string]map[*connection]bool), client: &http.Client{Timeout: 10 * time.Second}}
 }
-func (c *connection) send(v any) error { c.mu.Lock(); defer c.mu.Unlock(); return c.ws.WriteJSON(v) }
+func (c *connection) send(v any) error {
+	c.mu.Lock()
+	err := c.ws.WriteJSON(v)
+	c.mu.Unlock()
+	if err != nil {
+		c.close()
+	}
+	return err
+}
 func (c *connection) close() {
 	c.once.Do(func() { close(c.done); c.mu.Lock(); _ = c.ws.Close(); c.mu.Unlock() })
 }
@@ -77,7 +87,10 @@ func (h *hub) revoke(sid, reason string) {
 	delete(h.sessions, sid)
 	h.mu.Unlock()
 	for _, c := range conns {
-		id, _ := shared.UUID()
+		id, idErr := shared.UUID()
+		if idErr != nil {
+			panic(idErr)
+		}
 		_ = c.send(frame("session.revoked", id, map[string]string{"sessionId": sid, "reason": reason}))
 		c.close()
 	}
@@ -112,7 +125,10 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 		if len(raw) != 4 {
 			return
 		}
-		b, _ := json.Marshal(raw)
+		b, marshalErr := json.Marshal(raw)
+		if marshalErr != nil {
+			panic(marshalErr)
+		}
 		var e envelope
 		if json.Unmarshal(b, &e) != nil || e.ProtocolVersion != "1.0" || !validUUID(e.RequestID) || len(e.Payload) == 0 {
 			return
@@ -123,7 +139,9 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			if e.Type == "ping" {
-				_ = c.send(frame("pong", e.RequestID, map[string]any{}))
+				if c.send(frame("pong", e.RequestID, map[string]any{})) != nil {
+					return
+				}
 			}
 			continue
 		}
@@ -142,7 +160,9 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			var pfields map[string]any
-			_ = json.Unmarshal(e.Payload, &pfields)
+			if json.Unmarshal(e.Payload, &pfields) != nil {
+				return
+			}
 			if len(pfields) != 1 {
 				h.reject(c, e.RequestID, "VALIDATION_FAILED", "Auth binding payload is invalid.")
 				return
@@ -152,15 +172,26 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 				if ae, ok := err.(shared.Error); ok {
 					h.reject(c, e.RequestID, ae.Code, ae.Message)
 				} else {
-					h.reject(c, e.RequestID, "AUTH_TOKEN_INVALID", "Access token is invalid.")
+					// A database/internal failure does not mean an invalid token.
+					return
 				}
 				return
 			}
 			c.bound = &cl
 			c.token = p.AccessToken
 			h.add(cl.SessionID, c)
-			_ = c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch}))
-			go h.watch(c, cl)
+			if c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch})) != nil {
+				return
+			}
+			go func() {
+				if err := h.watch(c, cl); err != nil {
+					if watchTransportFailure(err) {
+						log.Print("Session validation transport failed; connection closed")
+						return
+					}
+					panic(err)
+				}
+			}()
 			continue
 		}
 		// A bound connection uses its validated binding, token expiry and the
@@ -186,25 +217,59 @@ func (h *hub) reject(c *connection, id, code, message string) {
 	_ = c.send(frame("auth.ack", id, map[string]any{"status": "rejected", "error": map[string]string{"code": code, "message": "Request rejected"}}))
 }
 
-func (h *hub) watch(c *connection, cl shared.Claims) {
+func (h *hub) watch(c *connection, cl shared.Claims) error {
+	defer c.close()
 	ticker := time.NewTicker(time.Second)
 	defer ticker.Stop()
 	for {
 		select {
 		case <-c.done:
-			return
+			return nil
 		case <-ticker.C:
 			ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 			_, err := h.auth.authenticate(ctx, c.token)
 			if err != nil {
+				if _, known := err.(shared.Error); !known {
+					cancel()
+					return err
+				}
 				reason := h.auth.revocationReason(ctx, cl, err)
 				cancel()
 				h.revoke(cl.SessionID, reason)
-				return
+				return nil
 			}
 			cancel()
 		}
 	}
+}
+
+// Default pgx can join connection attempts. Close the unverified connection
+// for known transport failure, but never hide an internal branch of that tree.
+func watchTransportFailure(err error) bool {
+	known := false
+	for err != nil {
+		if joined, ok := err.(interface{ Unwrap() []error }); ok {
+			branches := joined.Unwrap()
+			if len(branches) == 0 {
+				return false
+			}
+			for _, branch := range branches {
+				if !watchTransportFailure(branch) {
+					return false
+				}
+			}
+			return true
+		}
+		if _, ok := err.(net.Error); ok {
+			known = true
+		}
+		if wrapped, ok := err.(interface{ Unwrap() error }); ok {
+			err = wrapped.Unwrap()
+			continue
+		}
+		return known
+	}
+	return false
 }
 
 func writeError(w http.ResponseWriter, r *http.Request, err error) {
@@ -212,10 +277,15 @@ func writeError(w http.ResponseWriter, r *http.Request, err error) {
 	if v, ok := err.(shared.Error); ok {
 		e = v
 	}
-	id, _ := shared.UUID()
+	id, idErr := shared.UUID()
+	if idErr != nil {
+		panic(idErr)
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(e.Status)
-	_ = json.NewEncoder(w).Encode(map[string]any{"error": map[string]string{"code": e.Code, "message": e.Message}, "requestId": id})
+	if err := json.NewEncoder(w).Encode(map[string]any{"error": map[string]string{"code": e.Code, "message": e.Message}, "requestId": id}); err != nil {
+		return
+	}
 }
 
 // Forward only the canonical frame, using the validated connection's bearer.
@@ -224,7 +294,10 @@ func (h *hub) forward(ctx context.Context, c *connection, e envelope) {
 	var payload struct {
 		ConversationID string `json:"conversationId"`
 	}
-	_ = json.Unmarshal(e.Payload, &payload)
+	if json.Unmarshal(e.Payload, &payload) != nil {
+		c.close()
+		return
+	}
 	key := strings.ToLower(payload.ConversationID) + ":" + strings.ToLower(e.RequestID)
 	c.mu.Lock()
 	if c.origins == nil {

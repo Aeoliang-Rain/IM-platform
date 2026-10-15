@@ -1,0 +1,353 @@
+[
+  {
+    "path": "backend/go/Dockerfile",
+    "sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Build locked current Go module source, failure of download/build fails layer; multi-stage binary by role. No task changes/dependencies.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/config.example.json",
+    "sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Operator host/port/file paths only, no credential bytes; CoreURL/NATSURL current deployment, unchanged.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/core/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Read full Auth/register/login/refresh/logout/me/search. Only actual mismatch/ErrNoRows maps credential denial; unknown DB/bcrypt errors become failed HTTP operation. Slot replacement + revocation same transaction, shared user lock, WEB cookie/native response split unchanged. Entropy and marshal errors no longer generate false success. Search empty only on actual no row.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/core/http.go",
+    "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Core mounts public Auth/Social/Sync and private message/history adapter. No Gateway business import; shared primitives/time only.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full send and transaction logic: session/member shared locks precede persistence, conversation lock serializes request/seq, conflict checks original content/sender, durable commit before ACK. Unknown commit retains original cause via multi %w and never rejects as known rollback. Duplicate commit retains uncertainty. No new framework.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/core/outbox.go",
+    "sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full batch begin/query/scan/recipient read/Publish/Flush/update/commit inspected. Rows and members explicitly closed. Failed batch rolls back pending marks; NATS duplicates allowed. Only external transport/deadline errors retry existing tick, unknown query/scan/commit failures terminate dispatcher. Logs carry no payload/token.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full normalized pair locking, session recheck, canonical direct-state conflict, stable friendship ID, atomic memberships/user sync/outbox and rows.Err inspected. No fake list on SQL failure. Current allowed FRIENDSHIP_STATE_CONFLICT retained. No new business/dependency.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full integer normalization/parser, request/cursor/session/member validation, stable committed user prefix and continuous conversation pages, private history inspected. Limit cap and opaque-user binding consistent ADR0008. Authoritative invalid shape/gap panics; SQL errors yield non-2xx; no successful empty fallback. Held transaction avoids pool deadlock.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/gateway/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full socket lifecycle/auth/registry/watch/private Core forwarding/fanout inspected. Write failures retire connection, uncertainty retains origin for retry/Sync; source error known protocol close. Bound expiry and authority safety failures retire with generic REVOKED, never invent business LOGOUT/REPLACED. Actual safe closure is current recovery; no Session write/member decision.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/gateway/http.go",
+    "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Actual NATS subscriptions propagate startup/flush error; gateway mounts public WSS and reverse proxy only. Infra websocket is bounded historic transport probe. Malformed event drops with Sync completeness; valid subjects/frames routed by actual hub.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/gateway/session.go",
+    "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Read readonly authority checks and reason lookup. Actual primary/secondary DB failure preserved on bind. Watch conservative generic REVOKED only; exact committed identity required for LOGOUT/REPLACED, prior accepted fallback tests confirm fail-closed behavior. No complete Auth/session writes in shared or gateway.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/go.mod",
+    "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "All direct/indirect entries read. Current pgx/NATS/gorilla/crypto approved accepted Go stack; byte unchanged to base. No new dependency.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/go.sum",
+    "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "All checksum lock entries read as data; unchanged to base. No claim of reviewing transitive vendor source.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/main.go",
+    "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Assembly only: role whitelist, default existing config path, config/DB/NATS/startup fatal; Outbox returned internal failure fatal. No root business logic; deferred DB/NATS cleanup only when normal returns. Fatal exits are explicit failure per new governance.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/plugin-host/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/plugin-host/http.go",
+    "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Health skeleton only; no speculative WASM/plugin lifecycle/business and only shared InfraMux import.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/shared/config.go",
+    "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Strict operator config, no embedded credentials, relative credential files, length/key guards. Config/read/parse errors returned, main exits; readonly close cannot turn failure into success.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/shared/infra.go",
+    "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Only method-bounded role health probe; write failure ends request, no business fallback. Constant role text cannot internally fail formatting.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Read all HMAC/token/UUID helpers and imports. Actual entropy errors returned, header/signature/claims/expiry external token rejection exact; shared only primitive codec, no DB or Auth service. No changed dependency.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/java/Dockerfile",
+    "sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "javac current placeholder fails layer; JRE runs role. Same Java25 runtime accepted baseline, no task change/new stack.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/java/InfraPlaceholder.java",
+    "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full listener/request parsing/headers/SHA1 upgrade/health/404 inspected. accept outside request IOException catch; accepted socket closes each failed request, unknown RuntimeException/algorithm/listener failure escapes. No S3 business activated.",
+    "imports_and_responsibility": "Current SRC-01..07 checked; no changed service direction/new sensitive dependency",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/java/core/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/java/gateway/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "backend/java/plugin-host/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "contracts/database/migrate.py",
+    "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Read full psql subprocess/ON_ERROR_STOP/checksum/advisory-lock/concurrency guard/ledger/run/main. RuntimeError reports stderr and exits1; other exceptions propagate. Migration SQL and version fixed, destructive down flag explicit. No recovery that reports applied on failed psql.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "deploy/Caddyfile",
+    "sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "TLS internal actual localhost proxy, role UPSTREAM only; no task change or TLS bypass.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "deploy/README.md",
+    "sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full operational/development profile/trust/config/cleanup instructions read; descriptive current skeleton only. No execution behavior/hidden recovery.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "deploy/compose.yaml",
+    "sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "All services/env/volumes/healthchecks/profiles/depends_on read. Only TLS port exposed, independent migration completes before roles; operator config readonly bind; existing named volumes/development defaults remain current accepted infra.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "deploy/compose/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "deploy/migrate.Dockerfile",
+    "sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Standalone canonical SQL/runner image. Build/install fail layer; runner exit decides migration completion before app roles.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "deploy/observability/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "deploy/proxy/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "plugins/fixtures/echo/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "plugins/fixtures/poll/.gitkeep",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Exact newline-only placeholder read; no executable or recovery behavior and no premature plugin/Java role implementation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "tools/build_language_packs.py",
+    "sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full pure JSON builder read including duplicate/unsafe-key checks, three-locale parity, placeholder sets, determinism, owned-dir protection and temporary atomic replace. Unknown errors propagate. finally unlink is owned-only cleanup. No publication/install or network.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "contracts/database/migrations/0001_initial.up.sql",
+    "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full canonical SQL read. Session slots/status, normalized friendship/direct keys, memberships, seq/request/message uniqueness, one logical Outbox and plugin immutability triggers inspected. Source authority unchanged; no schema write/test mutation.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  },
+  {
+    "path": "contracts/database/migrations/0001_initial.down.sql",
+    "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+    "candidate": "e2294ac0b8e4d28843ec318416e09f38c4248982",
+    "result": "PASS",
+    "semantic_inspection": "Full reverse dependency DROP sequence read, executed only explicit allow-data-loss runner. Unchanged protected authority, no execution.",
+    "imports_and_responsibility": "declarative/build/canonical authority or placeholder, no cross-service executable import",
+    "inventory_hash_match": true
+  }
+]

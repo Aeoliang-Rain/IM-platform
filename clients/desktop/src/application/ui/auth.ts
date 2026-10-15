@@ -1,6 +1,6 @@
-import {object,parse,positive,uuid} from "../../../../shared/protocol-sdk/src/send/wire.js";
+import {WireFailure,object,parse,positive,uuid} from "../../../../shared/protocol-sdk/src/send/wire.js";
 import type {Session} from "../send.js";
-import {nativeFetch,secure} from "./native.js";
+import {NativeCapabilityFailure,NativeTransportFailure,nativeFetch,secure} from "./native.js";
 export interface User {userId:string;username:string;displayName:string}
 export interface Friend {user:User;friendshipId:string;directConversationId:string}
 export class ApiFailure extends Error {constructor(readonly kind:string,message:string=kind){super(message);}}
@@ -13,10 +13,11 @@ export class Auth {
   async request(path:string,method="GET",body?:unknown,authenticated=true):Promise<unknown>{
     const headers:Record<string,string>={"Content-Type":"application/json"};
     if(authenticated){if(!this.session)throw new ApiFailure("session_expired","Session expired");headers.Authorization="Bearer "+this.session.accessToken;}
-    let response:Response;try{response=await nativeFetch(this.endpoint+path,{method,headers,...(body===undefined?{}:{body:JSON.stringify(body)}),redirect:"error",cache:"no-store"});}catch{throw new ApiFailure("connection_unavailable","Connection unavailable");}
+    const encoded=body===undefined?undefined:JSON.stringify(body);
+    let response:Response;try{response=await nativeFetch(this.endpoint+path,{method,headers,...(body===undefined?{}:{body:encoded}),redirect:"error",cache:"no-store"});}catch(error){if(error instanceof WireFailure)throw new ApiFailure("invalid_server_response","Invalid server response");if(error instanceof NativeTransportFailure || error instanceof DOMException)throw new ApiFailure("connection_unavailable","Connection unavailable");throw error;}
     if(response.status===204)return null;
     if(!/^application\/json(?:\s*;|$)/i.test(response.headers.get("content-type")??""))throw new ApiFailure("invalid_server_response","Invalid server response");
-    const raw=await response.text();let data:unknown;try{data=parse(raw,1048576);}catch{throw new ApiFailure("invalid_server_response","Invalid server response");}
+    const bytes=await response.arrayBuffer();let raw:string;try{raw=new TextDecoder("utf-8",{fatal:true}).decode(bytes);}catch(error){if(error instanceof TypeError)throw new ApiFailure("invalid_server_response","Invalid server response");throw error;}let data:unknown;try{data=parse(raw,1048576);}catch(error){if(error instanceof WireFailure)throw new ApiFailure("invalid_server_response","Invalid server response");throw error;}
     if(!response.ok){const code=(data as {error?:{code?:unknown}})?.error?.code;throw new ApiFailure(response.status===401&&code==="AUTH_INVALID_CREDENTIALS"?"invalid_credentials":response.status===401?"session_expired":typeof code==="string"?code:"request_failed",response.status===401&&code==="AUTH_INVALID_CREDENTIALS"?"Invalid username or password":response.status===401?"Session expired":typeof code==="string"?code:"Request failed");}
     return data;
   }
@@ -29,17 +30,25 @@ export class Auth {
     const slot=this.endpoint+"/"+next.userId+"/"+next.sessionId;
     const refreshToken=t.refreshToken,expires=Number(positive(t.accessTokenExpiresInSeconds));positive(t.refreshTokenExpiresInSeconds);
     const write=this.storage.then(async()=>{if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");await secure.write(slot,refreshToken);if(g!==this.generation){await secure.remove(slot);throw new ApiFailure("session_expired","Session expired");}await secure.write(this.endpoint+"/current",slot);if(this.slot&&this.slot!==slot)await secure.remove(this.slot);this.slot=slot;});
-    this.storage=write.catch(()=>{});try{await write;}catch(error){this.session=null;throw error instanceof ApiFailure?error:new ApiFailure("secure_credential_storage_unavailable","Secure credential storage unavailable");}
+    this.storage=write.catch(error=>{if(!(error instanceof ApiFailure) && !(error instanceof NativeCapabilityFailure))throw error;});try{await write;}catch(error){this.session=null;if(error instanceof NativeCapabilityFailure && error.code==="Secure credential storage unavailable")throw new ApiFailure("secure_credential_storage_unavailable","Secure credential storage unavailable");throw error;}
     if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");this.session=next;this.expires=Date.now()+expires*1000;return next;
   }
   async register(username:string,password:string){const result=object(await this.request("/v1/auth/register","POST",{username,password,displayName:username},false),["user"]);return user(result.user);}
   async login(username:string,password:string){const g=this.generation;return this.accept(await this.request("/v1/auth/login","POST",{username,password,...metadata},false),g);}
   async restore():Promise<Session|null>{return await this.savedAccount()?this.refresh():null;}
   async savedAccount():Promise<string|null>{const g=this.generation,slot=await secure.read(this.endpoint+"/current");if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!slot)return null;if(!slot.startsWith(this.endpoint+"/"))throw new ApiFailure("secure_credential_metadata_invalid","Secure credential metadata invalid");const parts=slot.slice(this.endpoint.length+1).split("/");if(parts.length!==2)throw new ApiFailure("secure_credential_metadata_invalid","Secure credential metadata invalid");uuid(parts[1]);this.slot=slot;return uuid(parts[0]);}
-  async refresh():Promise<Session>{const g=this.generation;const token=await secure.read(this.slot);if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!token){await this.clear();throw new ApiFailure("session_expired","Session expired");}try{return await this.accept(await this.request("/v1/auth/refresh/native","POST",{refreshToken:token,...metadata},false),g);}catch(error){if(g===this.generation&&error instanceof ApiFailure&&error.kind==="session_expired")await this.clear();throw error;}}
+  async refresh():Promise<Session>{const g=this.generation;const token=await secure.read(this.slot);if(g!==this.generation)throw new ApiFailure("session_expired","Session expired");if(!token){await this.clear();throw new ApiFailure("session_expired","Session expired");}try{return await this.accept(await this.request("/v1/auth/refresh/native","POST",{refreshToken:token,...metadata},false),g);}catch(error){if(g===this.generation&&error instanceof ApiFailure&&error.kind==="session_expired"){
+      try{await this.clear();}catch(cleanup){if(cleanup===error)throw error;throw new AggregateError([error,cleanup],"Refresh cleanup failed");}
+    }throw error;}}
   needsRefresh(){return !!this.session && Date.now()>this.expires-60000;}
   async clear(){this.generation++;this.session=null;await this.storage;const slot=this.slot;this.slot="";if(slot)await secure.remove(slot);await secure.remove(this.endpoint+"/current");}
-  async logout(){const remote=this.session?this.request("/v1/auth/logout","POST",{}):Promise.resolve();await Promise.all([this.clear(),remote]);}
+  async logout(){
+    const remote=this.session?this.request("/v1/auth/logout","POST",{}):Promise.resolve();
+    const settled=await Promise.allSettled([this.clear(),remote]);
+    const failures=[...new Set(settled.filter(result=>result.status==="rejected").map(result=>result.reason))];
+    if(failures.length===1)throw failures[0];
+    if(failures.length>1)throw new AggregateError(failures,"Logout failed");
+  }
   async profile():Promise<User>{const o=object(await this.request("/v1/users/me"),["user"]);return user(o.user);}
   async friends():Promise<Friend[]>{const o=object(await this.request("/v1/friends"),["friends"]);if(!Array.isArray(o.friends))throw new ApiFailure("invalid_server_response","Invalid server response");return o.friends.map(v=>{const f=object(v,["user","friendshipId","directConversationId"]);return {user:user(f.user),friendshipId:uuid(f.friendshipId),directConversationId:uuid(f.directConversationId)};});}
   async search(query:string):Promise<User[]>{const o=object(await this.request("/v1/users/search?username="+encodeURIComponent(query)),["users"]);if(!Array.isArray(o.users))throw new ApiFailure("invalid_server_response","Invalid server response");return o.users.map(user);}

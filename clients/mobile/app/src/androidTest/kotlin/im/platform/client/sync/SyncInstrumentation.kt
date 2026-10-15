@@ -184,7 +184,7 @@ class SyncInstrumentation:Instrumentation() {
     override fun onCreate(arguments:Bundle?){args=arguments ?: Bundle();super.onCreate(arguments);start()}
     override fun onStart(){
         val result=Bundle()
-        try {runBlocking {wire();actual();storageLifecycle();discovery();slowPeriodicPull()};result.putString("result","PASS");result.putInt("sdkInt",android.os.Build.VERSION.SDK_INT);result.putInt("assertions",assertions);finish(Activity.RESULT_OK,result)}
+        try {runBlocking {wire();actual();storageLifecycle();discovery();slowPeriodicPull();result.putInt("readAssertions",ReadOriginChecks(targetContext).run());result.putInt("contiguousReadAssertions",ContiguousReadChecks(targetContext).run())};result.putString("result","PASS");result.putInt("sdkInt",android.os.Build.VERSION.SDK_INT);result.putInt("assertions",assertions);finish(Activity.RESULT_OK,result)}
         catch(error:Throwable){result.putString("result","FAIL");result.putString("phase",phase);result.putString("failure",error.javaClass.simpleName+": "+error.message);result.putString("failureStack",error.stackTraceToString());finish(Activity.RESULT_CANCELED,result)}
     }
 }

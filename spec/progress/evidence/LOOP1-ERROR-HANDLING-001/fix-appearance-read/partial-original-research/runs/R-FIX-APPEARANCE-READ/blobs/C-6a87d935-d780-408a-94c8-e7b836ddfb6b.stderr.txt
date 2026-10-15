@@ -1,0 +1,8 @@
+   Compiling im-client-storage v0.1.0 (H:\.codex\worktrees\err\IM-platform\clients\desktop\src-tauri)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 18.90s
+     Running unittests src\lib.rs (H:/.codex/toolchains/client-gui/target\debug\deps\im_client_storage-af2f2bd695801155.exe)
+
+thread 'desktop_capabilities::tests::appearance_owned_reads_distinguish_absence_invalid_and_io_failure' (34632) panicked at src\desktop_capabilities.rs:130:27:
+called `Result::unwrap_err()` on an `Ok` value: ("cold", 16, 1.0)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+error: test failed, to rerun pass `--lib`

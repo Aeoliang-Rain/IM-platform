@@ -1,6 +1,7 @@
 // Canonical schema: contracts/websocket/envelope.schema.json. No wire library.
 export type ObjectValue = { [key: string]: unknown };
-const invalid = (): never => { throw new Error("Invalid WSS frame"); };
+export class WireFailure extends Error {constructor(){super("Invalid WSS frame");}}
+const invalid = (): never => { throw new WireFailure(); };
 export function object(v: unknown, keys: string[]): ObjectValue {
   if (!v || typeof v !== "object" || Array.isArray(v)) return invalid();
   const o = v as ObjectValue;
@@ -35,7 +36,7 @@ export function parse(raw: string, maxLength=131072): unknown {
   function string(): string {
     const start=at++;
     while(at<raw.length) {
-      if(raw[at]==='"') { at++; try { return JSON.parse(raw.slice(start,at)); } catch { return invalid(); } }
+      if(raw[at]==='"') { at++; try { return JSON.parse(raw.slice(start,at)); } catch(error) { if(error instanceof SyntaxError) return invalid(); throw error; } }
       if(raw[at]==="\\") at++;
       at++;
     }

@@ -1,0 +1,613 @@
+diff --git a/backend/go/core/auth.go b/backend/go/core/auth.go
+index 0f2414e..07a9dff 100644
+--- a/backend/go/core/auth.go
++++ b/backend/go/core/auth.go
+@@ -70,7 +70,11 @@ func (s *authService) authenticate(ctx context.Context, token string) (claims, e
+ 	err = s.db.QueryRow(ctx, `SELECT session_id, client_type, session_epoch, status, expires_at FROM sessions WHERE user_id=$1 AND client_type=$2`, c.UserID, c.ClientType).Scan(&sid, &typ, &epoch, &status, &expiry)
+ 	if errors.Is(err, pgx.ErrNoRows) {
+ 		var actualType string
+-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
++		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
++		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
++			return c, lookupErr
++		}
++		if lookupErr == nil && actualType != c.ClientType {
+ 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
+ 		}
+ 		return c, fail(401, "AUTH_SESSION_REVOKED", "Session has been revoked.")
+@@ -86,7 +90,11 @@ func (s *authService) authenticate(ctx context.Context, token string) (claims, e
+ 	}
+ 	if sid != c.SessionID || typ != c.ClientType {
+ 		var actualType string
+-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
++		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
++		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
++			return c, lookupErr
++		}
++		if lookupErr == nil && actualType != c.ClientType {
+ 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
+ 		}
+ 		return c, fail(401, "AUTH_TOKEN_INVALID", "Access token and session binding disagree.")
+@@ -113,13 +121,22 @@ func decode(r *http.Request, dst any) error {
+ }
+ 
+ func requestID(_ *http.Request) string {
+-	id, _ := uuid()
++	id, err := uuid()
++	if err != nil {
++		panic(err)
++	}
+ 	return id
+ }
+ func writeJSON(w http.ResponseWriter, status int, v any) {
++	body, err := json.Marshal(v)
++	if err != nil {
++		panic(err)
++	}
+ 	w.Header().Set("Content-Type", "application/json")
+ 	w.WriteHeader(status)
+-	_ = json.NewEncoder(w).Encode(v)
++	if _, err = w.Write(append(body, '\n')); err != nil {
++		return
++	}
+ }
+ func writeError(w http.ResponseWriter, r *http.Request, err error) {
+ 	e := apiError{Status: 500, Code: "INTERNAL_ERROR", Message: "Internal server error."}
+@@ -221,7 +238,11 @@ func (s *authService) login(w http.ResponseWriter, r *http.Request) {
+ 		writeError(w, r, err)
+ 		return
+ 	}
+-	if bcrypt.CompareHashAndPassword([]byte(hash), passwordMaterial(v.Password)) != nil {
++	if err := bcrypt.CompareHashAndPassword([]byte(hash), passwordMaterial(v.Password)); err != nil {
++		if !errors.Is(err, bcrypt.ErrMismatchedHashAndPassword) {
++			writeError(w, r, err)
++			return
++		}
+ 		writeError(w, r, fail(401, "AUTH_INVALID_CREDENTIALS", "Credentials are invalid."))
+ 		return
+ 	}
+diff --git a/backend/go/core/error_handling_test.go b/backend/go/core/error_handling_test.go
+new file mode 100644
+index 0000000..a75b9cb
+--- /dev/null
++++ b/backend/go/core/error_handling_test.go
+@@ -0,0 +1,47 @@
++package core
++
++import (
++	"context"
++	"errors"
++	"github.com/jackc/pgx/v5/pgxpool"
++	"net/http/httptest"
++	"testing"
++)
++
++func TestOutboxBatchAndDispatcherDoNotDiscardClosedPoolFailure(t *testing.T) {
++	db, err := pgxpool.New(context.Background(), "postgres://localhost/unused")
++	if err != nil {
++		t.Fatal(err)
++	}
++	db.Close()
++	if err = relaySessionBatch(context.Background(), db, nil); err == nil {
++		t.Fatal("closed database silently accepted")
++	}
++	if err = RelaySessionRevocations(context.Background(), db, nil); err == nil {
++		t.Fatal("dispatcher reported success")
++	}
++	ctx, cancel := context.WithCancel(context.Background())
++	cancel()
++	if err = RelaySessionRevocations(ctx, db, nil); !errors.Is(err, context.Canceled) {
++		t.Fatalf("lost cancellation: %v", err)
++	}
++}
++func TestUnsupportedInternalResponseDoesNotBecomeEmptySuccess(t *testing.T) {
++	writer := httptest.NewRecorder()
++	defer func() {
++		if recover() == nil {
++			t.Fatal("internal encoding error swallowed")
++		}
++		if writer.Body.Len() != 0 || writer.Code != 200 {
++			t.Fatal("internal error wrote false result")
++		}
++	}()
++	writeJSON(writer, 200, make(chan int))
++}
++func TestUnknownMessageCommitPreservesOriginalCause(t *testing.T) {
++	original := errors.New("controlled commit transport failure")
++	err := newMessageCommitError(original)
++	if !errors.Is(err, original) || !errors.Is(err, errCommitUnknown) {
++		t.Fatal("commit cause or uncertainty marker lost")
++	}
++}
+diff --git a/backend/go/core/message.go b/backend/go/core/message.go
+index c5fa3d3..8e9bc46 100644
+--- a/backend/go/core/message.go
++++ b/backend/go/core/message.go
+@@ -23,7 +23,7 @@ func newMessageCommitError(err error) error {
+ 	if errors.Is(err, pgx.ErrTxCommitRollback) || (errors.As(err, &rejection) && rejection.Code == "P0001") {
+ 		return err
+ 	}
+-	return fmt.Errorf("%w: %v", errCommitUnknown, err)
++	return fmt.Errorf("%w: %w", errCommitUnknown, err)
+ }
+ 
+ type textContent struct {
+@@ -151,7 +151,7 @@ func (s *authService) commitMessage(ctx context.Context, c claims, v sendFrame)
+ 			return m, fail(409, "MESSAGE_REQUEST_CONFLICT", "Request rejected")
+ 		}
+ 		if err = tx.Commit(ctx); err != nil {
+-			err = fmt.Errorf("%w: %v", errCommitUnknown, err)
++			err = fmt.Errorf("%w: %w", errCommitUnknown, err)
+ 		}
+ 		return m, err
+ 	}
+diff --git a/backend/go/core/outbox.go b/backend/go/core/outbox.go
+index 0f80d23..470e65d 100644
+--- a/backend/go/core/outbox.go
++++ b/backend/go/core/outbox.go
+@@ -2,6 +2,9 @@ package core
+ 
+ import (
+ 	"context"
++	"errors"
++	"log"
++	"net"
+ 	"time"
+ 
+ 	"github.com/jackc/pgx/v5/pgxpool"
+@@ -10,30 +13,40 @@ import (
+ 
+ // Session and message events are stored in the same transaction as their writes.
+ // Publishing can repeat after a crash; the gateway handles duplicate events.
+-func RelaySessionRevocations(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) {
++func RelaySessionRevocations(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) error {
+ 	ticker := time.NewTicker(500 * time.Millisecond)
+ 	defer ticker.Stop()
+ 	for {
+ 		select {
+ 		case <-ctx.Done():
+-			return
++			return ctx.Err()
+ 		case <-ticker.C:
+-			relaySessionBatch(ctx, db, nc)
++			if err := relaySessionBatch(ctx, db, nc); err != nil {
++				if ctx.Err() != nil {
++					return ctx.Err()
++				}
++				var network net.Error
++				if errors.Is(err, nats.ErrConnectionClosed) || errors.Is(err, nats.ErrDisconnected) || errors.Is(err, nats.ErrTimeout) || errors.Is(err, context.DeadlineExceeded) || errors.As(err, &network) {
++					log.Print("Outbox transport batch failed; pending events retained for next tick")
++					continue
++				}
++				return err
++			}
+ 		}
+ 	}
+ }
+ 
+-func relaySessionBatch(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) {
++func relaySessionBatch(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) error {
+ 	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+ 	defer cancel()
+ 	tx, err := db.Begin(ctx)
+ 	if err != nil {
+-		return
++		return err
+ 	}
+ 	defer tx.Rollback(ctx)
+ 	rows, err := tx.Query(ctx, `SELECT event_id,event_type,payload,conversation_id FROM outbox_events WHERE event_type IN ('session.revoked','message.created') AND published_at IS NULL ORDER BY created_at,event_id LIMIT 32 FOR UPDATE SKIP LOCKED`)
+ 	if err != nil {
+-		return
++		return err
+ 	}
+ 	type event struct {
+ 		id           string
+@@ -44,59 +57,59 @@ func relaySessionBatch(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) {
+ 	var events []event
+ 	for rows.Next() {
+ 		var e event
+-		if rows.Scan(&e.id, &e.kind, &e.payload, &e.conversation) != nil {
++		if err = rows.Scan(&e.id, &e.kind, &e.payload, &e.conversation); err != nil {
+ 			rows.Close()
+-			return
++			return err
+ 		}
+ 		events = append(events, e)
+ 	}
+ 	err = rows.Err()
+ 	rows.Close()
+ 	if err != nil {
+-		return
++		return err
+ 	}
+ 	for _, e := range events {
+ 		if e.kind == "session.revoked" {
+-			if nc.Publish("session.revoked", e.payload) != nil {
+-				return
++			if err = nc.Publish("session.revoked", e.payload); err != nil {
++				return err
+ 			}
+ 		} else {
+ 			// Core owns recipient membership. Subjects are private routing
+ 			// locators; every payload remains the canonical created frame.
+ 			members, err := tx.Query(ctx, `SELECT user_id FROM conversation_members WHERE conversation_id=$1 AND left_at IS NULL`, e.conversation)
+ 			if err != nil {
+-				return
++				return err
+ 			}
+ 			var users []string
+ 			for members.Next() {
+ 				var user string
+-				if members.Scan(&user) != nil {
++				if err = members.Scan(&user); err != nil {
+ 					members.Close()
+-					return
++					return err
+ 				}
+ 				users = append(users, user)
+ 			}
+ 			err = members.Err()
+ 			members.Close()
+ 			if err != nil {
+-				return
++				return err
+ 			}
+ 			for _, user := range users {
+-				if nc.Publish("message.created."+user, e.payload) != nil {
+-					return
++				if err = nc.Publish("message.created."+user, e.payload); err != nil {
++					return err
+ 				}
+ 			}
+ 		}
+ 	}
+ 	if len(events) > 0 {
+-		if nc.FlushTimeout(2*time.Second) != nil {
+-			return
++		if err = nc.FlushTimeout(2 * time.Second); err != nil {
++			return err
+ 		}
+ 	}
+ 	for _, e := range events {
+ 		if _, err = tx.Exec(ctx, `UPDATE outbox_events SET published_at=now(),attempts=attempts+1 WHERE event_id=$1`, e.id); err != nil {
+-			return
++			return err
+ 		}
+ 	}
+-	_ = tx.Commit(ctx)
++	return tx.Commit(ctx)
+ }
+diff --git a/backend/go/core/outbox_test.go b/backend/go/core/outbox_test.go
+index c981c7e..a7a7ace 100644
+--- a/backend/go/core/outbox_test.go
++++ b/backend/go/core/outbox_test.go
+@@ -3,6 +3,7 @@ package core
+ import (
+ 	"context"
+ 	"encoding/json"
++	"errors"
+ 	"github.com/nats-io/nats.go"
+ 	"os"
+ 	"testing"
+@@ -82,7 +83,9 @@ func TestClosedNATSPublicationLeavesOutboxRetryable(t *testing.T) {
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+-	relaySessionBatch(context.Background(), f.db, nc)
++	if err = relaySessionBatch(context.Background(), f.db, nc); !errors.Is(err, nats.ErrConnectionClosed) {
++		t.Fatalf("lost publisher failure: %v", err)
++	}
+ 	if f.count(t, `SELECT count(*) FROM outbox_events WHERE conversation_id=$1 AND published_at IS NULL`) != 1 {
+ 		t.Fatal("failed publisher marked outbox")
+ 	}
+diff --git a/backend/go/core/sync.go b/backend/go/core/sync.go
+index 0bbd456..87ef229 100644
+--- a/backend/go/core/sync.go
++++ b/backend/go/core/sync.go
+@@ -89,7 +89,10 @@ func syncFailure(w http.ResponseWriter, id string, err error) {
+ 
+ func (s *authService) syncInput(w http.ResponseWriter, r *http.Request, conversation bool) (map[string]json.RawMessage, string, string, claims, bool) {
+ 	w.Header().Set("Cache-Control", "no-store")
+-	id, _ := uuid()
++	id, idErr := uuid()
++	if idErr != nil {
++		panic(idErr)
++	}
+ 	body, err := syncJSON(r.Body)
+ 	var fields map[string]json.RawMessage
+ 	if err == nil {
+@@ -251,8 +254,7 @@ func (s *authService) syncUser(w http.ResponseWriter, r *http.Request) {
+ 		}
+ 		revision, valid := syncInteger(json.RawMessage(event.Revision), 1)
+ 		if !valid || revision == 0 || !socialUUIDPattern.MatchString(event.EventID) || !socialUUIDPattern.MatchString(event.SubjectID) || event.Kind != kind {
+-			err = errors.New("invalid authoritative metadata")
+-			break
++			panic("invalid authoritative metadata")
+ 		}
+ 		event.Cursor = s.syncCursor(c.UserID, position)
+ 		events = append(events, event)
+@@ -337,8 +339,7 @@ func (s *authService) syncConversation(w http.ResponseWriter, r *http.Request) {
+ 			break
+ 		}
+ 		if previous == math.MaxInt64 || m.Seq != previous+1 {
+-			err = errors.New("noncontiguous authoritative message history")
+-			break
++			panic("noncontiguous authoritative message history")
+ 		}
+ 		previous = m.Seq
+ 		messages = append(messages, m)
+@@ -451,7 +452,11 @@ func (s *authService) syncAuthenticate(ctx context.Context, tx pgx.Tx, token str
+ 	err = tx.QueryRow(ctx, `SELECT session_id, client_type, session_epoch, status, expires_at FROM sessions WHERE user_id=$1 AND client_type=$2`, c.UserID, c.ClientType).Scan(&sid, &typ, &epoch, &status, &expiry)
+ 	if errors.Is(err, pgx.ErrNoRows) {
+ 		var actualType string
+-		if tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
++		lookupErr := tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
++		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
++			return c, lookupErr
++		}
++		if lookupErr == nil && actualType != c.ClientType {
+ 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
+ 		}
+ 		return c, fail(401, "AUTH_SESSION_REVOKED", "Session has been revoked.")
+@@ -467,7 +472,11 @@ func (s *authService) syncAuthenticate(ctx context.Context, tx pgx.Tx, token str
+ 	}
+ 	if sid != c.SessionID || typ != c.ClientType {
+ 		var actualType string
+-		if tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
++		lookupErr := tx.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
++		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
++			return c, lookupErr
++		}
++		if lookupErr == nil && actualType != c.ClientType {
+ 			return c, fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
+ 		}
+ 		return c, fail(401, "AUTH_TOKEN_INVALID", "Access token and session binding disagree.")
+diff --git a/backend/go/gateway/error_handling_test.go b/backend/go/gateway/error_handling_test.go
+new file mode 100644
+index 0000000..909dce0
+--- /dev/null
++++ b/backend/go/gateway/error_handling_test.go
+@@ -0,0 +1,42 @@
++package gateway
++
++import (
++	"github.com/gorilla/websocket"
++	"net/http"
++	"net/http/httptest"
++	"strings"
++	"testing"
++)
++
++func TestFailedWebSocketWriteRetiresConnection(t *testing.T) {
++	sockets := make(chan *websocket.Conn, 1)
++	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		u := websocket.Upgrader{}
++		ws, err := u.Upgrade(w, r, nil)
++		if err != nil {
++			return
++		}
++		sockets <- ws
++	}))
++	defer server.Close()
++	peer, _, err := websocket.DefaultDialer.Dial("ws"+strings.TrimPrefix(server.URL, "http"), nil)
++	if err != nil {
++		t.Fatal(err)
++	}
++	defer peer.Close()
++	ws := <-sockets
++	defer ws.Close()
++	c := &connection{ws: ws, done: make(chan struct{})}
++	if err = ws.UnderlyingConn().Close(); err != nil {
++		t.Fatal(err)
++	}
++	if err = c.send(frame("pong", "10000000-0000-4000-8000-000000000001", map[string]any{})); err == nil {
++		t.Fatal("write failure ignored")
++	}
++	select {
++	case <-c.done:
++	default:
++		t.Fatal("failed socket remained active")
++	}
++	c.close()
++}
+diff --git a/backend/go/gateway/gateway.go b/backend/go/gateway/gateway.go
+index d971206..86926a2 100644
+--- a/backend/go/gateway/gateway.go
++++ b/backend/go/gateway/gateway.go
+@@ -45,7 +45,15 @@ func validUUID(id string) bool { return requestIDPattern.MatchString(id) }
+ func newHub(auth *validator) *hub {
+ 	return &hub{auth: auth, sessions: make(map[string]map[*connection]bool), client: &http.Client{Timeout: 10 * time.Second}}
+ }
+-func (c *connection) send(v any) error { c.mu.Lock(); defer c.mu.Unlock(); return c.ws.WriteJSON(v) }
++func (c *connection) send(v any) error {
++	c.mu.Lock()
++	err := c.ws.WriteJSON(v)
++	c.mu.Unlock()
++	if err != nil {
++		c.close()
++	}
++	return err
++}
+ func (c *connection) close() {
+ 	c.once.Do(func() { close(c.done); c.mu.Lock(); _ = c.ws.Close(); c.mu.Unlock() })
+ }
+@@ -77,7 +85,10 @@ func (h *hub) revoke(sid, reason string) {
+ 	delete(h.sessions, sid)
+ 	h.mu.Unlock()
+ 	for _, c := range conns {
+-		id, _ := shared.UUID()
++		id, idErr := shared.UUID()
++		if idErr != nil {
++			panic(idErr)
++		}
+ 		_ = c.send(frame("session.revoked", id, map[string]string{"sessionId": sid, "reason": reason}))
+ 		c.close()
+ 	}
+@@ -112,7 +123,10 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
+ 		if len(raw) != 4 {
+ 			return
+ 		}
+-		b, _ := json.Marshal(raw)
++		b, marshalErr := json.Marshal(raw)
++		if marshalErr != nil {
++			panic(marshalErr)
++		}
+ 		var e envelope
+ 		if json.Unmarshal(b, &e) != nil || e.ProtocolVersion != "1.0" || !validUUID(e.RequestID) || len(e.Payload) == 0 {
+ 			return
+@@ -123,7 +137,9 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
+ 				return
+ 			}
+ 			if e.Type == "ping" {
+-				_ = c.send(frame("pong", e.RequestID, map[string]any{}))
++				if c.send(frame("pong", e.RequestID, map[string]any{})) != nil {
++					return
++				}
+ 			}
+ 			continue
+ 		}
+@@ -142,7 +158,9 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
+ 				return
+ 			}
+ 			var pfields map[string]any
+-			_ = json.Unmarshal(e.Payload, &pfields)
++			if json.Unmarshal(e.Payload, &pfields) != nil {
++				return
++			}
+ 			if len(pfields) != 1 {
+ 				h.reject(c, e.RequestID, "VALIDATION_FAILED", "Auth binding payload is invalid.")
+ 				return
+@@ -152,14 +170,17 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
+ 				if ae, ok := err.(shared.Error); ok {
+ 					h.reject(c, e.RequestID, ae.Code, ae.Message)
+ 				} else {
+-					h.reject(c, e.RequestID, "AUTH_TOKEN_INVALID", "Access token is invalid.")
++					// A database/internal failure does not mean an invalid token.
++					return
+ 				}
+ 				return
+ 			}
+ 			c.bound = &cl
+ 			c.token = p.AccessToken
+ 			h.add(cl.SessionID, c)
+-			_ = c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch}))
++			if c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch})) != nil {
++				return
++			}
+ 			go h.watch(c, cl)
+ 			continue
+ 		}
+@@ -212,10 +233,15 @@ func writeError(w http.ResponseWriter, r *http.Request, err error) {
+ 	if v, ok := err.(shared.Error); ok {
+ 		e = v
+ 	}
+-	id, _ := shared.UUID()
++	id, idErr := shared.UUID()
++	if idErr != nil {
++		panic(idErr)
++	}
+ 	w.Header().Set("Content-Type", "application/json")
+ 	w.WriteHeader(e.Status)
+-	_ = json.NewEncoder(w).Encode(map[string]any{"error": map[string]string{"code": e.Code, "message": e.Message}, "requestId": id})
++	if err := json.NewEncoder(w).Encode(map[string]any{"error": map[string]string{"code": e.Code, "message": e.Message}, "requestId": id}); err != nil {
++		return
++	}
+ }
+ 
+ // Forward only the canonical frame, using the validated connection's bearer.
+@@ -224,7 +250,10 @@ func (h *hub) forward(ctx context.Context, c *connection, e envelope) {
+ 	var payload struct {
+ 		ConversationID string `json:"conversationId"`
+ 	}
+-	_ = json.Unmarshal(e.Payload, &payload)
++	if json.Unmarshal(e.Payload, &payload) != nil {
++		c.close()
++		return
++	}
+ 	key := strings.ToLower(payload.ConversationID) + ":" + strings.ToLower(e.RequestID)
+ 	c.mu.Lock()
+ 	if c.origins == nil {
+diff --git a/backend/go/gateway/session.go b/backend/go/gateway/session.go
+index 874efc9..5c39ebb 100644
+--- a/backend/go/gateway/session.go
++++ b/backend/go/gateway/session.go
+@@ -26,7 +26,11 @@ func (s *validator) authenticate(ctx context.Context, token string) (shared.Clai
+ 	err = s.db.QueryRow(ctx, `SELECT session_id, client_type, session_epoch, status, expires_at FROM sessions WHERE user_id=$1 AND client_type=$2`, c.UserID, c.ClientType).Scan(&sid, &typ, &epoch, &status, &expiry)
+ 	if errors.Is(err, pgx.ErrNoRows) {
+ 		var actualType string
+-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
++		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
++		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
++			return c, lookupErr
++		}
++		if lookupErr == nil && actualType != c.ClientType {
+ 			return c, shared.Fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
+ 		}
+ 		return c, shared.Fail(401, "AUTH_SESSION_REVOKED", "Session has been revoked.")
+@@ -42,7 +46,11 @@ func (s *validator) authenticate(ctx context.Context, token string) (shared.Clai
+ 	}
+ 	if sid != c.SessionID || typ != c.ClientType {
+ 		var actualType string
+-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
++		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
++		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
++			return c, lookupErr
++		}
++		if lookupErr == nil && actualType != c.ClientType {
+ 			return c, shared.Fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
+ 		}
+ 		return c, shared.Fail(401, "AUTH_TOKEN_INVALID", "Access token and session binding disagree.")
+diff --git a/backend/go/main.go b/backend/go/main.go
+index ca1a2a4..7d623f1 100644
+--- a/backend/go/main.go
++++ b/backend/go/main.go
+@@ -53,7 +53,11 @@ func main() {
+ 	if role == "core" {
+ 		ctx, stop := context.WithCancel(context.Background())
+ 		defer stop()
+-		go core.RelaySessionRevocations(ctx, db, nc)
++		go func() {
++			if core.RelaySessionRevocations(ctx, db, nc) != nil && ctx.Err() == nil {
++				log.Fatal("Outbox dispatcher failed")
++			}
++		}()
+ 		h = core.NewHandler(db, key)
+ 	} else {
+ 		h, err = gateway.NewHandler(db, key, nc, cfg.CoreURL)
+diff --git a/backend/java/InfraPlaceholder.java b/backend/java/InfraPlaceholder.java
+index e1a5292..c82aa18 100644
+--- a/backend/java/InfraPlaceholder.java
++++ b/backend/java/InfraPlaceholder.java
+@@ -1,6 +1,7 @@
+ import java.io.BufferedReader;
+ import java.io.InputStreamReader;
+ import java.io.OutputStream;
++import java.io.IOException;
+ import java.net.ServerSocket;
+ import java.net.Socket;
+ import java.nio.charset.StandardCharsets;
+@@ -15,10 +16,11 @@ public final class InfraPlaceholder {
+         String role = args[0];
+         try (ServerSocket server = new ServerSocket(8080)) {
+             while (true) {
+-                try (Socket socket = server.accept()) {
++                Socket accepted = server.accept();
++                try (Socket socket = accepted) {
+                     socket.setSoTimeout(5000);
+                     handle(socket, role);
+-                } catch (Exception error) {
++                } catch (IOException error) {
+                     System.err.println("placeholder request failed: " + error.getClass().getSimpleName());
+                 }
+             }
+@@ -29,7 +31,9 @@ public final class InfraPlaceholder {
+         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
+         String request = reader.readLine();
+         if (request == null) return;
+-        String path = request.split(" ")[1];
++        String[] parts = request.split(" ");
++        if (parts.length < 2) throw new IOException("malformed request line");
++        String path = parts[1];
+         String key = null;
+         boolean upgrade = false;
+         String line;

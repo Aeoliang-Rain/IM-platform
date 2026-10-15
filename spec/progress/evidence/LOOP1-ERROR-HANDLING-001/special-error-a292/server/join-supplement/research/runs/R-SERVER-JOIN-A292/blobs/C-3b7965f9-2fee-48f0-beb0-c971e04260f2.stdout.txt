@@ -1,0 +1,6 @@
+Default localhost lookup: [::1 127.0.0.1]
+Actual pgxpool.Begin error type=*pgconn.ConnectError knownNetwork=true internalSQLSTATE=true
+failed to connect to `user=join-audit database=test`:
+	[::1]:50618 (localhost): dial error: dial tcp [::1]:50618: connectex: No connection could be made because the target machine actively refused it.
+	127.0.0.1:50618 (localhost): server error: FATAL: controlled internal PostgreSQL failure (SQLSTATE XX000)
+REPRODUCED: current Outbox errors.As(net.Error) branch treats this complete mixed Begin error as retryable; unknown XX000 root does not propagate

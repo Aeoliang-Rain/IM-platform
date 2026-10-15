@@ -31,7 +31,7 @@ pub fn run() {
         .plugin(tauri_plugin_notification::init())
         .plugin(tauri_plugin_global_shortcut::Builder::new().build())
         .setup(desktop_capabilities::setup)
-        .on_window_event(|window,event|if let tauri::WindowEvent::CloseRequested{api,..}=event {api.prevent_close();let _=window.hide();})
+        .on_window_event(|window,event|if let tauri::WindowEvent::CloseRequested{api,..}=event {api.prevent_close();window.hide().expect("Window hide failed");})
         .invoke_handler(tauri::generate_handler![database_transaction,database_query,desktop_capabilities::native_https,desktop_capabilities::credential_read,desktop_capabilities::credential_write,desktop_capabilities::credential_remove,desktop_capabilities::appearance_load,desktop_capabilities::appearance_save,desktop_capabilities::language_load,desktop_capabilities::language_save,desktop_capabilities::tray_text,desktop_capabilities::native_notify,desktop_capabilities::window_control,desktop_capabilities::window_maximized]);
     builder.run(tauri::generate_context!())
         .expect("Tauri startup failed");

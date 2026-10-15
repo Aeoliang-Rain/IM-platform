@@ -1,0 +1,30 @@
+WARNING: Error loading config file: open C:\Users\21441\.docker\config.json: Access is denied.
+WARNING: Error loading config file: open C:\Users\21441\.docker\config.json: Access is denied.
+unable to get image 'im-error-tests-bef80aa5e148-migrate': permission denied while trying to connect to the docker API at npipe:////./pipe/docker_engine
+WARNING: Error loading config file: open C:\Users\21441\.docker\config.json: Access is denied.
+permission denied while trying to connect to the docker API at npipe:////./pipe/docker_engine
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\err\IM-platform\tests\clients\errors\go_live.py", line 11, in main
+    subprocess.run(cmd+["up","-d","--build","postgres","nats","migrate"],env=env,check=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:/Program Files/Docker/Docker/resources/bin/docker.exe', 'compose', '-f', 'H:\\.codex\\worktrees\\err\\IM-platform\\deploy\\compose.yaml', '-p', 'im-error-tests-bef80aa5e148', 'up', '-d', '--build', 'postgres', 'nats', 'migrate']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\err\IM-platform\tests\clients\errors\go_live.py", line 24, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "H:\.codex\worktrees\err\IM-platform\tests\clients\errors\go_live.py", line 18, in main
+    ids=execute([docker,"ps","-aq","--filter","label=com.docker.compose.project="+project]).decode().split()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\.codex\worktrees\err\IM-platform\tests\clients\errors\go_live.py", line 9, in execute
+    def execute(args,**kwargs):return subprocess.check_output(args,env=env,**kwargs)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:/Program Files/Docker/Docker/resources/bin/docker.exe', 'ps', '-aq', '--filter', 'label=com.docker.compose.project=im-error-tests-bef80aa5e148']' returned non-zero exit status 1.

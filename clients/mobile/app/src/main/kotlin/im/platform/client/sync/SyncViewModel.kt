@@ -1,5 +1,7 @@
 package im.platform.client.sync
 import androidx.lifecycle.ViewModel
+import im.platform.client.send.SendStorageFailure
+import im.platform.client.send.repositoryRead
 import im.platform.client.send.SendViewModel
 import im.platform.client.send.SendSession
 import im.platform.client.send.Wire as SendWire
@@ -36,7 +38,7 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
         }
         scope.launch {while(isActive){delay(10000);if(send.state.value.connection=="ready" && !stopped && pull==null)enqueue()}}
     }
-    private fun enqueue(){scope.launch {try{synchronize()}catch(_:Exception){/* Failure already observable. */}}}
+    private fun enqueue(){scope.launch {try{synchronize()}catch(_:SyncFailure){/* Known Sync failure remains in state. */}catch(_:SendStorageFailure){/* Known native storage failure remains in state. */}}}
     suspend fun openConversation(c:String){val selected=SendWire.uuid(c);send.openConversation(selected);opened=selected;synchronize()}
     suspend fun synchronize() {
         if(retired || stopped)return;pending.set(true)
@@ -47,25 +49,27 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
             val unavailable=mutableListOf<String>();mutableState.value=SyncState("syncing")
             try {
                 while(active()){
-                    val cursor=repo.cursor();val page=http.user(cursor);if(!active())return
+                    val cursor=repositoryRead {repo.cursor()};val page=http.user(cursor);if(!active())return
                     send.mergeUserPage(page.events,page.nextCursor,cursor,::active);if(!active())return
-                    if(!page.hasMore)break;if(repo.cursor()==cursor)throw SyncFailure("protocol")
+                    if(!page.hasMore)break;if(repositoryRead {repo.cursor()}==cursor)throw SyncFailure("protocol")
                 }
-                for(c in (repo.conversationIds()+listOfNotNull(opened.takeIf {it.isNotEmpty()})).distinct()){
+                for(c in (repositoryRead {repo.conversationIds()}+listOfNotNull(opened.takeIf {it.isNotEmpty()})).distinct()){
                     try {
                         while(active()){
-                            val after=repo.contiguous(c);val page=http.conversation(c,after);if(!active())return
+                            val after=repositoryRead {repo.contiguous(c)};val page=http.conversation(c,after);if(!active())return
                             send.mergeMessages(page.messages,::active);if(!active())return
-                            if(!page.hasMore)break;if(repo.contiguous(c)<=after)throw SyncFailure("protocol")
+                            if(!page.hasMore)break;if(repositoryRead {repo.contiguous(c)}<=after)throw SyncFailure("protocol")
                         }
                     }catch(error:SyncFailure){if(error.kind=="unavailable"){unavailable.add(c);continue};throw error}
                 }
                 if(active())mutableState.value=SyncState(unavailable=unavailable.toList())
             }catch(error:Exception){
+                if(error is CancellationException)throw error
+                if(error !is SyncFailure && error !is SendStorageFailure)throw error
                 if(!active())return
-                val kind=if(error is SyncFailure)error.kind else "storage"
+                val kind=if(error is SendStorageFailure)"storage"else (error as SyncFailure).kind
                 if(kind=="authentication"){stopped=true;generation++;send.disconnect()}
-                mutableState.value=SyncState("failed",kind,unavailable.toList());throw SyncFailure(kind)
+                mutableState.value=SyncState("failed",kind,unavailable.toList());throw error
             }finally{if(pull===job)pull=null}
         }
     }
@@ -78,5 +82,5 @@ class SyncViewModel(val send:SendViewModel,private val repo:Repository,private v
 suspend fun accountSync(context:android.content.Context,session:SendSession,endpoint:String):SyncViewModel=withContext(Dispatchers.IO){
     val http=SyncHttps(endpoint,session);val repository=Repository(context,session.userId)
     try{repository.initialize();SyncViewModel(SendViewModel(repository,session,ownsRepository=true),repository,http)}
-    catch(_:Exception){repository.close();throw SyncFailure("storage")}
+    catch(error:Exception){repository.close();throw error}
 }

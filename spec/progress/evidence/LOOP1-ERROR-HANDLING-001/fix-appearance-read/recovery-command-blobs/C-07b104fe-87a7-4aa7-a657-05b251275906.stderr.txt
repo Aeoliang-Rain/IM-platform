@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\fix-appearance-read-recovery\audit.py", line 32, in <module>
+    for rel in ['final-receipt.json','final-receipt.sha256']:assert (src/rel).read_bytes()==(B/'regular-review-26a2941'/rel).read_bytes()
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-26a2941\\final-receipt.sha256'

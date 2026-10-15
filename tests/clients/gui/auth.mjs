@@ -9,7 +9,7 @@ globalThis.window={__TAURI_INTERNALS__:{invoke:async(command,args)=>{
   if(command==="credential_remove"){credentials.delete(args.slot);return;}
   // Stub only empty initialization reads for application lifecycle races.
   // These rows never establish SQLite/Send/ACK behavior acceptance.
-  if(command==="database_query")return args.sql==="PRAGMA user_version"?[["2"]]:[];
+  if(command==="database_query")return args.sql==="PRAGMA user_version"?[["2"]]:args.sql==="SELECT cursor FROM user_cursor WHERE singleton=1"?[["0"]]:[];
   if(command==="database_transaction")return;
   if(command==="appearance_save"){appearanceSaves.push(args.value);return;}
   if(command==="native_https"){
@@ -103,3 +103,64 @@ workspace.state={...workspace.state,selected:direct,page:"Chat",messages:rows.ge
 let listRelease;const retiredList=workspace.updateList({conversationIds:()=>new Promise(r=>{listRelease=r;}),messages:async()=>rows.get(direct)},workspace.generation);
 await workspace.logout();listRelease([direct]);await retiredList;assert.equal(workspace.state.conversations.length,0);assert.deepEqual(workspace.state.previews,{});
 console.log("PASS registration canonical body/confirmation/malformed/conflict; private+group latest-first and retired-account list guard; desktop selected row closes detail");
+
+// Unknown internal/native adapter error must escape Auth and Workspace; no
+// fabricated connection/unavailable category or normal operation completion.
+{
+ const original=new Error("controlled Auth programming bug");
+ const invoke=window.__TAURI_INTERNALS__.invoke;
+ window.__TAURI_INTERNALS__.invoke=async(command,args)=>{if(command==="native_https")throw original;return invoke(command,args);};
+ await assert.rejects(new Auth("https://localhost:8443").login("fixture-a","fixture-only-input"),e=>e===original);
+ const subject=new Workspace();await assert.rejects(subject.login("https://localhost:8443","fixture-a","fixture-only-input"),e=>e===original);
+ assert.equal(subject.state.session,null);assert.equal(subject.state.busy,false);
+ window.__TAURI_INTERNALS__.invoke=invoke;
+}
+console.log("PASS Auth/workspace unknown errors retain original identity");
+
+{
+ const primitive='controlled unexpected native primitive';const invoke=window.__TAURI_INTERNALS__.invoke;
+ window.__TAURI_INTERNALS__.invoke=async(command,args)=>{if(command==='native_https')throw primitive;return invoke(command,args);};
+ await assert.rejects(new Workspace().login('https://localhost:8443','fixture-a','fixture-only-input'),e=>e===primitive);
+ let reject,started;const began=new Promise(r=>{started=r;});const held=new Promise((_,r)=>{reject=r;});const original=Error('controlled retired Desktop login bug');
+ window.__TAURI_INTERNALS__.invoke=async(command,args)=>{if(command==='native_https'&&args.url.endsWith('/auth/login')){started();return held;}return invoke(command,args);};
+ const retired=new Workspace();const login=retired.login('https://localhost:8443','fixture-a','fixture-only-input');await began;reply={status:204,raw:''};await retired.logout();reject(original);
+ await assert.rejects(login,e=>e===original);assert.equal(retired.state.session,null);assert.equal(retired.state.error,null);window.__TAURI_INTERNALS__.invoke=invoke;
+}
+console.log('PASS unknown native primitive and retired login bug propagate without replacement-account state');
+
+{
+ const invoke=window.__TAURI_INTERNALS__.invoke;
+ window.__TAURI_INTERNALS__.invoke=async(command,args)=>{if(command==='native_notify')throw 'Notification unavailable';return invoke(command,args);};
+ const known=new Workspace();await known.testNotification();assert.equal(known.state.error,'System notification unavailable');
+ const original=Error('controlled notification programming bug');window.__TAURI_INTERNALS__.invoke=async(command,args)=>{if(command==='native_notify')throw original;return invoke(command,args);};
+ await assert.rejects(new Workspace().testNotification(),e=>e===original);
+ window.__TAURI_INTERNALS__.invoke=invoke;
+ const spoof='Notification unavailable',subject=new Workspace();
+ assert.throws(()=>subject.failure(spoof,false),e=>e===spoof);assert.equal(subject.state.error,null);
+}
+console.log('PASS known native notification failure is honest; unknown Error/native-code callback spoof preserve origin');
+
+{
+ const invoke=window.__TAURI_INTERNALS__.invoke;
+ for(const original of [new TypeError("controlled native adapter programming bug"),new Error("controlled native adapter bug")]){window.__TAURI_INTERNALS__.invoke=async(command,args)=>{if(command==="native_https")throw original;return invoke(command,args)};await assert.rejects(new Auth("https://localhost:8443").login("fixture-a","fixture-only-input"),e=>e===original);}
+ window.__TAURI_INTERNALS__.invoke=async(command,args)=>{if(command==="native_https")throw "HTTPS transport unavailable";return invoke(command,args)};
+ await assert.rejects(new Auth("https://localhost:8443").login("fixture-a","fixture-only-input"),e=>e.kind==="connection_unavailable");
+ window.__TAURI_INTERNALS__.invoke=invoke;
+ const actualResponse=globalThis.Response,original=new TypeError("controlled internal Response construction bug");reply={raw:encode(authResult(A))};globalThis.Response=class{constructor(){throw original}};
+ try{await assert.rejects(new Auth("https://localhost:8443").login("fixture-a","fixture-only-input"),e=>e===original)}finally{globalThis.Response=actualResponse}
+}
+console.log("PASS literal native transport remains known; internal native TypeError and Response constructor root cause propagate unchanged");
+
+{
+ const invoke=window.__TAURI_INTERNALS__.invoke;window.__TAURI_INTERNALS__.invoke=async(command,args)=>command==="native_https"?[200,{"content-type":"application/json"},[0xff]]:invoke(command,args);
+ try{await assert.rejects(new Auth("https://localhost:8443").login("fixture-a","fixture-only-input"),e=>e.kind==="invalid_server_response")}finally{window.__TAURI_INTERNALS__.invoke=invoke}
+}
+console.log("PASS Desktop Auth invalid UTF8 is protocol response failure, never replacement text or transport");
+
+{
+ const invoke=window.__TAURI_INTERNALS__.invoke;
+ for(const code of ["HTTPS request invalid","Credential query forbidden","HTTPS headers invalid"]){window.__TAURI_INTERNALS__.invoke=async(command,args)=>command==="native_https"?Promise.reject(code):invoke(command,args);await assert.rejects(new Workspace().login("https://localhost:8443","fixture-a","fixture-only-input"),e=>e===code)}
+ for(const code of ["HTTPS redirects forbidden","HTTPS response too large"]){window.__TAURI_INTERNALS__.invoke=async(command,args)=>command==="native_https"?Promise.reject(code):invoke(command,args);await assert.rejects(new Auth("https://localhost:8443").login("fixture-a","fixture-only-input"),e=>e.kind==="invalid_server_response")}
+ window.__TAURI_INTERNALS__.invoke=invoke;
+}
+console.log("PASS native internal input guard failures escape; actual invalid external HTTPS response remains protocol failure");

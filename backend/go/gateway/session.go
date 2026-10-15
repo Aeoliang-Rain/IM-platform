@@ -26,7 +26,11 @@ func (s *validator) authenticate(ctx context.Context, token string) (shared.Clai
 	err = s.db.QueryRow(ctx, `SELECT session_id, client_type, session_epoch, status, expires_at FROM sessions WHERE user_id=$1 AND client_type=$2`, c.UserID, c.ClientType).Scan(&sid, &typ, &epoch, &status, &expiry)
 	if errors.Is(err, pgx.ErrNoRows) {
 		var actualType string
-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
+		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
+		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
+			return c, lookupErr
+		}
+		if lookupErr == nil && actualType != c.ClientType {
 			return c, shared.Fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
 		}
 		return c, shared.Fail(401, "AUTH_SESSION_REVOKED", "Session has been revoked.")
@@ -42,7 +46,11 @@ func (s *validator) authenticate(ctx context.Context, token string) (shared.Clai
 	}
 	if sid != c.SessionID || typ != c.ClientType {
 		var actualType string
-		if s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType) == nil && actualType != c.ClientType {
+		lookupErr := s.db.QueryRow(ctx, `SELECT client_type FROM sessions WHERE user_id=$1 AND session_id=$2`, c.UserID, c.SessionID).Scan(&actualType)
+		if lookupErr != nil && !errors.Is(lookupErr, pgx.ErrNoRows) {
+			return c, lookupErr
+		}
+		if lookupErr == nil && actualType != c.ClientType {
 			return c, shared.Fail(401, "AUTH_CLIENT_TYPE_MISMATCH", "Access token does not match the active client session.")
 		}
 		return c, shared.Fail(401, "AUTH_TOKEN_INVALID", "Access token and session binding disagree.")

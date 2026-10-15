@@ -1,0 +1,1165 @@
+
+FILE clients/web/.gitkeep
+
+
+
+FILE clients/web/package.json
+{"name":"im-web","private":true,"version":"0.1.0","type":"module","scripts":{"build":"tsc -p tsconfig.json && node src/ui/build.config.mjs"},"dependencies":{"react":"18.3.1","react-dom":"18.3.1"},"devDependencies":{"typescript":"5.9.3","@types/react":"18.3.28","@types/react-dom":"18.3.7"}}
+
+
+FILE clients/web/src/ui/build.config.mjs
+const {mkdir,copyFile,cp,writeFile}=process.getBuiltinModule('fs').promises;
+const path=process.getBuiltinModule('path');
+const out=process.env.WEB_BUILD_DIR;
+if(!out||!path.isAbsolute(out))throw new Error('WEB_BUILD_DIR must be an explicit absolute build destination');
+await mkdir(path.join(out,'vendor'),{recursive:true});
+await cp('dist',out,{recursive:true});
+for(const name of ['index.html','style.css','logo.png'])await copyFile('src/ui/'+name,path.join(out,name));
+for(const name of ['react','react-dom'])await copyFile('src/ui/'+name+'.config.mjs',path.join(out,name+'.mjs'));
+await copyFile('node_modules/react/umd/react.production.min.js',path.join(out,'vendor/react.js'));
+await copyFile('node_modules/react-dom/umd/react-dom.production.min.js',path.join(out,'vendor/react-dom.js'));
+await writeFile(path.join(out,'package.json'),' {"type":"module"}\n');
+
+
+FILE clients/web/src/ui/components/AuthPanel.tsx
+import {useText} from "../i18n/context.js";
+import React from "react";
+import type {View} from "../../application/client.js";
+export function AuthPanel({v,username,setUsername,password,setPassword,login,refresh}:{v:Pick<View,"authBusy">;username:string;setUsername:(value:string)=>void;password[REDACTED];setPassword:(value:string)=>void;login:(username:string,password[REDACTED];refresh:()=>Promise<void>}){
+  const t=useText();
+  return <section className="login"><div className="welcome"><span className="pill">{t("welcome.pill")}</span><h1>{t("welcome.line1")}<br/><em>{t("welcome.line2")}</em></h1><p>{t("welcome.intro1")}<br/>{t("welcome.intro2")}</p><div className="welcome-art" aria-hidden="true"><div/><div/><span>+</span></div></div><form className="card login-card" onSubmit={e=>{e.preventDefault();const pass=password;setPassword('');void login(username,pass);}}><span className="eyebrow">{t("auth.start")}</span><h2>{t("auth.webTitle")}</h2><p className="muted">{t("auth.webMemory")}</p><label>{t("auth.username")}<input autoComplete="username" value={username} onChange={e=>setUsername(e.target.value)} minLength={3} maxLength={64} required disabled={v.authBusy}/></label><label>{t("auth.password")}<input type="password" autoComplete="current-password" value={password} onChange={e=>setPassword(e.target.value)} minLength={12} maxLength={256} required disabled={v.authBusy}/></label><button className="primary" disabled={v.authBusy}>{v.authBusy?t("auth.signingIn"):t("auth.enter")}</button><button type="button" className="link" onClick={()=>void refresh()} disabled={v.authBusy}>{t("auth.webResume")}</button></form></section>;
+}
+
+
+FILE clients/web/src/ui/components/Composer.tsx
+import {useText} from "../i18n/context.js";
+import React from "react";
+
+export function Composer({text,setText,send}:{text:string;setText:(value:string)=>void;send:(text:string)=>unknown}){
+  const t=useText();
+  return <form className="composer" onSubmit={e=>{e.preventDefault();if(text.trim()){send(text);setText('');}}}><label className="sr-only" htmlFor="message">{t("chat.message")}</label><textarea id="message" placeholder={t("chat.write")} value={text} maxLength={4096} onChange={e=>setText(e.target.value)} rows={2}/><button className="primary" disabled={!text.trim()}>{t("chat.send")}</button><small>{t("chat.webHelp")}</small></form>;
+}
+
+
+FILE clients/web/src/ui/components/ConversationList.tsx
+import {useText,useDisplayText} from "../i18n/context.js";
+import React from "react";
+import type {View} from "../../application/client.js";
+export function ConversationList({v,open,setPage,loadFriends}:{v:Pick<View,"friends"|"friendsBusy"|"friendsError"|"selected">;open:(id:string)=>void;setPage:(page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile")=>void;loadFriends:()=>Promise<void>}){
+  const t=useText();const display=useDisplayText();
+  return <aside className="conversations"><div className="section-title"><h1>{t("nav.chat")}</h1><span>{v.friends.length}</span></div><p className="muted">{t("chat.keepContact")}</p><button className="link" onClick={()=>void loadFriends()} disabled={v.friendsBusy}>{t("chat.refresh")}</button>{v.friendsBusy&&<p role="status">{t("chat.loading")}</p>}{v.friendsError&&<p role="alert" className="error">{display(v.friendsError)}</p>}{!v.friendsBusy&&!v.friends.length&&<div className="empty"><span>◌</span><h3>{t("chat.empty")}</h3><p>{t("web.emptyFriends1")}<br/>{t("web.emptyFriends2")}</p><button onClick={()=>setPage('Friends')}>{t("chat.find")}</button></div>}{v.friends.map(f=><button key={f.user.userId} className={'conversation '+(v.selected===f.directConversationId?'active':'')} onClick={()=>open(f.directConversationId)}><span className="avatar">{f.user.displayName.slice(0,1)}</span><span><strong>{f.user.displayName}</strong><small>@{f.user.username}</small></span></button>)}</aside>;
+}
+
+
+FILE clients/web/src/ui/components/FriendsPanel.tsx
+import {useText,useDisplayText} from "../i18n/context.js";
+import React from "react";
+import type {View} from "../../application/client.js";
+export function FriendsPanel({v,search,setSearch,searched,setSearched,open,loadFriends,searchUsers,addFriend}:{v:Pick<View,"friends"|"friendsBusy"|"friendsError"|"searchBusy"|"searchError"|"searchResults"|"user">;search:string;setSearch:(value:string)=>void;searched:boolean;setSearched:(value:boolean)=>void;open:(id:string)=>void;loadFriends:()=>Promise<void>;searchUsers:(value:string)=>Promise<void>;addFriend:(id:string)=>Promise<void>}){
+  const t=useText();const display=useDisplayText();
+  return <section className="page"><div className="page-heading"><div><span className="eyebrow">{t("friends.people")}</span><h1>{t("nav.friends")}</h1><p className="muted">{t("friends.direct")}</p></div><button onClick={()=>void loadFriends()} disabled={v.friendsBusy}>{t("friends.refresh")}</button></div><form className="search card" onSubmit={e=>{e.preventDefault();setSearched(true);void searchUsers(search);}}><label htmlFor="search">{t("friends.exact")}</label><div><input id="search" placeholder={t("friends.usernameHint")} minLength={3} maxLength={64} value={search} onChange={e=>{setSearched(false);setSearch(e.target.value);}} required/><button className="primary" disabled={v.searchBusy}>{v.searchBusy?t("friends.searching"):t("friends.search")}</button></div>{v.searchError&&<p className="error" role="alert">{display(v.searchError)}</p>}{searched&&!v.searchBusy&&!v.searchError&&!v.searchResults.length&&<p>{t("friends.noMatch")}</p>}{v.searchResults.map(u=><div className="friend" key={u.userId}><span className="avatar">{u.displayName.slice(0,1)}</span><div><strong>{u.displayName}</strong><p>@{u.username}</p></div><button disabled={v.searchBusy||u.userId===v.user?.userId||v.friends.some(f=>f.user.userId===u.userId)} onClick={()=>void addFriend(u.userId)}>{v.friends.some(f=>f.user.userId===u.userId)?t("friends.already"):t("friends.add")}</button></div>)}</form><h2>{t("friends.your")}<span className="muted">{v.friends.length}</span></h2>{v.friendsBusy&&<p role="status">{t("friends.loading")}</p>}{v.friendsError&&<p role="alert" className="error">{display(v.friendsError)}</p>}{!v.friendsBusy&&!v.friends.length&&<div className="card empty"><span>◫</span><h3>{t("friends.grow")}</h3><p>{t("friends.searchHint")}</p></div>}<div className="friend-grid">{v.friends.map(f=><article className="friend card" key={f.user.userId}><span className="avatar">{f.user.displayName.slice(0,1)}</span><div><strong>{f.user.displayName}</strong><p>@{f.user.username}</p></div><button onClick={()=>open(f.directConversationId)}>{t("friends.message")}</button></article>)}</div></section>;
+}
+
+
+FILE clients/web/src/ui/components/Header.tsx
+import {useText,useDisplayText} from "../i18n/context.js";
+import React from "react";
+import type {View} from "../../application/client.js";
+import {connectionText} from "./status.js";
+export function Header({page,setPage,v,logout}:{page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile";setPage:(page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile")=>void;v:Pick<View,"session"|"connection"|"authBusy"|"notice">;logout:()=>Promise<void>}){
+  const t=useText();const display=useDisplayText();
+  return <><header className="top"><span className="eyebrow">{v.session?t("header.online"):t("header.welcome")}</span><div className="top-actions"><span className="connection" role="status">{t("connection."+v.connection)}</span>{!v.session&&page==='Settings'&&<button onClick={()=>setPage('Chat')}>{t("auth.back")}</button>}{v.session&&<button onClick={()=>void logout()} disabled={v.authBusy}>{t("auth.signOut")}</button>}</div></header>{v.notice&&<div className="notice" role="status">{display(v.notice)}</div>}</>;
+}
+
+
+FILE clients/web/src/ui/components/LanguagePanel.tsx
+import React from "react";
+import {useText} from "../i18n/context.js";
+import {languageEntry,languageNames,locales,type Locale} from "../i18n/resources.js";
+export function LanguagePanel({locale,selectLanguage,languageStored}:{locale:Locale;selectLanguage:(value:Locale)=>void;languageStored:boolean}){const t=useText();
+ return <fieldset className="language-panel"><legend>{languageEntry}</legend><div className="language-list" role="group" aria-label={languageEntry}>{locales.map((value,index)=><button type="button" key={value} lang={value} aria-pressed={locale===value} onClick={()=>selectLanguage(value)}>{languageNames[index]}</button>)}</div><p role="status" className={languageStored?"muted":"error"}>{t(languageStored?"language.saved":"language.failed")}</p></fieldset>;
+}
+
+
+FILE clients/web/src/ui/components/Messages.tsx
+import {useText} from "../i18n/context.js";
+import React from "react";
+import type {View} from "../../application/client.js";
+import type {MemoryRepository} from "../../application/repository.js";
+export function Messages({v,messages,retry}:{v:Pick<View,"user">;messages:ReturnType<MemoryRepository["snapshot"]>;retry:(conversation:string,request:string)=>void}){
+  const t=useText();
+  const status=(value:unknown)=>{switch(value){case "SENDING":return t("chat.webSending");case "SENT":return t("chat.webSent");case "FAILED":return t("chat.webFailed");default:throw new Error("Invalid message state");}};
+  const body=(m:(typeof messages)[number])=>{if(typeof m.content?.text!=="string" || !m.requestId)throw new Error("Invalid message content or identity");return m.content.text;};
+  return <div className="messages" aria-live="polite">{!messages.length&&<div className="empty"><span>◌</span><h3>{t("chat.webStart")}</h3><p>{t("web.emptyChat1")}<br/>{t("web.emptyChat2")}</p></div>}{messages.map(m=><article key={m.requestId} className={'message '+(m.senderId===v.user?.userId?'own':'')}><p>{body(m)}</p><div className="message-meta"><span>{status(m.state)}</span>{m.state==='FAILED'&&<button onClick={()=>retry(m.conversationId,m.requestId)}>{t("chat.retry")}</button>}{m.seq!==undefined&&<span>#{m.seq.toString()}</span>}</div></article>)}</div>;
+}
+
+
+FILE clients/web/src/ui/components/Navigation.tsx
+import {useText} from "../i18n/context.js";
+import React from "react";
+import type {View} from "../../application/client.js";
+function Logo(){const t=useText();return <img className="logo" src="logo.png" alt={t("brand.logo")}/>;}
+export function Navigation({page,setPage,v,loadProfile}:{page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile";setPage:(page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile")=>void;v:Pick<View,"session">;loadProfile:()=>Promise<void>}){
+  const t=useText();
+  return <aside className="rail"><a className="brand" href="#" onClick={e=>e.preventDefault()}><Logo/><span>IM<span className="brand-plus">+</span><small>PLUGWORLDIM</small></span></a><div className="rail-note">{t("nav.onlineWorkspace")}</div><nav aria-label={t("nav.main")}>{(['Chat','Friends','AI','Plugin'] as const).map((p,i)=><button key={p} className={page===p?'nav selected':'nav'} onClick={()=>setPage(p)} disabled={!v.session}><span aria-hidden="true">{['◌','◫','✧','⊞'][i]}</span>{t("nav."+p.toLowerCase())}<small>{t(["nav.chat","nav.friends","nav.future","nav.extensions"][i])}</small></button>)}</nav><div className="rail-footer"><button className={page==='Settings'?'nav selected':'nav'} onClick={()=>setPage('Settings')}>{t("nav.settings")}</button>{v.session&&<button className={page==='Profile'?'nav selected':'nav'} onClick={()=>{setPage('Profile');void loadProfile();}}>{t("nav.profile")}</button>}<p className="tiny">{t("web.railLine1")}<br/>{t("web.railLine2")}</p></div></aside>;
+}
+
+
+FILE clients/web/src/ui/components/Placeholder.tsx
+import {useText} from "../i18n/context.js";
+import React from "react";
+
+export function Placeholder({page,setPage}:{page:"AI"|"Plugin";setPage:(page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile")=>void}){
+  const t=useText();
+  return <section className="page"><span className="eyebrow">{page==='AI'?t("ai.webEyebrow"):t("plugin.personal")}</span><h1>{t("nav."+page.toLowerCase())}</h1><div className="card placeholder"><div className="placeholder-art" aria-hidden="true">{page==='AI'?'✧':'⊞'}</div><span className="pill">{page==='AI'?t("ai.building"):t("plugin.currentUnavailable")}</span><h2>{page==='AI'?t("ai.webTitle"):t("plugin.webTitle")}</h2><p>{page==='AI'?t("ai.webDescription"):t("plugin.webDescription")}</p><p className="muted">{t("placeholder.continue")}</p><button onClick={()=>setPage('Chat')}>{t("placeholder.back")}</button></div></section>;
+}
+
+
+FILE clients/web/src/ui/components/ProfilePanel.tsx
+import {useText,useDisplayText} from "../i18n/context.js";
+import React from "react";
+import type {View} from "../../application/client.js";
+export function ProfilePanel({v,loadProfile,refresh,logout}:{v:Pick<View,"profileBusy"|"profileError"|"user"|"authBusy">;loadProfile:()=>Promise<void>;refresh:()=>Promise<void>;logout:()=>Promise<void>}){
+  const t=useText();const display=useDisplayText();
+  return <section className="page"><span className="eyebrow">{t("profile.account")}</span><h1>{t("nav.profile")}</h1><div className="card profile"><button onClick={()=>void loadProfile()} disabled={v.profileBusy}>{t("profile.refresh")}</button>{v.profileBusy?<p role="status">{t("profile.loading")}</p>:v.profileError?<p className="error" role="alert">{display(v.profileError)}</p>:v.user?<><span className="avatar large">{v.user.displayName.slice(0,1)}</span><h2>{v.user.displayName}</h2><p>@{v.user.username}</p></>:<p>{t("profile.empty")}</p>}<hr/><h3>{t("profile.webSession")}</h3><p className="muted">{t("profile.webSecurity")}</p><button onClick={()=>void refresh()} disabled={v.authBusy}>{t("auth.refresh")}</button><button onClick={()=>void logout()} disabled={v.authBusy}>{t("auth.signOut")}</button></div></section>;
+}
+
+
+FILE clients/web/src/ui/components/SettingsPanel.tsx
+import {LanguagePanel} from "./LanguagePanel.js";
+import type {Locale} from "../i18n/resources.js";
+import {useText} from "../i18n/context.js";
+import React from "react";
+import type {Appearance} from "../appearance.js";
+export function SettingsPanel({locale,selectLanguage,languageStored,prefs,appearance,stored}:{locale:Locale;selectLanguage:(value:Locale)=>void;languageStored:boolean;prefs:Appearance;appearance:(value:Partial<Appearance>)=>void;stored:boolean}){
+  const t=useText();
+  return <section className="page settings"><span className="eyebrow">{t("settings.webEyebrow")}</span><h1>{t("nav.settings")}</h1><p className="muted">{t("settings.webDescription")}</p><div className="card"><LanguagePanel locale={locale} selectLanguage={selectLanguage} languageStored={languageStored}/><h2>{t("settings.theme")}</h2><p>{t("settings.colorsOnly")}</p><div className="theme-options">{(['cold','warm'] as const).map(theme=><button className={prefs.theme===theme?'active':''} key={theme} onClick={()=>appearance({theme:theme})} aria-pressed={prefs.theme===theme}><span className={'swatch '+theme}/><strong>{theme==='cold'?t("settings.cold"):t("settings.warm")}</strong><small>{theme==='cold'?t("settings.coldHint"):t("settings.warmHint")}</small></button>)}</div><label>{t("settings.font")}<select aria-label={t("settings.font")} value={prefs.fontSize} onChange={e=>appearance({fontSize:Number(e.target.value) as Appearance['fontSize']})}>{[14,16,18,20].map(n=><option key={n} value={n}>{n}px</option>)}</select></label><label>{t("settings.spacing")}<select aria-label={t("settings.spacing")} value={prefs.density} onChange={e=>appearance({density:e.target.value as Appearance['density']})}><option value="compact">{t("settings.compact")}</option><option value="comfortable">{t("settings.comfort")}</option><option value="spacious">{t("settings.spacious")}</option></select></label><p className="preview">{t("settings.preview")}</p><p role="status" className={stored?'muted':'error'}>{stored?t("settings.webSaved"):t("settings.webUnavailable")}</p></div></section>;
+}
+
+
+FILE clients/web/src/ui/components/Shell.tsx
+import {LanguageContext,useText,useDisplayText} from "../i18n/context.js";
+import {Navigation} from "./Navigation.js";
+import {Header} from "./Header.js";
+import {AuthPanel} from "./AuthPanel.js";
+import {ConversationList} from "./ConversationList.js";
+import {Messages} from "./Messages.js";
+import {Composer} from "./Composer.js";
+import {FriendsPanel} from "./FriendsPanel.js";
+import {Placeholder} from "./Placeholder.js";
+import {SettingsPanel} from "./SettingsPanel.js";
+import {ProfilePanel} from "./ProfilePanel.js";
+import React,{useState,useEffect,useSyncExternalStore} from 'react';
+import {WebClient} from '../../application/client.js';
+import {loadAppearance,saveAppearance} from '../appearance.js';
+import type {Appearance} from '../appearance.js';
+const client=new WebClient(window.location.origin);
+import {loadLanguage,saveLanguage} from "../language.js";
+import {validLocale,type Locale} from "../i18n/resources.js";
+export function Shell(){const [locale,setLocale]=useState(loadLanguage),[languageStored,setLanguageStored]=useState(true);
+ function selectLanguage(value:Locale){if(!validLocale(value))return;setLocale(value);setLanguageStored(saveLanguage(value));}
+ useEffect(()=>{document.documentElement.lang=locale;},[locale]);
+ return <LanguageContext.Provider value={locale}><WorkspaceShell locale={locale} selectLanguage={selectLanguage} languageStored={languageStored}/></LanguageContext.Provider>;
+}
+function WorkspaceShell({locale,selectLanguage,languageStored}:{locale:Locale;selectLanguage:(value:Locale)=>void;languageStored:boolean}){
+ const t=useText();const display=useDisplayText();
+  const v=useSyncExternalStore(client.subscribe,client.view);const [page,setPage]=useState<"Chat"|"Friends"|"AI"|"Plugin"|"Settings"|"Profile">('Chat'),[prefs,setPrefs]=useState(loadAppearance),[stored,setStored]=useState(true),[username,setUsername]=useState(''),[password,setPassword]=useState(''),[search,setSearch]=useState(''),[searched,setSearched]=useState(false),[text,setText]=useState('');
+  useEffect(()=>{document.documentElement.dataset.theme=prefs.theme;document.documentElement.dataset.density=prefs.density;document.documentElement.style.setProperty('--font-size',prefs.fontSize+'px');},[prefs]);
+  useEffect(()=>{if(!v.session){setPage('Chat');setText('');setSearch('');setSearched(false);setUsername('');setPassword('');}},[v.session]);
+  const loadProfile=client.loadProfile.bind(client),logout=client.logout.bind(client),refresh=client.refresh.bind(client),loadFriends=client.loadFriends.bind(client),reconnect=client.reconnect.bind(client),retry=client.retry.bind(client),send=client.send.bind(client),searchUsers=client.search.bind(client),addFriend=client.addFriend.bind(client),login=client.login.bind(client);
+  function appearance(p:Partial<Appearance>){const next={...prefs,...p};setPrefs(next);setStored(saveAppearance(next));}
+  function open(c:string){client.open(c);setPage('Chat');}
+  const selected=v.friends.find(f=>f.directConversationId===v.selected),messages=client.repository.snapshot(v.selected);
+  return <div className="workspace">
+    <Navigation page={page} setPage={setPage} v={v} loadProfile={loadProfile}/>
+    <div className="main"><Header page={page} setPage={setPage} v={v} logout={logout}/>
+    {!v.session&&page!=='Settings'?<AuthPanel v={v} username={username} setUsername={setUsername} password[REDACTED] setPassword={setPassword} login={login} refresh={refresh}/>:
+    page==='Chat'?<section className="chat-layout"><ConversationList v={v} open={open} setPage={setPage} loadFriends={loadFriends}/><div className="chat-view">{selected?<><div className="chat-heading"><span className="avatar">{selected.user.displayName.slice(0,1)}</span><div><h2>{selected.user.displayName}</h2><p>{t("chat.webLive")}</p></div><button onClick={()=>reconnect()}>{t("auth.reconnect")}</button></div>{v.sync&&<p className="sync" role="status">{display(v.sync)}</p>}<Messages v={v} messages={messages} retry={retry}/><Composer text={text} setText={setText} send={send}/></>:<div className="empty chat-empty"><span>◌</span><h2>{t("chat.place")}</h2><p>{t("chat.choose")}</p></div>}</div></section>:
+    page==='Friends'?<FriendsPanel v={v} search={search} setSearch={setSearch} searched={searched} setSearched={setSearched} open={open} loadFriends={loadFriends} searchUsers={searchUsers} addFriend={addFriend}/>:
+    page==='AI'||page==='Plugin'?<Placeholder page={page} setPage={setPage}/>:
+    page==='Settings'?<SettingsPanel locale={locale} selectLanguage={selectLanguage} languageStored={languageStored} prefs={prefs} appearance={appearance} stored={stored}/>:
+    <ProfilePanel v={v} loadProfile={loadProfile} refresh={refresh} logout={logout}/>}
+    </div></div>;
+}
+
+
+
+FILE clients/web/src/ui/components/status.ts
+import type {Connection} from "../../application/client.js";
+export const connectionText:Record<Connection,string>={idle:"未连接",ready:"在线",connecting:"正在连接",failed:"连接失败",protocol_error:"协议错误",offline:"连接已断开"};
+
+
+FILE clients/web/src/ui/i18n/context.tsx
+import React from "react";
+import {translate,displayText,type Locale} from "./resources.js";
+export const LanguageContext=React.createContext<Locale>("en");
+export function useText(){const locale=React.useContext(LanguageContext);return (key:string,params:Record<string,string|number>={})=>translate(locale,key,params);}
+export function useDisplayText(){const locale=React.useContext(LanguageContext);return (value:string)=>displayText(locale,value);}
+
+
+FILE clients/web/src/ui/i18n/en.ts
+export default {
+  "nav.chat": "Chat",
+  "nav.friends": "Friends",
+  "nav.ai": "AI",
+  "nav.plugin": "Plugin",
+  "nav.settings": "Settings",
+  "nav.profile": "Profile",
+  "brand.logo": "IM+ logo",
+  "brand.name": "IM plus",
+  "nav.main": "Main navigation",
+  "nav.onlineWorkspace": "ONLINE WORKSPACE",
+  "nav.future": "Future communication",
+  "nav.extensions": "Extensions",
+  "nav.soon": "SOON",
+  "nav.personal": "Personal account",
+  "nav.signIn": "Sign in to connect",
+  "nav.workspace": "Your workspace",
+  "nav.signedIn": "Signed in",
+  "nav.local": "Viewing local history",
+  "nav.back": "Back to chats",
+  "connection.idle": "Not connected",
+  "connection.ready": "Online",
+  "connection.connecting": "Connecting",
+  "connection.failed": "Connection failed",
+  "connection.protocol_error": "Protocol error",
+  "connection.offline": "Disconnected",
+  "connection.connected": "Connected",
+  "connection.offlineShort": "Offline",
+  "sync.syncing": "Syncing…",
+  "sync.attention": "Sync needs attention",
+  "sync.local": "Local history",
+  "sync.current": "Up to date",
+  "sync.automatic": "Messages sync automatically",
+  "sync.connected": "Connected · Messages sync automatically",
+  "sync.offline": "Offline · Showing saved history",
+  "sync.webWindow": "Only live messages on this page · No history backfill",
+  "sync.webLoading": "Syncing this page's online messages…",
+  "sync.webCurrent": "Online messages synced · No history backfill",
+  "sync.webFailed": "Sync failed. Reconnect or reopen the conversation.",
+  "sync.invalid": "Invalid response did not change confirmed messages",
+  "auth.welcomeEyebrow": "SPACE FOR EVERY CONVERSATION",
+  "auth.stayClose": "Stay close.",
+  "auth.thinkBeyond": "Think beyond.",
+  "auth.stayCloseMobile": "Stay close. Think beyond.",
+  "auth.description": "Conversations, people and a little room for what comes next.",
+  "auth.join": "JOIN IM+",
+  "auth.welcomeBack": "WELCOME BACK",
+  "auth.createTitle": "Create your account",
+  "auth.openTitle": "Open your workspace",
+  "auth.created": "Account created. Sign in to continue.",
+  "auth.username": "Username",
+  "auth.password": "Password",
+  "auth.confirmPassword": "Confirm password",
+  "auth.passwordHint": "Use 12–256 characters for your password.",
+  "auth.wait": "Please wait…",
+  "auth.create": "Create account",
+  "auth.signIn": "Sign in",
+  "auth.existing": "Already have an account? Sign in",
+  "auth.new": "New here? Create an account",
+  "auth.resume": "Resume saved session",
+  "auth.start": "START A CONVERSATION",
+  "auth.webTitle": "Sign in to IM+",
+  "auth.webMemory": "Messages stay in memory and are cleared when this page closes.",
+  "auth.signingIn": "Signing in…",
+  "auth.enter": "Enter workspace →",
+  "auth.webResume": "Resume existing session",
+  "auth.back": "Back to sign in",
+  "auth.signOut": "Sign out",
+  "auth.refresh": "Refresh session",
+  "auth.offline": "Go offline",
+  "auth.reconnect": "Reconnect",
+  "auth.testNotification": "Test notification",
+  "auth.expired": "Session expired. Sign in again.",
+  "auth.replaced": "Session replaced. Sign in again.",
+  "auth.revoked": "Session expired or replaced in another page. Sign in again.",
+  "auth.loggedIn": "Signed in · Messages stay in this page's memory",
+  "auth.refreshing": "Refreshing session…",
+  "auth.refreshed": "Session refreshed",
+  "auth.refreshFailed": "Session refresh failed. Retry or sign in again.",
+  "auth.loggedOut": "Signed out.",
+  "auth.logoutUnconfirmed": "Signed out locally; server revocation is unconfirmed. Resume and retry sign out.",
+  "auth.invalidCredentials": "Invalid username or password",
+  "auth.loginFailed": "Sign in failed. Check your connection and retry.",
+  "header.connected": "YOUR CONNECTED WORKSPACE",
+  "header.online": "YOUR ONLINE SPACE",
+  "header.welcome": "WELCOME TO YOUR WORKSPACE",
+  "header.title": "Welcome to IM+",
+  "chat.messages": "Messages",
+  "chat.new": "New chat",
+  "chat.caption": "People and spaces that matter.",
+  "chat.next": "Your next conversation starts here",
+  "chat.addHint": "Add a friend to open a private chat.",
+  "chat.find": "Find a friend",
+  "chat.conversation": "Conversation",
+  "chat.conversationId": "Conversation {id}",
+  "chat.your": "Your conversations",
+  "chat.access": "Access unavailable",
+  "chat.noMessages": "No messages yet",
+  "chat.place": "Good conversations have a place",
+  "chat.choose": "Choose a conversation to begin.",
+  "chat.fresh": "A fresh start",
+  "chat.hello": "No messages yet. Say hello.",
+  "chat.now": "Now",
+  "chat.sent": "Sent",
+  "chat.sending": "Sending…",
+  "chat.failed": "Failed · Success confirmation not received",
+  "chat.retry": "Retry",
+  "chat.webSending": "Sending",
+  "chat.webSent": "Confirmed",
+  "chat.webFailed": "Success confirmation not received",
+  "chat.message": "Message",
+  "chat.write": "Write a message…",
+  "chat.send": "Send ↑",
+  "chat.resize": "Resize message input",
+  "chat.drag": "Drag up to expand",
+  "chat.keyboard": "Enter to send · Shift + Enter for a new line",
+  "chat.webHelp": "Online memory only · Retry unconfirmed messages with the same identity",
+  "chat.keepContact": "Keep in touch, one message at a time.",
+  "chat.refresh": "Refresh conversations",
+  "chat.loading": "Loading conversations…",
+  "chat.empty": "No conversations yet",
+  "chat.webStart": "Start now",
+  "chat.webLive": "Live messages on this page",
+  "friends.eyebrow": "BUILD YOUR CIRCLE",
+  "friends.reach": "People, within reach.",
+  "friends.exact": "Find someone by their exact username.",
+  "friends.searchLabel": "Search username",
+  "friends.searching": "Searching…",
+  "friends.search": "Search",
+  "friends.noMatch": "No matching user shown.",
+  "friends.check": "No matching user shown. Search to check this username.",
+  "friends.add": "Add friend",
+  "friends.your": "Your friends",
+  "friends.grow": "Your circle is waiting to grow.",
+  "friends.message": "Message",
+  "friends.people": "PEOPLE & CONNECTIONS",
+  "friends.direct": "Add a friend to create your unique private chat.",
+  "friends.refresh": "Refresh friends",
+  "friends.usernameHint": "Enter username",
+  "friends.already": "Already friends",
+  "friends.loading": "Loading friends…",
+  "friends.searchHint": "Search the exact username and add a friend.",
+  "friends.added": "Friend added; unique private chat ready",
+  "friends.failed": "Could not load friends. Retry.",
+  "friends.syncFailed": "Friend sync failed. Retry or reconnect.",
+  "friends.searchFailed": "Search failed. Check the username and retry.",
+  "friends.addFailed": "Could not add friend. Retry.",
+  "ai.eyebrow": "A LITTLE ROOM FOR WHAT COMES NEXT",
+  "ai.title": "Intelligence, in conversation.",
+  "ai.description": "An AI space is planned for IM+. It is not available in this release.",
+  "ai.later": "Coming later",
+  "ai.detail": "No AI service is connected. Your conversations are not sent to an AI provider.",
+  "ai.webEyebrow": "FUTURE COMMUNICATION",
+  "ai.webTitle": "New ideas, taking shape",
+  "ai.webDescription": "AI entry reserved. AI chat, tool calls and generated results are not available.",
+  "ai.building": "Under construction",
+  "plugin.eyebrow": "YOUR WORKSPACE, EXTENDED",
+  "plugin.title": "Plugins",
+  "plugin.workspace": "Your workspace, extended.",
+  "plugin.description": "Extensions will live here when the plugin platform becomes available.",
+  "plugin.unavailable": "Plugin capabilities unavailable",
+  "plugin.detail": "No plugin runtime or installation service is connected in this release.",
+  "plugin.badge": "Unavailable in Loop 1 S2",
+  "plugin.personal": "PERSONAL CAPABILITIES",
+  "plugin.currentUnavailable": "Currently unavailable",
+  "plugin.webTitle": "Your extension space",
+  "plugin.webDescription": "Plugin capabilities and installed list are not available. No runtime, install or store is provided.",
+  "placeholder.continue": "Keep using Chat and Friends to connect with real people.",
+  "placeholder.back": "Back to chat →",
+  "settings.eyebrow": "MAKE ROOM FOR YOURSELF",
+  "settings.appearance": "Appearance",
+  "settings.independent": "Color, type and spacing are independent preferences.",
+  "settings.independentMobile": "Color, type and spacing are independent.",
+  "settings.theme": "Color theme",
+  "settings.themeShort": "Theme",
+  "settings.cold": "Cold AI",
+  "settings.warm": "Warm Creative",
+  "settings.coldHint": "Blue · quiet · focused",
+  "settings.warmHint": "Warm · open · expressive",
+  "settings.font": "Font size",
+  "settings.fontValue": "Font size: {size}px",
+  "settings.spacing": "Spacing",
+  "settings.compact": "Compact",
+  "settings.standard": "Standard",
+  "settings.comfort": "Comfortable",
+  "settings.spacious": "Spacious",
+  "settings.saved": "Saved only on this device. Switching themes preserves your type and spacing.",
+  "settings.savedMobile": "Saved on this device. Switching themes preserves type and spacing.",
+  "settings.webEyebrow": "MAKE IT YOURS",
+  "settings.webDescription": "Your appearance, clear conversations.",
+  "settings.colorsOnly": "Changes colors only, keeping layout, type and spacing.",
+  "settings.preview": "Clear conversations, at your own pace. Aa 123",
+  "settings.webSaved": "Appearance settings (theme, font size and spacing) are saved locally; language is saved separately.",
+  "settings.webUnavailable": "Local appearance save unavailable; this page still uses your selection.",
+  "language.saved": "Language saved on this device.",
+  "language.failed": "Language could not be saved; using it for this session.",
+  "profile.session": "Profile & session",
+  "profile.unavailable": "Profile unavailable",
+  "profile.reconnect": "Reconnect to load your profile",
+  "profile.signIn": "Sign in to load your profile",
+  "profile.shortcut": "Ctrl + Shift + Space brings your workspace forward. The system tray keeps IM+ within reach.",
+  "profile.account": "YOUR ACCOUNT",
+  "profile.refresh": "Refresh profile",
+  "profile.loading": "Loading profile…",
+  "profile.empty": "No profile available.",
+  "profile.webSession": "Current web session",
+  "profile.webSecurity": "Refresh credentials use a secure browser cookie; messages and account data stay in memory.",
+  "profile.failed": "Could not load profile. Retry.",
+  "window.minimize": "Minimize",
+  "window.restore": "Restore",
+  "window.maximize": "Maximize",
+  "window.close": "Close",
+  "notify.ready": "Your workspace notifications are ready.",
+  "notify.activity": "New activity in your conversations",
+  "tray.open": "Open IM+",
+  "tray.hide": "Hide window",
+  "tray.quit": "Quit IM+",
+  "tray.tooltip": "IM+ · Your workspace",
+  "error.appearanceLoad": "Appearance could not be loaded",
+  "error.appearanceSave": "Appearance could not be saved",
+  "error.notification": "System notification unavailable",
+  "error.history": "Local history unavailable",
+  "error.conversationHistory": "Conversation history unavailable",
+  "error.operation": "Operation unavailable",
+  "error.passwordMismatch": "Passwords do not match",
+  "error.registration": "Use a 3–64 character username and a 12–256 character password",
+  "error.noSession": "No saved session for this server",
+  "error.resuming": "Showing saved history while the secure session resumes",
+  "error.cleanup": "Session expired; secure credential cleanup failed",
+  "error.syncLocal": "Sync unavailable; showing local history",
+  "error.saveMessage": "Message could not be saved",
+  "error.retry": "Retry unavailable",
+  "error.connection": "Connection unavailable",
+  "error.https": "Use an HTTPS server origin",
+  "error.response": "Invalid server response",
+  "error.credentials": "Invalid username or password",
+  "error.secure": "Secure credential storage unavailable",
+  "error.secureMetadata": "Secure credential metadata invalid",
+  "error.request": "Request failed",
+  "error.sync": "Sync failed: {reason}",
+  "error.validation": "Check the entered values.",
+  "error.denied": "Access denied.",
+  "error.conflict": "Request conflicts with an existing message.",
+  "error.commit": "Message commit failed; success is not confirmed.",
+  "error.usernameExists": "Username already exists.",
+  "error.protocol": "Protocol version unsupported.",
+  "error.authentication": "Authentication required.",
+  "welcome.pill": "Adaptive Glass Workspace",
+  "welcome.line1": "Give conversations",
+  "welcome.line2": "more space.",
+  "welcome.intro1": "Connect with people and ideas now.",
+  "welcome.intro2": "Simple online communication, a clear work rhythm.",
+  "web.railLine1": "Messages stay on this page",
+  "web.railLine2": "No history backfill",
+  "web.emptyFriends1": "Search and add friends in Friends,",
+  "web.emptyFriends2": "to create a unique private chat.",
+  "web.emptyChat1": "Only this page's live messages are shown; no history backfill.",
+  "web.emptyChat2": "Say hello and start a new conversation.",
+  "error.userNotFound": "User not found",
+  "error.friendSelf": "You cannot add yourself as a friend",
+  "error.friendState": "Friendship state changed. Refresh and try again."
+};
+
+
+FILE clients/web/src/ui/i18n/ja-JP.ts
+export default {
+  "nav.chat": "チャット",
+  "nav.friends": "友だち",
+  "nav.ai": "AI",
+  "nav.plugin": "プラグイン",
+  "nav.settings": "設定",
+  "nav.profile": "プロフィール",
+  "brand.logo": "IM+ ロゴ",
+  "brand.name": "IM plus",
+  "nav.main": "メインナビゲーション",
+  "nav.onlineWorkspace": "オンラインワークスペース",
+  "nav.future": "未来のコミュニケーション",
+  "nav.extensions": "拡張機能",
+  "nav.soon": "近日公開",
+  "nav.personal": "個人アカウント",
+  "nav.signIn": "ログインして接続",
+  "nav.workspace": "ワークスペース",
+  "nav.signedIn": "ログイン済み",
+  "nav.local": "ローカル履歴を表示中",
+  "nav.back": "チャットに戻る",
+  "connection.idle": "未接続",
+  "connection.ready": "オンライン",
+  "connection.connecting": "接続中",
+  "connection.failed": "接続失敗",
+  "connection.protocol_error": "プロトコルエラー",
+  "connection.offline": "切断されました",
+  "connection.connected": "接続済み",
+  "connection.offlineShort": "オフライン",
+  "sync.syncing": "同期中…",
+  "sync.attention": "同期の確認が必要です",
+  "sync.local": "ローカル履歴",
+  "sync.current": "最新の状態",
+  "sync.automatic": "メッセージは自動同期されます",
+  "sync.connected": "接続済み · メッセージは自動同期されます",
+  "sync.offline": "オフライン · 保存済みの履歴を表示",
+  "sync.webWindow": "このページの新着のみ · 過去の履歴は取得しません",
+  "sync.webLoading": "このページのオンラインメッセージを同期中…",
+  "sync.webCurrent": "オンラインメッセージを同期済み · 過去の履歴は取得しません",
+  "sync.webFailed": "同期に失敗しました。再接続するか会話を開き直してください。",
+  "sync.invalid": "無効な応答でも確認済みメッセージは変更されません",
+  "auth.welcomeEyebrow": "会話のためのスペース",
+  "auth.stayClose": "つながりを大切に。",
+  "auth.thinkBeyond": "その先へ。",
+  "auth.stayCloseMobile": "つながりを大切に。その先へ。",
+  "auth.description": "会話、人々、そして未来のためのスペース。",
+  "auth.join": "IM+ に参加",
+  "auth.welcomeBack": "おかえりなさい",
+  "auth.createTitle": "アカウントを作成",
+  "auth.openTitle": "ワークスペースを開く",
+  "auth.created": "アカウントを作成しました。ログインしてください。",
+  "auth.username": "ユーザー名",
+  "auth.password": "パスワード",
+  "auth.confirmPassword": "パスワードの確認",
+  "auth.passwordHint": "パスワードは12～256文字で入力してください。",
+  "auth.wait": "お待ちください…",
+  "auth.create": "アカウントを作成",
+  "auth.signIn": "ログイン",
+  "auth.existing": "アカウントをお持ちですか？ログイン",
+  "auth.new": "初めてですか？アカウントを作成",
+  "auth.resume": "保存済みセッションを再開",
+  "auth.start": "会話を始める",
+  "auth.webTitle": "IM+ にログイン",
+  "auth.webMemory": "メッセージはメモリ内のみで、ページを閉じると消去されます。",
+  "auth.signingIn": "ログイン中…",
+  "auth.enter": "ワークスペースへ →",
+  "auth.webResume": "既存のセッションを再開",
+  "auth.back": "ログインに戻る",
+  "auth.signOut": "ログアウト",
+  "auth.refresh": "セッションを更新",
+  "auth.offline": "オフラインにする",
+  "auth.reconnect": "再接続",
+  "auth.testNotification": "通知をテスト",
+  "auth.expired": "セッションが切れました。再度ログインしてください。",
+  "auth.replaced": "セッションが置き換えられました。再度ログインしてください。",
+  "auth.revoked": "セッションが切れたか別のページで置き換えられました。再度ログインしてください。",
+  "auth.loggedIn": "ログイン済み · メッセージはこのページのメモリ内のみ",
+  "auth.refreshing": "セッションを更新中…",
+  "auth.refreshed": "セッションを更新しました",
+  "auth.refreshFailed": "セッションを更新できませんでした。再試行するかログインしてください。",
+  "auth.loggedOut": "ログアウトしました。",
+  "auth.logoutUnconfirmed": "このページからログアウトしましたが、サーバーの無効化は未確認です。再開してログアウトを再試行してください。",
+  "auth.invalidCredentials": "ユーザー名またはパスワードが違います",
+  "auth.loginFailed": "ログインできませんでした。接続を確認して再試行してください。",
+  "header.connected": "つながるワークスペース",
+  "header.online": "オンラインスペース",
+  "header.welcome": "ワークスペースへようこそ",
+  "header.title": "IM+ へようこそ",
+  "chat.messages": "メッセージ",
+  "chat.new": "新しいチャット",
+  "chat.caption": "大切な人とスペース。",
+  "chat.next": "次の会話はここから",
+  "chat.addHint": "友だちを追加して個別チャットを始めましょう。",
+  "chat.find": "友だちを探す",
+  "chat.conversation": "会話",
+  "chat.conversationId": "会話 {id}",
+  "chat.your": "会話一覧",
+  "chat.access": "アクセスできません",
+  "chat.noMessages": "まだメッセージはありません",
+  "chat.place": "大切な会話のためのスペース",
+  "chat.choose": "会話を選んで始めましょう。",
+  "chat.fresh": "新しい始まり",
+  "chat.hello": "まだメッセージはありません。挨拶してみましょう。",
+  "chat.now": "今",
+  "chat.sent": "送信済み",
+  "chat.sending": "送信中…",
+  "chat.failed": "失敗 · 成功の確認を受信していません",
+  "chat.retry": "再試行",
+  "chat.webSending": "送信中",
+  "chat.webSent": "確認済み",
+  "chat.webFailed": "成功の確認を受信していません",
+  "chat.message": "メッセージ",
+  "chat.write": "メッセージを入力…",
+  "chat.send": "送信 ↑",
+  "chat.resize": "入力欄のサイズを変更",
+  "chat.drag": "上にドラッグして拡大",
+  "chat.keyboard": "Enterで送信 · Shift + Enterで改行",
+  "chat.webHelp": "オンラインのメモリ内のみ · 未確認メッセージは同じIDで再試行",
+  "chat.keepContact": "ひとことから、つながりを。",
+  "chat.refresh": "会話を更新",
+  "chat.loading": "会話を読み込み中…",
+  "chat.empty": "まだ会話はありません",
+  "chat.webStart": "ここから始める",
+  "chat.webLive": "このページの新着メッセージ",
+  "friends.eyebrow": "つながりを広げよう",
+  "friends.reach": "人々が、すぐそばに。",
+  "friends.exact": "正確なユーザー名で友だちを探す",
+  "friends.searchLabel": "ユーザー名を検索",
+  "friends.searching": "検索中…",
+  "friends.search": "検索",
+  "friends.noMatch": "一致するユーザーはいません。",
+  "friends.check": "一致するユーザーはいません。検索して確認してください。",
+  "friends.add": "友だちを追加",
+  "friends.your": "友だち一覧",
+  "friends.grow": "新しいつながりを待っています",
+  "friends.message": "チャットを開始",
+  "friends.people": "人とつながり",
+  "friends.direct": "友だちを追加すると、二人だけのチャットが作成されます。",
+  "friends.refresh": "友だちを更新",
+  "friends.usernameHint": "ユーザー名を入力",
+  "friends.already": "追加済み",
+  "friends.loading": "友だちを読み込み中…",
+  "friends.searchHint": "正確なユーザー名で検索して追加してください。",
+  "friends.added": "友だちを追加しました。個別チャットを開始できます",
+  "friends.failed": "友だちを読み込めませんでした。再試行してください。",
+  "friends.syncFailed": "友だちの同期に失敗しました。再試行するか再接続してください。",
+  "friends.searchFailed": "検索できませんでした。ユーザー名を確認して再試行してください。",
+  "friends.addFailed": "友だちを追加できませんでした。再試行してください。",
+  "ai.eyebrow": "未来のためのスペース",
+  "ai.title": "会話に、知性を。",
+  "ai.description": "IM+ にAIスペースを予定しています。このバージョンでは利用できません。",
+  "ai.later": "今後公開予定",
+  "ai.detail": "AIサービスには接続していません。会話をAI提供元に送信しません。",
+  "ai.webEyebrow": "未来のコミュニケーション",
+  "ai.webTitle": "新しいアイデアを構築中",
+  "ai.webDescription": "AIの入口を用意しています。AIチャット、ツール呼び出し、生成結果は提供していません。",
+  "ai.building": "準備中",
+  "plugin.eyebrow": "ワークスペースを拡張",
+  "plugin.title": "プラグイン",
+  "plugin.workspace": "広がるワークスペース。",
+  "plugin.description": "プラグインが利用可能になると、拡張機能がここに表示されます。",
+  "plugin.unavailable": "プラグイン機能は利用できません",
+  "plugin.detail": "このバージョンではプラグイン実行環境やインストールサービスに接続していません。",
+  "plugin.badge": "Loop 1 S2 では利用できません",
+  "plugin.personal": "個人の機能",
+  "plugin.currentUnavailable": "現在利用できません",
+  "plugin.webTitle": "拡張機能のスペース",
+  "plugin.webDescription": "プラグイン機能と一覧はまだ利用できません。実行、インストール、ストア機能はありません。",
+  "placeholder.continue": "チャットと友だちで、人とつながりましょう。",
+  "placeholder.back": "チャットに戻る →",
+  "settings.eyebrow": "自分のためのスペース",
+  "settings.appearance": "外観",
+  "settings.independent": "色、文字サイズ、間隔はそれぞれ独立した設定です。",
+  "settings.independentMobile": "色、文字サイズ、間隔は独立しています。",
+  "settings.theme": "カラーテーマ",
+  "settings.themeShort": "テーマ",
+  "settings.cold": "Cold AI",
+  "settings.warm": "Warm Creative",
+  "settings.coldHint": "青 · 静か · 集中",
+  "settings.warmHint": "暖かい · 開放的 · 豊かな表現",
+  "settings.font": "文字サイズ",
+  "settings.fontValue": "文字サイズ：{size}px",
+  "settings.spacing": "間隔",
+  "settings.compact": "コンパクト",
+  "settings.standard": "標準",
+  "settings.comfort": "ゆったり",
+  "settings.spacious": "広め",
+  "settings.saved": "この端末にのみ保存します。テーマを切り替えても文字サイズと間隔は保持します。",
+  "settings.savedMobile": "この端末に保存します。テーマを切り替えても文字サイズと間隔は保持します。",
+  "settings.webEyebrow": "自分らしいスペース",
+  "settings.webDescription": "自分らしい外観で、明確な会話を。",
+  "settings.colorsOnly": "色のみ変更します。レイアウト、文字、間隔は保持します。",
+  "settings.preview": "自分のペースで、明確な会話を。Aa 123",
+  "settings.webSaved": "外観設定（テーマ、文字サイズ、間隔）は端末に保存され、言語は別に保存されます。",
+  "settings.webUnavailable": "外観を保存できません。このページでは選択した外観を使用します。",
+  "language.saved": "言語をこの端末に保存しました。",
+  "language.failed": "言語を保存できません。このセッションでは選択した言語を使用します。",
+  "profile.session": "プロフィールとセッション",
+  "profile.unavailable": "プロフィールを表示できません",
+  "profile.reconnect": "再接続してプロフィールを読み込む",
+  "profile.signIn": "ログインしてプロフィールを読み込む",
+  "profile.shortcut": "Ctrl + Shift + Spaceでワークスペースを表示します。IM+ はシステムトレイからも利用できます。",
+  "profile.account": "アカウント",
+  "profile.refresh": "プロフィールを更新",
+  "profile.loading": "プロフィールを読み込み中…",
+  "profile.empty": "プロフィールはありません。",
+  "profile.webSession": "現在のWebセッション",
+  "profile.webSecurity": "更新用の認証情報は安全なブラウザーCookieで管理します。メッセージとアカウント情報はメモリ内のみです。",
+  "profile.failed": "プロフィールを読み込めませんでした。再試行してください。",
+  "window.minimize": "最小化",
+  "window.restore": "元に戻す",
+  "window.maximize": "最大化",
+  "window.close": "閉じる",
+  "notify.ready": "ワークスペースの通知を利用できます。",
+  "notify.activity": "会話に新しい更新があります",
+  "tray.open": "IM+ を開く",
+  "tray.hide": "ウィンドウを隠す",
+  "tray.quit": "IM+ を終了",
+  "tray.tooltip": "IM+ · ワークスペース",
+  "error.appearanceLoad": "外観を読み込めませんでした",
+  "error.appearanceSave": "外観を保存できませんでした",
+  "error.notification": "システム通知を利用できません",
+  "error.history": "ローカル履歴を利用できません",
+  "error.conversationHistory": "会話の履歴を利用できません",
+  "error.operation": "操作を利用できません",
+  "error.passwordMismatch": "パスワードが一致しません",
+  "error.registration": "ユーザー名は3～64文字、パスワードは12～256文字で入力してください",
+  "error.noSession": "このサーバーの保存済みセッションはありません",
+  "error.resuming": "安全なセッションを再開する間、保存済み履歴を表示します",
+  "error.cleanup": "セッションが切れました。認証情報を消去できませんでした",
+  "error.syncLocal": "同期を利用できません。ローカル履歴を表示します",
+  "error.saveMessage": "メッセージを保存できませんでした",
+  "error.retry": "再試行を利用できません",
+  "error.connection": "接続できません",
+  "error.https": "HTTPSサーバーのアドレスを使用してください",
+  "error.response": "サーバーの応答が無効です",
+  "error.credentials": "ユーザー名またはパスワードが違います",
+  "error.secure": "認証情報の安全な保存を利用できません",
+  "error.secureMetadata": "認証情報のメタデータが無効です",
+  "error.request": "リクエストに失敗しました",
+  "error.sync": "同期に失敗しました：{reason}",
+  "error.validation": "入力内容を確認してください。",
+  "error.denied": "アクセスが拒否されました。",
+  "error.conflict": "リクエストが既存のメッセージと競合しています。",
+  "error.commit": "メッセージの確定に失敗しました。成功は未確認です。",
+  "error.usernameExists": "ユーザー名はすでに使用されています。",
+  "error.protocol": "プロトコルのバージョンに対応していません。",
+  "error.authentication": "認証が必要です。",
+  "welcome.pill": "Adaptive Glass Workspace",
+  "welcome.line1": "会話に、",
+  "welcome.line2": "もっとスペースを。",
+  "welcome.intro1": "今、人とアイデアをつなぐ。",
+  "welcome.intro2": "シンプルなオンライン通信で、明確な仕事のリズムを。",
+  "web.railLine1": "メッセージはこのページ内のみ",
+  "web.railLine2": "過去の履歴は取得しません",
+  "web.emptyFriends1": "友だちで検索して追加し、",
+  "web.emptyFriends2": "個別チャットを始めましょう。",
+  "web.emptyChat1": "このページの新着のみ表示し、過去の履歴は取得しません。",
+  "web.emptyChat2": "挨拶して、新しい会話を始めましょう。",
+  "error.userNotFound": "ユーザーが見つかりません",
+  "error.friendSelf": "自分を友だちに追加することはできません",
+  "error.friendState": "友だち関係の状態が変わりました。更新して再試行してください。"
+};
+
+
+FILE clients/web/src/ui/i18n/resources.ts
+import en from "./en.js";
+import zhCN from "./zh-CN.js";
+import jaJP from "./ja-JP.js";
+export type Locale="en"|"zh-CN"|"ja-JP";
+export const locales:readonly Locale[]=["en","zh-CN","ja-JP"];
+export const languageNames=["English","简体中文","日本語"] as const;
+export const languageEntry="Language / 语言 / 言語";
+export function validLocale(value:unknown):value is Locale{return value==="en"||value==="zh-CN"||value==="ja-JP";}
+export const resources:Record<Locale,Record<string,string>>={en,"zh-CN":zhCN,"ja-JP":jaJP};
+// Display-only lookup. Wire values, user text and stable application IDs never pass through this function.
+export function translate(locale:unknown,key:string,params:Record<string,string|number>={},data=resources):string {
+ const language=validLocale(locale)?locale:"en";
+ if(!Object.hasOwn(data.en,key))throw new Error("Missing English language key: "+key);
+ const table=data[language];
+ const template=table&&Object.hasOwn(table,key)?table[key]:data.en[key];
+ if(template===undefined)throw new Error("Missing English language key: "+key);
+ return template.replace(/\{([A-Za-z]+)\}/g,(_,name:string)=>String(params[name]??"{"+name+"}"));
+}
+export const errorKeys:Record<string,string>={"USER_NOT_FOUND":"error.userNotFound","FRIEND_SELF_NOT_ALLOWED":"error.friendSelf","FRIENDSHIP_STATE_CONFLICT":"error.friendState",session_expired:"auth.expired",invalid_credentials:"error.credentials",connection_unavailable:"error.connection",invalid_server_response:"error.response",request_failed:"error.request",secure_credential_storage_unavailable:"error.secure",secure_credential_metadata_invalid:"error.secureMetadata",use_an_https_server_origin:"error.https",VALIDATION_FAILED:"error.validation",AUTHORIZATION_DENIED:"error.denied",MESSAGE_REQUEST_CONFLICT:"error.conflict",MESSAGE_COMMIT_FAILED:"error.commit",USERNAME_ALREADY_EXISTS:"error.usernameExists",PROTOCOL_VERSION_UNSUPPORTED:"error.protocol",AUTH_REQUIRED:"error.authentication",AUTH_TOKEN_INVALID:"auth.expired",AUTH_TOKEN_EXPIRED:"auth.expired",AUTH_SESSION_REVOKED:"auth.expired",AUTH_SESSION_EPOCH_STALE:"auth.expired",AUTH_CLIENT_TYPE_MISMATCH:"auth.expired",storage:"error.history",protocol:"connection.protocol_error",authentication:"error.authentication",transport:"error.connection",response:"error.response"};
+export function errorKey(kind:string):string{return Object.hasOwn(errorKeys,kind)?errorKeys[kind]:"error.request";}
+export const sourceDisplayKeys:Record<string,string>={"Chat": "nav.chat", "Friends": "nav.friends", "AI": "nav.ai", "Plugin": "nav.plugin", "Settings": "nav.settings", "Protocol error": "connection.protocol_error", "仅接收本页实时消息 · 不补历史": "sync.webWindow", "正在补齐本页在线消息…": "sync.webLoading", "本页在线消息已同步 · 不补历史": "sync.webCurrent", "同步失败，重连或重新打开会话重试": "sync.webFailed", "无效响应未改变已确认消息": "sync.invalid", "Session expired. Sign in again.": "auth.expired", "会话已过期，请重新登录。": "auth.expired", "会话已被替换，请重新登录。": "auth.replaced", "会话已过期或在其他网页被替换，请重新登录。": "auth.revoked", "已登录 · 消息仅保留在当前页面内存": "auth.loggedIn", "正在刷新会话…": "auth.refreshing", "会话已刷新": "auth.refreshed", "会话刷新失败，请重试或重新登录。": "auth.refreshFailed", "已退出登录。": "auth.loggedOut", "本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。": "auth.logoutUnconfirmed", "Invalid username or password": "auth.invalidCredentials", "账号或密码不正确。": "auth.invalidCredentials", "登录失败，请检查网络后重试。": "auth.loginFailed", "好友已添加，唯一私聊已建立": "friends.added", "好友加载失败，可重试。": "friends.failed", "好友同步失败，可重试或重连。": "friends.syncFailed", "搜索失败，请检查用户名后重试。": "friends.searchFailed", "添加好友失败，请重试。": "friends.addFailed", "个人资料加载失败，可重试。": "profile.failed", "Appearance could not be loaded": "error.appearanceLoad", "Appearance could not be saved": "error.appearanceSave", "System notification unavailable": "error.notification", "Local history unavailable": "error.history", "Conversation history unavailable": "error.conversationHistory", "Operation unavailable": "error.operation", "Passwords do not match": "error.passwordMismatch", "Use a 3–64 character username and a 12–256 character password": "error.registration", "No saved session for this server": "error.noSession", "Showing saved history while the secure session resumes": "error.resuming", "Session expired; secure credential cleanup failed": "error.cleanup", "Sync unavailable; showing local history": "error.syncLocal", "Message could not be saved": "error.saveMessage", "Retry unavailable": "error.retry", "Connection unavailable": "error.connection", "Use an HTTPS server origin": "error.https", "Invalid server response": "error.response", "Secure credential storage unavailable": "error.secure", "Secure credential metadata invalid": "error.secureMetadata", "Request failed": "error.request", "Session expired": "auth.expired", "会话已失效，请重新登录。": "auth.expired"};
+export function displayText(locale:unknown,value:string):string {
+ if(value==="")return "";
+ if(value.startsWith("Sync "))return translate(locale,"error.sync",{reason:translate(locale,errorKey(value.slice(5)))});
+ const key=Object.hasOwn(sourceDisplayKeys,value)?sourceDisplayKeys[value]:Object.hasOwn(errorKeys,value)?errorKeys[value]:Object.hasOwn(resources.en,value)?value:"error.operation";
+ return translate(locale,key);
+}
+
+
+FILE clients/web/src/ui/i18n/zh-CN.ts
+export default {
+  "nav.chat": "聊天",
+  "nav.friends": "好友",
+  "nav.ai": "AI",
+  "nav.plugin": "插件",
+  "nav.settings": "设置",
+  "nav.profile": "个人资料",
+  "brand.logo": "IM+ 标志",
+  "brand.name": "IM plus",
+  "nav.main": "主导航",
+  "nav.onlineWorkspace": "在线工作区",
+  "nav.future": "未来通信",
+  "nav.extensions": "扩展能力",
+  "nav.soon": "即将推出",
+  "nav.personal": "个人账号",
+  "nav.signIn": "登录以连接",
+  "nav.workspace": "你的工作区",
+  "nav.signedIn": "已登录",
+  "nav.local": "正在查看本地历史",
+  "nav.back": "返回聊天",
+  "connection.idle": "未连接",
+  "connection.ready": "在线",
+  "connection.connecting": "正在连接",
+  "connection.failed": "连接失败",
+  "connection.protocol_error": "协议错误",
+  "connection.offline": "连接已断开",
+  "connection.connected": "已连接",
+  "connection.offlineShort": "离线",
+  "sync.syncing": "正在同步…",
+  "sync.attention": "同步需要处理",
+  "sync.local": "本地历史",
+  "sync.current": "已更新",
+  "sync.automatic": "消息自动同步",
+  "sync.connected": "已连接 · 消息自动同步",
+  "sync.offline": "离线 · 显示已保存历史",
+  "sync.webWindow": "仅接收本页实时消息 · 不补历史",
+  "sync.webLoading": "正在补齐本页在线消息…",
+  "sync.webCurrent": "本页在线消息已同步 · 不补历史",
+  "sync.webFailed": "同步失败，重连或重新打开会话重试",
+  "sync.invalid": "无效响应未改变已确认消息",
+  "auth.welcomeEyebrow": "为每段交流留出空间",
+  "auth.stayClose": "保持联系。",
+  "auth.thinkBeyond": "想得更远。",
+  "auth.stayCloseMobile": "保持联系，想得更远。",
+  "auth.description": "交流、朋友，以及留给未来的一点空间。",
+  "auth.join": "加入 IM+",
+  "auth.welcomeBack": "欢迎回来",
+  "auth.createTitle": "创建你的账号",
+  "auth.openTitle": "打开你的工作区",
+  "auth.created": "账号已创建，请登录继续。",
+  "auth.username": "用户名",
+  "auth.password": "密码",
+  "auth.confirmPassword": "确认密码",
+  "auth.passwordHint": "密码长度为 12–256 个字符。",
+  "auth.wait": "请稍候…",
+  "auth.create": "创建账号",
+  "auth.signIn": "登录",
+  "auth.existing": "已有账号？登录",
+  "auth.new": "初次使用？创建账号",
+  "auth.resume": "恢复已保存会话",
+  "auth.start": "开启一段交流",
+  "auth.webTitle": "登录构界",
+  "auth.webMemory": "消息临时保存在内存，关闭页面后不保留。",
+  "auth.signingIn": "正在登录…",
+  "auth.enter": "进入工作区 →",
+  "auth.webResume": "恢复已有会话",
+  "auth.back": "返回登录",
+  "auth.signOut": "退出登录",
+  "auth.refresh": "刷新会话",
+  "auth.offline": "切换离线",
+  "auth.reconnect": "重新连接",
+  "auth.testNotification": "测试通知",
+  "auth.expired": "会话已过期，请重新登录。",
+  "auth.replaced": "会话已被替换，请重新登录。",
+  "auth.revoked": "会话已过期或在其他网页被替换，请重新登录。",
+  "auth.loggedIn": "已登录 · 消息仅保留在当前页面内存",
+  "auth.refreshing": "正在刷新会话…",
+  "auth.refreshed": "会话已刷新",
+  "auth.refreshFailed": "会话刷新失败，请重试或重新登录。",
+  "auth.loggedOut": "已退出登录。",
+  "auth.logoutUnconfirmed": "本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。",
+  "auth.invalidCredentials": "账号或密码不正确。",
+  "auth.loginFailed": "登录失败，请检查网络后重试。",
+  "header.connected": "你的互联工作区",
+  "header.online": "你的在线空间",
+  "header.welcome": "欢迎来到工作区",
+  "header.title": "欢迎使用 IM+",
+  "chat.messages": "消息",
+  "chat.new": "新聊天",
+  "chat.caption": "重要的人与交流空间。",
+  "chat.next": "下一段交流从这里开始",
+  "chat.addHint": "添加好友以建立私聊。",
+  "chat.find": "寻找好友",
+  "chat.conversation": "会话",
+  "chat.conversationId": "会话 {id}",
+  "chat.your": "你的会话",
+  "chat.access": "访问不可用",
+  "chat.noMessages": "暂无消息",
+  "chat.place": "为有意义的交流留出空间",
+  "chat.choose": "选择左侧会话，开始聊天。",
+  "chat.fresh": "新的开始",
+  "chat.hello": "暂无消息，发一句问候吧。",
+  "chat.now": "现在",
+  "chat.sent": "已确认",
+  "chat.sending": "发送中…",
+  "chat.failed": "失败 · 尚未收到成功确认",
+  "chat.retry": "重试",
+  "chat.webSending": "发送中",
+  "chat.webSent": "已确认",
+  "chat.webFailed": "尚未收到成功确认",
+  "chat.message": "消息",
+  "chat.write": "写一条消息…",
+  "chat.send": "发送 ↑",
+  "chat.resize": "调整消息输入框",
+  "chat.drag": "向上拖动以展开",
+  "chat.keyboard": "Enter 发送 · Shift + Enter 换行",
+  "chat.webHelp": "仅在线内存态 · 未确认消息可使用相同身份重试",
+  "chat.keepContact": "保持联系，从一句话开始。",
+  "chat.refresh": "刷新会话",
+  "chat.loading": "正在加载会话…",
+  "chat.empty": "还没有会话",
+  "chat.webStart": "从此刻开始",
+  "chat.webLive": "当前页面的实时消息",
+  "friends.eyebrow": "建立你的朋友圈",
+  "friends.reach": "人们，近在身边。",
+  "friends.exact": "通过准确用户名寻找好友",
+  "friends.searchLabel": "搜索用户名",
+  "friends.searching": "正在处理…",
+  "friends.search": "搜索",
+  "friends.noMatch": "没有找到该用户名。",
+  "friends.check": "暂无匹配用户。搜索以确认该用户名。",
+  "friends.add": "添加好友",
+  "friends.your": "我的好友",
+  "friends.grow": "这里等待新的连接",
+  "friends.message": "开始聊天",
+  "friends.people": "人与连接",
+  "friends.direct": "添加好友，即刻建立双方的唯一私聊。",
+  "friends.refresh": "刷新好友",
+  "friends.usernameHint": "输入用户名",
+  "friends.already": "已是好友",
+  "friends.loading": "正在加载好友…",
+  "friends.searchHint": "搜索准确用户名并添加好友。",
+  "friends.added": "好友已添加，唯一私聊已建立",
+  "friends.failed": "好友加载失败，可重试。",
+  "friends.syncFailed": "好友同步失败，可重试或重连。",
+  "friends.searchFailed": "搜索失败，请检查用户名后重试。",
+  "friends.addFailed": "添加好友失败，请重试。",
+  "ai.eyebrow": "为未来留一点空间",
+  "ai.title": "智慧，融入交流。",
+  "ai.description": "IM+ 已预留 AI 空间，本版本暂不可用。",
+  "ai.later": "即将推出",
+  "ai.detail": "未连接 AI 服务，你的会话不会发送给 AI 提供商。",
+  "ai.webEyebrow": "未来通信",
+  "ai.webTitle": "新的想法，正在构建",
+  "ai.webDescription": "AI 通信入口已预留。当前不提供 AI 聊天、工具调用或生成结果。",
+  "ai.building": "施工中",
+  "plugin.eyebrow": "扩展你的工作区",
+  "plugin.title": "插件",
+  "plugin.workspace": "你的工作区，更加广阔。",
+  "plugin.description": "插件平台开放后，扩展将在这里呈现。",
+  "plugin.unavailable": "插件能力不可用",
+  "plugin.detail": "本版本未连接插件运行时或安装服务。",
+  "plugin.badge": "Loop 1 S2 暂不可用",
+  "plugin.personal": "个人能力",
+  "plugin.currentUnavailable": "当前不可用",
+  "plugin.webTitle": "你的扩展空间",
+  "plugin.webDescription": "当前尚未开放插件能力与已安装清单。此页面没有插件运行、安装或商店功能。",
+  "placeholder.continue": "继续使用 Chat 与 Friends，连接真实的人。",
+  "placeholder.back": "返回聊天 →",
+  "settings.eyebrow": "为自己留出空间",
+  "settings.appearance": "外观",
+  "settings.independent": "色彩、字号和间距为独立偏好。",
+  "settings.independentMobile": "色彩、字号和间距相互独立。",
+  "settings.theme": "色彩主题",
+  "settings.themeShort": "主题",
+  "settings.cold": "Cold AI",
+  "settings.warm": "Warm Creative",
+  "settings.coldHint": "冷蓝与紫 · 专注的在线空间",
+  "settings.warmHint": "暖色与柔光 · 亲和的交流空间",
+  "settings.font": "字号",
+  "settings.fontValue": "字号：{size}px",
+  "settings.spacing": "间距",
+  "settings.compact": "紧凑",
+  "settings.standard": "标准",
+  "settings.comfort": "舒适",
+  "settings.spacious": "宽松",
+  "settings.saved": "仅保存在本设备，切换主题保留字号和间距。",
+  "settings.savedMobile": "保存在本设备，切换主题保留字号和间距。",
+  "settings.webEyebrow": "打造你的空间",
+  "settings.webDescription": "外观属于你，交流保持清晰。",
+  "settings.colorsOnly": "只改变颜色，保留布局、字体和间距。",
+  "settings.preview": "清晰的交流，适合自己的节奏。Aa 123",
+  "settings.webSaved": "外观设置（主题、字号和间距）保存在本地；语言偏好单独保存。",
+  "settings.webUnavailable": "本地外观保存不可用；当前页面仍使用所选外观。",
+  "language.saved": "语言已保存在本设备。",
+  "language.failed": "语言无法保存，当前会话仍使用所选语言。",
+  "profile.session": "个人资料与会话",
+  "profile.unavailable": "个人资料不可用",
+  "profile.reconnect": "重连以加载个人资料",
+  "profile.signIn": "登录以加载个人资料",
+  "profile.shortcut": "Ctrl + Shift + Space 将工作区置于前台，系统托盘让 IM+ 随时可达。",
+  "profile.account": "你的账号",
+  "profile.refresh": "刷新个人资料",
+  "profile.loading": "正在加载个人资料…",
+  "profile.empty": "暂无个人资料。",
+  "profile.webSession": "当前网页会话",
+  "profile.webSecurity": "刷新凭据由浏览器安全 Cookie 管理；消息和账号数据只保留在内存。",
+  "profile.failed": "个人资料加载失败，可重试。",
+  "window.minimize": "最小化",
+  "window.restore": "还原",
+  "window.maximize": "最大化",
+  "window.close": "关闭",
+  "notify.ready": "工作区通知已就绪。",
+  "notify.activity": "你的会话有新动态",
+  "tray.open": "打开 IM+",
+  "tray.hide": "隐藏窗口",
+  "tray.quit": "退出 IM+",
+  "tray.tooltip": "IM+ · 你的工作区",
+  "error.appearanceLoad": "无法加载外观",
+  "error.appearanceSave": "无法保存外观",
+  "error.notification": "系统通知不可用",
+  "error.history": "本地历史不可用",
+  "error.conversationHistory": "会话历史不可用",
+  "error.operation": "操作不可用",
+  "error.passwordMismatch": "两次密码不一致",
+  "error.registration": "用户名须为 3–64 个字符，密码须为 12–256 个字符",
+  "error.noSession": "此服务器没有已保存会话",
+  "error.resuming": "恢复安全会话时显示已保存历史",
+  "error.cleanup": "会话过期，安全凭据清理失败",
+  "error.syncLocal": "同步不可用，显示本地历史",
+  "error.saveMessage": "无法保存消息",
+  "error.retry": "重试不可用",
+  "error.connection": "连接不可用",
+  "error.https": "请使用 HTTPS 服务器地址",
+  "error.response": "服务器响应无效",
+  "error.credentials": "用户名或密码不正确",
+  "error.secure": "安全凭据存储不可用",
+  "error.secureMetadata": "安全凭据元数据无效",
+  "error.request": "请求失败",
+  "error.sync": "同步失败：{reason}",
+  "error.validation": "请检查输入值。",
+  "error.denied": "访问被拒绝。",
+  "error.conflict": "请求与已有消息冲突。",
+  "error.commit": "消息提交失败，成功尚未确认。",
+  "error.usernameExists": "用户名已存在。",
+  "error.protocol": "协议版本不受支持。",
+  "error.authentication": "需要认证。",
+  "welcome.pill": "自适应玻璃工作区",
+  "welcome.line1": "让交流，",
+  "welcome.line2": "更有空间。",
+  "welcome.intro1": "连接此刻的人与想法。",
+  "welcome.intro2": "简洁的在线通信，清晰的工作节奏。",
+  "web.railLine1": "消息仅保留在当前页面",
+  "web.railLine2": "不补聊天历史",
+  "web.emptyFriends1": "在 Friends 搜索并添加好友，",
+  "web.emptyFriends2": "建立唯一私聊。",
+  "web.emptyChat1": "这里只展示本页实时消息，不补聊天历史。",
+  "web.emptyChat2": "发一句问候，开启新的交流。",
+  "error.userNotFound": "用户不存在",
+  "error.friendSelf": "不能添加自己为好友",
+  "error.friendState": "好友关系状态已变化，请刷新后重试。"
+};
+
+
+FILE clients/web/src/ui/index.html
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>构界 IM+ · PlugWorldIM</title><link rel="stylesheet" href="style.css"><script type="importmap">{"imports":{"react":"./react.mjs","react-dom/client":"./react-dom.mjs"}}</script><script src="vendor/react.js"></script><script src="vendor/react-dom.js"></script></head><body><div id="root"></div><script type="module" src="web/src/ui/main.js"></script></body></html>
+
+
+FILE clients/web/src/ui/react-dom.config.mjs
+export const {createRoot}=globalThis.ReactDOM;
+
+
+FILE clients/web/src/ui/react.config.mjs
+export default globalThis.React;
+export const {useState,useEffect,useSyncExternalStore}=globalThis.React;
+
+
+FILE clients/web/src/ui/style.css
+:root{font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;font-size:var(--font-size,16px);--space:20px;--small:12px;--bg:#e8edf6;--bg-end:#c7d8f9;--surface:rgba(255,255,255,.75);--glass:rgba(255,255,255,.75);--ink:#17283f;--muted:#536781;--border:#cbd6e7;--accent:#285bc2;--accent-ink:#fff;--active:#dae5ff;--danger:#a93243;--shadow:#1c345009;color:var(--ink);background:var(--bg)}
+:root[data-theme=warm]{--bg:#f5ebe6;--bg-end:#e6ddd9;--surface:#fffaf5e8;--glass:#fffaf5ba;--ink:#342d3c;--muted:#736679;--border:#86707a3d;--accent:#935447;--accent-ink:#fff8f0;--active:#ae706a24;--danger:#a12d3f;--shadow:#8a66591b}
+:root[data-density=compact]{--space:12px;--small:8px}:root[data-density=spacious]{--space:28px;--small:16px}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 90% 5%,var(--bg-end),transparent 65%),var(--bg);min-height:100vh}button,input,textarea,select{font:inherit}button{color:var(--ink);border:1px solid var(--border);border-radius:10px;background:var(--surface);padding:var(--small) 16px;cursor:pointer;transition:background .15s}button:hover{background:var(--active)}button:disabled{opacity:.55;cursor:default}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent;font-weight:600}.primary:hover{background:var(--accent);filter:brightness(1.08)}h1,h2,h3,p{margin-top:0}h1{font-size:2rem;letter-spacing:-.04em;margin-bottom:12px}h2{font-size:1.3rem}p{line-height:1.65}small,.tiny{font-size:.75rem}.muted{color:var(--muted)}.eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.16em;color:var(--muted)}.workspace{display:flex;min-height:100vh;max-width:1800px;margin:auto}.rail{width:220px;flex-shrink:0;padding:30px var(--space);border-right:1px solid var(--border);background:var(--glass);backdrop-filter:blur(16px);display:flex;flex-direction:column}.brand{color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:6px;font-size:34px;font-weight:800;letter-spacing:-2px}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:2.4px;margin-top:4px}.brand-plus{color:var(--accent)}.logo{width:44px;height:44px;object-fit:contain;flex-shrink:0}.rail-note{font-size:.55rem;color:var(--muted);letter-spacing:.15em;margin:40px 0 18px}.nav{display:block;width:100%;text-align:left;border:1px solid transparent;background:transparent;margin-bottom:8px;padding:var(--small);font-weight:600}.nav>span{display:inline-block;width:28px;color:var(--accent);font-size:1.25rem}.nav small{display:block;margin:4px 0 0 28px;color:var(--muted);font-weight:400}.nav.selected{background:var(--active);border-color:var(--border)}.rail-footer{margin-top:auto;padding-top:30px}.rail-footer p{margin:20px 8px 0;color:var(--muted);line-height:1.8}.main{flex:1;min-width:0}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:20px 30px;border-bottom:1px solid var(--border)}.top-actions{display:flex;gap:16px;align-items:center}.connection{font-size:.75rem;color:var(--muted)}.notice{padding:12px 30px;background:var(--active);font-size:.8rem;line-height:1.5}.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:calc(var(--space) * 1.5);box-shadow:0 16px 45px var(--shadow)}.login{min-height:calc(100vh - 85px);display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:60px 7%}.welcome h1{font-size:3rem;font-weight:600;line-height:1.4;margin-top:26px}.welcome em{font-style:normal;color:var(--accent)}.welcome p{color:var(--muted)}.pill{border:1px solid var(--border);border-radius:30px;padding:8px 14px;font-size:.65rem;color:var(--accent);display:inline-block}.welcome-art{position:relative;width:200px;height:150px;margin:30px 0}.welcome-art div{position:absolute;border:1px solid var(--border);border-radius:30px;background:var(--active);width:120px;height:110px;transform:rotate(-12deg)}.welcome-art div+div{left:55px;top:25px;transform:rotate(12deg);backdrop-filter:blur(12px)}.welcome-art span{position:absolute;left:100px;top:60px;font-size:3rem;color:var(--accent)}.login-card{max-width:410px;width:100%}.login-card h2{font-size:1.75rem;margin-top:20px}label{display:block;font-size:.85rem;margin:var(--space) 0}input,textarea,select{color:var(--ink);border:1px solid var(--border);border-radius:10px;background:var(--bg);width:100%;padding:var(--small);margin-top:8px}input::placeholder,textarea::placeholder{color:var(--muted)}.login-card button{width:100%;margin-top:10px}.link{border:0;background:transparent;color:var(--accent);font-size:.8rem;padding-left:0}.chat-layout{display:flex;min-height:calc(100vh - 110px)}.conversations{width:280px;flex-shrink:0;padding:28px var(--space);border-right:1px solid var(--border)}.section-title{display:flex;justify-content:space-between;align-items:center}.section-title span{color:var(--muted);font-size:.8rem}.conversations>.muted{font-size:.75rem}.conversation{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border-color:transparent;margin-top:10px;padding:var(--small)}.conversation.active{background:var(--active);border-color:var(--border)}.conversation small{display:block;color:var(--muted);margin-top:5px}.avatar{display:grid;place-items:center;background:var(--active);color:var(--accent);border:1px solid var(--border);border-radius:14px;width:42px;height:42px;flex-shrink:0;font-weight:600}.chat-view{flex:1;min-width:0;display:flex;flex-direction:column}.chat-heading{padding:var(--space);display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--border)}.chat-heading h2{margin:0}.chat-heading p{font-size:.75rem;color:var(--muted);margin:5px 0 0}.chat-heading button{margin-left:auto;font-size:.7rem}.empty{text-align:center;padding:35px 12px;color:var(--muted)}.empty>span{display:block;font-size:3rem;color:var(--accent);margin-bottom:20px}.empty h2,.empty h3{color:var(--ink);font-weight:500}.empty p{font-size:.8rem}.chat-empty{margin:auto;max-width:520px}.messages{flex:1;min-height:300px;padding:var(--space);overflow:auto;max-height:calc(100vh - 300px);display:flex;flex-direction:column;gap:var(--small)}.message{align-self:flex-start;max-width:85%;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:var(--small) 18px;overflow-wrap:anywhere}.message.own{align-self:flex-end;background:var(--active)}.message p{white-space:pre-wrap;margin-bottom:8px}.message-meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:.6rem}.message-meta button{font-size:.65rem;padding:4px 8px}.composer{display:grid;grid-template-columns:1fr auto;gap:12px;padding:var(--space);border-top:1px solid var(--border)}.composer textarea{resize:vertical;margin:0}.composer small{grid-column:1/-1;color:var(--muted);font-size:.65rem}.sync{padding:10px var(--space);margin:0;color:var(--muted);font-size:.75rem;background:var(--active)}.page{padding:40px 6%;max-width:1100px}.page-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}.page h1{margin-top:12px}.search{margin:24px 0 30px}.search>label{margin:0 0 10px}.search>div:first-of-type{display:flex;gap:12px}.search input{margin:0;flex:1;min-width:0;width:auto}.search>div:first-of-type>button{flex-shrink:0;white-space:nowrap}.friend{display:flex;align-items:center;gap:14px}.friend>div{flex:1;min-width:0;overflow-wrap:anywhere}.friend p{color:var(--muted);font-size:.75rem;margin:5px 0 0}.search .friend{margin-top:20px}.friend-grid{display:grid;grid-template-columns:1fr;gap:var(--space)}.placeholder{margin-top:30px;max-width:730px;text-align:center;padding:60px 35px}.placeholder-art{font-size:5rem;color:var(--accent);margin-bottom:25px}.placeholder h2{font-size:1.8rem;margin-top:24px}.placeholder p{max-width:500px;margin:0 auto 24px;color:var(--muted)}.settings{max-width:950px}.settings>.card{margin-top:24px}.theme-options{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:25px 0}.theme-options button{text-align:left;padding:20px}.theme-options button.active{outline:2px solid var(--accent)}.theme-options small{display:block;color:var(--muted);margin-top:8px;line-height:1.5}.swatch{display:block;height:60px;border-radius:10px;margin-bottom:16px}.swatch.cold{background:linear-gradient(125deg,#e8edf6,#c7d8f9)}.swatch.warm{background:linear-gradient(125deg,#d4b7a9,#ead9cc)}.settings select{max-width:250px;display:block}.preview{padding:var(--space);background:var(--active);border-radius:12px}.profile{max-width:620px;margin-top:24px}.profile>button:first-child{float:right}.large{width:70px;height:70px;font-size:2rem;margin:30px 0 20px}.profile hr{border:0;border-top:1px solid var(--border);margin:30px 0}.profile>button{margin:5px 10px 5px 0}.error{color:var(--danger)}.sr-only{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}
+@media(max-width:1000px){.rail{width:180px}.conversations{width:230px}.login{gap:25px;padding:40px 5%}.welcome h1{font-size:2.5rem}.top{padding:16px 20px}}
+@media(max-width:700px){.workspace{display:block}.rail{width:100%;padding:12px;border-right:0;border-bottom:1px solid var(--border);display:block}.brand{font-size:34px}.rail-note{display:none}.rail nav{display:flex;margin-top:15px}.nav{font-size:.75rem;padding:8px;margin:0}.nav small{display:none}.rail-footer{display:flex;padding:8px 0 0}.rail-footer .nav{width:auto}.rail-footer p{display:none}.top .eyebrow{display:none}.top{justify-content:flex-end}.login{display:block;padding:24px}.welcome{display:none}.login-card{max-width:none}.conversations{width:150px;padding:20px 10px}.conversations h1{font-size:1.5rem}.conversation{gap:7px;padding:8px 4px;font-size:.7rem}.conversation .avatar{width:28px;height:28px;border-radius:8px}.chat-heading{flex-wrap:wrap;padding:12px}.chat-heading h2{font-size:1rem}.chat-heading button{margin:0}.composer{padding:12px;grid-template-columns:1fr}.composer small{line-height:1.5}.page{padding:25px 16px}.page-heading{display:block}.theme-options{grid-template-columns:1fr}.friend{flex-wrap:wrap}.card{padding:20px}.messages{min-height:300px;max-height:500px;padding:12px}.notice{padding:10px 16px}}
+
+.language-panel{min-width:0;margin-block:16px}.language-list{max-height:150px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}.language-list button{text-align:start;white-space:normal;overflow-wrap:anywhere;flex-shrink:0}.language-list button[aria-pressed=true]{outline:2px solid currentColor;outline-offset:-2px}
+
+
+FILE clients/web/tsconfig.json
+{"compilerOptions":{"target":"ES2022","module":"NodeNext","moduleResolution":"NodeNext","strict":true,"outDir":"dist","jsx":"react","lib":["ES2022","DOM","DOM.Iterable"],"esModuleInterop":true},"include":["src/**/*.ts","src/**/*.tsx","../shared/protocol-sdk/src/send/wire.ts","../shared/protocol-sdk/src/sync/**/*.ts","../shared/protocol-sdk/src/storage/models.ts"]}
+
+
+FILE plugins/fixtures/echo/.gitkeep
+
+
+
+FILE plugins/fixtures/poll/.gitkeep
+
+
+
+FILE tools/build_language_packs.py
+"""Reproducible en/ja JSON artifacts only. No network, publication or runtime installation."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import re
+import tempfile
+
+TASK='LOOP1-CLIENT-I18N-001'
+ROOT=Path(__file__).resolve().parents[1]
+LOCALES=('en','zh-CN','ja-JP')
+
+def unique_object(pairs):
+    result={}
+    for key,value in pairs:
+        if key in result or key in ('__proto__','constructor','prototype'):
+            raise ValueError('duplicate or unsafe resource key: '+key)
+        result[key]=value
+    return result
+
+def parse_json(raw):
+    return json.loads(raw,object_pairs_hook=unique_object)
+
+def validate(data):
+    if set(data)!=set(LOCALES):raise ValueError('three built-in locales required')
+    keys=set(data['en'])
+    if not keys:raise ValueError('English base must be complete and nonempty')
+    for locale,table in data.items():
+        if set(table)!=keys:raise ValueError('resource keys differ: '+locale)
+        for key,value in table.items():
+            if not isinstance(key,str) or not isinstance(value,str):raise ValueError('resource must contain strings only')
+            if key in ('__proto__','constructor','prototype'):raise ValueError('unsafe resource key')
+            if sorted(re.findall(r'\{([A-Za-z]+)\}',value))!=sorted(re.findall(r'\{([A-Za-z]+)\}',data['en'][key])):
+                raise ValueError('placeholder mismatch: '+locale+'/'+key)
+
+def sources(root):
+    all_data={}
+    for locale in LOCALES:
+        raw=(root/'clients/web/src/ui/i18n'/f'{locale}.ts').read_text(encoding='utf-8')
+        if not raw.startswith('export default '):raise ValueError('pure data resource required')
+        table=parse_json(raw[len('export default '):].strip().removesuffix(';'))
+        other=(root/'clients/desktop/src/ui/i18n'/f'{locale}.ts').read_text(encoding='utf-8')
+        if not other.startswith('export default '):raise ValueError('pure Desktop data required')
+        if table!=parse_json(other[len('export default '):].strip().removesuffix(';')):raise ValueError('Desktop data mismatch')
+        name={'en':'en','zh-CN':'zhCN','ja-JP':'jaJP'}[locale]
+        kotlin=(root/'clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n'/f'{name}.kt').read_text(encoding='utf-8')
+        pairs=[]
+        for match in re.finditer(r'("(?:[^"\\]|\\.)*") to ("(?:[^"\\]|\\.)*")',kotlin):
+            pairs.append(tuple(json.loads(value.replace('\\$','$')) for value in match.groups()))
+        if table!=unique_object(pairs):raise ValueError('Android data mismatch')
+        all_data[locale]=table
+    validate(all_data)
+    return all_data
+
+def encode(value):
+    return (json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'))+'\n').encode('utf-8')
+
+def artifacts(data):
+    validate(data)
+    files={locale+'.json':encode({'artifactVersion':1,'locale':locale,'messages':data[locale]}) for locale in ('en','ja-JP')}
+    metadata={'generatedBy':'tools/build_language_packs.py','task':TASK,'publication':'NOT_PUBLISHED','artifacts':[]}
+    for name,raw in sorted(files.items()):
+        metadata['artifacts'].append({'file':name,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()})
+    files['manifest.json']=encode(metadata)
+    return files
+
+def write_owned(directory,files):
+    directory=directory.resolve()
+    if directory.exists() and any(directory.iterdir()):
+        manifest=directory/'manifest.json'
+        if not manifest.is_file() or manifest.is_symlink():raise ValueError('existing output is not owned')
+        prior=parse_json(manifest.read_bytes())
+        if prior.get('generatedBy')!='tools/build_language_packs.py' or prior.get('task')!=TASK:raise ValueError('unknown output owner')
+        if any(path.name not in files or path.is_symlink() for path in directory.iterdir()):raise ValueError('unknown output preserved')
+    directory.mkdir(parents=True,exist_ok=True)
+    for name,raw in files.items():
+        path=directory/name
+        if path.exists() and path.read_bytes()==raw:continue
+        with tempfile.NamedTemporaryFile(dir=directory,prefix='.i18n-owned-',delete=False) as stream:
+            temporary=Path(stream.name);stream.write(raw)
+        try:temporary.replace(path)
+        finally:
+            if temporary.exists():temporary.unlink()
+
+def verify(root):
+    data=sources(root);first=artifacts(data);second=artifacts(sources(root))
+    if first!=second:raise ValueError('nondeterministic artifacts')
+    with tempfile.TemporaryDirectory(prefix='i18n-artifacts-') as temporary:
+        output=Path(temporary);write_owned(output,first);write_owned(output,second)
+        if {path.name:path.read_bytes() for path in output.iterdir()}!=first:raise ValueError('written artifact mismatch')
+    for name in ('en.json','ja-JP.json'):
+        if parse_json(first[name])['messages']!=data[name.removesuffix('.json')]:raise ValueError('artifact body mismatch')
+    return first
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--verify',action='store_true',help='verify in owned temporary output; no repository writes')
+    parser.add_argument('--output',type=Path,default=ROOT/'tests/clients/i18n/.runtime/language-packs')
+    args=parser.parse_args();files=verify(ROOT)
+    if not args.verify:write_owned(args.output,files)
+    print('PASS deterministic en/ja JSON artifact build; NOT_PUBLISHED; download/install deferred')
+    return 0
+
+if __name__=='__main__':raise SystemExit(main())
+

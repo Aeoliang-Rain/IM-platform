@@ -1,0 +1,7 @@
+Get-CimInstance : 拒绝访问 
+At line:1 char:124
++ ... cceptance/client-supplement.md; Get-CimInstance Win32_Process | Where ...
++                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (root\cimv2:Win32_Process:String) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+ 

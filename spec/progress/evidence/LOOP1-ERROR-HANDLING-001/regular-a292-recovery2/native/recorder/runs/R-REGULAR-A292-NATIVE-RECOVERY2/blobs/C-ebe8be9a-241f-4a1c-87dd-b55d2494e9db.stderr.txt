@@ -1,0 +1,4 @@
+  File "<string>", line 1
+    import pathlib; s=pathlib.Path('spec/architecture/frozen-architecture.md').read_text(encoding='utf-8'); print(s[s.index('<a id=\
+                                                                                                                            ^
+SyntaxError: unterminated string literal (detected at line 1)

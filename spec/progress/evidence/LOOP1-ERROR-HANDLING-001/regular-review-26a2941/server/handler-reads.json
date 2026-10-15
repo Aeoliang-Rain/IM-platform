@@ -1,0 +1,625 @@
+[
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 57,
+    "handler": "func passwordMaterial(password string) []byte {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 62,
+    "handler": "func (s *authService) authenticate(ctx context.Context, token string) (claims, error) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 105,
+    "handler": "func validClient(t string) bool { return t == \"WEB\" || t == \"DESKTOP\" || t == \"MOBILE\" }",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 106,
+    "handler": "func (v clientInput) valid() bool {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 110,
+    "handler": "func decode(r *http.Request, dst any) error {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 123,
+    "handler": "func requestID(_ *http.Request) string {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 130,
+    "handler": "func writeJSON(w http.ResponseWriter, status int, v any) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 141,
+    "handler": "func writeError(w http.ResponseWriter, r *http.Request, err error) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 150,
+    "handler": "func (s *authService) handler() http.Handler {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 179,
+    "handler": "func (s *authService) register(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 213,
+    "handler": "func (s *authService) login(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 257,
+    "handler": "func (s *authService) newSession(ctx context.Context, userID string, v clientInput) (sid string, epoch int64, replaced bool, refresh string, err error) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 307,
+    "handler": "func writeRevocation(ctx context.Context, tx pgx.Tx, userID, sid, reason string) error {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 325,
+    "handler": "func (s *authService) authResponse(w http.ResponseWriter, r *http.Request, userID, sid, typ string, epoch int64, replaced bool, refresh string) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 344,
+    "handler": "func (s *authService) refreshWeb(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 366,
+    "handler": "func (s *authService) refreshNative(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 387,
+    "handler": "func (s *authService) refresh(w http.ResponseWriter, r *http.Request, v clientInput, presented string) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 435,
+    "handler": "func bearer(r *http.Request) (string, error) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 443,
+    "handler": "func (s *authService) logout(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 486,
+    "handler": "func (s *authService) me(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 506,
+    "handler": "func (s *authService) search(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 538,
+    "handler": "func fail(status int, code, message string) error { return shared.Fail(status, code, message) }",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 539,
+    "handler": "func uuid() (string, error)                       { return shared.UUID() }",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 540,
+    "handler": "func randomToken(n int) (string, error)           { return shared.RandomToken(n) }",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/auth.go",
+    "line": 541,
+    "handler": "func hashToken(t string) string                   { return shared.HashToken(t) }",
+    "read_evidence": "Core owns register/login/refresh/logout and authoritative session authentication. Both auxiliary session lookups return non-NoRows original faults. bcrypt only mismatch means bad credentials; malformed hashes take server failure. Entropy/JSON internal faults escape before false body. HTTP server failure is privacy-safe non-success; not auth denial. Login serializes user slot, refresh locks matching refresh row, logout locks slot/rechecks then revocation/outbox+commit. Search returns empty only exact NoRows. No premature success on SQL errors.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/http.go",
+    "line": 10,
+    "handler": "func NewHandler(db *pgxpool.Pool, key []byte) http.Handler {",
+    "read_evidence": "Core assembly exposes public Auth/Social/Sync and private send/history; shared health only. No Gateway import or misplaced transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 21,
+    "handler": "func newMessageCommitError(err error) error {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 52,
+    "handler": "func messageFrame(kind, id string, payload any) any {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 55,
+    "handler": "func rejectedMessage(id, code string) any {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 58,
+    "handler": "func committedMessage(m storedMessage) any {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 61,
+    "handler": "func createdMessage(m storedMessage) any {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 64,
+    "handler": "func (v sendFrame) valid() bool {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 71,
+    "handler": "func (s *authService) sendMessage(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 106,
+    "handler": "func (s *authService) authorizeMessage(ctx context.Context, tx pgx.Tx, c claims, conversation string) error {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "line": 130,
+    "handler": "func (s *authService) commitMessage(ctx context.Context, c claims, v sendFrame) (m storedMessage, err error) {",
+    "read_evidence": "Core membership/session shared locks persist to commit; missing session/member explicit rejection. Serialized next_seq and existing logical request lookup preserve dedup. New message/outbox atomic commit precedes ACK. Unknown commit carries both original and uncertainty sentinel using two %w; only proven rejection yields MESSAGE_COMMIT_FAILED. Private adapter failure is not committed ACK.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/outbox.go",
+    "line": 15,
+    "handler": "func RelaySessionRevocations(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) error {",
+    "read_evidence": "Read full relay/batch/classifier. Every Begin/query/scan/rows/publish/flush/update/commit failure returns actual err. Deferred rollback leaves unpublished work for next existing tick; potential duplicate publish is canonical. Classifier directly unwraps; every joined child classified independently, so mixed PgError XX000+network is false. A direct net.OpError retains transport evidence through syscall wrapper; current default transport producer supplies that structure. No errors.As any-descendant shortcut. Unknown/closed-pool fault returns to main and stops process; recognized transient net/NATS/deadline retries without marker commit. No new queue/retry architecture.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/outbox.go",
+    "line": 39,
+    "handler": "func outboxTransportFailure(err error) bool {",
+    "read_evidence": "Read full relay/batch/classifier. Every Begin/query/scan/rows/publish/flush/update/commit failure returns actual err. Deferred rollback leaves unpublished work for next existing tick; potential duplicate publish is canonical. Classifier directly unwraps; every joined child classified independently, so mixed PgError XX000+network is false. A direct net.OpError retains transport evidence through syscall wrapper; current default transport producer supplies that structure. No errors.As any-descendant shortcut. Unknown/closed-pool fault returns to main and stops process; recognized transient net/NATS/deadline retries without marker commit. No new queue/retry architecture.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/outbox.go",
+    "line": 70,
+    "handler": "func relaySessionBatch(ctx context.Context, db *pgxpool.Pool, nc *nats.Conn) error {",
+    "read_evidence": "Read full relay/batch/classifier. Every Begin/query/scan/rows/publish/flush/update/commit failure returns actual err. Deferred rollback leaves unpublished work for next existing tick; potential duplicate publish is canonical. Classifier directly unwraps; every joined child classified independently, so mixed PgError XX000+network is false. A direct net.OpError retains transport evidence through syscall wrapper; current default transport producer supplies that structure. No errors.As any-descendant shortcut. Unknown/closed-pool fault returns to main and stops process; recognized transient net/NATS/deadline retries without marker commit. No new queue/retry architecture.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 20,
+    "handler": "func friendshipID(low, high string) string {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 32,
+    "handler": "func pair(a, b string) (string, string) {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 39,
+    "handler": "func socialResult(low, high, conversation string, created bool) map[string]any {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 49,
+    "handler": "func (s *authService) socialPrincipal(r *http.Request) (claims, error) {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 57,
+    "handler": "func (s *authService) listFriends(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 87,
+    "handler": "func (s *authService) addFriend(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 154,
+    "handler": "func assembleFriendship(ctx context.Context, tx pgx.Tx, low, high, actor string) (conversation string, created bool, err error) {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 208,
+    "handler": "func validDirectState(ctx context.Context, tx pgx.Tx, low, high, conversation string) error {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "line": 223,
+    "handler": "func writeSocialEvent(ctx context.Context, tx pgx.Tx, recipient, kind, subject string) error {",
+    "read_evidence": "Auth/membership decisions remain Core. list checks row scan and final rows.Err, never fake empty on fault. add locks normalized user pair then rechecks slot; friend/direct/members/events transaction. Only NoRows authorizes absent/new friend state; persisted inconsistency maps canonical FRIENDSHIP_STATE_CONFLICT. Every insert/query/event/commit failure aborts.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 28,
+    "handler": "func syncInteger(raw json.RawMessage, cap int64) (int64, bool) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 81,
+    "handler": "func syncFailure(w http.ResponseWriter, id string, err error) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 90,
+    "handler": "func (s *authService) syncInput(w http.ResponseWriter, r *http.Request, conversation bool) (map[string]json.RawMessage, string, string, claims, bool) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 151,
+    "handler": "func (s *authService) syncCursor(user string, position int64) string {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 160,
+    "handler": "func (s *authService) syncPosition(user, cursor string) (int64, bool) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 184,
+    "handler": "func (s *authService) syncUser(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 285,
+    "handler": "func (s *authService) syncConversation(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 377,
+    "handler": "func (s *authService) conversationHistory(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 444,
+    "handler": "func (s *authService) syncAuthenticate(ctx context.Context, tx pgx.Tx, token string) (claims, error) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 492,
+    "handler": "func syncJSON(input io.Reader) ([]byte, error) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "line": 539,
+    "handler": "func syncJSONNumber(reader *bufio.Reader) (string, error) {",
+    "read_evidence": "Core public Sync parses/binds requestId, rejects query/fields/version and validates canonical session under locks. User lock prevents skipped earlier allocated metadata; cursor authenticated per user. Reads limit+1 and commits before page. Bad authoritative metadata/gap panic; read/decode/SQL faults non-success, no page/cursor. Auxiliary session DB fault propagates. Numeric normalization grounds exact positive integer cap; EOF/peek sentinel does not finish outer input loop after real reader fault: next ReadByte returns fault, invalid grammar rejects. Private history remains authorized transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 43,
+    "handler": "func validUUID(id string) bool { return requestIDPattern.MatchString(id) }",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 45,
+    "handler": "func newHub(auth *validator) *hub {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 48,
+    "handler": "func (c *connection) send(v any) error {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 57,
+    "handler": "func (c *connection) close() {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 60,
+    "handler": "func (h *hub) add(sid string, c *connection) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 68,
+    "handler": "func (h *hub) remove(sid string, c *connection) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 76,
+    "handler": "func frame(typ, id string, payload any) any {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 79,
+    "handler": "func (h *hub) revoke(sid, reason string) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 97,
+    "handler": "func (h *hub) serve(w http.ResponseWriter, r *http.Request) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 206,
+    "handler": "func (h *hub) reject(c *connection, id, code, message string) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 210,
+    "handler": "func (h *hub) watch(c *connection, cl shared.Claims) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 231,
+    "handler": "func writeError(w http.ResponseWriter, r *http.Request, err error) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 249,
+    "handler": "func (h *hub) forward(ctx context.Context, c *connection, e envelope) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "line": 306,
+    "handler": "func (h *hub) fanout(user string, data []byte) {",
+    "read_evidence": "Gateway connection/protocol/transport only. Send retires on write failure before returning; all ignored send values are followed by known closed connection. Upgrade/read/protocol failure ends request/socket. UUID/decoded-map JSON internal errors panic. Auth internal DB failure closes unbound socket instead of invalid-token ACK. Watch conservatively revokes bound transport when authority unavailable; lookup reason never invents replacement/logout. Forward external transport/invalid response retains uncertain origin for timeout/retry/Sync, never fabricated committed ACK. Fanout validates event, active user binding/expiry, excludes original sender socket by request identity; no membership SQL/business.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/http.go",
+    "line": 17,
+    "handler": "func NewHandler(db *pgxpool.Pool, key []byte, nc *nats.Conn, coreURL string) (http.Handler, error) {",
+    "read_evidence": "Gateway startup subscribes and flushes NATS or fails; canonical revocation consumer and per-user fanout; public /v1 reverse proxy to Core. Existing nonbusiness infra upgrade probe. No session writes, Core import or plugin execution.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/session.go",
+    "line": 18,
+    "handler": "func (s *validator) authenticate(ctx context.Context, token string) (shared.Claims, error) {",
+    "read_evidence": "Readonly authoritative slot and auxiliary client-type lookup; non-NoRows returned as actual fault. revocationReason defaults REVOKED on unavailable/unrecognized authority but closes/revokes connection; cannot claim LOGOUT/REPLACED without recorded matching identity. Appropriate conservative safety state under AUF-I-002/004.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/gateway/session.go",
+    "line": 64,
+    "handler": "func (s *validator) revocationReason(ctx context.Context, c shared.Claims, err error) string {",
+    "read_evidence": "Readonly authoritative slot and auxiliary client-type lookup; non-NoRows returned as actual fault. revocationReason defaults REVOKED on unavailable/unrecognized authority but closes/revokes connection; cannot claim LOGOUT/REPLACED without recorded matching identity. Appropriate conservative safety state under AUF-I-002/004.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/config.go",
+    "line": 27,
+    "handler": "func ReadConfig(path string) (RuntimeConfig, []byte, *pgxpool.Config, error) {",
+    "read_evidence": "Readonly config/credential loading returns external failures; trailing data/incomplete config/credential minimum explicit failure. No full Auth or business. Readonly close error has no mutation/commit or successful persistence claim.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/infra.go",
+    "line": 9,
+    "handler": "func InfraMux(role string) *http.ServeMux {",
+    "read_evidence": "Existing nonbusiness health role text and 405; failed response write means external health probe fails, no persistent effects.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 29,
+    "handler": "func (e Error) Error() string { return e.Code }",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 31,
+    "handler": "func Fail(status int, code, message string) error { return Error{status, code, message} }",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 38,
+    "handler": "func RandomToken(n int) (string, error) {",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 46,
+    "handler": "func UUID() (string, error) {",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 57,
+    "handler": "func HashToken(token string) string {",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 63,
+    "handler": "func (s *Codec) Sign(c Claims) (string, error) {",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 75,
+    "handler": "func (s *Codec) Parse(token string) (Claims, error) {",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "line": 97,
+    "handler": "func ValidClient(t string) bool { return t == \"WEB\" || t == \"DESKTOP\" || t == \"MOBILE\" }",
+    "read_evidence": "Only token/crypto/UUID primitives and transport types. Parse explicit malformed/signature/expiry rejection; no DB writes/auth workflows. Random failures returned; callers check. HMAC writers cannot fail by their concrete standard-library implementation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/main.go",
+    "line": 17,
+    "handler": "func main() {",
+    "read_evidence": "Only config/dependency connect/Ping/role handler assembly; root imports service minimal starts. Existing startup faults fatal sanitized text; relay unknown error fatal, known parent cancel expected retirement. PostgreSQL/NATS closure after process retirement; no business routes or transaction.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/go/plugin-host/http.go",
+    "line": 9,
+    "handler": "func NewHandler() http.Handler { return shared.InfraMux(\"plugin-host\") }",
+    "read_evidence": "Health-only nonbusiness placeholder; no S4 WASM/query/action behavior or runtime/dependency speculation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/java/InfraPlaceholder.java",
+    "line": 12,
+    "handler": "public static void main(String[] args) throws Exception {",
+    "read_evidence": "Full class read. Bounded SRC-06 socket/health/upgrade skeleton only. accept outside per-peer IOException recovery. Malformed request explicitly IOException; accepted peer timeout/truncation/write/close failure closes peer via resource and logs sanitized class then listener can accept next peer. Runtime/algorithm exceptions escape main, listener closed. No business activation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  },
+  {
+    "path": "backend/java/InfraPlaceholder.java",
+    "line": 30,
+    "handler": "private static void handle(Socket socket, String role) throws Exception {",
+    "read_evidence": "Full class read. Bounded SRC-06 socket/health/upgrade skeleton only. accept outside per-peer IOException recovery. Malformed request explicitly IOException; accepted peer timeout/truncation/write/close failure closes peer via resource and logs sanitized class then listener can accept next peer. Runtime/algorithm exceptions escape main, listener closed. No business activation.",
+    "result": "NO_ACTIONABLE_FINDING"
+  }
+]

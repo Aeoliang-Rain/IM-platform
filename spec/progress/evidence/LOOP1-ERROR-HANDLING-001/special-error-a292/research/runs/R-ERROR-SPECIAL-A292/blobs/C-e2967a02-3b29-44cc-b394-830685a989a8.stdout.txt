@@ -1,0 +1,102 @@
+contracts\errors\http-errors.schema.json 1868
+contracts\http\auth-user-friend.openapi.json 28320
+contracts\http\auth-user-friend.openapi.validator.js 195400
+contracts\http\build-openapi-3.1-validator.js 2785
+contracts\http\check-openapi-3.1.js 692
+contracts\http\openapi-3.1-2026-08-03.schema.json 33483
+contracts\http\openapi-3.1-lint.md 2374
+contracts\http\sync.openapi.json 11244
+contracts\http\verify-auth-user-friend.ps1 34982
+contracts\websocket\.gitkeep 1
+contracts\websocket\envelope.schema.json 7651
+contracts\websocket\README.md 2817
+contracts\websocket\sync-v1.schema.json 3255
+contracts\websocket\verify.py 39766
+contracts\database\.gitkeep 1
+contracts\database\migrate.py 4175
+contracts\database\README.md 1761
+FILE contracts\errors\http-errors.schema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/errors/http-errors.schema.json",
+  "title": "Canonical HTTP error contract",
+  "$defs": {
+    "ErrorCode": {
+      "type": "string",
+      "enum": [
+        "VALIDATION_FAILED",
+        "AUTH_REQUIRED",
+        "AUTH_INVALID_CREDENTIALS",
+        "AUTH_TOKEN_INVALID",
+        "AUTH_TOKEN_EXPIRED",
+        "AUTH_SESSION_REVOKED",
+        "AUTH_SESSION_EPOCH_STALE",
+        "AUTH_CLIENT_TYPE_MISMATCH",
+        "AUTH_REFRESH_REVOKED",
+        "AUTHORIZATION_DENIED",
+        "PROTOCOL_VERSION_UNSUPPORTED",
+        "USERNAME_ALREADY_EXISTS",
+        "USER_NOT_FOUND",
+        "FRIEND_SELF_NOT_ALLOWED",
+        "FRIENDSHIP_STATE_CONFLICT"
+      ]
+    },
+    "FieldViolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "reason"],
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["error", "requestId"],
+      "properties": {
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "message"],
+          "properties": {
+            "code": { "$ref": "#/$defs/ErrorCode" },
+            "message": { "type": "string", "minLength": 1 },
+            "violations": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/FieldViolation" }
+            }
+          }
+        },
+        "requestId": { "type": "string", "minLength": 1 }
+      },
+      "description": "Messages and violations must never contain passwords, access tokens, refresh tokens, cookies, or other authentication material."
+    }
+  },
+  "$ref": "#/$defs/ErrorResponse"
+}
+
+FILE contracts/websocket/sync-v1.schema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/sync-v1.schema.json",
+  "title": "Sync v1 request and response contract",
+  "description": "User cursor carries only low-frequency friend, conversation, membership and plugin state. Message history uses a per-conversation sequence. Cursor and materialized data commit atomically on a client.",
+  "oneOf": [
+    {"$ref":"#/$defs/UserRequest"}, {"$ref":"#/$defs/UserPage"},
+    {"$ref":"#/$defs/ConversationRequest"}, {"$ref":"#/$defs/ConversationPage"}
+  ],
+  "$defs": {
+    "Id": {"type":"string","format":"uuid"},
+    "Seq": {"type":"integer","minimum":0},
+    "PositiveSeq": {"type":"integer","minimum":1},
+    "Cursor": {"type":"string","minLength":1,"maxLength":256},
+    "UserRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","cursor","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.request"},"requestId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"limit":{"type":"integer","minimum":1}}},
+    "UserEvent": {"type":"object","additionalProperties":false,"required":["eventId","cursor","kind","subjectId","revision"],"properties":{"eventId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"kind":{"enum":["friend.changed","conversation.changed","membership.changed","plugin.changed"]},"subjectId":{"$ref":"#/$defs/Id"},"revision":{"$ref":"#/$defs/PositiveSeq"}}},
+    "UserPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","events","nextCursor","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.page"},"requestId":{"$ref":"#/$defs/Id"},"events":{"type":"array","items":{"$ref":"#/$defs/UserEvent"}},"nextCursor":{"$ref":"#/$defs/Cursor"},"hasMore":{"type":"boolean"}}},
+    "ConversationRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","afterSeq","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.request"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"afterSeq":{"$ref":"#/$defs/Seq"},"limit":{"type":"integer","minimum":1}}},
+    "Message": {"type":"object","additionalProperties":false,"required":["conversationId","seq","messageId","senderId","requestId","createdAt","content"],"properties":{"conversationId":{"$ref":"#/$defs/Id"},"seq":{"$ref":"#/$defs/PositiveSeq"},"messageId":{"$ref":"#/$defs/Id"},"senderId":{"$ref":"#/$defs/Id"},"requestId":{"$ref":"#/$defs/Id"},"createdAt":{"type":"string","format":"date-time"},"content":{"type":"object","additionalProperties":false,"required":["kind","text"],"properties":{"kind":{"const":"TEXT"},"text":{"type":"string","minLength":1,"maxLength":4096}}}}},
+    "ConversationPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","messages","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.page"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"messages":{"type":"array","items":{"$ref":"#/$defs/Message"}},"hasMore":{"type":"boolean"}}}
+  }
+}
+

@@ -1,0 +1,18 @@
+
+FILE 97 clients\mobile\app\src\main\kotlin\im\platform\client\send\RepositoryRead.kt HASH 9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a
+1: package im.platform.client.send
+2: 
+3: // Only the final Repository's direct reads belong here. Callers keep parsing,
+4: // state publication, callbacks and all writes outside this boundary.
+5: internal fun <T> repositoryRead(read:()->T):T {
+6:     try { return read() }
+7:     catch(error:android.database.sqlite.SQLiteDiskIOException){throw SendStorageFailure(error)}
+8:     catch(error:android.database.sqlite.SQLiteDatabaseCorruptException){throw SendStorageFailure(error)}
+9:     catch(error:android.database.sqlite.SQLiteCantOpenDatabaseException){throw SendStorageFailure(error)}
+10:     catch(error:android.database.sqlite.SQLiteDatabaseLockedException){throw SendStorageFailure(error)}
+11:     catch(error:android.database.sqlite.SQLiteAccessPermException){throw SendStorageFailure(error)}
+12:     catch(error:IllegalStateException){
+13:         if(error.message?.startsWith("attempt to re-open an already-closed object:")==true)throw SendStorageFailure(error)
+14:         throw error
+15:     }
+16: }

@@ -1,0 +1,228 @@
+
+FILE contracts\errors\http-errors.schema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/errors/http-errors.schema.json",
+  "title": "Canonical HTTP error contract",
+  "$defs": {
+    "ErrorCode": {
+      "type": "string",
+      "enum": [
+        "VALIDATION_FAILED",
+        "AUTH_REQUIRED",
+        "AUTH_INVALID_CREDENTIALS",
+        "AUTH_TOKEN_INVALID",
+        "AUTH_TOKEN_EXPIRED",
+        "AUTH_SESSION_REVOKED",
+        "AUTH_SESSION_EPOCH_STALE",
+        "AUTH_CLIENT_TYPE_MISMATCH",
+        "AUTH_REFRESH_REVOKED",
+        "AUTHORIZATION_DENIED",
+        "PROTOCOL_VERSION_UNSUPPORTED",
+        "USERNAME_ALREADY_EXISTS",
+        "USER_NOT_FOUND",
+        "FRIEND_SELF_NOT_ALLOWED",
+        "FRIENDSHIP_STATE_CONFLICT"
+      ]
+    },
+    "FieldViolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "reason"],
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["error", "requestId"],
+      "properties": {
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "message"],
+          "properties": {
+            "code": { "$ref": "#/$defs/ErrorCode" },
+            "message": { "type": "string", "minLength": 1 },
+            "violations": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/FieldViolation" }
+            }
+          }
+        },
+        "requestId": { "type": "string", "minLength": 1 }
+      },
+      "description": "Messages and violations must never contain passwords, access tokens, refresh tokens, cookies, or other authentication material."
+    }
+  },
+  "$ref": "#/$defs/ErrorResponse"
+}
+
+
+FILE contracts\websocket\README.md
+# Canonical WSS v1 contract
+
+`envelope.schema.json` is the machine-verifiable wire authority. Every JSON frame has `protocolVersion`, `type`, `requestId`, and `payload`; unknown fields are rejected. A successful `message.ack` has `status: committed`, `messageId`, `seq`, and `createdAt`. The echoed `requestId` identifies the client logical send within its Conversation. `message.created` carries that same request identity for local convergence. Server-generated events use a unique event `requestId` except `message.created`, which carries the originating send request identity.
+
+TLS and WebSocket upgrade produce an unauthenticated connection. Before successful `auth.bind`, only `auth.bind`, `ping`, and `pong` are legal. The access token appears only in `auth.bind.payload`, never in the URL, logs, errors, or fan-out. The server checks signature, expiry, session ID, client type, and session epoch against authoritative session state before binding. A revoked or replaced session emits `session.revoked` and closes the connection; later sends cannot succeed. The `auth.ack` echoes the bind request identity.
+
+For `message.send`, the sender identity comes solely from the bound session. Core authorizes Conversation membership before persistence. `(senderId, conversationId, requestId)` is the server idempotency identity. A repeated send with that identity and identical content returns the original committed `messageId`, `seq`, and `createdAt`; it creates no second Message, sequence, or logical Outbox event. Reuse of the identity with different content is rejected. The same request ID in another Conversation is independent. Sequence numbers increase within each Conversation, while message IDs are globally unique.
+
+`message.ack` with `status: committed` is legal only after the Message, sequence allocation, and matching Outbox event commit atomically in PostgreSQL. A rollback or unknown commit outcome must not yield a successful ACK. A rejected send has no persisted Message or Outbox event. NATS delivery and local `message.created` fan-out can repeat; clients converge by Conversation and request/message identity, and Sync supplies eventual completeness. GROUP send persists one logical Message and one logical Outbox event regardless of member count. WSS v1's send content is `TEXT`; Plugin content requires its separate versioned contract. `message.created` is routed only to locally active, authorized Conversation members; Gateway does not decide business membership.
+
+`contracts/fixtures/websocket/` holds the deterministic shared Go/Java vectors. Run `python contracts/websocket/verify.py` to regenerate and compare them, validate the wire schema, run state assertions, and exercise negative mutations. `python contracts/websocket/verify.py --write` updates generated fixtures intentionally.
+
+
+FILE contracts\websocket\envelope.schema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/envelope.schema.json",
+  "title": "WSS protocol v1 envelope",
+  "description": "TLS and WebSocket upgrade precede auth.bind. Access tokens are carried only in auth.bind payload, never a URL. Success message.ack is emitted only after atomic durable Message and Outbox commit. A retry under sender/conversation/requestId returns the same messageId, seq and createdAt.",
+  "oneOf": [
+    { "$ref": "#/$defs/AuthBind" },
+    { "$ref": "#/$defs/AuthAck" },
+    { "$ref": "#/$defs/MessageSend" },
+    { "$ref": "#/$defs/MessageAck" },
+    { "$ref": "#/$defs/MessageCreated" },
+    { "$ref": "#/$defs/SessionRevoked" },
+    { "$ref": "#/$defs/Ping" },
+    { "$ref": "#/$defs/Pong" }
+  ],
+  "$defs": {
+    "Id": { "type": "string", "format": "uuid" },
+    "Timestamp": { "type": "string", "format": "date-time" },
+    "Base": {
+      "type": "object",
+      "required": ["protocolVersion", "type", "requestId", "payload"],
+      "properties": {
+        "protocolVersion": { "const": "1.0" },
+        "type": { "type": "string" },
+        "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object" }
+      }
+    },
+    "Error": {
+      "type": "object", "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "AUTHORIZATION_DENIED", "PROTOCOL_VERSION_UNSUPPORTED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] },
+        "message": { "type": "string", "minLength": 1 }
+      },
+      "description": "Must not include credentials, tokens or message content."
+    },
+    "AuthError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_TOKEN_INVALID", "AUTH_TOKEN_EXPIRED", "AUTH_SESSION_REVOKED", "AUTH_SESSION_EPOCH_STALE", "AUTH_CLIENT_TYPE_MISMATCH", "PROTOCOL_VERSION_UNSUPPORTED"] } } }] },
+    "MessageError": { "allOf": [{ "$ref": "#/$defs/Error" }, { "type": "object", "required": ["code"], "properties": { "code": { "enum": ["VALIDATION_FAILED", "AUTH_REQUIRED", "AUTH_SESSION_REVOKED", "AUTHORIZATION_DENIED", "MESSAGE_REQUEST_CONFLICT", "MESSAGE_COMMIT_FAILED"] } } }] },
+    "AuthBind": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.bind" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["accessToken"], "properties": { "accessToken": { "type": "string", "minLength": 1 } } }
+      }}]
+    },
+    "AuthAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "auth.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [
+          { "type": "object", "additionalProperties": false, "required": ["status", "userId", "sessionId", "clientType", "sessionEpoch"], "properties": { "status": { "const": "bound" }, "userId": { "$ref": "#/$defs/Id" }, "sessionId": { "$ref": "#/$defs/Id" }, "clientType": { "enum": ["WEB", "DESKTOP", "MOBILE"] }, "sessionEpoch": { "type": "integer", "minimum": 1 } } },
+          { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/AuthError" } } }
+        ] }
+      }}]
+    },
+    "TextContent": { "type": "object", "additionalProperties": false, "required": ["kind", "text"], "properties": { "kind": { "const": "TEXT" }, "text": { "type": "string", "minLength": 1, "maxLength": 4096 } } },
+    "MessageSend": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.send" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "Committed": { "type": "object", "additionalProperties": false, "required": ["status", "conversationId", "messageId", "seq", "createdAt"], "properties": { "status": { "const": "committed" }, "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" } } },
+    "MessageAck": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.ack" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "oneOf": [ { "$ref": "#/$defs/Committed" }, { "type": "object", "additionalProperties": false, "required": ["status", "error"], "properties": { "status": { "const": "rejected" }, "error": { "$ref": "#/$defs/MessageError" } } } ] }
+      }}]
+    },
+    "MessageCreated": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "message.created" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["conversationId", "messageId", "senderId", "seq", "createdAt", "content"], "properties": { "conversationId": { "$ref": "#/$defs/Id" }, "messageId": { "$ref": "#/$defs/Id" }, "senderId": { "$ref": "#/$defs/Id" }, "seq": { "type": "integer", "minimum": 1 }, "createdAt": { "$ref": "#/$defs/Timestamp" }, "content": { "$ref": "#/$defs/TextContent" } } }
+      }}]
+    },
+    "SessionRevoked": {
+      "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": {
+        "protocolVersion": { "const": "1.0" }, "type": { "const": "session.revoked" }, "requestId": { "$ref": "#/$defs/Id" },
+        "payload": { "type": "object", "additionalProperties": false, "required": ["sessionId", "reason"], "properties": { "sessionId": { "$ref": "#/$defs/Id" }, "reason": { "enum": ["LOGOUT", "REPLACED", "REVOKED"] } } }
+      }}]
+    },
+    "Ping": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "ping" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] },
+    "Pong": { "allOf": [{ "$ref": "#/$defs/Base" }, { "type": "object", "additionalProperties": false, "required": ["protocolVersion", "type", "requestId", "payload"], "properties": { "protocolVersion": { "const": "1.0" }, "type": { "const": "pong" }, "requestId": { "$ref": "#/$defs/Id" }, "payload": { "type": "object", "maxProperties": 0 } } }] }
+  }
+}
+
+
+FILE contracts\websocket\sync-v1.schema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://im.example/contracts/websocket/sync-v1.schema.json",
+  "title": "Sync v1 request and response contract",
+  "description": "User cursor carries only low-frequency friend, conversation, membership and plugin state. Message history uses a per-conversation sequence. Cursor and materialized data commit atomically on a client.",
+  "oneOf": [
+    {"$ref":"#/$defs/UserRequest"}, {"$ref":"#/$defs/UserPage"},
+    {"$ref":"#/$defs/ConversationRequest"}, {"$ref":"#/$defs/ConversationPage"}
+  ],
+  "$defs": {
+    "Id": {"type":"string","format":"uuid"},
+    "Seq": {"type":"integer","minimum":0},
+    "PositiveSeq": {"type":"integer","minimum":1},
+    "Cursor": {"type":"string","minLength":1,"maxLength":256},
+    "UserRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","cursor","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.request"},"requestId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"limit":{"type":"integer","minimum":1}}},
+    "UserEvent": {"type":"object","additionalProperties":false,"required":["eventId","cursor","kind","subjectId","revision"],"properties":{"eventId":{"$ref":"#/$defs/Id"},"cursor":{"$ref":"#/$defs/Cursor"},"kind":{"enum":["friend.changed","conversation.changed","membership.changed","plugin.changed"]},"subjectId":{"$ref":"#/$defs/Id"},"revision":{"$ref":"#/$defs/PositiveSeq"}}},
+    "UserPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","events","nextCursor","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.user.page"},"requestId":{"$ref":"#/$defs/Id"},"events":{"type":"array","items":{"$ref":"#/$defs/UserEvent"}},"nextCursor":{"$ref":"#/$defs/Cursor"},"hasMore":{"type":"boolean"}}},
+    "ConversationRequest": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","afterSeq","limit"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.request"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"afterSeq":{"$ref":"#/$defs/Seq"},"limit":{"type":"integer","minimum":1}}},
+    "Message": {"type":"object","additionalProperties":false,"required":["conversationId","seq","messageId","senderId","requestId","createdAt","content"],"properties":{"conversationId":{"$ref":"#/$defs/Id"},"seq":{"$ref":"#/$defs/PositiveSeq"},"messageId":{"$ref":"#/$defs/Id"},"senderId":{"$ref":"#/$defs/Id"},"requestId":{"$ref":"#/$defs/Id"},"createdAt":{"type":"string","format":"date-time"},"content":{"type":"object","additionalProperties":false,"required":["kind","text"],"properties":{"kind":{"const":"TEXT"},"text":{"type":"string","minLength":1,"maxLength":4096}}}}},
+    "ConversationPage": {"type":"object","additionalProperties":false,"required":["syncVersion","type","requestId","conversationId","messages","hasMore"],"properties":{"syncVersion":{"const":"1.0"},"type":{"const":"sync.conversation.page"},"requestId":{"$ref":"#/$defs/Id"},"conversationId":{"$ref":"#/$defs/Id"},"messages":{"type":"array","items":{"$ref":"#/$defs/Message"}},"hasMore":{"type":"boolean"}}}
+  }
+}
+
+
+FILE contracts\database\README.md
+# Canonical PostgreSQL schema
+
+`migrations/0001_initial.up.sql` is the shared schema for Go and Java profiles.
+Run the migration before application startup, using a normal PostgreSQL `psql`
+client and libpq connection settings (`PGHOST`, `PGPORT`, `PGUSER`, `PGDATABASE`,
+and secure credential handling outside the command line):
+
+```text
+python3 contracts/database/migrate.py status
+python3 contracts/database/migrate.py up
+python3 contracts/database/migrate.py down --allow-data-loss
+```
+
+The runner applies each SQL file and its checksum ledger entry in one transaction
+under a PostgreSQL advisory transaction lock. Applied SQL is immutable. The down
+migration drops all product tables and requires explicit data-loss acknowledgement;
+release rollback still requires a backup and compatibility assessment.
+
+`sessions` is one row per `(user_id, client_type)` slot. A replacement login must
+rotate `session_id`, increment `session_epoch`, and revoke the old session in one
+transaction. The server must validate both session ID and epoch against PostgreSQL.
+The database constraints reject duplicate normalized friendship and DIRECT pairs,
+request IDs and sequence numbers within a Conversation, and duplicate logical
+`message.created` outbox events. Message authorization, sequence allocation,
+matching Outbox insertion, friend/direct/membership/sync transaction assembly, and
+post-commit ACK remain application transaction obligations. A unique constraint
+alone cannot prove those multi-row operations occurred atomically.
+
+With a disposable PostgreSQL database configured through libpq variables, run
+`python3 -m unittest discover -s tests/database -v`. The integration test uses
+an isolated temporary schema and exercises forward, uniqueness, and rollback.
+
+
+FILE spec\progress\evidence\LOOP1-ERROR-HANDLING-001\fix-cause-read\human-read-mapper-scope.txt
+Question: 独立审查用真实 SQLx 证明：共享 Repository.contiguous 将已有记录的空序号读成 0；Android 同类只读方法也会将损坏模式下的 NULL 读成 0。此前确认仅修正异常边界，当前 Task 禁止改 Repository，AGENTS.md 要求只写 allowed_paths。是否允许仅修改这两个只读映射：无记录仍返回 0，已有无效序号明确失败？SQL、Schema、事务、写入行为和草稿全部不改。其他已授权修复会继续进行。
+Direct Human reply: 允许仅修正这两个只读映射
+Boundaries: Amend the unique task's exact allowed paths before edits. Only shared/mobile contiguous READ mapping changes are authorized. SQL, Schema, initialization, transactions, write behavior, native database implementation, Composer and drafts remain unchanged. No-row zero remains valid; present invalid data fails. No Frozen/contract change or general framework is authorized.
+

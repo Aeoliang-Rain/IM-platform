@@ -19,9 +19,12 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
     private var slot="";private var expires=0L;@Volatile private var generation=0L
     init{serverOrigin(endpoint)}
     private fun metadata()=JSONObject().put("clientType","MOBILE").put("deviceId","im-mobile").put("clientVersion","0.1.0").put("protocolVersion","1")
+    private fun transportCleanup(error:Throwable):Boolean=error is java.io.IOException && error.suppressed.all(::transportCleanup)
     suspend fun request(path:String,method:String="GET",body:JSONObject?=null,authenticated:Boolean=true,accessToken:String?=null):Any=withContext(Dispatchers.IO){
         val connection=URL(endpoint+path).openConnection() as HttpsURLConnection
         try {
+            var primary:Throwable?=null
+            try {
             connection.instanceFollowRedirects=false;connection.requestMethod=method;connection.connectTimeout=15000;connection.readTimeout=15000;connection.useCaches=false;connection.setRequestProperty("Content-Type","application/json")
             if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure("session_expired","Session expired");connection.setRequestProperty("Authorization","Bearer "+token)}
             if(body!=null){connection.doOutput=true;val bytes=body.toString().toByteArray(Charsets.UTF_8);connection.setFixedLengthStreamingMode(bytes.size);connection.outputStream.use {it.write(bytes)}}
@@ -31,7 +34,14 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
             (stream?:throw ApiFailure("connection_unavailable","Connection unavailable")).use{val buffer=ByteArray(8192);while(true){val n=it.read(buffer);if(n<0)break;if(output.size()+n>1048576)throw ApiFailure("invalid_server_response","Invalid server response");output.write(buffer,0,n)}}
             val raw=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(output.toByteArray())).toString();val result=Wire.parse(raw,1048576)
             if(status !in 200..299){val code=((result as? Map<*,*>)?.get("error") as? Map<*,*>)?.get("code") as? String;throw ApiFailure(if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"invalid_credentials" else if(status==401)"session_expired" else code?:"request_failed",if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"Invalid username or password" else if(status==401)"Session expired" else code?:"Request failed")};result
-        }catch(e:ApiFailure){throw e}catch(_:Exception){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+            }catch(error:Throwable){primary=error;throw error}
+            finally{try{connection.disconnect()}catch(cleanup:Throwable){val original=primary;if(original==null)throw cleanup;if(cleanup!==original)original.addSuppressed(cleanup)}}
+        }catch(error:Exception){
+            val known=error is ApiFailure || error is im.platform.client.send.WireFailure || error is java.io.IOException || error is kotlinx.coroutines.CancellationException
+            if(known && !error.suppressed.all(::transportCleanup))throw IllegalStateException("HTTPS operation and cleanup failed",error)
+            val failure=when(error){is ApiFailure->error;is im.platform.client.send.WireFailure,is java.nio.charset.CharacterCodingException->ApiFailure("invalid_server_response","Invalid server response").also{it.initCause(error)};is java.io.IOException->ApiFailure("connection_unavailable","Connection unavailable").also{it.initCause(error)};else->error}
+            throw failure
+        }
     }
     private fun user(v:Any?):User {val o=Wire.obj(v,setOf("userId","username","displayName"));return User(Wire.uuid(o["userId"]),o["username"] as String,o["displayName"] as String)}
     @Synchronized private fun accept(value:Any,g:Long):SendSession {
@@ -40,14 +50,21 @@ class Auth(val endpoint:String,private val preferences:Preferences) {
         require(s["clientType"]=="MOBILE" && s["status"]=="ACTIVE" && t["refreshTokenDelivery"]=="RESPONSE_BODY_FOR_OS_SECURE_STORAGE" && o["replacedExistingSession"] is Boolean)
         val next=SendSession(Wire.uuid(s["userId"]),Wire.uuid(s["sessionId"]),Wire.integer(s["sessionEpoch"]),t["accessToken"] as String);require(next.accessToken.isNotEmpty());val refresh=t["refreshToken"] as String;require(refresh.isNotEmpty());val seconds=Wire.integer(t["accessTokenExpiresInSeconds"]).longValueExact();Wire.integer(t["refreshTokenExpiresInSeconds"])
         val newSlot=endpoint+"/"+next.userId+"/"+next.sessionId
-        try {preferences.write(newSlot,refresh);preferences.write(endpoint+"/current",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(_:Exception){session=null;throw ApiFailure("secure_credential_storage_unavailable","Secure credential storage unavailable")}
+        try {preferences.write(newSlot,refresh);preferences.write(endpoint+"/current",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(error:Exception){session=null;throw error}
         slot=newSlot;session=next;expires=System.currentTimeMillis()+seconds*1000;return next
     }
     suspend fun register(username:String,password:String):User = user(Wire.obj(request("/v1/auth/register","POST",JSONObject().put("username",username).put("password",password).put("displayName",username),false),setOf("user"))["user"])
     suspend fun login(username:String,password:String):SendSession {val g=generation;return accept(request("/v1/auth/login","POST",metadata().put("username",username).put("password",password),false),g)}
     suspend fun restore():SendSession? {slot=preferences.read(endpoint+"/current")?:return null;return refresh()}
     @Synchronized fun savedAccount():String? {val saved=preferences.read(endpoint+"/current")?:return null;require(saved.startsWith(endpoint+"/"));val parts=saved.removePrefix(endpoint+"/").split('/');require(parts.size==2);Wire.uuid(parts[1]);slot=saved;return Wire.uuid(parts[0])}
-    suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure("session_expired","Session expired");try{return accept(request("/v1/auth/refresh/native","POST",metadata().put("refreshToken",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind=="session_expired")clear();throw e}}
+    suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure("session_expired","Session expired");try{return accept(request("/v1/auth/refresh/native","POST",metadata().put("refreshToken",refresh),false),g)}catch(e:ApiFailure){
+        if(g==generation && e.kind=="session_expired")try{clear()}catch(cleanup:Throwable){
+            if(cleanup===e)throw e
+            val failure=if(transportCleanup(cleanup))java.io.IOException("Refresh cleanup failed",e) else IllegalStateException("Refresh cleanup failed",e)
+            failure.addSuppressed(cleanup);throw failure
+        }
+        throw e
+    }}
     fun needsRefresh()=session!=null && System.currentTimeMillis()>expires-60000
     @Synchronized fun clear(){generation++;session=null;if(slot.isNotEmpty())preferences.remove(slot);slot="";preferences.remove(endpoint+"/current")}
     suspend fun logout(){val token=session?.accessToken;clear();if(token!=null)request("/v1/auth/logout","POST",accessToken=token)}

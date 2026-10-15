@@ -40,7 +40,8 @@ type Appearance=(String,u8,f64);
 fn valid_appearance(value:&Appearance)->bool{matches!(value.0.as_str(),"cold"|"warm")&&(14..=22).contains(&value.1)&&[0.8,1.0,1.2].iter().any(|v|(value.2-v).abs()<0.001)}
 fn appearance_bytes(value:&Appearance)->Vec<u8>{format!("[\"{}\",{},{}]",value.0,value.1,value.2).into_bytes()}
 #[tauri::command]
-pub fn appearance_load(app:tauri::AppHandle)->Result<Appearance,String>{let p=appearance_path(&app)?;if !p.exists(){return Ok(("cold".into(),16,1.0));}let bytes=std::fs::read(p).map_err(|_|"Appearance unavailable")?;if bytes.len()>64{return Err("Appearance invalid".into());}for theme in ["cold","warm"]{for font in 14..=22{for density in [0.8,1.0,1.2]{let value=(theme.to_owned(),font,density);if appearance_bytes(&value)==bytes{return Ok(value);}}}}Err("Appearance invalid".into())}
+pub fn appearance_load(app:tauri::AppHandle)->Result<Appearance,String>{load_appearance(&appearance_path(&app)?)}
+fn load_appearance(p:&std::path::Path)->Result<Appearance,String>{let bytes=match std::fs::read(p){Ok(bytes)=>bytes,Err(error) if error.kind()==std::io::ErrorKind::NotFound=>return Ok(("cold".into(),16,1.0)),Err(_)=>return Err("Appearance unavailable".into())};if bytes.len()>64{return Err("Appearance invalid".into());}for theme in ["cold","warm"]{for font in 14..=22{for density in [0.8,1.0,1.2]{let value=(theme.to_owned(),font,density);if appearance_bytes(&value)==bytes{return Ok(value);}}}}Err("Appearance invalid".into())}
 #[tauri::command]
 pub fn appearance_save(app:tauri::AppHandle,mut value:Appearance)->Result<(),String>{if !valid_appearance(&value){return Err("Appearance invalid".into());}value.2=[0.8,1.0,1.2].into_iter().find(|v|(value.2-v).abs()<0.001).ok_or("Appearance invalid")?;let p=appearance_path(&app)?;std::fs::create_dir_all(p.parent().ok_or("Appearance unavailable")?).map_err(|_|"Appearance unavailable")?;std::fs::write(p,appearance_bytes(&value)).map_err(|_|"Appearance unavailable".into())}
 #[tauri::command]
@@ -58,7 +59,7 @@ pub fn window_control(window:tauri::WebviewWindow,action:String)->Result<(),Stri
     };
     result.map_err(|_|"Window unavailable".into())
 }
-fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){let _=w.show();let _=w.unminimize();let _=w.set_focus();}}
+fn show(app:&tauri::AppHandle){if let Some(w)=app.get_webview_window("main"){w.show().expect("Window show failed");w.unminimize().expect("Window restore failed");w.set_focus().expect("Window focus failed");}}
 struct TrayPresentation {open:tauri::menu::MenuItem<tauri::Wry>,hide:tauri::menu::MenuItem<tauri::Wry>,quit:tauri::menu::MenuItem<tauri::Wry>}
 #[tauri::command]
 pub fn tray_text(app:tauri::AppHandle,open:String,hide:String,quit:String,tooltip:String)->Result<(),String>{
@@ -95,13 +96,45 @@ pub fn setup(app:&mut tauri::App)->Result<(),Box<dyn std::error::Error>>{
     let menu=tauri::menu::Menu::with_items(app,&[&open,&hide,&quit])?;
     app.manage(TrayPresentation{open,hide,quit});
     let icon=app.default_window_icon().ok_or("Application icon unavailable")?.clone();
-    tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){let _=w.hide();}},"quit"=>app.exit(0),_=>{}}).build(app)?;
+    tauri::tray::TrayIconBuilder::with_id("im-plus").icon(icon).tooltip("IM+ · Your workspace").menu(&menu).on_menu_event(|app,event|match event.id.as_ref(){"open"=>show(app),"hide"=>{if let Some(w)=app.get_webview_window("main"){w.hide().expect("Window hide failed");}},"quit"=>app.exit(0),_=>{}}).build(app)?;
     Ok(())
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+
+    #[test]
+    fn appearance_owned_reads_distinguish_absence_invalid_and_io_failure() {
+        let nonce=std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+        let root=std::env::temp_dir().join(format!("appearance-read-owned-{}-{nonce}",std::process::id()));
+        std::fs::create_dir(&root).unwrap();
+        let path=root.join("appearance.json");
+        let absent=load_appearance(&path).unwrap();println!("APPEARANCE_RESULT absent ok {}",String::from_utf8(appearance_bytes(&absent)).unwrap());
+        assert_eq!(absent,("cold".into(),16,1.0));
+        let value=("warm".into(),22,1.2);
+        std::fs::write(&path,appearance_bytes(&value)).unwrap();
+        let valid=load_appearance(&path).unwrap();println!("APPEARANCE_RESULT valid ok {}",String::from_utf8(appearance_bytes(&valid)).unwrap());
+        assert_eq!(valid,value);
+        for bytes in [b"not-json".as_slice(),b"[\"cold\",23,1]",b"[\"cold\",16,2]",&[b'x';65]] {
+            std::fs::write(&path,bytes).unwrap();
+            let error=load_appearance(&path).unwrap_err();println!("APPEARANCE_RESULT invalid error {error}");
+            assert_eq!(error,"Appearance invalid");
+        }
+        let directory=root.join("directory");std::fs::create_dir(&directory).unwrap();
+        assert_ne!(std::fs::read(&directory).unwrap_err().kind(),std::io::ErrorKind::NotFound);
+        let error=load_appearance(&directory).unwrap_err();println!("APPEARANCE_RESULT directory error {error}");
+        assert_eq!(error,"Appearance unavailable");
+        // Real Windows InvalidFilename control; no physical ACL-denial claim.
+        let invalid=root.join("invalid|appearance.json");
+        assert_ne!(std::fs::read(&invalid).unwrap_err().kind(),std::io::ErrorKind::NotFound);
+        let actual=load_appearance(&invalid);
+        std::fs::remove_dir_all(&root).unwrap();
+        let error=actual.unwrap_err();println!("APPEARANCE_RESULT invalid_filename error {error}");
+        assert_eq!(error,"Appearance unavailable");
+        assert!(!root.exists());
+    }
 
     #[test]
     fn language_owned_file_exact_enum_and_appearance_isolation() {

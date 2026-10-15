@@ -1,0 +1,220 @@
+diff --git a/clients/web/src/application/client.ts b/clients/web/src/application/client.ts
+index 3504a92..0fb6a2f 100644
+--- a/clients/web/src/application/client.ts
++++ b/clients/web/src/application/client.ts
+@@ -1,4 +1,4 @@
+-import {decode,envelope,object,uuid,content} from '../../../shared/protocol-sdk/src/send/wire.js';
++import {WireFailure,decode,envelope,object,uuid,content} from '../../../shared/protocol-sdk/src/send/wire.js';
+ import {SyncHttp} from '../../../shared/protocol-sdk/src/sync/http.js';
+ import {SyncFailure} from '../../../shared/protocol-sdk/src/sync/wire.js';
+ import type {Committed,RealtimeMessage} from '../../../shared/protocol-sdk/src/storage/models.js';
+@@ -19,29 +19,29 @@ export class WebClient {
+   private metadata(){return {clientType:'WEB',deviceId:this.device,clientVersion:'0.1.0',protocolVersion:'1'};}
+   private alive(g:number){return g===this.generation;}
+   private clear(notice:string){this.generation++;this.abort.abort();this.abort=new AbortController();clearTimeout(this.reconnectTimer);clearTimeout(this.refreshTimer);clearInterval(this.userPoll);this.userPoll=undefined;this.userCursor="0";this.userSyncing=false;this.friendRevision++;for(const p of this.pending.values())clearTimeout(p.timer);this.pending.clear();this.opened.clear();this.syncing.clear();this.socket?.close();this.socket=undefined;this.session=undefined;this.repository.reset();this.state={session:false,authBusy:false,notice,connection:'idle',sync:'',friends:[],friendsBusy:false,friendsError:'',profileBusy:false,profileError:'',searchBusy:false,searchError:'',searchResults:[],selected:'',revision:this.state.revision};this.publish();}
+-  private error(e:unknown,g:number){if(!this.alive(g))return;if(e instanceof ApiFailure&&e.status===401||e instanceof SyncFailure&&e.kind==='authentication')this.clear('会话已过期，请重新登录。');}
+-  async login(username:string,password[REDACTED];const g=this.generation;this.publish({authBusy:true});try {const s=auth(await this.http.request('/v1/auth/login','POST',{...this.metadata(),username,password},undefined,this.abort.signal));if(!this.alive(g))return;this.session=s;this.publish({session:true,authBusy:false,notice:'已登录 · 消息仅保留在当前页面内存'});this.connected();void this.loadFriends();void this.loadProfile();}catch(e){if(this.alive(g))this.publish({authBusy:false,notice:e instanceof ApiFailure&&e.status===401?'账号或密码不正确。':'登录失败，请检查网络后重试。'});}}
+-  async refresh(){if(this.refreshing)return this.refreshing;const g=this.generation;this.publish({authBusy:true,notice:'正在刷新会话…'});this.refreshing=(async()=>{try {const s=auth(await this.http.request('/v1/auth/refresh/web','POST',this.metadata(),undefined,this.abort.signal));if(!this.alive(g))return;if(this.session&&(s.userId!==this.session.userId||s.sessionId!==this.session.sessionId||s.sessionEpoch!==this.session.sessionEpoch)){this.clear('会话已被替换，请重新登录。');return;}this.session=s;this.publish({session:true,authBusy:false,notice:'会话已刷新'});this.socket?.close();this.connected();void this.loadFriends();void this.loadProfile();}catch(e){if(this.alive(g)){this.error(e,g);if(this.alive(g))this.publish({authBusy:false,notice:'会话刷新失败，请重试或重新登录。'});}}finally{this.refreshing=undefined;}})();return this.refreshing;}
+-  async logout(){const s=this.session,g=this.generation;const signal=this.abort.signal;this.publish({authBusy:true});try {if(s)await this.http.request('/v1/auth/logout','POST',undefined,s.accessToken,signal);if(this.alive(g))this.clear('已退出登录。');}catch{if(this.alive(g)){this.clear('本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。');}}}
+-  async loadProfile(){const s=this.session,g=this.generation;if(!s)return;this.publish({profileBusy:true,profileError:''});try{const p=object(await this.http.request('/v1/users/me','GET',undefined,s.accessToken,this.abort.signal),['user']),u=user(p.user);if(u.userId!==s.userId)throw new Error('Account mismatch');if(this.alive(g))this.publish({user:u,profileBusy:false});}catch(e){this.error(e,g);if(this.alive(g))this.publish({profileBusy:false,profileError:'个人资料加载失败，可重试。'});}}
+-  async loadFriends(){const revision=++this.friendRevision;const s=this.session,g=this.generation;if(!s)return;this.publish({friendsBusy:true,friendsError:''});try{const list=friends(await this.http.request('/v1/friends','GET',undefined,s.accessToken,this.abort.signal));if(list.some(f=>f.user.userId===s.userId))throw new Error('Invalid friend');if(this.alive(g)&&revision===this.friendRevision)this.publish({friends:list,friendsBusy:false});}catch(e){this.error(e,g);if(this.alive(g)&&revision===this.friendRevision)this.publish({friendsBusy:false,friendsError:'好友加载失败，可重试。'});}}
+-  async search(username:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:'',searchResults:[]});try{const p=object(await this.http.request('/v1/users/search?username='+encodeURIComponent(username),'GET',undefined,s.accessToken,this.abort.signal),['users']);if(!Array.isArray(p.users)||p.users.length>1)throw new Error('Invalid search');const users=p.users.map(user);if(this.alive(g))this.publish({searchBusy:false,searchResults:users});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'搜索失败，请检查用户名后重试。'});}}
+-  async addFriend(id:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:''});try{const p=object(await this.http.request('/v1/friends/'+uuid(id),'PUT',undefined,s.accessToken,this.abort.signal),['friendshipId','normalizedPair','directConversationId','memberUserIds','created']);uuid(p.friendshipId);const pair=object(p.normalizedPair,['lowUserId','highUserId']);if(!Array.isArray(p.memberUserIds)||p.memberUserIds.length!==2||new Set(p.memberUserIds).size!==2||!p.memberUserIds.includes(s.userId)||!p.memberUserIds.includes(id)||uuid(pair.lowUserId)!==[s.userId,id].sort()[0]||uuid(pair.highUserId)!==[s.userId,id].sort()[1]||typeof p.created!=='boolean')throw new Error('Invalid relationship');const c=uuid(p.directConversationId);if(!this.alive(g))return;await this.loadFriends();if(this.alive(g))this.publish({searchBusy:false,notice:'好友已添加，唯一私聊已建立',selected:c});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'添加好友失败，请重试。'});}}
++  private error(e:unknown,g:number){if(!(e instanceof ApiFailure || e instanceof SyncFailure || e instanceof WireFailure))throw e;if(!this.alive(g))return;if(e instanceof ApiFailure&&e.status===401||e instanceof SyncFailure&&e.kind==='authentication')this.clear('会话已过期，请重新登录。');}
++  async login(username:string,password[REDACTED];const g=this.generation;this.publish({authBusy:true});try {const s=auth(await this.http.request('/v1/auth/login','POST',{...this.metadata(),username,password},undefined,this.abort.signal));if(!this.alive(g))return;this.session=s;this.publish({session:true,authBusy:false,notice:'已登录 · 消息仅保留在当前页面内存'});this.connected();void this.loadFriends();void this.loadProfile();}catch(e){this.error(e,g);if(this.alive(g))this.publish({authBusy:false,notice:e instanceof ApiFailure&&e.status===401?'账号或密码不正确。':'登录失败，请检查网络后重试。'});}}
++  async refresh(){if(this.refreshing)return this.refreshing;const g=this.generation;this.publish({authBusy:true,notice:'正在刷新会话…'});this.refreshing=(async()=>{try {const s=auth(await this.http.request('/v1/auth/refresh/web','POST',this.metadata(),undefined,this.abort.signal));if(!this.alive(g))return;if(this.session&&(s.userId!==this.session.userId||s.sessionId!==this.session.sessionId||s.sessionEpoch!==this.session.sessionEpoch)){this.clear('会话已被替换，请重新登录。');return;}this.session=s;this.publish({session:true,authBusy:false,notice:'会话已刷新'});this.socket?.close();this.connected();void this.loadFriends();void this.loadProfile();}catch(e){this.error(e,g);if(this.alive(g))this.publish({authBusy:false,notice:'会话刷新失败，请重试或重新登录。'});}finally{this.refreshing=undefined;}})();return this.refreshing;}
++  async logout(){const s=this.session,g=this.generation;const signal=this.abort.signal;this.publish({authBusy:true});try {if(s)await this.http.request('/v1/auth/logout','POST',undefined,s.accessToken,signal);if(this.alive(g))this.clear('已退出登录。');}catch(e){if(!(e instanceof ApiFailure || e instanceof SyncFailure || e instanceof WireFailure))throw e;if(this.alive(g)){this.clear('本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。');}}}
++  async loadProfile(){const s=this.session,g=this.generation;if(!s)return;this.publish({profileBusy:true,profileError:''});try{const p=object(await this.http.request('/v1/users/me','GET',undefined,s.accessToken,this.abort.signal),['user']),u=user(p.user);if(u.userId!==s.userId)throw new WireFailure();if(this.alive(g))this.publish({user:u,profileBusy:false});}catch(e){this.error(e,g);if(this.alive(g))this.publish({profileBusy:false,profileError:'个人资料加载失败，可重试。'});}}
++  async loadFriends(){const revision=++this.friendRevision;const s=this.session,g=this.generation;if(!s)return;this.publish({friendsBusy:true,friendsError:''});try{const list=friends(await this.http.request('/v1/friends','GET',undefined,s.accessToken,this.abort.signal));if(list.some(f=>f.user.userId===s.userId))throw new WireFailure();if(this.alive(g)&&revision===this.friendRevision)this.publish({friends:list,friendsBusy:false});}catch(e){this.error(e,g);if(this.alive(g)&&revision===this.friendRevision)this.publish({friendsBusy:false,friendsError:'好友加载失败，可重试。'});}}
++  async search(username:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:'',searchResults:[]});try{const p=object(await this.http.request('/v1/users/search?username='+encodeURIComponent(username),'GET',undefined,s.accessToken,this.abort.signal),['users']);if(!Array.isArray(p.users)||p.users.length>1)throw new WireFailure();const users=p.users.map(user);if(this.alive(g))this.publish({searchBusy:false,searchResults:users});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'搜索失败，请检查用户名后重试。'});}}
++  async addFriend(id:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:''});try{const p=object(await this.http.request('/v1/friends/'+uuid(id),'PUT',undefined,s.accessToken,this.abort.signal),['friendshipId','normalizedPair','directConversationId','memberUserIds','created']);uuid(p.friendshipId);const pair=object(p.normalizedPair,['lowUserId','highUserId']);if(!Array.isArray(p.memberUserIds)||p.memberUserIds.length!==2||new Set(p.memberUserIds).size!==2||!p.memberUserIds.includes(s.userId)||!p.memberUserIds.includes(id)||uuid(pair.lowUserId)!==[s.userId,id].sort()[0]||uuid(pair.highUserId)!==[s.userId,id].sort()[1]||typeof p.created!=='boolean')throw new WireFailure();const c=uuid(p.directConversationId);if(!this.alive(g))return;await this.loadFriends();if(this.alive(g))this.publish({searchBusy:false,notice:'好友已添加，唯一私聊已建立',selected:c});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'添加好友失败，请重试。'});}}
+   open(c:string){if(!this.state.friends.some(f=>f.directConversationId===c))return;this.opened.add(c);this.publish({selected:c,sync:this.repository.hasBaseline(c)?'':'仅接收本页实时消息 · 不补历史'});void this.sync(c);}
+   send(text:string){const s=this.session,c=this.state.selected;if(!s||!c||!this.state.friends.some(f=>f.directConversationId===c))return;const m={conversationId:c,requestId:crypto.randomUUID(),senderId:s.userId,content:content({kind:'TEXT',text})};this.repository.begin(m);this.transmit(m.conversationId,m.requestId);return m.requestId;}
+   retry(c:string,r:string){const s=this.session,row=this.repository.snapshot(c).find(v=>v.requestId===r);if(!s||!row||row.state!=='FAILED'||row.senderId!==s.userId)return;this.repository.begin(row);this.transmit(c,r);}
+-  private transmit(c:string,r:string){const m=this.repository.snapshot(c).find(v=>v.requestId===r);if(!m)return;this.opened.add(c);this.publish();if(this.state.connection!=='ready'||!this.socket){this.repository.fail(c,r);this.publish();return;}try {this.socket.send(envelope('message.send',r,{conversationId:c,content:m.content}));const g=this.generation;const timer=setTimeout(()=>{if(this.alive(g)){this.pending.delete(r);this.repository.fail(c,r);this.publish();void this.sync(c);}},this.timeout);this.pending.set(r,{conversation:c,timer});}catch{this.repository.fail(c,r);this.publish();}}
++  private transmit(c:string,r:string){const m=this.repository.snapshot(c).find(v=>v.requestId===r);if(!m)return;this.opened.add(c);this.publish();if(this.state.connection!=='ready'||!this.socket){this.repository.fail(c,r);this.publish();return;}try {this.socket.send(envelope('message.send',r,{conversationId:c,content:m.content}));const g=this.generation;const timer=setTimeout(()=>{if(this.alive(g)){this.pending.delete(r);this.repository.fail(c,r);this.publish();void this.sync(c);}},this.timeout);this.pending.set(r,{conversation:c,timer});}catch(error){if(!(error instanceof DOMException))throw error;this.repository.fail(c,r);this.publish();}}
+   reconnect(){if(!this.session)return;clearTimeout(this.reconnectTimer);this.socket?.close();this.connected();}
+-  private connected(){const s=this.session,g=this.generation;if(!s)return;clearTimeout(this.refreshTimer);const wait=Math.max(1,s.expires-Date.now()-30000);this.refreshTimer=setTimeout(()=>void this.refresh(),wait);const url=this.http.origin.replace('https:','wss:')+'/v1/ws';let socket:WebSocket;try{socket=this.socketFactory(url);}catch{this.publish({connection:'failed'});return;}this.socket=socket;this.bind=crypto.randomUUID();const bind=this.bind;this.publish({connection:'connecting'});const current=()=>this.alive(g)&&this.socket===socket;
++  private connected(){const s=this.session,g=this.generation;if(!s)return;clearTimeout(this.refreshTimer);const wait=Math.max(1,s.expires-Date.now()-30000);this.refreshTimer=setTimeout(()=>void this.refresh(),wait);const url=this.http.origin.replace('https:','wss:')+'/v1/ws';let socket:WebSocket;try{socket=this.socketFactory(url);}catch(error){if(!(error instanceof DOMException))throw error;this.publish({connection:'failed'});return;}this.socket=socket;this.bind=crypto.randomUUID();const bind=this.bind;this.publish({connection:'connecting'});const current=()=>this.alive(g)&&this.socket===socket;
+     const authTimer=setTimeout(()=>{if(current())socket.close();},10000);
+     socket.onopen=()=>{if(current())socket.send(envelope('auth.bind',bind,{accessToken[REDACTED];};
+-    socket.onmessage=e=>{if(!current()||typeof e.data!=='string')return;try{const f=decode(e.data),p=f.payload;if(f.type==='auth.ack'){clearTimeout(authTimer);if(f.requestId!==bind)throw new Error('Bind correlation');if(p.status==='rejected'){const code=(p.error as {code:string}).code;if(code==='AUTH_TOKEN_EXPIRED'){void this.refresh();return;}this.clear('会话已失效，请重新登录。');return;}if(p.userId!==s.userId||p.sessionId!==s.sessionId||p.clientType!=='WEB'||p.sessionEpoch!==s.sessionEpoch)throw new Error('Session mismatch');this.publish({connection:'ready'});void this.syncFriends();if(!this.userPoll)this.userPoll=setInterval(()=>{if(this.state.connection==='ready')void this.syncFriends();},10000);for(const c of this.opened)void this.sync(c);}
++    socket.onmessage=e=>{if(!current()||typeof e.data!=='string')return;try{const f=decode(e.data),p=f.payload;if(f.type==='auth.ack'){clearTimeout(authTimer);if(f.requestId!==bind)throw new WireFailure();if(p.status==='rejected'){const code=(p.error as {code:string}).code;if(code==='AUTH_TOKEN_EXPIRED'){void this.refresh();return;}this.clear('会话已失效，请重新登录。');return;}if(p.userId!==s.userId||p.sessionId!==s.sessionId||p.clientType!=='WEB'||p.sessionEpoch!==s.sessionEpoch)throw new WireFailure();this.publish({connection:'ready'});void this.syncFriends();if(!this.userPoll)this.userPoll=setInterval(()=>{if(this.state.connection==='ready')void this.syncFriends();},10000);for(const c of this.opened)void this.sync(c);}
+       else if(f.type==='ping')socket.send(envelope('pong',f.requestId,{}));
+       else if(f.type==='session.revoked'){if(p.sessionId===s.sessionId)this.clear('会话已过期或在其他网页被替换，请重新登录。');}
+       else if(this.state.connection==='ready'&&f.type==='message.ack'){
+         const pending=this.pending.get(f.requestId);
+         if(p.status==='committed'){
+-          if(pending&&p.conversationId!==pending.conversation)throw new Error('Wrong conversation');
++          if(pending&&p.conversationId!==pending.conversation)throw new WireFailure();
+           // Attempt timeout does not erase the logical send stored in page memory.
+           const c=p.conversationId as string,row=this.repository.snapshot(c).find(v=>v.requestId===f.requestId&&v.senderId===s.userId);
+           if(!row||!this.state.friends.some(v=>v.directConversationId===c))return;
+@@ -51,7 +51,7 @@ export class WebClient {
+         if(p.status==='committed'&&this.opened.has(p.conversationId as string))void this.sync(p.conversationId as string);
+       }
+       else if(this.state.connection==='ready'&&f.type==='message.created'){const c=p.conversationId as string;if(!this.state.friends.some(v=>v.directConversationId===c))return;this.repository.realtime(f.requestId,p as unknown as RealtimeMessage);const pending=this.pending.get(f.requestId);if(pending&&pending.conversation===c){clearTimeout(pending.timer);this.pending.delete(f.requestId);}this.publish();if(this.opened.has(c))void this.sync(c);}
+-    }catch{socket.close();this.publish({connection:'protocol_error',sync:'无效响应未改变已确认消息'});}};
++    }catch(error){if(!(error instanceof WireFailure))throw error;socket.close();this.publish({connection:'protocol_error',sync:'无效响应未改变已确认消息'});}};
+     socket.onclose=()=>{clearTimeout(authTimer);if(!current())return;for(const [r,v] of this.pending){clearTimeout(v.timer);this.repository.fail(v.conversation,r);}this.pending.clear();this.publish({connection:'offline'});this.reconnectTimer=setTimeout(()=>{if(current())this.connected();},2000);};socket.onerror=()=>{if(current())this.publish({connection:'failed'});};
+   }
+   private async syncFriends(){
+@@ -61,7 +61,7 @@ export class WebClient {
+       for(;;){const cursor=this.userCursor,page=await http.user(cursor,this.abort.signal);if(!this.alive(g))return;
+         // Consume metadata by re-reading the canonical friend projection; no history pull.
+         if(page.events.length){const revision=++this.friendRevision;const list=friends(await this.http.request('/v1/friends','GET',undefined,s.accessToken,this.abort.signal));if(!this.alive(g)||revision!==this.friendRevision)return;
+-          if(list.some(f=>f.user.userId===s.userId))throw new Error('Invalid friend');
++          if(list.some(f=>f.user.userId===s.userId))throw new WireFailure();
+           this.publish({friends:list,friendsBusy:false,friendsError:''});
+         }
+         this.userCursor=page.nextCursor;if(!page.hasMore)break;
+@@ -83,7 +83,7 @@ export class WebClient {
+         // A realtime frame may supersede the window while this page is in flight.
+         // Re-read from the committed live prefix, never from initial history.
+         more=page.hasMore||job.again||prefix<after;
+-        if(!more&&gap)throw new Error('Terminal Sync did not fill the known live gap');
++        if(!more&&gap)throw new SyncFailure("protocol");
+         this.publish();
+       }
+       if(this.alive(g))this.publish({sync:'本页在线消息已同步 · 不补历史'});
+diff --git a/clients/web/src/application/http.ts b/clients/web/src/application/http.ts
+index 88bd3bc..abedbc6 100644
+--- a/clients/web/src/application/http.ts
++++ b/clients/web/src/application/http.ts
+@@ -16,19 +16,41 @@ export class Http {
+   readonly origin:string;
+   constructor(origin:string,private fetcher:typeof fetch=(input,init)=>fetch(input,init)){const u=new URL(origin);if(u.protocol!=='https:'||u.username||u.password||u.search||u.hash||u.pathname!=='/')throw new ApiFailure('HTTPS_REQUIRED',0);this.origin=u.origin;}
+   async request(path:string,method:string,body:unknown,token:string|undefined,signal:AbortSignal):Promise<unknown>{
+-    let r:Response;try {r=await this.fetcher(this.origin+path,{method,body:body===undefined?undefined:JSON.stringify(body),headers:{'Content-Type':'application/json',...(token?{'Authorization':'Bearer '+token}:{})},credentials:'same-origin',redirect:'error',cache:'no-store',signal});}catch{throw new ApiFailure('CONNECTION_UNAVAILABLE',0);}
++    const encoded=body===undefined?undefined:JSON.stringify(body);
++    let r:Response;try {r=await this.fetcher(this.origin+path,{method,body:encoded,headers:{'Content-Type':'application/json',...(token?{'Authorization':'Bearer '+token}:{})},credentials:'same-origin',redirect:'error',cache:'no-store',signal});}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure('CONNECTION_UNAVAILABLE',0);throw error;}
+     if(path==='/v1/auth/logout'&&method==='POST'){
+       if(r.redirected)return invalid();
+       if(r.status===204){
+         // Browsers may expose an empty stream for a no-content HTTP response.
+-        if(r.body){const reader=r.body.getReader();try{if(!(await reader.read()).done)return invalid();}finally{await reader.cancel().catch(()=>{});}}
++        if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
++        if(primary){
++          if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
++          const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
++          if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
++            const failure=new ApiFailure(primary.error.code,primary.error.status);
++            Object.defineProperty(failure,"cause",{value:causes});throw failure;
++          }
++          throw causes;
++        }
++        if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}}
+         return undefined;
+       }
+       if(r.ok)return invalid();
+     }
+     if(r.redirected||!/^application\/json(?:\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();
+     let raw='';const reader=r.body?.getReader();if(!reader)return invalid();const decoder=new TextDecoder('utf8',{fatal:true});let size=0;
+-    try {for(;;){const part=await reader.read();if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();raw+=decoder.decode(part.value,{stream:true});}raw+=decoder.decode();}finally{await reader.cancel().catch(()=>{});}
++    let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;
++    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
++        if(primary){
++          if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
++          const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
++          if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
++            const failure=new ApiFailure(primary.error.code,primary.error.status);
++            Object.defineProperty(failure,"cause",{value:causes});throw failure;
++          }
++          throw causes;
++        }
++        if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}
+     const p=parse(raw,6*1024*1024);
+     if(!r.ok){const e=object(p,['requestId','error']);uuid(e.requestId);const detail=e.error as Record<string,unknown>;if(!detail||typeof detail.code!=='string')return invalid();const allowed=['VALIDATION_FAILED','AUTH_REQUIRED','AUTH_TOKEN_INVALID','AUTH_TOKEN_EXPIRED','AUTH_SESSION_REVOKED','AUTH_SESSION_EPOCH_STALE','AUTH_CLIENT_TYPE_MISMATCH','AUTH_REFRESH_REVOKED','AUTH_INVALID_CREDENTIALS','AUTHORIZATION_DENIED','USER_NOT_FOUND','FRIEND_SELF_NOT_ALLOWED','FRIENDSHIP_STATE_CONFLICT','PROTOCOL_VERSION_UNSUPPORTED'];throw new ApiFailure(allowed.includes(detail.code)?detail.code:'REQUEST_FAILED',r.status);}
+     return p;
+diff --git a/clients/web/src/application/repository.ts b/clients/web/src/application/repository.ts
+index 7028cdc..8fc92fc 100644
+--- a/clients/web/src/application/repository.ts
++++ b/clients/web/src/application/repository.ts
+@@ -1,3 +1,4 @@
++import {WireFailure} from '../../../shared/protocol-sdk/src/send/wire.js';
+ import type {LocalMessage,ServerMessage,Committed,RealtimeMessage,State} from '../../../shared/protocol-sdk/src/storage/models.js';
+ export interface Message extends LocalMessage {state:State;messageId?:string;seq?:bigint;createdAt?:string}
+ export class MemoryRepository {
+@@ -20,14 +21,14 @@ export class MemoryRepository {
+   page(c:string,after:bigint,messages:ServerMessage[]){
+     // Validate entire page against the current view before publishing anything.
+     let next=after+1n;const draft=new MemoryRepository();draft.rows=this.rows.map(m=>({...m,content:{...m.content}}));draft.cursors=new Map(this.cursors);draft.starts=new Map(this.starts);
+-    for(const m of messages){if(m.conversationId!==c||BigInt(m.seq)!==next++)throw new Error('Sync gap');draft.commit(m);}
++    for(const m of messages){if(m.conversationId!==c||BigInt(m.seq)!==next++)throw new WireFailure();draft.commit(m);}
+     this.rows=draft.rows;this.cursors=draft.cursors;this.starts=draft.starts;
+   }
+   private commit(m:ServerMessage){
+     const seq=BigInt(m.seq);
+     const existing=this.rows.find(v=>v.conversationId===m.conversationId&&v.requestId===m.requestId);
+     const collision=this.rows.find(v=>(v.messageId===m.messageId||v.conversationId===m.conversationId&&v.seq===seq)&&v!==existing);
+-    if(collision||existing&&(existing.senderId!==m.senderId||existing.content.text!==m.content.text||existing.state==="SENT"&&(existing.messageId!==m.messageId||existing.seq!==seq)))throw new Error('Conflicting committed identity');
++    if(collision||existing&&(existing.senderId!==m.senderId||existing.content.text!==m.content.text||existing.state==="SENT"&&(existing.messageId!==m.messageId||existing.seq!==seq)))throw new WireFailure();
+     const row:Message={...m,content:{...m.content},seq,state:"SENT"};
+     if(existing)Object.assign(existing,row);else this.rows.push(row);
+     const oldStart=this.starts.get(m.conversationId);const start=oldStart===undefined||seq<oldStart?seq:oldStart;this.starts.set(m.conversationId,start);
+diff --git a/clients/web/src/ui/appearance.ts b/clients/web/src/ui/appearance.ts
+index 32ef9fd..1ce0a9f 100644
+--- a/clients/web/src/ui/appearance.ts
++++ b/clients/web/src/ui/appearance.ts
+@@ -1,16 +1,17 @@
+ export interface Appearance {theme:"cold"|"warm";fontSize:14|16|18|20;density:"compact"|"comfortable"|"spacious"}
+ const APPEARANCE_KEY = "plugworldim.appearance.v1";
+ export const defaults:Appearance={theme:"cold",fontSize:16,density:"comfortable"};
++class InvalidAppearance extends TypeError {}
+ export function validate(value:unknown):Appearance {
+-  if(!value||typeof value!=="object"||Array.isArray(value))throw new Error("Invalid appearance");
++  if(!value||typeof value!=="object"||Array.isArray(value))throw new InvalidAppearance("Invalid appearance");
+   const v=value as Record<string,unknown>;
+-  if(Object.keys(v).length!==3||!['theme','fontSize','density'].every(k=>Object.hasOwn(v,k))||typeof v.theme!=="string"||!['cold','warm'].includes(v.theme)||typeof v.fontSize!=="number"||![14,16,18,20].includes(v.fontSize)||typeof v.density!=="string"||!['compact','comfortable','spacious'].includes(v.density))throw new Error("Invalid appearance");
++  if(Object.keys(v).length!==3||!['theme','fontSize','density'].every(k=>Object.hasOwn(v,k))||typeof v.theme!=="string"||!['cold','warm'].includes(v.theme)||typeof v.fontSize!=="number"||![14,16,18,20].includes(v.fontSize)||typeof v.density!=="string"||!['compact','comfortable','spacious'].includes(v.density))throw new InvalidAppearance("Invalid appearance");
+   return {theme:v.theme as Appearance['theme'],fontSize:v.fontSize as Appearance['fontSize'],density:v.density as Appearance['density']};
+ }
+ export function loadAppearance():Appearance {
+-  try {const raw=window.localStorage.getItem(APPEARANCE_KEY);if(!raw||raw.length>128)return {...defaults};return validate(JSON.parse(raw));}catch{return {...defaults};}
++  try {const raw=window.localStorage.getItem(APPEARANCE_KEY);if(!raw||raw.length>128)return {...defaults};return validate(JSON.parse(raw));}catch(error){if(error instanceof DOMException || error instanceof SyntaxError || error instanceof InvalidAppearance)return {...defaults};throw error;}
+ }
+ export function saveAppearance(value:Appearance):boolean {
+   const valid=validate(value);
+-  try {window.localStorage.setItem(APPEARANCE_KEY, JSON.stringify({theme: valid.theme, fontSize: valid.fontSize, density: valid.density}));return true;}catch{return false;}
++  try {window.localStorage.setItem(APPEARANCE_KEY, JSON.stringify({theme: valid.theme, fontSize: valid.fontSize, density: valid.density}));return true;}catch(error){if(error instanceof DOMException)return false;throw error;}
+ }
+diff --git a/clients/web/src/ui/components/FriendsPanel.tsx b/clients/web/src/ui/components/FriendsPanel.tsx
+index bcd0a79..8b58a8c 100644
+--- a/clients/web/src/ui/components/FriendsPanel.tsx
++++ b/clients/web/src/ui/components/FriendsPanel.tsx
+@@ -3,5 +3,5 @@ import React from "react";
+ import type {View} from "../../application/client.js";
+ export function FriendsPanel({v,search,setSearch,searched,setSearched,open,loadFriends,searchUsers,addFriend}:{v:Pick<View,"friends"|"friendsBusy"|"friendsError"|"searchBusy"|"searchError"|"searchResults"|"user">;search:string;setSearch:(value:string)=>void;searched:boolean;setSearched:(value:boolean)=>void;open:(id:string)=>void;loadFriends:()=>Promise<void>;searchUsers:(value:string)=>Promise<void>;addFriend:(id:string)=>Promise<void>}){
+   const t=useText();const display=useDisplayText();
+-  return <section className="page"><div className="page-heading"><div><span className="eyebrow">{t("friends.people")}</span><h1>{t("nav.friends")}</h1><p className="muted">{t("friends.direct")}</p></div><button onClick={()=>void loadFriends()} disabled={v.friendsBusy}>{t("friends.refresh")}</button></div><form className="search card" onSubmit={e=>{e.preventDefault();setSearched(true);void searchUsers(search);}}><label htmlFor="search">{t("friends.exact")}</label><div><input id="search" placeholder={t("friends.usernameHint")} minLength={3} maxLength={64} value={search} onChange={e=>setSearch(e.target.value)} required/><button className="primary" disabled={v.searchBusy}>{v.searchBusy?t("friends.searching"):t("friends.search")}</button></div>{v.searchError&&<p className="error" role="alert">{display(v.searchError)}</p>}{searched&&!v.searchBusy&&!v.searchError&&!v.searchResults.length&&<p>{t("friends.noMatch")}</p>}{v.searchResults.map(u=><div className="friend" key={u.userId}><span className="avatar">{u.displayName.slice(0,1)}</span><div><strong>{u.displayName}</strong><p>@{u.username}</p></div><button disabled={v.searchBusy||u.userId===v.user?.userId||v.friends.some(f=>f.user.userId===u.userId)} onClick={()=>void addFriend(u.userId)}>{v.friends.some(f=>f.user.userId===u.userId)?t("friends.already"):t("friends.add")}</button></div>)}</form><h2>{t("friends.your")}<span className="muted">{v.friends.length}</span></h2>{v.friendsBusy&&<p role="status">{t("friends.loading")}</p>}{v.friendsError&&<p role="alert" className="error">{display(v.friendsError)}</p>}{!v.friendsBusy&&!v.friends.length&&<div className="card empty"><span>◫</span><h3>{t("friends.grow")}</h3><p>{t("friends.searchHint")}</p></div>}<div className="friend-grid">{v.friends.map(f=><article className="friend card" key={f.user.userId}><span className="avatar">{f.user.displayName.slice(0,1)}</span><div><strong>{f.user.displayName}</strong><p>@{f.user.username}</p></div><button onClick={()=>open(f.directConversationId)}>{t("friends.message")}</button></article>)}</div></section>;
++  return <section className="page"><div className="page-heading"><div><span className="eyebrow">{t("friends.people")}</span><h1>{t("nav.friends")}</h1><p className="muted">{t("friends.direct")}</p></div><button onClick={()=>void loadFriends()} disabled={v.friendsBusy}>{t("friends.refresh")}</button></div><form className="search card" onSubmit={e=>{e.preventDefault();setSearched(true);void searchUsers(search);}}><label htmlFor="search">{t("friends.exact")}</label><div><input id="search" placeholder={t("friends.usernameHint")} minLength={3} maxLength={64} value={search} onChange={e=>{setSearched(false);setSearch(e.target.value);}} required/><button className="primary" disabled={v.searchBusy}>{v.searchBusy?t("friends.searching"):t("friends.search")}</button></div>{v.searchError&&<p className="error" role="alert">{display(v.searchError)}</p>}{searched&&!v.searchBusy&&!v.searchError&&!v.searchResults.length&&<p>{t("friends.noMatch")}</p>}{v.searchResults.map(u=><div className="friend" key={u.userId}><span className="avatar">{u.displayName.slice(0,1)}</span><div><strong>{u.displayName}</strong><p>@{u.username}</p></div><button disabled={v.searchBusy||u.userId===v.user?.userId||v.friends.some(f=>f.user.userId===u.userId)} onClick={()=>void addFriend(u.userId)}>{v.friends.some(f=>f.user.userId===u.userId)?t("friends.already"):t("friends.add")}</button></div>)}</form><h2>{t("friends.your")}<span className="muted">{v.friends.length}</span></h2>{v.friendsBusy&&<p role="status">{t("friends.loading")}</p>}{v.friendsError&&<p role="alert" className="error">{display(v.friendsError)}</p>}{!v.friendsBusy&&!v.friends.length&&<div className="card empty"><span>◫</span><h3>{t("friends.grow")}</h3><p>{t("friends.searchHint")}</p></div>}<div className="friend-grid">{v.friends.map(f=><article className="friend card" key={f.user.userId}><span className="avatar">{f.user.displayName.slice(0,1)}</span><div><strong>{f.user.displayName}</strong><p>@{f.user.username}</p></div><button onClick={()=>open(f.directConversationId)}>{t("friends.message")}</button></article>)}</div></section>;
+ }
+diff --git a/clients/web/src/ui/components/Messages.tsx b/clients/web/src/ui/components/Messages.tsx
+index 6c38b9f..a40fd61 100644
+--- a/clients/web/src/ui/components/Messages.tsx
++++ b/clients/web/src/ui/components/Messages.tsx
+@@ -4,5 +4,7 @@ import type {View} from "../../application/client.js";
+ import type {MemoryRepository} from "../../application/repository.js";
+ export function Messages({v,messages,retry}:{v:Pick<View,"user">;messages:ReturnType<MemoryRepository["snapshot"]>;retry:(conversation:string,request:string)=>void}){
+   const t=useText();
+-  return <div className="messages" aria-live="polite">{!messages.length&&<div className="empty"><span>◌</span><h3>{t("chat.webStart")}</h3><p>{t("web.emptyChat1")}<br/>{t("web.emptyChat2")}</p></div>}{messages.map(m=><article key={m.requestId} className={'message '+(m.senderId===v.user?.userId?'own':'')}><p>{m.content.text}</p><div className="message-meta"><span>{m.state==='SENDING'?t("chat.webSending"):m.state==='SENT'?t("chat.webSent"):t("chat.webFailed")}</span>{m.state==='FAILED'&&<button onClick={()=>retry(m.conversationId,m.requestId)}>{t("chat.retry")}</button>}{m.seq!==undefined&&<span>#{m.seq.toString()}</span>}</div></article>)}</div>;
++  const status=(value:unknown)=>{switch(value){case "SENDING":return t("chat.webSending");case "SENT":return t("chat.webSent");case "FAILED":return t("chat.webFailed");default:throw new Error("Invalid message state");}};
++  const body=(m:(typeof messages)[number])=>{if(typeof m.content?.text!=="string" || !m.requestId)throw new Error("Invalid message content or identity");return m.content.text;};
++  return <div className="messages" aria-live="polite">{!messages.length&&<div className="empty"><span>◌</span><h3>{t("chat.webStart")}</h3><p>{t("web.emptyChat1")}<br/>{t("web.emptyChat2")}</p></div>}{messages.map(m=><article key={m.requestId} className={'message '+(m.senderId===v.user?.userId?'own':'')}><p>{body(m)}</p><div className="message-meta"><span>{status(m.state)}</span>{m.state==='FAILED'&&<button onClick={()=>retry(m.conversationId,m.requestId)}>{t("chat.retry")}</button>}{m.seq!==undefined&&<span>#{m.seq.toString()}</span>}</div></article>)}</div>;
+ }
+diff --git a/clients/web/src/ui/language.ts b/clients/web/src/ui/language.ts
+index 0ad2c51..e4bf052 100644
+--- a/clients/web/src/ui/language.ts
++++ b/clients/web/src/ui/language.ts
+@@ -1,9 +1,9 @@
+ import {validLocale,type Locale} from "./i18n/resources.js";
+ const LANGUAGE_KEY="plugworldim.language.v1";
+ export function loadLanguage():Locale {
+- try {const raw=window.localStorage.getItem(LANGUAGE_KEY);return validLocale(raw)?raw:"en";}catch{return "en";}
++ try {const raw=window.localStorage.getItem(LANGUAGE_KEY);return validLocale(raw)?raw:"en";}catch(error){if(error instanceof DOMException)return "en";throw error;}
+ }
+ export function saveLanguage(value:Locale):boolean {
+  if(!validLocale(value))return false;
+- try {window.localStorage.setItem(LANGUAGE_KEY,value);return true;}catch{return false;}
++ try {window.localStorage.setItem(LANGUAGE_KEY,value);return true;}catch(error){if(error instanceof DOMException)return false;throw error;}
+ }

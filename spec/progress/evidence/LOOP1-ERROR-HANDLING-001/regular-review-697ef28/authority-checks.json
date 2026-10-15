@@ -1,0 +1,303 @@
+[
+  {
+    "name": "assigned root",
+    "passed": true,
+    "detail": "H:/.codex/worktrees/err/IM-platform"
+  },
+  {
+    "name": "exact candidate",
+    "passed": true,
+    "detail": "697ef28a748354c624af71d9aaf81aa1ec02afae"
+  },
+  {
+    "name": "clean state",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "branch",
+    "passed": true,
+    "detail": "task/LOOP1-ERROR-HANDLING-001"
+  },
+  {
+    "name": "unique review",
+    "passed": true,
+    "detail": "exact CurrentTask"
+  },
+  {
+    "name": "scope",
+    "passed": true,
+    "detail": [
+      "AGENTS.md",
+      "backend/go/core/auth.go",
+      "backend/go/core/error_handling_test.go",
+      "backend/go/core/message.go",
+      "backend/go/core/outbox.go",
+      "backend/go/core/outbox_test.go",
+      "backend/go/core/sync.go",
+      "backend/go/gateway/error_handling_test.go",
+      "backend/go/gateway/gateway.go",
+      "backend/go/gateway/session.go",
+      "backend/go/main.go",
+      "backend/java/InfraPlaceholder.java",
+      "ci/check_architecture.py",
+      "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "clients/desktop/src-tauri/src/lib.rs",
+      "clients/desktop/src/application/accountSend.ts",
+      "clients/desktop/src/application/send.ts",
+      "clients/desktop/src/application/sync/application.ts",
+      "clients/desktop/src/application/ui/auth.ts",
+      "clients/desktop/src/application/ui/native.ts",
+      "clients/desktop/src/application/ui/workspace.ts",
+      "clients/desktop/src/ui/components/Messages.tsx",
+      "clients/desktop/src/ui/components/Shell.tsx",
+      "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ReadOriginChecks.kt",
+      "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/SyncInstrumentation.kt",
+      "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/ErrorHandlingInstrumentation.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+      "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+      "clients/shared/protocol-sdk/src/send/wire.ts",
+      "clients/shared/protocol-sdk/src/sync/http.ts",
+      "clients/shared/protocol-sdk/src/sync/wire.ts",
+      "clients/web/src/application/client.ts",
+      "clients/web/src/application/http.ts",
+      "clients/web/src/application/repository.ts",
+      "clients/web/src/ui/appearance.ts",
+      "clients/web/src/ui/components/FriendsPanel.tsx",
+      "clients/web/src/ui/components/Messages.tsx",
+      "clients/web/src/ui/language.ts",
+      "spec/governance/error-handling.md",
+      "spec/governance/independent-review.md",
+      "spec/governance/minimality.md",
+      "spec/handoff/agent-context.md",
+      "spec/progress/checkpoints/2026-10-13-error-handling-review-candidate.md",
+      "spec/progress/current.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/commit-ownership-audit.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/excluded-sqlite-handling.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/boundary-scope.txt",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/handoff.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/input-checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/ownership-audit.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/review-seals.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/runtime-cleanup.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-android-read/verification-history.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/handoff.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/input-checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/ownership-audit.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-read-origin/verification-history.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/human-boundary-clarification.txt",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-audit.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/implementation-handoff.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/instrumentation-limits.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/java-placeholder-authority-assessment.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/message-render-scope.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/production-inventory.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/prompt.txt",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/protected-inputs.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/recovery-audit-report.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/hashes.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/report.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-7700645/repro-read-boundaries.mjs",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/authority-checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/backend/navigation-addendum.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/backend/prior-live-inspection.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/backend/report.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/backend/retained-sites.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/backend/source-coverage.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/command-history.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/desktop-additional-native-grounds.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/desktop-coverage.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/desktop-retained-grounds.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/final-receipt.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/hashes.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/protected-checks.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/report.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/research/runs/R-ERROR-REGULAR-E2294AC/events.jsonl",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/research/runs/R-ERROR-REGULAR-E2294AC/metadata.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/research/runs/R-ERROR-REGULAR-E2294AC/summary.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/retained-grounds.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/semantic-coverage.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/web-mobile/coverage.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/regular-review-e2294ac/web-mobile/review.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/runtime-cleanup.json",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/scope-justification.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/search-and-fixture-scope.md",
+      "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/verification-history.json",
+      "spec/tasks/TASK_TEMPLATE.md",
+      "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+      "tests/architecture/test_client_technology.py",
+      "tests/architecture/test_source_boundaries.py",
+      "tests/clients/errors/.gitignore",
+      "tests/clients/errors/desktop_native_reads.mjs",
+      "tests/clients/errors/desktop_reads.mjs",
+      "tests/clients/errors/desktop_render.mjs",
+      "tests/clients/errors/go_live.py",
+      "tests/clients/errors/java.py",
+      "tests/clients/errors/mobile.py",
+      "tests/clients/gui/auth.mjs",
+      "tests/clients/i18n/compiled.mjs",
+      "tests/clients/i18n/scheduling.mjs",
+      "tests/clients/i18n/verify.mjs",
+      "tests/clients/send/desktop.mjs",
+      "tests/clients/sync/desktop.mjs",
+      "tests/clients/sync/shared.mjs",
+      "tests/clients/web/appearance.mjs",
+      "tests/clients/web/regressions.mjs"
+    ]
+  },
+  {
+    "name": "canonicalhash",
+    "passed": true,
+    "detail": "efbe04c7eb308904d1759b8e145a32363620ed8c14daef58f09c644bdc897bdc"
+  },
+  {
+    "name": "65protected equal baseline",
+    "passed": true,
+    "detail": 65
+  },
+  {
+    "name": "185 inventory hashes",
+    "passed": true,
+    "detail": 185
+  },
+  {
+    "name": "prerequisite",
+    "passed": true,
+    "detail": "d8d6fe2107a946bbb9aaae7c489863ab000eecf927b0009fc477ebef282dad5a"
+  },
+  {
+    "name": "prerequisite administrative-independent-20261013/report.md",
+    "passed": true,
+    "detail": "0f4a99f379050ce9e556bd3ec92111826d995371363442cc7147aa673bff818c"
+  },
+  {
+    "name": "prerequisite administrative-fix-20261013/checks.json",
+    "passed": true,
+    "detail": "15dc4f9a6e71a78d21e6fc5ccf3ff0f7fe6c725c21328c0772570a5a21728361"
+  },
+  {
+    "name": "prerequisite administrative-independent-fixed-20261013/report.md",
+    "passed": true,
+    "detail": "1defaad963a0d6bbcd4a472045e67ddeb77c1623f1668dad0fc47de37e00fb43"
+  },
+  {
+    "name": "prerequisite admin-hosted-acceptance-20261013.json",
+    "passed": true,
+    "detail": "bb62ddb481ba80ac7d75962d503ff9dfc78b0f887d351ddc55f9a0fec0dd8d9c"
+  },
+  {
+    "name": "prerequisite admin-main-hosted-acceptance-20261013.json",
+    "passed": true,
+    "detail": "8328dbafa848e7493f8caf28280f1b8ca969ee2465c8a4f8fdc6e75199a3bffa"
+  },
+  {
+    "name": "prerequisite admin-protected-merge-20261013.json",
+    "passed": true,
+    "detail": "6039048d44ef14a0f0532eaf09dfba53284473fb5f373bdfea2fbfc1819837c9"
+  },
+  {
+    "name": "prerequisite admin-main-sync-20261013.json",
+    "passed": true,
+    "detail": "edf53a7ea975fce1a921b4b9df4e0704a6fb95a6e2bd859ce5e3d0c2dd2c6e56"
+  },
+  {
+    "name": "prerequisite product-main-sync-20261013.json",
+    "passed": true,
+    "detail": "82ce712a406f89bbfea9e86504fb2edff69efd6b6f3d2a1d1834f07e8e09c5fd"
+  },
+  {
+    "name": "prerequisite accepted-language-pack-delivery-20261013.json",
+    "passed": true,
+    "detail": "a890197b735b52373afd777330bec433722f29c5cac09f859b3bea288c5a88c4"
+  },
+  {
+    "name": "prerequisite native-status-repair/captures/manifest.json",
+    "passed": true,
+    "detail": "7d02d1994e3de1b21abf1b7304e0b73c39c90b82f15185fdc268992e6d90e516"
+  },
+  {
+    "name": "prerequisite recorder-final-validation-20261013.json",
+    "passed": true,
+    "detail": "3ab21342ea6bcf1e40d3f06304a19d292e7057754f50d3c2416611290d0d00a0"
+  },
+  {
+    "name": "Android fix preserves Send",
+    "passed": true,
+    "detail": "76dd63549ae3a30c003dadff83cb2026118b778c0d98d068ba34c1d9416c76b4"
+  },
+  {
+    "name": "prior actual Android instrumentation blob hashes",
+    "passed": true,
+    "detail": {
+      "all_command_records": 26,
+      "runtime_record_count": 4,
+      "nonruntime_mismatches": [
+        "C-45f18359-e4c3-492a-8830-669e809bfc5e",
+        "C-d9589e8f-413b-4293-964c-4823564f40df",
+        "C-707e8059-37b6-4aca-8576-4e0c71de2d6e"
+      ],
+      "limitation": "Recorder stores redacted/decode-replacement text while hash describes raw process bytes. No raw hash equivalence claimed for 3 nonruntime command blobs; prior original attempts preserved."
+    }
+  },
+  {
+    "name": "all language maps data-only and equal keys",
+    "passed": true,
+    "detail": [
+      260,
+      260,
+      260
+    ]
+  },
+  {
+    "name": "wrapper is Gradle binary not product fallback",
+    "passed": true,
+    "detail": [
+      "META-INF/LICENSE",
+      "META-INF/MANIFEST.MF",
+      "org/gradle/cli/CommandLineArgumentException.class",
+      "org/gradle/cli/CommandLineOption.class",
+      "org/gradle/cli/CommandLineParser$AfterOptions.class",
+      "org/gradle/cli/CommandLineParser$BeforeFirstSubCommand.class",
+      "org/gradle/cli/CommandLineParser$KnownOptionParserState.class",
+      "org/gradle/cli/CommandLineParser$MissingOptionArgState.class",
+      "org/gradle/cli/CommandLineParser$OptionAwareParserState.class",
+      "org/gradle/cli/CommandLineParser$OptionParserState.class",
+      "org/gradle/cli/CommandLineParser$OptionString.class",
+      "org/gradle/cli/CommandLineParser$ParserState.class",
+      "org/gradle/cli/CommandLineParser$UnknownOptionParserState.class",
+      "org/gradle/cli/CommandLineParser.class",
+      "org/gradle/cli/ParsedCommandLine.class",
+      "org/gradle/cli/ParsedCommandLineOption.class",
+      "org/gradle/internal/file/PathTraversalChecker.class",
+      "org/gradle/internal/file/locking/ExclusiveFileAccessManager.class",
+      "org/gradle/util/internal/WrapperDistributionUrlConverter.class",
+      "org/gradle/wrapper/BootstrapMainStarter$1.class",
+      "org/gradle/wrapper/Download$DefaultDownloadProgressListener.class",
+      "org/gradle/wrapper/Download$ProxyAuthenticator.class",
+      "org/gradle/wrapper/Download.class",
+      "org/gradle/wrapper/GradleUserHomeLookup.class",
+      "org/gradle/wrapper/GradleWrapperMain.class",
+      "org/gradle/wrapper/Install$1.class",
+      "org/gradle/wrapper/Install$InstallCheck.class",
+      "org/gradle/wrapper/Install.class",
+      "org/gradle/wrapper/Logger.class",
+      "org/gradle/wrapper/PathAssembler.class",
+      "org/gradle/wrapper/SystemPropertiesHandler.class",
+      "org/gradle/wrapper/WrapperConfiguration.class",
+      "org/gradle/wrapper/WrapperExecutor.class"
+    ]
+  }
+]

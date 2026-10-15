@@ -1,0 +1,241 @@
+
+FILE clients/web/src/application/client.ts
+import {WireFailure,decode,envelope,object,uuid,content} from '../../../shared/protocol-sdk/src/send/wire.js';
+import {SyncHttp} from '../../../shared/protocol-sdk/src/sync/http.js';
+import {SyncFailure} from '../../../shared/protocol-sdk/src/sync/wire.js';
+import type {Committed,RealtimeMessage} from '../../../shared/protocol-sdk/src/storage/models.js';
+import {Http,auth,user,friends,ApiFailure} from './http.js';
+import type {User,Friend,Session} from './http.js';
+import {MemoryRepository} from './repository.js';
+export type Connection = 'idle'|'ready'|'connecting'|'failed'|'protocol_error'|'offline';
+export interface View {session:boolean;authBusy:boolean;notice:string;connection:Connection;sync:string;user?:User;friends:Friend[];friendsBusy:boolean;friendsError:string;profileBusy:boolean;profileError:string;searchBusy:boolean;searchError:string;searchResults:User[];selected:string;revision:number}
+export class WebClient {
+  readonly repository=new MemoryRepository();
+  private state:View={session:false,authBusy:false,notice:'',connection:'idle',sync:'',friends:[],friendsBusy:false,friendsError:'',profileBusy:false,profileError:'',searchBusy:false,searchError:'',searchResults:[],selected:'',revision:0};
+  private listeners=new Set<()=>void>();private session?:Session;private generation=0;private abort=new AbortController();private socket?:WebSocket;private friendRevision=0;private userCursor="0";private userSyncing=false;private userPoll?:ReturnType<typeof setInterval>;private reconnectTimer?:ReturnType<typeof setTimeout>;private refreshTimer?:ReturnType<typeof setTimeout>;private pending=new Map<string,{conversation:string;timer:ReturnType<typeof setTimeout>}>();private opened=new Set<string>();private syncing=new Map<string,{again:boolean}>();private bind='';private device=crypto.randomUUID();private refreshing?:Promise<void>;
+  readonly http:Http;
+  constructor(origin:string,private fetcher:typeof fetch=(input,init)=>fetch(input,init),private socketFactory:(url:string)=>WebSocket=url=>new WebSocket(url),private timeout=10000){this.http=new Http(origin,fetcher);}
+  view=()=>this.state;
+  subscribe=(f:()=>void)=>{this.listeners.add(f);return()=>{this.listeners.delete(f);};};
+  private publish(p:Partial<View>={}){this.state={...this.state,...p,revision:this.state.revision+1};for(const f of this.listeners)f();}
+  private metadata(){return {clientType:'WEB',deviceId:this.device,clientVersion:'0.1.0',protocolVersion:'1'};}
+  private alive(g:number){return g===this.generation;}
+  private clear(notice:string){this.generation++;this.abort.abort();this.abort=new AbortController();clearTimeout(this.reconnectTimer);clearTimeout(this.refreshTimer);clearInterval(this.userPoll);this.userPoll=undefined;this.userCursor="0";this.userSyncing=false;this.friendRevision++;for(const p of this.pending.values())clearTimeout(p.timer);this.pending.clear();this.opened.clear();this.syncing.clear();this.socket?.close();this.socket=undefined;this.session=undefined;this.repository.reset();this.state={session:false,authBusy:false,notice,connection:'idle',sync:'',friends:[],friendsBusy:false,friendsError:'',profileBusy:false,profileError:'',searchBusy:false,searchError:'',searchResults:[],selected:'',revision:this.state.revision};this.publish();}
+  private error(e:unknown,g:number){if(!(e instanceof ApiFailure || e instanceof SyncFailure || e instanceof WireFailure))throw e;if(!this.alive(g))return;if(e instanceof ApiFailure&&e.status===401||e instanceof SyncFailure&&e.kind==='authentication')this.clear('会话已过期，请重新登录。');}
+  async login(username:string,password[REDACTED];const g=this.generation;this.publish({authBusy:true});try {const s=auth(await this.http.request('/v1/auth/login','POST',{...this.metadata(),username,password},undefined,this.abort.signal));if(!this.alive(g))return;this.session=s;this.publish({session:true,authBusy:false,notice:'已登录 · 消息仅保留在当前页面内存'});this.connected();void this.loadFriends();void this.loadProfile();}catch(e){this.error(e,g);if(this.alive(g))this.publish({authBusy:false,notice:e instanceof ApiFailure&&e.status===401?'账号或密码不正确。':'登录失败，请检查网络后重试。'});}}
+  async refresh(){if(this.refreshing)return this.refreshing;const g=this.generation;this.publish({authBusy:true,notice:'正在刷新会话…'});this.refreshing=(async()=>{try {const s=auth(await this.http.request('/v1/auth/refresh/web','POST',this.metadata(),undefined,this.abort.signal));if(!this.alive(g))return;if(this.session&&(s.userId!==this.session.userId||s.sessionId!==this.session.sessionId||s.sessionEpoch!==this.session.sessionEpoch)){this.clear('会话已被替换，请重新登录。');return;}this.session=s;this.publish({session:true,authBusy:false,notice:'会话已刷新'});this.socket?.close();this.connected();void this.loadFriends();void this.loadProfile();}catch(e){this.error(e,g);if(this.alive(g))this.publish({authBusy:false,notice:'会话刷新失败，请重试或重新登录。'});}finally{this.refreshing=undefined;}})();return this.refreshing;}
+  async logout(){const s=this.session,g=this.generation;const signal=this.abort.signal;this.publish({authBusy:true});try {if(s)await this.http.request('/v1/auth/logout','POST',undefined,s.accessToken,signal);if(this.alive(g))this.clear('已退出登录。');}catch(e){if(!(e instanceof ApiFailure || e instanceof SyncFailure || e instanceof WireFailure))throw e;if(this.alive(g)){this.clear('本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。');}}}
+  async loadProfile(){const s=this.session,g=this.generation;if(!s)return;this.publish({profileBusy:true,profileError:''});try{const p=object(await this.http.request('/v1/users/me','GET',undefined,s.accessToken,this.abort.signal),['user']),u=user(p.user);if(u.userId!==s.userId)throw new WireFailure();if(this.alive(g))this.publish({user:u,profileBusy:false});}catch(e){this.error(e,g);if(this.alive(g))this.publish({profileBusy:false,profileError:'个人资料加载失败，可重试。'});}}
+  async loadFriends(){const revision=++this.friendRevision;const s=this.session,g=this.generation;if(!s)return;this.publish({friendsBusy:true,friendsError:''});try{const list=friends(await this.http.request('/v1/friends','GET',undefined,s.accessToken,this.abort.signal));if(list.some(f=>f.user.userId===s.userId))throw new WireFailure();if(this.alive(g)&&revision===this.friendRevision)this.publish({friends:list,friendsBusy:false});}catch(e){this.error(e,g);if(this.alive(g)&&revision===this.friendRevision)this.publish({friendsBusy:false,friendsError:'好友加载失败，可重试。'});}}
+  async search(username:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:'',searchResults:[]});try{const p=object(await this.http.request('/v1/users/search?username='+encodeURIComponent(username),'GET',undefined,s.accessToken,this.abort.signal),['users']);if(!Array.isArray(p.users)||p.users.length>1)throw new WireFailure();const users=p.users.map(user);if(this.alive(g))this.publish({searchBusy:false,searchResults:users});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'搜索失败，请检查用户名后重试。'});}}
+  async addFriend(id:string){const s=this.session,g=this.generation;if(!s)return;this.publish({searchBusy:true,searchError:''});try{const p=object(await this.http.request('/v1/friends/'+uuid(id),'PUT',undefined,s.accessToken,this.abort.signal),['friendshipId','normalizedPair','directConversationId','memberUserIds','created']);uuid(p.friendshipId);const pair=object(p.normalizedPair,['lowUserId','highUserId']);if(!Array.isArray(p.memberUserIds)||p.memberUserIds.length!==2||new Set(p.memberUserIds).size!==2||!p.memberUserIds.includes(s.userId)||!p.memberUserIds.includes(id)||uuid(pair.lowUserId)!==[s.userId,id].sort()[0]||uuid(pair.highUserId)!==[s.userId,id].sort()[1]||typeof p.created!=='boolean')throw new WireFailure();const c=uuid(p.directConversationId);if(!this.alive(g))return;await this.loadFriends();if(this.alive(g))this.publish({searchBusy:false,notice:'好友已添加，唯一私聊已建立',selected:c});}catch(e){this.error(e,g);if(this.alive(g))this.publish({searchBusy:false,searchError:'添加好友失败，请重试。'});}}
+  open(c:string){if(!this.state.friends.some(f=>f.directConversationId===c))return;this.opened.add(c);this.publish({selected:c,sync:this.repository.hasBaseline(c)?'':'仅接收本页实时消息 · 不补历史'});void this.sync(c);}
+  send(text:string){const s=this.session,c=this.state.selected;if(!s||!c||!this.state.friends.some(f=>f.directConversationId===c))return;const m={conversationId:c,requestId:crypto.randomUUID(),senderId:s.userId,content:content({kind:'TEXT',text})};this.repository.begin(m);this.transmit(m.conversationId,m.requestId);return m.requestId;}
+  retry(c:string,r:string){const s=this.session,row=this.repository.snapshot(c).find(v=>v.requestId===r);if(!s||!row||row.state!=='FAILED'||row.senderId!==s.userId)return;this.repository.begin(row);this.transmit(c,r);}
+  private transmit(c:string,r:string){const m=this.repository.snapshot(c).find(v=>v.requestId===r);if(!m)return;this.opened.add(c);this.publish();if(this.state.connection!=='ready'||!this.socket){this.repository.fail(c,r);this.publish();return;}try {this.socket.send(envelope('message.send',r,{conversationId:c,content:m.content}));const g=this.generation;const timer=setTimeout(()=>{if(this.alive(g)){this.pending.delete(r);this.repository.fail(c,r);this.publish();void this.sync(c);}},this.timeout);this.pending.set(r,{conversation:c,timer});}catch(error){if(!(error instanceof DOMException))throw error;this.repository.fail(c,r);this.publish();}}
+  reconnect(){if(!this.session)return;clearTimeout(this.reconnectTimer);this.socket?.close();this.connected();}
+  private connected(){const s=this.session,g=this.generation;if(!s)return;clearTimeout(this.refreshTimer);const wait=Math.max(1,s.expires-Date.now()-30000);this.refreshTimer=setTimeout(()=>void this.refresh(),wait);const url=this.http.origin.replace('https:','wss:')+'/v1/ws';let socket:WebSocket;try{socket=this.socketFactory(url);}catch(error){if(!(error instanceof DOMException))throw error;this.publish({connection:'failed'});return;}this.socket=socket;this.bind=crypto.randomUUID();const bind=this.bind;this.publish({connection:'connecting'});const current=()=>this.alive(g)&&this.socket===socket;
+    const authTimer=setTimeout(()=>{if(current())socket.close();},10000);
+    socket.onopen=()=>{if(current())socket.send(envelope('auth.bind',bind,{accessToken[REDACTED];};
+    socket.onmessage=e=>{if(!current()||typeof e.data!=='string')return;try{const f=decode(e.data),p=f.payload;if(f.type==='auth.ack'){clearTimeout(authTimer);if(f.requestId!==bind)throw new WireFailure();if(p.status==='rejected'){const code=(p.error as {code:string}).code;if(code==='AUTH_TOKEN_EXPIRED'){void this.refresh();return;}this.clear('会话已失效，请重新登录。');return;}if(p.userId!==s.userId||p.sessionId!==s.sessionId||p.clientType!=='WEB'||p.sessionEpoch!==s.sessionEpoch)throw new WireFailure();this.publish({connection:'ready'});void this.syncFriends();if(!this.userPoll)this.userPoll=setInterval(()=>{if(this.state.connection==='ready')void this.syncFriends();},10000);for(const c of this.opened)void this.sync(c);}
+      else if(f.type==='ping')socket.send(envelope('pong',f.requestId,{}));
+      else if(f.type==='session.revoked'){if(p.sessionId===s.sessionId)this.clear('会话已过期或在其他网页被替换，请重新登录。');}
+      else if(this.state.connection==='ready'&&f.type==='message.ack'){
+        const pending=this.pending.get(f.requestId);
+        if(p.status==='committed'){
+          if(pending&&p.conversationId!==pending.conversation)throw new WireFailure();
+          // Attempt timeout does not erase the logical send stored in page memory.
+          const c=p.conversationId as string,row=this.repository.snapshot(c).find(v=>v.requestId===f.requestId&&v.senderId===s.userId);
+          if(!row||!this.state.friends.some(v=>v.directConversationId===c))return;
+          this.repository.ack(f.requestId,p as unknown as Committed);
+        }else {if(!pending)return;this.repository.fail(pending.conversation,f.requestId);}
+        if(pending)clearTimeout(pending.timer);this.pending.delete(f.requestId);this.publish();
+        if(p.status==='committed'&&this.opened.has(p.conversationId as string))void this.sync(p.conversationId as string);
+      }
+      else if(this.state.connection==='ready'&&f.type==='message.created'){const c=p.conversationId as string;if(!this.state.friends.some(v=>v.directConversationId===c))return;this.repository.realtime(f.requestId,p as unknown as RealtimeMessage);const pending=this.pending.get(f.requestId);if(pending&&pending.conversation===c){clearTimeout(pending.timer);this.pending.delete(f.requestId);}this.publish();if(this.opened.has(c))void this.sync(c);}
+    }catch(error){if(!(error instanceof WireFailure))throw error;socket.close();this.publish({connection:'protocol_error',sync:'无效响应未改变已确认消息'});}};
+    socket.onclose=()=>{clearTimeout(authTimer);if(!current())return;for(const [r,v] of this.pending){clearTimeout(v.timer);this.repository.fail(v.conversation,r);}this.pending.clear();this.publish({connection:'offline'});this.reconnectTimer=setTimeout(()=>{if(current())this.connected();},2000);};socket.onerror=()=>{if(current())this.publish({connection:'failed'});};
+  }
+  private async syncFriends(){
+    const s=this.session,g=this.generation;if(!s||this.userSyncing)return;
+    this.userSyncing=true;
+    try{const http=new SyncHttp(this.http.origin,s,this.fetcher);
+      for(;;){const cursor=this.userCursor,page=await http.user(cursor,this.abort.signal);if(!this.alive(g))return;
+        // Consume metadata by re-reading the canonical friend projection; no history pull.
+        if(page.events.length){const revision=++this.friendRevision;const list=friends(await this.http.request('/v1/friends','GET',undefined,s.accessToken,this.abort.signal));if(!this.alive(g)||revision!==this.friendRevision)return;
+          if(list.some(f=>f.user.userId===s.userId))throw new WireFailure();
+          this.publish({friends:list,friendsBusy:false,friendsError:''});
+        }
+        this.userCursor=page.nextCursor;if(!page.hasMore)break;
+      }
+    }catch(e){this.error(e,g);if(this.alive(g))this.publish({friendsError:'好友同步失败，可重试或重连。'});}
+    finally{if(this.alive(g))this.userSyncing=false;}
+  }
+  async sync(c:string){
+    const s=this.session,g=this.generation;if(!s||!this.repository.hasBaseline(c)||!this.state.friends.some(f=>f.directConversationId===c))return;
+    const active=this.syncing.get(c);if(active){active.again=true;return;}
+    const job={again:false};this.syncing.set(c,job);this.publish({sync:'正在补齐本页在线消息…'});
+    try{
+      const http=new SyncHttp(this.http.origin,s,this.fetcher);let more=true;
+      while(more&&this.alive(g)){
+        job.again=false;const after=this.repository.after(c);
+        const page=await http.conversation(c,after,this.abort.signal);if(!this.alive(g))return;
+        this.repository.page(c,after,page.messages);
+        const prefix=this.repository.after(c),gap=this.repository.snapshot(c).some(m=>m.seq!==undefined&&m.seq>prefix);
+        // A realtime frame may supersede the window while this page is in flight.
+        // Re-read from the committed live prefix, never from initial history.
+        more=page.hasMore||job.again||prefix<after;
+        if(!more&&gap)throw new SyncFailure("protocol");
+        this.publish();
+      }
+      if(this.alive(g))this.publish({sync:'本页在线消息已同步 · 不补历史'});
+    }catch(e){this.error(e,g);if(this.alive(g))this.publish({sync:'同步失败，重连或重新打开会话重试'});}
+    finally{if(this.alive(g))this.syncing.delete(c);}
+  }
+  dispose(){this.clear('');this.listeners.clear();}
+}
+
+
+FILE clients/web/src/application/http.ts
+import {object,uuid,parse,positive} from '../../../shared/protocol-sdk/src/send/wire.js';
+export interface User {userId:string;username:string;displayName:string}
+export interface Friend {user:User;friendshipId:string;directConversationId:string}
+export interface Session {userId:string;sessionId:string;sessionEpoch:bigint;accessToken[REDACTED];expires:number}
+export class ApiFailure extends Error {constructor(readonly code:string,readonly status:number){super(code);}}
+const invalid=():never=>{throw new ApiFailure('INVALID_RESPONSE',0);};
+export function user(v:unknown):User {const p=object(v,['userId','username','displayName']);if(typeof p.username!=='string'||!/^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$/.test(p.username)||typeof p.displayName!=='string')return invalid();return {userId:uuid(p.userId),username:p.username,displayName:p.displayName};}
+export function friends(v:unknown):Friend[]{const p=object(v,['friends']);if(!Array.isArray(p.friends))return invalid();const ids=new Set<string>();return p.friends.map(v=>{const f=object(v,['user','friendshipId','directConversationId']),u=user(f.user);if(ids.has(u.userId))return invalid();ids.add(u.userId);return {user:u,friendshipId:uuid(f.friendshipId),directConversationId:uuid(f.directConversationId)};});}
+export function auth(v:unknown):Session {
+  const p=object(v,['session','tokens','replacedExistingSession']),s=object(p.session,['sessionId','userId','clientType','sessionEpoch','status']),t=object(p.tokens,['accessToken','accessTokenExpiresInSeconds','refreshTokenDelivery']);
+  if(s.clientType!=='WEB'||s.status!=='ACTIVE'||typeof p.replacedExistingSession!=='boolean'||t.refreshTokenDelivery!=='HTTP_ONLY_SECURE_COOKIE'||typeof t.accessToken!=='string'||!t.accessToken||/[\r\n]/.test(t.accessToken))return invalid();
+  const seconds=positive(t.accessTokenExpiresInSeconds);if(seconds>2147483n)return invalid();
+  return {userId:uuid(s.userId),sessionId:uuid(s.sessionId),sessionEpoch:positive(s.sessionEpoch),accessToken[REDACTED],expires:Date.now()+Number(seconds)*1000};
+}
+export class Http {
+  readonly origin:string;
+  constructor(origin:string,private fetcher:typeof fetch=(input,init)=>fetch(input,init)){const u=new URL(origin);if(u.protocol!=='https:'||u.username||u.password||u.search||u.hash||u.pathname!=='/')throw new ApiFailure('HTTPS_REQUIRED',0);this.origin=u.origin;}
+  async request(path:string,method:string,body:unknown,token:string|undefined,signal:AbortSignal):Promise<unknown>{
+    const encoded=body===undefined?undefined:JSON.stringify(body);
+    let r:Response;try {r=await this.fetcher(this.origin+path,{method,body:encoded,headers:{'Content-Type':'application/json',...(token?{'Authorization':'Bearer '+token}:{})},credentials:'same-origin',redirect:'error',cache:'no-store',signal});}catch(error){if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure('CONNECTION_UNAVAILABLE',0);throw error;}
+    if(path==='/v1/auth/logout'&&method==='POST'){
+      if(r.redirected)return invalid();
+      if(r.status===204){
+        // Browsers may expose an empty stream for a no-content HTTP response.
+        if(r.body){const reader=r.body.getReader();let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;try{let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(!part.done)return invalid();}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
+        if(primary){
+          if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
+          const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
+          if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
+            const failure=new ApiFailure(primary.error.code,primary.error.status);
+            Object.defineProperty(failure,"cause",{value:causes});throw failure;
+          }
+          throw causes;
+        }
+        if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}}
+        return undefined;
+      }
+      if(r.ok)return invalid();
+    }
+    if(r.redirected||!/^application\/json(?:\s*;|$)/i.test(r.headers.get('content-type')??''))return invalid();
+    let raw='';const reader=r.body?.getReader();if(!reader)return invalid();const decoder=new TextDecoder('utf8',{fatal:true});let size=0;
+    let primary:{error:unknown}|undefined,sourceFailure:{error:unknown}|undefined;
+    try {for(;;){let part:ReadableStreamReadResult<Uint8Array>;try{part=await reader.read();}catch(error){sourceFailure={error};if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}if(part.done)break;size+=part.value.byteLength;if(size>6*1024*1024)return invalid();try{raw+=decoder.decode(part.value,{stream:true});}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}try{raw+=decoder.decode();}catch(error){sourceFailure={error};if(error instanceof TypeError)return invalid();throw error;}}catch(error){primary={error};throw error;} finally {try{await reader.cancel();}catch(error){
+        if(primary){
+          if(error===primary.error || (sourceFailure && error===sourceFailure.error))throw primary.error;
+          const causes=new AggregateError([sourceFailure?sourceFailure.error:primary.error,error],"Response processing and cleanup failed");
+          if(primary.error instanceof ApiFailure && (error instanceof TypeError || error instanceof DOMException)){
+            const failure=new ApiFailure(primary.error.code,primary.error.status);
+            Object.defineProperty(failure,"cause",{value:causes});throw failure;
+          }
+          throw causes;
+        }
+        if(error instanceof TypeError || error instanceof DOMException)throw new ApiFailure("CONNECTION_UNAVAILABLE",0);throw error;}}
+    const p=parse(raw,6*1024*1024);
+    if(!r.ok){const e=object(p,['requestId','error']);uuid(e.requestId);const detail=e.error as Record<string,unknown>;if(!detail||typeof detail.code!=='string')return invalid();const allowed=['VALIDATION_FAILED','AUTH_REQUIRED','AUTH_TOKEN_INVALID','AUTH_TOKEN_EXPIRED','AUTH_SESSION_REVOKED','AUTH_SESSION_EPOCH_STALE','AUTH_CLIENT_TYPE_MISMATCH','AUTH_REFRESH_REVOKED','AUTH_INVALID_CREDENTIALS','AUTHORIZATION_DENIED','USER_NOT_FOUND','FRIEND_SELF_NOT_ALLOWED','FRIENDSHIP_STATE_CONFLICT','PROTOCOL_VERSION_UNSUPPORTED'];throw new ApiFailure(allowed.includes(detail.code)?detail.code:'REQUEST_FAILED',r.status);}
+    return p;
+  }
+}
+
+
+FILE clients/web/src/application/repository.ts
+import {WireFailure} from '../../../shared/protocol-sdk/src/send/wire.js';
+import type {LocalMessage,ServerMessage,Committed,RealtimeMessage,State} from '../../../shared/protocol-sdk/src/storage/models.js';
+export interface Message extends LocalMessage {state:State;messageId?:string;seq?:bigint;createdAt?:string}
+export class MemoryRepository {
+  private rows:Message[]=[];
+  private cursors=new Map<string,bigint>();
+  // This page's realtime window only. It never asserts old history is materialized.
+  private starts=new Map<string,bigint>();
+  snapshot(c:string):Message[]{return this.rows.filter(m=>m.conversationId===c).map(m=>({...m,content:{...m.content}})).sort((a,b)=>a.seq!==undefined&&b.seq!==undefined?(a.seq<b.seq?-1:a.seq>b.seq?1:0):a.seq!==undefined?-1:b.seq!==undefined?1:0);}
+  reset(){this.rows=[];this.cursors.clear();this.starts.clear();}
+  after(c:string){return this.cursors.get(c)??0n;}
+  hasBaseline(c:string){return this.cursors.has(c);}
+  begin(m:LocalMessage){
+    const prior=this.rows.find(v=>v.conversationId===m.conversationId&&v.requestId===m.requestId);
+    if(prior){if(prior.senderId!==m.senderId||prior.content.text!==m.content.text)throw new Error('Retry identity changed');if(prior.state!=="SENT")prior.state="SENDING";}
+    else this.rows.push({...m,content:{...m.content},state:"SENDING"});
+  }
+  fail(c:string,r:string){const row=this.rows.find(v=>v.conversationId===c&&v.requestId===r);if(row&&row.state!=="SENT")row.state="FAILED";}
+  ack(r:string,p:Committed){const row=this.rows.find(v=>v.conversationId===p.conversationId&&v.requestId===r);if(!row)return;this.commit({...row,messageId:p.messageId,seq:p.seq,createdAt:p.createdAt});}
+  realtime(r:string,m:RealtimeMessage){this.commit({...m,requestId:r});}
+  page(c:string,after:bigint,messages:ServerMessage[]){
+    // Validate entire page against the current view before publishing anything.
+    let next=after+1n;const draft=new MemoryRepository();draft.rows=this.rows.map(m=>({...m,content:{...m.content}}));draft.cursors=new Map(this.cursors);draft.starts=new Map(this.starts);
+    for(const m of messages){if(m.conversationId!==c||BigInt(m.seq)!==next++)throw new WireFailure();draft.commit(m);}
+    this.rows=draft.rows;this.cursors=draft.cursors;this.starts=draft.starts;
+  }
+  private commit(m:ServerMessage){
+    const seq=BigInt(m.seq);
+    const existing=this.rows.find(v=>v.conversationId===m.conversationId&&v.requestId===m.requestId);
+    const collision=this.rows.find(v=>(v.messageId===m.messageId||v.conversationId===m.conversationId&&v.seq===seq)&&v!==existing);
+    if(collision||existing&&(existing.senderId!==m.senderId||existing.content.text!==m.content.text||existing.state==="SENT"&&(existing.messageId!==m.messageId||existing.seq!==seq)))throw new WireFailure();
+    const row:Message={...m,content:{...m.content},seq,state:"SENT"};
+    if(existing)Object.assign(existing,row);else this.rows.push(row);
+    const oldStart=this.starts.get(m.conversationId);const start=oldStart===undefined||seq<oldStart?seq:oldStart;this.starts.set(m.conversationId,start);
+    // An earlier late frame expands the live window, exposing any intervening gap.
+    // Recompute that window's prefix; never discard the late frame or call this global contiguous_seq.
+    let at=start-1n;
+    while(this.rows.some(v=>v.conversationId===m.conversationId&&v.seq===at+1n))at++;
+    this.cursors.set(m.conversationId,at);
+  }
+}
+
+
+FILE clients/web/src/ui/appearance.ts
+export interface Appearance {theme:"cold"|"warm";fontSize:14|16|18|20;density:"compact"|"comfortable"|"spacious"}
+const APPEARANCE_KEY = "plugworldim.appearance.v1";
+export const defaults:Appearance={theme:"cold",fontSize:16,density:"comfortable"};
+class InvalidAppearance extends TypeError {}
+export function validate(value:unknown):Appearance {
+  if(!value||typeof value!=="object"||Array.isArray(value))throw new InvalidAppearance("Invalid appearance");
+  const v=value as Record<string,unknown>;
+  if(Object.keys(v).length!==3||!['theme','fontSize','density'].every(k=>Object.hasOwn(v,k))||typeof v.theme!=="string"||!['cold','warm'].includes(v.theme)||typeof v.fontSize!=="number"||![14,16,18,20].includes(v.fontSize)||typeof v.density!=="string"||!['compact','comfortable','spacious'].includes(v.density))throw new InvalidAppearance("Invalid appearance");
+  return {theme:v.theme as Appearance['theme'],fontSize:v.fontSize as Appearance['fontSize'],density:v.density as Appearance['density']};
+}
+export function loadAppearance():Appearance {
+  try {const raw=window.localStorage.getItem(APPEARANCE_KEY);if(!raw||raw.length>128)return {...defaults};return validate(JSON.parse(raw));}catch(error){if(error instanceof DOMException || error instanceof SyntaxError || error instanceof InvalidAppearance)return {...defaults};throw error;}
+}
+export function saveAppearance(value:Appearance):boolean {
+  const valid=validate(value);
+  try {window.localStorage.setItem(APPEARANCE_KEY, JSON.stringify({theme: valid.theme, fontSize: valid.fontSize, density: valid.density}));return true;}catch(error){if(error instanceof DOMException)return false;throw error;}
+}
+
+
+FILE clients/web/src/ui/language.ts
+import {validLocale,type Locale} from "./i18n/resources.js";
+const LANGUAGE_KEY="plugworldim.language.v1";
+export function loadLanguage():Locale {
+ try {const raw=window.localStorage.getItem(LANGUAGE_KEY);return validLocale(raw)?raw:"en";}catch(error){if(error instanceof DOMException)return "en";throw error;}
+}
+export function saveLanguage(value:Locale):boolean {
+ if(!validLocale(value))return false;
+ try {window.localStorage.setItem(LANGUAGE_KEY,value);return true;}catch(error){if(error instanceof DOMException)return false;throw error;}
+}
+
+
+FILE clients/web/src/ui/main.tsx
+import React from "react";
+import {createRoot} from "react-dom/client";
+import {Shell} from "./components/Shell.js";
+createRoot(document.getElementById("root")!).render(<Shell/>);
+

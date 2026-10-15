@@ -1,0 +1,137 @@
+{
+  "result": "FAIL",
+  "reviewer": "/root/regular_review_697ef28",
+  "independent_fresh_context": true,
+  "implementation_fix_priorreview_involvement": false,
+  "role": "regular Review; NOT specialized audit",
+  "candidate_sha": "697ef28a748354c624af71d9aaf81aa1ec02afae",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "base": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "root": "H:/.codex/worktrees/err/IM-platform",
+  "clean_git_status": "",
+  "production_files": 185,
+  "retained_full_tuples": 302,
+  "protected_inputs_unchanged": 65,
+  "findings": [
+    "F-SEND-READ",
+    "F-CLIENT-CLEANUP-ROOT"
+  ],
+  "research": {
+    "run": "R-ERROR-REGULAR-697EF28",
+    "complete_prospective_trace": false,
+    "finish_and_validation": [
+      {
+        "argv": [
+          "record-event",
+          "--repo",
+          "H:\\.codex\\worktrees\\err\\IM-platform",
+          "--research-root",
+          "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-697ef28\\research",
+          "--run-id",
+          "R-ERROR-REGULAR-697EF28",
+          "--event-type",
+          "instrumentation_warning",
+          "--data-json",
+          "{\"summary\": \"Own startup/source inspections were direct read-only tool commands before and after external Recorder start; prospective_resume records incomplete trace. Fresh verifiers/control/evidence commands routed. Incorrect initial sync/RepositoryRead.kt diagnostic and external evidence script syntax bug preserved in tool history; raw-vs-redacted/decode-replaced hash assumption failures recorded and narrowed to true runtime blobs. No evidence edited to change product outcome; final Review FAIL.\", \"type\": \"instrumentation_warning\", \"result\": \"incomplete_trace_disclosed\", \"aggregation_assumptions\": \"Initial aggregation assumed globallyunique inventoryID (RH294 actually two differentpaths) and untrimmed source (inventory text is stripped, columns from original source). Both diagnostic FAILs preserved; corrected to exact fulltuple and stripped source comparison with actual full line separately retained.185/302 coverage verified without editing candidate.\"}"
+        ],
+        "exit_code": 0,
+        "elapsed_ms": 328,
+        "stdout": "{\"data\": {\"aggregation_assumptions\": \"Initial aggregation assumed globallyunique inventoryID (RH294 actually two differentpaths) and untrimmed source (inventory text is stripped, columns from original source). Both diagnostic FAILs preserved; corrected to exact fulltuple and stripped source comparison with actual full line separately retained.185/302 coverage verified without editing candidate.\", \"result\": \"incomplete_trace_disclosed\", \"summary\": \"Own startup/source inspections were direct read-only tool commands before and after external Recorder start; prospective_resume records incomplete trace. Fresh verifiers/control/evidence commands routed. Incorrect initial sync/RepositoryRead.kt diagnostic and external evidence script syntax bug preserved in tool history; raw-vs-redacted/decode-replaced hash assumption failures recorded and narrowed to true runtime blobs. No evidence edited to change product outcome; final Review FAIL.\", \"type\": \"instrumentation_warning\"}, \"event_hash\": \"ef59702fbd5cbfacac8d2e08d44e38beda2487c5d971883edd48ed3c85221cc3\", \"event_type\": \"instrumentation_warning\", \"previous_event_hash\": \"8f74e36dcadc0bf0c9806e12dc7b70ddb5ecc49ba2c9f3d70a08328c96513448\", \"role\": \"review\", \"run_id\": \"R-ERROR-REGULAR-697EF28\", \"schema_version\": \"1.0.0\", \"seq\": 32, \"task_id\": \"LOOP1-ERROR-HANDLING-001\", \"timestamp\": \"2026-10-13T12:05:36.252052Z\"}\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "record-event",
+          "--repo",
+          "H:\\.codex\\worktrees\\err\\IM-platform",
+          "--research-root",
+          "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-697ef28\\research",
+          "--run-id",
+          "R-ERROR-REGULAR-697EF28",
+          "--event-type",
+          "review_finished",
+          "--data-json",
+          "{\"result\": \"FAIL\", \"sha\": \"697ef28a748354c624af71d9aaf81aa1ec02afae\", \"production_files\": 185, \"retained_full_tuples\": 302, \"findings\": [\"F-SEND-READ\", \"F-CLIENT-CLEANUP-ROOT\"], \"report_sha256\": \"766fac3d193df23696d2c8d7171bca719cd051089a51d222a16cab7ff7bef593\", \"role\": \"fresh regular Review only; specialist pending; no source/Git/main mutation\"}"
+        ],
+        "exit_code": 0,
+        "elapsed_ms": 1141,
+        "stdout": "{\"data\": {\"findings\": [\"F-SEND-READ\", \"F-CLIENT-CLEANUP-ROOT\"], \"production_files\": 185, \"report_sha256\": \"766fac3d193df23696d2c8d7171bca719cd051089a51d222a16cab7ff7bef593\", \"result\": \"FAIL\", \"retained_full_tuples\": 302, \"role\": \"fresh regular Review only; specialist pending; no source/Git/main mutation\", \"sha\": \"697ef28a748354c624af71d9aaf81aa1ec02afae\"}, \"event_hash\": \"51e4e9bdc35bc773f736ff182d7f8f013c7419975e8b7df65bdd3151d10208bb\", \"event_type\": \"review_finished\", \"previous_event_hash\": \"ef59702fbd5cbfacac8d2e08d44e38beda2487c5d971883edd48ed3c85221cc3\", \"role\": \"review\", \"run_id\": \"R-ERROR-REGULAR-697EF28\", \"schema_version\": \"1.0.0\", \"seq\": 33, \"task_id\": \"LOOP1-ERROR-HANDLING-001\", \"timestamp\": \"2026-10-13T12:05:37.371209Z\"}\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "finish-run",
+          "--repo",
+          "H:\\.codex\\worktrees\\err\\IM-platform",
+          "--research-root",
+          "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-697ef28\\research",
+          "--run-id",
+          "R-ERROR-REGULAR-697EF28",
+          "--result",
+          "FAIL"
+        ],
+        "exit_code": 0,
+        "elapsed_ms": 890,
+        "stdout": "{\"event_count\": 34, \"final_event_hash\": \"81a98088acb06295b0ec15a62b55dcf5d46a6b061e56c11baadc00e1712e1b39\", \"first_event_hash\": \"da9a384dc9edeba3f6ccccc886845ed1abfa794228e6cad848e1fc8265b81fd3\", \"manifest_hash\": \"16f516b16b97dc4fa2f936256f29d0d2b3951dfbc391eac4189320773cf8d5b8\", \"recorder_schema_version\": \"1.0.0\", \"result\": \"FAIL\", \"run_id\": \"R-ERROR-REGULAR-697EF28\", \"status\": \"finished\"}\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "validate-run",
+          "--repo",
+          "H:\\.codex\\worktrees\\err\\IM-platform",
+          "--research-root",
+          "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-697ef28\\research",
+          "--run-id",
+          "R-ERROR-REGULAR-697EF28"
+        ],
+        "exit_code": 0,
+        "elapsed_ms": 1125,
+        "stdout": "{\"event_count\": 34, \"run_id\": \"R-ERROR-REGULAR-697EF28\", \"status\": \"finished\"}\n",
+        "stderr": ""
+      }
+    ],
+    "structural_validation_only": true
+  },
+  "command_count": 14,
+  "failed_command_records_preserved": [
+    "C-0770e8d6-4a56-4460-98d8-e1afec4f456e",
+    "C-65e45689-f824-4d73-a24a-a81863061407",
+    "C-6e334df1-dbdf-424f-9f30-8f3b2695910d",
+    "C-3df47b83-9b66-45b5-841a-f60eb8bfd150",
+    "C-7ae25c0f-530c-4cc0-9fe2-80501f90ce5b"
+  ],
+  "artifact_sha256": {
+    "report.md": "766fac3d193df23696d2c8d7171bca719cd051089a51d222a16cab7ff7bef593",
+    "semantic-coverage.json": "9306a14d46e605fcd1c7586b7ce36974e273ee3fa9be0057f29cbceb1bab469e",
+    "retained-grounds.json": "bf625599cbd18b0ad29e55d7ed65596cf3fab424634c3f040a1ef89ff75f7e26",
+    "combined-findings.json": "a04a1ab6e0c0afb598fabe41d62188b61d9c1930c8e0f1c7165d9eb5fc59e1e9",
+    "findings.json": "8ec29bdd1e73bfa2490851639172cfb43e145fd06b2e69499a7127690d9d53dc",
+    "mobile-semantic-coverage.json": "2b72424336323edf84fa059a9d9a4d852264477c9f0051eb511a3a1627e33f2e",
+    "mobile-retained-grounds.json": "735f2c6d4863c83d751fa291e82a94fa7ec4f9d3235a5ea6557964b9713b5ef7",
+    "authority-checks.json": "8c095964694403b579adb77175c002b0e2fe130d4c3fe5141d4f987c9ebb2869",
+    "protected-checks.json": "fe273a2efc72122c20a0f43b9fffc50e80846ecd9c57a5ef434ba8c0d5c16988",
+    "governance-assessment.json": "ed7d6425b4a238b46dea99093c15b3558beadbec49f841584f7086123bed62ee",
+    "language-data-inspection.json": "2dd9aa127708d7cc6c43c2e540fe0da553d099b1b6ea9587eab4e9793675da71",
+    "prior-runtime-inspection.json": "400e401873da4b5327c6254da14c7a94ebcc6984b08c53162a13c00ff7bce893",
+    "warning.json": "690765beb13c5168ab83e4cc5dd55989c8c8a08e8bdc18e531896e8c1025efa2",
+    "command-history.json": "7ad68e097aeff5f31e6c4356f31f682baa8d4a7d95fadb2e8304bc10b0ccbd80",
+    "client-helper/coverage.json": "79cfe3160777d5ce5072ecebcbdccb0fbee8712dbf7694d8d4efa8ae94797e18",
+    "client-helper/commands.json": "01747d0a0c2d6f8e917b000430a6d2c9381042159b14604b8ed44b6ef944e4d6",
+    "client-helper/cleanup-root-repro.mjs": "e19045de9051365728ee8178cbf39c6a28f863b84c04676d1d0778c2bbe0c19f",
+    "client-helper/final-seal.json": "dddad081564fbfa78918461c5d7b6e0809ca3e567a80c77e41e338a351798f53",
+    "backend-helper/report.json": "3cf0a42f07c790830eabb11e2c87950da25fb19a23e04fb597882e09ec3a7fc0",
+    "backend-helper/source-coverage.json": "63df684b4a595cc22f3ec750d80c40c116cd35db836241e7c01ed91b050d442f",
+    "backend-helper/retained-sites.json": "7f631b2d748939a395022327df0ce283584fe0b26a4f225ac942782d24b7229e",
+    "backend-helper/checks.json": "1d725100cdd02bb8e8b30681cedf1f7209914d00c1a828660a12f4df9daba5b9",
+    "research/runs/R-ERROR-REGULAR-697EF28/metadata.json": "ec1bc749c6972a5a99d03a542096f6e599482704f1c3d2232bfb417668ba8e22",
+    "research/runs/R-ERROR-REGULAR-697EF28/summary.json": "348f221c6a9b29f88b5ed545a1fe24daaeb4f40b53d3c9d3431b1eb9631c79ce",
+    "research/runs/R-ERROR-REGULAR-697EF28/events.jsonl": "8a49b59f9e93bb020b34b5da566da931e5267201552106d4fe6665a1d5efcd2d"
+  },
+  "specialized_audit": "PENDING after newFix/newFinalSHA freshRegularReview PASS",
+  "CI": "NOT_TRIGGERED; PENDING",
+  "main_sync": "NOT_PERFORMED; PENDING",
+  "source_git_main_mutations": false,
+  "resources": "No Android/trust/backend/build ownership by root Reviewer. Backend helper owned disposableCompose fixtures removed; client helper externalbuild outputs preserved, no running service. All helper contexts finished and read-only leases released.",
+  "recovery_update_owner": "Coordinator/freshFix updates both TaskSpec/current.md and durably attaches these immutable FAIL artifacts; Reviewer read-only."
+}

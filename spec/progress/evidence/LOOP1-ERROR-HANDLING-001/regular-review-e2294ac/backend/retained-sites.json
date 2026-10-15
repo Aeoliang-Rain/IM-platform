@@ -1,0 +1,432 @@
+[
+  {
+    "id": "RH001",
+    "path": "backend/go/core/auth.go",
+    "line": 262,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH002",
+    "path": "backend/go/core/auth.go",
+    "line": 394,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH003",
+    "path": "backend/go/core/auth.go",
+    "line": 459,
+    "source": "defer tx.Rollback(r.Context())",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH004",
+    "path": "backend/go/core/message.go",
+    "line": 135,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH005",
+    "path": "backend/go/core/outbox.go",
+    "line": 46,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH006",
+    "path": "backend/go/core/social.go",
+    "line": 70,
+    "source": "defer rows.Close()",
+    "specific_fault": "SQL row stream requires cleanup after list completion/error.",
+    "current_ground": "Current owner resource lifecycle under canonical §3/§5/§7; close does not declare business success or retry failed operation.",
+    "actual_recovery_or_failure": "Resource explicitly retired/closed. Primary operation error remains returned/failed; row stream Close has no error return and db/NATS Close have no error return. Readonly file/body close failure cannot make previously read data false.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH007",
+    "path": "backend/go/core/social.go",
+    "line": 108,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH008",
+    "path": "backend/go/core/sync.go",
+    "line": 24,
+    "source": "var syncNumber = regexp.MustCompile(`^(-?)([0-9]+)(?:\\.([0-9]+))?(?:[eE]([+-]?[0-9]+))?$`)",
+    "specific_fault": "None: regex optional fractional/exponent groups are grammar, not runtime exception fallback.",
+    "current_ground": "contracts sync integer accepts integral exponent/decimal and arbitrary magnitude per ADR0008.",
+    "actual_recovery_or_failure": "No catch/recovery; invalid external integer returns false, actual parser I/O errors propagate to failed HTTP operation.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH009",
+    "path": "backend/go/core/sync.go",
+    "line": 24,
+    "source": "var syncNumber = regexp.MustCompile(`^(-?)([0-9]+)(?:\\.([0-9]+))?(?:[eE]([+-]?[0-9]+))?$`)",
+    "specific_fault": "None: regex optional fractional/exponent groups are grammar, not runtime exception fallback.",
+    "current_ground": "contracts sync integer accepts integral exponent/decimal and arbitrary magnitude per ADR0008.",
+    "actual_recovery_or_failure": "No catch/recovery; invalid external integer returns false, actual parser I/O errors propagate to failed HTTP operation.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH010",
+    "path": "backend/go/core/sync.go",
+    "line": 207,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH011",
+    "path": "backend/go/core/sync.go",
+    "line": 305,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH012",
+    "path": "backend/go/core/sync.go",
+    "line": 399,
+    "source": "defer tx.Rollback(ctx)",
+    "specific_fault": "An early SQL/permission/validation/commit failure leaves this transaction unfinished, or completed commit yields ErrTxClosed at deferred rollback.",
+    "current_ground": "canonical §5 atomic Auth/Message/Friend/Outbox; §11.5 read-transaction bounds. pgx Rollback cleanup closes failed connection; original caller already returns failure.",
+    "actual_recovery_or_failure": "Deferred rollback prevents partial effects; after completed commit idempotent closed transaction cleanup is safe. No fake successful result; original failure remains returned.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH013",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 58,
+    "source": "c.once.Do(func() { close(c.done); c.mu.Lock(); _ = c.ws.Close(); c.mu.Unlock() })",
+    "specific_fault": "Socket already retired or underlying close reports transport error.",
+    "current_ground": "Current owner resource lifecycle under canonical §3/§5/§7; close does not declare business success or retry failed operation.",
+    "actual_recovery_or_failure": "Resource explicitly retired/closed. Primary operation error remains returned/failed; row stream Close has no error return and db/NATS Close have no error return. Readonly file/body close failure cannot make previously read data false.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH014",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 92,
+    "source": "_ = c.send(frame(\"session.revoked\", id, map[string]string{\"sessionId\": sid, \"reason\": reason}))",
+    "specific_fault": "Actual socket WriteJSON fails while delivering this revoke frame.",
+    "current_ground": "canonical §7 WSS lifecycle + §5 postcommit ACK/event and Sync completeness; inspected connection.send now calls close before returning error.",
+    "actual_recovery_or_failure": "Connection done is closed and underlying websocket retired; client disconnect/timeout/retry/Sync handles absent delivery. Failed send does not publish false frame or keep usable socket.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH015",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 149,
+    "source": "_ = c.send(frame(\"message.ack\", e.RequestID, map[string]any{\"status\": \"rejected\", \"error\": map[string]string{\"code\": \"AUTH_REQUIRED\", \"message\": \"Request rejected\"}}))",
+    "specific_fault": "Actual socket WriteJSON fails while delivering this serve frame.",
+    "current_ground": "canonical §7 WSS lifecycle + §5 postcommit ACK/event and Sync completeness; inspected connection.send now calls close before returning error.",
+    "actual_recovery_or_failure": "Connection done is closed and underlying websocket retired; client disconnect/timeout/retry/Sync handles absent delivery. Failed send does not publish false frame or keep usable socket.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH016",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 207,
+    "source": "_ = c.send(frame(\"auth.ack\", id, map[string]any{\"status\": \"rejected\", \"error\": map[string]string{\"code\": code, \"message\": \"Request rejected\"}}))",
+    "specific_fault": "Actual socket WriteJSON fails while delivering this reject frame.",
+    "current_ground": "canonical §7 WSS lifecycle + §5 postcommit ACK/event and Sync completeness; inspected connection.send now calls close before returning error.",
+    "actual_recovery_or_failure": "Connection done is closed and underlying websocket retired; client disconnect/timeout/retry/Sync handles absent delivery. Failed send does not publish false frame or keep usable socket.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH017",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 266,
+    "source": "_ = c.send(frame(\"message.ack\", e.RequestID, map[string]any{\"status\": \"rejected\", \"error\": map[string]string{\"code\": \"MESSAGE_COMMIT_FAILED\", \"message\": \"Request rejected\"}}))",
+    "specific_fault": "Actual socket WriteJSON fails while delivering this forward frame.",
+    "current_ground": "canonical §7 WSS lifecycle + §5 postcommit ACK/event and Sync completeness; inspected connection.send now calls close before returning error.",
+    "actual_recovery_or_failure": "Connection done is closed and underlying websocket retired; client disconnect/timeout/retry/Sync handles absent delivery. Failed send does not publish false frame or keep usable socket.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH018",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 285,
+    "source": "defer response.Body.Close()",
+    "specific_fault": "HTTP response body requires cleanup after private Core ACK read.",
+    "current_ground": "Current owner resource lifecycle under canonical §3/§5/§7; close does not declare business success or retry failed operation.",
+    "actual_recovery_or_failure": "Resource explicitly retired/closed. Primary operation error remains returned/failed; row stream Close has no error return and db/NATS Close have no error return. Readonly file/body close failure cannot make previously read data false.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH019",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 303,
+    "source": "_ = c.send(ack)",
+    "specific_fault": "Actual socket WriteJSON fails while delivering this forward frame.",
+    "current_ground": "canonical §7 WSS lifecycle + §5 postcommit ACK/event and Sync completeness; inspected connection.send now calls close before returning error.",
+    "actual_recovery_or_failure": "Connection done is closed and underlying websocket retired; client disconnect/timeout/retry/Sync handles absent delivery. Failed send does not publish false frame or keep usable socket.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH020",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 355,
+    "source": "_ = c.send(e)",
+    "specific_fault": "Actual socket WriteJSON fails while delivering this fanout frame.",
+    "current_ground": "canonical §7 WSS lifecycle + §5 postcommit ACK/event and Sync completeness; inspected connection.send now calls close before returning error.",
+    "actual_recovery_or_failure": "Connection done is closed and underlying websocket retired; client disconnect/timeout/retry/Sync handles absent delivery. Failed send does not publish false frame or keep usable socket.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH021",
+    "path": "backend/go/main.go",
+    "line": 40,
+    "source": "defer db.Close()",
+    "specific_fault": "Process assembly terminates with DB pool still open.",
+    "current_ground": "Current owner resource lifecycle under canonical §3/§5/§7; close does not declare business success or retry failed operation.",
+    "actual_recovery_or_failure": "Resource explicitly retired/closed. Primary operation error remains returned/failed; row stream Close has no error return and db/NATS Close have no error return. Readonly file/body close failure cannot make previously read data false.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH022",
+    "path": "backend/go/main.go",
+    "line": 51,
+    "source": "defer nc.Close()",
+    "specific_fault": "Process assembly terminates with NATS connection still open.",
+    "current_ground": "Current owner resource lifecycle under canonical §3/§5/§7; close does not declare business success or retry failed operation.",
+    "actual_recovery_or_failure": "Resource explicitly retired/closed. Primary operation error remains returned/failed; row stream Close has no error return and db/NATS Close have no error return. Readonly file/body close failure cannot make previously read data false.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH023",
+    "path": "backend/go/shared/config.go",
+    "line": 36,
+    "source": "defer f.Close()",
+    "specific_fault": "Readonly operator config stream requires cleanup after parsing.",
+    "current_ground": "Current owner resource lifecycle under canonical §3/§5/§7; close does not declare business success or retry failed operation.",
+    "actual_recovery_or_failure": "Resource explicitly retired/closed. Primary operation error remains returned/failed; row stream Close has no error return and db/NATS Close have no error return. Readonly file/body close failure cannot make previously read data false.",
+    "result": "PASS"
+  },
+  {
+    "id": "RH024",
+    "path": "backend/java/InfraPlaceholder.java",
+    "line": 23,
+    "source": "} catch (IOException error) {",
+    "specific_fault": "Accepted socket timeout, malformed request line or actual request input/output IOException.",
+    "current_ground": "canonical SRC-06 exact Java nonbusiness transport skeleton; listener accept remains outside catch, no RuntimeException interception.",
+    "actual_recovery_or_failure": "try-with-resources closes only accepted peer; report class and accept next request. Listener/internal failures terminate process; no fake response.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR025",
+    "path": "backend/go/core/outbox.go",
+    "line": 29,
+    "source": "if errors.Is(err, nats.ErrConnectionClosed)",
+    "specific_fault": "NATS closed/disconnected/timeout or actual network/deadline failure in current SQL/NATS batch.",
+    "current_ground": "§5 transactional pending Outbox/NATS retry permitted, no future retry service.",
+    "actual_recovery_or_failure": "Original batch returns failure and rollback leaves pending marks; existing next tick retries. Unknown error returns and main terminates dispatcher.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR026",
+    "path": "backend/go/core/auth.go",
+    "line": 137,
+    "source": "if _, err = w.Write",
+    "specific_fault": "Peer HTTP write failed after serializable body built.",
+    "current_ground": "Current HTTP response external output boundary; marshal failure panics before status write.",
+    "actual_recovery_or_failure": "Handler ends failed output, no continued state mutation; actual peer connection cannot obtain complete response.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR027",
+    "path": "backend/go/core/auth.go",
+    "line": 142,
+    "source": "e := apiError{Status: 500",
+    "specific_fault": "Internal SQL/crypto operational error cannot expose sensitive cause to public response.",
+    "current_ground": "§7.4 credentials privacy, existing HTTP failed operation boundary.",
+    "actual_recovery_or_failure": "500 failed operation; no auth denial or normal result. Raw error kept in internal caller until safe projection.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR028",
+    "path": "backend/go/core/auth.go",
+    "line": 524,
+    "source": "if errors.Is(err, pgx.ErrNoRows) {\n\t\twriteJSON",
+    "specific_fault": "Exact username search has no row.",
+    "current_ground": "Auth/User HTTP search returns users empty on notfound.",
+    "actual_recovery_or_failure": "Successful empty search only this case; DB unknown emits failed response.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR029",
+    "path": "backend/go/core/auth.go",
+    "line": 275,
+    "source": "if errors.Is(err, pgx.ErrNoRows) {\n\t\terr = nil",
+    "specific_fault": "First-login slot genuinely absent.",
+    "current_ground": "Canonical three-slot insert/replacement invariant §7; newSession holds user lock.",
+    "actual_recovery_or_failure": "Create new slot epoch1, no error suppression on non-ErrNoRows.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR030",
+    "path": "backend/go/core/sync.go",
+    "line": 84,
+    "source": "http.Error(w, \"Sync unavailable\"",
+    "specific_fault": "Unknown backend/infrastructure failure.",
+    "current_ground": "ADR0008 explicitly non-2xx transport failure, no invented catalog code.",
+    "actual_recovery_or_failure": "503 failed operation, never success empty page.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR031",
+    "path": "backend/go/core/sync.go",
+    "line": 278,
+    "source": "next := cursor",
+    "specific_fault": "Actual successful user query returns empty terminal page.",
+    "current_ground": "ADR0008 empty page keeps input opaque cursor.",
+    "actual_recovery_or_failure": "No invented cursor; hasMore false, query/scan/commit errors fail first.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR032",
+    "path": "backend/go/core/sync.go",
+    "line": 161,
+    "source": "if cursor == \"0\"",
+    "specific_fault": "First user Sync has canonical initial cursor0.",
+    "current_ground": "ADR0008 initial cursor.",
+    "actual_recovery_or_failure": "Start user stream at0; malformed/other-account cursor fails validity, not reset.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR033",
+    "path": "backend/go/core/sync.go",
+    "line": 541,
+    "source": "peek := func() byte",
+    "specific_fault": "JSON lexical lookahead ends or reader error.",
+    "current_ground": "Bounded current external JSON parser; outer reader propagates actual read failure before successful page.",
+    "actual_recovery_or_failure": "Peek0 only parser sentinel; take used after successful nonzero peek. Invalid grammar rejects; no success fallback or authoritative gap hide.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR034",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 221,
+    "source": "reason := h.auth.revocationReason",
+    "specific_fault": "Safety-watch expiry/readonly Session authority failure after bind.",
+    "current_ground": "§7 authority/cache fail closed + existing accepted TestPostgresFallbackExpiryAndDatabaseFailureClose.",
+    "actual_recovery_or_failure": "Notify generic REVOKED and retire socket; no invented committed business LOGOUT/REPLACED, no continued unauthorized session. This is explicit failed connection, not success.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR035",
+    "path": "backend/go/gateway/session.go",
+    "line": 67,
+    "source": "return \"REVOKED\"",
+    "specific_fault": "No known exact committed business revocation, read lookup error, expiry, unknown persisted reason.",
+    "current_ground": "§7 generic revocation retirement and explicit prior accepted fallback test; exact user/session SQL identity required for LOGOUT/REPLACED.",
+    "actual_recovery_or_failure": "Conservative close; cannot borrow unrelated/latest new-slot business reason.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR036",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 287,
+    "source": "if response.StatusCode != 200",
+    "specific_fault": "Private Core response failed/unreadable/malformed or correlation mismatch.",
+    "current_ground": "§5 commit uncertainty/redelivery and §6 retry/Sync, never rejection when committed outcome unknown.",
+    "actual_recovery_or_failure": "Origin retained, no invented ACK; client timeout plus same-ID retry/Sync converges.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR037",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 281,
+    "source": "if err != nil {\n\t\t// Transport failure",
+    "specific_fault": "Private Core HTTP transport error may follow server commit.",
+    "current_ground": "§5 ACK durable meaning, uncertain commit cannot become known rejection.",
+    "actual_recovery_or_failure": "No frame; retained origin and client timeout/Sync convergence.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR038",
+    "path": "backend/go/gateway/gateway.go",
+    "line": 311,
+    "source": "if json.Unmarshal(data, &e)",
+    "specific_fault": "Malformed private NATS message event.",
+    "current_ground": "§5 NATS not source of truth; current schema-bound fanout rejects invalid source.",
+    "actual_recovery_or_failure": "Drop noncanonical event, no bad row delivered; authoritative conversation Sync supplies eventual completeness.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR039",
+    "path": "backend/go/gateway/http.go",
+    "line": 26,
+    "source": "if json.Unmarshal(m.Data, &v) == nil",
+    "specific_fault": "Malformed session NATS revocation payload.",
+    "current_ground": "§7 readonly authority watch handles missed notification.",
+    "actual_recovery_or_failure": "Do not process bad payload; existing periodic watch rechecks actual Session and retires if invalid.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR040",
+    "path": "backend/go/main.go",
+    "line": 30,
+    "source": "path = \"/run/im-config/config.json\"",
+    "specific_fault": "Operator did not override IM_CONFIG_FILE.",
+    "current_ground": "Existing Compose readonly config binding at same fixed path.",
+    "actual_recovery_or_failure": "Use only existing path; missing/invalid config fails startup, no default credentials.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR041",
+    "path": "backend/go/core/message.go",
+    "line": 88,
+    "source": "if errors.Is(err, errCommitUnknown)",
+    "specific_fault": "Message commit confirmation lost.",
+    "current_ground": "§5 durable ACK and unknown commit cannot prove rollback.",
+    "actual_recovery_or_failure": "503 no rejection ACK, original cause kept via multi %w; sameID retry/Sync resolves.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR042",
+    "path": "contracts/database/migrate.py",
+    "line": 105,
+    "source": "except RuntimeError as exc",
+    "specific_fault": "psql nonzero, missing executable/checksum/concurrency/destructive operation guard failure.",
+    "current_ground": "§11.4 independent migration component; canonical DB checksum and transactional migration.",
+    "actual_recovery_or_failure": "stderr message and exit1 prevents dependent services start; other exceptions propagate.",
+    "result": "PASS"
+  },
+  {
+    "id": "BR043",
+    "path": "tools/build_language_packs.py",
+    "line": 82,
+    "source": "finally:\n            if temporary.exists()",
+    "specific_fault": "Owned atomic replace failed or owned temp remains.",
+    "current_ground": "Current I18N artifact atomic write and unknown-output preservation.",
+    "actual_recovery_or_failure": "Unlink only exact owned temp; original write failure escapes; no claim of successful artifact on failed replace.",
+    "result": "PASS"
+  }
+]

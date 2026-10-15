@@ -1,0 +1,29 @@
+
+FILE 44 clients\desktop\src\ui\i18n\resources.ts HASH 5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b
+1: import en from "./en.js";
+2: import zhCN from "./zh-CN.js";
+3: import jaJP from "./ja-JP.js";
+4: export type Locale="en"|"zh-CN"|"ja-JP";
+5: export const locales:readonly Locale[]=["en","zh-CN","ja-JP"];
+6: export const languageNames=["English","简体中文","日本語"] as const;
+7: export const languageEntry="Language / 语言 / 言語";
+8: export function validLocale(value:unknown):value is Locale{return value==="en"||value==="zh-CN"||value==="ja-JP";}
+9: export const resources:Record<Locale,Record<string,string>>={en,"zh-CN":zhCN,"ja-JP":jaJP};
+10: // Display-only lookup. Wire values, user text and stable application IDs never pass through this function.
+11: export function translate(locale:unknown,key:string,params:Record<string,string|number>={},data=resources):string {
+12:  const language=validLocale(locale)?locale:"en";
+13:  if(!Object.hasOwn(data.en,key))throw new Error("Missing English language key: "+key);
+14:  const table=data[language];
+15:  const template=table&&Object.hasOwn(table,key)?table[key]:data.en[key];
+16:  if(template===undefined)throw new Error("Missing English language key: "+key);
+17:  return template.replace(/\{([A-Za-z]+)\}/g,(_,name:string)=>String(params[name]??"{"+name+"}"));
+18: }
+19: export const errorKeys:Record<string,string>={"USER_NOT_FOUND":"error.userNotFound","FRIEND_SELF_NOT_ALLOWED":"error.friendSelf","FRIENDSHIP_STATE_CONFLICT":"error.friendState",session_expired:"auth.expired",invalid_credentials:"error.credentials",connection_unavailable:"error.connection",invalid_server_response:"error.response",request_failed:"error.request",secure_credential_storage_unavailable:"error.secure",secure_credential_metadata_invalid:"error.secureMetadata",use_an_https_server_origin:"error.https",VALIDATION_FAILED:"error.validation",AUTHORIZATION_DENIED:"error.denied",MESSAGE_REQUEST_CONFLICT:"error.conflict",MESSAGE_COMMIT_FAILED:"error.commit",USERNAME_ALREADY_EXISTS:"error.usernameExists",PROTOCOL_VERSION_UNSUPPORTED:"error.protocol",AUTH_REQUIRED:"error.authentication",AUTH_TOKEN_INVALID:"auth.expired",AUTH_TOKEN_EXPIRED:"auth.expired",AUTH_SESSION_REVOKED:"auth.expired",AUTH_SESSION_EPOCH_STALE:"auth.expired",AUTH_CLIENT_TYPE_MISMATCH:"auth.expired",storage:"error.history",protocol:"connection.protocol_error",authentication:"error.authentication",transport:"error.connection",response:"error.response"};
+20: export function errorKey(kind:string):string{return Object.hasOwn(errorKeys,kind)?errorKeys[kind]:"error.request";}
+21: export const sourceDisplayKeys:Record<string,string>={"Chat": "nav.chat", "Friends": "nav.friends", "AI": "nav.ai", "Plugin": "nav.plugin", "Settings": "nav.settings", "Protocol error": "connection.protocol_error", "仅接收本页实时消息 · 不补历史": "sync.webWindow", "正在补齐本页在线消息…": "sync.webLoading", "本页在线消息已同步 · 不补历史": "sync.webCurrent", "同步失败，重连或重新打开会话重试": "sync.webFailed", "无效响应未改变已确认消息": "sync.invalid", "Session expired. Sign in again.": "auth.expired", "会话已过期，请重新登录。": "auth.expired", "会话已被替换，请重新登录。": "auth.replaced", "会话已过期或在其他网页被替换，请重新登录。": "auth.revoked", "已登录 · 消息仅保留在当前页面内存": "auth.loggedIn", "正在刷新会话…": "auth.refreshing", "会话已刷新": "auth.refreshed", "会话刷新失败，请重试或重新登录。": "auth.refreshFailed", "已退出登录。": "auth.loggedOut", "本页已退出，但服务端撤销未确认；请使用恢复会话再重试退出。": "auth.logoutUnconfirmed", "Invalid username or password": "auth.invalidCredentials", "账号或密码不正确。": "auth.invalidCredentials", "登录失败，请检查网络后重试。": "auth.loginFailed", "好友已添加，唯一私聊已建立": "friends.added", "好友加载失败，可重试。": "friends.failed", "好友同步失败，可重试或重连。": "friends.syncFailed", "搜索失败，请检查用户名后重试。": "friends.searchFailed", "添加好友失败，请重试。": "friends.addFailed", "个人资料加载失败，可重试。": "profile.failed", "Appearance could not be loaded": "error.appearanceLoad", "Appearance could not be saved": "error.appearanceSave", "System notification unavailable": "error.notification", "Local history unavailable": "error.history", "Conversation history unavailable": "error.conversationHistory", "Operation unavailable": "error.operation", "Passwords do not match": "error.passwordMismatch", "Use a 3–64 character username and a 12–256 character password": "error.registration", "No saved session for this server": "error.noSession", "Showing saved history while the secure session resumes": "error.resuming", "Session expired; secure credential cleanup failed": "error.cleanup", "Sync unavailable; showing local history": "error.syncLocal", "Message could not be saved": "error.saveMessage", "Retry unavailable": "error.retry", "Connection unavailable": "error.connection", "Use an HTTPS server origin": "error.https", "Invalid server response": "error.response", "Secure credential storage unavailable": "error.secure", "Secure credential metadata invalid": "error.secureMetadata", "Request failed": "error.request", "Session expired": "auth.expired", "会话已失效，请重新登录。": "auth.expired"};
+22: export function displayText(locale:unknown,value:string):string {
+23:  if(value==="")return "";
+24:  if(value.startsWith("Sync "))return translate(locale,"error.sync",{reason:translate(locale,errorKey(value.slice(5)))});
+25:  const key=Object.hasOwn(sourceDisplayKeys,value)?sourceDisplayKeys[value]:Object.hasOwn(errorKeys,value)?errorKeys[value]:Object.hasOwn(resources.en,value)?value:"error.operation";
+26:  return translate(locale,key);
+27: }

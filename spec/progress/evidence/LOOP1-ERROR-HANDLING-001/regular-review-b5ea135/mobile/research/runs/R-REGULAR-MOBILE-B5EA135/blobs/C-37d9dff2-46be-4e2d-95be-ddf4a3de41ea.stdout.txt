@@ -1,0 +1,1233 @@
+package im.platform.client.ui.i18n
+val en:Map<String,String> = mapOf(
+"nav.chat" to "Chat",
+"nav.friends" to "Friends",
+"nav.ai" to "AI",
+"nav.plugin" to "Plugin",
+"nav.settings" to "Settings",
+"nav.profile" to "Profile",
+"brand.logo" to "IM+ logo",
+"brand.name" to "IM plus",
+"nav.main" to "Main navigation",
+"nav.onlineWorkspace" to "ONLINE WORKSPACE",
+"nav.future" to "Future communication",
+"nav.extensions" to "Extensions",
+"nav.soon" to "SOON",
+"nav.personal" to "Personal account",
+"nav.signIn" to "Sign in to connect",
+"nav.workspace" to "Your workspace",
+"nav.signedIn" to "Signed in",
+"nav.local" to "Viewing local history",
+"nav.back" to "Back to chats",
+"connection.idle" to "Not connected",
+"connection.ready" to "Online",
+"connection.connecting" to "Connecting",
+"connection.failed" to "Connection failed",
+"connection.protocol_error" to "Protocol error",
+"connection.offline" to "Disconnected",
+"connection.connected" to "Connected",
+"connection.offlineShort" to "Offline",
+"sync.syncing" to "Syncing鈥?,
+"sync.attention" to "Sync needs attention",
+"sync.local" to "Local history",
+"sync.current" to "Up to date",
+"sync.automatic" to "Messages sync automatically",
+"sync.connected" to "Connected 路 Messages sync automatically",
+"sync.offline" to "Offline 路 Showing saved history",
+"sync.webWindow" to "Only live messages on this page 路 No history backfill",
+"sync.webLoading" to "Syncing this page's online messages鈥?,
+"sync.webCurrent" to "Online messages synced 路 No history backfill",
+"sync.webFailed" to "Sync failed. Reconnect or reopen the conversation.",
+"sync.invalid" to "Invalid response did not change confirmed messages",
+"auth.welcomeEyebrow" to "SPACE FOR EVERY CONVERSATION",
+"auth.stayClose" to "Stay close.",
+"auth.thinkBeyond" to "Think beyond.",
+"auth.stayCloseMobile" to "Stay close. Think beyond.",
+"auth.description" to "Conversations, people and a little room for what comes next.",
+"auth.join" to "JOIN IM+",
+"auth.welcomeBack" to "WELCOME BACK",
+"auth.createTitle" to "Create your account",
+"auth.openTitle" to "Open your workspace",
+"auth.created" to "Account created. Sign in to continue.",
+"auth.username" to "Username",
+"auth.password" to "Password",
+"auth.confirmPassword" to "Confirm password",
+"auth.passwordHint" to "Use 12鈥?56 characters for your password.",
+"auth.wait" to "Please wait鈥?,
+"auth.create" to "Create account",
+"auth.signIn" to "Sign in",
+"auth.existing" to "Already have an account? Sign in",
+"auth.new" to "New here? Create an account",
+"auth.resume" to "Resume saved session",
+"auth.start" to "START A CONVERSATION",
+"auth.webTitle" to "Sign in to IM+",
+"auth.webMemory" to "Messages stay in memory and are cleared when this page closes.",
+"auth.signingIn" to "Signing in鈥?,
+"auth.enter" to "Enter workspace 鈫?,
+"auth.webResume" to "Resume existing session",
+"auth.back" to "Back to sign in",
+"auth.signOut" to "Sign out",
+"auth.refresh" to "Refresh session",
+"auth.offline" to "Go offline",
+"auth.reconnect" to "Reconnect",
+"auth.testNotification" to "Test notification",
+"auth.expired" to "Session expired. Sign in again.",
+"auth.replaced" to "Session replaced. Sign in again.",
+"auth.revoked" to "Session expired or replaced in another page. Sign in again.",
+"auth.loggedIn" to "Signed in 路 Messages stay in this page's memory",
+"auth.refreshing" to "Refreshing session鈥?,
+"auth.refreshed" to "Session refreshed",
+"auth.refreshFailed" to "Session refresh failed. Retry or sign in again.",
+"auth.loggedOut" to "Signed out.",
+"auth.logoutUnconfirmed" to "Signed out locally; server revocation is unconfirmed. Resume and retry sign out.",
+"auth.invalidCredentials" to "Invalid username or password",
+"auth.loginFailed" to "Sign in failed. Check your connection and retry.",
+"header.connected" to "YOUR CONNECTED WORKSPACE",
+"header.online" to "YOUR ONLINE SPACE",
+"header.welcome" to "WELCOME TO YOUR WORKSPACE",
+"header.title" to "Welcome to IM+",
+"chat.messages" to "Messages",
+"chat.new" to "New chat",
+"chat.caption" to "People and spaces that matter.",
+"chat.next" to "Your next conversation starts here",
+"chat.addHint" to "Add a friend to open a private chat.",
+"chat.find" to "Find a friend",
+"chat.conversation" to "Conversation",
+"chat.conversationId" to "Conversation {id}",
+"chat.your" to "Your conversations",
+"chat.access" to "Access unavailable",
+"chat.noMessages" to "No messages yet",
+"chat.place" to "Good conversations have a place",
+"chat.choose" to "Choose a conversation to begin.",
+"chat.fresh" to "A fresh start",
+"chat.hello" to "No messages yet. Say hello.",
+"chat.now" to "Now",
+"chat.sent" to "Sent",
+"chat.sending" to "Sending鈥?,
+"chat.failed" to "Failed 路 Success confirmation not received",
+"chat.retry" to "Retry",
+"chat.webSending" to "Sending",
+"chat.webSent" to "Confirmed",
+"chat.webFailed" to "Success confirmation not received",
+"chat.message" to "Message",
+"chat.write" to "Write a message鈥?,
+"chat.send" to "Send 鈫?,
+"chat.resize" to "Resize message input",
+"chat.drag" to "Drag up to expand",
+"chat.keyboard" to "Enter to send 路 Shift + Enter for a new line",
+"chat.webHelp" to "Online memory only 路 Retry unconfirmed messages with the same identity",
+"chat.keepContact" to "Keep in touch, one message at a time.",
+"chat.refresh" to "Refresh conversations",
+"chat.loading" to "Loading conversations鈥?,
+"chat.empty" to "No conversations yet",
+"chat.webStart" to "Start now",
+"chat.webLive" to "Live messages on this page",
+"friends.eyebrow" to "BUILD YOUR CIRCLE",
+"friends.reach" to "People, within reach.",
+"friends.exact" to "Find someone by their exact username.",
+"friends.searchLabel" to "Search username",
+"friends.searching" to "Searching鈥?,
+"friends.search" to "Search",
+"friends.noMatch" to "No matching user shown.",
+"friends.check" to "No matching user shown. Search to check this username.",
+"friends.add" to "Add friend",
+"friends.your" to "Your friends",
+"friends.grow" to "Your circle is waiting to grow.",
+"friends.message" to "Message",
+"friends.people" to "PEOPLE & CONNECTIONS",
+"friends.direct" to "Add a friend to create your unique private chat.",
+"friends.refresh" to "Refresh friends",
+"friends.usernameHint" to "Enter username",
+"friends.already" to "Already friends",
+"friends.loading" to "Loading friends鈥?,
+"friends.searchHint" to "Search the exact username and add a friend.",
+"friends.added" to "Friend added; unique private chat ready",
+"friends.failed" to "Could not load friends. Retry.",
+"friends.syncFailed" to "Friend sync failed. Retry or reconnect.",
+"friends.searchFailed" to "Search failed. Check the username and retry.",
+"friends.addFailed" to "Could not add friend. Retry.",
+"ai.eyebrow" to "A LITTLE ROOM FOR WHAT COMES NEXT",
+"ai.title" to "Intelligence, in conversation.",
+"ai.description" to "An AI space is planned for IM+. It is not available in this release.",
+"ai.later" to "Coming later",
+"ai.detail" to "No AI service is connected. Your conversations are not sent to an AI provider.",
+"ai.webEyebrow" to "FUTURE COMMUNICATION",
+"ai.webTitle" to "New ideas, taking shape",
+"ai.webDescription" to "AI entry reserved. AI chat, tool calls and generated results are not available.",
+"ai.building" to "Under construction",
+"plugin.eyebrow" to "YOUR WORKSPACE, EXTENDED",
+"plugin.title" to "Plugins",
+"plugin.workspace" to "Your workspace, extended.",
+"plugin.description" to "Extensions will live here when the plugin platform becomes available.",
+"plugin.unavailable" to "Plugin capabilities unavailable",
+"plugin.detail" to "No plugin runtime or installation service is connected in this release.",
+"plugin.badge" to "Unavailable in Loop 1 S2",
+"plugin.personal" to "PERSONAL CAPABILITIES",
+"plugin.currentUnavailable" to "Currently unavailable",
+"plugin.webTitle" to "Your extension space",
+"plugin.webDescription" to "Plugin capabilities and installed list are not available. No runtime, install or store is provided.",
+"placeholder.continue" to "Keep using Chat and Friends to connect with real people.",
+"placeholder.back" to "Back to chat 鈫?,
+"settings.eyebrow" to "MAKE ROOM FOR YOURSELF",
+"settings.appearance" to "Appearance",
+"settings.independent" to "Color, type and spacing are independent preferences.",
+"settings.independentMobile" to "Color, type and spacing are independent.",
+"settings.theme" to "Color theme",
+"settings.themeShort" to "Theme",
+"settings.cold" to "Cold AI",
+"settings.warm" to "Warm Creative",
+"settings.coldHint" to "Blue 路 quiet 路 focused",
+"settings.warmHint" to "Warm 路 open 路 expressive",
+"settings.font" to "Font size",
+"settings.fontValue" to "Font size: {size}px",
+"settings.spacing" to "Spacing",
+"settings.compact" to "Compact",
+"settings.standard" to "Standard",
+"settings.comfort" to "Comfortable",
+"settings.spacious" to "Spacious",
+"settings.saved" to "Saved only on this device. Switching themes preserves your type and spacing.",
+"settings.savedMobile" to "Saved on this device. Switching themes preserves type and spacing.",
+"settings.webEyebrow" to "MAKE IT YOURS",
+"settings.webDescription" to "Your appearance, clear conversations.",
+"settings.colorsOnly" to "Changes colors only, keeping layout, type and spacing.",
+"settings.preview" to "Clear conversations, at your own pace. Aa 123",
+"settings.webSaved" to "Appearance settings (theme, font size and spacing) are saved locally; language is saved separately.",
+"settings.webUnavailable" to "Local appearance save unavailable; this page still uses your selection.",
+"language.saved" to "Language saved on this device.",
+"language.failed" to "Language could not be saved; using it for this session.",
+"profile.session" to "Profile & session",
+"profile.unavailable" to "Profile unavailable",
+"profile.reconnect" to "Reconnect to load your profile",
+"profile.signIn" to "Sign in to load your profile",
+"profile.shortcut" to "Ctrl + Shift + Space brings your workspace forward. The system tray keeps IM+ within reach.",
+"profile.account" to "YOUR ACCOUNT",
+"profile.refresh" to "Refresh profile",
+"profile.loading" to "Loading profile鈥?,
+"profile.empty" to "No profile available.",
+"profile.webSession" to "Current web session",
+"profile.webSecurity" to "Refresh credentials use a secure browser cookie; messages and account data stay in memory.",
+"profile.failed" to "Could not load profile. Retry.",
+"window.minimize" to "Minimize",
+"window.restore" to "Restore",
+"window.maximize" to "Maximize",
+"window.close" to "Close",
+"notify.ready" to "Your workspace notifications are ready.",
+"notify.activity" to "New activity in your conversations",
+"tray.open" to "Open IM+",
+"tray.hide" to "Hide window",
+"tray.quit" to "Quit IM+",
+"tray.tooltip" to "IM+ 路 Your workspace",
+"error.appearanceLoad" to "Appearance could not be loaded",
+"error.appearanceSave" to "Appearance could not be saved",
+"error.notification" to "System notification unavailable",
+"error.history" to "Local history unavailable",
+"error.conversationHistory" to "Conversation history unavailable",
+"error.operation" to "Operation unavailable",
+"error.passwordMismatch" to "Passwords do not match",
+"error.registration" to "Use a 3鈥?4 character username and a 12鈥?56 character password",
+"error.noSession" to "No saved session for this server",
+"error.resuming" to "Showing saved history while the secure session resumes",
+"error.cleanup" to "Session expired; secure credential cleanup failed",
+"error.syncLocal" to "Sync unavailable; showing local history",
+"error.saveMessage" to "Message could not be saved",
+"error.retry" to "Retry unavailable",
+"error.connection" to "Connection unavailable",
+"error.https" to "Use an HTTPS server origin",
+"error.response" to "Invalid server response",
+"error.credentials" to "Invalid username or password",
+"error.secure" to "Secure credential storage unavailable",
+"error.secureMetadata" to "Secure credential metadata invalid",
+"error.request" to "Request failed",
+"error.sync" to "Sync failed: {reason}",
+"error.validation" to "Check the entered values.",
+"error.denied" to "Access denied.",
+"error.conflict" to "Request conflicts with an existing message.",
+"error.commit" to "Message commit failed; success is not confirmed.",
+"error.usernameExists" to "Username already exists.",
+"error.protocol" to "Protocol version unsupported.",
+"error.authentication" to "Authentication required.",
+"welcome.pill" to "Adaptive Glass Workspace",
+"welcome.line1" to "Give conversations",
+"welcome.line2" to "more space.",
+"welcome.intro1" to "Connect with people and ideas now.",
+"welcome.intro2" to "Simple online communication, a clear work rhythm.",
+"web.railLine1" to "Messages stay on this page",
+"web.railLine2" to "No history backfill",
+"web.emptyFriends1" to "Search and add friends in Friends,",
+"web.emptyFriends2" to "to create a unique private chat.",
+"web.emptyChat1" to "Only this page's live messages are shown; no history backfill.",
+"web.emptyChat2" to "Say hello and start a new conversation.",
+ "error.userNotFound" to "User not found",
+ "error.friendSelf" to "You cannot add yourself as a friend",
+ "error.friendState" to "Friendship state changed. Refresh and try again."
+)
+package im.platform.client.ui.i18n
+val jaJP:Map<String,String> = mapOf(
+"nav.chat" to "銉併儯銉冦儓",
+"nav.friends" to "鍙嬨仩銇?,
+"nav.ai" to "AI",
+"nav.plugin" to "銉椼儵銈般偆銉?,
+"nav.settings" to "瑷畾",
+"nav.profile" to "銉椼儹銉曘偅銉笺儷",
+"brand.logo" to "IM+ 銉偞",
+"brand.name" to "IM plus",
+"nav.main" to "銉°偆銉炽儕銉撱偛銉笺偡銉с兂",
+"nav.onlineWorkspace" to "銈兂銉┿偆銉炽儻銉笺偗銈广儦銉笺偣",
+"nav.future" to "鏈潵銇偝銉熴儱銉嬨偙銉笺偡銉с兂",
+"nav.extensions" to "鎷″嫉姗熻兘",
+"nav.soon" to "杩戞棩鍏枊",
+"nav.personal" to "鍊嬩汉銈偒銈︺兂銉?,
+"nav.signIn" to "銉偘銈ゃ兂銇椼仸鎺ョ稓",
+"nav.workspace" to "銉兗銈偣銉氥兗銈?,
+"nav.signedIn" to "銉偘銈ゃ兂娓堛伩",
+"nav.local" to "銉兗銈儷灞ユ銈掕〃绀轰腑",
+"nav.back" to "銉併儯銉冦儓銇埢銈?,
+"connection.idle" to "鏈帴缍?,
+"connection.ready" to "銈兂銉┿偆銉?,
+"connection.connecting" to "鎺ョ稓涓?,
+"connection.failed" to "鎺ョ稓澶辨晽",
+"connection.protocol_error" to "銉椼儹銉堛偝銉偍銉┿兗",
+"connection.offline" to "鍒囨柇銇曘倢銇俱仐銇?,
+"connection.connected" to "鎺ョ稓娓堛伩",
+"connection.offlineShort" to "銈儠銉┿偆銉?,
+"sync.syncing" to "鍚屾湡涓€?,
+"sync.attention" to "鍚屾湡銇⒑瑾嶃亴蹇呰銇с仚",
+"sync.local" to "銉兗銈儷灞ユ",
+"sync.current" to "鏈€鏂般伄鐘舵厠",
+"sync.automatic" to "銉°儍銈汇兗銈搞伅鑷嫊鍚屾湡銇曘倢銇俱仚",
+"sync.connected" to "鎺ョ稓娓堛伩 路 銉°儍銈汇兗銈搞伅鑷嫊鍚屾湡銇曘倢銇俱仚",
+"sync.offline" to "銈儠銉┿偆銉?路 淇濆瓨娓堛伩銇饱姝淬倰琛ㄧず",
+"sync.webWindow" to "銇撱伄銉氥兗銈搞伄鏂扮潃銇伩 路 閬庡幓銇饱姝淬伅鍙栧緱銇椼伨銇涖倱",
+"sync.webLoading" to "銇撱伄銉氥兗銈搞伄銈兂銉┿偆銉炽儭銉冦偦銉笺偢銈掑悓鏈熶腑鈥?,
+"sync.webCurrent" to "銈兂銉┿偆銉炽儭銉冦偦銉笺偢銈掑悓鏈熸笀銇?路 閬庡幓銇饱姝淬伅鍙栧緱銇椼伨銇涖倱",
+"sync.webFailed" to "鍚屾湡銇け鏁椼仐銇俱仐銇熴€傚啀鎺ョ稓銇欍倠銇嬩細瑭便倰闁嬨亶鐩淬仐銇︺亸銇犮仌銇勩€?,
+"sync.invalid" to "鐒″姽銇繙绛斻仹銈傜⒑瑾嶆笀銇裤儭銉冦偦銉笺偢銇鏇淬仌銈屻伨銇涖倱",
+"auth.welcomeEyebrow" to "浼氳┍銇仧銈併伄銈广儦銉笺偣",
+"auth.stayClose" to "銇ゃ仾銇屻倞銈掑ぇ鍒囥伀銆?,
+"auth.thinkBeyond" to "銇濄伄鍏堛伕銆?,
+"auth.stayCloseMobile" to "銇ゃ仾銇屻倞銈掑ぇ鍒囥伀銆傘仢銇厛銇搞€?,
+"auth.description" to "浼氳┍銆佷汉銆呫€併仢銇椼仸鏈潵銇仧銈併伄銈广儦銉笺偣銆?,
+"auth.join" to "IM+ 銇弬鍔?,
+"auth.welcomeBack" to "銇娿亱銇堛倞銇仌銇?,
+"auth.createTitle" to "銈偒銈︺兂銉堛倰浣滄垚",
+"auth.openTitle" to "銉兗銈偣銉氥兗銈广倰闁嬨亸",
+"auth.created" to "銈偒銈︺兂銉堛倰浣滄垚銇椼伨銇椼仧銆傘儹銈般偆銉炽仐銇︺亸銇犮仌銇勩€?,
+"auth.username" to "銉︺兗銈躲兗鍚?,
+"auth.password" to "銉戙偣銉兗銉?,
+"auth.confirmPassword" to "銉戙偣銉兗銉夈伄纰鸿獚",
+"auth.passwordHint" to "銉戙偣銉兗銉夈伅12锝?56鏂囧瓧銇у叆鍔涖仐銇︺亸銇犮仌銇勩€?,
+"auth.wait" to "銇婂緟銇°亸銇犮仌銇勨€?,
+"auth.create" to "銈偒銈︺兂銉堛倰浣滄垚",
+"auth.signIn" to "銉偘銈ゃ兂",
+"auth.existing" to "銈偒銈︺兂銉堛倰銇婃寔銇°仹銇欍亱锛熴儹銈般偆銉?,
+"auth.new" to "鍒濄倎銇︺仹銇欍亱锛熴偄銈偊銉炽儓銈掍綔鎴?,
+"auth.resume" to "淇濆瓨娓堛伩銈汇儍銈枫儳銉炽倰鍐嶉枊",
+"auth.start" to "浼氳┍銈掑銈併倠",
+"auth.webTitle" to "IM+ 銇儹銈般偆銉?,
+"auth.webMemory" to "銉°儍銈汇兗銈搞伅銉°儮銉唴銇伩銇с€併儦銉笺偢銈掗枆銇樸倠銇ㄦ秷鍘汇仌銈屻伨銇欍€?,
+"auth.signingIn" to "銉偘銈ゃ兂涓€?,
+"auth.enter" to "銉兗銈偣銉氥兗銈广伕 鈫?,
+"auth.webResume" to "鏃㈠瓨銇偦銉冦偡銉с兂銈掑啀闁?,
+"auth.back" to "銉偘銈ゃ兂銇埢銈?,
+"auth.signOut" to "銉偘銈偊銉?,
+"auth.refresh" to "銈汇儍銈枫儳銉炽倰鏇存柊",
+"auth.offline" to "銈儠銉┿偆銉炽伀銇欍倠",
+"auth.reconnect" to "鍐嶆帴缍?,
+"auth.testNotification" to "閫氱煡銈掋儐銈广儓",
+"auth.expired" to "銈汇儍銈枫儳銉炽亴鍒囥倢銇俱仐銇熴€傚啀搴︺儹銈般偆銉炽仐銇︺亸銇犮仌銇勩€?,
+"auth.replaced" to "銈汇儍銈枫儳銉炽亴缃亶鎻涖亪銈夈倢銇俱仐銇熴€傚啀搴︺儹銈般偆銉炽仐銇︺亸銇犮仌銇勩€?,
+"auth.revoked" to "銈汇儍銈枫儳銉炽亴鍒囥倢銇熴亱鍒ャ伄銉氥兗銈搞仹缃亶鎻涖亪銈夈倢銇俱仐銇熴€傚啀搴︺儹銈般偆銉炽仐銇︺亸銇犮仌銇勩€?,
+"auth.loggedIn" to "銉偘銈ゃ兂娓堛伩 路 銉°儍銈汇兗銈搞伅銇撱伄銉氥兗銈搞伄銉°儮銉唴銇伩",
+"auth.refreshing" to "銈汇儍銈枫儳銉炽倰鏇存柊涓€?,
+"auth.refreshed" to "銈汇儍銈枫儳銉炽倰鏇存柊銇椼伨銇椼仧",
+"auth.refreshFailed" to "銈汇儍銈枫儳銉炽倰鏇存柊銇с亶銇俱仜銈撱仹銇椼仧銆傚啀瑭﹁銇欍倠銇嬨儹銈般偆銉炽仐銇︺亸銇犮仌銇勩€?,
+"auth.loggedOut" to "銉偘銈偊銉堛仐銇俱仐銇熴€?,
+"auth.logoutUnconfirmed" to "銇撱伄銉氥兗銈搞亱銈夈儹銈般偄銈︺儓銇椼伨銇椼仧銇屻€併偟銉笺儛銉笺伄鐒″姽鍖栥伅鏈⒑瑾嶃仹銇欍€傚啀闁嬨仐銇︺儹銈般偄銈︺儓銈掑啀瑭﹁銇椼仸銇忋仩銇曘亜銆?,
+"auth.invalidCredentials" to "銉︺兗銈躲兗鍚嶃伨銇熴伅銉戙偣銉兗銉夈亴閬曘亜銇俱仚",
+"auth.loginFailed" to "銉偘銈ゃ兂銇с亶銇俱仜銈撱仹銇椼仧銆傛帴缍氥倰纰鸿獚銇椼仸鍐嶈│琛屻仐銇︺亸銇犮仌銇勩€?,
+"header.connected" to "銇ゃ仾銇屻倠銉兗銈偣銉氥兗銈?,
+"header.online" to "銈兂銉┿偆銉炽偣銉氥兗銈?,
+"header.welcome" to "銉兗銈偣銉氥兗銈广伕銈堛亞銇撱仢",
+"header.title" to "IM+ 銇搞倛銇嗐亾銇?,
+"chat.messages" to "銉°儍銈汇兗銈?,
+"chat.new" to "鏂般仐銇勩儊銉ｃ儍銉?,
+"chat.caption" to "澶у垏銇汉銇ㄣ偣銉氥兗銈广€?,
+"chat.next" to "娆°伄浼氳┍銇亾銇撱亱銈?,
+"chat.addHint" to "鍙嬨仩銇°倰杩藉姞銇椼仸鍊嬪垾銉併儯銉冦儓銈掑銈併伨銇椼倗銇嗐€?,
+"chat.find" to "鍙嬨仩銇°倰鎺仚",
+"chat.conversation" to "浼氳┍",
+"chat.conversationId" to "浼氳┍ {id}",
+"chat.your" to "浼氳┍涓€瑕?,
+"chat.access" to "銈偗銈汇偣銇с亶銇俱仜銈?,
+"chat.noMessages" to "銇俱仩銉°儍銈汇兗銈搞伅銇傘倞銇俱仜銈?,
+"chat.place" to "澶у垏銇細瑭便伄銇熴倎銇偣銉氥兗銈?,
+"chat.choose" to "浼氳┍銈掗伕銈撱仹濮嬨倎銇俱仐銈囥亞銆?,
+"chat.fresh" to "鏂般仐銇勫銇俱倞",
+"chat.hello" to "銇俱仩銉°儍銈汇兗銈搞伅銇傘倞銇俱仜銈撱€傛尐鎷躲仐銇︺伩銇俱仐銈囥亞銆?,
+"chat.now" to "浠?,
+"chat.sent" to "閫佷俊娓堛伩",
+"chat.sending" to "閫佷俊涓€?,
+"chat.failed" to "澶辨晽 路 鎴愬姛銇⒑瑾嶃倰鍙椾俊銇椼仸銇勩伨銇涖倱",
+"chat.retry" to "鍐嶈│琛?,
+"chat.webSending" to "閫佷俊涓?,
+"chat.webSent" to "纰鸿獚娓堛伩",
+"chat.webFailed" to "鎴愬姛銇⒑瑾嶃倰鍙椾俊銇椼仸銇勩伨銇涖倱",
+"chat.message" to "銉°儍銈汇兗銈?,
+"chat.write" to "銉°儍銈汇兗銈搞倰鍏ュ姏鈥?,
+"chat.send" to "閫佷俊 鈫?,
+"chat.resize" to "鍏ュ姏娆勩伄銈点偆銈恒倰澶夋洿",
+"chat.drag" to "涓娿伀銉夈儵銉冦偘銇椼仸鎷″ぇ",
+"chat.keyboard" to "Enter銇ч€佷俊 路 Shift + Enter銇ф敼琛?,
+"chat.webHelp" to "銈兂銉┿偆銉炽伄銉°儮銉唴銇伩 路 鏈⒑瑾嶃儭銉冦偦銉笺偢銇悓銇業D銇у啀瑭﹁",
+"chat.keepContact" to "銇层仺銇撱仺銇嬨倝銆併仱銇亴銈娿倰銆?,
+"chat.refresh" to "浼氳┍銈掓洿鏂?,
+"chat.loading" to "浼氳┍銈掕銇胯炯銇夸腑鈥?,
+"chat.empty" to "銇俱仩浼氳┍銇亗銈娿伨銇涖倱",
+"chat.webStart" to "銇撱亾銇嬨倝濮嬨倎銈?,
+"chat.webLive" to "銇撱伄銉氥兗銈搞伄鏂扮潃銉°儍銈汇兗銈?,
+"friends.eyebrow" to "銇ゃ仾銇屻倞銈掑簝銇掋倛銇?,
+"friends.reach" to "浜恒€呫亴銆併仚銇愩仢銇般伀銆?,
+"friends.exact" to "姝ｇ⒑銇儲銉笺偠銉煎悕銇у弸銇犮仭銈掓帰銇?,
+"friends.searchLabel" to "銉︺兗銈躲兗鍚嶃倰妞滅储",
+"friends.searching" to "妞滅储涓€?,
+"friends.search" to "妞滅储",
+"friends.noMatch" to "涓€鑷淬仚銈嬨儲銉笺偠銉笺伅銇勩伨銇涖倱銆?,
+"friends.check" to "涓€鑷淬仚銈嬨儲銉笺偠銉笺伅銇勩伨銇涖倱銆傛绱仐銇︾⒑瑾嶃仐銇︺亸銇犮仌銇勩€?,
+"friends.add" to "鍙嬨仩銇°倰杩藉姞",
+"friends.your" to "鍙嬨仩銇′竴瑕?,
+"friends.grow" to "鏂般仐銇勩仱銇亴銈娿倰寰呫仯銇︺亜銇俱仚",
+"friends.message" to "銉併儯銉冦儓銈掗枊濮?,
+"friends.people" to "浜恒仺銇ゃ仾銇屻倞",
+"friends.direct" to "鍙嬨仩銇°倰杩藉姞銇欍倠銇ㄣ€佷簩浜恒仩銇戙伄銉併儯銉冦儓銇屼綔鎴愩仌銈屻伨銇欍€?,
+"friends.refresh" to "鍙嬨仩銇°倰鏇存柊",
+"friends.usernameHint" to "銉︺兗銈躲兗鍚嶃倰鍏ュ姏",
+"friends.already" to "杩藉姞娓堛伩",
+"friends.loading" to "鍙嬨仩銇°倰瑾伩杈笺伩涓€?,
+"friends.searchHint" to "姝ｇ⒑銇儲銉笺偠銉煎悕銇ф绱仐銇﹁拷鍔犮仐銇︺亸銇犮仌銇勩€?,
+"friends.added" to "鍙嬨仩銇°倰杩藉姞銇椼伨銇椼仧銆傚€嬪垾銉併儯銉冦儓銈掗枊濮嬨仹銇嶃伨銇?,
+"friends.failed" to "鍙嬨仩銇°倰瑾伩杈笺倎銇俱仜銈撱仹銇椼仧銆傚啀瑭﹁銇椼仸銇忋仩銇曘亜銆?,
+"friends.syncFailed" to "鍙嬨仩銇°伄鍚屾湡銇け鏁椼仐銇俱仐銇熴€傚啀瑭﹁銇欍倠銇嬪啀鎺ョ稓銇椼仸銇忋仩銇曘亜銆?,
+"friends.searchFailed" to "妞滅储銇с亶銇俱仜銈撱仹銇椼仧銆傘儲銉笺偠銉煎悕銈掔⒑瑾嶃仐銇﹀啀瑭﹁銇椼仸銇忋仩銇曘亜銆?,
+"friends.addFailed" to "鍙嬨仩銇°倰杩藉姞銇с亶銇俱仜銈撱仹銇椼仧銆傚啀瑭﹁銇椼仸銇忋仩銇曘亜銆?,
+"ai.eyebrow" to "鏈潵銇仧銈併伄銈广儦銉笺偣",
+"ai.title" to "浼氳┍銇€佺煡鎬с倰銆?,
+"ai.description" to "IM+ 銇獳I銈广儦銉笺偣銈掍簣瀹氥仐銇︺亜銇俱仚銆傘亾銇儛銉笺偢銉с兂銇с伅鍒╃敤銇с亶銇俱仜銈撱€?,
+"ai.later" to "浠婂緦鍏枊浜堝畾",
+"ai.detail" to "AI銈点兗銉撱偣銇伅鎺ョ稓銇椼仸銇勩伨銇涖倱銆備細瑭便倰AI鎻愪緵鍏冦伀閫佷俊銇椼伨銇涖倱銆?,
+"ai.webEyebrow" to "鏈潵銇偝銉熴儱銉嬨偙銉笺偡銉с兂",
+"ai.webTitle" to "鏂般仐銇勩偄銈ゃ儑銈倰妲嬬瘔涓?,
+"ai.webDescription" to "AI銇叆鍙ｃ倰鐢ㄦ剰銇椼仸銇勩伨銇欍€侫I銉併儯銉冦儓銆併儎銉笺儷鍛笺伋鍑恒仐銆佺敓鎴愮祼鏋溿伅鎻愪緵銇椼仸銇勩伨銇涖倱銆?,
+"ai.building" to "婧栧倷涓?,
+"plugin.eyebrow" to "銉兗銈偣銉氥兗銈广倰鎷″嫉",
+"plugin.title" to "銉椼儵銈般偆銉?,
+"plugin.workspace" to "搴冦亴銈嬨儻銉笺偗銈广儦銉笺偣銆?,
+"plugin.description" to "銉椼儵銈般偆銉炽亴鍒╃敤鍙兘銇仾銈嬨仺銆佹嫛寮垫鑳姐亴銇撱亾銇〃绀恒仌銈屻伨銇欍€?,
+"plugin.unavailable" to "銉椼儵銈般偆銉虫鑳姐伅鍒╃敤銇с亶銇俱仜銈?,
+"plugin.detail" to "銇撱伄銉愩兗銈搞儳銉炽仹銇儣銉┿偘銈ゃ兂瀹熻鐠板銈勩偆銉炽偣銉堛兗銉偟銉笺儞銈广伀鎺ョ稓銇椼仸銇勩伨銇涖倱銆?,
+"plugin.badge" to "Loop 1 S2 銇с伅鍒╃敤銇с亶銇俱仜銈?,
+"plugin.personal" to "鍊嬩汉銇鑳?,
+"plugin.currentUnavailable" to "鐝惧湪鍒╃敤銇с亶銇俱仜銈?,
+"plugin.webTitle" to "鎷″嫉姗熻兘銇偣銉氥兗銈?,
+"plugin.webDescription" to "銉椼儵銈般偆銉虫鑳姐仺涓€瑕с伅銇俱仩鍒╃敤銇с亶銇俱仜銈撱€傚疅琛屻€併偆銉炽偣銉堛兗銉€併偣銉堛偄姗熻兘銇亗銈娿伨銇涖倱銆?,
+"placeholder.continue" to "銉併儯銉冦儓銇ㄥ弸銇犮仭銇с€佷汉銇ㄣ仱銇亴銈娿伨銇椼倗銇嗐€?,
+"placeholder.back" to "銉併儯銉冦儓銇埢銈?鈫?,
+"settings.eyebrow" to "鑷垎銇仧銈併伄銈广儦銉笺偣",
+"settings.appearance" to "澶栬Τ",
+"settings.independent" to "鑹层€佹枃瀛椼偟銈ゃ偤銆侀枔闅斻伅銇濄倢銇炪倢鐙珛銇椼仧瑷畾銇с仚銆?,
+"settings.independentMobile" to "鑹层€佹枃瀛椼偟銈ゃ偤銆侀枔闅斻伅鐙珛銇椼仸銇勩伨銇欍€?,
+"settings.theme" to "銈儵銉笺儐銉笺優",
+"settings.themeShort" to "銉嗐兗銉?,
+"settings.cold" to "Cold AI",
+"settings.warm" to "Warm Creative",
+"settings.coldHint" to "闈?路 闈欍亱 路 闆嗕腑",
+"settings.warmHint" to "鏆栥亱銇?路 闁嬫斁鐨?路 璞娿亱銇〃鐝?,
+"settings.font" to "鏂囧瓧銈点偆銈?,
+"settings.fontValue" to "鏂囧瓧銈点偆銈猴細{size}px",
+"settings.spacing" to "闁撻殧",
+"settings.compact" to "銈炽兂銉戙偗銉?,
+"settings.standard" to "妯欐簴",
+"settings.comfort" to "銈嗐仯銇熴倞",
+"settings.spacious" to "搴冦倎",
+"settings.saved" to "銇撱伄绔湯銇伄銇夸繚瀛樸仐銇俱仚銆傘儐銉笺優銈掑垏銈婃浛銇堛仸銈傛枃瀛椼偟銈ゃ偤銇ㄩ枔闅斻伅淇濇寔銇椼伨銇欍€?,
+"settings.savedMobile" to "銇撱伄绔湯銇繚瀛樸仐銇俱仚銆傘儐銉笺優銈掑垏銈婃浛銇堛仸銈傛枃瀛椼偟銈ゃ偤銇ㄩ枔闅斻伅淇濇寔銇椼伨銇欍€?,
+"settings.webEyebrow" to "鑷垎銈夈仐銇勩偣銉氥兗銈?,
+"settings.webDescription" to "鑷垎銈夈仐銇勫瑕炽仹銆佹槑纰恒仾浼氳┍銈掋€?,
+"settings.colorsOnly" to "鑹层伄銇垮鏇淬仐銇俱仚銆傘儸銈ゃ偄銈︺儓銆佹枃瀛椼€侀枔闅斻伅淇濇寔銇椼伨銇欍€?,
+"settings.preview" to "鑷垎銇儦銉笺偣銇с€佹槑纰恒仾浼氳┍銈掋€侫a 123",
+"settings.webSaved" to "澶栬Τ瑷畾锛堛儐銉笺優銆佹枃瀛椼偟銈ゃ偤銆侀枔闅旓級銇鏈伀淇濆瓨銇曘倢銆佽█瑾炪伅鍒ャ伀淇濆瓨銇曘倢銇俱仚銆?,
+"settings.webUnavailable" to "澶栬Τ銈掍繚瀛樸仹銇嶃伨銇涖倱銆傘亾銇儦銉笺偢銇с伅閬告姙銇椼仧澶栬Τ銈掍娇鐢ㄣ仐銇俱仚銆?,
+"language.saved" to "瑷€瑾炪倰銇撱伄绔湯銇繚瀛樸仐銇俱仐銇熴€?,
+"language.failed" to "瑷€瑾炪倰淇濆瓨銇с亶銇俱仜銈撱€傘亾銇偦銉冦偡銉с兂銇с伅閬告姙銇椼仧瑷€瑾炪倰浣跨敤銇椼伨銇欍€?,
+"profile.session" to "銉椼儹銉曘偅銉笺儷銇ㄣ偦銉冦偡銉с兂",
+"profile.unavailable" to "銉椼儹銉曘偅銉笺儷銈掕〃绀恒仹銇嶃伨銇涖倱",
+"profile.reconnect" to "鍐嶆帴缍氥仐銇︺儣銉儠銈ｃ兗銉倰瑾伩杈笺個",
+"profile.signIn" to "銉偘銈ゃ兂銇椼仸銉椼儹銉曘偅銉笺儷銈掕銇胯炯銈€",
+"profile.shortcut" to "Ctrl + Shift + Space銇с儻銉笺偗銈广儦銉笺偣銈掕〃绀恒仐銇俱仚銆侷M+ 銇偡銈广儐銉犮儓銉偆銇嬨倝銈傚埄鐢ㄣ仹銇嶃伨銇欍€?,
+"profile.account" to "銈偒銈︺兂銉?,
+"profile.refresh" to "銉椼儹銉曘偅銉笺儷銈掓洿鏂?,
+"profile.loading" to "銉椼儹銉曘偅銉笺儷銈掕銇胯炯銇夸腑鈥?,
+"profile.empty" to "銉椼儹銉曘偅銉笺儷銇亗銈娿伨銇涖倱銆?,
+"profile.webSession" to "鐝惧湪銇甒eb銈汇儍銈枫儳銉?,
+"profile.webSecurity" to "鏇存柊鐢ㄣ伄瑾嶈鎯呭牨銇畨鍏ㄣ仾銉栥儵銈︺偠銉糃ookie銇х鐞嗐仐銇俱仚銆傘儭銉冦偦銉笺偢銇ㄣ偄銈偊銉炽儓鎯呭牨銇儭銉儶鍐呫伄銇裤仹銇欍€?,
+"profile.failed" to "銉椼儹銉曘偅銉笺儷銈掕銇胯炯銈併伨銇涖倱銇с仐銇熴€傚啀瑭﹁銇椼仸銇忋仩銇曘亜銆?,
+"window.minimize" to "鏈€灏忓寲",
+"window.restore" to "鍏冦伀鎴汇仚",
+"window.maximize" to "鏈€澶у寲",
+"window.close" to "闁夈仒銈?,
+"notify.ready" to "銉兗銈偣銉氥兗銈广伄閫氱煡銈掑埄鐢ㄣ仹銇嶃伨銇欍€?,
+"notify.activity" to "浼氳┍銇柊銇椼亜鏇存柊銇屻亗銈娿伨銇?,
+"tray.open" to "IM+ 銈掗枊銇?,
+"tray.hide" to "銈︺偅銉炽儔銈︺倰闅犮仚",
+"tray.quit" to "IM+ 銈掔祩浜?,
+"tray.tooltip" to "IM+ 路 銉兗銈偣銉氥兗銈?,
+"error.appearanceLoad" to "澶栬Τ銈掕銇胯炯銈併伨銇涖倱銇с仐銇?,
+"error.appearanceSave" to "澶栬Τ銈掍繚瀛樸仹銇嶃伨銇涖倱銇с仐銇?,
+"error.notification" to "銈枫偣銉嗐儬閫氱煡銈掑埄鐢ㄣ仹銇嶃伨銇涖倱",
+"error.history" to "銉兗銈儷灞ユ銈掑埄鐢ㄣ仹銇嶃伨銇涖倱",
+"error.conversationHistory" to "浼氳┍銇饱姝淬倰鍒╃敤銇с亶銇俱仜銈?,
+"error.operation" to "鎿嶄綔銈掑埄鐢ㄣ仹銇嶃伨銇涖倱",
+"error.passwordMismatch" to "銉戙偣銉兗銉夈亴涓€鑷淬仐銇俱仜銈?,
+"error.registration" to "銉︺兗銈躲兗鍚嶃伅3锝?4鏂囧瓧銆併儜銈广儻銉笺儔銇?2锝?56鏂囧瓧銇у叆鍔涖仐銇︺亸銇犮仌銇?,
+"error.noSession" to "銇撱伄銈点兗銉愩兗銇繚瀛樻笀銇裤偦銉冦偡銉с兂銇亗銈娿伨銇涖倱",
+"error.resuming" to "瀹夊叏銇偦銉冦偡銉с兂銈掑啀闁嬨仚銈嬮枔銆佷繚瀛樻笀銇垮饱姝淬倰琛ㄧず銇椼伨銇?,
+"error.cleanup" to "銈汇儍銈枫儳銉炽亴鍒囥倢銇俱仐銇熴€傝獚瑷兼儏鍫便倰娑堝幓銇с亶銇俱仜銈撱仹銇椼仧",
+"error.syncLocal" to "鍚屾湡銈掑埄鐢ㄣ仹銇嶃伨銇涖倱銆傘儹銉笺偒銉饱姝淬倰琛ㄧず銇椼伨銇?,
+"error.saveMessage" to "銉°儍銈汇兗銈搞倰淇濆瓨銇с亶銇俱仜銈撱仹銇椼仧",
+"error.retry" to "鍐嶈│琛屻倰鍒╃敤銇с亶銇俱仜銈?,
+"error.connection" to "鎺ョ稓銇с亶銇俱仜銈?,
+"error.https" to "HTTPS銈点兗銉愩兗銇偄銉夈儸銈广倰浣跨敤銇椼仸銇忋仩銇曘亜",
+"error.response" to "銈点兗銉愩兗銇繙绛斻亴鐒″姽銇с仚",
+"error.credentials" to "銉︺兗銈躲兗鍚嶃伨銇熴伅銉戙偣銉兗銉夈亴閬曘亜銇俱仚",
+"error.secure" to "瑾嶈鎯呭牨銇畨鍏ㄣ仾淇濆瓨銈掑埄鐢ㄣ仹銇嶃伨銇涖倱",
+"error.secureMetadata" to "瑾嶈鎯呭牨銇儭銈裤儑銉笺偪銇岀劇鍔广仹銇?,
+"error.request" to "銉偗銈ㄣ偣銉堛伀澶辨晽銇椼伨銇椼仧",
+"error.sync" to "鍚屾湡銇け鏁椼仐銇俱仐銇燂細{reason}",
+"error.validation" to "鍏ュ姏鍐呭銈掔⒑瑾嶃仐銇︺亸銇犮仌銇勩€?,
+"error.denied" to "銈偗銈汇偣銇屾嫆鍚︺仌銈屻伨銇椼仧銆?,
+"error.conflict" to "銉偗銈ㄣ偣銉堛亴鏃㈠瓨銇儭銉冦偦銉笺偢銇ㄧ鍚堛仐銇︺亜銇俱仚銆?,
+"error.commit" to "銉°儍銈汇兗銈搞伄纰哄畾銇け鏁椼仐銇俱仐銇熴€傛垚鍔熴伅鏈⒑瑾嶃仹銇欍€?,
+"error.usernameExists" to "銉︺兗銈躲兗鍚嶃伅銇欍仹銇娇鐢ㄣ仌銈屻仸銇勩伨銇欍€?,
+"error.protocol" to "銉椼儹銉堛偝銉伄銉愩兗銈搞儳銉炽伀瀵惧繙銇椼仸銇勩伨銇涖倱銆?,
+"error.authentication" to "瑾嶈銇屽繀瑕併仹銇欍€?,
+"welcome.pill" to "Adaptive Glass Workspace",
+"welcome.line1" to "浼氳┍銇€?,
+"welcome.line2" to "銈傘仯銇ㄣ偣銉氥兗銈广倰銆?,
+"welcome.intro1" to "浠娿€佷汉銇ㄣ偄銈ゃ儑銈倰銇ゃ仾銇愩€?,
+"welcome.intro2" to "銈枫兂銉椼儷銇偑銉炽儵銈ゃ兂閫氫俊銇с€佹槑纰恒仾浠曚簨銇儶銈恒儬銈掋€?,
+"web.railLine1" to "銉°儍銈汇兗銈搞伅銇撱伄銉氥兗銈稿唴銇伩",
+"web.railLine2" to "閬庡幓銇饱姝淬伅鍙栧緱銇椼伨銇涖倱",
+"web.emptyFriends1" to "鍙嬨仩銇°仹妞滅储銇椼仸杩藉姞銇椼€?,
+"web.emptyFriends2" to "鍊嬪垾銉併儯銉冦儓銈掑銈併伨銇椼倗銇嗐€?,
+"web.emptyChat1" to "銇撱伄銉氥兗銈搞伄鏂扮潃銇伩琛ㄧず銇椼€侀亷鍘汇伄灞ユ銇彇寰椼仐銇俱仜銈撱€?,
+"web.emptyChat2" to "鎸ㄦ嫸銇椼仸銆佹柊銇椼亜浼氳┍銈掑銈併伨銇椼倗銇嗐€?,
+ "error.userNotFound" to "銉︺兗銈躲兗銇岃銇ゃ亱銈娿伨銇涖倱",
+ "error.friendSelf" to "鑷垎銈掑弸銇犮仭銇拷鍔犮仚銈嬨亾銇ㄣ伅銇с亶銇俱仜銈?,
+ "error.friendState" to "鍙嬨仩銇￠枹淇傘伄鐘舵厠銇屽銈忋倞銇俱仐銇熴€傛洿鏂般仐銇﹀啀瑭﹁銇椼仸銇忋仩銇曘亜銆?
+)
+package im.platform.client.ui.i18n
+import androidx.compose.runtime.*
+val LocalLanguage=staticCompositionLocalOf { "en" }
+val locales=listOf("en","zh-CN","ja-JP")
+val languageNames=listOf("English","绠€浣撲腑鏂?,"鏃ユ湰瑾?)
+const val languageEntry="Language / 璇█ / 瑷€瑾?
+fun validLocale(value:String?)=value=="en"||value=="zh-CN"||value=="ja-JP"
+val resources:Map<String,Map<String,String>> = mapOf("en" to en,"zh-CN" to zhCN,"ja-JP" to jaJP)
+fun translate(locale:String?,key:String,params:Map<String,Any> = emptyMap(),data:Map<String,Map<String,String>> = resources):String {
+ val language=if(validLocale(locale))locale else "en"
+ check(data["en"]?.containsKey(key)==true){"Missing English language key: "+key}
+ val template=data[language]?.get(key)?:data["en"]?.get(key)?:error("Missing English language key: "+key)
+ return Regex("\\{([A-Za-z]+)\\}").replace(template){match->params[match.groupValues[1]]?.toString()?:match.value}
+}
+class TextLookup(private val locale:String){operator fun invoke(key:String,vararg params:Pair<String,Any>)=translate(locale,key,params.toMap())}
+@Composable fun useText():TextLookup=TextLookup(LocalLanguage.current)
+val errorKeys=mapOf("USER_NOT_FOUND" to "error.userNotFound","FRIEND_SELF_NOT_ALLOWED" to "error.friendSelf","FRIENDSHIP_STATE_CONFLICT" to "error.friendState","session_expired" to "auth.expired","invalid_credentials" to "error.credentials","connection_unavailable" to "error.connection","invalid_server_response" to "error.response","request_failed" to "error.request","secure_credential_storage_unavailable" to "error.secure","secure_credential_metadata_invalid" to "error.secureMetadata","use_an_https_server_origin" to "error.https","VALIDATION_FAILED" to "error.validation","AUTHORIZATION_DENIED" to "error.denied","MESSAGE_REQUEST_CONFLICT" to "error.conflict","MESSAGE_COMMIT_FAILED" to "error.commit","USERNAME_ALREADY_EXISTS" to "error.usernameExists","PROTOCOL_VERSION_UNSUPPORTED" to "error.protocol","AUTH_REQUIRED" to "error.authentication","AUTH_TOKEN_INVALID" to "auth.expired","AUTH_TOKEN_EXPIRED" to "auth.expired","AUTH_SESSION_REVOKED" to "auth.expired","AUTH_SESSION_EPOCH_STALE" to "auth.expired","AUTH_CLIENT_TYPE_MISMATCH" to "auth.expired","storage" to "error.history","protocol" to "connection.protocol_error","authentication" to "error.authentication","transport" to "error.connection","response" to "error.response")
+fun errorKey(kind:String)=errorKeys[kind]?:"error.request"
+
+val sourceDisplayKeys=mapOf("Chat" to "nav.chat","Friends" to "nav.friends","AI" to "nav.ai","Plugin" to "nav.plugin","Settings" to "nav.settings","Protocol error" to "connection.protocol_error","浠呮帴鏀舵湰椤靛疄鏃舵秷鎭?路 涓嶈ˉ鍘嗗彶" to "sync.webWindow","姝ｅ湪琛ラ綈鏈〉鍦ㄧ嚎娑堟伅鈥? to "sync.webLoading","鏈〉鍦ㄧ嚎娑堟伅宸插悓姝?路 涓嶈ˉ鍘嗗彶" to "sync.webCurrent","鍚屾澶辫触锛岄噸杩炴垨閲嶆柊鎵撳紑浼氳瘽閲嶈瘯" to "sync.webFailed","鏃犳晥鍝嶅簲鏈敼鍙樺凡纭娑堟伅" to "sync.invalid","Session expired. Sign in again." to "auth.expired","浼氳瘽宸茶繃鏈燂紝璇烽噸鏂扮櫥褰曘€? to "auth.expired","浼氳瘽宸茶鏇挎崲锛岃閲嶆柊鐧诲綍銆? to "auth.replaced","浼氳瘽宸茶繃鏈熸垨鍦ㄥ叾浠栫綉椤佃鏇挎崲锛岃閲嶆柊鐧诲綍銆? to "auth.revoked","宸茬櫥褰?路 娑堟伅浠呬繚鐣欏湪褰撳墠椤甸潰鍐呭瓨" to "auth.loggedIn","姝ｅ湪鍒锋柊浼氳瘽鈥? to "auth.refreshing","浼氳瘽宸插埛鏂? to "auth.refreshed","浼氳瘽鍒锋柊澶辫触锛岃閲嶈瘯鎴栭噸鏂扮櫥褰曘€? to "auth.refreshFailed","宸查€€鍑虹櫥褰曘€? to "auth.loggedOut","鏈〉宸查€€鍑猴紝浣嗘湇鍔＄鎾ら攢鏈‘璁わ紱璇蜂娇鐢ㄦ仮澶嶄細璇濆啀閲嶈瘯閫€鍑恒€? to "auth.logoutUnconfirmed","Invalid username or password" to "auth.invalidCredentials","璐﹀彿鎴栧瘑鐮佷笉姝ｇ‘銆? to "auth.invalidCredentials","鐧诲綍澶辫触锛岃妫€鏌ョ綉缁滃悗閲嶈瘯銆? to "auth.loginFailed","濂藉弸宸叉坊鍔狅紝鍞竴绉佽亰宸插缓绔? to "friends.added","濂藉弸鍔犺浇澶辫触锛屽彲閲嶈瘯銆? to "friends.failed","濂藉弸鍚屾澶辫触锛屽彲閲嶈瘯鎴栭噸杩炪€? to "friends.syncFailed","鎼滅储澶辫触锛岃妫€鏌ョ敤鎴峰悕鍚庨噸璇曘€? to "friends.searchFailed","娣诲姞濂藉弸澶辫触锛岃閲嶈瘯銆? to "friends.addFailed","涓汉璧勬枡鍔犺浇澶辫触锛屽彲閲嶈瘯銆? to "profile.failed","Appearance could not be loaded" to "error.appearanceLoad","Appearance could not be saved" to "error.appearanceSave","System notification unavailable" to "error.notification","Local history unavailable" to "error.history","Conversation history unavailable" to "error.conversationHistory","Operation unavailable" to "error.operation","Passwords do not match" to "error.passwordMismatch","Use a 3鈥?4 character username and a 12鈥?56 character password" to "error.registration","No saved session for this server" to "error.noSession","Showing saved history while the secure session resumes" to "error.resuming","Session expired; secure credential cleanup failed" to "error.cleanup","Sync unavailable; showing local history" to "error.syncLocal","Message could not be saved" to "error.saveMessage","Retry unavailable" to "error.retry","Connection unavailable" to "error.connection","Use an HTTPS server origin" to "error.https","Invalid server response" to "error.response","Secure credential storage unavailable" to "error.secure","Secure credential metadata invalid" to "error.secureMetadata","Request failed" to "error.request","Session expired" to "auth.expired","浼氳瘽宸插け鏁堬紝璇烽噸鏂扮櫥褰曘€? to "auth.expired")
+fun displayText(locale:String,value:String):String {
+ if(value.isEmpty())return ""
+ if(value.startsWith("Sync "))return translate(locale,"error.sync",mapOf("reason" to translate(locale,errorKey(value.substring(5)))))
+ return translate(locale,sourceDisplayKeys[value]?:errorKeys[value]?:if(resources["en"]!!.containsKey(value))value else "error.operation")
+}
+package im.platform.client.ui.i18n
+val zhCN:Map<String,String> = mapOf(
+"nav.chat" to "鑱婂ぉ",
+"nav.friends" to "濂藉弸",
+"nav.ai" to "AI",
+"nav.plugin" to "鎻掍欢",
+"nav.settings" to "璁剧疆",
+"nav.profile" to "涓汉璧勬枡",
+"brand.logo" to "IM+ 鏍囧織",
+"brand.name" to "IM plus",
+"nav.main" to "涓诲鑸?,
+"nav.onlineWorkspace" to "鍦ㄧ嚎宸ヤ綔鍖?,
+"nav.future" to "鏈潵閫氫俊",
+"nav.extensions" to "鎵╁睍鑳藉姏",
+"nav.soon" to "鍗冲皢鎺ㄥ嚭",
+"nav.personal" to "涓汉璐﹀彿",
+"nav.signIn" to "鐧诲綍浠ヨ繛鎺?,
+"nav.workspace" to "浣犵殑宸ヤ綔鍖?,
+"nav.signedIn" to "宸茬櫥褰?,
+"nav.local" to "姝ｅ湪鏌ョ湅鏈湴鍘嗗彶",
+"nav.back" to "杩斿洖鑱婂ぉ",
+"connection.idle" to "鏈繛鎺?,
+"connection.ready" to "鍦ㄧ嚎",
+"connection.connecting" to "姝ｅ湪杩炴帴",
+"connection.failed" to "杩炴帴澶辫触",
+"connection.protocol_error" to "鍗忚閿欒",
+"connection.offline" to "杩炴帴宸叉柇寮€",
+"connection.connected" to "宸茶繛鎺?,
+"connection.offlineShort" to "绂荤嚎",
+"sync.syncing" to "姝ｅ湪鍚屾鈥?,
+"sync.attention" to "鍚屾闇€瑕佸鐞?,
+"sync.local" to "鏈湴鍘嗗彶",
+"sync.current" to "宸叉洿鏂?,
+"sync.automatic" to "娑堟伅鑷姩鍚屾",
+"sync.connected" to "宸茶繛鎺?路 娑堟伅鑷姩鍚屾",
+"sync.offline" to "绂荤嚎 路 鏄剧ず宸蹭繚瀛樺巻鍙?,
+"sync.webWindow" to "浠呮帴鏀舵湰椤靛疄鏃舵秷鎭?路 涓嶈ˉ鍘嗗彶",
+"sync.webLoading" to "姝ｅ湪琛ラ綈鏈〉鍦ㄧ嚎娑堟伅鈥?,
+"sync.webCurrent" to "鏈〉鍦ㄧ嚎娑堟伅宸插悓姝?路 涓嶈ˉ鍘嗗彶",
+"sync.webFailed" to "鍚屾澶辫触锛岄噸杩炴垨閲嶆柊鎵撳紑浼氳瘽閲嶈瘯",
+"sync.invalid" to "鏃犳晥鍝嶅簲鏈敼鍙樺凡纭娑堟伅",
+"auth.welcomeEyebrow" to "涓烘瘡娈典氦娴佺暀鍑虹┖闂?,
+"auth.stayClose" to "淇濇寔鑱旂郴銆?,
+"auth.thinkBeyond" to "鎯冲緱鏇磋繙銆?,
+"auth.stayCloseMobile" to "淇濇寔鑱旂郴锛屾兂寰楁洿杩溿€?,
+"auth.description" to "浜ゆ祦銆佹湅鍙嬶紝浠ュ強鐣欑粰鏈潵鐨勪竴鐐圭┖闂淬€?,
+"auth.join" to "鍔犲叆 IM+",
+"auth.welcomeBack" to "娆㈣繋鍥炴潵",
+"auth.createTitle" to "鍒涘缓浣犵殑璐﹀彿",
+"auth.openTitle" to "鎵撳紑浣犵殑宸ヤ綔鍖?,
+"auth.created" to "璐﹀彿宸插垱寤猴紝璇风櫥褰曠户缁€?,
+"auth.username" to "鐢ㄦ埛鍚?,
+"auth.password" to "瀵嗙爜",
+"auth.confirmPassword" to "纭瀵嗙爜",
+"auth.passwordHint" to "瀵嗙爜闀垮害涓?12鈥?56 涓瓧绗︺€?,
+"auth.wait" to "璇风◢鍊欌€?,
+"auth.create" to "鍒涘缓璐﹀彿",
+"auth.signIn" to "鐧诲綍",
+"auth.existing" to "宸叉湁璐﹀彿锛熺櫥褰?,
+"auth.new" to "鍒濇浣跨敤锛熷垱寤鸿处鍙?,
+"auth.resume" to "鎭㈠宸蹭繚瀛樹細璇?,
+"auth.start" to "寮€鍚竴娈典氦娴?,
+"auth.webTitle" to "鐧诲綍鏋勭晫",
+"auth.webMemory" to "娑堟伅涓存椂淇濆瓨鍦ㄥ唴瀛橈紝鍏抽棴椤甸潰鍚庝笉淇濈暀銆?,
+"auth.signingIn" to "姝ｅ湪鐧诲綍鈥?,
+"auth.enter" to "杩涘叆宸ヤ綔鍖?鈫?,
+"auth.webResume" to "鎭㈠宸叉湁浼氳瘽",
+"auth.back" to "杩斿洖鐧诲綍",
+"auth.signOut" to "閫€鍑虹櫥褰?,
+"auth.refresh" to "鍒锋柊浼氳瘽",
+"auth.offline" to "鍒囨崲绂荤嚎",
+"auth.reconnect" to "閲嶆柊杩炴帴",
+"auth.testNotification" to "娴嬭瘯閫氱煡",
+"auth.expired" to "浼氳瘽宸茶繃鏈燂紝璇烽噸鏂扮櫥褰曘€?,
+"auth.replaced" to "浼氳瘽宸茶鏇挎崲锛岃閲嶆柊鐧诲綍銆?,
+"auth.revoked" to "浼氳瘽宸茶繃鏈熸垨鍦ㄥ叾浠栫綉椤佃鏇挎崲锛岃閲嶆柊鐧诲綍銆?,
+"auth.loggedIn" to "宸茬櫥褰?路 娑堟伅浠呬繚鐣欏湪褰撳墠椤甸潰鍐呭瓨",
+"auth.refreshing" to "姝ｅ湪鍒锋柊浼氳瘽鈥?,
+"auth.refreshed" to "浼氳瘽宸插埛鏂?,
+"auth.refreshFailed" to "浼氳瘽鍒锋柊澶辫触锛岃閲嶈瘯鎴栭噸鏂扮櫥褰曘€?,
+"auth.loggedOut" to "宸查€€鍑虹櫥褰曘€?,
+"auth.logoutUnconfirmed" to "鏈〉宸查€€鍑猴紝浣嗘湇鍔＄鎾ら攢鏈‘璁わ紱璇蜂娇鐢ㄦ仮澶嶄細璇濆啀閲嶈瘯閫€鍑恒€?,
+"auth.invalidCredentials" to "璐﹀彿鎴栧瘑鐮佷笉姝ｇ‘銆?,
+"auth.loginFailed" to "鐧诲綍澶辫触锛岃妫€鏌ョ綉缁滃悗閲嶈瘯銆?,
+"header.connected" to "浣犵殑浜掕仈宸ヤ綔鍖?,
+"header.online" to "浣犵殑鍦ㄧ嚎绌洪棿",
+"header.welcome" to "娆㈣繋鏉ュ埌宸ヤ綔鍖?,
+"header.title" to "娆㈣繋浣跨敤 IM+",
+"chat.messages" to "娑堟伅",
+"chat.new" to "鏂拌亰澶?,
+"chat.caption" to "閲嶈鐨勪汉涓庝氦娴佺┖闂淬€?,
+"chat.next" to "涓嬩竴娈典氦娴佷粠杩欓噷寮€濮?,
+"chat.addHint" to "娣诲姞濂藉弸浠ュ缓绔嬬鑱娿€?,
+"chat.find" to "瀵绘壘濂藉弸",
+"chat.conversation" to "浼氳瘽",
+"chat.conversationId" to "浼氳瘽 {id}",
+"chat.your" to "浣犵殑浼氳瘽",
+"chat.access" to "璁块棶涓嶅彲鐢?,
+"chat.noMessages" to "鏆傛棤娑堟伅",
+"chat.place" to "涓烘湁鎰忎箟鐨勪氦娴佺暀鍑虹┖闂?,
+"chat.choose" to "閫夋嫨宸︿晶浼氳瘽锛屽紑濮嬭亰澶┿€?,
+"chat.fresh" to "鏂扮殑寮€濮?,
+"chat.hello" to "鏆傛棤娑堟伅锛屽彂涓€鍙ラ棶鍊欏惂銆?,
+"chat.now" to "鐜板湪",
+"chat.sent" to "宸茬‘璁?,
+"chat.sending" to "鍙戦€佷腑鈥?,
+"chat.failed" to "澶辫触 路 灏氭湭鏀跺埌鎴愬姛纭",
+"chat.retry" to "閲嶈瘯",
+"chat.webSending" to "鍙戦€佷腑",
+"chat.webSent" to "宸茬‘璁?,
+"chat.webFailed" to "灏氭湭鏀跺埌鎴愬姛纭",
+"chat.message" to "娑堟伅",
+"chat.write" to "鍐欎竴鏉℃秷鎭€?,
+"chat.send" to "鍙戦€?鈫?,
+"chat.resize" to "璋冩暣娑堟伅杈撳叆妗?,
+"chat.drag" to "鍚戜笂鎷栧姩浠ュ睍寮€",
+"chat.keyboard" to "Enter 鍙戦€?路 Shift + Enter 鎹㈣",
+"chat.webHelp" to "浠呭湪绾垮唴瀛樻€?路 鏈‘璁ゆ秷鎭彲浣跨敤鐩稿悓韬唤閲嶈瘯",
+"chat.keepContact" to "淇濇寔鑱旂郴锛屼粠涓€鍙ヨ瘽寮€濮嬨€?,
+"chat.refresh" to "鍒锋柊浼氳瘽",
+"chat.loading" to "姝ｅ湪鍔犺浇浼氳瘽鈥?,
+"chat.empty" to "杩樻病鏈変細璇?,
+"chat.webStart" to "浠庢鍒诲紑濮?,
+"chat.webLive" to "褰撳墠椤甸潰鐨勫疄鏃舵秷鎭?,
+"friends.eyebrow" to "寤虹珛浣犵殑鏈嬪弸鍦?,
+"friends.reach" to "浜轰滑锛岃繎鍦ㄨ韩杈广€?,
+"friends.exact" to "閫氳繃鍑嗙‘鐢ㄦ埛鍚嶅鎵惧ソ鍙?,
+"friends.searchLabel" to "鎼滅储鐢ㄦ埛鍚?,
+"friends.searching" to "姝ｅ湪澶勭悊鈥?,
+"friends.search" to "鎼滅储",
+"friends.noMatch" to "娌℃湁鎵惧埌璇ョ敤鎴峰悕銆?,
+"friends.check" to "鏆傛棤鍖归厤鐢ㄦ埛銆傛悳绱互纭璇ョ敤鎴峰悕銆?,
+"friends.add" to "娣诲姞濂藉弸",
+"friends.your" to "鎴戠殑濂藉弸",
+"friends.grow" to "杩欓噷绛夊緟鏂扮殑杩炴帴",
+"friends.message" to "寮€濮嬭亰澶?,
+"friends.people" to "浜轰笌杩炴帴",
+"friends.direct" to "娣诲姞濂藉弸锛屽嵆鍒诲缓绔嬪弻鏂圭殑鍞竴绉佽亰銆?,
+"friends.refresh" to "鍒锋柊濂藉弸",
+"friends.usernameHint" to "杈撳叆鐢ㄦ埛鍚?,
+"friends.already" to "宸叉槸濂藉弸",
+"friends.loading" to "姝ｅ湪鍔犺浇濂藉弸鈥?,
+"friends.searchHint" to "鎼滅储鍑嗙‘鐢ㄦ埛鍚嶅苟娣诲姞濂藉弸銆?,
+"friends.added" to "濂藉弸宸叉坊鍔狅紝鍞竴绉佽亰宸插缓绔?,
+"friends.failed" to "濂藉弸鍔犺浇澶辫触锛屽彲閲嶈瘯銆?,
+"friends.syncFailed" to "濂藉弸鍚屾澶辫触锛屽彲閲嶈瘯鎴栭噸杩炪€?,
+"friends.searchFailed" to "鎼滅储澶辫触锛岃妫€鏌ョ敤鎴峰悕鍚庨噸璇曘€?,
+"friends.addFailed" to "娣诲姞濂藉弸澶辫触锛岃閲嶈瘯銆?,
+"ai.eyebrow" to "涓烘湭鏉ョ暀涓€鐐圭┖闂?,
+"ai.title" to "鏅烘収锛岃瀺鍏ヤ氦娴併€?,
+"ai.description" to "IM+ 宸查鐣?AI 绌洪棿锛屾湰鐗堟湰鏆備笉鍙敤銆?,
+"ai.later" to "鍗冲皢鎺ㄥ嚭",
+"ai.detail" to "鏈繛鎺?AI 鏈嶅姟锛屼綘鐨勪細璇濅笉浼氬彂閫佺粰 AI 鎻愪緵鍟嗐€?,
+"ai.webEyebrow" to "鏈潵閫氫俊",
+"ai.webTitle" to "鏂扮殑鎯虫硶锛屾鍦ㄦ瀯寤?,
+"ai.webDescription" to "AI 閫氫俊鍏ュ彛宸查鐣欍€傚綋鍓嶄笉鎻愪緵 AI 鑱婂ぉ銆佸伐鍏疯皟鐢ㄦ垨鐢熸垚缁撴灉銆?,
+"ai.building" to "鏂藉伐涓?,
+"plugin.eyebrow" to "鎵╁睍浣犵殑宸ヤ綔鍖?,
+"plugin.title" to "鎻掍欢",
+"plugin.workspace" to "浣犵殑宸ヤ綔鍖猴紝鏇村姞骞块様銆?,
+"plugin.description" to "鎻掍欢骞冲彴寮€鏀惧悗锛屾墿灞曞皢鍦ㄨ繖閲屽憟鐜般€?,
+"plugin.unavailable" to "鎻掍欢鑳藉姏涓嶅彲鐢?,
+"plugin.detail" to "鏈増鏈湭杩炴帴鎻掍欢杩愯鏃舵垨瀹夎鏈嶅姟銆?,
+"plugin.badge" to "Loop 1 S2 鏆備笉鍙敤",
+"plugin.personal" to "涓汉鑳藉姏",
+"plugin.currentUnavailable" to "褰撳墠涓嶅彲鐢?,
+"plugin.webTitle" to "浣犵殑鎵╁睍绌洪棿",
+"plugin.webDescription" to "褰撳墠灏氭湭寮€鏀炬彃浠惰兘鍔涗笌宸插畨瑁呮竻鍗曘€傛椤甸潰娌℃湁鎻掍欢杩愯銆佸畨瑁呮垨鍟嗗簵鍔熻兘銆?,
+"placeholder.continue" to "缁х画浣跨敤 Chat 涓?Friends锛岃繛鎺ョ湡瀹炵殑浜恒€?,
+"placeholder.back" to "杩斿洖鑱婂ぉ 鈫?,
+"settings.eyebrow" to "涓鸿嚜宸辩暀鍑虹┖闂?,
+"settings.appearance" to "澶栬",
+"settings.independent" to "鑹插僵銆佸瓧鍙峰拰闂磋窛涓虹嫭绔嬪亸濂姐€?,
+"settings.independentMobile" to "鑹插僵銆佸瓧鍙峰拰闂磋窛鐩镐簰鐙珛銆?,
+"settings.theme" to "鑹插僵涓婚",
+"settings.themeShort" to "涓婚",
+"settings.cold" to "Cold AI",
+"settings.warm" to "Warm Creative",
+"settings.coldHint" to "鍐疯摑涓庣传 路 涓撴敞鐨勫湪绾跨┖闂?,
+"settings.warmHint" to "鏆栬壊涓庢煍鍏?路 浜插拰鐨勪氦娴佺┖闂?,
+"settings.font" to "瀛楀彿",
+"settings.fontValue" to "瀛楀彿锛歿size}px",
+"settings.spacing" to "闂磋窛",
+"settings.compact" to "绱у噾",
+"settings.standard" to "鏍囧噯",
+"settings.comfort" to "鑸掗€?,
+"settings.spacious" to "瀹芥澗",
+"settings.saved" to "浠呬繚瀛樺湪鏈澶囷紝鍒囨崲涓婚淇濈暀瀛楀彿鍜岄棿璺濄€?,
+"settings.savedMobile" to "淇濆瓨鍦ㄦ湰璁惧锛屽垏鎹富棰樹繚鐣欏瓧鍙峰拰闂磋窛銆?,
+"settings.webEyebrow" to "鎵撻€犱綘鐨勭┖闂?,
+"settings.webDescription" to "澶栬灞炰簬浣狅紝浜ゆ祦淇濇寔娓呮櫚銆?,
+"settings.colorsOnly" to "鍙敼鍙橀鑹诧紝淇濈暀甯冨眬銆佸瓧浣撳拰闂磋窛銆?,
+"settings.preview" to "娓呮櫚鐨勪氦娴侊紝閫傚悎鑷繁鐨勮妭濂忋€侫a 123",
+"settings.webSaved" to "澶栬璁剧疆锛堜富棰樸€佸瓧鍙峰拰闂磋窛锛変繚瀛樺湪鏈湴锛涜瑷€鍋忓ソ鍗曠嫭淇濆瓨銆?,
+"settings.webUnavailable" to "鏈湴澶栬淇濆瓨涓嶅彲鐢紱褰撳墠椤甸潰浠嶄娇鐢ㄦ墍閫夊瑙傘€?,
+"language.saved" to "璇█宸蹭繚瀛樺湪鏈澶囥€?,
+"language.failed" to "璇█鏃犳硶淇濆瓨锛屽綋鍓嶄細璇濅粛浣跨敤鎵€閫夎瑷€銆?,
+"profile.session" to "涓汉璧勬枡涓庝細璇?,
+"profile.unavailable" to "涓汉璧勬枡涓嶅彲鐢?,
+"profile.reconnect" to "閲嶈繛浠ュ姞杞戒釜浜鸿祫鏂?,
+"profile.signIn" to "鐧诲綍浠ュ姞杞戒釜浜鸿祫鏂?,
+"profile.shortcut" to "Ctrl + Shift + Space 灏嗗伐浣滃尯缃簬鍓嶅彴锛岀郴缁熸墭鐩樿 IM+ 闅忔椂鍙揪銆?,
+"profile.account" to "浣犵殑璐﹀彿",
+"profile.refresh" to "鍒锋柊涓汉璧勬枡",
+"profile.loading" to "姝ｅ湪鍔犺浇涓汉璧勬枡鈥?,
+"profile.empty" to "鏆傛棤涓汉璧勬枡銆?,
+"profile.webSession" to "褰撳墠缃戦〉浼氳瘽",
+"profile.webSecurity" to "鍒锋柊鍑嵁鐢辨祻瑙堝櫒瀹夊叏 Cookie 绠＄悊锛涙秷鎭拰璐﹀彿鏁版嵁鍙繚鐣欏湪鍐呭瓨銆?,
+"profile.failed" to "涓汉璧勬枡鍔犺浇澶辫触锛屽彲閲嶈瘯銆?,
+"window.minimize" to "鏈€灏忓寲",
+"window.restore" to "杩樺師",
+"window.maximize" to "鏈€澶у寲",
+"window.close" to "鍏抽棴",
+"notify.ready" to "宸ヤ綔鍖洪€氱煡宸插氨缁€?,
+"notify.activity" to "浣犵殑浼氳瘽鏈夋柊鍔ㄦ€?,
+"tray.open" to "鎵撳紑 IM+",
+"tray.hide" to "闅愯棌绐楀彛",
+"tray.quit" to "閫€鍑?IM+",
+"tray.tooltip" to "IM+ 路 浣犵殑宸ヤ綔鍖?,
+"error.appearanceLoad" to "鏃犳硶鍔犺浇澶栬",
+"error.appearanceSave" to "鏃犳硶淇濆瓨澶栬",
+"error.notification" to "绯荤粺閫氱煡涓嶅彲鐢?,
+"error.history" to "鏈湴鍘嗗彶涓嶅彲鐢?,
+"error.conversationHistory" to "浼氳瘽鍘嗗彶涓嶅彲鐢?,
+"error.operation" to "鎿嶄綔涓嶅彲鐢?,
+"error.passwordMismatch" to "涓ゆ瀵嗙爜涓嶄竴鑷?,
+"error.registration" to "鐢ㄦ埛鍚嶉』涓?3鈥?4 涓瓧绗︼紝瀵嗙爜椤讳负 12鈥?56 涓瓧绗?,
+"error.noSession" to "姝ゆ湇鍔″櫒娌℃湁宸蹭繚瀛樹細璇?,
+"error.resuming" to "鎭㈠瀹夊叏浼氳瘽鏃舵樉绀哄凡淇濆瓨鍘嗗彶",
+"error.cleanup" to "浼氳瘽杩囨湡锛屽畨鍏ㄥ嚟鎹竻鐞嗗け璐?,
+"error.syncLocal" to "鍚屾涓嶅彲鐢紝鏄剧ず鏈湴鍘嗗彶",
+"error.saveMessage" to "鏃犳硶淇濆瓨娑堟伅",
+"error.retry" to "閲嶈瘯涓嶅彲鐢?,
+"error.connection" to "杩炴帴涓嶅彲鐢?,
+"error.https" to "璇蜂娇鐢?HTTPS 鏈嶅姟鍣ㄥ湴鍧€",
+"error.response" to "鏈嶅姟鍣ㄥ搷搴旀棤鏁?,
+"error.credentials" to "鐢ㄦ埛鍚嶆垨瀵嗙爜涓嶆纭?,
+"error.secure" to "瀹夊叏鍑嵁瀛樺偍涓嶅彲鐢?,
+"error.secureMetadata" to "瀹夊叏鍑嵁鍏冩暟鎹棤鏁?,
+"error.request" to "璇锋眰澶辫触",
+"error.sync" to "鍚屾澶辫触锛歿reason}",
+"error.validation" to "璇锋鏌ヨ緭鍏ュ€笺€?,
+"error.denied" to "璁块棶琚嫆缁濄€?,
+"error.conflict" to "璇锋眰涓庡凡鏈夋秷鎭啿绐併€?,
+"error.commit" to "娑堟伅鎻愪氦澶辫触锛屾垚鍔熷皻鏈‘璁ゃ€?,
+"error.usernameExists" to "鐢ㄦ埛鍚嶅凡瀛樺湪銆?,
+"error.protocol" to "鍗忚鐗堟湰涓嶅彈鏀寔銆?,
+"error.authentication" to "闇€瑕佽璇併€?,
+"welcome.pill" to "鑷€傚簲鐜荤拑宸ヤ綔鍖?,
+"welcome.line1" to "璁╀氦娴侊紝",
+"welcome.line2" to "鏇存湁绌洪棿銆?,
+"welcome.intro1" to "杩炴帴姝ゅ埢鐨勪汉涓庢兂娉曘€?,
+"welcome.intro2" to "绠€娲佺殑鍦ㄧ嚎閫氫俊锛屾竻鏅扮殑宸ヤ綔鑺傚銆?,
+"web.railLine1" to "娑堟伅浠呬繚鐣欏湪褰撳墠椤甸潰",
+"web.railLine2" to "涓嶈ˉ鑱婂ぉ鍘嗗彶",
+"web.emptyFriends1" to "鍦?Friends 鎼滅储骞舵坊鍔犲ソ鍙嬶紝",
+"web.emptyFriends2" to "寤虹珛鍞竴绉佽亰銆?,
+"web.emptyChat1" to "杩欓噷鍙睍绀烘湰椤靛疄鏃舵秷鎭紝涓嶈ˉ鑱婂ぉ鍘嗗彶銆?,
+"web.emptyChat2" to "鍙戜竴鍙ラ棶鍊欙紝寮€鍚柊鐨勪氦娴併€?,
+ "error.userNotFound" to "鐢ㄦ埛涓嶅瓨鍦?,
+ "error.friendSelf" to "涓嶈兘娣诲姞鑷繁涓哄ソ鍙?,
+ "error.friendState" to "濂藉弸鍏崇郴鐘舵€佸凡鍙樺寲锛岃鍒锋柊鍚庨噸璇曘€?
+)
+plugins {
+    id("com.android.application") version "8.7.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.10" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.10" apply false
+}
+pluginManagement { repositories { google(); mavenCentral(); gradlePluginPortal() } }
+dependencyResolutionManagement { repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS); repositories { google(); mavenCentral() } }
+rootProject.name = "IMClient"
+include(":app")
+android.useAndroidX=true
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+kotlin.code.style=official
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-bin.zip
+networkTimeout=10000
+validateDistributionUrl=true
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionSha256Sum=d725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
+}
+android {
+    namespace = "im.platform.client"
+    compileSdk = 35
+    defaultConfig {
+        applicationId = "im.platform.client"
+        minSdk = 34
+        targetSdk = 35
+        versionCode = 1
+        versionName = "0.1"
+        testInstrumentationRunner = providers.gradleProperty("imSendInstrumentation").orNull ?: "im.platform.client.storage.StorageInstrumentation"
+    }
+    compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
+    kotlinOptions { jvmTarget = "17" }
+    buildFeatures { compose = true }
+}
+dependencies {
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+    implementation("androidx.navigation:navigation-compose:2.8.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation(platform("androidx.compose:compose-bom:2024.12.01"))
+    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation("androidx.compose.foundation:foundation:1.7.6")
+    implementation("androidx.compose.material3:material3:1.3.1")
+}
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <application android:label="IM Plus" android:icon="@drawable/project_logo" android:allowBackup="false">
+    <activity android:name=".MainActivity" android:exported="true">
+      <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+    </activity>
+  </application>
+</manifest>
+# Android storage slice
+
+Approved Android Kotlin + Jetpack Compose, built-in Android SDK SQLite; no Room, network library, JS bridge or third-party testing framework. Canonical 搂6.1 and ADR-0005 authorize equivalent Kotlin models/Repository behavior using the same contracts/fixtures.
+
+Build toolchain: Gradle8.9, AGP8.7.0, Kotlin/Compose compiler2.1.10, JDK17, compile/targetSDK35, minSDK34. Necessary Compose foundation/activity binding provides only a minimal validation host. Version compatibility: https://developer.android.com/build/releases/agp-8-7-0-release-notes and https://kotlinlang.org/docs/gradle-configure-project.html . Debug instrumentation uses the built-in android.app.Instrumentation runner.
+
+From repository root: python -B tools/verify_client_sqlite.py --scope mobile --serial emulator-5554
+IM_CLIENT_GRADLE may explicitly select an actual verified Gradle executable when the wrapper download is unavailable; evidence must name the fallback, and clean hosted CI still runs the official pinned wrapper. Set JAVA_HOME/ANDROID_HOME for your actual tools and select the exact real emulator serial. Missing build/runtime or failed instrumentation fails; host/mock and skipped execution never pass. APK installation targets only that explicit emulator. The verifier does not start/stop user AVDs. Local Coordinator tooling creates a separate hidden task AVD outside the checkout; existing user AVD remains untouched.
+
+Canonical golden.json is copied byte-identically into test assets and validated against contracts. v1.sql is the independent retained old-schema fixture copied from tests/clients/sqlite/v1.sql. Instrumentation checks canonical normalized results plus migration rollback/history preservation, reopen, account isolation, identity/content conflicts, realtime-first ACK/Sync merging, terminal SENT and actual data/contiguous rollback. Synthetic local.failed fixture steps omit message content; the fixture harness seeds the matching local message before the FAILED observation, using the same case's server message. This does not change product input or wire schema.
+
+This task establishes storage foundation, not full send/retry/Sync UI or S2 Gate PASS. Token storage and network orchestration are untouched.
+
+Minimum-runtime proof: targeted UPSERT requires SQLite3.24 (2018); targetless ON CONFLICT DO UPDATE requires3.35 (2021). Android API26 ships3.18, API30 ships3.28, API31-33 ships3.32, and API34 ships3.39 or3.42. API34 is the first SDK minimum satisfying every current statement; CI and the actual verifier exercise API34, including fresh install and data-clear rerun. This corrects an unaccepted minSDK26 engineering binding; canonical public protocol compatibility and schema remain unchanged. Sources: https://developer.android.com/reference/android/database/sqlite/package-summary and https://www.sqlite.org/lang_upsert.html .
+Text validation counts Unicode codepoints, matching the unchanged JSON Schema4096-character limit; actual two-platform tests accept4096 supplementary characters and reject4097 with durable state unchanged.
+#!/bin/sh
+
+#
+# Copyright 漏 2015-2021 the original authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+##############################################################################
+#
+#   Gradle start up script for POSIX generated by Gradle.
+#
+#   Important for running:
+#
+#   (1) You need a POSIX-compliant shell to run this script. If your /bin/sh is
+#       noncompliant, but you have some other compliant shell such as ksh or
+#       bash, then to run this script, type that shell name before the whole
+#       command line, like:
+#
+#           ksh Gradle
+#
+#       Busybox and similar reduced shells will NOT work, because this script
+#       requires all of these POSIX shell features:
+#         * functions;
+#         * expansions 芦$var禄, 芦${var}禄, 芦${var:-default}禄, 芦${var+SET}禄,
+#           芦${var#prefix}禄, 芦${var%suffix}禄, and 芦$( cmd )禄;
+#         * compound commands having a testable exit status, especially 芦case禄;
+#         * various built-in commands including 芦command禄, 芦set禄, and 芦ulimit禄.
+#
+#   Important for patching:
+#
+#   (2) This script targets any POSIX shell, so it avoids extensions provided
+#       by Bash, Ksh, etc; in particular arrays are avoided.
+#
+#       The "traditional" practice of packing multiple parameters into a
+#       space-separated string is a well documented source of bugs and security
+#       problems, so this is (mostly) avoided, by progressively accumulating
+#       options in "$@", and eventually passing that to Java.
+#
+#       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       see the in-line comments for details.
+#
+#       There are tweaks for specific operating systems such as AIX, CygWin,
+#       Darwin, MinGW, and NonStop.
+#
+#   (3) This script is generated from the Groovy template
+#       https://github.com/gradle/gradle/blob/HEAD/platforms/jvm/plugins-application/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+#       within the Gradle project.
+#
+#       You can find Gradle at https://github.com/gradle/gradle/.
+#
+##############################################################################
+
+# Attempt to set APP_HOME
+
+# Resolve links: $0 may be a link
+app_path=$0
+
+# Need this for daisy-chained symlinks.
+while
+    APP_HOME=${app_path%"${app_path##*/}"}  # leaves a trailing /; empty if no leading path
+    [ -h "$app_path" ]
+do
+    ls=$( ls -ld "$app_path" )
+    link=${ls#*' -> '}
+    case $link in             #(
+      /*)   app_path=$link ;; #(
+      *)    app_path=$APP_HOME$link ;;
+    esac
+done
+
+# This is normally unused
+# shellcheck disable=SC2034
+APP_BASE_NAME=${0##*/}
+# Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
+APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s
+' "$PWD" ) || exit
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD=maximum
+
+warn () {
+    echo "$*"
+} >&2
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+} >&2
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+nonstop=false
+case "$( uname )" in                #(
+  CYGWIN* )         cygwin=true  ;; #(
+  Darwin* )         darwin=true  ;; #(
+  MSYS* | MINGW* )  msys=true    ;; #(
+  NONSTOP* )        nonstop=true ;;
+esac
+
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+
+
+# Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD=$JAVA_HOME/jre/sh/java
+    else
+        JAVACMD=$JAVA_HOME/bin/java
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+else
+    JAVACMD=java
+    if ! command -v java >/dev/null 2>&1
+    then
+        die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+fi
+
+# Increase the maximum file descriptors if we can.
+if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
+    case $MAX_FD in #(
+      max*)
+        # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        MAX_FD=$( ulimit -H -n ) ||
+            warn "Could not query maximum file descriptor limit"
+    esac
+    case $MAX_FD in  #(
+      '' | soft) :;; #(
+      *)
+        # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        ulimit -n "$MAX_FD" ||
+            warn "Could not set maximum file descriptor limit to $MAX_FD"
+    esac
+fi
+
+# Collect all arguments for the java command, stacking in reverse order:
+#   * args from the command line
+#   * the main class name
+#   * -classpath
+#   * -D...appname settings
+#   * --module-path (only if needed)
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and GRADLE_OPTS environment variables.
+
+# For Cygwin or MSYS, switch paths to Windows format before running java
+if "$cygwin" || "$msys" ; then
+    APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
+    CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
+
+    JAVACMD=$( cygpath --unix "$JAVACMD" )
+
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+    for arg do
+        if
+            case $arg in                                #(
+              -*)   false ;;                            # don't mess with options #(
+              /?*)  t=${arg#/} t=/${t%%/*}              # looks like a POSIX filepath
+                    [ -e "$t" ] ;;                      #(
+              *)    false ;;
+            esac
+        then
+            arg=$( cygpath --path --ignore --mixed "$arg" )
+        fi
+        # Roll the args list around exactly as many times as the number of
+        # args, so each arg winds up back in the position where it started, but
+        # possibly modified.
+        #
+        # NB: a `for` loop captures its iteration list before it begins, so
+        # changing the positional parameters here affects neither the number of
+        # iterations, nor the values presented in `arg`.
+        shift                   # remove old arg
+        set -- "$@" "$arg"      # push replacement arg
+    done
+fi
+
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Collect all arguments for the java command:
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, JAVA_OPTS, and optsEnvironmentVar are not allowed to contain shell fragments,
+#     and any embedded shellness will be escaped.
+#   * For example: A user cannot expect ${Hostname} to be expanded, as it is an environment variable and will be
+#     treated as '${Hostname}' itself on the command line.
+
+set -- \
+        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        -classpath "$CLASSPATH" \
+        org.gradle.wrapper.GradleWrapperMain \
+        "$@"
+
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
+
+# Use "xargs" to parse quoted args.
+#
+# With -n1 it outputs one arg per line, with the quotes and backslashes removed.
+#
+# In Bash we could simply go:
+#
+#   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
+#   set -- "${ARGS[@]}" "$@"
+#
+# but POSIX shell has neither arrays nor command substitution, so instead we
+# post-process each arg (as a line of input to sed) to backslash-escape any
+# character that might be a shell metacharacter, then use eval to reverse
+# that process (while maintaining the separation between arguments), and wrap
+# the whole thing up as a single "set" statement.
+#
+# This will of course break if any of these variables contains a newline or
+# an unmatched quote.
+#
+
+eval "set -- $(
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        xargs -n1 |
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    )" '"$@"'
+
+exec "$JAVACMD" "$@"
+@rem
+@rem Copyright 2015 the original author or authors.
+@rem
+@rem Licensed under the Apache License, Version 2.0 (the "License");
+@rem you may not use this file except in compliance with the License.
+@rem You may obtain a copy of the License at
+@rem
+@rem      https://www.apache.org/licenses/LICENSE-2.0
+@rem
+@rem Unless required by applicable law or agreed to in writing, software
+@rem distributed under the License is distributed on an "AS IS" BASIS,
+@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@rem See the License for the specific language governing permissions and
+@rem limitations under the License.
+@rem
+@rem SPDX-License-Identifier: Apache-2.0
+@rem
+
+@if "%DEBUG%"=="" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+set DIRNAME=%~dp0
+if "%DIRNAME%"=="" set DIRNAME=.
+@rem This is normally unused
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Resolve any "." and ".." in APP_HOME to make it shorter.
+for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if %ERRORLEVEL% equ 0 goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH. 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME% 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:execute
+@rem Setup the command line
+
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
+
+:end
+@rem End local scope for the variables with windows NT shell
+if %ERRORLEVEL% equ 0 goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+set EXIT_CODE=%ERRORLEVEL%
+if %EXIT_CODE% equ 0 set EXIT_CODE=1
+if not ""=="%GRADLE_EXIT_CONSOLE%" exit %EXIT_CODE%
+exit /b %EXIT_CODE%
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega

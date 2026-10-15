@@ -1,0 +1,394 @@
+[
+  {
+    "id": "RH236",
+    "original_operation": "timestamp",
+    "reviewed_operation": "timestamp regex group",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH237",
+    "original_operation": "timestamp",
+    "reviewed_operation": "timestamp regex group",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH238",
+    "original_operation": "parse",
+    "reviewed_operation": "parse.whitespace",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH239",
+    "original_operation": "string",
+    "reviewed_operation": "parse.string JSON.parse",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH240",
+    "original_operation": "value",
+    "reviewed_operation": "parse.value numeric regex",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH241",
+    "original_operation": "value",
+    "reviewed_operation": "parse.value numeric regex",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH242",
+    "original_operation": "value",
+    "reviewed_operation": "parse.value numeric regex",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH243",
+    "original_operation": "value",
+    "reviewed_operation": "parse.value exponent",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH244",
+    "original_operation": "contiguous",
+    "reviewed_operation": "Repository.contiguous absent row",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH245",
+    "original_operation": "module",
+    "reviewed_operation": "SyncHttp.constructor URL",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH246",
+    "original_operation": "post",
+    "reviewed_operation": "SyncHttp.post fetch",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH247",
+    "original_operation": "post",
+    "reviewed_operation": "SyncHttp.post content-type regex",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH248",
+    "original_operation": "post",
+    "reviewed_operation": "SyncHttp.post missing header",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH249",
+    "original_operation": "post",
+    "reviewed_operation": "SyncHttp.post reader.read",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH250",
+    "original_operation": "post",
+    "reviewed_operation": "SyncHttp.post decoder.decode chunk",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH251",
+    "original_operation": "post",
+    "reviewed_operation": "SyncHttp.post decoder.decode flush",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH252",
+    "original_operation": "post",
+    "reviewed_operation": "SyncHttp.post reader.cancel",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH253",
+    "original_operation": "userPage",
+    "reviewed_operation": "userPage strict validation",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH254",
+    "original_operation": "conversationPage",
+    "reviewed_operation": "conversationPage strict validation",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH255",
+    "original_operation": "errorResponse",
+    "reviewed_operation": "errorResponse strict validation",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH256",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration user",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH257",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration session",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH258",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration socket",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH259",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration userPoll",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH260",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration reconnectTimer",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH261",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration refreshTimer",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH262",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration refreshing",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH263",
+    "original_operation": "login",
+    "reviewed_operation": "WebClient.login",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH264",
+    "original_operation": "refresh",
+    "reviewed_operation": "WebClient.refresh",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH265",
+    "original_operation": "logout",
+    "reviewed_operation": "WebClient.logout",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH266",
+    "original_operation": "loadProfile",
+    "reviewed_operation": "WebClient.loadProfile",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH267",
+    "original_operation": "loadFriends",
+    "reviewed_operation": "WebClient.loadFriends",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH268",
+    "original_operation": "search",
+    "reviewed_operation": "WebClient.search",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH269",
+    "original_operation": "addFriend",
+    "reviewed_operation": "WebClient.addFriend",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH270",
+    "original_operation": "addFriend",
+    "reviewed_operation": "WebClient.transmit WebSocket.send",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH271",
+    "original_operation": "addFriend",
+    "reviewed_operation": "WebClient.connected socketFactory",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH272",
+    "original_operation": "addFriend",
+    "reviewed_operation": "WebClient.connected onmessage",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH273",
+    "original_operation": "syncFriends",
+    "reviewed_operation": "WebClient.syncFriends",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH274",
+    "original_operation": "sync",
+    "reviewed_operation": "WebClient.sync",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH275",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request fetch",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH276",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request logout reader.read",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH277",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request logout reader.cancel",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH278",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request content-type regex",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH279",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request missing content-type",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH280",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request JSON reader.read",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH281",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request JSON decoder chunk",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH282",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request JSON decoder flush",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH283",
+    "original_operation": "request",
+    "reviewed_operation": "Http.request JSON reader.cancel",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH284",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration messageId",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH285",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration seq",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH286",
+    "original_operation": "module",
+    "reviewed_operation": "optional type declaration createdAt",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH287",
+    "original_operation": "module",
+    "reviewed_operation": "MemoryRepository.after",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "RH290",
+    "original_operation": "translate",
+    "reviewed_operation": "translate interpolation",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "CLEANUP-PRIMARY-303",
+    "original_operation": "response read/decode primary capture for mandatory cleanup",
+    "reviewed_operation": "SyncHttp.post processing primary capture",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "CLEANUP-PRIMARY-304",
+    "original_operation": "response read/decode primary capture for mandatory cleanup",
+    "reviewed_operation": "Http.request logout processing primary capture",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  },
+  {
+    "id": "CLEANUP-PRIMARY-305",
+    "original_operation": "response read/decode primary capture for mandatory cleanup",
+    "reviewed_operation": "Http.request JSON processing primary capture",
+    "token_coordinates_verified": true,
+    "source_behavior_finding": false
+  }
+]

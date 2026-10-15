@@ -1,0 +1,137 @@
+{
+  "original_ids": 218,
+  "distinct_corrected_coordinates": 218,
+  "executable_navigation": 204,
+  "nonexecutable_navigation": 14,
+  "manual_duplicate_reconciliation": {
+    "RH147": [
+      41,
+      59,
+      "catch",
+      "SyncViewModel.kt.enqueue"
+    ],
+    "RH148": [
+      41,
+      123,
+      "catch",
+      "SyncViewModel.kt.enqueue"
+    ],
+    "RH190": [
+      61,
+      10,
+      "catch",
+      "WorkspaceViewModel.kt.refreshFriends"
+    ],
+    "RH191": [
+      61,
+      49,
+      "catch",
+      "WorkspaceViewModel.kt.refreshFriends"
+    ],
+    "RH196": [
+      69,
+      10,
+      "catch",
+      "WorkspaceViewModel.kt.updateList"
+    ],
+    "RH197": [
+      69,
+      49,
+      "catch",
+      "WorkspaceViewModel.kt.updateList"
+    ],
+    "RH198": [
+      76,
+      144,
+      "catch",
+      "WorkspaceViewModel.kt.register"
+    ],
+    "RH199": [
+      76,
+      183,
+      "catch",
+      "WorkspaceViewModel.kt.register"
+    ],
+    "RH204": [
+      82,
+      161,
+      "catch",
+      "WorkspaceViewModel.kt.logout"
+    ],
+    "RH205": [
+      82,
+      200,
+      "catch",
+      "WorkspaceViewModel.kt.logout"
+    ],
+    "RH206": [
+      82,
+      310,
+      "catch",
+      "WorkspaceViewModel.kt.logout"
+    ],
+    "RH208": [
+      85,
+      256,
+      "catch",
+      "WorkspaceViewModel.kt.send"
+    ],
+    "RH209": [
+      85,
+      41,
+      "?:",
+      "WorkspaceViewModel.kt.send"
+    ],
+    "RH210": [
+      86,
+      162,
+      "catch",
+      "WorkspaceViewModel.kt.retry"
+    ],
+    "RH211": [
+      86,
+      40,
+      "?:",
+      "WorkspaceViewModel.kt.retry"
+    ],
+    "RH212": [
+      88,
+      178,
+      "catch",
+      "WorkspaceViewModel.kt.reconnect"
+    ],
+    "RH213": [
+      88,
+      35,
+      "?:",
+      "WorkspaceViewModel.kt.reconnect"
+    ],
+    "RH214": [
+      89,
+      270,
+      "catch",
+      "WorkspaceViewModel.kt.search"
+    ],
+    "RH215": [
+      89,
+      44,
+      "?:",
+      "WorkspaceViewModel.kt.search"
+    ],
+    "RH216": [
+      90,
+      378,
+      "catch",
+      "WorkspaceViewModel.kt.add"
+    ],
+    "RH217": [
+      90,
+      38,
+      "?:",
+      "WorkspaceViewModel.kt.add"
+    ]
+  },
+  "standards_findings": [],
+  "task_spec_findings": [],
+  "navigation_judgment": "Candidate original inaccurate operations/duplicatecatch coords are repaired by independent addendum with no semantic coverage loss; navigation issue is not product defect or review blocker once corrected."
+}

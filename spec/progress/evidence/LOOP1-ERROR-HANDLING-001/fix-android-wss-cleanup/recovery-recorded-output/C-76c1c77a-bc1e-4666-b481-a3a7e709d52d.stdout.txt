@@ -1,0 +1,586 @@
+[
+  {
+    "composite_identity": "24|backend/java/InfraPlaceholder.java|RH024",
+    "path": "backend/java/InfraPlaceholder.java",
+    "current_line_at_8f5": 23,
+    "source_sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290",
+    "source": "                } catch (IOException error) {",
+    "specific_fault": "Actual accepted default Socket setSoTimeout/reader/writer/flush/close IOException, including malformed request line or network timeout/reset. Header EOF alone is not an IOException and the current skeleton may continue to a response.",
+    "present_authority": "Frozen10 SRC-06 accepted non-business Java startup/health/transport skeleton; no S3 business/parser expansion.",
+    "actual_recovery_or_failure": "try-with-resources closes current accepted socket before catch logs safe exception class and loops to next request. Listener accept failure and unchecked primary exceptions escape. Actual JDK25 default close converts only UncheckedIOException back to IOException, closes state/descriptor; no current reproducible unknown/Error cleanup producer found. Do not claim blanket truncated-header rejection or pretend synthetic custom SocketImpl is current default incidence.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "57|clients/desktop/src/application/ui/native.ts|RH059",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 16,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "catch(error){if(error===\"HTTPS transport unavailable\")throw new NativeTransportFailure(error);if(error===\"HTTPS redirects forbidden\" || error===\"HTTPS response too large\")throw new WireFailure();throw error;}",
+    "specific_fault": "Actual literal native_https reports sanitized reqwest network/timeout/TLS failure, or current redirect/response-size rejection.",
+    "present_authority": "Frozen6.1/7.4; ADR0009 necessary reqwest native HTTPS adapter.",
+    "actual_recovery_or_failure": "NativeTransportFailure marks only HTTPS transport unavailable; current redirects/size errors become WireFailure; all other values propagate.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "58|clients/desktop/src/application/ui/native.ts|RH060",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 22,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "load:async()=>{let value:[Appearance[\"theme\"],number,number];try{value=await invoke<[Appearance[\"theme\"],number,number]>(\"appearance_load\");}catch(error){nativeFailure(error,[\"Appearance unavailable\",\"Appearance invalid\"]);}const [theme,fontSize,density]=value;return {theme,fontSize,density};},",
+    "specific_fault": "Actual appearance_load returns Appearance unavailable for non-NotFound native file IO or Appearance invalid for malformed/oversize/out-of-domain tuple.",
+    "present_authority": "Frozen6.1; ADR0009 app-owned appearance. ADR0012 language defaults do not authorize appearance fallback.",
+    "actual_recovery_or_failure": "Literal invoke tags these exact native failures; Workspace.start publishes an honest appearance load error. NotFound default belongs to the Rust reader, not this catch.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "59|clients/desktop/src/application/ui/native.ts|RH061",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 23,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "save:async(value:Appearance)=>{try{await invoke<void>(\"appearance_save\",{value:[value.theme,value.fontSize,value.density]});}catch(error){nativeFailure(error,[\"Appearance unavailable\"]);}}",
+    "specific_fault": "Actual appearance_save native create-dir/file write fails with Appearance unavailable.",
+    "present_authority": "Frozen6.1; ADR0009 existing appearance persistence.",
+    "actual_recovery_or_failure": "Literal invoke tags only exact unavailable string. Invalid value or unknown native result propagates; no success/default substitution.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "60|clients/desktop/src/application/ui/native.ts|RH062",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 27,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "read:async(slot:string)=>{try{return await invoke<string|null>(\"credential_read\",{slot});}catch(error){nativeFailure(error,[\"Secure credential storage unavailable\"]);}},",
+    "specific_fault": "Windows Credential Manager entry/get_password fails except actual NoEntry.",
+    "present_authority": "Frozen6.1/7.1; ADR0009 OS secure credential storage, no plaintext downgrade.",
+    "actual_recovery_or_failure": "Exact sanitized unavailable string is tagged; NoEntry returns null in Rust before this catch; unknown IPC roots propagate.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "61|clients/desktop/src/application/ui/native.ts|RH063",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 28,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "write:async(slot:string,value:string)=>{try{await invoke<void>(\"credential_write\",{slot,value});}catch(error){nativeFailure(error,[\"Secure credential storage unavailable\"]);}},",
+    "specific_fault": "Windows Credential Manager set_password fails.",
+    "present_authority": "Frozen6.1/7.1; ADR0009 OS secure credential storage.",
+    "actual_recovery_or_failure": "Exact sanitized unavailable string is tagged and rejects the operation; no plaintext fallback or SQLite change.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "62|clients/desktop/src/application/ui/native.ts|RH064",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 29,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "remove:async(slot:string)=>{try{await invoke<void>(\"credential_remove\",{slot});}catch(error){nativeFailure(error,[\"Secure credential storage unavailable\"]);}}",
+    "specific_fault": "Windows Credential Manager delete_credential fails except actual NoEntry.",
+    "present_authority": "Frozen6.1/7.1; ADR0009 current slot/session cleanup.",
+    "actual_recovery_or_failure": "Exact sanitized unavailable string is tagged and rejects; NoEntry is already a successful absent-slot result in Rust. Unknown IPC error remains original.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "63|clients/desktop/src/application/ui/native.ts|RH065",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 31,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "export const windowMaximized=async()=>{try{return await invoke<boolean>(\"window_maximized\");}catch(error){nativeFailure(error,[\"Window unavailable\"]);}};",
+    "specific_fault": "Actual window.is_maximized native call fails with Window unavailable.",
+    "present_authority": "Frozen6.1/6.5; ADR0009 necessary window presentation adapter.",
+    "actual_recovery_or_failure": "Exact native failure is tagged; unknown results propagate; no false maximized state is manufactured.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "64|clients/desktop/src/application/ui/native.ts|RH066",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 32,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "export const windowControl=async(action:\"minimize\"|\"maximize\"|\"close\"|\"drag\")=>{try{await invoke<void>(\"window_control\",{action});}catch(error){nativeFailure(error,[\"Window unavailable\"]);}};",
+    "specific_fault": "Actual minimize/unmaximize/maximize/close/drag OS window operation fails.",
+    "present_authority": "Frozen6.1/6.5; ADR0009 existing window controls.",
+    "actual_recovery_or_failure": "Only exact Window unavailable is tagged; invalid action and unknown roots propagate. Caller receives rejection.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "65|clients/desktop/src/application/ui/native.ts|RH067",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 33,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "export const notify=async(title:string,body:string)=>{try{await invoke<void>(\"native_notify\",{title,body});}catch(error){nativeFailure(error,[\"Notification unavailable\"]);}};",
+    "specific_fault": "Actual sanctioned OS notification show fails with Notification unavailable.",
+    "present_authority": "Frozen6.1/6.5; ADR0009 actual native notification.",
+    "actual_recovery_or_failure": "Exact native failure is tagged; Workspace publishes honest notification error for the known failure; unknown roots reject.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "66|clients/desktop/src/application/ui/native.ts|RH068",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 36,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "load:async():Promise<Locale>=>{try{const value=await invoke<unknown>(\"language_load\");return validLocale(value)?value:\"en\";}catch(error){if(error===\"Language unavailable\")return \"en\";throw error;}},",
+    "specific_fault": "Language-load native capability unavailable, invalid enum or absent/corrupt/unavailable language file.",
+    "present_authority": "Frozen6.6 language policy; ADR0012 explicit default en/unavailable fallback only.",
+    "actual_recovery_or_failure": "Accepted load fallback en is retained; arbitrary unknown IPC errors propagate. No appearance/credential fallback is borrowed.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "67|clients/desktop/src/application/ui/native.ts|RH069",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 37,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "save:async(value:Locale)=>{if(!validLocale(value))throw new Error(\"Invalid language\");try{await invoke<void>(\"language_save\",{value});}catch(error){nativeFailure(error,[\"Language unavailable\"]);}}",
+    "specific_fault": "Actual language-save create-dir/write fails with Language unavailable.",
+    "present_authority": "Frozen6.6; ADR0012 honest write-failure feedback and independent preference fields.",
+    "actual_recovery_or_failure": "Exact sanitized native failure is tagged; invalid input throws before invoke. Workspace marks languageStored false only for known failure; unknown remains rejected.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "68|clients/desktop/src/application/ui/native.ts|RH070",
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "current_line_at_8f5": 39,
+    "source_sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "source": "export const trayText=async(open:string,hide:string,quit:string,tooltip:string)=>{try{await invoke<void>(\"tray_text\",{open,hide,quit,tooltip});}catch(error){nativeFailure(error,[\"Tray unavailable\"]);}};",
+    "specific_fault": "Actual current tray menu text or tooltip OS mutation fails with Tray unavailable.",
+    "present_authority": "Frozen6.1/6.5/6.6; ADR0009 native tray and ADR0012 translated presentation.",
+    "actual_recovery_or_failure": "Exact sanitized native failure is tagged; Workspace.updateTray marks operation unavailable. Unknown IPC roots propagate; no fabricated tray success.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "69|clients/desktop/src/application/ui/workspace.ts|RH071",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 19,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async start(){const revision=this.languageRevision;const value=await language.load();if(revision===this.languageRevision)this.publish({language:value});await this.updateTray();try{this.publish({appearance:await appearance.load()});}catch(error){this.failure(error);this.publish({error:\"Appearance could not be loaded\"});}}",
+    "specific_fault": "Current app-owned appearance load IO/tuple failure.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known native appearance failure publishes Appearance could not be loaded; unknown throws before this UI update.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "70|clients/desktop/src/application/ui/workspace.ts|RH072",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 22,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "this.trayWrites=this.trayWrites.then(async()=>{if(revision!==this.languageRevision)return;const t=(key:string)=>translate(this.state.language,key);try{await trayText(t(\"tray.open\"),t(\"tray.hide\"),t(\"tray.quit\"),t(\"tray.tooltip\"));}catch(error){this.failure(error);if(revision===this.languageRevision)this.publish({error:\"Operation unavailable\"});}});return this.trayWrites;",
+    "specific_fault": "Current sanctioned tray-text mutation fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known native capability failure publishes Operation unavailable; unknown poisons/rejects the existing tray queue; stale known result may be dropped.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "71|clients/desktop/src/application/ui/workspace.ts|RH073",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 26,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "this.languageWrites=this.languageWrites.then(async()=>{try{await language.save(value);if(revision===this.languageRevision)this.publish({languageStored:true});}catch(error){this.failure(error);if(revision===this.languageRevision)this.publish({languageStored:false});}});return Promise.all([this.languageWrites,tray]).then(()=>{});",
+    "specific_fault": "Current language-save native write fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure marks languageStored false; unknown rejects existing language queue. Parallel tray known errors are handled by tray owner, so do not first-reject Promise.all as ordinary known faults.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "72|clients/desktop/src/application/ui/workspace.ts|RH074",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 29,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async testNotification(){try{await notify(\"IM+\",translate(this.state.language,\"notify.ready\"));}catch(error){this.failure(error);this.publish({error:\"System notification unavailable\"});}}",
+    "specific_fault": "Current native notification test show fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure publishes System notification unavailable; unknown rejects.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "73|clients/desktop/src/application/ui/workspace.ts|RH075",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 31,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "preferences(value:Appearance){this.publish({appearance:value,error:null});this.appearanceWrites=this.appearanceWrites.then(async()=>{try{await appearance.save(value);}catch(error){this.failure(error);this.publish({error:\"Appearance could not be saved\"});}});return this.appearanceWrites;}",
+    "specific_fault": "Current appearance-save native IO fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure publishes Appearance could not be saved; unknown rejects/poisons current appearance write queue.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "74|clients/desktop/src/application/ui/workspace.ts|RH076",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 35,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "ws.onmessage=event=>{try{const frame=decode(event.data);if(frame.type===\"session.revoked\"||frame.type===\"auth.ack\"&&frame.payload.status===\"rejected\"){expired();return;}}catch(error){if(!(error instanceof WireFailure))throw error;/* Send owns invalid wire rejection. */}onmessage?.(event);};",
+    "specific_fault": "Pre-parser detects only actual WireFailure for malformed current external WSS frame.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "WireFailure proceeds to Send current decoder/connection rejection; arbitrary unknown decoder/expiry callback error propagates.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "75|clients/desktop/src/application/ui/workspace.ts|RH077",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 46,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "this.detach.push(send.observeDelivery(()=>{if(active()&&document.visibilityState!==\"visible\")void notify(\"IM+\",translate(this.state.language,\"notify.activity\")).catch(error=>{if(!(error instanceof NativeCapabilityFailure))throw error;if(active())this.publish({error:\"System notification unavailable\"});});}));",
+    "specific_fault": "Current background OS notification show fails after delivered event.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Only NativeCapabilityFailure is consumed with honest System notification unavailable; unknown promise rejection propagates even for retired generation.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "76|clients/desktop/src/application/ui/workspace.ts|RH078",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 50,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "try{const profile=await owner!.profile();if(!active())return;this.publish({profile});await this.refreshFriends(repo,g);}catch(error){this.failure(error,active());}",
+    "specific_fault": "Current profile/friend canonical HTTP/network/protocol or account-native read fails during bind.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "failure helper rethrows unknown even stale; known current errors publish failure and auth expiry schedules retirement.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "77|clients/desktop/src/application/ui/workspace.ts|RH079",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 57,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "}catch(error){this.failure(error,g===this.generation&&revision===this.friendRevision);}",
+    "specific_fault": "Current friend metadata cursor/read or canonical friend projection fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Only recognized owner failure is handled; unknown propagates even stale. Generation/revision gates prevent wrong-account publish.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "81|clients/desktop/src/application/ui/workspace.ts|RH083",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 69,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "}catch(error){this.failure(error,g===this.generation&&revision===this.listRevision);if(g===this.generation&&revision===this.listRevision)this.publish({error:\"Conversation history unavailable\"});}",
+    "specific_fault": "Current parallel conversation metadata reads fail.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "At 8f5 known-first read currently masks later unknown via Promise.all (F-DESKTOP-LIST-MIXED); existing broad retained claim is not valid for all roots. Rejudge after minimal fix on new SHA.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "82|clients/desktop/src/application/ui/workspace.ts|RH084",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 77,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "catch(error){this.failure(error,op===this.operation);return false;}finally{if(op===this.operation)this.publish({busy:false});}",
+    "specific_fault": "Current canonical registration HTTP/network/protocol failure.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known owner failure publishes honest error and returns false; unknown is rethrown, finally busy clears only current operation.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "83|clients/desktop/src/application/ui/workspace.ts|RH085",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 79,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async login(endpoint:string,username:string,password[REDACTED];const op=++this.operation;this.publish({busy:true,error:null});await this.stop();const g=this.generation;try{await this.auth?.clear();if(op!==this.operation)return;const base=origin(endpoint);this.publish({endpoint:base});const owner=new Auth(base);this.auth=owner;const session=await owner.login(username,password);if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "specific_fault": "Current sign-in/secure cleanup/bind/native read failure.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Only known owner failure publishes error; unknown throws even stale; busy clears for current operation.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "84|clients/desktop/src/application/ui/workspace.ts|RH086",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 80,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async restore(endpoint:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});try{await this.stop();const g=this.generation,base=origin(endpoint);this.publish({endpoint:base});const auth=new Auth(base);this.auth=auth;const account=await auth.savedAccount();if(op!==this.operation)return;if(!account){this.publish({error:\"No saved session for this server\"});return;}const repo=accountRepository(account);await repo.initialize();const ids=await repo.conversationIds(),selected=\"\",messages:ReadonlyArray<ReadonlyArray<string|null>>=[];if(op!==this.operation)return;this.offlineRepository=repo;this.publish({offlineAccount:account,conversations:ids,selected,messages,error:\"Showing saved history while the secure session resumes\"});await this.updateList(repo,this.generation);const session=await auth.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "specific_fault": "Current saved account metadata/secure refresh/local-first read failure.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known owner failure publishes honest error; unknown throws. Empty saved-account only comes from actual absent secure slot, not swallowed read failure.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "85|clients/desktop/src/application/ui/workspace.ts|RH087",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 81,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async refresh(){if(this.state.busy||!this.auth)return;const op=++this.operation;const owner=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const session=await owner.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "specific_fault": "Current auth refresh/bind failure.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Unknown rethrows even stale; known owner failure is displayed. Auth.refresh cleanup-primary root loss is separately F-DESKTOP-REFRESH-CLEANUP-ROOT at 8f5.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "86|clients/desktop/src/application/ui/workspace.ts|RH088",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 82,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async expire(){const op=++this.operation,owner=this.auth;this.auth=null;await this.stop();try{await owner?.clear();}catch(error){this.failure(error,op===this.operation);/* Surface secure cleanup failure. */if(op===this.operation)this.publish({busy:false,error:\"Session expired; secure credential cleanup failed\"});return;}if(op===this.operation)this.publish({busy:false,error:\"Session expired. Sign in again.\"});}",
+    "specific_fault": "Current expired-session secure credential cleanup fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure publishes Session expired; secure credential cleanup failed; unknown rethrows before ordinary UI recovery.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "87|clients/desktop/src/application/ui/workspace.ts|RH089",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 83,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async logout(){const op=++this.operation;this.publish({busy:true});const auth=this.auth;this.auth=null;const request=auth?.logout();await this.stop();const g=this.generation;try{await request;if(op===this.operation)this.publish({error:null});}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}",
+    "specific_fault": "Current remote logout or secure credential cleanup fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "At 8f5 Auth.logout Promise.all known-first rejection masks later unknown cleanup (F-DESKTOP-LOGOUT-MIXED); broad retained claim requires new-SHA rejudgment after fix.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "88|clients/desktop/src/application/ui/workspace.ts|RH090",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 85,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async open(id:string){if(this.state.page===\"Chat\"&&this.state.selected===id){this.closeConversation();return;}const g=this.generation;this.publish({selected:id,page:\"Chat\",messages:[],error:null});try{if(this.offlineRepository){const messages=await this.offlineRepository.messages(id);if(g===this.generation&&this.state.selected===id)this.publish({messages});}else await this.sync?.openConversation(id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Sync unavailable; showing local history\"});}}",
+    "specific_fault": "Current offline messages read/openConversation/Sync pull fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known read/Sync failures publish honest unavailable/local-history status; unknown throws before status recovery.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "89|clients/desktop/src/application/ui/workspace.ts|RH091",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 86,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async send(text:string){if(!this.state.selected||!this.sync)return;const g=this.generation,owner=this.sync;try{const id=this.state.selected;await owner.send.send(id,text);if(g===this.generation){this.activity.set(id,Date.now());if(this.repository)await this.updateList(this.repository,g);}}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Message could not be saved\"});}}",
+    "specific_fault": "Current Send or following native history read fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure publishes Message could not be saved; unknown propagates. No SQLite write-policy change is authorized.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "90|clients/desktop/src/application/ui/workspace.ts|RH092",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 87,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async retry(id:string){const g=this.generation,owner=this.sync;if(!owner)return;try{await owner.send.retry(this.state.selected,id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Retry unavailable\"});}}",
+    "specific_fault": "Current retry or native read fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure publishes Retry unavailable; unknown propagates. Existing retry identity and write scope remain protected.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "91|clients/desktop/src/application/ui/workspace.ts|RH093",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 88,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async reconnect(){const g=this.generation,owner=this.sync;if(!owner)return;try{owner.send.connect(this.state.endpoint.replace(/^https:/,\"wss:\")+\"/v1/ws\");await owner.synchronize();}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:\"Connection unavailable\"});}}",
+    "specific_fault": "Current reconnect/bound Sync operation fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure publishes Connection unavailable; unknown propagates, including internal callback/validation faults.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "92|clients/desktop/src/application/ui/workspace.ts|RH094",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 90,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async search(query:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,results:[],error:null});try{const results=await auth.search(query);if(g===this.generation)this.publish({results});}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}",
+    "specific_fault": "Current exact-user HTTP search fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure is displayed; unknown propagates; current generation alone may publish results; finally busy clears.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  },
+  {
+    "composite_identity": "93|clients/desktop/src/application/ui/workspace.ts|RH095",
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "current_line_at_8f5": 91,
+    "source_sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "source": "async add(id:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const conversation=await auth.add(id);if(g!==this.generation)return;const revision=++this.friendRevision;const friends=await auth.friends();if(g!==this.generation||auth!==this.auth)return;if(revision===this.friendRevision)this.publish({friends,conversations:[...new Set([...this.state.conversations,conversation])]});await this.open(conversation);}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}",
+    "specific_fault": "Current friend add/friend reload/open operation fails.",
+    "present_authority": "Frozen6.1/6.5/7.1; applicable ADR0009 (native capabilities)/ADR0012 (language only); error-handling7/9/11; current account ownership and canonical HTTP/WSS/Sync.",
+    "actual_recovery_or_failure": "Known failure is displayed; unknown propagates. Generation/auth ownership gates prevent wrong-account publish.",
+    "status": "SUPPORT_GROUND_CORRECTION_NOT_ACCEPTANCE"
+  }
+]
+import {errorKey,translate,type Locale,validLocale} from "../../ui/i18n/resources.js";
+import {Repository} from "../../../../shared/protocol-sdk/src/storage/repository.js";
+import {SyncFailure} from "../../../../shared/protocol-sdk/src/sync/wire.js";
+import {SyncHttp} from "../../../../shared/protocol-sdk/src/sync/http.js";
+import {WireFailure,decode} from "../../../../shared/protocol-sdk/src/send/wire.js";
+import {accountRepository} from "../accountSend.js";
+import {SendStorageFailure,SendApplication,type Session,type Socket} from "../send.js";
+import {SyncApplication} from "../sync/application.js";
+import {Auth,ApiFailure,type Friend,type User,origin} from "./auth.js";
+import {NativeCapabilityFailure,NativeTransportFailure,appearance,language,trayText,defaults,nativeFetch,notify,type Appearance} from "./native.js";
+export interface WorkspaceState {language:Locale;languageStored:boolean;appearance:Appearance;busy:boolean;error:string|null;session:Session|null;offlineAccount:string|null;profile:User|null;friends:Friend[];results:User[];conversations:string[];selected:string;messages:ReadonlyArray<ReadonlyArray<string|null>>;connection:string;sync:string;unavailable:readonly string[];page:"Chat"|"Friends"|"AI"|"Plugin"|"Settings";endpoint:string;previews:Record<string,{text:string;time:number}>}
+export class Workspace {
+  state:WorkspaceState={language:"en",languageStored:true,appearance:defaults,busy:false,error:null,session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],page:"Chat",endpoint:"https://localhost:8443",previews:{}};
+  private listeners=new Set<()=>void>();private auth:Auth|null=null;private sync:SyncApplication|null=null;private offlineRepository:Repository|null=null;private generation=0;private operation=0;private detach: (()=>void)[]=[];private repository:Repository|null=null;private listRevision=0;private activity=new Map<string,number>();private friendRevision=0;private friendCursor="";private refreshTimer:ReturnType<typeof setInterval>|null=null;
+  observe=(fn:()=>void)=>{this.listeners.add(fn);return()=>{this.listeners.delete(fn);};};
+  snapshot=()=>this.state;
+  private publish(value:Partial<WorkspaceState>){this.state={...this.state,...value};for(const listener of this.listeners)listener();}
+  private languageRevision=0;
+  async start(){const revision=this.languageRevision;const value=await language.load();if(revision===this.languageRevision)this.publish({language:value});await this.updateTray();try{this.publish({appearance:await appearance.load()});}catch(error){this.failure(error);this.publish({error:"Appearance could not be loaded"});}}
+  private trayWrites:Promise<void>=Promise.resolve();
+  private updateTray(){const revision=this.languageRevision;
+    this.trayWrites=this.trayWrites.then(async()=>{if(revision!==this.languageRevision)return;const t=(key:string)=>translate(this.state.language,key);try{await trayText(t("tray.open"),t("tray.hide"),t("tray.quit"),t("tray.tooltip"));}catch(error){this.failure(error);if(revision===this.languageRevision)this.publish({error:"Operation unavailable"});}});return this.trayWrites;
+  }
+  private languageWrites:Promise<void>=Promise.resolve();
+  selectLanguage(value:Locale){if(!validLocale(value))return Promise.resolve();const revision=++this.languageRevision;this.publish({language:value,languageStored:true});const tray=this.updateTray();
+    this.languageWrites=this.languageWrites.then(async()=>{try{await language.save(value);if(revision===this.languageRevision)this.publish({languageStored:true});}catch(error){this.failure(error);if(revision===this.languageRevision)this.publish({languageStored:false});}});return Promise.all([this.languageWrites,tray]).then(()=>{});
+  }
+  page(page:WorkspaceState["page"]){this.publish({page,error:null});}
+  async testNotification(){try{await notify("IM+",translate(this.state.language,"notify.ready"));}catch(error){this.failure(error);this.publish({error:"System notification unavailable"});}}
+  private appearanceWrites:Promise<void>=Promise.resolve();
+  preferences(value:Appearance){this.publish({appearance:value,error:null});this.appearanceWrites=this.appearanceWrites.then(async()=>{try{await appearance.save(value);}catch(error){this.failure(error);this.publish({error:"Appearance could not be saved"});}});return this.appearanceWrites;}
+  private async stop(){this.generation++;if(this.refreshTimer)clearInterval(this.refreshTimer);this.refreshTimer=null;this.detach.forEach(fn=>fn());this.detach=[];const old=this.sync;this.sync=null;this.offlineRepository=null;this.repository=null;this.friendCursor="";this.friendRevision++;this.listRevision++;this.activity.clear();this.publish({session:null,offlineAccount:null,profile:null,friends:[],results:[],conversations:[],selected:"",messages:[],connection:"offline",sync:"idle",unavailable:[],previews:{}});await old?.close();}
+  private socket(url:string,expired:()=>void):Socket {
+    const ws=new WebSocket(url);let onmessage:Socket["onmessage"]=null;
+    ws.onmessage=event=>{try{const frame=decode(event.data);if(frame.type==="session.revoked"||frame.type==="auth.ack"&&frame.payload.status==="rejected"){expired();return;}}catch(error){if(!(error instanceof WireFailure))throw error;/* Send owns invalid wire rejection. */}onmessage?.(event);};
+    return {get onopen(){return ws.onopen;},set onopen(fn){ws.onopen=fn;},get onmessage(){return onmessage;},set onmessage(fn){onmessage=fn;},get onclose(){return ws.onclose;},set onclose(fn){ws.onclose=fn;},get onerror(){return ws.onerror;},set onerror(fn){ws.onerror=fn;},send:text=>ws.send(text),close:()=>ws.close()};
+  }
+  private async bind(session:Session,op:number){
+    if(op!==this.operation)return;
+    await this.stop();if(op!==this.operation)return;const owner=this.auth,g=this.generation,active=()=>g===this.generation&&op===this.operation,repo=accountRepository(session.userId);await repo.initialize();if(!active())return;
+    const send=new SendApplication(repo,session,url=>this.socket(url,()=>{void this.expire();}));
+    this.repository=repo;const sync=new SyncApplication(send,new SyncHttp(this.state.endpoint,session,nativeFetch,undefined,error=>error instanceof NativeTransportFailure || error instanceof DOMException));this.sync=sync;
+    const conversations=await repo.conversationIds();if(!active())return;this.publish({session,conversations,error:null});
+    this.detach.push(send.observe(s=>{if(active()){this.publish({connection:s.connection,...(s.error?{error:s.error==="storage"?"Local history unavailable":"Protocol error"}:{})});void this.updateList(repo,g);}}));
+    this.detach.push(sync.observe(s=>{if(!active())return;this.publish({sync:s.status,unavailable:s.unavailable,...(s.error?{error:"Sync "+s.error}:{})});if(s.error==="authentication")void this.expire();if(s.status==="idle"){void this.updateList(repo,g);void this.refreshFriends(repo,g);}}));
+    this.detach.push(send.observeDelivery(()=>{if(active()&&document.visibilityState!=="visible")void notify("IM+",translate(this.state.language,"notify.activity")).catch(error=>{if(!(error instanceof NativeCapabilityFailure))throw error;if(active())this.publish({error:"System notification unavailable"});});}));
+    await this.updateList(repo,g);if(!active())return;
+    this.publish({selected:"",messages:[]});send.connect(this.state.endpoint.replace(/^https:/,"wss:")+"/v1/ws");
+    this.refreshTimer=setInterval(()=>{if(active()&&this.auth?.needsRefresh())void this.refresh();},30000);
+    try{const profile=await owner!.profile();if(!active())return;this.publish({profile});await this.refreshFriends(repo,g);}catch(error){this.failure(error,active());}
+  }
+  private async refreshFriends(repo:Repository,g:number){
+    const owner=this.auth;if(!owner)return;const revision=++this.friendRevision;
+    try{const cursor=await repo.cursor();if(g!==this.generation||cursor===this.friendCursor)return;
+      const friends=await owner.friends();if(g!==this.generation||owner!==this.auth||revision!==this.friendRevision)return;
+      this.friendCursor=cursor;this.publish({friends});await this.updateList(repo,g);
+    }catch(error){this.failure(error,g===this.generation&&revision===this.friendRevision);}
+  }
+  private failure(error:unknown,active=true){
+    const failures=error instanceof AggregateError?error.errors:[error];
+    if(!failures.length || !failures.every(root=>root instanceof ApiFailure || root instanceof WireFailure || root instanceof SyncFailure || root instanceof SendStorageFailure || root instanceof NativeCapabilityFailure))throw error;
+    if(!active)return;
+    const authentication=error instanceof ApiFailure?error:undefined;
+    this.publish({error:authentication?authentication.message:"Operation unavailable"});if(authentication?.kind==="session_expired")void this.expire();}
+  private async updateList(repo:Repository,g:number){
+    const revision=++this.listRevision;
+    try{const ids=[...new Set([...await repo.conversationIds(),...this.state.friends.map(f=>f.directConversationId)])];
+      const settled=await Promise.allSettled(ids.map(async id=>{const rows=await repo.messages(id);const last=rows.at(-1);const time=Math.max(0,...rows.map(m=>m[6]?Date.parse(m[6]):0),this.activity.get(id)??0);return [id,{text:last?.[2]??"",time},rows] as const;}));
+      const failures=[...new Set(settled.filter(result=>result.status==="rejected").map(result=>result.reason))];
+      if(failures.length===1)throw failures[0];
+      if(failures.length>1)throw new AggregateError(failures,"Conversation history failed");
+      const entries=settled.filter(result=>result.status==="fulfilled").map(result=>result.value);
+      if(g!==this.generation||revision!==this.listRevision)return;
+      const previews=Object.fromEntries(entries.map(([id,preview])=>[id,preview]));ids.sort((a,b)=>previews[b].time-previews[a].time||a.localeCompare(b));this.publish({conversations:ids,previews,messages:entries.find(e=>e[0]===this.state.selected)?.[2]??[]});
+    }catch(error){this.failure(error,g===this.generation&&revision===this.listRevision);if(g===this.generation&&revision===this.listRevision)this.publish({error:"Conversation history unavailable"});}
+  }
+  async register(username:string,password[REDACTED],confirmation:string){
+    if(this.state.busy)return false;
+    if(password!==confirmation){this.publish({error:"Passwords do not match"});return false;}
+    if(!/^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$/.test(username)||[...password].length<12||[...password].length>256){this.publish({error:"Use a 3–64 character username and a 12–256 character password"});return false;}
+    const op=++this.operation;this.publish({busy:true,error:null});
+    try{await new Auth(this.state.endpoint).register(username,password);if(op!==this.operation)return false;return true;}
+    catch(error){this.failure(error,op===this.operation);return false;}finally{if(op===this.operation)this.publish({busy:false});}
+  }
+  async login(endpoint:string,username:string,password[REDACTED];const op=++this.operation;this.publish({busy:true,error:null});await this.stop();const g=this.generation;try{await this.auth?.clear();if(op!==this.operation)return;const base=origin(endpoint);this.publish({endpoint:base});const owner=new Auth(base);this.auth=owner;const session=await owner.login(username,password);if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}
+  async restore(endpoint:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});try{await this.stop();const g=this.generation,base=origin(endpoint);this.publish({endpoint:base});const auth=new Auth(base);this.auth=auth;const account=await auth.savedAccount();if(op!==this.operation)return;if(!account){this.publish({error:"No saved session for this server"});return;}const repo=accountRepository(account);await repo.initialize();const ids=await repo.conversationIds(),selected="",messages:ReadonlyArray<ReadonlyArray<string|null>>=[];if(op!==this.operation)return;this.offlineRepository=repo;this.publish({offlineAccount:account,conversations:ids,selected,messages,error:"Showing saved history while the secure session resumes"});await this.updateList(repo,this.generation);const session=await auth.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}
+  async refresh(){if(this.state.busy||!this.auth)return;const op=++this.operation;const owner=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const session=await owner.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}
+  async expire(){const op=++this.operation,owner=this.auth;this.auth=null;await this.stop();try{await owner?.clear();}catch(error){this.failure(error,op===this.operation);/* Surface secure cleanup failure. */if(op===this.operation)this.publish({busy:false,error:"Session expired; secure credential cleanup failed"});return;}if(op===this.operation)this.publish({busy:false,error:"Session expired. Sign in again."});}
+  async logout(){const op=++this.operation;this.publish({busy:true});const auth=this.auth;this.auth=null;const request=auth?.logout();await this.stop();const g=this.generation;try{await request;if(op===this.operation)this.publish({error:null});}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}
+  closeConversation(){this.publish({selected:"",messages:[]});}
+  async open(id:string){if(this.state.page==="Chat"&&this.state.selected===id){this.closeConversation();return;}const g=this.generation;this.publish({selected:id,page:"Chat",messages:[],error:null});try{if(this.offlineRepository){const messages=await this.offlineRepository.messages(id);if(g===this.generation&&this.state.selected===id)this.publish({messages});}else await this.sync?.openConversation(id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Sync unavailable; showing local history"});}}
+  async send(text:string){if(!this.state.selected||!this.sync)return;const g=this.generation,owner=this.sync;try{const id=this.state.selected;await owner.send.send(id,text);if(g===this.generation){this.activity.set(id,Date.now());if(this.repository)await this.updateList(this.repository,g);}}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Message could not be saved"});}}
+  async retry(id:string){const g=this.generation,owner=this.sync;if(!owner)return;try{await owner.send.retry(this.state.selected,id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Retry unavailable"});}}
+  async reconnect(){const g=this.generation,owner=this.sync;if(!owner)return;try{owner.send.connect(this.state.endpoint.replace(/^https:/,"wss:")+"/v1/ws");await owner.synchronize();}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Connection unavailable"});}}
+  disconnect(){this.sync?.send.disconnect();}
+  async search(query:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,results:[],error:null});try{const results=await auth.search(query);if(g===this.generation)this.publish({results});}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}
+  async add(id:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const conversation=await auth.add(id);if(g!==this.generation)return;const revision=++this.friendRevision;const friends=await auth.friends();if(g!==this.generation||auth!==this.auth)return;if(revision===this.friendRevision)this.publish({friends,conversations:[...new Set([...this.state.conversations,conversation])]});await this.open(conversation);}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}
+}
+import {WireFailure} from "../../../../shared/protocol-sdk/src/send/wire.js";
+import {invoke} from "@tauri-apps/api/core";
+// Current native capability provenance, distinct from arbitrary callback values.
+// Only exact sanitized Rust command errors are tagged at the literal invoke call.
+export class NativeTransportFailure extends Error {constructor(code:string){super(code,{cause:code});}}
+export class NativeCapabilityFailure extends Error {constructor(readonly code:string){super(code,{cause:code});}}
+function nativeFailure(error:unknown,codes:readonly string[]):never {if(typeof error==="string"&&codes.includes(error))throw new NativeCapabilityFailure(error);throw error;}
+export interface Appearance {theme:"cold"|"warm";fontSize:number;density:number}
+export const defaults:Appearance={theme:"cold",fontSize:16,density:1};
+export const nativeFetch:typeof fetch=async(input,init)=>{
+  const request=new Request(input,init);
+  if(request.signal.aborted)throw new DOMException("Aborted","AbortError");
+  const body=Array.from(new Uint8Array(await request.arrayBuffer()));
+  let result:[number,Record<string,string>,number[]];
+  try{result=await invoke<[number,Record<string,string>,number[]]>("native_https",{url:request.url,method:request.method,headers:Object.fromEntries(request.headers),body});}
+  catch(error){if(error==="HTTPS transport unavailable")throw new NativeTransportFailure(error);if(error==="HTTPS redirects forbidden" || error==="HTTPS response too large")throw new WireFailure();throw error;}
+  if(request.signal.aborted)throw new DOMException("Aborted","AbortError");
+  const [status,headers,bytes]=result;
+  return new Response(status===204?null:new Uint8Array(bytes),{status,headers});
+};
+export const appearance={
+ load:async()=>{let value:[Appearance["theme"],number,number];try{value=await invoke<[Appearance["theme"],number,number]>("appearance_load");}catch(error){nativeFailure(error,["Appearance unavailable","Appearance invalid"]);}const [theme,fontSize,density]=value;return {theme,fontSize,density};},
+ save:async(value:Appearance)=>{try{await invoke<void>("appearance_save",{value:[value.theme,value.fontSize,value.density]});}catch(error){nativeFailure(error,["Appearance unavailable"]);}}
+};
+// No credential is stored in appearance, localStorage or account database.
+export const secure={
+ read:async(slot:string)=>{try{return await invoke<string|null>("credential_read",{slot});}catch(error){nativeFailure(error,["Secure credential storage unavailable"]);}},
+ write:async(slot:string,value:string)=>{try{await invoke<void>("credential_write",{slot,value});}catch(error){nativeFailure(error,["Secure credential storage unavailable"]);}},
+ remove:async(slot:string)=>{try{await invoke<void>("credential_remove",{slot});}catch(error){nativeFailure(error,["Secure credential storage unavailable"]);}}
+};
+export const windowMaximized=async()=>{try{return await invoke<boolean>("window_maximized");}catch(error){nativeFailure(error,["Window unavailable"]);}};
+export const windowControl=async(action:"minimize"|"maximize"|"close"|"drag")=>{try{await invoke<void>("window_control",{action});}catch(error){nativeFailure(error,["Window unavailable"]);}};
+export const notify=async(title:string,body:string)=>{try{await invoke<void>("native_notify",{title,body});}catch(error){nativeFailure(error,["Notification unavailable"]);}};
+import {validLocale,type Locale} from "../../ui/i18n/resources.js";
+export const language={
+ load:async():Promise<Locale>=>{try{const value=await invoke<unknown>("language_load");return validLocale(value)?value:"en";}catch(error){if(error==="Language unavailable")return "en";throw error;}},
+ save:async(value:Locale)=>{if(!validLocale(value))throw new Error("Invalid language");try{await invoke<void>("language_save",{value});}catch(error){nativeFailure(error,["Language unavailable"]);}}
+};
+export const trayText=async(open:string,hide:string,quit:string,tooltip:string)=>{try{await invoke<void>("tray_text",{open,hide,quit,tooltip});}catch(error){nativeFailure(error,["Tray unavailable"]);}};
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.Base64;
+
+public final class InfraPlaceholder {
+    public static void main(String[] args) throws Exception {
+        if (args.length != 1 || !(args[0].equals("gateway") || args[0].equals("core") || args[0].equals("plugin-host"))) {
+            throw new IllegalArgumentException("expected gateway, core, or plugin-host role");
+        }
+        String role = args[0];
+        try (ServerSocket server = new ServerSocket(8080)) {
+            while (true) {
+                Socket accepted = server.accept();
+                try (Socket socket = accepted) {
+                    socket.setSoTimeout(5000);
+                    handle(socket, role);
+                } catch (IOException error) {
+                    System.err.println("placeholder request failed: " + error.getClass().getSimpleName());
+                }
+            }
+        }
+    }
+
+    private static void handle(Socket socket, String role) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
+        String request = reader.readLine();
+        if (request == null) return;
+        String[] parts = request.split(" ");
+        if (parts.length < 2) throw new IOException("malformed request line");
+        String path = parts[1];
+        String key = null;
+        boolean upgrade = false;
+        String line;
+        while ((line = reader.readLine()) != null && !line.isEmpty()) {
+            int colon = line.indexOf(':');
+            if (colon < 0) continue;
+            String name = line.substring(0, colon).trim();
+            String value = line.substring(colon + 1).trim();
+            if (name.equalsIgnoreCase("Sec-WebSocket-Key")) key = value;
+            if (name.equalsIgnoreCase("Upgrade") && value.equalsIgnoreCase("websocket")) upgrade = true;
+        }
+        OutputStream out = socket.getOutputStream();
+        if (role.equals("gateway") && path.equals("/__infra/ws") && upgrade && key != null) {
+            byte[] digest = MessageDigest.getInstance("SHA-1").digest((key + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").getBytes(StandardCharsets.US_ASCII));
+            String accept = Base64.getEncoder().encodeToString(digest);
+            out.write(("HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: " + accept + "\r\n\r\n").getBytes(StandardCharsets.US_ASCII));
+        } else if (path.equals("/__infra/health")) {
+            byte[] body = ("profile=java role=" + role + "\n").getBytes(StandardCharsets.UTF_8);
+            out.write(("HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: " + body.length + "\r\nConnection: close\r\n\r\n").getBytes(StandardCharsets.US_ASCII));
+            out.write(body);
+        } else {
+            out.write("HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n".getBytes(StandardCharsets.US_ASCII));
+        }
+        out.flush();
+    }
+}

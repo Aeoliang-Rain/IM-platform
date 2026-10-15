@@ -28,7 +28,7 @@ object Wire {
         val next=cursor(p["nextCursor"]);val more=p["hasMore"] as Boolean
         if(if(events.isEmpty()) next!=input || more else next!=last || next==input) invalid()
         UserPage(events,next,more)
-    }catch(_:Exception){invalid()}
+    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}
     fun conversation(raw:String,id:String,c:String,after:Long):ConversationPage=try {
         val p=base(raw,setOf("syncVersion","type","requestId","conversationId","messages","hasMore"),id,"sync.conversation.page")
         if(SendWire.uuid(p["conversationId"])!=c) invalid()
@@ -42,7 +42,7 @@ object Wire {
             ServerMessage(c,request,SendWire.uuid(m["senderId"]),SendWire.text(content["text"]),message,seq.longValueExact(),SendWire.time(m["createdAt"]))
         }
         val more=p["hasMore"] as Boolean;if(more && messages.isEmpty()) invalid();ConversationPage(messages,more)
-    }catch(_:Exception){invalid()}
+    }catch(_:im.platform.client.send.WireFailure){invalid()}catch(_:ArithmeticException){invalid()}
     fun error(raw:String,id:String,status:Int,conversation:Boolean):SyncFailure=try {
         val p=SendWire.obj(SendWire.parse(raw,MAX_RESPONSE,19),setOf("requestId","error"));if(SendWire.uuid(p["requestId"])!=id) invalid()
         val e=p["error"] as? Map<*,*> ?: invalid();if(e.keys.any {it !in setOf("code","message","violations")} || e["message"] !is String || (e["message"] as String).isEmpty()) invalid()
@@ -53,7 +53,7 @@ object Wire {
             status==400 && e["code"]=="VALIDATION_FAILED" || status==426 && e["code"]=="PROTOCOL_VERSION_UNSUPPORTED"->SyncFailure("protocol")
             else->invalid()
         }
-    }catch(_:Exception){SyncFailure("protocol")}
+    }catch(_:im.platform.client.send.WireFailure){SyncFailure("protocol")}catch(_:SyncFailure){SyncFailure("protocol")}
     fun userRequest(id:String,input:String)=JSONObject().put("syncVersion","1.0").put("type","sync.user.request").put("requestId",SendWire.uuid(id)).put("cursor",cursor(input)).put("limit",100).toString()
     fun conversationRequest(id:String,c:String,after:Long):String {if(after<0) invalid();return JSONObject().put("syncVersion","1.0").put("type","sync.conversation.request").put("requestId",SendWire.uuid(id)).put("conversationId",SendWire.uuid(c)).put("afterSeq",after).put("limit",100).toString()}
 }

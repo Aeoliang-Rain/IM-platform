@@ -53,7 +53,11 @@ func main() {
 	if role == "core" {
 		ctx, stop := context.WithCancel(context.Background())
 		defer stop()
-		go core.RelaySessionRevocations(ctx, db, nc)
+		go func() {
+			if core.RelaySessionRevocations(ctx, db, nc) != nil && ctx.Err() == nil {
+				log.Fatal("Outbox dispatcher failed")
+			}
+		}()
 		h = core.NewHandler(db, key)
 	} else {
 		h, err = gateway.NewHandler(db, key, nc, cfg.CoreURL)

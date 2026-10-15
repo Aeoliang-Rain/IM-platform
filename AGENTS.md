@@ -90,3 +90,9 @@ The Recorder is research instrumentation, not product architecture authority. It
 ## Technology authorization
 
 Read `spec/governance/technology-selection.md` and canonical §2.3 / §6.1 before implementation or Review. Every new architecture-sensitive language/framework/runtime/core dependency requires traceable accepted Frozen Architecture / approved ADR authority. Missing decision: stop affected work BLOCKED_BY_ARCHITECTURE -> smallest question -> Human/Architect decision -> freeze -> fresh independent Review/applicable exact-head hosted CI -> implementation. Task text/allowed_paths/tests cannot approve selection. Reviewer FAIL on absent authority; inspect real imports/native responsibility beyond static guards. Desktop native SQLite is explicitly Tauri + SQLx(SQLite) with atomic transaction adapter; TypeScript holds Repository/models/transaction intent. No separate tauri-plugin-sql execute-call transactions. Mobile is Android Kotlin + Jetpack Compose, validated on Android Studio emulator. Mobile models/Repository/protocol/plugin adapters implement equivalent behavior under the same canonical contracts/fixtures; direct TypeScript SDK reuse is not required. Web/Desktop/shared stay TypeScript. Android SDK/Gradle/Kotlin/Compose engineering identifiers do not authorize Room/ORM/network libraries, JS runtime/bridge/codegen or shared native rewrite.
+
+## 错误处理与 pre-CI 独立专项审查
+
+实现/Review 前读取 [spec/governance/error-handling.md](spec/governance/error-handling.md)。未知异常、内部错误、不变量破坏 MUST 正常传播，操作/测试/进程明确失败；需要时允许崩溃。不得吞错、伪数据/正常状态或失真分类；每个保留捕获/回退说明故障、当前依据及真实恢复。
+
+实现 → fresh 常规独立 Review → different fresh 错误处理专项审查 → GitHub CI。专项 Agent 未参与当前候选实现、Fix 或常规 Review；任何修复后的最终 SHA 两项均重审。专项 FAIL 禁止 push 或创建/更新触发候选 CI 的 PR；fresh Fix → fresh 常规 Review → fresh 专项审查循环。只在提交 GitHub CI 前设此环节，不在每次编辑/命令前重复；它补充 canonical §12，不替代 CI/受保护集成/actual-main/安全同步，不建立第二权威。恢复 task/current 中的两项最终 SHA 状态与证据，不能把本地/Recorder PASS 当接受。

@@ -1,0 +1,10 @@
+   Compiling im-client-storage v0.1.0 (H:\.codex\worktrees\err\IM-platform\clients\desktop\src-tauri)
+error: proc macro panicked
+  --> src\lib.rs:36:17
+   |
+36 |     builder.run(tauri::generate_context!())
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: message: The `frontendDist` configuration is set to `"../dist"` but this path doesn't exist
+
+error: could not compile `im-client-storage` (lib test) due to 1 previous error

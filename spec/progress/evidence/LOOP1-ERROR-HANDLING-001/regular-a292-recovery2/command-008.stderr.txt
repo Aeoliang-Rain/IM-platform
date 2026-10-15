@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\controls.py", line 32, in <module>
+    for file in ['tests/clients/web/behavior.mjs','tests/clients/web/appearance.mjs']:run([NODE,F/file])
+                                                                                      ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.codex\visualizations\2026\10\13\01a1341c-f5bd-7a20-8d63-e5a574250f3c\regular-review-a292-recovery2\controls.py", line 21, in run
+    print(json.dumps(hist[-1]),flush=True);print(p.stdout.decode('utf8','replace')[-4000:]);print(p.stderr.decode('utf8','replace')[-2500:]);p.check_returncode()
+                                                                                                                                             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 502, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+subprocess.CalledProcessError: Command '['C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe', 'C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-a292-recovery2\\fixture\\tests\\clients\\web\\behavior.mjs']' returned non-zero exit status 1.

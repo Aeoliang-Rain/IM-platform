@@ -1,0 +1,338 @@
+
+FILE spec/architecture/frozen-architecture.md#3
+<a id="section-3"></a>
+## 3. 系统总体架构与部署单元
+
+```mermaid
+flowchart LR
+  Web["Web<br/>临时内存态"]
+  Desktop["Desktop<br/>SQLite"]
+  Mobile["Mobile<br/>SQLite"]
+  UI["Plugin UI Host<br/>声明式 UI + Render Bundle"]
+  Gateway["TLS Proxy / Gateway<br/>HTTPS + WSS"]
+  Core["Core 模块化单体<br/>Auth / IM / Sync"]
+  Plugin["Plugin Host<br/>WASM Sandbox"]
+  PG["PostgreSQL<br/>事实来源 + Outbox"]
+  NATS["NATS<br/>实时事件总线"]
+  Web --> Gateway
+  Desktop --> Gateway
+  Mobile --> Gateway
+  UI --> Gateway
+  Gateway --> Core
+  Core --> Plugin
+  Core --> PG
+  Core --> NATS
+  NATS --> Gateway
+```
+
+> 图 3-1 逻辑组件图。
+
+> 实时路径为 Core 的 Outbox dispatcher → NATS → Gateway；PostgreSQL 写入由 Core 事务负责。历史 PDF 的 NATS → PostgreSQL 箭头只保留在历史来源中，不代表现行运行依赖。
+
+<a id="section-3-1"></a>
+### 3.1 三个物理部署单元
+
+| 部署单元 | 职责 | 明确不负责 |
+| --- | --- | --- |
+| gateway | TLS 之后的 WSS 生命周期、auth.bind、session/cache 校验、connection registry、协议路由、local fan-out、heartbeat/限流 | 好友/群成员规则、消息持久化、插件业务逻辑 |
+| core | Auth、Session、User、Friendship、Conversation、Message、Sync、Outbox；模块化单体 | 不可信插件执行；大量 socket 连接状态 |
+| plugin-host | WASM runtime、事件分派、经授权的 Query/Action Host bridge、资源限制、熔断、编译缓存 | 不可信 WASM 直接访问数据库/文件/任意网络；绕过 Core 业务授权；成为 IM 主链单点 |
+
+<a id="section-3-2"></a>
+### 3.2 运行 profile
+
+```text
+docker compose --profile go up
+# gateway-go + core-go + plugin-host-go adapter + shared PostgreSQL/NATS/TLS
+docker compose --profile java up
+# gateway-java + core-java + plugin-host adapter + same canonical schema/contracts
+```
+
+profile 的目标是行为可替换；服务内部源码结构可以不同，但 §3 职责、§10 服务源码归属和依赖方向共同约束两个后端。Go 与 Java 可使用各自惯用的框架和组织方式，但必须共享：公共契约、数据库迁移语义、错误码、测试向量、插件 API、Release Manifest 格式。
+
+Go/Java 可采用不同内部组织方式，但所有新增框架、ORM、runtime、核心依赖必须先遵守 §2.3；结构自由不是技术选型授权。
+
+<a id="section-3-3"></a>
+### 3.3 Loop 1 单机部署
+
+| 层 | Loop 1 单机部署规则 |
+| --- | --- |
+| 入口 | TLS reverse proxy 暴露 HTTPS/WSS；部署 smoke、E2E、容量与发布验收流量经过真实入口。单元和隔离集成测试可直接访问被测组件，但不得替代入口验收 |
+| 服务 | 仅启动一个后端 profile；gateway/core/plugin-host 为可独立启动的部署角色。可复用一个构建制品按角色启动；不强制三个 module 或三个 binary，禁止把源码职责混为一个业务包 |
+| 数据 | PostgreSQL 单实例；所有 migration 有 forward/rollback 规则 |
+| 事件 | Core NATS，默认非事实来源；Outbox dispatcher 可重放 |
+| 存储 | 3TB 是机器容量约束，不代表测试必须填满；记录实际占用与增长 |
+
+
+
+FILE spec/architecture/frozen-architecture.md#5
+<a id="section-5"></a>
+## 5. 消息写入、Outbox 与实时 fan-out
+
+```mermaid
+sequenceDiagram
+  participant Sender as 发送端
+  participant Gateway
+  participant Core
+  participant PG as PostgreSQL
+  participant Bus as Outbox/NATS
+  participant Receiver as 接收端
+  Sender->>Gateway: message.send(request_id)
+  Gateway->>Core: 转发绑定身份与发送请求
+  Core->>Core: 校验成员权限与业务规则
+  Core->>PG: BEGIN / seq / message / outbox
+  PG-->>Core: COMMIT 成功
+  Core-->>Gateway: ACK = durable commit
+  Gateway-->>Sender: 转发 ACK
+  Core->>PG: Outbox dispatcher 读取已提交事件
+  Core->>Bus: dispatcher 可重试发布
+  Bus->>Gateway: message.created
+  Gateway->>Receiver: local fan-out
+```
+
+> 图 5-1 私聊消息时序图。ACK 的唯一成功语义是 message 与 outbox 已持久化提交。
+
+<a id="section-5-1"></a>
+### 5.1 发送事务
+
+1. BEGIN
+2. 校验 sender 是 conversation member
+3. 幂等查询/冲突处理 (sender_id, conversation_id, request_id)
+4. 锁定/更新 conversation sequence row
+5. INSERT message(seq, ...)
+6. INSERT outbox_event(message.created, ...)
+7. COMMIT
+8. 返回 ACK(message_id, seq, server_created_at)
+
+第一轮 sequence row 允许成为热门会话热点，因为它最直观且易验证。只有压测证明竞争不可接受时，才通过 ADR 评估 range allocation 等演进方案。
+
+<a id="section-5-2"></a>
+### 5.2 NATS 与 Gateway fan-out
+
+- Outbox dispatcher 发布 message.created 到 NATS，并以可重试方式标记 published。
+
+- Gateway 订阅需要的实时事件，并只向本机活跃连接 fan-out。
+
+- 收件人的所有在线端、发送者的其他在线端接收 message.created；发送端原连接由 ACK 收敛。
+
+- NATS 事件可重复，消费者必须幂等；NATS 事件可短暂错过，Sync 必须最终补齐。
+
+- Loop 1 不把 NATS JetStream 作为消息事实来源，也不为每个群成员写一条持久投递记录。消息写一次，在线端由
+
+Gateway 读扩散。
+
+<a id="section-5-3"></a>
+### 5.3 群聊 fan-out
+
+GROUP 消息仍只写一条 message 和一条 outbox 事件。Gateway 根据会话在线成员执行 local fan-out。普通群最大成员数不在设计阶段拍脑袋固定，应由 10/50/200/500 成员等阶梯测试结果决定。
+
+#### 消息正确性红线
+
+lost committed messages = 0；duplicate logical messages = 0；wrong conversation delivery = 0；permanent seq gap = 0；ACK-before-commit = 0。
+
+
+
+FILE spec/architecture/frozen-architecture.md#7
+<a id="section-7"></a>
+## 7. HTTPS/WSS/TLS 与认证协议
+
+<a id="section-7-1"></a>
+### 7.1 登录与 Token
+
+- 登录端点、字段名、版本与传输形状由 contracts/http/ 定义（当前为 POST /v1/auth/login）。本章 snake_case 领域名称不是另一套 wire schema。
+
+- Access Token 短期、Refresh Token 长期；具体时长是配置，不写死进协议。
+
+- Web 优先使用 HttpOnly Secure Cookie 持有 Refresh Token；原生端使用 OS secure storage。
+
+- 显式 logout 撤销 Session、Refresh Token 与 WSS；退出登录不等于立即删除本地 SQLite。
+
+<a id="section-7-2"></a>
+### 7.2 WSS 状态机
+
+1. TCP/TLS -> WebSocket Upgrade -> UNAUTHENTICATED
+2. UNAUTHENTICATED 只允许 auth.bind 与 ping/pong
+3. auth.bind 校验签名、exp、session_id、client_type、session_epoch
+4. 成功 -> AUTHENTICATED，socket 永久绑定 user/session/client_type
+5. 同端新登录 -> session.revoked -> 推送旧连接 -> close
+
+<a id="section-7-3"></a>
+### 7.3 Session 缓存一致性
+
+Core 在 Session 创建/撤销事务中写 outbox；Gateway 经 NATS 更新内存映射 (user_id, client_type) ->session_id/epoch/connection_id。每条消息不查询 PostgreSQL。实时撤销事件是体验优化；每次新绑定/重连必须验证数据库权威 Session ID 与 epoch，拒绝旧凭据；不得把实时撤销事件作为唯一有效性来源。Gateway 只拥有验证/连接能力；注册、登录、刷新、退出、Session 写事务及其 Outbox 属于 Core，不能通过共享完整 Auth 服务绕过边界。
+
+<a id="section-7-4"></a>
+### 7.4 传输与日志安全
+
+| 规则 | 要求 |
+| --- | --- |
+| 传输 | 生产入口仅 HTTPS/WSS/TLS；禁用明文回退 |
+| Token | 禁止放 URL query；禁止写应用日志/trace；错误响应不得回显 |
+| 密码 | 只存强哈希；凭证与普通用户资料分离 |
+| 插件 | 永不向 Custom Renderer 暴露认证 token 或 SQLite 直连 |
+| 日志 | request_id/message_id 可观测；消息正文默认不进入结构化日志 |
+
+
+
+FILE spec/architecture/frozen-architecture.md#12
+<a id="section-12"></a>
+## 12. AI Development Loop
+
+```mermaid
+flowchart LR
+  Context["读取上下文"] --> Repo["恢复真实任务状态"] --> Plan["PLAN"] --> Implement["新 Implementation Agent"] --> Test["本地验证 + 候选提交"] --> Review["新独立 Review Agent"]
+  Review -->|"FAIL"| Failure["新 Fix Agent；授权范围内修复"]
+  Failure --> Test
+  Review -->|"PASS"| CI["适用真实 CI；核对 head SHA 与必跑作业"]
+  CI -->|"FAIL"| Failure
+  CI -->|"PASS"| Complete["接受任务；更新队列/证据/current/checkpoint"]
+  Complete --> Handoff["HANDOFF / 下一依赖满足任务"]
+```
+
+> 实现/修复与接受候选的 Review 必须是真实不同的新上下文；同一上下文改角色名不是独立审查。单写者；普通失败进入修复与新的独立 Review 循环。验收依据是权威规范、契约、候选 diff、结构/依赖/最小性检查及真实测试结果。
+>
+> 图 12-1 Agent 工作流。开发自动化和 CI/CD 是两个独立系统。
+
+<a id="section-12-1"></a>
+### 12.1 Task Spec 模板
+
+```text
+task_id: LOOP1-MSG-003
+goal: implement WSS text message sending
+inputs:
+ - spec/architecture/README.md # resolve §3/§10/§11 + Minimality Contract
+ - spec/domain/messaging.md
+ - spec/invariants/messaging.md
+ - contracts/websocket/
+allowed_paths:
+ - backend/go/core/message/**
+ - backend/go/core/outbox/**
+ - backend/go/tests/**
+acceptance:
+ - applicable source ownership and dependency checks pass
+ - contract tests pass
+ - retry is idempotent
+ - ACK only after durable commit
+forbidden:
+ - change public contract
+ - change DB contract without migration
+ - modify Java implementation
+```
+
+<a id="section-12-2"></a>
+### 12.2 状态队列
+
+backlog -> ready -> active -> review -> done
+
+- 进入 ready: inputs 完整、依赖完成、验收可执行
+- 进入 active: 分配唯一 owner/agent、建立 task branch
+- 进入 review: 实现完成 + 本地最小验证 + handoff 完整
+- 进入 done: 对精确候选的适用真实 CI PASS + 新独立 review 接受 + progress 更新；Task PASS 不等于整个 Stage Gate PASS。ADR-0001 临时 bootstrap 机制仅在 LOOP1-CI-001 operational 且 done 前有效，现已失效，不得恢复为绕过方式。
+
+<a id="section-12-3"></a>
+### 12.3 Git 工作模式
+
+采用 main + task/，不引入复杂 GitFlow。每个任务独立分支、最小提交、CI、Review 后合并。Agent 不得长期堆积跨任务改动，也不得为了让 CI 变绿而修改无关测试或公共契约。
+
+
+
+FILE spec/architecture/frozen-architecture.md#13
+<a id="section-13"></a>
+## 13. Agent 启动与交接协议
+
+<a id="section-13-1"></a>
+### 13.1 强制读取顺序
+
+| 顺序 | 必须读取 | 退出条件 |
+| --- | --- | --- |
+| 1 | spec/handoff/agent-context.md | 理解项目边界、frozen decisions 与工作方式 |
+| 2 | spec/progress/current.md | 知道当前 Stage、Gate、最后已验证commit、blockers |
+| 3 | 按 current.md 的精确 Current Task ID 查找 backlog/ready/active/review/done，必须唯一且 status 匹配 | review 继续独立审查/修复；active 继续实现；ready 验依赖后激活；backlog 保持阻塞；仅当前 done 且无未完当前任务才按依赖选下一任务，禁止 active 为空就跳任务 |
+| 4 | resolver/hash、现行冻结正文适用 §3/§10/§11、批准 ADR、Minimality 及任务引用的 domain/invariants/acceptance/contracts | 能复述职责、源码/依赖边界、不可变量、输入输出与验收 |
+| 5 | git status、当前 diff、最近提交 | 识别用户/前 Agent 未完成改动，不覆盖 |
+| 6 | 最小基线验证 | 确认仓库状态可继续；失败则记录而非盲改 |
+| 7 | PLAN -> IMPLEMENT -> TEST -> REVIEW | 仅在授权路径与任务范围内工作 |
+
+<a id="section-13-2"></a>
+### 13.2 Handoff 必填项
+
+- Current task / stage / gate
+- Completed work
+- Files and migrations changed
+- Tests: command + result + evidence location
+- Known failures / risks / assumptions
+- Next exact action
+- Last known good commit
+- Uncommitted changes and ownership
+- Architecture conflicts or ACP/ADR required
+
+<a id="section-13-3"></a>
+### 13.3 Checkpoint 规则
+
+稳定 Gate、重要纵向链路、schema/contract 版本切换或可恢复发布点必须生成 checkpoint。checkpoint 记录 commit、contract version、migration level、image digests、fixture versions、通过的 Gate 与已知限制。current.md 始终指向最新 checkpoint，而不是复制其全部内容。
+
+#### 崩溃恢复目标
+
+新的 Agent 不扫描整个仓库重新猜架构。它通过 agent-context -> current -> 精确 Current Task 的真实队列状态 -> referenced specs/contracts -> git status/diff/commits 在一个可控上下文中恢复工作。
+
+
+
+FILE spec/architecture/frozen-architecture.md#14
+<a id="section-14"></a>
+## 14. CI/CD 独立校验架构
+
+```mermaid
+flowchart LR
+  Diff["Diff 分类"]
+  Diff --> GoPath["backend/go/**"]
+  Diff --> JavaPath["backend/java/**"]
+  Diff --> Shared["contracts/** / DB / shared SDK"]
+  Diff --> Rules["architecture / Agent / task template / acceptance / checker"]
+  Rules --> Structure["规范 + 源码归属 + 依赖 + 触发负例"]
+  GoCI --> Structure
+  JavaCI --> Structure
+  Structure --> Gate
+  GoPath --> GoCI["Go CI<br/>unit + integration<br/>contract"]
+  JavaPath --> JavaCI["Java CI<br/>unit + integration<br/>contract"]
+  Shared --> Matrix["全平台兼容矩阵<br/>Go + Java + clients<br/>plugin + migration"]
+  Matrix --> Artifacts["可重复制品<br/>镜像 / 客户端"]
+  Matrix --> Smoke["Staging Smoke"]
+  Artifacts --> Smoke
+  Smoke --> Gate["Release Gate<br/>manifest + rollback"]
+```
+
+> Agent 负责提出变更；CI 独立验证事实。Agent 无权自行宣布 Gate 通过。
+>
+> 图 14-1 Path-aware CI DAG。分类分支相互独立；公共契约/schema/shared SDK 变更按表触发兼容矩阵，规范与检查器变更必须触发适用架构检查。部署/发布节点表示相应阶段要求，不把未来发布能力冒充当前 skeleton。
+
+<a id="section-14-1"></a>
+### 14.1 路径感知规则
+
+| 变更路径 | 必跑作业 |
+| --- | --- |
+| backend/go/** | Go lint/unit/integration/contract；不默认跑 Java |
+| backend/java/** | Java lint/unit/integration/contract；不默认跑 Go |
+| clients/web/** | Web unit/build/protocol/plugin UI tests |
+| clients/desktop/** 或 clients/mobile/** | architecture/client technology guard + 对应客户端 + SQLite migration + protocol tests |
+| contracts/**、数据库迁移、shared protocol/plugin SDK | Go + Java + Web + Desktop + Mobile + old client fixtures + plugin fixtures + migration compatibility |
+| deploy/**、ci/**、.github/workflows/** | 按当前阶段执行 compose/manifest/security/smoke/rollback validation，并验证分类与 Gate |
+| spec/architecture/**、Agent 入口、handoff、活动任务/模板/batch、acceptance、架构检查器与测试 | baseline/resolver/ADR 一致性、活动引用、源码归属、Go/Java 适用阶段依赖检查、触发与正负控制；Markdown-only 不能全部跳过 |
+
+<a id="section-14-2"></a>
+### 14.2 流水线层次
+
+static/lint -> unit -> contract -> integration -> compatibility -> build
+-> immutable artifacts -> SBOM/signature -> staging deploy -> smoke/E2E
+-> release gate -> canary/controlled rollout -> observe -> complete or rollback
+
+<a id="section-14-3"></a>
+### 14.3 兼容矩阵
+
+完整兼容阶段的最低矩阵包含 Client Protocol v1、v2、HEAD；在相应协议与客户端版本尚未定义的早期阶段，只能明确报告现有契约向量/占位检查，不能虚构 v2 或声称已通过完整矩阵；后续阶段不得永久豁免。Go/Java profile；Echo/Poll 插件 fixture；SQLite old schema fixtures。服务端只维护一个当前实现版本与有限兼容窗口。latest/recommended/min_supported 必须在 Release Manifest 中显式声明，客户端版本号与 protocol_version 不绑定。
+
+<a id="section-14-4"></a>
+### 14.4 CI 与 Agent 的信任边界
+
+Agent 可运行本地测试并提交证据，但 Gate 只能由隔离 Runner 从干净 checkout 重建后判定。核对精确 head SHA、要求运行的作业及实际结果；必跑作业缺失、异常 skip、失败或取消均不满足 Gate。测试环境未启用导致的 skip 不是集成 PASS；旧提交的绿色不覆盖新增要求。历史 ADR-0001 的适用及失效条件见 §12.2。任何需要跳过测试、重录 golden fixture、降低阈值或更改验收项的动作都视为架构/验收变更，必须单独审批。
+
+

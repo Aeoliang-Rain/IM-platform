@@ -1,0 +1,1339 @@
+[
+  {
+    "path": "backend/go/core/auth.go",
+    "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/core/http.go",
+    "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/core/message.go",
+    "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/core/outbox.go",
+    "sha256": "3c78eef4f84766dcc98e8f0772a24cb34460d693b9876144cf77d537871e0bc1",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/core/social.go",
+    "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/core/sync.go",
+    "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/gateway/gateway.go",
+    "sha256": "8726c22fa647c62e9b91c0df198799b2fcbaf03840e0b16194ddc584a835d6fa",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/gateway/http.go",
+    "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/gateway/session.go",
+    "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/main.go",
+    "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/plugin-host/http.go",
+    "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/shared/config.go",
+    "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/shared/infra.go",
+    "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/go/shared/security.go",
+    "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03",
+    "imports": [
+      "import ("
+    ]
+  },
+  {
+    "path": "backend/java/InfraPlaceholder.java",
+    "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290",
+    "imports": [
+      "import java.io.BufferedReader;",
+      "import java.io.InputStreamReader;",
+      "import java.io.OutputStream;",
+      "import java.io.IOException;",
+      "import java.net.ServerSocket;",
+      "import java.net.Socket;",
+      "import java.nio.charset.StandardCharsets;",
+      "import java.security.MessageDigest;",
+      "import java.util.Base64;"
+    ]
+  },
+  {
+    "path": "clients/desktop/src-tauri/build.rs",
+    "sha256": "8af41c0062014fc594e4bb9899e60ee9930ab57d4cf0c73041ff557d6ec736e6",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src-tauri/src/bin/storage_probe.rs",
+    "sha256": "2e0385845a09feaa8b508f72d1a42449c02e69d2d47f4f6f19a3c18020a0eaa9",
+    "imports": [
+      "use im_client_storage::database;",
+      "use std::io::{self, Read};"
+    ]
+  },
+  {
+    "path": "clients/desktop/src-tauri/src/database.rs",
+    "sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad",
+    "imports": [
+      "use sqlx::{Connection, Row, SqliteConnection, TypeInfo, ValueRef};",
+      "use sqlx::sqlite::SqliteConnectOptions;",
+      "use std::{path::PathBuf, time::Duration};"
+    ]
+  },
+  {
+    "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+    "sha256": "0de29b9a5db8b22000e89dbb46c253a77cc2cf9be8d6b498aac87f16068006d6",
+    "imports": [
+      "use std::collections::BTreeMap;",
+      "use tauri::Manager;",
+      "use tauri_plugin_notification::NotificationExt;",
+      "use tauri_plugin_global_shortcut::{GlobalShortcutExt,ShortcutState};",
+      "use std::io::Read;",
+      "mod tests {",
+      "use super::*;"
+    ]
+  },
+  {
+    "path": "clients/desktop/src-tauri/src/lib.rs",
+    "sha256": "4f0b7bf9797c3793203b160434994f0d8ab84d2fdbc156d7c40a812bd5e83630",
+    "imports": [
+      "mod desktop_capabilities;",
+      "use std::path::PathBuf;",
+      "use tauri::Manager;"
+    ]
+  },
+  {
+    "path": "clients/desktop/src-tauri/src/main.rs",
+    "sha256": "56602b9b5147eaa2b143228d5bc0d5118291297930e06b716a408a44b499ec2b",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src/application/accountSend.ts",
+    "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893",
+    "imports": [
+      "import { accountDatabase } from \"../storage/database.js\";",
+      "import { Repository } from \"../../../shared/protocol-sdk/src/storage/repository.js\";",
+      "import { SendApplication, SendStorageFailure, type Session } from \"./send.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/application/send.ts",
+    "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443",
+    "imports": [
+      "import { Repository } from \"../../../shared/protocol-sdk/src/storage/repository.js\";",
+      "import type { LocalMessage, ServerMessage, Committed, UserPage } from \"../../../shared/protocol-sdk/src/storage/models.js\";",
+      "import { WireFailure, content, decode, envelope, uuid } from \"../../../shared/protocol-sdk/src/send/wire.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/application/sync/accountSync.ts",
+    "sha256": "0f542e8af6dae019911169dfe1ff0ddae90cfb944584e8f38b421e0c3035c0e6",
+    "imports": [
+      "import {accountSend} from \"../accountSend.js\";",
+      "import type {Session} from \"../send.js\";",
+      "import {SyncHttp} from \"../../../../shared/protocol-sdk/src/sync/http.js\";",
+      "import {SyncApplication} from \"./application.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/application/sync/application.ts",
+    "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6",
+    "imports": [
+      "import {uuid} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import {SendStorageFailure,SendApplication} from \"../send.js\";",
+      "import {SyncHttp} from \"../../../../shared/protocol-sdk/src/sync/http.js\";",
+      "import {SyncFailure} from \"../../../../shared/protocol-sdk/src/sync/wire.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/application/ui/auth.ts",
+    "sha256": "09fc666b3636def084c7845a9a4b83a340fc2c2f3cef65e7c4d8250544ec8600",
+    "imports": [
+      "import {WireFailure,object,parse,positive,uuid} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import type {Session} from \"../send.js\";",
+      "import {NativeCapabilityFailure,NativeTransportFailure,nativeFetch,secure} from \"./native.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/application/ui/native.ts",
+    "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179",
+    "imports": [
+      "import {WireFailure} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import {invoke} from \"@tauri-apps/api/core\";",
+      "import {validLocale,type Locale} from \"../../ui/i18n/resources.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/application/ui/workspace.ts",
+    "sha256": "aa394cb632468589475caf94086a6c2b1381bb479c550052e8c1de3499512a4c",
+    "imports": [
+      "import {errorKey,translate,type Locale,validLocale} from \"../../ui/i18n/resources.js\";",
+      "import {Repository} from \"../../../../shared/protocol-sdk/src/storage/repository.js\";",
+      "import {SyncFailure} from \"../../../../shared/protocol-sdk/src/sync/wire.js\";",
+      "import {SyncHttp} from \"../../../../shared/protocol-sdk/src/sync/http.js\";",
+      "import {WireFailure,decode} from \"../../../../shared/protocol-sdk/src/send/wire.js\";",
+      "import {accountRepository} from \"../accountSend.js\";",
+      "import {SendStorageFailure,SendApplication,type Session,type Socket} from \"../send.js\";",
+      "import {SyncApplication} from \"../sync/application.js\";",
+      "import {Auth,ApiFailure,type Friend,type User,origin} from \"./auth.js\";",
+      "import {NativeCapabilityFailure,NativeTransportFailure,appearance,language,trayText,defaults,nativeFetch,notify,type Appearance} from \"./native.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/storage/database.ts",
+    "sha256": "bc40daf644784fb43b60abb8d3f9afc5522c36d735664c8bb75affef4693f6f4",
+    "imports": [
+      "import { invoke } from \"@tauri-apps/api/core\";",
+      "import type { Bind, Database, Statement } from \"../../../shared/protocol-sdk/src/storage/models.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/build.config.mjs",
+    "sha256": "4acccc55c794b734f391f81468e7e978a6420dd05c64cb9f2ba3955b2c3a5f0d",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src/ui/components/AIPlaceholder.tsx",
+    "sha256": "6ca11c2ed40f7f697b0bd5ce371838233e1a56ab99a8e6619d40e4bc76cbe090",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/AuthPanel.tsx",
+    "sha256": "ff7aec0dd885a4d20dffadbafdca6032932a52c816b99ea3320002e0130fb890",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Composer.tsx",
+    "sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";",
+      "import {resizedComposerHeight} from \"../composer.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/ConversationList.tsx",
+    "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/FriendsPanel.tsx",
+    "sha256": "ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Header.tsx",
+    "sha256": "1c9a902cabb864b938974c28cb24c8c4b020f4a9e2441a60cb95d8cc13cb8f3e",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/LanguagePanel.tsx",
+    "sha256": "a2e5f0eac5f1d5887ff8a8c90d5d05e795cd0cab207850af604bfb3e22053204",
+    "imports": [
+      "import React from \"react\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import {languageEntry,languageNames,locales,type Locale} from \"../i18n/resources.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Messages.tsx",
+    "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5",
+    "imports": [
+      "import {LanguageContext,useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Navigation.tsx",
+    "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/PluginPlaceholder.tsx",
+    "sha256": "b0b98a48008cc22334c1aa321fa3cd41cb5bb59032e544b01ca9800b338d83bb",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/ProfilePanel.tsx",
+    "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/SettingsPanel.tsx",
+    "sha256": "b1e99a6c6887c950a57d473f6627972b847575d0a1e8083d416401e684e68e73",
+    "imports": [
+      "import {LanguagePanel} from \"./LanguagePanel.js\";",
+      "import type {Locale} from \"../i18n/resources.js\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import {ProfilePanel} from \"./ProfilePanel.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/Shell.tsx",
+    "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4",
+    "imports": [
+      "import {LanguageContext,useText,useDisplayText} from \"../i18n/context.js\";",
+      "import {WindowBar} from \"./WindowBar.js\";",
+      "import {Navigation} from \"./Navigation.js\";",
+      "import {Header} from \"./Header.js\";",
+      "import {AuthPanel} from \"./AuthPanel.js\";",
+      "import {ConversationList} from \"./ConversationList.js\";",
+      "import {Messages} from \"./Messages.js\";",
+      "import {Composer} from \"./Composer.js\";",
+      "import {FriendsPanel} from \"./FriendsPanel.js\";",
+      "import {AIPlaceholder} from \"./AIPlaceholder.js\";",
+      "import {PluginPlaceholder} from \"./PluginPlaceholder.js\";",
+      "import {SettingsPanel} from \"./SettingsPanel.js\";",
+      "import React,{useEffect,useRef,useState,useSyncExternalStore} from \"react\";",
+      "import {Workspace} from \"../../application/ui/workspace.js\";",
+      "import {windowControl,windowMaximized} from \"../../application/ui/native.js\";",
+      "import {resizedComposerHeight} from \"../composer.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/components/WindowBar.tsx",
+    "sha256": "9fee03a2e5dc2e6ad9627f8ad63c4cfd9c9ea237f67ecc3fefd5bb03c60e5296",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {WorkspaceState} from \"../../application/ui/workspace.js\";",
+      "import type {Appearance} from \"../../application/ui/native.js\";",
+      "import type {Friend} from \"../../application/ui/auth.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/composer.ts",
+    "sha256": "c4da6d567a3e8c088d7c20baa5f51a86c118e8c72ec3b4a4f8c1d17146157992",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/context.tsx",
+    "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861",
+    "imports": [
+      "import React from \"react\";",
+      "import {translate,displayText,type Locale} from \"./resources.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/en.ts",
+    "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/ja-JP.ts",
+    "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/resources.ts",
+    "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b",
+    "imports": [
+      "import en from \"./en.js\";",
+      "import zhCN from \"./zh-CN.js\";",
+      "import jaJP from \"./ja-JP.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/i18n/zh-CN.ts",
+    "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src/ui/main.tsx",
+    "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3",
+    "imports": [
+      "import React from \"react\";",
+      "import {createRoot} from \"react-dom/client\";",
+      "import {Shell} from \"./components/Shell.js\";"
+    ]
+  },
+  {
+    "path": "clients/desktop/src/ui/react-dom.config.mjs",
+    "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5",
+    "imports": []
+  },
+  {
+    "path": "clients/desktop/src/ui/react.config.mjs",
+    "sha256": "8c483c11d9f779d78da8981e7e65dd0be91b2ec4c698e7101d389aa09ed6f576",
+    "imports": []
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/MainActivity.kt",
+    "sha256": "5caa0062bc3a749015bd3cce4aa8c37c0996248dba59999ba85a50d8fd53800c",
+    "imports": [
+      "import android.os.Bundle",
+      "import androidx.activity.ComponentActivity",
+      "import androidx.activity.compose.setContent",
+      "import im.platform.client.ui.Workspace"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+    "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a",
+    "imports": []
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+    "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8",
+    "imports": [
+      "import androidx.lifecycle.ViewModel",
+      "import im.platform.client.storage.Repository",
+      "import im.platform.client.storage.LocalMessage",
+      "import im.platform.client.storage.ServerMessage",
+      "import im.platform.client.storage.Committed",
+      "import im.platform.client.storage.UserEvent",
+      "import java.util.concurrent.CopyOnWriteArraySet",
+      "import kotlinx.coroutines.*",
+      "import kotlinx.coroutines.flow.MutableStateFlow",
+      "import kotlinx.coroutines.flow.StateFlow",
+      "import kotlinx.coroutines.flow.asStateFlow",
+      "import kotlinx.coroutines.sync.Mutex",
+      "import kotlinx.coroutines.sync.withLock",
+      "import java.math.BigInteger",
+      "import java.net.URI",
+      "import java.util.UUID",
+      "import org.json.JSONObject"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+    "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7",
+    "imports": [
+      "import java.math.BigDecimal",
+      "import java.math.BigInteger",
+      "import java.time.OffsetDateTime",
+      "import java.util.UUID",
+      "import org.json.JSONObject"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+    "sha256": "8f34a4c563e47b2f166661319f06d2e9df02f0961fb73d6d07f70d4a1dc7ee44",
+    "imports": [
+      "import java.io.BufferedInputStream",
+      "import java.io.Closeable",
+      "import java.io.IOException",
+      "import java.net.URI",
+      "import java.nio.ByteBuffer",
+      "import java.nio.charset.CodingErrorAction",
+      "import java.security.MessageDigest",
+      "import java.security.SecureRandom",
+      "import java.util.Base64",
+      "import javax.net.ssl.SSLSocket",
+      "import javax.net.ssl.SSLSocketFactory"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt",
+    "sha256": "42fecb529611f684de99404922938e70148f77b9f19a253f3d7f84457cf93b3e",
+    "imports": []
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+    "sha256": "1a1e1a02300d5eef6f376410709b344a7049cc5e02bf17dc08342477d5489c66",
+    "imports": [
+      "import android.content.Context",
+      "import android.database.sqlite.SQLiteDatabase",
+      "import java.io.Closeable"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt",
+    "sha256": "4c9453e8ad6c47d46edfa6f61538dc5911d9461c9391509353b8701c29211d05",
+    "imports": []
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+    "sha256": "32d3e7defb83eae373eb76cfd03a13d9e88b0a9feffe538ffffdc34a0ab95e08",
+    "imports": [
+      "import im.platform.client.send.SendSession",
+      "import java.net.URI",
+      "import java.net.URL",
+      "import javax.net.ssl.HttpsURLConnection",
+      "import java.nio.ByteBuffer",
+      "import java.nio.charset.CodingErrorAction",
+      "import java.util.UUID",
+      "import java.util.concurrent.atomic.AtomicReference",
+      "import kotlinx.coroutines.*",
+      "import kotlin.coroutines.resume",
+      "import kotlin.coroutines.resumeWithException"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+    "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14",
+    "imports": [
+      "import androidx.lifecycle.ViewModel",
+      "import im.platform.client.send.SendStorageFailure",
+      "import im.platform.client.send.repositoryRead",
+      "import im.platform.client.send.SendViewModel",
+      "import im.platform.client.send.SendSession",
+      "import im.platform.client.send.Wire as SendWire",
+      "import im.platform.client.storage.Repository",
+      "import kotlinx.coroutines.*",
+      "import kotlinx.coroutines.flow.*",
+      "import kotlinx.coroutines.sync.Mutex",
+      "import kotlinx.coroutines.sync.withLock",
+      "import java.util.concurrent.atomic.AtomicBoolean"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+    "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+    "imports": [
+      "import im.platform.client.send.Wire as SendWire",
+      "import im.platform.client.storage.UserEvent",
+      "import im.platform.client.storage.ServerMessage",
+      "import java.math.BigInteger",
+      "import org.json.JSONObject"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+    "sha256": "4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f",
+    "imports": [
+      "import im.platform.client.send.SendSession",
+      "import im.platform.client.send.Wire",
+      "import java.net.URI",
+      "import java.net.URL",
+      "import javax.net.ssl.HttpsURLConnection",
+      "import java.net.URLEncoder",
+      "import java.nio.ByteBuffer",
+      "import java.nio.charset.CodingErrorAction",
+      "import org.json.JSONObject",
+      "import kotlinx.coroutines.Dispatchers",
+      "import kotlinx.coroutines.withContext"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+    "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9",
+    "imports": [
+      "import android.content.Context",
+      "import android.security.keystore.KeyGenParameterSpec",
+      "import android.security.keystore.KeyProperties",
+      "import java.security.KeyStore",
+      "import javax.crypto.Cipher",
+      "import javax.crypto.KeyGenerator",
+      "import javax.crypto.SecretKey",
+      "import javax.crypto.spec.GCMParameterSpec",
+      "import java.util.Base64"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Workspace.kt",
+    "sha256": "e4f79ec5b4ef99191a77b5566e403889ff3cdbbfdca9417eed787050504df0bc",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import im.platform.client.ui.components.Shell",
+      "import im.platform.client.ui.i18n.LocalLanguage"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+    "sha256": "0f3377325b4dafc09fc38143556f72ba926fc6b6918f49411563c79620a3fd65",
+    "imports": [
+      "import android.app.Application",
+      "import im.platform.client.ui.i18n.errorKey",
+      "import androidx.lifecycle.AndroidViewModel",
+      "import im.platform.client.send.*",
+      "import im.platform.client.send.Wire as SendWire",
+      "import im.platform.client.storage.Repository",
+      "import im.platform.client.sync.*",
+      "import kotlinx.coroutines.*",
+      "import kotlinx.coroutines.flow.*",
+      "import kotlinx.coroutines.sync.Mutex",
+      "import kotlinx.coroutines.sync.withLock"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt",
+    "sha256": "670822348f5b1c48850e87c8921a7f1be37e4f3beec61a2a13702161928b125e",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt",
+    "sha256": "876dad90d9ef9e5a361f4fa57ae7db2b3469a5e4a3df92ccc0944696fc43d1a8",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt",
+    "sha256": "db4c523eff6ea3562f6e1968c91d318b711866c8e22df3bf517e43324cf01609",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+    "sha256": "87eaf11f01f090f3f05a5187e8867bc77794dee78614fbb8e3c4f82d780663a8",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Future.kt",
+    "sha256": "2e1d62d9e65d262cc8aa0c0a0c72f5b8c55f0a441133b5af299c150e780a6c27",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/LanguagePanel.kt",
+    "sha256": "689fd7f5435bf32d2c5cf6944df425f87f2f94ba899a32bf5a1ee8cfb5af403e",
+    "imports": [
+      "import androidx.compose.runtime.Composable",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.itemsIndexed",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.unit.dp",
+      "import im.platform.client.ui.Appearance",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Login.kt",
+    "sha256": "cf2b82c82b17f7f1e63a3c4f0c0a15fc2e1c5c8be8b929dd1661cb07407212e9",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+    "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*",
+      "import androidx.compose.ui.unit.Dp"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Navigation.kt",
+    "sha256": "2850035864c90e0f25ffa6b9b4b465a3ded57e3e99d12c11b27da87ae865fd86",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Panel.kt",
+    "sha256": "7a29137a26e0acc2958005987b9ca136583345bc6a519c6e94a54858c30a23c1",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt",
+    "sha256": "52f5ad6efd178ce48c8b94bf9df83f017ed852388caf9fc9ac7deaa5792465fa",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Settings.kt",
+    "sha256": "cf22aaaa0ef9e3efd3da001c39af34b81fbbc6679d8ba40eed8fd500598b1332",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt",
+    "sha256": "08f1e70d332812bd0661429102a1992ad51645dcfc81727a6962659ad575008e",
+    "imports": [
+      "import androidx.compose.runtime.*",
+      "import androidx.activity.compose.BackHandler",
+      "import androidx.compose.foundation.*",
+      "import androidx.compose.foundation.layout.*",
+      "import androidx.compose.foundation.lazy.LazyColumn",
+      "import androidx.compose.foundation.lazy.items",
+      "import androidx.compose.foundation.shape.RoundedCornerShape",
+      "import androidx.compose.material3.*",
+      "import androidx.compose.ui.Modifier",
+      "import androidx.compose.ui.semantics.semantics",
+      "import androidx.compose.ui.semantics.contentDescription",
+      "import androidx.compose.ui.Alignment",
+      "import androidx.compose.ui.graphics.Color",
+      "import androidx.compose.ui.graphics.RectangleShape",
+      "import androidx.compose.ui.text.font.FontWeight",
+      "import androidx.compose.ui.text.input.PasswordVisualTransformation",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "import androidx.lifecycle.compose.collectAsStateWithLifecycle",
+      "import androidx.lifecycle.viewmodel.compose.viewModel",
+      "import androidx.navigation.compose.*",
+      "import im.platform.client.ui.*",
+      "import im.platform.client.ui.i18n.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+    "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12",
+    "imports": [
+      "import androidx.compose.runtime.*"
+    ]
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/en.kt",
+    "sha256": "98500f11535640019290c29e679eda87b3165af94cf92cf8bbeb1ad9dc9d9527",
+    "imports": []
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/jaJP.kt",
+    "sha256": "c093f25b9aca39559174f014835ef291c31b1978a3aff32cd35e4d31806c95de",
+    "imports": []
+  },
+  {
+    "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/zhCN.kt",
+    "sha256": "d0c48a2bca27d0fb7ae85ac97e35136abd47548764cbe664b9046dc51c906588",
+    "imports": []
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+    "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8",
+    "imports": []
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/storage/models.ts",
+    "sha256": "6ad58c5240d036ad70b20795ed2fcc015fdbafd5926e453702159327f03463e3",
+    "imports": []
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+    "sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c",
+    "imports": [
+      "import type { Bind, Committed, Database, LocalMessage, RealtimeMessage, ServerMessage, Sequence, Statement, UserPage } from \"./models.js\";",
+      "import { v1, v2 } from \"./schema.js\";"
+    ]
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/storage/schema.ts",
+    "sha256": "5761dbc44f0c96ab59b4d28c4a38814de5023ff37220d4864a54e7618c5fb0cd",
+    "imports": [
+      "import type { Statement } from \"./models.js\";"
+    ]
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+    "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715",
+    "imports": [
+      "import {WireFailure} from \"../send/wire.js\";",
+      "import {MAX_RESPONSE,SyncFailure,errorResponse,userRequest,conversationRequest,userPage,conversationPage} from \"./wire.js\";"
+    ]
+  },
+  {
+    "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+    "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50",
+    "imports": [
+      "import {WireFailure,parse,object,uuid,positive,timestamp,content} from \"../send/wire.js\";",
+      "import type {UserPage,UserEvent,ServerMessage} from \"../storage/models.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/application/client.ts",
+    "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852",
+    "imports": [
+      "import {WireFailure,decode,envelope,object,uuid,content} from '../../../shared/protocol-sdk/src/send/wire.js';",
+      "import {SyncHttp} from '../../../shared/protocol-sdk/src/sync/http.js';",
+      "import {SyncFailure} from '../../../shared/protocol-sdk/src/sync/wire.js';",
+      "import type {Committed,RealtimeMessage} from '../../../shared/protocol-sdk/src/storage/models.js';",
+      "import {Http,auth,user,friends,ApiFailure} from './http.js';",
+      "import type {User,Friend,Session} from './http.js';",
+      "import {MemoryRepository} from './repository.js';"
+    ]
+  },
+  {
+    "path": "clients/web/src/application/http.ts",
+    "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd",
+    "imports": [
+      "import {object,uuid,parse,positive} from '../../../shared/protocol-sdk/src/send/wire.js';"
+    ]
+  },
+  {
+    "path": "clients/web/src/application/repository.ts",
+    "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd",
+    "imports": [
+      "import {WireFailure} from '../../../shared/protocol-sdk/src/send/wire.js';",
+      "import type {LocalMessage,ServerMessage,Committed,RealtimeMessage,State} from '../../../shared/protocol-sdk/src/storage/models.js';"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/appearance.ts",
+    "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a",
+    "imports": []
+  },
+  {
+    "path": "clients/web/src/ui/build.config.mjs",
+    "sha256": "c14b2f838a2f5d6365dfde23f2f7ae3d5ae9cfeb4646d4334221f526cd6427d3",
+    "imports": []
+  },
+  {
+    "path": "clients/web/src/ui/components/AuthPanel.tsx",
+    "sha256": "a0013ce3e4a670d9b3f9daa93f9f9609b457c60a8d3cc8ab6d051537ba7aa23f",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/Composer.tsx",
+    "sha256": "0f8a384f93d39019d6feb850133ee174ec056b8708bc3a81df001d7af70c09a3",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/ConversationList.tsx",
+    "sha256": "b2c524f8ff1be37710e4b4bf8b6996d45f05c4ca1e15135f6cfeb027b276103d",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/FriendsPanel.tsx",
+    "sha256": "8d2ca587c2a48140a110ceb978ca84a66876cf87c2a291ce0e486fc88697ec47",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/Header.tsx",
+    "sha256": "a4ded013e1705605583c34c9e77d694bcc9404c5405cf25afa0bf36fc6511ec4",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";",
+      "import {connectionText} from \"./status.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/LanguagePanel.tsx",
+    "sha256": "1d1e466910ee84c384a2e2c00fd0d0603aa4fce277b54ddefef177cdfd648b43",
+    "imports": [
+      "import React from \"react\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import {languageEntry,languageNames,locales,type Locale} from \"../i18n/resources.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/Messages.tsx",
+    "sha256": "51d5d0219a6e11f99321b45457b5145aa9f8bf705a512ebe14f1b9ac3bad86ad",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";",
+      "import type {MemoryRepository} from \"../../application/repository.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/Navigation.tsx",
+    "sha256": "e05683a386dab67e08f9377f83eed2e99316717f8c4df5e8610fa811c81757ca",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/Placeholder.tsx",
+    "sha256": "80f8dbf23a5c0be3ac6d9e14e5aaf0322fee7e895b6e5d520e739c133dec1b4d",
+    "imports": [
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/ProfilePanel.tsx",
+    "sha256": "b52ad135f07e0d8ac9a4e045ee1875dec086ee259acd9b9be17882bc540f93cc",
+    "imports": [
+      "import {useText,useDisplayText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {View} from \"../../application/client.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/SettingsPanel.tsx",
+    "sha256": "5c2e7d89f4c2e4f4775b3880237ee98c17db31d350a675353dea345e0cb206ef",
+    "imports": [
+      "import {LanguagePanel} from \"./LanguagePanel.js\";",
+      "import type {Locale} from \"../i18n/resources.js\";",
+      "import {useText} from \"../i18n/context.js\";",
+      "import React from \"react\";",
+      "import type {Appearance} from \"../appearance.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/Shell.tsx",
+    "sha256": "27e8b05e6cddf1c9ec246aacafb290c9035af5333f894484e83d5eda2c51d8eb",
+    "imports": [
+      "import {LanguageContext,useText,useDisplayText} from \"../i18n/context.js\";",
+      "import {Navigation} from \"./Navigation.js\";",
+      "import {Header} from \"./Header.js\";",
+      "import {AuthPanel} from \"./AuthPanel.js\";",
+      "import {ConversationList} from \"./ConversationList.js\";",
+      "import {Messages} from \"./Messages.js\";",
+      "import {Composer} from \"./Composer.js\";",
+      "import {FriendsPanel} from \"./FriendsPanel.js\";",
+      "import {Placeholder} from \"./Placeholder.js\";",
+      "import {SettingsPanel} from \"./SettingsPanel.js\";",
+      "import {ProfilePanel} from \"./ProfilePanel.js\";",
+      "import React,{useState,useEffect,useSyncExternalStore} from 'react';",
+      "import {WebClient} from '../../application/client.js';",
+      "import {loadAppearance,saveAppearance} from '../appearance.js';",
+      "import type {Appearance} from '../appearance.js';",
+      "import {loadLanguage,saveLanguage} from \"../language.js\";",
+      "import {validLocale,type Locale} from \"../i18n/resources.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/components/status.ts",
+    "sha256": "868e6d4d1459f83c8a6dff7580c88aeb4cabb0f027af1e9bf3b67f07c801ff12",
+    "imports": [
+      "import type {Connection} from \"../../application/client.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/i18n/context.tsx",
+    "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861",
+    "imports": [
+      "import React from \"react\";",
+      "import {translate,displayText,type Locale} from \"./resources.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/i18n/en.ts",
+    "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5",
+    "imports": []
+  },
+  {
+    "path": "clients/web/src/ui/i18n/ja-JP.ts",
+    "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2",
+    "imports": []
+  },
+  {
+    "path": "clients/web/src/ui/i18n/resources.ts",
+    "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b",
+    "imports": [
+      "import en from \"./en.js\";",
+      "import zhCN from \"./zh-CN.js\";",
+      "import jaJP from \"./ja-JP.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/i18n/zh-CN.ts",
+    "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70",
+    "imports": []
+  },
+  {
+    "path": "clients/web/src/ui/language.ts",
+    "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e",
+    "imports": [
+      "import {validLocale,type Locale} from \"./i18n/resources.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/main.tsx",
+    "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3",
+    "imports": [
+      "import React from \"react\";",
+      "import {createRoot} from \"react-dom/client\";",
+      "import {Shell} from \"./components/Shell.js\";"
+    ]
+  },
+  {
+    "path": "clients/web/src/ui/react-dom.config.mjs",
+    "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5",
+    "imports": []
+  },
+  {
+    "path": "clients/web/src/ui/react.config.mjs",
+    "sha256": "92595c5e2aef4233d0ac7d7de085cfd37eb145af37c0d634f83dd3c8d4e7bc27",
+    "imports": []
+  },
+  {
+    "path": "contracts/database/migrate.py",
+    "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c",
+    "imports": [
+      "from __future__ import annotations",
+      "import argparse",
+      "import hashlib",
+      "import pathlib",
+      "import shutil",
+      "import subprocess",
+      "import sys"
+    ]
+  },
+  {
+    "path": "tools/build_language_packs.py",
+    "sha256": "c012a39d9ddb2cd655fa778d63c2711f2ac447cf7791b785a5e80cf683e845d1",
+    "imports": [
+      "import argparse",
+      "import hashlib",
+      "import json",
+      "from pathlib import Path",
+      "import re",
+      "import tempfile"
+    ]
+  }
+]

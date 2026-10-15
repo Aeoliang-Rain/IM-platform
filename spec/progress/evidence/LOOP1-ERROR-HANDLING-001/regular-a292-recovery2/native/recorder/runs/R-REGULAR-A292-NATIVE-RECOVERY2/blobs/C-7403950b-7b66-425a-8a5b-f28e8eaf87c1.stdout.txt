@@ -1,0 +1,89 @@
+
+FILE 68 clients\mobile\app\src\main\kotlin\im\platform\client\ui\Auth.kt HASH 4feec9d06fa813308d24aab48d6dba94a5318f59758d73108aed896caf73d42f
+1: package im.platform.client.ui
+2: import im.platform.client.send.SendSession
+3: import im.platform.client.send.Wire
+4: import java.net.URI
+5: import java.net.URL
+6: import javax.net.ssl.HttpsURLConnection
+7: import java.net.URLEncoder
+8: import java.nio.ByteBuffer
+9: import java.nio.charset.CodingErrorAction
+10: import org.json.JSONObject
+11: import kotlinx.coroutines.Dispatchers
+12: import kotlinx.coroutines.withContext
+13: class ApiFailure(val kind:String,message:String=kind):Exception(message)
+14: data class User(val userId:String,val username:String,val displayName:String)
+15: data class Friend(val user:User,val friendshipId:String,val directConversationId:String)
+16: fun serverOrigin(value:String):String {val u=URI(value);require(u.scheme=="https" && u.host!=null && u.rawUserInfo==null && u.rawQuery==null && u.rawFragment==null && u.rawPath in listOf("","/"));return URI("https",null,u.host,u.port,null,null,null).toString()}
+17: class Auth(val endpoint:String,private val preferences:Preferences) {
+18:     @Volatile var session:SendSession?=null;private set
+19:     private var slot="";private var expires=0L;@Volatile private var generation=0L
+20:     init{serverOrigin(endpoint)}
+21:     private fun metadata()=JSONObject().put("clientType","MOBILE").put("deviceId","im-mobile").put("clientVersion","0.1.0").put("protocolVersion","1")
+22:     suspend fun request(path:String,method:String="GET",body:JSONObject?=null,authenticated:Boolean=true,accessToken[REDACTED]
+23:         val connection=URL(endpoint+path).openConnection() as HttpsURLConnection
+24:         try {
+25:             connection.instanceFollowRedirects=false;connection.requestMethod=method;connection.connectTimeout=15000;connection.readTimeout=15000;connection.useCaches=false;connection.setRequestProperty("Content-Type","application/json")
+26:             if(authenticated){val token=accessToken?:session?.accessToken?:throw ApiFailure("session_expired","Session expired");connection.setRequestProperty("Authorization","Bearer "+token)}
+27:             if(body!=null){connection.doOutput=true;val bytes=body.toString().toByteArray(Charsets.UTF_8);connection.setFixedLengthStreamingMode(bytes.size);connection.outputStream.use {it.write(bytes)}}
+28:             val status=connection.responseCode;if(status==204)return@withContext emptyMap<String,Any>()
+29:             if(status in 300..399 || connection.contentType?.matches(Regex("(?i)application/json(?:\\s*;.*)?"))!=true)throw ApiFailure("invalid_server_response","Invalid server response")
+30:             val output=java.io.ByteArrayOutputStream();val stream=if(status in 200..299)connection.inputStream else connection.errorStream
+31:             (stream?:throw ApiFailure("connection_unavailable","Connection unavailable")).use{val buffer=ByteArray(8192);while(true){val n=it.read(buffer);if(n<0)break;if(output.size()+n>1048576)throw ApiFailure("invalid_server_response","Invalid server response");output.write(buffer,0,n)}}
+32:             val raw=Charsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(output.toByteArray())).toString();val result=Wire.parse(raw,1048576)
+33:             if(status !in 200..299){val code=((result as? Map<*,*>)?.get("error") as? Map<*,*>)?.get("code") as? String;throw ApiFailure(if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"invalid_credentials" else if(status==401)"session_expired" else code?:"request_failed",if(status==401 && code=="AUTH_INVALID_CREDENTIALS")"Invalid username or password" else if(status==401)"Session expired" else code?:"Request failed")};result
+34:         }catch(e:ApiFailure){throw e}catch(_:im.platform.client.send.WireFailure){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.nio.charset.CharacterCodingException){throw ApiFailure("invalid_server_response","Invalid server response")}catch(_:java.io.IOException){throw ApiFailure("connection_unavailable","Connection unavailable")}finally{connection.disconnect()}
+35:     }
+36:     private fun user(v:Any?):User {val o=Wire.obj(v,setOf("userId","username","displayName"));return User(Wire.uuid(o["userId"]),o["username"] as String,o["displayName"] as String)}
+37:     @Synchronized private fun accept(value:Any,g:Long):SendSession {
+38:         if(g!=generation)throw ApiFailure("session_expired","Session expired")
+39:         val o=Wire.obj(value,setOf("session","tokens","replacedExistingSession"));val s=Wire.obj(o["session"],setOf("sessionId","userId","clientType","sessionEpoch","status"));val t=Wire.obj(o["tokens"],setOf("accessToken","accessTokenExpiresInSeconds","refreshToken","refreshTokenExpiresInSeconds","refreshTokenDelivery"))
+40:         require(s["clientType"]=="MOBILE" && s["status"]=="ACTIVE" && t["refreshTokenDelivery"]=="RESPONSE_BODY_FOR_OS_SECURE_STORAGE" && o["replacedExistingSession"] is Boolean)
+41:         val next=SendSession(Wire.uuid(s["userId"]),Wire.uuid(s["sessionId"]),Wire.integer(s["sessionEpoch"]),t["accessToken"] as String);require(next.accessToken.isNotEmpty());val refresh=t["refreshToken"] as String;require(refresh.isNotEmpty());val seconds=Wire.integer(t["accessTokenExpiresInSeconds"]).longValueExact();Wire.integer(t["refreshTokenExpiresInSeconds"])
+42:         val newSlot=endpoint+"/"+next.userId+"/"+next.sessionId
+43:         try {preferences.write(newSlot,refresh);preferences.write(endpoint+"/current",newSlot);if(slot.isNotEmpty() && slot!=newSlot)preferences.remove(slot)}catch(error:Exception){session=null;throw error}
+44:         slot=newSlot;session=next;expires=System.currentTimeMillis()+seconds*1000;return next
+45:     }
+46:     suspend fun register(username:String,password[REDACTED] = user(Wire.obj(request("/v1/auth/register","POST",JSONObject().put("username",username).put("password",password).put("displayName",username),false),setOf("user"))["user"])
+47:     suspend fun login(username:String,password[REDACTED] {val g=generation;return accept(request("/v1/auth/login","POST",metadata().put("username",username).put("password",password),false),g)}
+48:     suspend fun restore():SendSession? {slot=preferences.read(endpoint+"/current")?:return null;return refresh()}
+49:     @Synchronized fun savedAccount():String? {val saved=preferences.read(endpoint+"/current")?:return null;require(saved.startsWith(endpoint+"/"));val parts=saved.removePrefix(endpoint+"/").split('/');require(parts.size==2);Wire.uuid(parts[1]);slot=saved;return Wire.uuid(parts[0])}
+50:     suspend fun refresh():SendSession {val g=generation;val refresh=preferences.read(slot)?:throw ApiFailure("session_expired","Session expired");try{return accept(request("/v1/auth/refresh/native","POST",metadata().put("refreshToken",refresh),false),g)}catch(e:ApiFailure){if(g==generation && e.kind=="session_expired")clear();throw e}}
+51:     fun needsRefresh()=session!=null && System.currentTimeMillis()>expires-60000
+52:     @Synchronized fun clear(){generation++;session=null;if(slot.isNotEmpty())preferences.remove(slot);slot="";preferences.remove(endpoint+"/current")}
+53:     suspend fun logout(){val token=session?.accessToken;clear();if(token!=null)request("/v1/auth/logout","POST",accessToken[REDACTED]
+54:     suspend fun profile()=user(Wire.obj(request("/v1/users/me"),setOf("user"))["user"])
+55:     suspend fun friends():List<Friend> =(Wire.obj(request("/v1/friends"),setOf("friends"))["friends"] as List<*>).map{val f=Wire.obj(it,setOf("user","friendshipId","directConversationId"));Friend(user(f["user"]),Wire.uuid(f["friendshipId"]),Wire.uuid(f["directConversationId"]))}
+56:     suspend fun search(query:String):List<User> =(Wire.obj(request("/v1/users/search?username="+URLEncoder.encode(query,"UTF-8")),setOf("users"))["users"] as List<*>).map(::user)
+57:     suspend fun add(id:String):String {val result=Wire.obj(request("/v1/friends/"+Wire.uuid(id),"PUT"),setOf("friendshipId","normalizedPair","directConversationId","memberUserIds","created"));return Wire.uuid(result["directConversationId"])}
+58: }
+
+FILE 69 clients\mobile\app\src\main\kotlin\im\platform\client\ui\Preferences.kt HASH 2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9
+1: package im.platform.client.ui
+2: import android.content.Context
+3: import android.security.keystore.KeyGenParameterSpec
+4: import android.security.keystore.KeyProperties
+5: import java.security.KeyStore
+6: import javax.crypto.Cipher
+7: import javax.crypto.KeyGenerator
+8: import javax.crypto.SecretKey
+9: import javax.crypto.spec.GCMParameterSpec
+10: import java.util.Base64
+11: data class Appearance(val theme:String="cold",val fontSize:Int=16,val density:Float=1f)
+12: class Preferences(context:Context) {
+13:     private val appearance=context.getSharedPreferences("appearance",Context.MODE_PRIVATE)
+14:     private val credentials=context.getSharedPreferences("secure-refresh",Context.MODE_PRIVATE)
+15:     fun loadAppearance():Appearance {val value=try{Appearance(appearance.getString("theme","cold")!!,appearance.getInt("fontSize",16),appearance.getFloat("density",1f))}catch(_:ClassCastException){throw ApiFailure("error.appearanceLoad")};try{validate(value)}catch(_:IllegalArgumentException){throw ApiFailure("error.appearanceLoad")};return value}
+16:     private fun validate(v:Appearance){require(v.theme in listOf("cold","warm") && v.fontSize in 14..22 && listOf(.8f,1f,1.2f).any {kotlin.math.abs(v.density-it)<.001f})}
+17:     fun saveAppearance(v:Appearance){validate(v);if(!appearance.edit().putString("theme",v.theme).putInt("fontSize",v.fontSize).putFloat("density",v.density).commit())throw java.io.IOException("Appearance write failed")}
+18:     fun loadLanguage():String=try {val value=appearance.getString("language",null);if(value=="en"||value=="zh-CN"||value=="ja-JP")value!! else "en"}catch(_:ClassCastException){"en"}
+19:     fun saveLanguage(value:String){require(value=="en"||value=="zh-CN"||value=="ja-JP");if(!appearance.edit().putString("language",value).commit())throw java.io.IOException("Language write failed")}
+20:     private fun key():SecretKey {
+21:         val store=KeyStore.getInstance("AndroidKeyStore");store.load(null);(store.getKey("im-platform-refresh",null) as? SecretKey)?.let {return it}
+22:         val generator=KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,"AndroidKeyStore");generator.init(KeyGenParameterSpec.Builder("im-platform-refresh",KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT).setBlockModes(KeyProperties.BLOCK_MODE_GCM).setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE).setRandomizedEncryptionRequired(true).build());return generator.generateKey()
+23:     }
+24:     @Synchronized fun write(slot:String,value:String){require(slot.length<=256 && value.length<=8192);val cipher=Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.ENCRYPT_MODE,key());cipher.updateAAD(slot.toByteArray());val ciphertext=cipher.doFinal(value.toByteArray());if(!credentials.edit().putString(slot,Base64.getEncoder().encodeToString(cipher.iv)+":"+Base64.getEncoder().encodeToString(ciphertext)).commit())throw java.io.IOException("Credential write failed")}
+25:     @Synchronized fun read(slot:String):String? {val saved=credentials.getString(slot,null)?:return null;val parts=saved.split(':');require(parts.size==2);val cipher=Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.DECRYPT_MODE,key(),GCMParameterSpec(128,Base64.getDecoder().decode(parts[0])));cipher.updateAAD(slot.toByteArray());return cipher.doFinal(Base64.getDecoder().decode(parts[1])).toString(Charsets.UTF_8)}
+26:     @Synchronized fun remove(slot:String){if(!credentials.edit().remove(slot).commit())throw java.io.IOException("Credential cleanup failed")}
+27: }

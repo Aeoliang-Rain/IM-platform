@@ -1,0 +1,361 @@
+
+FILE 0 clients\desktop\.gitignore HASH 790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910
+1: node_modules/
+2: dist/
+
+FILE 1 clients\desktop\.gitkeep HASH 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+1: 
+
+FILE 2 clients\desktop\README.md HASH 7bc4b810f2989a1fb786093a351cf95176c990ddfb30dd213d21e5507f6f0ccc
+1: # Desktop storage slice
+2: 
+3: Approved stack: Tauri + TypeScript with SQLx(SQLite) only; accepted canonical §6.1 / ADR-0005. React UI and actual send/Sync orchestration are outside this storage task. The Tauri adapter registers generic account query/atomic transaction commands. TypeScript owns Repository/models/schema/migration/intents. Native account UUID filenames are normalized and bounded to the application data directory.
+4: 
+5: Verification: python -B tools/verify_client_sqlite.py --scope desktop.
+6: This compiles shared/adapter TypeScript, tests/builds actual SQLx, then executes canonical and additional storage cases through the same native atomic adapter. A small private hex test transport exists solely to carry current SQL/bind instructions to that adapter without an unapproved serialization package; it is not product IPC or a replacement runtime. Each test batch calls the adapter once. Query connections are physically read-only; transactions roll back on any statement or row-count mismatch.
+7: 
+8: Required tools: Node build tooling, npm, stable Rust/MSVC on Windows (or system Tauri build prerequisites on Linux). CARGO_TARGET_DIR may point outside the checkout. Exact dependency versions are in lockfiles; no global PATH or unrelated toolchain changes are required. Native/full UI/network/S2 acceptance remains for later slices.
+
+FILE 3 clients\desktop\package-lock.json HASH 16f453c2beed2a1bc0ba7becaf3457a1bc310d1faa3451331ef9bff0685ff376
+JSON lockVersion 3
+{
+  "": {
+    "name": "im-desktop",
+    "version": "0.1.0",
+    "dependencies": {
+      "@tauri-apps/api": "2.12.1",
+      "react": "18.3.1",
+      "react-dom": "18.3.1"
+    },
+    "devDependencies": {
+      "@tauri-apps/cli": "2.10.1",
+      "@types/react": "18.3.28",
+      "@types/react-dom": "18.3.7",
+      "typescript": "5.9.3"
+    }
+  },
+  "node_modules/@tauri-apps/api": {
+    "version": "2.12.1",
+    "license": "Apache-2.0 OR MIT",
+    "funding": {
+      "type": "opencollective",
+      "url": "https://opencollective.com/tauri"
+    }
+  },
+  "node_modules/@tauri-apps/cli": {
+    "version": "2.10.1",
+    "dev": true,
+    "license": "Apache-2.0 OR MIT",
+    "bin": {
+      "tauri": "tauri.js"
+    },
+    "engines": {
+      "node": ">= 10"
+    },
+    "funding": {
+      "type": "opencollective",
+      "url": "https://opencollective.com/tauri"
+    },
+    "optionalDependencies": {
+      "@tauri-apps/cli-darwin-arm64": "2.10.1",
+      "@tauri-apps/cli-darwin-x64": "2.10.1",
+      "@tauri-apps/cli-linux-arm-gnueabihf": "2.10.1",
+      "@tauri-apps/cli-linux-arm64-gnu": "2.10.1",
+      "@tauri-apps/cli-linux-arm64-musl": "2.10.1",
+      "@tauri-apps/cli-linux-riscv64-gnu": "2.10.1",
+      "@tauri-apps/cli-linux-x64-gnu": "2.10.1",
+      "@tauri-apps/cli-linux-x64-musl": "2.10.1",
+      "@tauri-apps/cli-win32-arm64-msvc": "2.10.1",
+      "@tauri-apps/cli-win32-ia32-msvc": "2.10.1",
+      "@tauri-apps/cli-win32-x64-msvc": "2.10.1"
+    }
+  },
+  "node_modules/@tauri-apps/cli-darwin-arm64": {
+    "version": "2.10.1",
+    "cpu": [
+      "arm64"
+    ],
+    "dev": true,
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "darwin"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-darwin-x64": {
+    "version": "2.10.1",
+    "cpu": [
+      "x64"
+    ],
+    "dev": true,
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "darwin"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-linux-arm-gnueabihf": {
+    "version": "2.10.1",
+    "cpu": [
+      "arm"
+    ],
+    "dev": true,
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "linux"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-linux-arm64-gnu": {
+    "version": "2.10.1",
+    "cpu": [
+      "arm64"
+    ],
+    "dev": true,
+    "libc": [
+      "glibc"
+    ],
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "linux"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-linux-arm64-musl": {
+    "version": "2.10.1",
+    "cpu": [
+      "arm64"
+    ],
+    "dev": true,
+    "libc": [
+      "musl"
+    ],
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "linux"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-linux-riscv64-gnu": {
+    "version": "2.10.1",
+    "cpu": [
+      "riscv64"
+    ],
+    "dev": true,
+    "libc": [
+      "glibc"
+    ],
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "linux"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-linux-x64-gnu": {
+    "version": "2.10.1",
+    "cpu": [
+      "x64"
+    ],
+    "dev": true,
+    "libc": [
+      "glibc"
+    ],
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "linux"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-linux-x64-musl": {
+    "version": "2.10.1",
+    "cpu": [
+      "x64"
+    ],
+    "dev": true,
+    "libc": [
+      "musl"
+    ],
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "linux"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-win32-arm64-msvc": {
+    "version": "2.10.1",
+    "cpu": [
+      "arm64"
+    ],
+    "dev": true,
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "win32"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-win32-ia32-msvc": {
+    "version": "2.10.1",
+    "cpu": [
+      "ia32"
+    ],
+    "dev": true,
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "win32"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@tauri-apps/cli-win32-x64-msvc": {
+    "version": "2.10.1",
+    "cpu": [
+      "x64"
+    ],
+    "dev": true,
+    "license": "Apache-2.0 OR MIT",
+    "optional": true,
+    "os": [
+      "win32"
+    ],
+    "engines": {
+      "node": ">= 10"
+    }
+  },
+  "node_modules/@types/prop-types": {
+    "version": "15.7.15",
+    "dev": true,
+    "license": "MIT"
+  },
+  "node_modules/@types/react": {
+    "version": "18.3.28",
+    "dev": true,
+    "license": "MIT",
+    "dependencies": {
+      "@types/prop-types": "*",
+      "csstype": "^3.2.2"
+    }
+  },
+  "node_modules/@types/react-dom": {
+    "version": "18.3.7",
+    "dev": true,
+    "license": "MIT",
+    "peerDependencies": {
+      "@types/react": "^18.0.0"
+    }
+  },
+  "node_modules/csstype": {
+    "version": "3.2.3",
+    "dev": true,
+    "license": "MIT"
+  },
+  "node_modules/js-tokens": {
+    "version": "4.0.0",
+    "license": "MIT"
+  },
+  "node_modules/loose-envify": {
+    "version": "1.4.0",
+    "license": "MIT",
+    "dependencies": {
+      "js-tokens": "^3.0.0 || ^4.0.0"
+    },
+    "bin": {
+      "loose-envify": "cli.js"
+    }
+  },
+  "node_modules/react": {
+    "version": "18.3.1",
+    "license": "MIT",
+    "dependencies": {
+      "loose-envify": "^1.1.0"
+    },
+    "engines": {
+      "node": ">=0.10.0"
+    }
+  },
+  "node_modules/react-dom": {
+    "version": "18.3.1",
+    "license": "MIT",
+    "dependencies": {
+      "loose-envify": "^1.1.0",
+      "scheduler": "^0.23.2"
+    },
+    "peerDependencies": {
+      "react": "^18.3.1"
+    }
+  },
+  "node_modules/scheduler": {
+    "version": "0.23.2",
+    "license": "MIT",
+    "dependencies": {
+      "loose-envify": "^1.1.0"
+    }
+  },
+  "node_modules/typescript": {
+    "version": "5.9.3",
+    "dev": true,
+    "license": "Apache-2.0",
+    "bin": {
+      "tsc": "bin/tsc",
+      "tsserver": "bin/tsserver"
+    },
+    "engines": {
+      "node": ">=14.17"
+    }
+  }
+}
+
+FILE 4 clients\desktop\package.json HASH e052f11dc52945220cc0d5a334db753e4d41d0fe8d338e9267730cf85a2e8881
+1: {
+2:   "name": "im-desktop",
+3:   "private": true,
+4:   "version": "0.1.0",
+5:   "type": "module",
+6:   "scripts": {
+7:     "build": "tsc -p tsconfig.json && node src/ui/build.config.mjs",
+8:     "tauri": "tauri"
+9:   },
+10:   "dependencies": {
+11:     "@tauri-apps/api": "2.12.1",
+12:     "react": "18.3.1",
+13:     "react-dom": "18.3.1"
+14:   },
+15:   "devDependencies": {
+16:     "typescript": "5.9.3",
+17:     "@types/react": "18.3.28",
+18:     "@types/react-dom": "18.3.7",
+19:     "@tauri-apps/cli": "2.10.1"
+20:   }
+21: }
+
+FILE 5 clients\desktop\src-tauri\.gitignore HASH f879bb710d6f5a2934e0b564fe2451a971f16969a268bb6ad040291177c33c97
+1: target/
+2: gen/schemas/
