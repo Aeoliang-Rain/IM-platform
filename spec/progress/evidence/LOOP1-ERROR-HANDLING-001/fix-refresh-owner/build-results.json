@@ -1,0 +1,40 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\gui\\native.py",
+      "gradle",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx768m -XX:ActiveProcessorCount=2 -Dfile.encoding=UTF-8",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "-PimSendInstrumentation=im.platform.client.ui.RefreshOwnerInstrumentation",
+      "assembleDebug",
+      "assembleDebugAndroidTest"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 14.84400000000096,
+    "output_sha256": "d9d50dbfc2ba9cae42e4310e364b0bad72e196e52b5a66b430be983092bc9287",
+    "output": "build-owner.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\gui\\native.py",
+      "gradle",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx768m -XX:ActiveProcessorCount=2 -Dfile.encoding=UTF-8",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "-PimSendInstrumentation=im.platform.client.ui.ErrorHandlingInstrumentation",
+      "assembleDebug",
+      "assembleDebugAndroidTest"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 8.875,
+    "output_sha256": "0df0a2674f7b9692ef0493d98fd268411fdecc7d26f15db6beb0d82079f84f4e",
+    "output": "build-errors.txt"
+  }
+]

@@ -1,0 +1,268 @@
+{
+  "desktop_qualified_historical_reuse": {
+    "observed_commands": [
+      {
+        "start": {
+          "data": {
+            "argv": [
+              "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+              "-Xutf8",
+              "-B",
+              "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-refresh-owner/compile.py"
+            ],
+            "command_id": "C-a2ac974d-ce73-411a-8978-de0c5de64ce5",
+            "cwd": ".",
+            "secret_redaction_applied": false
+          },
+          "event_hash": "963eb9c713eb07c1f9ab59cce5a51bbe47ebb2b5630d58f6ec12a8b11f0ad6b0",
+          "event_type": "command_started",
+          "previous_event_hash": "a6795961c27204424b98bb247ff0ce95cf29506432f45b6c550d9bc3dd5990fb",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 24,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:42:19.428873Z"
+        },
+        "finish": {
+          "data": {
+            "command_id": "C-a2ac974d-ce73-411a-8978-de0c5de64ce5",
+            "duration_ms": 1609.0,
+            "exit_code": 0,
+            "result": "PASS",
+            "secret_redaction_applied": false,
+            "stderr_blob": "blobs/C-a2ac974d-ce73-411a-8978-de0c5de64ce5.stderr.txt",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_blob": "blobs/C-a2ac974d-ce73-411a-8978-de0c5de64ce5.stdout.txt",
+            "stdout_sha256": "dc383912e80f36924ccc77e0ff15eb1cc3e1d8446c0f6797b354b6e271d6d484"
+          },
+          "event_hash": "be44dcef54356de2bb2c1dad878459ce8c96c7275f51ac8d616905ef480442f6",
+          "event_type": "command_finished",
+          "previous_event_hash": "963eb9c713eb07c1f9ab59cce5a51bbe47ebb2b5630d58f6ec12a8b11f0ad6b0",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 25,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:42:21.052965Z"
+        }
+      },
+      {
+        "start": {
+          "data": {
+            "argv": [
+              "H:/node.js/node.exe",
+              "tests/clients/errors/desktop_parallel.mjs",
+              "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-refresh-owner/desktop-build/"
+            ],
+            "command_id": "C-8cfb8755-2ff4-494e-bc24-8d397f400f0b",
+            "cwd": ".",
+            "secret_redaction_applied": false
+          },
+          "event_hash": "4847afcf746afd0d3c20ae39678a818f80b263064f1071a9c958f388ae1377f0",
+          "event_type": "command_started",
+          "previous_event_hash": "be44dcef54356de2bb2c1dad878459ce8c96c7275f51ac8d616905ef480442f6",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 26,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:42:30.646872Z"
+        },
+        "finish": {
+          "data": {
+            "command_id": "C-8cfb8755-2ff4-494e-bc24-8d397f400f0b",
+            "duration_ms": 125.0,
+            "exit_code": 0,
+            "result": "PASS",
+            "secret_redaction_applied": false,
+            "stderr_blob": "blobs/C-8cfb8755-2ff4-494e-bc24-8d397f400f0b.stderr.txt",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_blob": "blobs/C-8cfb8755-2ff4-494e-bc24-8d397f400f0b.stdout.txt",
+            "stdout_sha256": "e6ad6c7106b2f0185182bb160c043a82ed7f705af5864a45499bbc8a5f6f3943"
+          },
+          "event_hash": "83a153caaeed3571305623695c15c964a03ea9a928ab83b19e7e10b76714e063",
+          "event_type": "command_finished",
+          "previous_event_hash": "4847afcf746afd0d3c20ae39678a818f80b263064f1071a9c958f388ae1377f0",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 27,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:42:30.787714Z"
+        }
+      },
+      {
+        "start": {
+          "data": {
+            "argv": [
+              "H:/node.js/node.exe",
+              "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-refresh-owner/desktop_owner_retirement.mjs",
+              "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-refresh-owner/desktop-build/"
+            ],
+            "command_id": "C-7626697a-9fb0-4056-a84e-47bdfc7b9ba8",
+            "cwd": ".",
+            "secret_redaction_applied": false
+          },
+          "event_hash": "6b358ba6c3e70ef2529b6a20205eb3698d9a220e0177d979a76492749f347cc2",
+          "event_type": "command_started",
+          "previous_event_hash": "83a153caaeed3571305623695c15c964a03ea9a928ab83b19e7e10b76714e063",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 28,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:42:39.633840Z"
+        },
+        "finish": {
+          "data": {
+            "command_id": "C-7626697a-9fb0-4056-a84e-47bdfc7b9ba8",
+            "duration_ms": 203.0,
+            "exit_code": 0,
+            "result": "PASS",
+            "secret_redaction_applied": false,
+            "stderr_blob": "blobs/C-7626697a-9fb0-4056-a84e-47bdfc7b9ba8.stderr.txt",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_blob": "blobs/C-7626697a-9fb0-4056-a84e-47bdfc7b9ba8.stdout.txt",
+            "stdout_sha256": "44691015a6dc9138645d3a1633a68ccc1c07adfb82096d9b624467a702a867a3"
+          },
+          "event_hash": "e175e13731d577867ecdbad9a0ecaea5346ca3aeea07303d08731935e60e4221",
+          "event_type": "command_finished",
+          "previous_event_hash": "6b358ba6c3e70ef2529b6a20205eb3698d9a220e0177d979a76492749f347cc2",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 29,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:42:39.849571Z"
+        }
+      },
+      {
+        "start": {
+          "data": {
+            "argv": [
+              "H:/node.js/node.exe",
+              "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-refresh-owner/auth.mjs"
+            ],
+            "command_id": "C-a7d59058-3635-40cc-bb25-0b6dd5ca05f4",
+            "cwd": ".",
+            "secret_redaction_applied": false
+          },
+          "event_hash": "585715513b6673d3c7941a80be61435183623bebffa110511fd58069acb027c9",
+          "event_type": "command_started",
+          "previous_event_hash": "e5f89fdbd761a97247a5997492bf6659d037f6095ab39c413be6bebabd51a3e0",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 46,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:52:58.681303Z"
+        },
+        "finish": {
+          "data": {
+            "command_id": "C-a7d59058-3635-40cc-bb25-0b6dd5ca05f4",
+            "duration_ms": 234.0,
+            "exit_code": 0,
+            "result": "PASS",
+            "secret_redaction_applied": false,
+            "stderr_blob": "blobs/C-a7d59058-3635-40cc-bb25-0b6dd5ca05f4.stderr.txt",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_blob": "blobs/C-a7d59058-3635-40cc-bb25-0b6dd5ca05f4.stdout.txt",
+            "stdout_sha256": "1e64ca7cf33b7a1236fb3c196b29cef8e8216af1c9416e4ed76a4daa5a129de2"
+          },
+          "event_hash": "980f16dc89d4e0bfc6c202110a8c13d8f93eceb09124e35b5ad2fb2079ba3f67",
+          "event_type": "command_finished",
+          "previous_event_hash": "585715513b6673d3c7941a80be61435183623bebffa110511fd58069acb027c9",
+          "role": "fix",
+          "run_id": "R-FIX-REFRESH-OWNER",
+          "schema_version": "1.0.0",
+          "seq": 47,
+          "task_id": "LOOP1-ERROR-HANDLING-001",
+          "timestamp": "2026-10-15T08:52:58.924925Z"
+        }
+      }
+    ],
+    "current185_preview_sha256": "1ca8f9aec0d98123f50568b45a54722d37450943785a8b07c438feeada47b8b1",
+    "compiled_graph_archive": "prior-fix-partial-raw.zip::desktop-build/",
+    "qualification": "Prior Fix compiled after the actual two Workspace changes, then ran strengthened37/owner12/originalAuth controls; current production185 bytes match prior post-edit preview and no new source change. These are historical local observations, not new execution or independent acceptance.",
+    "test_format_only": {
+      "original_sha256": "48bb155cac9f52c6e9abd547df66f17cc60fb64095ab217caa1ead66e76b87c7",
+      "current_sha256": "02e8e6e710a7d62a5314b41d286d14f45adb3a84dffa8e5fac3b14a044f3eb0d",
+      "original_bytes": 4210,
+      "current_bytes": 4209,
+      "only_trailing_whitespace_changed": true,
+      "token_sequence_equal": true,
+      "original_source": "prior-fix-partial-raw.zip::desktop_owner_retirement.mjs",
+      "cause": "Scoped staged whitespace failed on original last-line CR; product and test assertions unchanged."
+    }
+  },
+  "unchanged_send_sync_inputs": [
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+      "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+      "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+      "sha256": "f1fb508628382cfb391e5e236c64ba62aa219122e3651e97ca6b315c0bff9372",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "sha256": "7071cc10977ff6fb79af73c1cf241f3d845451f98a107a453c08f5328c6e2d37",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+      "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+      "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendInstrumentation.kt",
+      "sha256": "d8141042644b8dd1c2866fa7a92516d2aabe67803891224894ef58077072d2ab",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendReadChecks.kt",
+      "sha256": "5ee18a41ae4e7aae72b73df68d3edd00fb22373dcd7e4fce5111e871ce19711a",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/WssCleanupInstrumentation.kt",
+      "sha256": "2f83410d1040bab5d2c58fca104ac45fa221f81b4f7085a51ca3ca2a5089a5f4",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ContiguousReadChecks.kt",
+      "sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ReadOriginChecks.kt",
+      "sha256": "8c071adf444437a425cd33026212e879171d0f0addbf481fc0e72e06e53df4df",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/SyncInstrumentation.kt",
+      "sha256": "8929a0c6494ecbaa40a9655b7b35c3ff185b19c17d199f8b0d1567ef96ebf9d0",
+      "relation": "Same bytes as prior recorded runtime input; protected source graphs remain unchanged"
+    }
+  ],
+  "send_sync_qualification": "Prior actual Send66+Read21/Sync69+Read33+contiguous18 remain unchanged responsibility graphs; no new native run claimed. Current Workspace owner10 and original errors/HTTP32/WSS21 are newly observed on own API34/5612 with exact APK/input graph.",
+  "fresh_android_build_inputs_sha256": "4568d3e897d4ee1fc1b2c166c3b23bcb8543fc308f40b4cad90e360b9c89fe64"
+}

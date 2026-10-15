@@ -40,8 +40,8 @@ async function listCase(name,left,right,first,retired=false){
 async function refreshCase(name,cleanup,fail=false,consumer=false){
  let primary,removes=0;globalThis.window={__TAURI_INTERNALS__:{invoke:async(command)=>{if(command==='credential_read')return 'public-owned-refresh-fixture';if(command==='native_https')return [401,{'content-type':'application/json'},[...new TextEncoder().encode('{"error":{"code":"AUTH_SESSION_REVOKED"}}')]];assert.equal(command,'credential_remove');removes++;if(fail)throw cleanup==='same-primary'?primary:cleanup;}}};
  const auth=owner(),request=auth.request.bind(auth);auth.request=async(...args)=>{try{return await request(...args);}catch(error){primary=error;throw error;}};
- const w=new Workspace();w.auth=auth;w.state.session=session;let error,failed=false;
- await (consumer?w.refresh():auth.refresh()).catch(root=>{failed=true;error=root;});await tick();assert(primary instanceof ApiFailure);assert.equal(primary.kind,'session_expired');
+ const w=new Workspace();w.auth=auth;w.state.session=session;let closed=0;w.sync={close:async()=>{closed++;}};let error,failed=false;
+ await (consumer?w.refresh():auth.refresh()).catch(root=>{failed=true;error=root;});await tick();if(consumer){assert.equal(w.state.session,null);assert.equal(w.auth,null);assert.equal(w.sync,null);assert.equal(closed,1);const before=removes;await w.refresh();assert.equal(removes,before);}assert(primary instanceof ApiFailure);assert.equal(primary.kind,'session_expired');
  if(consumer&&cleanup==='Secure credential storage unavailable'){assert.equal(failed,false);assert.equal(w.state.error,'Operation unavailable');assert.equal(w.state.busy,false);assert.equal(removes,1,'known cleanup aggregate must not trigger extra credential retry');}
  else {assert(failed);const graph=roots(error);assert(graph.has(primary));if(fail&&cleanup!=='same-primary'){assert(error instanceof AggregateError);assert(graph.has(cleanup));}else assert.equal(error,primary);assert.equal(removes,fail?1:2);if(consumer)assert.equal(w.state.busy,false);}
  checks++;console.log(name+' PASS');

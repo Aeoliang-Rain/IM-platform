@@ -1,0 +1,58 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.2959999999984575,
+    "output": "final-static-0.txt",
+    "stored_output_sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989"
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.5160000000032596,
+    "output": "final-static-1.txt",
+    "stored_output_sha256": "7bc09f2f6da417981d82791cac34b94e0f2aa810c38c7d760f556e05f1e9a277"
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.34399999999732245,
+    "output": "final-static-2.txt",
+    "stored_output_sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426"
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/architecture",
+      "-v"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 16.531000000002678,
+    "output": "final-static-3.txt",
+    "stored_output_sha256": "1140fe6547e044ac69685ba9ec22c1159d1e288ba96570e64af63d243308b379"
+  }
+]
