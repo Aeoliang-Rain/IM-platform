@@ -1,0 +1,31 @@
+{
+  "result": "PASS_BINDING_ONLY",
+  "base": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c",
+  "candidate": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "reviews": [
+    {
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-63f685d\\final-receipt.json",
+      "sha256": "331eff21a35b60653d7618dddf7be51f38ad05d29c2b8043cbba16074b36da3e",
+      "artifacts_verified": 275,
+      "result": "PASS_REGULAR_REVIEW_ONLY"
+    },
+    {
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\error-audit-63f685d\\final-receipt.json",
+      "sha256": "598f58af70b83763eadb28fbf08a0cdf244cf731426e4b228e3b416470f122b6",
+      "artifacts_verified": 311,
+      "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY"
+    }
+  ],
+  "candidate_main_tree_equal": true,
+  "sync_checks": {
+    "head": true,
+    "branch": true,
+    "status": true,
+    "cachedDiff": true,
+    "unknownBytes": true,
+    "unrelatedIndexFlags": true
+  },
+  "ci_input_seals_verified": 3,
+  "acceptance_snapshot_note": "product-acceptance.json safeMainSync PENDING/taskDone false precedes immutable later product-main-sync.json PASS; neither snapshot is rewritten.",
+  "main_head_verified": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c"
+}

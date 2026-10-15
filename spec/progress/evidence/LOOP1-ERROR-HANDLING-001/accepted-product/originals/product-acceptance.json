@@ -1,0 +1,71 @@
+{
+  "result": "PASS",
+  "phase": "product",
+  "candidateSHA": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "actualMainSHA": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c",
+  "allRequiredJobsSuccess": true,
+  "regularReviewSHA": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "errorAuditSHA": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "regularReviewResult": "PASS",
+  "errorAuditResult": "PASS",
+  "reviews": [
+    {
+      "role": "regular",
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-63f685d\\final-receipt.json",
+      "sha256": "331eff21a35b60653d7618dddf7be51f38ad05d29c2b8043cbba16074b36da3e",
+      "result": "PASS_REGULAR_REVIEW_ONLY",
+      "actor": "/root/regular_review_63f685d",
+      "actor_source": "Root observed live delegation, Recorder review_started and final delivery identity",
+      "independence": "Fresh context; did not implement/fix/review prior candidate; no delegated reviewers or own fixes",
+      "candidate_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "artifacts_verified": 275
+    },
+    {
+      "role": "specialized",
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\error-audit-63f685d\\final-receipt.json",
+      "sha256": "598f58af70b83763eadb28fbf08a0cdf244cf731426e4b228e3b416470f122b6",
+      "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY",
+      "actor": "/root/error_audit_63f685d",
+      "actor_source": "Root observed live delegation, Recorder review_started and final delivery identity",
+      "independence": "New context; did not implement, Fix, or regular-review candidate; no inherited semantic verdict",
+      "candidate_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "artifacts_verified": 311
+    }
+  ],
+  "pr": "https://github.com/nilesthump/IM-platform/pull/40",
+  "mergeMethod": "Protected merge with exact match-head; no admin bypass",
+  "candidateTree": "21f1ed5cfc5a296027eef68272c66a13966ad638",
+  "actualMainTree": "21f1ed5cfc5a296027eef68272c66a13966ad638",
+  "ci": [
+    {
+      "run": 38732968440,
+      "attempt": 1,
+      "event": "push",
+      "head": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "jobs": 14,
+      "evidence": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-push-run-38732968440-attempt-1-20261015T122113499122Z.json",
+      "sha256": "69c7bb30f0172e723b2467d3ebe848da3ca1af1257d4cbb66fedbef3f26dce56"
+    },
+    {
+      "run": 38733066327,
+      "attempt": 1,
+      "event": "pull_request",
+      "head": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "jobs": 14,
+      "evidence": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-pr-run-38733066327-attempt-1-20261015T122343532061Z.json",
+      "sha256": "be943cf8660d071f45c73e7c1c15e3aa0779ce6c01801fefe0e391ba91d2d5df"
+    },
+    {
+      "run": 38734397144,
+      "attempt": 1,
+      "event": "push",
+      "head": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c",
+      "jobs": 14,
+      "evidence": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-main-run-38734397144-attempt-1-20261015T123352583450Z.json",
+      "sha256": "c112222f3ea1015716f94158f64bdff647456b4b1fb69bdca1b086d83740336a"
+    }
+  ],
+  "safeMainSync": "PENDING",
+  "taskDone": false,
+  "s2Gate": "OPEN"
+}

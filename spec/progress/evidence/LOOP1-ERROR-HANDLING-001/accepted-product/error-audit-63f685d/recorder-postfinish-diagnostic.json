@@ -1,0 +1,46 @@
+{
+  "discovered_after_finish": true,
+  "original_stream_unchanged": true,
+  "unmatched_event": {
+    "data": {
+      "argv": [
+        "Get-ChildItem",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/",
+        "-Name"
+      ],
+      "command_id": "C-bc21570f-0e4b-4895-aa6d-41439a7f9eb2",
+      "cwd": ".",
+      "secret_redaction_applied": false
+    },
+    "event_hash": "10de9907d6059db86068422b361d779f64f98565f111434dbe56c016916bb86d",
+    "event_type": "command_started",
+    "previous_event_hash": "5114aba562646ed7d656863b7722ba0e137a1f0b8d95064d774ed775dbdc7c2c",
+    "role": "review",
+    "run_id": "R-SPECIAL-63F685D",
+    "schema_version": "1.0.0",
+    "seq": 177,
+    "task_id": "LOOP1-ERROR-HANDLING-001",
+    "timestamp": "2026-10-15T12:02:46.402981Z"
+  },
+  "observed_launcher_failure": {
+    "tool_output_chunk_id": "da6d3e",
+    "process_exit": 1,
+    "error": "ERROR: [WinError 2] 系统找不到指定的文件。",
+    "meaning": "PowerShell cmdlet passed as executable; launch failed before command process existed; Recorder left command_started without command_finished"
+  },
+  "subsequent_real_read": {
+    "tool_output_chunk_id": "c26b54",
+    "exit": 0,
+    "method": "explicit child bundled pwsh Get-ChildItem",
+    "directory": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/"
+  },
+  "postfinish_bookkeeping_failure": {
+    "tool_output_chunk_id": "3f02c6",
+    "exit": 1,
+    "source": "finish-recorder.py line18",
+    "assertion": "counts.get('command_started')==counts.get('command_finished')",
+    "note": "Run finish and validate commands had already succeeded; no rerun or retroactive finish inserted"
+  },
+  "semantic_conclusion_affected": false,
+  "trace_completeness": "incomplete; explicitly disclosed pre-recorder work and one failed launcher gap"
+}

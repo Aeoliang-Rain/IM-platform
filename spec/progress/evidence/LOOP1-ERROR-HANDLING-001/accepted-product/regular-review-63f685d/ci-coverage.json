@@ -1,0 +1,37 @@
+{
+  "candidate": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "base": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+  "path_count": 1753,
+  "logical_selectors": {
+    "go": true,
+    "java": true,
+    "web": true,
+    "desktop": true,
+    "mobile": true,
+    "shared": true,
+    "old_client": true,
+    "plugin": true,
+    "migration": true,
+    "compatibility": true,
+    "deploy": true,
+    "architecture": true,
+    "source_go": true,
+    "source_java": true
+  },
+  "workflow_sha256": "f972042f51af0f28b09f01567391c3be812d1ec84571d09102c0ae5ae1c8fb72",
+  "actual_hosted_invocation": "PENDING; no current candidate hosted run started by this review",
+  "verified_entrypoints": {
+    "go": "DB-enabled go test ./..., race, vet in current workflow",
+    "desktop": "Existing GUI/Auth and Send/Sync/Read/stream controls have direct or indirect workflow entry; platform native jobs remain required",
+    "web": "Full tests/clients/web/verify.py includes compiled Web, errors and stream controls",
+    "mobile": "Existing API34 storage/Send/Sync/GUI task entrypoints; historical source graph is separately qualified"
+  },
+  "local_only_unverified_hosted": [
+    "tests/clients/errors/desktop_retirement_consumers.mjs (39)",
+    "tests/clients/errors/desktop_owner_retirement.mjs (12)",
+    "tests/clients/errors/desktop_parallel.mjs (37)",
+    "Android ErrorHandlingInstrumentation",
+    "Android RefreshOwnerInstrumentation"
+  ],
+  "disposition": "Coverage limitation stated; Task does not require a separate hosted job for every local control. Missing current exact-head hosted acceptance still blocks Task/integration/Gate completion."
+}

@@ -1,0 +1,122 @@
+{
+  "result": "PASS_OBSERVED_PRODUCT_ACCEPTANCE_BINDINGS",
+  "product_candidate": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "actual_main": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c",
+  "tree_equal": true,
+  "reviews": [
+    {
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-63f685d\\final-receipt.json",
+      "sha256": "331eff21a35b60653d7618dddf7be51f38ad05d29c2b8043cbba16074b36da3e",
+      "artifacts_verified": 275,
+      "result": "PASS_REGULAR_REVIEW_ONLY"
+    },
+    {
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\error-audit-63f685d\\final-receipt.json",
+      "sha256": "598f58af70b83763eadb28fbf08a0cdf244cf731426e4b228e3b416470f122b6",
+      "artifacts_verified": 311,
+      "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY"
+    }
+  ],
+  "ci": [
+    {
+      "run": 38732968440,
+      "sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "event": "push",
+      "branch": "task/LOOP1-ERROR-HANDLING-001",
+      "url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440",
+      "actual_jobs": 14,
+      "all_success": true,
+      "normal_os_conditional_skips": [
+        [
+          "desktop (ubuntu-latest)",
+          "Approved Windows GUI assembly and auth controls"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Native Tauri prerequisites and approved Rust compiler"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Actual TypeScript Repository on SQLx SQLite"
+        ]
+      ],
+      "source": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-push-run-38732968440-attempt-1-20261015T122113499122Z.json",
+      "sha256": "69c7bb30f0172e723b2467d3ebe848da3ca1af1257d4cbb66fedbef3f26dce56"
+    },
+    {
+      "run": 38733066327,
+      "sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "event": "pull_request",
+      "branch": "task/LOOP1-ERROR-HANDLING-001",
+      "url": "https://github.com/nilesthump/IM-platform/actions/runs/38733066327",
+      "actual_jobs": 14,
+      "all_success": true,
+      "normal_os_conditional_skips": [
+        [
+          "desktop (windows-latest)",
+          "Native Tauri prerequisites and approved Rust compiler"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Actual TypeScript Repository on SQLx SQLite"
+        ],
+        [
+          "desktop (ubuntu-latest)",
+          "Approved Windows GUI assembly and auth controls"
+        ]
+      ],
+      "source": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-pr-run-38733066327-attempt-1-20261015T122343532061Z.json",
+      "sha256": "be943cf8660d071f45c73e7c1c15e3aa0779ce6c01801fefe0e391ba91d2d5df"
+    },
+    {
+      "run": 38734397144,
+      "sha": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c",
+      "event": "push",
+      "branch": "main",
+      "url": "https://github.com/nilesthump/IM-platform/actions/runs/38734397144",
+      "actual_jobs": 14,
+      "all_success": true,
+      "normal_os_conditional_skips": [
+        [
+          "desktop (ubuntu-latest)",
+          "Approved Windows GUI assembly and auth controls"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Native Tauri prerequisites and approved Rust compiler"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Actual TypeScript Repository on SQLx SQLite"
+        ]
+      ],
+      "source": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-main-run-38734397144-attempt-1-20261015T123352583450Z.json",
+      "sha256": "c112222f3ea1015716f94158f64bdff647456b4b1fb69bdca1b086d83740336a"
+    }
+  ],
+  "protected_merge_guard": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-merge-guard.json",
+    "sha256": "0695312fda566bff461b225508146932210c4a52377f1eb90c2c58acebab987f"
+  },
+  "actual_merged_pr": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\product-pr40-actual.json",
+    "sha256": "93edb9155f9e13ebdce6a2a34df9109b9a3f41a56fac0da96e4a7bde6c4afc27",
+    "merged_at": "2026-10-15T12:24:27Z"
+  },
+  "production_bytes_and_committed_blobs_verified": 185,
+  "main_preservation_current_matches_second_snapshot": true,
+  "main_unknown_original_count": 782,
+  "main_snapshot": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\main-preservation-before-admin.json",
+    "sha256": "f5769aa29038595dae2837f117c61db521ced3b0bfffc036a0fc1416a9f79722"
+  },
+  "sync_proof": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\product-main-sync.json",
+    "sha256": "81996463bbc8a561f7bbcb4e6aa8c4c27cf3574890a0c9af7dad0090a29b7111"
+  },
+  "notes": [
+    "Verification of existing external evidence and actual tree/state, not an independent source review.",
+    "Wrong initial workflow path read failed; subsequent discovered ci.yml was inspected directly. Initial outer PowerShell command exited0 after independent later reads, so that is not a successful workflow read.",
+    "No product or test changes; no new runtime execution required for this administrative metadata scope."
+  ]
+}

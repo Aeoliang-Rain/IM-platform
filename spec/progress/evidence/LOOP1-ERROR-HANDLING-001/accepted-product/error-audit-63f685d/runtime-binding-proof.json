@@ -1,0 +1,94 @@
+{
+  "candidate_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "production_git_blobs_independently_checked": 185,
+  "owned_git_blobs_independently_checked": 21,
+  "android_graph_sha256": "4568d3e897d4ee1fc1b2c166c3b23bcb8543fc308f40b4cad90e360b9c89fe64",
+  "android_current_main_test_config_inputs_independently_checked": 59,
+  "android_runtime": "Historical owned API34/5612 owner10 plus HTTP32/WSS21; not executed in this specialist run. Does not claim current Desktop graph unchanged.",
+  "archive_entry_checks": [
+    {
+      "manifest": "spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-retirement-gateway\\original-review-archive.json",
+      "archive_sha256": "29f214008cff465e47d58162f0688d3fc2fdde067b1ff3986cb4fde506458176",
+      "verified_entries": 316
+    },
+    {
+      "manifest": "spec\\progress\\evidence\\LOOP1-ERROR-HANDLING-001\\fix-retirement-gateway\\local-evidence-manifest.json",
+      "archive_sha256": "b1d2301cd040a1467dabdb8da2d4aaa38d0995ad931a4ce0f7baa6bb0e1b0c6d",
+      "verified_entries": 329
+    }
+  ],
+  "live_command_metadata": [
+    {
+      "label": "go-race",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 31.563,
+      "output": "go-race.txt",
+      "sha256": "15a60682a047fc567bd09041abc7011c79c5adbc20f379b1feaa4657919df1ba",
+      "bytes": 272
+    },
+    {
+      "label": "live-go-all-final",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/live_go.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 39.109,
+      "output": "live-go-all-final.txt",
+      "sha256": "1eb1fd7ca64157add3ea800bd02024467d857ae85fedbc666ace84348fa130b7",
+      "bytes": 32378
+    },
+    {
+      "label": "go-vet",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "vet",
+        "-mod=readonly",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 2.828,
+      "output": "go-vet.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "label": "go-race-final",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 12.047,
+      "output": "go-race-final.txt",
+      "sha256": "48926f42eb84b9181ff58e35cccb11a5a8821872b64d227d96239f027dddca92",
+      "bytes": 272
+    }
+  ],
+  "native_scope": "Native SQLx/Repository/SQL protected responsibility inputs exact baseline as recorded in own protected-proof.json. No native runtime rerun or runtime PASS claimed.",
+  "inherited_semantic_verdict": false
+}
