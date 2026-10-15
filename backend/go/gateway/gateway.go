@@ -5,6 +5,8 @@ import (
 	"context"
 	"encoding/json"
 	"io"
+	"log"
+	"net"
 	"net/http"
 	"regexp"
 	"strings"
@@ -181,7 +183,15 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 			if c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch})) != nil {
 				return
 			}
-			go h.watch(c, cl)
+			go func() {
+				if err := h.watch(c, cl); err != nil {
+					if watchTransportFailure(err) {
+						log.Print("Session validation transport failed; connection closed")
+						return
+					}
+					panic(err)
+				}
+			}()
 			continue
 		}
 		// A bound connection uses its validated binding, token expiry and the
@@ -207,25 +217,59 @@ func (h *hub) reject(c *connection, id, code, message string) {
 	_ = c.send(frame("auth.ack", id, map[string]any{"status": "rejected", "error": map[string]string{"code": code, "message": "Request rejected"}}))
 }
 
-func (h *hub) watch(c *connection, cl shared.Claims) {
+func (h *hub) watch(c *connection, cl shared.Claims) error {
+	defer c.close()
 	ticker := time.NewTicker(time.Second)
 	defer ticker.Stop()
 	for {
 		select {
 		case <-c.done:
-			return
+			return nil
 		case <-ticker.C:
 			ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 			_, err := h.auth.authenticate(ctx, c.token)
 			if err != nil {
+				if _, known := err.(shared.Error); !known {
+					cancel()
+					return err
+				}
 				reason := h.auth.revocationReason(ctx, cl, err)
 				cancel()
 				h.revoke(cl.SessionID, reason)
-				return
+				return nil
 			}
 			cancel()
 		}
 	}
+}
+
+// Default pgx can join connection attempts. Close the unverified connection
+// for known transport failure, but never hide an internal branch of that tree.
+func watchTransportFailure(err error) bool {
+	known := false
+	for err != nil {
+		if joined, ok := err.(interface{ Unwrap() []error }); ok {
+			branches := joined.Unwrap()
+			if len(branches) == 0 {
+				return false
+			}
+			for _, branch := range branches {
+				if !watchTransportFailure(branch) {
+					return false
+				}
+			}
+			return true
+		}
+		if _, ok := err.(net.Error); ok {
+			known = true
+		}
+		if wrapped, ok := err.(interface{ Unwrap() error }); ok {
+			err = wrapped.Unwrap()
+			continue
+		}
+		return known
+	}
+	return false
 }
 
 func writeError(w http.ResponseWriter, r *http.Request, err error) {

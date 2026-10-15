@@ -64,7 +64,7 @@ export class Workspace {
     if(!failures.length || !failures.every(root=>root instanceof ApiFailure || root instanceof WireFailure || root instanceof SyncFailure || root instanceof SendStorageFailure || root instanceof NativeCapabilityFailure))throw error;
     if(!active)return;
     const authentication=error instanceof ApiFailure?error:undefined;
-    this.publish({error:authentication?authentication.message:"Operation unavailable"});if(authentication?.kind==="session_expired")void this.expire();}
+    try{this.publish({error:authentication?authentication.message:"Operation unavailable"});}catch(observer){if(observer===error)throw error;throw new AggregateError([error,observer],"Operation and observer failed");}if(authentication?.kind==="session_expired")void this.expire();}
   private async updateList(repo:Repository,g:number){
     const revision=++this.listRevision;
     try{const ids=[...new Set([...await repo.conversationIds(),...this.state.friends.map(f=>f.directConversationId)])];
@@ -81,26 +81,63 @@ export class Workspace {
     if(this.state.busy)return false;
     if(password!==confirmation){this.publish({error:"Passwords do not match"});return false;}
     if(!/^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$/.test(username)||[...password].length<12||[...password].length>256){this.publish({error:"Use a 3–64 character username and a 12–256 character password"});return false;}
-    const op=++this.operation;this.publish({busy:true,error:null});
-    try{await new Auth(this.state.endpoint).register(username,password);if(op!==this.operation)return false;return true;}
-    catch(error){this.failure(error,op===this.operation);return false;}finally{if(op===this.operation)this.publish({busy:false});}
+    const op=++this.operation;let completed=false,failed=false,rejected=false,failure:unknown;
+    try{this.publish({busy:true,error:null});await new Auth(this.state.endpoint).register(username,password);completed=op===this.operation;}
+    catch(error){failed=true;failure=error;try{this.failure(error,op===this.operation);}catch(propagated){failure=propagated;rejected=true;}}
+    finally{if(op===this.operation)try{this.publish({busy:false});}catch(error){failure=failed&&error!==failure?new AggregateError([failure,error],"Registration and observer failed"):error;rejected=true;}}
+    if(rejected)throw failure;return completed;
   }
-  async login(endpoint:string,username:string,password:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});await this.stop();const g=this.generation;try{await this.auth?.clear();if(op!==this.operation)return;const base=origin(endpoint);this.publish({endpoint:base});const owner=new Auth(base);this.auth=owner;const session=await owner.login(username,password);if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}
-  async restore(endpoint:string){if(this.state.busy)return;const op=++this.operation;this.publish({busy:true,error:null});try{await this.stop();const g=this.generation,base=origin(endpoint);this.publish({endpoint:base});const auth=new Auth(base);this.auth=auth;const account=await auth.savedAccount();if(op!==this.operation)return;if(!account){this.publish({error:"No saved session for this server"});return;}const repo=accountRepository(account);await repo.initialize();const ids=await repo.conversationIds(),selected="",messages:ReadonlyArray<ReadonlyArray<string|null>>=[];if(op!==this.operation)return;this.offlineRepository=repo;this.publish({offlineAccount:account,conversations:ids,selected,messages,error:"Showing saved history while the secure session resumes"});await this.updateList(repo,this.generation);const session=await auth.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}
-  async refresh(){if(this.state.busy||!this.auth)return;const op=++this.operation;const owner=this.auth,g=this.generation;let failed=false,failure:unknown;this.publish({busy:true,error:null});try{const session=await owner.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){
+  async login(endpoint:string,username:string,password:string){if(this.state.busy)return;const op=++this.operation;let failed=false,failure:unknown;
+    try{this.publish({busy:true,error:null});await this.stop();await this.auth?.clear();if(op!==this.operation)return;const base=origin(endpoint);this.publish({endpoint:base});const owner=new Auth(base);this.auth=owner;const session=await owner.login(username,password);if(op===this.operation)await this.bind(session,op);}catch(error){failed=true;failure=error;}
+    finally{if(op===this.operation)try{this.publish({busy:false});}catch(error){failure=failed&&error!==failure?new AggregateError([failure,error],"Login and observer failed"):error;failed=true;}}
+    if(failed)this.failure(failure,op===this.operation);
+  }
+  async restore(endpoint:string){if(this.state.busy)return;const op=++this.operation;let failed=false,failure:unknown;
+    try{this.publish({busy:true,error:null});await this.stop();const base=origin(endpoint);this.publish({endpoint:base});const auth=new Auth(base);this.auth=auth;const account=await auth.savedAccount();if(op!==this.operation)return;
+      if(!account)this.publish({error:"No saved session for this server"});
+      else{const repo=accountRepository(account);await repo.initialize();const ids=await repo.conversationIds(),selected="",messages:ReadonlyArray<ReadonlyArray<string|null>>=[];if(op!==this.operation)return;this.offlineRepository=repo;this.publish({offlineAccount:account,conversations:ids,selected,messages,error:"Showing saved history while the secure session resumes"});await this.updateList(repo,this.generation);const session=await auth.refresh();if(op===this.operation)await this.bind(session,op);}
+    }catch(error){failed=true;failure=error;}
+    finally{if(op===this.operation)try{this.publish({busy:false});}catch(error){failure=failed&&error!==failure?new AggregateError([failure,error],"Restore and observer failed"):error;failed=true;}}
+    if(failed)this.failure(failure,op===this.operation);
+  }
+  async refresh(){if(this.state.busy||!this.auth)return;const op=++this.operation;const owner=this.auth,g=this.generation;let failed=false,failure:unknown;try{this.publish({busy:true,error:null});const session=await owner.refresh();if(op===this.operation)await this.bind(session,op);}catch(error){
     failed=true;failure=error;
     if(op===this.operation&&owner===this.auth&&g===this.generation&&!owner.session){this.auth=null;try{await this.stop();}catch(cleanup){if(cleanup!==error)failure=new AggregateError([error,cleanup],"Refresh and retirement failed");}}
   }finally{if(op===this.operation)try{this.publish({busy:false});}catch(cleanup){failure=failed&&cleanup!==failure?new AggregateError([failure,cleanup],"Refresh and observer failed"):cleanup;failed=true;}}
     if(failed)this.failure(failure,op===this.operation);
   }
-  async expire(){const op=++this.operation,owner=this.auth;this.auth=null;await this.stop();try{await owner?.clear();}catch(error){this.failure(error,op===this.operation);/* Surface secure cleanup failure. */if(op===this.operation)this.publish({busy:false,error:"Session expired; secure credential cleanup failed"});return;}if(op===this.operation)this.publish({busy:false,error:"Session expired. Sign in again."});}
-  async logout(){const op=++this.operation;this.publish({busy:true});const auth=this.auth;this.auth=null;const request=auth?.logout();await this.stop();const g=this.generation;try{await request;if(op===this.operation)this.publish({error:null});}catch(error){this.failure(error,op===this.operation);}finally{if(op===this.operation)this.publish({busy:false});}}
+  async expire(){const op=++this.operation,owner=this.auth;this.auth=null;const failures:unknown[]=[];let cleanupFailed=false;
+    try{await this.stop();}catch(error){failures.push(error);}
+    try{await owner?.clear();}catch(error){cleanupFailed=true;if(!failures.includes(error))failures.push(error);}
+    if(op===this.operation)try{this.publish({busy:false,error:cleanupFailed?"Session expired; secure credential cleanup failed":"Session expired. Sign in again."});}catch(error){if(!failures.includes(error))failures.push(error);}
+    if(failures.length)this.failure(failures.length===1?failures[0]:new AggregateError(failures,"Expiry cleanup failed"),false);
+  }
+  async logout(){const op=++this.operation,auth=this.auth;this.auth=null;const failures:unknown[]=[];
+    try{this.publish({busy:true});}catch(error){failures.push(error);}
+    const settled=await Promise.allSettled([auth?.logout(),this.stop()]);
+    for(const result of settled)if(result.status==="rejected"&&!failures.includes(result.reason))failures.push(result.reason);
+    if(op===this.operation)try{this.publish({busy:false,...(!failures.length?{error:null}:{})});}catch(error){if(!failures.includes(error))failures.push(error);}
+    if(failures.length){const failure=failures.length===1?failures[0]:new AggregateError(failures,"Logout retirement failed");
+      this.failure(failure,op===this.operation);}
+
+  }
   closeConversation(){this.publish({selected:"",messages:[]});}
   async open(id:string){if(this.state.page==="Chat"&&this.state.selected===id){this.closeConversation();return;}const g=this.generation;this.publish({selected:id,page:"Chat",messages:[],error:null});try{if(this.offlineRepository){const messages=await this.offlineRepository.messages(id);if(g===this.generation&&this.state.selected===id)this.publish({messages});}else await this.sync?.openConversation(id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Sync unavailable; showing local history"});}}
   async send(text:string){if(!this.state.selected||!this.sync)return;const g=this.generation,owner=this.sync;try{const id=this.state.selected;await owner.send.send(id,text);if(g===this.generation){this.activity.set(id,Date.now());if(this.repository)await this.updateList(this.repository,g);}}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Message could not be saved"});}}
   async retry(id:string){const g=this.generation,owner=this.sync;if(!owner)return;try{await owner.send.retry(this.state.selected,id);}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Retry unavailable"});}}
   async reconnect(){const g=this.generation,owner=this.sync;if(!owner)return;try{owner.send.connect(this.state.endpoint.replace(/^https:/,"wss:")+"/v1/ws");await owner.synchronize();}catch(error){this.failure(error,g===this.generation);if(g===this.generation)this.publish({error:"Connection unavailable"});}}
   disconnect(){this.sync?.send.disconnect();}
-  async search(query:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,results:[],error:null});try{const results=await auth.search(query);if(g===this.generation)this.publish({results});}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}
-  async add(id:string){if(!this.auth)return;const auth=this.auth,g=this.generation;this.publish({busy:true,error:null});try{const conversation=await auth.add(id);if(g!==this.generation)return;const revision=++this.friendRevision;const friends=await auth.friends();if(g!==this.generation||auth!==this.auth)return;if(revision===this.friendRevision)this.publish({friends,conversations:[...new Set([...this.state.conversations,conversation])]});await this.open(conversation);}catch(error){this.failure(error,g===this.generation);}finally{if(g===this.generation)this.publish({busy:false});}}
+  async search(query:string){if(!this.auth)return;const auth=this.auth,g=this.generation;let failed=false,rejected=false,failure:unknown;
+    try{this.publish({busy:true,results:[],error:null});const results=await auth.search(query);if(g===this.generation)this.publish({results});}
+    catch(error){failed=true;failure=error;try{this.failure(error,g===this.generation);}catch(propagated){failure=propagated;rejected=true;}}
+    finally{if(g===this.generation)try{this.publish({busy:false});}catch(error){failure=failed&&error!==failure?new AggregateError([failure,error],"Search and observer failed"):error;rejected=true;}}
+    if(rejected)throw failure;
+  }
+  async add(id:string){if(!this.auth)return;const auth=this.auth,g=this.generation;let failed=false,rejected=false,failure:unknown;
+    try{this.publish({busy:true,error:null});const conversation=await auth.add(id);if(g!==this.generation)return;const revision=++this.friendRevision;const friends=await auth.friends();if(g!==this.generation||auth!==this.auth)return;if(revision===this.friendRevision)this.publish({friends,conversations:[...new Set([...this.state.conversations,conversation])]});await this.open(conversation);}
+    catch(error){failed=true;failure=error;try{this.failure(error,g===this.generation);}catch(propagated){failure=propagated;rejected=true;}}
+    finally{if(g===this.generation)try{this.publish({busy:false});}catch(error){failure=failed&&error!==failure?new AggregateError([failure,error],"Friend add and observer failed"):error;rejected=true;}}
+    if(rejected)throw failure;
+  }
+
 }

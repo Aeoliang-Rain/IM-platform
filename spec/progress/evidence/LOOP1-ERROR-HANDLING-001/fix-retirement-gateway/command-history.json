@@ -1,0 +1,1267 @@
+{
+  "scope": "Bounded precommit snapshot through actual final Development. Final external receipt binds ownedcommit/cleanAcceptance/postclean/Recorderfinish. All raw failures retained.",
+  "commands": [
+    {
+      "label": "baseline-frozen",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tools\\verify_frozen_architecture.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.235,
+      "output": "baseline-frozen.txt",
+      "sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989",
+      "bytes": 164
+    },
+    {
+      "label": "baseline-architecture",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 8.125,
+      "output": "baseline-architecture.txt",
+      "sha256": "7bc09f2f6da417981d82791cac34b94e0f2aa810c38c7d760f556e05f1e9a277",
+      "bytes": 206333
+    },
+    {
+      "label": "baseline-planning",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.218,
+      "output": "baseline-planning.txt",
+      "sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426",
+      "bytes": 77
+    },
+    {
+      "label": "baseline-development",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tools\\verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 19.016,
+      "output": "baseline-development.txt",
+      "sha256": "748db87e716cf019d476a2cde236888e612d0a5008398350212723d53946b067",
+      "bytes": 338
+    },
+    {
+      "label": "baseline-sequence",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/baseline.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 28.0,
+      "output": "baseline-sequence.txt",
+      "sha256": "3952c1c1fd14a64336958d621f2f1352bf29b87954c26284b53ab2330cfbeae9",
+      "bytes": 2620
+    },
+    {
+      "label": "prepare",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/prepare.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.454,
+      "output": "prepare.txt",
+      "sha256": "6596b8a08e191e62cd32bb8c3f5e9be2ba06bab75d510545ce0079248daab134",
+      "bytes": 883
+    },
+    {
+      "label": "desktop-red-compile",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-retirement-gateway\\desktop_compile.py",
+        "red"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.734,
+      "output": "desktop-red-compile.txt",
+      "sha256": "7196eede11b2965fad5f494cb35b93df09d66b5287042238dad5499b5629f868",
+      "bytes": 70
+    },
+    {
+      "label": "desktop-review-defects-reproduced",
+      "argv": [
+        "H:/node.js/node.exe",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-retirement-gateway\\logout_retirement_repro.mjs"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.313,
+      "output": "desktop-review-defects-reproduced.txt",
+      "sha256": "d61987c6e004d5cba9da0d6705cd690a60a07843ac05b92b6714df143e6bc369",
+      "bytes": 566
+    },
+    {
+      "label": "gateway-review-defect-reproduced",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "test",
+        "-mod=readonly",
+        "-overlay",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-retirement-gateway\\go-overlay.json",
+        "-count=1",
+        "-run",
+        "^TestReviewWatchUnavailableDatabaseEmitsRevoked$",
+        "-v",
+        "./gateway"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform\\backend\\go",
+      "exit": 1,
+      "elapsed_seconds": 0.219,
+      "output": "gateway-review-defect-reproduced.txt",
+      "sha256": "2c14cafbd77be4533191c4fc5d8884d8e490427a204ad08b99887362de04f52b",
+      "bytes": 95
+    },
+    {
+      "label": "reproduce-sequence",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/reproduce.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 1,
+      "elapsed_seconds": 2.469,
+      "output": "reproduce-sequence.txt",
+      "sha256": "11a9b348a093c814fe61ec3ff48ee15fec1b2b50ac0825209cbb24e216096b7b",
+      "bytes": 1569
+    },
+    {
+      "label": "gateway-review-defect-reproduced-cwd",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-overlay",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/go-overlay.json",
+        "-count=1",
+        "-run",
+        "^TestReviewWatchUnavailableDatabaseEmitsRevoked$",
+        "-v",
+        "./gateway"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 9.734,
+      "output": "gateway-review-defect-reproduced-cwd.txt",
+      "sha256": "8a21250b0ba47a2565392b9c3527738d15f654c3699cbb0b6007bb3fd2fbd305",
+      "bytes": 421
+    },
+    {
+      "label": "install-desktop-test",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/install_desktop_test.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "install-desktop-test.txt",
+      "sha256": "019da812d72bd6f7583aea9ed07f5bd5943fbb0b1580bf33b2ee45851fb05277",
+      "bytes": 89
+    },
+    {
+      "label": "desktop-retirement-red",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_retirement_consumers.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 1,
+      "elapsed_seconds": 0.25,
+      "output": "desktop-retirement-red.txt",
+      "sha256": "62dfa043c1b8f9e6303bc96c5b92e3ff7a405c6446531b6e8837278856f9db16",
+      "bytes": 993
+    },
+    {
+      "label": "apply-fix",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/fix.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.234,
+      "output": "apply-fix.txt",
+      "sha256": "78e4670f1d88f86728ecf53a0131f6292ad153b5b36a1f8de65c898d0be1921f",
+      "bytes": 162
+    },
+    {
+      "label": "desktop-green-compile",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop_compile.py",
+        "green"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.812,
+      "output": "desktop-green-compile.txt",
+      "sha256": "7196eede11b2965fad5f494cb35b93df09d66b5287042238dad5499b5629f868",
+      "bytes": 70
+    },
+    {
+      "label": "desktop-retirement-green",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_retirement_consumers.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 1,
+      "elapsed_seconds": 0.563,
+      "output": "desktop-retirement-green.txt",
+      "sha256": "a145e239f484d7f233ca1c1c26913e58ca3325e6e2b46e6f3b27e4e6111bedb5",
+      "bytes": 1152
+    },
+    {
+      "label": "correct-new-test-expectation",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/fix_test_expectation.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.188,
+      "output": "correct-new-test-expectation.txt",
+      "sha256": "47e1ddeaa2abc5528c3997f238514bc530f002e78a65be64818f3fa462613ddd",
+      "bytes": 174
+    },
+    {
+      "label": "desktop-retirement-green2",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_retirement_consumers.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.625,
+      "output": "desktop-retirement-green2.txt",
+      "sha256": "ba7aa303e8c194b5ddb806995bf4176e54c618f39dad9b5de574997a012d18c8",
+      "bytes": 974
+    },
+    {
+      "label": "install-go-tests",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/install_go_test.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.203,
+      "output": "install-go-tests.txt",
+      "sha256": "962e371942129afe869a577816b4b58a177dcefe384065f39b1cf696fadb6d90",
+      "bytes": 163
+    },
+    {
+      "label": "gateway-focused",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-run",
+        "TestWatch|TestFailedWebSocketWrite|TestRevocationReason",
+        "-v",
+        "./gateway"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 6.453,
+      "output": "gateway-focused.txt",
+      "sha256": "92c33b221c8d33fd6306a486cf3b90a57602359b1b787ba594fe1a7d9036a56a",
+      "bytes": 2612
+    },
+    {
+      "label": "desktop-original-owner12",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\errors\\desktop_owner_retirement.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.312,
+      "output": "desktop-original-owner12.txt",
+      "sha256": "2eb7fc5665f9dc88940f408e2bc6ab24fe91c010c53cec6d1966b8819265ab89",
+      "bytes": 445
+    },
+    {
+      "label": "desktop-original-parallel37",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\errors\\desktop_parallel.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "desktop-original-parallel37.txt",
+      "sha256": "58be1702cb1a417851c523415ae3ed4b285b248adac77ba992a9cdcd37524466",
+      "bytes": 1517
+    },
+    {
+      "label": "desktop-original-auth",
+      "argv": [
+        "H:/node.js/node.exe",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-retirement-gateway\\original-auth-linked.mjs"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.266,
+      "output": "desktop-original-auth.txt",
+      "sha256": "1ea4f78ce1368c14f04a1b45ae7ac04eab0c5352aa079222121bf2cf0e8c0b6a",
+      "bytes": 1444
+    },
+    {
+      "label": "desktop-original-controls",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop_controls.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.031,
+      "output": "desktop-original-controls.txt",
+      "sha256": "232428f2800ccd5cae4d99c0df62db2967255037df4ec70475e8e40d8d32d4db",
+      "bytes": 1483
+    },
+    {
+      "label": "go-all",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-v",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 7.5,
+      "output": "go-all.txt",
+      "sha256": "8663719957fa03147718fe27786d807b96ea9f9df83a539cfab42afa900aae60",
+      "bytes": 24586
+    },
+    {
+      "label": "go-race",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 31.563,
+      "output": "go-race.txt",
+      "sha256": "15a60682a047fc567bd09041abc7011c79c5adbc20f379b1feaa4657919df1ba",
+      "bytes": 272
+    },
+    {
+      "label": "metadata-inspect",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/inspect_metadata.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.219,
+      "output": "metadata-inspect.txt",
+      "sha256": "8f8f6e06ffba90d990c027f114f0d1f4e231e3250ec3a0f706bfca013f65e537",
+      "bytes": 38297
+    },
+    {
+      "label": "live-go-all",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/live_go.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 1,
+      "elapsed_seconds": 49.219,
+      "output": "live-go-all.txt",
+      "sha256": "1cd0c75ed3645880717e56114e4d3af27d4c4b730da9aa232eb6d9b9943e9f0c",
+      "bytes": 32897
+    },
+    {
+      "label": "refine-current-controls",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/refine.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.203,
+      "output": "refine-current-controls.txt",
+      "sha256": "fa29a9bfbf3cfa702a7b7e1968562305a7302b384fe1cc38ac90764dd36899bf",
+      "bytes": 233
+    },
+    {
+      "label": "gateway-focused-final",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-count=1",
+        "-run",
+        "TestWatch|TestFailedWebSocketWrite|TestRevocationReason",
+        "-v",
+        "./gateway"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 8.391,
+      "output": "gateway-focused-final.txt",
+      "sha256": "ee6383e99bceded1beb3dc36c731acf4b79398aa0db78f4ceebcadfb3a84d58a",
+      "bytes": 2885
+    },
+    {
+      "label": "live-go-all-final",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/live_go.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 39.109,
+      "output": "live-go-all-final.txt",
+      "sha256": "1eb1fd7ca64157add3ea800bd02024467d857ae85fedbc666ace84348fa130b7",
+      "bytes": 32378
+    },
+    {
+      "label": "nav-summary",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/nav_summary.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.188,
+      "output": "nav-summary.txt",
+      "sha256": "387d7fa564c2de46c4c3ecb4a23b0b67613f882bb6d5a1477b0a9a0068c1a057",
+      "bytes": 9285
+    },
+    {
+      "label": "go-vet",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "vet",
+        "-mod=readonly",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 2.828,
+      "output": "go-vet.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "label": "go-race-final",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "H:/.codex/worktrees/err/IM-platform/backend/go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 12.047,
+      "output": "go-race-final.txt",
+      "sha256": "48926f42eb84b9181ff58e35cccb11a5a8821872b64d227d96239f027dddca92",
+      "bytes": 272
+    },
+    {
+      "label": "bind-current-inputs",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/bind_inputs.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 1,
+      "elapsed_seconds": 10.109,
+      "output": "bind-current-inputs.txt",
+      "sha256": "d3b855a502e7a2e0eceaef1c061d64737628b26aab584deaaf8df304daac4bb5",
+      "bytes": 1042
+    },
+    {
+      "label": "verify-current-bindings",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/verify_bindings.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 7.859,
+      "output": "verify-current-bindings.txt",
+      "sha256": "675f867e0b924b13821304b27ec3a2276813bda9f318416c5b1333096b822525",
+      "bytes": 560
+    },
+    {
+      "label": "final-frozen",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tools\\verify_frozen_architecture.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "final-frozen.txt",
+      "sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989",
+      "bytes": 164
+    },
+    {
+      "label": "final-architecture",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.172,
+      "output": "final-architecture.txt",
+      "sha256": "4f65e9536ce23c00e1564e10630e385de25f2eed54724fd9e64301647ad616c6",
+      "bytes": 219356
+    },
+    {
+      "label": "final-planning",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.234,
+      "output": "final-planning.txt",
+      "sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426",
+      "bytes": 77
+    },
+    {
+      "label": "final-architecture-tests",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 17.625,
+      "output": "final-architecture-tests.txt",
+      "sha256": "f89302b62934a88e3728fb02ff3af792cf89f9c49441e3c2bc7ee87325645fcc",
+      "bytes": 13622
+    },
+    {
+      "label": "final-static-sequence",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/final_static.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 19.469,
+      "output": "final-static-sequence.txt",
+      "sha256": "3f51b54f0e2cc5c9ea95c89d20559f8035e70e9538bb3342d4bddece38c5357a",
+      "bytes": 1812
+    },
+    {
+      "label": "login-same-consumer-defect-reproduced",
+      "argv": [
+        "H:/node.js/node.exe",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/login_consumer_repro.mjs"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.218,
+      "output": "login-same-consumer-defect-reproduced.txt",
+      "sha256": "8a82f147cfa4dfdf3501e6619df53e306c8982c8a0210883e4ad35db4721c521",
+      "bytes": 173
+    },
+    {
+      "label": "fix-login-literal-consumer",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/fix_login_consumer.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.203,
+      "output": "fix-login-literal-consumer.txt",
+      "sha256": "d9c0bd1da71b5f1ad828dc729ec6cb434ddfdc6d70d559c589ca881c2d0567c1",
+      "bytes": 198
+    },
+    {
+      "label": "desktop-final-compile",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop_compile.py",
+        "final"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.922,
+      "output": "desktop-final-compile.txt",
+      "sha256": "7196eede11b2965fad5f494cb35b93df09d66b5287042238dad5499b5629f868",
+      "bytes": 70
+    },
+    {
+      "label": "desktop-retirement-final31",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_retirement_consumers.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.672,
+      "output": "desktop-retirement-final31.txt",
+      "sha256": "af85517d961696411005bdce0ebe347c33ac5a2858fcbe4524d90b2b2c2362e0",
+      "bytes": 1068
+    },
+    {
+      "label": "restore-and-failure-boundary-defects",
+      "argv": [
+        "H:/node.js/node.exe",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/family_repro.mjs"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.203,
+      "output": "restore-and-failure-boundary-defects.txt",
+      "sha256": "25322f895c78326b7fd8e750ec8f04c46222548e4be8fa285690f25523cb1f94",
+      "bytes": 205
+    },
+    {
+      "label": "finish-literal-consumer-family",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/finish_consumer_family.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.188,
+      "output": "finish-literal-consumer-family.txt",
+      "sha256": "78d37cd2bacf6e6e30df668151ba5ff31e48b06a561124705c2ee1642a4f1a48",
+      "bytes": 222
+    },
+    {
+      "label": "desktop-family-compile",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop_compile.py",
+        "family-final"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.781,
+      "output": "desktop-family-compile.txt",
+      "sha256": "7196eede11b2965fad5f494cb35b93df09d66b5287042238dad5499b5629f868",
+      "bytes": 70
+    },
+    {
+      "label": "desktop-retirement-family36",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_retirement_consumers.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.625,
+      "output": "desktop-retirement-family36.txt",
+      "sha256": "3875b5f8f658f5a4f28c1a44838a6599365f07532e74c3ecae444ce6fe926a39",
+      "bytes": 1281
+    },
+    {
+      "label": "refresh-family-bindings",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/refresh_family_bindings.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.219,
+      "output": "refresh-family-bindings.txt",
+      "sha256": "944f555f6316f07a0fbd6ab07e4c2e197f646397d7e64bd24a0d407e435a7b6e",
+      "bytes": 133
+    },
+    {
+      "label": "desktop-original-owner12-family-final",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\errors\\desktop_owner_retirement.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.328,
+      "output": "desktop-original-owner12-family-final.txt",
+      "sha256": "2eb7fc5665f9dc88940f408e2bc6ab24fe91c010c53cec6d1966b8819265ab89",
+      "bytes": 445
+    },
+    {
+      "label": "desktop-original-parallel37-family-final",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\errors\\desktop_parallel.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "desktop-original-parallel37-family-final.txt",
+      "sha256": "58be1702cb1a417851c523415ae3ed4b285b248adac77ba992a9cdcd37524466",
+      "bytes": 1517
+    },
+    {
+      "label": "desktop-original-auth-family-final",
+      "argv": [
+        "H:/node.js/node.exe",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-retirement-gateway\\original-auth-linked.mjs"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.297,
+      "output": "desktop-original-auth-family-final.txt",
+      "sha256": "1ea4f78ce1368c14f04a1b45ae7ac04eab0c5352aa079222121bf2cf0e8c0b6a",
+      "bytes": 1444
+    },
+    {
+      "label": "desktop-original-controls-family",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop_controls.py",
+        "family-final"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.062,
+      "output": "desktop-original-controls-family.txt",
+      "sha256": "c7e2c34f9102e05b40b2891387e4bfa4688482e2cf099c18b67123b934819014",
+      "bytes": 1561
+    },
+    {
+      "label": "write-current-handoff",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/write_handoff.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.188,
+      "output": "write-current-handoff.txt",
+      "sha256": "d25a4d94c852b963ec98df1919473d9916d6ad51e964ebe8410c48fe95792938",
+      "bytes": 131
+    },
+    {
+      "label": "final-frozen-family-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tools\\verify_frozen_architecture.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.234,
+      "output": "final-frozen-family-final.txt",
+      "sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989",
+      "bytes": 164
+    },
+    {
+      "label": "final-architecture-family-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.953,
+      "output": "final-architecture-family-final.txt",
+      "sha256": "4f65e9536ce23c00e1564e10630e385de25f2eed54724fd9e64301647ad616c6",
+      "bytes": 219356
+    },
+    {
+      "label": "final-planning-family-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "final-planning-family-final.txt",
+      "sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426",
+      "bytes": 77
+    },
+    {
+      "label": "verify-family-final-bindings",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/verify_bindings.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 8.312,
+      "output": "verify-family-final-bindings.txt",
+      "sha256": "9463893b9caaa599eab43489465cffa46a312c16faa05db0db5cd17f5961d962",
+      "bytes": 560
+    },
+    {
+      "label": "final-architecture-tests-family-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 19.328,
+      "output": "final-architecture-tests-family-final.txt",
+      "sha256": "ad9f8b8b93755f03345d1c88b31006c670b1869183c9c58bde601a82d334d848",
+      "bytes": 13622
+    },
+    {
+      "label": "family-final-static-sequence",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/final_static.py",
+        "family-final"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 20.937,
+      "output": "family-final-static-sequence.txt",
+      "sha256": "068207f6cb6f0bae008bd24128ba73979305f7846337b05e4a4cdce48de5f315",
+      "bytes": 1916
+    },
+    {
+      "label": "register-search-add-defects",
+      "argv": [
+        "H:/node.js/node.exe",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/busy_methods_repro.mjs"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.203,
+      "output": "register-search-add-defects.txt",
+      "sha256": "9049fcd1332505c3af4ca76233fb608eff8e6d0df6eaad546a2ad99393d3725a",
+      "bytes": 287
+    },
+    {
+      "label": "fix-register-search-add",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/fix_busy_methods.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.203,
+      "output": "fix-register-search-add.txt",
+      "sha256": "8a47b59e4a133279ab99c808af3ae30b83b911b223e8a66338b6a95877575697",
+      "bytes": 212
+    },
+    {
+      "label": "desktop-all-family-compile",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop_compile.py",
+        "all-family-final"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.859,
+      "output": "desktop-all-family-compile.txt",
+      "sha256": "7196eede11b2965fad5f494cb35b93df09d66b5287042238dad5499b5629f868",
+      "bytes": 70
+    },
+    {
+      "label": "desktop-retirement-all-family39",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:/.codex/worktrees/err/IM-platform/tests/clients/errors/desktop_retirement_consumers.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.609,
+      "output": "desktop-retirement-all-family39.txt",
+      "sha256": "b9f35be7d6250543072384a8f2e4c37d9659610b2525d5b26b89b3ed4b9bc1d2",
+      "bytes": 1472
+    },
+    {
+      "label": "desktop-original-owner12-all-family-final",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\errors\\desktop_owner_retirement.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.344,
+      "output": "desktop-original-owner12-all-family-final.txt",
+      "sha256": "2eb7fc5665f9dc88940f408e2bc6ab24fe91c010c53cec6d1966b8819265ab89",
+      "bytes": 445
+    },
+    {
+      "label": "desktop-original-parallel37-all-family-final",
+      "argv": [
+        "H:/node.js/node.exe",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tests\\clients\\errors\\desktop_parallel.mjs",
+        "file:///C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop-build/"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.218,
+      "output": "desktop-original-parallel37-all-family-final.txt",
+      "sha256": "58be1702cb1a417851c523415ae3ed4b285b248adac77ba992a9cdcd37524466",
+      "bytes": 1517
+    },
+    {
+      "label": "desktop-original-auth-all-family-final",
+      "argv": [
+        "H:/node.js/node.exe",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\fix-retirement-gateway\\original-auth-linked.mjs"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.313,
+      "output": "desktop-original-auth-all-family-final.txt",
+      "sha256": "1ea4f78ce1368c14f04a1b45ae7ac04eab0c5352aa079222121bf2cf0e8c0b6a",
+      "bytes": 1444
+    },
+    {
+      "label": "desktop-original-controls-all-family",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/desktop_controls.py",
+        "all-family-final"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 1.078,
+      "output": "desktop-original-controls-all-family.txt",
+      "sha256": "a6d9617243550b6d9320051594a8438c4880af254ce2568f5f7f12052fba3d22",
+      "bytes": 1586
+    },
+    {
+      "label": "bind-all-busy-final",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/final_busy_bindings.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "bind-all-busy-final.txt",
+      "sha256": "ae45f1889a2c1d2ff125a4c9828506b0ce842278497c9668315f9a3c2c298c62",
+      "bytes": 140
+    },
+    {
+      "label": "preserve-task-history",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/preserve_task_history.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.203,
+      "output": "preserve-task-history.txt",
+      "sha256": "4a83a2e065f6787763cfbee47999229f7c219ac3e33f6fe8460a13d8fe4ff77e",
+      "bytes": 318
+    },
+    {
+      "label": "final-frozen-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tools\\verify_frozen_architecture.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "final-frozen-all-final.txt",
+      "sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989",
+      "bytes": 164
+    },
+    {
+      "label": "final-architecture-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.843,
+      "output": "final-architecture-all-final.txt",
+      "sha256": "4f65e9536ce23c00e1564e10630e385de25f2eed54724fd9e64301647ad616c6",
+      "bytes": 219356
+    },
+    {
+      "label": "final-planning-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.235,
+      "output": "final-planning-all-final.txt",
+      "sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426",
+      "bytes": 77
+    },
+    {
+      "label": "verify-final339-bindings",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/verify_bindings.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 8.204,
+      "output": "verify-final339-bindings.txt",
+      "sha256": "8700cf231dd6888fa8be2b12450cf16034166bdf1051468747a67b44356d950a",
+      "bytes": 560
+    },
+    {
+      "label": "final-architecture-tests-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 17.062,
+      "output": "final-architecture-tests-all-final.txt",
+      "sha256": "c650c9b4d25288aed9f51dbf6dbad440bfdcd2572058f7cdef4614b123774e7d",
+      "bytes": 13622
+    },
+    {
+      "label": "all-final-static-sequence",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/final_static.py",
+        "all-final"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 18.594,
+      "output": "all-final-static-sequence.txt",
+      "sha256": "f88c45ba6b4d3bb257852451aba6d9990c79234588d3151a761abc337163cdff",
+      "bytes": 1892
+    },
+    {
+      "label": "finalize-current-docs",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-retirement-gateway/finalize_docs.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.219,
+      "output": "finalize-current-docs.txt",
+      "sha256": "c2c41131e42eb7b1e4ac09c9cb73d9162a8bf45d729d42178b44a1796b3329dd",
+      "bytes": 133
+    },
+    {
+      "label": "handwritten-whitespace-final",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "clients/desktop/src/application/ui/workspace.ts",
+        "backend/go/gateway/gateway.go",
+        "backend/go/gateway/watch_failure_test.go",
+        "backend/go/tests/revocation_fallback_test.go",
+        "tests/clients/errors/desktop_retirement_consumers.mjs",
+        "spec/progress/current.md",
+        "spec/tasks/review/LOOP1-ERROR-HANDLING-001.md",
+        "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/production-inventory.json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.187,
+      "output": "handwritten-whitespace-final.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "label": "final-development",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:/.codex/worktrees/err/IM-platform/tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 17.219,
+      "output": "final-development.txt",
+      "sha256": "c9a4b45b99872f1c4e19aeab5b61f54377e8cd017c11439471c2e79fe3c220ef",
+      "bytes": 339
+    }
+  ]
+}

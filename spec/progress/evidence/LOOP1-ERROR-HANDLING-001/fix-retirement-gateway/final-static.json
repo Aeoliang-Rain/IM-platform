@@ -1,0 +1,75 @@
+{
+  "scope": "Fresh current exact production/task local verification, never hosted or independent acceptance",
+  "commands": [
+    {
+      "label": "final-frozen-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\tools\\verify_frozen_architecture.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "output": "final-frozen-all-final.txt",
+      "sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989",
+      "bytes": 164
+    },
+    {
+      "label": "final-architecture-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.843,
+      "output": "final-architecture-all-final.txt",
+      "sha256": "4f65e9536ce23c00e1564e10630e385de25f2eed54724fd9e64301647ad616c6",
+      "bytes": 219356
+    },
+    {
+      "label": "final-planning-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\err\\IM-platform\\ci\\check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 0.235,
+      "output": "final-planning-all-final.txt",
+      "sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426",
+      "bytes": 77
+    },
+    {
+      "label": "final-architecture-tests-all-final",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+      "exit": 0,
+      "elapsed_seconds": 17.062,
+      "output": "final-architecture-tests-all-final.txt",
+      "sha256": "c650c9b4d25288aed9f51dbf6dbad440bfdcd2572058f7cdef4614b123774e7d",
+      "bytes": 13622
+    }
+  ],
+  "architecture_tests": 82,
+  "documented_windows_skips": 1
+}

@@ -2,7 +2,7 @@
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
 status: review
-owner: fresh recovery Fix Agent /root/recover_refresh_owner_finish
+owner: fresh Fix Agent /root/fix_retirement_gateway
 stage: S2
 gate: S2
 ---
@@ -158,7 +158,19 @@ spec/progress/evidence/LOOP1-ERROR-HANDLING-001/，原始研究evidence独立于
 
 # Handoff
 
-Current recovery owner /root/recover_refresh_owner_finish; current local185/323/65 candidate evidence in spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-refresh-owner/handoff.md. Task review/S2 OPEN; finalSHA regular/specialized/hosted/integration/main/sync PENDING.
+Current sole Fix /root/fix_retirement_gateway; formal e186054 regular FAIL, F1/F2 repair IN_PROGRESS. Current record below and fix-retirement-gateway/handoff.md control this iteration; prior candidate-specific sections are immutable history. FinalSHA reviews/CI/integration/main/sync PENDING.
+
+# Current retirement/Gateway Fix (2026-10-15)
+
+Fresh sole Fix /root/fix_retirement_gateway repairs formal full regular e186054 FAIL F1-DESKTOP-RETIREMENT-CONSUMERS/P2 and F2-GATEWAY-DB-FAILURE-AS-REVOCATION/P2. Exact assigned and Git-resolved root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001, clean starting e186054d964e11755e7bc48ae71f95d1ea125f2f. Original315+receipt316archive entries verified, immutable receiptSHA0b367d78822ffb0f584b2dbf034d3a6839e6008309ef25b27cf114df0e9ccb6d. Full local repair, per-hunk test correction, authority/minimality, actual commands/limits/failures/isolation/history: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/handoff.md.
+
+Only2 production changes: Workspace mandatory expiry clear/logout settlement and actual same login/restore/refresh/failure-publication observer roots; Gateway safety-watch raw DB error closes without session.revoked, original unknown/internal root escapes real serve goroutine, complete known-network tree closes safely. No new error framework/cache/retry/dependency/contract/security/ACK or session.go change. Current185/339(304exec35nonexec) exact input/navigation;65protected exacte186,63accepted whole+2prior Human contiguous READ exceptions, same SQL/allotherRepo bytes. Android/Auth/Prefs/nativeDB/Repository/schema/init/transactions/all writes/Composer/drafts exacte186. No SQLite WRITE/draft issue work.
+
+Fresh Desktop strictcompile/new39/originalowner12/parallel37/Auth PASS. Actual defaultpgx refused/mixed/internal/closedpool/knownexpiry/writefail PASS; actual disposablePG16/NATS2.10 DB_TEST_ENABLE1 fullGo noSKIP PASS, finalrace/vet PASS. Existing F2 database test now models actual defaultDial unavailable and strictly requiresclose/noJSON/notimeout; genuine expiry/replaced/logout assertions retained, exactactualclosedpoolinternal control retained. New realserve->watch child originalPgError0A000/actualserve stack strictPASS; only ownrandomschema changed, parentcheckedDROP, sharedpublic.sessions untouched, entireownedfixtureproject removed. Android79graph binds qualified prior API34owner10/HTTP32/WSS21, no unnecessary native execution. Finalstatic/Development/clean committedAcceptance/postclean and exact finalSHA in commandhistory/externalsealedreceipt; local/Recorder not acceptance.
+
+Preserved all raw failures including initialcwd/expectedRED/newtestexpectation/live0A000+closedpool/move-crossdrive; exact current limitations/gaps in handoff. Own Recorder R-FIX-RETIREMENT-GATEWAY prospective_resume parentR-ERROR-INTEGRATION-COORD-20261013 relatedR-REGULAR-E186054, incompleteprestart; never edits/finishes old/root runs. Lastaccepted35bd6f5; main782unknown/two tracked edits untouched. Sourcelease exclusive until final clean receipt RELEASED.
+
+Task remains review/S2 OPEN. NEW complete regular185/339/65 then DIFFERENT NEW specialist SAMEfinalcleanSHA PENDING; anyFix repeatsboth. No push/CI-triggeringPR until bothPASS; exacthead hostedrequiredjobs/protectedintegration/actual-main/safe H:/IM-platform sync/mainSHA allPENDING. Taskdone/S2PASS forbidden. New stable localcheckpoint 2026-10-15-error-handling-retirement-gateway-review-candidate.md. Everything below is historical prior-candidate recovery, not current acceptance.
 
 # Current refresh owner recovery (2026-10-15)
 

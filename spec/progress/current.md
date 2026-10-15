@@ -12,46 +12,45 @@ Execution Status: AWAITING_NEW_FINAL_SHA_REGULAR_REVIEW_AND_SPECIALIZED_AUDIT
 
 ## Immediately Relevant Completed Work
 
-Recovered interrupted refresh-owner Fix after regular27cdd93 FAIL. Two Workspace production changes retire the actual invalidated active owner, preserve refresh/retirement/observer roots and avoid credential retry. Current185/323(288 executable35 nonexecutable)/65 exact protected and22 retained-ground corrections verified. Full history/limits: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-refresh-owner/handoff.md.
+Formal fresh regular e186054 FAIL F1/F2 archived315+receipt. Fresh sole Fix /root/fix_retirement_gateway repairs actual Desktop retirement consumers/final observer roots and Gateway DB-unavailable false revocation. Current185/339(304 executable35 nonexecutable)/65protected bound; only2 production files differ e186, Android79graph unchanged. Actual fresh Desktop39+owner12+parallel37/Auth and Go default producer/closedpool/internal/genuine invalidation controls PASS; real PG16/NATS2.10 fullGo noSKIP, finalrace/vet PASS. Full current method/results/limits: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/handoff.md.
 
 ## Current Blockers
 
-NEW full regular finalSHA then DIFFERENT NEW specialized SAMEfinalSHA PENDING. Exact-head hostedCI/protectedintegration/actual-main/safe H:/IM-platform synchronization PENDING. No push/CI-triggeringPR before both reviews PASS. Taskdone/S2PASS forbidden; local proof is not acceptance.
+NEW complete regular then DIFFERENT NEW specialized audit SAME final clean SHA PENDING. Exact-head hosted CI/protected integration/actual-main/safe H:/IM-platform synchronization PENDING. No push/CI-triggering PR before both reviews PASS. Taskdone/S2PASS forbidden; local evidence is not acceptance.
 
 ## Verification
 
 - Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: fresh final frozen/PDF/architectureall/planning/82architecturetests PASS, one existing Windows skip. Exact results in final-static.json; local only.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-refresh-owner/final-static.json`
+  - Result: fresh final current frozen/PDF/architectureall/planning/82tests PASS; local only, one existing Windows skip.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/final-static.json`
 - Command: `pwsh -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development`
-  - Result: fresh final Development PASS; clean committed Acceptance/postclean follows final external receipt. Local evidence is not independent acceptance.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-refresh-owner/handoff.md`
-- New actual API34/5612 owner10 plus originalErrors/HTTP32/WSS21 PASS, exact sealedAPK/current input graph. Desktop strictcompile/strengthened37/owner12/originalAuth are qualified prior current-graph observations; Send66+Read21/Sync69+Read33+contiguous18 qualified unchanged runtime reuse, never new execution.
+  - Result: fresh final current Development PASS; clean committed Acceptance/postclean follows sealed external receipt; local only.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/fix-retirement-gateway/command-history.json`
 
 ## Changed Files or Migrations
 
-Relative27cdd93 only Desktop ui/workspace.ts and Android ui/WorkspaceViewModel.kt production;183 others unchanged. Focused tests/evidence/recovery metadata only.65 protected exact27:63 whole accepted base plus two earlier Human contiguous READ-mapper exceptions; SQL/all other Repository bytes unchanged. No Auth/Preferences/storage/nativeDB/SQL/write/Composer/draft/Frozen/ADR/contracts/security/ACK/dependency change in this Fix.
+Production only Desktop ui/workspace.ts and Go gateway/gateway.go relativee186. Focused actual tests and F2 false fixture/expectation correction; no weakening genuine revoked/replaced/logout/expiry/write-failure assertions. Inventory/navigation/evidence/recovery metadata only.65protected exacte186:63wholeaccepted35 plus2prior Human READmapper exceptions; SQL/allotherRepo bytes unchanged. No Android/Auth/Prefs/nativeDB/SQL/write/Composer/draft/Frozen/ADR/contracts/security/ACK/dependency change.
 
 ## Known Failures, Risks, and Assumptions
 
-Old R-FIX-REFRESH-OWNER immutable partial,lastseq60 build-two.py outcome unavailable. New install signature mismatch resolved only on disposable own fixture packages; owner actual10PASS collector stdout assumption failed then corrected without test/product change. Cleanup readonly own pstore leaf retry changed only Windows readonly attribute, no ACL/trust. All old OOM/argument/SyntaxError and new raw failures retained. Startup/direct/truncated-read/helper gaps disclosed. No full scope independent semantic acceptance or default-provider incidence claimed.
+Preserved cwd failure, expectedRED, newtest mistaken observer-only identity, real0A000 preceding intendedscan, oldclosedpoolfalseREVOKED expectation, cross-drive generated-pyc move failure; exact fixes/limits in handoff. Own latest live-driver snapshots do not reconstruct unavailable first per-child timing; outer raw failure output preserved. Startup/direct diagnostic/helper/truncated-read gaps disclosed. Qualified old API34graphs are not new runtime observations. Local full-scope bindings are not independent semantic acceptance.
 
 ## Next Exact Action
 
-Coordinator receives clean finalSHA/sealedreceipt/sourcelease RELEASED. NEW full fresh regular185/323/65 -> DIFFERENT NEW specialized SAMEfinalSHA; any Fix repeats both. BothPASS then exacthead required hostedCI/protectedintegration/actual-main/safe main sync. All Taskdone/S2PASS/main synchronization PENDING.
+Final static/Development PASS. Complete task-owned clean commit/Acceptance/postclean and sealed RELEASED receipt. Coordinator NEW complete regular185/339/65 -> DIFFERENT NEW specialist SAME finalSHA; any Fix repeats both. BothPASS then exact-head required hostedCI/protectedintegration/actual-main/safe main sync. All acceptance/mainSHA/synchronization PENDING.
 
 ## Last Known Good Commit
 
-`35bd6f5f1091503f95a0282f730ed04233b0b6ea` accepted I18N/main. Final task SHA is exact committed Git HEAD in final external receipt; candidate commit is not main acceptance or sync.
+`35bd6f5f1091503f95a0282f730ed04233b0b6ea` accepted I18N/main. Candidate exact committed task HEAD is externally sealed; candidate commit is not main acceptance/sync.
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-15-error-handling-refresh-owner-review-candidate.md` local stable recovery only.
+`spec/progress/checkpoints/2026-10-15-error-handling-retirement-gateway-review-candidate.md` local recovery only.
 
 ## Uncommitted Changes / Ownership
 
-Sole /root/recover_refresh_owner_finish owns exact known-owned assigned task delta until clean commit/releasedreceipt. Root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001. Main H:/IM-platform782unknown/two tracked edits untouched. Own5612/qemu/reverse/AVD/newqueryadb closed; generated build/.gradle/crash outputs preserved externally. No private device/globaltrust/ACL/main write.
+Sole /root/fix_retirement_gateway owns this iteration until clean commit/released receipt. Exact assigned root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001. Main H:/IM-platform782unknown/two tracked edits untouched. Own disposable PG/NATS resources removed by verified labels; owned generated bytecode preserved externally. No private device/globaltrust/ACL/main write.
 
 ## Architecture Conflicts / ACP / ADR
 
-None. Existing authorized TypeScript/Kotlin and current lifecycle cleanup only. Both final reviews/CI/integration/main/sync PENDING; S2 OPEN.
+None. Existing authorized TypeScript/Go and literal lifecycle boundaries only. Both final reviews/CI/integration/main/sync PENDING; S2 OPEN.
