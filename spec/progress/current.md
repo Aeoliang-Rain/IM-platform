@@ -21,15 +21,15 @@ No unresolved product finding or architecture conflict. Administrative finalSHA 
 ## Verification
 
 - Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: baseline frozen/PDF/architectureall/planning/Development PASS; final administrative verification and clean committed Acceptance are locally sealed in external administrative receipt, never hosted acceptance.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/acceptance.md`
+  - Result: Fix frozen/PDF/architectureall/planning/Development PASS; architecture82/one Windows skip and CI35/four Windows skips PASS. Exact final local records and clean committed Acceptance follow the Fix receipt, never hosted acceptance.
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/fix-resolver-handoff.md`
 - Command: `pwsh -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development`
   - Result: exact product hosted evidence and local metadata verification are distinguished; final local command results follow accepted-product/local-verification.json and external final receipt.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/product-binding-verification.json`
+  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/fix-resolver-handoff.md`
 
 ## Changed Files or Migrations
 
-Only ERROR Task review->done/frontmatter/new Handoff, current, new error-handling checkpoint and selected accepted-product evidence. All185 production inputs and tests unchanged from acceptedmain1cab. No migration/Frozen/ADR/contracts/dependency/security/ACK change. SQLite WRITE/draft excluded; only prior two authorized READ mapper exceptions remain in accepted product. Historical Task tail and evidence are byte-preserved.
+Only current ERROR Task frontmatter/Handoff, current, current error-handling checkpoint and accepted-product recovery prose/FAIL copies/handoff changed by this Fix; prior product administrative metadata remains its accepted-product candidate history. All185 production inputs and tests unchanged from acceptedmain1cab. No migration/Frozen/ADR/contracts/dependency/security/ACK change. SQLite WRITE/draft excluded; only prior two authorized READ mapper exceptions remain in accepted product. Historical Task tail and evidence are byte-preserved.
 
 ## Known Failures, Risks, and Assumptions
 
@@ -37,7 +37,7 @@ Social403 Human waiver unexecuted/not canonical PASS; Android59/native/live hist
 
 ## Next Exact Action
 
-Coordinator obtains NEW regular then DIFFERENT NEW specialist SAME final administrative SHA; any Fix repeats both. BothPASS -> applicable exacthead hostedCI -> protected integration -> actualmainCI -> second safe sync. Exact administrative SHA/local clean Acceptance/Recorder/RELEASED follow C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/admin-error-close/final-receipt.json. Final discovery C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/final-error-handling-acceptance-seal.json is PENDING, not asserted existing/PASS. Stop before next task/S2 Gate.
+After mandatory startup, first apply [the task-specific final-seal resolver](evidence/LOOP1-ERROR-HANDLING-001/accepted-product/recovery.md): inspect the fixed external discovery path, validate exact identities/source bytes and original evidence, then resume the first unmet step. Missing/invalid/incomplete seal keeps administrative pending; only complete valid evidence resolves this exact candidate-time pending/next-action snapshot without recursive source edits. Current seal absent; NEW regular then DIFFERENT NEW specialist on SAME final SHA precede hostedCI/protectedmerge/actual-mainCI/second safe sync. Any Fix repeats both. Local Fix receipt: C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-admin-resolver/final-receipt.json after commit. S2 OPEN; stop before next task/Gate.
 
 ## Last Known Good Commit
 
@@ -49,7 +49,7 @@ Coordinator obtains NEW regular then DIFFERENT NEW specialist SAME final adminis
 
 ## Uncommitted Changes / Ownership
 
-Sole administrative writer /root/admin_error_close owns only permitted metadata/evidence until clean commit/RELEASED external receipt. Assigned exact root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001, base1cab. Main H:/IM-platform782unknown/two tracked edits/branch/index unchanged by this writer. No private device/globaltrust/ACL/source/runtime changes.
+Sole Fix writer /root/fix_admin_recovery_resolver owns only current permitted recovery prose/new evidence until clean commit/RELEASED external receipt. Assigned exact root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001, base16584b7; accepted product base1cab. Formal administrative regular FAIL and this local repair/three-state walkthrough follow accepted-product/fix-resolver-handoff.md; both NEW finalSHA reviews remain pending. Main H:/IM-platform782unknown/two tracked edits/branch/index unchanged by this writer. No private device/globaltrust/ACL/source/runtime changes.
 
 ## Architecture Conflicts / ACP / ADR
 

@@ -1,0 +1,575 @@
+{
+  "result": "FAIL_ADMIN_REGULAR_REVIEW_ONLY",
+  "actor": "/root/admin_regular_error",
+  "independence": "New independent regular reviewer context; no implementation, Fix, prior current-candidate review, specialist role, or delegated reviewers. Source/Git/main read-only; no own Fix.",
+  "candidate_sha": "16584b7232a4393650967d6d61ea3c38879b4081",
+  "base_sha": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c",
+  "branch": "task/LOOP1-ERROR-HANDLING-001",
+  "assigned_root": "H:/.codex/worktrees/err/IM-platform",
+  "git_clean": true,
+  "source_lease": "RELEASED",
+  "findings": [
+    {
+      "id": "F-ADMIN-FINAL-SEAL-RECOVERY-RESOLVER",
+      "priority": 2,
+      "title": "[P2] Define how the completed external seal resolves administrative pending",
+      "candidate_sha": "16584b7232a4393650967d6d61ea3c38879b4081",
+      "file": "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\current.md",
+      "start": 40,
+      "end": 40,
+      "related_locations": [
+        {
+          "path": "spec/tasks/done/LOOP1-ERROR-HANDLING-001.md",
+          "line": 165
+        },
+        {
+          "path": "spec/tasks/done/LOOP1-ERROR-HANDLING-001.md",
+          "line": 169
+        },
+        {
+          "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/acceptance.md",
+          "line": 62
+        },
+        {
+          "path": "spec/progress/checkpoints/2026-10-15-error-handling-product-accepted-administrative-pending.md",
+          "line": 9
+        }
+      ],
+      "requirement": "Human requires recoverable/executable/acceptable new workflow; AGENTS mandatory actual-state recovery and canonical §13 require correct handoff/next action. Independent-review.md requires recovery/evidence consistency.",
+      "trigger": "After the final administrative SHA actually passes both fresh reviews, hosted checks, protected merge, actual-main CI and second safe synchronization and the Coordinator publishes the final external seal, then a fresh Agent resumes from this immutable committed current/task/checkpoint.",
+      "body": "The entry point permanently labels execution administrative_closure_pending and directs NEW reviews/CI/sync, while the only final-seal text says it is PENDING and not asserted to exist/pass. None of current, current Task Handoff/Next Action, accepted-product acceptance, or the new checkpoint tells a resumed Agent to inspect an existing seal first, verify its candidate/main and evidence bindings, or treat exactly the completed administrative pending statements as historical after success. A completed real closure therefore has no documented consumption path: a resumed Agent must either repeat a completed administrative cycle/change accepted source again, or infer an acceptance override without defined validation. This is a recovery behavior gap, not a request to predeclare future PASS.",
+      "smallest_fix": "Add one subordinate prose resolver, linked by current/Task/checkpoint. Read the named final seal first when it exists; validate task/product/admin candidate/main identities, source receipt and artifact hashes, two different fresh same-final-SHA review results/independence, actual required exact-head candidate and actual-main CI jobs/steps, protected merge/tree binding, and second safe synchronization/preserved unknown/index evidence. Only complete valid evidence resolves these candidate-time administrative pending statements, without recursively editing accepted source or authorizing another task/S2 Gate. Missing, malformed, mismatched or incomplete evidence keeps pending and resumes the exact missing step. Existence or a PASS word alone must not count. No product/authority change or generic new resolver framework is needed.",
+      "validation": "Fresh reviewer can recover three states from repository prose: seal absent, seal present but invalid/incomplete, seal fully valid. Only the third resolves administrative closure; all retain S2 OPEN and current stop boundary. Existing static tests passing does not exercise this future evidence-consumption path."
+    }
+  ],
+  "repository_writes": 0,
+  "main_writes": 0,
+  "ci_triggered": false,
+  "task_complete": false,
+  "s2_gate": "OPEN",
+  "recorder": {
+    "run_id": "R-ADMIN-REGULAR-16584B7",
+    "result": "FAIL",
+    "finished": true,
+    "validate_exit": 0,
+    "validation": "{\"event_count\": 50, \"run_id\": \"R-ADMIN-REGULAR-16584B7\", \"status\": \"finished\"}",
+    "event_count": 50,
+    "command_started": 21,
+    "command_finished": 21,
+    "structural_only": true,
+    "pre_recorder_trace_complete": false
+  },
+  "verification": {
+    "fresh": "Frozen, architecture all, planning, Development, clean committed Acceptance exit0; architecture82/oneWindowsSkip; CI35/fourWindowsSkips; actual admin classification",
+    "independent_evidence_checks": 2659,
+    "supplemental_checks": 16,
+    "upstream_artifact_seals": 697,
+    "copies": 29,
+    "actual_administrative_git_blobs": 37,
+    "production_unchanged": 185,
+    "composites": 339,
+    "protected": 65,
+    "product_runtime_repeated": false
+  },
+  "limitations": [
+    "Single regular-review role only. FAIL blocks this candidate; no specialized, hosted, integration, administrative-main or final-sync acceptance is claimed.",
+    "Product63/actualmain1cab acceptance and runtime evidence are historical exact-input bindings, not reexecuted product observations.",
+    "Recorder start/helper/lifecycle/truncation gaps and one unsupported bootstrap event are exposed; original failed evidence-audit invocation preserved. Structural validation is not Task/Gate PASS.",
+    "Current final external discovery remains pending. Missing recovery consumption rule is the sole P2 finding; fresh Fix and both NEW same-final-SHA reviews are required."
+  ],
+  "artifact_count": 98,
+  "artifacts": [
+    {
+      "path": "administrative-committed-blobs.json",
+      "bytes": 10966,
+      "sha256": "e75ced9f6a5b6c1635d225501a21ecbc05d3a0152e592ab473342bb00b47a88e"
+    },
+    {
+      "path": "audit-v2.py",
+      "bytes": 12275,
+      "sha256": "fb4364af91364a8f550f0ef98157ddff52abb7d36c6c03dcf0e5c61d33528e7e"
+    },
+    {
+      "path": "audit.py",
+      "bytes": 12042,
+      "sha256": "6d79309527839ea26f3843554827c551268c5c54616b12a67e71620aa982ef08"
+    },
+    {
+      "path": "bootstrap-observed-failure.json",
+      "bytes": 454,
+      "sha256": "f852ed3a1293a049364eea2427a20f9c4fff85ec09c0875d05d3f9a3f9c6b351"
+    },
+    {
+      "path": "bootstrap.py",
+      "bytes": 2273,
+      "sha256": "54581616bc6cdf23b51d0380a95d68ce74bb4ac679a8115a72863506cb7288d6"
+    },
+    {
+      "path": "commands.json",
+      "bytes": 26120,
+      "sha256": "ed3d9ce4dde63594ec21437ff52d8cc5582669dff3512f2ca24f8fd73e882d9b"
+    },
+    {
+      "path": "delegation.txt",
+      "bytes": 5943,
+      "sha256": "95ce5bdd46e242033162babe225799928abaff1c8a96da60660709f543fcb6c4"
+    },
+    {
+      "path": "diagnostic.py",
+      "bytes": 975,
+      "sha256": "af1f7da0e8ae5efcdefc2cd6172d00b722b7889640ae6860380385b78e6bf659"
+    },
+    {
+      "path": "final-git-state.json",
+      "bytes": 1334,
+      "sha256": "4f88edddf768b5a3bb518e71506fc9446df1e12d48aecbd929810135623c597d"
+    },
+    {
+      "path": "final-instrumentation-warning.json",
+      "bytes": 1557,
+      "sha256": "20796115e6732f48e882d9db80409d2a924596a6ed4fc22e8e3e1db91c4f5bb4"
+    },
+    {
+      "path": "final-instrumentation-warning.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "final-instrumentation-warning.stdout",
+      "bytes": 1142,
+      "sha256": "568b399fc6f3cf1dff86f27be13f8405f9002bbdba0c1b6accbf8029fec1c609"
+    },
+    {
+      "path": "finalize.py",
+      "bytes": 7145,
+      "sha256": "1a526ee434d4a0df6bdc2cbdeb14c67be113b642eb1921144b0c788ce81800e9"
+    },
+    {
+      "path": "finding-record.json",
+      "bytes": 4103,
+      "sha256": "492c10b674b3c25418d641ad934f2217df94260f1ed3615f05abcff6c22fbf9a"
+    },
+    {
+      "path": "finding-record.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "finding-record.stdout",
+      "bytes": 3624,
+      "sha256": "94eb7f5235b91847631b74fe821b13d473789c9abdd547974a64cdf39ce25794"
+    },
+    {
+      "path": "findings.json",
+      "bytes": 3451,
+      "sha256": "f607b452fe94f035b02a51e5a7de1bfa53e636d2865c6d6645eae69b6dbf950a"
+    },
+    {
+      "path": "finish-run.json",
+      "bytes": 745,
+      "sha256": "869312647c5d18e07f1ec67a5625ccbdff6ba8a08ea6a031c3179930fc251326"
+    },
+    {
+      "path": "finish-run.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "finish-run.stdout",
+      "bytes": 395,
+      "sha256": "99536981537e9cf8bd84d34f665e0a61921d94471745aed22e45a5d7b2dc4238"
+    },
+    {
+      "path": "independent-evidence-audit.json",
+      "bytes": 419816,
+      "sha256": "ae7a91318cb9efef93a1dce757ee0d3b720288476996dc489ae028832508f56e"
+    },
+    {
+      "path": "inspect.py",
+      "bytes": 1002,
+      "sha256": "3c0188114c17e95cd14e07d4b0d61420013961fd9d28d4caf1765cb7622604a4"
+    },
+    {
+      "path": "instrumentation-disclosure.json",
+      "bytes": 1130,
+      "sha256": "01575672dd237c2fbe049ae1913ff113eb112f56a1137f1e5965bd8b3155ec87"
+    },
+    {
+      "path": "main-preservation-independent-checks.json",
+      "bytes": 114938,
+      "sha256": "6724bef4705ad8691b2e1c483722eebb863dd06471629f7212b26a123af6bfd3"
+    },
+    {
+      "path": "prepare-audit-v2.py",
+      "bytes": 649,
+      "sha256": "9e86d43a6ff34390d75e9fdda207d3e46566d26ae46582a79d0b34a5ff4afd79"
+    },
+    {
+      "path": "raw-ci-independent-checks.json",
+      "bytes": 1607,
+      "sha256": "d551099a71650776923463d5db6096ffb45dc93c7fb8762b043676291583bc62"
+    },
+    {
+      "path": "recorder-final-verification.json",
+      "bytes": 361,
+      "sha256": "68b0f4ed40f9c6aaf8229fcabbd6296c6a70edaa502bdbe15fe3af83228e6131"
+    },
+    {
+      "path": "register-steering.json",
+      "bytes": 993,
+      "sha256": "c613959080a79f002fcd760b3e9274e4475a13c2e7b4bc4753c3d3daf2fb67b7"
+    },
+    {
+      "path": "register-steering.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "register-steering.stdout",
+      "bytes": 483,
+      "sha256": "ecb05989afc6494ed9f5903c5fc262c21fb1b0b6bd5dd58128928fa48ef82985"
+    },
+    {
+      "path": "report.md",
+      "bytes": 7012,
+      "sha256": "4373816276b5b979ddbe3ca516368ca992fb63aaaec7a476d4add1aea5405eb4"
+    },
+    {
+      "path": "report.py",
+      "bytes": 12783,
+      "sha256": "0c6cb1a069d4632a606d47ff6e710200111595cbcbbc5b35b3a33220920d0829"
+    },
+    {
+      "path": "research/prompts/P-ADMIN-REGULAR-DELEGATION-16584B7/metadata.json",
+      "bytes": 499,
+      "sha256": "171327ca85b60d9cd73ebfbd7a91dc7c880e833c0180363981dd56b7aca7cba4"
+    },
+    {
+      "path": "research/prompts/P-ADMIN-REGULAR-DELEGATION-16584B7/prompt.txt",
+      "bytes": 5942,
+      "sha256": "b9e9f81c4b689bee2551249525a06327543411151b9d4b8662f6ccbe0a84e613"
+    },
+    {
+      "path": "research/prompts/P-ADMIN-REGULAR-HUMAN-16584B7/metadata.json",
+      "bytes": 504,
+      "sha256": "7abf34f6b9198820e99d1d1bf388189ccc6e247b77ea66b6fd534092bf5e9b6b"
+    },
+    {
+      "path": "research/prompts/P-ADMIN-REGULAR-HUMAN-16584B7/prompt.txt",
+      "bytes": 4708,
+      "sha256": "aa099ee739463e81b69740faa173dfa3a314967d043f225c448a609ffa985698"
+    },
+    {
+      "path": "research/prompts/P-ADMIN-REGULAR-STEERING-16584B7/metadata.json",
+      "bytes": 506,
+      "sha256": "05960703a51dd2452c708613cbd8f9a4feb73be707f5a16c70eacf4e178ecec6"
+    },
+    {
+      "path": "research/prompts/P-ADMIN-REGULAR-STEERING-16584B7/prompt.txt",
+      "bytes": 1329,
+      "sha256": "45640b150b4e9c465c947fe5306e5b1327f3221a86db2559fa053eadb8c7d7b3"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-36f473ea-d275-44ad-8371-41ace1b6e0bd.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-36f473ea-d275-44ad-8371-41ace1b6e0bd.stdout.txt",
+      "bytes": 216,
+      "sha256": "efc0a3e00f677893d5acc4399df1d59204e655f89e186871ce8eccde0b66acde"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-4a6987ef-3e5d-4aa8-b371-952e537c9a9d.stderr.txt",
+      "bytes": 1195,
+      "sha256": "688eed019dfa9bd031468947281f523fb427b122a9523710479c608005ebea39"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-4a6987ef-3e5d-4aa8-b371-952e537c9a9d.stdout.txt",
+      "bytes": 45,
+      "sha256": "5725465bf62c5f7213d8fa65d9c91cc51e85cd8df327dd7871aecc9a393f1cc2"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-4ba70cb8-2e5e-4070-80ac-f570873ec96a.stderr.txt",
+      "bytes": 13535,
+      "sha256": "a4de0cc909c6c1b0fedb4195c5fd488998692ab3f2a09aff568fe43c5188d648"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-4ba70cb8-2e5e-4070-80ac-f570873ec96a.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-4d30860b-8857-42e6-8d7b-93200921e7da.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-4d30860b-8857-42e6-8d7b-93200921e7da.stdout.txt",
+      "bytes": 19543,
+      "sha256": "324692ad8d3bb05f92579656642f8a403f58b4c03b4cfe42a77aa6024980c771"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-768e4c3a-ac18-4dfa-97c8-9ed597a9f1d5.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-768e4c3a-ac18-4dfa-97c8-9ed597a9f1d5.stdout.txt",
+      "bytes": 20459,
+      "sha256": "10f69041730b70be04d0f3acc285b0c47385eb28d492df76f57ffddbc0d07aa0"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-80d5b4ac-0566-43e3-bacb-d340175cf0b9.stderr.txt",
+      "bytes": 8455,
+      "sha256": "22a8f7b81fe775bb3665aeaeae939fc12e0130f2f06895d0d93d05c41c5d0d70"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-80d5b4ac-0566-43e3-bacb-d340175cf0b9.stdout.txt",
+      "bytes": 389,
+      "sha256": "92c2b8c43bdb71a6e4ccb5c062e9afd9992fa86eee07cb3c1d4a543c1e687b52"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-8374250e-803e-4b75-909e-6941ca03e409.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-8374250e-803e-4b75-909e-6941ca03e409.stdout.txt",
+      "bytes": 144,
+      "sha256": "ff2dbf7252560f613adf6a8530393ed29013115069e44070a60c87face76d6b2"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-88ab7643-cc73-41ef-9169-12fd9a0b744d.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-88ab7643-cc73-41ef-9169-12fd9a0b744d.stdout.txt",
+      "bytes": 22984,
+      "sha256": "8b3bd3b6597e23f2716dce7f7bcc8e2182d9c87ef08551d507f2d03e2cf91e30"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-9a703d05-3695-466c-8a49-c44aa4e07103.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-9a703d05-3695-466c-8a49-c44aa4e07103.stdout.txt",
+      "bytes": 76,
+      "sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-9fef5b69-440d-4688-9435-cd2a17bce087.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-9fef5b69-440d-4688-9435-cd2a17bce087.stdout.txt",
+      "bytes": 3197,
+      "sha256": "9cfe53736ef91369c982423a0b1c1db8ca5fed54b500790154b8cdfa62bebd50"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-a39953d0-f3d2-4a22-b01c-32f45b6afa84.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-a39953d0-f3d2-4a22-b01c-32f45b6afa84.stdout.txt",
+      "bytes": 124021,
+      "sha256": "8ea0e6ff400f9ff30d2372c82f41894771ad064e1f67b7645eeecf630c8ec455"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-b1d9cf3c-4ab6-48a0-94df-01ddb3259fdb.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-b1d9cf3c-4ab6-48a0-94df-01ddb3259fdb.stdout.txt",
+      "bytes": 333,
+      "sha256": "b792879dec3970b90a58c88b086b93789cd26222d23cd3d1df3850cd28e74697"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-b2e52888-bd51-417b-b0e7-1a4bf3f18f7f.stderr.txt",
+      "bytes": 162,
+      "sha256": "6660b55d5ddc23a90bc143d59cd97ee8e2eac08138dcc650f30b3c781c0c994e"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-b2e52888-bd51-417b-b0e7-1a4bf3f18f7f.stdout.txt",
+      "bytes": 18430,
+      "sha256": "849e17f6f79315025b6d5610fba19c45d2180f8f08bef0b60a0763779826499d"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-c9e8b9b8-c332-42f5-a461-300ad1d26856.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-c9e8b9b8-c332-42f5-a461-300ad1d26856.stdout.txt",
+      "bytes": 769,
+      "sha256": "0661e57aef55e3e114fd13b24f56ba319599e7c8566214f2c2227a80f5d78c9f"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-c9f9ebbe-4733-464d-b2a0-dd62235a388f.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-c9f9ebbe-4733-464d-b2a0-dd62235a388f.stdout.txt",
+      "bytes": 33232,
+      "sha256": "5f515fd9cd299e28ca59a199df5ca0777ab13b0baf2283e590ff853f6c12be8a"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-d15a2ed8-efe6-476a-8182-d78f71795e25.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-d15a2ed8-efe6-476a-8182-d78f71795e25.stdout.txt",
+      "bytes": 163,
+      "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-d825f1ce-7833-4e29-9866-cac7ce571aba.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-d825f1ce-7833-4e29-9866-cac7ce571aba.stdout.txt",
+      "bytes": 15808,
+      "sha256": "9aafa3b98358103e6c96f0fdecc165f1e5e738770bc52288cbba1e7450effd1f"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-e24958da-c62e-447f-bc24-32f723035264.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-e24958da-c62e-447f-bc24-32f723035264.stdout.txt",
+      "bytes": 119,
+      "sha256": "bccc22c473d169c312f90582f3c4bc640473b3ddafcdc9efe643dd48a20b48d3"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-e28b1c96-1f8c-4db0-a8f8-857154051217.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-e28b1c96-1f8c-4db0-a8f8-857154051217.stdout.txt",
+      "bytes": 18428,
+      "sha256": "9f9bb2498593a0f2867338932d1d729631b104e086abb7c1915b7786dd7a8bd7"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-f2e010ba-c4ab-4e95-ae4a-4c148c8b974c.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-f2e010ba-c4ab-4e95-ae4a-4c148c8b974c.stdout.txt",
+      "bytes": 4487,
+      "sha256": "0c29d9a94cea75126e2c93a5c1d3e5aeb4e4901b26d512269372c8e18f172b04"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-fce13d0b-ac81-4c3d-bd5f-850293097178.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/blobs/C-fce13d0b-ac81-4c3d-bd5f-850293097178.stdout.txt",
+      "bytes": 40823,
+      "sha256": "4cbb0f00135e427c72d26ca1646b6dd49afce61dcb08253946d23f77f6675435"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/diff.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/events.jsonl",
+      "bytes": 42748,
+      "sha256": "058ce9da13a260fe7625391a43cd74642b85548acf7cf3ca220ed41188161f60"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/final_state.json",
+      "bytes": 13986,
+      "sha256": "95a4189db383410576d397ea476cdc2a7a3cf2c2d1c686584446b8f9d4517b71"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/initial_state.json",
+      "bytes": 13986,
+      "sha256": "0373e40fd1b2cc716874e16fbf24797d569ce83effe0401eeba3fb3ab5299d70"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/metadata.json",
+      "bytes": 1116,
+      "sha256": "bce079b53da918b053122786ec18129931fc6817576d77094a66c020e75a36b4"
+    },
+    {
+      "path": "research/runs/R-ADMIN-REGULAR-16584B7/summary.json",
+      "bytes": 412,
+      "sha256": "e2ed46d4d509b5fdfd354e12c71f92a6e477073ba6bf4fd163699ac98798032e"
+    },
+    {
+      "path": "review-finished.json",
+      "bytes": 1214,
+      "sha256": "8f0f9297b2b03bdb90f9efc273dab9c5bfee79e16c6ce8b5cf2dc795ce368db0"
+    },
+    {
+      "path": "review-finished.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "review-finished.stdout",
+      "bytes": 783,
+      "sha256": "76c0648e5c90c4f88cb5fb574d46e9fe321b1d39b24ec9d5f0785ba8472b64e1"
+    },
+    {
+      "path": "review-state.json",
+      "bytes": 473,
+      "sha256": "cd3b5afecffc6f115b8392280af9dd7dd35f0eb5ae09fe89a963d5956493f07c"
+    },
+    {
+      "path": "run.py",
+      "bytes": 1988,
+      "sha256": "21c25b7dad90f56371886aa9cb579f971e60369ecec654aac2a714d7f1305540"
+    },
+    {
+      "path": "steering.txt",
+      "bytes": 1330,
+      "sha256": "8c63a373a51044e58e536ef8068e09b7717d3f2d2d8daeff8690b8a06479ff72"
+    },
+    {
+      "path": "structures.py",
+      "bytes": 1197,
+      "sha256": "e2dccc2715821f578712e3aef9e4889417b9a4f193dc585a3a85ff5e2c4000e2"
+    },
+    {
+      "path": "supplemental-dependency-branch-checks.json",
+      "bytes": 1679,
+      "sha256": "5442a8b3167ec908b83c6ce0d98952b001c544eadf12415324a1a09fba965469"
+    },
+    {
+      "path": "upstream-seal-verification.json",
+      "bytes": 256881,
+      "sha256": "bbd44240df9272b93a5e8c0c900d39dc5ba1bcd6f36482cfd855fb1279fe4fb7"
+    },
+    {
+      "path": "validate-run.json",
+      "bytes": 717,
+      "sha256": "695bec60d74068cce4e665dd1af3fee26cdc249ebbd47a82f26f8b81875af1ed"
+    },
+    {
+      "path": "validate-run.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validate-run.stdout",
+      "bytes": 80,
+      "sha256": "5d213f341280843dc4c38493af21d63e95b755a93450ee068fa09f9b1bb18e6d"
+    }
+  ],
+  "receipt_excludes_itself": true,
+  "sealed_at_utc": "2026-10-15T13:14:41.867752+00:00"
+}

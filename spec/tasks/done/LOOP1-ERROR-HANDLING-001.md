@@ -2,7 +2,7 @@
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
 status: done
-owner: /root/admin_error_close (accepted-product administrative records)
+owner: /root/fix_admin_recovery_resolver (administrative recovery P2 Fix)
 stage: S2
 gate: S2
 ---
@@ -162,11 +162,11 @@ Product accepted and safely synchronized: final product63f685d1b959b318f97d804f4
 
 Recover from spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/acceptance.md and copy-manifest.json: current185/42changed/339(304executable35nonexecuting)/65protected, actual fixes/retained grounds, original two review reports/receipts/commands, three raw CI audits, merged PR/guard/tree/sync and all limitations. SQLite WRITE/draft excluded; only two prior Human contiguous READ mapper spans differ, SQL/all other bytes unchanged. Existing Social403 waived/unexecuted/not canonical PASS; historical native/Android59 graph reuse and specialist98starts97finishes/optional probe FAIL remain qualified. Old FAIL/history/Recorder bytes are not rewritten.
 
-This NEW administrative candidate is administrative_closure_pending: its exact final clean SHA and local committed Acceptance/Recorder/lease RELEASED are bound by C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/admin-error-close/final-receipt.json after commit. Both NEW administrative reviews, applicable exact-head hostedCI, protected integration, actual-mainCI and second safe sync remain PENDING. No recursive own-SHA or future acceptance claim. Coordinator final discovery path C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/final-error-handling-acceptance-seal.json is PENDING, not asserted to exist/pass. Last known good productmain1cab; sole writer /root/admin_error_close owns only permitted metadata/evidence until clean release. Main782unknown/two tracked edits preserved.
+This administrative candidate remains administrative_closure_pending after formal regular16584b7 FAIL F-ADMIN-FINAL-SEAL-RECOVERY-RESOLVER. Sole fresh Fix /root/fix_admin_recovery_resolver adds only the linked task-specific prose resolver and preserved FAIL evidence; accepted product185/tests/history unchanged. Base16584b7; last accepted productmain1cab. Local clean candidate/Acceptance/Recorder/sourcelease RELEASED follow external fix-admin-resolver/final-receipt.json under C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c after commit, not independent acceptance. Exact scope, three-state walkthrough, verification and trace gaps: spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/fix-resolver-handoff.md.
 
 # Next Action
 
-Coordinator dispatches NEW regular then DIFFERENT NEW error specialist on SAME final administrative SHA; any Fix repeats both. BothPASS -> applicable exacthead hostedCI -> protectedmerge -> actualmainCI -> second verified safe H:/IM-platformsync -> final external seal. Stop before next task/S2 Gate. Current Task remains this done product record while administrative execution is pending.
+After mandatory startup, first read [the final-seal recovery resolver](../../progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/recovery.md), inspect its fixed external discovery path and cross-check identities/current owned bytes/original proof. Seal missing/invalid/incomplete keeps pending and resumes the first unmet step; complete valid evidence alone resolves this exact candidate-time administrative pending/Next Action as history without recursive source edits. The seal is absent at Fix generation; both NEW regular and DIFFERENT NEW specialist SAME finalSHA remain PENDING, then applicable exacthead candidate/PR CI, protectedmerge, actualmainCI and second safe H:/IM-platform sync. Any Fix repeats both reviews. Current Task remains this done product record during administrative closure. S2 OPEN; no next task or Stage Gate.
 
 # Historical candidate recovery records
 

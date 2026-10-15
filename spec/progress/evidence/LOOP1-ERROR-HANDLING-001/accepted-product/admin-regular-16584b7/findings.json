@@ -1,0 +1,34 @@
+[
+  {
+    "id": "F-ADMIN-FINAL-SEAL-RECOVERY-RESOLVER",
+    "priority": 2,
+    "title": "[P2] Define how the completed external seal resolves administrative pending",
+    "candidate_sha": "16584b7232a4393650967d6d61ea3c38879b4081",
+    "file": "H:\\.codex\\worktrees\\err\\IM-platform\\spec\\progress\\current.md",
+    "start": 40,
+    "end": 40,
+    "related_locations": [
+      {
+        "path": "spec/tasks/done/LOOP1-ERROR-HANDLING-001.md",
+        "line": 165
+      },
+      {
+        "path": "spec/tasks/done/LOOP1-ERROR-HANDLING-001.md",
+        "line": 169
+      },
+      {
+        "path": "spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/acceptance.md",
+        "line": 62
+      },
+      {
+        "path": "spec/progress/checkpoints/2026-10-15-error-handling-product-accepted-administrative-pending.md",
+        "line": 9
+      }
+    ],
+    "requirement": "Human requires recoverable/executable/acceptable new workflow; AGENTS mandatory actual-state recovery and canonical §13 require correct handoff/next action. Independent-review.md requires recovery/evidence consistency.",
+    "trigger": "After the final administrative SHA actually passes both fresh reviews, hosted checks, protected merge, actual-main CI and second safe synchronization and the Coordinator publishes the final external seal, then a fresh Agent resumes from this immutable committed current/task/checkpoint.",
+    "body": "The entry point permanently labels execution administrative_closure_pending and directs NEW reviews/CI/sync, while the only final-seal text says it is PENDING and not asserted to exist/pass. None of current, current Task Handoff/Next Action, accepted-product acceptance, or the new checkpoint tells a resumed Agent to inspect an existing seal first, verify its candidate/main and evidence bindings, or treat exactly the completed administrative pending statements as historical after success. A completed real closure therefore has no documented consumption path: a resumed Agent must either repeat a completed administrative cycle/change accepted source again, or infer an acceptance override without defined validation. This is a recovery behavior gap, not a request to predeclare future PASS.",
+    "smallest_fix": "Add one subordinate prose resolver, linked by current/Task/checkpoint. Read the named final seal first when it exists; validate task/product/admin candidate/main identities, source receipt and artifact hashes, two different fresh same-final-SHA review results/independence, actual required exact-head candidate and actual-main CI jobs/steps, protected merge/tree binding, and second safe synchronization/preserved unknown/index evidence. Only complete valid evidence resolves these candidate-time administrative pending statements, without recursively editing accepted source or authorizing another task/S2 Gate. Missing, malformed, mismatched or incomplete evidence keeps pending and resumes the exact missing step. Existence or a PASS word alone must not count. No product/authority change or generic new resolver framework is needed.",
+    "validation": "Fresh reviewer can recover three states from repository prose: seal absent, seal present but invalid/incomplete, seal fully valid. Only the third resolves administrative closure; all retain S2 OPEN and current stop boundary. Existing static tests passing does not exercise this future evidence-consumption path."
+  }
+]
