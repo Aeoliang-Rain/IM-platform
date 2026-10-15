@@ -12,42 +12,43 @@ Execution Status: planning_review_pending
 
 ## Immediately Relevant Completed Work
 
-Latest main86b41e4d and prior ERROR final seal fully verified by Coordinator: product63f685d/PR40main1cab, administrative0aa228cc/PR41main86b41e4d, four distinct-role receipts/872artifacts,6 live hostedruns,44owned/185product inputs and actual safe main sync. Fixed seal SHA81a829add56ab8cefc497096ba0823df082cf4cad051fb35d3786afe28a578af; durable summaries in this task evidence. This resolves prior candidate-time pending only, never accepts this new planning candidate.
+Prior ERROR seal/recovery remains verified at accepted main86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0; recovery-verification.md retains exact discovery. Planning candidate10b39c8 received fresh regular FAIL R1/P2. A fresh Fix context repaired only future GROUP migration-runner/database-regression/required existing contract-step scope and executable acceptance details; group screenshot wording now binds original files and SHA-256. No present product/contracts/runner/workflow/Frozen changes.
 
 ## Current Blockers
 
-Local planning candidate prepared; independent acceptance pending. Final clean candidate fresh regular then DIFFERENT fresh error specialist, exact-head candidate/PR CI, protected integration/actual-main CI and safe H:/IM-platform sync all PENDING. No push/CI-triggering PR before finalSHA two reviews PASS. GROUP remains backlog; S2 OPEN, no Stage Gate evaluation.
+New final SHA fresh regular Review PENDING; DIFFERENT fresh error specialist PENDING. Exact-head candidate/PR CI, protected integration/actual-main CI and safe H:/IM-platform sync PENDING. No push/CI-triggering PR before same finalSHA both reviews PASS. Original10b39c8 FAIL immutable; no local result accepts it or the repair. GROUP remains unique backlog/planned; S2 OPEN.
 
 ## Verification
 
-- Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: baseline and final changed-source frozen(base86)/planning/architectureall PASS; 88 architecture tests (1 existing Windows skip),35 CI tests (4 existing OS skips),Development PASS. Clean committed Acceptance and exact finalSHA follow external implementation/final-receipt.json; no independent acceptance claimed.
-  - Evidence: `spec/progress/evidence/LOOP1-GROUP-PLAN-001/local-verification.json`
+- Command: `python -Xutf8 -B tools/verify_frozen_architecture.py --base-commit 86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0`
+  - Result: baseline/final frozen, S2 planning and architecture-all exit0; 88 architecture tests (1 existing Windows skip) and 35 CI tests (4 existing OS skips) exit0. Initial Development exit1 for this Verification section's missing command/result/evidence syntax; syntax repaired, Development recheck exit0; clean committed Acceptance bound by external fix-r1/final-receipt.json. Local evidence never acceptance.
+  - Evidence: `spec/progress/evidence/LOOP1-GROUP-PLAN-001/fix-r1/local-verification.json`
+- Original FAIL copies and all168 external artifact manifest: spec/progress/evidence/LOOP1-GROUP-PLAN-001/review-10b39c8/.
 
 ## Changed Files or Migrations
 
-Only Human-authorized planning: ADR13/canonical+baseline lineage, group domain/invariants/acceptance and backlogTask, S2 dependency/policy/checker/negative tests, current/checkpoint/evidence. No contracts/backend/clients/deploy/plugin product edits or data migration.
+R1 Fix only GROUP backlog, group acceptance, current controlTask/current, new task evidence/recovery note and new group-plan checkpoint. Whole planning candidate retains original ADR13/canonical+baseline lineage, domain/invariants/acceptance, S2 policy/checker/tests. No data migration or product activation this round.
 
 ## Known Failures, Risks, and Assumptions
 
-Default sandbox denied task branch lock and assigned worktree write; no source write occurred, authorized elevated retry succeeded. Early read/preparation commands and truncated/nested encoding read gaps disclosed; initial Recorder begins prospective_resume with incomplete trace. Local/Recorder evidence is not acceptance. Recorder Unicode output encoding failure leaves old run resultFAIL and one unmatched architecture command; validate exit0 is structural only. New related prospective_resume UTF8 run records real checks and externally binds finish/validate. Prior historical limits remain qualified. No main unknown bytes adopted.
+Original regular R1 FAIL remains historical; fresh reviews decide the repair. Fix Recorder prospective_resume explicitly discloses startup/direct-read gaps, truncated output and initial unsupported-event/common-argument helper failures before actual recorded baseline. Corrected orchestration did not change Recorder or product; unavailable facts remain unavailable. Prior original implementation Unicode resultFAIL/unmatched command remains preserved. Initial Development exit1 was a control-document Verification format mismatch, not a product failure; repaired syntax recheck exit0 and original FAIL preserved. Future PG/group contract/client checks not run or PASS this planning round. Main unknown work was never adopted or written.
 
 ## Next Exact Action
 
-Commit/recover clean review candidate and external local receipt, release sole source lease; no independent acceptance yet. Coordinator NEW regular→DIFFERENT NEW error specialist SAME finalSHA, then actual exact-head required hostedjobs/protected integration/actual-main/safe sync. AnyFix repeatsboth. After content acceptance, separate closing writer truthfully records done/actualcandidate/main and an administrative-pending snapshot; metadata candidate gets its own same full acceptance and external seal. Fixed resolver path: spec/progress/evidence/LOOP1-GROUP-PLAN-001/recovery.md. This round ends GROUP backlog/S2 OPEN/STOP.
+Coordinator recover exact new clean SHA/source lease RELEASED from external fix-r1/final-receipt.json, then NEW regular → DIFFERENT NEW specialist same finalSHA → actual exact-head required hostedjobs/protected integration/actual-main/safe sync. AnyFix repeats both. After content acceptance separate closing writer records true candidate/main and administrative-pending snapshot; metadata candidate receives its own full independent chain. Fixed resolver: spec/progress/evidence/LOOP1-GROUP-PLAN-001/recovery.md. GROUP backlog/S2 OPEN/STOP.
 
 ## Last Known Good Commit
 
-`86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0` independently accepted prior administrative main and preserved main sync. New planning candidate not accepted.
+`86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0` independently accepted prior administrative main and preserved main sync. New planning/fix candidate not accepted.
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-15-group-plan-review-pending.md`
+`spec/progress/checkpoints/2026-10-15-group-plan-r1-fix-review-pending.md`
 
 ## Uncommitted Changes / Ownership
 
-Sole writer /root/group_plan_impl owns only controlTask Allowed Paths in assigned exact Git root H:/.codex/worktrees/grp/IM-platform, branch task/LOOP1-GROUP-PLAN-001, base86b41e4d. Main H:/IM-platform unknown782/two tracked edits/index/branch preserved; Coordinator only read-verifies during this writer lease. Final clean SHA/Recorder/sourcelease RELEASED is externally bound implementation/final-receipt.json. No product task activation.
+Sole Fix writer /root/group_fix_r1 owns only controlTask Allowed Paths in assigned exact Git root H:/.codex/worktrees/grp/IM-platform, branch task/LOOP1-GROUP-PLAN-001; start10b39c8/full-range base86b41e4d. Final clean SHA and sourcelease RELEASED are bound externally in fix-r1/final-receipt.json. Main H:/IM-platform always read-only; unknown782/two tracked edits/index/branch preserved. No product task activation.
 
 ## Architecture Conflicts / ACP / ADR
 
-No unresolved conflict: this round Human explicitly authorizes minimal ADR13/frozen/domain/acceptance planning change; independent acceptance pending. GROUP public contract remains future first independently frozen slice, not implemented here. S2 OPEN.
+No new conflict or authority expansion. R1 adds already-necessary future executable paths under existing ADR13 minimal additive migration/contract-first decision; no architecture/contract code change this Fix. GROUP contracts remain future first independently frozen/accepted slice. S2 OPEN.

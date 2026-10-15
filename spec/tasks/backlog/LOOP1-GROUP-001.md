@@ -46,6 +46,9 @@ client_runtime: Android
 - `contracts/database/migrations/0002_group_operations.up.sql`
 - `contracts/database/migrations/0002_group_operations.down.sql`
 - `contracts/database/README.md`（仅新增migration语义/兼容与回滚）
+- `contracts/database/migrate.py`（仅现有独立runner支持0001→0002的有序应用、ledger/status与已冻结回退；保留0001字节、历史checksum、锁及真实失败行为）
+- `tests/database/test_migrations.py`（仅上述迁移入口的空库/0001升级/重入/回退/旧fixture兼容正反回归）
+- `.github/workflows/ci.yml`（仅在现有shared必需contract步骤接入群verifier与正负suite；保留旧检查、真实非零传播及既有作业选择，不增workflow/job/framework）
 - `contracts/fixtures/group/**`（canonical正负/并发/幂等/兼容输入与expected）
 - `backend/go/core/group.go`（群权限、事务、快照）
 - `backend/go/core/group_test.go`
@@ -124,7 +127,9 @@ client_runtime: Android
 
 建群：(actor,create request)；加人：(actor,conversation,add request)，操作类型分隔；目标集合规范化、去重、至少一人且不含操作者。当前授权校验后，同key同集合返回原始已提交结果，同key不同集合冲突。创建利用现(created_by,group_create_request_id)唯一键；必要最小持久幂等结果支持加人重放，additive0002先定义唯一约束/原结果绑定/回滚fixture，绝不重写0001。旧DIRECT/HTTP/WSS/ACK/Sync/旧客户端保持兼容。若资源或具体shape需扩张批准范围，BLOCKED_BY_ARCHITECTURE提出最小问题。
 
-契约切片须clean commit、fresh常规Review→different fresh错误专项→exact-head适用hosted CI→protected integration/actual-main→主目录安全同步独立接受并登记实际contract SHA，再实现Go/客户端；本planning接受不是新公共契约已冻结。中间契约切片不使整个GROUP done。
+首个契约切片同时交付0002、现有独立migration runner及tests/database/test_migrations.py必要适配，并把群verifier与tests/contract/group正负suite接入现有shared必需contract步骤。真实hosted证据须证明这两个新入口确实执行并传播非零失败，不能只证明路径分类选中了job。现有Go部署/CI仍通过contracts/database/migrate.py up应用canonical schema，既有compatibility步骤仍执行tests/database；不得由Core启动或群verifier偷偷执行DDL，不改写0001绕过runner。保留0001 up/down原字节及历史checksum、既有checksum不符拒绝、事务advisory lock、ledger原子性和失败传播；0001→0002及空库到0002、重复up、受控回退和旧fixture兼容须实际验证，详见Verification。
+
+契约/runner/回归/现有CI接入作为同一个首契约切片，须clean commit、fresh常规Review→different fresh错误专项→exact-head适用hosted CI→protected integration/actual-main→主目录安全同步独立冻结接受并登记实际contract SHA，才实现Go/客户端；本planning接受不是新公共契约已冻结。中间契约切片不使整个GROUP done。
 
 # Server Transaction and Sync
 
@@ -157,7 +162,9 @@ Web/Desktop沿既有TypeScript分层和各端独立React视觉；Android Kotlin/
 # Verification
 
 - Minimum activation baseline：`python -Xutf8 -B tools/verify_frozen_architecture.py`、`python -Xutf8 -B ci/check_s2_planning.py`、`python -Xutf8 -B ci/check_architecture.py --scope all --json`，`python -Xutf8 -B -m unittest discover -s tests/architecture`、`python -Xutf8 -B -m unittest discover -s tests/ci`；已有accepted stage-three checker，不豁免。
-- 现契约回归：`pwsh -NoProfile -File contracts/http/verify-auth-user-friend.ps1`、`python -Xutf8 -B contracts/websocket/verify.py`、`python -Xutf8 -B contracts/plugin-api/verify.py`；DB现migration runner及0002正反/旧fixture兼容在契约切片登记真实命令、启用环境、退出/时长，未执行不计PASS。
+- 现契约回归：`pwsh -NoProfile -File contracts/http/verify-auth-user-friend.ps1`、`python -Xutf8 -B tools/verify_sync_transport.py`、`python -Xutf8 -B -m unittest discover -s tests/contract -p test_sync_transport.py`、`python -Xutf8 -B contracts/websocket/verify.py`、`python -Xutf8 -B contracts/plugin-api/verify.py`，不删除或压低旧检查。
+- 首契约切片（未来交付后执行）：`python -Xutf8 -B contracts/http/verify-group.py`和`python -Xutf8 -B -m unittest discover -s tests/contract/group -p "test_*.py" -v`真实覆盖群schema/正负fixtures，二者须在现有shared必需contract步骤执行并传播非零退出；核对精确hosted SHA/job/step原始日志，不能只核对classifier选择。
+- 同一首契约切片的迁移验证：在明确受控、可丢弃PostgreSQL中，配置真实psql/libpq PGHOST/PGPORT/PGUSER/PGDATABASE和安全凭据（不放argv或日志），设置`DB_TEST_ENABLE=1`，实际执行`python -Xutf8 -B contracts/database/migrate.py status`、`python -Xutf8 -B contracts/database/migrate.py up`、再次status及up，并运行`python -Xutf8 -B -m unittest discover -s tests/database -p test_migrations.py -v`。回归分别覆盖空库→0002、保留旧数据/ledger的0001→0002、重复应用无新增、checksum不符拒绝、锁/并发与失败整批回滚；按该切片冻结的回退规则仅在受控库调用现有`python -Xutf8 -B contracts/database/migrate.py down --allow-data-loss`，核对0002的实际schema/ledger回退及重入、旧fixtures/兼容窗口。不得把只测0001当0002覆盖，不新增业务DDL入口。记录0001 up/down原字节SHA-256与历史ledger checksum保持、实际迁移level、命令/启用环境/退出/耗时；现有Go up和compatibility数据库suite的真实hosted执行同样必需。缺PG/psql、未启用或skip均未执行，不计PASS；当前规划轮不运行这些未来迁移/产品检查。
 - 未来新增（当前不存在/不可计PASS）：`python -Xutf8 -B contracts/http/verify-group.py`，`python -Xutf8 -B tests/clients/group/verify.py`、`python -Xutf8 -B tests/clients/group/runtime.py --serial <实际独占serial> --capture`。激活后先实现/登记参数、fault hooks/fixture/服务/清理及每G项映射；若命令有变化先Task更新，不能把planned harness当已执行。
 - cwd backend/go：`go test ./...`；真实受控PG/NATS使用DB_TEST_ENABLE=1及受控DATABASE_URL/NATS_URL执行group integration/concurrency/fault测试，缺环境skip不是PASS；`python -Xutf8 -B tools/verify_sync_runtime.py`沿现TLS入口。
 - `python -Xutf8 -B tests/clients/web/verify.py`、`node tests/clients/web/browser.mjs`；shared/Desktop现`tools/verify_client_send.py --scope shared`和`--scope desktop`、`tools/verify_client_sync.py --scope shared`和`--scope desktop`适用回归。

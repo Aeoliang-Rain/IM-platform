@@ -17,3 +17,7 @@
 - 两阶段全部完整有效：仅把此精确候选生成时Task/Handoff/Next Action、current/Blockers/Next Exact Action、checkpoint及handoff的planning或administrative pending解释为当时历史快照；本控制任务规划与行政均闭环。无需递归改写已接受源文件、再提交无限封存。所有旧FAIL、PENDING原快照/Recorder/限制作历史保留；不得据此接受任何字节改变的新候选。
 
 无论分支，LOOP1-GROUP-001保留唯一backlog、client_supplement_phase planned且无产品接受，S2 OPEN/STOP。不得执行群产品/下一任务或评估Stage Gate。恢复证据记录实际seal hash、两阶段精确candidate/main与原件核验结果、首个缺口；本地/Recorder不得充当独立接受。
+
+## R1 修复候选发现（2026-10-15）
+
+原implementation/final-receipt.json绑定的10b39c8已经fresh常规Review FAIL R1/P2，原件review-10b39c8/及manifest保留。后续内容候选实际最终SHA、branch/range/clean/owned Git blobs/本地验证/Recorder/sourcelease请从同一固定外部目录的fix-r1/final-receipt.json解析；它取代原implementation收据作为本次修复候选身份发现，不能替代新finalSHA fresh常规及different fresh专项/hosted/集成/actual-main/安全同步。两审均PENDING；原FAIL不能复用为接受。既有两阶段闭环与所有原历史保持；GROUP backlog/S2 OPEN。

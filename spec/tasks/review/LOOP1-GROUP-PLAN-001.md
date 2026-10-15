@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-PLAN-001
 title: S2 群聊架构与任务插入规划
 status: review
-owner: /root/group_plan_impl
+owner: /root/group_fix_r1
 stage: S2
 gate: S2
 ---
@@ -96,8 +96,10 @@ main_sync_evidence: unavailable
 
 # Handoff
 
-唯一 writer /root/group_plan_impl。已验证 assigned exact root H:/.codex/worktrees/grp/IM-platform，branch task/LOOP1-GROUP-PLAN-001，latest main 86b41e4d clean。前任务 seal 81a829add56ab8cefc497096ba0823df082cf4cad051fb35d3786afe28a578af 由 Coordinator 完整核验，摘要固定引用，不复制旧巨量证据。本地frozen(base86)/planning/architectureall、88architecture tests(1既有Windows skip)、35CI tests(4既有OS skip)、Development实际PASS；详见implementation-handoff.md与local-verification.json。新候选两审/hosted/main/sync PENDING。最终 clean SHA/本地验证/Recorder/source lease 由外部 implementation/final-receipt.json 绑定。
+当前唯一Fix writer /root/group_fix_r1；assigned exact root/branch已核验，起点clean10b39c8688588c94f95a9a3d671b8496e076fcdf。原常规Review该SHA为FAIL，仅R1/P2（未来runner/迁移回归/现CI接入路径缺口）；原report/findings/receipt与必要原始输出按字节保存review-10b39c8，manifest绑定external全部168 artifacts。最小修复仅GROUP backlog范围/首契约切片及真实验证、group验收同义承接和原始截图SHA-256措辞，未写产品/契约/runner/CI/Frozen。新最终SHA常规Review PENDING；different fresh错误专项PENDING；hosted/integration/main/sync PENDING。本轮Fix frozen(base86)/planning/architectureall exit0，88architecture(1既有Windows skip)/35CI(4既有OS skip)通过；Development初次exit1仅current Verification字段格式，修复后重跑exit0，原失败保持。完整命令/时长/gap见fix-r1/handoff.md和local-verification.json；实际提交SHA/clean Acceptance/owned blobs/Recorder完成及source lease RELEASED以外部fix-r1/final-receipt.json绑定。旧10b39c8 FAIL保持，不复用为接受。
+
+以下为原实现历史handoff：唯一 writer /root/group_plan_impl。已验证 assigned exact root H:/.codex/worktrees/grp/IM-platform，branch task/LOOP1-GROUP-PLAN-001，latest main 86b41e4d clean。前任务 seal 81a829add56ab8cefc497096ba0823df082cf4cad051fb35d3786afe28a578af 由 Coordinator 完整核验，摘要固定引用，不复制旧巨量证据。本地frozen(base86)/planning/architectureall、88architecture tests(1既有Windows skip)、35CI tests(4既有OS skip)、Development实际PASS；详见implementation-handoff.md与local-verification.json。新候选两审/hosted/main/sync PENDING。最终 clean SHA/本地验证/Recorder/source lease 由外部 implementation/final-receipt.json 绑定。
 
 # Next Action
 
-完成最小规划及本地验证，提交 clean review 候选并释放唯一 writer；Coordinator NEW regular → DIFFERENT NEW specialist 同最终 SHA → exact-head CI → protected integration → actual-main → safe main sync。任何 Fix 两项重审。后续独立 closing writer 只记录真实接受/集成 SHA，metadata 候选再独立闭环；不得递归改写已接受 source。GROUP backlog/S2 OPEN，STOP。
+Fix提交clean新候选、执行Acceptance并释放唯一source lease后停止写入；Coordinator从外部fix-r1/final-receipt.json恢复实际最终SHA。新最终SHA须NEW常规Review → DIFFERENT NEW错误专项，两项均PENDING；旧FAIL不能接受新候选。两审通过后 exact-head CI → protected integration → actual-main → safe main sync。任何 Fix 两项重审。后续独立 closing writer 只记录真实接受/集成 SHA，metadata 候选再独立闭环；不得递归改写已接受 source。GROUP backlog/S2 OPEN，STOP。

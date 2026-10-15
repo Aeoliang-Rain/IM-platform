@@ -18,11 +18,11 @@
 
 ## 运行与独立接受
 
-契约切片先在contracts/机器schema/正负fixture/migration/兼容测试及clean commit上完成fresh常规Review、different fresh错误专项、适用exact-head CI、受保护集成/actual-main/主目录安全同步，记录精确contract SHA，才实现产品；不能以本规划接受等同新增wire已冻结。后续产品候选也重复完整闭环。
+契约首切片必须包括contracts/机器schema/正负fixture/0002迁移、现有独立runner与迁移回归的必要适配，以及现有shared必需contract步骤中的群verifier/正负suite调用。按GROUP Task Verification在可丢弃PG且DB_TEST_ENABLE=1下真实验证空库/0001→0002/重复应用/回退/旧fixture兼容，保留0001原字节、历史checksum、锁及真实失败行为；核对精确hosted原始job/step证明新群验证确实执行且非零传播，不能只凭路径选择或旧验证绿。无新workflow/job/framework，也不得由业务或verifier绕过runner执行DDL。上述契约切片在clean commit上完成fresh常规Review、different fresh错误专项、适用exact-head CI、受保护集成/actual-main/主目录安全同步，记录精确contract SHA，才实现产品；不能以本规划接受等同新增wire已冻结。后续产品候选也重复完整闭环。
 
 真实Go profile/PostgreSQL/NATS/TLS入口和受控非私人fixture；Web真实浏览器、Desktop同候选构建并安装的Windows Tauri、Mobile真实独占Android Studio emulator。契约fixture/host/mock是补充，不代替入口证据。记录环境/真实serial、命令argv/退出码/耗时/DB断言、请求/操作/用户/会话关联、原始响应/故障时序及资源清理；skip/缺环境为未执行，不计PASS。
 
-每端真实截图至少：好友选择建群、成功群列表/群消息、B加C、sender身份、拒绝/失败/未确认重试；截图manifest绑定Task、final产品SHA/build/runtime/fixture/状态/尺寸/theme/font/density/locale/PNG哈希及复现步骤。两主题及受影响布局的字号密度极值保持可读。Architect独立绑定同候选/原始截图Review→修复重拍→Approval；源码或视觉影响证据即重拍重审。截图不能证明事务/权限/ACK。
+每端真实截图至少：好友选择建群、成功群列表/群消息、B加C、sender身份、拒绝/失败/未确认重试；截图manifest绑定Task、final产品SHA/build/runtime/fixture/状态/尺寸/theme/font/density/locale/原始截图文件及SHA-256和复现步骤。两主题及受影响布局的字号密度极值保持可读。Architect独立绑定同候选/原始截图Review→修复重拍→Approval；源码或视觉影响证据即重拍重审。截图不能证明事务/权限/ACK。
 
 全部G01..G09、契约兼容、服务/客户端职责导入、minimality、真实构建/入口/截图/Architect、最终SHA两项独立审查、实际required hosted jobs、protected integration、actual-main验证和H:/IM-platform安全同步均满足才GROUP done。独立证据与Task Completion Metadata可核对；本地或Recorder不是接受，GROUP单项PASS不是Stage PASS。
 
