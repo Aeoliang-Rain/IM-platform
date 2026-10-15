@@ -1,8 +1,8 @@
 ---
 task_id: LOOP1-ERROR-HANDLING-001
 title: 无意义防御与静默兜底治理、全量生产代码纠正
-status: review
-owner: fresh Fix Agent /root/fix_retirement_gateway
+status: done
+owner: /root/admin_error_close (accepted-product administrative records)
 stage: S2
 gate: S2
 ---
@@ -157,6 +157,20 @@ allowed_paths is a hard write boundary and never an architecture exemption. Java
 spec/progress/evidence/LOOP1-ERROR-HANDLING-001/，原始研究evidence独立于product acceptance。审查与CI及同步证据精确绑定SHA；旧FAIL不可重写。
 
 # Handoff
+
+Product accepted and safely synchronized: final product63f685d1b959b318f97d804f40af49d61aa3f273, fresh regular /root/regular_review_63f685d PASS (receipt SHA331eff21a35b60653d7618dddf7be51f38ad05d29c2b8043cbba16074b36da3e), different fresh specialist /root/error_audit_63f685d PASS (SHA598f58af70b83763eadb28fbf08a0cdf244cf731426e4b228e3b416470f122b6), exact push38732968440/PR38733066327/main38734397144 each14actual jobs success, protected PR40 main1cab3dc4c9180bfe6a6654fde028a0354faf8a4c, full tree equality and actual safe H:/IM-platform sync six checks PASS. Task moves review->done on these accepted product facts; S2 OPEN, no next task/Gate activation.
+
+Recover from spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/acceptance.md and copy-manifest.json: current185/42changed/339(304executable35nonexecuting)/65protected, actual fixes/retained grounds, original two review reports/receipts/commands, three raw CI audits, merged PR/guard/tree/sync and all limitations. SQLite WRITE/draft excluded; only two prior Human contiguous READ mapper spans differ, SQL/all other bytes unchanged. Existing Social403 waived/unexecuted/not canonical PASS; historical native/Android59 graph reuse and specialist98starts97finishes/optional probe FAIL remain qualified. Old FAIL/history/Recorder bytes are not rewritten.
+
+This NEW administrative candidate is administrative_closure_pending: its exact final clean SHA and local committed Acceptance/Recorder/lease RELEASED are bound by C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/admin-error-close/final-receipt.json after commit. Both NEW administrative reviews, applicable exact-head hostedCI, protected integration, actual-mainCI and second safe sync remain PENDING. No recursive own-SHA or future acceptance claim. Coordinator final discovery path C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/final-error-handling-acceptance-seal.json is PENDING, not asserted to exist/pass. Last known good productmain1cab; sole writer /root/admin_error_close owns only permitted metadata/evidence until clean release. Main782unknown/two tracked edits preserved.
+
+# Next Action
+
+Coordinator dispatches NEW regular then DIFFERENT NEW error specialist on SAME final administrative SHA; any Fix repeats both. BothPASS -> applicable exacthead hostedCI -> protectedmerge -> actualmainCI -> second verified safe H:/IM-platformsync -> final external seal. Stop before next task/S2 Gate. Current Task remains this done product record while administrative execution is pending.
+
+# Historical candidate recovery records
+
+Everything below is an immutable prior-candidate snapshot. Its Current/pending/Taskdone forbidden wording applies to its then-unaccepted candidate and does not override the accepted-product discovery above. Original text bytes below are retained intact.
 
 Current sole Fix /root/fix_retirement_gateway; formal e186054 regular FAIL, F1/F2 repair IN_PROGRESS. Current record below and fix-retirement-gateway/handoff.md control this iteration; prior candidate-specific sections are immutable history. FinalSHA reviews/CI/integration/main/sync PENDING.
 

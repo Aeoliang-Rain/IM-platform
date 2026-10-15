@@ -1,0 +1,59 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "tools/verify_frozen_architecture.py"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 0.125,
+    "stdout_sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_architecture.py",
+      "--scope",
+      "all",
+      "--json"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 1.5779999999977008,
+    "stdout_sha256": "5bd38a9cf06a78306593beaf5793edd6d72dbee8bb595a4073b73ad7cd7b9546",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "ci/check_s2_planning.py"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 0.11000000000058208,
+    "stdout_sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Acceptance"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 30.968000000000757,
+    "stdout_sha256": "b162700cd66c5b27016eb7eab9acfe654874547a919ca259b0df71c797ac3ef2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

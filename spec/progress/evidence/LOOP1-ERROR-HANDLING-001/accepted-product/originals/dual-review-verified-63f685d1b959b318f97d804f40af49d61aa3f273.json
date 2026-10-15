@@ -1,0 +1,30 @@
+{
+  "result": "PASS_PRE_CI_REVIEWS_ONLY",
+  "candidate_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "clean": true,
+  "reviews": [
+    {
+      "role": "regular",
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\regular-review-63f685d\\final-receipt.json",
+      "sha256": "331eff21a35b60653d7618dddf7be51f38ad05d29c2b8043cbba16074b36da3e",
+      "result": "PASS_REGULAR_REVIEW_ONLY",
+      "actor": "/root/regular_review_63f685d",
+      "actor_source": "Root observed live delegation, Recorder review_started and final delivery identity",
+      "independence": "Fresh context; did not implement/fix/review prior candidate; no delegated reviewers or own fixes",
+      "candidate_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "artifacts_verified": 275
+    },
+    {
+      "role": "specialized",
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\error-audit-63f685d\\final-receipt.json",
+      "sha256": "598f58af70b83763eadb28fbf08a0cdf244cf731426e4b228e3b416470f122b6",
+      "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY",
+      "actor": "/root/error_audit_63f685d",
+      "actor_source": "Root observed live delegation, Recorder review_started and final delivery identity",
+      "independence": "New context; did not implement, Fix, or regular-review candidate; no inherited semantic verdict",
+      "candidate_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "artifacts_verified": 311
+    }
+  ],
+  "ci_integration_sync": "PENDING"
+}

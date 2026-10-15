@@ -1,0 +1,71 @@
+[
+  {
+    "label": "original-auth",
+    "argv": [
+      "H:/node.js/node.exe",
+      "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\error-audit-63f685d\\auth-linked.mjs"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 0.1709999999984575,
+    "stdout": "original-auth.stdout",
+    "stderr": "original-auth.stderr",
+    "stdout_sha256": "1e64ca7cf33b7a1236fb3c196b29cef8e8216af1c9416e4ed76a4daa5a129de2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "architecture-tests",
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/architecture",
+      "-v"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 22.1720000000023,
+    "stdout": "architecture-tests.stdout",
+    "stderr": "architecture-tests.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "a6dca272a12086c5a44f186e5c207681472a252092b97a78940ccc154d709c13"
+  },
+  {
+    "label": "go-default",
+    "argv": [
+      "H:\\go\\bin\\go.EXE",
+      "-C",
+      "backend/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 14.90599999999904,
+    "stdout": "go-default.stdout",
+    "stderr": "go-default.stderr",
+    "stdout_sha256": "d402b4365c13126a4c88a10747c27862f8320bab23e92c539091628b229f321d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "web-verifier",
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "tests/clients/web/verify.py"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\err\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 15.953000000001339,
+    "stdout": "web-verifier.stdout",
+    "stderr": "web-verifier.stderr",
+    "stdout_sha256": "ffde65f623d88d136d8850c8c1fe91f30b78280ea4219fcbc904df0bacbbf621",
+    "stderr_sha256": "1793da9a6fd2e752b2cb686796d2e46ef8f3d3caa98256a9da1ba77341e38001"
+  }
+]

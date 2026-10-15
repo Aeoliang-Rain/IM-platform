@@ -1,0 +1,1656 @@
+{
+  "result": "PASS",
+  "expected_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+  "expected_branch": "task/LOOP1-ERROR-HANDLING-001",
+  "expected_event": "push",
+  "checks": {
+    "exact_head": true,
+    "branch": true,
+    "expected_event": true,
+    "expected_workflow": true,
+    "completed_success": true,
+    "all_14_expected_jobs": true,
+    "all_jobs_success": true,
+    "all_job_heads": true,
+    "all_jobs_have_steps": true,
+    "no_failed_steps": true,
+    "no_anomalous_step_skip": true
+  },
+  "unexpected_steps": [],
+  "run": {
+    "id": 38732968440,
+    "name": "Loop 1 CI",
+    "node_id": "WFR_kwLOUhPg3c8AAAAJBKox-A",
+    "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+    "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+    "path": ".github/workflows/ci.yml",
+    "display_title": "Correct the qualified Android input count in current handoff",
+    "run_number": 197,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_id": 369734954,
+    "check_suite_id": 104960730688,
+    "check_suite_node_id": "CS_kwDOUhPg3c8AAAAYcCWmQA",
+    "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+    "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440",
+    "pull_requests": [
+      {
+        "url": "https://api.github.com/repos/nilesthump/IM-platform/pulls/40",
+        "id": 4873055234,
+        "number": 40,
+        "head": {
+          "ref": "task/LOOP1-ERROR-HANDLING-001",
+          "sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+          "repo": {
+            "id": 1377034461,
+            "url": "https://api.github.com/repos/nilesthump/IM-platform",
+            "name": "IM-platform"
+          }
+        },
+        "base": {
+          "ref": "main",
+          "sha": "35bd6f5f1091503f95a0282f730ed04233b0b6ea",
+          "repo": {
+            "id": 1377034461,
+            "url": "https://api.github.com/repos/nilesthump/IM-platform",
+            "name": "IM-platform"
+          }
+        }
+      }
+    ],
+    "created_at": "2026-10-15T12:13:04Z",
+    "updated_at": "2026-10-15T12:20:37Z",
+    "actor": {
+      "login": "nilesthump",
+      "id": 211787881,
+      "node_id": "U_kgDODJ-gaQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/211787881?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nilesthump",
+      "html_url": "https://github.com/nilesthump",
+      "followers_url": "https://api.github.com/users/nilesthump/followers",
+      "following_url": "https://api.github.com/users/nilesthump/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nilesthump/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nilesthump/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nilesthump/subscriptions",
+      "organizations_url": "https://api.github.com/users/nilesthump/orgs",
+      "repos_url": "https://api.github.com/users/nilesthump/repos",
+      "events_url": "https://api.github.com/users/nilesthump/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nilesthump/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "run_attempt": 1,
+    "referenced_workflows": [],
+    "run_started_at": "2026-10-15T12:13:04Z",
+    "triggering_actor": {
+      "login": "nilesthump",
+      "id": 211787881,
+      "node_id": "U_kgDODJ-gaQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/211787881?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nilesthump",
+      "html_url": "https://github.com/nilesthump",
+      "followers_url": "https://api.github.com/users/nilesthump/followers",
+      "following_url": "https://api.github.com/users/nilesthump/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nilesthump/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nilesthump/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nilesthump/subscriptions",
+      "organizations_url": "https://api.github.com/users/nilesthump/orgs",
+      "repos_url": "https://api.github.com/users/nilesthump/repos",
+      "events_url": "https://api.github.com/users/nilesthump/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nilesthump/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "jobs_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440/jobs",
+    "logs_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440/logs",
+    "check_suite_url": "https://api.github.com/repos/nilesthump/IM-platform/check-suites/104960730688",
+    "artifacts_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440/artifacts",
+    "cancel_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440/cancel",
+    "rerun_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440/rerun",
+    "previous_attempt_url": null,
+    "workflow_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/workflows/369734954",
+    "head_commit": {
+      "id": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "tree_id": "21f1ed5cfc5a296027eef68272c66a13966ad638",
+      "message": "Correct the qualified Android input count in current handoff",
+      "timestamp": "2026-10-15T11:04:52Z",
+      "author": {
+        "name": "nilesthump",
+        "email": "2963862605@qq.com"
+      },
+      "committer": {
+        "name": "nilesthump",
+        "email": "2963862605@qq.com"
+      }
+    },
+    "repository": {
+      "id": 1377034461,
+      "node_id": "R_kgDOUhPg3Q",
+      "name": "IM-platform",
+      "full_name": "nilesthump/IM-platform",
+      "private": false,
+      "owner": {
+        "login": "nilesthump",
+        "id": 211787881,
+        "node_id": "U_kgDODJ-gaQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/211787881?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/nilesthump",
+        "html_url": "https://github.com/nilesthump",
+        "followers_url": "https://api.github.com/users/nilesthump/followers",
+        "following_url": "https://api.github.com/users/nilesthump/following{/other_user}",
+        "gists_url": "https://api.github.com/users/nilesthump/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/nilesthump/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/nilesthump/subscriptions",
+        "organizations_url": "https://api.github.com/users/nilesthump/orgs",
+        "repos_url": "https://api.github.com/users/nilesthump/repos",
+        "events_url": "https://api.github.com/users/nilesthump/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/nilesthump/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/nilesthump/IM-platform",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/nilesthump/IM-platform",
+      "forks_url": "https://api.github.com/repos/nilesthump/IM-platform/forks",
+      "keys_url": "https://api.github.com/repos/nilesthump/IM-platform/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/nilesthump/IM-platform/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/nilesthump/IM-platform/teams",
+      "hooks_url": "https://api.github.com/repos/nilesthump/IM-platform/hooks",
+      "issue_events_url": "https://api.github.com/repos/nilesthump/IM-platform/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/nilesthump/IM-platform/events",
+      "assignees_url": "https://api.github.com/repos/nilesthump/IM-platform/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/nilesthump/IM-platform/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/nilesthump/IM-platform/tags",
+      "blobs_url": "https://api.github.com/repos/nilesthump/IM-platform/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/nilesthump/IM-platform/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/nilesthump/IM-platform/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/nilesthump/IM-platform/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/nilesthump/IM-platform/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/nilesthump/IM-platform/languages",
+      "stargazers_url": "https://api.github.com/repos/nilesthump/IM-platform/stargazers",
+      "contributors_url": "https://api.github.com/repos/nilesthump/IM-platform/contributors",
+      "subscribers_url": "https://api.github.com/repos/nilesthump/IM-platform/subscribers",
+      "subscription_url": "https://api.github.com/repos/nilesthump/IM-platform/subscription",
+      "commits_url": "https://api.github.com/repos/nilesthump/IM-platform/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/nilesthump/IM-platform/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/nilesthump/IM-platform/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/nilesthump/IM-platform/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/nilesthump/IM-platform/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/nilesthump/IM-platform/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/nilesthump/IM-platform/merges",
+      "archive_url": "https://api.github.com/repos/nilesthump/IM-platform/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/nilesthump/IM-platform/downloads",
+      "issues_url": "https://api.github.com/repos/nilesthump/IM-platform/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/nilesthump/IM-platform/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/nilesthump/IM-platform/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/nilesthump/IM-platform/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/nilesthump/IM-platform/labels{/name}",
+      "releases_url": "https://api.github.com/repos/nilesthump/IM-platform/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/nilesthump/IM-platform/deployments"
+    },
+    "head_repository": {
+      "id": 1377034461,
+      "node_id": "R_kgDOUhPg3Q",
+      "name": "IM-platform",
+      "full_name": "nilesthump/IM-platform",
+      "private": false,
+      "owner": {
+        "login": "nilesthump",
+        "id": 211787881,
+        "node_id": "U_kgDODJ-gaQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/211787881?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/nilesthump",
+        "html_url": "https://github.com/nilesthump",
+        "followers_url": "https://api.github.com/users/nilesthump/followers",
+        "following_url": "https://api.github.com/users/nilesthump/following{/other_user}",
+        "gists_url": "https://api.github.com/users/nilesthump/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/nilesthump/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/nilesthump/subscriptions",
+        "organizations_url": "https://api.github.com/users/nilesthump/orgs",
+        "repos_url": "https://api.github.com/users/nilesthump/repos",
+        "events_url": "https://api.github.com/users/nilesthump/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/nilesthump/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/nilesthump/IM-platform",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/nilesthump/IM-platform",
+      "forks_url": "https://api.github.com/repos/nilesthump/IM-platform/forks",
+      "keys_url": "https://api.github.com/repos/nilesthump/IM-platform/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/nilesthump/IM-platform/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/nilesthump/IM-platform/teams",
+      "hooks_url": "https://api.github.com/repos/nilesthump/IM-platform/hooks",
+      "issue_events_url": "https://api.github.com/repos/nilesthump/IM-platform/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/nilesthump/IM-platform/events",
+      "assignees_url": "https://api.github.com/repos/nilesthump/IM-platform/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/nilesthump/IM-platform/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/nilesthump/IM-platform/tags",
+      "blobs_url": "https://api.github.com/repos/nilesthump/IM-platform/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/nilesthump/IM-platform/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/nilesthump/IM-platform/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/nilesthump/IM-platform/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/nilesthump/IM-platform/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/nilesthump/IM-platform/languages",
+      "stargazers_url": "https://api.github.com/repos/nilesthump/IM-platform/stargazers",
+      "contributors_url": "https://api.github.com/repos/nilesthump/IM-platform/contributors",
+      "subscribers_url": "https://api.github.com/repos/nilesthump/IM-platform/subscribers",
+      "subscription_url": "https://api.github.com/repos/nilesthump/IM-platform/subscription",
+      "commits_url": "https://api.github.com/repos/nilesthump/IM-platform/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/nilesthump/IM-platform/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/nilesthump/IM-platform/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/nilesthump/IM-platform/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/nilesthump/IM-platform/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/nilesthump/IM-platform/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/nilesthump/IM-platform/merges",
+      "archive_url": "https://api.github.com/repos/nilesthump/IM-platform/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/nilesthump/IM-platform/downloads",
+      "issues_url": "https://api.github.com/repos/nilesthump/IM-platform/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/nilesthump/IM-platform/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/nilesthump/IM-platform/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/nilesthump/IM-platform/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/nilesthump/IM-platform/labels{/name}",
+      "releases_url": "https://api.github.com/repos/nilesthump/IM-platform/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/nilesthump/IM-platform/deployments"
+    }
+  },
+  "jobs": [
+    {
+      "id": 116415047885,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuCozQ",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415047885",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415047885",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:05Z",
+      "started_at": "2026-10-15T12:13:08Z",
+      "completed_at": "2026-10-15T12:13:57Z",
+      "name": "classify",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:13:09Z",
+          "completed_at": "2026-10-15T12:13:10Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:13:10Z",
+          "completed_at": "2026-10-15T12:13:27Z"
+        },
+        {
+          "name": "Diagnose checkout status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:13:27Z",
+          "completed_at": "2026-10-15T12:13:32Z"
+        },
+        {
+          "name": "Verify clean repository recovery",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:13:32Z",
+          "completed_at": "2026-10-15T12:13:52Z"
+        },
+        {
+          "name": "Test path matrix",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:13:52Z",
+          "completed_at": "2026-10-15T12:13:53Z"
+        },
+        {
+          "name": "Classify full diff, including deletions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:13:53Z",
+          "completed_at": "2026-10-15T12:13:54Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-15T12:13:54Z",
+          "completed_at": "2026-10-15T12:13:54Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-15T12:13:54Z",
+          "completed_at": "2026-10-15T12:13:54Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415047885",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001813,
+      "runner_name": "GitHub Actions 1000001813",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415415779,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZF4w",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415415779",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415415779",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:00Z",
+      "completed_at": "2026-10-15T12:14:21Z",
+      "name": "source_java",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:02Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:18Z"
+        },
+        {
+          "name": "Java current source and explicit placeholder boundary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:18Z",
+          "completed_at": "2026-10-15T12:14:18Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:14:18Z",
+          "completed_at": "2026-10-15T12:14:18Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:14:18Z",
+          "completed_at": "2026-10-15T12:14:19Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415415779",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001815,
+      "runner_name": "GitHub Actions 1000001815",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415415826,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGEg",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415415826",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415415826",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:00Z",
+      "completed_at": "2026-10-15T12:14:25Z",
+      "name": "java",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:03Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:03Z",
+          "completed_at": "2026-10-15T12:14:20Z"
+        },
+        {
+          "name": "Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:20Z",
+          "completed_at": "2026-10-15T12:14:20Z"
+        },
+        {
+          "name": "Java S0 compile",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:20Z",
+          "completed_at": "2026-10-15T12:14:22Z"
+        },
+        {
+          "name": "Post Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:14:22Z",
+          "completed_at": "2026-10-15T12:14:22Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-15T12:14:22Z",
+          "completed_at": "2026-10-15T12:14:22Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-15T12:14:22Z",
+          "completed_at": "2026-10-15T12:14:22Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415415826",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001819,
+      "runner_name": "GitHub Actions 1000001819",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415415929,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGeQ",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415415929",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415415929",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:01Z",
+      "completed_at": "2026-10-15T12:14:40Z",
+      "name": "source_go",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:03Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:03Z",
+          "completed_at": "2026-10-15T12:14:22Z"
+        },
+        {
+          "name": "Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:22Z",
+          "completed_at": "2026-10-15T12:14:31Z"
+        },
+        {
+          "name": "Real Go source ownership and AST dependency graph",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:31Z",
+          "completed_at": "2026-10-15T12:14:36Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:14:36Z",
+          "completed_at": "2026-10-15T12:14:36Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-15T12:14:36Z",
+          "completed_at": "2026-10-15T12:14:37Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-15T12:14:37Z",
+          "completed_at": "2026-10-15T12:14:37Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415415929",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001820,
+      "runner_name": "GitHub Actions 1000001820",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415415933,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGfQ",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415415933",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415415933",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:00Z",
+      "completed_at": "2026-10-15T12:18:13Z",
+      "name": "desktop (ubuntu-latest)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:02Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:17Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:17Z",
+          "completed_at": "2026-10-15T12:14:18Z"
+        },
+        {
+          "name": "Native Tauri prerequisites and approved Rust compiler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:18Z",
+          "completed_at": "2026-10-15T12:14:43Z"
+        },
+        {
+          "name": "Actual TypeScript Repository on SQLx SQLite",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:43Z",
+          "completed_at": "2026-10-15T12:18:10Z"
+        },
+        {
+          "name": "Approved Windows GUI assembly and auth controls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-15T12:18:10Z",
+          "completed_at": "2026-10-15T12:18:10Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-15T12:18:10Z",
+          "completed_at": "2026-10-15T12:18:10Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-15T12:18:10Z",
+          "completed_at": "2026-10-15T12:18:10Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-15T12:18:10Z",
+          "completed_at": "2026-10-15T12:18:10Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415415933",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001816,
+      "runner_name": "GitHub Actions 1000001816",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415415952,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGkA",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415415952",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415415952",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:00Z",
+      "completed_at": "2026-10-15T12:15:52Z",
+      "name": "deploy",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:01Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:15Z"
+        },
+        {
+          "name": "Prepare disposable Go profile configuration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:15Z",
+          "completed_at": "2026-10-15T12:14:16Z"
+        },
+        {
+          "name": "Validate both Compose profiles",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:16Z",
+          "completed_at": "2026-10-15T12:14:17Z"
+        },
+        {
+          "name": "Frozen architecture integrity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:17Z",
+          "completed_at": "2026-10-15T12:14:31Z"
+        },
+        {
+          "name": "Go transport smoke",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:14:31Z",
+          "completed_at": "2026-10-15T12:15:02Z"
+        },
+        {
+          "name": "Go Auth actual roles and TLS event smoke",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:15:02Z",
+          "completed_at": "2026-10-15T12:15:09Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-15T12:15:09Z",
+          "completed_at": "2026-10-15T12:15:10Z"
+        },
+        {
+          "name": "Current shared Sync client actual Go TLS runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-15T12:15:10Z",
+          "completed_at": "2026-10-15T12:15:19Z"
+        },
+        {
+          "name": "Go public Sync strict TLS runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-15T12:15:19Z",
+          "completed_at": "2026-10-15T12:15:25Z"
+        },
+        {
+          "name": "Go S1 strict TLS messaging E2E",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-15T12:15:25Z",
+          "completed_at": "2026-10-15T12:15:38Z"
+        },
+        {
+          "name": "Java transport smoke",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-15T12:15:38Z",
+          "completed_at": "2026-10-15T12:15:50Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-15T12:15:50Z",
+          "completed_at": "2026-10-15T12:15:50Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-15T12:15:50Z",
+          "completed_at": "2026-10-15T12:15:50Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-15T12:15:50Z",
+          "completed_at": "2026-10-15T12:15:50Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415415952",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001817,
+      "runner_name": "GitHub Actions 1000001817",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415415977,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGqQ",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415415977",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415415977",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:00Z",
+      "completed_at": "2026-10-15T12:15:10Z",
+      "name": "compatibility",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:02Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:26Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:26Z",
+          "completed_at": "2026-10-15T12:14:41Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:41Z",
+          "completed_at": "2026-10-15T12:14:42Z"
+        },
+        {
+          "name": "Install PostgreSQL client",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:42Z",
+          "completed_at": "2026-10-15T12:14:50Z"
+        },
+        {
+          "name": "Shared fixture compatibility and migration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:14:50Z",
+          "completed_at": "2026-10-15T12:14:52Z"
+        },
+        {
+          "name": "Current client source and actual Web verification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:14:52Z",
+          "completed_at": "2026-10-15T12:15:07Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-15T12:15:07Z",
+          "completed_at": "2026-10-15T12:15:07Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-15T12:15:07Z",
+          "completed_at": "2026-10-15T12:15:07Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-15T12:15:07Z",
+          "completed_at": "2026-10-15T12:15:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-15T12:15:08Z",
+          "completed_at": "2026-10-15T12:15:08Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415415977",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001818,
+      "runner_name": "GitHub Actions 1000001818",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415416003,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGww",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415416003",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415416003",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:01Z",
+      "completed_at": "2026-10-15T12:14:53Z",
+      "name": "shared",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:03Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:03Z",
+          "completed_at": "2026-10-15T12:14:23Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:23Z",
+          "completed_at": "2026-10-15T12:14:29Z"
+        },
+        {
+          "name": "Actual shared TypeScript storage compile",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:29Z",
+          "completed_at": "2026-10-15T12:14:37Z"
+        },
+        {
+          "name": "HTTP, WSS, Sync and Plugin contracts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:37Z",
+          "completed_at": "2026-10-15T12:14:50Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-15T12:14:50Z",
+          "completed_at": "2026-10-15T12:14:50Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-15T12:14:50Z",
+          "completed_at": "2026-10-15T12:14:50Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-15T12:14:50Z",
+          "completed_at": "2026-10-15T12:14:50Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415416003",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001824,
+      "runner_name": "GitHub Actions 1000001824",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415416004,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGxA",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415416004",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415416004",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:01Z",
+      "completed_at": "2026-10-15T12:14:50Z",
+      "name": "architecture",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:03Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:03Z",
+          "completed_at": "2026-10-15T12:14:19Z"
+        },
+        {
+          "name": "Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:19Z",
+          "completed_at": "2026-10-15T12:14:24Z"
+        },
+        {
+          "name": "Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:24Z",
+          "completed_at": "2026-10-15T12:14:25Z"
+        },
+        {
+          "name": "Canonical integrity and authority structure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:25Z",
+          "completed_at": "2026-10-15T12:14:39Z"
+        },
+        {
+          "name": "Current governance references and task scopes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:14:39Z",
+          "completed_at": "2026-10-15T12:14:40Z"
+        },
+        {
+          "name": "Active client technology/source/dependency/configuration guard",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:14:40Z",
+          "completed_at": "2026-10-15T12:14:40Z"
+        },
+        {
+          "name": "Checker positive and negative controls",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-15T12:14:40Z",
+          "completed_at": "2026-10-15T12:14:46Z"
+        },
+        {
+          "name": "Post Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-15T12:14:46Z",
+          "completed_at": "2026-10-15T12:14:46Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-15T12:14:46Z",
+          "completed_at": "2026-10-15T12:14:46Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-15T12:14:46Z",
+          "completed_at": "2026-10-15T12:14:46Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-15T12:14:46Z",
+          "completed_at": "2026-10-15T12:14:46Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415416004",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001825,
+      "runner_name": "GitHub Actions 1000001825",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415416012,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZGzA",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415416012",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415416012",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:01Z",
+      "completed_at": "2026-10-15T12:19:37Z",
+      "name": "desktop (windows-latest)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:02Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:18Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:18Z",
+          "completed_at": "2026-10-15T12:14:23Z"
+        },
+        {
+          "name": "Native Tauri prerequisites and approved Rust compiler",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:23Z",
+          "completed_at": "2026-10-15T12:14:23Z"
+        },
+        {
+          "name": "Actual TypeScript Repository on SQLx SQLite",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:23Z",
+          "completed_at": "2026-10-15T12:14:23Z"
+        },
+        {
+          "name": "Approved Windows GUI assembly and auth controls",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:14:23Z",
+          "completed_at": "2026-10-15T12:19:33Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-15T12:19:33Z",
+          "completed_at": "2026-10-15T12:19:33Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-15T12:19:33Z",
+          "completed_at": "2026-10-15T12:19:34Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-15T12:19:34Z",
+          "completed_at": "2026-10-15T12:19:34Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415416012",
+      "labels": [
+        "windows-latest"
+      ],
+      "runner_id": 1000001821,
+      "runner_name": "GitHub Actions 1000001821",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415416021,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZG1Q",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415416021",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415416021",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:01Z",
+      "completed_at": "2026-10-15T12:20:14Z",
+      "name": "mobile",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:03Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:03Z",
+          "completed_at": "2026-10-15T12:14:20Z"
+        },
+        {
+          "name": "Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:20Z",
+          "completed_at": "2026-10-15T12:14:20Z"
+        },
+        {
+          "name": "Run android-actions/setup-android@v3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:20Z",
+          "completed_at": "2026-10-15T12:14:25Z"
+        },
+        {
+          "name": "Enable hosted Linux KVM permissions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:25Z",
+          "completed_at": "2026-10-15T12:14:25Z"
+        },
+        {
+          "name": "Run reactivecircus/android-emulator-runner@v2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:14:25Z",
+          "completed_at": "2026-10-15T12:20:12Z"
+        },
+        {
+          "name": "Post Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-15T12:20:12Z",
+          "completed_at": "2026-10-15T12:20:12Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-15T12:20:12Z",
+          "completed_at": "2026-10-15T12:20:12Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-15T12:20:12Z",
+          "completed_at": "2026-10-15T12:20:12Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415416021",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001822,
+      "runner_name": "GitHub Actions 1000001822",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415416039,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZG5w",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415416039",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415416039",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:01Z",
+      "completed_at": "2026-10-15T12:14:38Z",
+      "name": "web",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:03Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:03Z",
+          "completed_at": "2026-10-15T12:14:18Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:18Z",
+          "completed_at": "2026-10-15T12:14:19Z"
+        },
+        {
+          "name": "Web prerequisite and product verification negative controls",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:19Z",
+          "completed_at": "2026-10-15T12:14:20Z"
+        },
+        {
+          "name": "Actual locked Web build, behavior, appearance and source verification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:20Z",
+          "completed_at": "2026-10-15T12:14:36Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-15T12:14:36Z",
+          "completed_at": "2026-10-15T12:14:36Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-15T12:14:36Z",
+          "completed_at": "2026-10-15T12:14:36Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-15T12:14:36Z",
+          "completed_at": "2026-10-15T12:14:36Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415416039",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001823,
+      "runner_name": "GitHub Actions 1000001823",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116415416095,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGuZHHw",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116415416095",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116415416095",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:13:58Z",
+      "started_at": "2026-10-15T12:14:01Z",
+      "completed_at": "2026-10-15T12:17:19Z",
+      "name": "go",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:14:01Z",
+          "completed_at": "2026-10-15T12:14:02Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:14:02Z",
+          "completed_at": "2026-10-15T12:14:25Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:14:25Z",
+          "completed_at": "2026-10-15T12:14:38Z"
+        },
+        {
+          "name": "Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-15T12:14:38Z",
+          "completed_at": "2026-10-15T12:14:47Z"
+        },
+        {
+          "name": "Install PostgreSQL client",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-15T12:14:47Z",
+          "completed_at": "2026-10-15T12:14:59Z"
+        },
+        {
+          "name": "Migrate canonical schema",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:14:59Z",
+          "completed_at": "2026-10-15T12:15:00Z"
+        },
+        {
+          "name": "Go Auth build, integration and contract verification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:15:00Z",
+          "completed_at": "2026-10-15T12:17:15Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-15T12:17:15Z",
+          "completed_at": "2026-10-15T12:17:15Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-15T12:17:15Z",
+          "completed_at": "2026-10-15T12:17:16Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-15T12:17:16Z",
+          "completed_at": "2026-10-15T12:17:16Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-15T12:17:16Z",
+          "completed_at": "2026-10-15T12:17:16Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116415416095",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001826,
+      "runner_name": "GitHub Actions 1000001826",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 116418055659,
+      "run_id": 38732968440,
+      "workflow_name": "Loop 1 CI",
+      "head_branch": "task/LOOP1-ERROR-HANDLING-001",
+      "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/38732968440",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUhPg3c8AAAAbGw6N6w",
+      "head_sha": "63f685d1b959b318f97d804f40af49d61aa3f273",
+      "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/116418055659",
+      "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/38732968440/job/116418055659",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-15T12:20:14Z",
+      "started_at": "2026-10-15T12:20:17Z",
+      "completed_at": "2026-10-15T12:20:36Z",
+      "name": "gate",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-15T12:20:18Z",
+          "completed_at": "2026-10-15T12:20:19Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-15T12:20:19Z",
+          "completed_at": "2026-10-15T12:20:33Z"
+        },
+        {
+          "name": "Require every selected job to pass",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-15T12:20:33Z",
+          "completed_at": "2026-10-15T12:20:33Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-15T12:20:33Z",
+          "completed_at": "2026-10-15T12:20:33Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-15T12:20:33Z",
+          "completed_at": "2026-10-15T12:20:34Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/116418055659",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001839,
+      "runner_name": "GitHub Actions 1000001839",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "audit_time": "2026-10-15T12:21:13.499122+00:00",
+  "limitation": "This verifies actual latest-attempt jobs, exact push head and conditional skips; it does not substitute independent source reviews, tree integration or safe main sync."
+}

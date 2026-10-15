@@ -1,0 +1,119 @@
+{
+  "result": "PASS_LOCAL_ADMINISTRATIVE_CHECKS_ONLY",
+  "base_sha": "1cab3dc4c9180bfe6a6654fde028a0354faf8a4c",
+  "scope": "metadata/evidence only; no new product/test behavior",
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.25,
+      "stdout_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-0.stdout",
+      "stdout_sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989",
+      "stderr_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-0.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.218,
+      "stdout_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-1.stdout",
+      "stdout_sha256": "4f65e9536ce23c00e1564e10630e385de25f2eed54724fd9e64301647ad616c6",
+      "stderr_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-1.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.25,
+      "stdout_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-2.stdout",
+      "stdout_sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426",
+      "stderr_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-2.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 17.64,
+      "stdout_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-3.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-3.stderr",
+      "stderr_sha256": "06539be388c33c64d6f9e0c3d8519252e47b30603cc3048263a819032ca3e3f5",
+      "result": "PASS"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.312,
+      "stdout_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-4.stdout",
+      "stdout_sha256": "d260103c650a82689a727c276f85b42ca0d9c582efe3e36b8536e41390b8cea6",
+      "stderr_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-4.stderr",
+      "stderr_sha256": "52bf3c626ddca549e7f678893162372c7792073eac9c129c2e81d358497a6a0c",
+      "result": "PASS"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 20.5,
+      "stdout_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-5.stdout",
+      "stdout_sha256": "58c4fd5f37d4a8d69399e59abb108386e19ab572fd943530083814b86005a428",
+      "stderr_absolute": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\13\\01a1341c-f5bd-7a20-8d63-e5a574250f3c\\admin-error-close\\final-check-5.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS"
+    }
+  ],
+  "architecture_tests": {
+    "count": 82,
+    "existing_windows_symlink_skips": 1
+  },
+  "ci_test_summary": "-------------------------------------------------------------------\n\nRan 35 tests in 5.909s\n\n\n\nOK (skipped=4)\n\n{\n\n  \"paths\": [\n\n    \"contracts/errors/x.json\"\n\n  ],\n\n  \"jobs\": {\n\n    \"go\": true,\n\n    \"java\": true,\n\n    \"web\": true,\n\n    \"desktop\": true,\n\n    \"mobile\": true,\n\n    \"shared\": true,\n\n    \"old_client\": true,\n\n    \"plugin\": true,\n\n    \"migration\": true,\n\n    \"compatibility\": true,\n\n    \"deploy\": false,\n\n    \"architecture\": true,\n\n    \"source_go\": true,\n\n    \"source_java\": true\n\n  }\n\n}\n\n",
+  "clean_committed_acceptance": "PENDING_EXTERNAL_FINAL_RECEIPT_AFTER_COMMIT",
+  "note": "Actual child commands are recorded. Snapshot includes completed checks only, not own enclosing command finish. Recorder and local checks are not independent Task/Gate acceptance."
+}
