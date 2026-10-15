@@ -4,53 +4,50 @@ Current Loop: Loop 1
 Current Stage: S2
 Current Gate: S2
 Gate Status: OPEN
-Current Batch: LOOP1-ERROR-HANDLING-001
-Batch Status: PRODUCT_ACCEPTED_ADMINISTRATIVE_CLOSURE_PENDING
-Current Task: LOOP1-ERROR-HANDLING-001
-Current Task State: done
-Execution Status: administrative_closure_pending
+Current Batch: LOOP1-GROUP-PLAN-001
+Batch Status: PLANNING_REVIEW_PENDING
+Current Task: LOOP1-GROUP-PLAN-001
+Current Task State: review
+Execution Status: planning_review_pending
 
 ## Immediately Relevant Completed Work
 
-Product63f685d independently accepted by fresh regular /root/regular_review_63f685d and different fresh specialist /root/error_audit_63f685d. Exact push38732968440/PR38733066327/actualmain38734397144 each14 actual jobs success. Protected PR40 actualmain1cab3dc4c9180bfe6a6654fde028a0354faf8a4c has identical complete product tree; actual safe main sync six checks PASS preserving782unknown/two tracked edits/recovery branch/index. Product Task now done; this new administrative metadata candidate remains pending its own independent closure. Durable scope/receipts/rawCI/sync/limits: accepted-product/acceptance.md below.
+Latest main86b41e4d and prior ERROR final seal fully verified by Coordinator: product63f685d/PR40main1cab, administrative0aa228cc/PR41main86b41e4d, four distinct-role receipts/872artifacts,6 live hostedruns,44owned/185product inputs and actual safe main sync. Fixed seal SHA81a829add56ab8cefc497096ba0823df082cf4cad051fb35d3786afe28a578af; durable summaries in this task evidence. This resolves prior candidate-time pending only, never accepts this new planning candidate.
 
 ## Current Blockers
 
-No unresolved product finding or architecture conflict. Administrative finalSHA NEW regular and DIFFERENT NEW specialist, applicable exact-head hostedCI/protectedmerge/actual-mainCI/second safe sync remain PENDING. No push or CI-triggering PR before both finalSHA reviews PASS. S2 OPEN; do not select another task or evaluate Stage Gate.
+Local planning candidate prepared; independent acceptance pending. Final clean candidate fresh regular then DIFFERENT fresh error specialist, exact-head candidate/PR CI, protected integration/actual-main CI and safe H:/IM-platform sync all PENDING. No push/CI-triggering PR before finalSHA two reviews PASS. GROUP remains backlog; S2 OPEN, no Stage Gate evaluation.
 
 ## Verification
 
 - Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: Fix frozen/PDF/architectureall/planning/Development PASS; architecture82/one Windows skip and CI35/four Windows skips PASS. Exact final local records and clean committed Acceptance follow the Fix receipt, never hosted acceptance.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/fix-resolver-handoff.md`
-- Command: `pwsh -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development`
-  - Result: exact product hosted evidence and local metadata verification are distinguished; final local command results follow accepted-product/local-verification.json and external final receipt.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/fix-resolver-handoff.md`
+  - Result: baseline and final changed-source frozen(base86)/planning/architectureall PASS; 88 architecture tests (1 existing Windows skip),35 CI tests (4 existing OS skips),Development PASS. Clean committed Acceptance and exact finalSHA follow external implementation/final-receipt.json; no independent acceptance claimed.
+  - Evidence: `spec/progress/evidence/LOOP1-GROUP-PLAN-001/local-verification.json`
 
 ## Changed Files or Migrations
 
-Only current ERROR Task frontmatter/Handoff, current, current error-handling checkpoint and accepted-product recovery prose/FAIL copies/handoff changed by this Fix; prior product administrative metadata remains its accepted-product candidate history. All185 production inputs and tests unchanged from acceptedmain1cab. No migration/Frozen/ADR/contracts/dependency/security/ACK change. SQLite WRITE/draft excluded; only prior two authorized READ mapper exceptions remain in accepted product. Historical Task tail and evidence are byte-preserved.
+Only Human-authorized planning: ADR13/canonical+baseline lineage, group domain/invariants/acceptance and backlogTask, S2 dependency/policy/checker/negative tests, current/checkpoint/evidence. No contracts/backend/clients/deploy/plugin product edits or data migration.
 
 ## Known Failures, Risks, and Assumptions
 
-Social403 Human waiver unexecuted/not canonical PASS; Android59/native/live historical reuse is exact-input-graph bounded. Specialist optional native probe invocation FAIL and98starts97finishes WinError2 gap are preserved. Earlier/root direct/helper/read/REST-fallback trace gaps remain disclosed; Recorder structural PASS is not Task/Gate PASS. Administrative helper snapshot-format/import/workflow-read diagnostics are retained and corrected without product edits. Original pre-sync acceptance/reviewer PENDING snapshots are immutable; later actual sync PASS establishes chronology.
+Default sandbox denied task branch lock and assigned worktree write; no source write occurred, authorized elevated retry succeeded. Early read/preparation commands and truncated/nested encoding read gaps disclosed; initial Recorder begins prospective_resume with incomplete trace. Local/Recorder evidence is not acceptance. Recorder Unicode output encoding failure leaves old run resultFAIL and one unmatched architecture command; validate exit0 is structural only. New related prospective_resume UTF8 run records real checks and externally binds finish/validate. Prior historical limits remain qualified. No main unknown bytes adopted.
 
 ## Next Exact Action
 
-After mandatory startup, first apply [the task-specific final-seal resolver](evidence/LOOP1-ERROR-HANDLING-001/accepted-product/recovery.md): inspect the fixed external discovery path, validate exact identities/source bytes and original evidence, then resume the first unmet step. Missing/invalid/incomplete seal keeps administrative pending; only complete valid evidence resolves this exact candidate-time pending/next-action snapshot without recursive source edits. Current seal absent; NEW regular then DIFFERENT NEW specialist on SAME final SHA precede hostedCI/protectedmerge/actual-mainCI/second safe sync. Any Fix repeats both. Local Fix receipt: C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-admin-resolver/final-receipt.json after commit. S2 OPEN; stop before next task/Gate.
+Commit/recover clean review candidate and external local receipt, release sole source lease; no independent acceptance yet. Coordinator NEW regular→DIFFERENT NEW error specialist SAME finalSHA, then actual exact-head required hostedjobs/protected integration/actual-main/safe sync. AnyFix repeatsboth. After content acceptance, separate closing writer truthfully records done/actualcandidate/main and an administrative-pending snapshot; metadata candidate gets its own same full acceptance and external seal. Fixed resolver path: spec/progress/evidence/LOOP1-GROUP-PLAN-001/recovery.md. This round ends GROUP backlog/S2 OPEN/STOP.
 
 ## Last Known Good Commit
 
-`1cab3dc4c9180bfe6a6654fde028a0354faf8a4c` independently accepted protected product main, actual-mainCI and safe main synchronization PASS. Administrative candidate is not yet independently accepted or synchronized.
+`86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0` independently accepted prior administrative main and preserved main sync. New planning candidate not accepted.
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-15-error-handling-product-accepted-administrative-pending.md`
+`spec/progress/checkpoints/2026-10-15-group-plan-review-pending.md`
 
 ## Uncommitted Changes / Ownership
 
-Sole Fix writer /root/fix_admin_recovery_resolver owns only current permitted recovery prose/new evidence until clean commit/RELEASED external receipt. Assigned exact root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001, base16584b7; accepted product base1cab. Formal administrative regular FAIL and this local repair/three-state walkthrough follow accepted-product/fix-resolver-handoff.md; both NEW finalSHA reviews remain pending. Main H:/IM-platform782unknown/two tracked edits/branch/index unchanged by this writer. No private device/globaltrust/ACL/source/runtime changes.
+Sole writer /root/group_plan_impl owns only controlTask Allowed Paths in assigned exact Git root H:/.codex/worktrees/grp/IM-platform, branch task/LOOP1-GROUP-PLAN-001, base86b41e4d. Main H:/IM-platform unknown782/two tracked edits/index/branch preserved; Coordinator only read-verifies during this writer lease. Final clean SHA/Recorder/sourcelease RELEASED is externally bound implementation/final-receipt.json. No product task activation.
 
 ## Architecture Conflicts / ACP / ADR
 
-None. Product accepted; separate administrative closure pending. S2 OPEN.
+No unresolved conflict: this round Human explicitly authorizes minimal ADR13/frozen/domain/acceptance planning change; independent acceptance pending. GROUP public contract remains future first independently frozen slice, not implemented here. S2 OPEN.
