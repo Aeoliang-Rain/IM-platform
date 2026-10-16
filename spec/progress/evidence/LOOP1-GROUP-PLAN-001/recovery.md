@@ -21,3 +21,9 @@
 ## R1 修复候选发现（2026-10-15）
 
 原implementation/final-receipt.json绑定的10b39c8已经fresh常规Review FAIL R1/P2，原件review-10b39c8/及manifest保留。后续内容候选实际最终SHA、branch/range/clean/owned Git blobs/本地验证/Recorder/sourcelease请从同一固定外部目录的fix-r1/final-receipt.json解析；它取代原implementation收据作为本次修复候选身份发现，不能替代新finalSHA fresh常规及different fresh专项/hosted/集成/actual-main/安全同步。两审均PENDING；原FAIL不能复用为接受。既有两阶段闭环与所有原历史保持；GROUP backlog/S2 OPEN。
+
+## R2 CI candidate discovery（2026-10-16；最新候选身份入口）
+
+R1收据绑定的bab8已通过两项fresh审查与push全14，但PR两次Go+aggregate gate FAIL；旧两审/CI只历史、原件见ci-fix-r2/history-manifest.json，不接受新字节。当前最新内容候选身份必须从固定外部目录 ci-fix-r2/final-receipt.json 解析；它取代implementation/fix-r1收据作为最新candidate发现，旧文件和既有两阶段流程全部保留。该R2收据绑定实际branch/clean finalSHA/base/range/owned Git blobs/local结果/Recorder/lease RELEASED；不是独立接受。R2仅现Go临时无TLS PG env及7checkout精确绑定，13/13候选refs，生产树不改。
+
+新finalSHA的NEW常规及DIFFERENT NEW错误专项均PENDING，CI/integration/actual-main/安全同步PENDING；任何修复必须两项重审再提交CI，不复用bab8 PASS。Go env方向未经新hosted验证，不能称已解决。source commit后不可再写；后续独立接受及行政闭环遵从上文完整两阶段机制。GROUP唯一backlog/planned，S2 OPEN/STOP。
