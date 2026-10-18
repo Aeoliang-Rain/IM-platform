@@ -1,0 +1,38 @@
+{
+  "parent_sha": "0190c65cafff7df50492e743761427f214fba951",
+  "base_sha": "6f163927334c39c9c8833eb8222335c661bde673",
+  "original_test_methods": 17,
+  "original_methods_and_helpers_ast_unchanged": 19,
+  "added_test_methods": [
+    "GroupContractTests.test_checker_internal_exits_cannot_pass_formal_negative_test",
+    "GroupContractTests.test_real_checker_success_and_schema_rejection_exit_codes",
+    "GroupContractTests.test_structural_checker_missing_node_and_launch_defects_propagate"
+  ],
+  "final_test_methods": 20,
+  "fixtures": {
+    "valid": 35,
+    "invalid": 30,
+    "objects_unchanged": true,
+    "git_blob_unchanged": true
+  },
+  "verifier_changed_functions": [
+    "structural_lint"
+  ],
+  "prefix_lookahead_and_short_page_logic_unchanged": true,
+  "current_delta": [
+    "contracts/http/verify-group.py",
+    "tests/contract/group/test_group.py"
+  ],
+  "protected_tracked_paths_checked": 18974,
+  "preserved_0001": {
+    "contracts/database/migrations/0001_initial.up.sql": {
+      "worktree_sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "git_blob": "a65de90ff6fb3682abd57453a8cb3d39e0760675"
+    },
+    "contracts/database/migrations/0001_initial.down.sql": {
+      "worktree_sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "git_blob": "ac88d806fbb6fe8e167a9f9712b14308bd33f24d"
+    }
+  },
+  "parent_owned_paths": 36
+}

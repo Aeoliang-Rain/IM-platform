@@ -1,0 +1,82 @@
+{
+  "reason": "Initial staged diff --check found CRLF in newly copied JSON under byte-preserving evidence attributes. Original evidence is unchanged externally and additionally preserved byte-exact in ZIP; loose JSON is a logically equal LF projection. Recorder originals are never edited.",
+  "archive": {
+    "path": "pre-stage-originals.zip",
+    "bytes": 246797,
+    "sha256": "3746ce3e4c4cd9e5725abd5f3b73091a770f602f8c4138896889ae22d7d80d17"
+  },
+  "projections": [
+    {
+      "path": "direct-faults.json",
+      "original_sha256": "98efa515bb2621790d030b80a398d06fff94913bdbc628c1a1161ed80e1ff411",
+      "original_bytes": 1142,
+      "semantic_projection_sha256": "eaab15948e76e8fc989efcf35960996bb6392c03a1369d8d8b5036f6f23aeb63",
+      "projection_bytes": 1111,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "evidence-bindings.json",
+      "original_sha256": "53774eb547caa81c4e79bf9781aafbd7830d5fa5ee7a44d903050ea13ddd1add",
+      "original_bytes": 1246,
+      "semantic_projection_sha256": "53774eb547caa81c4e79bf9781aafbd7830d5fa5ee7a44d903050ea13ddd1add",
+      "projection_bytes": 1246,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "failure-bindings.json",
+      "original_sha256": "0b98a06509f04920588beaa8ca232109ba0466ddbf84eb86e3d09dc8a8e00dff",
+      "original_bytes": 1321,
+      "semantic_projection_sha256": "b2c049f768f43ca86cc853f7bb62f446314e2b4eea8c99340912e7cfeca5aeab",
+      "projection_bytes": 1293,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "fault-after-summary.json",
+      "original_sha256": "4b49ddcc5d8b5f02654fffe32f7ac958c1588df4e27346eced9e180a7d90515e",
+      "original_bytes": 3523,
+      "semantic_projection_sha256": "22520d69fbfd66f8b6fd9334576b5855d40af10996cf0a10de2781e7655b409c",
+      "projection_bytes": 3439,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "final-local-bindings.json",
+      "original_sha256": "9495f6cb2c5b3dee4bd9c9c9e1402b55400759e6a366e4e20ea9563f5c4ca95a",
+      "original_bytes": 3572,
+      "semantic_projection_sha256": "9495f6cb2c5b3dee4bd9c9c9e1402b55400759e6a366e4e20ea9563f5c4ca95a",
+      "projection_bytes": 3572,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "final-local-verification.json",
+      "original_sha256": "4b4b48f7b94411f9d5e12bcc10d7da40da1b9be160e53ccde505ed52ecaf9afb",
+      "original_bytes": 53962,
+      "semantic_projection_sha256": "4b4b48f7b94411f9d5e12bcc10d7da40da1b9be160e53ccde505ed52ecaf9afb",
+      "projection_bytes": 53962,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "local-verification.json",
+      "original_sha256": "abf5031d3d2de5050301505b1fe829ecec5c4d7cefa968c230449c9ea05a59db",
+      "original_bytes": 41104,
+      "semantic_projection_sha256": "abf5031d3d2de5050301505b1fe829ecec5c4d7cefa968c230449c9ea05a59db",
+      "projection_bytes": 41104,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "source-inventory.json",
+      "original_sha256": "61947f2b89fb5df0a3d426b9e86f9dbd143cacace5cd140f3c606fbe8a1bdbb9",
+      "original_bytes": 5616,
+      "semantic_projection_sha256": "61947f2b89fb5df0a3d426b9e86f9dbd143cacace5cd140f3c606fbe8a1bdbb9",
+      "projection_bytes": 5616,
+      "logical_content_unchanged": true
+    },
+    {
+      "path": "source-preservation.json",
+      "original_sha256": "9a3950b9cde67443b3b1277e9116b8de6ab5d4b837aa0877467de9de2958a7e4",
+      "original_bytes": 1447,
+      "semantic_projection_sha256": "c020f49ae82be10aeaecd36e597433dcfd505faacc663d9bb8a1c148d039dbe2",
+      "projection_bytes": 1409,
+      "logical_content_unchanged": true
+    }
+  ]
+}

@@ -107,9 +107,16 @@ def validate(value, schema, document=None):
 
 def structural_lint(document):
     node = shutil.which('node')
-    require(bool(node), 'Node required for existing official OpenAPI3.1 structural lint')
+    if not node:
+        raise RuntimeError('Node required for existing official OpenAPI3.1 structural lint')
     result = subprocess.run([node,str(ROOT/'contracts/http/check-openapi-3.1.js')], input=json.dumps(document).encode(),capture_output=True)
-    require(result.returncode == 0,result.stderr.decode(errors='replace'))
+    if result.returncode != 0:
+        diagnostic = (f'OpenAPI structural checker exit {result.returncode}; '
+                      f'stdout={result.stdout.decode(errors="replace")!r}; '
+                      f'stderr={result.stderr.decode(errors="replace")!r}')
+        if result.returncode == 1:
+            raise Invalid(diagnostic)  # The pinned checker reserves exit1 for schema rejection.
+        raise RuntimeError(diagnostic)
 
 
 def check_document(document):

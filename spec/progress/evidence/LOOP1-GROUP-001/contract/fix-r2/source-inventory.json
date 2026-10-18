@@ -1,0 +1,119 @@
+{
+  "parent_sha": "0190c65cafff7df50492e743761427f214fba951",
+  "base_sha": "6f163927334c39c9c8833eb8222335c661bde673",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "0bab7a3e871b11b2abb4d8869d21e53020a7232afd911dbb49542329dd185663",
+      "bytes": 18030,
+      "git_filtered_blob": "2feb236d1fee8d70377639a6752aa2cf25b32e7b",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/database/README.md",
+      "sha256": "b420a707af4e8c4ee2d35246bbadd041e3f4dd2ee63c8c5fc5f4bfbab5219b77",
+      "bytes": 6241,
+      "git_filtered_blob": "44c1c6cc3820e4e443d41f987b9071f616e8b523",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/database/migrate.py",
+      "sha256": "ce6a6c9510c33995088a5bbf34ffc2348bf87f2e501e7303d7dab1f20a897c36",
+      "bytes": 5566,
+      "git_filtered_blob": "b8e0be111903167401d8bc4ca2bd9e3f69adb335",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/database/migrations/0002_group_operations.down.sql",
+      "sha256": "a82f113d2dc34ac34c70b32481ec56946e9cb63fad68e6022753b577e9b5dd00",
+      "bytes": 241,
+      "git_filtered_blob": "e6716dcf84489da3aaa537dab5c97953bf53ffb5",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/database/migrations/0002_group_operations.up.sql",
+      "sha256": "649fd59ceaa08894b07de4a19e1082f87aa4f421deeb394b40cee1c327bb18ec",
+      "bytes": 1759,
+      "git_filtered_blob": "83a198cd94dfe0c82e4c058b8df76675eb6f00a4",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/errors/http-errors.schema.json",
+      "sha256": "2457fef04b21fbdcd3e626ed0020f8f854642f3cf19a5d911605a4816dfcd32a",
+      "bytes": 1902,
+      "git_filtered_blob": "e6ba2d7356ebe2752a4a85a1e44831134ceb117f",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/fixtures/group/exchanges.json",
+      "sha256": "7964b6bfb2923b29dfa23928ff6f7aee349c13c2cd0b9dd48cb35ae51e529395",
+      "bytes": 97612,
+      "git_filtered_blob": "70fed63dea5493c35dd5ddba601ec5ce81bf1840",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/fixtures/group/transaction-vectors.json",
+      "sha256": "a35481fec370837850396fe3727215bd4616a78463fda0a8633ab11fc01773aa",
+      "bytes": 4624,
+      "git_filtered_blob": "0fdb7c36e3aef61227f0f0f0c851f928d9108dfc",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/http/group.openapi.json",
+      "sha256": "8c40882cfea49b681a3ebd02f36c2d75bbe12cb15e63ae98f12a055c72667de0",
+      "bytes": 24377,
+      "git_filtered_blob": "4461c94e8f09fbe31712779d629452aa1b19423b",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/http/verify-auth-user-friend.ps1",
+      "sha256": "faf8a4aab1c724dc51fd19fd39d1e077a83f67057b879029902f3004f9562e07",
+      "bytes": 35017,
+      "git_filtered_blob": "f067a9f9bfa54f1ab22e7a87c7a1653a3dd4c63f",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    },
+    {
+      "path": "contracts/http/verify-group.py",
+      "sha256": "66885113507a265fa8afae03970469f51956fe66450bedb2c0fbc13e9b004348",
+      "bytes": 19100,
+      "git_filtered_blob": "3311ba69cd19b34603ef657db397ff9755046c30",
+      "change_since_parent": "MODIFIED",
+      "responsibility": "structural checker execution classification"
+    },
+    {
+      "path": "tests/contract/group/test_group.py",
+      "sha256": "df9a2bdc5a5c88e84ff2f6e9e8fa3ddd1d3fe40aa5c69788f5f8bbb1c21dd3d4",
+      "bytes": 14958,
+      "git_filtered_blob": "5cd88dcfd649c615dc5333e8130de80e66a2b0ce",
+      "change_since_parent": "MODIFIED",
+      "responsibility": "group regression suite"
+    },
+    {
+      "path": "tests/database/test_migrations.py",
+      "sha256": "3cbdff35a7a06dad7e1f62593083f01d44192663e0f8375c098038510ff0f337",
+      "bytes": 25362,
+      "git_filtered_blob": "9201a65b90c9e2e6455104f5d02584caf6de2721",
+      "change_since_parent": "UNCHANGED",
+      "responsibility": "inherited first-contract slice, unchanged by this fix"
+    }
+  ],
+  "new_catches": [],
+  "retained_failure_classification": {
+    "known_schema_rejection": "Pinned JS exit1 only -> Invalid",
+    "unavailable_Node": "RuntimeError, no subprocess attempt",
+    "checker_execution": "Any nonzero except1 -> RuntimeError retaining exit/stdout/stderr",
+    "unknown_launch_internal_exception": "Uncaught unchanged; tests assert same instance"
+  },
+  "existing_catches": "All inherited verifier functions except structural_lint AST unchanged, including existing Invalid-only alternative/semantic/uncorrelatable/negative loops; no broad catch added.",
+  "protected_paths": "Full parent diff set exactly the authorized4trackedfiles; all other18974trackedpaths unchanged; original0001raw worktree bytes verified."
+}

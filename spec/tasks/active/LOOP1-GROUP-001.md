@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/group_contract_fix_r1
+owner: /root/group_contract_fix_r2
 stage: S2
 gate: S2
 client_supplement_phase: group_product
@@ -190,17 +190,17 @@ main_sync_evidence: unavailable
 
 # Handoff
 
-首契约旧候选 `5aa1632341fd90f30a00a87356ee2d09ee3f9bbe` 常规独立审查 FAIL（R1-P2-001）已保留。fresh Fix `/root/group_contract_fix_r1` 最小修复分页验收完整性；本轮事实/范围/失败和研究限制见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r1/handoff.md`。当前最终候选唯一发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r1/final-receipt.json`，文档生成时 finalSHA=PENDING，以该新 receipt 的实际 clean committed SHA/owned blobs/Recorder/lease 为准；旧 contract-impl/final-receipt.json 只绑定历史5aa，不能作为当前最终候选。
+首契约历史5aa常规FAIL、0190常规R2PASS及专项R1FAIL EH-R1-P2-001全部保留。fresh Fix r2只修Python结构检查桥接退出码分类，并加3个行为故障回归；详见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r2/handoff.md`。当前唯一候选发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r2/final-receipt.json`；文档生成时finalSHA=PENDING，以该receipt的实际clean committed SHA/ownedblobs/Recorder/lease为准，历史r1/impl receipt不得作为新final候选。
 
-regular_review: NEW PENDING final SHA
-error_handling_review: DIFFERENT NEW PENDING final SHA
+regular_review: NEW PENDING final SHA (fresh r3 required)
+error_handling_review: DIFFERENT NEW PENDING final SHA (fresh specialist r2 required)
 hosted_acceptance: PENDING
 main_sync: PENDING
-整体GROUP保持active/group_product，S2 OPEN；原regular FAIL与实现Recorder FAIL均不抹除。
+整体GROUP保持active/group_product，S2 OPEN；历史FAIL和Recorder FAIL不抹除。
 
 # Next Action
 
-Coordinator核新固定final-receipt原件/hash/clean SHA/范围→fresh常规→DIFFERENT fresh错误专项同最终SHA→exact candidate/PR实际必需jobs/steps（两个群入口与真实PG迁移）→protected merge→actual-main hosted/tree→保存782unknown安全主目录同步。固定外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-acceptance-seal.json` 缺/坏保持PENDING；逐项核原件/hash/jobs/sync，不能只信seal。全部完成才由fresh产品Agent记录实际contract SHA后实现Go/三端；整体Task不移review/done，S2不PASS。
+Coordinator核新fixed receipt原件/hash/cleanSHA/范围→NEW fresh常规r3→DIFFERENT fresh错误专项r2同finalSHA→exact candidate/PR实际必需jobs/steps（群verifier、实际20tests、真实PG）→protected merge→actual-main hosted/tree→保存782unknown安全主目录同步。两项新审查前禁止push/CI-triggering PR；本Fix不执行push/PR/CI/merge/sync。固定外部contract-acceptance-seal.json仍缺/坏=PENDING，逐项核原件/hash/jobs/sync；全部完成后才fresh产品Agent登记实际contract SHA并继续Go/三端。整个Task不移review/done，S2不PASS。
 
 # 2026-10-18 Activation / Contract Candidate
 
@@ -250,3 +250,15 @@ main_sync: PENDING
 本轮只改verify-group.py、exchanges.json、test_group.py、本Task/current和新fix-r1证据；不改OpenAPI/public shape/0001/0002/runner/Go/客户端/Frozen/ADR/旧wire/旧证据。Recorder初始化unsupported event exit2已披露修正；prospective_resume仍partial，最终finish/validate实际值由新receipt绑定。单个fix commit后两项最终审查均NEW PENDING、CI/sync PENDING；当前finalSHA=PENDING发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r1/final-receipt.json`，不沿用历史5aa receipt。Last known good accepted/synchronized main仍 `6f163927334c39c9c8833eb8222335c661bde673`。本writer提交后释放lease，禁止push/PR/CI/merge/sync；新独立两审与完整接受仍由Coordinator推进。
 
 本轮current格式初版遗漏既有Command/Result/Evidence标签导致Development exit1，已最小补齐并保留真实FAIL；最终Development/clean Acceptance结果由新final-receipt绑定。研究一次live session与只读git检查重叠也已warning公开，最终structural validation独立报告。
+
+# Fresh Fix R2 Local Outcome
+
+2026-10-18 `/root/group_contract_fix_r2`在assigned exactroot/branch/clean0190核验后获唯一writer lease。专项EH-R1-P2-001原件223hash均匹配；原17tests遇5次内部exit2仍PASS已真实复现。最小修复仅结构检查器明确exit1→Invalid；缺Node、exit2/其他异常码→带exit/stdout/stderr的RuntimeError；launch和未知exceptions原样传播。新增3个回归方法，原17tests/19methods+helpers AST与35valid30invalidfixtures保持；正常20tests和verifier全exit0。相同原fault后original17suite1error/current20suite2errors，每个5formal输入均RuntimeError，不能negativePASS。
+
+JS/OpenAPI/publicwire/errors/SQL/runner/CI/0001bytes、0190完整prefix/lookahead/合法短page、Go/三端/Frozen/ADR/旧证据不改。Frozen/planning/allarchitecture、88architecture(skip1)/35CI(skip4)、旧Auth/Sync/WSS/Plugin通过。PG未改不重复，旧真实11/0skip保留，hosted仍须实际执行。Development/clean committedAcceptance最终命令/exit/elapsed由新receipt绑定。
+
+Recorder为prospective_resume/partial，startup/helperauthoring/通信/封存不完整capture，早期输出截断后定向重读，两次ADR猜名失败后纠正；一次baseline live session与只读检查重叠已warning，后续严格串行。preservation helper初次Windows argv206失败已保留并改用完整delta集合检查后通过。finish诚实FAIL、direct validate另报；研究与产品接受分开。新finalSHA两项freshreviews/hosted/protected/actualmain/sync均PENDING；整体active/group_product/S2OPEN。单个fixcommit之后释放lease，finalSHA/clean/ownedblob/实际Recorder只由新fixed receipt绑定；最后已知良好main仍6f163927334c39c9c8833eb8222335c661bde673。
+
+本Fix r2首次Development真实exit1：current两行Command/Evidence格式不符及子进程选中系统Python2.7；已最小修正记录格式并在本轮runner环境前置既有Python3路径，不改控制检查器。原始FAIL保存，复验/clean Acceptance由最终receipt绑定。
+
+Staged whitespace检查首次失败：本轮新松散JSON以Windows CRLF写出且证据目录保留原字节，git识别CR为尾空白；尚未commit。外部原始probe/Recorder和sealed specialist均不改，新repo证据draft原字节另存pre-stage-originals.zip；松散JSON仅生成逻辑等价LF语义投影，representation-bindings.json绑定原/投影hash，更新索引后重验。此为表示修正，不更改原故障事实。

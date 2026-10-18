@@ -3,6 +3,7 @@ import importlib.util
 import json
 from pathlib import Path
 import unittest
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[3]
 spec = importlib.util.spec_from_file_location('group_contract', ROOT/'contracts/http/verify-group.py')
@@ -184,6 +185,49 @@ class GroupContractTests(unittest.TestCase):
         step=workflow.split('- name: HTTP, WSS, Sync and Plugin contracts',1)[1].split('\n  compatibility:',1)[0]
         for command in ('python3 -B contracts/http/verify-group.py','python3 -B -m unittest discover -s tests/contract/group -p "test_*.py" -v'):
             self.assertIn(command+'\n          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }',step)
+
+
+    def test_checker_internal_exits_cannot_pass_formal_negative_test(self):
+        for code in (2,37,-9):
+            with self.subTest(exit_code=code):
+                process=v.subprocess.CompletedProcess([],code,stdout=b'checker-output-sentinel',stderr=b'checker-internal-sentinel')
+                result=unittest.TestResult()
+                with mock.patch.object(v.subprocess,'run',return_value=process) as checker:
+                    GroupContractTests('test_formal_openapi_structure_negative_controls').run(result)
+                self.assertFalse(result.wasSuccessful())
+                self.assertEqual((len(result.failures),len(result.errors)),(0,1))
+                self.assertEqual(checker.call_count,1)
+                diagnostic=result.errors[0][1]
+                for expected in ('RuntimeError',f'exit {code}','checker-output-sentinel','checker-internal-sentinel'):
+                    self.assertIn(expected,diagnostic)
+
+    def test_structural_checker_missing_node_and_launch_defects_propagate(self):
+        with mock.patch.object(v.shutil,'which',return_value=None),mock.patch.object(v.subprocess,'run') as checker:
+            with self.assertRaisesRegex(RuntimeError,'Node required'):
+                v.structural_lint(self.document)
+            checker.assert_not_called()
+        for fault in (FileNotFoundError('missing-node-executable'),OSError('launch-failed'),ValueError('internal-invocation-defect')):
+            with self.subTest(fault=type(fault).__name__),mock.patch.object(v.subprocess,'run',side_effect=fault):
+                with self.assertRaises(type(fault)) as observed:
+                    v.structural_lint(self.document)
+                self.assertIs(observed.exception,fault)
+
+    def test_real_checker_success_and_schema_rejection_exit_codes(self):
+        for valid in (True,False):
+            candidate=copy.deepcopy(self.document)
+            if not valid:candidate['info'].pop('title')
+            with self.subTest(valid=valid):
+                real_run=v.subprocess.run;children=[]
+                def observe(*args,**kwargs):
+                    child=real_run(*args,**kwargs);children.append(child);return child
+                with mock.patch.object(v.subprocess,'run',side_effect=observe) as checker:
+                    if valid:v.structural_lint(candidate)
+                    else:
+                        with self.assertRaises(v.Invalid):v.structural_lint(candidate)
+                self.assertEqual(checker.call_count,1)
+                child=children[0]
+                self.assertEqual(child.returncode,0 if valid else 1)
+                if not valid:self.assertTrue(child.stderr)
 
 
 if __name__=='__main__':unittest.main()
