@@ -1,0 +1,13 @@
+=== RUN   TestServeJoinsInflightWatchBeforePoolClose
+    watch_failure_test.go:390: serve returned before its watch retired, allowing pool teardown to cancel it: exit status 2: === RUN   TestServeJoinsInflightWatchBeforePoolClose
+        panic: failed to connect to `user=public_fixture database=public_fixture`: 127.0.0.1:58269 (127.0.0.1): failed to receive message: context canceled
+        
+        goroutine 39 [running]:
+        im-platform/backend/go/gateway.(*hub).serve.func3()
+        	H:/.codex/worktrees/grp/IM-platform/backend/go/gateway/gateway.go:192 +0x105
+        created by im-platform/backend/go/gateway.(*hub).serve in goroutine 11
+        	H:/.codex/worktrees/grp/IM-platform/backend/go/gateway/gateway.go:186 +0xf25
+--- FAIL: TestServeJoinsInflightWatchBeforePoolClose (1.46s)
+FAIL
+FAIL	im-platform/backend/go/gateway	2.811s
+FAIL

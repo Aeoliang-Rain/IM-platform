@@ -1,0 +1,15 @@
+......................................................s.....................E...........
+======================================================================
+ERROR: test_legal_single_module_go_runtime_and_blackbox_test (test_source_boundaries.SourceTests.test_legal_single_module_go_runtime_and_blackbox_test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\.codex\worktrees\grp\IM-platform\tests\architecture\test_source_boundaries.py", line 46, in test_legal_single_module_go_runtime_and_blackbox_test
+    subprocess.run(["go", "test", "./..."], cwd=self.root / "backend/go", check=True, capture_output=True)
+  File "C:\Users\21441\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['go', 'test', './...']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 88 tests in 54.951s
+
+FAILED (errors=1, skipped=1)

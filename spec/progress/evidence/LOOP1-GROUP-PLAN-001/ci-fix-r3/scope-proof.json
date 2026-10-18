@@ -1,0 +1,4511 @@
+{
+  "result": "PASS",
+  "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "starting_sha": "204e803724c2a64514c6e14f8d1ed86cabca8acb",
+  "current_head": "204e803724c2a64514c6e14f8d1ed86cabca8acb",
+  "root": "H:/.codex/worktrees/grp/IM-platform",
+  "allowed_backend_paths": [
+    "backend/go/gateway/gateway.go",
+    "backend/go/gateway/watch_failure_test.go",
+    "backend/go/tests/auth_test.go",
+    "backend/go/tests/contract_fixture_test.go",
+    "backend/go/tests/message_test.go",
+    "backend/go/tests/revocation_fallback_test.go",
+    "backend/go/tests/runtime_test.go"
+  ],
+  "actual_backend_delta": [
+    "backend/go/gateway/gateway.go",
+    "backend/go/gateway/watch_failure_test.go",
+    "backend/go/tests/auth_test.go",
+    "backend/go/tests/contract_fixture_test.go",
+    "backend/go/tests/message_test.go",
+    "backend/go/tests/revocation_fallback_test.go",
+    "backend/go/tests/runtime_test.go"
+  ],
+  "unauthorized_backend_and_other_product_files_preserved": 254,
+  "product_tree_paths_equal_at_base_and_start": true,
+  "product_path_count": 261,
+  "unchanged_product_files": [
+    {
+      "path": "backend/go/Dockerfile",
+      "base_blob": "f2de55f368ba7f7098ccd602371b68f427569554",
+      "start_blob": "f2de55f368ba7f7098ccd602371b68f427569554",
+      "base_bytes": {
+        "bytes": 208,
+        "sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358"
+      },
+      "current_worktree_bytes": {
+        "bytes": 208,
+        "sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 208,
+        "sha256": "d378500af3ce73279b76ef556935a16edb68e82a34af5eeb925edb233c1b5358"
+      }
+    },
+    {
+      "path": "backend/go/config.example.json",
+      "base_blob": "49bf31d37a49e52b33f2104c02911ce019135331",
+      "start_blob": "49bf31d37a49e52b33f2104c02911ce019135331",
+      "base_bytes": {
+        "bytes": 253,
+        "sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628"
+      },
+      "current_worktree_bytes": {
+        "bytes": 253,
+        "sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 253,
+        "sha256": "0f990c07bcdbc4c8b2279c5727f4505f11181830a954db43ca343d8160bfd628"
+      }
+    },
+    {
+      "path": "backend/go/core/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "backend/go/core/auth.go",
+      "base_blob": "07a9dff1cf52739a2f21d14390f79f945ce487ca",
+      "start_blob": "07a9dff1cf52739a2f21d14390f79f945ce487ca",
+      "base_bytes": {
+        "bytes": 18436,
+        "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701"
+      },
+      "current_worktree_bytes": {
+        "bytes": 18436,
+        "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 18436,
+        "sha256": "ba67ad053b457c4afb0d1bf24b683bb4de1883c9ef85313b49bc65bea884e701"
+      }
+    },
+    {
+      "path": "backend/go/core/error_handling_test.go",
+      "base_blob": "a75b9cb7322551d873c0d7e3797f78255e66f41f",
+      "start_blob": "a75b9cb7322551d873c0d7e3797f78255e66f41f",
+      "base_bytes": {
+        "bytes": 1414,
+        "sha256": "f8adf2ace9dee5d6b6177975cad2ec84518930806ce2809d8e993ed58ac31f26"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1414,
+        "sha256": "f8adf2ace9dee5d6b6177975cad2ec84518930806ce2809d8e993ed58ac31f26"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1414,
+        "sha256": "f8adf2ace9dee5d6b6177975cad2ec84518930806ce2809d8e993ed58ac31f26"
+      }
+    },
+    {
+      "path": "backend/go/core/http.go",
+      "base_blob": "f4e7c00ee4dd57a9831ad1001f8a8c597dc21215",
+      "start_blob": "f4e7c00ee4dd57a9831ad1001f8a8c597dc21215",
+      "base_bytes": {
+        "bytes": 451,
+        "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945"
+      },
+      "current_worktree_bytes": {
+        "bytes": 451,
+        "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 451,
+        "sha256": "6331bd8943a8f46838eb2ff606d9faa7021fa842ad3e114b400fe6af3ed6d945"
+      }
+    },
+    {
+      "path": "backend/go/core/message.go",
+      "base_blob": "8e9bc4657dc77de0dae8ee232a96c31cf45e346d",
+      "start_blob": "8e9bc4657dc77de0dae8ee232a96c31cf45e346d",
+      "base_bytes": {
+        "bytes": 7229,
+        "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+      },
+      "current_worktree_bytes": {
+        "bytes": 7229,
+        "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 7229,
+        "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+      }
+    },
+    {
+      "path": "backend/go/core/message_test.go",
+      "base_blob": "6fdcd592de8d148e919c9fd6fcb3b1da5420466b",
+      "start_blob": "6fdcd592de8d148e919c9fd6fcb3b1da5420466b",
+      "base_bytes": {
+        "bytes": 11241,
+        "sha256": "9ad4889afde8ebc59691e70e857e92d1c6bcba4ec25c4587d199cfc761094e87"
+      },
+      "current_worktree_bytes": {
+        "bytes": 11241,
+        "sha256": "9ad4889afde8ebc59691e70e857e92d1c6bcba4ec25c4587d199cfc761094e87"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 11241,
+        "sha256": "9ad4889afde8ebc59691e70e857e92d1c6bcba4ec25c4587d199cfc761094e87"
+      }
+    },
+    {
+      "path": "backend/go/core/outbox.go",
+      "base_blob": "2fdbd4e1477ec9a40a5651dffa87920bf0bfc1f2",
+      "start_blob": "2fdbd4e1477ec9a40a5651dffa87920bf0bfc1f2",
+      "base_bytes": {
+        "bytes": 3829,
+        "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3829,
+        "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3829,
+        "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1"
+      }
+    },
+    {
+      "path": "backend/go/core/outbox_test.go",
+      "base_blob": "a7a7ace588be62973ed968601dcb97a468dbb2d3",
+      "start_blob": "a7a7ace588be62973ed968601dcb97a468dbb2d3",
+      "base_bytes": {
+        "bytes": 2978,
+        "sha256": "85fd0a901dd65ce3ae52c6ad4d63315c1c928cea64f46baad19674e69962439f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2978,
+        "sha256": "85fd0a901dd65ce3ae52c6ad4d63315c1c928cea64f46baad19674e69962439f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2978,
+        "sha256": "85fd0a901dd65ce3ae52c6ad4d63315c1c928cea64f46baad19674e69962439f"
+      }
+    },
+    {
+      "path": "backend/go/core/outbox_transport_test.go",
+      "base_blob": "61ee516f1e9d3af2e8ed0c74d6a5190fc28f82e0",
+      "start_blob": "61ee516f1e9d3af2e8ed0c74d6a5190fc28f82e0",
+      "base_bytes": {
+        "bytes": 6619,
+        "sha256": "41e52a6943cc84d443d797e63c9892258e858338310a81ea66f8dbc5b54256fe"
+      },
+      "current_worktree_bytes": {
+        "bytes": 6619,
+        "sha256": "41e52a6943cc84d443d797e63c9892258e858338310a81ea66f8dbc5b54256fe"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 6619,
+        "sha256": "41e52a6943cc84d443d797e63c9892258e858338310a81ea66f8dbc5b54256fe"
+      }
+    },
+    {
+      "path": "backend/go/core/rollback_test.go",
+      "base_blob": "493137765ab8cad62b769ea6ce38b75fffc7b13e",
+      "start_blob": "493137765ab8cad62b769ea6ce38b75fffc7b13e",
+      "base_bytes": {
+        "bytes": 1864,
+        "sha256": "a548d0557e36d37df618fbb0e1ea046198ce9f724cb86edae11f3a1e0f4a694c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1864,
+        "sha256": "a548d0557e36d37df618fbb0e1ea046198ce9f724cb86edae11f3a1e0f4a694c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1864,
+        "sha256": "a548d0557e36d37df618fbb0e1ea046198ce9f724cb86edae11f3a1e0f4a694c"
+      }
+    },
+    {
+      "path": "backend/go/core/social.go",
+      "base_blob": "de016ae604796b551b31f0be920fe66266c999ad",
+      "start_blob": "de016ae604796b551b31f0be920fe66266c999ad",
+      "base_bytes": {
+        "bytes": 8667,
+        "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 8667,
+        "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 8667,
+        "sha256": "ca719855b3848d4a07d47225c238f8698f625d2d00aa67f01202cc4a40976a2c"
+      }
+    },
+    {
+      "path": "backend/go/core/social_test.go",
+      "base_blob": "2429393bf95f1ac3ac31a33d98453987659d6cec",
+      "start_blob": "2429393bf95f1ac3ac31a33d98453987659d6cec",
+      "base_bytes": {
+        "bytes": 5552,
+        "sha256": "a2cf077bd270c7466dddb6af5da4d4cb6cdd03b978f7e91824d7840c78b8bc68"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5552,
+        "sha256": "a2cf077bd270c7466dddb6af5da4d4cb6cdd03b978f7e91824d7840c78b8bc68"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5552,
+        "sha256": "a2cf077bd270c7466dddb6af5da4d4cb6cdd03b978f7e91824d7840c78b8bc68"
+      }
+    },
+    {
+      "path": "backend/go/core/sync.go",
+      "base_blob": "87ef2290c46cf7ebaa780ea443d090764409817c",
+      "start_blob": "87ef2290c46cf7ebaa780ea443d090764409817c",
+      "base_bytes": {
+        "bytes": 19874,
+        "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+      },
+      "current_worktree_bytes": {
+        "bytes": 19874,
+        "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 19874,
+        "sha256": "8ad7c95ba75f0ea054a07ffb029ca1764ade96fe55d5effd9f9e002bf245f842"
+      }
+    },
+    {
+      "path": "backend/go/core/sync_http_test.go",
+      "base_blob": "74822ff88a4bbb1204ffc96992654f1b8b360866",
+      "start_blob": "74822ff88a4bbb1204ffc96992654f1b8b360866",
+      "base_bytes": {
+        "bytes": 20495,
+        "sha256": "04f967ef25e284ab8d1da9ce56ea019570c6da16ad83601b7bed3d035ef53598"
+      },
+      "current_worktree_bytes": {
+        "bytes": 20495,
+        "sha256": "04f967ef25e284ab8d1da9ce56ea019570c6da16ad83601b7bed3d035ef53598"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 20495,
+        "sha256": "04f967ef25e284ab8d1da9ce56ea019570c6da16ad83601b7bed3d035ef53598"
+      }
+    },
+    {
+      "path": "backend/go/core/sync_test.go",
+      "base_blob": "f41215fdb31f9a7ce0db33b40e01353e30ae8893",
+      "start_blob": "f41215fdb31f9a7ce0db33b40e01353e30ae8893",
+      "base_bytes": {
+        "bytes": 3446,
+        "sha256": "9887884298317aa0502494b6861bb71bec932510428194fbba93368cfba15032"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3446,
+        "sha256": "9887884298317aa0502494b6861bb71bec932510428194fbba93368cfba15032"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3446,
+        "sha256": "9887884298317aa0502494b6861bb71bec932510428194fbba93368cfba15032"
+      }
+    },
+    {
+      "path": "backend/go/gateway/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "backend/go/gateway/error_handling_test.go",
+      "base_blob": "909dce0a3324ef1ec14bb2d86162081778eacf8f",
+      "start_blob": "909dce0a3324ef1ec14bb2d86162081778eacf8f",
+      "base_bytes": {
+        "bytes": 998,
+        "sha256": "4fa45507cb296db2dd951cd921ce201ba47cc2a337c1fee6f8bc01ae3dbbaa9c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 998,
+        "sha256": "4fa45507cb296db2dd951cd921ce201ba47cc2a337c1fee6f8bc01ae3dbbaa9c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 998,
+        "sha256": "4fa45507cb296db2dd951cd921ce201ba47cc2a337c1fee6f8bc01ae3dbbaa9c"
+      }
+    },
+    {
+      "path": "backend/go/gateway/http.go",
+      "base_blob": "1239cdde76e79b12b3fb96d5629ba6e89b420c27",
+      "start_blob": "1239cdde76e79b12b3fb96d5629ba6e89b420c27",
+      "base_bytes": {
+        "bytes": 1733,
+        "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1733,
+        "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1733,
+        "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f"
+      }
+    },
+    {
+      "path": "backend/go/gateway/message_test.go",
+      "base_blob": "c230cceb70649d5c35739cdafdddea78a6c16920",
+      "start_blob": "c230cceb70649d5c35739cdafdddea78a6c16920",
+      "base_bytes": {
+        "bytes": 9285,
+        "sha256": "3164223b580641f7491e2cf050f96012b607582eb4596154635a1b94f1c1f134"
+      },
+      "current_worktree_bytes": {
+        "bytes": 9285,
+        "sha256": "3164223b580641f7491e2cf050f96012b607582eb4596154635a1b94f1c1f134"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 9285,
+        "sha256": "3164223b580641f7491e2cf050f96012b607582eb4596154635a1b94f1c1f134"
+      }
+    },
+    {
+      "path": "backend/go/gateway/origin_test.go",
+      "base_blob": "145d068407c3a09371fc221899e4adeda0690f0a",
+      "start_blob": "145d068407c3a09371fc221899e4adeda0690f0a",
+      "base_bytes": {
+        "bytes": 4356,
+        "sha256": "b39832ef8f9f76022cd830373b09f24a0c41aab37aece8e5d1889ce27f0f2567"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4356,
+        "sha256": "b39832ef8f9f76022cd830373b09f24a0c41aab37aece8e5d1889ce27f0f2567"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4356,
+        "sha256": "b39832ef8f9f76022cd830373b09f24a0c41aab37aece8e5d1889ce27f0f2567"
+      }
+    },
+    {
+      "path": "backend/go/gateway/session.go",
+      "base_blob": "5c39ebbe0c8d76f550b245e815c60f2bc1a6f801",
+      "start_blob": "5c39ebbe0c8d76f550b245e815c60f2bc1a6f801",
+      "base_bytes": {
+        "bytes": 2990,
+        "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2990,
+        "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2990,
+        "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f"
+      }
+    },
+    {
+      "path": "backend/go/gateway/session_test.go",
+      "base_blob": "6cbf3cd8f121147693b59b2a72fa365c70cfc1e8",
+      "start_blob": "6cbf3cd8f121147693b59b2a72fa365c70cfc1e8",
+      "base_bytes": {
+        "bytes": 2826,
+        "sha256": "fab943c53114dd46d066fcd579f48e19b582c9086ebbd23f5e8e6e0b4c5aec3c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2826,
+        "sha256": "fab943c53114dd46d066fcd579f48e19b582c9086ebbd23f5e8e6e0b4c5aec3c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2826,
+        "sha256": "fab943c53114dd46d066fcd579f48e19b582c9086ebbd23f5e8e6e0b4c5aec3c"
+      }
+    },
+    {
+      "path": "backend/go/go.mod",
+      "base_blob": "3b599e765359ba57ec5163032dba3c6b20a8046f",
+      "start_blob": "3b599e765359ba57ec5163032dba3c6b20a8046f",
+      "base_bytes": {
+        "bytes": 632,
+        "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591"
+      },
+      "current_worktree_bytes": {
+        "bytes": 632,
+        "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 632,
+        "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591"
+      }
+    },
+    {
+      "path": "backend/go/go.sum",
+      "base_blob": "dbe8312d1ad7d7184709310e8c19f4060cd55bb9",
+      "start_blob": "dbe8312d1ad7d7184709310e8c19f4060cd55bb9",
+      "base_bytes": {
+        "bytes": 3470,
+        "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3470,
+        "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3470,
+        "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a"
+      }
+    },
+    {
+      "path": "backend/go/main.go",
+      "base_blob": "7d623f12d0018c0b0e8f74a68895843377b18468",
+      "start_blob": "7d623f12d0018c0b0e8f74a68895843377b18468",
+      "base_bytes": {
+        "bytes": 1715,
+        "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1715,
+        "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1715,
+        "sha256": "bd296fca2ec92ec5573c85cb0114ebe2e11175d0f8d13487767e57610450bff7"
+      }
+    },
+    {
+      "path": "backend/go/plugin-host/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "backend/go/plugin-host/http.go",
+      "base_blob": "ae264988ba197ef0a60003b12a288bd2d5043f4a",
+      "start_blob": "ae264988ba197ef0a60003b12a288bd2d5043f4a",
+      "base_bytes": {
+        "bytes": 212,
+        "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90"
+      },
+      "current_worktree_bytes": {
+        "bytes": 212,
+        "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 212,
+        "sha256": "f14ac265cbe3b603a51be499065688d866a7702d353c933552fa75c3605dfc90"
+      }
+    },
+    {
+      "path": "backend/go/shared/config.go",
+      "base_blob": "3b3839a7bc37c224e1d6d4d04a30d00ba9fb1840",
+      "start_blob": "3b3839a7bc37c224e1d6d4d04a30d00ba9fb1840",
+      "base_bytes": {
+        "bytes": 2417,
+        "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2417,
+        "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2417,
+        "sha256": "5861a328c75a7bbef00cf4f7f3315b26e4cd3c48370d2b6fb4e4165d11baea70"
+      }
+    },
+    {
+      "path": "backend/go/shared/config_test.go",
+      "base_blob": "26864e3e39d9b9b7e0c90489a242a937a5f8c20b",
+      "start_blob": "26864e3e39d9b9b7e0c90489a242a937a5f8c20b",
+      "base_bytes": {
+        "bytes": 1325,
+        "sha256": "b014acba6e518d31ef3865c15c66bfd530b7825f7a1c88fbc022fd997e8c5bbd"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1325,
+        "sha256": "b014acba6e518d31ef3865c15c66bfd530b7825f7a1c88fbc022fd997e8c5bbd"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1325,
+        "sha256": "b014acba6e518d31ef3865c15c66bfd530b7825f7a1c88fbc022fd997e8c5bbd"
+      }
+    },
+    {
+      "path": "backend/go/shared/infra.go",
+      "base_blob": "da5650ed865920331b327d2475b1bcf73e0b4ed8",
+      "start_blob": "da5650ed865920331b327d2475b1bcf73e0b4ed8",
+      "base_bytes": {
+        "bytes": 478,
+        "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 478,
+        "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 478,
+        "sha256": "9039c355d14f6ee307307e15992535519520f2ca2a3bf56188e2b3902ae80d6f"
+      }
+    },
+    {
+      "path": "backend/go/shared/security.go",
+      "base_blob": "ba1adc4b5ce3100bc3e43aa31952037a15168213",
+      "start_blob": "ba1adc4b5ce3100bc3e43aa31952037a15168213",
+      "base_bytes": {
+        "bytes": 2836,
+        "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2836,
+        "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2836,
+        "sha256": "a9116296436697a1369f2150aba73bf00c7acd83ce663962c12565d670049c03"
+      }
+    },
+    {
+      "path": "backend/go/shared/security_test.go",
+      "base_blob": "3577489024d51393b1e4c575d9636d78a7525f8c",
+      "start_blob": "3577489024d51393b1e4c575d9636d78a7525f8c",
+      "base_bytes": {
+        "bytes": 725,
+        "sha256": "27e3880120e993b56e4353610fdff92f8b281c0890a0228a2fa3d54e457afb3d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 725,
+        "sha256": "27e3880120e993b56e4353610fdff92f8b281c0890a0228a2fa3d54e457afb3d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 725,
+        "sha256": "27e3880120e993b56e4353610fdff92f8b281c0890a0228a2fa3d54e457afb3d"
+      }
+    },
+    {
+      "path": "backend/go/tests/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "backend/go/tests/social_test.go",
+      "base_blob": "efa0e74c30bd3d1166182c870b99d3f47c69d16c",
+      "start_blob": "efa0e74c30bd3d1166182c870b99d3f47c69d16c",
+      "base_bytes": {
+        "bytes": 10685,
+        "sha256": "cb5f54600f93b37cc25e9de5a3fa6d6cd2b60ebb4182284c5d3786981b07fe80"
+      },
+      "current_worktree_bytes": {
+        "bytes": 10685,
+        "sha256": "cb5f54600f93b37cc25e9de5a3fa6d6cd2b60ebb4182284c5d3786981b07fe80"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 10685,
+        "sha256": "cb5f54600f93b37cc25e9de5a3fa6d6cd2b60ebb4182284c5d3786981b07fe80"
+      }
+    },
+    {
+      "path": "backend/java/Dockerfile",
+      "base_blob": "787e318ca152f3c8abcb84972728321afb60f83c",
+      "start_blob": "787e318ca152f3c8abcb84972728321afb60f83c",
+      "base_bytes": {
+        "bytes": 255,
+        "sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06"
+      },
+      "current_worktree_bytes": {
+        "bytes": 255,
+        "sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 255,
+        "sha256": "c3d2ca680ee9229c8e3d9ca0e7a41aff1b5846a329f56c3de4be91eb372f4b06"
+      }
+    },
+    {
+      "path": "backend/java/InfraPlaceholder.java",
+      "base_blob": "c82aa18762381e6ce39b6a5c11a36bde3e1da944",
+      "start_blob": "c82aa18762381e6ce39b6a5c11a36bde3e1da944",
+      "base_bytes": {
+        "bytes": 3226,
+        "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3226,
+        "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3226,
+        "sha256": "257f6882ccb3ba13a8489222f4d463f44b7c75a6c5e90a32c81031197f889290"
+      }
+    },
+    {
+      "path": "backend/java/core/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "backend/java/gateway/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "backend/java/plugin-host/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "backend/java/tests/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "clients/desktop/.gitignore",
+      "base_blob": "b9470778764f72c5257a3361590d2994547f90e1",
+      "start_blob": "b9470778764f72c5257a3361590d2994547f90e1",
+      "base_bytes": {
+        "bytes": 20,
+        "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+      },
+      "current_worktree_bytes": {
+        "bytes": 20,
+        "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 20,
+        "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+      }
+    },
+    {
+      "path": "clients/desktop/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "clients/desktop/README.md",
+      "base_blob": "d180970f25cd4a05f332d1e00af1acdbf0417ab3",
+      "start_blob": "d180970f25cd4a05f332d1e00af1acdbf0417ab3",
+      "base_bytes": {
+        "bytes": 1337,
+        "sha256": "7bc4b810f2989a1fb786093a351cf95176c990ddfb30dd213d21e5507f6f0ccc"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1337,
+        "sha256": "7bc4b810f2989a1fb786093a351cf95176c990ddfb30dd213d21e5507f6f0ccc"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1337,
+        "sha256": "7bc4b810f2989a1fb786093a351cf95176c990ddfb30dd213d21e5507f6f0ccc"
+      }
+    },
+    {
+      "path": "clients/desktop/package-lock.json",
+      "base_blob": "42e88d267d7efecf85fbca81f7d89af93dded85b",
+      "start_blob": "42e88d267d7efecf85fbca81f7d89af93dded85b",
+      "base_bytes": {
+        "bytes": 11875,
+        "sha256": "16f453c2beed2a1bc0ba7becaf3457a1bc310d1faa3451331ef9bff0685ff376"
+      },
+      "current_worktree_bytes": {
+        "bytes": 11875,
+        "sha256": "16f453c2beed2a1bc0ba7becaf3457a1bc310d1faa3451331ef9bff0685ff376"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 11875,
+        "sha256": "16f453c2beed2a1bc0ba7becaf3457a1bc310d1faa3451331ef9bff0685ff376"
+      }
+    },
+    {
+      "path": "clients/desktop/package.json",
+      "base_blob": "d6e0c85af9c71b7d33fa08f80191e29d46afa4cf",
+      "start_blob": "d6e0c85af9c71b7d33fa08f80191e29d46afa4cf",
+      "base_bytes": {
+        "bytes": 457,
+        "sha256": "e052f11dc52945220cc0d5a334db753e4d41d0fe8d338e9267730cf85a2e8881"
+      },
+      "current_worktree_bytes": {
+        "bytes": 457,
+        "sha256": "e052f11dc52945220cc0d5a334db753e4d41d0fe8d338e9267730cf85a2e8881"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 457,
+        "sha256": "e052f11dc52945220cc0d5a334db753e4d41d0fe8d338e9267730cf85a2e8881"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/.gitignore",
+      "base_blob": "2e3f5fc23aee2c2e7824c8dfc93c8c37482896d0",
+      "start_blob": "2e3f5fc23aee2c2e7824c8dfc93c8c37482896d0",
+      "base_bytes": {
+        "bytes": 21,
+        "sha256": "f879bb710d6f5a2934e0b564fe2451a971f16969a268bb6ad040291177c33c97"
+      },
+      "current_worktree_bytes": {
+        "bytes": 21,
+        "sha256": "f879bb710d6f5a2934e0b564fe2451a971f16969a268bb6ad040291177c33c97"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 21,
+        "sha256": "f879bb710d6f5a2934e0b564fe2451a971f16969a268bb6ad040291177c33c97"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/Cargo.lock",
+      "base_blob": "ee966973f17db79731abd14b786d8d955770ae85",
+      "start_blob": "ee966973f17db79731abd14b786d8d955770ae85",
+      "base_bytes": {
+        "bytes": 134880,
+        "sha256": "0af591b07840a2b7ad57d4413a065b78158f7d2b9d4eb688930ee2853b0a0f58"
+      },
+      "current_worktree_bytes": {
+        "bytes": 134880,
+        "sha256": "0af591b07840a2b7ad57d4413a065b78158f7d2b9d4eb688930ee2853b0a0f58"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 134880,
+        "sha256": "0af591b07840a2b7ad57d4413a065b78158f7d2b9d4eb688930ee2853b0a0f58"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/Cargo.toml",
+      "base_blob": "4d294c29c57e756e52ac9713b8814a18df70db4c",
+      "start_blob": "4d294c29c57e756e52ac9713b8814a18df70db4c",
+      "base_bytes": {
+        "bytes": 705,
+        "sha256": "71e8f5feecf92aef9fc37af4b125463fb696ab4bb2de0823461a671773a196fe"
+      },
+      "current_worktree_bytes": {
+        "bytes": 705,
+        "sha256": "71e8f5feecf92aef9fc37af4b125463fb696ab4bb2de0823461a671773a196fe"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 705,
+        "sha256": "71e8f5feecf92aef9fc37af4b125463fb696ab4bb2de0823461a671773a196fe"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/build.rs",
+      "base_blob": "2846c573a499b639c9092ac49a7cdf965fe0d25e",
+      "start_blob": "2846c573a499b639c9092ac49a7cdf965fe0d25e",
+      "base_bytes": {
+        "bytes": 35,
+        "sha256": "8af41c0062014fc594e4bb9899e60ee9930ab57d4cf0c73041ff557d6ec736e6"
+      },
+      "current_worktree_bytes": {
+        "bytes": 35,
+        "sha256": "8af41c0062014fc594e4bb9899e60ee9930ab57d4cf0c73041ff557d6ec736e6"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 35,
+        "sha256": "8af41c0062014fc594e4bb9899e60ee9930ab57d4cf0c73041ff557d6ec736e6"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/icons/icon.ico",
+      "base_blob": "e849a60e37c3b36a444f800a18f0bb6094fdc98e",
+      "start_blob": "e849a60e37c3b36a444f800a18f0bb6094fdc98e",
+      "base_bytes": {
+        "bytes": 122429,
+        "sha256": "73b1fc32c2612d63e14a6d6c0baf2878af39f47a685822e6e62170441454a405"
+      },
+      "current_worktree_bytes": {
+        "bytes": 122429,
+        "sha256": "73b1fc32c2612d63e14a6d6c0baf2878af39f47a685822e6e62170441454a405"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 122429,
+        "sha256": "73b1fc32c2612d63e14a6d6c0baf2878af39f47a685822e6e62170441454a405"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/icons/icon.png",
+      "base_blob": "fa0a323f005d4658ab2e8a9622061a54d7e4506b",
+      "start_blob": "fa0a323f005d4658ab2e8a9622061a54d7e4506b",
+      "base_bytes": {
+        "bytes": 80441,
+        "sha256": "8a0f65d1aeea5c1ed41071bd36f26e8a5c9e9eb9772debabd98c08375fa97350"
+      },
+      "current_worktree_bytes": {
+        "bytes": 80441,
+        "sha256": "8a0f65d1aeea5c1ed41071bd36f26e8a5c9e9eb9772debabd98c08375fa97350"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 80441,
+        "sha256": "8a0f65d1aeea5c1ed41071bd36f26e8a5c9e9eb9772debabd98c08375fa97350"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/bin/storage_probe.rs",
+      "base_blob": "5ca4dbaf042eb6ccebbbc2eaf6e593688bb2a033",
+      "start_blob": "5ca4dbaf042eb6ccebbbc2eaf6e593688bb2a033",
+      "base_bytes": {
+        "bytes": 2538,
+        "sha256": "2e0385845a09feaa8b508f72d1a42449c02e69d2d47f4f6f19a3c18020a0eaa9"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2538,
+        "sha256": "2e0385845a09feaa8b508f72d1a42449c02e69d2d47f4f6f19a3c18020a0eaa9"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2538,
+        "sha256": "2e0385845a09feaa8b508f72d1a42449c02e69d2d47f4f6f19a3c18020a0eaa9"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/database.rs",
+      "base_blob": "33c530dab1edfe05aa3fb462ac643a065a072016",
+      "start_blob": "33c530dab1edfe05aa3fb462ac643a065a072016",
+      "base_bytes": {
+        "bytes": 3516,
+        "sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3516,
+        "sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3516,
+        "sha256": "ce29e04035be6c1b729abd49cd7926504468d575beb5c7159a8b757d4241d3ad"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/desktop_capabilities.rs",
+      "base_blob": "ea6c745e3cf4e4930c38311011641bda313a2219",
+      "start_blob": "ea6c745e3cf4e4930c38311011641bda313a2219",
+      "base_bytes": {
+        "bytes": 14466,
+        "sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9"
+      },
+      "current_worktree_bytes": {
+        "bytes": 14466,
+        "sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 14466,
+        "sha256": "623eba52056b671956b72429e2f9cd84631b255323a4a2bac7faf7540c516cc9"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/lib.rs",
+      "base_blob": "c632cb122725171f2a9465503eba9546535ecd67",
+      "start_blob": "c632cb122725171f2a9465503eba9546535ecd67",
+      "base_bytes": {
+        "bytes": 2203,
+        "sha256": "4f0b7bf9797c3793203b160434994f0d8ab84d2fdbc156d7c40a812bd5e83630"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2203,
+        "sha256": "4f0b7bf9797c3793203b160434994f0d8ab84d2fdbc156d7c40a812bd5e83630"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2203,
+        "sha256": "4f0b7bf9797c3793203b160434994f0d8ab84d2fdbc156d7c40a812bd5e83630"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/src/main.rs",
+      "base_blob": "7a89991f8aec252b399dcde52c14a5ee5ba3f4af",
+      "start_blob": "7a89991f8aec252b399dcde52c14a5ee5ba3f4af",
+      "base_bytes": {
+        "bytes": 39,
+        "sha256": "56602b9b5147eaa2b143228d5bc0d5118291297930e06b716a408a44b499ec2b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 39,
+        "sha256": "56602b9b5147eaa2b143228d5bc0d5118291297930e06b716a408a44b499ec2b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 39,
+        "sha256": "56602b9b5147eaa2b143228d5bc0d5118291297930e06b716a408a44b499ec2b"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/tauri.conf.json",
+      "base_blob": "7bfae4f5aabc05a916b944c6474130ae31b6e55a",
+      "start_blob": "7bfae4f5aabc05a916b944c6474130ae31b6e55a",
+      "base_bytes": {
+        "bytes": 888,
+        "sha256": "a2a5f2dd54d0168b6733fdb0642f5a347bd4454300a37a81d12a713da43447df"
+      },
+      "current_worktree_bytes": {
+        "bytes": 888,
+        "sha256": "a2a5f2dd54d0168b6733fdb0642f5a347bd4454300a37a81d12a713da43447df"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 888,
+        "sha256": "a2a5f2dd54d0168b6733fdb0642f5a347bd4454300a37a81d12a713da43447df"
+      }
+    },
+    {
+      "path": "clients/desktop/src-tauri/tests/storage.rs",
+      "base_blob": "c2367d58abc7ef703f733eab828006655479c8c9",
+      "start_blob": "c2367d58abc7ef703f733eab828006655479c8c9",
+      "base_bytes": {
+        "bytes": 1241,
+        "sha256": "dae647505007876b53f332d2b73791fa28b7b115189bfa3aa7ba4053b903aa67"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1241,
+        "sha256": "dae647505007876b53f332d2b73791fa28b7b115189bfa3aa7ba4053b903aa67"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1241,
+        "sha256": "dae647505007876b53f332d2b73791fa28b7b115189bfa3aa7ba4053b903aa67"
+      }
+    },
+    {
+      "path": "clients/desktop/src/application/accountSend.ts",
+      "base_blob": "0551987bb6a5481b928402038efe04509915f5bf",
+      "start_blob": "0551987bb6a5481b928402038efe04509915f5bf",
+      "base_bytes": {
+        "bytes": 1177,
+        "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1177,
+        "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1177,
+        "sha256": "1b1f49cac1feb4fb3e8e73238b5a000982fd6a65cbb581a0e10b91d85fe4f893"
+      }
+    },
+    {
+      "path": "clients/desktop/src/application/send.ts",
+      "base_blob": "0a1047f5755c4ae0d53a347250668356820a790f",
+      "start_blob": "0a1047f5755c4ae0d53a347250668356820a790f",
+      "base_bytes": {
+        "bytes": 12556,
+        "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+      },
+      "current_worktree_bytes": {
+        "bytes": 12556,
+        "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 12556,
+        "sha256": "1bf88720107d4ce649254d8bcbc091941ee50c6ae93b2e428cad65ecfec30443"
+      }
+    },
+    {
+      "path": "clients/desktop/src/application/sync/accountSync.ts",
+      "base_blob": "356a14b53a20f2da97db32adf1006c2001c45351",
+      "start_blob": "356a14b53a20f2da97db32adf1006c2001c45351",
+      "base_bytes": {
+        "bytes": 534,
+        "sha256": "0f542e8af6dae019911169dfe1ff0ddae90cfb944584e8f38b421e0c3035c0e6"
+      },
+      "current_worktree_bytes": {
+        "bytes": 534,
+        "sha256": "0f542e8af6dae019911169dfe1ff0ddae90cfb944584e8f38b421e0c3035c0e6"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 534,
+        "sha256": "0f542e8af6dae019911169dfe1ff0ddae90cfb944584e8f38b421e0c3035c0e6"
+      }
+    },
+    {
+      "path": "clients/desktop/src/application/sync/application.ts",
+      "base_blob": "c09d00e98b043cbedbdea8a5a2506d0958d7a2b2",
+      "start_blob": "c09d00e98b043cbedbdea8a5a2506d0958d7a2b2",
+      "base_bytes": {
+        "bytes": 5239,
+        "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5239,
+        "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5239,
+        "sha256": "f37d1cf2d76577e4a64f98029b6fb44e1e5c46caa299b135c42ab371fb8fa2a6"
+      }
+    },
+    {
+      "path": "clients/desktop/src/application/ui/auth.ts",
+      "base_blob": "3eb68aa58fab133ef805741503f27b0f0200ab1b",
+      "start_blob": "3eb68aa58fab133ef805741503f27b0f0200ab1b",
+      "base_bytes": {
+        "bytes": 8852,
+        "sha256": "d238c935052bdbec83439a8a7a9542c08190264ba3b8142b76129b44490245e7"
+      },
+      "current_worktree_bytes": {
+        "bytes": 8852,
+        "sha256": "d238c935052bdbec83439a8a7a9542c08190264ba3b8142b76129b44490245e7"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 8852,
+        "sha256": "d238c935052bdbec83439a8a7a9542c08190264ba3b8142b76129b44490245e7"
+      }
+    },
+    {
+      "path": "clients/desktop/src/application/ui/native.ts",
+      "base_blob": "a73a2f7702889953566f61de5b02d3189bb0fcec",
+      "start_blob": "a73a2f7702889953566f61de5b02d3189bb0fcec",
+      "base_bytes": {
+        "bytes": 4059,
+        "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4059,
+        "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4059,
+        "sha256": "7c910c380c01895fa239c0edffe0cc6927284ded370ab5b29541892af396f179"
+      }
+    },
+    {
+      "path": "clients/desktop/src/application/ui/workspace.ts",
+      "base_blob": "ebed628191c7c3b05825f7b9b35c071b161b38f3",
+      "start_blob": "ebed628191c7c3b05825f7b9b35c071b161b38f3",
+      "base_bytes": {
+        "bytes": 19137,
+        "sha256": "6eb3f6cdc404fd5042c1ab10fe3f380a87a735e33cf8fa7cfa85af402293f5f7"
+      },
+      "current_worktree_bytes": {
+        "bytes": 19137,
+        "sha256": "6eb3f6cdc404fd5042c1ab10fe3f380a87a735e33cf8fa7cfa85af402293f5f7"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 19137,
+        "sha256": "6eb3f6cdc404fd5042c1ab10fe3f380a87a735e33cf8fa7cfa85af402293f5f7"
+      }
+    },
+    {
+      "path": "clients/desktop/src/storage/database.ts",
+      "base_blob": "ff9e42414a43ad7f27f8d8cbab55ed009077e9af",
+      "start_blob": "ff9e42414a43ad7f27f8d8cbab55ed009077e9af",
+      "base_bytes": {
+        "bytes": 520,
+        "sha256": "bc40daf644784fb43b60abb8d3f9afc5522c36d735664c8bb75affef4693f6f4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 520,
+        "sha256": "bc40daf644784fb43b60abb8d3f9afc5522c36d735664c8bb75affef4693f6f4"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 520,
+        "sha256": "bc40daf644784fb43b60abb8d3f9afc5522c36d735664c8bb75affef4693f6f4"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/build.config.mjs",
+      "base_blob": "39822b9b2e582fcf5a90cc3d521bde6321a96025",
+      "start_blob": "39822b9b2e582fcf5a90cc3d521bde6321a96025",
+      "base_bytes": {
+        "bytes": 746,
+        "sha256": "4acccc55c794b734f391f81468e7e978a6420dd05c64cb9f2ba3955b2c3a5f0d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 746,
+        "sha256": "4acccc55c794b734f391f81468e7e978a6420dd05c64cb9f2ba3955b2c3a5f0d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 746,
+        "sha256": "4acccc55c794b734f391f81468e7e978a6420dd05c64cb9f2ba3955b2c3a5f0d"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/AIPlaceholder.tsx",
+      "base_blob": "e5061c7a1dd6800bd0886d1728ce70d64e476be7",
+      "start_blob": "e5061c7a1dd6800bd0886d1728ce70d64e476be7",
+      "base_bytes": {
+        "bytes": 627,
+        "sha256": "6ca11c2ed40f7f697b0bd5ce371838233e1a56ab99a8e6619d40e4bc76cbe090"
+      },
+      "current_worktree_bytes": {
+        "bytes": 627,
+        "sha256": "6ca11c2ed40f7f697b0bd5ce371838233e1a56ab99a8e6619d40e4bc76cbe090"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 627,
+        "sha256": "6ca11c2ed40f7f697b0bd5ce371838233e1a56ab99a8e6619d40e4bc76cbe090"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/AuthPanel.tsx",
+      "base_blob": "b4ee831fcf4c303ecd865825baca660cdb8cac11",
+      "start_blob": "b4ee831fcf4c303ecd865825baca660cdb8cac11",
+      "base_bytes": {
+        "bytes": 3071,
+        "sha256": "ff7aec0dd885a4d20dffadbafdca6032932a52c816b99ea3320002e0130fb890"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3071,
+        "sha256": "ff7aec0dd885a4d20dffadbafdca6032932a52c816b99ea3320002e0130fb890"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3071,
+        "sha256": "ff7aec0dd885a4d20dffadbafdca6032932a52c816b99ea3320002e0130fb890"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Composer.tsx",
+      "base_blob": "5d762337410a3b44ad035e2802374546f092d9bf",
+      "start_blob": "5d762337410a3b44ad035e2802374546f092d9bf",
+      "base_bytes": {
+        "bytes": 2412,
+        "sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2412,
+        "sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2412,
+        "sha256": "ea0f9fc5506273e1503f1bdd9d3257144a27997c022bcee23d17addd274bf202"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/ConversationList.tsx",
+      "base_blob": "5d203c3025d1f79ab30181f2107ff33bfa69bfdd",
+      "start_blob": "5d203c3025d1f79ab30181f2107ff33bfa69bfdd",
+      "base_bytes": {
+        "bytes": 1458,
+        "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1458,
+        "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1458,
+        "sha256": "6e8267a34f0a52ad47e4dc762ac9001a136c85937eef1e9e5252799cc8e19418"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/FriendsPanel.tsx",
+      "base_blob": "4a70c577b9f3fab84dbcc1216cbced2228463538",
+      "start_blob": "4a70c577b9f3fab84dbcc1216cbced2228463538",
+      "base_bytes": {
+        "bytes": 2003,
+        "sha256": "ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2003,
+        "sha256": "ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2003,
+        "sha256": "ebd4e0c390f4048ef6b823d120302e99d8ade51f8e89baf3516cabcc850f161f"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Header.tsx",
+      "base_blob": "887d8b44d531f5c6718484763843cb574d57328b",
+      "start_blob": "887d8b44d531f5c6718484763843cb574d57328b",
+      "base_bytes": {
+        "bytes": 1137,
+        "sha256": "1c9a902cabb864b938974c28cb24c8c4b020f4a9e2441a60cb95d8cc13cb8f3e"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1137,
+        "sha256": "1c9a902cabb864b938974c28cb24c8c4b020f4a9e2441a60cb95d8cc13cb8f3e"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1137,
+        "sha256": "1c9a902cabb864b938974c28cb24c8c4b020f4a9e2441a60cb95d8cc13cb8f3e"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/LanguagePanel.tsx",
+      "base_blob": "f525e0d878b5bad9b727f5209bc206dfe8faf10b",
+      "start_blob": "f525e0d878b5bad9b727f5209bc206dfe8faf10b",
+      "base_bytes": {
+        "bytes": 803,
+        "sha256": "a2e5f0eac5f1d5887ff8a8c90d5d05e795cd0cab207850af604bfb3e22053204"
+      },
+      "current_worktree_bytes": {
+        "bytes": 803,
+        "sha256": "a2e5f0eac5f1d5887ff8a8c90d5d05e795cd0cab207850af604bfb3e22053204"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 803,
+        "sha256": "a2e5f0eac5f1d5887ff8a8c90d5d05e795cd0cab207850af604bfb3e22053204"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Messages.tsx",
+      "base_blob": "5642151ff43d4183909e7f9304610062ae462a11",
+      "start_blob": "5642151ff43d4183909e7f9304610062ae462a11",
+      "base_bytes": {
+        "bytes": 1657,
+        "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1657,
+        "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1657,
+        "sha256": "628c78d3a62467c800cc375bc51b21d48ceb05258b9df082412bd32a850c0db5"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Navigation.tsx",
+      "base_blob": "bee1f307df4aa5bdb8835aa662b7a2b72802651d",
+      "start_blob": "bee1f307df4aa5bdb8835aa662b7a2b72802651d",
+      "base_bytes": {
+        "bytes": 1657,
+        "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1657,
+        "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1657,
+        "sha256": "03bb80bc089c2ce73d590dc5cbb3ed705fe6aa7bedc6165cf0f36af25a7bc99c"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/PluginPlaceholder.tsx",
+      "base_blob": "ad84dbf871074fd8e8b49fbc49e85a495aa91cb0",
+      "start_blob": "ad84dbf871074fd8e8b49fbc49e85a495aa91cb0",
+      "base_bytes": {
+        "bytes": 681,
+        "sha256": "b0b98a48008cc22334c1aa321fa3cd41cb5bb59032e544b01ca9800b338d83bb"
+      },
+      "current_worktree_bytes": {
+        "bytes": 681,
+        "sha256": "b0b98a48008cc22334c1aa321fa3cd41cb5bb59032e544b01ca9800b338d83bb"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 681,
+        "sha256": "b0b98a48008cc22334c1aa321fa3cd41cb5bb59032e544b01ca9800b338d83bb"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/ProfilePanel.tsx",
+      "base_blob": "64cdd8ac39cc0773e549450689ee8d6610c47abc",
+      "start_blob": "64cdd8ac39cc0773e549450689ee8d6610c47abc",
+      "base_bytes": {
+        "bytes": 1435,
+        "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1435,
+        "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1435,
+        "sha256": "1e5c3b63c773364ee15e4b51a0a3ce668ea3f1449d6455df1b2cab411b8fda4c"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/SettingsPanel.tsx",
+      "base_blob": "dd043efa8b51ee4e206029f40be6ccbe7c916e2e",
+      "start_blob": "dd043efa8b51ee4e206029f40be6ccbe7c916e2e",
+      "base_bytes": {
+        "bytes": 2534,
+        "sha256": "b1e99a6c6887c950a57d473f6627972b847575d0a1e8083d416401e684e68e73"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2534,
+        "sha256": "b1e99a6c6887c950a57d473f6627972b847575d0a1e8083d416401e684e68e73"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2534,
+        "sha256": "b1e99a6c6887c950a57d473f6627972b847575d0a1e8083d416401e684e68e73"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/Shell.tsx",
+      "base_blob": "ceea1eaa6a93e34df87f30dd42f847775354484c",
+      "start_blob": "ceea1eaa6a93e34df87f30dd42f847775354484c",
+      "base_bytes": {
+        "bytes": 5058,
+        "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5058,
+        "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5058,
+        "sha256": "e9710f776c4b0b89706b308a9cc168fc9e1de578d640fee9e3fa93081fbf91c4"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/components/WindowBar.tsx",
+      "base_blob": "101d79100dbe1cd7d17108c9505ef7b1162d2033",
+      "start_blob": "101d79100dbe1cd7d17108c9505ef7b1162d2033",
+      "base_bytes": {
+        "bytes": 1506,
+        "sha256": "9fee03a2e5dc2e6ad9627f8ad63c4cfd9c9ea237f67ecc3fefd5bb03c60e5296"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1506,
+        "sha256": "9fee03a2e5dc2e6ad9627f8ad63c4cfd9c9ea237f67ecc3fefd5bb03c60e5296"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1506,
+        "sha256": "9fee03a2e5dc2e6ad9627f8ad63c4cfd9c9ea237f67ecc3fefd5bb03c60e5296"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/composer.ts",
+      "base_blob": "78e4be10a2cf361bed5b4c69483de182d6bdd1f6",
+      "start_blob": "78e4be10a2cf361bed5b4c69483de182d6bdd1f6",
+      "base_bytes": {
+        "bytes": 142,
+        "sha256": "c4da6d567a3e8c088d7c20baa5f51a86c118e8c72ec3b4a4f8c1d17146157992"
+      },
+      "current_worktree_bytes": {
+        "bytes": 142,
+        "sha256": "c4da6d567a3e8c088d7c20baa5f51a86c118e8c72ec3b4a4f8c1d17146157992"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 142,
+        "sha256": "c4da6d567a3e8c088d7c20baa5f51a86c118e8c72ec3b4a4f8c1d17146157992"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/context.tsx",
+      "base_blob": "ebe731e9e4cfef1b99168ab2cde8c88dadc82530",
+      "start_blob": "ebe731e9e4cfef1b99168ab2cde8c88dadc82530",
+      "base_bytes": {
+        "bytes": 452,
+        "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+      },
+      "current_worktree_bytes": {
+        "bytes": 452,
+        "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 452,
+        "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/en.ts",
+      "base_blob": "3dfd31896758979392a1017c14dc4a2c9599f843",
+      "start_blob": "3dfd31896758979392a1017c14dc4a2c9599f843",
+      "base_bytes": {
+        "bytes": 13042,
+        "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+      },
+      "current_worktree_bytes": {
+        "bytes": 13042,
+        "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 13042,
+        "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/ja-JP.ts",
+      "base_blob": "6235958e710ae49ada0ab604f6cec2b91f043383",
+      "start_blob": "6235958e710ae49ada0ab604f6cec2b91f043383",
+      "base_bytes": {
+        "bytes": 16576,
+        "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+      },
+      "current_worktree_bytes": {
+        "bytes": 16576,
+        "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 16576,
+        "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/resources.ts",
+      "base_blob": "e8981f9022defa09e8e220c55c7410c49e88d28f",
+      "start_blob": "e8981f9022defa09e8e220c55c7410c49e88d28f",
+      "base_bytes": {
+        "bytes": 5775,
+        "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5775,
+        "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5775,
+        "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/i18n/zh-CN.ts",
+      "base_blob": "0eec71c941e184cfdfed3f56ca214f347326a071",
+      "start_blob": "0eec71c941e184cfdfed3f56ca214f347326a071",
+      "base_bytes": {
+        "bytes": 12612,
+        "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+      },
+      "current_worktree_bytes": {
+        "bytes": 12612,
+        "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 12612,
+        "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/index.html",
+      "base_blob": "fb52e45c0ed8c7ffce18a3d4f7f53974cc3a50df",
+      "start_blob": "fb52e45c0ed8c7ffce18a3d4f7f53974cc3a50df",
+      "base_bytes": {
+        "bytes": 554,
+        "sha256": "46103c9c5f35c1a4fdd47fae440faafa0fe5a3a81b3c9aa649ae589696996e76"
+      },
+      "current_worktree_bytes": {
+        "bytes": 554,
+        "sha256": "46103c9c5f35c1a4fdd47fae440faafa0fe5a3a81b3c9aa649ae589696996e76"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 554,
+        "sha256": "46103c9c5f35c1a4fdd47fae440faafa0fe5a3a81b3c9aa649ae589696996e76"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/logo.png",
+      "base_blob": "28a064c1747f60c8a06965271b699ffa26e5ab5b",
+      "start_blob": "28a064c1747f60c8a06965271b699ffa26e5ab5b",
+      "base_bytes": {
+        "bytes": 1797658,
+        "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1797658,
+        "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1797658,
+        "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/main.tsx",
+      "base_blob": "433fbf4dc43c12d235cf69f401c559c5c84d7040",
+      "start_blob": "433fbf4dc43c12d235cf69f401c559c5c84d7040",
+      "base_bytes": {
+        "bytes": 180,
+        "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+      },
+      "current_worktree_bytes": {
+        "bytes": 180,
+        "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 180,
+        "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/react-dom.config.mjs",
+      "base_blob": "9fd2c44ecfbd29131732b9ee5ff26c13bd1224a1",
+      "start_blob": "9fd2c44ecfbd29131732b9ee5ff26c13bd1224a1",
+      "base_bytes": {
+        "bytes": 47,
+        "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+      },
+      "current_worktree_bytes": {
+        "bytes": 47,
+        "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 47,
+        "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/react.config.mjs",
+      "base_blob": "e03114752d1fcc0793d53c2e1be6ba183e840b36",
+      "start_blob": "e03114752d1fcc0793d53c2e1be6ba183e840b36",
+      "base_bytes": {
+        "bytes": 113,
+        "sha256": "8c483c11d9f779d78da8981e7e65dd0be91b2ec4c698e7101d389aa09ed6f576"
+      },
+      "current_worktree_bytes": {
+        "bytes": 113,
+        "sha256": "8c483c11d9f779d78da8981e7e65dd0be91b2ec4c698e7101d389aa09ed6f576"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 113,
+        "sha256": "8c483c11d9f779d78da8981e7e65dd0be91b2ec4c698e7101d389aa09ed6f576"
+      }
+    },
+    {
+      "path": "clients/desktop/src/ui/style.css",
+      "base_blob": "d6c86acf339992a4aaef6b5e2b25a047b41c23f1",
+      "start_blob": "d6c86acf339992a4aaef6b5e2b25a047b41c23f1",
+      "base_bytes": {
+        "bytes": 13237,
+        "sha256": "1db209903281409494e83858549fb5f1d023732afba5e26bb7ee26f3b42aaccc"
+      },
+      "current_worktree_bytes": {
+        "bytes": 13237,
+        "sha256": "1db209903281409494e83858549fb5f1d023732afba5e26bb7ee26f3b42aaccc"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 13237,
+        "sha256": "1db209903281409494e83858549fb5f1d023732afba5e26bb7ee26f3b42aaccc"
+      }
+    },
+    {
+      "path": "clients/desktop/tsconfig.json",
+      "base_blob": "137d7de16079971e4366c6d211365426075995cf",
+      "start_blob": "137d7de16079971e4366c6d211365426075995cf",
+      "base_bytes": {
+        "bytes": 471,
+        "sha256": "6619b81336f0c10b451c60bd196573599edaf99bb79c9a3daff7a615e49f4502"
+      },
+      "current_worktree_bytes": {
+        "bytes": 471,
+        "sha256": "6619b81336f0c10b451c60bd196573599edaf99bb79c9a3daff7a615e49f4502"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 471,
+        "sha256": "6619b81336f0c10b451c60bd196573599edaf99bb79c9a3daff7a615e49f4502"
+      }
+    },
+    {
+      "path": "clients/mobile/.gitignore",
+      "base_blob": "ce988d8490c7c9d6293eb418b4c0fe933b118bf8",
+      "start_blob": "ce988d8490c7c9d6293eb418b4c0fe933b118bf8",
+      "base_bytes": {
+        "bytes": 53,
+        "sha256": "d010c63b31ab924e9fa34a396c0e27e42bcf398bdd727ab64a7639c7add0dc8c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 53,
+        "sha256": "d010c63b31ab924e9fa34a396c0e27e42bcf398bdd727ab64a7639c7add0dc8c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 53,
+        "sha256": "d010c63b31ab924e9fa34a396c0e27e42bcf398bdd727ab64a7639c7add0dc8c"
+      }
+    },
+    {
+      "path": "clients/mobile/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "clients/mobile/README.md",
+      "base_blob": "9f93977bc56d34dea0a44d2513bef0a75e56420f",
+      "start_blob": "9f93977bc56d34dea0a44d2513bef0a75e56420f",
+      "base_bytes": {
+        "bytes": 3077,
+        "sha256": "340b1e0fd237161c9e78b4bad54f5720b1ac375c1ee13aee2d655f1a23b76838"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3077,
+        "sha256": "340b1e0fd237161c9e78b4bad54f5720b1ac375c1ee13aee2d655f1a23b76838"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3077,
+        "sha256": "340b1e0fd237161c9e78b4bad54f5720b1ac375c1ee13aee2d655f1a23b76838"
+      }
+    },
+    {
+      "path": "clients/mobile/app/build.gradle.kts",
+      "base_blob": "54477c62d6a8e6b5a3339ec2e533bb6232a61a5f",
+      "start_blob": "54477c62d6a8e6b5a3339ec2e533bb6232a61a5f",
+      "base_bytes": {
+        "bytes": 1280,
+        "sha256": "af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1280,
+        "sha256": "af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1280,
+        "sha256": "af31715673b09b952790f05244a2cbb5187144e6e8d92e1a049c2a1b7941d077"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/assets/golden.json",
+      "base_blob": "3116c3b6ad8bef4ebed0ffdaa86fe146d7369fc1",
+      "start_blob": "3116c3b6ad8bef4ebed0ffdaa86fe146d7369fc1",
+      "base_bytes": {
+        "bytes": 72516,
+        "sha256": "711dfe2dbb513df45d2b75c5ee9184ae221602ce74c93a1092bcd4a8b834db8d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 72516,
+        "sha256": "711dfe2dbb513df45d2b75c5ee9184ae221602ce74c93a1092bcd4a8b834db8d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 72516,
+        "sha256": "711dfe2dbb513df45d2b75c5ee9184ae221602ce74c93a1092bcd4a8b834db8d"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/assets/v1.sql",
+      "base_blob": "b1aa58a87c6a9a737e7e4c02a35c33d9a2f41288",
+      "start_blob": "b1aa58a87c6a9a737e7e4c02a35c33d9a2f41288",
+      "base_bytes": {
+        "bytes": 755,
+        "sha256": "83e21518dca5c83d46594d980b565f4f6082a2f9ecafc3ee171db58a1056e0a9"
+      },
+      "current_worktree_bytes": {
+        "bytes": 755,
+        "sha256": "83e21518dca5c83d46594d980b565f4f6082a2f9ecafc3ee171db58a1056e0a9"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 755,
+        "sha256": "83e21518dca5c83d46594d980b565f4f6082a2f9ecafc3ee171db58a1056e0a9"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendInstrumentation.kt",
+      "base_blob": "8a9548ee3131d4809d0c1ae301f303e54d4371bf",
+      "start_blob": "8a9548ee3131d4809d0c1ae301f303e54d4371bf",
+      "base_bytes": {
+        "bytes": 16260,
+        "sha256": "d8141042644b8dd1c2866fa7a92516d2aabe67803891224894ef58077072d2ab"
+      },
+      "current_worktree_bytes": {
+        "bytes": 16260,
+        "sha256": "d8141042644b8dd1c2866fa7a92516d2aabe67803891224894ef58077072d2ab"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 16260,
+        "sha256": "d8141042644b8dd1c2866fa7a92516d2aabe67803891224894ef58077072d2ab"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/SendReadChecks.kt",
+      "base_blob": "f6c1df4cd31223499bce239d4c4923faed89a7e9",
+      "start_blob": "f6c1df4cd31223499bce239d4c4923faed89a7e9",
+      "base_bytes": {
+        "bytes": 3789,
+        "sha256": "5ee18a41ae4e7aae72b73df68d3edd00fb22373dcd7e4fce5111e871ce19711a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3789,
+        "sha256": "5ee18a41ae4e7aae72b73df68d3edd00fb22373dcd7e4fce5111e871ce19711a"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3789,
+        "sha256": "5ee18a41ae4e7aae72b73df68d3edd00fb22373dcd7e4fce5111e871ce19711a"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/send/WssCleanupInstrumentation.kt",
+      "base_blob": "7a57676144996ff373b6901df4f2bbd4ed3031a0",
+      "start_blob": "7a57676144996ff373b6901df4f2bbd4ed3031a0",
+      "base_bytes": {
+        "bytes": 7298,
+        "sha256": "2f83410d1040bab5d2c58fca104ac45fa221f81b4f7085a51ca3ca2a5089a5f4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 7298,
+        "sha256": "2f83410d1040bab5d2c58fca104ac45fa221f81b4f7085a51ca3ca2a5089a5f4"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 7298,
+        "sha256": "2f83410d1040bab5d2c58fca104ac45fa221f81b4f7085a51ca3ca2a5089a5f4"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/storage/StorageInstrumentation.kt",
+      "base_blob": "6467b2670195f036bc337c5b0b9e2a978f6b452b",
+      "start_blob": "6467b2670195f036bc337c5b0b9e2a978f6b452b",
+      "base_bytes": {
+        "bytes": 15999,
+        "sha256": "740082dac717a26a0dc2209252a0cceb56a1e789b79421cf013daedfd1284659"
+      },
+      "current_worktree_bytes": {
+        "bytes": 15999,
+        "sha256": "740082dac717a26a0dc2209252a0cceb56a1e789b79421cf013daedfd1284659"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 15999,
+        "sha256": "740082dac717a26a0dc2209252a0cceb56a1e789b79421cf013daedfd1284659"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ContiguousReadChecks.kt",
+      "base_blob": "ace19f2e3e53f01c0e420e57faa3b60a3c598dae",
+      "start_blob": "ace19f2e3e53f01c0e420e57faa3b60a3c598dae",
+      "base_bytes": {
+        "bytes": 3706,
+        "sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3706,
+        "sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3706,
+        "sha256": "4aa52fc81485e177b83429ae7648fea3ec824afb139f985925261850d4cbafa2"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/ReadOriginChecks.kt",
+      "base_blob": "591d213178a165ce9815b25d3389f1f799b04679",
+      "start_blob": "591d213178a165ce9815b25d3389f1f799b04679",
+      "base_bytes": {
+        "bytes": 8113,
+        "sha256": "8c071adf444437a425cd33026212e879171d0f0addbf481fc0e72e06e53df4df"
+      },
+      "current_worktree_bytes": {
+        "bytes": 8113,
+        "sha256": "8c071adf444437a425cd33026212e879171d0f0addbf481fc0e72e06e53df4df"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 8113,
+        "sha256": "8c071adf444437a425cd33026212e879171d0f0addbf481fc0e72e06e53df4df"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/sync/SyncInstrumentation.kt",
+      "base_blob": "5b204f2f44cebbf7c220b947f2d4ce61bbf2c98f",
+      "start_blob": "5b204f2f44cebbf7c220b947f2d4ce61bbf2c98f",
+      "base_bytes": {
+        "bytes": 17714,
+        "sha256": "8929a0c6494ecbaa40a9655b7b35c3ff185b19c17d199f8b0d1567ef96ebf9d0"
+      },
+      "current_worktree_bytes": {
+        "bytes": 17714,
+        "sha256": "8929a0c6494ecbaa40a9655b7b35c3ff185b19c17d199f8b0d1567ef96ebf9d0"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 17714,
+        "sha256": "8929a0c6494ecbaa40a9655b7b35c3ff185b19c17d199f8b0d1567ef96ebf9d0"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/ErrorHandlingInstrumentation.kt",
+      "base_blob": "4a0077383b5977466b624d2c28efb914144896bb",
+      "start_blob": "4a0077383b5977466b624d2c28efb914144896bb",
+      "base_bytes": {
+        "bytes": 6856,
+        "sha256": "9c73e36d6e5336062dbd16c4aa78430cf405659134001ba8d9b0673693634d3c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 6856,
+        "sha256": "9c73e36d6e5336062dbd16c4aa78430cf405659134001ba8d9b0673693634d3c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 6856,
+        "sha256": "9c73e36d6e5336062dbd16c4aa78430cf405659134001ba8d9b0673693634d3c"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiAuthenticatedInstrumentation.kt",
+      "base_blob": "4da4e20b27da8a5b29bf3b3a1aa04235e62256a8",
+      "start_blob": "4da4e20b27da8a5b29bf3b3a1aa04235e62256a8",
+      "base_bytes": {
+        "bytes": 48423,
+        "sha256": "6812685f58803ddb4148ce0a454fe22a449740f91c25d5252113a05e74976c02"
+      },
+      "current_worktree_bytes": {
+        "bytes": 48423,
+        "sha256": "6812685f58803ddb4148ce0a454fe22a449740f91c25d5252113a05e74976c02"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 48423,
+        "sha256": "6812685f58803ddb4148ce0a454fe22a449740f91c25d5252113a05e74976c02"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiInstrumentation.kt",
+      "base_blob": "5f4dcf993ef91ccd9cea0d13149482a9b1036147",
+      "start_blob": "5f4dcf993ef91ccd9cea0d13149482a9b1036147",
+      "base_bytes": {
+        "bytes": 6623,
+        "sha256": "643a6e50a827ed031a6e23271946b90876dfaba49996de38d3611a25d8c69806"
+      },
+      "current_worktree_bytes": {
+        "bytes": 6623,
+        "sha256": "643a6e50a827ed031a6e23271946b90876dfaba49996de38d3611a25d8c69806"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 6623,
+        "sha256": "643a6e50a827ed031a6e23271946b90876dfaba49996de38d3611a25d8c69806"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/GuiTrustRollbackInstrumentation.kt",
+      "base_blob": "0a3cc2c40409f3c01f3b65c220f5b43ebacfdd1a",
+      "start_blob": "0a3cc2c40409f3c01f3b65c220f5b43ebacfdd1a",
+      "base_bytes": {
+        "bytes": 1626,
+        "sha256": "93ed19f5eee3989107282ad20cd7b0b767bcd076bb94cc2447ee22b57f81a303"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1626,
+        "sha256": "93ed19f5eee3989107282ad20cd7b0b767bcd076bb94cc2447ee22b57f81a303"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1626,
+        "sha256": "93ed19f5eee3989107282ad20cd7b0b767bcd076bb94cc2447ee22b57f81a303"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/HttpCleanupInstrumentation.kt",
+      "base_blob": "22f3b39cc20c713d37bdb510067eefc7f4b5700e",
+      "start_blob": "22f3b39cc20c713d37bdb510067eefc7f4b5700e",
+      "base_bytes": {
+        "bytes": 8098,
+        "sha256": "4748dc9ba8c503fed7ff405285ada43749684f7ade099b80fc598f8e66026318"
+      },
+      "current_worktree_bytes": {
+        "bytes": 8098,
+        "sha256": "4748dc9ba8c503fed7ff405285ada43749684f7ade099b80fc598f8e66026318"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 8098,
+        "sha256": "4748dc9ba8c503fed7ff405285ada43749684f7ade099b80fc598f8e66026318"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nComposeInstrumentation.kt",
+      "base_blob": "174387eb0f2f6cbdef0ca4f5c0226ecc5ff8c5ef",
+      "start_blob": "174387eb0f2f6cbdef0ca4f5c0226ecc5ff8c5ef",
+      "base_bytes": {
+        "bytes": 14430,
+        "sha256": "b99decf010ba36738fdbf98fe8af16f906af1224d076b82911b4ecbd1f0e14cd"
+      },
+      "current_worktree_bytes": {
+        "bytes": 14430,
+        "sha256": "b99decf010ba36738fdbf98fe8af16f906af1224d076b82911b4ecbd1f0e14cd"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 14430,
+        "sha256": "b99decf010ba36738fdbf98fe8af16f906af1224d076b82911b4ecbd1f0e14cd"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nPreferencesInstrumentation.kt",
+      "base_blob": "eb6002d33b2e4fdc1064bcf5111b9a40f3f89bad",
+      "start_blob": "eb6002d33b2e4fdc1064bcf5111b9a40f3f89bad",
+      "base_bytes": {
+        "bytes": 4276,
+        "sha256": "b3f2368c39ee3cf41e7f2d3a9d581d1b847a5fc4af05295ecc973757cc2a109d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4276,
+        "sha256": "b3f2368c39ee3cf41e7f2d3a9d581d1b847a5fc4af05295ecc973757cc2a109d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4276,
+        "sha256": "b3f2368c39ee3cf41e7f2d3a9d581d1b847a5fc4af05295ecc973757cc2a109d"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/I18nRestartInstrumentation.kt",
+      "base_blob": "225a2c51f373ecdca934ffba2852576570a231af",
+      "start_blob": "225a2c51f373ecdca934ffba2852576570a231af",
+      "base_bytes": {
+        "bytes": 14896,
+        "sha256": "36822464bccf770a1920d1f59fecd5caebca93aa584065977f6efbaefb88a8e8"
+      },
+      "current_worktree_bytes": {
+        "bytes": 14896,
+        "sha256": "36822464bccf770a1920d1f59fecd5caebca93aa584065977f6efbaefb88a8e8"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 14896,
+        "sha256": "36822464bccf770a1920d1f59fecd5caebca93aa584065977f6efbaefb88a8e8"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/RefreshCleanupInstrumentation.kt",
+      "base_blob": "98f8fecc2479dc91acb01127dd771b03d2625520",
+      "start_blob": "98f8fecc2479dc91acb01127dd771b03d2625520",
+      "base_bytes": {
+        "bytes": 5103,
+        "sha256": "5e6ef31d25c83f41b66b7190ac8701355ff03c721f6d9001a8cf1148ca08a2a6"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5103,
+        "sha256": "5e6ef31d25c83f41b66b7190ac8701355ff03c721f6d9001a8cf1148ca08a2a6"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5103,
+        "sha256": "5e6ef31d25c83f41b66b7190ac8701355ff03c721f6d9001a8cf1148ca08a2a6"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/RefreshOwnerInstrumentation.kt",
+      "base_blob": "c2dc2e0e1b2d12fd48da4e51dd275dd4e44e5746",
+      "start_blob": "c2dc2e0e1b2d12fd48da4e51dd275dd4e44e5746",
+      "base_bytes": {
+        "bytes": 9282,
+        "sha256": "d93ce251d4da65d05f70169428b5b258134d43370c527dbf197bfa258dd9ec5c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 9282,
+        "sha256": "d93ce251d4da65d05f70169428b5b258134d43370c527dbf197bfa258dd9ec5c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 9282,
+        "sha256": "d93ce251d4da65d05f70169428b5b258134d43370c527dbf197bfa258dd9ec5c"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefFixtureTrust.kt",
+      "base_blob": "d3fd99010fd743d48473e431a5883ad487923409",
+      "start_blob": "d3fd99010fd743d48473e431a5883ad487923409",
+      "base_bytes": {
+        "bytes": 4339,
+        "sha256": "bb57465b2d2ec58d8d68f131de7643e54e4c8686f73cdd8fbf62c27ea23e0456"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4339,
+        "sha256": "bb57465b2d2ec58d8d68f131de7643e54e4c8686f73cdd8fbf62c27ea23e0456"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4339,
+        "sha256": "bb57465b2d2ec58d8d68f131de7643e54e4c8686f73cdd8fbf62c27ea23e0456"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/androidTest/kotlin/im/platform/client/ui/UiRefTLSNegative.kt",
+      "base_blob": "199e771994bb6e927d672f8677a4bd980e0b72cb",
+      "start_blob": "199e771994bb6e927d672f8677a4bd980e0b72cb",
+      "base_bytes": {
+        "bytes": 1622,
+        "sha256": "90e7641244c5b87add702db2bc48d56bb48de1c8fee35df2f91acbb2b2ccd362"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1622,
+        "sha256": "90e7641244c5b87add702db2bc48d56bb48de1c8fee35df2f91acbb2b2ccd362"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1622,
+        "sha256": "90e7641244c5b87add702db2bc48d56bb48de1c8fee35df2f91acbb2b2ccd362"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/AndroidManifest.xml",
+      "base_blob": "8467239b690fd55ebfaf1d999c298de5eede398e",
+      "start_blob": "8467239b690fd55ebfaf1d999c298de5eede398e",
+      "base_bytes": {
+        "bytes": 501,
+        "sha256": "fdeed8b057bfdefbe2889d0e0f8f748db3b162af0b7fadd037d3481feb0ff82f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 501,
+        "sha256": "fdeed8b057bfdefbe2889d0e0f8f748db3b162af0b7fadd037d3481feb0ff82f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 501,
+        "sha256": "fdeed8b057bfdefbe2889d0e0f8f748db3b162af0b7fadd037d3481feb0ff82f"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/MainActivity.kt",
+      "base_blob": "7fc7f373fc766ac1113332727b48b1fa18d417b0",
+      "start_blob": "7fc7f373fc766ac1113332727b48b1fa18d417b0",
+      "base_bytes": {
+        "bytes": 390,
+        "sha256": "5caa0062bc3a749015bd3cce4aa8c37c0996248dba59999ba85a50d8fd53800c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 390,
+        "sha256": "5caa0062bc3a749015bd3cce4aa8c37c0996248dba59999ba85a50d8fd53800c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 390,
+        "sha256": "5caa0062bc3a749015bd3cce4aa8c37c0996248dba59999ba85a50d8fd53800c"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/RepositoryRead.kt",
+      "base_blob": "eb6d764cb049588ade3d0c45909d38a6e8422b45",
+      "start_blob": "eb6d764cb049588ade3d0c45909d38a6e8422b45",
+      "base_bytes": {
+        "bytes": 958,
+        "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 958,
+        "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 958,
+        "sha256": "9455c283dc3aeb58338a44ec11be3451314f03b11d0cfbbb36c3fe3c0959c16a"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/SendViewModel.kt",
+      "base_blob": "a1b57441c3ff49223f048382c290b286ba016e1e",
+      "start_blob": "a1b57441c3ff49223f048382c290b286ba016e1e",
+      "base_bytes": {
+        "bytes": 11323,
+        "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+      },
+      "current_worktree_bytes": {
+        "bytes": 11323,
+        "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 11323,
+        "sha256": "979231e5745f6893af43d0c49067c953612be075b47114867f05d8cb3ef250a8"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wire.kt",
+      "base_blob": "78926d628ce735d8e3bbea923f62856b15dad5f0",
+      "start_blob": "78926d628ce735d8e3bbea923f62856b15dad5f0",
+      "base_bytes": {
+        "bytes": 7907,
+        "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+      },
+      "current_worktree_bytes": {
+        "bytes": 7907,
+        "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 7907,
+        "sha256": "3d444f56ccb7ec9a99816c15a99c4f940d8aa966bf48f90b60bfc099ecd09db7"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/send/Wss.kt",
+      "base_blob": "f408a47ae5be8664a8d6acec3cffa97c3a705619",
+      "start_blob": "f408a47ae5be8664a8d6acec3cffa97c3a705619",
+      "base_bytes": {
+        "bytes": 7136,
+        "sha256": "f1fb508628382cfb391e5e236c64ba62aa219122e3651e97ca6b315c0bff9372"
+      },
+      "current_worktree_bytes": {
+        "bytes": 7136,
+        "sha256": "f1fb508628382cfb391e5e236c64ba62aa219122e3651e97ca6b315c0bff9372"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 7136,
+        "sha256": "f1fb508628382cfb391e5e236c64ba62aa219122e3651e97ca6b315c0bff9372"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Models.kt",
+      "base_blob": "47d30ba000ea722c5b808275a1d0dea789a2939e",
+      "start_blob": "47d30ba000ea722c5b808275a1d0dea789a2939e",
+      "base_bytes": {
+        "bytes": 597,
+        "sha256": "42fecb529611f684de99404922938e70148f77b9f19a253f3d7f84457cf93b3e"
+      },
+      "current_worktree_bytes": {
+        "bytes": 597,
+        "sha256": "42fecb529611f684de99404922938e70148f77b9f19a253f3d7f84457cf93b3e"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 597,
+        "sha256": "42fecb529611f684de99404922938e70148f77b9f19a253f3d7f84457cf93b3e"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt",
+      "base_blob": "a935111548d49dd350d010d8e9d9de61574493e6",
+      "start_blob": "a935111548d49dd350d010d8e9d9de61574493e6",
+      "base_bytes": {
+        "bytes": 9611,
+        "sha256": "1a1e1a02300d5eef6f376410709b344a7049cc5e02bf17dc08342477d5489c66"
+      },
+      "current_worktree_bytes": {
+        "bytes": 9611,
+        "sha256": "1a1e1a02300d5eef6f376410709b344a7049cc5e02bf17dc08342477d5489c66"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 9611,
+        "sha256": "1a1e1a02300d5eef6f376410709b344a7049cc5e02bf17dc08342477d5489c66"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/storage/Schema.kt",
+      "base_blob": "68e609760ee866d1df3688b0c2eb7b6c50f944f1",
+      "start_blob": "68e609760ee866d1df3688b0c2eb7b6c50f944f1",
+      "base_bytes": {
+        "bytes": 1224,
+        "sha256": "4c9453e8ad6c47d46edfa6f61538dc5911d9461c9391509353b8701c29211d05"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1224,
+        "sha256": "4c9453e8ad6c47d46edfa6f61538dc5911d9461c9391509353b8701c29211d05"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1224,
+        "sha256": "4c9453e8ad6c47d46edfa6f61538dc5911d9461c9391509353b8701c29211d05"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Https.kt",
+      "base_blob": "80394bdfbe047a8e33e925c7f1d9dfb4ac4b80c1",
+      "start_blob": "80394bdfbe047a8e33e925c7f1d9dfb4ac4b80c1",
+      "base_bytes": {
+        "bytes": 4800,
+        "sha256": "7071cc10977ff6fb79af73c1cf241f3d845451f98a107a453c08f5328c6e2d37"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4800,
+        "sha256": "7071cc10977ff6fb79af73c1cf241f3d845451f98a107a453c08f5328c6e2d37"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4800,
+        "sha256": "7071cc10977ff6fb79af73c1cf241f3d845451f98a107a453c08f5328c6e2d37"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/SyncViewModel.kt",
+      "base_blob": "e81ec5c996602e71fc9acbbd2916af766d6b95b2",
+      "start_blob": "e81ec5c996602e71fc9acbbd2916af766d6b95b2",
+      "base_bytes": {
+        "bytes": 5344,
+        "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5344,
+        "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5344,
+        "sha256": "cb04812df44549a204383c6c5f79819e72e449b21d9ee554b11d798e3e595c14"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/sync/Wire.kt",
+      "base_blob": "9e5fc06eff9b314d42f621dab1141ca9b784a681",
+      "start_blob": "9e5fc06eff9b314d42f621dab1141ca9b784a681",
+      "base_bytes": {
+        "bytes": 5400,
+        "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5400,
+        "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5400,
+        "sha256": "d5c5083d8ea096a420eddf5dff9f4514c5492c63847a3c439a02bbaa7980864d"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt",
+      "base_blob": "18ac5dad7eb544a56f11ce2ad54843bc906e5994",
+      "start_blob": "18ac5dad7eb544a56f11ce2ad54843bc906e5994",
+      "base_bytes": {
+        "bytes": 8909,
+        "sha256": "bef816318b723172d4692b477da776426ed98b3bf90756879cb2d9ae7fd7d880"
+      },
+      "current_worktree_bytes": {
+        "bytes": 8909,
+        "sha256": "bef816318b723172d4692b477da776426ed98b3bf90756879cb2d9ae7fd7d880"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 8909,
+        "sha256": "bef816318b723172d4692b477da776426ed98b3bf90756879cb2d9ae7fd7d880"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Preferences.kt",
+      "base_blob": "10cc35922ab43c7c09832906541ce9fed092cc88",
+      "start_blob": "10cc35922ab43c7c09832906541ce9fed092cc88",
+      "base_bytes": {
+        "bytes": 3431,
+        "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3431,
+        "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3431,
+        "sha256": "2d07c520b7d325295b79bac9be6f0087c1b5a91a8f5df0ebbb43872a02f9c0b9"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/Workspace.kt",
+      "base_blob": "b9dbae8a67b28660f79254d65cd0a71d80afd77f",
+      "start_blob": "b9dbae8a67b28660f79254d65cd0a71d80afd77f",
+      "base_bytes": {
+        "bytes": 785,
+        "sha256": "e4f79ec5b4ef99191a77b5566e403889ff3cdbbfdca9417eed787050504df0bc"
+      },
+      "current_worktree_bytes": {
+        "bytes": 785,
+        "sha256": "e4f79ec5b4ef99191a77b5566e403889ff3cdbbfdca9417eed787050504df0bc"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 785,
+        "sha256": "e4f79ec5b4ef99191a77b5566e403889ff3cdbbfdca9417eed787050504df0bc"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt",
+      "base_blob": "8e91c0e8202787578239d7c298d395e41ad67cac",
+      "start_blob": "8e91c0e8202787578239d7c298d395e41ad67cac",
+      "base_bytes": {
+        "bytes": 14900,
+        "sha256": "4bee1edb0ead9b487e0eb121a5c8538f04ffa70bec3e6e3b3f332d1fec15d00b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 14900,
+        "sha256": "4bee1edb0ead9b487e0eb121a5c8538f04ffa70bec3e6e3b3f332d1fec15d00b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 14900,
+        "sha256": "4bee1edb0ead9b487e0eb121a5c8538f04ffa70bec3e6e3b3f332d1fec15d00b"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt",
+      "base_blob": "624558cbcf993b61c944abd5b02c9972bd590287",
+      "start_blob": "624558cbcf993b61c944abd5b02c9972bd590287",
+      "base_bytes": {
+        "bytes": 2290,
+        "sha256": "670822348f5b1c48850e87c8921a7f1be37e4f3beec61a2a13702161928b125e"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2290,
+        "sha256": "670822348f5b1c48850e87c8921a7f1be37e4f3beec61a2a13702161928b125e"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2290,
+        "sha256": "670822348f5b1c48850e87c8921a7f1be37e4f3beec61a2a13702161928b125e"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Composer.kt",
+      "base_blob": "2c3d5d566e042d02fb4fde3d310ddf70546a56d0",
+      "start_blob": "2c3d5d566e042d02fb4fde3d310ddf70546a56d0",
+      "base_bytes": {
+        "bytes": 1680,
+        "sha256": "876dad90d9ef9e5a361f4fa57ae7db2b3469a5e4a3df92ccc0944696fc43d1a8"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1680,
+        "sha256": "876dad90d9ef9e5a361f4fa57ae7db2b3469a5e4a3df92ccc0944696fc43d1a8"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1680,
+        "sha256": "876dad90d9ef9e5a361f4fa57ae7db2b3469a5e4a3df92ccc0944696fc43d1a8"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ConversationList.kt",
+      "base_blob": "1877caf1be57e0fd95d128f3f7d2c8861a1d939f",
+      "start_blob": "1877caf1be57e0fd95d128f3f7d2c8861a1d939f",
+      "base_bytes": {
+        "bytes": 2000,
+        "sha256": "db4c523eff6ea3562f6e1968c91d318b711866c8e22df3bf517e43324cf01609"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2000,
+        "sha256": "db4c523eff6ea3562f6e1968c91d318b711866c8e22df3bf517e43324cf01609"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2000,
+        "sha256": "db4c523eff6ea3562f6e1968c91d318b711866c8e22df3bf517e43324cf01609"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Friends.kt",
+      "base_blob": "123d7807715d7b074652d6662b93b45505f155f1",
+      "start_blob": "123d7807715d7b074652d6662b93b45505f155f1",
+      "base_bytes": {
+        "bytes": 3093,
+        "sha256": "87eaf11f01f090f3f05a5187e8867bc77794dee78614fbb8e3c4f82d780663a8"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3093,
+        "sha256": "87eaf11f01f090f3f05a5187e8867bc77794dee78614fbb8e3c4f82d780663a8"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3093,
+        "sha256": "87eaf11f01f090f3f05a5187e8867bc77794dee78614fbb8e3c4f82d780663a8"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Future.kt",
+      "base_blob": "21b93fa5365d2372fa437250e84878066b952a6e",
+      "start_blob": "21b93fa5365d2372fa437250e84878066b952a6e",
+      "base_bytes": {
+        "bytes": 1594,
+        "sha256": "2e1d62d9e65d262cc8aa0c0a0c72f5b8c55f0a441133b5af299c150e780a6c27"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1594,
+        "sha256": "2e1d62d9e65d262cc8aa0c0a0c72f5b8c55f0a441133b5af299c150e780a6c27"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1594,
+        "sha256": "2e1d62d9e65d262cc8aa0c0a0c72f5b8c55f0a441133b5af299c150e780a6c27"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/LanguagePanel.kt",
+      "base_blob": "a7c7afee2161f4c87c318e722ae8cef763b34cc7",
+      "start_blob": "a7c7afee2161f4c87c318e722ae8cef763b34cc7",
+      "base_bytes": {
+        "bytes": 1000,
+        "sha256": "689fd7f5435bf32d2c5cf6944df425f87f2f94ba899a32bf5a1ee8cfb5af403e"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1000,
+        "sha256": "689fd7f5435bf32d2c5cf6944df425f87f2f94ba899a32bf5a1ee8cfb5af403e"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1000,
+        "sha256": "689fd7f5435bf32d2c5cf6944df425f87f2f94ba899a32bf5a1ee8cfb5af403e"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Login.kt",
+      "base_blob": "3194afae1e6c98a010c8254d6e9a670538a806e1",
+      "start_blob": "3194afae1e6c98a010c8254d6e9a670538a806e1",
+      "base_bytes": {
+        "bytes": 3500,
+        "sha256": "cf2b82c82b17f7f1e63a3c4f0c0a15fc2e1c5c8be8b929dd1661cb07407212e9"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3500,
+        "sha256": "cf2b82c82b17f7f1e63a3c4f0c0a15fc2e1c5c8be8b929dd1661cb07407212e9"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3500,
+        "sha256": "cf2b82c82b17f7f1e63a3c4f0c0a15fc2e1c5c8be8b929dd1661cb07407212e9"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Messages.kt",
+      "base_blob": "4ffb408d277adc9844d1eb6735af2b58e47baa98",
+      "start_blob": "4ffb408d277adc9844d1eb6735af2b58e47baa98",
+      "base_bytes": {
+        "bytes": 2782,
+        "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2782,
+        "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2782,
+        "sha256": "ea5378224a83e1f661afd226efc2fb0ff93145325d85621552173167b75c221c"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Navigation.kt",
+      "base_blob": "57113ac902ded1972fa7338fd141e80869bfd999",
+      "start_blob": "57113ac902ded1972fa7338fd141e80869bfd999",
+      "base_bytes": {
+        "bytes": 1419,
+        "sha256": "2850035864c90e0f25ffa6b9b4b465a3ded57e3e99d12c11b27da87ae865fd86"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1419,
+        "sha256": "2850035864c90e0f25ffa6b9b4b465a3ded57e3e99d12c11b27da87ae865fd86"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1419,
+        "sha256": "2850035864c90e0f25ffa6b9b4b465a3ded57e3e99d12c11b27da87ae865fd86"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Panel.kt",
+      "base_blob": "043e53052e8842e913c192b3a168d5155c7a7bee",
+      "start_blob": "043e53052e8842e913c192b3a168d5155c7a7bee",
+      "base_bytes": {
+        "bytes": 1452,
+        "sha256": "7a29137a26e0acc2958005987b9ca136583345bc6a519c6e94a54858c30a23c1"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1452,
+        "sha256": "7a29137a26e0acc2958005987b9ca136583345bc6a519c6e94a54858c30a23c1"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1452,
+        "sha256": "7a29137a26e0acc2958005987b9ca136583345bc6a519c6e94a54858c30a23c1"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/ProfilePanel.kt",
+      "base_blob": "5c939a8ec696bf0df498a827364779cbaabb2ad7",
+      "start_blob": "5c939a8ec696bf0df498a827364779cbaabb2ad7",
+      "base_bytes": {
+        "bytes": 2222,
+        "sha256": "52f5ad6efd178ce48c8b94bf9df83f017ed852388caf9fc9ac7deaa5792465fa"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2222,
+        "sha256": "52f5ad6efd178ce48c8b94bf9df83f017ed852388caf9fc9ac7deaa5792465fa"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2222,
+        "sha256": "52f5ad6efd178ce48c8b94bf9df83f017ed852388caf9fc9ac7deaa5792465fa"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Settings.kt",
+      "base_blob": "10762f714ea2cca5c6feecbc4151a1426c7499d8",
+      "start_blob": "10762f714ea2cca5c6feecbc4151a1426c7499d8",
+      "base_bytes": {
+        "bytes": 2836,
+        "sha256": "cf22aaaa0ef9e3efd3da001c39af34b81fbbc6679d8ba40eed8fd500598b1332"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2836,
+        "sha256": "cf22aaaa0ef9e3efd3da001c39af34b81fbbc6679d8ba40eed8fd500598b1332"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2836,
+        "sha256": "cf22aaaa0ef9e3efd3da001c39af34b81fbbc6679d8ba40eed8fd500598b1332"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt",
+      "base_blob": "a8737c29f187869e05f12c7cc8df6bee0838cd2b",
+      "start_blob": "a8737c29f187869e05f12c7cc8df6bee0838cd2b",
+      "base_bytes": {
+        "bytes": 5558,
+        "sha256": "08f1e70d332812bd0661429102a1992ad51645dcfc81727a6962659ad575008e"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5558,
+        "sha256": "08f1e70d332812bd0661429102a1992ad51645dcfc81727a6962659ad575008e"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5558,
+        "sha256": "08f1e70d332812bd0661429102a1992ad51645dcfc81727a6962659ad575008e"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/Resources.kt",
+      "base_blob": "9d3d8de42486a8f6e521a90dfe1607b259b81733",
+      "start_blob": "9d3d8de42486a8f6e521a90dfe1607b259b81733",
+      "base_bytes": {
+        "bytes": 5766,
+        "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5766,
+        "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5766,
+        "sha256": "5047fd895a61599e3aaf1d197d5e42b6c42a06368b7ed4aef4e66a615facdb12"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/en.kt",
+      "base_blob": "018be3b05cab46ebc884ff46f4bcecf7c233de3e",
+      "start_blob": "018be3b05cab46ebc884ff46f4bcecf7c233de3e",
+      "base_bytes": {
+        "bytes": 13097,
+        "sha256": "98500f11535640019290c29e679eda87b3165af94cf92cf8bbeb1ad9dc9d9527"
+      },
+      "current_worktree_bytes": {
+        "bytes": 13097,
+        "sha256": "98500f11535640019290c29e679eda87b3165af94cf92cf8bbeb1ad9dc9d9527"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 13097,
+        "sha256": "98500f11535640019290c29e679eda87b3165af94cf92cf8bbeb1ad9dc9d9527"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/jaJP.kt",
+      "base_blob": "da91114d379f5782302b311063abdeb9c7efd0f0",
+      "start_blob": "da91114d379f5782302b311063abdeb9c7efd0f0",
+      "base_bytes": {
+        "bytes": 16633,
+        "sha256": "c093f25b9aca39559174f014835ef291c31b1978a3aff32cd35e4d31806c95de"
+      },
+      "current_worktree_bytes": {
+        "bytes": 16633,
+        "sha256": "c093f25b9aca39559174f014835ef291c31b1978a3aff32cd35e4d31806c95de"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 16633,
+        "sha256": "c093f25b9aca39559174f014835ef291c31b1978a3aff32cd35e4d31806c95de"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/kotlin/im/platform/client/ui/i18n/zhCN.kt",
+      "base_blob": "de7a3387b6a170c99f0cab9707a8944603c12419",
+      "start_blob": "de7a3387b6a170c99f0cab9707a8944603c12419",
+      "base_bytes": {
+        "bytes": 12669,
+        "sha256": "d0c48a2bca27d0fb7ae85ac97e35136abd47548764cbe664b9046dc51c906588"
+      },
+      "current_worktree_bytes": {
+        "bytes": 12669,
+        "sha256": "d0c48a2bca27d0fb7ae85ac97e35136abd47548764cbe664b9046dc51c906588"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 12669,
+        "sha256": "d0c48a2bca27d0fb7ae85ac97e35136abd47548764cbe664b9046dc51c906588"
+      }
+    },
+    {
+      "path": "clients/mobile/app/src/main/res/drawable/project_logo.png",
+      "base_blob": "baee496daa80650bf517e89cc641e13cf5959c4c",
+      "start_blob": "baee496daa80650bf517e89cc641e13cf5959c4c",
+      "base_bytes": {
+        "bytes": 274110,
+        "sha256": "92f649d217cf503ff0665ce0715e2257402aa881b0f1776eeaa58f8d0cbf07d5"
+      },
+      "current_worktree_bytes": {
+        "bytes": 274110,
+        "sha256": "92f649d217cf503ff0665ce0715e2257402aa881b0f1776eeaa58f8d0cbf07d5"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 274110,
+        "sha256": "92f649d217cf503ff0665ce0715e2257402aa881b0f1776eeaa58f8d0cbf07d5"
+      }
+    },
+    {
+      "path": "clients/mobile/build.gradle.kts",
+      "base_blob": "c025be89c39285d77a41669f3def14a2b36aa213",
+      "start_blob": "c025be89c39285d77a41669f3def14a2b36aa213",
+      "base_bytes": {
+        "bytes": 217,
+        "sha256": "6a31d62bd097db83ac71cf4deb9a920443c3d7ccd1abf8087eff12740a2decf7"
+      },
+      "current_worktree_bytes": {
+        "bytes": 217,
+        "sha256": "6a31d62bd097db83ac71cf4deb9a920443c3d7ccd1abf8087eff12740a2decf7"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 217,
+        "sha256": "6a31d62bd097db83ac71cf4deb9a920443c3d7ccd1abf8087eff12740a2decf7"
+      }
+    },
+    {
+      "path": "clients/mobile/gradle.properties",
+      "base_blob": "97f494ecc3128dddf56c35511d9e3cecbfea8931",
+      "start_blob": "97f494ecc3128dddf56c35511d9e3cecbfea8931",
+      "base_bytes": {
+        "bytes": 103,
+        "sha256": "0cc66f8565a869c7a56174e75d944254a69015cfbfb9bec3f4762219adb7679f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 103,
+        "sha256": "0cc66f8565a869c7a56174e75d944254a69015cfbfb9bec3f4762219adb7679f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 103,
+        "sha256": "0cc66f8565a869c7a56174e75d944254a69015cfbfb9bec3f4762219adb7679f"
+      }
+    },
+    {
+      "path": "clients/mobile/gradle/wrapper/gradle-wrapper.jar",
+      "base_blob": "2c3521197d7c4586c843d1d3e9090525f1898cde",
+      "start_blob": "2c3521197d7c4586c843d1d3e9090525f1898cde",
+      "base_bytes": {
+        "bytes": 43504,
+        "sha256": "498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17"
+      },
+      "current_worktree_bytes": {
+        "bytes": 43504,
+        "sha256": "498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 43504,
+        "sha256": "498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17"
+      }
+    },
+    {
+      "path": "clients/mobile/gradle/wrapper/gradle-wrapper.properties",
+      "base_blob": "7179de4de65b7e498ed8a437905bccaa69c99d35",
+      "start_blob": "7179de4de65b7e498ed8a437905bccaa69c99d35",
+      "base_bytes": {
+        "bytes": 337,
+        "sha256": "7811b7e9709748edc54d01918ac1b2acce8a9884d5cdd29e42d204d7d052dbf1"
+      },
+      "current_worktree_bytes": {
+        "bytes": 337,
+        "sha256": "7811b7e9709748edc54d01918ac1b2acce8a9884d5cdd29e42d204d7d052dbf1"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 337,
+        "sha256": "7811b7e9709748edc54d01918ac1b2acce8a9884d5cdd29e42d204d7d052dbf1"
+      }
+    },
+    {
+      "path": "clients/mobile/gradlew",
+      "base_blob": "f5feea6d6b116baaca5a2642d4d9fa1f47d574a7",
+      "start_blob": "f5feea6d6b116baaca5a2642d4d9fa1f47d574a7",
+      "base_bytes": {
+        "bytes": 8762,
+        "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+      },
+      "current_worktree_bytes": {
+        "bytes": 8762,
+        "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 8762,
+        "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+      }
+    },
+    {
+      "path": "clients/mobile/gradlew.bat",
+      "base_blob": "9b42019c7915b971238526075306ffba3b666dd5",
+      "start_blob": "9b42019c7915b971238526075306ffba3b666dd5",
+      "base_bytes": {
+        "bytes": 2966,
+        "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2966,
+        "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2966,
+        "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+      }
+    },
+    {
+      "path": "clients/mobile/settings.gradle.kts",
+      "base_blob": "c78ca81c6ce705a28bcb0cac31c4e0dbe76508c9",
+      "start_blob": "c78ca81c6ce705a28bcb0cac31c4e0dbe76508c9",
+      "base_bytes": {
+        "bytes": 270,
+        "sha256": "3e21709a3a02ecf2cc4d6093d4065e052681930551a9e6ac3e6a7e5095866fde"
+      },
+      "current_worktree_bytes": {
+        "bytes": 270,
+        "sha256": "3e21709a3a02ecf2cc4d6093d4065e052681930551a9e6ac3e6a7e5095866fde"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 270,
+        "sha256": "3e21709a3a02ecf2cc4d6093d4065e052681930551a9e6ac3e6a7e5095866fde"
+      }
+    },
+    {
+      "path": "clients/shared/plugin-sdk/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/.gitignore",
+      "base_blob": "b9470778764f72c5257a3361590d2994547f90e1",
+      "start_blob": "b9470778764f72c5257a3361590d2994547f90e1",
+      "base_bytes": {
+        "bytes": 20,
+        "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+      },
+      "current_worktree_bytes": {
+        "bytes": 20,
+        "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 20,
+        "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/README.md",
+      "base_blob": "b3a07831fbc66744d4d379eb5d792c80d84ef56d",
+      "start_blob": "b3a07831fbc66744d4d379eb5d792c80d84ef56d",
+      "base_bytes": {
+        "bytes": 2350,
+        "sha256": "a0a877295c2374071e07f8983e26b3a1a59ebd8b9f3b1a0f5c9ef7f2c870e9d1"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2350,
+        "sha256": "a0a877295c2374071e07f8983e26b3a1a59ebd8b9f3b1a0f5c9ef7f2c870e9d1"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2350,
+        "sha256": "a0a877295c2374071e07f8983e26b3a1a59ebd8b9f3b1a0f5c9ef7f2c870e9d1"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/package-lock.json",
+      "base_blob": "f03da6ffb35f60b437314b4cab83e046fe09e9a8",
+      "start_blob": "f03da6ffb35f60b437314b4cab83e046fe09e9a8",
+      "base_bytes": {
+        "bytes": 719,
+        "sha256": "910009362f0710052831610dcc0036a53721d107c38db56fea45a006622de897"
+      },
+      "current_worktree_bytes": {
+        "bytes": 719,
+        "sha256": "910009362f0710052831610dcc0036a53721d107c38db56fea45a006622de897"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 719,
+        "sha256": "910009362f0710052831610dcc0036a53721d107c38db56fea45a006622de897"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/package.json",
+      "base_blob": "90100f56c3e7c5826f8b0ff0a65f268ee0bc3d49",
+      "start_blob": "90100f56c3e7c5826f8b0ff0a65f268ee0bc3d49",
+      "base_bytes": {
+        "bytes": 204,
+        "sha256": "9e6e79aeb6dbd4010dbe6392272f77e9b1df085ab726c81cc57b635738435bd4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 204,
+        "sha256": "9e6e79aeb6dbd4010dbe6392272f77e9b1df085ab726c81cc57b635738435bd4"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 204,
+        "sha256": "9e6e79aeb6dbd4010dbe6392272f77e9b1df085ab726c81cc57b635738435bd4"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/send/wire.ts",
+      "base_blob": "014b8f1e41d0f6ad58a7d3cc0bf5f5ef485c7f9c",
+      "start_blob": "014b8f1e41d0f6ad58a7d3cc0bf5f5ef485c7f9c",
+      "base_bytes": {
+        "bytes": 6708,
+        "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+      },
+      "current_worktree_bytes": {
+        "bytes": 6708,
+        "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 6708,
+        "sha256": "e63fcdf7eb4417902b4f370c5e4784c2781631ada3b95250a8fe8a3f161584c8"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/models.ts",
+      "base_blob": "06a0ee062889c12c65d832fc1d5ec9048dbf2387",
+      "start_blob": "06a0ee062889c12c65d832fc1d5ec9048dbf2387",
+      "base_bytes": {
+        "bytes": 1473,
+        "sha256": "6ad58c5240d036ad70b20795ed2fcc015fdbafd5926e453702159327f03463e3"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1473,
+        "sha256": "6ad58c5240d036ad70b20795ed2fcc015fdbafd5926e453702159327f03463e3"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1473,
+        "sha256": "6ad58c5240d036ad70b20795ed2fcc015fdbafd5926e453702159327f03463e3"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/repository.ts",
+      "base_blob": "69392f6e5084d2cf6f2640724c582394dc4eea09",
+      "start_blob": "69392f6e5084d2cf6f2640724c582394dc4eea09",
+      "base_bytes": {
+        "bytes": 9383,
+        "sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 9383,
+        "sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 9383,
+        "sha256": "d246dc399afe4a3fe320edebd2b191e18ddee346cb8488e9ceb1c284b455745c"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/storage/schema.ts",
+      "base_blob": "95c2cd4f99866d3401373e0fab6483fcb9c8e951",
+      "start_blob": "95c2cd4f99866d3401373e0fab6483fcb9c8e951",
+      "base_bytes": {
+        "bytes": 1492,
+        "sha256": "5761dbc44f0c96ab59b4d28c4a38814de5023ff37220d4864a54e7618c5fb0cd"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1492,
+        "sha256": "5761dbc44f0c96ab59b4d28c4a38814de5023ff37220d4864a54e7618c5fb0cd"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1492,
+        "sha256": "5761dbc44f0c96ab59b4d28c4a38814de5023ff37220d4864a54e7618c5fb0cd"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/sync/http.ts",
+      "base_blob": "7154968f292c0718fff69858ae6c588ea83208e9",
+      "start_blob": "7154968f292c0718fff69858ae6c588ea83208e9",
+      "base_bytes": {
+        "bytes": 4404,
+        "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4404,
+        "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4404,
+        "sha256": "1ef6f596331e0616087ecc6be4ed3cd108c953813bf60f32d34ae209d6bf6715"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/src/sync/wire.ts",
+      "base_blob": "b3f18f3f741dd561693c74c18166fb6969cee65c",
+      "start_blob": "b3f18f3f741dd561693c74c18166fb6969cee65c",
+      "base_bytes": {
+        "bytes": 5349,
+        "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5349,
+        "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5349,
+        "sha256": "c8ce9638b3fb687500336690c13cf14ff739fd764bc3ec5959c1eca500d35b50"
+      }
+    },
+    {
+      "path": "clients/shared/protocol-sdk/tsconfig.json",
+      "base_blob": "c9a2b92d61e818c73ffa18682a43ef53898adbe3",
+      "start_blob": "c9a2b92d61e818c73ffa18682a43ef53898adbe3",
+      "base_bytes": {
+        "bytes": 295,
+        "sha256": "b61e27b76b179cf1b127a30bed6645e21df1085ebfcbd536e2c19635b3fa1cea"
+      },
+      "current_worktree_bytes": {
+        "bytes": 295,
+        "sha256": "b61e27b76b179cf1b127a30bed6645e21df1085ebfcbd536e2c19635b3fa1cea"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 295,
+        "sha256": "b61e27b76b179cf1b127a30bed6645e21df1085ebfcbd536e2c19635b3fa1cea"
+      }
+    },
+    {
+      "path": "clients/shared/ui/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "clients/web/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "clients/web/package-lock.json",
+      "base_blob": "c422dc3298398c60978d32d8b5b64a306a939052",
+      "start_blob": "c422dc3298398c60978d32d8b5b64a306a939052",
+      "base_bytes": {
+        "bytes": 4193,
+        "sha256": "f4a303760dd702f3cf9b4cf87393dde95281b9463d59ba42ca2f879f1603407a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4193,
+        "sha256": "f4a303760dd702f3cf9b4cf87393dde95281b9463d59ba42ca2f879f1603407a"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4193,
+        "sha256": "f4a303760dd702f3cf9b4cf87393dde95281b9463d59ba42ca2f879f1603407a"
+      }
+    },
+    {
+      "path": "clients/web/package.json",
+      "base_blob": "5f5086333424d480b46f94d4871da30ab6498974",
+      "start_blob": "5f5086333424d480b46f94d4871da30ab6498974",
+      "base_bytes": {
+        "bytes": 291,
+        "sha256": "427fe1533d2ff01ced497d9c8d7a8ed522e0c2683ed0439078ec883bf7fb2f79"
+      },
+      "current_worktree_bytes": {
+        "bytes": 291,
+        "sha256": "427fe1533d2ff01ced497d9c8d7a8ed522e0c2683ed0439078ec883bf7fb2f79"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 291,
+        "sha256": "427fe1533d2ff01ced497d9c8d7a8ed522e0c2683ed0439078ec883bf7fb2f79"
+      }
+    },
+    {
+      "path": "clients/web/src/application/client.ts",
+      "base_blob": "0fb6a2f63ce015bcb11e1bac259ad2808534607b",
+      "start_blob": "0fb6a2f63ce015bcb11e1bac259ad2808534607b",
+      "base_bytes": {
+        "bytes": 16093,
+        "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+      },
+      "current_worktree_bytes": {
+        "bytes": 16093,
+        "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 16093,
+        "sha256": "749c2f151777ceebfb97510adf8eec2baa81af5a710c200a434f8e7bd7278852"
+      }
+    },
+    {
+      "path": "clients/web/src/application/http.ts",
+      "base_blob": "abedbc6e82f52a8268099527c9da1a73cb369243",
+      "start_blob": "abedbc6e82f52a8268099527c9da1a73cb369243",
+      "base_bytes": {
+        "bytes": 6849,
+        "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+      },
+      "current_worktree_bytes": {
+        "bytes": 6849,
+        "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 6849,
+        "sha256": "d71878aa04b0f9739463ae8ce198a5d3eef5a16b9f8bee2ff44e2fb4d9f88edd"
+      }
+    },
+    {
+      "path": "clients/web/src/application/repository.ts",
+      "base_blob": "8fc92fcaea4535fa0db8df76014d905e3d8f8652",
+      "start_blob": "8fc92fcaea4535fa0db8df76014d905e3d8f8652",
+      "base_bytes": {
+        "bytes": 3425,
+        "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3425,
+        "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3425,
+        "sha256": "7bbcabff5b8f16c7a6b2b105fee540a6f023ce03e69942ac3b47ff45662ff1dd"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/appearance.ts",
+      "base_blob": "1ce0a9f80db2520b77d7ebfba4fed4361cd9053f",
+      "start_blob": "1ce0a9f80db2520b77d7ebfba4fed4361cd9053f",
+      "base_bytes": {
+        "bytes": 1658,
+        "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1658,
+        "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1658,
+        "sha256": "0c832a8a4138eb64227404d8620820fe6b1600bb9ceb8d4350504b722e5df76a"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/build.config.mjs",
+      "base_blob": "82ab4e224f835d4b73d7730c34ba6e8f71fd7d54",
+      "start_blob": "82ab4e224f835d4b73d7730c34ba6e8f71fd7d54",
+      "base_bytes": {
+        "bytes": 867,
+        "sha256": "c14b2f838a2f5d6365dfde23f2f7ae3d5ae9cfeb4646d4334221f526cd6427d3"
+      },
+      "current_worktree_bytes": {
+        "bytes": 867,
+        "sha256": "c14b2f838a2f5d6365dfde23f2f7ae3d5ae9cfeb4646d4334221f526cd6427d3"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 867,
+        "sha256": "c14b2f838a2f5d6365dfde23f2f7ae3d5ae9cfeb4646d4334221f526cd6427d3"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/AuthPanel.tsx",
+      "base_blob": "e681f95fc9548201a171c862fab20a173a8c8123",
+      "start_blob": "e681f95fc9548201a171c862fab20a173a8c8123",
+      "base_bytes": {
+        "bytes": 1656,
+        "sha256": "a0013ce3e4a670d9b3f9daa93f9f9609b457c60a8d3cc8ab6d051537ba7aa23f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1656,
+        "sha256": "a0013ce3e4a670d9b3f9daa93f9f9609b457c60a8d3cc8ab6d051537ba7aa23f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1656,
+        "sha256": "a0013ce3e4a670d9b3f9daa93f9f9609b457c60a8d3cc8ab6d051537ba7aa23f"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/Composer.tsx",
+      "base_blob": "36abd24ad3719acc156c1e629fe8b04f1e62de82",
+      "start_blob": "36abd24ad3719acc156c1e629fe8b04f1e62de82",
+      "base_bytes": {
+        "bytes": 648,
+        "sha256": "0f8a384f93d39019d6feb850133ee174ec056b8708bc3a81df001d7af70c09a3"
+      },
+      "current_worktree_bytes": {
+        "bytes": 648,
+        "sha256": "0f8a384f93d39019d6feb850133ee174ec056b8708bc3a81df001d7af70c09a3"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 648,
+        "sha256": "0f8a384f93d39019d6feb850133ee174ec056b8708bc3a81df001d7af70c09a3"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/ConversationList.tsx",
+      "base_blob": "e15beb637bf3b6fa3689a9bc745697ae61285652",
+      "start_blob": "e15beb637bf3b6fa3689a9bc745697ae61285652",
+      "base_bytes": {
+        "bytes": 1449,
+        "sha256": "b2c524f8ff1be37710e4b4bf8b6996d45f05c4ca1e15135f6cfeb027b276103d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1449,
+        "sha256": "b2c524f8ff1be37710e4b4bf8b6996d45f05c4ca1e15135f6cfeb027b276103d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1449,
+        "sha256": "b2c524f8ff1be37710e4b4bf8b6996d45f05c4ca1e15135f6cfeb027b276103d"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/FriendsPanel.tsx",
+      "base_blob": "8b58a8c3c3b523d6db69aa1e3c9b13f8e50d7593",
+      "start_blob": "8b58a8c3c3b523d6db69aa1e3c9b13f8e50d7593",
+      "base_bytes": {
+        "bytes": 2733,
+        "sha256": "8d2ca587c2a48140a110ceb978ca84a66876cf87c2a291ce0e486fc88697ec47"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2733,
+        "sha256": "8d2ca587c2a48140a110ceb978ca84a66876cf87c2a291ce0e486fc88697ec47"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2733,
+        "sha256": "8d2ca587c2a48140a110ceb978ca84a66876cf87c2a291ce0e486fc88697ec47"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/Header.tsx",
+      "base_blob": "5e7c64c0c6f56b8caa040726471a6413d1ecab54",
+      "start_blob": "5e7c64c0c6f56b8caa040726471a6413d1ecab54",
+      "base_bytes": {
+        "bytes": 1019,
+        "sha256": "a4ded013e1705605583c34c9e77d694bcc9404c5405cf25afa0bf36fc6511ec4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1019,
+        "sha256": "a4ded013e1705605583c34c9e77d694bcc9404c5405cf25afa0bf36fc6511ec4"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1019,
+        "sha256": "a4ded013e1705605583c34c9e77d694bcc9404c5405cf25afa0bf36fc6511ec4"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/LanguagePanel.tsx",
+      "base_blob": "7b404be2be7e1706841f0dff5cce51be93237631",
+      "start_blob": "7b404be2be7e1706841f0dff5cce51be93237631",
+      "base_bytes": {
+        "bytes": 782,
+        "sha256": "1d1e466910ee84c384a2e2c00fd0d0603aa4fce277b54ddefef177cdfd648b43"
+      },
+      "current_worktree_bytes": {
+        "bytes": 782,
+        "sha256": "1d1e466910ee84c384a2e2c00fd0d0603aa4fce277b54ddefef177cdfd648b43"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 782,
+        "sha256": "1d1e466910ee84c384a2e2c00fd0d0603aa4fce277b54ddefef177cdfd648b43"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/Messages.tsx",
+      "base_blob": "a40fd610ee81f077871205ae09624db141666c04",
+      "start_blob": "a40fd610ee81f077871205ae09624db141666c04",
+      "base_bytes": {
+        "bytes": 1355,
+        "sha256": "51d5d0219a6e11f99321b45457b5145aa9f8bf705a512ebe14f1b9ac3bad86ad"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1355,
+        "sha256": "51d5d0219a6e11f99321b45457b5145aa9f8bf705a512ebe14f1b9ac3bad86ad"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1355,
+        "sha256": "51d5d0219a6e11f99321b45457b5145aa9f8bf705a512ebe14f1b9ac3bad86ad"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/Navigation.tsx",
+      "base_blob": "57fe709a545dbe5413eb97c2701121a0ed7bee4b",
+      "start_blob": "57fe709a545dbe5413eb97c2701121a0ed7bee4b",
+      "base_bytes": {
+        "bytes": 1505,
+        "sha256": "e05683a386dab67e08f9377f83eed2e99316717f8c4df5e8610fa811c81757ca"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1505,
+        "sha256": "e05683a386dab67e08f9377f83eed2e99316717f8c4df5e8610fa811c81757ca"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1505,
+        "sha256": "e05683a386dab67e08f9377f83eed2e99316717f8c4df5e8610fa811c81757ca"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/Placeholder.tsx",
+      "base_blob": "28927d9a8a31c4d3a9858a0700d625a4eb72dc15",
+      "start_blob": "28927d9a8a31c4d3a9858a0700d625a4eb72dc15",
+      "base_bytes": {
+        "bytes": 872,
+        "sha256": "80f8dbf23a5c0be3ac6d9e14e5aaf0322fee7e895b6e5d520e739c133dec1b4d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 872,
+        "sha256": "80f8dbf23a5c0be3ac6d9e14e5aaf0322fee7e895b6e5d520e739c133dec1b4d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 872,
+        "sha256": "80f8dbf23a5c0be3ac6d9e14e5aaf0322fee7e895b6e5d520e739c133dec1b4d"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/ProfilePanel.tsx",
+      "base_blob": "6d1f2d2749629b674b04549864138de84d3cc31e",
+      "start_blob": "6d1f2d2749629b674b04549864138de84d3cc31e",
+      "base_bytes": {
+        "bytes": 1227,
+        "sha256": "b52ad135f07e0d8ac9a4e045ee1875dec086ee259acd9b9be17882bc540f93cc"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1227,
+        "sha256": "b52ad135f07e0d8ac9a4e045ee1875dec086ee259acd9b9be17882bc540f93cc"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1227,
+        "sha256": "b52ad135f07e0d8ac9a4e045ee1875dec086ee259acd9b9be17882bc540f93cc"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/SettingsPanel.tsx",
+      "base_blob": "5437c0ec28d2ae2d977313e7656db04c36a35126",
+      "start_blob": "5437c0ec28d2ae2d977313e7656db04c36a35126",
+      "base_bytes": {
+        "bytes": 2070,
+        "sha256": "5c2e7d89f4c2e4f4775b3880237ee98c17db31d350a675353dea345e0cb206ef"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2070,
+        "sha256": "5c2e7d89f4c2e4f4775b3880237ee98c17db31d350a675353dea345e0cb206ef"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2070,
+        "sha256": "5c2e7d89f4c2e4f4775b3880237ee98c17db31d350a675353dea345e0cb206ef"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/Shell.tsx",
+      "base_blob": "313d67c63a7882b2fb0acb631f65a411c9fb6349",
+      "start_blob": "313d67c63a7882b2fb0acb631f65a411c9fb6349",
+      "base_bytes": {
+        "bytes": 4727,
+        "sha256": "27e8b05e6cddf1c9ec246aacafb290c9035af5333f894484e83d5eda2c51d8eb"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4727,
+        "sha256": "27e8b05e6cddf1c9ec246aacafb290c9035af5333f894484e83d5eda2c51d8eb"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4727,
+        "sha256": "27e8b05e6cddf1c9ec246aacafb290c9035af5333f894484e83d5eda2c51d8eb"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/components/status.ts",
+      "base_blob": "1c470486ebf03402fca8bbff394f7aa50da91436",
+      "start_blob": "1c470486ebf03402fca8bbff394f7aa50da91436",
+      "base_bytes": {
+        "bytes": 254,
+        "sha256": "868e6d4d1459f83c8a6dff7580c88aeb4cabb0f027af1e9bf3b67f07c801ff12"
+      },
+      "current_worktree_bytes": {
+        "bytes": 254,
+        "sha256": "868e6d4d1459f83c8a6dff7580c88aeb4cabb0f027af1e9bf3b67f07c801ff12"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 254,
+        "sha256": "868e6d4d1459f83c8a6dff7580c88aeb4cabb0f027af1e9bf3b67f07c801ff12"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/i18n/context.tsx",
+      "base_blob": "ebe731e9e4cfef1b99168ab2cde8c88dadc82530",
+      "start_blob": "ebe731e9e4cfef1b99168ab2cde8c88dadc82530",
+      "base_bytes": {
+        "bytes": 452,
+        "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+      },
+      "current_worktree_bytes": {
+        "bytes": 452,
+        "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 452,
+        "sha256": "46082cf15bb0561ece2717ffeca57b8088027b5b057218eb13fb614a92807861"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/i18n/en.ts",
+      "base_blob": "3dfd31896758979392a1017c14dc4a2c9599f843",
+      "start_blob": "3dfd31896758979392a1017c14dc4a2c9599f843",
+      "base_bytes": {
+        "bytes": 13042,
+        "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+      },
+      "current_worktree_bytes": {
+        "bytes": 13042,
+        "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 13042,
+        "sha256": "79dcf28a4011efb94a08af74f80cf2f965efc2b58718e91439595568342ac6c5"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/i18n/ja-JP.ts",
+      "base_blob": "6235958e710ae49ada0ab604f6cec2b91f043383",
+      "start_blob": "6235958e710ae49ada0ab604f6cec2b91f043383",
+      "base_bytes": {
+        "bytes": 16576,
+        "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+      },
+      "current_worktree_bytes": {
+        "bytes": 16576,
+        "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 16576,
+        "sha256": "b0060dd0607eb6ad11b90330c2c8f3db5e22a982f3557ce16b5f9b9e90c477a2"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/i18n/resources.ts",
+      "base_blob": "e8981f9022defa09e8e220c55c7410c49e88d28f",
+      "start_blob": "e8981f9022defa09e8e220c55c7410c49e88d28f",
+      "base_bytes": {
+        "bytes": 5775,
+        "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 5775,
+        "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 5775,
+        "sha256": "5b32ec52998d9fb45b69ad4a67f51f30821fac797e12788af221d1427dbfdb5b"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/i18n/zh-CN.ts",
+      "base_blob": "0eec71c941e184cfdfed3f56ca214f347326a071",
+      "start_blob": "0eec71c941e184cfdfed3f56ca214f347326a071",
+      "base_bytes": {
+        "bytes": 12612,
+        "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+      },
+      "current_worktree_bytes": {
+        "bytes": 12612,
+        "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 12612,
+        "sha256": "d6da37e706719f8dbe408df8086b9c399cd4dcc25dcfce0442086f808cc64e70"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/index.html",
+      "base_blob": "9dcc7bba1ffe495533678ce42bfd1e496e0ad57d",
+      "start_blob": "9dcc7bba1ffe495533678ce42bfd1e496e0ad57d",
+      "base_bytes": {
+        "bytes": 502,
+        "sha256": "397bf2bbfb9d2e48e9d742e04537525345b2683f492377cc417c81843e5729d9"
+      },
+      "current_worktree_bytes": {
+        "bytes": 502,
+        "sha256": "397bf2bbfb9d2e48e9d742e04537525345b2683f492377cc417c81843e5729d9"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 502,
+        "sha256": "397bf2bbfb9d2e48e9d742e04537525345b2683f492377cc417c81843e5729d9"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/language.ts",
+      "base_blob": "e4bf05280c7788f83990e43e2e0599697946cdf4",
+      "start_blob": "e4bf05280c7788f83990e43e2e0599697946cdf4",
+      "base_bytes": {
+        "bytes": 546,
+        "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e"
+      },
+      "current_worktree_bytes": {
+        "bytes": 546,
+        "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 546,
+        "sha256": "9709bb7dcca41f8efed2e7511d1723632c58a788eaad76b9a6b646ecdcdee85e"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/logo.png",
+      "base_blob": "28a064c1747f60c8a06965271b699ffa26e5ab5b",
+      "start_blob": "28a064c1747f60c8a06965271b699ffa26e5ab5b",
+      "base_bytes": {
+        "bytes": 1797658,
+        "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1797658,
+        "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1797658,
+        "sha256": "efd0954b42c77ef103995a03eeabd6db2ce2b28cc8648d36247b2f23c25bf0a2"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/main.tsx",
+      "base_blob": "433fbf4dc43c12d235cf69f401c559c5c84d7040",
+      "start_blob": "433fbf4dc43c12d235cf69f401c559c5c84d7040",
+      "base_bytes": {
+        "bytes": 180,
+        "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+      },
+      "current_worktree_bytes": {
+        "bytes": 180,
+        "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 180,
+        "sha256": "d7a22949c67da26d22c9e47b4098a91bf0eb7aacc736b5924aeb062922c7a1a3"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/react-dom.config.mjs",
+      "base_blob": "9fd2c44ecfbd29131732b9ee5ff26c13bd1224a1",
+      "start_blob": "9fd2c44ecfbd29131732b9ee5ff26c13bd1224a1",
+      "base_bytes": {
+        "bytes": 47,
+        "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+      },
+      "current_worktree_bytes": {
+        "bytes": 47,
+        "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 47,
+        "sha256": "676d0a9dbebac371cdfd90821411b4582ce495ae95a6ac17bbe5eaf950afc1f5"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/react.config.mjs",
+      "base_blob": "419253c08a5e106223b0fe36600e6f3d6dcdef1b",
+      "start_blob": "419253c08a5e106223b0fe36600e6f3d6dcdef1b",
+      "base_bytes": {
+        "bytes": 106,
+        "sha256": "92595c5e2aef4233d0ac7d7de085cfd37eb145af37c0d634f83dd3c8d4e7bc27"
+      },
+      "current_worktree_bytes": {
+        "bytes": 106,
+        "sha256": "92595c5e2aef4233d0ac7d7de085cfd37eb145af37c0d634f83dd3c8d4e7bc27"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 106,
+        "sha256": "92595c5e2aef4233d0ac7d7de085cfd37eb145af37c0d634f83dd3c8d4e7bc27"
+      }
+    },
+    {
+      "path": "clients/web/src/ui/style.css",
+      "base_blob": "7b9b7ff99bd0d161b129349f3944b77009ce5428",
+      "start_blob": "7b9b7ff99bd0d161b129349f3944b77009ce5428",
+      "base_bytes": {
+        "bytes": 10557,
+        "sha256": "1f54de7775b87f6f3b99a0d6320ce157118727ea07d0b0d2d7bd2b533a618373"
+      },
+      "current_worktree_bytes": {
+        "bytes": 10557,
+        "sha256": "1f54de7775b87f6f3b99a0d6320ce157118727ea07d0b0d2d7bd2b533a618373"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 10557,
+        "sha256": "1f54de7775b87f6f3b99a0d6320ce157118727ea07d0b0d2d7bd2b533a618373"
+      }
+    },
+    {
+      "path": "clients/web/tsconfig.json",
+      "base_blob": "87bb83da78b31641472a04e4b3234041a1dbe41e",
+      "start_blob": "87bb83da78b31641472a04e4b3234041a1dbe41e",
+      "base_bytes": {
+        "bytes": 367,
+        "sha256": "8309543308d3102d5e0e784fa7c4f523287f0eaa54e3e2d399f9a30c19e8e2d4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 367,
+        "sha256": "8309543308d3102d5e0e784fa7c4f523287f0eaa54e3e2d399f9a30c19e8e2d4"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 367,
+        "sha256": "8309543308d3102d5e0e784fa7c4f523287f0eaa54e3e2d399f9a30c19e8e2d4"
+      }
+    },
+    {
+      "path": "contracts/database/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "contracts/database/README.md",
+      "base_blob": "dffb831da28cd9e24197d17a43a26a167dc7a4a2",
+      "start_blob": "dffb831da28cd9e24197d17a43a26a167dc7a4a2",
+      "base_bytes": {
+        "bytes": 1761,
+        "sha256": "5601e242336708e2c77dea1be5bea621e092fd8d69acdb34bc4cc3f3f939ade6"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1761,
+        "sha256": "5601e242336708e2c77dea1be5bea621e092fd8d69acdb34bc4cc3f3f939ade6"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1761,
+        "sha256": "5601e242336708e2c77dea1be5bea621e092fd8d69acdb34bc4cc3f3f939ade6"
+      }
+    },
+    {
+      "path": "contracts/database/migrate.py",
+      "base_blob": "70c36db31f0220d68ee2ccd04faa8c704fc0a264",
+      "start_blob": "70c36db31f0220d68ee2ccd04faa8c704fc0a264",
+      "base_bytes": {
+        "bytes": 4175,
+        "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4175,
+        "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4175,
+        "sha256": "59fd313fe95fa6f65801ad92bfd14a6881f6968f5a7909b0e2cb693c9a3c887c"
+      }
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.down.sql",
+      "base_blob": "ac88d806fbb6fe8e167a9f9712b14308bd33f24d",
+      "start_blob": "ac88d806fbb6fe8e167a9f9712b14308bd33f24d",
+      "base_bytes": {
+        "bytes": 494,
+        "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 494,
+        "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 494,
+        "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c"
+      }
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.up.sql",
+      "base_blob": "a65de90ff6fb3682abd57453a8cb3d39e0760675",
+      "start_blob": "a65de90ff6fb3682abd57453a8cb3d39e0760675",
+      "base_bytes": {
+        "bytes": 7630,
+        "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098"
+      },
+      "current_worktree_bytes": {
+        "bytes": 7630,
+        "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 7630,
+        "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098"
+      }
+    },
+    {
+      "path": "contracts/errors/http-errors.schema.json",
+      "base_blob": "f4302ff75e492e56ab82978cb78b83b7658a4a22",
+      "start_blob": "f4302ff75e492e56ab82978cb78b83b7658a4a22",
+      "base_bytes": {
+        "bytes": 1868,
+        "sha256": "b063404ea779b28f7fd5a082f8e562409f862342a6986ebf8ff92427fcec784a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1868,
+        "sha256": "b063404ea779b28f7fd5a082f8e562409f862342a6986ebf8ff92427fcec784a"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1868,
+        "sha256": "b063404ea779b28f7fd5a082f8e562409f862342a6986ebf8ff92427fcec784a"
+      }
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/fixture.schema.json",
+      "base_blob": "10b2f335728246975fb799c9888b56797d9a1d73",
+      "start_blob": "10b2f335728246975fb799c9888b56797d9a1d73",
+      "base_bytes": {
+        "bytes": 13401,
+        "sha256": "898980cf3b9eb330aa2fc35bb00e79c966df4fb1ea7e4481b1ace4da73e95aff"
+      },
+      "current_worktree_bytes": {
+        "bytes": 13401,
+        "sha256": "898980cf3b9eb330aa2fc35bb00e79c966df4fb1ea7e4481b1ace4da73e95aff"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 13401,
+        "sha256": "898980cf3b9eb330aa2fc35bb00e79c966df4fb1ea7e4481b1ace4da73e95aff"
+      }
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/loop1-exceptions.json",
+      "base_blob": "d09c59a6215144e0f6c48d20becf09508f28349d",
+      "start_blob": "d09c59a6215144e0f6c48d20becf09508f28349d",
+      "base_bytes": {
+        "bytes": 1099,
+        "sha256": "dc40e4abcfad6d3f7f7f02e84d4372783954f1eed907b831d48ffbec5b3f0ccf"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1099,
+        "sha256": "dc40e4abcfad6d3f7f7f02e84d4372783954f1eed907b831d48ffbec5b3f0ccf"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1099,
+        "sha256": "dc40e4abcfad6d3f7f7f02e84d4372783954f1eed907b831d48ffbec5b3f0ccf"
+      }
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/negative.json",
+      "base_blob": "652e30d76932872b0abe90eab8a66d4dfee579c8",
+      "start_blob": "652e30d76932872b0abe90eab8a66d4dfee579c8",
+      "base_bytes": {
+        "bytes": 40807,
+        "sha256": "1d6df9be8f11c5cde3e7ca71719c14de57b2d3583cb0abe63d8aa4bda0d711bb"
+      },
+      "current_worktree_bytes": {
+        "bytes": 40807,
+        "sha256": "1d6df9be8f11c5cde3e7ca71719c14de57b2d3583cb0abe63d8aa4bda0d711bb"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 40807,
+        "sha256": "1d6df9be8f11c5cde3e7ca71719c14de57b2d3583cb0abe63d8aa4bda0d711bb"
+      }
+    },
+    {
+      "path": "contracts/fixtures/auth-user-friend/positive.json",
+      "base_blob": "97847ad4d5c76e0a42420324db4378579869333d",
+      "start_blob": "97847ad4d5c76e0a42420324db4378579869333d",
+      "base_bytes": {
+        "bytes": 28982,
+        "sha256": "7eef05b5b77a419a7ef8f36abf88721fd147b7b686c5c7fa4c5fc424fdf76d1c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 28982,
+        "sha256": "7eef05b5b77a419a7ef8f36abf88721fd147b7b686c5c7fa4c5fc424fdf76d1c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 28982,
+        "sha256": "7eef05b5b77a419a7ef8f36abf88721fd147b7b686c5c7fa4c5fc424fdf76d1c"
+      }
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/.gitattributes",
+      "base_blob": "562ad1420efdd58a6e17a09aa6f9b390db7f30f4",
+      "start_blob": "562ad1420efdd58a6e17a09aa6f9b390db7f30f4",
+      "base_bytes": {
+        "bytes": 18,
+        "sha256": "6fa4b33ae92e504a8037d76b1cf06dc52a7ac3b3ef3c0e726b28b514e0a1722f"
+      },
+      "current_worktree_bytes": {
+        "bytes": 18,
+        "sha256": "6fa4b33ae92e504a8037d76b1cf06dc52a7ac3b3ef3c0e726b28b514e0a1722f"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 18,
+        "sha256": "6fa4b33ae92e504a8037d76b1cf06dc52a7ac3b3ef3c0e726b28b514e0a1722f"
+      }
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/generate.py",
+      "base_blob": "d69676e9c0d8892910bb3cbcc9d5458177765c76",
+      "start_blob": "d69676e9c0d8892910bb3cbcc9d5458177765c76",
+      "base_bytes": {
+        "bytes": 12839,
+        "sha256": "91b7ce7eca4bcc626a5a4555d897df175aaab651b54128b92c799a550d814b4d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 12839,
+        "sha256": "91b7ce7eca4bcc626a5a4555d897df175aaab651b54128b92c799a550d814b4d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 12839,
+        "sha256": "91b7ce7eca4bcc626a5a4555d897df175aaab651b54128b92c799a550d814b4d"
+      }
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/golden.json",
+      "base_blob": "3116c3b6ad8bef4ebed0ffdaa86fe146d7369fc1",
+      "start_blob": "3116c3b6ad8bef4ebed0ffdaa86fe146d7369fc1",
+      "base_bytes": {
+        "bytes": 72516,
+        "sha256": "711dfe2dbb513df45d2b75c5ee9184ae221602ce74c93a1092bcd4a8b834db8d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 72516,
+        "sha256": "711dfe2dbb513df45d2b75c5ee9184ae221602ce74c93a1092bcd4a8b834db8d"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 72516,
+        "sha256": "711dfe2dbb513df45d2b75c5ee9184ae221602ce74c93a1092bcd4a8b834db8d"
+      }
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/profile-outcomes/go.json",
+      "base_blob": "20ba190238656d8747b47115a326ef77d0016c08",
+      "start_blob": "20ba190238656d8747b47115a326ef77d0016c08",
+      "base_bytes": {
+        "bytes": 14655,
+        "sha256": "71d986e2b476723b04c033a13ccd7f8d3859e091fac1d5d1deea18132cf54e5a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 14655,
+        "sha256": "71d986e2b476723b04c033a13ccd7f8d3859e091fac1d5d1deea18132cf54e5a"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 14655,
+        "sha256": "71d986e2b476723b04c033a13ccd7f8d3859e091fac1d5d1deea18132cf54e5a"
+      }
+    },
+    {
+      "path": "contracts/fixtures/sync-plugin/profile-outcomes/java.json",
+      "base_blob": "bfece1699ded92fa30312058e1fedc8152d85909",
+      "start_blob": "bfece1699ded92fa30312058e1fedc8152d85909",
+      "base_bytes": {
+        "bytes": 14657,
+        "sha256": "03ba94a6a751c595c7dc9ea7b08cadb0a89ca6ee1ef4de7a9aeb6fdd8547f1b1"
+      },
+      "current_worktree_bytes": {
+        "bytes": 14657,
+        "sha256": "03ba94a6a751c595c7dc9ea7b08cadb0a89ca6ee1ef4de7a9aeb6fdd8547f1b1"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 14657,
+        "sha256": "03ba94a6a751c595c7dc9ea7b08cadb0a89ca6ee1ef4de7a9aeb6fdd8547f1b1"
+      }
+    },
+    {
+      "path": "contracts/fixtures/websocket/.gitattributes",
+      "base_blob": "99aa611b51356f2a397b4bded4107b68bf2a7c68",
+      "start_blob": "99aa611b51356f2a397b4bded4107b68bf2a7c68",
+      "base_bytes": {
+        "bytes": 97,
+        "sha256": "9ee6b7ccfcbeaadb0af82fa128a82979b00bdacfc3b6dbbe3bdea8ad28557f23"
+      },
+      "current_worktree_bytes": {
+        "bytes": 97,
+        "sha256": "9ee6b7ccfcbeaadb0af82fa128a82979b00bdacfc3b6dbbe3bdea8ad28557f23"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 97,
+        "sha256": "9ee6b7ccfcbeaadb0af82fa128a82979b00bdacfc3b6dbbe3bdea8ad28557f23"
+      }
+    },
+    {
+      "path": "contracts/fixtures/websocket/golden.json",
+      "base_blob": "b7c23c4c300ed2acbcffaa9183f8889a5772f4f3",
+      "start_blob": "b7c23c4c300ed2acbcffaa9183f8889a5772f4f3",
+      "base_bytes": {
+        "bytes": 29681,
+        "sha256": "8fc5fa751707fcfb6b986bb75746237248212f35552e6063d77d24bd65c0dda4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 29681,
+        "sha256": "8fc5fa751707fcfb6b986bb75746237248212f35552e6063d77d24bd65c0dda4"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 29681,
+        "sha256": "8fc5fa751707fcfb6b986bb75746237248212f35552e6063d77d24bd65c0dda4"
+      }
+    },
+    {
+      "path": "contracts/http/auth-user-friend.openapi.json",
+      "base_blob": "58532c83b8340ce2c708f35f1057d99fb0d99264",
+      "start_blob": "58532c83b8340ce2c708f35f1057d99fb0d99264",
+      "base_bytes": {
+        "bytes": 28320,
+        "sha256": "bb115fe9cd82010d6cf94b7ee5cf6aaeaf915d072c6e105f70384637c49a14a2"
+      },
+      "current_worktree_bytes": {
+        "bytes": 28320,
+        "sha256": "bb115fe9cd82010d6cf94b7ee5cf6aaeaf915d072c6e105f70384637c49a14a2"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 28320,
+        "sha256": "bb115fe9cd82010d6cf94b7ee5cf6aaeaf915d072c6e105f70384637c49a14a2"
+      }
+    },
+    {
+      "path": "contracts/http/auth-user-friend.openapi.validator.js",
+      "base_blob": "13f9c87801ca54a719223e47038edf0f9ea34836",
+      "start_blob": "13f9c87801ca54a719223e47038edf0f9ea34836",
+      "base_bytes": {
+        "bytes": 195400,
+        "sha256": "682b5f51c053c9876c16a6bdd92fb8968a50c6df1d4bab44d6e8e184ce9c7ee6"
+      },
+      "current_worktree_bytes": {
+        "bytes": 195400,
+        "sha256": "682b5f51c053c9876c16a6bdd92fb8968a50c6df1d4bab44d6e8e184ce9c7ee6"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 195400,
+        "sha256": "682b5f51c053c9876c16a6bdd92fb8968a50c6df1d4bab44d6e8e184ce9c7ee6"
+      }
+    },
+    {
+      "path": "contracts/http/build-openapi-3.1-validator.js",
+      "base_blob": "d45eea976fa614b2c882fd50617db0a6ddcf5499",
+      "start_blob": "d45eea976fa614b2c882fd50617db0a6ddcf5499",
+      "base_bytes": {
+        "bytes": 2785,
+        "sha256": "9fc47cd941496335c9de7f1cdb6c5ce50311f43d8207991cabcda9d358799e96"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2785,
+        "sha256": "9fc47cd941496335c9de7f1cdb6c5ce50311f43d8207991cabcda9d358799e96"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2785,
+        "sha256": "9fc47cd941496335c9de7f1cdb6c5ce50311f43d8207991cabcda9d358799e96"
+      }
+    },
+    {
+      "path": "contracts/http/check-openapi-3.1.js",
+      "base_blob": "c96b369bac1ff89fc03a8e8eb1309340a4fd2dc4",
+      "start_blob": "c96b369bac1ff89fc03a8e8eb1309340a4fd2dc4",
+      "base_bytes": {
+        "bytes": 692,
+        "sha256": "bb43ca692d261f03fceccfdb659481cb3d0b59234f7600648e55e07e58f2d04c"
+      },
+      "current_worktree_bytes": {
+        "bytes": 692,
+        "sha256": "bb43ca692d261f03fceccfdb659481cb3d0b59234f7600648e55e07e58f2d04c"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 692,
+        "sha256": "bb43ca692d261f03fceccfdb659481cb3d0b59234f7600648e55e07e58f2d04c"
+      }
+    },
+    {
+      "path": "contracts/http/openapi-3.1-2026-08-03.schema.json",
+      "base_blob": "1c2e54d1023c6c59dca977218aa715ba6e9fac46",
+      "start_blob": "1c2e54d1023c6c59dca977218aa715ba6e9fac46",
+      "base_bytes": {
+        "bytes": 33483,
+        "sha256": "59f106413cb48c31299f96f024c938d3628aed6cd02cd14bcfb2fcaae7a130b6"
+      },
+      "current_worktree_bytes": {
+        "bytes": 33483,
+        "sha256": "59f106413cb48c31299f96f024c938d3628aed6cd02cd14bcfb2fcaae7a130b6"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 33483,
+        "sha256": "59f106413cb48c31299f96f024c938d3628aed6cd02cd14bcfb2fcaae7a130b6"
+      }
+    },
+    {
+      "path": "contracts/http/openapi-3.1-lint.md",
+      "base_blob": "0c3fc087f0d17de3e1f4db11c742b22b632ab5e9",
+      "start_blob": "0c3fc087f0d17de3e1f4db11c742b22b632ab5e9",
+      "base_bytes": {
+        "bytes": 2374,
+        "sha256": "77f8e8f867a73b306f1dc5599ab0c73f5a8386164556cc0930e931d3814285e8"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2374,
+        "sha256": "77f8e8f867a73b306f1dc5599ab0c73f5a8386164556cc0930e931d3814285e8"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2374,
+        "sha256": "77f8e8f867a73b306f1dc5599ab0c73f5a8386164556cc0930e931d3814285e8"
+      }
+    },
+    {
+      "path": "contracts/http/sync.openapi.json",
+      "base_blob": "2df50e2564cf14ec5a1ad762487b76e2156a9886",
+      "start_blob": "2df50e2564cf14ec5a1ad762487b76e2156a9886",
+      "base_bytes": {
+        "bytes": 11244,
+        "sha256": "ebecbb1cb6dcbcb592a2a9f623c929200f220796bc70285f867c89f56e0650ca"
+      },
+      "current_worktree_bytes": {
+        "bytes": 11244,
+        "sha256": "ebecbb1cb6dcbcb592a2a9f623c929200f220796bc70285f867c89f56e0650ca"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 11244,
+        "sha256": "ebecbb1cb6dcbcb592a2a9f623c929200f220796bc70285f867c89f56e0650ca"
+      }
+    },
+    {
+      "path": "contracts/http/verify-auth-user-friend.ps1",
+      "base_blob": "f349a70f5f040d6d97778d7763d106ef164e96cb",
+      "start_blob": "f349a70f5f040d6d97778d7763d106ef164e96cb",
+      "base_bytes": {
+        "bytes": 34982,
+        "sha256": "c1cf4814e32e1a547aba22654f6b7ffeeecc839f0cada353f8d69d2968d1464b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 34982,
+        "sha256": "c1cf4814e32e1a547aba22654f6b7ffeeecc839f0cada353f8d69d2968d1464b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 34982,
+        "sha256": "c1cf4814e32e1a547aba22654f6b7ffeeecc839f0cada353f8d69d2968d1464b"
+      }
+    },
+    {
+      "path": "contracts/plugin-api/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "contracts/plugin-api/README.md",
+      "base_blob": "22b73a54dd2dd274e9422e509a8d4b7e900aa9d8",
+      "start_blob": "22b73a54dd2dd274e9422e509a8d4b7e900aa9d8",
+      "base_bytes": {
+        "bytes": 4982,
+        "sha256": "dfcb037d0d9e589de77302d8cb413d0e2c79e74d2db9ef7e59aa3b33cd4da4cb"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4982,
+        "sha256": "dfcb037d0d9e589de77302d8cb413d0e2c79e74d2db9ef7e59aa3b33cd4da4cb"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4982,
+        "sha256": "dfcb037d0d9e589de77302d8cb413d0e2c79e74d2db9ef7e59aa3b33cd4da4cb"
+      }
+    },
+    {
+      "path": "contracts/plugin-api/policy-v1.json",
+      "base_blob": "6a641941340b2c53216fa4fda4004e73d22ee268",
+      "start_blob": "6a641941340b2c53216fa4fda4004e73d22ee268",
+      "base_bytes": {
+        "bytes": 1354,
+        "sha256": "fb189cdb9045248d1d6ed7268da625e56e11de3597864268bd6e517f126384cb"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1354,
+        "sha256": "fb189cdb9045248d1d6ed7268da625e56e11de3597864268bd6e517f126384cb"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1354,
+        "sha256": "fb189cdb9045248d1d6ed7268da625e56e11de3597864268bd6e517f126384cb"
+      }
+    },
+    {
+      "path": "contracts/plugin-api/v1.schema.json",
+      "base_blob": "f4e0dfae3f51e5dad49f4ec772bd6f371d63e471",
+      "start_blob": "f4e0dfae3f51e5dad49f4ec772bd6f371d63e471",
+      "base_bytes": {
+        "bytes": 4720,
+        "sha256": "c0376763c5203bd69b7ff3e2cac9a81ec71f9c0f43b4c0cefed608279ac4baad"
+      },
+      "current_worktree_bytes": {
+        "bytes": 4720,
+        "sha256": "c0376763c5203bd69b7ff3e2cac9a81ec71f9c0f43b4c0cefed608279ac4baad"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 4720,
+        "sha256": "c0376763c5203bd69b7ff3e2cac9a81ec71f9c0f43b4c0cefed608279ac4baad"
+      }
+    },
+    {
+      "path": "contracts/plugin-api/verify.py",
+      "base_blob": "c9e96c4207c47237f838781c6e06a99cdb95e71f",
+      "start_blob": "c9e96c4207c47237f838781c6e06a99cdb95e71f",
+      "base_bytes": {
+        "bytes": 23611,
+        "sha256": "72c264f897f5edd86764f106fc0f0d7570dd46577b4f37c1e120969130518b22"
+      },
+      "current_worktree_bytes": {
+        "bytes": 23611,
+        "sha256": "72c264f897f5edd86764f106fc0f0d7570dd46577b4f37c1e120969130518b22"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 23611,
+        "sha256": "72c264f897f5edd86764f106fc0f0d7570dd46577b4f37c1e120969130518b22"
+      }
+    },
+    {
+      "path": "contracts/websocket/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "contracts/websocket/README.md",
+      "base_blob": "a8df24c839d60c1e1dda80a1ef273c0c5d5b71ad",
+      "start_blob": "a8df24c839d60c1e1dda80a1ef273c0c5d5b71ad",
+      "base_bytes": {
+        "bytes": 2817,
+        "sha256": "a3ea8ed61084b1c95c5774f8e38b25ff227ee31324453139c014efe2d9e50a37"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2817,
+        "sha256": "a3ea8ed61084b1c95c5774f8e38b25ff227ee31324453139c014efe2d9e50a37"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 2817,
+        "sha256": "a3ea8ed61084b1c95c5774f8e38b25ff227ee31324453139c014efe2d9e50a37"
+      }
+    },
+    {
+      "path": "contracts/websocket/envelope.schema.json",
+      "base_blob": "9d05cab66b3181cb0a50d6f9f4b73bb786e88326",
+      "start_blob": "9d05cab66b3181cb0a50d6f9f4b73bb786e88326",
+      "base_bytes": {
+        "bytes": 7651,
+        "sha256": "d03f6aa659338553867614f615175caa128a40102013b618d3ddcf920a8ef3ec"
+      },
+      "current_worktree_bytes": {
+        "bytes": 7651,
+        "sha256": "d03f6aa659338553867614f615175caa128a40102013b618d3ddcf920a8ef3ec"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 7651,
+        "sha256": "d03f6aa659338553867614f615175caa128a40102013b618d3ddcf920a8ef3ec"
+      }
+    },
+    {
+      "path": "contracts/websocket/sync-v1.schema.json",
+      "base_blob": "2b2aebc13e745171b446354da67e3e00cb52f57c",
+      "start_blob": "2b2aebc13e745171b446354da67e3e00cb52f57c",
+      "base_bytes": {
+        "bytes": 3255,
+        "sha256": "244eec3c9258ccb44e8e0e1df1763d7a0daa8e052d587a47c4d17636e8ecee37"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3255,
+        "sha256": "244eec3c9258ccb44e8e0e1df1763d7a0daa8e052d587a47c4d17636e8ecee37"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3255,
+        "sha256": "244eec3c9258ccb44e8e0e1df1763d7a0daa8e052d587a47c4d17636e8ecee37"
+      }
+    },
+    {
+      "path": "contracts/websocket/verify.py",
+      "base_blob": "e4885747d173d2721b8386ce63f2e240ecaa010e",
+      "start_blob": "e4885747d173d2721b8386ce63f2e240ecaa010e",
+      "base_bytes": {
+        "bytes": 39766,
+        "sha256": "467209ad23a92f830e36fff9c779b63faa31a36d5770f3203a376a7921547106"
+      },
+      "current_worktree_bytes": {
+        "bytes": 39766,
+        "sha256": "467209ad23a92f830e36fff9c779b63faa31a36d5770f3203a376a7921547106"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 39766,
+        "sha256": "467209ad23a92f830e36fff9c779b63faa31a36d5770f3203a376a7921547106"
+      }
+    },
+    {
+      "path": "deploy/Caddyfile",
+      "base_blob": "e9dfe207c22d858e75e9470c94ee96bc56f56ece",
+      "start_blob": "e9dfe207c22d858e75e9470c94ee96bc56f56ece",
+      "base_bytes": {
+        "bytes": 69,
+        "sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3"
+      },
+      "current_worktree_bytes": {
+        "bytes": 69,
+        "sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 69,
+        "sha256": "084c7ecc43ca27ca1daa217d2b66cdb1fa34f206bca5882ea26d93309c1046f3"
+      }
+    },
+    {
+      "path": "deploy/README.md",
+      "base_blob": "c2188e3ab5f869839dca0b04cf2d59c3bb1e56ce",
+      "start_blob": "c2188e3ab5f869839dca0b04cf2d59c3bb1e56ce",
+      "base_bytes": {
+        "bytes": 1754,
+        "sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1754,
+        "sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1754,
+        "sha256": "90c7a2e758a93e4286ae4feaa4509db03837697c4be00365ab7bad53295676c5"
+      }
+    },
+    {
+      "path": "deploy/compose.yaml",
+      "base_blob": "5842c221a45cb247b702d864c0188ab7b696e6e7",
+      "start_blob": "5842c221a45cb247b702d864c0188ab7b696e6e7",
+      "base_bytes": {
+        "bytes": 3260,
+        "sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe"
+      },
+      "current_worktree_bytes": {
+        "bytes": 3260,
+        "sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 3260,
+        "sha256": "9cee6488ee91edc2c25ed449da13cf621893e803009a2635b8b42442345757fe"
+      }
+    },
+    {
+      "path": "deploy/compose/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "deploy/migrate.Dockerfile",
+      "base_blob": "b206a435674a3c132a92945252e54a07389ea7b6",
+      "start_blob": "b206a435674a3c132a92945252e54a07389ea7b6",
+      "base_bytes": {
+        "bytes": 182,
+        "sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd"
+      },
+      "current_worktree_bytes": {
+        "bytes": 182,
+        "sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 182,
+        "sha256": "d39b03bbbae210917f984c476034eb364f266e7183be8de6fd173a3a3c2981dd"
+      }
+    },
+    {
+      "path": "deploy/observability/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "deploy/proxy/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "plugins/fixtures/echo/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    },
+    {
+      "path": "plugins/fixtures/poll/.gitkeep",
+      "base_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "start_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "base_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "current_worktree_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "expected_checkout_bytes": {
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      }
+    }
+  ],
+  "permitted_changed_files": [
+    {
+      "path": "backend/go/gateway/gateway.go",
+      "base_blob": "5ead82bdff071b44689fa12600d6bad999e203fc",
+      "start_blob": "5ead82bdff071b44689fa12600d6bad999e203fc",
+      "base_bytes": {
+        "bytes": 11109,
+        "sha256": "8a2a5cfad86bf74545625db667f2ff2f89b824ffd30c66a434ed4d9c4a340ec4"
+      },
+      "current_worktree_bytes": {
+        "bytes": 11259,
+        "sha256": "d3eb9dc73089099b164f361df8d194cae8e61b2b23fd5b9a50851ed786a5ba60"
+      }
+    },
+    {
+      "path": "backend/go/gateway/watch_failure_test.go",
+      "base_blob": "60973f2aee7d41fc1301e111f3a50fa3777cfc33",
+      "start_blob": "60973f2aee7d41fc1301e111f3a50fa3777cfc33",
+      "base_bytes": {
+        "bytes": 12852,
+        "sha256": "747e0f25e44b87ef6f8b1375d2e7b1cc9054e3a57dc584eb7cac968e1ba56f52"
+      },
+      "current_worktree_bytes": {
+        "bytes": 18165,
+        "sha256": "802033332ae146f6c248cfd34dd1eaf5b9235af4e58a77f722c1176f66412e7c"
+      }
+    },
+    {
+      "path": "backend/go/tests/auth_test.go",
+      "base_blob": "8d955a1b9e70169a104a3239504382aea2904ddb",
+      "start_blob": "8d955a1b9e70169a104a3239504382aea2904ddb",
+      "base_bytes": {
+        "bytes": 11142,
+        "sha256": "bc2b90ee05b86f534523e90484630a9daaf70078f5858cb4dbf42e01675f6245"
+      },
+      "current_worktree_bytes": {
+        "bytes": 11156,
+        "sha256": "1450e47162efa5077968cb5f9649cd3be5f4f03922a299820f182c74821d6c30"
+      }
+    },
+    {
+      "path": "backend/go/tests/contract_fixture_test.go",
+      "base_blob": "d4aa39054874097aa09136b7edaafb4d0646d367",
+      "start_blob": "d4aa39054874097aa09136b7edaafb4d0646d367",
+      "base_bytes": {
+        "bytes": 17792,
+        "sha256": "0655ac9fc2352596d595fc0dd27cf68203cb7725c27a15c0d2a79328f16abd90"
+      },
+      "current_worktree_bytes": {
+        "bytes": 17806,
+        "sha256": "10f77201d84200f3c25b66db1c38001d33c1f23776cf603305679392d6f9d62c"
+      }
+    },
+    {
+      "path": "backend/go/tests/message_test.go",
+      "base_blob": "5aa0eee7460477cefcb0ac9cda5ad8ccb3926cf7",
+      "start_blob": "5aa0eee7460477cefcb0ac9cda5ad8ccb3926cf7",
+      "base_bytes": {
+        "bytes": 18154,
+        "sha256": "2caf396124de66896b93e1ac22b87c4a5e1b09c5008e3b55d69eb0be519d269d"
+      },
+      "current_worktree_bytes": {
+        "bytes": 18168,
+        "sha256": "1fdc537194fc5706ed6bca9dd943ae2ecb27c01df0af0c0e19e6a05d01f75b25"
+      }
+    },
+    {
+      "path": "backend/go/tests/revocation_fallback_test.go",
+      "base_blob": "acd4043d374659462ea99c1bc87d0a42790a3c2a",
+      "start_blob": "acd4043d374659462ea99c1bc87d0a42790a3c2a",
+      "base_bytes": {
+        "bytes": 8816,
+        "sha256": "ebbe6c72831e757f9f0c9fe4fca169f36ef2ce672d00e1af2668dd58e0ce977a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 8844,
+        "sha256": "ef11581e80b4e1241209677340793d21b71025b6816d343acadeaa3067e4ac11"
+      }
+    },
+    {
+      "path": "backend/go/tests/runtime_test.go",
+      "base_blob": "3233baab30b6cdab18a4e73e156c09241935624b",
+      "start_blob": "3233baab30b6cdab18a4e73e156c09241935624b",
+      "base_bytes": {
+        "bytes": 1666,
+        "sha256": "ab4958c878832e1165a1f8f2d75f83fb4d79c2804871ffebf90bc169bea0919a"
+      },
+      "current_worktree_bytes": {
+        "bytes": 2602,
+        "sha256": "1e6d1ee1db2e4369c579a9bed088dfafb0ead9abea9d19b88007806ba4d422a7"
+      }
+    }
+  ],
+  "current_delta_paths": [
+    "backend/go/gateway/gateway.go",
+    "backend/go/gateway/watch_failure_test.go",
+    "backend/go/tests/auth_test.go",
+    "backend/go/tests/contract_fixture_test.go",
+    "backend/go/tests/message_test.go",
+    "backend/go/tests/revocation_fallback_test.go",
+    "backend/go/tests/runtime_test.go",
+    "spec/progress/current.md",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/recovery.md",
+    "spec/tasks/review/LOOP1-GROUP-PLAN-001.md"
+  ],
+  "untracked_paths": [
+    "spec/progress/checkpoints/2026-10-18-group-plan-ci-r3-review-pending.md",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/error-inventory.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/gateway-watch-scope-approval-20261016.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/handoff.md",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history-manifest.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/artifact-manifest.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/command-index.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/diagnosis.md",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/diagnostic_probe_test.go",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/final-receipt.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/findings.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/minimal-scope-proposal.md",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/ci-diagnose-r3/probe-C-e12f5891-1d31-4ffc-a976-3591ae79ce5b.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/error-204e803/final-receipt.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/planning-204e803-pr-failure-38859630177-a1-20261016T061455136230Z/diagnosis.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/planning-pr-run-38859630177-attempt-1-20261016T062223517030Z.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/planning-push-run-38859626443-attempt-1-20261016T062106532475Z.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/history/regular-204e803/final-receipt.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-0d9c3b75-93b1-4ff4-8ae0-a5f49dbd0035.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-0d9c3b75-93b1-4ff4-8ae0-a5f49dbd0035.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-0f398599-c29e-4494-87f7-394670cc4d8a.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-0f398599-c29e-4494-87f7-394670cc4d8a.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-1ee73359-23ea-4441-b97f-cde776b688e9.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-1ee73359-23ea-4441-b97f-cde776b688e9.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-24fd2bef-f269-46d4-a071-b507fe95da69.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-24fd2bef-f269-46d4-a071-b507fe95da69.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-302a9189-44ac-4098-95f1-33f1984d8787.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-302a9189-44ac-4098-95f1-33f1984d8787.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-4a591ece-a133-41a5-9704-dabaae64ab5e.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-4a591ece-a133-41a5-9704-dabaae64ab5e.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-4f84671f-18df-469e-b9f5-ea747c558802.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-4f84671f-18df-469e-b9f5-ea747c558802.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-54992243-5887-456c-8e7a-558a956a893e.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-54992243-5887-456c-8e7a-558a956a893e.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-5ce027fc-24e9-412d-b888-efbfa74ebd2a.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-5ce027fc-24e9-412d-b888-efbfa74ebd2a.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-5f3a29e4-5699-4e26-8838-255bfeb90a0a.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-5f3a29e4-5699-4e26-8838-255bfeb90a0a.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-7e17ed0c-ba6b-47a9-846f-184f52c521db.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-7e17ed0c-ba6b-47a9-846f-184f52c521db.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-a4483904-7c12-4eb1-b63b-dcad613a0750.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-a4483904-7c12-4eb1-b63b-dcad613a0750.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-ad9ed38e-58b3-42f7-beb9-b9dde9ac56a6.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-ad9ed38e-58b3-42f7-beb9-b9dde9ac56a6.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-b72e46d3-7ee5-4866-b687-08c8545fc8ee.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-b72e46d3-7ee5-4866-b687-08c8545fc8ee.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-e353a60d-3a83-46a6-82f3-5f31e1aaa8a9.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-e353a60d-3a83-46a6-82f3-5f31e1aaa8a9.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-f00897ea-6e42-4d5b-8f73-8b8c3a9745e2.stderr.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-output/C-f00897ea-6e42-4d5b-8f73-8b8c3a9745e2.stdout.txt",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-verification.json",
+    "spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/scope-proof.json"
+  ],
+  "unexpected_paths": [],
+  "frozen_adr_workflow_checker_group_task_unchanged_from_start": true,
+  "historical_handoff_bytes_preserved": true,
+  "zero_product_assertion": "not applicable to Human-authorized seven backend paths; original observed --base-commit FAIL retained; strict path/byte proof replaces only zero-product assertion"
+}

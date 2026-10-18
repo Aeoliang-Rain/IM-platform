@@ -412,8 +412,8 @@ func TestCanonicalWSSAuthSessionFixtures(t *testing.T) {
 	}
 	s := newService(db, []byte("test-only-signing-key-at-least-32-bytes"))
 	hub := newGateway(t, s.db, s.codec.Key)
-	server := httptest.NewServer(hub)
-	defer server.Close()
+	server, closeServer := newGatewayTestServer(hub)
+	defer closeServer()
 	wsURL := "ws" + strings.TrimPrefix(server.URL, "http") + "/v1/ws"
 	random, _ := shared.RandomToken(8)
 	username := "wssfixture" + strings.ToLower(random[:10])

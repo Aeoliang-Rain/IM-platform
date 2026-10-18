@@ -4,53 +4,52 @@ Current Loop: Loop 1
 Current Stage: S2
 Current Gate: S2
 Gate Status: OPEN
-Current Batch: LOOP1-ERROR-HANDLING-001
-Batch Status: PRODUCT_ACCEPTED_ADMINISTRATIVE_CLOSURE_PENDING
-Current Task: LOOP1-ERROR-HANDLING-001
-Current Task State: done
-Execution Status: administrative_closure_pending
+Current Batch: LOOP1-GROUP-PLAN-001
+Batch Status: PLANNING_REVIEW_PENDING
+Current Task: LOOP1-GROUP-PLAN-001
+Current Task State: review
+Execution Status: planning_review_pending
 
 ## Immediately Relevant Completed Work
 
-Product63f685d independently accepted by fresh regular /root/regular_review_63f685d and different fresh specialist /root/error_audit_63f685d. Exact push38732968440/PR38733066327/actualmain38734397144 each14 actual jobs success. Protected PR40 actualmain1cab3dc4c9180bfe6a6654fde028a0354faf8a4c has identical complete product tree; actual safe main sync six checks PASS preserving782unknown/two tracked edits/recovery branch/index. Product Task now done; this new administrative metadata candidate remains pending its own independent closure. Durable scope/receipts/rawCI/sync/limits: accepted-product/acceptance.md below.
+LKG accepted main86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0保持。R3 Human窄授权Gateway watch生命周期和必要fixture，先修订/readback Task scope再backend。actualserve/bind/watch/pgx在途socket退休回归旧源码RED原取消panic exit1；serve close后join唯一watch+五处fixture完成等待后同命令GREEN。未知/internal/mixed/classifier/deadline/panic均保留。
 
 ## Current Blockers
 
-No unresolved product finding or architecture conflict. Administrative finalSHA NEW regular and DIFFERENT NEW specialist, applicable exact-head hostedCI/protectedmerge/actual-mainCI/second safe sync remain PENDING. No push or CI-triggering PR before both finalSHA reviews PASS. S2 OPEN; do not select another task or evaluate Stage Gate.
+新finalSHA NEW常规Review PENDING；DIFFERENT NEW错误专项PENDING。真实PG/NATS normal/race本地未执行，exact-head candidate/PR required hosted CI、protected integration/actual-main、安全主目录同步均PENDING。两审同最终SHA PASS前不得push/更新触发CI的PR。旧204e两审及push14PASS仅历史；PR38859630177 attempt1 Go+gateFAIL保留。GROUP unique backlog/planned；S2 OPEN。
 
 ## Verification
 
 - Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: Fix frozen/PDF/architectureall/planning/Development PASS; architecture82/one Windows skip and CI35/four Windows skips PASS. Exact final local records and clean committed Acceptance follow the Fix receipt, never hosted acceptance.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/fix-resolver-handoff.md`
-- Command: `pwsh -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development`
-  - Result: exact product hosted evidence and local metadata verification are distinguished; final local command results follow accepted-product/local-verification.json and external final receipt.
-  - Evidence: `spec/progress/evidence/LOOP1-ERROR-HANDLING-001/accepted-product/fix-resolver-handoff.md`
+  - Result: 当前Frozen完整hash/ADR/authority结构、planning、architecture-all exit0；strictscope真实base86b/start204e仅7backend路径变化，其他254产品路径bytes保持。88architecture(1既有OSskip)、35CI(4既有OSskip)最终exit0。Go normal/race ./...本地exit0但真实PG/NATS既有条件skip未执行。Development实际exit0；clean committed Acceptance以最终外部receipt绑定。
+  - Evidence: `spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-verification.json`
 
 ## Changed Files or Migrations
 
-Only current ERROR Task frontmatter/Handoff, current, current error-handling checkpoint and accepted-product recovery prose/FAIL copies/handoff changed by this Fix; prior product administrative metadata remains its accepted-product candidate history. All185 production inputs and tests unchanged from acceptedmain1cab. No migration/Frozen/ADR/contracts/dependency/security/ACK change. SQLite WRITE/draft excluded; only prior two authorized READ mapper exceptions remain in accepted product. Historical Task tail and evidence are byte-preserved.
+R3仅gateway.go watch完成所有权、watch_failure_test.go真实回归、runtime_test.go必要fixture包装与auth/contract_fixture/message/revocation_fallback四文件五调用处；当前Task/current、新ci-fix-r3证据/recovery追加和group-plan checkpoint。无publicAPI/http.go/契约/ACK/安全/生产TLS/依赖/GROUP实现/迁移；R2workflow/checker/Frozen/ADR/GROUP Task不改。
 
 ## Known Failures, Risks, and Assumptions
 
-Social403 Human waiver unexecuted/not canonical PASS; Android59/native/live historical reuse is exact-input-graph bounded. Specialist optional native probe invocation FAIL and98starts97finishes WinError2 gap are preserved. Earlier/root direct/helper/read/REST-fallback trace gaps remain disclosed; Recorder structural PASS is not Task/Gate PASS. Administrative helper snapshot-format/import/workflow-read diagnostics are retained and corrected without product edits. Original pre-sync acceptance/reviewer PENDING snapshots are immutable; later actual sync PASS establishes chronology.
+可选全文件 `git diff --cached --check` 对按字节保留的 history/Recorder 原始 CRLF/空白报 exit1；原件不改。仅代码及控制文件独立 --check，不能称全文件 PASS；正常 commit hooks/Acceptance 不绕过，原失败在外部 Recorder 收据。
+
+真实hosted旧204e raceFAIL未被新接受替代。Dockerdaemon不可用、psql未找到、DB_TEST_ENABLE未设；Go1.26.6Windows不同于hostLinuxGo1.23。wireendpoint不是DB。首次默认GOCACHE权限失败和首次architecture nestedGo失败保留，child缓存修正后通过。原--base-commit86b零产品断言与Human后续7路径授权冲突，实际exit1保留；不改checker，以无flag完整Frozen和strictscope独立证明替代仅零产品断言。Recorder startup/directread/helperauthoring/通信缺口明确prospective_resume；local/Recorder不是接受。旧历史原件未改。
 
 ## Next Exact Action
 
-After mandatory startup, first apply [the task-specific final-seal resolver](evidence/LOOP1-ERROR-HANDLING-001/accepted-product/recovery.md): inspect the fixed external discovery path, validate exact identities/source bytes and original evidence, then resume the first unmet step. Missing/invalid/incomplete seal keeps administrative pending; only complete valid evidence resolves this exact candidate-time pending/next-action snapshot without recursive source edits. Current seal absent; NEW regular then DIFFERENT NEW specialist on SAME final SHA precede hostedCI/protectedmerge/actual-mainCI/second safe sync. Any Fix repeats both. Local Fix receipt: C:/Users/21441/.codex/visualizations/2026/10/13/01a1341c-f5bd-7a20-8d63-e5a574250f3c/fix-admin-resolver/final-receipt.json after commit. S2 OPEN; stop before next task/Gate.
+Coordinator仅由外部ci-fix-r3/final-receipt.json恢复最终cleanSHA/Acceptance/Recorder/sourcelease RELEASED；NEW常规→DIFFERENT NEW专项同finalSHA→精确candidate/PR实际requiredjobs（真实PG/NATSnormal/race）→protected integration→actualmain→实际安全主目录同步。任何Fix两审重做。后续metadata候选仍另需完整闭环；不激活GROUP，不评估S2。recovery.md最新R3入口。
 
 ## Last Known Good Commit
 
-`1cab3dc4c9180bfe6a6654fde028a0354faf8a4c` independently accepted protected product main, actual-mainCI and safe main synchronization PASS. Administrative candidate is not yet independently accepted or synchronized.
+`86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0`。R3规划/生命周期候选未独立接受、集成或同步。
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-15-error-handling-product-accepted-administrative-pending.md`
+`spec/progress/checkpoints/2026-10-18-group-plan-ci-r3-review-pending.md`
 
 ## Uncommitted Changes / Ownership
 
-Sole Fix writer /root/fix_admin_recovery_resolver owns only current permitted recovery prose/new evidence until clean commit/RELEASED external receipt. Assigned exact root H:/.codex/worktrees/err/IM-platform, branch task/LOOP1-ERROR-HANDLING-001, base16584b7; accepted product base1cab. Formal administrative regular FAIL and this local repair/three-state walkthrough follow accepted-product/fix-resolver-handoff.md; both NEW finalSHA reviews remain pending. Main H:/IM-platform782unknown/two tracked edits/branch/index unchanged by this writer. No private device/globaltrust/ACL/source/runtime changes.
+Sole R3 Fix writer /root/group_ci_fix_r3仅在assigned exactroot H:/.codex/worktrees/grp/IM-platform，branch task/LOOP1-GROUP-PLAN-001，start204e/fullbase86b写窄Task授权路径。最终cleanSHA/ownedblobs/Acceptance/Recorder/lease RELEASED由外部ci-fix-r3/final-receipt.json绑定。main H:/IM-platform只读，782未知原件不写入/采纳/清理。
 
 ## Architecture Conflicts / ACP / ADR
 
-None. Product accepted; separate administrative closure pending. S2 OPEN.
+无新架构决定。Human窄授权仅按canonical§3.1/§10修复Gateway资源生命周期，原错误/契约/安全保持；零产品可选校验的适用性调整见Task R3验证，未改checker。若需新publicAPI/http.go或其他越界，停止受影响部分提最小问题。S2 OPEN。

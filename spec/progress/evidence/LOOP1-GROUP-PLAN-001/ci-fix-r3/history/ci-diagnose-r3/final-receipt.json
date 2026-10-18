@@ -1,0 +1,66 @@
+{
+  "schema": "diagnosis-receipt-v1",
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "actor": "/root/group_ci_diagnose_r3",
+  "fresh_context": true,
+  "result": "DIAGNOSIS_ONLY_NOT_ACCEPTANCE",
+  "candidate_sha": "204e803724c2a64514c6e14f8d1ed86cabca8acb",
+  "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "branch": "task/LOOP1-GROUP-PLAN-001",
+  "assigned_git_root": "H:\\.codex\\worktrees\\grp\\IM-platform",
+  "completed_at": "2026-10-16T06:36:11.155204+00:00",
+  "source_writes": false,
+  "source_lease": "RELEASED",
+  "scope": "read-only source; writes only under this external evidence root",
+  "actions_not_performed": [
+    "source changes",
+    "commit",
+    "push",
+    "PR update",
+    "CI rerun",
+    "merge",
+    "main sync"
+  ],
+  "recorder": {
+    "run_id": "R-GROUP-CI-DIAGNOSE-R3-20261016",
+    "capture_mode": "prospective_resume",
+    "role_enum": "fix (diagnosis role unavailable; no Fix performed)",
+    "finish_exit": 0,
+    "validate_exit": 0,
+    "product_acceptance": false
+  },
+  "hosted_scope": {
+    "run_id": 38859630177,
+    "attempt": 1,
+    "job_id": 116838949761,
+    "normal": "PASS",
+    "race_tests_package": "FAIL",
+    "exact_fixture": "unavailable; not verbose"
+  },
+  "diagnosis": "Detached safety-watch/pool lifetime defect reproduced with real watch/validator/pgxpool/pgx; pool.Close is constructor cancellation owner. Current classifier correctly does not normalize this lifecycle misuse into network recovery.",
+  "current_scope_resolution": "No evidence-supported CI-only fix remains within current two workflow delta classes. Need narrow backend lifecycle scope authorization before source work.",
+  "proposal": "minimal-scope-proposal.md",
+  "report": "diagnosis.md",
+  "findings": "findings.json",
+  "manifest": {
+    "path": "artifact-manifest.json",
+    "bytes": 19805,
+    "sha256": "7b6a326b9adc0e27bdd90d065a5894fdf143dea361144f4c1e4f399ad0e023dc",
+    "artifact_count": 95
+  },
+  "report_binding": {
+    "bytes": 7069,
+    "sha256": "b0fb892abd1a4594ea56d239a40b8ffe57dae19493162687aa9781afffa848c8"
+  },
+  "findings_binding": {
+    "bytes": 3712,
+    "sha256": "5fe2ade596ea05337446f9072dd905d230a589bafab742ebac26019d2e622884"
+  },
+  "limitations": [
+    "No local full PostgreSQL/NATS CI reproduction; Docker daemon unavailable and psql not found.",
+    "Local Go1.26.6 Windows differs from hosted Go1.23 Linux.",
+    "Retirement probe uses test-only handler plus production watch/connection.close, not successful real-DB auth.bind.",
+    "Proposal not implemented or validated; all original unknown/internal/mixed error behavior must remain."
+  ],
+  "final_state": "GROUP backlog; S2 OPEN; current planning acceptance unfinished"
+}

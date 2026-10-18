@@ -124,8 +124,8 @@ func newMessagingHarness(t *testing.T) *messagingHarness {
 	if err != nil {
 		t.Fatal(err)
 	}
-	server := httptest.NewServer(handler)
-	t.Cleanup(server.Close)
+	server, closeServer := newGatewayTestServer(handler)
+	t.Cleanup(closeServer)
 	bind := func(token string) *websocket.Conn {
 		c := openFixtureSocket(t, "ws"+strings.TrimPrefix(server.URL, "http")+"/v1/ws")
 		t.Cleanup(func() { c.Close() })

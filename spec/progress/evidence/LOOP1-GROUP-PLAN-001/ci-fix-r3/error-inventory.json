@@ -1,0 +1,63 @@
+{
+  "result": "IMPLEMENTER_INVENTORY_NOT_INDEPENDENT_REVIEW",
+  "files": [
+    {
+      "path": "backend/go/gateway/gateway.go",
+      "bytes": 11259,
+      "sha256": "d3eb9dc73089099b164f361df8d194cae8e61b2b23fd5b9a50851ed786a5ba60",
+      "responsibility_and_result": "Only R3 production delta: actual serve owns/join its one started watch; responsibility canonical3.1/10. Existing classifier/deadline/returns/panic unchanged.",
+      "self_check_only": true
+    },
+    {
+      "path": "ci/check_s2_planning.py",
+      "bytes": 14513,
+      "sha256": "92e3057009c2e0ad9d8de16b07a45bb14fb2bb488b2bf522fa45919d7d509420",
+      "responsibility_and_result": "Existing full candidate executable planning checker; no R3 edit. Fresh final-SHA review remains required.",
+      "self_check_only": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 17778,
+      "sha256": "4c1a59b4ed19ce9d866af7616168a74b0cf6df8c9d7ca474bbf331d34ea25552",
+      "responsibility_and_result": "R2 existing disposable PG env and 13 candidate checkout pins; no R3 edit. Existing normal/race/gates unchanged.",
+      "self_check_only": true
+    }
+  ],
+  "retained_boundaries": [
+    {
+      "location": "gateway.go connection.close",
+      "specific_fault": "WebSocket transport close can already be closed",
+      "authority": "existing connection retirement, unchanged",
+      "behavior": "done closes exactly once and socket close attempted; does not catch watch errors"
+    },
+    {
+      "location": "gateway.go serve watch goroutine",
+      "specific_fault": "known per-branch transport result from safety validation",
+      "authority": "existing fail-closed unverified transport behavior",
+      "behavior": "watch closes WS; known transport logged and returned; unknown/internal/mixed original error still panics"
+    },
+    {
+      "location": "gateway.go watch",
+      "specific_fault": "known canonical session invalidation or original DB error",
+      "authority": "existing session safety watch",
+      "behavior": "known invalidation retains original revoke behavior; unknown error returned unchanged for panic"
+    },
+    {
+      "location": "gateway.go R3 serve deferred join",
+      "specific_fault": "socket closes while safety validation is in flight",
+      "authority": "Human narrow lifecycle scope; canonical Gateway resource ownership",
+      "behavior": "close socket, wait actual child completion; does not cancel/replace errors; child panic remains process failure"
+    },
+    {
+      "location": "tests/runtime_test.go newGatewayTestServer",
+      "specific_fault": "httptest.Server.Close does not account for hijacked handler completion",
+      "authority": "direct test fixture pool ownership, not production API",
+      "behavior": "one admission mutex closes gate then waits active handlers via Cond before caller releases pool; no recover/retry/default-data"
+    }
+  ],
+  "new_catches": 0,
+  "new_public_api": 0,
+  "new_dependencies": 0,
+  "regular_review": "NEW_PENDING",
+  "error_specialist": "DIFFERENT_NEW_PENDING"
+}

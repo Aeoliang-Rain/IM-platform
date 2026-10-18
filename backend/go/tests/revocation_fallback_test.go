@@ -37,8 +37,8 @@ func TestPostgresRevocationFallbackWithoutNATS(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	server := httptest.NewServer(h)
-	defer server.Close()
+	server, closeServer := newGatewayTestServer(h)
+	defer closeServer()
 	wsURL := "ws" + strings.TrimPrefix(server.URL, "http") + "/v1/ws"
 	for _, reason := range []string{"REPLACED", "LOGOUT", "REPLACED_THEN_LOGOUT"} {
 		t.Run(reason, func(t *testing.T) {
@@ -189,8 +189,8 @@ func TestPostgresFallbackExpiryAndDatabaseFailureClose(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			server := httptest.NewServer(h)
-			defer server.Close()
+			server, closeServer := newGatewayTestServer(h)
+			defer closeServer()
 			conn, _, err := websocket.DefaultDialer.Dial("ws"+strings.TrimPrefix(server.URL, "http")+"/v1/ws", nil)
 			if err != nil {
 				t.Fatal(err)

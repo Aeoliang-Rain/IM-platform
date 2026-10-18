@@ -1,0 +1,61 @@
+{
+  "result": "DIAGNOSIS_ONLY_NOT_ACCEPTANCE",
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "actor": "/root/group_ci_diagnose_r3",
+  "candidate": "204e803724c2a64514c6e14f8d1ed86cabca8acb",
+  "base": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "source_lease": "READ_ONLY",
+  "source_writes": false,
+  "confirmed_mechanism": "pool.Close cancels puddle baseAcquireCtx while a detached Gateway safety watch is constructing a pgx connection; connection.close/c.done and outer-handler return do not join the watch",
+  "confidence": {
+    "mechanism": "reproduced with real production watch/validator/pgxpool/pgx; normal and race controlled probes",
+    "exact_ci_fixture": "unavailable: non-verbose hosted log, no local full PG/NATS environment"
+  },
+  "finding": {
+    "id": "CI-LIFETIME-01",
+    "severity": "acceptance_blocker",
+    "locations": [
+      "backend/go/gateway/gateway.go:186",
+      "backend/go/gateway/gateway.go:224",
+      "backend/go/gateway/gateway.go:229",
+      "backend/go/gateway/gateway.go:248",
+      "backend/go/tests/message_test.go:97",
+      "backend/go/tests/message_test.go:128",
+      "backend/go/tests/message_test.go:131"
+    ],
+    "behavior": "A fixture may close its pool before every previously bound connection safety-watch goroutine has ended. The real connection-constructor cancellation is then intentionally rejected by watchTransportFailure and escapes through serve.func3 panic.",
+    "classification": "lifetime/ownership defect, not evidence that context.Canceled should be globally network-classified",
+    "scope": "outside current planning task: backend/** explicitly forbidden; no remaining correction proven within the two permitted workflow delta classes"
+  },
+  "hypotheses": [
+    {
+      "rank": 1,
+      "name": "fixture/pool teardown races detached watch acquisition",
+      "result": "mechanism reproduced, including socket-retirement order; precise hosted fixture not uniquely identified"
+    },
+    {
+      "rank": 2,
+      "name": "watch one-second timeout",
+      "result": "control returns context.DeadlineExceeded, net.Error=true, classifier=true; differs from hosted context.Canceled"
+    },
+    {
+      "rank": 3,
+      "name": "IPv4/IPv6/TLS fallback alone",
+      "result": "single IPv4 reproduces same unknown first branch; TLS disable already active in hosted raw log"
+    },
+    {
+      "rank": 4,
+      "name": "cross-package shared DB data corruption",
+      "result": "no evidence; error is startup context cancellation, not PgError or changed data; full suite not locally reproduced"
+    }
+  ],
+  "minimal_decision_question": "是否授权一个独立、窄 Go 生命周期修复切片：仅 Gateway 已启动 safety watch 的终止/完成所有权及直接相关测试 fixture 的关闭等待，保留原 classifier、未知/internal/mixed panic、契约/ACK/安全边界、全部 normal+race；不授权 GROUP 产品或 blanket backend 范围？",
+  "proposal_file": "minimal-scope-proposal.md",
+  "limitations": [
+    "Local Go 1.26.6 windows/amd64 differs from hosted Go 1.23 Linux; locked pgx v5.7.6 and puddle v2.2.2 actual source used.",
+    "Docker daemon unavailable and psql not found; no actual local PostgreSQL/NATS full CI reproduction.",
+    "Controlled endpoint consumes actual PostgreSQL StartupMessage and stalls; it is not a database.",
+    "Retirement probe uses a test-only outer handler with the same production watch and connection.close path, not a complete successful auth.bind on a real database.",
+    "Proposed join implementation is not implemented or validated; no source mutation, push, PR update, CI rerun, merge or synchronization performed."
+  ]
+}
