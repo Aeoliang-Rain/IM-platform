@@ -110,7 +110,13 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	c := &connection{ws: ws, done: make(chan struct{})}
-	defer c.close()
+	var watchDone chan struct{}
+	defer func() {
+		c.close()
+		if watchDone != nil {
+			<-watchDone
+		}
+	}()
 	defer func() {
 		if c.bound != nil {
 			h.remove(c.bound.SessionID, c)
@@ -183,7 +189,9 @@ func (h *hub) serve(w http.ResponseWriter, r *http.Request) {
 			if c.send(frame("auth.ack", e.RequestID, map[string]any{"status": "bound", "userId": cl.UserID, "sessionId": cl.SessionID, "clientType": cl.ClientType, "sessionEpoch": cl.SessionEpoch})) != nil {
 				return
 			}
+			watchDone = make(chan struct{})
 			go func() {
+				defer close(watchDone)
 				if err := h.watch(c, cl); err != nil {
 					if watchTransportFailure(err) {
 						log.Print("Session validation transport failed; connection closed")

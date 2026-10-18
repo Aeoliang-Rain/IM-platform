@@ -1,0 +1,61 @@
+=== RUN   TestDiagnosePoolCloseDuringWatch
+=== RUN   TestDiagnosePoolCloseDuringWatch/127.0.0.1
+    diagnostic_probe_test.go:71: *pgconn.ConnectError net=false timeout=false canceled=true deadline=false :: failed to connect to `user=public_fixture database=public_fixture`: 127.0.0.1:49843 (127.0.0.1): failed to receive message: context canceled
+    diagnostic_probe_test.go:71:   *errors.joinError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49843 (127.0.0.1): failed to receive message: context canceled
+    diagnostic_probe_test.go:71:     *pgconn.perDialConnectError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49843 (127.0.0.1): failed to receive message: context canceled
+    diagnostic_probe_test.go:71:       *fmt.wrapError net=false timeout=false canceled=true deadline=false :: failed to receive message: context canceled
+    diagnostic_probe_test.go:71:         *errors.errorString net=false timeout=false canceled=true deadline=false :: context canceled
+    diagnostic_probe_test.go:75: REPRODUCED pool.Close canceled real pgx construction during actual watch; elapsed=1.0035577s classifier=false
+=== RUN   TestDiagnosePoolCloseDuringWatch/localhost
+    diagnostic_probe_test.go:71: *pgconn.ConnectError net=false timeout=false canceled=true deadline=false :: failed to connect to `user=public_fixture database=public_fixture`:
+        	127.0.0.1:49849 (localhost): failed to receive message: context canceled
+        	[::1]:49849 (localhost): dial error: dial tcp [::1]:49849: operation was canceled
+    diagnostic_probe_test.go:71:   *errors.joinError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49849 (localhost): failed to receive message: context canceled
+        [::1]:49849 (localhost): dial error: dial tcp [::1]:49849: operation was canceled
+    diagnostic_probe_test.go:71:     *pgconn.perDialConnectError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49849 (localhost): failed to receive message: context canceled
+    diagnostic_probe_test.go:71:       *fmt.wrapError net=false timeout=false canceled=true deadline=false :: failed to receive message: context canceled
+    diagnostic_probe_test.go:71:         *errors.errorString net=false timeout=false canceled=true deadline=false :: context canceled
+    diagnostic_probe_test.go:71:     *pgconn.perDialConnectError net=false timeout=false canceled=true deadline=false :: [::1]:49849 (localhost): dial error: dial tcp [::1]:49849: operation was canceled
+    diagnostic_probe_test.go:71:       *fmt.wrapError net=false timeout=false canceled=true deadline=false :: dial error: dial tcp [::1]:49849: operation was canceled
+    diagnostic_probe_test.go:71:         *net.OpError net=true timeout=false canceled=true deadline=false :: dial tcp [::1]:49849: operation was canceled
+    diagnostic_probe_test.go:71:           net.canceledError net=false timeout=false canceled=true deadline=false :: operation was canceled
+    diagnostic_probe_test.go:75: REPRODUCED pool.Close canceled real pgx construction during actual watch; elapsed=1.0020516s classifier=false
+--- PASS: TestDiagnosePoolCloseDuringWatch (2.01s)
+    --- PASS: TestDiagnosePoolCloseDuringWatch/127.0.0.1 (1.01s)
+    --- PASS: TestDiagnosePoolCloseDuringWatch/localhost (1.00s)
+=== RUN   TestDiagnoseWatchDeadlineControl
+    diagnostic_probe_test.go:85: context.deadlineExceededError net=true timeout=true canceled=false deadline=true :: context deadline exceeded
+    diagnostic_probe_test.go:87: CONTROL actual watch deadline returned context.deadlineExceededError classifier=true elapsed=2.0010315s
+--- PASS: TestDiagnoseWatchDeadlineControl (2.00s)
+=== RUN   TestDiagnoseAuthenticatePoolCloseContextOwner
+    diagnostic_probe_test.go:97: *pgconn.ConnectError net=false timeout=false canceled=true deadline=false :: failed to connect to `user=public_fixture database=public_fixture`:
+        	127.0.0.1:49860 (localhost): failed to receive message: context canceled
+        	[::1]:49860 (localhost): dial error: dial tcp [::1]:49860: operation was canceled
+    diagnostic_probe_test.go:97:   *errors.joinError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49860 (localhost): failed to receive message: context canceled
+        [::1]:49860 (localhost): dial error: dial tcp [::1]:49860: operation was canceled
+    diagnostic_probe_test.go:97:     *pgconn.perDialConnectError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49860 (localhost): failed to receive message: context canceled
+    diagnostic_probe_test.go:97:       *fmt.wrapError net=false timeout=false canceled=true deadline=false :: failed to receive message: context canceled
+    diagnostic_probe_test.go:97:         *errors.errorString net=false timeout=false canceled=true deadline=false :: context canceled
+    diagnostic_probe_test.go:97:     *pgconn.perDialConnectError net=false timeout=false canceled=true deadline=false :: [::1]:49860 (localhost): dial error: dial tcp [::1]:49860: operation was canceled
+    diagnostic_probe_test.go:97:       *fmt.wrapError net=false timeout=false canceled=true deadline=false :: dial error: dial tcp [::1]:49860: operation was canceled
+    diagnostic_probe_test.go:97:         *net.OpError net=true timeout=false canceled=true deadline=false :: dial tcp [::1]:49860: operation was canceled
+    diagnostic_probe_test.go:97:           net.canceledError net=false timeout=false canceled=true deadline=false :: operation was canceled
+    diagnostic_probe_test.go:99: OWNER query ctx.Err=<nil> while result wraps context.Canceled; cancellation belongs to pool constructor base context
+--- PASS: TestDiagnoseAuthenticatePoolCloseContextOwner (0.00s)
+=== RUN   TestDiagnoseRetiredSocketDoesNotJoinWatch
+    diagnostic_probe_test.go:129: *pgconn.ConnectError net=false timeout=false canceled=true deadline=false :: failed to connect to `user=public_fixture database=public_fixture`:
+        	127.0.0.1:49862 (localhost): failed to receive message: context canceled
+        	[::1]:49862 (localhost): dial error: dial tcp [::1]:49862: operation was canceled
+    diagnostic_probe_test.go:129:   *errors.joinError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49862 (localhost): failed to receive message: context canceled
+        [::1]:49862 (localhost): dial error: dial tcp [::1]:49862: operation was canceled
+    diagnostic_probe_test.go:129:     *pgconn.perDialConnectError net=false timeout=false canceled=true deadline=false :: 127.0.0.1:49862 (localhost): failed to receive message: context canceled
+    diagnostic_probe_test.go:129:       *fmt.wrapError net=false timeout=false canceled=true deadline=false :: failed to receive message: context canceled
+    diagnostic_probe_test.go:129:         *errors.errorString net=false timeout=false canceled=true deadline=false :: context canceled
+    diagnostic_probe_test.go:129:     *pgconn.perDialConnectError net=false timeout=false canceled=true deadline=false :: [::1]:49862 (localhost): dial error: dial tcp [::1]:49862: operation was canceled
+    diagnostic_probe_test.go:129:       *fmt.wrapError net=false timeout=false canceled=true deadline=false :: dial error: dial tcp [::1]:49862: operation was canceled
+    diagnostic_probe_test.go:129:         *net.OpError net=true timeout=false canceled=true deadline=false :: dial tcp [::1]:49862: operation was canceled
+    diagnostic_probe_test.go:129:           net.canceledError net=false timeout=false canceled=true deadline=false :: operation was canceled
+    diagnostic_probe_test.go:131: REPRODUCED actual connection.close/c.done and outer handler return did not join in-flight production watch; pool.Close still canceled its pgx constructor
+--- PASS: TestDiagnoseRetiredSocketDoesNotJoinWatch (1.00s)
+PASS
+ok  	im-platform/backend/go/gateway	6.982s

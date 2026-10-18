@@ -1,0 +1,486 @@
+{
+  "root": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\ci-diagnose-r3",
+  "excluded": [
+    "go-build/**",
+    "go-tmp/**",
+    "artifact-manifest.json (bound in receipt)",
+    "final-receipt.json (self-excluded)"
+  ],
+  "artifacts": [
+    {
+      "path": "build_evidence.py",
+      "bytes": 19155,
+      "sha256": "bba5223e204fc4e9f2a8daaff448acb36f0ff675dd5897d96567317c6589e558"
+    },
+    {
+      "path": "command-index.json",
+      "bytes": 25772,
+      "sha256": "33f04d2ddba3e3b7a6a1fcc78c197ce77552d7513d522b50c5cf6cb75f7ac60e"
+    },
+    {
+      "path": "diagnosis.md",
+      "bytes": 7069,
+      "sha256": "b0fb892abd1a4594ea56d239a40b8ffe57dae19493162687aa9781afffa848c8"
+    },
+    {
+      "path": "diagnostic_probe_test.go",
+      "bytes": 5745,
+      "sha256": "20e896e235cfd9eb9e2898282f2afa487fa9bbc725c340539e090a6e08ec4289"
+    },
+    {
+      "path": "final-git-checks.json",
+      "bytes": 1786,
+      "sha256": "dd7f58d0784e6b335d07bc3ae85b2b8f8c501c12915067a6484fb265405a96b2"
+    },
+    {
+      "path": "finalize_evidence.py",
+      "bytes": 6418,
+      "sha256": "5ff1d91325f3200421e008082abd5033e31b51581bfb00500bb5fc4820d6efd2"
+    },
+    {
+      "path": "findings.json",
+      "bytes": 3712,
+      "sha256": "5fe2ade596ea05337446f9072dd905d230a589bafab742ebac26019d2e622884"
+    },
+    {
+      "path": "finish-run.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "finish-run.stdout.txt",
+      "bytes": 403,
+      "sha256": "4f214019808b662bcd1bb6c5713d4cdec2ff6cf5c15cdb29bc1678dcd1c606d5"
+    },
+    {
+      "path": "git-state.json",
+      "bytes": 5393,
+      "sha256": "17606bcb1093f975ac2346aa1a16dd2a96007c884575285c69e8a7b785b35b9f"
+    },
+    {
+      "path": "input-manifest.json",
+      "bytes": 11461,
+      "sha256": "2dfc4633c4dd87b80e8979f9502051c0abebed5afb5fa813b815282b63090876"
+    },
+    {
+      "path": "inputs/dependencies/0-pgconn-errors.go",
+      "bytes": 6759,
+      "sha256": "401d20942ba44b9663c4bf7ad9a22dbab1b24ec2529da57eb9030253870e72d2"
+    },
+    {
+      "path": "inputs/dependencies/1-pgconn-pgconn.go",
+      "bytes": 79767,
+      "sha256": "08dbe55fb43ac2938e09f055cc864fcb7a95116d5e8ff0cc1178ad2a002f9245"
+    },
+    {
+      "path": "inputs/dependencies/2-pgxpool-pool.go",
+      "bytes": 26672,
+      "sha256": "88fc943102cb2283b15ab2d5b4d412eb9fa4db91e2d572f2d8fd32fd848a282f"
+    },
+    {
+      "path": "inputs/dependencies/3-v2@v2.2.2-pool.go",
+      "bytes": 20915,
+      "sha256": "8db825c5ff387f7fa3135d31946203552ac13213bdab41079a47fa2ac8e0be63"
+    },
+    {
+      "path": "inputs/dependencies/4-v2@v2.2.2-context.go",
+      "bytes": 776,
+      "sha256": "985c690bc3d0554888714370c91af3d77bcb2981d8774d04b3d32b51eb99616f"
+    },
+    {
+      "path": "inputs/dependencies/5-httptest-server.go",
+      "bytes": 11959,
+      "sha256": "31baebc00924bb22a44a84e98b890946e40a61b386edbcc8ee4a57f36bebd3c4"
+    },
+    {
+      "path": "inputs/hosted/116838949761.log",
+      "bytes": 51390,
+      "sha256": "e62928626ef9a98cf312654e6b606a70d77525405adbf8ced3b60de92db706b9"
+    },
+    {
+      "path": "inputs/hosted/diagnosis.json",
+      "bytes": 71230,
+      "sha256": "57c38d4fc3f3ffc7040e75007cb0fccaeb94a52d0a5914e62be74da2cf9dd4ea"
+    },
+    {
+      "path": "inputs/source/.github/workflows/ci.yml",
+      "bytes": 17778,
+      "sha256": "4c1a59b4ed19ce9d866af7616168a74b0cf6df8c9d7ca474bbf331d34ea25552"
+    },
+    {
+      "path": "inputs/source/backend/go/core/message.go",
+      "bytes": 7229,
+      "sha256": "c80f6367c7541fe77a9e1a154c6aecf49cb1af56a03e5d664050d14dccbe5029"
+    },
+    {
+      "path": "inputs/source/backend/go/core/outbox.go",
+      "bytes": 3829,
+      "sha256": "6144f562943cddc2897b498b60d114883a148ccbf0619755e48f77b9a98698a1"
+    },
+    {
+      "path": "inputs/source/backend/go/core/outbox_transport_test.go",
+      "bytes": 6619,
+      "sha256": "41e52a6943cc84d443d797e63c9892258e858338310a81ea66f8dbc5b54256fe"
+    },
+    {
+      "path": "inputs/source/backend/go/gateway/gateway.go",
+      "bytes": 11109,
+      "sha256": "8a2a5cfad86bf74545625db667f2ff2f89b824ffd30c66a434ed4d9c4a340ec4"
+    },
+    {
+      "path": "inputs/source/backend/go/gateway/http.go",
+      "bytes": 1733,
+      "sha256": "abd9ee3a25c4b95272d35fc940e3238c3f18baaee3a30556eaa575f2cb1ef90f"
+    },
+    {
+      "path": "inputs/source/backend/go/gateway/session.go",
+      "bytes": 2990,
+      "sha256": "3c48fcbfa1672022e3d4f2c8681d7f0a24749a261f68d849b6a4a6524e5ec60f"
+    },
+    {
+      "path": "inputs/source/backend/go/gateway/watch_failure_test.go",
+      "bytes": 12852,
+      "sha256": "747e0f25e44b87ef6f8b1375d2e7b1cc9054e3a57dc584eb7cac968e1ba56f52"
+    },
+    {
+      "path": "inputs/source/backend/go/go.mod",
+      "bytes": 632,
+      "sha256": "9f67b2b0108051b23f3c8153c80169d1ed48c80e0bb2f99efccd485b3c187591"
+    },
+    {
+      "path": "inputs/source/backend/go/go.sum",
+      "bytes": 3470,
+      "sha256": "620f313bd37586795c16eb20fce3ee0fba6fe0d559277efc0927ff898822ea0a"
+    },
+    {
+      "path": "inputs/source/backend/go/tests/auth_test.go",
+      "bytes": 11142,
+      "sha256": "bc2b90ee05b86f534523e90484630a9daaf70078f5858cb4dbf42e01675f6245"
+    },
+    {
+      "path": "inputs/source/backend/go/tests/contract_fixture_test.go",
+      "bytes": 17792,
+      "sha256": "0655ac9fc2352596d595fc0dd27cf68203cb7725c27a15c0d2a79328f16abd90"
+    },
+    {
+      "path": "inputs/source/backend/go/tests/message_test.go",
+      "bytes": 18154,
+      "sha256": "2caf396124de66896b93e1ac22b87c4a5e1b09c5008e3b55d69eb0be519d269d"
+    },
+    {
+      "path": "inputs/source/backend/go/tests/revocation_fallback_test.go",
+      "bytes": 8816,
+      "sha256": "ebbe6c72831e757f9f0c9fe4fca169f36ef2ce672d00e1af2668dd58e0ce977a"
+    },
+    {
+      "path": "inputs/source/backend/go/tests/runtime_test.go",
+      "bytes": 1666,
+      "sha256": "ab4958c878832e1165a1f8f2d75f83fb4d79c2804871ffebf90bc169bea0919a"
+    },
+    {
+      "path": "inputs/source/backend/go/tests/social_test.go",
+      "bytes": 10685,
+      "sha256": "cb5f54600f93b37cc25e9de5a3fa6d6cd2b60ebb4182284c5d3786981b07fe80"
+    },
+    {
+      "path": "minimal-scope-proposal.md",
+      "bytes": 3084,
+      "sha256": "4be50acb1b5da2ee6aaed9519e10a15d0f5dd4efa8355139bf44373fdcfcf07a"
+    },
+    {
+      "path": "overlay.json",
+      "bytes": 242,
+      "sha256": "9f64720cf47e55942cc078e36b536618426969b14dcb2ab9a2383a52aa4e81fa"
+    },
+    {
+      "path": "probe-C-10bd576e-f8b7-4e14-aeb9-a68e4f2ed255.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "probe-C-e12f5891-1d31-4ffc-a976-3591ae79ce5b.stdout.txt",
+      "bytes": 7839,
+      "sha256": "0b408111285119ce29b1ac0d27dc779f1e913e417c847c1551aeb5f488ab035d"
+    },
+    {
+      "path": "probe-C-ed3f43b1-eef0-44d0-9207-82539cfa8b52.stdout.txt",
+      "bytes": 5761,
+      "sha256": "503eaf0f5cb2bead39814a6a53f3dfd9d2e054a49120db37de0d46eac3ff7721"
+    },
+    {
+      "path": "probe-C-fd9f6344-005d-4256-824b-239229f5ce2d.stdout.txt",
+      "bytes": 2126,
+      "sha256": "184a3b83d7c2989b76616d3dce762c87c5a85dd844bdae4bc4f8a0d1cd025e33"
+    },
+    {
+      "path": "recorder-finalization.json",
+      "bytes": 1431,
+      "sha256": "d03cc847e71b8dc2df790d5d7c2dcee2ab9d1dff1fb9912d0338f8c59cdc5076"
+    },
+    {
+      "path": "research/prompts/P-GROUP-CI-DIAGNOSE-R3/metadata.json",
+      "bytes": 501,
+      "sha256": "a1a3d7172d13053b980cd66bfc93e783a31478739e41cb65123e56598a2dccf7"
+    },
+    {
+      "path": "research/prompts/P-GROUP-CI-DIAGNOSE-R3/prompt.txt",
+      "bytes": 2175,
+      "sha256": "ab0699e01d34dbca86b5d879715bbeb4d9073705e40d5a6684cc794a852a0bdd"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-10bd576e-f8b7-4e14-aeb9-a68e4f2ed255.stderr.txt",
+      "bytes": 94,
+      "sha256": "f718031b71a6eb82bab59b71d6f3fe40fc7744ce7bfb810d8499a7ac0b9e304c"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-10bd576e-f8b7-4e14-aeb9-a68e4f2ed255.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-17220691-7b8e-4a8d-bc25-f6e75cf2440b.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-17220691-7b8e-4a8d-bc25-f6e75cf2440b.stdout.txt",
+      "bytes": 88463,
+      "sha256": "cee1e6c50b6393bded294c1f8f1795aaf865da5e46b0a7c59d34e0aaa67e93e3"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-2720384d-4a18-4219-9fc1-c74a759c4497.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-2720384d-4a18-4219-9fc1-c74a759c4497.stdout.txt",
+      "bytes": 15317,
+      "sha256": "5a780e4aee9d4f6eb141c048cc50a5990fd7d7178eae04897e135c39ed4a4f76"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-2fee62fd-f17a-4261-b912-dd6da1040e93.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-2fee62fd-f17a-4261-b912-dd6da1040e93.stdout.txt",
+      "bytes": 163,
+      "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-3406a9b8-c9d7-4bc4-a994-42db4e6653a1.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-3406a9b8-c9d7-4bc4-a994-42db4e6653a1.stdout.txt",
+      "bytes": 76,
+      "sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-5dee328e-0d6f-4b8c-b3f8-5542af85f52b.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-5dee328e-0d6f-4b8c-b3f8-5542af85f52b.stdout.txt",
+      "bytes": 82,
+      "sha256": "1ce16345c4821ee035d9aece9cdf099b22c20f004c7aa9590fd8822a00cf4a84"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-793b2ee6-f9b4-4c03-973d-c25a6edf984b.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-793b2ee6-f9b4-4c03-973d-c25a6edf984b.stdout.txt",
+      "bytes": 21163,
+      "sha256": "2344ec07f35b58ce219f293a5b68e80789dabfc0fb4d44387005759e38fd1b4a"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-7b820e6d-2911-4187-8451-0ca2ad766484.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-7b820e6d-2911-4187-8451-0ca2ad766484.stdout.txt",
+      "bytes": 42012,
+      "sha256": "ca1eea245e8cdc347db215ef4cebea9befb0ddbae2928bdb2617b1bfd6f4827d"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-7e154939-b673-4bf5-a1cd-e5c4bf3bb65f.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-7e154939-b673-4bf5-a1cd-e5c4bf3bb65f.stdout.txt",
+      "bytes": 62339,
+      "sha256": "30cf2f4597c0fc54d500055876c84c527c5853511a2ae2d1902a26eb8ba3fbf6"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-8853c5ed-9522-4958-ab06-6b59dabab0ee.stderr.txt",
+      "bytes": 162,
+      "sha256": "6660b55d5ddc23a90bc143d59cd97ee8e2eac08138dcc650f30b3c781c0c994e"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-8853c5ed-9522-4958-ab06-6b59dabab0ee.stdout.txt",
+      "bytes": 4577,
+      "sha256": "88ccbfa59d92211e5aadf665dfb2a67880b0c254861ca1590906c3eb0e505513"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-8d91d6d5-a1d8-46c9-8527-2cd305a58a74.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-8d91d6d5-a1d8-46c9-8527-2cd305a58a74.stdout.txt",
+      "bytes": 75793,
+      "sha256": "e8ae0155b78e3226fb6d98d0fa95d7418893884499476e5632ce47cccb8f6969"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-966031b6-9bdb-46bc-acee-f454483a6422.stderr.txt",
+      "bytes": 297,
+      "sha256": "e7c5d62c3582e324f533e030a59525d7ab133786f573037f467cafcd947bd824"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-966031b6-9bdb-46bc-acee-f454483a6422.stdout.txt",
+      "bytes": 4294,
+      "sha256": "65721e2159752624c6cb2a4d2725b7d57b000f8f5b9f5bb8ef91dbe3161739d4"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-ae55d225-d84b-4b39-9ef7-0fe79ef4c487.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-ae55d225-d84b-4b39-9ef7-0fe79ef4c487.stdout.txt",
+      "bytes": 20308,
+      "sha256": "44d542cdc4e7b093710c7bc2f6b4e0484f4ca654d5941a6c45641941ee6ee392"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-c18ecefb-4bac-4dfa-91e3-d41c55e1b7b7.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-c18ecefb-4bac-4dfa-91e3-d41c55e1b7b7.stdout.txt",
+      "bytes": 13123,
+      "sha256": "63f106cfdf125dafdb2f9127bce8d85046a3ea705fa221fc618691d6e565a5e7"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-c815d51c-aef5-4bb3-93d6-bdb56518e57a.stderr.txt",
+      "bytes": 162,
+      "sha256": "6660b55d5ddc23a90bc143d59cd97ee8e2eac08138dcc650f30b3c781c0c994e"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-c815d51c-aef5-4bb3-93d6-bdb56518e57a.stdout.txt",
+      "bytes": 21206,
+      "sha256": "b04ac278696b5ebdb3e6591e0c20e2d098f9bf7a30518c5cbe32eb5c984a2ea7"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-dbb8ce80-0835-4242-9d39-152d6ce9b7ec.stderr.txt",
+      "bytes": 87,
+      "sha256": "02dc52dcca284cd436af8f9cdba6579ffcff0286ca5c4c4eb65a317653c1d5f0"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-dbb8ce80-0835-4242-9d39-152d6ce9b7ec.stdout.txt",
+      "bytes": 13309,
+      "sha256": "a524d341c104ad5ba36cffbaf51bb93b4878a0d1a762f2e7b7f4c64878ef5dfd"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-de20cf06-22ad-493e-9ac2-b0070bd5bf20.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-de20cf06-22ad-493e-9ac2-b0070bd5bf20.stdout.txt",
+      "bytes": 21118,
+      "sha256": "28c482ea2f7cf0ee047872f766634b73ff5563da27ea0d455d8234e295cb4cce"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-e12f5891-1d31-4ffc-a976-3591ae79ce5b.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-e12f5891-1d31-4ffc-a976-3591ae79ce5b.stdout.txt",
+      "bytes": 7839,
+      "sha256": "0b408111285119ce29b1ac0d27dc779f1e913e417c847c1551aeb5f488ab035d"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-ed3f43b1-eef0-44d0-9207-82539cfa8b52.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-ed3f43b1-eef0-44d0-9207-82539cfa8b52.stdout.txt",
+      "bytes": 5761,
+      "sha256": "503eaf0f5cb2bead39814a6a53f3dfd9d2e054a49120db37de0d46eac3ff7721"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-f460c7d7-8206-43e7-a28f-df615fc01a17.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-f460c7d7-8206-43e7-a28f-df615fc01a17.stdout.txt",
+      "bytes": 15014,
+      "sha256": "47fd3f52664fb3ac011f4de84bb46f1100541e5567bf128023787fc084b51d29"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-fd9f6344-005d-4256-824b-239229f5ce2d.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/blobs/C-fd9f6344-005d-4256-824b-239229f5ce2d.stdout.txt",
+      "bytes": 2126,
+      "sha256": "184a3b83d7c2989b76616d3dce762c87c5a85dd844bdae4bc4f8a0d1cd025e33"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/diff.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/events.jsonl",
+      "bytes": 42804,
+      "sha256": "6f4e7fc0b78760f027730fa0fd7b865b0167d10ebb0e95ac909b7a5e95f4e420"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/final_state.json",
+      "bytes": 14583,
+      "sha256": "181acfb8b6805afff40b3a7cfcf03700fde30df6c7f7f5c9db54d8712d7a3b79"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/initial_state.json",
+      "bytes": 14583,
+      "sha256": "69bcf5c535788fba98c388873606b96761657285ac40b84a047c650b785d3e32"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/metadata.json",
+      "bytes": 1088,
+      "sha256": "27102ad4bb99c70eb3c7bfda0b052d0d833d14ef826b38ed773b2c8e45371558"
+    },
+    {
+      "path": "research/runs/R-GROUP-CI-DIAGNOSE-R3-20261016/summary.json",
+      "bytes": 420,
+      "sha256": "b1268776a37ef34c3af130ddd994f565584490da3070999a90ddbd00abc1a011"
+    },
+    {
+      "path": "validate-run.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validate-run.stdout.txt",
+      "bytes": 88,
+      "sha256": "9f4849cd9383d569020798f1e136089da7e9c48543b4d73e7eddc5e9c5ebb243"
+    },
+    {
+      "path": "visible-human-prompt.txt",
+      "bytes": 2175,
+      "sha256": "ab0699e01d34dbca86b5d879715bbeb4d9073705e40d5a6684cc794a852a0bdd"
+    }
+  ]
+}

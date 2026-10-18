@@ -16,7 +16,9 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
+	"github.com/jackc/pgx/v5/pgproto3"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"im-platform/backend/go/shared"
 )
@@ -368,4 +370,149 @@ func TestPostgresWatchInternalFailureEscapesActualGoroutine(t *testing.T) {
 		t.Fatalf("internal root lost in actual goroutine result: %s", output)
 	}
 	t.Log("actual successful auth.bind then PostgreSQL invalid epoch -> watch closes transport and original cached-plan PgError0A000 escapes actual serve goroutine; child failure expected")
+}
+
+// Exercise the actual serve -> bind -> watch -> socket-close lifecycle. The
+// controlled wire endpoint supplies one session row, then stalls the next pgx
+// constructor. It is not a database or a replacement for the live PG suite.
+func TestServeJoinsInflightWatchBeforePoolClose(t *testing.T) {
+	if os.Getenv("IM_WATCH_JOIN_CHILD") != "1" {
+		exe, err := os.Executable()
+		if err != nil {
+			t.Fatal(err)
+		}
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+		command := exec.CommandContext(ctx, exe, "-test.run=^TestServeJoinsInflightWatchBeforePoolClose$", "-test.v")
+		command.Env = append(os.Environ(), "IM_WATCH_JOIN_CHILD=1")
+		output, err := command.CombinedOutput()
+		if err != nil || ctx.Err() != nil {
+			t.Fatalf("serve returned before its watch retired, allowing pool teardown to cancel it: %v: %s", err, output)
+		}
+		if !strings.Contains(string(output), "handler completed before pool released; in-flight watch retired") {
+			t.Fatalf("child did not complete the lifecycle: %s", output)
+		}
+		return
+	}
+	listener, err := net.Listen("tcp4", "127.0.0.1:0")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer listener.Close()
+	cfg, err := pgxpool.ParseConfig(fmt.Sprintf("host=127.0.0.1 port=%d user=public_fixture dbname=public_fixture sslmode=disable", listener.Addr().(*net.TCPAddr).Port))
+	if err != nil {
+		t.Fatal(err)
+	}
+	cfg.ConnConfig.DefaultQueryExecMode = pgx.QueryExecModeSimpleProtocol
+	// Every acquisition starts a fresh connection; the second constructor is
+	// exactly the ownership boundary involved in the hosted cancellation failure.
+	cfg.AfterRelease = func(*pgx.Conn) bool { return false }
+	pool, err := pgxpool.NewWithConfig(context.Background(), cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer pool.Close()
+	h, cl, token := watchFixture(t, pool)
+	startup := make(chan struct{})
+	endpointDone := make(chan error, 1)
+	go func() {
+		endpointDone <- func() error {
+			first, err := listener.Accept()
+			if err != nil {
+				return err
+			}
+			defer first.Close()
+			backend := pgproto3.NewBackend(first, first)
+			if _, err = backend.ReceiveStartupMessage(); err != nil {
+				return err
+			}
+			backend.Send(&pgproto3.AuthenticationOk{})
+			backend.Send(&pgproto3.ParameterStatus{Name: "client_encoding", Value: "UTF8"})
+			backend.Send(&pgproto3.ParameterStatus{Name: "standard_conforming_strings", Value: "on"})
+			backend.Send(&pgproto3.ReadyForQuery{TxStatus: 'I'})
+			if err = backend.Flush(); err != nil {
+				return err
+			}
+			query, err := backend.Receive()
+			if err != nil {
+				return err
+			}
+			if _, ok := query.(*pgproto3.Query); !ok {
+				return fmt.Errorf("expected binding session query, got %T", query)
+			}
+			backend.Send(&pgproto3.RowDescription{Fields: []pgproto3.FieldDescription{
+				{Name: []byte("session_id"), DataTypeOID: 25, DataTypeSize: -1},
+				{Name: []byte("client_type"), DataTypeOID: 25, DataTypeSize: -1},
+				{Name: []byte("session_epoch"), DataTypeOID: 20, DataTypeSize: 8},
+				{Name: []byte("status"), DataTypeOID: 25, DataTypeSize: -1},
+				{Name: []byte("expires_at"), DataTypeOID: 1184, DataTypeSize: 8},
+			}})
+			backend.Send(&pgproto3.DataRow{Values: [][]byte{[]byte(cl.SessionID), []byte(cl.ClientType), []byte("1"), []byte("ACTIVE"), []byte(time.Now().Add(time.Hour).UTC().Format("2006-01-02 15:04:05.999999999Z07:00"))}})
+			backend.Send(&pgproto3.CommandComplete{CommandTag: []byte("SELECT 1")})
+			backend.Send(&pgproto3.ReadyForQuery{TxStatus: 'I'})
+			if err = backend.Flush(); err != nil {
+				return err
+			}
+			second, err := listener.Accept()
+			if err != nil {
+				return err
+			}
+			defer second.Close()
+			if _, err = pgproto3.NewBackend(second, second).ReceiveStartupMessage(); err != nil {
+				return err
+			}
+			close(startup)
+			_, err = io.Copy(io.Discard, second)
+			return err
+		}()
+	}()
+	handlerDone := make(chan struct{})
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer close(handlerDone)
+		h.serve(w, r)
+	}))
+	defer server.Close()
+	peer, _, err := websocket.DefaultDialer.Dial("ws"+strings.TrimPrefix(server.URL, "http"), nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer peer.Close()
+	if err = peer.SetReadDeadline(time.Now().Add(5 * time.Second)); err != nil {
+		t.Fatal(err)
+	}
+	if err = peer.WriteJSON(frame("auth.bind", "10000000-0000-4000-8000-000000000001", map[string]string{"accessToken": token})); err != nil {
+		t.Fatal(err)
+	}
+	var ack struct {
+		Type    string `json:"type"`
+		Payload struct {
+			Status string `json:"status"`
+		} `json:"payload"`
+	}
+	if err = peer.ReadJSON(&ack); err != nil {
+		t.Fatal(err)
+	}
+	if ack.Type != "auth.ack" || ack.Payload.Status != "bound" {
+		t.Fatalf("fixture did not bind: %+v", ack)
+	}
+	select {
+	case <-startup:
+	case err := <-endpointDone:
+		t.Fatalf("endpoint failed before watch constructor: %v", err)
+	case <-time.After(5 * time.Second):
+		t.Fatal("watch did not start constructor")
+	}
+	if err = peer.Close(); err != nil {
+		t.Fatal(err)
+	}
+	select {
+	case <-handlerDone:
+	case <-time.After(5 * time.Second):
+		t.Fatal("handler did not finish its watch")
+	}
+	pool.Close()
+	if err = <-endpointDone; err != nil {
+		t.Fatal(err)
+	}
+	t.Log("handler completed before pool released; in-flight watch retired")
 }

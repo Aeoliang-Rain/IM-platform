@@ -150,8 +150,8 @@ func TestPostgresAuthSessionAndWSS(t *testing.T) {
 	expect(t, mobile, 200)
 	mobileRefresh := readResult(t, mobile)["tokens"].(map[string]any)["refreshToken"].(string)
 	// Exercise real WebSocket pre-bind rejection and bind/replace notification.
-	server := httptest.NewServer(h)
-	defer server.Close()
+	server, closeServer := newGatewayTestServer(h)
+	defer closeServer()
 	wsURL := "ws" + strings.TrimPrefix(server.URL, "http") + "/v1/ws"
 	pre, _, err := websocket.DefaultDialer.Dial(wsURL, nil)
 	if err != nil {

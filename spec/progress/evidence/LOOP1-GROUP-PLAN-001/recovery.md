@@ -27,3 +27,14 @@
 R1收据绑定的bab8已通过两项fresh审查与push全14，但PR两次Go+aggregate gate FAIL；旧两审/CI只历史、原件见ci-fix-r2/history-manifest.json，不接受新字节。当前最新内容候选身份必须从固定外部目录 ci-fix-r2/final-receipt.json 解析；它取代implementation/fix-r1收据作为最新candidate发现，旧文件和既有两阶段流程全部保留。该R2收据绑定实际branch/clean finalSHA/base/range/owned Git blobs/local结果/Recorder/lease RELEASED；不是独立接受。R2仅现Go临时无TLS PG env及7checkout精确绑定，13/13候选refs，生产树不改。
 
 新finalSHA的NEW常规及DIFFERENT NEW错误专项均PENDING，CI/integration/actual-main/安全同步PENDING；任何修复必须两项重审再提交CI，不复用bab8 PASS。Go env方向未经新hosted验证，不能称已解决。source commit后不可再写；后续独立接受及行政闭环遵从上文完整两阶段机制。GROUP唯一backlog/planned，S2 OPEN/STOP。
+
+
+## R3 Gateway watch 生命周期 Fix 候选（2026-10-18；旧R2仅历史）
+
+当前唯一Task仍LOOP1-GROUP-PLAN-001 review/Completion PENDING；GROUPbacklog/S2OPEN。soleFix /root/group_ci_fix_r3 clean start204e，fullbase及LKG86b。Human窄授权 ci-fix-r3/gateway-watch-scope-approval-20261016.txt 已按字节归档并先更新/读回Task；诊断95artifact核验及旧204e审查/hostedFAIL原件见ci-fix-r3/history-manifest.json。actualserve/auth.bind/watch/真实pgx在途退休旧源码RED原取消panic，唯一watchjoin+必要fixture等待后GREEN，classifier/未知internalmixed失败/ACK/安全不改。
+
+最新候选只能由外部 `C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/ci-fix-r3/final-receipt.json` 恢复实际finalSHA/branch/range/clean/ownedGitblobs/命令/Acceptance/Recorder与sourcelease RELEASED。不要读取已退休顶层发布别名，不用旧204e或bab8PASS接受新字节。当前新常规Review PENDING、DIFFERENT NEW专项PENDING，二者最终SHA相同；任何Fix两项重新做。两项PASS前禁止push/更新触发CI的PR。
+
+完整Frozen无flag/planning/architectureall及strictscope七backend、254其余产品bytes验证PASS；原--base86b可选zero-product断言与后续Human授权冲突，真实FAIL保持，不改checker。normal/race ./...本地PASS但DB_TEST_ENABLE未设/livePGNATS未执行；dockerdaemon/psql不可用，wire不是数据库。88architecture(1既有skip)/35CI(4既有skip)最终通过，首次缓存相关失败原件保留。Development/clean committedAcceptance最终结果以外部receipt为准；local/Recorder不是独立接受。
+
+接续：NEW常规→DIFFERENT NEW错误专项→exactcandidate/PR实际requiredjobs及真实PGNATSnormal/race→protected integration→actualmainCI/树→保存782未知main原件的实际安全同步；后续metadata候选另需独立闭环。main H:/IM-platform从未写入/采纳/清理，未知work不归Fix。证据ci-fix-r3/handoff.md与local-verification.json；checkpoint2026-10-18-group-plan-ci-r3-review-pending.md。R1/R2/原实施及Recorder/FAIL谱系保持原字节；S2OPEN/STOP。

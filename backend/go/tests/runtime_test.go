@@ -8,8 +8,10 @@ import (
 	"im-platform/backend/go/gateway"
 	"im-platform/backend/go/shared"
 	"net/http"
+	"net/http/httptest"
 	"os"
 	"regexp"
+	"sync"
 	"testing"
 	"time"
 )
@@ -64,4 +66,42 @@ func frame(typ, id string, payload any) any {
 }
 func validUUID(id string) bool {
 	return regexp.MustCompile(`^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`).MatchString(id)
+}
+
+// httptest.Server.Close does not wait for hijacked WebSocket handlers. Admit
+// handlers under the same mutex used to stop admission, then wait for every
+// admitted handler before a fixture releases its database pool.
+func newGatewayTestServer(handler http.Handler) (*httptest.Server, func()) {
+	var mu sync.Mutex
+	finished := sync.NewCond(&mu)
+	active := 0
+	closing := false
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		mu.Lock()
+		if closing {
+			mu.Unlock()
+			http.Error(w, "fixture is closing", http.StatusServiceUnavailable)
+			return
+		}
+		active++
+		mu.Unlock()
+		defer func() {
+			mu.Lock()
+			active--
+			finished.Broadcast()
+			mu.Unlock()
+		}()
+		handler.ServeHTTP(w, r)
+	}))
+	return server, func() {
+		mu.Lock()
+		closing = true
+		mu.Unlock()
+		server.Close()
+		mu.Lock()
+		defer mu.Unlock()
+		for active != 0 {
+			finished.Wait()
+		}
+	}
 }

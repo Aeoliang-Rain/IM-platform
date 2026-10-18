@@ -1,0 +1,1526 @@
+{
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "actor": "/root/group_error_204e803",
+  "role": "fresh_independent_specialized_error_handling_audit",
+  "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY",
+  "candidate_sha": "204e803724c2a64514c6e14f8d1ed86cabca8acb",
+  "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "branch": "task/LOOP1-GROUP-PLAN-001",
+  "diff_range": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0..204e803724c2a64514c6e14f8d1ed86cabca8acb",
+  "assigned_git_root": "H:/.codex/worktrees/grp/IM-platform",
+  "source_paths": 126,
+  "independence": "Different fresh context; did not implement/fix or regularly review this candidate or review old candidates. Regular prerequisite receipt independently hash checked. No source mutation.",
+  "clean_committed_method": "Assigned managed Codex worktree; startup root/branch/head/status/diff/log, own clean committed Acceptance and final-state plus final HEAD/status after Recorder lifecycle; no clone/copy/main write.",
+  "final_state": {
+    "assigned_git_root": "H:/.codex/worktrees/grp/IM-platform",
+    "root": "H:/.codex/worktrees/grp/IM-platform",
+    "branch": "task/LOOP1-GROUP-PLAN-001",
+    "head": "204e803724c2a64514c6e14f8d1ed86cabca8acb",
+    "git_status": "",
+    "diff": "",
+    "cached_diff": ""
+  },
+  "blocking_findings": 0,
+  "report": "report.md",
+  "findings": "findings.json",
+  "retained_boundaries": "retained-boundaries.json",
+  "input_receipts": {
+    "regular": {
+      "path": "../regular-204e803/final-receipt.json",
+      "sha256": "e896e927f1972473b941719e4bfe4e8978e72cbaa56c94cf763e601f226062db",
+      "artifacts_rehashed": 242,
+      "result": "PASS_REGULAR_REVIEW_ONLY"
+    },
+    "fix": {
+      "path": "../ci-fix-r2/final-receipt.json",
+      "sha256": "ac76bb9fa1ca7279f9e0625b8dc1573e4e2870a37c7afcec00d3a9f8e04830dc",
+      "artifacts_rehashed": 142,
+      "result": "FIX_PREPARED_LOCAL_PASS_NOT_ACCEPTED"
+    }
+  },
+  "verification": [
+    {
+      "label": "01-status",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.ps1",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 1,
+      "started_unix": 1792130177.7259438,
+      "elapsed_seconds": 0.9147167205810547,
+      "stdout_path": "01-status.stdout",
+      "stderr_path": "01-status.stderr"
+    },
+    {
+      "label": "02-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--no-ext-diff"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.ps1",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "diff",
+        "--no-ext-diff"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 1,
+      "started_unix": 1792130179.574684,
+      "elapsed_seconds": 0.904111385345459,
+      "stdout_path": "02-diff.stdout",
+      "stderr_path": "02-diff.stderr"
+    },
+    {
+      "label": "03-log",
+      "argv": [
+        "git",
+        "log",
+        "-5",
+        "--oneline"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.ps1",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "log",
+        "-5",
+        "--oneline"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 1,
+      "started_unix": 1792130181.4173484,
+      "elapsed_seconds": 0.9196581840515137,
+      "stdout_path": "03-log.stdout",
+      "stderr_path": "03-log.stderr"
+    },
+    {
+      "label": "04-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel",
+        "--abbrev-ref",
+        "HEAD",
+        "HEAD"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.ps1",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "rev-parse",
+        "--show-toplevel",
+        "--abbrev-ref",
+        "HEAD",
+        "HEAD"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 1,
+      "started_unix": 1792130183.293431,
+      "elapsed_seconds": 0.9538383483886719,
+      "stdout_path": "04-identity.stdout",
+      "stderr_path": "04-identity.stderr"
+    },
+    {
+      "label": "05-status",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130205.8903565,
+      "elapsed_seconds": 0.47555065155029297,
+      "stdout_path": "05-status.stdout",
+      "stderr_path": "05-status.stderr"
+    },
+    {
+      "label": "06-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--no-ext-diff"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "diff",
+        "--no-ext-diff"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130207.400447,
+      "elapsed_seconds": 0.5453968048095703,
+      "stdout_path": "06-diff.stdout",
+      "stderr_path": "06-diff.stderr"
+    },
+    {
+      "label": "07-log",
+      "argv": [
+        "git",
+        "log",
+        "-5",
+        "--oneline"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "log",
+        "-5",
+        "--oneline"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130208.950563,
+      "elapsed_seconds": 0.49636006355285645,
+      "stdout_path": "07-log.stdout",
+      "stderr_path": "07-log.stderr"
+    },
+    {
+      "label": "08-root",
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130210.436732,
+      "elapsed_seconds": 0.47418856620788574,
+      "stdout_path": "08-root.stdout",
+      "stderr_path": "08-root.stderr"
+    },
+    {
+      "label": "09-branch",
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130211.8865433,
+      "elapsed_seconds": 0.5000874996185303,
+      "stdout_path": "09-branch.stdout",
+      "stderr_path": "09-branch.stderr"
+    },
+    {
+      "label": "10-head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130213.3602777,
+      "elapsed_seconds": 0.46749138832092285,
+      "stdout_path": "10-head.stdout",
+      "stderr_path": "10-head.stderr"
+    },
+    {
+      "label": "11-frozen-baseline",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py",
+        "--base-commit",
+        "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py",
+        "--base-commit",
+        "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130226.3896234,
+      "elapsed_seconds": 1.4760572910308838,
+      "stdout_path": "11-frozen-baseline.stdout",
+      "stderr_path": "11-frozen-baseline.stderr"
+    },
+    {
+      "label": "12-planning-baseline",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130228.9783416,
+      "elapsed_seconds": 0.8046228885650635,
+      "stdout_path": "12-planning-baseline.stdout",
+      "stderr_path": "12-planning-baseline.stderr"
+    },
+    {
+      "label": "13-architecture-all",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130278.0591104,
+      "elapsed_seconds": 13.154180765151978,
+      "stdout_path": "13-architecture-all.stdout",
+      "stderr_path": "13-architecture-all.stderr"
+    },
+    {
+      "label": "15-ci-tests",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci",
+        "-v"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci",
+        "-v"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130278.3443284,
+      "elapsed_seconds": 20.723783016204834,
+      "stdout_path": "15-ci-tests.stdout",
+      "stderr_path": "15-ci-tests.stderr"
+    },
+    {
+      "label": "14-architecture-tests",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture",
+        "-v"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130278.6930504,
+      "elapsed_seconds": 30.99708867073059,
+      "stdout_path": "14-architecture-tests.stdout",
+      "stderr_path": "14-architecture-tests.stderr"
+    },
+    {
+      "label": "16-source-input-audit",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/gather_review.py"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/gather_review.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130330.96064,
+      "elapsed_seconds": 65.72888612747192,
+      "stdout_path": "16-source-input-audit.stdout",
+      "stderr_path": "16-source-input-audit.stderr"
+    },
+    {
+      "label": "17-error-probes",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/error_probes.py"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/error_probes.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 1,
+      "started_unix": 1792130411.5296052,
+      "elapsed_seconds": 2.375986337661743,
+      "stdout_path": "17-error-probes.stdout",
+      "stderr_path": "17-error-probes.stderr"
+    },
+    {
+      "label": "18-error-probes-v2",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/error_probes.py"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/error_probes.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130493.3547444,
+      "elapsed_seconds": 11.798986196517944,
+      "stdout_path": "18-error-probes-v2.stdout",
+      "stderr_path": "18-error-probes-v2.stderr"
+    },
+    {
+      "label": "19-clean-acceptance",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Acceptance"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Acceptance"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130520.4672878,
+      "elapsed_seconds": 39.73156237602234,
+      "stdout_path": "19-clean-acceptance.stdout",
+      "stderr_path": "19-clean-acceptance.stderr"
+    },
+    {
+      "label": "20-full-range-classifier",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/classify.py",
+        "--base",
+        "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+        "--head",
+        "204e803724c2a64514c6e14f8d1ed86cabca8acb"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/classify.py",
+        "--base",
+        "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+        "--head",
+        "204e803724c2a64514c6e14f8d1ed86cabca8acb"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130633.4584546,
+      "elapsed_seconds": 1.0050580501556396,
+      "stdout_path": "20-full-range-classifier.stdout",
+      "stderr_path": "20-full-range-classifier.stderr"
+    },
+    {
+      "label": "21-final-identity",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/prepare_closure.py"
+      ],
+      "recorder_argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\grp\\IM-platform\\tools\\research\\recorder.py",
+        "run-command",
+        "--repo",
+        "H:\\.codex\\worktrees\\grp\\IM-platform",
+        "--research-root",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-204e803\\research",
+        "--run-id",
+        "R-GROUP-ERROR-204E803-20261016",
+        "--",
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/error-204e803/prepare_closure.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\grp\\IM-platform",
+      "exit_code": 0,
+      "started_unix": 1792130759.2628891,
+      "elapsed_seconds": 2.361423969268799,
+      "stdout_path": "21-final-identity.stdout",
+      "stderr_path": "21-final-identity.stderr"
+    }
+  ],
+  "probes": {
+    "result": "PASS_AUDIT_PROBES",
+    "count": 12,
+    "expected_subprocess_nonzero": 9,
+    "unknown_internal_exceptions_propagated": 3,
+    "evidence": "probe-results.json"
+  },
+  "skips": {
+    "architecture": {
+      "tests": 88,
+      "skipped": 1,
+      "reason": "existing POSIX symlink applicability; real Windows junction passed"
+    },
+    "ci": {
+      "tests": 35,
+      "skipped": 4,
+      "reason": "existing Windows symlink privilege WinError1314 subtests"
+    }
+  },
+  "scope": {
+    "product_trees_unchanged": [
+      "contracts",
+      "backend",
+      "clients",
+      "plugins",
+      "deploy"
+    ],
+    "workflow": "only seven existing candidate ref blocks plus Go disposable localhost PGSSLMODE disable; all jobs/steps/conditions/fetch-depth/tests/normal+race/failure gates preserved",
+    "hosted_fix_effectiveness": "UNVERIFIED_PENDING_REAL_HOSTED"
+  },
+  "history": {
+    "original_artifacts_rehashed": 18,
+    "meaning": "bab8 PASS/push and two PR Go+gate FAIL preserved; not current acceptance"
+  },
+  "recorder": {
+    "run_id": "R-GROUP-ERROR-204E803-20261016",
+    "finish_result": "PASS",
+    "finish_exit": 0,
+    "validate_exit": 0,
+    "starts": 17,
+    "finishes": 17,
+    "trace_complete_for_recorded_commands": true,
+    "pre_recorder_trace_complete": false,
+    "disclosure": "instrumentation-disclosure.json",
+    "trace_audit": "trace-audit.json"
+  },
+  "gaps": [
+    "prospective_resume startup authority reads/tool preparation and later direct read-only displays not a complete prospective trace; missing per-step timings unavailable",
+    "four wrapper binding failures: exit1, no command executed/events; raw retained; direct recorder.py succeeded",
+    "first external probe helper argparse2/outer1 preserved; external helper repaired, v2 separate outputs passed; no source change",
+    "post-finish external seal helper argv-only mapping AssertionError exit1 preserved; original helper retained; resumed pairing by argv+exit, no Recorder lifecycle replay or stream edit"
+  ],
+  "source_lease": "RELEASED",
+  "external_evidence_lease": "RELEASED",
+  "source_writes": false,
+  "main_writes": false,
+  "push": false,
+  "pr_update": false,
+  "ci_trigger": false,
+  "pending": [
+    "new exact-head candidate and PR hosted required jobs",
+    "protected integration",
+    "actual-main hosted CI/full tree",
+    "first actual safe main sync",
+    "separate administrative candidate complete two-review/CI/integration/actual-main/second safe sync closure"
+  ],
+  "group_state": "unique backlog/planned",
+  "s2_gate": "OPEN",
+  "last_known_good_commit": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "artifact_count": 137,
+  "artifacts": [
+    {
+      "path": "01-status.stderr",
+      "bytes": 91,
+      "sha256": "7f4028d6c0e4ebd2ddaec3ce0e0959440e85dd9c9593d1a8a1050d4144d71468"
+    },
+    {
+      "path": "01-status.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "02-diff.stderr",
+      "bytes": 91,
+      "sha256": "7f4028d6c0e4ebd2ddaec3ce0e0959440e85dd9c9593d1a8a1050d4144d71468"
+    },
+    {
+      "path": "02-diff.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "03-log.stderr",
+      "bytes": 91,
+      "sha256": "7f4028d6c0e4ebd2ddaec3ce0e0959440e85dd9c9593d1a8a1050d4144d71468"
+    },
+    {
+      "path": "03-log.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "04-identity.stderr",
+      "bytes": 91,
+      "sha256": "7f4028d6c0e4ebd2ddaec3ce0e0959440e85dd9c9593d1a8a1050d4144d71468"
+    },
+    {
+      "path": "04-identity.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "05-status.stderr",
+      "bytes": 164,
+      "sha256": "85586b148616c4fa045a6632a8678afded3ad1aa6884fb43606cd6ea6da50f70"
+    },
+    {
+      "path": "05-status.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "06-diff.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "06-diff.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "07-log.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "07-log.stdout",
+      "bytes": 383,
+      "sha256": "f25cb76f7a4d0e0e6e8c7962669f605d1e39fd88866ba4a4e3221089ef8bfdaf"
+    },
+    {
+      "path": "08-root.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "08-root.stdout",
+      "bytes": 37,
+      "sha256": "2c26eff30a3cb1b221d817bcbfd11466c4c1a04980d76738fff3b993815bdcd7"
+    },
+    {
+      "path": "09-branch.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "09-branch.stdout",
+      "bytes": 27,
+      "sha256": "8de4fe6f93fbf9a2ef52cff4f3dc3308ccc3b569396b6239d5613abe18e01e9b"
+    },
+    {
+      "path": "10-head.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "10-head.stdout",
+      "bytes": 42,
+      "sha256": "e1d53a0f161f00181b929991d639a4eeb673081dd8fbf03872711daa587227b7"
+    },
+    {
+      "path": "11-frozen-baseline.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "11-frozen-baseline.stdout",
+      "bytes": 164,
+      "sha256": "74a9920ae5bd83d694d654231231b7a74b66bd47bf05de9b45cb6dabd7d39989"
+    },
+    {
+      "path": "12-planning-baseline.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "12-planning-baseline.stdout",
+      "bytes": 77,
+      "sha256": "da25c57ead20198d302d441479af13535190171558bf1ce64e4ad5df729ed426"
+    },
+    {
+      "path": "13-architecture-all.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "13-architecture-all.stdout",
+      "bytes": 219356,
+      "sha256": "4f65e9536ce23c00e1564e10630e385de25f2eed54724fd9e64301647ad616c6"
+    },
+    {
+      "path": "14-architecture-tests.stderr",
+      "bytes": 14686,
+      "sha256": "40781980c82d522dd6b8fc79fbe0135056df3a55db64b9f55d028882ac387b39"
+    },
+    {
+      "path": "14-architecture-tests.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "15-ci-tests.stderr",
+      "bytes": 8530,
+      "sha256": "23d91401781b579707806d4ae3a8e572cab8ebce6453dfb22de73b347ee22f67"
+    },
+    {
+      "path": "15-ci-tests.stdout",
+      "bytes": 410,
+      "sha256": "d260103c650a82689a727c276f85b42ca0d9c582efe3e36b8536e41390b8cea6"
+    },
+    {
+      "path": "16-source-input-audit.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "16-source-input-audit.stdout",
+      "bytes": 236,
+      "sha256": "f2e3013863217b524f28847b384dd700268998e064160ba9f95674c117152360"
+    },
+    {
+      "path": "17-error-probes.stderr",
+      "bytes": 577,
+      "sha256": "29a316dab162a18152beb12a988b15f7b65d11f282c3db963df41fe32068c2bc"
+    },
+    {
+      "path": "17-error-probes.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "18-error-probes-v2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "18-error-probes-v2.stdout",
+      "bytes": 150,
+      "sha256": "c0cafcab0ab4efe0c9ddeafd564ff88faa2ba9630377b1eee50f86f1fe143c07"
+    },
+    {
+      "path": "19-clean-acceptance.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "19-clean-acceptance.stdout",
+      "bytes": 212,
+      "sha256": "4adb9cf15b8c64c6648e0827632c48b08abc7cb2666b1044f29d1a0204ba2c47"
+    },
+    {
+      "path": "20-full-range-classifier.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "20-full-range-classifier.stdout",
+      "bytes": 13481,
+      "sha256": "26fa65a075afa254d5ea224aa0d3186c879a991bc9778769512226e0331f336f"
+    },
+    {
+      "path": "21-final-identity.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "21-final-identity.stdout",
+      "bytes": 203,
+      "sha256": "62118026c781c1eeaeb2f86eb90b2dd4ae40695874dcf84155137c065f547252"
+    },
+    {
+      "path": "audit_driver.py",
+      "bytes": 1709,
+      "sha256": "5bf70aedf6213389100ca3d189d16a2ce0adec26386c32a8f38555c81bb84c7a"
+    },
+    {
+      "path": "commands.jsonl",
+      "bytes": 20431,
+      "sha256": "b17f581c467bca60062572e40d6036455b6b22f7197e85b506d8886d3b092b86"
+    },
+    {
+      "path": "error_probes-v1.py",
+      "bytes": 4858,
+      "sha256": "ce3bcb81e6027ef2aaa726c04b2f5e49f4946b4afc3507f6187ee3fc79f852a0"
+    },
+    {
+      "path": "error_probes.py",
+      "bytes": 4904,
+      "sha256": "365cc134904f322c6572899d7202e73090b5ca6de643818402f047fc54cd2705"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 273,
+      "sha256": "1c307445598b695981c0657c1940413ea67a55d48b43b03823218b04de31f180"
+    },
+    {
+      "path": "findings.json",
+      "bytes": 431,
+      "sha256": "b05ef004025fd3aa92991ad23daef5d111477ab2c39c92014cc8df79d0761ee1"
+    },
+    {
+      "path": "full-range.patch",
+      "bytes": 1202243,
+      "sha256": "2cb818c4a03dab8f74b44e21ce0e9aa32bc9a4b8d415a420c86bb1a805f21b5d"
+    },
+    {
+      "path": "gather_review.py",
+      "bytes": 5165,
+      "sha256": "b6f943365459eb6e5a2659fca9ec2e0b295662325d47b57442cefdab2eb443d6"
+    },
+    {
+      "path": "history-verified.json",
+      "bytes": 147,
+      "sha256": "fdc7e1b8e05b5726fea6ef250a0f0fdb8c13173220f83f37f28b496208ca2adb"
+    },
+    {
+      "path": "human-request.txt",
+      "bytes": 2175,
+      "sha256": "ab0699e01d34dbca86b5d879715bbeb4d9073705e40d5a6684cc794a852a0bdd"
+    },
+    {
+      "path": "input-receipts-verified.json",
+      "bytes": 78174,
+      "sha256": "9b02b728b5a6bea8855a291dc0f4595fcb1a58b633e7b049b74bf6957e1d0a8e"
+    },
+    {
+      "path": "instrumentation-disclosure.json",
+      "bytes": 2405,
+      "sha256": "ff61773f34ec18e9e5efc02c15298cb0722b5e155ba1b75d0b6efa8fd3272647"
+    },
+    {
+      "path": "lifecycle.jsonl",
+      "bytes": 2290,
+      "sha256": "849cf77be1b0898a43fa43b128aedfde4cc4c7bd7e198b33851e6144c66caace"
+    },
+    {
+      "path": "prepare_closure.py",
+      "bytes": 7974,
+      "sha256": "581d7e26c0f9c9f2f49e1e9396ab5b05d1e232c7080c4239228da20895920e6e"
+    },
+    {
+      "path": "probe-results.json",
+      "bytes": 5821,
+      "sha256": "07f17b1c77fc77432f3b85635163340a1dbddf28de355869e3c37d36ee8fa72f"
+    },
+    {
+      "path": "recorder-finish.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "recorder-finish.stdout",
+      "bytes": 402,
+      "sha256": "c994feb45c5183b438dd4a2c1ba05c9fb5b7665b02f30a499a81677e12b53bc0"
+    },
+    {
+      "path": "recorder-result.json",
+      "bytes": 2234,
+      "sha256": "f37bdc6773508a7081d2c341e4ff284572ca39d4c1a1bfa7d404e09b05e31864"
+    },
+    {
+      "path": "recorder-validate.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "recorder-validate.stdout",
+      "bytes": 87,
+      "sha256": "186c1e15fcbd44092d242ae4ff9ea13c678b4ec8fa42967a3027c957c85e13be"
+    },
+    {
+      "path": "report.md",
+      "bytes": 10400,
+      "sha256": "8bdff26566675cd0c788b7f1ae332413b7b0c6fff87cc1409e1941388784687c"
+    },
+    {
+      "path": "research/prompts/P-GROUP-ERROR-204E803-20261016/metadata.json",
+      "bytes": 493,
+      "sha256": "2235502ca0fbeadd05984fd64a0bb729e4d8a59b054335ff29aa24787114e7ad"
+    },
+    {
+      "path": "research/prompts/P-GROUP-ERROR-204E803-20261016/prompt.txt",
+      "bytes": 2175,
+      "sha256": "ab0699e01d34dbca86b5d879715bbeb4d9073705e40d5a6684cc794a852a0bdd"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-0db5e351-d473-4933-956e-b287c7eb0094.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-0db5e351-d473-4933-956e-b287c7eb0094.stdout.txt",
+      "bytes": 124021,
+      "sha256": "8ea0e6ff400f9ff30d2372c82f41894771ad064e1f67b7645eeecf630c8ec455"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-27bca7f3-7077-439c-acd1-1ca9b0d38776.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-27bca7f3-7077-439c-acd1-1ca9b0d38776.stdout.txt",
+      "bytes": 378,
+      "sha256": "ab1c4731241aebc681caadd45a21477b7077fa3cd6c8914e3a556cf5f7a95e0d"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-36bbf8fa-78e8-4661-9bc6-0b606aa73b6e.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-36bbf8fa-78e8-4661-9bc6-0b606aa73b6e.stdout.txt",
+      "bytes": 210,
+      "sha256": "af0a45b6ef6e7e147b5874109deaec903afa7741f282b6ae0e9aff3fa09c7aee"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-4cdd60dc-3889-496d-be24-ea8f30faca8a.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-4cdd60dc-3889-496d-be24-ea8f30faca8a.stdout.txt",
+      "bytes": 202,
+      "sha256": "155b0fc8d6c01834ea53991bc37e0ad3894878740c9a5ceef9c975ac2fd61c9d"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-4e1552ff-979c-4d83-a527-7296706e294d.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-4e1552ff-979c-4d83-a527-7296706e294d.stdout.txt",
+      "bytes": 76,
+      "sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-531eec84-86c8-48c1-8386-e39c4c76192c.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-531eec84-86c8-48c1-8386-e39c4c76192c.stdout.txt",
+      "bytes": 41,
+      "sha256": "e840ebb68a7d05e8450b1968f7827dc8f06f839440b3a3f1dcc55d16f6aedd16"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-796aa96e-7987-4635-bfd7-7e1d5fb8bc27.stderr.txt",
+      "bytes": 8467,
+      "sha256": "6c1a97d07abbcf3f28cbb8ea1c2cd30b4a1cf87f0145effa152a20406f46e729"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-796aa96e-7987-4635-bfd7-7e1d5fb8bc27.stdout.txt",
+      "bytes": 389,
+      "sha256": "92c2b8c43bdb71a6e4ccb5c062e9afd9992fa86eee07cb3c1d4a543c1e687b52"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-818194fe-08c5-4e28-8b0d-5ebfeee0107a.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-818194fe-08c5-4e28-8b0d-5ebfeee0107a.stdout.txt",
+      "bytes": 235,
+      "sha256": "e384c72c8d9ee1a7ae8dbd448664fa42d392ea0194ad4cbc36b60b32927c5740"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-832ea65a-70d5-440e-9ee5-08f0b475d430.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-832ea65a-70d5-440e-9ee5-08f0b475d430.stdout.txt",
+      "bytes": 13335,
+      "sha256": "350ac55546f813f2f367f92a3862ee26c4ad384564e4bd00cea4a7c08fc6ae11"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-9c13c7fa-4801-400b-bd14-d20fc99e0313.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-9c13c7fa-4801-400b-bd14-d20fc99e0313.stdout.txt",
+      "bytes": 36,
+      "sha256": "d2fc23e9dca054673dc2873147eafe65bf21ab9c8af12d8d77225fcab696d62f"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-c67c50cc-dc0d-40e3-bf4f-f06ac8763cc7.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-c67c50cc-dc0d-40e3-bf4f-f06ac8763cc7.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-cfbf5cc5-e33e-43b2-b9ec-17c0337ded3d.stderr.txt",
+      "bytes": 14593,
+      "sha256": "98b91511ba1e311c43510552909f34869ed2318cf142d4b4a804f9b746eeabcb"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-cfbf5cc5-e33e-43b2-b9ec-17c0337ded3d.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-d8fad090-05e7-49d6-a79b-6968392bb01e.stderr.txt",
+      "bytes": 570,
+      "sha256": "7f985eba3b89fca6eac63be49ac2c81cf4e64661f9ce521a1de503c2964213b3"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-d8fad090-05e7-49d6-a79b-6968392bb01e.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-ded9a79f-c1f3-4478-b229-0f82393a70c7.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-ded9a79f-c1f3-4478-b229-0f82393a70c7.stdout.txt",
+      "bytes": 163,
+      "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-e05eddb2-4706-4cd2-8238-860e673f0a9f.stderr.txt",
+      "bytes": 162,
+      "sha256": "6660b55d5ddc23a90bc143d59cd97ee8e2eac08138dcc650f30b3c781c0c994e"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-e05eddb2-4706-4cd2-8238-860e673f0a9f.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-f0342d48-4245-4795-97c4-d139ee04459d.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-f0342d48-4245-4795-97c4-d139ee04459d.stdout.txt",
+      "bytes": 26,
+      "sha256": "b3099d64da5f9efb15ace8c2ac760d320ce030afd1934871be20d472d7b7df20"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-f307fe4b-7aec-443c-93af-2dca894f4f9f.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/blobs/C-f307fe4b-7aec-443c-93af-2dca894f4f9f.stdout.txt",
+      "bytes": 149,
+      "sha256": "e0d061da717a31b0410ccd6d7bc8f2f395f78042035ea9d697cabbaa209ed9a9"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/diff.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/events.jsonl",
+      "bytes": 27631,
+      "sha256": "b27b0c1fe09189169ee2d7ffa68d34075cede00ea2eb4466fddd221b072fc285"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/final_state.json",
+      "bytes": 14583,
+      "sha256": "64ffb81f80a439c2a6c50b421602fe2c34c644753aa8e668e2d7f0998493bb33"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/initial_state.json",
+      "bytes": 14583,
+      "sha256": "31b643cbd93d0ee97ab35d8264546d6110415ff0d5d48837d6f856302ede1e76"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/metadata.json",
+      "bytes": 1096,
+      "sha256": "3317a61e01a14c8ab3a3d105c8bc154c11a80b6fc753a0848125b7c839f675f1"
+    },
+    {
+      "path": "research/runs/R-GROUP-ERROR-204E803-20261016/summary.json",
+      "bytes": 419,
+      "sha256": "e4791b8a88a66d61a432d5f0a0b5845335d1ebbcb5524762fcf5283380e6bc52"
+    },
+    {
+      "path": "retained-boundaries.json",
+      "bytes": 4714,
+      "sha256": "c1bab18c261090524e8632486fee58cd21cabe66b71578870d1207a34cbd460d"
+    },
+    {
+      "path": "review-finished-event.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "review-finished-event.stdout",
+      "bytes": 728,
+      "sha256": "e239bbb63011b9be96ce16e40627b2f8605b71a7a176d8dc5907129d273aa55b"
+    },
+    {
+      "path": "runtime-authority-v1.stderr",
+      "bytes": 110,
+      "sha256": "2b333b3a00c3ba4a5727be8ebfec0e74b15c468a35032a05be528e59209dffc5"
+    },
+    {
+      "path": "runtime-authority-v1.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime-authority.stderr",
+      "bytes": 110,
+      "sha256": "2b333b3a00c3ba4a5727be8ebfec0e74b15c468a35032a05be528e59209dffc5"
+    },
+    {
+      "path": "runtime-authority.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "seal-attempt1-failure.json",
+      "bytes": 739,
+      "sha256": "e39034d8a8dfda96594152adb0129a8f56ecfff788148112d68969a92198ce8b"
+    },
+    {
+      "path": "seal_review-v1.py",
+      "bytes": 9215,
+      "sha256": "fe4d030187f01f480beab6c3e9074518d75c13eb7ee51c096bdbbdd2ea4f611e"
+    },
+    {
+      "path": "seal_review.py",
+      "bytes": 9745,
+      "sha256": "59ea24e19e9ca2d13b5274cd9c4ea159c05fa681d000af08050579648e5aedbe"
+    },
+    {
+      "path": "source-inventory.json",
+      "bytes": 54209,
+      "sha256": "bf36ae69cebbe5c73313499135153df1d12d53b969aa162d5f86fd8cc6c02040"
+    },
+    {
+      "path": "trace-audit.json",
+      "bytes": 23393,
+      "sha256": "2af156371d4785bd0593561ed35b2b2c65a43bfa72994de23ff985385baa9ac8"
+    },
+    {
+      "path": "v2-group-backlog-blocks-claimed-gate.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-group-backlog-blocks-claimed-gate.stdout",
+      "bytes": 83,
+      "sha256": "455d52a24910cb0ec5f474276f443d2585138c4bd61904f838604a6b60a446cd"
+    },
+    {
+      "path": "v2-language-rebound-group.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-language-rebound-group.stdout",
+      "bytes": 102,
+      "sha256": "07afd259774bfbcf986f3bc5ffc0ad5293e89f78a4fa2e62995e8c2fcb3653d3"
+    },
+    {
+      "path": "v2-malformed-language-policy.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-malformed-language-policy.stdout",
+      "bytes": 104,
+      "sha256": "92e5e71d0a78fa661db0f8db7359da771f946a72f9389a0672c2f43c3ed4bd35"
+    },
+    {
+      "path": "v2-missing-completion-field.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-missing-completion-field.stdout",
+      "bytes": 115,
+      "sha256": "9872e67801cf40105a0873e43936afead8f39d76f70d34cd61ca770fb5157998"
+    },
+    {
+      "path": "v2-missing-group-policy.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-missing-group-policy.stdout",
+      "bytes": 99,
+      "sha256": "8bf34cb50acd66aa0d373fb8c0798a7292f4f64b36a59d766b22e527ddd68571"
+    },
+    {
+      "path": "v2-missing-group-task.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-missing-group-task.stdout",
+      "bytes": 80,
+      "sha256": "3562d13a7a88c942bea3ce08439151115357b15a76c756c56821788140b1f9f0"
+    },
+    {
+      "path": "v2-runtime-authority.stderr",
+      "bytes": 1514,
+      "sha256": "93e0ef028aabd30d0622bcf8b714d5f28f00fd0cec2eac032b9c253eb7d29b8d"
+    },
+    {
+      "path": "v2-runtime-authority.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-type-evidence.stderr",
+      "bytes": 1212,
+      "sha256": "1178c74962a8ce34a5f3c3ab1cfa24577e2e99643b0ae25bbb4d6a8f1ca44858"
+    },
+    {
+      "path": "v2-type-evidence.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2-type-inventory.stderr",
+      "bytes": 1626,
+      "sha256": "1c5b3a8519c674b04e6e6507973fa8d186b20efec11af7219136fe5e4f8a467d"
+    },
+    {
+      "path": "v2-type-inventory.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification-summary.json",
+      "bytes": 25007,
+      "sha256": "03a8dbcabb40366150fb8cb34105294cc97c497fd2880613709508d2b937e006"
+    },
+    {
+      "path": "workflow-invariance.json",
+      "bytes": 1103,
+      "sha256": "026c0198a2dc0c141213cdbd84c5c297dff54de82e57dc48f0d8faddf39f9786"
+    }
+  ],
+  "sealed_at_utc": "2026-10-16T06:07:40.608432+00:00"
+}
