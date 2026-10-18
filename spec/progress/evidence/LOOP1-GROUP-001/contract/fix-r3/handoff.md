@@ -1,0 +1,13 @@
+# Fresh Fix r3 handoff
+
+R3-P2-001 is locally repaired by selecting raw body/query and reading requestId only from a dict. Non-object malformed requests use the existing server UUID path. All response schema/status/code/UUID validation and correlation for a valid supplied requestId remain active. No catch, wire/schema/fixture, checker, pagination, database, CI or product change was added.
+
+The sealed Review r3 receipt/report/manifest and all416 original artifacts were verified. The original4 cases reproduce4AttributeError before (exit1) and accept4canonical400 outcomes after (exit0). Two focused parameterized test methods cover create/add/list and actualJSON null/array/bool/number/string plus empty-object control, wrong status/code/UUID/success and malformed objects retaining valid requestIds. Their run against the bca verifier fails with15subtest errors; all22current tests pass. Original20test methods/22methods+helpersAST,12other verifier functions and35valid/30invalidgolden bytes are preserved. The initial red helper had a standard-library name shadowing failure; its raw output is retained and isolated Python -I produced the actual red evidence.
+
+Frozen/planning/all-architecture,88architecture(skip1)/35CI(skip4),oldAuth/Sync4/WSS/Plugin pass locally. Development/clean committedAcceptance/finalSHA/clean/actualownedblobs are bound by the external final receipt; source docs deliberately do not self-predict a commitSHA. NoPG code changed, so this Fix did not rerunPG or claim a newPG result; independent Review r3's real11tests/0skip remains original evidence, and hosted must execute it again.
+
+Research capture is prospective_resume/partial. Startup and helperauthoring/communications/finalpackaging/sealing gaps are disclosed; finish is honestlyFAIL and structural validation/0unmatched are reported separately. No trace was altered. Public raw outputs and commands are preserved byte-for-byte in the accompanying archive and bound by SHA256/bytes; all new loose text is explicitUTF8LF.
+
+Only the declared4paths and newfix-r3evidence are owned. Parentbca,acceptedbase6f and allhistoricalFAIL/sealed artifacts remain preserved. One task-ownedfixcommit is followed by cleanAcceptance and finalexternal sealing. SOURCE WRITE LEASE RELEASED is asserted only in the finalexternalreceipt after completion. No push/PR/CI/merge/synchronization occurred. NewfinalSHA regularr4 and different fresh specialistr2 are PENDING, as are hosted/protectedintegration/actualmain/safemainsync/contractfreeze. GROUP staysactive/group_product;S2OPEN;Go/three-client products remainPENDING.
+
+Latest actual candidate discovery: C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r3/final-receipt.json.

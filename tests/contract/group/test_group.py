@@ -230,4 +230,36 @@ class GroupContractTests(unittest.TestCase):
                 if not valid:self.assertTrue(child.stderr)
 
 
+    def test_nonobject_requests_accept_canonical_errors_and_reject_bad_responses(self):
+        for name,field in (('create-a-b','body'),('member-b-adds-nonfriend-c','body'),('snapshot-nonfriend','query')):
+            for encoded in ('null','[]','true','42','"decoded scalar JSON"','{}'):
+                with self.subTest(fixture=name,json=encoded):
+                    original=self.case(name);case=copy.deepcopy(original)
+                    case['request'][field]=json.loads(encoded)
+                    case['status']=400
+                    case['response']={'requestId':'40000000-0000-4000-8000-000000000099','error':{'code':'VALIDATION_FAILED','message':'Request validation failed.'}}
+                    self.assertEqual(v.request_failure(case['operation'],case['request'],case['context'],self.document),(400,'VALIDATION_FAILED'))
+                    v.check_exchange(case,self.document)
+                    mutations=[
+                        ('status',lambda c:c.__setitem__('status',401)),
+                        ('code',lambda c:c['response']['error'].__setitem__('code','AUTH_REQUIRED')),
+                        ('requestId',lambda c:c['response'].__setitem__('requestId','not-a-uuid')),
+                        ('success',lambda c:c.update(status=original['status'],response=original['response'])),
+                    ]
+                    for label,mutate in mutations:
+                        invalid=copy.deepcopy(case);mutate(invalid)
+                        with self.subTest(mutation=label),self.assertRaises(v.Invalid):v.check_exchange(invalid,self.document)
+
+    def test_malformed_objects_with_valid_request_ids_still_require_correlation(self):
+        for name,field in (('create-a-b','body'),('member-b-adds-nonfriend-c','body'),('snapshot-nonfriend','query')):
+            with self.subTest(fixture=name):
+                case=self.case(name);request_id=case['request'][field]['requestId']
+                case['request'][field]={'requestId':request_id,'limit':0} if field=='query' else {'requestId':request_id,'memberUserIds':[]}
+                case['status']=400
+                case['response']={'requestId':request_id,'error':{'code':'VALIDATION_FAILED','message':'Request validation failed.'}}
+                v.check_exchange(case,self.document)
+                case['response']['requestId']='40000000-0000-4000-8000-000000000099'
+                with self.assertRaises(v.Invalid):v.check_exchange(case,self.document)
+
+
 if __name__=='__main__':unittest.main()

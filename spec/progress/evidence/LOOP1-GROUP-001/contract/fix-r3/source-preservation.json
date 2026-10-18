@@ -1,0 +1,51 @@
+{
+  "result": "PASS",
+  "parent_sha": "bcae6468285bd050bce6a7e53012e66bc15ab962",
+  "verifier_delta": "exact one-line replaced by two object-aware extraction lines",
+  "other_verifier_functions_unchanged": [
+    "require",
+    "resolve_schema",
+    "without_patterns",
+    "check_patterns",
+    "validate",
+    "structural_lint",
+    "check_document",
+    "operation_key",
+    "request_failure",
+    "row_key",
+    "verify_fixtures",
+    "main"
+  ],
+  "old_test_methods_unchanged": 20,
+  "old_methods_and_helpers_unchanged": 22,
+  "current_tests": 22,
+  "golden_fixtures_unchanged": {
+    "valid": 35,
+    "invalid": 30
+  },
+  "changed_tracked_paths": [
+    "contracts/http/verify-group.py",
+    "spec/progress/current.md",
+    "spec/tasks/active/LOOP1-GROUP-001.md",
+    "tests/contract/group/test_group.py"
+  ],
+  "new_paths": [
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r3/handoff.md",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r3/local-verification.json",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r3/upstream-review-bindings.json",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r3/upstream-review-originals.zip"
+  ],
+  "protected_0001": [
+    {
+      "path": "contracts/database/migrations/0001_initial.up.sql",
+      "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "bytes": 7630
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.down.sql",
+      "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "bytes": 494
+    }
+  ],
+  "protection": "git diff from bca restricts every tracked source/evidence byte change to four declared paths and new fix-r3 evidence; all other parent tree entries remain unchanged"
+}

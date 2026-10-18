@@ -223,7 +223,8 @@ def check_exchange(case, document=None):
     body = case['response']
     validate(body,responses[status]['content']['application/json']['schema'],document)
     validate(body['requestId'],{'$ref':'./auth-user-friend.openapi.json#/components/schemas/Id'})
-    supplied = request.get('query',{}).get('requestId') if operation == 'list' else request.get('body',{}).get('requestId')
+    supplied_fields = request.get('query') if operation == 'list' else request.get('body')
+    supplied = supplied_fields.get('requestId') if isinstance(supplied_fields,dict) else None
     if isinstance(supplied,str):
         try:
             validate(supplied,{'$ref':'./auth-user-friend.openapi.json#/components/schemas/Id'})

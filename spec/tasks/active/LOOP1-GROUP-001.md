@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/group_contract_fix_r2
+owner: /root/group_contract_fix_r3
 stage: S2
 gate: S2
 client_supplement_phase: group_product
@@ -190,17 +190,17 @@ main_sync_evidence: unavailable
 
 # Handoff
 
-首契约历史5aa常规FAIL、0190常规R2PASS及专项R1FAIL EH-R1-P2-001全部保留。fresh Fix r2只修Python结构检查桥接退出码分类，并加3个行为故障回归；详见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r2/handoff.md`。当前唯一候选发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r2/final-receipt.json`；文档生成时finalSHA=PENDING，以该receipt的实际clean committed SHA/ownedblobs/Recorder/lease为准，历史r1/impl receipt不得作为新final候选。
+首契约历史5aa常规FAIL、0190常规R2PASS与专项R1FAIL、bca常规R3FAIL R3-P2-001及Spec初版PASS被supplement FAIL取代的原件全部保留。R3最终receipt SHA a13fb68f86291a800e5f3b1c5068a40f653dba47ddcb46f580ca490a4297d363、report850075eb、manifest246677e3及416原件已逐一核对。fresh Fix r3仅使body/query关联ID提取判定对象，加入2个参数化回归；详见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r3/handoff.md`。唯一当前候选发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r3/final-receipt.json`；文档生成时finalSHA=PENDING，以该receipt实际clean committed SHA/ownedblobs/Recorder/lease为准，历史bca及旧receipt不可充当新final候选。
 
-regular_review: NEW PENDING final SHA (fresh r3 required)
+regular_review: NEW PENDING final SHA (fresh r4 required)
 error_handling_review: DIFFERENT NEW PENDING final SHA (fresh specialist r2 required)
 hosted_acceptance: PENDING
 main_sync: PENDING
-整体GROUP保持active/group_product，S2 OPEN；历史FAIL和Recorder FAIL不抹除。
+整体GROUP保持active/group_product，S2 OPEN；历史FAIL和Recorder FAIL不抹除。最后已知良好accepted/synchronized main仍6f163927334c39c9c8833eb8222335c661bde673。
 
 # Next Action
 
-Coordinator核新fixed receipt原件/hash/cleanSHA/范围→NEW fresh常规r3→DIFFERENT fresh错误专项r2同finalSHA→exact candidate/PR实际必需jobs/steps（群verifier、实际20tests、真实PG）→protected merge→actual-main hosted/tree→保存782unknown安全主目录同步。两项新审查前禁止push/CI-triggering PR；本Fix不执行push/PR/CI/merge/sync。固定外部contract-acceptance-seal.json仍缺/坏=PENDING，逐项核原件/hash/jobs/sync；全部完成后才fresh产品Agent登记实际contract SHA并继续Go/三端。整个Task不移review/done，S2不PASS。
+Coordinator核fix-r3 receipt原件/hash/cleanSHA/实际--no-renames范围→NEW fresh常规r4→DIFFERENT fresh错误专项r2同finalSHA→exact candidate/PR实际必需jobs/steps（群verifier、实际22tests、真实PG）→protected merge→actual-main hosted/tree→保存782unknown安全主目录同步。两项新审查前禁止push/CI-triggering PR；本Fix不执行push/PR/CI/merge/sync。固定外部contract-acceptance-seal.json仍缺/坏=PENDING，逐项核原件/hash/jobs/sync；全部完成后才fresh产品Agent登记实际contract SHA并继续Go/三端。整个Task不移review/done，S2不PASS。
 
 # 2026-10-18 Activation / Contract Candidate
 
@@ -262,3 +262,13 @@ Recorder为prospective_resume/partial，startup/helperauthoring/通信/封存不
 本Fix r2首次Development真实exit1：current两行Command/Evidence格式不符及子进程选中系统Python2.7；已最小修正记录格式并在本轮runner环境前置既有Python3路径，不改控制检查器。原始FAIL保存，复验/clean Acceptance由最终receipt绑定。
 
 Staged whitespace检查首次失败：本轮新松散JSON以Windows CRLF写出且证据目录保留原字节，git识别CR为尾空白；尚未commit。外部原始probe/Recorder和sealed specialist均不改，新repo证据draft原字节另存pre-stage-originals.zip；松散JSON仅生成逻辑等价LF语义投影，representation-bindings.json绑定原/投影hash，更新索引后重验。此为表示修正，不更改原故障事实。
+
+# Fresh Fix R3 Local Outcome
+
+2026-10-18 `/root/group_contract_fix_r3`先只读startup，在R3封存后收到Coordinator明确唯一SOURCE WRITE LEASE GRANTED；assigned exactroot/branch/clean bca已核，最终R3receipt/report/416原件和actual52 no-renames parent paths逐项匹配。R3-P2-001原4个non-object body合法400交换before真实4AttributeError/exit1，after同封存输入4接受/exit0。
+
+仅verify-group.py读取raw body/query后dict才提取requestId，否则走现uncorrelatable/serverUUID路径；schema/UUID/错误优先级及有合法ID的坏对象关联检查保持。无新增catch，不把unknown context/validator defects变为known400。新增2个参数化方法涵盖create/add/list、实际JSON null/array/bool/number/string及空对象对照、非法状态/码/UUID/伪成功与合法ID坏对象关联。新回归在bca原verifier真实15subtest errors/exit1，修后完整22tests0fail0error；原20tests/22methods+helpers AST、另12个verifier函数和35valid30invalidfixtures字节不变，0190分页prefix/lookahead/合法短页/237成员与bca结构checker故障分类完整保留。
+
+Frozen/planning/allarchitecture、88architecture(skip1)/35CI(skip4)与旧Auth/Sync4/WSS/Plugin均exit0；Development/clean committedAcceptance及最终耗时/实际SHA由新receipt绑定。无PG/schema/runner变化，本Fix不重跑也不声称PG通过；R3独立真实11tests/0skip原件保留，未来hosted仍必需真实执行。wire/OpenAPI/JSchecker/errors/SQL/runner/CI/0001bytes、Go/三端/Frozen/ADR/旧sealed保持。
+
+外部red helper首次非隔离调用遇本OUT inspect.py遮蔽标准库inspect而失败，原始exit1保留；用Python -I排除helper目录后才得到真实15errors，不改产品或旧输出。早期工具展示截断而raw完整保存，局部读取复核。Recorder prospective_resume/partial：startup、helperauthoring/通信/最后packaging与封存非完整capture；finish诚实FAIL、direct validate结构结果由receipt单独报告，trace不编辑。全部post-driver命令串行无same-run overlap。单个fixcommit之后释放lease；新finalSHA常规r4/DIFFERENT专项r2、hosted/protected/actual-main/main-sync全部PENDING，GROUPactive/S2OPEN。
