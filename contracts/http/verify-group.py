@@ -253,7 +253,13 @@ def check_exchange(case, document=None):
         current = {key:value for key,value in item.items() if key != 'member'}
         if conv in metadata: require(metadata[conv] == current,'within-page conversation metadata')
         metadata[conv] = current
-    require(body['hasMore'] == context['additionalRowExists'],'hasMore iff lookahead committed row')
+    eligible = sorted(tuple(row) for row in context['activeRows']
+                      if row[0] in context['ownConversationIds'] and tuple(row) > previous)
+    require(keys == eligible[:len(keys)],'complete ordered eligible page prefix')
+    require(bool(keys) or not eligible,'empty page only when no eligible rows remain')
+    has_more = len(eligible) > len(keys)
+    require(context['additionalRowExists'] == has_more,'fixture lookahead matches eligible rows')
+    require(body['hasMore'] == has_more,'hasMore iff lookahead committed row')
     expected = dict(afterConversationId=keys[-1][0],afterMemberUserId=keys[-1][1]) if body['hasMore'] and keys else dict(afterConversationId='',afterMemberUserId='')
     require(not body['hasMore'] or bool(items),'hasMore requires nonempty progress')
     require(body['next'] == expected,'last-row continuation or terminal empty tuple')

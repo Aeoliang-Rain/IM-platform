@@ -1,0 +1,62 @@
+{
+  "scope": "R1-P2-001 changed-source delta only; inherited whole first-slice inventory stays historical at5aa, fresh reviewers must inspect whole new candidate.",
+  "files": [
+    {
+      "path": "contracts/fixtures/group/exchanges.json",
+      "sha256": "7964b6bfb2923b29dfa23928ff6f7aee349c13c2cd0b9dd48cb35ae51e529395",
+      "responsibility": "Existing canonical exchange data; append four omission/lookahead negatives only.",
+      "new_catches_or_fallbacks": 0,
+      "retained_handlers": [],
+      "retained_basis": "No catch or fallback exists in this changed pure-data/test file."
+    },
+    {
+      "path": "contracts/http/verify-group.py",
+      "sha256": "7fecca28ecd1811ccf2f95d4f1dc4afb23e6bd9a1097b2f7f14317a7b9b1db31",
+      "responsibility": "Existing offline schema/exchange oracle; derive full eligible current page and lookahead. No runtime or new wire.",
+      "new_catches_or_fallbacks": 0,
+      "retained_handlers": [
+        {
+          "line": 186,
+          "type": "Invalid",
+          "body": "return (400, 'VALIDATION_FAILED')",
+          "failure": "Known malformed request/ID/target/query schema or actor-in-target rejection raises Invalid.",
+          "basis": "Existing frozen400 VALIDATION_FAILED request boundary.",
+          "behavior": "Return the canonical known semantic rejection; caller must match status/code. Unknown exceptions propagate."
+        },
+        {
+          "line": 223,
+          "type": "Invalid",
+          "body": "pass",
+          "failure": "Supplied requestId cannot be associated because its canonical UUID validation raises Invalid.",
+          "basis": "Existing error-correlation contract requires a fresh valid server UUID for uncorrelatable input.",
+          "behavior": "Skip echo association only; response/body UUID was already validated. Unknown errors propagate."
+        },
+        {
+          "line": 88,
+          "type": "Invalid",
+          "body": "pass",
+          "failure": "An individual oneOf branch rejects the value with known Invalid.",
+          "basis": "Existing shared schema validator requires exactly one matching alternative, including canonical pattern.",
+          "behavior": "Count only successful alternatives; final match count mismatch raises Invalid. Other exception types propagate."
+        },
+        {
+          "line": 281,
+          "type": "Invalid",
+          "body": "continue",
+          "failure": "An explicitly negative golden exchange raises known Invalid.",
+          "basis": "Existing verify_fixtures negative-control assertion.",
+          "behavior": "Count the expected rejection. Accepted negatives and unknown/internal exceptions fail the verifier."
+        }
+      ],
+      "retained_basis": "Only known Invalid rejection is handled: oneOf branch selection, public request validation, uncorrelatable request UUID and expected negative fixtures. Each retains real rejection behavior; unknown/internal errors propagate. Fix adds no handler, fallback, dependency or classification."
+    },
+    {
+      "path": "tests/contract/group/test_group.py",
+      "sha256": "314d3884969558f1f7191a8e92d03c784a8f19f7ea87379e7d77e11eb54eb0cc",
+      "responsibility": "Existing group regression suite; append four completeness/keyset/lookahead/legitimate-short-prefix tests only.",
+      "new_catches_or_fallbacks": 0,
+      "retained_handlers": [],
+      "retained_basis": "No catch or fallback exists in this changed pure-data/test file."
+    }
+  ]
+}

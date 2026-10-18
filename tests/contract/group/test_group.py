@@ -90,6 +90,60 @@ class GroupContractTests(unittest.TestCase):
         self.assertEqual(rows[0]['member']['user']['displayName'],rows[1]['member']['user']['displayName'])
         self.assertNotEqual(rows[0]['member']['user']['userId'],rows[1]['member']['user']['userId'])
 
+    def test_skipped_eligible_rows_and_incomplete_terminal_pages_are_rejected(self):
+        for name in ('snapshot-nonfriend','snapshot-split-page','snapshot-resume-terminal'):
+            original=self.case(name)
+            omitted=range(len(original['response']['items'])-1) if original['response']['hasMore'] else range(len(original['response']['items']))
+            for index in omitted:
+                with self.subTest(fixture=name,omitted=index):
+                    case=copy.deepcopy(original)
+                    del case['response']['items'][index]
+                    if case['response']['hasMore'] and case['response']['items']:
+                        last=v.row_key(case['response']['items'][-1])
+                        case['response']['next']=dict(afterConversationId=last[0],afterMemberUserId=last[1])
+                    with self.assertRaises(v.Invalid):v.check_exchange(case)
+        case=self.case('snapshot-nonfriend');case['response']['items']=[]
+        with self.assertRaises(v.Invalid):v.check_exchange(case)
+
+    def test_lookahead_is_derived_even_when_context_and_response_agree(self):
+        for name in ('snapshot-nonfriend','snapshot-split-page'):
+            case=self.case(name);more=not case['response']['hasMore']
+            case['context']['additionalRowExists']=more
+            case['response']['hasMore']=more
+            last=v.row_key(case['response']['items'][-1])
+            case['response']['next']=dict(afterConversationId=last[0],afterMemberUserId=last[1]) if more else dict(afterConversationId='',afterMemberUserId='')
+            with self.subTest(fixture=name),self.assertRaises(v.Invalid):v.check_exchange(case)
+
+    def test_page_prefix_uses_full_tuple_order_and_own_conversation_filter(self):
+        case=self.case('snapshot-split-page')
+        first,second=case['response']['items']
+        later=copy.deepcopy(first);later['conversationId']='30000000-0000-4000-8000-000000000002'
+        outside=copy.deepcopy(first);outside['conversationId']='30000000-0000-4000-8000-000000000003'
+        case['context']['ownConversationIds'].append(later['conversationId'])
+        case['context']['activeRows']=[list(v.row_key(row)) for row in (outside,later,second,first)]
+        case['request']['query'].update(afterConversationId=first['conversationId'],afterMemberUserId=first['member']['user']['userId'])
+        case['response'].update(items=[second,later],hasMore=False,next=dict(afterConversationId='',afterMemberUserId=''))
+        case['context']['additionalRowExists']=False
+        v.check_exchange(case)
+        for omitted in (0,1):
+            incomplete=copy.deepcopy(case);del incomplete['response']['items'][omitted]
+            with self.subTest(omitted=omitted),self.assertRaises(v.Invalid):v.check_exchange(incomplete)
+
+    def test_short_ordered_prefix_with_truthful_lookahead_can_reach_terminal(self):
+        for limit in (2,None):
+            with self.subTest(limit=limit):
+                first=self.case('snapshot-split-page');all_rows=self.case('snapshot-nonfriend')['response']['items']
+                if limit is None:first['request']['query'].pop('limit')
+                first['response']['items']=all_rows[:1]
+                first['response']['next']=dict(afterConversationId=all_rows[0]['conversationId'],afterMemberUserId=all_rows[0]['member']['user']['userId'])
+                v.check_exchange(first)
+                last=copy.deepcopy(first)
+                last['request']['query'].update(first['response']['next'])
+                last['response'].update(items=all_rows[1:],hasMore=False,next=dict(afterConversationId='',afterMemberUserId=''))
+                last['context']['additionalRowExists']=False
+                v.check_exchange(last)
+                self.assertEqual(first['response']['items']+last['response']['items'],all_rows)
+
     def test_more_than_one_page_and_no_total_group_size_cap(self):
         template=self.case('snapshot-nonfriend');base=template['response']['items'][0]
         members=[]

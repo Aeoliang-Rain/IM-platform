@@ -1,0 +1,23 @@
+{
+  "parent_sha": "5aa1632341fd90f30a00a87356ee2d09ee3f9bbe",
+  "base_sha": "6f163927334c39c9c8833eb8222335c661bde673",
+  "fix_source_paths": [
+    "contracts/fixtures/group/exchanges.json",
+    "contracts/http/verify-group.py",
+    "tests/contract/group/test_group.py"
+  ],
+  "unmodified_old_valid": 35,
+  "unmodified_old_invalid": 26,
+  "new_invalid": 4,
+  "old_test_methods_unchanged": 13,
+  "new_test_methods": 4,
+  "unrelated_tracked_deltas": [],
+  "preserved": [
+    "Frozen/PDF/ADR/domain/invariants/acceptance",
+    "all Go and clients",
+    "all old contract shapes incl group.openapi.json, errors and0001",
+    "migration runner/0002/database tests/workflow/Auth adaptation from5aa",
+    "all historical implementation/review/Recorder evidence"
+  ],
+  "method": "git diff parent names before handoff; all old fixture objects exact; AST bodies of every old test/helper exact; final committed trees rechecked in external receipt"
+}

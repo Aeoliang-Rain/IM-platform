@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/group_contract_impl
+owner: /root/group_contract_fix_r1
 stage: S2
 gate: S2
 client_supplement_phase: group_product
@@ -190,11 +190,17 @@ main_sync_evidence: unavailable
 
 # Handoff
 
-首契约候选已完成本地验证；详细实现/范围/真实PG/失败与研究限制见 spec/progress/evidence/LOOP1-GROUP-001/contract/implementation-handoff.md。实际clean finalSHA/ownedblobs/Recorder/lease只由固定外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-impl/final-receipt.json` 绑定。NEW常规→DIFFERENT NEW专项均PENDING，hosted/集成/actual-main/主目录同步PENDING；整体active、S2 OPEN。
+首契约旧候选 `5aa1632341fd90f30a00a87356ee2d09ee3f9bbe` 常规独立审查 FAIL（R1-P2-001）已保留。fresh Fix `/root/group_contract_fix_r1` 最小修复分页验收完整性；本轮事实/范围/失败和研究限制见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r1/handoff.md`。当前最终候选唯一发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r1/final-receipt.json`，文档生成时 finalSHA=PENDING，以该新 receipt 的实际 clean committed SHA/owned blobs/Recorder/lease 为准；旧 contract-impl/final-receipt.json 只绑定历史5aa，不能作为当前最终候选。
+
+regular_review: NEW PENDING final SHA
+error_handling_review: DIFFERENT NEW PENDING final SHA
+hosted_acceptance: PENDING
+main_sync: PENDING
+整体GROUP保持active/group_product，S2 OPEN；原regular FAIL与实现Recorder FAIL均不抹除。
 
 # Next Action
 
-Coordinator从外部final-receipt恢复clean契约候选→fresh常规→different fresh错误专项同最终SHA→exact candidate/PR实际必需jobs/steps（两新群入口+真实PG迁移）→protected merge→actual-main hosted/tree→保存782unknown的安全主目录同步。固定外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-acceptance-seal.json` 缺/坏保持PENDING，从首缺口接续；后续fresh产品Agent必须逐项核原件/hash/CI/同步，不能只看seal存在/PASS。完全核验才把本生成时pending视为历史并记录真实contract SHA后实现Go/三端；整体GROUP不移review/done，S2 OPEN。
+Coordinator核新固定final-receipt原件/hash/clean SHA/范围→fresh常规→DIFFERENT fresh错误专项同最终SHA→exact candidate/PR实际必需jobs/steps（两个群入口与真实PG迁移）→protected merge→actual-main hosted/tree→保存782unknown安全主目录同步。固定外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-acceptance-seal.json` 缺/坏保持PENDING；逐项核原件/hash/jobs/sync，不能只信seal。全部完成才由fresh产品Agent记录实际contract SHA后实现Go/三端；整体Task不移review/done，S2不PASS。
 
 # 2026-10-18 Activation / Contract Candidate
 
@@ -236,3 +242,11 @@ main_sync: PENDING
 后续产品实情：writeSocialEvent旧revision固定1不能用于多次群变更；现user_state仅kind/subject/revision且Sequence number|bigint。契约接受后fresh实现先核验实际持久化需要/Task范围，不能把成员JSON藏无关列或投机新增native/schema/新revision平台；稳定前缀、锁序、账号数据游标事务保持。
 
 首次全staged --check因精确复制recovery原receipt的CRLF native exit2（外层PowerShell工具exit1），日志保留。两份本轮原件现以recovery-preflight/originals.zip+bindings.json逐字节保存并核原hash，外部原件不改；仅移除本writer新松散copies，不归一化原件。首次打包helper错误假定native exit1而assert失败，原ZIP已保存，现按真实非零选择器修正；不影响产品/原件。全部候选空白复检另行真实执行。
+
+# Fresh Fix R1 Local Outcome
+
+唯一source writer现为 `/root/group_contract_fix_r1`，exactroot/branch与初始clean5aa已核。R1-P2-001修前原2反例probe exit1（错误接受），修后同原件probe exit0（均明确拒绝）；verifier35valid/30invalid、17tests全PASS。原35正例/26负例对象与13旧test/helper AST完全保持，仅追加4负例/4测试。详见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r1/`；旧独立report/receipt及222artifact manifest哈希已核，旧文件/历史证据不改。
+
+本轮只改verify-group.py、exchanges.json、test_group.py、本Task/current和新fix-r1证据；不改OpenAPI/public shape/0001/0002/runner/Go/客户端/Frozen/ADR/旧wire/旧证据。Recorder初始化unsupported event exit2已披露修正；prospective_resume仍partial，最终finish/validate实际值由新receipt绑定。单个fix commit后两项最终审查均NEW PENDING、CI/sync PENDING；当前finalSHA=PENDING发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r1/final-receipt.json`，不沿用历史5aa receipt。Last known good accepted/synchronized main仍 `6f163927334c39c9c8833eb8222335c661bde673`。本writer提交后释放lease，禁止push/PR/CI/merge/sync；新独立两审与完整接受仍由Coordinator推进。
+
+本轮current格式初版遗漏既有Command/Result/Evidence标签导致Development exit1，已最小补齐并保留真实FAIL；最终Development/clean Acceptance结果由新final-receipt绑定。研究一次live session与只读git检查重叠也已warning公开，最终structural validation独立报告。

@@ -1,0 +1,20 @@
+{
+  "phase": "after-final",
+  "counterexamples": [
+    {
+      "fixture": "snapshot-nonfriend",
+      "original_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-regular-r1\\counterexample-snapshot-nonfriend.json",
+      "sha256": "8c191dcb09e67446e12719982c64a8e2c4f84725faa9c629791584098788c8b5",
+      "result": "REJECTED",
+      "detail": "empty page only when no eligible rows remain"
+    },
+    {
+      "fixture": "snapshot-split-page",
+      "original_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-regular-r1\\counterexample-snapshot-split-page.json",
+      "sha256": "cce12d3b3e6522bb383f3b2e502f242bd97983f5b1890b2b18ed781fc9da6fee",
+      "result": "REJECTED",
+      "detail": "complete ordered eligible page prefix"
+    }
+  ],
+  "all_rejected": true
+}
