@@ -1,0 +1,135 @@
+{
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "phase": "accepted planning and authorized Gateway repair only",
+  "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "reviews": [
+    {
+      "role": "regular",
+      "actor": "/root/group_regular_r3",
+      "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "result": "PASS_REGULAR_REVIEW_ONLY",
+      "receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\final-receipt.json",
+        "bytes": 5861,
+        "sha256": "d434380e54b0bda40c8d29cf15754b4bd52e9670be38c12a9272224d92e445e9"
+      },
+      "manifest": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\artifact-manifest.json",
+        "bytes": 20465,
+        "sha256": "16ac9ce54d6de5117b9b4ab37142ef50f9fb0964a38912e70ffeb0d77372f7ff"
+      },
+      "verified_artifact_count": 96,
+      "report": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\report.md",
+        "bytes": 14145,
+        "sha256": "7551a873126f0e67ab0afbc9e8a7dca7db74a5cfe097eaa2429050fdc6aae365"
+      },
+      "findings": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\findings.json",
+        "bytes": 1418,
+        "sha256": "9c11f9e7485a16a3153863712f93c75b76bd3a1ebb1af3d9e6db2c34b14df057"
+      },
+      "independence": {
+        "fresh_context": true,
+        "actor": "/root/group_regular_r3",
+        "implemented_candidate": false,
+        "fixed_candidate": false,
+        "previously_reviewed_candidate": false,
+        "same_as_following_error_specialist": false,
+        "declaration": "This actor independently read authority, complete base-to-candidate diff, actual logic/imports and evidence. No source write, repair, push, PR update, CI trigger, merge, main sync, Task/Gate acceptance or subdelegation was performed."
+      },
+      "recorder": {
+        "run_id": "R-GROUP-REGULAR-R3-20261018",
+        "capture_mode": "prospective_resume",
+        "pre_recorder_trace_complete": false,
+        "status": "finished",
+        "result": "PASS",
+        "validate_exit": 0,
+        "validation": {
+          "event_count": 66,
+          "run_id": "R-GROUP-REGULAR-R3-20261018",
+          "status": "finished"
+        },
+        "command_started_count": 30,
+        "command_finished_count": 30,
+        "unmatched_command_count": 0,
+        "stream_edited": false
+      }
+    },
+    {
+      "role": "specialized",
+      "actor": "/root/group_error_r3",
+      "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY",
+      "receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\final-receipt.json",
+        "bytes": 4084,
+        "sha256": "3c55046a43d6953266d68ec145783c53b1ff09772cb43a2f96a6b2308016aa9a"
+      },
+      "manifest": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\artifact-manifest.json",
+        "bytes": 77281,
+        "sha256": "d378befbf582b4f510f6dfdbd990bf4b184367e2c5fd234b084062cfd33c2be4"
+      },
+      "verified_artifact_count": 260,
+      "report": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\report.md",
+        "bytes": 7429,
+        "sha256": "915b398879b00ae9776ec87315ea8bd1dcba08fdaa2e71116c4579f99dccb6f9"
+      },
+      "findings": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\findings.json",
+        "bytes": 815,
+        "sha256": "e5f46f19aca8ddc4df5d72e2ca3ab319a0cd067137a95f884076c1f8aab1cad4"
+      },
+      "independence": {
+        "fresh_context": true,
+        "implemented_or_fixed_candidate": false,
+        "regular_reviewer": false,
+        "regular_precondition": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\final-receipt.json",
+          "sha256": "d434380e54b0bda40c8d29cf15754b4bd52e9670be38c12a9272224d92e445e9",
+          "actor": "/root/group_regular_r3",
+          "result": "PASS_REGULAR_REVIEW_ONLY"
+        }
+      },
+      "recorder": {
+        "run_id": "R-GROUP-ERROR-R3-20261018",
+        "result": "FAIL",
+        "capture_mode": "prospective_resume",
+        "command_started_count": 42,
+        "command_finished_count": 41,
+        "unmatched_command_ids": [
+          "C-500885b6-7109-4df4-b95a-aff3c3570468"
+        ],
+        "original_launch_failure": {
+          "outer_exit_code": 2,
+          "stdout": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\outputs\\canonical-headings.stdout.bin",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\outputs\\canonical-headings.stderr.bin",
+            "bytes": 37,
+            "sha256": "d88aacd35d32adcc8179ba77067b72dcc59e1af9b437ce908cc7119d2a8ce442"
+          },
+          "reason": "Windows WinError5 rejected rg startup; Recorder emitted command_started but no command_finished"
+        },
+        "event_stream_repaired": false,
+        "pre_recorder_trace_complete": false,
+        "gaps": [
+          "Initial mandatory authority reads",
+          "External helper/artifact authoring",
+          "Communications",
+          "One rg launch event unmatched"
+        ],
+        "structural_validate_exit": 0,
+        "structural_validation_is_not_complete_trace": true
+      }
+    }
+  ],
+  "copy_provenance": "copy-provenance.json",
+  "qualification": "Both source reviews PASS at c7; error specialist Recorder FAIL remains separate. These reviews do not accept this new metadata candidate."
+}

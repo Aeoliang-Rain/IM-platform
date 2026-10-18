@@ -38,3 +38,14 @@ R1收据绑定的bab8已通过两项fresh审查与push全14，但PR两次Go+aggr
 完整Frozen无flag/planning/architectureall及strictscope七backend、254其余产品bytes验证PASS；原--base86b可选zero-product断言与后续Human授权冲突，真实FAIL保持，不改checker。normal/race ./...本地PASS但DB_TEST_ENABLE未设/livePGNATS未执行；dockerdaemon/psql不可用，wire不是数据库。88architecture(1既有skip)/35CI(4既有skip)最终通过，首次缓存相关失败原件保留。Development/clean committedAcceptance最终结果以外部receipt为准；local/Recorder不是独立接受。
 
 接续：NEW常规→DIFFERENT NEW错误专项→exactcandidate/PR实际requiredjobs及真实PGNATSnormal/race→protected integration→actualmainCI/树→保存782未知main原件的实际安全同步；后续metadata候选另需独立闭环。main H:/IM-platform从未写入/采纳/清理，未知work不归Fix。证据ci-fix-r3/handoff.md与local-verification.json；checkpoint2026-10-18-group-plan-ci-r3-review-pending.md。R1/R2/原实施及Recorder/FAIL谱系保持原字节；S2OPEN/STOP。
+
+
+## 第一阶段已接受同步／行政封存候选（2026-10-18）
+
+上方R3及更早PENDING均保留为当时真实快照。第一阶段candidate `c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2`、base86b已通过fresh `/root/group_regular_r3` 常规及different `/root/group_error_r3` 专项；原96/260manifest artifacts、报告/receipt原件完整hash核实。exactpush39097442700 attempt1是204e→c7增量，6selected成功/7正常inactive；PR39097445982与actualmain39098036604 attempt1各14/14成功。34个实际checkout原log、所有required jobs/steps与真实PG16/NATS enabled normal/race已核验。protected PR42正常合并actualmain `45b0a8512da4e505c467a6120cf2fc2cdd0bac7f`，parents86b/c7且完整tree9e41a42相同；第一次实际安全同步PASS，190paths与八项保存检查全部true，782未知原件和recovery分支保持。原planning-acceptance.json的同步PENDING为pre-sync快照，planning-main-sync.json为随后实际APPLY收据；小原件/两审manifest及完整外部hash发现见[accepted-product/acceptance.md](accepted-product/acceptance.md)和[copy-provenance.json](accepted-product/copy-provenance.json)。
+
+第二阶段行政候选从45b准备，只移本控制Task done/真实第一阶段Completion及恢复元数据。sole closing writer `/root/group_plan_close_r1`；实际finalSHA/branch/base45b/clean/ownedGitblobs/本地命令/Acceptance/Recorder/sourcelease RELEASED仅从固定外部`closure/final-receipt.json`恢复。NEW常规与DIFFERENT NEW错误专项、exact candidate push/NEW PR CI、protected merge、actual-main hosted/完整tree及第二次实际安全同步全部PENDING，不能复用c7的接受覆盖新bytes。
+
+仍执行上方两阶段固定`final-group-planning-acceptance-seal.json`规则：当前缺失，不能宣称完整完成；后续完整且hash/身份/真实原件全部匹配后仅把此pending解释为历史，不递归修改已接受source凑最终SHA。仅缺seal且真实前置已完整核验时由Coordinator补外部seal。第二次sync须使用原`administrative-preservation-before.json`保存快照（SHA-256 a47ad0727cad6b23701c56fe4ddcbe2a8ac23b21eabb01f692b4ff4b1970a73d），不复制快照中的全局dirtydiff/782未知原件到repo证据。
+
+五处immutable Recorder gaps及所有原FAIL保持：IMPL14/13FAIL、REGULAR-R2-RESUME28/27FAIL、REGULAR-204E80336/35原PASS、CI-FIX-R3 42/41原PASS、ERROR-R3 42/41FAIL；第五处unmatched C-500885b6-7109-4df4-b95a-aff3c3570468/rg WinError5/exit2，原stderr37bytes d88aacd35d32adcc8179ba77067b72dcc59e1af9b437ce908cc7119d2a8ce442。结构validate0不是完整trace，专项产品PASS不替代RecorderFAIL。closing首轮外部parser的Windows git.exe spelling不匹配exit1及v2纠正exit0另保留，所有started commands须实结束后DIRECTfinish；不修旧流。原可选Frozen零产品FAIL/rawCRLF whitespace及旧CI FAIL保持。GROUP真实入口/截图/Architect没有执行，仍唯一backlog/planned，I18N语言绑定不改，S2 OPEN/STOP。

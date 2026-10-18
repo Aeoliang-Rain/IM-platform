@@ -1,0 +1,20 @@
+{
+  "schema": "independent-regular-review-findings-v1",
+  "actor": "/root/group_regular_r3",
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "branch": "task/LOOP1-GROUP-PLAN-001",
+  "result": "PASS_REGULAR_REVIEW_ONLY",
+  "findings": [],
+  "blocking_finding_count": 0,
+  "limitations": [
+    "Real PostgreSQL/NATS integration and live PostgreSQL internal-watch child were not executed; DB_TEST_ENABLE unset. Wire regression is not a database.",
+    "Local Go1.26.6 Windows differs from required hosted Go1.23 Linux.",
+    "Architecture/CI suites preserve one/four existing platform applicability skips respectively.",
+    "Historical optional zero-product and raw-evidence whitespace failures were retained, not represented as passing.",
+    "Prospective_resume: startup reads, an invalid-role start failure, corrected guessed ADR path, external helper/report authoring and communications are outside full command capture. All started commands in this review run must have a completion before finish.",
+    "Fix primary Recorder 42 starts/41 finishes remains immutable and incomplete; related 2/2 continuation is supplemental only.",
+    "This review is not the distinct error audit, hosted acceptance, Task/Stage acceptance, protected integration, actual-main verification or main synchronization."
+  ]
+}

@@ -1,0 +1,2439 @@
+{
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "integrated_main_sha": "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f",
+  "ci": [
+    {
+      "run_id": 39097442700,
+      "attempt": 1,
+      "url": "https://github.com/nilesthump/IM-platform/actions/runs/39097442700",
+      "event": "push",
+      "head_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "branch": "task/LOOP1-GROUP-PLAN-001",
+      "original": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z.json",
+        "bytes": 51581,
+        "sha256": "04cece4cf001cb44c51bc3229a4dbd6c94e91dad3b6679358a56ff1d1f091f09"
+      },
+      "checkout_receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\receipt.json",
+        "bytes": 2747,
+        "sha256": "b6200871758c9dd2676bc22d7327501926cb7163a4994f3944d0b4500985b6a6"
+      },
+      "successful_required_jobs": 6,
+      "normal_inactive_jobs": [
+        "compatibility",
+        "desktop",
+        "java",
+        "shared",
+        "deploy",
+        "web",
+        "mobile"
+      ],
+      "normal_os_step_skips": [],
+      "jobs": [
+        {
+          "id": 117586697935,
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Diagnose checkout status",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify clean repository recovery",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Test path matrix",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Classify full diff, including deletions",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586820086,
+          "name": "architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Canonical integrity and authority structure",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Current governance references and task scopes",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Active client technology/source/dependency/configuration guard",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Checker positive and negative controls",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586820110,
+          "name": "go",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install PostgreSQL client",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Migrate canonical schema",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go Auth build, integration and contract verification",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586820125,
+          "name": "source_go",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Real Go source ownership and AST dependency graph",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586820143,
+          "name": "source_java",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Java current source and explicit placeholder boundary",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586820963,
+          "name": "compatibility",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 117586820986,
+          "name": "desktop",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 117586821005,
+          "name": "java",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 117586821182,
+          "name": "shared",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 117586821280,
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 117586821300,
+          "name": "web",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 117586821391,
+          "name": "mobile",
+          "status": "completed",
+          "conclusion": "skipped",
+          "steps": []
+        },
+        {
+          "id": 117587499958,
+          "name": "gate",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Require every selected job to pass",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "actual_checkouts": [
+        {
+          "job_id": 117586697935,
+          "name": "classify",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\20261018T043905844029Z\\117586697935.log",
+            "bytes": 40082,
+            "sha256": "cacbe16292fbf8879e482a3de95a5c8bed5fea226f59078fd8fc4fb11ad7cd8f"
+          }
+        },
+        {
+          "job_id": 117586820086,
+          "name": "architecture",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\20261018T043905844029Z\\117586820086.log",
+            "bytes": 59861,
+            "sha256": "46ac96ad928d3cfadd4a0ca69cc69b04f63e454b38cb64e910151ab4755534be"
+          }
+        },
+        {
+          "job_id": 117586820110,
+          "name": "go",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\20261018T043905844029Z\\117586820110.log",
+            "bytes": 52028,
+            "sha256": "e5e8d379fb2efff675c5b3c43c136336d27f11907c97399a1f923e6cfe79d912"
+          }
+        },
+        {
+          "job_id": 117586820125,
+          "name": "source_go",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\20261018T043905844029Z\\117586820125.log",
+            "bytes": 447220,
+            "sha256": "0635174eb215b0b3ec8996dbd2ddabee82eb650503601fdccbaffa7d52ad2272"
+          }
+        },
+        {
+          "job_id": 117586820143,
+          "name": "source_java",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\20261018T043905844029Z\\117586820143.log",
+            "bytes": 17272,
+            "sha256": "5f1cce7fad4a2902e5164c6f4a2a80cd64672a82f8166a13162fecdd94cf1fbe"
+          }
+        },
+        {
+          "job_id": 117587499958,
+          "name": "gate",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\20261018T043905844029Z\\117587499958.log",
+            "bytes": 16007,
+            "sha256": "17bcfb6cdaa60153272aec8499d7260a58325c5def1321e2094195026dc601e0"
+          }
+        }
+      ],
+      "real_go_normal_race": {
+        "markers": {
+          "postgres:16": true,
+          "nats:2": true,
+          "DB_TEST_ENABLE: 1": true,
+          "PGSSLMODE: disable": true,
+          "NATS_URL: nats://localhost:4222": true,
+          "go test -count=1 ./...": true,
+          "go test -race -count=1 ./...": true
+        },
+        "normal_race_tests_package_results": [
+          "2026-10-18T04:34:33.2176446Z ok  \tim-platform/backend/go/tests\t19.570s",
+          "2026-10-18T04:36:52.0207028Z ok  \tim-platform/backend/go/tests\t117.012s"
+        ],
+        "log": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\20261018T043905844029Z\\117586820110.log",
+          "bytes": 52028,
+          "sha256": "e5e8d379fb2efff675c5b3c43c136336d27f11907c97399a1f923e6cfe79d912"
+        },
+        "interpretation": "Real disposable PostgreSQL/NATS enabled; both actual package runs returned success. Not GROUP product/entry acceptance."
+      }
+    },
+    {
+      "run_id": 39097445982,
+      "attempt": 1,
+      "url": "https://github.com/nilesthump/IM-platform/actions/runs/39097445982",
+      "event": "pull_request",
+      "head_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "branch": "task/LOOP1-GROUP-PLAN-001",
+      "original": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z.json",
+        "bytes": 65213,
+        "sha256": "ac05bf6b8e8555b128ca391293adae0ad17a9f8389b14ace7ca1e994c841cab5"
+      },
+      "checkout_receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\receipt.json",
+        "bytes": 5560,
+        "sha256": "af37077086ddaa7d688c721cfe222c18c5dce07a8f09ee049a83b272a7c8cdfb"
+      },
+      "successful_required_jobs": 14,
+      "normal_inactive_jobs": [],
+      "normal_os_step_skips": [
+        [
+          "desktop (ubuntu-latest)",
+          "Approved Windows GUI assembly and auth controls"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Native Tauri prerequisites and approved Rust compiler"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Actual TypeScript Repository on SQLx SQLite"
+        ]
+      ],
+      "jobs": [
+        {
+          "id": 117586706971,
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Diagnose checkout status",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify clean repository recovery",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Test path matrix",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Classify full diff, including deletions",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830843,
+          "name": "web",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Web prerequisite and product verification negative controls",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Actual locked Web build, behavior, appearance and source verification",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830846,
+          "name": "source_go",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Real Go source ownership and AST dependency graph",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830863,
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare disposable Go profile configuration",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate both Compose profiles",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Frozen architecture integrity",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go transport smoke",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go Auth actual roles and TLS event smoke",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Current shared Sync client actual Go TLS runtime",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go public Sync strict TLS runtime",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go S1 strict TLS messaging E2E",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Java transport smoke",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830880,
+          "name": "architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Canonical integrity and authority structure",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Current governance references and task scopes",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Active client technology/source/dependency/configuration guard",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Checker positive and negative controls",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830908,
+          "name": "compatibility",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install PostgreSQL client",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Shared fixture compatibility and migration",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Current client source and actual Web verification",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830915,
+          "name": "mobile",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run android-actions/setup-android@v3",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Enable hosted Linux KVM permissions",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run reactivecircus/android-emulator-runner@v2",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830921,
+          "name": "go",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install PostgreSQL client",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Migrate canonical schema",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go Auth build, integration and contract verification",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830931,
+          "name": "source_java",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Java current source and explicit placeholder boundary",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830947,
+          "name": "desktop (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Native Tauri prerequisites and approved Rust compiler",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Actual TypeScript Repository on SQLx SQLite",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Approved Windows GUI assembly and auth controls",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586830968,
+          "name": "shared",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Actual shared TypeScript storage compile",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "HTTP, WSS, Sync and Plugin contracts",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586831006,
+          "name": "java",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Java S0 compile",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117586831025,
+          "name": "desktop (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Native Tauri prerequisites and approved Rust compiler",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Actual TypeScript Repository on SQLx SQLite",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Approved Windows GUI assembly and auth controls",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588086561,
+          "name": "gate",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Require every selected job to pass",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "actual_checkouts": [
+        {
+          "job_id": 117586706971,
+          "name": "classify",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586706971.log",
+            "bytes": 56348,
+            "sha256": "7d85b6e407807c9b6e669af0f6fdc9a1f7b9eb41ae672ffbb0fdfd1ca0c61c96"
+          }
+        },
+        {
+          "job_id": 117586830843,
+          "name": "web",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830843.log",
+            "bytes": 27147,
+            "sha256": "827dbd82e4f8be4f955707f0f38ecd90f03abb2a90a1a29a69dfe9acbaaff1ac"
+          }
+        },
+        {
+          "job_id": 117586830846,
+          "name": "source_go",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830846.log",
+            "bytes": 447219,
+            "sha256": "6f19791dc12c9ccffbf1fa73dc1819c69b765642bf0c32422b35976eb6dd0fc2"
+          }
+        },
+        {
+          "job_id": 117586830863,
+          "name": "deploy",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830863.log",
+            "bytes": 52733,
+            "sha256": "d9dafe07f7d18f0b405acb0cf2e8e0059a4f614695867b22a77b40f9c71c0540"
+          }
+        },
+        {
+          "job_id": 117586830880,
+          "name": "architecture",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830880.log",
+            "bytes": 59603,
+            "sha256": "a7b7bf83c70c85abd88f6072731d151c9a7b9beddc9baf1b585cdbbae9eadaf4"
+          }
+        },
+        {
+          "job_id": 117586830908,
+          "name": "compatibility",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830908.log",
+            "bytes": 43706,
+            "sha256": "fd3f7162d7359c7a8ddcf7b791fd3ef9e729878b8e42558db09624309e8cb667"
+          }
+        },
+        {
+          "job_id": 117586830915,
+          "name": "mobile",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830915.log",
+            "bytes": 231840,
+            "sha256": "9a109b951cd2183f1ea01c5f1ae30b599bbdaa2f9e71fb6a2a55b5df7388b910"
+          }
+        },
+        {
+          "job_id": 117586830921,
+          "name": "go",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830921.log",
+            "bytes": 52183,
+            "sha256": "ce17ce442bfdc98b8158e5f5b6e8f3e96658057be77187f8975b20000e7f0d71"
+          }
+        },
+        {
+          "job_id": 117586830931,
+          "name": "source_java",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830931.log",
+            "bytes": 17021,
+            "sha256": "94f77dd854ed89c8e06cff386af2b06921b8b49682ac1aaaf3728dd358fc87e6"
+          }
+        },
+        {
+          "job_id": 117586830947,
+          "name": "desktop (ubuntu-latest)",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830947.log",
+            "bytes": 169000,
+            "sha256": "7915e97573da46799ed434e07cf66fcbbc924a24af24b2c1b8912fa7b0463c4e"
+          }
+        },
+        {
+          "job_id": 117586830968,
+          "name": "shared",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830968.log",
+            "bytes": 20768,
+            "sha256": "b36227e1af241491c9a18009e1bfb23eaf332c251b2c10045392d3d5647dea6f"
+          }
+        },
+        {
+          "job_id": 117586831006,
+          "name": "java",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586831006.log",
+            "bytes": 17402,
+            "sha256": "9e51ea58b273a11635e23d48ff9cd594fc8ef09b3b6f20d93292dcdb8a0024ce"
+          }
+        },
+        {
+          "job_id": 117586831025,
+          "name": "desktop (windows-latest)",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586831025.log",
+            "bytes": 81872,
+            "sha256": "8c56020ed6080cb168254b675fdbfd8acf903e734e4eab5b8a22605957318f7f"
+          }
+        },
+        {
+          "job_id": 117588086561,
+          "name": "gate",
+          "actual_heads": [
+            "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117588086561.log",
+            "bytes": 15995,
+            "sha256": "a7797c6dcdb7dd8f24d2e07830f6fad810f39e4814a47d64e04ad674869937ff"
+          }
+        }
+      ],
+      "real_go_normal_race": {
+        "markers": {
+          "postgres:16": true,
+          "nats:2": true,
+          "DB_TEST_ENABLE: 1": true,
+          "PGSSLMODE: disable": true,
+          "NATS_URL: nats://localhost:4222": true,
+          "go test -count=1 ./...": true,
+          "go test -race -count=1 ./...": true
+        },
+        "normal_race_tests_package_results": [
+          "2026-10-18T04:34:42.3924325Z ok  \tim-platform/backend/go/tests\t19.515s",
+          "2026-10-18T04:37:00.1016207Z ok  \tim-platform/backend/go/tests\t116.417s"
+        ],
+        "log": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\20261018T044154846846Z\\117586830921.log",
+          "bytes": 52183,
+          "sha256": "ce17ce442bfdc98b8158e5f5b6e8f3e96658057be77187f8975b20000e7f0d71"
+        },
+        "interpretation": "Real disposable PostgreSQL/NATS enabled; both actual package runs returned success. Not GROUP product/entry acceptance."
+      }
+    },
+    {
+      "run_id": 39098036604,
+      "attempt": 1,
+      "url": "https://github.com/nilesthump/IM-platform/actions/runs/39098036604",
+      "event": "push",
+      "head_sha": "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f",
+      "branch": "main",
+      "original": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z.json",
+        "bytes": 64168,
+        "sha256": "04f6d78c23e62908e1422b558c8b4c419beb1bd6ae8dab767d616c28ea4f7b0e"
+      },
+      "checkout_receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\receipt.json",
+        "bytes": 5562,
+        "sha256": "228d7c5714ffa7759506348c221afb94fca8baaebd4f3d94553b019e2001d212"
+      },
+      "successful_required_jobs": 14,
+      "normal_inactive_jobs": [],
+      "normal_os_step_skips": [
+        [
+          "desktop (windows-latest)",
+          "Native Tauri prerequisites and approved Rust compiler"
+        ],
+        [
+          "desktop (windows-latest)",
+          "Actual TypeScript Repository on SQLx SQLite"
+        ],
+        [
+          "desktop (ubuntu-latest)",
+          "Approved Windows GUI assembly and auth controls"
+        ]
+      ],
+      "jobs": [
+        {
+          "id": 117588425590,
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Diagnose checkout status",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify clean repository recovery",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Test path matrix",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Classify full diff, including deletions",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544403,
+          "name": "web",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Web prerequisite and product verification negative controls",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Actual locked Web build, behavior, appearance and source verification",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544442,
+          "name": "compatibility",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install PostgreSQL client",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Shared fixture compatibility and migration",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Current client source and actual Web verification",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544444,
+          "name": "java",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Java S0 compile",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544452,
+          "name": "mobile",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run android-actions/setup-android@v3",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Enable hosted Linux KVM permissions",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run reactivecircus/android-emulator-runner@v2",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544456,
+          "name": "go",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install PostgreSQL client",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Migrate canonical schema",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go Auth build, integration and contract verification",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544461,
+          "name": "source_go",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Real Go source ownership and AST dependency graph",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544471,
+          "name": "architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Canonical integrity and authority structure",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Current governance references and task scopes",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Active client technology/source/dependency/configuration guard",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Checker positive and negative controls",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-java@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-go@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544514,
+          "name": "desktop (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Native Tauri prerequisites and approved Rust compiler",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Actual TypeScript Repository on SQLx SQLite",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Approved Windows GUI assembly and auth controls",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544527,
+          "name": "shared",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Actual shared TypeScript storage compile",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "HTTP, WSS, Sync and Plugin contracts",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544542,
+          "name": "source_java",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Java current source and explicit placeholder boundary",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544566,
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare disposable Go profile configuration",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate both Compose profiles",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Frozen architecture integrity",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go transport smoke",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go Auth actual roles and TLS event smoke",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Current shared Sync client actual Go TLS runtime",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go public Sync strict TLS runtime",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Go S1 strict TLS messaging E2E",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Java transport smoke",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117588544604,
+          "name": "desktop (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Native Tauri prerequisites and approved Rust compiler",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Actual TypeScript Repository on SQLx SQLite",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Approved Windows GUI assembly and auth controls",
+              "status": "completed",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 117589784977,
+          "name": "gate",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Require every selected job to pass",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "actual_checkouts": [
+        {
+          "job_id": 117588425590,
+          "name": "classify",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588425590.log",
+            "bytes": 56352,
+            "sha256": "0f6dd959979eec79b9c5024f183fea4ea576201f0e0fc3860e418a9c939efb6b"
+          }
+        },
+        {
+          "job_id": 117588544403,
+          "name": "web",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544403.log",
+            "bytes": 27400,
+            "sha256": "37c7df116bb3babdcfddf2b63c656a5476d67cf8940394b945fd15012c247f38"
+          }
+        },
+        {
+          "job_id": 117588544442,
+          "name": "compatibility",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544442.log",
+            "bytes": 43718,
+            "sha256": "682ebd27a51b85ef9d10bb9d8e30c6b161d61cf6ab308b82637da2808d517b85"
+          }
+        },
+        {
+          "job_id": 117588544444,
+          "name": "java",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544444.log",
+            "bytes": 17156,
+            "sha256": "a736ce787c016bc9cd730e1b51c548a52b91c228b01ef5a78d147bb8ec9bf781"
+          }
+        },
+        {
+          "job_id": 117588544452,
+          "name": "mobile",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544452.log",
+            "bytes": 231767,
+            "sha256": "14cfd924c4a899609745c0bc7be30a15bd4fe1577b15ef7ea6f275b9fbf90388"
+          }
+        },
+        {
+          "job_id": 117588544456,
+          "name": "go",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544456.log",
+            "bytes": 51932,
+            "sha256": "880c004c372246f5e49534c4b99e5eb31644a40f2f8106feec07507c31ca5f6d"
+          }
+        },
+        {
+          "job_id": 117588544461,
+          "name": "source_go",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544461.log",
+            "bytes": 447225,
+            "sha256": "2ce25738d2c4bc27a94c04de3d4df4310d3bb0f6a82c042be93ce2bfe832cb1d"
+          }
+        },
+        {
+          "job_id": 117588544471,
+          "name": "architecture",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544471.log",
+            "bytes": 59858,
+            "sha256": "effd3a22add487902203bf2a008fd0e8dc07a1918565fcaaaa0701d7b47ea9c0"
+          }
+        },
+        {
+          "job_id": 117588544514,
+          "name": "desktop (windows-latest)",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544514.log",
+            "bytes": 81692,
+            "sha256": "abfb6dae4d6ad0e58b162f0f1f62ca0d193e7788ee25db70d7a5c3f8941c812d"
+          }
+        },
+        {
+          "job_id": 117588544527,
+          "name": "shared",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544527.log",
+            "bytes": 21025,
+            "sha256": "585651ef5a57ddddb187b6293cc55b71dfd869770efcc8a01611f6be1ffdcc76"
+          }
+        },
+        {
+          "job_id": 117588544542,
+          "name": "source_java",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544542.log",
+            "bytes": 17275,
+            "sha256": "d1a90e2857c5192f78da7f4ca8f3f12c29887734572976cb952933705a42a092"
+          }
+        },
+        {
+          "job_id": 117588544566,
+          "name": "deploy",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544566.log",
+            "bytes": 52482,
+            "sha256": "072ac3af5988cb7f9569e21cab46f5824a9ab730f028d5619730db65d5280b46"
+          }
+        },
+        {
+          "job_id": 117588544604,
+          "name": "desktop (ubuntu-latest)",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544604.log",
+            "bytes": 168938,
+            "sha256": "67f67a3197fdc2997fd14ae1e28b366345bf67f549f3548a17068fabee50ab35"
+          }
+        },
+        {
+          "job_id": 117589784977,
+          "name": "gate",
+          "actual_heads": [
+            "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f"
+          ],
+          "log": {
+            "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117589784977.log",
+            "bytes": 15998,
+            "sha256": "1e4c1f037c1c01e5e7e51628dc20f5c6df3147a5b396957c8999c7594a8ecca4"
+          }
+        }
+      ],
+      "real_go_normal_race": {
+        "markers": {
+          "postgres:16": true,
+          "nats:2": true,
+          "DB_TEST_ENABLE: 1": true,
+          "PGSSLMODE: disable": true,
+          "NATS_URL: nats://localhost:4222": true,
+          "go test -count=1 ./...": true,
+          "go test -race -count=1 ./...": true
+        },
+        "normal_race_tests_package_results": [
+          "2026-10-18T04:44:48.9003547Z ok  \tim-platform/backend/go/tests\t17.920s",
+          "2026-10-18T04:46:30.0543380Z ok  \tim-platform/backend/go/tests\t86.937s"
+        ],
+        "log": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\20261018T045210967281Z\\117588544456.log",
+          "bytes": 51932,
+          "sha256": "880c004c372246f5e49534c4b99e5eb31644a40f2f8106feec07507c31ca5f6d"
+        },
+        "interpretation": "Real disposable PostgreSQL/NATS enabled; both actual package runs returned success. Not GROUP product/entry acceptance."
+      }
+    }
+  ],
+  "merge": {
+    "pr": "https://github.com/nilesthump/IM-platform/pull/42",
+    "merged_at": "2026-10-18T04:42:39Z",
+    "parents": [
+      "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+      "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+    ],
+    "candidate_tree": "9e41a42cc790619bd258213636bb61b543a68a56",
+    "main_tree": "9e41a42cc790619bd258213636bb61b543a68a56",
+    "strict_gate": true,
+    "enforce_admins": true,
+    "method": "Normal protected merge, exact expected head, no admin bypass."
+  },
+  "originals": {
+    "planning-acceptance.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-acceptance.json",
+      "bytes": 4592,
+      "sha256": "ba21122fee6b51811e9bb3c288f7553475276a10d9e80e5fe9726f73094e4ee9"
+    },
+    "planning-main-sync.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-sync.json",
+      "bytes": 673,
+      "sha256": "d048ccc442e589fe05deb9e96c1e8ea7e46c3e36381f84f298be8b6e10d91313"
+    },
+    "planning-reviews.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-reviews.json",
+      "bytes": 1275,
+      "sha256": "de6481ad924d2f2369a7503a44d00d12742b11c5aabbdf936f251a33d6270476"
+    },
+    "planning-merge-guard.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-merge-guard.json",
+      "bytes": 26972,
+      "sha256": "0c5d03103bfa0ab473a5e53e062357428efd1f9e201f95f02f8daee6472161f7"
+    },
+    "planning-push-event-base.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-event-base.json",
+      "bytes": 4047,
+      "sha256": "19ba8c61636b45b93c84f4c22ef341c8a23f04afc53be4e2ec22b8415e139a45"
+    },
+    "planning-merged-pr.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-merged-pr.json",
+      "bytes": 23983,
+      "sha256": "ef8cdec453d0e92c47e6c866ea0ef6371987c3cdcf631b5200e0038de9a839d5"
+    },
+    "planning-prepublish-guard.json": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-prepublish-guard.json",
+      "bytes": 9964,
+      "sha256": "5e84e4b7027244b1eac10326c8049a418d1783df473571483f03a201c48681b8"
+    }
+  },
+  "qualification": "Actual exact SHA/jobs/steps and 34 checkout logs independently hash-verified. Push selected6/normalinactive7; PR and actualmain14 each. No GROUP product real-entry/screenshot/Architect or S2 Gate acceptance."
+}
