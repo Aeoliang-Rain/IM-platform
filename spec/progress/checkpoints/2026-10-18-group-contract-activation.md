@@ -1,0 +1,3 @@
+# GROUP first contract candidate recovery point
+
+2026-10-18；accepted base/main6f163927334c39c9c8833eb8222335c661bde673。Task LOOP1-GROUP-001唯一active/group_product，S2 OPEN。首契约本地群schema35/26、13tests和实际PG16.15迁移11tests/0skip通过；0001原bytes/checksum、旧产品保持。契约freeze仍PENDING。真实候选cleanSHA/Recorder/lease由外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-impl/final-receipt.json` 绑定；NEW两审→exact hosted→protected/main→actual-main→实际安全同步逐项完成后才可由 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-acceptance-seal.json` 发现并独立核验。缺/坏保持pending；不以文件存在或local/Recorder当接受。无Go/client实现、无G01..G09/截图/Architect或S2PASS；主目录782unknown保持。详见contract/implementation-handoff.md。

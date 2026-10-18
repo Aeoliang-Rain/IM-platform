@@ -4,50 +4,50 @@ Current Loop: Loop 1
 Current Stage: S2
 Current Gate: S2
 Gate Status: OPEN
-Current Batch: LOOP1-GROUP-PLAN-001
-Batch Status: ADMINISTRATIVE_REVIEW_PENDING
-Current Task: LOOP1-GROUP-PLAN-001
-Current Task State: done
-Execution Status: administrative_pending
+Current Batch: LOOP1-GROUP-001
+Batch Status: CONTRACT_CANDIDATE_PENDING_REVIEWS
+Current Task: LOOP1-GROUP-001
+Current Task State: active
+Execution Status: active
 
 ## Immediately Relevant Completed Work
 
-第一阶段规划及Human窄授权Gateway生命周期修复已独立接受/集成/实际安全同步。candidate `c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2`；fresh常规/root/group_regular_r3与different专项/root/group_error_r3同SHA PASS；exact push39097442700实际6selected成功/7正常inactive，PR39097445982和actual-main39098036604各14/14成功且真实PG/NATS normal/race执行。protected PR42正常merge main `45b0a8512da4e505c467a6120cf2fc2cdd0bac7f`，parents86b/c7且完整tree相同；第一次实际安全同步八项检查PASS，782未知原件和原分支保留。证据accepted-product/acceptance.md。Task done/Completion只声明此第一阶段。
+本轮Human恢复下一task；GROUP-PLAN/I18N独立接受、精确hosted、protected integration/actual-main与保存未知work主目录同步已实际核验。旧规划STOP/administrative pending是历史，固定seal绑定已接受main6f163927。群契约尚未冻结；先完成首契约独立闭环再实现产品。
 
 ## Current Blockers
 
-仅本次新增行政metadata候选的NEW常规Review、DIFFERENT NEW错误专项、exact-head push/NEW PR CI、protected merge、actual-main/tree及第二次安全主目录同步PENDING。最终SHA由外部closure/final-receipt.json发现；c7两审/CI不接受新bytes。两审同最终SHA PASS前不得push或触发PR CI；最终两阶段seal尚不存在，不能声称完整封存。GROUP唯一backlog/planned；S2 OPEN/STOP。
+无架构/依赖阻塞。首契约fresh常规与different fresh错误专项同最终SHA、hosted/受保护集成/actual-main/安全同步均NEW PENDING。专用本地PG16.15实际11tests/0skip通过；现hosted PG suite仍必须在最终SHA真实执行。
 
 ## Verification
 
 - Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: 本closing baseline Frozen/planning exit0；第一阶段96/260原件manifest、34实际checkout logs、6/14/14jobs/steps、merge parents/tree及实际sync收据hash独立核验exit0。本metadata Frozen无flag/planning/architecture-all均exit0，88architecture（1既有OSskip）/35CI（4既有OSskip）exit0；Development初次缺新证据exit1后补齐并真实重验exit0。clean committedAcceptance/finalSHA/Recorder由外部finalreceipt绑定；local/Recorder不是接受。
-  - Evidence: `spec/progress/evidence/LOOP1-GROUP-PLAN-001/accepted-product/local-verification.json`
+  - Result: Frozen/planning/architecture-all exit0；88architecture(skip1)/35CI(skip4) exit0；群35valid26invalid/13tests及真实PG16.15迁移11tests/0skip exit0；现旧契约回归通过。local不是接受；Recorder因已知capture缺口FAIL/结构结果另记。
+  - Evidence: `spec/progress/evidence/LOOP1-GROUP-001/contract/local-verification.json`
 
 ## Changed Files or Migrations
 
-仅本控制Task review→done和Completion/Handoff/NextAction、current、新accepted-product必要小证据、recovery追加与新group-plan checkpoint。所有既有规划、Frozen/ADR/domain/invariants/acceptance、GROUPbacklog、workflow/checker/tests、产品/contracts/依赖与45b保持；无新迁移或GROUP实现。
+首契约HTTP/必要群冲突码/0002窄receipt、现runner/迁移回归/群fixtures与现shared步骤已准备；旧Auth verifier只有提前登记的一处exact-registry适配。Go/客户端/Frozen/ADR/0001字节保持；产品PENDING。
 
 ## Known Failures, Risks, and Assumptions
 
-保留五处Recorder轨迹缺口：IMPL14/13原FAIL、REGULAR-R2-RESUME28/27原FAIL、REGULAR-204E80336/35原PASS、CI-FIX-R3 42/41原PASS、ERROR-R3 42/41原FAIL。最后一处unmatched C-500885b6-7109-4df4-b95a-aff3c3570468/rg WinError5/外层exit2，原stderr37bytes hash d88aacd35d32adcc8179ba77067b72dcc59e1af9b437ce908cc7119d2a8ce442；structuralvalidate0不是完整trace。专项产品PASS与RecorderFAIL分开。旧可选Frozen--base86b零产品断言与Human七路径修复冲突的exit1、原CRLF whitespace、旧Review/CI FAIL及缓存失败全部保持，不声称所有历史PASS。此closing首次外部Windows checkout拼写解析exit1已保留并由v2实际核验exit0纠正；本closing首次control whitespace检查因新生成JSON为CRLF而exit2，仅将这些新文件改LF，原件/历史不改，另行重验。本closing首次Development因新local-verification.json尚未生成而exit1，原输出保留；创建证据后真实重验exit0。startup/directread/helperauthoring/通信为prospective_resume限制，不伪装完整trace。GROUP真实产品入口/截图/Architect仍未来未执行。
+单页100为传输界限，无群人数/总页数cap。GET分页每页一致，跨页并发更新通过UserSync invalidation和周期从头刷新最终补齐，不伪装全局冻结snapshot。未知内部故障正常失败/提交未知保留原ID。Recorder startup/helperauthoring/通信与两次post-start只读调用未捕获，研究run计划FAIL；结构验证与完整trace分开。初次Auth registry FAIL与早期PG8skip保留，后续真实重验PASS；旧FAIL/缺口不改。首次全staged空白检查因精确复制receipt原CRLF native exit2（外层1），原件现byte-exact ZIP保存并留FAIL；不修改旧原件。打包helper首次原退出码假定错误的assert FAIL也保留，后修正控制资料选择器。已有identity缺原receipt时真实server failure，不猜重放/409或回填。
 
 ## Next Exact Action
 
-Coordinator读取固定外部closure/final-receipt.json→NEW常规→DIFFERENT NEW专项同metadata finalSHA→exact candidate push/NEW PR实际requiredjobs/steps→protected merge→actual-main hosted/tree→第二次安全同步。任何Fix两审重做；完整两阶段seal由recovery.md固定路径解析，缺失/损坏保持pending。第一阶段已接受同步不重开；本轮封存后STOP，GROUP不激活，S2不评估。
+从固定外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-impl/final-receipt.json` 恢复clean契约SHA/ownedblobs/Recorder/lease；fresh常规→DIFFERENT fresh专项同SHA→exact push/PR实际必需jobs/steps含两新入口/真实PG→protected merge/main parents/tree→actual-main hosted/tree→保存782unknown实际安全同步。固定发现 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-acceptance-seal.json` 现在缺失=PENDING，需逐项验原件/hash/真实CI/同步；缺/坏从首缺口续，不能只信seal/PASS。全部核验后fresh产品Agent写真实contract SHA，把本pending当历史再实现，整体GROUP active、S2 OPEN。
 
 ## Last Known Good Commit
 
-`45b0a8512da4e505c467a6120cf2fc2cdd0bac7f`：第一阶段实际protected main与H:/IM-platform同步PASS；此行政metadata新候选未独立接受。
+`6f163927334c39c9c8833eb8222335c661bde673`：已独立接受、集成并安全同步的规划main。
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-18-group-plan-planning-accepted-admin-pending.md`
+`spec/progress/checkpoints/2026-10-18-group-contract-activation.md`
 
 ## Uncommitted Changes / Ownership
 
-Sole行政writer /root/group_plan_close_r1，assigned exactroot H:/.codex/worktrees/grp/IM-platform，branch task/LOOP1-GROUP-PLAN-001，已从c7 ff-only到clean45b。最终cleanSHA/ownedblobs/Acceptance/Recorder/sourcelease RELEASED从固定外部closure/final-receipt.json发现。H:/IM-platform只读HEAD/branch；782未知原件不读取采纳/清理/改写；保存快照由Coordinator第二次安全同步使用。
+唯一writer /root/group_contract_impl；assigned exactroot H:/.codex/worktrees/group/IM-platform，branch task/LOOP1-GROUP-001，base6f163927。主目录782未知原件不读取采纳/覆盖。提交前task-owned候选；实际clean committedSHA/ownedblobs/sourcelease RELEASED由 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-impl/final-receipt.json` 绑定。两审/hosted/sync均PENDING。
 
 ## Architecture Conflicts / ACP / ADR
 
-无新决定或冲突。原ADR-0013/canonical/领域/验收内容保持第一阶段接受字节；此处仅行政恢复事实。GROUP唯一backlog/planned；语言activation仍I18N；S2 OPEN/STOP。
+无新增架构选择。ADR-0013允许具体群contract在contracts唯一冻结；Frozen/ADR/旧契约字节不改（仅必要新错误码）。语言activation仍I18N。

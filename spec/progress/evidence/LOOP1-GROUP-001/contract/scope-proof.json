@@ -1,0 +1,65 @@
+{
+  "result": "PASS",
+  "base": "6f163927334c39c9c8833eb8222335c661bde673",
+  "root": "H:\\.codex\\worktrees\\group\\IM-platform",
+  "branch": "task/LOOP1-GROUP-001",
+  "owned_paths": [
+    ".github/workflows/ci.yml",
+    "contracts/database/README.md",
+    "contracts/database/migrate.py",
+    "contracts/database/migrations/0002_group_operations.down.sql",
+    "contracts/database/migrations/0002_group_operations.up.sql",
+    "contracts/errors/http-errors.schema.json",
+    "contracts/fixtures/group/exchanges.json",
+    "contracts/fixtures/group/transaction-vectors.json",
+    "contracts/http/group.openapi.json",
+    "contracts/http/verify-auth-user-friend.ps1",
+    "contracts/http/verify-group.py",
+    "spec/progress/checkpoints/2026-10-18-group-contract-activation.md",
+    "spec/progress/current.md",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/activation.md",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/error-handling-inventory.json",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/implementation-handoff.md",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/local-command-originals.zip",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/local-verification.json",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/recovery-preflight/bindings.json",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/recovery-preflight/originals.zip",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/scope-proof.json",
+    "spec/tasks/active/LOOP1-GROUP-001.md",
+    "tests/contract/group/test_group.py",
+    "tests/database/test_migrations.py"
+  ],
+  "protected_paths_unchanged": [
+    "spec/architecture",
+    "spec/domain",
+    "spec/invariants",
+    "spec/acceptance",
+    "backend",
+    "clients",
+    "plugins",
+    "deploy",
+    "contracts/http/auth-user-friend.openapi.json",
+    "contracts/http/sync.openapi.json",
+    "contracts/websocket",
+    "contracts/plugin-api",
+    "contracts/fixtures/auth-user-friend",
+    "contracts/fixtures/sync-plugin",
+    "contracts/fixtures/websocket",
+    "contracts/database/migrations/0001_initial.up.sql",
+    "contracts/database/migrations/0001_initial.down.sql"
+  ],
+  "old_verifier_delta": "one exact ordered-registry comparison only; original15 coverage unchanged",
+  "workflow_delta": "two new commands and immediate exit guards in existing shared contract step only",
+  "0001": {
+    "0001_initial.up.sql": {
+      "raw_sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "historical_text_sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "base_git_blob": "a65de90ff6fb3682abd57453a8cb3d39e0760675"
+    },
+    "0001_initial.down.sql": {
+      "raw_sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "historical_text_sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "base_git_blob": "ac88d806fbb6fe8e167a9f9712b14308bd33f24d"
+    }
+  }
+}

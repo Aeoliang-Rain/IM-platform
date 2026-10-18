@@ -1,0 +1,656 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "IM Group and Conversation Snapshot API",
+    "version": "1.0.0",
+    "description": "Canonical additive group contract. HTTPS only; credentials only Authorization Bearer, never query/body/cookie/logs/errors. Core validates current database Session ID/epoch/client type/revocation/expiry for every call including replay. Reject unknown or repeated query parameters, JSON duplicate fields, non-JSON or bodies above 16384 UTF-8 bytes. Mutation precedence: reject query or undecodable JSON; authenticate; validate exact body/path; validate GROUP and active actor membership for add; validate every target's friendship to actor, including already-active members; then compare existing receipt and either replay original status/body or return conflict; otherwise one Core transaction commits all effects. Current Session/authorization must remain valid at commit, including when a call waited on locks. Target UUID text uses canonical lowercase hyphenated representation; sort/distinct before operation comparison; raw target array length 1..100, actor rejected, at least one distinct target. No partial success. Create automatically adds actor as OWNER; targets MEMBER. Any effective member may add its own friends, independent of OWNER/creator/other members' friendship. Missing conversation, DIRECT, non-member, nonexistent/nonfriend target and mixed invalid batch all return 403 AUTHORIZATION_DENIED without revealing which target; self/shape errors return 400. Replays check current authorization but never mutate or rederive original results from current membership. CREATE always returns original 201; ADD original 200 with only actual new IDs, possibly empty. Result IDs sorted unique; CREATE includes actor, ADD excludes actor. createdAt is the original durable operation record timestamp, not a pre-COMMIT acknowledgement or measured commit completion time. Same request UUID may be reused across distinct actor/type/conversation scopes. Any definite failure rolls back all new business/receipt/user-Sync/outbox effects. Unknown commit/timeout/response loss is unconfirmed; retry original identity and targets. Unexpected server errors propagate as non-2xx transport failures, never successful empty output or an invented catalog code. Every actual membership change invalidates all current effective members including newly added users through existing conversation.changed/membership.changed and matching Outbox in the same transaction; no duplicate logical event for replay/already-member. New members can read existing committed group messages under current member authorization, no join-seq rule. Success and catalog errors echo a decoded valid mutation body requestId or GET requestId; otherwise use a fresh server UUID. All responses no-store; no credentials in output. Existing DIRECT/Auth/WSS/ACK/Sync contracts and old-client window unchanged. Existing0001 GROUP rows continue to be readable/sendable and may receive new authorized ADD operations. If an existing CREATE identity has no verifiable original receipt, both old receipt-less GROUP state and an unexpected missing new receipt must fail the new POST with a non-2xx server failure retaining the missing persisted original-result cause. Do not invent a canonical ErrorResponse, infer different targets and return409, guess original results, backfill a success receipt or overwrite the group. Earlier no public group-create HTTP endpoint existed, so this unreplayable state does not remove any old HTTP success behavior. Only a verified existing receipt with a different normalized target set establishes409 GROUP_REQUEST_CONFLICT; new atomic HTTP operations replay their recorded original result exactly."
+  },
+  "servers": [
+    {
+      "url": "https://api.example.invalid"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/groups": {
+      "post": {
+        "operationId": "createGroup",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Original committed operation result; replay retains this status and body",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          },
+          "403": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTHORIZATION_DENIED"
+            ]
+          },
+          "409": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "GROUP_REQUEST_CONFLICT"
+            ]
+          },
+          "default": {
+            "description": "Unexpected server or infrastructure failure is non-2xx and never a canonical error envelope or successful group/page result. Preserve the real failure cause and retry original mutation identity; absence of confirmation does not prove rollback.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/groups/{conversationId}/members": {
+      "post": {
+        "operationId": "addGroupMembers",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Original committed operation result; replay retains this status and body",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          },
+          "403": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTHORIZATION_DENIED"
+            ]
+          },
+          "409": {
+            "description": "Canonical rejection; no new effects",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "GROUP_REQUEST_CONFLICT"
+            ]
+          },
+          "default": {
+            "description": "Unexpected server or infrastructure failure is non-2xx and never a canonical error envelope or successful group/page result. Preserve the real failure cause and retry original mutation identity; absence of confirmation does not prove rollback.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "conversationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/conversations": {
+      "get": {
+        "operationId": "listOwnConversationMembers",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Read-only bounded joined member rows for the authenticated user's effective conversations; both own membership and returned membership require left_at IS NULL. Each row includes existing minimal PublicUser (userId/username/displayName), including nonfriends; no credentials or arbitrary user lookup. No body or additional query keys. afterConversationId and afterMemberUserId are either both absent (start) or both canonical UUIDs. Sort strictly by UUID tuple (conversationId,member.user.userId) ascending, exclusive after tuple. Each query reads one committed consistent page plus at most one lookahead row. items <= limit (default100,max100); hasMore iff another eligible committed row exists, requires nonempty progress. When true next exactly equals last row tuple; when false both next strings empty. Empty page terminal. Continue every page to terminal with no fixed total row/page cap, merge by conversationId/member.userId and verify repeated conversation metadata is consistent within each page. A conversation can span pages. No group-size cap. Each page is current, not a frozen global snapshot: concurrent inserts below the last tuple can be absent from this scan. User Sync conversation/membership invalidation and periodic full rescan from start must refresh/upsert affected identities; do not discard an invalidation arriving during an unfinished scan or treat terminal as future writes synchronized. Authorization is rechecked for each page; a cursor tuple grants no access to its conversation or user. New writes become visible on later scans; retries are read-only and may observe newer committed data.",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 100
+            }
+          },
+          {
+            "name": "afterConversationId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+            }
+          },
+          {
+            "name": "afterMemberUserId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current own member page",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Canonical request or authentication rejection",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_FAILED"
+            ]
+          },
+          "401": {
+            "description": "Canonical request or authentication rejection",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../errors/http-errors.schema.json#/$defs/ErrorResponse"
+                }
+              }
+            },
+            "x-error-codes": [
+              "AUTH_REQUIRED",
+              "AUTH_TOKEN_INVALID",
+              "AUTH_TOKEN_EXPIRED",
+              "AUTH_SESSION_REVOKED",
+              "AUTH_SESSION_EPOCH_STALE",
+              "AUTH_CLIENT_TYPE_MISMATCH"
+            ]
+          },
+          "default": {
+            "description": "Unexpected server or infrastructure failure is non-2xx and never a canonical error envelope or successful group/page result. Preserve the real failure cause and retry original mutation identity; absence of confirmation does not prove rollback.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "$ref": "./auth-user-friend.openapi.json#/components/securitySchemes/bearerAuth"
+      }
+    },
+    "schemas": {
+      "GroupRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "memberUserIds"
+        ],
+        "properties": {
+          "requestId": {
+            "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+          },
+          "memberUserIds": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+            }
+          }
+        }
+      },
+      "GroupResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "conversationId",
+          "addedMemberUserIds",
+          "createdAt"
+        ],
+        "properties": {
+          "requestId": {
+            "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+          },
+          "conversationId": {
+            "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+          },
+          "addedMemberUserIds": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 101,
+            "items": {
+              "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+            },
+            "uniqueItems": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Member": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "user",
+          "role",
+          "joinedAt"
+        ],
+        "properties": {
+          "user": {
+            "$ref": "./auth-user-friend.openapi.json#/components/schemas/PublicUser"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "OWNER",
+              "MEMBER"
+            ]
+          },
+          "joinedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ConversationMemberView": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "conversationId",
+          "kind",
+          "createdBy",
+          "createdAt",
+          "member"
+        ],
+        "properties": {
+          "conversationId": {
+            "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "DIRECT",
+              "GROUP"
+            ]
+          },
+          "createdBy": {
+            "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "member": {
+            "$ref": "#/components/schemas/Member"
+          }
+        }
+      },
+      "Continuation": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "afterConversationId",
+              "afterMemberUserId"
+            ],
+            "properties": {
+              "afterConversationId": {
+                "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+              },
+              "afterMemberUserId": {
+                "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "afterConversationId",
+              "afterMemberUserId"
+            ],
+            "properties": {
+              "afterConversationId": {
+                "const": ""
+              },
+              "afterMemberUserId": {
+                "const": ""
+              }
+            }
+          }
+        ]
+      },
+      "ConversationPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "items",
+          "hasMore",
+          "next"
+        ],
+        "properties": {
+          "requestId": {
+            "$ref": "./auth-user-friend.openapi.json#/components/schemas/Id"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/ConversationMemberView"
+            }
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "next": {
+            "$ref": "#/components/schemas/Continuation"
+          }
+        }
+      }
+    }
+  },
+  "x-group-binding": {
+    "authentication": "authoritative-current-session-each-request-before-replay",
+    "actor": "authorization-bearer-only-no-body-or-query-identity",
+    "normalization": "canonical-lowercase-uuid-sort-distinct-targets-excluding-actor",
+    "rawTargetLimit": 100,
+    "pageRowLimit": 100,
+    "bodyByteLimit": 16384,
+    "createKey": [
+      "actorId",
+      "CREATE",
+      "requestId"
+    ],
+    "addKey": [
+      "actorId",
+      "conversationId",
+      "ADD",
+      "requestId"
+    ],
+    "replay": "current-authorization-then-original-status-and-body",
+    "conflict": "same-key-different-canonical-target-set-409-GROUP_REQUEST_CONFLICT",
+    "authorization": "create-own-friends-add-current-group-member-own-friends-whole-batch",
+    "alreadyMember": "still-check-friendship-no-new-member-or-change-event",
+    "commit": "conversation-members-receipt-all-affected-user-sync-outbox-one-transaction-before-success",
+    "unconfirmed": "retain-original-request-and-targets-never-assume-rollback-or-success",
+    "snapshot": "current-effective-own-conversation-members-only-including-nonfriends",
+    "order": [
+      "conversationId",
+      "member.user.userId"
+    ],
+    "pagination": "strict-tuple-keyset-extra-row-hasMore-continue-to-terminal-no-total-cap",
+    "consistency": "one-committed-page-not-global-multipage-snapshot",
+    "refresh": "user-sync-invalidation-and-periodic-full-rescan-from-start-upsert-by-ids",
+    "failure": "unknown-internal-failure-propagates-non-2xx-no-fabricated-canonical-error",
+    "compatibility": "additive-old-direct-http-wss-ack-sync-unchanged",
+    "missingOriginalResult": "existing-create-identity-without-verifiable-receipt-server-failure-no-guessed-replay-or-conflict"
+  }
+}

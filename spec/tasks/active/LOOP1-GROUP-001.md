@@ -1,16 +1,16 @@
 ---
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
-status: backlog
-owner: unassigned
+status: active
+owner: /root/group_contract_impl
 stage: S2
 gate: S2
-client_supplement_phase: planned
+client_supplement_phase: group_product
 ---
 
 # Goal
 
-创建者从自己的好友列表选人，创建GROUP会话并自动加入；任意有效群成员均可从本人的好友列表选择新成员加入当前群，好友资格仅针对本次操作者校验。补齐Web/Desktop/Mobile群会话入口、成员与发言者身份展示；复用现有发送、成员鉴权、seq、幂等、ACK、Outbox、分发和Sync，新文案接入现有i18n。依赖I18N及本规划正式接受，位于I18N后/S2 Gate前。本轮仅入队，不激活。
+创建者从自己的好友列表选人，创建GROUP会话并自动加入；任意有效群成员均可从本人的好友列表选择新成员加入当前群，好友资格仅针对本次操作者校验。补齐Web/Desktop/Mobile群会话入口、成员与发言者身份展示；复用现有发送、成员鉴权、seq、幂等、ACK、Outbox、分发和Sync，新文案接入现有i18n。依赖I18N及本规划正式接受，位于I18N后/S2 Gate前。2026-10-18 Human 新请求恢复下一任务；依赖核验通过后先交付独立公共契约切片。
 
 # Inputs
 
@@ -42,6 +42,7 @@ client_runtime: Android
 
 - `contracts/http/group.openapi.json`（建群/加人/本人会话快照；唯一新增HTTP权威）
 - `contracts/http/verify-group.py`（标准库/现有validator适配，不新依赖）
+- `contracts/http/verify-auth-user-friend.ps1`（激活时实际输入适配：仅 Get-ModelFailures 的全局 ordered registry 在原15码后接入已授权 GROUP_REQUEST_CONFLICT；旧15码顺序、Auth/Friend特定负例覆盖、全部原断言/mutations/退出传播保持；不得修改Auth OpenAPI或旧fixtures）
 - `contracts/errors/http-errors.schema.json`（仅已批准群操作必要错误）
 - `contracts/database/migrations/0002_group_operations.up.sql`
 - `contracts/database/migrations/0002_group_operations.down.sql`
@@ -153,7 +154,7 @@ Web/Desktop沿既有TypeScript分层和各端独立React视觉；Android Kotlin/
 
 # Forbidden
 
-不实现退群/移除/群主管理/邀请审批/链接/二维码/陌生人拉群/群名编辑/已读/新消息类型/每成员持久投递；不加服务/runtime/库/bridge/ORM/通用工作流或错误框架，不提前S3/S4。不改ACK/security/现兼容语义，不绕过契约独立冻结，不扩大搜索/非成员身份访问。未知main工作不复制覆盖；本轮仅backlog，不激活或实现。
+不实现退群/移除/群主管理/邀请审批/链接/二维码/陌生人拉群/群名编辑/已读/新消息类型/每成员持久投递；不加服务/runtime/库/bridge/ORM/通用工作流或错误框架，不提前S3/S4。不改ACK/security/现兼容语义，不绕过契约独立冻结，不扩大搜索/非成员身份访问。未知main工作不复制覆盖；当前只实现下述首契约切片；Go/客户端实现等待该切片独立接受并同步。
 
 # Minimality
 
@@ -189,8 +190,49 @@ main_sync_evidence: unavailable
 
 # Handoff
 
-由LOOP1-GROUP-PLAN-001创建，status backlog/client_supplement_phase planned；I18N后/S2前，本规划接受/同步前阻止激活。无群聊产品实现/接受或截图PASS。last known good 86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0；新规划接受main以后按本规划seal恢复。无产品未提交work。
+首契约候选已完成本地验证；详细实现/范围/真实PG/失败与研究限制见 spec/progress/evidence/LOOP1-GROUP-001/contract/implementation-handoff.md。实际clean finalSHA/ownedblobs/Recorder/lease只由固定外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-impl/final-receipt.json` 绑定。NEW常规→DIFFERENT NEW专项均PENDING，hosted/集成/actual-main/主目录同步PENDING；整体active、S2 OPEN。
 
 # Next Action
 
-本轮保持backlog、S2 OPEN并STOP。未来Human授权恢复时核验I18N及本规划实际独立接受/集成/主目录同步，全部满足再唯一队列backlog→ready→active、phase group_product；先契约切片独立冻结接受再实现，不能因active空选择。
+Coordinator从外部final-receipt恢复clean契约候选→fresh常规→different fresh错误专项同最终SHA→exact candidate/PR实际必需jobs/steps（两新群入口+真实PG迁移）→protected merge→actual-main hosted/tree→保存782unknown的安全主目录同步。固定外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-acceptance-seal.json` 缺/坏保持PENDING，从首缺口接续；后续fresh产品Agent必须逐项核原件/hash/CI/同步，不能只看seal存在/PASS。完全核验才把本生成时pending视为历史并记录真实contract SHA后实现Go/三端；整体GROUP不移review/done，S2 OPEN。
+
+# 2026-10-18 Activation / Contract Candidate
+
+Human 本轮直接指令“阅读AGENTS.md，完成下一个task”恢复 GROUP，不沿用旧规划轮 STOP。
+Coordinator 与 fresh recovery Agent 已实际核验 GROUP-PLAN/I18N 的独立接受、精确 hosted、protected main 与保存未知工作安全同步；规划封存3735文件hash/265历史blob/1749语义检查、I18N440证据项均匹配。起点与最后已知良好 main `6f163927334c39c9c8833eb8222335c661bde673`。
+唯一 writer `/root/group_contract_impl`，assigned exactroot `H:/.codex/worktrees/group/IM-platform`，branch `task/LOOP1-GROUP-001`。顺序 backlog→ready→active，唯一队列与 status 同步；phase group_product 不改变语言激活 I18N。
+
+本切片限 contracts/http/group.openapi.json、verify-group.py、必要 errors 新码、0002 up/down、database README/migrate.py、tests/database/test_migrations.py、fixtures/group、tests/contract/group、现 workflow shared contract step 两个新入口及本 Task/current/必要新证据/checkpoint。保留0001 up/down字节、历史ledger checksum、原检查/必需job及失败传播；不写 Go、客户端、Frozen、ADR 或旧证据。
+
+POST 输入只 requestId/memberUserIds，身份仅当前数据库权威Session；规范UUID小写/排序/去重后至少一目标、不含actor，每次raw batch最多100。create key(actor,CREATE,request)；add key(actor,conversation,ADD,request)。当前身份与授权校验优先于重放；同规范目标原结果重放，异内容409 GROUP_REQUEST_CONFLICT；非好友/非法群/非成员403，非法结构/自身400。create201含自动actor；add200只返回实际新成员（可为空）。两者原结果字段 requestId/conversationId/addedMemberUserIds/createdAt 持久绑定；createdAt是提交操作的原始记录时间，并非可在COMMIT前确认的wall-clock commit时间。未知内部失败非2xx、结果未知保留原ID，不伪造成功或rollback。
+
+GET /v1/conversations 使用 requestId、limit1..100、成对可选 afterConversationId/afterMemberUserId。按(conversationId,memberUserId)升序分页本人有效会话的有效成员joined rows，逐项含会话kind/createdBy/createdAt及现PublicUser/role/joinedAt；无外群筛选或身份扩权。单页最多100行、hasMore必须有额外已提交行与前进，持续至terminal，不限制群总人数/总页数。每页一致、跨页不宣称冻结全局快照；并发插入落在已读key前须由UserSync invalidation和周期从头刷新补齐。消费端按会话/用户ID合并，非好友成员身份同样可见。
+
+0002只定义窄group operation receipts，保存actor/type/request/conversation/规范targets/原added IDs/原createdAt；CREATE/ADD独立唯一约束，现create唯一键继续有效。成员表不能反推出创建原targets。迁移up按0001→0002在同一advisory-lock事务应用全部pending及ledger；down每次只回退最高已应用版本且需现allow-data-loss，保留旧业务schema/数据至显式回退0001。生产先停止相关writers并备份/评估receipt重试窗口，禁止运行新endpoint时删receipt。旧DIRECT/HTTP/WSS/Sync/ACK兼容不变。
+
+contract_freeze_result: PENDING
+contract_candidate_sha: unavailable
+regular_review: NEW PENDING
+error_handling_review: DIFFERENT NEW PENDING
+hosted_acceptance: PENDING
+main_sync: PENDING
+整体G01..G09/真实三端/Architect/产品接受PENDING，GROUP保持active、S2 OPEN。
+本地个人activation baseline：Frozen/planning/architecture-all exit0；88architecture(skip1)/35CI(skip4) exit0。PG/psql尚未可用，真实迁移未执行，不计PASS；现hosted compatibility DB suite及Go迁移up必须实际执行。外部Recorder R-GROUP-CONTRACT-20261018为prospective_resume，startup/directread/helperauthoring/通信不伪造完整trace。
+下一动作：完成首契约候选/正负与迁移回归→clean commit→fresh常规→different fresh专项同SHA→hosted→protected integration/actual-main→保存未知work安全主目录同步；之后另fresh实现产品。此writer不push/PR/CI/merge/sync，不将整个Task移review/done。
+
+# Actual verification input adaptation
+
+2026-10-18 首次实际旧Auth verifier退出1：shared error code registry differs from the canonical ordered set。已授权新GROUP_REQUEST_CONFLICT使其硬编码15码全局目录比较失配；复用FRIENDSHIP_STATE_CONFLICT会失真群错误分类，不采用。按本Task原“激活时核对路径，确有新增输入先修Task范围，不在实施后追认”及ADR-0013必要新错误/既有验证接入授权，Coordinator判定这是现验证输入最小适配。先将上述唯一路径/精确责任写入并读回，之后才修改旧verifier。
+仅global registry期待旧15码原序+GROUP_REQUEST_CONFLICT；原AUF expectedCodes15及其全部负例覆盖仍完整，群新码由群contract/fixture suite独立覆盖。不改旧Auth OpenAPI/fixtures，不接受任意未来错误码，不以subset替代exact ordered比较。最初FAIL原始输出在Recorder，保留不改；新增输入/实际逻辑由最终SHA两项NEW审查核验。
+
+# Missing original-result compatibility boundary
+
+真实0001可已有GROUP/create identity却无receipt，且过去没有群create公共HTTP调用。新POST遇已有identity而缺可验证原结果，无法证明合法旧来源或异targets，必须保留缺少持久原结果根因，以non-2xx服务器失败结束；不得伪造ErrorResponse/409、猜targets、回填成功或覆盖群。旧群读取/发送保持，新授权ADD仍可行。新操作意外缺receipt同样失败，不正常化为legacy；只有已有可验证receipt同key异targets才409。无marker/回填新机制。最初通信中拟legacy409的过强解释已撤回，未部署该proposal；保留外部原通信/helper，不作accepted事实。该最小诚实失败边界由最终fresh两审核验。
+
+# Current first-slice local outcome
+
+群verifier35valid26invalid与13tests PASS；实际专用PG16.15 final11tests10.397s、8真实integration、0skip，status/up/repeatup/down0002/status/re-up/status均exit0。原0001 bytes/ledger checksum保持，scope proof保护Frozen/ADR/domain/invariants/acceptance/全部Go和客户端旧契约。旧Auth初次registry FAIL保留，先Task登记读回窄scope后仅一comparison适配，再真实PASS；旧15码/21负例/15mutations不削弱。现控制/架构/CI/所有旧契约回归通过，local不是独立接受。
+研究run因两处已知post-start只读capture缺口计划finish FAIL，结构validate/0unmatched与完整trace分开，实际最终值由外部receipt绑定；不编辑trace/补造事实。全部Task写入/测试经过Recorder，原direct读取exit1留明。契约双审、hosted、protected integration/actual-main、安全主目录同步以及全部产品G项/截图/Architect仍PENDING。
+后续产品实情：writeSocialEvent旧revision固定1不能用于多次群变更；现user_state仅kind/subject/revision且Sequence number|bigint。契约接受后fresh实现先核验实际持久化需要/Task范围，不能把成员JSON藏无关列或投机新增native/schema/新revision平台；稳定前缀、锁序、账号数据游标事务保持。
+
+首次全staged --check因精确复制recovery原receipt的CRLF native exit2（外层PowerShell工具exit1），日志保留。两份本轮原件现以recovery-preflight/originals.zip+bindings.json逐字节保存并核原hash，外部原件不改；仅移除本writer新松散copies，不归一化原件。首次打包helper错误假定native exit1而assert失败，原ZIP已保存，现按真实非零选择器修正；不影响产品/原件。全部候选空白复检另行真实执行。

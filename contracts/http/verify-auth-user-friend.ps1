@@ -284,7 +284,7 @@ function Get-ModelFailures {
     if ($duplicates.Count -gt 0) { $issues += "duplicate operationId: $($duplicates -join ', ')" }
 
     $expectedCodes = @('VALIDATION_FAILED','AUTH_REQUIRED','AUTH_INVALID_CREDENTIALS','AUTH_TOKEN_INVALID','AUTH_TOKEN_EXPIRED','AUTH_SESSION_REVOKED','AUTH_SESSION_EPOCH_STALE','AUTH_CLIENT_TYPE_MISMATCH','AUTH_REFRESH_REVOKED','AUTHORIZATION_DENIED','PROTOCOL_VERSION_UNSUPPORTED','USERNAME_ALREADY_EXISTS','USER_NOT_FOUND','FRIEND_SELF_NOT_ALLOWED','FRIENDSHIP_STATE_CONFLICT')
-    if (($globalCodes -join ',') -cne ($expectedCodes -join ',')) { $issues += 'shared error code registry differs from the canonical ordered set' }
+    if (($globalCodes -join ',') -cne ((@($expectedCodes) + @('GROUP_REQUEST_CONFLICT')) -join ',')) { $issues += 'shared error code registry differs from the canonical ordered set' }
 
     if ((@($OpenApi.components.schemas.ClientType.enum) -join ',') -cne 'WEB,DESKTOP,MOBILE') { $issues += 'client type slots must be exactly WEB,DESKTOP,MOBILE' }
     foreach ($schemaName in @('LoginRequest','WebRefreshRequest','NativeRefreshRequest','Session','AuthResult','NormalizedUserPair','FriendshipResult')) {

@@ -1,0 +1,156 @@
+{
+  "candidate_sha": "discover exact committed SHA from external final-receipt.json",
+  "scope": "all changed executable contract/runner/test/CI surfaces",
+  "files": [
+    {
+      "path": "contracts/http/verify-group.py",
+      "sha256": "123baafbaf041d446e915a20f2f912797a96ee839aef18219e8bcecce2715a18",
+      "responsibility": "Official OAI structural lint; existing validator adapter/external references/pattern, semantic HTTP/permission/replay/page fixture checks; no server implementation.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": [
+        {
+          "line": 88,
+          "function": "check_patterns",
+          "caught": "Invalid",
+          "specific_failure": "One invalid JSON-schema alternative",
+          "current_basis": "Existing oneOf semantics",
+          "actual_behavior": "Count only valid alternatives; require exactly one; unrelated errors propagate"
+        },
+        {
+          "line": 186,
+          "function": "request_failure",
+          "caught": "Invalid",
+          "specific_failure": "Malformed client schema/path/self target only",
+          "current_basis": "Current group400 VALIDATION_FAILED",
+          "actual_behavior": "Emit the canonical rejection; authoritative context validation is outside this catch"
+        },
+        {
+          "line": 223,
+          "function": "check_exchange",
+          "caught": "Invalid",
+          "specific_failure": "Decoded request UUID is not correlatable",
+          "current_basis": "Current server-UUID correlation fallback",
+          "actual_behavior": "Response still validates as UUID; never fabricate identity; unrelated exceptions propagate"
+        },
+        {
+          "line": 275,
+          "function": "verify_fixtures",
+          "caught": "Invalid",
+          "specific_failure": "Expected negative exchange rejection",
+          "current_basis": "Required positive/negative fixture verification",
+          "actual_behavior": "Accept only Invalid for declared negative; accepting invalid data makes verifier fail"
+        }
+      ]
+    },
+    {
+      "path": "contracts/database/migrate.py",
+      "sha256": "ce6a6c9510c33995088a5bbf34ffc2348bf87f2e501e7303d7dab1f20a897c36",
+      "responsibility": "Known ordered0001→0002 apply/status/highest-version rollback with historical checksum, same transaction advisory lock and stale prefix guard.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": [
+        {
+          "line": 127,
+          "function": "main",
+          "caught": "RuntimeError",
+          "specific_failure": "Explicit psql/ledger/order/checksum/data-loss acknowledgement failure",
+          "current_basis": "Standalone migration runner must exit nonzero",
+          "actual_behavior": "Preserve diagnostic cause and return1; parsing/programming exceptions remain uncaught"
+        }
+      ]
+    },
+    {
+      "path": "contracts/http/verify-auth-user-friend.ps1",
+      "sha256": "faf8a4aab1c724dc51fd19fd39d1e077a83f67057b879029902f3004f9562e07",
+      "responsibility": "Existing verifier; only exact global ordered registry extends original15 by GROUP_REQUEST_CONFLICT; old fixture coverage/mutations unchanged.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": [
+        {
+          "line": 234,
+          "specific_failure": "external official OAI lint invocation",
+          "current_basis": "unchanged existing contract validation boundary",
+          "actual_behavior": "retains exception message in issues/failures, final exit1; never successful empty model"
+        },
+        {
+          "line": 452,
+          "specific_failure": "JSON document read/parse",
+          "current_basis": "unchanged existing contract validation boundary",
+          "actual_behavior": "retains exception message in issues/failures, final exit1; never successful empty model"
+        },
+        {
+          "line": 453,
+          "specific_failure": "JSON document read/parse",
+          "current_basis": "unchanged existing contract validation boundary",
+          "actual_behavior": "retains exception message in issues/failures, final exit1; never successful empty model"
+        },
+        {
+          "line": 454,
+          "specific_failure": "JSON document read/parse",
+          "current_basis": "unchanged existing contract validation boundary",
+          "actual_behavior": "retains exception message in issues/failures, final exit1; never successful empty model"
+        },
+        {
+          "line": 455,
+          "specific_failure": "JSON document read/parse",
+          "current_basis": "unchanged existing contract validation boundary",
+          "actual_behavior": "retains exception message in issues/failures, final exit1; never successful empty model"
+        },
+        {
+          "line": 464,
+          "specific_failure": "fixture schema Test-Json failure",
+          "current_basis": "unchanged existing contract validation boundary",
+          "actual_behavior": "retains exception message in issues/failures, final exit1; never successful empty model"
+        }
+      ]
+    },
+    {
+      "path": "contracts/database/migrations/0002_group_operations.up.sql",
+      "sha256": "649fd59ceaa08894b07de4a19e1082f87aa4f421deeb394b40cee1c327bb18ec",
+      "responsibility": "One narrow original-target/result receipt table, canonical UUID-array helper and CREATE partial unique index; business transaction/auth remains Core responsibility.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": []
+    },
+    {
+      "path": "contracts/database/migrations/0002_group_operations.down.sql",
+      "sha256": "a82f113d2dc34ac34c70b32481ec56946e9cb63fad68e6022753b577e9b5dd00",
+      "responsibility": "Explicit highest-version receipt/helper removal retaining0001 business rows; destructive retry-window restrictions documented.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": []
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "0bab7a3e871b11b2abb4d8869d21e53020a7232afd911dbb49542329dd185663",
+      "responsibility": "Only two commands plus immediate nonzero-exit guards inside existing shared contract step; all original jobs/selection/tests preserved.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": []
+    },
+    {
+      "path": "tests/database/test_migrations.py",
+      "sha256": "3cbdff35a7a06dad7e1f62593083f01d44192663e0f8375c098038510ff0f337",
+      "responsibility": "Original compatibility test plus real isolated PostgreSQL upgrade/reentry/checksum/lock/concurrency/batch rollback/receipt/down assertions and explicit child cleanup.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": []
+    },
+    {
+      "path": "tests/contract/group/test_group.py",
+      "sha256": "c162f1af3d33ac8d2107ba20cb77e4aa541a0e093d92566cc4f9d3efbd10d238",
+      "responsibility": "Official structural/schema/permission/replay/237-row paging negative controls and existing shared-step failure propagation assertion.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": []
+    },
+    {
+      "path": "contracts/http/group.openapi.json",
+      "sha256": "8c40882cfea49b681a3ebd02f36c2d75bbe12cb15e63ae98f12a055c72667de0",
+      "responsibility": "Sole additive group HTTP wire authority; default server failures never canonical false errors/success.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": []
+    },
+    {
+      "path": "contracts/errors/http-errors.schema.json",
+      "sha256": "2457fef04b21fbdcd3e626ed0020f8f854642f3cf19a5d911605a4816dfcd32a",
+      "responsibility": "Only necessary GROUP_REQUEST_CONFLICT enum append; old definitions unchanged.",
+      "implementation_inventory_only": "not independent Review/PASS",
+      "catches": []
+    }
+  ],
+  "review_status": "NEW independent regular then DIFFERENT NEW specialist required"
+}
