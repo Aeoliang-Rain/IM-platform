@@ -1,0 +1,2615 @@
+{
+  "task_id": "LOOP1-GROUP-001",
+  "role": "fresh Fix r4",
+  "parent_sha": "0a9f24a38774760e8003e15cc77ff65e3c0d25ac",
+  "base_sha": "6f163927334c39c9c8833eb8222335c661bde673",
+  "local_result": "PASS_LOCAL_CHECKS_ONLY",
+  "independent_reviews": "NEW regular r5 and DIFFERENT NEW specialist r3 PENDING on final SHA",
+  "hosted_acceptance": "PENDING_NEW_FINAL_SHA; original 0a9 push and PR each 12 success / deploy and aggregate gate failure",
+  "recorded_commands": [
+    {
+      "started_at": "2026-10-18T09:43:49.689167Z",
+      "finished_at": "2026-10-18T09:43:50.058134Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "Get-Content -LiteralPath 'spec/architecture/frozen-architecture.md' | Select-Object -Skip 378 -First 231"
+        ],
+        "command_id": "C-4515647a-ff0a-40e8-b79c-28fbe30b1add",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-4515647a-ff0a-40e8-b79c-28fbe30b1add",
+        "duration_ms": 359.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-4515647a-ff0a-40e8-b79c-28fbe30b1add.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-4515647a-ff0a-40e8-b79c-28fbe30b1add.stdout.txt",
+        "stdout_sha256": "ed4e4c0c526c111f0707d9a78a54cf3d4a37805ce16f3d94753f0f552dc09730"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "ed4e4c0c526c111f0707d9a78a54cf3d4a37805ce16f3d94753f0f552dc09730",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:43:56.662253Z",
+      "finished_at": "2026-10-18T09:43:57.042002Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "Get-Content -LiteralPath 'spec/architecture/frozen-architecture.md' | Select-Object -Skip 651 -First 181; Get-Content -LiteralPath 'spec/architecture/frozen-architecture.md' | Select-Object -Skip 1170 -First 240"
+        ],
+        "command_id": "C-4684fafb-d042-4cb9-b458-33ea8a8bf33b",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-4684fafb-d042-4cb9-b458-33ea8a8bf33b",
+        "duration_ms": 360.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-4684fafb-d042-4cb9-b458-33ea8a8bf33b.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-4684fafb-d042-4cb9-b458-33ea8a8bf33b.stdout.txt",
+        "stdout_sha256": "6e4dbf1ea00e489039c3548aba88dac5672451937a36ac7f911a985c8a025f26"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "6e4dbf1ea00e489039c3548aba88dac5672451937a36ac7f911a985c8a025f26",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:44:02.547432Z",
+      "finished_at": "2026-10-18T09:44:02.931796Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "Get-Content -LiteralPath 'spec/architecture/frozen-architecture.md' | Select-Object -Skip 1409; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0013-group-planning.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0005-client-technology-clarification.md' -Raw"
+        ],
+        "command_id": "C-583cb9f0-11c3-4ec0-8dcf-a51b7144ee5c",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-583cb9f0-11c3-4ec0-8dcf-a51b7144ee5c",
+        "duration_ms": 375.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-583cb9f0-11c3-4ec0-8dcf-a51b7144ee5c.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-583cb9f0-11c3-4ec0-8dcf-a51b7144ee5c.stdout.txt",
+        "stdout_sha256": "1a075189c3d84575ff6e5f4bf8dee7e62f86f6e28918f6e8c57425e3d179d922"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "1a075189c3d84575ff6e5f4bf8dee7e62f86f6e28918f6e8c57425e3d179d922",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:44:09.241838Z",
+      "finished_at": "2026-10-18T09:44:09.733792Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0006-client-ui-architecture.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0007-client-mvp-task-planning.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0008-sync-https-transport.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0009-client-minimal-native-capabilities.md' -Raw"
+        ],
+        "command_id": "C-a3e808fb-cb09-4fe4-86bb-54173daa3d1d",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-a3e808fb-cb09-4fe4-86bb-54173daa3d1d",
+        "duration_ms": 469.0,
+        "exit_code": 1,
+        "result": "FAIL",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-a3e808fb-cb09-4fe4-86bb-54173daa3d1d.stderr.txt",
+        "stderr_sha256": "fff7036a9242b3b70ddd32c761ce4493a03aaced5ea8dc9f6025cecceb81fca8",
+        "stdout_blob": "blobs/C-a3e808fb-cb09-4fe4-86bb-54173daa3d1d.stdout.txt",
+        "stdout_sha256": "81bcffcde9216c32d373a74993b5db1365b23a06e130e281f65dfae85202db58"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "81bcffcde9216c32d373a74993b5db1365b23a06e130e281f65dfae85202db58",
+        "stderr": "fff7036a9242b3b70ddd32c761ce4493a03aaced5ea8dc9f6025cecceb81fca8"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:44:24.252047Z",
+      "finished_at": "2026-10-18T09:44:24.694291Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "Get-ChildItem -LiteralPath 'spec/architecture/decisions' -File | Select-Object -ExpandProperty Name; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0009-client-minimal-native-gui.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0010-client-gui-product-activation.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0011-web-appearance-storage.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0012-client-supplement-planning.md' -Raw"
+        ],
+        "command_id": "C-6dc68141-be74-4ab4-ba33-617b2b8bc46d",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-6dc68141-be74-4ab4-ba33-617b2b8bc46d",
+        "duration_ms": 406.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-6dc68141-be74-4ab4-ba33-617b2b8bc46d.stderr.txt",
+        "stderr_sha256": "d6e72639e2a4e1e8244e44e7f867b91b1cc5863245d7d5a8e0753c2b742f1705",
+        "stdout_blob": "blobs/C-6dc68141-be74-4ab4-ba33-617b2b8bc46d.stdout.txt",
+        "stdout_sha256": "65266e8d121607b238cf338c619a9e9d762e5fd016bb26161e12b6c1e4936b48"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "65266e8d121607b238cf338c619a9e9d762e5fd016bb26161e12b6c1e4936b48",
+        "stderr": "d6e72639e2a4e1e8244e44e7f867b91b1cc5863245d7d5a8e0753c2b742f1705"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:44:30.168259Z",
+      "finished_at": "2026-10-18T09:44:30.517028Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference = 'Stop'; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0009-client-native-capabilities.md' -Raw; Get-Content -LiteralPath 'spec/architecture/decisions/ADR-0010-windows-tauri-wss-origin.md' -Raw; Get-Content -LiteralPath 'spec/domain/group.md' -Raw; Get-Content -LiteralPath 'spec/invariants/group.md' -Raw; Get-Content -LiteralPath 'spec/acceptance/group.md' -Raw"
+        ],
+        "command_id": "C-9843c8f8-6361-4560-b6c5-d94dd67b0887",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-9843c8f8-6361-4560-b6c5-d94dd67b0887",
+        "duration_ms": 328.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-9843c8f8-6361-4560-b6c5-d94dd67b0887.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-9843c8f8-6361-4560-b6c5-d94dd67b0887.stdout.txt",
+        "stdout_sha256": "830d03ed61f068424b477786f7c6154c458b46198343297cd97d2803930da7c6"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "830d03ed61f068424b477786f7c6154c458b46198343297cd97d2803930da7c6",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:44:37.112485Z",
+      "finished_at": "2026-10-18T09:44:37.479941Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-ChildItem -LiteralPath 'spec/domain','spec/invariants' -File | Select-Object -ExpandProperty FullName; Get-Content -LiteralPath 'spec/tasks/active/LOOP1-GROUP-001.md' | Select-Object -Skip 198; Get-Content -LiteralPath 'spec/architecture/README.md' | Select-Object -First 25"
+        ],
+        "command_id": "C-5ade05a6-7d6f-4730-a49c-6c97e5a84499",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-5ade05a6-7d6f-4730-a49c-6c97e5a84499",
+        "duration_ms": 328.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-5ade05a6-7d6f-4730-a49c-6c97e5a84499.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-5ade05a6-7d6f-4730-a49c-6c97e5a84499.stdout.txt",
+        "stdout_sha256": "3cf13102f769955c2521ee149681cdb43bbfa784c8ed533eeeb44ed35a3e0bfc"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "3cf13102f769955c2521ee149681cdb43bbfa784c8ed533eeeb44ed35a3e0bfc",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:44:44.606026Z",
+      "finished_at": "2026-10-18T09:44:44.959677Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'spec/domain/auth-user-friend.md' -Raw; Get-Content -LiteralPath 'spec/domain/messaging.md' -Raw; Get-Content -LiteralPath 'spec/domain/sync-plugin.md' -Raw; Get-Content -LiteralPath 'spec/invariants/auth-user-friend.md' -Raw; Get-Content -LiteralPath 'spec/invariants/messaging.md' -Raw; Get-Content -LiteralPath 'spec/invariants/sync-plugin.md' -Raw; Get-Content -LiteralPath 'spec/acceptance/client-gui.md' -Raw; Get-Content -LiteralPath 'spec/acceptance/client-supplement.md' -Raw"
+        ],
+        "command_id": "C-bfc4c1a7-a559-4ee8-b122-83fecd409c62",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-bfc4c1a7-a559-4ee8-b122-83fecd409c62",
+        "duration_ms": 328.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-bfc4c1a7-a559-4ee8-b122-83fecd409c62.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-bfc4c1a7-a559-4ee8-b122-83fecd409c62.stdout.txt",
+        "stdout_sha256": "9168b630e3fdb5cf2fd10ad27a467757e2429033f1fbb834a8434543d139dc23"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "9168b630e3fdb5cf2fd10ad27a467757e2429033f1fbb834a8434543d139dc23",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:44:53.222431Z",
+      "finished_at": "2026-10-18T09:44:53.597233Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'spec/tasks/active/LOOP1-GROUP-001.md' | Select-Object -Skip 153 -First 46; Get-Content -LiteralPath 'contracts/database/README.md' -Raw; Get-Content -LiteralPath 'contracts/database/migrate.py' -Raw"
+        ],
+        "command_id": "C-e8aeaa1a-39b7-46b7-a394-492624e93b8c",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-e8aeaa1a-39b7-46b7-a394-492624e93b8c",
+        "duration_ms": 328.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-e8aeaa1a-39b7-46b7-a394-492624e93b8c.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-e8aeaa1a-39b7-46b7-a394-492624e93b8c.stdout.txt",
+        "stdout_sha256": "711fae73b4eb0f1cd509f88e41b1f16f9080cc7a869d3b48ecfcc523bf354592"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "711fae73b4eb0f1cd509f88e41b1f16f9080cc7a869d3b48ecfcc523bf354592",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:02.794103Z",
+      "finished_at": "2026-10-18T09:45:03.163768Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'contracts/database/migrations/0002_group_operations.up.sql' -Raw; Get-Content -LiteralPath 'contracts/database/migrations/0002_group_operations.down.sql' -Raw; Get-Content -LiteralPath 'contracts/http/sync.openapi.json' -Raw; Get-Content -LiteralPath 'contracts/errors/http-errors.schema.json' -Raw; Get-Content -LiteralPath 'contracts/websocket/sync-v1.schema.json' -Raw"
+        ],
+        "command_id": "C-4858b608-f654-4f27-aaad-df0c1b0025ed",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-4858b608-f654-4f27-aaad-df0c1b0025ed",
+        "duration_ms": 328.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-4858b608-f654-4f27-aaad-df0c1b0025ed.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-4858b608-f654-4f27-aaad-df0c1b0025ed.stdout.txt",
+        "stdout_sha256": "d548f4dee7a23e4e648e0a4cd54b3cd1669d145f8b227e026500374c119ca459"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "d548f4dee7a23e4e648e0a4cd54b3cd1669d145f8b227e026500374c119ca459",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:11.446005Z",
+      "finished_at": "2026-10-18T09:45:11.869171Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; foreach ($p in @('contracts/http/auth-user-friend.openapi.json','contracts/websocket/envelope.schema.json','contracts/http/group.openapi.json')) { $p; Get-Content -LiteralPath $p -Raw | ConvertFrom-Json -AsHashtable | ConvertTo-Json -Depth 100 -Compress }; Get-Content -LiteralPath 'tests/infrastructure/smoke.ps1' -Raw; Get-Content -LiteralPath 'tests/e2e/go_tls_messaging.py' | Select-Object -First 275"
+        ],
+        "command_id": "C-c335aedd-cbc6-4ed5-9222-fd8ed6cef1a4",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-c335aedd-cbc6-4ed5-9222-fd8ed6cef1a4",
+        "duration_ms": 375.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-c335aedd-cbc6-4ed5-9222-fd8ed6cef1a4.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-c335aedd-cbc6-4ed5-9222-fd8ed6cef1a4.stdout.txt",
+        "stdout_sha256": "0ec66a1f61b60b987527ccbd962c1c9daed68d4eeb6028ce86bec235063d2b8e"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "0ec66a1f61b60b987527ccbd962c1c9daed68d4eeb6028ce86bec235063d2b8e",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:21.550606Z",
+      "finished_at": "2026-10-18T09:45:22.281664Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; git -c core.excludesFile=.git/info/exclude rev-parse --show-toplevel; git -c core.excludesFile=.git/info/exclude status --short; git -c core.excludesFile=.git/info/exclude diff --stat; git -c core.excludesFile=.git/info/exclude diff; git -c core.excludesFile=.git/info/exclude log -6 --oneline; git -c core.excludesFile=.git/info/exclude rev-parse HEAD; git -c core.excludesFile=.git/info/exclude branch --show-current"
+        ],
+        "command_id": "C-56da7ee4-11f4-42a7-b07d-041ab8540499",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-56da7ee4-11f4-42a7-b07d-041ab8540499",
+        "duration_ms": 672.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-56da7ee4-11f4-42a7-b07d-041ab8540499.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-56da7ee4-11f4-42a7-b07d-041ab8540499.stdout.txt",
+        "stdout_sha256": "8f6eb2824645e5dbd622c3e4e0e9c1f528babc08f98d71e940122b1fbd8b4164"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "8f6eb2824645e5dbd622c3e4e0e9c1f528babc08f98d71e940122b1fbd8b4164",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:29.846323Z",
+      "finished_at": "2026-10-18T09:45:29.998834Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "tools/verify_frozen_architecture.py"
+        ],
+        "command_id": "C-ea8dd9b1-89ed-444b-96fe-6e86598d3b95",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-ea8dd9b1-89ed-444b-96fe-6e86598d3b95",
+        "duration_ms": 109.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-ea8dd9b1-89ed-444b-96fe-6e86598d3b95.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-ea8dd9b1-89ed-444b-96fe-6e86598d3b95.stdout.txt",
+        "stdout_sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:30.966995Z",
+      "finished_at": "2026-10-18T09:45:31.139302Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "ci/check_s2_planning.py"
+        ],
+        "command_id": "C-0178242f-2cda-4e15-bae4-59e5f9273c91",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-0178242f-2cda-4e15-bae4-59e5f9273c91",
+        "duration_ms": 125.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-0178242f-2cda-4e15-bae4-59e5f9273c91.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-0178242f-2cda-4e15-bae4-59e5f9273c91.stdout.txt",
+        "stdout_sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:32.136900Z",
+      "finished_at": "2026-10-18T09:45:33.281315Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "ci/check_architecture.py",
+          "--scope",
+          "all",
+          "--json"
+        ],
+        "command_id": "C-bca1404b-6d77-43a5-912e-ae42f2343de0",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-bca1404b-6d77-43a5-912e-ae42f2343de0",
+        "duration_ms": 1078.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": true,
+        "stderr_blob": "blobs/C-bca1404b-6d77-43a5-912e-ae42f2343de0.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-bca1404b-6d77-43a5-912e-ae42f2343de0.stdout.txt",
+        "stdout_sha256": "c4b66eb26ef8d21c7981cf198c3d5ec1ef3ae7a105c1c12ce337360aa8ae223e"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "933fdd7f5cd44820957daacb8cbc42a556420c21f4341b71c5811cc5953b3631",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:45.125028Z",
+      "finished_at": "2026-10-18T09:45:50.806580Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/ci"
+        ],
+        "command_id": "C-401d2215-2501-4b42-96ae-b3e3b9feae17",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-401d2215-2501-4b42-96ae-b3e3b9feae17",
+        "duration_ms": 5641.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-401d2215-2501-4b42-96ae-b3e3b9feae17.stderr.txt",
+        "stderr_sha256": "a0f2739aee41e26791d9a4d7d7ba33827c7cf9c2e9cea8ee6d7c8c39e1159ba8",
+        "stdout_blob": "blobs/C-401d2215-2501-4b42-96ae-b3e3b9feae17.stdout.txt",
+        "stdout_sha256": "92c2b8c43bdb71a6e4ccb5c062e9afd9992fa86eee07cb3c1d4a543c1e687b52"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "92c2b8c43bdb71a6e4ccb5c062e9afd9992fa86eee07cb3c1d4a543c1e687b52",
+        "stderr": "a0f2739aee41e26791d9a4d7d7ba33827c7cf9c2e9cea8ee6d7c8c39e1159ba8"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:45:34.224915Z",
+      "finished_at": "2026-10-18T09:45:57.235041Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/architecture"
+        ],
+        "command_id": "C-9053b630-b4b1-402a-bc14-1b5c9c68e5cc",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-9053b630-b4b1-402a-bc14-1b5c9c68e5cc",
+        "duration_ms": 22968.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-9053b630-b4b1-402a-bc14-1b5c9c68e5cc.stderr.txt",
+        "stderr_sha256": "e818edeb078848ab8f56968ba0f08db68c5bb67fcfd140610b5101a59ce51cac",
+        "stdout_blob": "blobs/C-9053b630-b4b1-402a-bc14-1b5c9c68e5cc.stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e818edeb078848ab8f56968ba0f08db68c5bb67fcfd140610b5101a59ce51cac"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:46:11.443315Z",
+      "finished_at": "2026-10-18T09:46:11.865153Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; $out='C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0'; Get-Content -LiteralPath ($out+'/contract-failed-deploy-original-bindings.json') -Raw; Get-FileHash -Algorithm SHA256 -LiteralPath ($out+'/contract-failed-deploy-original-bindings.json'),($out+'/contract-failed-deploy-39115869727-117641538618.log'),($out+'/contract-failed-deploy-39115960616-117641824783.log'),'tests/infrastructure/smoke.ps1','tests/e2e/go_tls_messaging.py' | Select-Object Path,Hash | ConvertTo-Json -Compress; Select-String -LiteralPath ($out+'/contract-failed-deploy-39115869727-117641538618.log'),($out+'/contract-failed-deploy-39115960616-117641824783.log') -Pattern 'Go transport smoke|smoke.ps1:60|canonical migration missing' | Select-Object Path,LineNumber,Line | ConvertTo-Json -Compress; Get-Content -LiteralPath '.github/workflows/ci.yml' | Select-Object -Skip 427 -First 24; Get-Content -LiteralPath 'tests/e2e/go_tls_messaging.py' | Select-Object -Skip 275"
+        ],
+        "command_id": "C-a5fa24fc-7f8b-4ed7-a5c5-d0457d268139",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-a5fa24fc-7f8b-4ed7-a5c5-d0457d268139",
+        "duration_ms": 375.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-a5fa24fc-7f8b-4ed7-a5c5-d0457d268139.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-a5fa24fc-7f8b-4ed7-a5c5-d0457d268139.stdout.txt",
+        "stdout_sha256": "43983cdb0d80bf2de7f089558b97c8827c9ca67c5c25aa2f5101cc28b8334ff5"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "43983cdb0d80bf2de7f089558b97c8827c9ca67c5c25aa2f5101cc28b8334ff5",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:46:27.645844Z",
+      "finished_at": "2026-10-18T09:46:28.050002Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'research/schema/event.schema.json' | Select-Object -First 100; Select-String -LiteralPath 'tools/research/recorder.py' -Pattern 'EVENT_TYPES|event_type|warning' | Select-Object -First 22 LineNumber,Line | ConvertTo-Json -Compress"
+        ],
+        "command_id": "C-77de47c8-6594-473c-961d-47888541a983",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-77de47c8-6594-473c-961d-47888541a983",
+        "duration_ms": 343.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-77de47c8-6594-473c-961d-47888541a983.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-77de47c8-6594-473c-961d-47888541a983.stdout.txt",
+        "stdout_sha256": "2ebe09674c47522df7b546ec3ff23dfa51ea2990b7e2ce07a56d00504e619b08"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "2ebe09674c47522df7b546ec3ff23dfa51ea2990b7e2ce07a56d00504e619b08",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:47:30.550859Z",
+      "finished_at": "2026-10-18T09:47:33.346063Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/migration_probe.py",
+          "before"
+        ],
+        "command_id": "C-013673d2-5967-4f9e-a4ec-264f7de2676c",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-013673d2-5967-4f9e-a4ec-264f7de2676c",
+        "duration_ms": 2734.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-013673d2-5967-4f9e-a4ec-264f7de2676c.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-013673d2-5967-4f9e-a4ec-264f7de2676c.stdout.txt",
+        "stdout_sha256": "5663fa0346b460829e8620fc439eb0574078badface815ea44a584ea155757c5"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "5663fa0346b460829e8620fc439eb0574078badface815ea44a584ea155757c5",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:47:38.190347Z",
+      "finished_at": "2026-10-18T09:47:41.012756Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/migration_probe.py",
+          "proposed"
+        ],
+        "command_id": "C-0172f1b0-c516-4ff2-a10e-3fefe2ef8f01",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-0172f1b0-c516-4ff2-a10e-3fefe2ef8f01",
+        "duration_ms": 2766.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-0172f1b0-c516-4ff2-a10e-3fefe2ef8f01.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-0172f1b0-c516-4ff2-a10e-3fefe2ef8f01.stdout.txt",
+        "stdout_sha256": "5a03d5f2fe84bac244cc71953328b6da08c952484237899a48bac381c3ecb12d"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "5a03d5f2fe84bac244cc71953328b6da08c952484237899a48bac381c3ecb12d",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:48:19.850610Z",
+      "finished_at": "2026-10-18T09:48:20.242845Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/register_scope.py"
+        ],
+        "command_id": "C-f1644879-94e8-4de8-993c-a3292b6dc524",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-f1644879-94e8-4de8-993c-a3292b6dc524",
+        "duration_ms": 328.0,
+        "exit_code": 1,
+        "result": "FAIL",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-f1644879-94e8-4de8-993c-a3292b6dc524.stderr.txt",
+        "stderr_sha256": "511f48fe24f9049ca667d5b95fb0648f71841b91c802e38140f3d5e53ad61bfe",
+        "stdout_blob": "blobs/C-f1644879-94e8-4de8-993c-a3292b6dc524.stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "511f48fe24f9049ca667d5b95fb0648f71841b91c802e38140f3d5e53ad61bfe"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:48:21.327744Z",
+      "finished_at": "2026-10-18T09:48:21.916479Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; git -c core.excludesFile=.git/info/exclude diff --name-only; git -c core.excludesFile=.git/info/exclude diff -- spec/tasks/active/LOOP1-GROUP-001.md; Get-FileHash -Algorithm SHA256 -LiteralPath 'spec/tasks/active/LOOP1-GROUP-001.md' | Select-Object Path,Hash | ConvertTo-Json -Compress; Select-String -LiteralPath 'spec/tasks/active/LOOP1-GROUP-001.md' -Pattern 'tests/infrastructure/smoke.ps1|tests/e2e/go_tls_messaging.py' | Select-Object LineNumber,Line | ConvertTo-Json -Compress"
+        ],
+        "command_id": "C-11f22da0-4372-42c5-bcdd-f0f7ada0c698",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-11f22da0-4372-42c5-bcdd-f0f7ada0c698",
+        "duration_ms": 532.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-11f22da0-4372-42c5-bcdd-f0f7ada0c698.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-11f22da0-4372-42c5-bcdd-f0f7ada0c698.stdout.txt",
+        "stdout_sha256": "9f75512c900f46d29ef8ae573ce30bb50acd1e8e66e8d1d60910e926fd59979b"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "9f75512c900f46d29ef8ae573ce30bb50acd1e8e66e8d1d60910e926fd59979b",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:49:16.896978Z",
+      "finished_at": "2026-10-18T09:49:17.466988Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/register_scope.py"
+        ],
+        "command_id": "C-5ff52529-e250-43df-99c3-4a3ba0c867c7",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-5ff52529-e250-43df-99c3-4a3ba0c867c7",
+        "duration_ms": 500.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-5ff52529-e250-43df-99c3-4a3ba0c867c7.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-5ff52529-e250-43df-99c3-4a3ba0c867c7.stdout.txt",
+        "stdout_sha256": "4eddc6d8e483135b80b9c391ca7cf72f3260c4bfd1d943305db87ab79893d644"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "4eddc6d8e483135b80b9c391ca7cf72f3260c4bfd1d943305db87ab79893d644",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:49:27.837054Z",
+      "finished_at": "2026-10-18T09:49:28.349520Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; git -c core.excludesFile=.git/info/exclude diff --name-only; git -c core.excludesFile=.git/info/exclude diff -- spec/tasks/active/LOOP1-GROUP-001.md; Get-FileHash -Algorithm SHA256 -LiteralPath 'spec/tasks/active/LOOP1-GROUP-001.md' | Select-Object Path,Hash | ConvertTo-Json -Compress; Select-String -LiteralPath 'spec/tasks/active/LOOP1-GROUP-001.md' -Pattern 'tests/infrastructure/smoke.ps1|tests/e2e/go_tls_messaging.py' | Select-Object LineNumber,Line | ConvertTo-Json -Compress"
+        ],
+        "command_id": "C-5ffb6e27-067f-4537-986d-e993dcc61817",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-5ffb6e27-067f-4537-986d-e993dcc61817",
+        "duration_ms": 453.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-5ffb6e27-067f-4537-986d-e993dcc61817.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-5ffb6e27-067f-4537-986d-e993dcc61817.stdout.txt",
+        "stdout_sha256": "cc285f33f9917cb7b225fd21460743e54c3d30f3f56d08f2491f41b4d00d67cb"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "cc285f33f9917cb7b225fd21460743e54c3d30f3f56d08f2491f41b4d00d67cb",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:49:45.609004Z",
+      "finished_at": "2026-10-18T09:49:46.158627Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; $files=Get-ChildItem -LiteralPath 'tests','tools','deploy','.github/workflows' -Recurse -File | Where-Object { $_.Extension -in '.py','.ps1','.yml','.yaml','.mjs','.ts','.go' }; $files | Select-String -Pattern 'schema_migrations|0001_initial' | Select-Object Path,LineNumber,Line | ConvertTo-Json -Compress; Get-Content -LiteralPath 'deploy/compose.yaml' | Select-Object -First 200"
+        ],
+        "command_id": "C-077e6ae4-aa49-42f3-80ec-4225b1e293f4",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-077e6ae4-aa49-42f3-80ec-4225b1e293f4",
+        "duration_ms": 500.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-077e6ae4-aa49-42f3-80ec-4225b1e293f4.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-077e6ae4-aa49-42f3-80ec-4225b1e293f4.stdout.txt",
+        "stdout_sha256": "99d3d4e916707f70c0135e7803dfde8f482d2544424bcde31ee2191bb4beda27"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "99d3d4e916707f70c0135e7803dfde8f482d2544424bcde31ee2191bb4beda27",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:50:09.363546Z",
+      "finished_at": "2026-10-18T09:50:09.786643Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; docker version --format '{{.Server.Version}} {{.Server.Os}}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; docker ps -a --format '{{json .}}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; Get-NetTCPConnection -LocalPort 18443 -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,State,OwningProcess | ConvertTo-Json -Compress; Get-ChildItem -LiteralPath 'backend/go/local-config' -ErrorAction SilentlyContinue | Select-Object Name,Length | ConvertTo-Json -Compress"
+        ],
+        "command_id": "C-ee8059ed-77c3-4458-a76b-a21735ad5d35",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-ee8059ed-77c3-4458-a76b-a21735ad5d35",
+        "duration_ms": 360.0,
+        "exit_code": 1,
+        "result": "FAIL",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-ee8059ed-77c3-4458-a76b-a21735ad5d35.stderr.txt",
+        "stderr_sha256": "f1c685da24b3ee153e3ee8147c22f997955bc0267b4c8d03914e5a829c2cd376",
+        "stdout_blob": "blobs/C-ee8059ed-77c3-4458-a76b-a21735ad5d35.stdout.txt",
+        "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "stderr": "f1c685da24b3ee153e3ee8147c22f997955bc0267b4c8d03914e5a829c2cd376"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:50:24.753838Z",
+      "finished_at": "2026-10-18T09:50:25.269761Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'contracts/websocket/envelope.schema.json' -Raw; Get-Content -LiteralPath 'contracts/http/group.openapi.json' -Raw | ConvertFrom-Json -AsHashtable | ConvertTo-Json -Depth 100 -Compress; Get-Content -LiteralPath 'spec/progress/evidence/LOOP1-GROUP-PLAN-001/acceptance/acceptance.md' -Raw"
+        ],
+        "command_id": "C-f5982012-528d-45ff-b5b1-d216683a1984",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-f5982012-528d-45ff-b5b1-d216683a1984",
+        "duration_ms": 453.0,
+        "exit_code": 1,
+        "result": "FAIL",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-f5982012-528d-45ff-b5b1-d216683a1984.stderr.txt",
+        "stderr_sha256": "e3bba001579e549681560adf01ff3d75c6e0c17fb861d1bcd4614b1122958af6",
+        "stdout_blob": "blobs/C-f5982012-528d-45ff-b5b1-d216683a1984.stdout.txt",
+        "stdout_sha256": "09d1e1107e9584dd58be75a9c5df6dde651ad090f210c778010e850a2822c748"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "09d1e1107e9584dd58be75a9c5df6dde651ad090f210c778010e850a2822c748",
+        "stderr": "e3bba001579e549681560adf01ff3d75c6e0c17fb861d1bcd4614b1122958af6"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:51:03.816985Z",
+      "finished_at": "2026-10-18T09:51:04.384134Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'spec/tasks/done/LOOP1-GROUP-PLAN-001.md' | Select-Object -Last 70; Get-Content -LiteralPath 'spec/tasks/done/LOOP1-CLIENT-I18N-001.md' | Select-Object -Last 55; git -c core.excludesFile=.git/info/exclude diff --check; git -c core.excludesFile=.git/info/exclude status --short"
+        ],
+        "command_id": "C-f58f148f-7296-4f7b-a4f9-80665eddc09f",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-f58f148f-7296-4f7b-a4f9-80665eddc09f",
+        "duration_ms": 500.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-f58f148f-7296-4f7b-a4f9-80665eddc09f.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-f58f148f-7296-4f7b-a4f9-80665eddc09f.stdout.txt",
+        "stdout_sha256": "60c2200b9c310b44986fa22ac5f92c25aa3c7b19c8979d3a166c0175799d0dd8"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "60c2200b9c310b44986fa22ac5f92c25aa3c7b19c8979d3a166c0175799d0dd8",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:51:43.538597Z",
+      "finished_at": "2026-10-18T09:51:43.817139Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/apply_fix.py"
+        ],
+        "command_id": "C-64b186fb-3bbd-439b-8d02-9747e22dfa7b",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-64b186fb-3bbd-439b-8d02-9747e22dfa7b",
+        "duration_ms": 219.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-64b186fb-3bbd-439b-8d02-9747e22dfa7b.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-64b186fb-3bbd-439b-8d02-9747e22dfa7b.stdout.txt",
+        "stdout_sha256": "f2f01f58bd83a12474a6b4840c460097eb5e47198aaa33662fa02022a13bd28f"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "f2f01f58bd83a12474a6b4840c460097eb5e47198aaa33662fa02022a13bd28f",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:51:49.367313Z",
+      "finished_at": "2026-10-18T09:51:52.075508Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/migration_probe.py",
+          "after"
+        ],
+        "command_id": "C-31165273-3fc5-44c4-8abf-3fe5fa10ae0e",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-31165273-3fc5-44c4-8abf-3fe5fa10ae0e",
+        "duration_ms": 2657.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-31165273-3fc5-44c4-8abf-3fe5fa10ae0e.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-31165273-3fc5-44c4-8abf-3fe5fa10ae0e.stdout.txt",
+        "stdout_sha256": "05ccdb2276649b2da3b5cc3fd6e14cb0fa5d279c8d43bf3fad0fecf164ac3cde"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "05ccdb2276649b2da3b5cc3fd6e14cb0fa5d279c8d43bf3fad0fecf164ac3cde",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:52:52.408981Z",
+      "finished_at": "2026-10-18T09:53:18.308515Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/runtime_run.py",
+          "go-smoke"
+        ],
+        "command_id": "C-086ca285-9b92-4bb3-a6e7-e36409b80ee8",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-086ca285-9b92-4bb3-a6e7-e36409b80ee8",
+        "duration_ms": 25828.0,
+        "exit_code": 1,
+        "result": "FAIL",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-086ca285-9b92-4bb3-a6e7-e36409b80ee8.stderr.txt",
+        "stderr_sha256": "6f7107e072cb286ab35e3ac58ccabd858c5aa0c44c38a136bee8bb126874c360",
+        "stdout_blob": "blobs/C-086ca285-9b92-4bb3-a6e7-e36409b80ee8.stdout.txt",
+        "stdout_sha256": "eea478eb95d09ff1f514ffadde97c395dc2833c319689661258a37eb32f11015"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "eea478eb95d09ff1f514ffadde97c395dc2833c319689661258a37eb32f11015",
+        "stderr": "6f7107e072cb286ab35e3ac58ccabd858c5aa0c44c38a136bee8bb126874c360"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:53:49.267453Z",
+      "finished_at": "2026-10-18T09:53:51.871401Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; docker info --format '{{json .RegistryConfig.Mirrors}}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; docker image ls --format '{{.Repository}}:{{.Tag}} {{.ID}}' --filter 'reference=alpine*'; docker image ls --format '{{.Repository}}:{{.Tag}} {{.ID}}' --filter 'reference=golang*'; docker image ls --format '{{.Repository}}:{{.Tag}} {{.ID}}' --filter 'reference=python*'; docker image ls --format '{{.Repository}}:{{.Tag}} {{.ID}}' --filter 'reference=postgres*'; docker image ls --format '{{.Repository}}:{{.Tag}} {{.ID}}' --filter 'reference=caddy*'; docker image ls --format '{{.Repository}}:{{.Tag}} {{.ID}}' --filter 'reference=nats*'"
+        ],
+        "command_id": "C-1de4a6d9-774b-4af3-94ed-407e744c9ebf",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-1de4a6d9-774b-4af3-94ed-407e744c9ebf",
+        "duration_ms": 2547.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-1de4a6d9-774b-4af3-94ed-407e744c9ebf.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-1de4a6d9-774b-4af3-94ed-407e744c9ebf.stdout.txt",
+        "stdout_sha256": "53e449a7dab9e6567e01c3d0c12d1f8789e56fe3a2d181c0e2500ad5b46737a2"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "53e449a7dab9e6567e01c3d0c12d1f8789e56fe3a2d181c0e2500ad5b46737a2",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:54:05.486462Z",
+      "finished_at": "2026-10-18T09:54:21.067140Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; docker pull registry-1.docker.io/library/alpine:3.21; exit $LASTEXITCODE"
+        ],
+        "command_id": "C-293dc6b3-f1f7-4ce5-9ae4-da35674ebd3c",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-293dc6b3-f1f7-4ce5-9ae4-da35674ebd3c",
+        "duration_ms": 15500.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-293dc6b3-f1f7-4ce5-9ae4-da35674ebd3c.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-293dc6b3-f1f7-4ce5-9ae4-da35674ebd3c.stdout.txt",
+        "stdout_sha256": "4aa4ac517d20be990bf373e63edee3408ce0809ae16d95a8161a9034caed0c53"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "4aa4ac517d20be990bf373e63edee3408ce0809ae16d95a8161a9034caed0c53",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:54:43.093479Z",
+      "finished_at": "2026-10-18T09:54:44.446882Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; $prior = & docker image inspect alpine:3.21 --format '{{.Id}}' 2>$null; $priorExit=$LASTEXITCODE; if ($priorExit -eq 0) { throw 'canonical alpine tag already exists; refusing overwrite' }; if ($priorExit -ne 1) { throw ('unexpected image inspect exit '+$priorExit) }; docker image inspect registry-1.docker.io/library/alpine:3.21 --format '{{json .RepoDigests}}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; docker tag registry-1.docker.io/library/alpine:3.21 alpine:3.21; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; docker image inspect alpine:3.21 --format '{{.Id}} {{json .RepoTags}} {{json .RepoDigests}}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; Write-Output 'canonical_tag_previously_absent=true; same official declared image cached'"
+        ],
+        "command_id": "C-cd9d52f8-9439-46b8-a10e-fe92f7f8293f",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-cd9d52f8-9439-46b8-a10e-fe92f7f8293f",
+        "duration_ms": 1297.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-cd9d52f8-9439-46b8-a10e-fe92f7f8293f.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-cd9d52f8-9439-46b8-a10e-fe92f7f8293f.stdout.txt",
+        "stdout_sha256": "e7d917d48f8b6fcf7fdf00d1e984e421ce1b879855abc72e3f97aad756c60bce"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e7d917d48f8b6fcf7fdf00d1e984e421ce1b879855abc72e3f97aad756c60bce",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:55:05.043660Z",
+      "finished_at": "2026-10-18T09:55:27.549725Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/runtime_run.py",
+          "go-smoke",
+          "--attempt",
+          "2"
+        ],
+        "command_id": "C-62028b8c-5a8d-41ad-9a91-db79dda89282",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-62028b8c-5a8d-41ad-9a91-db79dda89282",
+        "duration_ms": 22406.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-62028b8c-5a8d-41ad-9a91-db79dda89282.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-62028b8c-5a8d-41ad-9a91-db79dda89282.stdout.txt",
+        "stdout_sha256": "598b69ad3a9f259f36510f90db5ea698f899825bde24695b0ebbdf8ebdd01da8"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "598b69ad3a9f259f36510f90db5ea698f899825bde24695b0ebbdf8ebdd01da8",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:55:48.007172Z",
+      "finished_at": "2026-10-18T09:55:48.401637Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'backend/java/Dockerfile' -Raw; Get-Content -LiteralPath 'backend/go/Dockerfile' -Raw; Get-Content -LiteralPath 'deploy/migrate.Dockerfile' -Raw"
+        ],
+        "command_id": "C-0e6edd7d-f421-49c8-95d8-c912b4699c4d",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-0e6edd7d-f421-49c8-95d8-c912b4699c4d",
+        "duration_ms": 328.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-0e6edd7d-f421-49c8-95d8-c912b4699c4d.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-0e6edd7d-f421-49c8-95d8-c912b4699c4d.stdout.txt",
+        "stdout_sha256": "add14ccfdc7ecacc3cb757e973eeedd6c63b6f8a24e1d5b1c8b8b4cfc55ffcd6"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "add14ccfdc7ecacc3cb757e973eeedd6c63b6f8a24e1d5b1c8b8b4cfc55ffcd6",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:56:09.998812Z",
+      "finished_at": "2026-10-18T09:56:10.573736Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; docker image ls --format '{{.Repository}}:{{.Tag}} {{.ID}}' --filter 'reference=eclipse-temurin*'; exit $LASTEXITCODE"
+        ],
+        "command_id": "C-112782ba-b85a-4d03-a882-20ae9efd7b35",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-112782ba-b85a-4d03-a882-20ae9efd7b35",
+        "duration_ms": 516.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-112782ba-b85a-4d03-a882-20ae9efd7b35.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-112782ba-b85a-4d03-a882-20ae9efd7b35.stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:56:20.585727Z",
+      "finished_at": "2026-10-18T09:56:37.313877Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; docker pull registry-1.docker.io/library/eclipse-temurin:25-jdk-alpine; exit $LASTEXITCODE"
+        ],
+        "command_id": "C-aaddeb9c-86e4-4b40-9d6a-c4651c99cdff",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-aaddeb9c-86e4-4b40-9d6a-c4651c99cdff",
+        "duration_ms": 16609.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-aaddeb9c-86e4-4b40-9d6a-c4651c99cdff.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-aaddeb9c-86e4-4b40-9d6a-c4651c99cdff.stdout.txt",
+        "stdout_sha256": "5e9ee1c502fd158967f43e69e0e43cfe68d295faf71354992bf5371bcf0c70ee"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "5e9ee1c502fd158967f43e69e0e43cfe68d295faf71354992bf5371bcf0c70ee",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:56:53.069845Z",
+      "finished_at": "2026-10-18T09:57:10.862378Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; docker pull registry-1.docker.io/library/eclipse-temurin:25-jre-alpine; exit $LASTEXITCODE"
+        ],
+        "command_id": "C-5533148c-8219-4b74-b613-71f1908180c8",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-5533148c-8219-4b74-b613-71f1908180c8",
+        "duration_ms": 17657.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-5533148c-8219-4b74-b613-71f1908180c8.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-5533148c-8219-4b74-b613-71f1908180c8.stdout.txt",
+        "stdout_sha256": "b32c5c7f4f401a99d95e24ef73b7a27d7fcae8c649fbce888bdeb834ac3b05c3"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "b32c5c7f4f401a99d95e24ef73b7a27d7fcae8c649fbce888bdeb834ac3b05c3",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:58:28.258259Z",
+      "finished_at": "2026-10-18T09:58:30.481215Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; foreach ($tag in @('eclipse-temurin:25-jdk-alpine','eclipse-temurin:25-jre-alpine')) { $prior = & docker image inspect $tag --format '{{.Id}}' 2>$null; $priorExit=$LASTEXITCODE; if ($priorExit -eq 0) { throw ('canonical tag already exists; refusing overwrite: '+$tag) }; if ($priorExit -ne 1) { throw ('unexpected image inspect exit '+$priorExit) }; $official = 'registry-1.docker.io/library/'+$tag; docker image inspect $official --format '{{json .RepoDigests}}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; docker tag $official $tag; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; docker image inspect $tag --format '{{.Id}} {{json .RepoTags}} {{json .RepoDigests}}'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE } }; Write-Output 'canonical_tags_previously_absent=true; same official declared images cached'"
+        ],
+        "command_id": "C-2d9cda1a-2a9c-4684-8d47-65254c61a619",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-2d9cda1a-2a9c-4684-8d47-65254c61a619",
+        "duration_ms": 2141.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-2d9cda1a-2a9c-4684-8d47-65254c61a619.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-2d9cda1a-2a9c-4684-8d47-65254c61a619.stdout.txt",
+        "stdout_sha256": "db96be051d5c12e45fc44446d3f2ac14df7f5b633fda2c145dddd523afee1a80"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "db96be051d5c12e45fc44446d3f2ac14df7f5b633fda2c145dddd523afee1a80",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:58:39.905991Z",
+      "finished_at": "2026-10-18T09:58:54.694629Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/runtime_run.py",
+          "java-smoke"
+        ],
+        "command_id": "C-837723ed-f020-4a96-a8d9-e1def8f99382",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-837723ed-f020-4a96-a8d9-e1def8f99382",
+        "duration_ms": 14687.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-837723ed-f020-4a96-a8d9-e1def8f99382.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-837723ed-f020-4a96-a8d9-e1def8f99382.stdout.txt",
+        "stdout_sha256": "6f4b90212a18eac82ded81d7c13fa609ff7b6c4af8daa4ad07d94f4e105aa288"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "6f4b90212a18eac82ded81d7c13fa609ff7b6c4af8daa4ad07d94f4e105aa288",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T09:59:12.158750Z",
+      "finished_at": "2026-10-18T09:59:41.245621Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/runtime_run.py",
+          "go-e2e"
+        ],
+        "command_id": "C-9c162835-8a4c-42f3-a7aa-f8b3de48e206",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-9c162835-8a4c-42f3-a7aa-f8b3de48e206",
+        "duration_ms": 29000.0,
+        "exit_code": 1,
+        "result": "FAIL",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-9c162835-8a4c-42f3-a7aa-f8b3de48e206.stderr.txt",
+        "stderr_sha256": "e2807f02e16bbc0066c0722b72185e4f64eeb49b4f2155304b233e560e9c3acb",
+        "stdout_blob": "blobs/C-9c162835-8a4c-42f3-a7aa-f8b3de48e206.stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e2807f02e16bbc0066c0722b72185e4f64eeb49b4f2155304b233e560e9c3acb"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:00:17.386089Z",
+      "finished_at": "2026-10-18T10:00:17.803100Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; $out='C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4'; Copy-Item -LiteralPath ($out+'/runtime_run.py') -Destination ($out+'/runtime_run-before-event-observation.py'); Get-Content -LiteralPath ($out+'/go-e2e.stdout.log') -Raw; Get-Content -LiteralPath ($out+'/go-e2e.stderr.log') -Raw; Get-Content -LiteralPath ($out+'/go-e2e.running.json') -Raw"
+        ],
+        "command_id": "C-159c726d-3381-47a9-8b82-7e40623fc711",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-159c726d-3381-47a9-8b82-7e40623fc711",
+        "duration_ms": 359.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-159c726d-3381-47a9-8b82-7e40623fc711.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-159c726d-3381-47a9-8b82-7e40623fc711.stdout.txt",
+        "stdout_sha256": "28c80e322663d15e9cc55d0c6eb3e5b27d9ed16b4141d89a7d30584300798a22"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "28c80e322663d15e9cc55d0c6eb3e5b27d9ed16b4141d89a7d30584300798a22",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:00:28.239279Z",
+      "finished_at": "2026-10-18T10:00:59.165335Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/runtime_run.py",
+          "go-e2e",
+          "--attempt",
+          "2"
+        ],
+        "command_id": "C-14a9359f-5d28-4c98-9113-2fe9ef15385d",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-14a9359f-5d28-4c98-9113-2fe9ef15385d",
+        "duration_ms": 30813.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-14a9359f-5d28-4c98-9113-2fe9ef15385d.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-14a9359f-5d28-4c98-9113-2fe9ef15385d.stdout.txt",
+        "stdout_sha256": "62feae8a83311a7affa459efb5985c5c16b57aca3e44dcce552a13e793c26c7f"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "62feae8a83311a7affa459efb5985c5c16b57aca3e44dcce552a13e793c26c7f",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:17.274182Z",
+      "finished_at": "2026-10-18T10:01:17.783498Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "contracts/http/verify-group.py"
+        ],
+        "command_id": "C-9c1f098f-01c0-4486-a761-d7b3dfaaa14f",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-9c1f098f-01c0-4486-a761-d7b3dfaaa14f",
+        "duration_ms": 437.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-9c1f098f-01c0-4486-a761-d7b3dfaaa14f.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-9c1f098f-01c0-4486-a761-d7b3dfaaa14f.stdout.txt",
+        "stdout_sha256": "9f02c127e846062634008ce3875ebf52fd380ef27dab8f51decbe269fe69686a"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "9f02c127e846062634008ce3875ebf52fd380ef27dab8f51decbe269fe69686a",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:18.834247Z",
+      "finished_at": "2026-10-18T10:01:20.793545Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/contract/group",
+          "-p",
+          "test_*.py",
+          "-v"
+        ],
+        "command_id": "C-32bfb452-202a-4eb4-98f7-beef8ee368b2",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-32bfb452-202a-4eb4-98f7-beef8ee368b2",
+        "duration_ms": 1891.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-32bfb452-202a-4eb4-98f7-beef8ee368b2.stderr.txt",
+        "stderr_sha256": "3ab151201b82903f92fd066149f60a9ac84e822472340619a5ce4b7e4e3a0928",
+        "stdout_blob": "blobs/C-32bfb452-202a-4eb4-98f7-beef8ee368b2.stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "3ab151201b82903f92fd066149f60a9ac84e822472340619a5ce4b7e4e3a0928"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:21.802585Z",
+      "finished_at": "2026-10-18T10:01:22.019674Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "tools/verify_sync_transport.py"
+        ],
+        "command_id": "C-7504a69f-2dcd-4106-b7f0-ca789f488673",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-7504a69f-2dcd-4106-b7f0-ca789f488673",
+        "duration_ms": 140.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-7504a69f-2dcd-4106-b7f0-ca789f488673.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-7504a69f-2dcd-4106-b7f0-ca789f488673.stdout.txt",
+        "stdout_sha256": "7463263b065fa0355404d1dee5921d66c765e10ebc3c01452fe23c5c4fb95859"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "7463263b065fa0355404d1dee5921d66c765e10ebc3c01452fe23c5c4fb95859",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:23.026222Z",
+      "finished_at": "2026-10-18T10:01:23.227173Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/contract",
+          "-p",
+          "test_sync_transport.py"
+        ],
+        "command_id": "C-1eee29ff-8abe-4fc5-b348-dc568650a421",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-1eee29ff-8abe-4fc5-b348-dc568650a421",
+        "duration_ms": 140.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-1eee29ff-8abe-4fc5-b348-dc568650a421.stderr.txt",
+        "stderr_sha256": "441ce318e0f3881ac386d2d1b8f7d04c2c5cac74a10f4d99a7ee6725db08760e",
+        "stdout_blob": "blobs/C-1eee29ff-8abe-4fc5-b348-dc568650a421.stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "441ce318e0f3881ac386d2d1b8f7d04c2c5cac74a10f4d99a7ee6725db08760e"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:24.196064Z",
+      "finished_at": "2026-10-18T10:01:24.344081Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "contracts/websocket/verify.py"
+        ],
+        "command_id": "C-4db8ef94-b31e-4325-b3a7-f31f642ae2b3",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-4db8ef94-b31e-4325-b3a7-f31f642ae2b3",
+        "duration_ms": 94.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-4db8ef94-b31e-4325-b3a7-f31f642ae2b3.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-4db8ef94-b31e-4325-b3a7-f31f642ae2b3.stdout.txt",
+        "stdout_sha256": "4eb2bd895b7d0d6ff48c073898cc8eb117c642cfbf3c0e34477adc556e1dc78b"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "4eb2bd895b7d0d6ff48c073898cc8eb117c642cfbf3c0e34477adc556e1dc78b",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:25.381822Z",
+      "finished_at": "2026-10-18T10:01:25.528931Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "contracts/plugin-api/verify.py"
+        ],
+        "command_id": "C-dd267f53-2ae3-4ca8-a1cf-e0651799a7bb",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-dd267f53-2ae3-4ca8-a1cf-e0651799a7bb",
+        "duration_ms": 78.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-dd267f53-2ae3-4ca8-a1cf-e0651799a7bb.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-dd267f53-2ae3-4ca8-a1cf-e0651799a7bb.stdout.txt",
+        "stdout_sha256": "1ebc963302a2587a60c0685b89613c10d25d2e1ee37bf6eff5ba50173f41083f"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "1ebc963302a2587a60c0685b89613c10d25d2e1ee37bf6eff5ba50173f41083f",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:26.563675Z",
+      "finished_at": "2026-10-18T10:01:33.054284Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; $env:PATH='C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python;'+$env:PATH; & 'C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe' -NoProfile -File contracts/http/verify-auth-user-friend.ps1; exit $LASTEXITCODE"
+        ],
+        "command_id": "C-a609c669-93c6-45f9-a742-0ccdb6e2d5bf",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-a609c669-93c6-45f9-a742-0ccdb6e2d5bf",
+        "duration_ms": 6422.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-a609c669-93c6-45f9-a742-0ccdb6e2d5bf.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-a609c669-93c6-45f9-a742-0ccdb6e2d5bf.stdout.txt",
+        "stdout_sha256": "a29eedb2ce6529b48f9804329d16b5860a60efd6e04143c3832972ef179efb0e"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "a29eedb2ce6529b48f9804329d16b5860a60efd6e04143c3832972ef179efb0e",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:41.201878Z",
+      "finished_at": "2026-10-18T10:01:41.653401Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; $out='C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0'; Get-Content -LiteralPath ($out+'/contract-regular-r4/final-receipt.json') -Raw; Get-Content -LiteralPath ($out+'/contract-error-r2/final-receipt.json') -Raw; Get-Content -LiteralPath ($out+'/contract-fix-r4/research/runs/R-GROUP-FIX-R4-20261018/events.jsonl') | Select-Object -Last 4; Get-ChildItem -LiteralPath ($out+'/contract-regular-r4'),($out+'/contract-error-r2') -File | Select-Object DirectoryName,Name,Length | ConvertTo-Json -Compress"
+        ],
+        "command_id": "C-63aa29bb-fa91-4c6e-ab4c-aaced4f5e5e5",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-63aa29bb-fa91-4c6e-ab4c-aaced4f5e5e5",
+        "duration_ms": 454.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-63aa29bb-fa91-4c6e-ab4c-aaced4f5e5e5.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-63aa29bb-fa91-4c6e-ab4c-aaced4f5e5e5.stdout.txt",
+        "stdout_sha256": "b09830eb18c1957276523b1de7606398788d6ebbaf85a078ebad9908aee5ff2d"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "b09830eb18c1957276523b1de7606398788d6ebbaf85a078ebad9908aee5ff2d",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:01:49.223557Z",
+      "finished_at": "2026-10-18T10:01:49.338870Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-c",
+          "import json,pathlib; p=pathlib.Path('C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/research/runs/R-GROUP-FIX-R4-20261018/events.jsonl'); e=[json.loads(x) for x in p.read_text().splitlines()]; print(json.dumps([x for x in e if x['event_type']=='command_finished'][-1],indent=2))"
+        ],
+        "command_id": "C-64473e1d-1416-43f8-852a-4775cdcadc85",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-64473e1d-1416-43f8-852a-4775cdcadc85",
+        "duration_ms": 109.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-64473e1d-1416-43f8-852a-4775cdcadc85.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-64473e1d-1416-43f8-852a-4775cdcadc85.stdout.txt",
+        "stdout_sha256": "257400601c4dea39c61bd47cffd83174cb32e60ac685103ae831832f21740292"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "257400601c4dea39c61bd47cffd83174cb32e60ac685103ae831832f21740292",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:03:37.089053Z",
+      "finished_at": "2026-10-18T10:03:37.747625Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-I",
+          "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/prepare_evidence.py"
+        ],
+        "command_id": "C-cde7e547-8a6f-485e-ad57-5ae234eab24e",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-cde7e547-8a6f-485e-ad57-5ae234eab24e",
+        "duration_ms": 656.0,
+        "exit_code": 1,
+        "result": "FAIL",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-cde7e547-8a6f-485e-ad57-5ae234eab24e.stderr.txt",
+        "stderr_sha256": "a435e2bdcf47832e5b53337a1d2c3784b19c8c9924e5d5eefdc9b8c33a684bec",
+        "stdout_blob": "blobs/C-cde7e547-8a6f-485e-ad57-5ae234eab24e.stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "a435e2bdcf47832e5b53337a1d2c3784b19c8c9924e5d5eefdc9b8c33a684bec"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:03:45.793154Z",
+      "finished_at": "2026-10-18T10:03:46.267307Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; Get-Content -LiteralPath 'tools/research/recorder.py' | Select-Object -Skip 385 -First 49; Get-Content -LiteralPath 'tools/research/recorder.py' | Select-Object -Skip 145 -First 35; git -c core.excludesFile=.git/info/exclude diff --stat"
+        ],
+        "command_id": "C-7a1dff79-2aed-4db5-a918-a13965b77917",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-7a1dff79-2aed-4db5-a918-a13965b77917",
+        "duration_ms": 422.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-7a1dff79-2aed-4db5-a918-a13965b77917.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-7a1dff79-2aed-4db5-a918-a13965b77917.stdout.txt",
+        "stdout_sha256": "6064fefa8f10a066349d4a4114a0e33cf89c0056665a3b22c736e8949842480e"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "6064fefa8f10a066349d4a4114a0e33cf89c0056665a3b22c736e8949842480e",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "started_at": "2026-10-18T10:04:13.023683Z",
+      "finished_at": "2026-10-18T10:04:13.509153Z",
+      "start": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "-Xutf8",
+          "-B",
+          "-c",
+          "import pathlib,zipfile,shutil,json,hashlib; out=pathlib.Path('C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4'); p=pathlib.Path('H:/.codex/worktrees/group/IM-platform/spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r4'); z=out/'evidence-preparation-v1-partial.zip'; b=zipfile.ZipFile(z,'x',zipfile.ZIP_DEFLATED); [b.write(f,f.relative_to(p).as_posix()) for f in p.rglob('*') if f.is_file()]; b.close(); shutil.copyfile(out/'prepare_evidence.py',out/'prepare_evidence-v1.py'); ev=[json.loads(s) for s in (out/'research/runs/R-GROUP-FIX-R4-20261018/events.jsonl').read_text().splitlines()]; mismatches=[{'command_id':x['data']['command_id'],'side':side,'redaction_applied':x['data']['secret_redaction_applied'],'declared_raw_sha256':x['data'][side+'_sha256'],'stored_utf8_blob_sha256':hashlib.sha256((out/'research/runs/R-GROUP-FIX-R4-20261018'/x['data'][side+'_blob']).read_bytes()).hexdigest()} for x in ev if x['event_type']=='command_finished' for side in ('stdout','stderr') if hashlib.sha256((out/'research/runs/R-GROUP-FIX-R4-20261018'/x['data'][side+'_blob']).read_bytes()).hexdigest()!=x['data'][side+'_sha256']]; print(json.dumps({'partial_archive_sha256':hashlib.sha256(z.read_bytes()).hexdigest(),'mismatch_count':len(mismatches),'mismatches':mismatches},indent=2))"
+        ],
+        "command_id": "C-23f8120f-7059-4cf4-bc4e-62eac2172cf1",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "finish": {
+        "command_id": "C-23f8120f-7059-4cf4-bc4e-62eac2172cf1",
+        "duration_ms": 484.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-23f8120f-7059-4cf4-bc4e-62eac2172cf1.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-23f8120f-7059-4cf4-bc4e-62eac2172cf1.stdout.txt",
+        "stdout_sha256": "34fafa8917e5df7d54965de8570706cb59485d5d3d9a61fb253f6e31e7e57946"
+      },
+      "stored_utf8_redacted_blob_hashes": {
+        "stdout": "34fafa8917e5df7d54965de8570706cb59485d5d3d9a61fb253f6e31e7e57946",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "runtime": {
+    "go-smoke": {
+      "case": "go-smoke",
+      "pid": 60548,
+      "started_at": "2026-10-18T09:52:52.935495+00:00",
+      "command": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\infrastructure\\smoke.ps1",
+        "-Profile",
+        "go"
+      ],
+      "state": "FINISHED",
+      "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+      "exit_code": 1,
+      "elapsed_seconds": 24.75,
+      "engine": "29.5.2 linux",
+      "owned_projects": [
+        "im-infra-smoke-go-60548"
+      ],
+      "cleanup": {
+        "im-infra-smoke-go-60548": {
+          "containers": [],
+          "volumes": []
+        }
+      },
+      "preexisting_containers_unchanged": true,
+      "before_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "after_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "raw": {
+        "go-smoke.stdout.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "go-smoke.stderr.log": {
+          "sha256": "13c748bac2039d1d936ef1e21b3682dafad3b8c0c98b5210caa1e8e568d113bd",
+          "bytes": 880
+        }
+      }
+    },
+    "go-smoke-a2": {
+      "case": "go-smoke",
+      "attempt": 2,
+      "pid": 37620,
+      "started_at": "2026-10-18T09:55:05.546867+00:00",
+      "command": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\infrastructure\\smoke.ps1",
+        "-Profile",
+        "go"
+      ],
+      "state": "FINISHED",
+      "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+      "exit_code": 0,
+      "elapsed_seconds": 21.28099999999904,
+      "engine": "29.5.2 linux",
+      "owned_projects": [
+        "im-infra-smoke-go-37620"
+      ],
+      "cleanup": {
+        "im-infra-smoke-go-37620": {
+          "containers": [],
+          "volumes": []
+        }
+      },
+      "preexisting_containers_unchanged": true,
+      "before_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "after_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "raw": {
+        "go-smoke-a2.stdout.log": {
+          "sha256": "66924dbd515837380ab72fa1bc89cf306c5eca4767ebc11dbb3a30fe2a5ba5f2",
+          "bytes": 126
+        },
+        "go-smoke-a2.stderr.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    "java-smoke": {
+      "case": "java-smoke",
+      "attempt": 1,
+      "pid": 58576,
+      "started_at": "2026-10-18T09:58:40.417724+00:00",
+      "command": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\infrastructure\\smoke.ps1",
+        "-Profile",
+        "java"
+      ],
+      "state": "FINISHED",
+      "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+      "exit_code": 0,
+      "elapsed_seconds": 13.5,
+      "engine": "29.5.2 linux",
+      "owned_projects": [
+        "im-infra-smoke-java-58576"
+      ],
+      "cleanup": {
+        "im-infra-smoke-java-58576": {
+          "containers": [],
+          "volumes": []
+        }
+      },
+      "preexisting_containers_unchanged": true,
+      "before_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "after_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "raw": {
+        "java-smoke.stdout.log": {
+          "sha256": "6adf1b84cfaf02665a2a8ad4f1e3731545069085d0900f86746695eb120a1f96",
+          "bytes": 128
+        },
+        "java-smoke.stderr.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    "go-e2e-a2": {
+      "case": "go-e2e",
+      "attempt": 2,
+      "pid": 62160,
+      "started_at": "2026-10-18T10:00:28.799749+00:00",
+      "started_unix": 1792317628,
+      "command": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\e2e\\go_tls_messaging.py"
+      ],
+      "state": "FINISHED",
+      "before_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+      "exit_code": 0,
+      "elapsed_seconds": 29.39099999999962,
+      "engine": "29.5.2 linux",
+      "owned_projects": [
+        "im-s1-e2e-62160-136a6aa6"
+      ],
+      "cleanup": {
+        "im-s1-e2e-62160-136a6aa6": {
+          "containers": [],
+          "volumes": []
+        }
+      },
+      "preexisting_containers_unchanged": true,
+      "after_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "raw": {
+        "go-e2e-a2.stdout.log": {
+          "sha256": "e98abfd99b9852ca66244b9ca543ac7f722908e02b1102e7c2bfad8d33e4085f",
+          "bytes": 570
+        },
+        "go-e2e-a2.stderr.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    }
+  },
+  "preserved_failures": [
+    "First Go smoke exit1/24.75s before ledger: configured mirror alpine3.21 metadata403; owned resources removed, unrelated containers preserved. Same official declared image cached only after missing-tag checks; no daemon/source/version change.",
+    "First E2E observer helper exit1 after product PASS stdout: project name was intentionally absent from stdout. Child exit/elapsed unavailable. Only external observer repaired; second unchanged E2E actual child+outer exit0/29.391s.",
+    "Initial sandbox Task write Permission13, no partial write; later authorized escalation succeeded.",
+    "Startup guessed ADR/acceptance read paths failed and were corrected; original raw retained.",
+    "Recorder partial and initial same-run baseline overlap disclosed; subsequent commands serial. Unsupported warning event attempt failed; allowed instrumentation_warning recorded the gap.",
+    "First evidence helper assumed original subprocess byte hashes must equal stored decoded/redacted UTF8 blob hashes and failed; partial draft archived externally. Corrected representation binding preserves both without trace/blob edits."
+  ],
+  "recorder": {
+    "run_id": "R-GROUP-FIX-R4-20261018",
+    "capture_mode": "prospective_resume",
+    "partial": true,
+    "planned_honest_finish": "FAIL",
+    "final_structural_validation": "external final-receipt.json; research is not Task acceptance"
+  },
+  "schema_tests": "No SQL/runner change. Prior independent real 11 tests/0skip remain historical; this fix does not claim a new standalone database-suite run. Three real Compose entries applied current runner schema.",
+  "control": "Development and final clean committed Acceptance exact commands/exits/elapsed bound by external final receipt; local evidence cannot replace new reviews/hosted/synchronization.",
+  "control_development": {
+    "start": {
+      "data": {
+        "argv": [
+          "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+          "-NoProfile",
+          "-Command",
+          "$ErrorActionPreference='Stop'; $env:PATH='C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python;'+$env:PATH; & 'C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe' -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development; exit $LASTEXITCODE"
+        ],
+        "command_id": "C-c4ded3b9-0965-4647-9703-147868c79f9d",
+        "cwd": ".",
+        "secret_redaction_applied": false
+      },
+      "event_hash": "f354b4a9ffd8aa997f231c7f88a61624c6e2edba28a86f3695a02a95d1ed78c7",
+      "event_type": "command_started",
+      "previous_event_hash": "ebabcd6ff76c26b3640a265912d9ebd2239690f1ab747b38e0ad214cb80fdc82",
+      "role": "fix",
+      "run_id": "R-GROUP-FIX-R4-20261018",
+      "schema_version": "1.0.0",
+      "seq": 123,
+      "task_id": "LOOP1-GROUP-001",
+      "timestamp": "2026-10-18T10:04:40.546819Z"
+    },
+    "finish": {
+      "data": {
+        "command_id": "C-c4ded3b9-0965-4647-9703-147868c79f9d",
+        "duration_ms": 24266.0,
+        "exit_code": 0,
+        "result": "PASS",
+        "secret_redaction_applied": false,
+        "stderr_blob": "blobs/C-c4ded3b9-0965-4647-9703-147868c79f9d.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_blob": "blobs/C-c4ded3b9-0965-4647-9703-147868c79f9d.stdout.txt",
+        "stdout_sha256": "5531649062248abbde8dfe54c9d65757910f596ed6a13ae6ac15f7f08157b03e"
+      },
+      "event_hash": "be70dcf0216909044e12f8e469ef156712a98b8304701e8c55c56b7079dfee49",
+      "event_type": "command_finished",
+      "previous_event_hash": "f354b4a9ffd8aa997f231c7f88a61624c6e2edba28a86f3695a02a95d1ed78c7",
+      "role": "fix",
+      "run_id": "R-GROUP-FIX-R4-20261018",
+      "schema_version": "1.0.0",
+      "seq": 124,
+      "task_id": "LOOP1-GROUP-001",
+      "timestamp": "2026-10-18T10:05:04.881910Z"
+    }
+  },
+  "redaction_audit": "redaction-audit.json; original raw/stored UTF8 hashes distinct by intended redaction; classified public static literals only, no private credentials read/copied"
+}

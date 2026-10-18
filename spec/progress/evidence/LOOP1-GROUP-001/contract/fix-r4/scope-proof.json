@@ -1,0 +1,47 @@
+{
+  "parent_sha": "0a9f24a38774760e8003e15cc77ff65e3c0d25ac",
+  "base_sha": "6f163927334c39c9c8833eb8222335c661bde673",
+  "root": "H:/.codex/worktrees/group/IM-platform",
+  "protected_paths_with_no_diff": [
+    "contracts",
+    "backend",
+    "clients",
+    "spec/architecture",
+    "spec/domain",
+    "spec/invariants",
+    "spec/acceptance",
+    ".github",
+    "ci",
+    "tests/database",
+    "tests/contract/group"
+  ],
+  "scripts": [
+    {
+      "path": "tests/infrastructure/smoke.ps1",
+      "parent_sha256": "5f0c6bf0cd387c223e8cae1a5fdf1d47986bef4dc46e18c98cbec17dc17d9496",
+      "after_sha256": "cc1103cd765339c9f26f6ae06c5f807cd32bcecc75aa7dcc08ab870100366700",
+      "exact_replacement_count": 2,
+      "all_other_bytes_preserved": true
+    },
+    {
+      "path": "tests/e2e/go_tls_messaging.py",
+      "parent_sha256": "c02aed93c888c73237c5e65d057ad8f0faa7192d66ab86cb5830fe702297be81",
+      "after_sha256": "e40f1405b7b4481e57705958ddf510d4d6e52cd85dc859b2b10ec637fe260143",
+      "exact_replacement_count": 1,
+      "all_other_bytes_preserved": true
+    }
+  ],
+  "0001": [
+    {
+      "path": "contracts/database/migrations/0001_initial.up.sql",
+      "sha256": "e62294fdbdc5346c3a7b88b33777c50941a9b30df6bc6fa6e5f5b031bb11d098",
+      "parent_and_accepted_base_bytes_identical": true
+    },
+    {
+      "path": "contracts/database/migrations/0001_initial.down.sql",
+      "sha256": "fd1b25df9533dcb4698061beacb1b4f784e6073c43b72c9fb387b1bd2012c94c",
+      "parent_and_accepted_base_bytes_identical": true
+    }
+  ],
+  "frozen_sha256": "33b7b2a0a29b555b8c2842383890ae67fc382286b582b4681d2cd78b9f5829ca"
+}

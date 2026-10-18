@@ -56,8 +56,8 @@ try {
     }
     Compose @('exec', '-T', 'postgres', 'pg_isready', '-U', 'im', '-d', 'im')
     Compose @('exec', '-T', 'nats', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:8222/healthz')
-    $migration = & docker compose -f $compose -p $project --profile $Profile exec -T postgres psql -U im -d im -Atc 'SELECT version FROM schema_migrations'
-    if ($LASTEXITCODE -ne 0 -or ($migration -join '').Trim() -ne '0001_initial') { throw "canonical migration missing: $migration" }
+    $migration = & docker compose -f $compose -p $project --profile $Profile exec -T postgres psql -U im -d im -Atc 'SELECT version FROM schema_migrations ORDER BY version'
+    if ($LASTEXITCODE -ne 0 -or ($migration -join ',').Trim() -cne '0001_initial,0002_group_operations') { throw "canonical migration missing: $migration" }
     $health = Read-TlsResponse '/__infra/health' @()
     if ($health.Status -notmatch '^HTTP/1\.[01] 200 ' -or $health.Body.Trim() -ne "profile=$Profile role=gateway") {
         throw "HTTPS gateway response invalid: $($health.Status) $($health.Body)"

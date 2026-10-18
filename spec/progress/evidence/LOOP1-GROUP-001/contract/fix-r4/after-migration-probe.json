@@ -1,0 +1,202 @@
+{
+  "phase": "after",
+  "qualification": "Original extracted snippets or exact in-memory proposed replacements; injected command outputs, not a real Docker or TLS pass.",
+  "source_sha256": {
+    "tests/infrastructure/smoke.ps1": "cc1103cd765339c9f26f6ae06c5f807cd32bcecc75aa7dcc08ab870100366700",
+    "tests/e2e/go_tls_messaging.py": "e40f1405b7b4481e57705958ddf510d4d6e52cd85dc859b2b10ec637fe260143"
+  },
+  "smoke": {
+    "guard": "if ($LASTEXITCODE -ne 0 -or ($migration -join ',').Trim() -cne '0001_initial,0002_group_operations') { throw \"canonical migration missing: $migration\" }",
+    "results": [
+      {
+        "name": "canonical-two",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "ACCEPT"
+      },
+      {
+        "name": "missing-second",
+        "versions": [
+          "0001_initial"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT"
+      },
+      {
+        "name": "missing-first",
+        "versions": [
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT"
+      },
+      {
+        "name": "empty",
+        "versions": [],
+        "subprocess_exit": 0,
+        "decision": "REJECT"
+      },
+      {
+        "name": "extra",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations",
+          "0003_future"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT"
+      },
+      {
+        "name": "duplicate",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT"
+      },
+      {
+        "name": "wrong-order",
+        "versions": [
+          "0002_group_operations",
+          "0001_initial"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT"
+      },
+      {
+        "name": "wrong-case",
+        "versions": [
+          "0001_INITIAL",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT"
+      },
+      {
+        "name": "nonzero-with-valid-output",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 2,
+        "decision": "REJECT"
+      },
+      {
+        "name": "nonzero-with-empty-output",
+        "versions": [],
+        "subprocess_exit": 37,
+        "decision": "REJECT"
+      }
+    ]
+  },
+  "e2e": {
+    "assertion": "require(sql('SELECT version FROM schema_migrations ORDER BY version') == '0001_initial\\n0002_group_operations', 'canonical migration missing')",
+    "wrapper_source": [
+      "def require(condition, reason):\n    if not condition:\n        raise AssertionError(reason)",
+      "def docker(args, *, data=None):\n    result = subprocess.run(args, env=env, input=data, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=300)\n    if result.returncode:\n        raise RuntimeError('Docker test command failed: ' + result.stderr.decode(errors='replace'))\n    return result.stdout",
+      "def compose(*args):\n    return docker(command + list(args))",
+      "def sql(query):\n    return compose('exec', '-T', 'postgres', 'psql', '-U', 'im', '-d', 'im', '-v', 'ON_ERROR_STOP=1', '-Atc', query).decode().strip()"
+    ],
+    "results": [
+      {
+        "name": "canonical-two",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "ACCEPT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "missing-second",
+        "versions": [
+          "0001_initial"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "missing-first",
+        "versions": [
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "empty",
+        "versions": [],
+        "subprocess_exit": 0,
+        "decision": "REJECT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "extra",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations",
+          "0003_future"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "duplicate",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "wrong-order",
+        "versions": [
+          "0002_group_operations",
+          "0001_initial"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "wrong-case",
+        "versions": [
+          "0001_INITIAL",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 0,
+        "decision": "REJECT",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "nonzero-with-valid-output",
+        "versions": [
+          "0001_initial",
+          "0002_group_operations"
+        ],
+        "subprocess_exit": 2,
+        "decision": "RUNTIME_FAILURE",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      },
+      {
+        "name": "nonzero-with-empty-output",
+        "versions": [],
+        "subprocess_exit": 37,
+        "decision": "RUNTIME_FAILURE",
+        "sql": "SELECT version FROM schema_migrations ORDER BY version"
+      }
+    ]
+  }
+}

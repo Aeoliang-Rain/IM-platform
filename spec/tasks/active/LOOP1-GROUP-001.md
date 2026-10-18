@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/group_contract_fix_r3
+owner: /root/group_contract_fix_r4
 stage: S2
 gate: S2
 client_supplement_phase: group_product
@@ -49,6 +49,8 @@ client_runtime: Android
 - `contracts/database/README.md`（仅新增migration语义/兼容与回滚）
 - `contracts/database/migrate.py`（仅现有独立runner支持0001→0002的有序应用、ledger/status与已冻结回退；保留0001字节、历史checksum、锁及真实失败行为）
 - `tests/database/test_migrations.py`（仅上述迁移入口的空库/0001升级/重入/回退/旧fixture兼容正反回归）
+- `tests/infrastructure/smoke.ps1`（当前已授权canonical0001→0002验证输入适配：仅现Go/Java profile迁移ledger的SELECT显式ORDER BY version及精确两项比较；保留LASTEXITCODE、缺失/额外/重复拒绝，以及role/TLS/WSS/Compose/cleanup全部现检查和失败传播）
+- `tests/e2e/go_tls_messaging.py`（同一首契约切片的现Go S1 strict TLS E2E迁移ledger输入适配：仅SELECT显式ORDER BY version及精确0001_initial与0002_group_operations两项比较；TLS/hostname反例、Auth/成员/ACK/seq/Outbox/Sync/cleanup及原失败传播保持）
 - `.github/workflows/ci.yml`（仅在现有shared必需contract步骤接入群verifier与正负suite；保留旧检查、真实非零传播及既有作业选择，不增workflow/job/framework）
 - `contracts/fixtures/group/**`（canonical正负/并发/幂等/兼容输入与expected）
 - `backend/go/core/group.go`（群权限、事务、快照）
@@ -190,17 +192,20 @@ main_sync_evidence: unavailable
 
 # Handoff
 
-首契约历史5aa常规FAIL、0190常规R2PASS与专项R1FAIL、bca常规R3FAIL R3-P2-001及Spec初版PASS被supplement FAIL取代的原件全部保留。R3最终receipt SHA a13fb68f86291a800e5f3b1c5068a40f653dba47ddcb46f580ca490a4297d363、report850075eb、manifest246677e3及416原件已逐一核对。fresh Fix r3仅使body/query关联ID提取判定对象，加入2个参数化回归；详见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r3/handoff.md`。唯一当前候选发现路径 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r3/final-receipt.json`；文档生成时finalSHA=PENDING，以该receipt实际clean committed SHA/ownedblobs/Recorder/lease为准，历史bca及旧receipt不可充当新final候选。
+Fresh Fix r4只适配当前独立runner已授权0001→0002的两处部署ledger检查；Phase1先Task登记并经Coordinator独立读回，Phase2才实施。原0a9常规r4/专项r2 PASS、push39115869727与PR39115960616实际各12success及deploy/gateFAIL均保持；两raw/report/audits原字节见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r4/original-history.zip` 与bindings。仅PS两行/GoE2E一行SQL确定排序+明确两项精确比较，全部原TLS/安全/业务/清理/非零传播保持。
 
-regular_review: NEW PENDING final SHA (fresh r4 required)
-error_handling_review: DIFFERENT NEW PENDING final SHA (fresh specialist r2 required)
-hosted_acceptance: PENDING
+actualsource两处各10正反注入通过；真实Go smoke21.281s、Java smoke13.5s、Go strictTLS E2E29.391s均exit0且own资源清理/既有容器身份状态保持。群35/30与22tests、旧Auth/Sync4/WSS/Plugin保持；原mirror403和首E2E外部observer失败保留。详见fix-r4/handoff.md及local-verification.json，local不是独立接受。
+
+regular_review: NEW PENDING final SHA (fresh r5 required)
+error_handling_review: DIFFERENT NEW PENDING final SHA (fresh specialist r3 required)
+hosted_acceptance: PENDING_NEW_FINAL_SHA (historical 0a9 FAIL preserved)
 main_sync: PENDING
-整体GROUP保持active/group_product，S2 OPEN；历史FAIL和Recorder FAIL不抹除。最后已知良好accepted/synchronized main仍6f163927334c39c9c8833eb8222335c661bde673。
+
+最终SHA/clean/ownedblobs/clean committedAcceptance/Recorder与lease RELEASED只从 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/final-receipt.json` 恢复。整体GROUP active/group_product、S2 OPEN，首契约未独立冻结，产品G01..G09 PENDING。LKG仍 `6f163927334c39c9c8833eb8222335c661bde673`。
 
 # Next Action
 
-Coordinator核fix-r3 receipt原件/hash/cleanSHA/实际--no-renames范围→NEW fresh常规r4→DIFFERENT fresh错误专项r2同finalSHA→exact candidate/PR实际必需jobs/steps（群verifier、实际22tests、真实PG）→protected merge→actual-main hosted/tree→保存782unknown安全主目录同步。两项新审查前禁止push/CI-triggering PR；本Fix不执行push/PR/CI/merge/sync。固定外部contract-acceptance-seal.json仍缺/坏=PENDING，逐项核原件/hash/jobs/sync；全部完成后才fresh产品Agent登记实际contract SHA并继续Go/三端。整个Task不移review/done，S2不PASS。
+Coordinator核fix-r4新final-receipt所有原件/hash/clean最终SHA/实际no-renames paths→NEW fresh常规r5→DIFFERENT NEW fresh专项r3同最终SHA→exact candidate/PR真实必需jobs与steps（群verifier/22tests/真实PG及全部deploy）→protected integration→actual-main hosted/完整tree→保存782unknown与2unknowntracked安全主目录同步。两项新审查前禁止push/更新触发候选CI的PR；本writer不publication/integration/sync。contract-acceptance-seal.json缺/坏=PENDING；全部接受同步后才fresh产品Agent登记contract SHA并实施，Task不移review/done，S2不PASS。
 
 # 2026-10-18 Activation / Contract Candidate
 
@@ -272,3 +277,19 @@ Staged whitespace检查首次失败：本轮新松散JSON以Windows CRLF写出�
 Frozen/planning/allarchitecture、88architecture(skip1)/35CI(skip4)与旧Auth/Sync4/WSS/Plugin均exit0；Development/clean committedAcceptance及最终耗时/实际SHA由新receipt绑定。无PG/schema/runner变化，本Fix不重跑也不声称PG通过；R3独立真实11tests/0skip原件保留，未来hosted仍必需真实执行。wire/OpenAPI/JSchecker/errors/SQL/runner/CI/0001bytes、Go/三端/Frozen/ADR/旧sealed保持。
 
 外部red helper首次非隔离调用遇本OUT inspect.py遮蔽标准库inspect而失败，原始exit1保留；用Python -I排除helper目录后才得到真实15errors，不改产品或旧输出。早期工具展示截断而raw完整保存，局部读取复核。Recorder prospective_resume/partial：startup、helperauthoring/通信/最后packaging与封存非完整capture；finish诚实FAIL、direct validate结构结果由receipt单独报告，trace不编辑。全部post-driver命令串行无same-run overlap。单个fixcommit之后释放lease；新finalSHA常规r4/DIFFERENT专项r2、hosted/protected/actual-main/main-sync全部PENDING，GROUPactive/S2OPEN。
+
+# Deployment verification input adaptation (Fix R4)
+
+2026-10-18 Coordinator先授予PHASE1唯一Task登记lease，落实Allowed Paths原“激活时核对路径，确有新增输入先修Task范围，不在实施后追认”和Public Contract Slice既有独立runner真实部署0001→0002要求。仅登记上述两条验证输入路径；不改Frozen/ADR/公共wire/SQL/Go/clients/CI/Gate或群功能范围，未登记前不实施。
+
+候选0a9f24a38774760e8003e15cc77ff65e3c0d25ac曾经fresh常规r4及different fresh专项r2 PASS，但真实push39115869727/job117641538618和PR39115960616/job117641824783均在Go transport smoke失败：smoke.ps1:60只接受0001_initial，实际合法ledger为0001_initial、0002_group_operations。原raw SHA256分别34fd1cb1e8879f7a9066d25923f2d120acef517a1664090ea81566ef44add247、54a64153e82dd857d02a236d6ec3159150145ac447c601aa736ae91342e09e86；原bindings146d3960cde7d98b0e34ca587d13ecf47b10ca45ab5edc614af709a759fc117c，位于外部OUT的contract-failed-deploy-original-bindings.json，原件保持。
+
+同deploy后续Go S1 strict TLS messaging E2E因前步失败尚未hosted执行；静态核对go_tls_messaging.py:254发现同一旧单项ledger预期，不能称第二hosted失败。外部原snippet与同sql/docker包装注入复现，两处各10例：合法两项在原实现均拒绝；仅在内存proposed比较中接受精确两项，缺失/额外/重复/乱序/大小写错/非零退出仍明确拒绝或RuntimeError。before/proposed报告位于OUT/contract-fix-r4，SHA256分别048cc6f7bad4e3e1a16d1171129c8d2ea4784e3943badb69935ac01fd4eaacd6、6ccea954a2146149d56628a2f4c7d4cf8ccebe0f324bcf45dd589dc01d2049ce。此为隔离注入，不是实际Docker/TLS PASS。
+
+PHASE1读回时脚本仍未修改；Coordinator确认后明确授予PHASE2才实施。仅确定排序和明确两项精确比较，不动态接受未来migration；保留所有原检查/失败传播。后续任何新fix SHA都须NEW fresh常规与DIFFERENT NEW fresh专项后才可publication，再exact-head hosted、protected integration、actual-main及保存未知main安全同步。首契约未冻结、产品G01..G09仍PENDING，GROUP active/group_product、S2 OPEN。
+
+# Fresh Fix R4 Local Outcome
+
+2026-10-18 sole writer `/root/group_contract_fix_r4`先只读恢复，PHASE1 Task先登记/Coordinator独立读回确认后，才获PHASE2明确授权。最终改动仅smoke.ps1两行与Go strictTLS E2E一行，确定ORDER BY version与精确0001_initial+0002_group_operations比较，保留PS LASTEXITCODE/Python RuntimeError及全部原断言。actualsource各10正反注入、真实Go smoke21.281s/Java13.5s/GoE2E29.391s均exit0；各ownproject容器/卷空、既有容器身份状态保持。群35/30与22tests和旧契约完整回归；wire/SQL/runner/Go/三端/旧sealed不改，scope-proof与原件见contract/fix-r4/。
+
+初次镜像站403、首E2E产品stdoutPASS而外部observer失败均原件保留；首E2E childexit/elapsed不可用，不推断整体PASS。仅外部observer修正后新attempt真实child+outer exit0。官方仅缓存同declaredimages并先核canonical缺失，不改版本/daemon/全局trust。Recorder prospective_resume/partial、最初baseline一次overlap及读取/事件/权限失败公开；finish诚实FAIL，最终结构/cleancommitAcceptance/实际SHA/ownedblobs/lease RELEASED只由新finalreceipt绑定。旧0a9两审PASS及两CI总体FAIL不是新候选接受。新常规r5、DIFFERENT专项r3、hosted/protected/actual-main/sync PENDING；GROUPactive/S2OPEN，产品尚未实施。
