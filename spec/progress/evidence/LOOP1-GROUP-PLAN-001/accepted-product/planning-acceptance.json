@@ -1,0 +1,86 @@
+{
+  "result": "PASS",
+  "phase": "planning",
+  "qualification": "Independent reviews and exact hosted/protected actual-main verification passed. Actual safe synchronization remains a separate required step; this pre-sync snapshot does not establish Task done.",
+  "candidateSHA": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "actualMainSHA": "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f",
+  "baseSHA": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "branch": "task/LOOP1-GROUP-PLAN-001",
+  "candidateTree": "9e41a42cc790619bd258213636bb61b543a68a56",
+  "actualMainTree": "9e41a42cc790619bd258213636bb61b543a68a56",
+  "regularReviewSHA": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "errorAuditSHA": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "regularReviewResult": "PASS",
+  "errorAuditResult": "PASS",
+  "reviews": [
+    {
+      "role": "regular",
+      "actor": "/root/group_regular_r3",
+      "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\final-receipt.json",
+      "sha256": "d434380e54b0bda40c8d29cf15754b4bd52e9670be38c12a9272224d92e445e9",
+      "result": "PASS_REGULAR_REVIEW_ONLY"
+    },
+    {
+      "role": "specialized",
+      "actor": "/root/group_error_r3",
+      "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "receipt": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\final-receipt.json",
+      "sha256": "3c55046a43d6953266d68ec145783c53b1ff09772cb43a2f96a6b2308016aa9a",
+      "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY"
+    }
+  ],
+  "ci": [
+    {
+      "run": 39097442700,
+      "attempt": 1,
+      "event": "push",
+      "head": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "evidence": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z.json",
+      "sha256": "04cece4cf001cb44c51bc3229a4dbd6c94e91dad3b6679358a56ff1d1f091f09",
+      "required_jobs": 6,
+      "checkout_receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-run-39097442700-attempt-1-20261018T043826225255Z-checkouts\\receipt.json",
+        "sha256": "b6200871758c9dd2676bc22d7327501926cb7163a4994f3944d0b4500985b6a6"
+      }
+    },
+    {
+      "run": 39097445982,
+      "attempt": 1,
+      "event": "pull_request",
+      "head": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+      "evidence": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z.json",
+      "sha256": "ac05bf6b8e8555b128ca391293adae0ad17a9f8389b14ace7ca1e994c841cab5",
+      "required_jobs": 14,
+      "checkout_receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-pr-run-39097445982-attempt-1-20261018T044143393729Z-checkouts\\receipt.json",
+        "sha256": "af37077086ddaa7d688c721cfe222c18c5dce07a8f09ee049a83b272a7c8cdfb"
+      }
+    },
+    {
+      "run": 39098036604,
+      "attempt": 1,
+      "event": "push",
+      "head": "45b0a8512da4e505c467a6120cf2fc2cdd0bac7f",
+      "evidence": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z.json",
+      "sha256": "04f6d78c23e62908e1422b558c8b4c419beb1bd6ae8dab767d616c28ea4f7b0e",
+      "required_jobs": 14,
+      "checkout_receipt": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-main-run-39098036604-attempt-1-20261018T045154931926Z-checkouts\\receipt.json",
+        "sha256": "228d7c5714ffa7759506348c221afb94fca8baaebd4f3d94553b019e2001d212"
+      }
+    }
+  ],
+  "allRequiredJobsSuccess": true,
+  "pr": "https://github.com/nilesthump/IM-platform/pull/42",
+  "mergeMethod": "Protected merge with exact match-head; no admin bypass",
+  "merge_guard": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-merge-guard.json",
+    "bytes": 26972,
+    "sha256": "0c5d03103bfa0ab473a5e53e062357428efd1f9e201f95f02f8daee6472161f7"
+  },
+  "safeMainSync": "PENDING",
+  "taskDone": false,
+  "groupProduct": "backlog; not implemented",
+  "s2Gate": "OPEN"
+}

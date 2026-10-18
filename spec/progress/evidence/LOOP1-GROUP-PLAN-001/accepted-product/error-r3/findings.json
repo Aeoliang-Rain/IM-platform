@@ -1,0 +1,22 @@
+{
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "actor": "/root/group_error_r3",
+  "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY",
+  "blocking_findings": [],
+  "product_findings": [],
+  "instrumentation": {
+    "result": "FAIL",
+    "run_id": "R-GROUP-ERROR-R3-20261018",
+    "new_launch_gap": true,
+    "unmatched_command_id": "C-500885b6-7109-4df4-b95a-aff3c3570468",
+    "source_fix_required": false
+  },
+  "acceptance_limits": [
+    "Hosted real PostgreSQL/NATS normal and race pending",
+    "No hosted/Task/S2/integration/main-sync acceptance",
+    "Wire controls are not a real database",
+    "Research Recorder trace incomplete; preserved and finished FAIL"
+  ]
+}

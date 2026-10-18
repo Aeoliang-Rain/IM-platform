@@ -1,0 +1,112 @@
+{
+  "result": "PASS_ACTUAL_PUSH_CLASSIFICATION_BASE_ONLY",
+  "run_id": 39097442700,
+  "attempt": 1,
+  "head_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "before_sha": "204e803724c2a64514c6e14f8d1ed86cabca8acb",
+  "classify_job": {
+    "id": 117586697935,
+    "run_id": 39097442700,
+    "workflow_name": "Loop 1 CI",
+    "head_branch": "task/LOOP1-GROUP-PLAN-001",
+    "run_url": "https://api.github.com/repos/nilesthump/IM-platform/actions/runs/39097442700",
+    "run_attempt": 1,
+    "node_id": "CR_kwDOUhPg3c8AAAAbYLaezw",
+    "head_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+    "url": "https://api.github.com/repos/nilesthump/IM-platform/actions/jobs/117586697935",
+    "html_url": "https://github.com/nilesthump/IM-platform/actions/runs/39097442700/job/117586697935",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-10-18T04:32:21Z",
+    "started_at": "2026-10-18T04:32:24Z",
+    "completed_at": "2026-10-18T04:33:04Z",
+    "name": "classify",
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-18T04:32:25Z",
+        "completed_at": "2026-10-18T04:32:25Z"
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-18T04:32:25Z",
+        "completed_at": "2026-10-18T04:32:39Z"
+      },
+      {
+        "name": "Diagnose checkout status",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-18T04:32:39Z",
+        "completed_at": "2026-10-18T04:32:44Z"
+      },
+      {
+        "name": "Verify clean repository recovery",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-18T04:32:44Z",
+        "completed_at": "2026-10-18T04:33:02Z"
+      },
+      {
+        "name": "Test path matrix",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-18T04:33:02Z",
+        "completed_at": "2026-10-18T04:33:02Z"
+      },
+      {
+        "name": "Classify full diff, including deletions",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-10-18T04:33:02Z",
+        "completed_at": "2026-10-18T04:33:02Z"
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 12,
+        "started_at": "2026-10-18T04:33:02Z",
+        "completed_at": "2026-10-18T04:33:03Z"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13,
+        "started_at": "2026-10-18T04:33:03Z",
+        "completed_at": "2026-10-18T04:33:03Z"
+      }
+    ],
+    "check_run_url": "https://api.github.com/repos/nilesthump/IM-platform/check-runs/117586697935",
+    "labels": [
+      "ubuntu-latest"
+    ],
+    "runner_id": 1000001940,
+    "runner_name": "GitHub Actions 1000001940",
+    "runner_group_id": 0,
+    "runner_group_name": "GitHub Actions"
+  },
+  "log": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\planning-push-classify-39097442700-a1.log",
+    "bytes": 40082,
+    "sha256": "cacbe16292fbf8879e482a3de95a5c8bed5fea226f59078fd8fc4fb11ad7cd8f"
+  },
+  "observed_base_values": [
+    "204e803724c2a64514c6e14f8d1ed86cabca8acb"
+  ],
+  "observed_head_values": [
+    "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2"
+  ],
+  "prepublish_guard_sha256": "5e84e4b7027244b1eac10326c8049a418d1783df473571483f03a201c48681b8",
+  "qualification": "Push comparison base is the hosted classifier actual BASE_SHA, independently matched to the prepublication remote ref; the PR and actual-main use the complete main diff."
+}

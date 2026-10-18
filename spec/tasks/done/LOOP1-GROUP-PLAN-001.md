@@ -1,8 +1,8 @@
 ---
 task_id: LOOP1-GROUP-PLAN-001
 title: S2 群聊架构与任务插入规划
-status: review
-owner: /root/group_ci_fix_r3
+status: done
+owner: /root/group_plan_close_r1
 stage: S2
 gate: S2
 ---
@@ -113,6 +113,18 @@ spec/progress/evidence/LOOP1-GROUP-PLAN-001/；外部 implementation/research ru
 
 # Completion Metadata
 
+acceptance_result: PASS
+accepted_candidate_sha: c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2
+integrated_main_sha: 45b0a8512da4e505c467a6120cf2fc2cdd0bac7f
+main_sync_result: PASS
+independent_review_evidence: spec/progress/evidence/LOOP1-GROUP-PLAN-001/accepted-product/independent-reviews.json
+hosted_acceptance_evidence: spec/progress/evidence/LOOP1-GROUP-PLAN-001/accepted-product/hosted-acceptance.json
+main_sync_evidence: spec/progress/evidence/LOOP1-GROUP-PLAN-001/accepted-product/planning-main-sync.json
+
+# Historical Completion Snapshot (pre-acceptance)
+
+以下原字段为第一阶段接受前的历史状态；上方唯一Completion Metadata仅声称c7/45b第一阶段接受同步，不声称本次metadata新候选已接受。
+
 acceptance_result: PENDING
 accepted_candidate_sha: unavailable
 integrated_main_sha: unavailable
@@ -122,6 +134,14 @@ hosted_acceptance_evidence: unavailable
 main_sync_evidence: unavailable
 
 # Handoff
+
+最新行政封存：第一阶段candidate `c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2` 已通过 `/root/group_regular_r3` 常规和different `/root/group_error_r3` 专项；exact push39097442700实际6selected/7正常inactive，PR39097445982与actual-main39098036604各14/14成功，真实PG/NATS normal/race完整执行。protected PR42正常merge到 `45b0a8512da4e505c467a6120cf2fc2cdd0bac7f`、parents86b/c7、完整tree相同；第一次实际安全主目录同步PASS且782未知原件/原分支/status/index保持。原件、报告/收据/manifest和逐项hash核验见accepted-product/acceptance.md、independent-reviews.json、hosted-acceptance.json及planning-main-sync.json。旧R3/PENDING/FAIL段落均作为历史保留。
+
+本metadata候选base及LKG45b，assigned root/branch已核验并ff-only45b；sole writer `/root/group_plan_close_r1`。只移Task done/填写第一阶段真实Completion，更新current/NEW accepted-product证据/recovery追加/NEWcheckpoint；其余规划、Frozen/ADR/domain/invariants/acceptance/GROUPbacklog/checker/workflow/产品/contracts与45b逐字节保持。metadata最终cleanSHA/ownedGitblobs/本地检查/clean committedAcceptance/Recorder/sourcelease RELEASED由固定外部 `C:/Users/21441/.codex/visualizations/2026/10/15/01a1400d-ed56-7fb0-bb81-bc855be6da84/closure/final-receipt.json`绑定。NEW常规Review PENDING、DIFFERENT NEW错误专项PENDING；后续CI/集成/actual-main/第二次安全同步PENDING，不以第一阶段接受覆盖新bytes。
+
+历史五处Recorder unmatched gaps保持（IMPL14/13 FAIL、REGULAR-R2-RESUME28/27 FAIL、REGULAR-204E80336/35原PASS、CI-FIX-R3 42/41原PASS、ERROR-R3 42/41 FAIL）；专项产品PASS不等于其RecorderPASS。本closing首次control whitespace检查因新生成JSON为CRLF而exit2，仅将这些新文件改LF，原件/历史不改，另行重验。本closing首次Development因新local-verification.json尚未生成而exit1，原输出保留；创建证据后真实重验exit0。此次startup/directread/外部helperauthoring/通信在prospective_resume限制内；首次外部checkout解析器只识别Linux拼写而exit1，原输出保留，支持真实Windows git.exe后v2核验exit0；不是产品失败或第六处unmatched gap。原可选Frozen --base86b FAIL、rawCRLF whitespace失败及其他旧FAIL不改。GROUP真实入口/截图/Architect未执行；GROUP唯一backlog/planned，S2 OPEN/STOP，封存缺失或坏hash仍PENDING。
+
+本closing完整Frozen无flag/planning/architecture-all exit0；88architecture（1既有OSskip）与35CI（4既有OSskip）exit0，Development缺新证据的初次exit1保留、补齐后重验exit0。精确命令/耗时/output hash见accepted-product/local-verification.json；clean committedAcceptance、finalSHA/Recorder只由外部closure/final-receipt.json绑定。local/Recorder不是独立接受。checkpoint `spec/progress/checkpoints/2026-10-18-group-plan-planning-accepted-admin-pending.md`。以下原Handoff全部为历史：
 
 可选全文件 `git diff --cached --check` 对按字节保留的 history/Recorder 原始 CRLF/空白报 exit1；原件不改。仅代码及控制文件独立 --check，不能称全文件 PASS；正常 commit hooks/Acceptance 不绕过，原失败在外部 Recorder 收据。
 
@@ -138,6 +158,8 @@ R3最新：sole Fix writer /root/group_ci_fix_r3；start204e/fullbase及LKG86b�
 以下为原实现历史handoff：唯一 writer /root/group_plan_impl。已验证 assigned exact root H:/.codex/worktrees/grp/IM-platform，branch task/LOOP1-GROUP-PLAN-001，latest main 86b41e4d clean。前任务 seal 81a829add56ab8cefc497096ba0823df082cf4cad051fb35d3786afe28a578af 由 Coordinator 完整核验，摘要固定引用，不复制旧巨量证据。本地frozen(base86)/planning/architectureall、88architecture tests(1既有Windows skip)、35CI tests(4既有OS skip)、Development实际PASS；详见implementation-handoff.md与local-verification.json。新候选两审/hosted/main/sync PENDING。最终 clean SHA/本地验证/Recorder/source lease 由外部 implementation/final-receipt.json 绑定。
 
 # Next Action
+
+Coordinator从固定外部closure/final-receipt.json恢复本metadata精确finalSHA/clean/ownedblobs/Acceptance/Recorder和sourcelease RELEASED；NEW fresh常规→DIFFERENT NEW fresh错误专项覆盖同finalSHA（均PENDING；任何Fix两项重做）→exact candidate push/NEW PR实际required jobs/steps→protected merge→actual-main hosted/完整tree→第二次保存782未知原件的实际安全H:/IM-platform同步。完整核验并生成固定final-group-planning-acceptance-seal.json后才解释此行政pending为历史；不递归改已接受source。第一阶段c7/45b已接受同步，不重做其真实已满足步骤。GROUP backlog/planned、S2 OPEN/STOP，不选下任务、不评估Gate。以下原Next Action为历史：
 
 R3提交后source不再写；Coordinator从外部ci-fix-r3/final-receipt.json恢复最终cleanSHA与sourcelease RELEASED，NEW常规→DIFFERENT NEW错误专项（均PENDING）→exact-head candidate/PR实际requiredjobs→protected integration→actual-main→实际安全同步；任何Fix两项重做。先确认真实PG/NATS normal/race完整执行，不用本地条件skip或wire证明接受；保留旧204e PR FAIL。GROUP backlog/S2 OPEN/STOP。以下R2 next action保留历史：
 

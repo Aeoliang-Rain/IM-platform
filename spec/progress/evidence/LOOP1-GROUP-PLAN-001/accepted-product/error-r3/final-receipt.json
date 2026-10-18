@@ -1,0 +1,91 @@
+{
+  "task_id": "LOOP1-GROUP-PLAN-001",
+  "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+  "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+  "actor": "/root/group_error_r3",
+  "result": "PASS_SPECIALIZED_ERROR_HANDLING_AUDIT_ONLY",
+  "branch": "task/LOOP1-GROUP-PLAN-001",
+  "source_lease": "RELEASED",
+  "source_read_only": true,
+  "independence": {
+    "fresh_context": true,
+    "implemented_or_fixed_candidate": false,
+    "regular_reviewer": false,
+    "regular_precondition": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\final-receipt.json",
+      "sha256": "d434380e54b0bda40c8d29cf15754b4bd52e9670be38c12a9272224d92e445e9",
+      "actor": "/root/group_regular_r3",
+      "result": "PASS_REGULAR_REVIEW_ONLY"
+    }
+  },
+  "clean_committed_checkout": {
+    "candidate_sha": "c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2",
+    "base_sha": "86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0",
+    "branch": "task/LOOP1-GROUP-PLAN-001",
+    "assigned_root": "H:\\.codex\\worktrees\\grp\\IM-platform",
+    "actual_root": "H:/.codex/worktrees/grp/IM-platform",
+    "status_entries": 0,
+    "current_diff_bytes": 0,
+    "source_lease": "RELEASED",
+    "regular_precondition": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\regular-r3\\final-receipt.json",
+      "sha256": "d434380e54b0bda40c8d29cf15754b4bd52e9670be38c12a9272224d92e445e9",
+      "actor": "/root/group_regular_r3",
+      "result": "PASS_REGULAR_REVIEW_ONLY"
+    },
+    "go_version": "go version go1.26.6 windows/amd64",
+    "platform": "win32",
+    "DB_TEST_ENABLE_is_1": false,
+    "real_PG_NATS_executed": false,
+    "real_PG_normal_race": "PENDING_HOSTED_CI",
+    "main_repository": "H:/IM-platform read-only; no sync attempted by auditor"
+  },
+  "findings": [],
+  "recorder": {
+    "run_id": "R-GROUP-ERROR-R3-20261018",
+    "result": "FAIL",
+    "capture_mode": "prospective_resume",
+    "command_started_count": 42,
+    "command_finished_count": 41,
+    "unmatched_command_ids": [
+      "C-500885b6-7109-4df4-b95a-aff3c3570468"
+    ],
+    "original_launch_failure": {
+      "outer_exit_code": 2,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\outputs\\canonical-headings.stdout.bin",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\outputs\\canonical-headings.stderr.bin",
+        "bytes": 37,
+        "sha256": "d88aacd35d32adcc8179ba77067b72dcc59e1af9b437ce908cc7119d2a8ce442"
+      },
+      "reason": "Windows WinError5 rejected rg startup; Recorder emitted command_started but no command_finished"
+    },
+    "event_stream_repaired": false,
+    "pre_recorder_trace_complete": false,
+    "gaps": [
+      "Initial mandatory authority reads",
+      "External helper/artifact authoring",
+      "Communications",
+      "One rg launch event unmatched"
+    ],
+    "structural_validate_exit": 0,
+    "structural_validation_is_not_complete_trace": true
+  },
+  "report": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\report.md",
+  "findings_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\findings.json",
+  "artifacts": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\15\\01a1400d-ed56-7fb0-bb81-bc855be6da84\\error-r3\\artifact-manifest.json",
+    "bytes": 77281,
+    "sha256": "d378befbf582b4f510f6dfdbd990bf4b184367e2c5fd234b084062cfd33c2be4",
+    "artifact_count": 260
+  },
+  "hosted_acceptance": "PENDING",
+  "task_acceptance": "PENDING",
+  "S2": "OPEN",
+  "main_sync": "PENDING",
+  "sealed_at": "2026-10-18T04:27:26.534998+00:00"
+}

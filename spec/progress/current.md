@@ -5,51 +5,49 @@ Current Stage: S2
 Current Gate: S2
 Gate Status: OPEN
 Current Batch: LOOP1-GROUP-PLAN-001
-Batch Status: PLANNING_REVIEW_PENDING
+Batch Status: ADMINISTRATIVE_REVIEW_PENDING
 Current Task: LOOP1-GROUP-PLAN-001
-Current Task State: review
-Execution Status: planning_review_pending
+Current Task State: done
+Execution Status: administrative_pending
 
 ## Immediately Relevant Completed Work
 
-LKG accepted main86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0保持。R3 Human窄授权Gateway watch生命周期和必要fixture，先修订/readback Task scope再backend。actualserve/bind/watch/pgx在途socket退休回归旧源码RED原取消panic exit1；serve close后join唯一watch+五处fixture完成等待后同命令GREEN。未知/internal/mixed/classifier/deadline/panic均保留。
+第一阶段规划及Human窄授权Gateway生命周期修复已独立接受/集成/实际安全同步。candidate `c7d3d8bfeb5a4742ae06e0ac2d792215bcb3a0e2`；fresh常规/root/group_regular_r3与different专项/root/group_error_r3同SHA PASS；exact push39097442700实际6selected成功/7正常inactive，PR39097445982和actual-main39098036604各14/14成功且真实PG/NATS normal/race执行。protected PR42正常merge main `45b0a8512da4e505c467a6120cf2fc2cdd0bac7f`，parents86b/c7且完整tree相同；第一次实际安全同步八项检查PASS，782未知原件和原分支保留。证据accepted-product/acceptance.md。Task done/Completion只声明此第一阶段。
 
 ## Current Blockers
 
-新finalSHA NEW常规Review PENDING；DIFFERENT NEW错误专项PENDING。真实PG/NATS normal/race本地未执行，exact-head candidate/PR required hosted CI、protected integration/actual-main、安全主目录同步均PENDING。两审同最终SHA PASS前不得push/更新触发CI的PR。旧204e两审及push14PASS仅历史；PR38859630177 attempt1 Go+gateFAIL保留。GROUP unique backlog/planned；S2 OPEN。
+仅本次新增行政metadata候选的NEW常规Review、DIFFERENT NEW错误专项、exact-head push/NEW PR CI、protected merge、actual-main/tree及第二次安全主目录同步PENDING。最终SHA由外部closure/final-receipt.json发现；c7两审/CI不接受新bytes。两审同最终SHA PASS前不得push或触发PR CI；最终两阶段seal尚不存在，不能声称完整封存。GROUP唯一backlog/planned；S2 OPEN/STOP。
 
 ## Verification
 
 - Command: `python -Xutf8 -B tools/verify_frozen_architecture.py`
-  - Result: 当前Frozen完整hash/ADR/authority结构、planning、architecture-all exit0；strictscope真实base86b/start204e仅7backend路径变化，其他254产品路径bytes保持。88architecture(1既有OSskip)、35CI(4既有OSskip)最终exit0。Go normal/race ./...本地exit0但真实PG/NATS既有条件skip未执行。Development实际exit0；clean committed Acceptance以最终外部receipt绑定。
-  - Evidence: `spec/progress/evidence/LOOP1-GROUP-PLAN-001/ci-fix-r3/local-verification.json`
+  - Result: 本closing baseline Frozen/planning exit0；第一阶段96/260原件manifest、34实际checkout logs、6/14/14jobs/steps、merge parents/tree及实际sync收据hash独立核验exit0。本metadata Frozen无flag/planning/architecture-all均exit0，88architecture（1既有OSskip）/35CI（4既有OSskip）exit0；Development初次缺新证据exit1后补齐并真实重验exit0。clean committedAcceptance/finalSHA/Recorder由外部finalreceipt绑定；local/Recorder不是接受。
+  - Evidence: `spec/progress/evidence/LOOP1-GROUP-PLAN-001/accepted-product/local-verification.json`
 
 ## Changed Files or Migrations
 
-R3仅gateway.go watch完成所有权、watch_failure_test.go真实回归、runtime_test.go必要fixture包装与auth/contract_fixture/message/revocation_fallback四文件五调用处；当前Task/current、新ci-fix-r3证据/recovery追加和group-plan checkpoint。无publicAPI/http.go/契约/ACK/安全/生产TLS/依赖/GROUP实现/迁移；R2workflow/checker/Frozen/ADR/GROUP Task不改。
+仅本控制Task review→done和Completion/Handoff/NextAction、current、新accepted-product必要小证据、recovery追加与新group-plan checkpoint。所有既有规划、Frozen/ADR/domain/invariants/acceptance、GROUPbacklog、workflow/checker/tests、产品/contracts/依赖与45b保持；无新迁移或GROUP实现。
 
 ## Known Failures, Risks, and Assumptions
 
-可选全文件 `git diff --cached --check` 对按字节保留的 history/Recorder 原始 CRLF/空白报 exit1；原件不改。仅代码及控制文件独立 --check，不能称全文件 PASS；正常 commit hooks/Acceptance 不绕过，原失败在外部 Recorder 收据。
-
-真实hosted旧204e raceFAIL未被新接受替代。Dockerdaemon不可用、psql未找到、DB_TEST_ENABLE未设；Go1.26.6Windows不同于hostLinuxGo1.23。wireendpoint不是DB。首次默认GOCACHE权限失败和首次architecture nestedGo失败保留，child缓存修正后通过。原--base-commit86b零产品断言与Human后续7路径授权冲突，实际exit1保留；不改checker，以无flag完整Frozen和strictscope独立证明替代仅零产品断言。Recorder startup/directread/helperauthoring/通信缺口明确prospective_resume；local/Recorder不是接受。旧历史原件未改。
+保留五处Recorder轨迹缺口：IMPL14/13原FAIL、REGULAR-R2-RESUME28/27原FAIL、REGULAR-204E80336/35原PASS、CI-FIX-R3 42/41原PASS、ERROR-R3 42/41原FAIL。最后一处unmatched C-500885b6-7109-4df4-b95a-aff3c3570468/rg WinError5/外层exit2，原stderr37bytes hash d88aacd35d32adcc8179ba77067b72dcc59e1af9b437ce908cc7119d2a8ce442；structuralvalidate0不是完整trace。专项产品PASS与RecorderFAIL分开。旧可选Frozen--base86b零产品断言与Human七路径修复冲突的exit1、原CRLF whitespace、旧Review/CI FAIL及缓存失败全部保持，不声称所有历史PASS。此closing首次外部Windows checkout拼写解析exit1已保留并由v2实际核验exit0纠正；本closing首次control whitespace检查因新生成JSON为CRLF而exit2，仅将这些新文件改LF，原件/历史不改，另行重验。本closing首次Development因新local-verification.json尚未生成而exit1，原输出保留；创建证据后真实重验exit0。startup/directread/helperauthoring/通信为prospective_resume限制，不伪装完整trace。GROUP真实产品入口/截图/Architect仍未来未执行。
 
 ## Next Exact Action
 
-Coordinator仅由外部ci-fix-r3/final-receipt.json恢复最终cleanSHA/Acceptance/Recorder/sourcelease RELEASED；NEW常规→DIFFERENT NEW专项同finalSHA→精确candidate/PR实际requiredjobs（真实PG/NATSnormal/race）→protected integration→actualmain→实际安全主目录同步。任何Fix两审重做。后续metadata候选仍另需完整闭环；不激活GROUP，不评估S2。recovery.md最新R3入口。
+Coordinator读取固定外部closure/final-receipt.json→NEW常规→DIFFERENT NEW专项同metadata finalSHA→exact candidate push/NEW PR实际requiredjobs/steps→protected merge→actual-main hosted/tree→第二次安全同步。任何Fix两审重做；完整两阶段seal由recovery.md固定路径解析，缺失/损坏保持pending。第一阶段已接受同步不重开；本轮封存后STOP，GROUP不激活，S2不评估。
 
 ## Last Known Good Commit
 
-`86b41e4dbacd2fd6c92033697ee2ebe05a8b0ed0`。R3规划/生命周期候选未独立接受、集成或同步。
+`45b0a8512da4e505c467a6120cf2fc2cdd0bac7f`：第一阶段实际protected main与H:/IM-platform同步PASS；此行政metadata新候选未独立接受。
 
 ## Latest Checkpoint
 
-`spec/progress/checkpoints/2026-10-18-group-plan-ci-r3-review-pending.md`
+`spec/progress/checkpoints/2026-10-18-group-plan-planning-accepted-admin-pending.md`
 
 ## Uncommitted Changes / Ownership
 
-Sole R3 Fix writer /root/group_ci_fix_r3仅在assigned exactroot H:/.codex/worktrees/grp/IM-platform，branch task/LOOP1-GROUP-PLAN-001，start204e/fullbase86b写窄Task授权路径。最终cleanSHA/ownedblobs/Acceptance/Recorder/lease RELEASED由外部ci-fix-r3/final-receipt.json绑定。main H:/IM-platform只读，782未知原件不写入/采纳/清理。
+Sole行政writer /root/group_plan_close_r1，assigned exactroot H:/.codex/worktrees/grp/IM-platform，branch task/LOOP1-GROUP-PLAN-001，已从c7 ff-only到clean45b。最终cleanSHA/ownedblobs/Acceptance/Recorder/sourcelease RELEASED从固定外部closure/final-receipt.json发现。H:/IM-platform只读HEAD/branch；782未知原件不读取采纳/清理/改写；保存快照由Coordinator第二次安全同步使用。
 
 ## Architecture Conflicts / ACP / ADR
 
-无新架构决定。Human窄授权仅按canonical§3.1/§10修复Gateway资源生命周期，原错误/契约/安全保持；零产品可选校验的适用性调整见Task R3验证，未改checker。若需新publicAPI/http.go或其他越界，停止受影响部分提最小问题。S2 OPEN。
+无新决定或冲突。原ADR-0013/canonical/领域/验收内容保持第一阶段接受字节；此处仅行政恢复事实。GROUP唯一backlog/planned；语言activation仍I18N；S2 OPEN/STOP。
