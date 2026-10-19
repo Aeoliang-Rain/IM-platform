@@ -300,9 +300,20 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot '.github/workflows') -PathType C
 
 if (Test-Path -LiteralPath (Join-Path $repoRoot 'tools/verify-frozen-architecture.ps1') -PathType Leaf) {
     $frozenScript = Join-Path $repoRoot 'tools/verify-frozen-architecture.ps1'
-    if ($Python) { $architectureResult = @(& $frozenScript -Python $Python 2>&1) }
-    else { $architectureResult = @(& $frozenScript 2>&1) }
-    if ($LASTEXITCODE -ne 0) { Add-Failure "Frozen Architecture migration verification failed: $($architectureResult -join ' ')" }
+    # The wrapper script is invoked in-process: its designed throws (for example
+    # an invalid -Python) propagate as real exceptions and must be caught here
+    # so they become reportable failures instead of crashing this verifier.
+    $architectureResult = @()
+    $frozenExit = 0
+    try {
+        if ($Python) { $architectureResult = @(& $frozenScript -Python $Python 2>&1) }
+        else { $architectureResult = @(& $frozenScript 2>&1) }
+        $frozenExit = $LASTEXITCODE
+    } catch {
+        $architectureResult = @("$($architectureResult)", "$($_.Exception.Message)")
+        $frozenExit = 1
+    }
+    if ($frozenExit -ne 0) { Add-Failure "Frozen Architecture migration verification failed: $($architectureResult -join ' ')" }
 }
 
 $planningChecker = Join-Path $repoRoot 'ci/check_s2_planning.py'
@@ -313,7 +324,12 @@ if (Test-Path -LiteralPath $planningChecker -PathType Leaf) {
         Add-Failure "Specified -Python path does not exist: $Python"
     }
     elseif ($Python) {
-        $version = & $Python --version 2>&1
+        $ErrorActionPreference = 'Continue'
+        try {
+            $version = & $Python --version 2>&1
+        } finally {
+            $ErrorActionPreference = 'Stop'
+        }
         if ($LASTEXITCODE -eq 0 -and "$version" -match '^Python 3\.') { $planningPython = $Python }
         else { Add-Failure "Specified -Python is not a working Python 3: $Python" }
     }
