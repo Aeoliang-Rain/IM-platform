@@ -200,7 +200,8 @@ Current Task State: active
     def test_human_decision_fixture_explicit(self):
         run_id = self.start(role="human")
         args = self.ns(run_id=run_id, decision_id=None, question="choose", alternatives_json='["A","B"]',
-                       selected="B", reason="fixture reason", affected_authority=None, fixture=True)
+                       selected="B", reason="fixture reason", affected_authority=None, fixture=True,
+                       alternatives_file=None)
         recorder.cmd_human_decision(args, self.repo, self.root)
         event = recorder.validate_events(self.root / "runs" / run_id / "events.jsonl", run_id)[-1]
         self.assertTrue(event["data"]["human_actor"])
@@ -362,6 +363,53 @@ Current Task State: active
                         data_json="{not-json}", data_file=None), self.repo, self.root)
         durable = (self.root / "runs" / run_id / "events.jsonl").read_text(encoding="utf-8")
         self.assertNotIn("not-json", durable)
+
+    def test_human_decision_alternatives_file_avoids_shell_quoting(self):
+        run_id = self.start(role="human")
+        payload = Path(self.temp.name) / "alternatives.json"
+        payload.write_text(json.dumps(['选项 A "引号"', '选项 B \\反斜杠']), encoding="utf-8")
+        recorder.cmd_human_decision(self.ns(
+            run_id=run_id, decision_id=None, question="选一个", alternatives_json=None,
+            alternatives_file=str(payload), selected='选项 A "引号"', reason="文件传入避免 shell 转义",
+            affected_authority=None, fixture=True), self.repo, self.root)
+        event = recorder.validate_events(self.root / "runs" / run_id / "events.jsonl", run_id)[-1]
+        self.assertEqual(['选项 A "引号"', '选项 B \\反斜杠'], event["data"]["alternatives"])
+        # A BOM (Windows PowerShell 5.1 Set-Content -Encoding utf8) must not corrupt the list.
+        bom_payload = Path(self.temp.name) / "alternatives-bom.json"
+        bom_payload.write_bytes(b"\xef\xbb\xbf" + json.dumps(["BOM ok"]).encode("utf-8"))
+        recorder.cmd_human_decision(self.ns(
+            run_id=run_id, decision_id=None, question="again", alternatives_json=None,
+            alternatives_file=str(bom_payload), selected="BOM ok", reason="bom",
+            affected_authority=None, fixture=True), self.repo, self.root)
+        event = recorder.validate_events(self.root / "runs" / run_id / "events.jsonl", run_id)[-1]
+        self.assertEqual(["BOM ok"], event["data"]["alternatives"])
+
+    def test_human_decision_requires_exactly_one_alternatives_source(self):
+        run_id = self.start(role="human")
+        with self.assertRaises(recorder.RecorderError):
+            recorder.cmd_human_decision(self.ns(
+                run_id=run_id, decision_id=None, question="q", alternatives_json=None,
+                alternatives_file=None, selected="A", reason="r", affected_authority=None, fixture=True),
+                self.repo, self.root)
+        with self.assertRaises(recorder.RecorderError):
+            recorder.cmd_human_decision(self.ns(
+                run_id=run_id, decision_id=None, question="q", alternatives_json='["A"]',
+                alternatives_file="unused", selected="A", reason="r", affected_authority=None, fixture=True),
+                self.repo, self.root)
+        missing = Path(self.temp.name) / "missing-alternatives.json"
+        with self.assertRaises(recorder.RecorderError):
+            recorder.cmd_human_decision(self.ns(
+                run_id=run_id, decision_id=None, question="q", alternatives_json=None,
+                alternatives_file=str(missing), selected="A", reason="r", affected_authority=None, fixture=True),
+                self.repo, self.root)
+
+    def test_human_decision_reports_invalid_json_with_guidance(self):
+        run_id = self.start(role="human")
+        with self.assertRaisesRegex(recorder.RecorderError, "not valid JSON"):
+            recorder.cmd_human_decision(self.ns(
+                run_id=run_id, decision_id=None, question="q", alternatives_json="{not-json}",
+                alternatives_file=None, selected="A", reason="r", affected_authority=None, fixture=True),
+                self.repo, self.root)
 
 
 if __name__ == "__main__":
