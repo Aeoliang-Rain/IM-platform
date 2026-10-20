@@ -290,6 +290,26 @@ class GroupMigrationPostgreSQLTests(unittest.TestCase):
         self.psql(f"UPDATE schema_migrations SET checksum='{digest}'; INSERT INTO schema_migrations(version,checksum) VALUES('9999_unknown','wrong');")
         self.assertIn('known ordered prefix',self.migrate('up',success=False))
 
+
+    def test_single_physical_ledger_record_cannot_alias_canonical_rows(self):
+        import hashlib
+        digest1 = self.seed_0001()
+        digest2 = hashlib.sha256((UP.parent / '0002_group_operations.up.sql').read_text(encoding='utf8').encode('utf8')).hexdigest()
+        cases = (
+            ('version', '0001_initial\t' + digest1 + '\n0002_group_operations', digest2),
+            ('checksum', '0001_initial', digest1 + '\n0002_group_operations\t' + digest2),
+        )
+        for field, version, digest in cases:
+            self.psql(f"UPDATE schema_migrations SET version='{version}',checksum='{digest}';")
+            before = self.psql('SELECT json_agg(json_build_array(version,checksum,applied_at) ORDER BY version) FROM schema_migrations;')
+            self.assertEqual(self.psql('SELECT count(*) FROM schema_migrations;'), '1')
+            for arguments in (('status',), ('up',), ('down', '--allow-data-loss')):
+                with self.subTest(field=field, arguments=arguments):
+                    self.migrate(*arguments, success=False)
+                    self.assertEqual(self.psql('SELECT json_agg(json_build_array(version,checksum,applied_at) ORDER BY version) FROM schema_migrations;'), before)
+                    self.assertEqual(self.psql("SELECT to_regclass('group_operation_receipts') IS NULL;"), 't')
+                    self.assertEqual(self.psql('SELECT text_body FROM messages;'), 'old fixture')
+
     def test_failure_in_0002_rolls_back_whole_pending_batch(self):
         self.psql('CREATE TABLE group_operation_receipts(preexisting int);')
         self.assertIn('already exists',self.migrate('up',success=False))

@@ -1,0 +1,1420 @@
+{
+  "qualification": "LOCAL_EVIDENCE_ONLY",
+  "task": "LOOP1-GROUP-001",
+  "parent": "e218cacbfff2f88bfd162440dcfb2745d9934895",
+  "baseline_accepted_main": "6f163927334c39c9c8833eb8222335c661bde673",
+  "commands": [
+    {
+      "command_id": "C-280d29a7-e6c6-4da3-a352-457c6ac562a5",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 125.0,
+      "stdout_sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-e6e60ef0-fb2d-44b8-9e09-9aff34a2ce37",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 125.0,
+      "stdout_sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-c770fe5c-d5f6-4849-835e-3d41df014df6",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 1125.0,
+      "stdout_sha256": "c4b66eb26ef8d21c7981cf198c3d5ec1ef3ae7a105c1c12ce337360aa8ae223e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-90833dc5-d361-4708-ae2d-c60c7bbb23c8",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 5688.0,
+      "stdout_sha256": "92c2b8c43bdb71a6e4ccb5c062e9afd9992fa86eee07cb3c1d4a543c1e687b52",
+      "stderr_sha256": "3edc9b66af161938d7fcaacaff5dcdfaa51d2140d07537e02e27463ea45fbf94"
+    },
+    {
+      "command_id": "C-9ac36973-3686-4dbb-8fe0-003fe09366b8",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 24938.0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f880fa6c9d6d5e7c9494f3aef5886de62e279f7b4585f67f824d3a397efeef17"
+    },
+    {
+      "command_id": "C-ccb2749c-50e9-4e16-8c92-66541251896e",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; import ast; print(Path('contracts/database/migrate.py').read_text(encoding='utf-8')); ls=Path('tests/e2e/go_tls_messaging.py').read_text(encoding='utf-8').splitlines(); print('\\nE2E\\n'+'\\n'.join(f'{i+1}: {s}' for i,s in enumerate(ls) if i+1<=85 or 235<=i+1<=265)); ls=Path('tests/database/test_migrations.py').read_text(encoding='utf-8').splitlines(); print('\\nDB_TESTS\\n'+'\\n'.join(f'{i+1}: {s}' for i,s in enumerate(ls) if i+1<=100 or s.strip().startswith('def test_')))"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 62.0,
+      "stdout_sha256": "525d200b4d742de822b3ffa6314bfa404471b229a8045b8fc05da0c246b22b19",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-b6178694-6ab8-4bea-a23e-5f990b3268fe",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; ls=Path('tests/database/test_migrations.py').read_text(encoding='utf-8').splitlines(); print('\\n'.join(f'{i+1}: {s}' for i,s in enumerate(ls) if 160<=i+1<=305))"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 62.0,
+      "stdout_sha256": "5c6ee918ab377b203dd86f8e1a9229ce1c68cc6baf7b82bda3f30785f1ea03fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-d39c6488-3982-403e-8ce3-cb677437ad35",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; p=Path(r'C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-regular-r6'); print('\\n'.join(str(x) for x in p.iterdir() if x.is_file()))"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 47.0,
+      "stdout_sha256": "b9397cce892de45980aa2ac79fbe3226543c53af62e141604f2ebddb023e43e4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-b49f61f3-b96d-4f92-9fde-de738956e47c",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; import json,hashlib; p=Path(r'C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-regular-r6'); print('REPORT\\n'+(p/'report.md').read_text(encoding='utf-8')); print('RECEIPT\\n'+(p/'final-receipt.json').read_text(encoding='utf-8')); m=json.loads((p/'artifact-manifest.json').read_text(encoding='utf-8')); print('MANIFEST_SCHEMA',type(m),list(m)[:8]); print('FIRST',str(m)[:1000])"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 47.0,
+      "stdout_sha256": "d09311da4f57a13610706631bf88801a929d846f2840a3aaa1e0d1dcdf5d93f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-485e8507-fc13-451c-b55d-d2d876f483e1",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/verify_review_inputs.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 563.0,
+      "stdout_sha256": "db9a89935cff5cda167bd7fc2ce24b47917aa0de0788cdb32b72b07900673317",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-f907ee75-c848-4edf-8aaf-eea5be7c1e03",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/phase1_register.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 359.0,
+      "stdout_sha256": "c6e318a5473384d1ee9dbe31269d4d773f94212a3dbe9b0fa7b731e646fcead8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-20788c30-dea5-4e3f-bd99-863cf6a90c3a",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; p=Path('tests/contract/group/test_verification_failures.py'); print(p.read_text(encoding='utf-8')); p=Path('tests/e2e/go_tls_messaging.py'); ls=p.read_text(encoding='utf-8').splitlines(); print('\\nSQLFUNCTION\\n'+'\\n'.join(f'{i+1}: {s}' for i,s in enumerate(ls) if 135<=i+1<=200))"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 47.0,
+      "stdout_sha256": "5da92bf39bad3028c2e7578da219549cf6bbdfaa6c7f3da93b908e858b95ef52",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-a6197d4f-e865-4caf-8e35-1053be52a686",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/phase2_edit.py",
+        "tests"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 281.0,
+      "stdout_sha256": "6cba0440d11ea22c04358db293f3637d1a2a24d376bd73af6677b319901c3e4f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-67f18bdd-b36d-46c6-a31a-6f0a3a1c25f5",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract/group",
+        "-p",
+        "test_verification_failures.py",
+        "-k",
+        "e2e_ledger",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit": 1,
+      "duration_ms": 422.0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "9ce92cbe1c23433d51f77e11d982019594e22d87161dea92e820aec2e0dfd4e5"
+    },
+    {
+      "command_id": "C-3f0979b8-5fa3-4648-9b23-863c0b274e2c",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/phase2_edit.py",
+        "probe-bytes"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 218.0,
+      "stdout_sha256": "a7cbfeb79debfdf5fd90bc4bae7531e7e16b601e9cd3146c2f91a167e115f7e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-1ca14009-f632-4eed-9262-0024f4e3ca5e",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract/group",
+        "-p",
+        "test_verification_failures.py",
+        "-k",
+        "e2e_ledger",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit": 1,
+      "duration_ms": 391.0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "73898addcef1d5e2f25847943f2b1c6c31bdc47c9d33f4b7aa108261d4f954fa"
+    },
+    {
+      "command_id": "C-393801b3-18ba-4f7e-a84e-8f73663fa19d",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/runtime_pg.py",
+        "red"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 407.0,
+      "stdout_sha256": "e3a0c9636dd61ade40309a8e5667e9356bd7e8c0713c08a6d3b0a592280f008c",
+      "stderr_sha256": "a5b9ed0c92775b1d7e164298a522c90251198795ec8f672755b5bda6acc2ae32"
+    },
+    {
+      "command_id": "C-3c28dff6-58f9-413a-9017-1af26151b417",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/runtime_pg.py",
+        "red-a2"
+      ],
+      "cwd": ".",
+      "exit": 1,
+      "duration_ms": 2422.0,
+      "stdout_sha256": "69405ad2d58df049ce3e7039aaf1926d1d169043df7db0698f91873162efb98d",
+      "stderr_sha256": "bf72b9d36b9eb29b00a740bf4110fbabe7a5b49ead01e2ebf36ab678db7bc29d"
+    },
+    {
+      "command_id": "C-6a0d72e0-f0a5-4fbc-b851-21900962ab69",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/phase2_edit.py",
+        "fix"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 250.0,
+      "stdout_sha256": "eeacc7ac0d8db0d4ecd818851b327916e41aaa97fdf9ce9d73e529d10d06860a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-330651ac-e1a1-4351-ac57-a8606d1917c0",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract/group",
+        "-p",
+        "test_verification_failures.py",
+        "-k",
+        "e2e_ledger",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 437.0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f848d3a04a58a3133ff2ec9f66b8476b4b40b96e22e71d3dc3c3635edbc44261"
+    },
+    {
+      "command_id": "C-ea2da22d-f016-4ea1-8741-f2f2b5f50f97",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/runtime_pg.py",
+        "green"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 14297.0,
+      "stdout_sha256": "1f28195ffc7d589297497f52e6eb588df11fad7640a4cc205018b782e4536c46",
+      "stderr_sha256": "a3404085d28e09dbf33947d2dfd9433133136ddc17c5d2719b3b99c72a8a06f6"
+    },
+    {
+      "command_id": "C-0d794278-f52b-4878-83b2-57a65f170102",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract/group",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 27594.0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "737c91054ee06aba6f947a9e6690e6129db9c6bc30216b445258ab7e06896ef8"
+    },
+    {
+      "command_id": "C-343ac2da-5987-43c6-b957-9f6e5411ec7e",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; import json; p=Path('tests/infrastructure/smoke.ps1'); print('\\n'.join(x for x in p.read_text(encoding='utf-8').splitlines() if 'project' in x.lower() or 'cleanup' in x.lower())); p=Path(r'C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6-phase1-before-coordinator.json'); j=json.loads(p.read_text(encoding='utf-8')); print('SNAP_KEYS',list(j)); print(str(j)[:1800])"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 78.0,
+      "stdout_sha256": "485aff105ba23a68dddf55f28f61705b1a66e225a1ddc4257e0f7904b93d2dfa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-2575eb9e-9950-4ee8-a139-7e8de61971ec",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/runtime_docker.py"
+      ],
+      "cwd": ".",
+      "exit": 1,
+      "duration_ms": 12110.0,
+      "stdout_sha256": "d5fb15d455a63e193541aebf40d21552b593b7ee4a64a2da86ff66f4f9c64d84",
+      "stderr_sha256": "96f45e37d185e51bcc716c32c5687e43a42744c690890a51d81b0c966de33fce"
+    },
+    {
+      "command_id": "C-2a7416ff-874a-4fb1-8eb8-7326173a6e7b",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; p=Path(r'C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6'); print((p/'go-smoke.stderr').read_text(encoding='utf-8')[-9000:]); print((p/'go-smoke.stdout').read_text(encoding='utf-8')[-4000:])"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 62.0,
+      "stdout_sha256": "44b56b9844ff47db038061ad831dd39061c1c92f62c8b8c5839a7dc58c023773",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-e0651b3f-bd0a-4074-86e6-db7bbb5da087",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; print('\\n'.join(Path('tests/infrastructure/smoke.ps1').read_text(encoding='utf-8').splitlines()[:75])); print('\\nCOMPOSEENV\\n'+'\\n'.join(s for s in Path('deploy/compose.yaml').read_text(encoding='utf-8').splitlines() if 'CONFIG' in s or 'secret' in s or 'PASSWORD' in s or 'GO_' in s))"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 47.0,
+      "stdout_sha256": "7d509409fe47e77b385a371e2ff5cf69d5410785e299f436677401aa467347b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-c894500a-0089-4cf7-a258-88ce6c93187c",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/runtime_docker.py",
+        "a2"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 62406.0,
+      "stdout_sha256": "e26556d5f924f505a86d7dacf89df8e4be3848067a9d316d94f3cd224e7368f1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-9c206551-f16c-451a-94a0-6162ce10656e",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/scope_proof.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 6984.0,
+      "stdout_sha256": "0bb098491b9cd5450623dde05603f67116175c1cfe581a23ef09fbc1ca7d9057",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-33d0f216-6972-4157-ae6b-2b54e57da669",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/write_control.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 62.0,
+      "stdout_sha256": "c3bd46954e859dbe8c085ef5a5c3a9aab8610e7f877bd4074fc6fc1e94a28710",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-af835a75-7658-40b2-9d9b-89717e4c7b1b",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 125.0,
+      "stdout_sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-d680c8a1-d74d-4356-ba2f-176186dd2b2e",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 125.0,
+      "stdout_sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-50847e9b-3a0b-4e48-9641-29d455e8d5b4",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 1453.0,
+      "stdout_sha256": "c4b66eb26ef8d21c7981cf198c3d5ec1ef3ae7a105c1c12ce337360aa8ae223e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-9c094688-fe21-4d95-b870-21bf6b055d56",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 25125.0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0fc03974f5fa192cdbdf84a2d1e4dad5ea8be3a7d9210e93404d6e34714f0246"
+    },
+    {
+      "command_id": "C-0a603c77-3f87-4f69-8a06-f5e981285f99",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 5532.0,
+      "stdout_sha256": "92c2b8c43bdb71a6e4ccb5c062e9afd9992fa86eee07cb3c1d4a543c1e687b52",
+      "stderr_sha256": "ba053ccb8179f377c9cacd867068a03341673977514b8d35718071c41bce5b4e"
+    },
+    {
+      "command_id": "C-59dd0a11-4ad3-4625-90ec-b0771cc4c430",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "contracts/http/verify-group.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 406.0,
+      "stdout_sha256": "9f02c127e846062634008ce3875ebf52fd380ef27dab8f51decbe269fe69686a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-e9687939-7490-4fc8-8aea-008f9ea81c9e",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "contracts/http/verify-auth-user-friend.ps1"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 6000.0,
+      "stdout_sha256": "a29eedb2ce6529b48f9804329d16b5860a60efd6e04143c3832972ef179efb0e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-946bc6f7-de64-417b-a2e2-08d2fdf3e027",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/verify_sync_transport.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 156.0,
+      "stdout_sha256": "7463263b065fa0355404d1dee5921d66c765e10ebc3c01452fe23c5c4fb95859",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-abe585e2-41ab-4008-85e9-359a527f8905",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract",
+        "-p",
+        "test_sync_transport.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 157.0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ada2231f6651cb08d76fe665f46b18458ad6072708e751f0bc09a6b4ca4f9c89"
+    },
+    {
+      "command_id": "C-f5bc5ab5-e18b-4187-9d5b-9a55833f92c8",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "contracts/websocket/verify.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 93.0,
+      "stdout_sha256": "4eb2bd895b7d0d6ff48c073898cc8eb117c642cfbf3c0e34477adc556e1dc78b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-5969df4d-5532-4f95-8475-6051329ccb03",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "contracts/plugin-api/verify.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 79.0,
+      "stdout_sha256": "1ebc963302a2587a60c0685b89613c10d25d2e1ee37bf6eff5ba50173f41083f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-82f85961-4eb7-4470-8205-ee1b694be5b9",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-c",
+        "from pathlib import Path; import json; p=Path(r'C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/research/runs/R-GROUP-FIX-R6-20261020/events.jsonl'); es=[json.loads(s) for s in p.read_text(encoding='utf-8').splitlines()]; print(next(e['data'] for e in es if e['event_type']=='command_started')); print(next(e['data'] for e in es if e['event_type']=='command_finished')); print(json.loads(Path(r'C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/runtime-a2/docker-runtime.json').read_text(encoding='utf-8'))['commands'])"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 47.0,
+      "stdout_sha256": "95b985ff594067cc113c7d52fa6b5f198683de43bc539364c596e4585362e058",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-0acd7728-e8e0-4a21-bfe3-ea0544475189",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/publish_evidence.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 359.0,
+      "stdout_sha256": "86f8bd4e60c2d46339253733e5773851223f461342403e39e10b49350d3de46b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-0aba3352-6d42-461c-bce4-a6bf29886ac8",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 27329.0,
+      "stdout_sha256": "5d42002e07bee5650b41d9a8ba1df9b6655d40f1ec6d57d4c4b28636a3f64715",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command_id": "C-796ce278-1649-46cc-95d0-f18088f47cd1",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r6/scope_proof.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 6781.0,
+      "stdout_sha256": "6aae8a2839446f114339611a82be36ab9afc5f06537b34798befd2725d7f1ef2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "group_suite": {
+    "tests": 29,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "test_seconds": 27.313,
+    "raw": "green-group-suite.stderr"
+  },
+  "pg_actual_wrapper": {
+    "argv_entry": "contract-fix-r6/runtime_pg.py green",
+    "method": "unmodified test module loaded through unittest; only external wrappers observe owned schema allocations",
+    "result": {
+      "mode": "green",
+      "identity": {
+        "version": "16.15",
+        "data_directory": "H:/IM-platform/.git/worktrees/IM-platform4/group-pg16-20261018/data-v2",
+        "port": "63830",
+        "user": "group_contract_fixture",
+        "database": "group_contract_20261018"
+      },
+      "credentials": "libpq file path only; contents never read/printed/copied",
+      "tests_run": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 14.06199999999808,
+      "result": "PASS",
+      "owned_schema_allocations": [
+        "group_db_test_d8bfdcca3f30412381a23e0c6123fd06",
+        "group_db_test_26787ec773cf402387e775a338e06d49",
+        "group_db_test_7a6a613a8ae443869d74d030cd8d69c4",
+        "group_db_test_bcd900633fbc40ddbe945189212d334d",
+        "group_db_test_e8044ab0318f40c093db93137063fbc5",
+        "group_db_test_7b3ab5402bd14955b9e7b6380d6d9033",
+        "group_db_test_d6c303b9386b4131a082ba5f7b182353",
+        "group_db_test_21417909c1194b99b3276233e9d6bca2",
+        "db_test_0960151701df4cbbaa7e9e1ec19394b2"
+      ],
+      "before_inventory": [
+        "public"
+      ],
+      "after_inventory": [
+        "public"
+      ],
+      "inventories_equal": true,
+      "emergency_cleanup": [],
+      "server_left_running": true
+    }
+  },
+  "runtime": {
+    "commands": [
+      {
+        "label": "go-smoke",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+          "-NoProfile",
+          "-File",
+          "tests/infrastructure/smoke.ps1",
+          "-Profile",
+          "go"
+        ],
+        "pid": 64416,
+        "exit": 0,
+        "elapsed_seconds": 19.75,
+        "stdout": "go-smoke.stdout",
+        "stderr": "go-smoke.stderr"
+      },
+      {
+        "label": "java-smoke",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+          "-NoProfile",
+          "-File",
+          "tests/infrastructure/smoke.ps1",
+          "-Profile",
+          "java"
+        ],
+        "pid": 61788,
+        "exit": 0,
+        "elapsed_seconds": 12.295999999998457,
+        "stdout": "java-smoke.stdout",
+        "stderr": "java-smoke.stderr"
+      },
+      {
+        "label": "go-e2e",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "tests/e2e/go_tls_messaging.py"
+        ],
+        "pid": 61672,
+        "exit": 0,
+        "elapsed_seconds": 29.079000000001543,
+        "stdout": "go-e2e.stdout",
+        "stderr": "go-e2e.stderr"
+      }
+    ],
+    "before": {
+      "containers": [
+        {
+          "id": "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131",
+          "name": "im-gui-product-20261004-52804-nats-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb",
+          "name": "im-gui-product-20261004-52804-migrate-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da",
+          "name": "shopping-backend",
+          "state": "exited",
+          "project": "infrastructure"
+        },
+        {
+          "id": "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b",
+          "name": "shopping-qdrant",
+          "state": "exited",
+          "project": "infrastructure"
+        },
+        {
+          "id": "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f",
+          "name": "im-gui-product-20261004-52804-plugin-host-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba",
+          "name": "naiwa-house-game-worker-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873",
+          "name": "naiwa-house-mysql-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c",
+          "name": "dsm-etl-postgres",
+          "state": "exited",
+          "project": ""
+        },
+        {
+          "id": "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b",
+          "name": "im-gui-product-20261004-52804-gateway-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec",
+          "name": "naiwa-house-migrate-1",
+          "state": "exited",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d",
+          "name": "shopping-pg",
+          "state": "exited",
+          "project": "infrastructure"
+        },
+        {
+          "id": "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd",
+          "name": "im-gui-product-20261004-52804-tls-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590",
+          "name": "oracle",
+          "state": "exited",
+          "project": ""
+        },
+        {
+          "id": "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750",
+          "name": "im-gui-product-20261004-52804-postgres-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c",
+          "name": "naiwa-house-gateway-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c",
+          "name": "im-gui-product-20261004-52804-core-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4",
+          "name": "naiwa-house-web-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f",
+          "name": "naiwa-house-coturn-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68",
+          "name": "naiwa-house-prometheus-1",
+          "state": "running",
+          "project": "naiwa-house"
+        }
+      ],
+      "volumes": [
+        {
+          "name": "52f1b0eb24dc4101bd4be06d350a4d4a00f968897cf2310b03a1d9ea32a863da",
+          "project": ""
+        },
+        {
+          "name": "618e7e255da92092baf0d1df1f0ebf4d544abaede5c28732a6119515400fd2f3",
+          "project": ""
+        },
+        {
+          "name": "66eab5a23b40f94aaee4e41636b08de352a381d6446dd56f3e55f1427882ed1b",
+          "project": ""
+        },
+        {
+          "name": "6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1",
+          "project": ""
+        },
+        {
+          "name": "dsm-etl-pgdata",
+          "project": ""
+        },
+        {
+          "name": "im-gui-product-20261004-52804_caddy-go-data",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "name": "im-gui-product-20261004-52804_postgres-data",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "name": "infrastructure_model_cache",
+          "project": "infrastructure"
+        },
+        {
+          "name": "infrastructure_pgdata",
+          "project": "infrastructure"
+        },
+        {
+          "name": "infrastructure_qdrant_storage",
+          "project": "infrastructure"
+        },
+        {
+          "name": "naiwa-house_mysql-data",
+          "project": "naiwa-house"
+        },
+        {
+          "name": "naiwa-house_prometheus-data",
+          "project": "naiwa-house"
+        },
+        {
+          "name": "oracle_data",
+          "project": ""
+        }
+      ]
+    },
+    "after": {
+      "containers": [
+        {
+          "id": "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131",
+          "name": "im-gui-product-20261004-52804-nats-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb",
+          "name": "im-gui-product-20261004-52804-migrate-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da",
+          "name": "shopping-backend",
+          "state": "exited",
+          "project": "infrastructure"
+        },
+        {
+          "id": "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b",
+          "name": "shopping-qdrant",
+          "state": "exited",
+          "project": "infrastructure"
+        },
+        {
+          "id": "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f",
+          "name": "im-gui-product-20261004-52804-plugin-host-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba",
+          "name": "naiwa-house-game-worker-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873",
+          "name": "naiwa-house-mysql-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c",
+          "name": "dsm-etl-postgres",
+          "state": "exited",
+          "project": ""
+        },
+        {
+          "id": "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b",
+          "name": "im-gui-product-20261004-52804-gateway-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec",
+          "name": "naiwa-house-migrate-1",
+          "state": "exited",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d",
+          "name": "shopping-pg",
+          "state": "exited",
+          "project": "infrastructure"
+        },
+        {
+          "id": "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd",
+          "name": "im-gui-product-20261004-52804-tls-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590",
+          "name": "oracle",
+          "state": "exited",
+          "project": ""
+        },
+        {
+          "id": "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750",
+          "name": "im-gui-product-20261004-52804-postgres-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c",
+          "name": "naiwa-house-gateway-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c",
+          "name": "im-gui-product-20261004-52804-core-go-1",
+          "state": "exited",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "id": "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4",
+          "name": "naiwa-house-web-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f",
+          "name": "naiwa-house-coturn-1",
+          "state": "running",
+          "project": "naiwa-house"
+        },
+        {
+          "id": "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68",
+          "name": "naiwa-house-prometheus-1",
+          "state": "running",
+          "project": "naiwa-house"
+        }
+      ],
+      "volumes": [
+        {
+          "name": "52f1b0eb24dc4101bd4be06d350a4d4a00f968897cf2310b03a1d9ea32a863da",
+          "project": ""
+        },
+        {
+          "name": "618e7e255da92092baf0d1df1f0ebf4d544abaede5c28732a6119515400fd2f3",
+          "project": ""
+        },
+        {
+          "name": "66eab5a23b40f94aaee4e41636b08de352a381d6446dd56f3e55f1427882ed1b",
+          "project": ""
+        },
+        {
+          "name": "6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1",
+          "project": ""
+        },
+        {
+          "name": "dsm-etl-pgdata",
+          "project": ""
+        },
+        {
+          "name": "im-gui-product-20261004-52804_caddy-go-data",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "name": "im-gui-product-20261004-52804_postgres-data",
+          "project": "im-gui-product-20261004-52804"
+        },
+        {
+          "name": "infrastructure_model_cache",
+          "project": "infrastructure"
+        },
+        {
+          "name": "infrastructure_pgdata",
+          "project": "infrastructure"
+        },
+        {
+          "name": "infrastructure_qdrant_storage",
+          "project": "infrastructure"
+        },
+        {
+          "name": "naiwa-house_mysql-data",
+          "project": "naiwa-house"
+        },
+        {
+          "name": "naiwa-house_prometheus-data",
+          "project": "naiwa-house"
+        },
+        {
+          "name": "oracle_data",
+          "project": ""
+        }
+      ]
+    },
+    "preexisting_id_name_state_preserved": true,
+    "owned_projects": [
+      "im-infra-smoke-go-64416",
+      "im-infra-smoke-java-61788"
+    ],
+    "owned_containers_volumes_remaining": [],
+    "emergency_cleanup": [],
+    "global_docker_configuration_changed": false,
+    "result": "PASS"
+  },
+  "final_checks": [
+    {
+      "label": "final-frozen",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 0.25,
+      "stdout": "final-frozen.stdout",
+      "stderr": "final-frozen.stderr"
+    },
+    {
+      "label": "final-planning",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 0.25,
+      "stdout": "final-planning.stdout",
+      "stderr": "final-planning.stderr"
+    },
+    {
+      "label": "final-architecture",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 1.625,
+      "stdout": "final-architecture.stdout",
+      "stderr": "final-architecture.stderr"
+    },
+    {
+      "label": "final-architecture-tests",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 25.25,
+      "stdout": "final-architecture-tests.stdout",
+      "stderr": "final-architecture-tests.stderr"
+    },
+    {
+      "label": "final-ci-tests",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 5.65599999999904,
+      "stdout": "final-ci-tests.stdout",
+      "stderr": "final-ci-tests.stderr"
+    },
+    {
+      "label": "final-group-verifier",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "contracts/http/verify-group.py"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 0.5159999999996217,
+      "stdout": "final-group-verifier.stdout",
+      "stderr": "final-group-verifier.stderr"
+    },
+    {
+      "label": "final-auth-verifier",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "contracts/http/verify-auth-user-friend.ps1"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 6.125,
+      "stdout": "final-auth-verifier.stdout",
+      "stderr": "final-auth-verifier.stderr"
+    },
+    {
+      "label": "final-sync-verifier",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/verify_sync_transport.py"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 0.28100000000267755,
+      "stdout": "final-sync-verifier.stdout",
+      "stderr": "final-sync-verifier.stderr"
+    },
+    {
+      "label": "final-sync-tests",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract",
+        "-p",
+        "test_sync_transport.py"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 0.2809999999990396,
+      "stdout": "final-sync-tests.stdout",
+      "stderr": "final-sync-tests.stderr"
+    },
+    {
+      "label": "final-wss-verifier",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "contracts/websocket/verify.py"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 0.23500000000058208,
+      "stdout": "final-wss-verifier.stdout",
+      "stderr": "final-wss-verifier.stderr"
+    },
+    {
+      "label": "final-plugin-verifier",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "contracts/plugin-api/verify.py"
+      ],
+      "exit": 0,
+      "recorder_wrapper_elapsed_seconds": 0.18699999999807915,
+      "stdout": "final-plugin-verifier.stdout",
+      "stderr": "final-plugin-verifier.stderr"
+    }
+  ],
+  "development": [
+    {
+      "command_id": "C-0aba3352-6d42-461c-bce4-a6bf29886ac8",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "duration_ms": 27329.0,
+      "stdout_sha256": "5d42002e07bee5650b41d9a8ba1df9b6655d40f1ec6d57d4c4b28636a3f64715",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "clean_committed_acceptance": "PENDING_EXTERNAL_FINAL_RECEIPT",
+  "original_archive": {
+    "path": "local-originals.zip",
+    "bytes": 107546,
+    "sha256": "8fdb78a5efc1d4989caecc34b1b517f4f10fc7584121816d51d2ee86d5cdaf4e",
+    "files": 84
+  },
+  "known_failed_or_unexecuted_attempts": [
+    "red-e2e-ledger: canonical control failed from Windows text CRLF; not target defect evidence",
+    "red-e2e-ledger-a2: exact LF transcript canonical control passed; one LF record incorrectly accepted (true RED)",
+    "red-pg-ledger: wrapper enabled DB after import; skip1/zero schemas, unexecuted; its unittest PASS is not migration PASS",
+    "red-pg-ledger-a2: actual PG one method, four failed status/up subtests, zero skip, owned schema removed",
+    "real-docker-runtime: missing gateway with absent controlled Go config; actual FAIL and resources cleaned",
+    "baseline architecture live session dispatched CI before drain: one disclosed same-run overlap"
+  ],
+  "research": {
+    "run_id": "R-GROUP-FIX-R6-20261020",
+    "capture_mode": "prospective_resume",
+    "complete_trace": false,
+    "finish_plan": "FAIL honest partial; direct closure/structural validation externally bound",
+    "gaps": "startup, helper authoring, communication, assignment excerpt, direct reads, final sealing; one disclosed baseline overlap"
+  },
+  "new_independent_reviews": {
+    "regularR7": "NEW_PENDING_FINAL_SHA",
+    "different_error_specialistR4": "NEW_PENDING_FINAL_SHA"
+  },
+  "contract_acceptance": "PENDING",
+  "hosted": "PROHIBITED_PENDING_BOTH_NEW_REVIEWS",
+  "integration_actual_main_sync": "PENDING",
+  "gate": "S2 OPEN",
+  "product_G01_G09": "NOT_STARTED"
+}

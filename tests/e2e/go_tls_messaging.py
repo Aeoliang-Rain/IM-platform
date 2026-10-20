@@ -251,7 +251,7 @@ def main():
                 restored = json.loads(compose('exec', '-T', 'tls-go', 'wget', '-qO-', 'http://127.0.0.1:2019/config/'))
                 require(restored == original_config, 'original Caddy configuration not restored')
             print('PASS TLS: trusted CA/CERT_REQUIRED/hostname HTTPS+WSS; untrusted CA and certificate name mismatch rejected', flush=True)
-            require(sql('SELECT version FROM schema_migrations ORDER BY version') == '0001_initial\n0002_group_operations', 'canonical migration missing')
+            require(json.loads(sql('SELECT json_agg(version ORDER BY version) FROM schema_migrations')) == ['0001_initial', '0002_group_operations'], 'canonical migration missing')
             for role in ['core', 'gateway', 'plugin-host']:
                 require(compose('exec', '-T', role + '-go', 'wget', '-qO-', 'http://localhost:8080/__infra/health').strip() == f'profile=go role={role}'.encode(), 'real role missing')
 

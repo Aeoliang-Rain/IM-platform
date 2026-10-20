@@ -188,5 +188,65 @@ exit $code
                 self.assertEqual('PASS:' in result.stdout, accepted)
 
 
+    def test_e2e_ledger_assertion_preserves_records_and_native_failures(self):
+        import ast
+        import os
+        import types
+        path = ROOT / 'tests/e2e/go_tls_messaging.py'
+        tree = ast.parse(path.read_text(encoding='utf-8'))
+        main = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == 'main')
+        helpers = [next(node for node in main.body if isinstance(node, ast.FunctionDef) and node.name == name)
+                   for name in ('docker', 'compose', 'sql')]
+        require = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == 'require')
+        assertions = [node for node in ast.walk(main) if isinstance(node, ast.Expr)
+                      and isinstance(node.value, ast.Call) and isinstance(node.value.func, ast.Name)
+                      and node.value.func.id == 'require' and len(node.value.args) == 2
+                      and isinstance(node.value.args[1], ast.Constant)
+                      and node.value.args[1].value == 'canonical migration missing']
+        self.assertEqual(len(assertions), 1)
+        boundary = compile(ast.fix_missing_locations(ast.Module(body=[require, *helpers, assertions[0]], type_ignores=[])), str(path), 'exec')
+        cases = (
+            (['0001_initial', '0002_group_operations'], 0, True),
+            (['0001_initial\n0002_group_operations'], 0, False),
+            (['0001_initial,0002_group_operations'], 0, False),
+            ([], 0, False), (['0001_initial'], 0, False),
+            (['0001_initial', '0002_group_operations', '0003_unknown'], 0, False),
+            (['0001_initial', '0001_initial', '0002_group_operations'], 0, False),
+            (['0002_group_operations', '0001_initial'], 0, False),
+            (['0001_initial', '0002_GROUP_operations'], 0, False),
+            (['0001_initial', '0002_group_operations'], 37, False),
+        )
+        for rows, native_exit, accepted in cases:
+            with self.subTest(rows=rows, native_exit=native_exit):
+                observed = []
+                def transport(arguments, **options):
+                    query = arguments[-1]
+                    observed.append(query)
+                    if query == 'SELECT version FROM schema_migrations ORDER BY version':
+                        transcript = '\n'.join(rows)
+                    elif query == 'SELECT json_agg(version ORDER BY version) FROM schema_migrations':
+                        transcript = json.dumps(rows) if rows else 'null'
+                    else:
+                        raise AssertionError('unexpected actual E2E ledger SQL: ' + query)
+                    # Execute the real native failure path while replacing only
+                    # Docker transport. This is not live Docker/TLS acceptance.
+                    return subprocess.run([sys.executable, '-c',
+                                           "import sys;sys.stdout.buffer.write(sys.argv[1].encode('utf-8'));sys.stderr.write('E2E_LEDGER_NATIVE_SENTINEL');sys.exit(int(sys.argv[2]))",
+                                           transcript + '\n', str(native_exit)],
+                                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=10)
+                scope = {'json': json, 'env': os.environ.copy(), 'command': ['isolated-docker'],
+                         'subprocess': types.SimpleNamespace(run=transport, PIPE=subprocess.PIPE)}
+                if accepted:
+                    exec(boundary, scope)
+                elif native_exit:
+                    with self.assertRaisesRegex(RuntimeError, 'E2E_LEDGER_NATIVE_SENTINEL'):
+                        exec(boundary, scope)
+                else:
+                    with self.assertRaisesRegex(AssertionError, 'canonical migration missing'):
+                        exec(boundary, scope)
+                self.assertEqual(len(observed), 1)
+
+
+
 if __name__ == '__main__':
     unittest.main()

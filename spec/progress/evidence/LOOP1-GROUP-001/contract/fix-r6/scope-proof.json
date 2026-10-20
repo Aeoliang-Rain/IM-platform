@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "base": "e218cacbfff2f88bfd162440dcfb2745d9934895",
+  "tracked_before": 19041,
+  "non_allowed_tracked_physical_files_verified": 19035,
+  "non_allowed_bytes_unchanged": true,
+  "changed_paths": [
+    "contracts/database/migrate.py",
+    "spec/progress/current.md",
+    "spec/tasks/active/LOOP1-GROUP-001.md",
+    "tests/contract/group/test_verification_failures.py",
+    "tests/database/test_migrations.py",
+    "tests/e2e/go_tls_messaging.py"
+  ],
+  "untracked_evidence_only": [
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r6/handoff.md",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r6/local-originals.zip",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r6/local-verification.json",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r6/review-input-bindings.json",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r6/scope-proof.json"
+  ],
+  "old_test_preservation": {
+    "tests/database/test_migrations.py": {
+      "all_old_methods_helpers_ast_equal": true,
+      "old_test_methods": 11,
+      "added": [
+        "GroupMigrationPostgreSQLTests.test_single_physical_ledger_record_cannot_alias_canonical_rows"
+      ]
+    },
+    "tests/contract/group/test_verification_failures.py": {
+      "all_old_methods_helpers_ast_equal": true,
+      "old_test_methods": 6,
+      "added": [
+        "VerificationFailureTests.test_e2e_ledger_assertion_preserves_records_and_native_failures"
+      ]
+    }
+  },
+  "runner_functions_changed_only": [
+    "applied"
+  ],
+  "e2e_changes_only": "one existing ledger query/assertion",
+  "public_sql_frozen_go_clients_ci_old_evidence_preserved": true
+}

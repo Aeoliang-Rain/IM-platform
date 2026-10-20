@@ -45,10 +45,9 @@ def applied() -> dict[str,str]:
         return {}
     if exists != 't':
         raise RuntimeError('unexpected schema_migrations existence result')
-    output = psql("SELECT version || E'\\t' || checksum FROM schema_migrations ORDER BY version;",capture=True)
+    output = psql("SELECT COALESCE(json_agg(json_build_array(version,checksum) ORDER BY version),'[]'::json) FROM schema_migrations;",capture=True)
     known = {}
-    for line in output.splitlines():
-        version,digest = line.split('\t')
+    for version,digest in json.loads(output):
         if version in known:
             raise RuntimeError('duplicate migration ledger version')
         known[version] = digest
