@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/group_contract_fix_r4
+owner: /root/group_contract_fix_r5
 stage: S2
 gate: S2
 client_supplement_phase: group_product
@@ -42,14 +42,14 @@ client_runtime: Android
 
 - `contracts/http/group.openapi.json`（建群/加人/本人会话快照；唯一新增HTTP权威）
 - `contracts/http/verify-group.py`（标准库/现有validator适配，不新依赖）
-- `contracts/http/verify-auth-user-friend.ps1`（激活时实际输入适配：仅 Get-ModelFailures 的全局 ordered registry 在原15码后接入已授权 GROUP_REQUEST_CONFLICT；旧15码顺序、Auth/Friend特定负例覆盖、全部原断言/mutations/退出传播保持；不得修改Auth OpenAPI或旧fixtures）
+- `contracts/http/verify-auth-user-friend.ps1`（现全局 ordered registry 仍精确为原15码原序+GROUP_REQUEST_CONFLICT；本Fix R5仅修 EH-R3-P2-001 的 Get-OpenApiStructureErrors 直接边界：只有 pinned checker 明确 schema-invalid exit1 可计结构拒绝；缺Node/launch失败、内部exit2/37及其他非零/未知异常、ConvertTo-Json内部异常正常传播，使整个verifier非零且不报PASS。保留旧15码业务覆盖、全局16码、6正例/21负例/15 mutations及全部原模型/结构断言；不得修改Auth OpenAPI、JS checkers或旧fixtures）
 - `contracts/errors/http-errors.schema.json`（仅已批准群操作必要错误）
 - `contracts/database/migrations/0002_group_operations.up.sql`
 - `contracts/database/migrations/0002_group_operations.down.sql`
 - `contracts/database/README.md`（仅新增migration语义/兼容与回滚）
 - `contracts/database/migrate.py`（仅现有独立runner支持0001→0002的有序应用、ledger/status与已冻结回退；保留0001字节、历史checksum、锁及真实失败行为）
 - `tests/database/test_migrations.py`（仅上述迁移入口的空库/0001升级/重入/回退/旧fixture兼容正反回归）
-- `tests/infrastructure/smoke.ps1`（当前已授权canonical0001→0002验证输入适配：仅现Go/Java profile迁移ledger的SELECT显式ORDER BY version及精确两项比较；保留LASTEXITCODE、缺失/额外/重复拒绝，以及role/TLS/WSS/Compose/cleanup全部现检查和失败传播）
+- `tests/infrastructure/smoke.ps1`（现Go/Java profile的直接验证边界：EH-R3-P2-003要求ledger SELECT保留ORDER BY version，以保留/转义元素边界的结果精确验证两条且仅两条canonical记录0001_initial、0002_group_operations，大小写/顺序精确；拒绝单条含逗号或换行的unknown version、缺失/额外/重复/乱序/大小写错/native非零，不用另一个有歧义join、过滤unknown或动态接受未来migration。EH-R3-P2-002要求仅检查现owned project cleanup的实际结果，cleanup-only失败使操作非零，body与cleanup同时失败保留两因，环境清理仍执行，全部必需清理完成后才输出PASS。保留role/TLS/WSS/Compose、现资源归属和全部其他检查；不加通用错误/清理/重试框架）
 - `tests/e2e/go_tls_messaging.py`（同一首契约切片的现Go S1 strict TLS E2E迁移ledger输入适配：仅SELECT显式ORDER BY version及精确0001_initial与0002_group_operations两项比较；TLS/hostname反例、Auth/成员/ACK/seq/Outbox/Sync/cleanup及原失败传播保持）
 - `.github/workflows/ci.yml`（仅在现有shared必需contract步骤接入群verifier与正负suite；保留旧检查、真实非零传播及既有作业选择，不增workflow/job/framework）
 - `contracts/fixtures/group/**`（canonical正负/并发/幂等/兼容输入与expected）
@@ -107,7 +107,7 @@ client_runtime: Android
 - `clients/mobile/app/src/main/kotlin/im/platform/client/storage/Repository.kt`（仅现metadata读写/群身份投影；不改消息写入/草稿/SQLite事务adapter）
 - `clients/mobile/app/src/androidTest/kotlin/im/platform/client/group/**`
 - `tests/clients/group/**`
-- `tests/contract/group/**`
+- `tests/contract/group/**`（本Fix R5只新增 `tests/contract/group/test_verification_failures.py`，对上述三项既有验证入口做有意义的实际进程/直接边界故障回归；原test_group.py全部22测试方法、35valid/30invalid对象与helpers保持）
 - `tests/integration/group/**`
 - `tests/clients/i18n/verify.mjs`（群资源键/参数负例）
 - `tests/clients/i18n/compiled.mjs`（群资源键/参数负例）
@@ -165,6 +165,7 @@ Web/Desktop沿既有TypeScript分层和各端独立React视觉；Android Kotlin/
 # Verification
 
 - Minimum activation baseline：`python -Xutf8 -B tools/verify_frozen_architecture.py`、`python -Xutf8 -B ci/check_s2_planning.py`、`python -Xutf8 -B ci/check_architecture.py --scope all --json`，`python -Xutf8 -B -m unittest discover -s tests/architecture`、`python -Xutf8 -B -m unittest discover -s tests/ci`；已有accepted stage-three checker，不豁免。
+- Fix R5三项错误回归：`python -Xutf8 -B -m unittest discover -s tests/contract/group -p "test_verification_failures.py" -v`；实际调用当前PS入口/边界，隔离transport shim只控制外部依赖/原生exit，不作为真实Docker/TLS接受。known structural exit1仍为正常拒绝；初始真实Node正例0后，mutation阶段exit2/37/异常终止/launch与内部异常均令完整verifier非零且无PASS。Go/Java smoke成功、仅primary失败、仅cleanup失败、双失败覆盖真实native退出/两因/环境清理/成功输出时序；精确两canonical记录通过，单逗号/嵌入换行version及缺/extra/duplicate/order/case/nonzero拒绝。新增suite必须在现shared Ubuntu runner已有pwsh/Node下实际执行，不用Windows-only skip、未启用环境或新workflow/job冒充覆盖。
 - 现契约回归：`pwsh -NoProfile -File contracts/http/verify-auth-user-friend.ps1`、`python -Xutf8 -B tools/verify_sync_transport.py`、`python -Xutf8 -B -m unittest discover -s tests/contract -p test_sync_transport.py`、`python -Xutf8 -B contracts/websocket/verify.py`、`python -Xutf8 -B contracts/plugin-api/verify.py`，不删除或压低旧检查。
 - 首契约切片（未来交付后执行）：`python -Xutf8 -B contracts/http/verify-group.py`和`python -Xutf8 -B -m unittest discover -s tests/contract/group -p "test_*.py" -v`真实覆盖群schema/正负fixtures，二者须在现有shared必需contract步骤执行并传播非零退出；核对精确hosted SHA/job/step原始日志，不能只核对classifier选择。
 - 同一首契约切片的迁移验证：在明确受控、可丢弃PostgreSQL中，配置真实psql/libpq PGHOST/PGPORT/PGUSER/PGDATABASE和安全凭据（不放argv或日志），设置`DB_TEST_ENABLE=1`，实际执行`python -Xutf8 -B contracts/database/migrate.py status`、`python -Xutf8 -B contracts/database/migrate.py up`、再次status及up，并运行`python -Xutf8 -B -m unittest discover -s tests/database -p test_migrations.py -v`。回归分别覆盖空库→0002、保留旧数据/ledger的0001→0002、重复应用无新增、checksum不符拒绝、锁/并发与失败整批回滚；按该切片冻结的回退规则仅在受控库调用现有`python -Xutf8 -B contracts/database/migrate.py down --allow-data-loss`，核对0002的实际schema/ledger回退及重入、旧fixtures/兼容窗口。不得把只测0001当0002覆盖，不新增业务DDL入口。记录0001 up/down原字节SHA-256与历史ledger checksum保持、实际迁移level、命令/启用环境/退出/耗时；现有Go up和compatibility数据库suite的真实hosted执行同样必需。缺PG/psql、未启用或skip均未执行，不计PASS；当前规划轮不运行这些未来迁移/产品检查。
@@ -192,20 +193,20 @@ main_sync_evidence: unavailable
 
 # Handoff
 
-Fresh Fix r4只适配当前独立runner已授权0001→0002的两处部署ledger检查；Phase1先Task登记并经Coordinator独立读回，Phase2才实施。原0a9常规r4/专项r2 PASS、push39115869727与PR39115960616实际各12success及deploy/gateFAIL均保持；两raw/report/audits原字节见 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r4/original-history.zip` 与bindings。仅PS两行/GoE2E一行SQL确定排序+明确两项精确比较，全部原TLS/安全/业务/清理/非零传播保持。
+2026-10-20 fresh Fix R5只在assigned root/branch/clean4624完成PHASE1 Task登记，Coordinator独立读回Task a352ce78/rawdiff942d6e及19021其他tracked bytes不变后，明确PHASE2唯一SOURCE WRITE LEASE。现仅两个PS+单新formal文件修复R3三个falsePASS；原schema/checkers/fixtures/22methods/SQL/runner/GoE2E/Go/clients/Frozen/ADR/CI/Gate/旧sealed字节保持。修前6methods14subtestFAIL/exit1保留；修后完整28methods0failure0error0skip/57.550s exit0。旧Auth全局16/旧15码覆盖/6positive21negative15mutations与群35valid30invalid、Sync4/WSS/Plugin保持。真实Go14.735s/Java12.515s/旧strictTLS31.219s全exit0，own容器卷空、原容器身份状态保持。详见新contract/fix-r5/local-verification.json与raw prefix/late ZIP；local不是独立接受。
 
-actualsource两处各10正反注入通过；真实Go smoke21.281s、Java smoke13.5s、Go strictTLS E2E29.391s均exit0且own资源清理/既有容器身份状态保持。群35/30与22tests、旧Auth/Sync4/WSS/Plugin保持；原mirror403和首E2E外部observer失败保留。详见fix-r4/handoff.md及local-verification.json，local不是独立接受。
+PG初次identity连接拒绝exit2，未建schema；Coordinator恢复同一实例后，own亲自核PG16.15/data-v2/63830/db/user，再在两次新随机schema验证。最终A3 canonical runner up/status0和actual smoke snippet0；真实count1的comma/newline version都令smoke非零，comma runner known-prefix1/newline未知ValueError1保留；缺表native查询也失败。两次finally均drop own schema、before/after列表相同，credentials只交libpq路径。A2外部helper过强known-prefix诊断假设assert失败原件保留，A3仅外部断言校正，不改runner/重分类unknown。首次Task Permission13/Docker只读API权限拒绝无partial/资源，后精确escalation成功；所有原failure保留。Recorder R-GROUP-FIX-R5-20261020 prospective_resume/partial，startup/helperauthoring/通信/prompt摘录/UTF8重读缺口诚实披露，后续串行drain；最终finish FAIL/structural validate/commit/cleanAcceptance另由外部finalreceipt实际绑定，最终实际结果由sealed receipt绑定；本writer不自评独立接受。
 
-regular_review: NEW PENDING final SHA (fresh r5 required)
-error_handling_review: DIFFERENT NEW PENDING final SHA (fresh specialist r3 required)
-hosted_acceptance: PENDING_NEW_FINAL_SHA (historical 0a9 FAIL preserved)
+regular_review: NEW PENDING future FixR5 finalSHA (old regularR5 PASS bound4624 only)
+error_handling_review: R3 FAIL at462431a45d60d1de0449a35b2fcf698a894d664b EH-R3-P2-001/002/003; DIFFERENT NEW PENDING future finalSHA
+hosted_acceptance: PROHIBITED_PENDING_BOTH_NEW_REVIEWS (historical0a9 CI FAIL preserved)
 main_sync: PENDING
 
-最终SHA/clean/ownedblobs/clean committedAcceptance/Recorder与lease RELEASED只从 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r4/final-receipt.json` 恢复。整体GROUP active/group_product、S2 OPEN，首契约未独立冻结，产品G01..G09 PENDING。LKG仍 `6f163927334c39c9c8833eb8222335c661bde673`。
+R3原receipt b083da01148b5cef0b496913358d92efe973e353aee646fdf9b8ec198d046ed7/report f507ea6507ea343e2d904f9f4bb15269ed91a06803712a4aebb2c5644841bcdb/646manifest d5826a824a29b2c7973c4ee536f1fdaf436b56525fad6c957cce8ab1aaab2297及Coordinator核验/phase1批准原件在新original-review-and-scope.zip逐字节绑定。新最终SHA/ownedblobs/lease只从外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r5/final-receipt.json`恢复，当前未封存；LKG6f不变。GROUPactive/group_product、S2OPEN、首契约freeze/Go/三端/G01..G09 PENDING。
 
 # Next Action
 
-Coordinator核fix-r4新final-receipt所有原件/hash/clean最终SHA/实际no-renames paths→NEW fresh常规r5→DIFFERENT NEW fresh专项r3同最终SHA→exact candidate/PR真实必需jobs与steps（群verifier/22tests/真实PG及全部deploy）→protected integration→actual-main hosted/完整tree→保存782unknown与2unknowntracked安全主目录同步。两项新审查前禁止push/更新触发候选CI的PR；本writer不publication/integration/sync。contract-acceptance-seal.json缺/坏=PENDING；全部接受同步后才fresh产品Agent登记contract SHA并实施，Task不移review/done，S2不PASS。
+Coordinator从外部contract-fix-r5/final-receipt.json核实际单fixcommit最终SHA/clean/ownedblobs、Development/clean committedAcceptance、诚实Recorder direct closure及SOURCE WRITE LEASE RELEASED；本writer不publication。NEW fresh常规R6→DIFFERENT NEW fresh专项R4同最终SHA，任何新fix两项重审，两项都PASS前禁止push/CI-triggering PR。之后新exact-head hosted实际requiredjobs/steps→protected integration→actual-main hosted/tree→保存782unknown及2unknowntracked安全主目录同步。首契约独立接受seal/同步完整后才fresh产品Agent登记contract SHA继续Go/三端/G01..G09；GROUP仍active/group_product、S2 OPEN，旧R5常规PASS/旧CI不豁免新接受。
 
 # 2026-10-18 Activation / Contract Candidate
 
@@ -293,3 +294,19 @@ PHASE1读回时脚本仍未修改；Coordinator确认后明确授予PHASE2才实
 2026-10-18 sole writer `/root/group_contract_fix_r4`先只读恢复，PHASE1 Task先登记/Coordinator独立读回确认后，才获PHASE2明确授权。最终改动仅smoke.ps1两行与Go strictTLS E2E一行，确定ORDER BY version与精确0001_initial+0002_group_operations比较，保留PS LASTEXITCODE/Python RuntimeError及全部原断言。actualsource各10正反注入、真实Go smoke21.281s/Java13.5s/GoE2E29.391s均exit0；各ownproject容器/卷空、既有容器身份状态保持。群35/30与22tests和旧契约完整回归；wire/SQL/runner/Go/三端/旧sealed不改，scope-proof与原件见contract/fix-r4/。
 
 初次镜像站403、首E2E产品stdoutPASS而外部observer失败均原件保留；首E2E childexit/elapsed不可用，不推断整体PASS。仅外部observer修正后新attempt真实child+outer exit0。官方仅缓存同declaredimages并先核canonical缺失，不改版本/daemon/全局trust。Recorder prospective_resume/partial、最初baseline一次overlap及读取/事件/权限失败公开；finish诚实FAIL，最终结构/cleancommitAcceptance/实际SHA/ownedblobs/lease RELEASED只由新finalreceipt绑定。旧0a9两审PASS及两CI总体FAIL不是新候选接受。新常规r5、DIFFERENT专项r3、hosted/protected/actual-main/sync PENDING；GROUPactive/S2OPEN，产品尚未实施。
+
+# Verification Failure Repair Scope (Fix R5, registered before implementation)
+
+本登记依据本Task原“激活时核对路径，确有新增输入先修Task范围，不在实施后追认”、既有独立runner真实部署/精确ledger/失败传播义务、canonical§12及spec/governance/error-handling.md和Minimality Contract。已封存R3三个当前可复现错误：EH-R3-P2-001 unknown checker错误被当schema-negative PASS；EH-R3-P2-002 cleanup native37仍整体0/PASS；EH-R3-P2-003真实PG一条逗号version被join压平为两条canonical而误PASS。原actual source Auth SHA256 faf8a4aab1c724dc51fd19fd39d1e077a83f67057b879029902f3004f9562e07，smoke SHA256 cc1103cd765339c9f26f6ae06c5f807cd32bcecc75aa7dcc08ab870100366700；原failed事实、旧审查/CI/Recorder/evidence均保留。
+
+最小机制只在两个现边界：Auth仅明确exit1产生known schema错误，其他实际失败正常传播；smoke保留元素边界与精确两记录判定（拟使用现PG JSON聚合与现PowerShell解析原语，避免版本text中的逗号/换行别名），owned cleanup检查实际native结果并保留primary/cleanup双因，env cleanup在其finally执行且PASS延至必需清理结束。只在新单一test文件调用实际source/入口作三缺陷回归，不引入通用跨平台/错误/retry框架、依赖或生产test hook。Ubuntu与Windows都执行既有pwsh/Node，环境缺失明确失败，不能skip充PASS。实际实现细节仍由PHASE2和新独立Review核验，不由本Task授权架构/公共contract改变。
+
+PHASE2精确拟写路径：`contracts/http/verify-auth-user-friend.ps1`、`tests/infrastructure/smoke.ps1`、`tests/contract/group/test_verification_failures.py`、本active Task、`spec/progress/current.md`、仅新 `spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r5/**`。保留public Auth/group OpenAPI/JS checkers/errors/fixtures、原22tests/35valid30invalid、0001/0002/runner/GoE2E、全部Go/clients/Frozen/ADR/CI/Gate/旧sealed字节；不实现产品。
+
+退出条件：三个falsePASS的原故障实际失败而known负例/正常成功保持；原检查与全局16/旧15业务码/6正例/21负例/15mutations完整；新formal suite现shared discovery确实执行；真实受控runtime及必要PG记录边界证据清理owned资源、所有原失败保留；source scope/逐字节保护/cleancommit与Development、clean committedAcceptance/Recorder实际结果明确。之后新最终SHA两项fresh独立审查、真实hosted/受保护集成/actual-main/安全主目录同步均PENDING，接受同步前不complete/done，不推进S2。
+
+# Fresh Fix R5 Local Outcome
+
+仅两处现验证边界修复三项R3发现；新增一个formal文件6methods，原22methods/35valid30invalid与公共schema/fixtures/checkers/SQL/runner/GoE2E/Go/三端/Frozen/ADR/CI/Gate/旧sealed逐字节保持。28methods实际0fail0error0skip、旧Auth15mutations与其他旧契约/控制/架构回归、真实Go/Java smoke/旧strictTLS E2E、必要真实PG ledger边界均已执行，完整argv/exit/elapsed及原失败见新fix-r5原件。隔离fault shim不代替真实运行，os._exit86仅快速原生终止，不冒称信号崩溃。未重复无变化全11 migration suite，也不声称本Fix独立DB11 PASS；历史11/0skip保持、未来真实hosted仍必需。
+
+Development/clean committedAcceptance、实际单fixcommit/clean/ownedblobs和Recorder direct finish FAIL/validate结构状态由外部final-receipt.json封存，不提前自称通过。完整trace缺口真实披露，原事件/blob不改。新最终SHA fresh regularR6及DIFFERENT specialistR4均NEW PENDING，两审PASS前禁止push/CI-triggering PR；hosted/protected integration/actual-main/安全同步PENDING。首契约未冻结，GROUP active/group_product、S2OPEN，所有G01..G09与产品仍PENDING。

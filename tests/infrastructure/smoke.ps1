@@ -43,6 +43,7 @@ function Read-TlsResponse([string]$Path, [string[]]$Headers) {
     } finally { $tcp.Dispose() }
 }
 
+$primaryFailed = $false
 try {
     Compose @('config', '--quiet')
     Compose @('up', '-d', '--build')
@@ -56,8 +57,12 @@ try {
     }
     Compose @('exec', '-T', 'postgres', 'pg_isready', '-U', 'im', '-d', 'im')
     Compose @('exec', '-T', 'nats', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:8222/healthz')
-    $migration = & docker compose -f $compose -p $project --profile $Profile exec -T postgres psql -U im -d im -Atc 'SELECT version FROM schema_migrations ORDER BY version'
-    if ($LASTEXITCODE -ne 0 -or ($migration -join ',').Trim() -cne '0001_initial,0002_group_operations') { throw "canonical migration missing: $migration" }
+    # JSON aggregation preserves row boundaries even for unknown versions
+    # containing commas or newlines; native psql failure remains an error.
+    $migrationJson = @(& docker compose -f $compose -p $project --profile $Profile exec -T postgres psql -U im -d im -Atc 'SELECT json_agg(version ORDER BY version) FROM schema_migrations')
+    if ($LASTEXITCODE -ne 0 -or $migrationJson.Count -ne 1) { throw "canonical migration query failed: $migrationJson" }
+    $migration = ConvertFrom-Json -InputObject $migrationJson[0] -NoEnumerate
+    if (-not ($migration -is [array]) -or $migration.Count -ne 2 -or $migration[0] -cne '0001_initial' -or $migration[1] -cne '0002_group_operations') { throw "canonical migration missing: $migrationJson" }
     $health = Read-TlsResponse '/__infra/health' @()
     if ($health.Status -notmatch '^HTTP/1\.[01] 200 ' -or $health.Body.Trim() -ne "profile=$Profile role=gateway") {
         throw "HTTPS gateway response invalid: $($health.Status) $($health.Body)"
@@ -67,9 +72,20 @@ try {
     if ($ws.Status -notmatch '^HTTP/1\.[01] 101 ' -or $ws.Headers['sec-websocket-accept'] -ne 's3pPLMBiTxaQ9kYGzzhZRbK+xOo=') {
         throw "WSS gateway upgrade invalid: $($ws.Status)"
     }
-    Write-Output "PASS: $Profile profile, PostgreSQL migration, Core NATS, HTTPS and WSS over $($health.Protocol)"
+} catch {
+    $primaryFailed = $true
+    throw
 } finally {
-    & docker compose -f $compose -p $project --profile $Profile down --volumes --remove-orphans | Out-Host
-    Remove-Item Env:IM_HTTPS_PORT -ErrorAction SilentlyContinue
-    Remove-Item Env:COMPOSE_PROGRESS -ErrorAction SilentlyContinue
+    try {
+        Compose @('down', '--volumes', '--remove-orphans') | Out-Host
+    } catch {
+        if (-not $primaryFailed) { throw }
+        # Cleanup cannot replace a pending primary failure; report its own
+        # original error while the primary exception continues to propagate.
+        Write-Error -ErrorRecord $_ -ErrorAction Continue
+    } finally {
+        Remove-Item Env:IM_HTTPS_PORT -ErrorAction SilentlyContinue
+        Remove-Item Env:COMPOSE_PROGRESS -ErrorAction SilentlyContinue
+    }
 }
+Write-Output "PASS: $Profile profile, PostgreSQL migration, Core NATS, HTTPS and WSS over $($health.Protocol)"

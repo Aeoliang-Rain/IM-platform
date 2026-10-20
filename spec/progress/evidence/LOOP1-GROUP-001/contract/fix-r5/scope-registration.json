@@ -1,0 +1,47 @@
+{
+  "phase": "PHASE1_TASK_ONLY_COMPLETE_WAITING_COORDINATOR_READBACK",
+  "actor": "/root/group_contract_fix_r5",
+  "task_id": "LOOP1-GROUP-001",
+  "git_root": "H:/.codex/worktrees/group/IM-platform",
+  "head": "462431a45d60d1de0449a35b2fcf698a894d664b",
+  "branch": "task/LOOP1-GROUP-001",
+  "index_empty": true,
+  "status": " M spec/tasks/active/LOOP1-GROUP-001.md\n",
+  "task_path": "spec/tasks/active/LOOP1-GROUP-001.md",
+  "task_actual_sha256": "a352ce78ff670a444644b7c80e448767427509ccc8a5d36bfcb4ba9b6721d28e",
+  "task_before_sha256": "2eef5f9adfca28246f542441a95dcda2b7b6aeee59aa2285e9b1916f0365dc77",
+  "raw_diff_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\phase1-task.diff",
+  "raw_diff_sha256": "942d6e925b2edb5f22f423e27cb14194f5d36d31461dde7a09929535ae8221bd",
+  "tracked_byte_hash_count": 19022,
+  "all_other_19021_tracked_worktree_bytes_unchanged": true,
+  "before_snapshot_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\phase1-before.json",
+  "before_snapshot_sha256": "7c7c090dd998520defede0fa4f64acb7772f5fe08cfd14f8e39aa5754f788fd7",
+  "only_changed_repo_paths": [
+    "spec/tasks/active/LOOP1-GROUP-001.md"
+  ],
+  "phase2_granted": false,
+  "phase1_task_write_activity": "STOPPED_PENDING_COORDINATOR",
+  "proposed_phase2_paths": [
+    "contracts/http/verify-auth-user-friend.ps1",
+    "tests/infrastructure/smoke.ps1",
+    "tests/contract/group/test_verification_failures.py",
+    "spec/tasks/active/LOOP1-GROUP-001.md",
+    "spec/progress/current.md",
+    "spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r5/**"
+  ],
+  "other_source_tests_current_index_commit_runtime_publication_writes": false,
+  "source_authority": "Sealed R3 EH-R3-P2-001/002/003, existing error-handling governance; no architecture/public contract expansion",
+  "failed_attempt_preserved": "phase1-task-registration.json PermissionError13; no partial write; normal precise escalation then succeeded",
+  "baseline": {
+    "frozen": 0,
+    "planning": 0,
+    "architecture_all": 0,
+    "architecture_tests": "88, skip1, exit0",
+    "ci_tests": "35, skip4, exit0"
+  },
+  "research": "prospective_resume/partial running, not acceptance",
+  "stage": "S2 OPEN",
+  "contract_freeze": "PENDING",
+  "product": "Go/three-clients/G01..G09 PENDING",
+  "created_at_epoch": 1792485483.8452203
+}

@@ -225,14 +225,16 @@ function Get-OperationMatch {
 
 function Get-OpenApiStructureErrors {
     param($Value, [string]$ValidatorPath, [string]$Location)
-    try {
-        $json = $Value | ConvertTo-Json -Depth 100
-        $diagnostics = @($json | & node $ValidatorPath 2>&1)
-        if ($LASTEXITCODE -ne 0) {
-            return @("$Location does not conform to the pinned OAI OpenAPI 3.1 structural schema: $($diagnostics -join '; ')")
-        }
-    } catch {
-        return @("$Location OpenAPI 3.1 structural schema validation failed: $($_.Exception.Message)")
+    $json = $Value | ConvertTo-Json -Depth 100
+    $diagnostics = @($json | & node $ValidatorPath 2>&1)
+    $checkerExit = $LASTEXITCODE
+    # The pinned checker reserves exit1 for known schema rejection.
+    # Launch, serialization and internal checker defects must fail the verifier.
+    if ($checkerExit -eq 1) {
+        return @("$Location does not conform to the pinned OAI OpenAPI 3.1 structural schema: $($diagnostics -join '; ')")
+    }
+    if ($checkerExit -ne 0) {
+        throw "$Location OpenAPI structural checker failed with exit ${checkerExit}: $($diagnostics -join '; ')"
     }
     return @()
 }

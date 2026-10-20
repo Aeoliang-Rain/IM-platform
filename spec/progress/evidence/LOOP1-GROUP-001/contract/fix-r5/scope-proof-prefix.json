@@ -1,0 +1,46 @@
+{
+  "result": "PASS_SCOPE_PRESERVATION",
+  "initial_tracked_files": 19022,
+  "changed_existing_paths": [
+    "contracts/http/verify-auth-user-friend.ps1",
+    "spec/tasks/active/LOOP1-GROUP-001.md",
+    "tests/infrastructure/smoke.ps1"
+  ],
+  "unchanged_existing_count": 19019,
+  "forbidden_paths_byte_unchanged": true,
+  "only_auth_function_changed": "Get-OpenApiStructureErrors",
+  "old_group_methods_unchanged": [
+    "test_actual_official_openapi_lint_and_all_positive_negative_exchanges",
+    "test_formal_openapi_structure_negative_controls",
+    "test_contract_security_and_resource_negative_controls",
+    "test_request_schema_positive_and_negative_vectors",
+    "test_original_receipt_is_not_reconstructed_after_later_membership",
+    "test_current_authorization_precedes_replay_and_conflict",
+    "test_idempotency_scopes_are_separate_and_orderless",
+    "test_joined_rows_allow_complete_member_pagination_and_nonfriends",
+    "test_skipped_eligible_rows_and_incomplete_terminal_pages_are_rejected",
+    "test_lookahead_is_derived_even_when_context_and_response_agree",
+    "test_page_prefix_uses_full_tuple_order_and_own_conversation_filter",
+    "test_short_ordered_prefix_with_truthful_lookahead_can_reach_terminal",
+    "test_more_than_one_page_and_no_total_group_size_cap",
+    "test_candidate_internal_references_validate_candidate_schemas",
+    "test_internal_fixture_errors_propagate_without_false_validation_failure",
+    "test_runtime_transaction_vectors_are_declared_pending",
+    "test_existing_shared_step_executes_both_new_entrypoints_and_propagates_failure",
+    "test_checker_internal_exits_cannot_pass_formal_negative_test",
+    "test_structural_checker_missing_node_and_launch_defects_propagate",
+    "test_real_checker_success_and_schema_rejection_exit_codes",
+    "test_nonobject_requests_accept_canonical_errors_and_reject_bad_responses",
+    "test_malformed_objects_with_valid_request_ids_still_require_correlation"
+  ],
+  "group_fixtures_unchanged_counts": [
+    35,
+    30
+  ],
+  "source_hashes": {
+    "contracts/http/verify-auth-user-friend.ps1": "d029ec5d82eec1faa91fe6e8f1644d8c34fb3e45ca69ddf23742b3a93d3b8245",
+    "tests/infrastructure/smoke.ps1": "0afde7aff45381ded53644f303bf5aeea39e933f9bba125f6925141555242c2f",
+    "tests/contract/group/test_verification_failures.py": "36c9d180bb78aa759fe9502b9128cbd2405d703782699c8ad3da082904749085"
+  },
+  "qualification": "Compared all 19022 tracked worktree byte hashes with initial4624; index/commit and final evidence closure will be independently bound later."
+}

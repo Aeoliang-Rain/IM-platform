@@ -1,0 +1,50 @@
+{
+  "source_hashes": {
+    "contracts/http/verify-auth-user-friend.ps1": "d029ec5d82eec1faa91fe6e8f1644d8c34fb3e45ca69ddf23742b3a93d3b8245",
+    "tests/infrastructure/smoke.ps1": "0afde7aff45381ded53644f303bf5aeea39e933f9bba125f6925141555242c2f",
+    "tests/contract/group/test_verification_failures.py": "36c9d180bb78aa759fe9502b9128cbd2405d703782699c8ad3da082904749085"
+  },
+  "removed_boundary": {
+    "location": "Auth Get-OpenApiStructureErrors",
+    "old_fault": "all native/launch/internal errors became schema-negative diagnostics",
+    "new_failure": "only checker1 is known rejection; other native codes throw with diagnostics, serialization/launch exceptions remain uncaught",
+    "basis": "Pinned checker exit1/2 meanings and EH-R3-P2-001/error-handling.md",
+    "regression": "full verifier fault matrix + real unshimmed Auth regression"
+  },
+  "retained_boundaries": [
+    {
+      "location": "Auth top-level JSON/fixture parse catches",
+      "fault": "external file/JSON/schema failure",
+      "basis": "existing contract input validation boundary",
+      "behavior": "records cause in failures and whole verifier exits1; never credits a structural mutation"
+    },
+    {
+      "location": "Smoke TLS stream/TCP finally",
+      "fault": "TLS/socket lifecycle",
+      "basis": "existing ownership/transport cleanup",
+      "behavior": "dispose owned handles; unchanged original code"
+    },
+    {
+      "location": "Smoke main catch",
+      "fault": "any primary operation failure",
+      "basis": "EH-R3-P2-002 requires preserving original cause",
+      "behavior": "marks pending primary only and immediately rethrows original error"
+    },
+    {
+      "location": "Smoke cleanup catch",
+      "fault": "actual owned Compose native nonzero or launch error",
+      "basis": "EH-R3-P2-002",
+      "behavior": "cleanup-only rethrows; dual failure emits original cleanup ErrorRecord while pending primary continues; no PASS"
+    },
+    {
+      "location": "Smoke env removals",
+      "fault": "existing idempotent removal of only two process-env keys",
+      "basis": "original test-owned env cleanup kept, known missing-key removal is nonessential",
+      "behavior": "existing SilentlyContinue flags unchanged; actual formal matrix proves both keys absent for all tested primary/cleanup outcomes; no claim to have injected arbitrary environment-provider faults"
+    }
+  ],
+  "new_test_recovery": "tempfile contexts clean only generated test scripts; subprocess returns are explicitly asserted, environment absence is RuntimeError not skip",
+  "ledger": "PG JSON aggregation escapes row values, exact array type/count2/case-sensitive ordered identities, native failure before parse, parser defects uncaught",
+  "no_new_framework_or_dependency": true,
+  "independent_review": "PENDING, this is fixer inventory only"
+}
