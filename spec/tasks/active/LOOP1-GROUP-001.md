@@ -241,6 +241,10 @@ main_sync_evidence: unavailable
 
 # Handoff
 
+2026-10-20 FINAL_GO_HANDOFF：首Go source commit e145cc1b8f6f1304da86f3da4c41fbdc2ed60569（parent79、tree dd126ea6448cc721f4b976f9cb58a36587ce32a0）；已实际clean committed Control Acceptance exit0/native28.718s，status_entries0。四Go rawhash保持最终普通/race测试绑定。当前仅一次metadata/evidence handoff commit补此实际SHA与研究闭合；其最终HEAD/parent、最后clean Acceptance/全路径/保护证明由外部sealed finalreceipt提供，不递归追逐SHA。
+
+Recorder R-GROUP-PRODUCT-R2-GO-20261020实际finish FAIL/exit0、direct validate exit0；139events、67 command_started/67 command_finished、无unmatched，trace未编辑。partial缺口与闭合后的这一metadata/Control/封存tail已提前显式声明，后段真实CLI原件另存，不伪装继续sealed run。ci单一313cache初始不存在/创建时间位于本轮Control，nested Frozen首调用无-B；用实际Control Python3.13.14核magic/header/源code对象相等后，保存原pyc只精确清理该文件与空目录。最初3.12错比较和其他probe FAIL保留；未stage/改CI source。后续Control只childenv PYTHONDONTWRITEBYTECODE=1。完整事实见product/go/handoff.json、handoff-originals.zip与handoff-manifest.json。以下“待提交/将finish”是各段初建时点历史；当前accepted LKG/main仍79，产品review/hosted/sync/G不接受。
+
 2026-10-20 PHASE2_GO_LOCAL_VERIFIED：唯一writer /root/group_product_impl_r2完成首Go四文件；POST CREATE201/ADD200原请求/原结果，当前Session/active GROUP/member/操作者好友逐目标权限，sorted NO KEY UPDATE→Session/member/conversation与新成员重扫，receipt+全部当前成员两种user Sync/Outbox原子提交，DIRECT+GROUP tuple快照。现锁定pgx BuildFrontend test-only IO观察真正COMMIT成功帧，先独立核durable再EOF；原cause传播、原ID重试无新效果。真实logout/send锁图及UserSync提交前缀、每写点/deferred失败、HTTP前后响应丢失、207成员分页/低tuple补漏均通过。最终全Go普通/native21.375s和race/native92.156s各71主方法/250含子项PASS、0fail/0skip；含14个TestGroup主方法（其中既有500成员消息方法1个）、55含子项，新增13主方法。13项authority/contract/Development实际exit0，88architecture(skip1)/35CI(skip4)与29群契约零skip如实保留。
 
 本地原件/命令/退出/耗时/四源码hash与限制见product/go/report.md、verification-summary.json、local-originals.zip；这不是独立产品Review/G/CI接受。own PG schema group_product_r2_e79be46910ac4016已drop、非own schema前后完全一致、root PG49572/16.15身份保持；drop前7条own Outbox残留来源unavailable，其余fixture表与testfunctions0，未伪报全表0。own NATS精确ID/name/image/label/loopbackport核验后已移除；最初fullState比较FAIL原件保留，新稳定identity/status/mount集合/volume比较PASS，差异为mount数组顺序及Health.Log时间。default sandbox格式化/缓存失败、fixture缺GROUP request CHECK失败与修正原件保留。Recorder将诚实partial FAIL并direct finish/validate，最终研究回执与提交SHA另随handoff封存，不把研究当产品接受。
@@ -280,7 +284,7 @@ R3原receipt b083da01148b5cef0b496913358d92efe973e353aee646fdf9b8ec198d046ed7/re
 
 # Next Action
 
-首契约已独立接受/同步，首Go四文件及本地真实PG/NATS普通/race和适用回归均已验证，own资源已清。封存本phase源码/原输出/Recorder及精确commit/干净状态，release唯一source lease交Coordinator独立读回并串行grant下一三端phase；三端scope/CLI/完整G路线按已登记内容继续。完整产品最终SHA fresh常规→different fresh专项/Architect/hosted/protected/actual-main/安全同步仍PENDING，不done、S2 OPEN。
+首契约已独立接受/同步；首Go source e145cc1b及本地普通/race/clean Control已验证，own资源已清，Recorder实际honest partial FAIL闭合/direct validate0。完成唯一一次metadata handoff commit/最终clean Acceptance与OUT sealedreceipt后release source lease，root独立核最终实际HEAD/全部changedpaths/19042保护，再串行grant三端writer按既定scope/CLI/完整G继续。完整产品最终SHA fresh常规→different fresh专项/Architect/hosted/protected/actual-main/安全同步仍PENDING，不done、S2 OPEN。
 
 Historical pre-seal R6 next action retained: Coordinator先核新contract-fix-r6/final-receipt实际单commit SHA/clean/ownedblobs/Development/clean committedAcceptance/Recorder direct closure与lease RELEASED；NEW fresh regularR7→DIFFERENT NEW fresh错误专项R4同finalSHA，任一Fix两项重审。两项都PASS才publication/exact-head hosted/protected integration/actual-main/安全主目录同步；首契约接受seal前不实施产品、不done、S2 OPEN。
 

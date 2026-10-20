@@ -1,0 +1,377 @@
+{
+  "scope": "LOCAL_FIRST_GO_HANDOFF_NOT_PRODUCT_ACCEPTANCE",
+  "task": "LOOP1-GROUP-001",
+  "owner": "/root/group_product_impl_r2",
+  "source_commit": "e145cc1b8f6f1304da86f3da4c41fbdc2ed60569",
+  "source_parent": "79d39dcbd045597ccc5abd459edd388eed269254",
+  "source_tree": "dd126ea6448cc721f4b976f9cb58a36587ce32a0",
+  "branch": "task/LOOP1-GROUP-001",
+  "accepted_main_lkg": "79d39dcbd045597ccc5abd459edd388eed269254",
+  "product_main_sync": "NOT_STARTED",
+  "source_clean_recovery": {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "H:\\.codex\\worktrees\\group\\IM-platform\\tools\\research\\recorder.py",
+      "run-command",
+      "--repo",
+      "H:\\.codex\\worktrees\\group\\IM-platform",
+      "--research-root",
+      "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\research",
+      "--run-id",
+      "R-GROUP-PRODUCT-R2-GO-20261020",
+      "--",
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/product-implementation-r2-go/control.py",
+      "Acceptance"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 28.95300000000134,
+    "stdout_sha256": "f264acf1eb3869bc588b6f7e2fe09563a9f3107a8c95772b31c6c6d16c6d3fdb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_state": {
+    "result": "CLEAN_LOCAL_GO_SOURCE_CHECKPOINT_ONLY",
+    "root": "H:/.codex/worktrees/group/IM-platform",
+    "head": "e145cc1b8f6f1304da86f3da4c41fbdc2ed60569",
+    "parent": "79d39dcbd045597ccc5abd459edd388eed269254",
+    "tree": "dd126ea6448cc721f4b976f9cb58a36587ce32a0",
+    "branch": "task/LOOP1-GROUP-001",
+    "status": "",
+    "protected_old_raw_files": 19042,
+    "protected_index_entries_unchanged": true,
+    "protected_index_flags_unchanged": true,
+    "tested_source": [
+      {
+        "path": "backend/go/core/group.go",
+        "size": 16684,
+        "sha256": "e7b837c92b09fcab53cebf7295bcd787d1e1cb668a3ed7a152cac07cc1701f83"
+      },
+      {
+        "path": "backend/go/core/group_test.go",
+        "size": 52540,
+        "sha256": "19a17382683320d7ad72d1687806a60c336a6373cb95e8bc5587d8a2839d45ef"
+      },
+      {
+        "path": "backend/go/core/http.go",
+        "size": 632,
+        "sha256": "f63b0772352e4ad105d4bb8123acfc692df0660ed23971a46552b4190fa589bd"
+      },
+      {
+        "path": "backend/go/core/social.go",
+        "size": 8932,
+        "sha256": "8d94af6d02c86b6995cd837eb0f12ce14c8dca0f3bfb16d7468b94d74141b65c"
+      }
+    ],
+    "changed_paths_from_accepted79": [
+      "A\tbackend/go/core/group.go",
+      "A\tbackend/go/core/group_test.go",
+      "M\tbackend/go/core/http.go",
+      "M\tbackend/go/core/social.go",
+      "A\tspec/progress/checkpoints/2026-10-20-group-contract-accepted.md",
+      "A\tspec/progress/checkpoints/2026-10-20-group-go-local.md",
+      "M\tspec/progress/current.md",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/activation/final-receipt.json",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/activation/package-manifest.json",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/activation/public-first-contract-acceptance-originals.zip",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/activation/relocation-map.json",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/activation/report.md",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/go/local-originals.zip",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/go/package-manifest.json",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/go/report.md",
+      "A\tspec/progress/evidence/LOOP1-GROUP-001/product/go/verification-summary.json",
+      "M\tspec/tasks/active/LOOP1-GROUP-001.md"
+    ],
+    "ci_cache_absent": true
+  },
+  "go_results": [
+    {
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "backend/go",
+        "test",
+        "-count=1",
+        "-timeout=5m",
+        "-json",
+        "./..."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 21.375,
+      "raw_stdout": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498833987377200-owned-runtime.stdout",
+      "raw_stdout_sha256": "61d14c12149f67cc42458c8ba9764f3774030c6e52bbbe5a546c3fd07a20d411",
+      "metadata_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498833987377200-owned-runtime.json",
+      "metadata_sha256": "b8a28978a8b9a240e425768546e388938687c1939c030d5f91b5b9eb2f245217",
+      "test_actions": {
+        "pass": 250
+      },
+      "main_test_actions": {
+        "pass": 71
+      },
+      "group_test_actions": {
+        "pass": 55
+      },
+      "group_main_methods": [
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestGroup500SingleLogicalMessageAndOutbox"
+      ],
+      "packages": [
+        {
+          "Time": "2026-10-20T20:20:13.6350183+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:20:15.2428507+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go/plugin-host",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:20:15.7322121+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/shared",
+          "Elapsed": 0.489
+        },
+        {
+          "Time": "2026-10-20T20:20:25.5820702+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/gateway",
+          "Elapsed": 10.34
+        },
+        {
+          "Time": "2026-10-20T20:20:29.8164762+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/core",
+          "Elapsed": 14.575
+        },
+        {
+          "Time": "2026-10-20T20:20:33.9144186+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/tests",
+          "Elapsed": 18.672
+        }
+      ]
+    },
+    {
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "backend/go",
+        "test",
+        "-race",
+        "-count=1",
+        "-timeout=5m",
+        "-json",
+        "./..."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 92.15599999999904,
+      "raw_stdout": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498966564629800-owned-runtime.stdout",
+      "raw_stdout_sha256": "c362da674b61d1813c70083447082f2479a6fbf631feb905de9be7fa371ce9ab",
+      "metadata_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498966564629800-owned-runtime.json",
+      "metadata_sha256": "dd8244f26043fe4a9feb302af18d508a54ed9d78b662e07f89fb774c29a4c1d6",
+      "test_actions": {
+        "pass": 250
+      },
+      "main_test_actions": {
+        "pass": 71
+      },
+      "group_test_actions": {
+        "pass": 55
+      },
+      "group_main_methods": [
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestGroup500SingleLogicalMessageAndOutbox"
+      ],
+      "packages": [
+        {
+          "Time": "2026-10-20T20:21:15.0139397+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:21:22.8808667+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go/plugin-host",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:21:24.3269285+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/shared",
+          "Elapsed": 1.446
+        },
+        {
+          "Time": "2026-10-20T20:21:34.6155102+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/gateway",
+          "Elapsed": 11.735
+        },
+        {
+          "Time": "2026-10-20T20:21:42.4465298+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/core",
+          "Elapsed": 19.567
+        },
+        {
+          "Time": "2026-10-20T20:22:46.4899722+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/tests",
+          "Elapsed": 83.609
+        }
+      ]
+    }
+  ],
+  "new_group_main_methods": [
+    "TestGroupHTTPBoundariesAndAuthorization",
+    "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+    "TestGroupConcurrentIdentitiesAndMembership",
+    "TestGroupEveryWriteAndDeferredCommitRollback",
+    "TestGroupCommitBarrierAndSessionRevalidation",
+    "TestGroupServerCommittedButReplyLost",
+    "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+    "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+    "TestGroupUnknownAndCleanupErrorsPropagate",
+    "TestGroupUserLockCompatibilityWithLogoutAndSend",
+    "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+    "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+    "TestGroupHTTPCurrentAuthAndSnapshot"
+  ],
+  "source": [
+    {
+      "path": "backend/go/core/group.go",
+      "size": 16684,
+      "sha256": "e7b837c92b09fcab53cebf7295bcd787d1e1cb668a3ed7a152cac07cc1701f83"
+    },
+    {
+      "path": "backend/go/core/group_test.go",
+      "size": 52540,
+      "sha256": "19a17382683320d7ad72d1687806a60c336a6373cb95e8bc5587d8a2839d45ef"
+    },
+    {
+      "path": "backend/go/core/http.go",
+      "size": 632,
+      "sha256": "f63b0772352e4ad105d4bb8123acfc692df0660ed23971a46552b4190fa589bd"
+    },
+    {
+      "path": "backend/go/core/social.go",
+      "size": 8932,
+      "sha256": "8d94af6d02c86b6995cd837eb0f12ce14c8dca0f3bfb16d7468b94d74141b65c"
+    }
+  ],
+  "recorder": {
+    "run_id": "R-GROUP-PRODUCT-R2-GO-20261020",
+    "capture": "prospective_partial",
+    "finish": {
+      "event_count": 139,
+      "final_event_hash": "7e4dc768c20a6920235942c3feff83a63c28bccbfea24959d1d2dae1f002f5dc",
+      "first_event_hash": "a47aa59c7044f6eb157d1aa84cbee760b8dbee4c77c6f11a93fbf160d1a71b31",
+      "manifest_hash": "402a4eeda9e5f28e0e5e0cf5281e89e05789030d91988adf5f77194b2daac757",
+      "recorder_schema_version": "1.0.0",
+      "result": "FAIL",
+      "run_id": "R-GROUP-PRODUCT-R2-GO-20261020",
+      "status": "finished"
+    },
+    "direct_validation": {
+      "event_count": 139,
+      "run_id": "R-GROUP-PRODUCT-R2-GO-20261020",
+      "status": "finished"
+    },
+    "finish_exit_code": 0,
+    "validate_exit_code": 0,
+    "event_types": {
+      "run_started": 1,
+      "task_state_observed": 1,
+      "git_state_observed": 1,
+      "command_started": 67,
+      "command_finished": 67,
+      "instrumentation_warning": 1,
+      "run_finished": 1
+    },
+    "command_started": 67,
+    "command_finished": 67,
+    "unmatched": 0,
+    "recorded_command_failures": 11,
+    "trace_edited": false,
+    "postclosure_tail": "One handoff metadata/evidence commit, final Control and sealed external receipt captured as explicit tail, not appended to the closed run"
+  },
+  "generated_cache": {
+    "result": "OWN_GENERATED_CACHE_REMOVED",
+    "cache_path": "H:\\.codex\\worktrees\\group\\IM-platform\\ci\\__pycache__\\check_s2_planning.cpython-313.pyc",
+    "cache_sha256": "a288505661d40b9104af6f75c24a7063c44bcd304a8008c8aa9d25ef1e05df00",
+    "source_sha256": "92e3057009c2e0ad9d8de16b07a45bb14fb2bb488b2bf522fa45919d7d509420",
+    "source_header_matches": true,
+    "same_version_compiler_result": {
+      "version": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+      "magic": "f30d0d0a",
+      "cache_magic": "f30d0d0a",
+      "code_filename": "H:\\.codex\\worktrees\\group\\IM-platform\\ci\\check_s2_planning.py",
+      "code_matches_source": true
+    },
+    "initial_marshal_and_code_comparison": false,
+    "initial_comparison_note": "primary runtime Python3.12 compared Python3.13 cache; raw false observations retained, qualified existing Control Python3.13 gives equal code object",
+    "baseline_absent": true,
+    "created_within_owned_post_metadata_Control_interval": true,
+    "producer": "post-metadata Development -> existing verify-frozen-architecture.ps1 no-B verifier -> importlib planning import",
+    "cache_file_absent": true,
+    "empty_cache_dir_removed": true
+  },
+  "final_prestage_proof_sha256": "20e17d0a16ffbe78cf4a93446ee69401c61482de4f2b53c294c496c076db5b3d",
+  "metadata_development": {
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "-Xutf8",
+      "-B",
+      "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/product-implementation-r2-go/control.py",
+      "Development"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 25.09400000000096,
+    "stdout_sha256": "273a0fcbcaacca5468e6b6facbb8ed7c2bbf1a1d76cddcffe5dd4cb4c9c1c279",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "pending_product_acceptance": [
+    "All real Web/installed Windows Tauri/Android emulator G01..G09",
+    "Architect screenshot assessment",
+    "Fresh regular then different fresh error review on final product SHA",
+    "Exact-head required hosted CI",
+    "Protected integration/actual-main and safe main synchronization"
+  ],
+  "next_exact_action": "Root verifies final external sealed receipt actual HEAD/one source+one metadata ancestry/all changed paths/19042 protected files and writer release, then serially grants client source/runtime phase. Task active/group_product, S2 OPEN.",
+  "final_head_control_receipt": "External final-receipt.json produced after metadata commit/final clean Control; no recursive metadata commit",
+  "source_state_original": {
+    "entry": "source-commit-state.json",
+    "sha256": "d9a01cecfb1b249da48f81fc0006d0bc297417db13d4ee8b4b4c7e5b78a7ca1d",
+    "note": "Complete original includes every raw Git command output; loose handoff omits duplicate command bodies."
+  }
+}
