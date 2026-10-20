@@ -1,0 +1,3042 @@
+{
+  "result": "PASS_LOCAL_FIRST_GO_SLICE_ONLY",
+  "base_sha": "79d39dcbd045597ccc5abd459edd388eed269254",
+  "source": [
+    {
+      "path": "backend/go/core/group.go",
+      "size": 16684,
+      "sha256": "e7b837c92b09fcab53cebf7295bcd787d1e1cb668a3ed7a152cac07cc1701f83"
+    },
+    {
+      "path": "backend/go/core/group_test.go",
+      "size": 52540,
+      "sha256": "19a17382683320d7ad72d1687806a60c336a6373cb95e8bc5587d8a2839d45ef"
+    },
+    {
+      "path": "backend/go/core/http.go",
+      "size": 632,
+      "sha256": "f63b0772352e4ad105d4bb8123acfc692df0660ed23971a46552b4190fa589bd"
+    },
+    {
+      "path": "backend/go/core/social.go",
+      "size": 8932,
+      "sha256": "8d94af6d02c86b6995cd837eb0f12ce14c8dca0f3bfb16d7468b94d74141b65c"
+    }
+  ],
+  "go_results": [
+    {
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "backend/go",
+        "test",
+        "-count=1",
+        "-timeout=5m",
+        "-json",
+        "./..."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 21.375,
+      "raw_stdout": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498833987377200-owned-runtime.stdout",
+      "raw_stdout_sha256": "61d14c12149f67cc42458c8ba9764f3774030c6e52bbbe5a546c3fd07a20d411",
+      "metadata_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498833987377200-owned-runtime.json",
+      "metadata_sha256": "b8a28978a8b9a240e425768546e388938687c1939c030d5f91b5b9eb2f245217",
+      "test_actions": {
+        "pass": 250
+      },
+      "main_test_actions": {
+        "pass": 71
+      },
+      "group_test_actions": {
+        "pass": 55
+      },
+      "group_main_methods": [
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestGroup500SingleLogicalMessageAndOutbox"
+      ],
+      "packages": [
+        {
+          "Time": "2026-10-20T20:20:13.6350183+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:20:15.2428507+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go/plugin-host",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:20:15.7322121+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/shared",
+          "Elapsed": 0.489
+        },
+        {
+          "Time": "2026-10-20T20:20:25.5820702+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/gateway",
+          "Elapsed": 10.34
+        },
+        {
+          "Time": "2026-10-20T20:20:29.8164762+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/core",
+          "Elapsed": 14.575
+        },
+        {
+          "Time": "2026-10-20T20:20:33.9144186+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/tests",
+          "Elapsed": 18.672
+        }
+      ]
+    },
+    {
+      "argv": [
+        "H:/go/bin/go.exe",
+        "-C",
+        "backend/go",
+        "test",
+        "-race",
+        "-count=1",
+        "-timeout=5m",
+        "-json",
+        "./..."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 92.15599999999904,
+      "raw_stdout": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498966564629800-owned-runtime.stdout",
+      "raw_stdout_sha256": "c362da674b61d1813c70083447082f2479a6fbf631feb905de9be7fa371ce9ab",
+      "metadata_path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\runtime-captures\\1792498966564629800-owned-runtime.json",
+      "metadata_sha256": "dd8244f26043fe4a9feb302af18d508a54ed9d78b662e07f89fb774c29a4c1d6",
+      "test_actions": {
+        "pass": 250
+      },
+      "main_test_actions": {
+        "pass": 71
+      },
+      "group_test_actions": {
+        "pass": 55
+      },
+      "group_main_methods": [
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestGroup500SingleLogicalMessageAndOutbox"
+      ],
+      "packages": [
+        {
+          "Time": "2026-10-20T20:21:15.0139397+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:21:22.8808667+08:00",
+          "Action": "skip",
+          "Package": "im-platform/backend/go/plugin-host",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-20T20:21:24.3269285+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/shared",
+          "Elapsed": 1.446
+        },
+        {
+          "Time": "2026-10-20T20:21:34.6155102+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/gateway",
+          "Elapsed": 11.735
+        },
+        {
+          "Time": "2026-10-20T20:21:42.4465298+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/core",
+          "Elapsed": 19.567
+        },
+        {
+          "Time": "2026-10-20T20:22:46.4899722+08:00",
+          "Action": "pass",
+          "Package": "im-platform/backend/go/tests",
+          "Elapsed": 83.609
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "results": [
+      {
+        "label": "frozen",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "tools/verify_frozen_architecture.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "planning",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "ci/check_s2_planning.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "architecture",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "ci/check_architecture.py",
+          "--scope",
+          "all",
+          "--json"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "architecture-tests",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/architecture"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "ci-tests",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/ci"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "group-contract",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "contracts/http/verify-group.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "group-contract-tests",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/contract/group",
+          "-p",
+          "test_*.py",
+          "-v"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "auth-contract",
+        "argv": [
+          "pwsh",
+          "-NoProfile",
+          "-File",
+          "contracts/http/verify-auth-user-friend.ps1"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "sync-contract",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "tools/verify_sync_transport.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "sync-contract-tests",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/contract",
+          "-p",
+          "test_sync_transport.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "wss-contract",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "contracts/websocket/verify.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "plugin-contract",
+        "argv": [
+          "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-Xutf8",
+          "-B",
+          "contracts/plugin-api/verify.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "development",
+        "argv": [
+          "pwsh",
+          "-NoProfile",
+          "-File",
+          "tools/verify-loop1-ctrl-002.ps1",
+          "-Mode",
+          "Development"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "pass": true
+  },
+  "pg_cleanup": {
+    "schema": "group_product_r2_e79be46910ac4016",
+    "identity": {
+      "host": "127.0.0.1",
+      "port": 63830,
+      "database": "group_contract_20261018",
+      "user": "group_contract_fixture",
+      "version": "160015",
+      "datadir": "H:/IM-platform/.git/worktrees/IM-platform4/group-pg16-20261018/data-v2",
+      "backend_pid": 32500
+    },
+    "before_schemas": [
+      [
+        "information_schema",
+        "group_contract_fixture"
+      ],
+      [
+        "pg_catalog",
+        "group_contract_fixture"
+      ],
+      [
+        "pg_toast",
+        "group_contract_fixture"
+      ],
+      [
+        "public",
+        "pg_database_owner"
+      ]
+    ],
+    "created": true,
+    "cleaned": true,
+    "source_root": "H:\\.codex\\worktrees\\group\\IM-platform",
+    "credential": "path-only; never read by this helper",
+    "migration_complete": true,
+    "fixture_counts_before_schema_drop": {
+      "users": 0,
+      "sessions": 0,
+      "conversations": 0,
+      "members": 0,
+      "receipts": 0,
+      "user_sync_events": 0,
+      "outbox_events": 7,
+      "messages": 0,
+      "test_functions": 0
+    },
+    "after_schemas": [
+      [
+        "information_schema",
+        "group_contract_fixture"
+      ],
+      [
+        "pg_catalog",
+        "group_contract_fixture"
+      ],
+      [
+        "pg_toast",
+        "group_contract_fixture"
+      ],
+      [
+        "public",
+        "pg_database_owner"
+      ]
+    ],
+    "cleanup_pass": true
+  },
+  "nats_cleanup": {
+    "own_qualification": {
+      "id": "73fe0e1cdefa8af1de1ef6e30d34be9ba0358268373506b526e89f639dd017b6",
+      "name": "/group-product-r2-nats-6c848a06e67a",
+      "image": "nats:2.10-alpine",
+      "image_id": "sha256:b83efabe3e7def1e0a4a31ec6e078999bb17c80363f881df35edc70fcb6bb927",
+      "labels": {
+        "group-product-r2-owner": "R-GROUP-PRODUCT-R2-GO-20261020"
+      },
+      "mounts": [],
+      "ports": {
+        "4222/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "62481"
+          }
+        ]
+      },
+      "pass": true
+    },
+    "before_cleanup_all": {
+      "containers": [
+        {
+          "id": "73fe0e1cdefa8af1de1ef6e30d34be9ba0358268373506b526e89f639dd017b6",
+          "name": "/group-product-r2-nats-6c848a06e67a",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 37086,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T12:09:24.234281368Z",
+            "Status": "running"
+          },
+          "mounts": [],
+          "labels": {
+            "group-product-r2-owner": "R-GROUP-PRODUCT-R2-GO-20261020"
+          }
+        },
+        {
+          "id": "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c",
+          "name": "/dsm-etl-postgres",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-14T11:21:11.941269439Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 80468,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T11:03:32.774754805Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/postgresql/data",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "dsm-etl-pgdata",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/dsm-etl-pgdata/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "project": "dsm-etl"
+          }
+        },
+        {
+          "id": "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd",
+          "name": "/im-gui-product-20261004-52804-tls-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204159256Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.893238292Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/data",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "im-gui-product-20261004-52804_caddy-go-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/im-gui-product-20261004-52804_caddy-go-data/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/etc/caddy/Caddyfile",
+              "Mode": "ro",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\Caddyfile",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/gui-cert",
+              "Mode": "ro",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "/run/desktop/mnt/host/h/IM-platform/.git/worktrees/IM-platform43/state-runtime/tls-state-week2",
+              "Type": "bind"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "3afd097d36a1436cbb6b032b1935516bdaba79a5ecca08e129bd195e6e84e5f8",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "gateway-go:service_started:false",
+            "com.docker.compose.image": "sha256:6aeddd44c3078b0f9a35206472a11420648a79c184603ef95957d0a20044cb2b",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "tls-go",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.description": "a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go",
+            "org.opencontainers.image.documentation": "https://caddyserver.com/docs",
+            "org.opencontainers.image.licenses": "Apache-2.0",
+            "org.opencontainers.image.source": "https://github.com/caddyserver/caddy-docker",
+            "org.opencontainers.image.title": "Caddy",
+            "org.opencontainers.image.url": "https://caddyserver.com",
+            "org.opencontainers.image.vendor": "Light Code Labs",
+            "org.opencontainers.image.version": "v2.11.4"
+          }
+        },
+        {
+          "id": "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c",
+          "name": "/im-gui-product-20261004-52804-core-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204186748Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.608761071Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/run/im-config",
+              "Mode": "",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\config",
+              "Type": "bind"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "639fb7f96bd7da77e183efb7ce164817a90ec8ac5aaad0259dd4e467fa28f002",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false,nats:service_healthy:false",
+            "com.docker.compose.image": "sha256:695e3224fcbd69aef71245f2016fc76c7cd5040016cc1db3abd82a12e0fa18b2",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "core-go",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b",
+          "name": "/im-gui-product-20261004-52804-gateway-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204899927Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.612243163Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/run/im-config",
+              "Mode": "",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\config",
+              "Type": "bind"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "a6a44e2aeaf3c5a498ebb408c897fa905cda205f5ee66178983d519e7d537aaf",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false,nats:service_healthy:false",
+            "com.docker.compose.image": "sha256:520983fb06de0bf500a399249bf94c213757e93aff883c1cdfc385c77f56d1ef",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "gateway-go",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f",
+          "name": "/im-gui-product-20261004-52804-plugin-host-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204612102Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.598761517Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "210543c061946f33a870996073e01cd162f5e0a5b831d9aa0c1768c6e0ef128e",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false",
+            "com.docker.compose.image": "sha256:710b85409bf672083b5bfef892e1df4a8ef557899412e8db310eb8773309f817",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "plugin-host-go",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb",
+          "name": "/im-gui-product-20261004-52804-migrate-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-10T15:18:33.159505093Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:32.356466043Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "ff9f5568564ad795b23d0618fdd189ff70c269595ad7757d5e959ae632211f58",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "postgres:service_healthy:false",
+            "com.docker.compose.image": "sha256:0fed12fc7f43b29641c63a027c25b4484018bd28f893de2175f463bbe8aa3f4c",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "migrate",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750",
+          "name": "/im-gui-product-20261004-52804-postgres-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.20418266Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [],
+              "Status": "starting"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:29.61534431Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/postgresql/data",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "im-gui-product-20261004-52804_postgres-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/im-gui-product-20261004-52804_postgres-data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "3197f4effdcbca47240f234e3958dfb81c62456da02d6ed4b69b406c31b76b00",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "postgres",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131",
+          "name": "/im-gui-product-20261004-52804-nats-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204207517Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [],
+              "Status": "starting"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:29.613331559Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "2db78ecd0dcb7ee5ba83facc2163e84dd2438963e64605b41b6cd23405eec279",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:b83efabe3e7def1e0a4a31ec6e078999bb17c80363f881df35edc70fcb6bb927",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "nats",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4",
+          "name": "/naiwa-house-web-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.460739829Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:06.158636594Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:06.089533622Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:16.213480269Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:16.158874666Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:26.281861569Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:26.213368007Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:36.363584881Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:36.282555879Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.442619195Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:46.363815361Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 632,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.478958233Z",
+            "Status": "running"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "45a3356df1aa417b9653d56aa2e404988ae3c22a6bdca8d0b9c3d2f9c6eb9d41",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:e6a807f77a9d3e2be6e2f99049491bf4a9e3d1ce43ac0461fe43fe08ac90fbc1",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "web-1",
+            "com.docker.compose.service": "web",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.description": "a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go",
+            "org.opencontainers.image.documentation": "https://caddyserver.com/docs",
+            "org.opencontainers.image.licenses": "Apache-2.0",
+            "org.opencontainers.image.source": "https://github.com/caddyserver/caddy-docker",
+            "org.opencontainers.image.title": "Caddy",
+            "org.opencontainers.image.url": "https://caddyserver.com",
+            "org.opencontainers.image.vendor": "Light Code Labs",
+            "org.opencontainers.image.version": "v2.10.2"
+          }
+        },
+        {
+          "id": "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c",
+          "name": "/naiwa-house-gateway-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-20T07:44:35.881501815Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:00.370155475Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:00.242514596Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:10.479062783Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:10.371540881Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:20.589251383Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:20.479530718Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:30.754227761Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:30.588496635Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:40.871594654Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:40.755005201Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 1443,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:36.240916799Z",
+            "Status": "running"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "f86773593b505c38dfdbdc0162160554d548d1224d8b5c3623b1df7de92e76c3",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false,game-worker:service_healthy:false",
+            "com.docker.compose.image": "sha256:b16cba8c21f9dcea48cf57f059ab122c666abbb12b24d8d882f26330c0875f9d",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "gateway-1",
+            "com.docker.compose.service": "gateway",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba",
+          "name": "/naiwa-house-game-worker-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.799579788Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:00.370238731Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:00.239698506Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:10.476203323Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:10.371619213Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:20.589193531Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:20.47767501Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:30.754267346Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:30.588459052Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:40.861002646Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:40.755084044Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 633,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.503967443Z",
+            "Status": "running"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "2795ecb7bd4ddb36ecbc9e34357fa4d42e342f85b86bd0c9abdc188561cc7c32",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false",
+            "com.docker.compose.image": "sha256:c516a09d81dfd96e50a1c584c8d97b3b06da1a0643001ceac6f30616972a4a05",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "game-worker-1",
+            "com.docker.compose.service": "game-worker",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec",
+          "name": "/naiwa-house-migrate-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-09-16T06:12:46.714236131Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-09-16T06:12:43.298917356Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "6b90ec87795f31b4ae4c025fafe9498cbe5ec3c0599e130aec1ece43a64632a9",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "mysql:service_healthy:false",
+            "com.docker.compose.image": "sha256:a031e206fcafb07e8028a13e8df9db06a56729c2d899203e13773fc4df4858e4",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "migrate-1",
+            "com.docker.compose.service": "migrate",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873",
+          "name": "/naiwa-house-mysql-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:48.583658789Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:25.517567861Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:25.433858343Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:30.769298541Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:30.518911337Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:35.868444322Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:35.769892109Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:40.947601184Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:40.869019198Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.039698104Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:45.948509802Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 639,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.508113062Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/mysql",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "naiwa-house_mysql-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/naiwa-house_mysql-data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "7abed048163e63706d7f147fc9692010c4e96812124b7f551b8f4137fe4aef37",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:b3b90af2a6552ae30c266fdb7d5dd55f3afb72404bb78d37fe8a23eb857fd3fb",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "mysql-1",
+            "com.docker.compose.service": "mysql",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f",
+          "name": "/naiwa-house-coturn-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.599251527Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:06.15678774Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:06.08957939Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:16.213364384Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:16.157686126Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:26.282940369Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:26.213399114Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:36.359939515Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:36.283447792Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.448466268Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:46.361563655Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 628,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.48526747Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/coturn",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "95b4c8fb427b67e5b7decaec00ac04fec04cef00987f8ac9be2979d9e28c7c3e",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:e2bca2f79a4269d7240de5872ab60a9305013ad37296d2acf14f9510874346be",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "coturn-1",
+            "com.docker.compose.service": "coturn",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.revision": "1284a3f12471eed86bb698974b419d8af52c3bfd",
+            "org.opencontainers.image.source": "https://github.com/coturn/coturn",
+            "org.opencontainers.image.version": "4.6.3-r3"
+          }
+        },
+        {
+          "id": "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68",
+          "name": "/naiwa-house-prometheus-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.476739205Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:06.15674162Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:06.089639377Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:16.213486131Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:16.157640848Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:26.281860352Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:26.213443393Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:36.361173324Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:36.282528656Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.445560731Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:46.361535991Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 631,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.501503511Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/etc/prometheus/prometheus.yml",
+              "Mode": "ro",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "/run/desktop/mnt/host/h/BetaryalAtHouseWithNaiwa/infra/prometheus/prometheus.yml",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/prometheus",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "naiwa-house_prometheus-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/naiwa-house_prometheus-data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "58f174be79068546f6afe4e6439ff08ca8990fabe1affe9a0f21e82823d74193",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "game-worker:service_healthy:false,gateway:service_healthy:false",
+            "com.docker.compose.image": "sha256:49214755b6153f90a597adcbff0252cc61069f8ab69ce8411285cd4a560e8038",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "prometheus-1",
+            "com.docker.compose.service": "prometheus",
+            "com.docker.compose.version": "5.1.4",
+            "maintainer": "The Prometheus Authors <prometheus-developers@googlegroups.com>",
+            "org.opencontainers.image.source": "https://github.com/prometheus/prometheus"
+          }
+        },
+        {
+          "id": "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590",
+          "name": "/oracle",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 137,
+            "FinishedAt": "2026-07-21T15:29:07.029845931Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-07-21T15:24:29.080070506Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:24:28.918418141Z"
+                },
+                {
+                  "End": "2026-07-21T15:25:29.245100591Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:25:29.076486695Z"
+                },
+                {
+                  "End": "2026-07-21T15:26:29.435467886Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:26:29.243751285Z"
+                },
+                {
+                  "End": "2026-07-21T15:27:29.653330777Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:27:29.43337216Z"
+                },
+                {
+                  "End": "2026-07-21T15:28:29.825508722Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:28:29.652043562Z"
+                }
+              ],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-07-21T13:17:53.596139603Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/opt/oracle/oradata",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "oracle_data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/oracle_data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "description": "Oracle AI Database 26ai Free is a fully functional version of Oracle AI Database 26ai for developers to learn, build, and deploy applications.",
+            "io.buildah.version": "1.33.14",
+            "issues": "https://github.com/oracle/docker-images/issues",
+            "maintainer": "Oracle Database Container Team <container-team_ww@oracle.com>",
+            "name": "Oracle AI Database 26ai Free",
+            "port.listener": "1521",
+            "provider": "Oracle",
+            "release": "Free",
+            "summary": "Oracle AI Database 26ai Free",
+            "vendor": "Oracle Corporation",
+            "version": "23.26.0",
+            "volume.data": "/opt/oracle/oradata",
+            "volume.setup.location1": "/opt/oracle/scripts/setup",
+            "volume.setup.location2": "/docker-entrypoint-initdb.d/setup",
+            "volume.startup.location1": "/opt/oracle/scripts/startup",
+            "volume.startup.location2": "/docker-entrypoint-initdb.d/startup"
+          }
+        },
+        {
+          "id": "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d",
+          "name": "/shopping-pg",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-07-05T12:38:04.270251157Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-06-15T09:18:36.700905626Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:36.598669303Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:41.822342024Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:41.701645378Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:46.91505174Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:46.823734652Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:52.017458718Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:51.916441531Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:57.100972021Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:57.016367589Z"
+                }
+              ],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-07-05T12:38:00.311667185Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/postgresql/data",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "infrastructure_pgdata",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/infrastructure_pgdata/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "35b673947e905f0d0846df2ab49e3810adbd52b03cdbcf86025047688163709a",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:081f1bc7bd5e143dbb6e487b710bbc27712cdcfaced4c071b8e47349aa1b4171",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "infrastructure",
+            "com.docker.compose.project.config_files": "H:\\rag-ecommerce-agent\\infrastructure\\docker-compose.yml",
+            "com.docker.compose.project.working_dir": "H:\\rag-ecommerce-agent\\infrastructure",
+            "com.docker.compose.replace": "shopping-pg",
+            "com.docker.compose.service": "postgres",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da",
+          "name": "/shopping-backend",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 137,
+            "FinishedAt": "2026-06-05T04:50:01.17581362Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-06-05T04:49:57.226287543Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/app/data",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/run/desktop/mnt/host/h/rag-ecommerce-agent/apps/backend/data",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/root/.cache",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "infrastructure_model_cache",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/infrastructure_model_cache/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "85961114cbe3591d4b7db3a6cc49af06d2bb9822a45abed0e655e22252095d91",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "qdrant:service_healthy:false,postgres:service_healthy:false",
+            "com.docker.compose.image": "sha256:334cba305d1d65005c6db44f4b7d19d702abf01677ed2bd2f6950da675bb12c8",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "infrastructure",
+            "com.docker.compose.project.config_files": "H:\\rag-ecommerce-agent\\infrastructure\\docker-compose.yml",
+            "com.docker.compose.project.working_dir": "H:\\rag-ecommerce-agent\\infrastructure",
+            "com.docker.compose.replace": "shopping-backend",
+            "com.docker.compose.service": "backend",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b",
+          "name": "/shopping-qdrant",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 143,
+            "FinishedAt": "2026-07-05T12:38:04.272767534Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-06-15T09:18:33.516572478Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:33.428588734Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:38.593592494Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:38.517727651Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:43.6615509Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:43.594986088Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:48.735148055Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:48.663510421Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:53.825004224Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:53.735600391Z"
+                }
+              ],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-07-05T12:38:00.309876447Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/qdrant/storage",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "infrastructure_qdrant_storage",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/infrastructure_qdrant_storage/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "89abd399417c531ac2288972fb1a54c01985086f5d71c1b5ecabac5d73352576",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:75eab8c4ba42096724fdcfde8b4de0b5713d529dde32f285a1f86fdcb2c9e50c",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "infrastructure",
+            "com.docker.compose.project.config_files": "H:\\rag-ecommerce-agent\\infrastructure\\docker-compose.yml",
+            "com.docker.compose.project.working_dir": "H:\\rag-ecommerce-agent\\infrastructure",
+            "com.docker.compose.service": "qdrant",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.description": "Official Qdrant image",
+            "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+            "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+            "org.opencontainers.image.title": "Qdrant",
+            "org.opencontainers.image.url": "https://qdrant.com/",
+            "org.opencontainers.image.vendor": "Qdrant",
+            "org.opencontainers.image.version": "v1.18.2"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1/_data",
+          "Name": "6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/52f1b0eb24dc4101bd4be06d350a4d4a00f968897cf2310b03a1d9ea32a863da/_data",
+          "Name": "52f1b0eb24dc4101bd4be06d350a4d4a00f968897cf2310b03a1d9ea32a863da",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/66eab5a23b40f94aaee4e41636b08de352a381d6446dd56f3e55f1427882ed1b/_data",
+          "Name": "66eab5a23b40f94aaee4e41636b08de352a381d6446dd56f3e55f1427882ed1b",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/618e7e255da92092baf0d1df1f0ebf4d544abaede5c28732a6119515400fd2f3/_data",
+          "Name": "618e7e255da92092baf0d1df1f0ebf4d544abaede5c28732a6119515400fd2f3",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/dsm-etl-pgdata/_data",
+          "Name": "dsm-etl-pgdata",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=2a50049247a5f346259473d93924800a8850ad5d8741496e986421fd12d40e7f,com.docker.compose.project=im-gui-product-20261004-52804,com.docker.compose.version=5.1.4,com.docker.compose.volume=caddy-go-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/im-gui-product-20261004-52804_caddy-go-data/_data",
+          "Name": "im-gui-product-20261004-52804_caddy-go-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=2dc1aa632ad9cbe6a3aafcfb792dbeafdc0cde935041f8efeaa14a6749820ae0,com.docker.compose.project=im-gui-product-20261004-52804,com.docker.compose.version=5.1.4,com.docker.compose.volume=postgres-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/im-gui-product-20261004-52804_postgres-data/_data",
+          "Name": "im-gui-product-20261004-52804_postgres-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=97655cf517e48fda8eda329020567806ad638325773fe626629d4f0f239f0ecf,com.docker.compose.project=infrastructure,com.docker.compose.version=5.1.4,com.docker.compose.volume=model_cache",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/infrastructure_model_cache/_data",
+          "Name": "infrastructure_model_cache",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=4d40d24a506d7f43b1c50fafc290c9ad782af2fbd3912dd6b2458290f6073802,com.docker.compose.project=infrastructure,com.docker.compose.version=5.1.4,com.docker.compose.volume=pgdata",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/infrastructure_pgdata/_data",
+          "Name": "infrastructure_pgdata",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=ba71e9e7a79439f4a1dc7f8af11eaf84ada5367e1a76d4e8a10ab02ba3f8361d,com.docker.compose.project=infrastructure,com.docker.compose.version=5.1.4,com.docker.compose.volume=qdrant_storage",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/infrastructure_qdrant_storage/_data",
+          "Name": "infrastructure_qdrant_storage",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=23582bea125c12f4ac4ed0c5103f3345edb4031aa47d28d24d37bd5547b13966,com.docker.compose.project=naiwa-house,com.docker.compose.version=5.1.4,com.docker.compose.volume=mysql-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/naiwa-house_mysql-data/_data",
+          "Name": "naiwa-house_mysql-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=5d7ab43b8cec8e1937291a5babd3ac02a2372325f0f918773362f3b89249470e,com.docker.compose.project=naiwa-house,com.docker.compose.version=5.1.4,com.docker.compose.volume=prometheus-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/naiwa-house_prometheus-data/_data",
+          "Name": "naiwa-house_prometheus-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/oracle_data/_data",
+          "Name": "oracle_data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        }
+      ]
+    },
+    "after_cleanup_all": {
+      "containers": [
+        {
+          "id": "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c",
+          "name": "/dsm-etl-postgres",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-14T11:21:11.941269439Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 80468,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T11:03:32.774754805Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/postgresql/data",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "dsm-etl-pgdata",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/dsm-etl-pgdata/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "project": "dsm-etl"
+          }
+        },
+        {
+          "id": "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd",
+          "name": "/im-gui-product-20261004-52804-tls-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204159256Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.893238292Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/data",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "im-gui-product-20261004-52804_caddy-go-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/im-gui-product-20261004-52804_caddy-go-data/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/etc/caddy/Caddyfile",
+              "Mode": "ro",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\Caddyfile",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/gui-cert",
+              "Mode": "ro",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "/run/desktop/mnt/host/h/IM-platform/.git/worktrees/IM-platform43/state-runtime/tls-state-week2",
+              "Type": "bind"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "3afd097d36a1436cbb6b032b1935516bdaba79a5ecca08e129bd195e6e84e5f8",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "gateway-go:service_started:false",
+            "com.docker.compose.image": "sha256:6aeddd44c3078b0f9a35206472a11420648a79c184603ef95957d0a20044cb2b",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "tls-go",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.description": "a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go",
+            "org.opencontainers.image.documentation": "https://caddyserver.com/docs",
+            "org.opencontainers.image.licenses": "Apache-2.0",
+            "org.opencontainers.image.source": "https://github.com/caddyserver/caddy-docker",
+            "org.opencontainers.image.title": "Caddy",
+            "org.opencontainers.image.url": "https://caddyserver.com",
+            "org.opencontainers.image.vendor": "Light Code Labs",
+            "org.opencontainers.image.version": "v2.11.4"
+          }
+        },
+        {
+          "id": "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c",
+          "name": "/im-gui-product-20261004-52804-core-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204186748Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.608761071Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/run/im-config",
+              "Mode": "",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\config",
+              "Type": "bind"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "639fb7f96bd7da77e183efb7ce164817a90ec8ac5aaad0259dd4e467fa28f002",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false,nats:service_healthy:false",
+            "com.docker.compose.image": "sha256:695e3224fcbd69aef71245f2016fc76c7cd5040016cc1db3abd82a12e0fa18b2",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "core-go",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b",
+          "name": "/im-gui-product-20261004-52804-gateway-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204899927Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.612243163Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/run/im-config",
+              "Mode": "",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\config",
+              "Type": "bind"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "a6a44e2aeaf3c5a498ebb408c897fa905cda205f5ee66178983d519e7d537aaf",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false,nats:service_healthy:false",
+            "com.docker.compose.image": "sha256:520983fb06de0bf500a399249bf94c213757e93aff883c1cdfc385c77f56d1ef",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "gateway-go",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f",
+          "name": "/im-gui-product-20261004-52804-plugin-host-go-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204612102Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:33.598761517Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "210543c061946f33a870996073e01cd162f5e0a5b831d9aa0c1768c6e0ef128e",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false",
+            "com.docker.compose.image": "sha256:710b85409bf672083b5bfef892e1df4a8ef557899412e8db310eb8773309f817",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "plugin-host-go",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb",
+          "name": "/im-gui-product-20261004-52804-migrate-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-10T15:18:33.159505093Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:32.356466043Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "ff9f5568564ad795b23d0618fdd189ff70c269595ad7757d5e959ae632211f58",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "postgres:service_healthy:false",
+            "com.docker.compose.image": "sha256:0fed12fc7f43b29641c63a027c25b4484018bd28f893de2175f463bbe8aa3f4c",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "migrate",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750",
+          "name": "/im-gui-product-20261004-52804-postgres-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.20418266Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [],
+              "Status": "starting"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:29.61534431Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/postgresql/data",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "im-gui-product-20261004-52804_postgres-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/im-gui-product-20261004-52804_postgres-data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "3197f4effdcbca47240f234e3958dfb81c62456da02d6ed4b69b406c31b76b00",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "postgres",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131",
+          "name": "/im-gui-product-20261004-52804-nats-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 255,
+            "FinishedAt": "2026-10-11T03:59:54.204207517Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [],
+              "Status": "starting"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-10-10T15:18:29.613331559Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "2db78ecd0dcb7ee5ba83facc2163e84dd2438963e64605b41b6cd23405eec279",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:b83efabe3e7def1e0a4a31ec6e078999bb17c80363f881df35edc70fcb6bb927",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "im-gui-product-20261004-52804",
+            "com.docker.compose.project.config_files": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy\\compose.yaml,H:\\IM-platform\\.git\\worktrees\\IM-platform43\\state-runtime\\go-52804\\override.yaml",
+            "com.docker.compose.project.working_dir": "H:\\.codex\\worktrees\\st\\IM-platform\\deploy",
+            "com.docker.compose.service": "nats",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4",
+          "name": "/naiwa-house-web-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.460739829Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:06.158636594Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:06.089533622Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:16.213480269Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:16.158874666Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:26.281861569Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:26.213368007Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:36.363584881Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:36.282555879Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.442619195Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:46.363815361Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 632,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.478958233Z",
+            "Status": "running"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "45a3356df1aa417b9653d56aa2e404988ae3c22a6bdca8d0b9c3d2f9c6eb9d41",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:e6a807f77a9d3e2be6e2f99049491bf4a9e3d1ce43ac0461fe43fe08ac90fbc1",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "web-1",
+            "com.docker.compose.service": "web",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.description": "a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go",
+            "org.opencontainers.image.documentation": "https://caddyserver.com/docs",
+            "org.opencontainers.image.licenses": "Apache-2.0",
+            "org.opencontainers.image.source": "https://github.com/caddyserver/caddy-docker",
+            "org.opencontainers.image.title": "Caddy",
+            "org.opencontainers.image.url": "https://caddyserver.com",
+            "org.opencontainers.image.vendor": "Light Code Labs",
+            "org.opencontainers.image.version": "v2.10.2"
+          }
+        },
+        {
+          "id": "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c",
+          "name": "/naiwa-house-gateway-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-20T07:44:35.881501815Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:10.479062783Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:10.371540881Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:20.589251383Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:20.479530718Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:30.754227761Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:30.588496635Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:40.871594654Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:40.755005201Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:50.97860708Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:50.872455225Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 1443,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:36.240916799Z",
+            "Status": "running"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "f86773593b505c38dfdbdc0162160554d548d1224d8b5c3623b1df7de92e76c3",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false,game-worker:service_healthy:false",
+            "com.docker.compose.image": "sha256:b16cba8c21f9dcea48cf57f059ab122c666abbb12b24d8d882f26330c0875f9d",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "gateway-1",
+            "com.docker.compose.service": "gateway",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba",
+          "name": "/naiwa-house-game-worker-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.799579788Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:10.476203323Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:10.371619213Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:20.589193531Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:20.47767501Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:30.754267346Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:30.588459052Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:40.861002646Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:40.755084044Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:50.977820103Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:50.861832288Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 633,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.503967443Z",
+            "Status": "running"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "2795ecb7bd4ddb36ecbc9e34357fa4d42e342f85b86bd0c9abdc188561cc7c32",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "migrate:service_completed_successfully:false",
+            "com.docker.compose.image": "sha256:c516a09d81dfd96e50a1c584c8d97b3b06da1a0643001ceac6f30616972a4a05",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "game-worker-1",
+            "com.docker.compose.service": "game-worker",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec",
+          "name": "/naiwa-house-migrate-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-09-16T06:12:46.714236131Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-09-16T06:12:43.298917356Z",
+            "Status": "exited"
+          },
+          "mounts": [],
+          "labels": {
+            "com.docker.compose.config-hash": "6b90ec87795f31b4ae4c025fafe9498cbe5ec3c0599e130aec1ece43a64632a9",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "mysql:service_healthy:false",
+            "com.docker.compose.image": "sha256:a031e206fcafb07e8028a13e8df9db06a56729c2d899203e13773fc4df4858e4",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "migrate-1",
+            "com.docker.compose.service": "migrate",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873",
+          "name": "/naiwa-house-mysql-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:48.583658789Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:30.769298541Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:30.518911337Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:35.868444322Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:35.769892109Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:40.947601184Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:40.869019198Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.039698104Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:45.948509802Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:51.126508609Z",
+                  "ExitCode": 0,
+                  "Output": "mysqladmin: [Warning] Using a password on the command line interface can be insecure.\nmysqld is alive\n",
+                  "Start": "2026-10-20T12:25:51.041119977Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 639,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.508113062Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/mysql",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "naiwa-house_mysql-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/naiwa-house_mysql-data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "7abed048163e63706d7f147fc9692010c4e96812124b7f551b8f4137fe4aef37",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:b3b90af2a6552ae30c266fdb7d5dd55f3afb72404bb78d37fe8a23eb857fd3fb",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "mysql-1",
+            "com.docker.compose.service": "mysql",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f",
+          "name": "/naiwa-house-coturn-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.599251527Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:06.15678774Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:06.08957939Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:16.213364384Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:16.157686126Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:26.282940369Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:26.213399114Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:36.359939515Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:36.283447792Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.448466268Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:46.361563655Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 628,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.48526747Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/coturn",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "95b4c8fb427b67e5b7decaec00ac04fec04cef00987f8ac9be2979d9e28c7c3e",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:e2bca2f79a4269d7240de5872ab60a9305013ad37296d2acf14f9510874346be",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "coturn-1",
+            "com.docker.compose.service": "coturn",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.revision": "1284a3f12471eed86bb698974b419d8af52c3bfd",
+            "org.opencontainers.image.source": "https://github.com/coturn/coturn",
+            "org.opencontainers.image.version": "4.6.3-r3"
+          }
+        },
+        {
+          "id": "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68",
+          "name": "/naiwa-house-prometheus-1",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-10-18T10:45:47.476739205Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-10-20T12:25:06.15674162Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:06.089639377Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:16.213486131Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:16.157640848Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:26.281860352Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:26.213443393Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:36.361173324Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:36.282528656Z"
+                },
+                {
+                  "End": "2026-10-20T12:25:46.445560731Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-10-20T12:25:46.361535991Z"
+                }
+              ],
+              "Status": "healthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 631,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2026-10-20T07:44:31.501503511Z",
+            "Status": "running"
+          },
+          "mounts": [
+            {
+              "Destination": "/etc/prometheus/prometheus.yml",
+              "Mode": "ro",
+              "Propagation": "rprivate",
+              "RW": false,
+              "Source": "/run/desktop/mnt/host/h/BetaryalAtHouseWithNaiwa/infra/prometheus/prometheus.yml",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/prometheus",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "naiwa-house_prometheus-data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/naiwa-house_prometheus-data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "58f174be79068546f6afe4e6439ff08ca8990fabe1affe9a0f21e82823d74193",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "game-worker:service_healthy:false,gateway:service_healthy:false",
+            "com.docker.compose.image": "sha256:49214755b6153f90a597adcbff0252cc61069f8ab69ce8411285cd4a560e8038",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "naiwa-house",
+            "com.docker.compose.project.config_files": "H:\\BetaryalAtHouseWithNaiwa\\compose.yaml",
+            "com.docker.compose.project.working_dir": "H:\\BetaryalAtHouseWithNaiwa",
+            "com.docker.compose.replace": "prometheus-1",
+            "com.docker.compose.service": "prometheus",
+            "com.docker.compose.version": "5.1.4",
+            "maintainer": "The Prometheus Authors <prometheus-developers@googlegroups.com>",
+            "org.opencontainers.image.source": "https://github.com/prometheus/prometheus"
+          }
+        },
+        {
+          "id": "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590",
+          "name": "/oracle",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 137,
+            "FinishedAt": "2026-07-21T15:29:07.029845931Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-07-21T15:24:29.080070506Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:24:28.918418141Z"
+                },
+                {
+                  "End": "2026-07-21T15:25:29.245100591Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:25:29.076486695Z"
+                },
+                {
+                  "End": "2026-07-21T15:26:29.435467886Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:26:29.243751285Z"
+                },
+                {
+                  "End": "2026-07-21T15:27:29.653330777Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:27:29.43337216Z"
+                },
+                {
+                  "End": "2026-07-21T15:28:29.825508722Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-07-21T15:28:29.652043562Z"
+                }
+              ],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-07-21T13:17:53.596139603Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/opt/oracle/oradata",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "oracle_data",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/oracle_data/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "description": "Oracle AI Database 26ai Free is a fully functional version of Oracle AI Database 26ai for developers to learn, build, and deploy applications.",
+            "io.buildah.version": "1.33.14",
+            "issues": "https://github.com/oracle/docker-images/issues",
+            "maintainer": "Oracle Database Container Team <container-team_ww@oracle.com>",
+            "name": "Oracle AI Database 26ai Free",
+            "port.listener": "1521",
+            "provider": "Oracle",
+            "release": "Free",
+            "summary": "Oracle AI Database 26ai Free",
+            "vendor": "Oracle Corporation",
+            "version": "23.26.0",
+            "volume.data": "/opt/oracle/oradata",
+            "volume.setup.location1": "/opt/oracle/scripts/setup",
+            "volume.setup.location2": "/docker-entrypoint-initdb.d/setup",
+            "volume.startup.location1": "/opt/oracle/scripts/startup",
+            "volume.startup.location2": "/docker-entrypoint-initdb.d/startup"
+          }
+        },
+        {
+          "id": "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d",
+          "name": "/shopping-pg",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "2026-07-05T12:38:04.270251157Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-06-15T09:18:36.700905626Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:36.598669303Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:41.822342024Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:41.701645378Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:46.91505174Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:46.823734652Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:52.017458718Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:51.916441531Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:57.100972021Z",
+                  "ExitCode": 0,
+                  "Output": "/var/run/postgresql:5432 - accepting connections\n",
+                  "Start": "2026-06-15T09:18:57.016367589Z"
+                }
+              ],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-07-05T12:38:00.311667185Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/postgresql/data",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "infrastructure_pgdata",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/infrastructure_pgdata/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "35b673947e905f0d0846df2ab49e3810adbd52b03cdbcf86025047688163709a",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:081f1bc7bd5e143dbb6e487b710bbc27712cdcfaced4c071b8e47349aa1b4171",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "infrastructure",
+            "com.docker.compose.project.config_files": "H:\\rag-ecommerce-agent\\infrastructure\\docker-compose.yml",
+            "com.docker.compose.project.working_dir": "H:\\rag-ecommerce-agent\\infrastructure",
+            "com.docker.compose.replace": "shopping-pg",
+            "com.docker.compose.service": "postgres",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da",
+          "name": "/shopping-backend",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 137,
+            "FinishedAt": "2026-06-05T04:50:01.17581362Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-06-05T04:49:57.226287543Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/app/data",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/run/desktop/mnt/host/h/rag-ecommerce-agent/apps/backend/data",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/root/.cache",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "infrastructure_model_cache",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/infrastructure_model_cache/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "85961114cbe3591d4b7db3a6cc49af06d2bb9822a45abed0e655e22252095d91",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "qdrant:service_healthy:false,postgres:service_healthy:false",
+            "com.docker.compose.image": "sha256:334cba305d1d65005c6db44f4b7d19d702abf01677ed2bd2f6950da675bb12c8",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "infrastructure",
+            "com.docker.compose.project.config_files": "H:\\rag-ecommerce-agent\\infrastructure\\docker-compose.yml",
+            "com.docker.compose.project.working_dir": "H:\\rag-ecommerce-agent\\infrastructure",
+            "com.docker.compose.replace": "shopping-backend",
+            "com.docker.compose.service": "backend",
+            "com.docker.compose.version": "5.1.4"
+          }
+        },
+        {
+          "id": "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b",
+          "name": "/shopping-qdrant",
+          "state": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 143,
+            "FinishedAt": "2026-07-05T12:38:04.272767534Z",
+            "Health": {
+              "FailingStreak": 0,
+              "Log": [
+                {
+                  "End": "2026-06-15T09:18:33.516572478Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:33.428588734Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:38.593592494Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:38.517727651Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:43.6615509Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:43.594986088Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:48.735148055Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:48.663510421Z"
+                },
+                {
+                  "End": "2026-06-15T09:18:53.825004224Z",
+                  "ExitCode": 0,
+                  "Output": "",
+                  "Start": "2026-06-15T09:18:53.735600391Z"
+                }
+              ],
+              "Status": "unhealthy"
+            },
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 0,
+            "Restarting": false,
+            "Running": false,
+            "StartedAt": "2026-07-05T12:38:00.309876447Z",
+            "Status": "exited"
+          },
+          "mounts": [
+            {
+              "Destination": "/qdrant/storage",
+              "Driver": "local",
+              "Mode": "rw",
+              "Name": "infrastructure_qdrant_storage",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/infrastructure_qdrant_storage/_data",
+              "Type": "volume"
+            }
+          ],
+          "labels": {
+            "com.docker.compose.config-hash": "89abd399417c531ac2288972fb1a54c01985086f5d71c1b5ecabac5d73352576",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:75eab8c4ba42096724fdcfde8b4de0b5713d529dde32f285a1f86fdcb2c9e50c",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "infrastructure",
+            "com.docker.compose.project.config_files": "H:\\rag-ecommerce-agent\\infrastructure\\docker-compose.yml",
+            "com.docker.compose.project.working_dir": "H:\\rag-ecommerce-agent\\infrastructure",
+            "com.docker.compose.service": "qdrant",
+            "com.docker.compose.version": "5.1.4",
+            "org.opencontainers.image.description": "Official Qdrant image",
+            "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+            "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+            "org.opencontainers.image.title": "Qdrant",
+            "org.opencontainers.image.url": "https://qdrant.com/",
+            "org.opencontainers.image.vendor": "Qdrant",
+            "org.opencontainers.image.version": "v1.18.2"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1/_data",
+          "Name": "6ee3c657a92e55d39ae3319db608de24762a13d7612a8a157c6f8ba72702f3b1",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/52f1b0eb24dc4101bd4be06d350a4d4a00f968897cf2310b03a1d9ea32a863da/_data",
+          "Name": "52f1b0eb24dc4101bd4be06d350a4d4a00f968897cf2310b03a1d9ea32a863da",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/66eab5a23b40f94aaee4e41636b08de352a381d6446dd56f3e55f1427882ed1b/_data",
+          "Name": "66eab5a23b40f94aaee4e41636b08de352a381d6446dd56f3e55f1427882ed1b",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.volume.anonymous=",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/618e7e255da92092baf0d1df1f0ebf4d544abaede5c28732a6119515400fd2f3/_data",
+          "Name": "618e7e255da92092baf0d1df1f0ebf4d544abaede5c28732a6119515400fd2f3",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/dsm-etl-pgdata/_data",
+          "Name": "dsm-etl-pgdata",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=2a50049247a5f346259473d93924800a8850ad5d8741496e986421fd12d40e7f,com.docker.compose.project=im-gui-product-20261004-52804,com.docker.compose.version=5.1.4,com.docker.compose.volume=caddy-go-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/im-gui-product-20261004-52804_caddy-go-data/_data",
+          "Name": "im-gui-product-20261004-52804_caddy-go-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=2dc1aa632ad9cbe6a3aafcfb792dbeafdc0cde935041f8efeaa14a6749820ae0,com.docker.compose.project=im-gui-product-20261004-52804,com.docker.compose.version=5.1.4,com.docker.compose.volume=postgres-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/im-gui-product-20261004-52804_postgres-data/_data",
+          "Name": "im-gui-product-20261004-52804_postgres-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=97655cf517e48fda8eda329020567806ad638325773fe626629d4f0f239f0ecf,com.docker.compose.project=infrastructure,com.docker.compose.version=5.1.4,com.docker.compose.volume=model_cache",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/infrastructure_model_cache/_data",
+          "Name": "infrastructure_model_cache",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=4d40d24a506d7f43b1c50fafc290c9ad782af2fbd3912dd6b2458290f6073802,com.docker.compose.project=infrastructure,com.docker.compose.version=5.1.4,com.docker.compose.volume=pgdata",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/infrastructure_pgdata/_data",
+          "Name": "infrastructure_pgdata",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=ba71e9e7a79439f4a1dc7f8af11eaf84ada5367e1a76d4e8a10ab02ba3f8361d,com.docker.compose.project=infrastructure,com.docker.compose.version=5.1.4,com.docker.compose.volume=qdrant_storage",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/infrastructure_qdrant_storage/_data",
+          "Name": "infrastructure_qdrant_storage",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=23582bea125c12f4ac4ed0c5103f3345edb4031aa47d28d24d37bd5547b13966,com.docker.compose.project=naiwa-house,com.docker.compose.version=5.1.4,com.docker.compose.volume=mysql-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/naiwa-house_mysql-data/_data",
+          "Name": "naiwa-house_mysql-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "com.docker.compose.config-hash=5d7ab43b8cec8e1937291a5babd3ac02a2372325f0f918773362f3b89249470e,com.docker.compose.project=naiwa-house,com.docker.compose.version=5.1.4,com.docker.compose.volume=prometheus-data",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/naiwa-house_prometheus-data/_data",
+          "Name": "naiwa-house_prometheus-data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        },
+        {
+          "Availability": "N/A",
+          "Driver": "local",
+          "Group": "N/A",
+          "Labels": "",
+          "Links": "N/A",
+          "Mountpoint": "/var/lib/docker/volumes/oracle_data/_data",
+          "Name": "oracle_data",
+          "Scope": "local",
+          "Size": "N/A",
+          "Status": "N/A"
+        }
+      ]
+    },
+    "original_full_state_comparison": "FAIL; original run/output and observed field diff retained",
+    "comparison_rules": [
+      "containers by immutable ID",
+      "mount entries compared as complete unordered records",
+      "Health.Log Start/End excluded only from separate stable comparison; all other state/status/health ExitCode/Output retained",
+      "all volume entries retained"
+    ],
+    "stable_identity_status_mount_volume_comparison": "PASS",
+    "own_id_absent": true
+  },
+  "limitations": [
+    "No public deployment/TLS/client/Web/Desktop/Android runtime in this phase",
+    "G01..G09 and product independent reviews/Architect/hosted/integration/sync remain unaccepted",
+    "Initial default sandbox write failures, bad CHECK test fixture run and full-State Docker comparison FAIL are preserved",
+    "Seven own-schema Outbox residual rows observed before final own-schema drop; origin unavailable; all other fixture tables and test functions zero",
+    "Recorder is honest partial FAIL, separate from local test outcomes"
+  ],
+  "metadata_only_development": {
+    "argv": [
+      "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-Xutf8",
+      "-B",
+      "H:\\.codex\\worktrees\\group\\IM-platform\\tools\\research\\recorder.py",
+      "run-command",
+      "--repo",
+      "H:\\.codex\\worktrees\\group\\IM-platform",
+      "--research-root",
+      "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\product-implementation-r2-go\\research",
+      "--run-id",
+      "R-GROUP-PRODUCT-R2-GO-20261020",
+      "--",
+      "pwsh",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Development"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 24.68800000000192,
+    "stdout_sha256": "abdc46ce30386236f7eb7af84940bfba34bbe4433a65b8b1a950960f2da860b6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "prestage_scope_proof": {
+    "path": "prestage-scope-proof.json in local-originals.zip",
+    "sha256": "870948e35b895eddf6a09aaf8cc603ba5cece415d264d2e10ce293f2deeb06ca",
+    "unchanged_old_files": 19042,
+    "changed_existing": [
+      "backend/go/core/http.go",
+      "backend/go/core/social.go",
+      "spec/progress/current.md",
+      "spec/tasks/active/LOOP1-GROUP-001.md"
+    ]
+  }
+}

@@ -11,6 +11,9 @@ func NewHandler(db *pgxpool.Pool, key []byte) http.Handler {
 	s := &authService{db: db, codec: &shared.Codec{Key: key, Now: time.Now}, now: time.Now}
 	m := shared.InfraMux("core")
 	m.Handle("/v1/", s.handler())
+	m.HandleFunc("POST /v1/groups", s.mutateGroup)
+	m.HandleFunc("POST /v1/groups/{conversationId}/members", s.mutateGroup)
+	m.HandleFunc("GET /v1/conversations", s.listConversations)
 	m.HandleFunc("POST /__core/message", s.sendMessage)
 	m.HandleFunc("POST /__core/history", s.conversationHistory)
 	return m

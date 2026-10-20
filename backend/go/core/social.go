@@ -221,6 +221,10 @@ func validDirectState(ctx context.Context, tx pgx.Tx, low, high, conversation st
 }
 
 func writeSocialEvent(ctx context.Context, tx pgx.Tx, recipient, kind, subject string) error {
+	return writeUserStateEvent(ctx, tx, recipient, kind, subject, false)
+}
+
+func writeUserStateEvent(ctx context.Context, tx pgx.Tx, recipient, kind, subject string, cursorRevision bool) error {
 	id, err := uuid()
 	if err != nil {
 		return err
@@ -230,7 +234,11 @@ func writeSocialEvent(ctx context.Context, tx pgx.Tx, recipient, kind, subject s
 	if err != nil {
 		return err
 	}
-	event := map[string]any{"eventId": id, "cursor": strconv.FormatInt(cursor, 10), "kind": kind, "subjectId": subject, "revision": 1}
+	revision := int64(1)
+	if cursorRevision {
+		revision = cursor
+	}
+	event := map[string]any{"eventId": id, "cursor": strconv.FormatInt(cursor, 10), "kind": kind, "subjectId": subject, "revision": revision}
 	payload, err := json.Marshal(event)
 	if err != nil {
 		return err
