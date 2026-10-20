@@ -1,0 +1,23 @@
+{
+  "result": "PASS_INPUT_BYTES_ONLY",
+  "manifest_items_verified": 801,
+  "bindings": [
+    {
+      "path": "final-receipt.json",
+      "bytes": 10564,
+      "sha256": "a9405ce7fc109d642005e41c8b2ede49e4c497b3f096a0dfeaec0859a23c7b20"
+    },
+    {
+      "path": "report.md",
+      "bytes": 12238,
+      "sha256": "9857fe7b7ae732bcdffc440e973e41df8e7b390d3b3af7befd147f702895f9fc"
+    },
+    {
+      "path": "artifact-manifest.json",
+      "bytes": 156129,
+      "sha256": "75581f26123a8f5fed72464b9a2e2f79589b45f178a9a8a873afe6cd431719a0"
+    }
+  ],
+  "review_result": "FAIL",
+  "limits": "Hash binding is input provenance, not product acceptance. Real PG physical-row runner defect and limited E2E assertion-boundary defect retained with original qualification. All original artifacts remain unchanged."
+}

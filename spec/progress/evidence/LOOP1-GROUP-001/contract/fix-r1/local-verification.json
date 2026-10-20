@@ -1,0 +1,222 @@
+{
+  "result": "LOCAL_PASS_NOT_ACCEPTANCE",
+  "finding": "R1-P2-001 repaired",
+  "before_probe_exit": 1,
+  "before": "Two original incorrect exchanges accepted; expected failing regression probe retained.",
+  "after_probe_exit": 0,
+  "after": "Same byte-exact original exchanges rejected: false empty page and incomplete ordered eligible page prefix.",
+  "group_verifier": {
+    "positive": 35,
+    "negative": 30,
+    "exit_code": 0
+  },
+  "group_tests": {
+    "tests": 17,
+    "skips": 0,
+    "exit_code": 0
+  },
+  "baseline": [
+    "Frozen verifier exit0",
+    "S2 planning exit0",
+    "architecture --scope all --json exit0"
+  ],
+  "regression_commands": [
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 20.697561,
+      "stdout": "verification-00.stdout.txt",
+      "stderr": "verification-00.stderr.txt"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.449808,
+      "stdout": "verification-01.stdout.txt",
+      "stderr": "verification-01.stderr.txt"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "contracts/http/verify-auth-user-friend.ps1"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.470741,
+      "stdout": "verification-02.stdout.txt",
+      "stderr": "verification-02.stderr.txt"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_sync_transport.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.264969,
+      "stdout": "verification-03.stdout.txt",
+      "stderr": "verification-03.stderr.txt"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract",
+        "-p",
+        "test_sync_transport.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.271542,
+      "stdout": "verification-04.stdout.txt",
+      "stderr": "verification-04.stderr.txt"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "contracts/websocket/verify.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.223871,
+      "stdout": "verification-05.stdout.txt",
+      "stderr": "verification-05.stderr.txt"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "contracts/plugin-api/verify.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.206232,
+      "stdout": "verification-06.stdout.txt",
+      "stderr": "verification-06.stderr.txt"
+    },
+    {
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "tools/verify-loop1-ctrl-002.ps1",
+        "-Mode",
+        "Development"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 22.816765,
+      "stdout": "verification-07.stdout.txt",
+      "stderr": "verification-07.stderr.txt"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.191121,
+      "stdout": "verification-08.stdout.txt",
+      "stderr": "verification-08.stderr.txt"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--stat"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.182858,
+      "stdout": "verification-09.stdout.txt",
+      "stderr": "verification-09.stderr.txt"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--",
+        "contracts/http/verify-group.py",
+        "tests/contract/group/test_group.py",
+        "contracts/fixtures/group/exchanges.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.173418,
+      "stdout": "verification-10.stdout.txt",
+      "stderr": "verification-10.stderr.txt"
+    }
+  ],
+  "database": "No PG source/schema/runner/test changed relative5aa. Not rerun in this verifier-only fix; original implementation and independent regular-review real PG11tests/0skip evidence preserved. Final fresh reviewers/hosted still must cover full candidate.",
+  "research": {
+    "result": "PENDING_FINISH_EXPECTED_FAIL_FOR_CAPTURE_LIMITS",
+    "validation": "PENDING_DIRECT_FINAL_VALIDATION",
+    "capture_mode": "prospective_resume",
+    "pre_recorder_trace_complete": false,
+    "limits": [
+      "Mandatory startup/preflight reads before run",
+      "some initial large reads truncated; relevant targeted rereads recorded",
+      "external helper authoring, communications and final packing outside command trace",
+      "initial unsupported semantic event rejected exit2, corrected to existing instrumentation_warning; failure openly retained",
+      "One run-command yielded a live Development session before two read-only git inspections; all completed, event-chain integrity validated only after direct finish. Later calls drain sessions sequentially."
+    ],
+    "discovery": "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r1/final-receipt.json"
+  },
+  "regular_review": "NEW PENDING final SHA",
+  "error_handling_review": "DIFFERENT NEW PENDING final SHA",
+  "hosted": "PENDING",
+  "main_sync": "PENDING",
+  "stage_gate": "S2 OPEN",
+  "whole_task": "active",
+  "short_prefix_authority_correction": {
+    "authority": "Unchanged GET description items <= limit; full pages not mandatory.",
+    "initial_overstrict_probe_exit": 1,
+    "initial_rejected_legal_short_prefix": true,
+    "final_probe_exit": 0,
+    "final_accepts_legal_short_prefix": true,
+    "rule": "Returned keys must equal the contiguous actual-length prefix, eligible rows prohibit empty pages, hasMore derives from remaining rows.",
+    "regression": "limit2 and omitted default100 each use short first page, truthful lookahead and final complete terminal page.",
+    "initial_and_final_outputs": "initial-overstrict-short-prefix.json; final-short-prefix.json"
+  },
+  "later_recovery_control_failure": {
+    "argv": [
+      "pwsh",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Development"
+    ],
+    "exit_code": 1,
+    "issues": [
+      "current Verification missing exact Command",
+      "missing nonempty Result",
+      "missing durable Evidence"
+    ],
+    "repair": "Restore existing required Command/Result/Evidence labels; rerun Development and clean committed Acceptance. Original failure remains in external immutable Recorder and final receipt artifact manifest.",
+    "final_result_discovery": "C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r1/final-receipt.json"
+  }
+}

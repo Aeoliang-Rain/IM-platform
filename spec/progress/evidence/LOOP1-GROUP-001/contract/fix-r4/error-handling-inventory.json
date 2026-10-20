@@ -1,0 +1,22 @@
+{
+  "qualification": "Fix self-inventory only, not independent specialist acceptance",
+  "parent_sha": "0a9f24a38774760e8003e15cc77ff65e3c0d25ac",
+  "files": [
+    {
+      "path": "tests/infrastructure/smoke.ps1",
+      "sha256": "cc1103cd765339c9f26f6ae06c5f807cd32bcecc75aa7dcc08ab870100366700",
+      "responsibility": "Existing deployment validation of exact authorized migration ledger",
+      "changed_failure_behavior": "Only expected known ordered ledger changes to two canonical rows; PS LASTEXITCODE and Python sql/docker RuntimeError propagation unchanged",
+      "catch_or_fallback_added": false,
+      "retained_reasons": "All original bytes outside exact query/comparison replacements preserved; TLS name/CA negative controls, auth/member/ACK/Outbox/rollback and cleanup remain original."
+    },
+    {
+      "path": "tests/e2e/go_tls_messaging.py",
+      "sha256": "e40f1405b7b4481e57705958ddf510d4d6e52cd85dc859b2b10ec637fe260143",
+      "responsibility": "Existing deployment validation of exact authorized migration ledger",
+      "changed_failure_behavior": "Only expected known ordered ledger changes to two canonical rows; PS LASTEXITCODE and Python sql/docker RuntimeError propagation unchanged",
+      "catch_or_fallback_added": false,
+      "retained_reasons": "All original bytes outside exact query/comparison replacements preserved; TLS name/CA negative controls, auth/member/ACK/Outbox/rollback and cleanup remain original."
+    }
+  ]
+}

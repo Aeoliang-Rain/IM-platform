@@ -1,0 +1,512 @@
+{
+  "result": "PASS_LOCAL_LEDGER_BOUNDARY_ONLY",
+  "identity": {
+    "version": "16.15",
+    "database": "group_contract_20261018",
+    "user": "group_contract_fixture",
+    "port": 63830,
+    "directory": "H:/IM-platform/.git/worktrees/IM-platform4/group-pg16-20261018/data-v2",
+    "start": "2026-10-20T16:55:18.83737+08:00"
+  },
+  "own_schema": "fix_r5_00643eae835d4293bbdea77d31698144",
+  "own_schema_removed": true,
+  "schemas_before_after_equal": true,
+  "credential_handling": "PGPASSFILE path only, never read/printed/copied",
+  "commands": [
+    {
+      "label": "identity",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06199999999989814,
+      "stdin_sql": "SELECT json_build_object('version',current_setting('server_version'),'database',current_database(),'user',current_user,'port',inet_server_port(),'directory',current_setting('data_directory'),'start',pg_postmaster_start_time());",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-identity.stdout",
+          "sha256": "f967f99314843795965f30a9772decc8fae2ea315d035dbcb03d2d7594414dbc",
+          "bytes": 247
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-identity.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "schemas-before",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06300000000010186,
+      "stdin_sql": "SELECT nspname FROM pg_namespace ORDER BY nspname;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-schemas-before.stdout",
+          "sha256": "2cf422b0f0d5b7eb60931cee0f9cee5d6beccbb4e27735762dd1a522ce0d1092",
+          "bytes": 50
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-schemas-before.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "create-own",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06199999999989814,
+      "stdin_sql": "CREATE SCHEMA fix_r5_00643eae835d4293bbdea77d31698144;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-create-own.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-create-own.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "canonical-up",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\database\\migrate.py",
+        "up"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.48400000000037835,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-canonical-up.stdout",
+          "sha256": "d4dff80d8d435726ea572ace97e67c14290acd4ce3eaef3ab456e2c226f38d9a",
+          "bytes": 63
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-canonical-up.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "canonical-status",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\database\\migrate.py",
+        "status"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.25,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-canonical-status.stdout",
+          "sha256": "a49717375dfab9b9efaf04866a678647069eb886b992a2cb4a04fa62b6a077b0",
+          "bytes": 55
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-canonical-status.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "canonical-ledger",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06300000000010186,
+      "stdin_sql": "SELECT json_agg(json_build_object('version',version,'checksum',checksum) ORDER BY version) FROM schema_migrations;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-canonical-ledger.stdout",
+          "sha256": "41db0e37f111717bfb676f030896dc1c7cf69a483c45b067ba919d11e530b711",
+          "bytes": 233
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-canonical-ledger.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "two-canonical-rows",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-actual-smoke-ledger.ps1"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.43699999999989814,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-two-canonical-rows.stdout",
+          "sha256": "06a4312e84d1d936d6c75875b27095ce6e62091485d4612b8ba5f782b56ba398",
+          "bytes": 17
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-two-canonical-rows.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "comma-seed",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06300000000010186,
+      "stdin_sql": "DELETE FROM schema_migrations; INSERT INTO schema_migrations(version,checksum) VALUES ('0001_initial,0002_group_operations','fault');",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-seed.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-seed.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "comma-actual-count",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.07799999999951979,
+      "stdin_sql": "SELECT json_build_object('count',count(*),'versions',json_agg(version ORDER BY version)) FROM schema_migrations;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-actual-count.stdout",
+          "sha256": "a563b9251acaf12fb89ecf8aa9cefc9de4b54e60e159b4eaa72a22306606e91f",
+          "bytes": 68
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-actual-count.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "comma-runner-refusal",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\database\\migrate.py",
+        "status"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.5,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-runner-refusal.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-runner-refusal.stderr",
+          "sha256": "963b8e66324e3c1c5d8289b174bf0a0d90b4a8a818fdde23bb0dc20f5b132383",
+          "bytes": 65
+        }
+      }
+    },
+    {
+      "label": "comma-actual-smoke-refusal",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-actual-smoke-ledger.ps1"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 1.5630000000001019,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-actual-smoke-refusal.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-comma-actual-smoke-refusal.stderr",
+          "sha256": "07959ebe2d099b25016dc8ef1b98ec5b496b167f0037f70fd1aca6e60177ae5b",
+          "bytes": 394
+        }
+      }
+    },
+    {
+      "label": "newline-seed",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06199999999989814,
+      "stdin_sql": "DELETE FROM schema_migrations; INSERT INTO schema_migrations(version,checksum) VALUES ('0001_initial\n0002_group_operations','fault');",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-seed.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-seed.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "newline-actual-count",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06300000000010186,
+      "stdin_sql": "SELECT json_build_object('count',count(*),'versions',json_agg(version ORDER BY version)) FROM schema_migrations;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-actual-count.stdout",
+          "sha256": "52d3ec4360d4d42632cbbbab774800556450125ecf2e4ae68ec05aacfa52c3de",
+          "bytes": 69
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-actual-count.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "newline-runner-refusal",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\database\\migrate.py",
+        "status"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.3899999999994179,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-runner-refusal.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-runner-refusal.stderr",
+          "sha256": "2390a0dc38de6dbe73807877d4988fa958b85a65f1f743a323a938f73ef0921f",
+          "bytes": 558
+        }
+      }
+    },
+    {
+      "label": "newline-actual-smoke-refusal",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-actual-smoke-ledger.ps1"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 1.5160000000014406,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-actual-smoke-refusal.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-newline-actual-smoke-refusal.stderr",
+          "sha256": "6e7f440a696be3808720e9c9038e3933ef5f2c603a61d5de3d1abce8b568b4c2",
+          "bytes": 395
+        }
+      }
+    },
+    {
+      "label": "drop-owned-ledger",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06199999999989814,
+      "stdin_sql": "DROP TABLE schema_migrations;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-drop-owned-ledger.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-drop-owned-ledger.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "label": "native-query-failure",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-actual-smoke-ledger.ps1"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.43800000000010186,
+      "stdin_sql": null,
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-native-query-failure.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-native-query-failure.stderr",
+          "sha256": "6b0162752af4bcc947b16308ae51e2875ecfc40b6b84427c51675bc9fcb30657",
+          "bytes": 550
+        }
+      }
+    },
+    {
+      "label": "drop-own",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.09399999999914144,
+      "stdin_sql": "DROP SCHEMA fix_r5_00643eae835d4293bbdea77d31698144 CASCADE;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-drop-own.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-drop-own.stderr",
+          "sha256": "07da3a9cc854ec376e8a8d36b1f3322c8e7743840ca90b56e9c0f22387947ca2",
+          "bytes": 1297
+        }
+      }
+    },
+    {
+      "label": "schemas-after",
+      "argv": [
+        "H:\\IM-platform\\.git\\worktrees\\IM-platform4\\group-pg16-20261018\\pgsql\\bin\\psql.exe",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-q",
+        "-A",
+        "-t"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06199999999989814,
+      "stdin_sql": "SELECT nspname FROM pg_namespace ORDER BY nspname;",
+      "raw": {
+        "stdout": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-schemas-after.stdout",
+          "sha256": "2cf422b0f0d5b7eb60931cee0f9cee5d6beccbb4e27735762dd1a522ce0d1092",
+          "bytes": 50
+        },
+        "stderr": {
+          "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\pg-a3\\pg-schemas-after.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    }
+  ],
+  "newline_runner_classification": "Unexpected line parsing ValueError propagates CLI nonzero; not a known schema-negative and not reclassified/repaired",
+  "qualification": "Actual PG16.15 runner and actual smoke ledger snippet; docker is transport-only shim to real psql. Not full Docker/TLS acceptance."
+}

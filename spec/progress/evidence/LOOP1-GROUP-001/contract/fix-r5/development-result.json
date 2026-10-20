@@ -1,0 +1,37 @@
+{
+  "argv": [
+    "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-Xutf8",
+    "-B",
+    "H:\\.codex\\worktrees\\group\\IM-platform\\tools\\research\\recorder.py",
+    "run-command",
+    "--repo",
+    "H:\\.codex\\worktrees\\group\\IM-platform",
+    "--research-root",
+    "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-fix-r5\\research",
+    "--run-id",
+    "R-GROUP-FIX-R5-20261020",
+    "--",
+    "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+    "-NoProfile",
+    "-File",
+    "tools/verify-loop1-ctrl-002.ps1",
+    "-Mode",
+    "Development"
+  ],
+  "command_argv": [
+    "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+    "-NoProfile",
+    "-File",
+    "tools/verify-loop1-ctrl-002.ps1",
+    "-Mode",
+    "Development"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 31.690474033355713,
+  "stdout_sha256": "e55ec6ba8add521da2cafb9e378428ffdcd200835dd894bd2996f06b28a4a34f",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "qualification": "Actual Development control verification only; clean committed Acceptance is separate, receipt-bound after this commit.",
+  "stdout": "NON-ACCEPTANCE DEVELOPMENT MODE: dirty worktree is permitted; this output MUST NOT be used as acceptance evidence.\n\nPASS: generic repository recovery verified task=LOOP1-GROUP-001 state=active mode=Development queues=5 task_specs=38.\n\nGIT: branch=task/LOOP1-GROUP-001 status_entries=22 diff_lines=5 recent_commits=5.\n\n",
+  "stderr": ""
+}

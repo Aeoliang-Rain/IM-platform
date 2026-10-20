@@ -1,0 +1,111 @@
+{
+  "qualification": "Pattern categories/counts and source provenance only; no matched values/private credential files read or printed. Recorder originals and trace are unchanged.",
+  "architecture_original_raw_sha256": "c4b66eb26ef8d21c7981cf198c3d5ec1ef3ae7a105c1c12ce337360aa8ae223e",
+  "architecture_stored_blob_sha256": "933fdd7f5cd44820957daacb8cbc42a556420c21f4341b71c5811cc5953b3631",
+  "architecture_exact_regeneration_and_redaction_match": true,
+  "architecture_static_source_matches": [
+    {
+      "path": "backend/go/core/sync_http_test.go",
+      "field": "extracted static strings",
+      "item_index": 146,
+      "pattern_category": "secret-assignment",
+      "count": 1,
+      "provenance": "tracked committed public source literal; no runtime credential read",
+      "public_committed_source_sha256": "04f967ef25e284ab8d1da9ce56ea019570c6da16ad83601b7bed3d035ef53598",
+      "canonical_fixture_file": false,
+      "qualification": "Existing public committed Go test literals, not runtime credentials or private files; architecture graph extracts static source only."
+    },
+    {
+      "path": "backend/go/core/sync_http_test.go",
+      "field": "extracted static strings",
+      "item_index": 209,
+      "pattern_category": "secret-assignment",
+      "count": 1,
+      "provenance": "tracked committed public source literal; no runtime credential read",
+      "public_committed_source_sha256": "04f967ef25e284ab8d1da9ce56ea019570c6da16ad83601b7bed3d035ef53598",
+      "canonical_fixture_file": false,
+      "qualification": "Existing public committed Go test literals, not runtime credentials or private files; architecture graph extracts static source only."
+    },
+    {
+      "path": "backend/go/core/sync_http_test.go",
+      "field": "extracted static strings",
+      "item_index": 220,
+      "pattern_category": "secret-assignment",
+      "count": 1,
+      "provenance": "tracked committed public source literal; no runtime credential read",
+      "public_committed_source_sha256": "04f967ef25e284ab8d1da9ce56ea019570c6da16ad83601b7bed3d035ef53598",
+      "canonical_fixture_file": false,
+      "qualification": "Existing public committed Go test literals, not runtime credentials or private files; architecture graph extracts static source only."
+    },
+    {
+      "path": "backend/go/gateway/origin_test.go",
+      "field": "extracted static strings",
+      "item_index": 67,
+      "pattern_category": "secret-assignment",
+      "count": 1,
+      "provenance": "tracked committed public source literal; no runtime credential read",
+      "public_committed_source_sha256": "b39832ef8f9f76022cd830373b09f24a0c41aab37aece8e5d1889ce27f0f2567",
+      "canonical_fixture_file": false,
+      "qualification": "Existing public committed Go test literals, not runtime credentials or private files; architecture graph extracts static source only."
+    },
+    {
+      "path": "backend/go/tests/auth_test.go",
+      "field": "extracted static strings",
+      "item_index": 89,
+      "pattern_category": "secret-assignment",
+      "count": 1,
+      "provenance": "tracked committed public source literal; no runtime credential read",
+      "public_committed_source_sha256": "1450e47162efa5077968cb5f9649cd3be5f4f03922a299820f182c74821d6c30",
+      "canonical_fixture_file": false,
+      "qualification": "Existing public committed Go test literals, not runtime credentials or private files; architecture graph extracts static source only."
+    }
+  ],
+  "archive_matches": [
+    {
+      "archive": "original-history.zip",
+      "entry": "contract-failed-deploy-39115869727-117641538618.log",
+      "pattern_category": "authorization-header",
+      "matched_length": 20,
+      "classification": "CI checkout authorization scheme only; following credential already GitHub-masked",
+      "matching_public_source_paths": [],
+      "contains_actual_credential": false
+    },
+    {
+      "archive": "original-history.zip",
+      "entry": "contract-failed-deploy-39115960616-117641824783.log",
+      "pattern_category": "authorization-header",
+      "matched_length": 20,
+      "classification": "CI checkout authorization scheme only; following credential already GitHub-masked",
+      "matching_public_source_paths": [],
+      "contains_actual_credential": false
+    },
+    {
+      "archive": "local-originals.zip",
+      "entry": "runtime_run-before-event-observation.py",
+      "pattern_category": "secret-assignment",
+      "matched_length": 36,
+      "classification": "External helper static generator expression; no generated runtime value in archive",
+      "matching_public_source_paths": [],
+      "contains_actual_credential": false
+    },
+    {
+      "archive": "local-originals.zip",
+      "entry": "runtime_run.py",
+      "pattern_category": "secret-assignment",
+      "matched_length": 36,
+      "classification": "External helper static generator expression; no generated runtime value in archive",
+      "matching_public_source_paths": [],
+      "contains_actual_credential": false
+    }
+  ],
+  "archive_category_counts": {
+    "authorization-header": 2,
+    "secret-assignment": 2
+  },
+  "classification_result": "All 5 architecture static-source matches and all 4 archived-pattern matches classified without displaying any match value; no actual secret material found in the explicitly enumerated candidate archives.",
+  "verified_archive_sha256": {
+    "original-history.zip": "75aa85413e21859aa9090e4bb6208861a582ea354c81013d0b7dce59b85d72cb",
+    "local-originals.zip": "7493f55d24ab6600d2c781d4fd8e742b52f2bc7e116276b19012061508421356",
+    "raw-verification-prefix.zip": "78e8e371132f961786487c6538c15c986d39f16982056eba616bfc028df5b6a3"
+  }
+}

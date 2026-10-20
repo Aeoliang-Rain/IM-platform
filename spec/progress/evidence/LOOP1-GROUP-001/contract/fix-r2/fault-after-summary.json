@@ -1,0 +1,84 @@
+[
+  {
+    "probe": "after-formal",
+    "candidate_sha": "0190c65cafff7df50492e743761427f214fba951",
+    "location": "contracts/http/verify-group.py:108-112 and tests/contract/group/test_group.py:28-38",
+    "injected_failure": "checker subprocess exit2, genuine checker/internal failure branch; no schema validation result",
+    "negative_test_result": false,
+    "tests_run": 1,
+    "failures": 0,
+    "errors": 1,
+    "checker_crashes_seen": 1,
+    "observations": [
+      {
+        "argv": [
+          "H:\\node.js\\node.EXE",
+          "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\http\\check-openapi-3.1.js"
+        ],
+        "injected_exit_code": 2,
+        "stderr": "SPECIALIZED_OPENAPI_INTERNAL_SENTINEL"
+      }
+    ],
+    "issue_reproduced": false,
+    "consequence": "all five negative structural controls count checker-internal failure as expected Invalid rejection",
+    "fixed_worktree_source_sha256": "66885113507a265fa8afae03970469f51956fe66450bedb2c0fbc13e9b004348",
+    "probe_original_sha256": "247969fe9a53c9ab1d25f402bbdedfc5f138a678d722cb43c7f473d0db874fc9",
+    "interpretation": "Expected old false-PASS assertion now fails: internal error propagates; this is local fault verification, not acceptance."
+  },
+  {
+    "probe": "after-original17",
+    "candidate_sha": "0190c65cafff7df50492e743761427f214fba951",
+    "tests_run": 17,
+    "negative_input_checker_crashes": 1,
+    "suite_success": false,
+    "failures": 0,
+    "errors": 1,
+    "observations": [
+      {
+        "argv": [
+          "H:\\node.js\\node.EXE",
+          "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\http\\check-openapi-3.1.js"
+        ],
+        "injected_exit_code": 2,
+        "stderr": "SPECIALIZED_INPUT_DEPENDENT_CHECKER_BUG"
+      }
+    ],
+    "real_validator_for_positive_and_other_inputs": true,
+    "issue_reproduced": false,
+    "fixed_worktree_source_sha256": "66885113507a265fa8afae03970469f51956fe66450bedb2c0fbc13e9b004348",
+    "probe_original_sha256": "247969fe9a53c9ab1d25f402bbdedfc5f138a678d722cb43c7f473d0db874fc9",
+    "interpretation": "Expected old false-PASS assertion now fails: internal error propagates; this is local fault verification, not acceptance."
+  },
+  {
+    "probe": "after-current20",
+    "candidate_sha": "0190c65cafff7df50492e743761427f214fba951",
+    "tests_run": 20,
+    "negative_input_checker_crashes": 2,
+    "suite_success": false,
+    "failures": 0,
+    "errors": 2,
+    "observations": [
+      {
+        "argv": [
+          "H:\\node.js\\node.EXE",
+          "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\http\\check-openapi-3.1.js"
+        ],
+        "injected_exit_code": 2,
+        "stderr": "SPECIALIZED_INPUT_DEPENDENT_CHECKER_BUG"
+      },
+      {
+        "argv": [
+          "H:\\node.js\\node.EXE",
+          "H:\\.codex\\worktrees\\group\\IM-platform\\contracts\\http\\check-openapi-3.1.js"
+        ],
+        "injected_exit_code": 2,
+        "stderr": "SPECIALIZED_INPUT_DEPENDENT_CHECKER_BUG"
+      }
+    ],
+    "real_validator_for_positive_and_other_inputs": true,
+    "issue_reproduced": false,
+    "fixed_worktree_source_sha256": "66885113507a265fa8afae03970469f51956fe66450bedb2c0fbc13e9b004348",
+    "probe_original_sha256": "247969fe9a53c9ab1d25f402bbdedfc5f138a678d722cb43c7f473d0db874fc9",
+    "interpretation": "Expected old false-PASS assertion now fails: internal error propagates; this is local fault verification, not acceptance."
+  }
+]

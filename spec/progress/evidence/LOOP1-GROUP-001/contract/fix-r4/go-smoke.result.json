@@ -1,0 +1,194 @@
+{
+  "case": "go-smoke",
+  "pid": 60548,
+  "started_at": "2026-10-18T09:52:52.935495+00:00",
+  "command": [
+    "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+    "-NoProfile",
+    "-File",
+    "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\infrastructure\\smoke.ps1",
+    "-Profile",
+    "go"
+  ],
+  "state": "FINISHED",
+  "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+  "exit_code": 1,
+  "elapsed_seconds": 24.75,
+  "engine": "29.5.2 linux",
+  "owned_projects": [
+    "im-infra-smoke-go-60548"
+  ],
+  "cleanup": {
+    "im-infra-smoke-go-60548": {
+      "containers": [],
+      "volumes": []
+    }
+  },
+  "preexisting_containers_unchanged": true,
+  "before_containers": {
+    "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+      "dsm-etl-postgres",
+      "exited"
+    ],
+    "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+      "im-gui-product-20261004-52804-tls-go-1",
+      "exited"
+    ],
+    "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+      "im-gui-product-20261004-52804-core-go-1",
+      "exited"
+    ],
+    "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+      "im-gui-product-20261004-52804-gateway-go-1",
+      "exited"
+    ],
+    "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+      "im-gui-product-20261004-52804-plugin-host-go-1",
+      "exited"
+    ],
+    "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+      "im-gui-product-20261004-52804-migrate-1",
+      "exited"
+    ],
+    "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+      "im-gui-product-20261004-52804-postgres-1",
+      "exited"
+    ],
+    "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+      "im-gui-product-20261004-52804-nats-1",
+      "exited"
+    ],
+    "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+      "naiwa-house-web-1",
+      "running"
+    ],
+    "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+      "naiwa-house-gateway-1",
+      "running"
+    ],
+    "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+      "naiwa-house-game-worker-1",
+      "running"
+    ],
+    "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+      "naiwa-house-migrate-1",
+      "exited"
+    ],
+    "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+      "naiwa-house-mysql-1",
+      "running"
+    ],
+    "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+      "naiwa-house-coturn-1",
+      "running"
+    ],
+    "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+      "naiwa-house-prometheus-1",
+      "running"
+    ],
+    "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+      "oracle",
+      "exited"
+    ],
+    "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+      "shopping-pg",
+      "exited"
+    ],
+    "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+      "shopping-backend",
+      "exited"
+    ],
+    "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+      "shopping-qdrant",
+      "exited"
+    ]
+  },
+  "after_containers": {
+    "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+      "dsm-etl-postgres",
+      "exited"
+    ],
+    "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+      "im-gui-product-20261004-52804-tls-go-1",
+      "exited"
+    ],
+    "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+      "im-gui-product-20261004-52804-core-go-1",
+      "exited"
+    ],
+    "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+      "im-gui-product-20261004-52804-gateway-go-1",
+      "exited"
+    ],
+    "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+      "im-gui-product-20261004-52804-plugin-host-go-1",
+      "exited"
+    ],
+    "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+      "im-gui-product-20261004-52804-migrate-1",
+      "exited"
+    ],
+    "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+      "im-gui-product-20261004-52804-postgres-1",
+      "exited"
+    ],
+    "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+      "im-gui-product-20261004-52804-nats-1",
+      "exited"
+    ],
+    "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+      "naiwa-house-web-1",
+      "running"
+    ],
+    "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+      "naiwa-house-gateway-1",
+      "running"
+    ],
+    "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+      "naiwa-house-game-worker-1",
+      "running"
+    ],
+    "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+      "naiwa-house-migrate-1",
+      "exited"
+    ],
+    "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+      "naiwa-house-mysql-1",
+      "running"
+    ],
+    "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+      "naiwa-house-coturn-1",
+      "running"
+    ],
+    "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+      "naiwa-house-prometheus-1",
+      "running"
+    ],
+    "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+      "oracle",
+      "exited"
+    ],
+    "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+      "shopping-pg",
+      "exited"
+    ],
+    "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+      "shopping-backend",
+      "exited"
+    ],
+    "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+      "shopping-qdrant",
+      "exited"
+    ]
+  },
+  "raw": {
+    "go-smoke.stdout.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "go-smoke.stderr.log": {
+      "sha256": "13c748bac2039d1d936ef1e21b3682dafad3b8c0c98b5210caa1e8e568d113bd",
+      "bytes": 880
+    }
+  }
+}

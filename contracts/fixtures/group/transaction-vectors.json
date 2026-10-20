@@ -1,0 +1,177 @@
+{
+  "fixtureVersion": "1.0.0",
+  "runtimeAcceptance": "PENDING",
+  "vectors": [
+    {
+      "id": "concurrent-create-same-key",
+      "operation": "CREATE",
+      "actors": [
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000001"
+      ],
+      "requestIds": [
+        "40000000-0000-4000-8000-000000000001",
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "targets": [
+        [
+          "10000000-0000-4000-8000-000000000002"
+        ],
+        [
+          "10000000-0000-4000-8000-000000000002",
+          "10000000-0000-4000-8000-000000000002"
+        ]
+      ],
+      "expected": {
+        "groups": 1,
+        "receipts": 1,
+        "members": [
+          "10000000-0000-4000-8000-000000000001",
+          "10000000-0000-4000-8000-000000000002"
+        ],
+        "resultEquality": true
+      }
+    },
+    {
+      "id": "concurrent-add-same-key",
+      "operation": "ADD",
+      "conversationId": "30000000-0000-4000-8000-000000000001",
+      "actors": [
+        "10000000-0000-4000-8000-000000000002",
+        "10000000-0000-4000-8000-000000000002"
+      ],
+      "requestIds": [
+        "40000000-0000-4000-8000-000000000001",
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "targets": [
+        [
+          "10000000-0000-4000-8000-000000000003"
+        ],
+        [
+          "10000000-0000-4000-8000-000000000003",
+          "10000000-0000-4000-8000-000000000003"
+        ]
+      ],
+      "expected": {
+        "newMembers": [
+          "10000000-0000-4000-8000-000000000003"
+        ],
+        "receipts": 1,
+        "resultEquality": true
+      }
+    },
+    {
+      "id": "overlap-different-actor-request",
+      "operation": "ADD",
+      "conversationId": "30000000-0000-4000-8000-000000000001",
+      "actors": [
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000002"
+      ],
+      "requestIds": [
+        "40000000-0000-4000-8000-000000000001",
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "targets": [
+        [
+          "10000000-0000-4000-8000-000000000003",
+          "10000000-0000-4000-8000-000000000004"
+        ],
+        [
+          "10000000-0000-4000-8000-000000000003"
+        ]
+      ],
+      "friendships": [
+        [
+          "10000000-0000-4000-8000-000000000001",
+          "10000000-0000-4000-8000-000000000003"
+        ],
+        [
+          "10000000-0000-4000-8000-000000000001",
+          "10000000-0000-4000-8000-000000000004"
+        ],
+        [
+          "10000000-0000-4000-8000-000000000002",
+          "10000000-0000-4000-8000-000000000003"
+        ]
+      ],
+      "expected": {
+        "newMembers": [
+          "10000000-0000-4000-8000-000000000003",
+          "10000000-0000-4000-8000-000000000004"
+        ],
+        "receipts": 2,
+        "memberUniqueness": true,
+        "eventsOnlyForActualChange": true
+      }
+    },
+    {
+      "id": "write-failure-rollback",
+      "faults": [
+        "conversation",
+        "membership",
+        "receipt",
+        "user_sync",
+        "outbox",
+        "commit-definite-failure"
+      ],
+      "expected": {
+        "newGroups": 0,
+        "newMembers": 0,
+        "newReceipts": 0,
+        "newSync": 0,
+        "newOutbox": 0
+      }
+    },
+    {
+      "id": "response-loss-before-commit",
+      "retry": {
+        "requestId": "40000000-0000-4000-8000-000000000001",
+        "targets": [
+          "10000000-0000-4000-8000-000000000002"
+        ]
+      },
+      "expected": {
+        "groupsAfterRetry": 1,
+        "receiptsAfterRetry": 1,
+        "confirmationBeforeRetry": "unconfirmed"
+      }
+    },
+    {
+      "id": "response-loss-after-commit",
+      "retry": {
+        "requestId": "40000000-0000-4000-8000-000000000001",
+        "targets": [
+          "10000000-0000-4000-8000-000000000002"
+        ]
+      },
+      "expected": {
+        "groupsAfterRetry": 1,
+        "receiptsAfterRetry": 1,
+        "response": "original",
+        "confirmationBeforeRetry": "unconfirmed"
+      }
+    },
+    {
+      "id": "compatibility-old-client",
+      "expected": {
+        "direct": "unchanged",
+        "auth": "unchanged",
+        "wss": "unchanged",
+        "ack": "durable-message-and-single-outbox",
+        "syncShapes": "unchanged",
+        "0001Checksum": "unchanged"
+      }
+    },
+    {
+      "id": "concurrent-list-insert-before-cursor",
+      "expected": {
+        "multipageGlobalSnapshot": false,
+        "nextInvalidationOrPeriodicRescan": "restart-from-origin",
+        "fixedTotalLimit": false,
+        "nonfriendIdentities": "authorized-current-members-only"
+      }
+    }
+  ]
+}

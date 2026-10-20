@@ -225,14 +225,16 @@ function Get-OperationMatch {
 
 function Get-OpenApiStructureErrors {
     param($Value, [string]$ValidatorPath, [string]$Location)
-    try {
-        $json = $Value | ConvertTo-Json -Depth 100
-        $diagnostics = @($json | & node $ValidatorPath 2>&1)
-        if ($LASTEXITCODE -ne 0) {
-            return @("$Location does not conform to the pinned OAI OpenAPI 3.1 structural schema: $($diagnostics -join '; ')")
-        }
-    } catch {
-        return @("$Location OpenAPI 3.1 structural schema validation failed: $($_.Exception.Message)")
+    $json = $Value | ConvertTo-Json -Depth 100
+    $diagnostics = @($json | & node $ValidatorPath 2>&1)
+    $checkerExit = $LASTEXITCODE
+    # The pinned checker reserves exit1 for known schema rejection.
+    # Launch, serialization and internal checker defects must fail the verifier.
+    if ($checkerExit -eq 1) {
+        return @("$Location does not conform to the pinned OAI OpenAPI 3.1 structural schema: $($diagnostics -join '; ')")
+    }
+    if ($checkerExit -ne 0) {
+        throw "$Location OpenAPI structural checker failed with exit ${checkerExit}: $($diagnostics -join '; ')"
     }
     return @()
 }
@@ -284,7 +286,7 @@ function Get-ModelFailures {
     if ($duplicates.Count -gt 0) { $issues += "duplicate operationId: $($duplicates -join ', ')" }
 
     $expectedCodes = @('VALIDATION_FAILED','AUTH_REQUIRED','AUTH_INVALID_CREDENTIALS','AUTH_TOKEN_INVALID','AUTH_TOKEN_EXPIRED','AUTH_SESSION_REVOKED','AUTH_SESSION_EPOCH_STALE','AUTH_CLIENT_TYPE_MISMATCH','AUTH_REFRESH_REVOKED','AUTHORIZATION_DENIED','PROTOCOL_VERSION_UNSUPPORTED','USERNAME_ALREADY_EXISTS','USER_NOT_FOUND','FRIEND_SELF_NOT_ALLOWED','FRIENDSHIP_STATE_CONFLICT')
-    if (($globalCodes -join ',') -cne ($expectedCodes -join ',')) { $issues += 'shared error code registry differs from the canonical ordered set' }
+    if (($globalCodes -join ',') -cne ((@($expectedCodes) + @('GROUP_REQUEST_CONFLICT')) -join ',')) { $issues += 'shared error code registry differs from the canonical ordered set' }
 
     if ((@($OpenApi.components.schemas.ClientType.enum) -join ',') -cne 'WEB,DESKTOP,MOBILE') { $issues += 'client type slots must be exactly WEB,DESKTOP,MOBILE' }
     foreach ($schemaName in @('LoginRequest','WebRefreshRequest','NativeRefreshRequest','Session','AuthResult','NormalizedUserPair','FriendshipResult')) {

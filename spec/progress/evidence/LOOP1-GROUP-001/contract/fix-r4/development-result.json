@@ -1,0 +1,46 @@
+{
+  "start": {
+    "data": {
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-Command",
+        "$ErrorActionPreference='Stop'; $env:PATH='C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python;'+$env:PATH; & 'C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe' -NoProfile -File tools/verify-loop1-ctrl-002.ps1 -Mode Development; exit $LASTEXITCODE"
+      ],
+      "command_id": "C-c4ded3b9-0965-4647-9703-147868c79f9d",
+      "cwd": ".",
+      "secret_redaction_applied": false
+    },
+    "event_hash": "f354b4a9ffd8aa997f231c7f88a61624c6e2edba28a86f3695a02a95d1ed78c7",
+    "event_type": "command_started",
+    "previous_event_hash": "ebabcd6ff76c26b3640a265912d9ebd2239690f1ab747b38e0ad214cb80fdc82",
+    "role": "fix",
+    "run_id": "R-GROUP-FIX-R4-20261018",
+    "schema_version": "1.0.0",
+    "seq": 123,
+    "task_id": "LOOP1-GROUP-001",
+    "timestamp": "2026-10-18T10:04:40.546819Z"
+  },
+  "finish": {
+    "data": {
+      "command_id": "C-c4ded3b9-0965-4647-9703-147868c79f9d",
+      "duration_ms": 24266.0,
+      "exit_code": 0,
+      "result": "PASS",
+      "secret_redaction_applied": false,
+      "stderr_blob": "blobs/C-c4ded3b9-0965-4647-9703-147868c79f9d.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_blob": "blobs/C-c4ded3b9-0965-4647-9703-147868c79f9d.stdout.txt",
+      "stdout_sha256": "5531649062248abbde8dfe54c9d65757910f596ed6a13ae6ac15f7f08157b03e"
+    },
+    "event_hash": "be70dcf0216909044e12f8e469ef156712a98b8304701e8c55c56b7079dfee49",
+    "event_type": "command_finished",
+    "previous_event_hash": "f354b4a9ffd8aa997f231c7f88a61624c6e2edba28a86f3695a02a95d1ed78c7",
+    "role": "fix",
+    "run_id": "R-GROUP-FIX-R4-20261018",
+    "schema_version": "1.0.0",
+    "seq": 124,
+    "task_id": "LOOP1-GROUP-001",
+    "timestamp": "2026-10-18T10:05:04.881910Z"
+  }
+}

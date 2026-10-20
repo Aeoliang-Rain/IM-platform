@@ -1,0 +1,628 @@
+{
+  "result": "LOCAL_REPAIR_VERIFIED_PG_AND_FINALIZATION_PENDING",
+  "parent_sha": "462431a45d60d1de0449a35b2fcf698a894d664b",
+  "formal_red": {
+    "methods": 6,
+    "subtest_failures": 14,
+    "exit_code": 1,
+    "elapsed_seconds": 88.838
+  },
+  "formal_final_28": {
+    "actual_discovered_methods": 28,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "elapsed_seconds": 57.54699999999866,
+    "child_process_observations": 44,
+    "result": "PASS_LOCAL_ONLY"
+  },
+  "group_fixtures": [
+    35,
+    30
+  ],
+  "auth": {
+    "error_codes": 16,
+    "positive": 6,
+    "negative": 21,
+    "mutation_regressions": 15,
+    "exit_code": 0
+  },
+  "runtime": {
+    "go": {
+      "case": "go-smoke",
+      "attempt": 2,
+      "pid": 54296,
+      "started_at": "2026-10-20T08:49:11.912985+00:00",
+      "started_unix": 1792486151,
+      "command": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\infrastructure\\smoke.ps1",
+        "-Profile",
+        "go"
+      ],
+      "state": "FINISHED",
+      "before_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+      "exit_code": 0,
+      "elapsed_seconds": 14.735000000000582,
+      "engine": "29.5.2 linux",
+      "owned_projects": [
+        "im-infra-smoke-go-54296"
+      ],
+      "cleanup": {
+        "im-infra-smoke-go-54296": {
+          "containers": [],
+          "volumes": []
+        }
+      },
+      "preexisting_containers_unchanged": true,
+      "after_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "raw": {
+        "go-smoke-a2.stdout.log": {
+          "sha256": "66924dbd515837380ab72fa1bc89cf306c5eca4767ebc11dbb3a30fe2a5ba5f2",
+          "bytes": 126
+        },
+        "go-smoke-a2.stderr.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    "java": {
+      "case": "java-smoke",
+      "attempt": 1,
+      "pid": 55280,
+      "started_at": "2026-10-20T08:49:51.434670+00:00",
+      "started_unix": 1792486191,
+      "command": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\infrastructure\\smoke.ps1",
+        "-Profile",
+        "java"
+      ],
+      "state": "FINISHED",
+      "before_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+      "exit_code": 0,
+      "elapsed_seconds": 12.514999999999418,
+      "engine": "29.5.2 linux",
+      "owned_projects": [
+        "im-infra-smoke-java-55280"
+      ],
+      "cleanup": {
+        "im-infra-smoke-java-55280": {
+          "containers": [],
+          "volumes": []
+        }
+      },
+      "preexisting_containers_unchanged": true,
+      "after_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "raw": {
+        "java-smoke.stdout.log": {
+          "sha256": "6adf1b84cfaf02665a2a8ad4f1e3731545069085d0900f86746695eb120a1f96",
+          "bytes": 128
+        },
+        "java-smoke.stderr.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    "go_tls": {
+      "case": "go-e2e",
+      "attempt": 1,
+      "pid": 55564,
+      "started_at": "2026-10-20T08:50:24.838673+00:00",
+      "started_unix": 1792486224,
+      "command": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-Xutf8",
+        "-B",
+        "H:\\.codex\\worktrees\\group\\IM-platform\\tests\\e2e\\go_tls_messaging.py"
+      ],
+      "state": "FINISHED",
+      "before_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "private_config_qualification": "generated disposable secrets are not evidence and are not printed/copied",
+      "exit_code": 0,
+      "elapsed_seconds": 31.21900000000096,
+      "engine": "29.5.2 linux",
+      "owned_projects": [
+        "im-s1-e2e-55564-73dd11dd"
+      ],
+      "cleanup": {
+        "im-s1-e2e-55564-73dd11dd": {
+          "containers": [],
+          "volumes": []
+        }
+      },
+      "preexisting_containers_unchanged": true,
+      "after_containers": {
+        "7e6c91c4526df4c5c415eba84fe895ef5cf1bf355d91562641dc58288219735c": [
+          "dsm-etl-postgres",
+          "exited"
+        ],
+        "a3feb1d46819a9dcb52613019d41aa8567550a49fedd89aa69ef578e992f22cd": [
+          "im-gui-product-20261004-52804-tls-go-1",
+          "exited"
+        ],
+        "ccf0be26f060179e94f27ebe8c72409a426ed577b0dda6fa91ac201f9d92f33c": [
+          "im-gui-product-20261004-52804-core-go-1",
+          "exited"
+        ],
+        "84c84261ac8873dbfe2aaed6f8571e0731853a1c4995fe6af1deee6a17ca1b1b": [
+          "im-gui-product-20261004-52804-gateway-go-1",
+          "exited"
+        ],
+        "5cf17ddee10ae5c799c1ebff53df3fe30862293d8a8c7b161fa8dfe66dc10d1f": [
+          "im-gui-product-20261004-52804-plugin-host-go-1",
+          "exited"
+        ],
+        "1f8f2c6aa81ecdfed81e74617dcca514b37d1f228b68ee38907f70151f52c4fb": [
+          "im-gui-product-20261004-52804-migrate-1",
+          "exited"
+        ],
+        "c4c3eb2df772b901a4dc50d88d987b082fecc954ee2877df3ffe258b1351b750": [
+          "im-gui-product-20261004-52804-postgres-1",
+          "exited"
+        ],
+        "1e875292aa00de30ec5d729b6063e9595ae2d470c8754aa9ecca597c49cf8131": [
+          "im-gui-product-20261004-52804-nats-1",
+          "exited"
+        ],
+        "d607a4d7781574c21465c394d55f7170b1d81f3476d190aeef16c3b3d7a059f4": [
+          "naiwa-house-web-1",
+          "running"
+        ],
+        "c6faffe9145cfcfd51b0e38fc662c9dde21f50ae49ee97407dccfc6e4570c77c": [
+          "naiwa-house-gateway-1",
+          "running"
+        ],
+        "615a5967f11a65ded6abbe6e5a8398bedb6cf50a91c44e6ac16d3e05f2f065ba": [
+          "naiwa-house-game-worker-1",
+          "running"
+        ],
+        "85035316ef72427dcd8ec6aba43dbb120ed5a53c7a9126d37d0509f311a076ec": [
+          "naiwa-house-migrate-1",
+          "exited"
+        ],
+        "76796c445f60d2afd369213b07aff89f8b515aa9bf1755a46a35c4864cdbf873": [
+          "naiwa-house-mysql-1",
+          "running"
+        ],
+        "de44379417b4bbc5ae7e83e82e2d0677d5d200a2af956130a215f04cd8df019f": [
+          "naiwa-house-coturn-1",
+          "running"
+        ],
+        "e5b1c58fd1d8c723ec4534063193e96cb82d0e500b5e5944a1ee7c4e0e7c6b68": [
+          "naiwa-house-prometheus-1",
+          "running"
+        ],
+        "a95292f2b41a37e105b3679ec7ef17eeb872c632e7f20dfbeb453004c53e9590": [
+          "oracle",
+          "exited"
+        ],
+        "91b60f551d8645e81666fd2aa3b394ea9d1eb682ad59e4f0f15ed1a79f878e0d": [
+          "shopping-pg",
+          "exited"
+        ],
+        "2ea98b9b7f69952f7bb9efe5dcfa59a462b6f56f7b2f4229639ebb616aad96da": [
+          "shopping-backend",
+          "exited"
+        ],
+        "554043c948274cbc840ef816e1f2d30862881361b00ef831ae2e5805a94a896b": [
+          "shopping-qdrant",
+          "exited"
+        ]
+      },
+      "raw": {
+        "go-e2e.stdout.log": {
+          "sha256": "e98abfd99b9852ca66244b9ca543ac7f722908e02b1102e7c2bfad8d33e4085f",
+          "bytes": 570
+        },
+        "go-e2e.stderr.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    }
+  },
+  "pg": "PENDING: identity connection refused exit2 before any schema write; Coordinator restoring same owned instance; no PG PASS claimed",
+  "unchanged_group_old_methods": 22,
+  "new_methods": 6,
+  "old_sync_wss_plugin_exit": 0,
+  "baseline": "Frozen/planning/allarchitecture exit0;88architecture(skip1)/35CI(skip4) exit0 before and after fix",
+  "source_write_owner": "/root/group_contract_fix_r5",
+  "independent_reviews_hosted_integration_sync": "NEW PENDING",
+  "research": "prospective_resume/partial; final result intentionally FAIL for incomplete trace; structural validation remains pending",
+  "stage": "S2 OPEN",
+  "product": "G01..G09 PENDING"
+}
