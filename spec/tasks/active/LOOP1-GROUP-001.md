@@ -10,6 +10,18 @@ client_supplement_phase: group_product
 
 # Goal
 
+current_delivery: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
+backend_regular_review: NOT_STARTED_FRESH_STANDARDS_AND_SPEC_SAME_FINAL_SHA
+backend_error_handling_review: NOT_STARTED_DIFFERENT_FRESH_SPECIALIST_SAME_FINAL_SHA
+backend_pull_request: NOT_CREATED
+backend_main_sync: PENDING_NOT_PERFORMED_NOT_AUTHORIZED_THIS_ROUND
+backend_review_fixed_base: 79d39dcbd045597ccc5abd459edd388eed269254
+backend_review_spec_source: this_Task_and_latest_Human_backend_only_stop
+
+可恢复discovery（root完成实际审查/PR时外部写真实值，现在不虚构结果）：`C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/backend-go-pr-reviews.json`记录fresh regular/error同最终SHA状态/originalrefs；同目录`backend-go-pr-handoff.json`记录实际最终SHA、PR URL、已执行验证、CI仅触发未接受、main-sync PENDING与STOP_BY_HUMAN。恢复时跟随两文件读取实际最终状态，不为URL再追逐metadata SHA；文件尚未写入/结果缺失不算PASS。
+
+2026-10-20 Human最新停止点：“完成后端代码编写与审查并提交pr后停止工作”。当前交付只首Go四文件、真实群PG/wholeGo/race及本地证据。11个群事务/链路核心主方法及追加IO/当前Auth两个主方法实际共13新增（另保留原500成员方法）；完整Go71主方法/250含子项零failure/skip。root先委派fresh后端窄scope常规Review（Standards+Spec），再different fresh错误处理专项；同一最终SHA两项PASS才可push并创建新的后端PR，创建后按Human停止，不merge、不main-sync、不Taskdone。任何fix后的最终SHA两审重做。下列完整GROUP/三端/G01..G09目标仍未接受，Task active/group_product、S2 OPEN；旧段“接续三端”属于此前计划，已被本停止点明确取代，不启动三端或新runtime。
+
 创建者从自己的好友列表选人，创建GROUP会话并自动加入；任意有效群成员均可从本人的好友列表选择新成员加入当前群，好友资格仅针对本次操作者校验。补齐Web/Desktop/Mobile群会话入口、成员与发言者身份展示；复用现有发送、成员鉴权、seq、幂等、ACK、Outbox、分发和Sync，新文案接入现有i18n。依赖I18N及本规划正式接受，位于I18N后/S2 Gate前。2026-10-18 Human 新请求恢复下一任务；依赖核验通过后先交付独立公共契约切片。
 
 # Inputs
@@ -132,7 +144,7 @@ client_runtime: Android
 接受链原件由seal逐path/bytes/hash绑定：contract-r6-reviews.json、regularR7/errorR4 receipts、candidate hosted auditor/bindings、protected-integration、actual-main auditor/bindings、contract-r6-acceptance.json、preservation-before-sync及contract-r6-main-sync.json。safe sync全部8检查PASS，H:/IM-platform SHA79；782未知文件含2tracked、recovery/s1-handoff-20261001分支与无关index flags/entries保持。当前assigned managedroot `H:/.codex/worktrees/group/IM-platform`、branch `task/LOOP1-GROUP-001`已ff-only到同79/同tree；未复制main未知工作。新last known good为已接受/同步首契约main79；不代表群产品已接受。
 
 product_owner: /root/group_product_impl_r2
-product_registration: PHASE2_GO_LOCAL_VERIFIED_PENDING_SERIAL_HANDOFF
+product_registration: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
 product_G01_G09: NOT_RUN
 product_regular_review: NOT_STARTED
 product_error_handling_review: NOT_STARTED
@@ -241,6 +253,8 @@ main_sync_evidence: unavailable
 
 # Handoff
 
+2026-10-20 HUMAN_BACKEND_PR_ONLY：在Go source e145cc1b及一次handoff metadata c20cdbde已经提交、各自clean Control实际0之后收到上述Human收窄；仅本Task/current做最小scope提交恢复停止点，四Go实测hash与原测试/证据不变。当前把实际最终HEAD/ancestry/最后clean Control与Recorder闭合留OUT sealedreceipt，root独立读回后只推进后端fresh双审→新PR→停止。未同步main明确PENDING；产品Review/G/三端/Architect/hosted/受保护集成仍未完成，不因本地Go或PR创建接受完整GROUP。后文任何“root下一client/三端grant”只为旧计划历史，当前禁止继续执行。
+
 2026-10-20 FINAL_GO_HANDOFF：首Go source commit e145cc1b8f6f1304da86f3da4c41fbdc2ed60569（parent79、tree dd126ea6448cc721f4b976f9cb58a36587ce32a0）；已实际clean committed Control Acceptance exit0/native28.718s，status_entries0。四Go rawhash保持最终普通/race测试绑定。当前仅一次metadata/evidence handoff commit补此实际SHA与研究闭合；其最终HEAD/parent、最后clean Acceptance/全路径/保护证明由外部sealed finalreceipt提供，不递归追逐SHA。
 
 Recorder R-GROUP-PRODUCT-R2-GO-20261020实际finish FAIL/exit0、direct validate exit0；139events、67 command_started/67 command_finished、无unmatched，trace未编辑。partial缺口与闭合后的这一metadata/Control/封存tail已提前显式声明，后段真实CLI原件另存，不伪装继续sealed run。ci单一313cache初始不存在/创建时间位于本轮Control，nested Frozen首调用无-B；用实际Control Python3.13.14核magic/header/源code对象相等后，保存原pyc只精确清理该文件与空目录。最初3.12错比较和其他probe FAIL保留；未stage/改CI source。后续Control只childenv PYTHONDONTWRITEBYTECODE=1。完整事实见product/go/handoff.json、handoff-originals.zip与handoff-manifest.json。以下“待提交/将finish”是各段初建时点历史；当前accepted LKG/main仍79，产品review/hosted/sync/G不接受。
@@ -284,7 +298,7 @@ R3原receipt b083da01148b5cef0b496913358d92efe973e353aee646fdf9b8ec198d046ed7/re
 
 # Next Action
 
-首契约已独立接受/同步；首Go source e145cc1b及本地普通/race/clean Control已验证，own资源已清，Recorder实际honest partial FAIL闭合/direct validate0。完成唯一一次metadata handoff commit/最终clean Acceptance与OUT sealedreceipt后release source lease，root独立核最终实际HEAD/全部changedpaths/19042保护，再串行grant三端writer按既定scope/CLI/完整G继续。完整产品最终SHA fresh常规→different fresh专项/Architect/hosted/protected/actual-main/安全同步仍PENDING，不done、S2 OPEN。
+BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR：完成本次最小Task/current停止点提交、最终clean Control/OUT sealedreceipt后release唯一source lease；root核实际最终SHA/全部changedpaths/19042保护，只委派fresh后端常规Standards+Spec→different fresh错误专项。同finalSHA两项PASS后push并创建新后端PR，创建后立即按Human停止。不merge/main-sync/Taskdone，不启动三端/新runtime；完整GROUP及G01..G09未接受、S2 OPEN。首契约接受及本地Go结果不替代本次后端独立Review。
 
 Historical pre-seal R6 next action retained: Coordinator先核新contract-fix-r6/final-receipt实际单commit SHA/clean/ownedblobs/Development/clean committedAcceptance/Recorder direct closure与lease RELEASED；NEW fresh regularR7→DIFFERENT NEW fresh错误专项R4同finalSHA，任一Fix两项重审。两项都PASS才publication/exact-head hosted/protected integration/actual-main/安全主目录同步；首契约接受seal前不实施产品、不done、S2 OPEN。
 
