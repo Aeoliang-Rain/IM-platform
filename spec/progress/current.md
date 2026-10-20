@@ -12,8 +12,8 @@ Execution Status: active
 
 Current Delivery: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
 Human Stop Point: 完成后端代码编写与审查并提交新PR后停止；不merge/main-sync/Taskdone，不启动三端/新runtime。
-Backend Regular Review: NOT_STARTED fresh Standards+Spec on final backend SHA
-Backend Error Review: NOT_STARTED different fresh specialist on same final SHA
+Backend Regular Review: R1 FAIL at bda9a962 (Standards0/Spec1 P2-001); UTF-8 fixed, NEW fresh Standards+Spec PENDING final Fix SHA
+Backend Error Review: DIFFERENT NEW fresh specialist PENDING same final Fix SHA after new regular PASS
 Backend PR: NOT_CREATED
 Backend Main Sync: PENDING_NOT_PERFORMED
 Backend Review Fixed Base: 79d39dcbd045597ccc5abd459edd388eed269254
@@ -22,6 +22,8 @@ Backend Review Spec Source: 当前Task及Human最新backend-only停止点
 Backend Discovery: `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/backend-go-pr-reviews.json`与同目录`backend-go-pr-handoff.json`。root在实际完成fresh双审/PR时写最终同SHA与originalrefs/PR URL/验证/CI仅触发未接受/main-sync PENDING/STOP_BY_HUMAN；恢复跟随实际文件，不虚构尚未发生结果、不为URL再追逐SHA。
 
 ## Immediately Relevant Completed Work
+
+Backend Fix R1 repairs the sole regular Spec P2 malformed-UTF8 precedence finding with a standard-library check and actual raw-byte HTTP regression on both routes. Original probe and formal regression are genuinely RED→GREEN. Whole Go normal/race each72 main/265 including subtests/70 Group, zero test failures/skips; each two no-test packages. Own schema/NATS cleaned and nonown preservation PASS; source frozen for a single final commit. New double review/PR acceptance is not inferred. Details: `spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r1/report.md`. Older owner/next-action paragraphs below are historical.
 
 首契约candidate82a37fad256ef9ffb69bf5940d296b251cf7266d经fresh regularR7/different errorR4、push39412332412/PR39412340073/actualmain39414268672各14真实必需jobs接受，PR44实际main79d39dcbd045597ccc5abd459edd388eed269254安全同步八检查PASS，782unknown含2tracked/原recovery分支/index保持。seal SHAab4485bf4f50accfc0ac5f975d0acee0237820565c0d326174c11d35e78c3d93，完整原件链由Task引用；不等于群产品完成。
 
@@ -36,6 +38,13 @@ Human随后明确收窄为后端审查/新PR后停止。上述一次handoff meta
 首Go已本地验证，当前只待后端fresh常规Standards+Spec、different fresh错误专项同finalSHA与新PR。PR创建后按Human停止；本轮未main-sync且不执行merge/同步/Taskdone。完整GROUP/三端/G01..G09、Architect及完整产品接受仍PENDING，不以本地/Recorder或PR替代。
 
 ## Verification
+
+- Command: `go test -count=1 -timeout=5m -json ./...`
+  - Result: new fixed source, actual owned PG/NATS, native0/21.750s;72 main/265 with subtests/70 Group, zero test failure/skip, two no-test packages.
+  - Evidence: `spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r1/local-verification.json`
+- Command: `go test -race -count=1 -timeout=5m -json ./...`
+  - Result: same frozen source and owned resources, native0/100.031s; same72/265/70 and zero test failure/skip, two no-test packages. Actual raw-byte HTTP formal RED four encoding failures/eight controls→GREEN15/no skip. Frozen/planning/architecture and group29/old contracts all0; baseline architecture88(skip1)/CI35(skip4).
+  - Evidence: `spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r1/local-verification.json`
 
 首Go最终`go test -count=1 -timeout=5m -json ./...`与`go test -race -count=1 -timeout=5m -json ./...`在own PG/NATS实际exit0，native21.375s/92.156s，各71主方法/250含子项PASS、零failure/skip。14个TestGroup主方法含原500成员消息方法1个，新增13主方法；55群含子项。13项Frozen/planning/architecture/contract/Development回归exit0（88architecture/skip1、35CI/skip4、29群契约零skip）。见`spec/progress/evidence/LOOP1-GROUP-001/product/go/report.md`及其JSON/raw ZIP。以下R6命令/失败均为已接受首契约历史local记录，完整hosted接受由上方seal承担。
 
@@ -53,9 +62,13 @@ Frozen/planning/architecture启动及最终均exit0，最终88architecture(skip1
 
 ## Changed Files or Migrations
 
+Fix R1 changes only group.go original UTF-8 validation, one actual HTTP regression in group_test.go, Task/current and new `product/go/fix-r1/` evidence. Existing http.go/social.go and all prior20-path evidence/authority/client/CI bytes remain.
+
 本phase完成core/group.go、group_test.go、http.go三个公开路由与social.go现事件窄提取，Task/current及新group checkpoint/product证据。首契约五件portable原件已逐hash原byte复制到product/activation。无公共contract/0001/0002/本地schema/native/旧测试/旧sealed改动。
 
 ## Known Failures, Risks, and Assumptions
+
+Fix R1 retains original rg WinError5/unmatched Recorder start, shell escaping check error, default worktree PermissionError and pg_ctl status3. Privileged same-instance status0 required no restart; status3 cause is unavailable. Recorder partial/honest FAIL and final clean Control/actual commit are externally sealed, never acceptance.2 leftover Outbox rows of unavailable origin existed only in own schema before its verified drop.
 
 Go Recorder已实际finish FAIL/exit0、direct validate exit0，139events/67start/67finish/0unmatched；提前声明partial及postclosure metadata/Control/封存tail，未编辑trace。ci唯一313cache已用实际Control Python3.13.14核header/code对象/初始缺席/本轮创建时段与nested no-B producer，保存原件后仅精确自清；最初3.12错比较/probe FAIL保留，未stage/改CI source。后续Control只child PYTHONDONTWRITEBYTECODE=1。见product/go/handoff.json和late原件包；下文“将finish”仅初建时点历史。
 
@@ -67,7 +80,7 @@ Recorder R-GROUP-FIX-R6-20261020 prospective_resume/partial：startup、外部he
 
 ## Next Exact Action
 
-完成本次仅Task/current停止点scope commit、最终clean Control/OUT sealedreceipt后release source lease。root核实际finalHEAD/source e145cc1b/metadata ancestry/20路径与19042保护，fresh后端常规Standards+Spec→different fresh错误专项，同finalSHA两PASS后push并创建新后端PR，然后停止。不merge/main-sync/Taskdone，不继续三端/新runtime；own PG/NATS均已清、root PG保留，S2 OPEN。
+Root independently binds `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/backend-go-fix-r1/final-receipt.json` actual final Fix SHA/source/clean Control and released leases → wholly new Standards+Spec regular → different fresh error specialist on same SHA. Only two PASS permit push/new backend PR; stop after PR creation per Human. No CI wait/merge/main-sync/Taskdone or client continuation. S2 OPEN/active/group_product; accepted LKG/main79 remains.
 
 ## Last Known Good Commit
 
@@ -79,8 +92,10 @@ Recorder R-GROUP-FIX-R6-20261020 prospective_resume/partial：startup、外部he
 
 ## Uncommitted Changes / Ownership
 
-唯一source writer `/root/group_product_impl_r2`，exactroot H:/.codex/worktrees/group/IM-platform，branch task/LOOP1-GROUP-001；source e145cc1b和handoff c20cdbde已提交，现仅按Human新停止点更新Task/current，之后最终Control/sealedrelease。main未知工作不读取/采纳/覆盖，尚无push/新PR/CI/merge/main-sync。最终HEAD/无未提交工作由OUT receipt实际确认。
+Fix R1 sole writer `/root/backend_go_fix_r1`, assigned exactroot H:/.codex/worktrees/group/IM-platform, branch task/LOOP1-GROUP-001; only two Go files, Task/current and new thin fix evidence owned here. Single final commit/clean state/source/runtime lease RELEASED are determined from external sealed `backend-go-fix-r1/final-receipt.json`; no unknown main work is copied or modified. No push/PR/merge/sync by Fix owner.
 
 ## Architecture Conflicts / ACP / ADR
 
 无新增架构/技术/公共contract。Go Core拥有群事务/HTTP/快照，现事件helper保留旧friend revision1；群revision用既有单调cursor。稳定NO KEY UPDATE兼容现FK锁图，test-only现pgx frontend IO不改TLS/SASL/生产hook/依赖。未知主/cleanup/commit/response IO cause正常传播；ACK/security/兼容/原schema/native职责保持。产品独立接受仍PENDING。
+
+Development Control actual native0/29.11s; non-acceptance output. Clean committed Control/final SHA are sealed externally after the single commit; fresh reviews still PENDING.

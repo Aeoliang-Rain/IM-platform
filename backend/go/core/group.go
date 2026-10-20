@@ -14,6 +14,7 @@ import (
 	"sort"
 	"strconv"
 	"time"
+	"unicode/utf8"
 
 	"github.com/jackc/pgx/v5"
 )
@@ -104,7 +105,7 @@ func groupDenied() error  { return fail(403, "AUTHORIZATION_DENIED", "Group acce
 // Decode one bounded JSON object without accepting duplicate keys. Non-object
 // JSON remains a shape error checked after authentication.
 func groupObject(body []byte) (map[string]json.RawMessage, error) {
-	if !json.Valid(body) {
+	if !utf8.Valid(body) || !json.Valid(body) {
 		return nil, groupInvalid()
 	}
 	d := json.NewDecoder(bytes.NewReader(body))

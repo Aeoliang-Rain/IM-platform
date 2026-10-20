@@ -226,6 +226,63 @@ func (f *groupFixture) effects() []int {
 	return out
 }
 
+func TestGroupHTTPJSONEncodingPrecedence(t *testing.T) {
+	server := httptest.NewServer(NewHandler(nil, []byte("group-http-input-test-key")))
+	t.Cleanup(server.Close)
+	id := groupUUID(t)
+	prefix := `{"requestId":"` + id + `","memberUserIds":["`
+	suffix := `"]}`
+	for _, route := range []struct{ name, path string }{
+		{"create", "/v1/groups"},
+		{"add", "/v1/groups/30000000-0000-4000-8000-000000000001/members"},
+	} {
+		t.Run(route.name, func(t *testing.T) {
+			for _, tc := range []struct {
+				name, body, code string
+				status           int
+				correlated       bool
+			}{
+				{"valid", prefix + "10000000-0000-4000-8000-000000000002" + suffix, "AUTH_REQUIRED", 401, true},
+				{"valid-unicode-before-shape", prefix + "é" + suffix, "AUTH_REQUIRED", 401, true},
+				{"non-object-before-shape", "null", "AUTH_REQUIRED", 401, false},
+				{"broken-json", `{"requestId":`, "VALIDATION_FAILED", 400, false},
+				{"invalid-utf8-ff", prefix + "\xff" + suffix, "VALIDATION_FAILED", 400, false},
+				{"invalid-utf8-c328", prefix + "\xc3\x28" + suffix, "VALIDATION_FAILED", 400, false},
+			} {
+				t.Run(tc.name, func(t *testing.T) {
+					r, err := http.NewRequest(http.MethodPost, server.URL+route.path, strings.NewReader(tc.body))
+					if err != nil {
+						t.Fatal(err)
+					}
+					r.Header.Set("Content-Type", "application/json")
+					response, err := server.Client().Do(r)
+					if err != nil {
+						t.Fatal(err)
+					}
+					body, readErr := io.ReadAll(response.Body)
+					closeErr := response.Body.Close()
+					if readErr != nil || closeErr != nil {
+						t.Fatal(errors.Join(readErr, closeErr))
+					}
+					var result struct {
+						RequestID string `json:"requestId"`
+						Error     struct {
+							Code string `json:"code"`
+						} `json:"error"`
+					}
+					if response.StatusCode != tc.status || json.Unmarshal(body, &result) != nil || result.Error.Code != tc.code ||
+						!groupID.MatchString(result.RequestID) || response.Header.Get("Cache-Control") != "no-store" {
+						t.Fatalf("HTTP %d %s, want %d/%s with UUID and no-store", response.StatusCode, body, tc.status, tc.code)
+					}
+					if (result.RequestID == id) != tc.correlated {
+						t.Fatalf("requestId correlation = %q, correlated = %t", result.RequestID, tc.correlated)
+					}
+				})
+			}
+		})
+	}
+}
+
 func TestGroupHTTPBoundariesAndAuthorization(t *testing.T) {
 	f := newGroupFixture(t, 4)
 	f.friend(0, 1)

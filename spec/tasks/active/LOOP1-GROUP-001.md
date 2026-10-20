@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/group_product_impl_r2
+owner: /root/backend_go_fix_r1
 stage: S2
 gate: S2
 client_supplement_phase: group_product
@@ -11,8 +11,8 @@ client_supplement_phase: group_product
 # Goal
 
 current_delivery: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
-backend_regular_review: NOT_STARTED_FRESH_STANDARDS_AND_SPEC_SAME_FINAL_SHA
-backend_error_handling_review: NOT_STARTED_DIFFERENT_FRESH_SPECIALIST_SAME_FINAL_SHA
+backend_regular_review: R1_FAIL_AT_bda9a962_SPEC_P2_001_FIXED_NEW_FRESH_REVIEW_PENDING_FINAL_FIX_SHA
+backend_error_handling_review: DIFFERENT_NEW_FRESH_SPECIALIST_PENDING_FINAL_FIX_SHA_AFTER_NEW_REGULAR_PASS
 backend_pull_request: NOT_CREATED
 backend_main_sync: PENDING_NOT_PERFORMED_NOT_AUTHORIZED_THIS_ROUND
 backend_review_fixed_base: 79d39dcbd045597ccc5abd459edd388eed269254
@@ -143,7 +143,7 @@ client_runtime: Android
 
 接受链原件由seal逐path/bytes/hash绑定：contract-r6-reviews.json、regularR7/errorR4 receipts、candidate hosted auditor/bindings、protected-integration、actual-main auditor/bindings、contract-r6-acceptance.json、preservation-before-sync及contract-r6-main-sync.json。safe sync全部8检查PASS，H:/IM-platform SHA79；782未知文件含2tracked、recovery/s1-handoff-20261001分支与无关index flags/entries保持。当前assigned managedroot `H:/.codex/worktrees/group/IM-platform`、branch `task/LOOP1-GROUP-001`已ff-only到同79/同tree；未复制main未知工作。新last known good为已接受/同步首契约main79；不代表群产品已接受。
 
-product_owner: /root/group_product_impl_r2
+product_owner: /root/backend_go_fix_r1
 product_registration: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
 product_G01_G09: NOT_RUN
 product_regular_review: NOT_STARTED
@@ -251,7 +251,17 @@ independent_review_evidence: unavailable
 hosted_acceptance_evidence: unavailable
 main_sync_evidence: unavailable
 
+# Backend UTF-8 Fix R1 Local Outcome
+
+Fresh Fix owner `/root/backend_go_fix_r1` recovered exact assigned root/branch/clean `bda9a962d68222b9509d7697e38a6d02862c9e7a`, read frozen authority and completed all five baselines before writes. R1 regular FAIL has exactly one confirmed P2 (Standards0/Spec1), and284 sealed original artifacts match. Minimal repair only adds original-byte UTF-8 validation in existing `groupObject`; post-authentication shape order, requestId/no-store and all transactions/locks/pagination remain. Both actual HTTP routes have FF/C3-28 regressions and validJSON/Unicode/non-object/bad-syntax controls: original probe RED1→GREEN0; formal RED has four encoding case failures/eight passing controls, GREEN15 results/no skips. Old tests/helpers and19058 other tracked files/index are protected.
+
+Final-source whole Go ordinary21.750s/race100.031s native0 each:72 main/265 including subtests/70 Group, no test failure/skip; two packages have no test files. Frozen/planning/all-architecture plus group35valid30invalid/29methods zero skip and old Auth/Sync/WSS/Plugin native0; startup architecture88(skip1)/CI35(skip4) remain explicit. Own schema/NATS cleaned with nonown preservation PASS, PG49572 and path-only passfile retained;2 residual Outbox rows of unavailable origin were removed only with own schema. Details/raw inputs/commands/failures: `spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r1/local-verification.json` and `report.md`/new archive. Development, single commit, clean committed Control and actual final SHA are sealed externally at `C:\Users\21441\.codex\visualizations\2026\10\18\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\backend-go-fix-r1/final-receipt.json`; no recursive self-SHA metadata commit.
+
+Recorder prospective_resume/partial actually finished FAIL (finish CLI0), direct structural validate0;95events/45starts/44finishes/one unmatched rg launch. No trace edits or fabricated finish. Packaging/commit/clean Control/sealing are explicit postclosure tail. Original shell-escape/default-write/pg_ctl status3 failures remain; same-instance privileged PG status0 required no restart and status3 cause is unavailable. New final SHA requires wholly fresh regular then different fresh error specialist. Both are NEW PENDING, hosted not accepted, PR not created by Fix owner, main-sync PENDING; GROUP active/group_product, S2 OPEN and accepted LKG/main `79d39dcbd045597ccc5abd459edd388eed269254`. Root may push/new PR only after both reviews PASS, then STOP per Human; no merge/main-sync/Taskdone/client continuation.
+
 # Handoff
+
+Backend Fix R1 supersedes the historical implementation next-action text: follow the sealed external fix receipt, verify the single final commit/clean state, and perform NEW regular→different NEW error review before new backend PR; stop after PR creation. Full GROUP acceptance remains pending.
 
 2026-10-20 HUMAN_BACKEND_PR_ONLY：在Go source e145cc1b及一次handoff metadata c20cdbde已经提交、各自clean Control实际0之后收到上述Human收窄；仅本Task/current做最小scope提交恢复停止点，四Go实测hash与原测试/证据不变。当前把实际最终HEAD/ancestry/最后clean Control与Recorder闭合留OUT sealedreceipt，root独立读回后只推进后端fresh双审→新PR→停止。未同步main明确PENDING；产品Review/G/三端/Architect/hosted/受保护集成仍未完成，不因本地Go或PR创建接受完整GROUP。后文任何“root下一client/三端grant”只为旧计划历史，当前禁止继续执行。
 
@@ -297,6 +307,8 @@ main_sync: PENDING
 R3原receipt b083da01148b5cef0b496913358d92efe973e353aee646fdf9b8ec198d046ed7/report f507ea6507ea343e2d904f9f4bb15269ed91a06803712a4aebb2c5644841bcdb/646manifest d5826a824a29b2c7973c4ee536f1fdaf436b56525fad6c957cce8ab1aaab2297及Coordinator核验/phase1批准原件在新original-review-and-scope.zip逐字节绑定。新最终SHA/ownedblobs/lease只从外部 `C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-fix-r5/final-receipt.json`恢复，当前未封存；LKG6f不变。GROUPactive/group_product、S2OPEN、首契约freeze/Go/三端/G01..G09 PENDING。
 
 # Next Action
+
+Backend Fix R1 current next action: root binds external final-receipt.json actual final SHA/clean Control/protected source and obtains wholly new regular plus different fresh error review on that SHA; after both PASS publish new backend PR then STOP_BY_HUMAN. No merge/main-sync/Taskdone or clients.
 
 BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR：完成本次最小Task/current停止点提交、最终clean Control/OUT sealedreceipt后release唯一source lease；root核实际最终SHA/全部changedpaths/19042保护，只委派fresh后端常规Standards+Spec→different fresh错误专项。同finalSHA两项PASS后push并创建新后端PR，创建后立即按Human停止。不merge/main-sync/Taskdone，不启动三端/新runtime；完整GROUP及G01..G09未接受、S2 OPEN。首契约接受及本地Go结果不替代本次后端独立Review。
 
@@ -427,3 +439,5 @@ R6原报告SHA2569857fe7b7ae732bcdffc440e973e41df8e7b390d3b3af7befd147f702895f9f
 PHASE2精确拟写路径：contracts/database/migrate.py、tests/database/test_migrations.py、tests/e2e/go_tls_messaging.py、tests/contract/group/test_verification_failures.py、本active Task、spec/progress/current.md、仅新spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r6/**。保留Frozen/ADR/domain/invariants/acceptance、public schemas/errors/0001/0002/现两PS/原test_group.py22methods与35valid30invalid、原11DB方法、全部Go/clients/CI/Gate/旧sealed字节；不实现群产品。
 
 退出条件：两个原缺陷的当前直接边界真实拒绝、canonical正例及原检查保持；真实受控PG的status/up/down坏ledger零新效果，完整原11项加新DB回归实际运行；现shared discovery执行追加E2E回归；必要真实旧Go/Java smoke和strictTLS E2E保持，其owned资源清理并保存既有资源身份。Development/clean committed Acceptance、单fixcommit、source scope/字节保护、honest Recorder及外部report/manifest/ownedblobs/finalreceipt如实封存后释放lease。新最终SHA fresh常规→different fresh专项、hosted/protected integration/actual-main/安全主目录同步均NEW PENDING；禁止本writer push/PR/CI/merge/sync，首契约未接受、GROUP active/group_product、S2 OPEN，Go/三端/G01..G09尚未实施，不complete/done。
+
+Development Control actual native0/29.11s; non-acceptance output. Clean committed Control/final SHA are sealed externally after the single commit; fresh reviews still PENDING.

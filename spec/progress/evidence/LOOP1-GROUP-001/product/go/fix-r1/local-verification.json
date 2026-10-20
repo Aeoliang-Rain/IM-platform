@@ -1,0 +1,949 @@
+{
+  "result": "LOCAL_FIX_VERIFIED_NOT_INDEPENDENT_ACCEPTANCE",
+  "finding": "BACKEND-GO-SPEC-R1-P2-001",
+  "original_candidate": "bda9a962d68222b9509d7697e38a6d02862c9e7a",
+  "accepted_lkg_main": "79d39dcbd045597ccc5abd459edd388eed269254",
+  "branch": "task/LOOP1-GROUP-001",
+  "owner": "/root/backend_go_fix_r1",
+  "scope": [
+    "backend/go/core/group.go",
+    "backend/go/core/group_test.go",
+    "spec/tasks/active/LOOP1-GROUP-001.md",
+    "spec/progress/current.md",
+    "spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r1/**"
+  ],
+  "review_input": {
+    "result": "BOUND_REGULAR_FAIL_INPUTS",
+    "artifacts_checked": 284,
+    "references": [
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-regular-r1\\report.md",
+        "sha256": "0d909c6d40fc7e4ec8ed82bc27b6ca5e4e3325e97c212562c193e0b4d71d1e4f"
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-regular-r1\\final-receipt.json",
+        "sha256": "a39869725d0f84b3311ded56f4a7b714fa4818863a55a59d2ad381dece32f81b"
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-regular-r1\\artifact-bindings.json",
+        "sha256": "09d966dd9537d4e0ee2d20d399705d918dd666f66200001966f264c156b6e4d9"
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-regular-r1-coordinator-bindings.json",
+        "sha256": "222b0d84d2b433b5ee14bbca9c389764baa74602f78df13ee9251e5e8ecb8837"
+      },
+      {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-regular-r1\\spec-axis\\raw-http-probe.go",
+        "sha256": "d39f268b547832051119d2719501f4e1b7d3089a0043a7b286fcfe5359872b3c"
+      }
+    ]
+  },
+  "red_original_probe": {
+    "argv": [
+      "H:/go/bin/go.exe",
+      "-C",
+      "H:\\.codex\\worktrees\\group\\IM-platform\\backend\\go",
+      "run",
+      "-mod=readonly",
+      "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\raw-http-probe.go"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 17.281,
+    "tested_head": "bda9a962d68222b9509d7697e38a6d02862c9e7a",
+    "probe_candidate_label": "Historical original label; actual tested head is separately bound",
+    "stdout": "red-original-probe.stdout",
+    "stderr": "red-original-probe.stderr"
+  },
+  "green_original_probe": {
+    "argv": [
+      "H:/go/bin/go.exe",
+      "-C",
+      "H:\\.codex\\worktrees\\group\\IM-platform\\backend\\go",
+      "run",
+      "-mod=readonly",
+      "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\raw-http-probe.go"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 4.203,
+    "tested_head": "bda9a962d68222b9509d7697e38a6d02862c9e7a",
+    "probe_candidate_label": "Historical original label; actual tested head is separately bound",
+    "stdout": "green-original-probe.stdout",
+    "stderr": "green-original-probe.stderr"
+  },
+  "probe_identity_note": "The unchanged original program emits its historical bda candidate label; GREEN executes the uncommitted fixed source explicitly bound by both complete Go run source_hashes and scope proof. This label is not evidence of testing the old product tree after repair.",
+  "formal_red": {
+    "argv": [
+      "H:/go/bin/go.exe",
+      "test",
+      "-count=1",
+      "-timeout=1m",
+      "-run",
+      "^TestGroupHTTPJSONEncodingPrecedence$",
+      "-json",
+      "./core"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\group\\IM-platform\\backend\\go",
+    "exit_code": 1,
+    "elapsed_seconds": 6.813,
+    "stdout": "formal-red.stdout",
+    "stderr": "formal-red.stderr",
+    "test_passes": [
+      "TestGroupHTTPJSONEncodingPrecedence/create/valid",
+      "TestGroupHTTPJSONEncodingPrecedence/create/valid-unicode-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/create/non-object-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/create/broken-json",
+      "TestGroupHTTPJSONEncodingPrecedence/add/valid",
+      "TestGroupHTTPJSONEncodingPrecedence/add/valid-unicode-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/add/non-object-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/add/broken-json"
+    ],
+    "test_failures": [
+      "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-ff",
+      "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-c328",
+      "TestGroupHTTPJSONEncodingPrecedence/create",
+      "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-ff",
+      "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-c328",
+      "TestGroupHTTPJSONEncodingPrecedence/add",
+      "TestGroupHTTPJSONEncodingPrecedence"
+    ],
+    "test_skips": []
+  },
+  "formal_green": {
+    "argv": [
+      "H:/go/bin/go.exe",
+      "test",
+      "-count=1",
+      "-timeout=1m",
+      "-run",
+      "^TestGroupHTTPJSONEncodingPrecedence$",
+      "-json",
+      "./core"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\group\\IM-platform\\backend\\go",
+    "exit_code": 0,
+    "elapsed_seconds": 3.313,
+    "stdout": "formal-green.stdout",
+    "stderr": "formal-green.stderr",
+    "test_passes": [
+      "TestGroupHTTPJSONEncodingPrecedence/create/valid",
+      "TestGroupHTTPJSONEncodingPrecedence/create/valid-unicode-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/create/non-object-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/create/broken-json",
+      "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-ff",
+      "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-c328",
+      "TestGroupHTTPJSONEncodingPrecedence/create",
+      "TestGroupHTTPJSONEncodingPrecedence/add/valid",
+      "TestGroupHTTPJSONEncodingPrecedence/add/valid-unicode-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/add/non-object-before-shape",
+      "TestGroupHTTPJSONEncodingPrecedence/add/broken-json",
+      "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-ff",
+      "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-c328",
+      "TestGroupHTTPJSONEncodingPrecedence/add",
+      "TestGroupHTTPJSONEncodingPrecedence"
+    ],
+    "test_failures": [],
+    "test_skips": []
+  },
+  "go": [
+    {
+      "tag": "whole-normal",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "test",
+        "-count=1",
+        "-timeout=5m",
+        "-json",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform\\backend\\go",
+      "exit_code": 0,
+      "elapsed_seconds": 21.75,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\runtime-captures\\1792503448667215500-whole-normal.stdout",
+        "bytes": 227777,
+        "sha256": "39a9d05a823606655465260a1e76214e17587e3a5630d4e3defb7f932cd3bec8"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\runtime-captures\\1792503448667215500-whole-normal.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "passes": 265,
+      "main_methods": [
+        "TestConfigReadsExternalCredentialFiles",
+        "TestTokenTamperAndExpiry",
+        "TestFailedWebSocketWriteRetiresConnection",
+        "TestPrivateForwardUsesBoundBearerAndCanonicalFrame",
+        "TestOutboxBatchAndDispatcherDoNotDiscardClosedPoolFailure",
+        "TestUnsupportedInternalResponseDoesNotBecomeEmptySuccess",
+        "TestUnknownMessageCommitPreservesOriginalCause",
+        "TestGroupHTTPJSONEncodingPrecedence",
+        "TestLocalFanoutSelectsUserAndSuppressesOriginOnly",
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestRejectedRetryPreservesCommittedOrigin",
+        "TestUnknownCoreOutcomeHasNoRejectionAndKeepsOrigin",
+        "TestOriginAdmissionRetainsAuthenticationBoundary",
+        "TestWindowsOriginDoesNotPermitQueryCredentials",
+        "TestRevocationReasonDoesNotInventBusinessCause",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestPostgresRevocationReasonUsesExactCommittedIdentity",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestPostgresAuthSessionAndWSS",
+        "TestWatchDefaultPGXRefusalClosesWithoutRevocation",
+        "TestCanonicalAuthHTTPFixtures",
+        "TestCanonicalWSSPrebindFixturesAndMalformedRequestID",
+        "TestCanonicalWSSAuthSessionFixtures",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestWatchActualClosedPoolReturnsExactInternalRoot",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestWatchDefaultPGXInternalAndMixedRootsRemainFailures",
+        "TestWatchTransportClassificationKeepsEveryBranch",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestWatchKnownExpiryStillRevokes",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestCanonicalLiveMessageSendFixtures",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestMessageConcurrentIdentityAndSequence",
+        "TestMessageAuthorizationAndIndependentConversations",
+        "TestMessageRollbackAndACKAfterCommit",
+        "TestPostgresWatchInternalFailureEscapesActualGoroutine",
+        "TestCanonicalDuplicateOutOfOrderAndSyncRecovery",
+        "TestGroup500SingleLogicalMessageAndOutbox",
+        "TestNewMessageCommitUnknownClassification",
+        "TestMessageOutboxPublicationCanRepeatWithoutNewMessage",
+        "TestClosedNATSPublicationLeavesOutboxRetryable",
+        "TestOutboxMixedDefaultConnectErrorPropagates",
+        "TestOutboxInternalOnlyDefaultConnectErrorPropagates",
+        "TestServeJoinsInflightWatchBeforePoolClose",
+        "TestLiveConflictingRetryDelayedOrigin",
+        "TestOutboxAllNetworkDefaultConnectErrorsRetryUntilCancellation",
+        "TestOutboxCompleteTransportClassification",
+        "TestRevocationRollback",
+        "TestSocialAssemblyReuseAndRollback",
+        "TestSyncExactIntegerBounded",
+        "TestPublicSyncPaginationReplayAndLatest",
+        "TestPublicSyncValidationAuthAndIsolation",
+        "TestUserSyncCommittedPrefixAndAuthAfterWait",
+        "TestPublicSyncMalformedCorrelationAndAuthFailures",
+        "TestUserSyncSessionChangesDuringLockWait",
+        "TestPublicSyncSingleConnectionConcurrentReaders",
+        "TestSyncStreamingNumbersAndOriginalGrammar",
+        "TestPublicSyncArbitraryNumericLength",
+        "TestAuthorizedHistoryGapPages",
+        "TestHistoryRequiresPresentIntegerAfterSeq",
+        "TestPostgresRevocationFallbackWithoutNATS",
+        "TestPostgresFallbackExpiryAndDatabaseFailureClose",
+        "TestCanonicalSocialFixturesAndAtomicity",
+        "TestConcurrentReverseFriendAdd",
+        "TestSocialLoop1Applicability",
+        "TestSocialMutationRechecksSessionAfterUserLock"
+      ],
+      "group_passes": [
+        "TestGroupHTTPJSONEncodingPrecedence/create/valid",
+        "TestGroupHTTPJSONEncodingPrecedence/create/valid-unicode-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/create/non-object-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/create/broken-json",
+        "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-ff",
+        "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-c328",
+        "TestGroupHTTPJSONEncodingPrecedence/create",
+        "TestGroupHTTPJSONEncodingPrecedence/add/valid",
+        "TestGroupHTTPJSONEncodingPrecedence/add/valid-unicode-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/add/non-object-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/add/broken-json",
+        "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-ff",
+        "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-c328",
+        "TestGroupHTTPJSONEncodingPrecedence/add",
+        "TestGroupHTTPJSONEncodingPrecedence",
+        "TestGroupHTTPBoundariesAndAuthorization/malformed",
+        "TestGroupHTTPBoundariesAndAuthorization/media",
+        "TestGroupHTTPBoundariesAndAuthorization/query",
+        "TestGroupHTTPBoundariesAndAuthorization/forcequery",
+        "TestGroupHTTPBoundariesAndAuthorization/duplicate",
+        "TestGroupHTTPBoundariesAndAuthorization/oversize",
+        "TestGroupHTTPBoundariesAndAuthorization/auth-before-shape",
+        "TestGroupHTTPBoundariesAndAuthorization/missing",
+        "TestGroupHTTPBoundariesAndAuthorization/extra",
+        "TestGroupHTTPBoundariesAndAuthorization/empty",
+        "TestGroupHTTPBoundariesAndAuthorization/self",
+        "TestGroupHTTPBoundariesAndAuthorization/uppercase",
+        "TestGroupHTTPBoundariesAndAuthorization/wrong-array",
+        "TestGroupHTTPBoundariesAndAuthorization/nonfriend",
+        "TestGroupHTTPBoundariesAndAuthorization/nonexistent",
+        "TestGroupHTTPBoundariesAndAuthorization/bad-path",
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/conversation",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/member-first",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/member-later",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/receipt",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/sync-insert",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/sync-update",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/outbox",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/commit",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/member-first",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/member-later",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/receipt",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/sync-insert",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/sync-update",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/outbox",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/commit",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestGroupCommitBarrierAndSessionRevalidation/commit-is-not-response",
+        "TestGroupCommitBarrierAndSessionRevalidation/session-REVOKED",
+        "TestGroupCommitBarrierAndSessionRevalidation/session-EPOCH",
+        "TestGroupCommitBarrierAndSessionRevalidation/session-EXPIRED",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit/after=false",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit/after=true",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend/logout-Session-before-user-FK",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend/send-conversation-before-sender-FK",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix/new-member-requires-earlier-lock-retry",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix/UserSync-waits-for-whole-group-event-pair",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestGroup500SingleLogicalMessageAndOutbox"
+      ],
+      "failures": [],
+      "skips": [],
+      "source_hashes": {
+        "backend/go/core/group.go": "0f883f669b1b2dd82dfacef69adf279d886de986d9fcd7a9d1b0baa888ac9474",
+        "backend/go/core/group_test.go": "153bcd2204b7483762a96be2d97f46afba67318cc61be8f291e9aa62b8bfdb0e",
+        "backend/go/core/http.go": "f63b0772352e4ad105d4bb8123acfc692df0660ed23971a46552b4190fa589bd",
+        "backend/go/core/social.go": "8d94af6d02c86b6995cd837eb0f12ce14c8dca0f3bfb16d7468b94d74141b65c"
+      },
+      "owned_schema": "backend_go_fix_r1_c06713df5c3b4688",
+      "DB_TEST_ENABLE": "1",
+      "PGOPTIONS": "-c search_path=backend_go_fix_r1_c06713df5c3b4688",
+      "NATS_URL": "nats://127.0.0.1:60637"
+    },
+    {
+      "tag": "whole-race",
+      "argv": [
+        "H:/go/bin/go.exe",
+        "test",
+        "-race",
+        "-count=1",
+        "-timeout=5m",
+        "-json",
+        "./..."
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform\\backend\\go",
+      "exit_code": 0,
+      "elapsed_seconds": 100.031,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\runtime-captures\\1792503588008009800-whole-race.stdout",
+        "bytes": 227792,
+        "sha256": "2bd4430a966b93a0c6497004c13f54b1e0cd36286c534622b962d850f0345313"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\runtime-captures\\1792503588008009800-whole-race.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "passes": 265,
+      "main_methods": [
+        "TestConfigReadsExternalCredentialFiles",
+        "TestTokenTamperAndExpiry",
+        "TestFailedWebSocketWriteRetiresConnection",
+        "TestPrivateForwardUsesBoundBearerAndCanonicalFrame",
+        "TestLocalFanoutSelectsUserAndSuppressesOriginOnly",
+        "TestRejectedRetryPreservesCommittedOrigin",
+        "TestUnknownCoreOutcomeHasNoRejectionAndKeepsOrigin",
+        "TestOriginAdmissionRetainsAuthenticationBoundary",
+        "TestWindowsOriginDoesNotPermitQueryCredentials",
+        "TestRevocationReasonDoesNotInventBusinessCause",
+        "TestPostgresRevocationReasonUsesExactCommittedIdentity",
+        "TestOutboxBatchAndDispatcherDoNotDiscardClosedPoolFailure",
+        "TestUnsupportedInternalResponseDoesNotBecomeEmptySuccess",
+        "TestUnknownMessageCommitPreservesOriginalCause",
+        "TestGroupHTTPJSONEncodingPrecedence",
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestWatchDefaultPGXRefusalClosesWithoutRevocation",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestWatchActualClosedPoolReturnsExactInternalRoot",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestWatchDefaultPGXInternalAndMixedRootsRemainFailures",
+        "TestWatchTransportClassificationKeepsEveryBranch",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestPostgresAuthSessionAndWSS",
+        "TestWatchKnownExpiryStillRevokes",
+        "TestPostgresWatchInternalFailureEscapesActualGoroutine",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestMessageConcurrentIdentityAndSequence",
+        "TestMessageAuthorizationAndIndependentConversations",
+        "TestServeJoinsInflightWatchBeforePoolClose",
+        "TestMessageRollbackAndACKAfterCommit",
+        "TestGroup500SingleLogicalMessageAndOutbox",
+        "TestNewMessageCommitUnknownClassification",
+        "TestMessageOutboxPublicationCanRepeatWithoutNewMessage",
+        "TestClosedNATSPublicationLeavesOutboxRetryable",
+        "TestCanonicalAuthHTTPFixtures",
+        "TestOutboxMixedDefaultConnectErrorPropagates",
+        "TestCanonicalWSSPrebindFixturesAndMalformedRequestID",
+        "TestOutboxInternalOnlyDefaultConnectErrorPropagates",
+        "TestCanonicalWSSAuthSessionFixtures",
+        "TestOutboxAllNetworkDefaultConnectErrorsRetryUntilCancellation",
+        "TestOutboxCompleteTransportClassification",
+        "TestRevocationRollback",
+        "TestSocialAssemblyReuseAndRollback",
+        "TestSyncExactIntegerBounded",
+        "TestPublicSyncPaginationReplayAndLatest",
+        "TestPublicSyncValidationAuthAndIsolation",
+        "TestUserSyncCommittedPrefixAndAuthAfterWait",
+        "TestPublicSyncMalformedCorrelationAndAuthFailures",
+        "TestUserSyncSessionChangesDuringLockWait",
+        "TestPublicSyncSingleConnectionConcurrentReaders",
+        "TestSyncStreamingNumbersAndOriginalGrammar",
+        "TestPublicSyncArbitraryNumericLength",
+        "TestAuthorizedHistoryGapPages",
+        "TestHistoryRequiresPresentIntegerAfterSeq",
+        "TestCanonicalLiveMessageSendFixtures",
+        "TestCanonicalDuplicateOutOfOrderAndSyncRecovery",
+        "TestLiveConflictingRetryDelayedOrigin",
+        "TestPostgresRevocationFallbackWithoutNATS",
+        "TestPostgresFallbackExpiryAndDatabaseFailureClose",
+        "TestCanonicalSocialFixturesAndAtomicity",
+        "TestConcurrentReverseFriendAdd",
+        "TestSocialLoop1Applicability",
+        "TestSocialMutationRechecksSessionAfterUserLock"
+      ],
+      "group_passes": [
+        "TestGroupHTTPJSONEncodingPrecedence/create/valid",
+        "TestGroupHTTPJSONEncodingPrecedence/create/valid-unicode-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/create/non-object-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/create/broken-json",
+        "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-ff",
+        "TestGroupHTTPJSONEncodingPrecedence/create/invalid-utf8-c328",
+        "TestGroupHTTPJSONEncodingPrecedence/create",
+        "TestGroupHTTPJSONEncodingPrecedence/add/valid",
+        "TestGroupHTTPJSONEncodingPrecedence/add/valid-unicode-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/add/non-object-before-shape",
+        "TestGroupHTTPJSONEncodingPrecedence/add/broken-json",
+        "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-ff",
+        "TestGroupHTTPJSONEncodingPrecedence/add/invalid-utf8-c328",
+        "TestGroupHTTPJSONEncodingPrecedence/add",
+        "TestGroupHTTPJSONEncodingPrecedence",
+        "TestGroupHTTPBoundariesAndAuthorization/malformed",
+        "TestGroupHTTPBoundariesAndAuthorization/media",
+        "TestGroupHTTPBoundariesAndAuthorization/query",
+        "TestGroupHTTPBoundariesAndAuthorization/forcequery",
+        "TestGroupHTTPBoundariesAndAuthorization/duplicate",
+        "TestGroupHTTPBoundariesAndAuthorization/oversize",
+        "TestGroupHTTPBoundariesAndAuthorization/auth-before-shape",
+        "TestGroupHTTPBoundariesAndAuthorization/missing",
+        "TestGroupHTTPBoundariesAndAuthorization/extra",
+        "TestGroupHTTPBoundariesAndAuthorization/empty",
+        "TestGroupHTTPBoundariesAndAuthorization/self",
+        "TestGroupHTTPBoundariesAndAuthorization/uppercase",
+        "TestGroupHTTPBoundariesAndAuthorization/wrong-array",
+        "TestGroupHTTPBoundariesAndAuthorization/nonfriend",
+        "TestGroupHTTPBoundariesAndAuthorization/nonexistent",
+        "TestGroupHTTPBoundariesAndAuthorization/bad-path",
+        "TestGroupHTTPBoundariesAndAuthorization",
+        "TestGroupOriginalResultsCurrentAuthorizationAndEvents",
+        "TestGroupConcurrentIdentitiesAndMembership",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/conversation",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/member-first",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/member-later",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/receipt",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/sync-insert",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/sync-update",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/outbox",
+        "TestGroupEveryWriteAndDeferredCommitRollback/CREATE/commit",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/member-first",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/member-later",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/receipt",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/sync-insert",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/sync-update",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/outbox",
+        "TestGroupEveryWriteAndDeferredCommitRollback/ADD/commit",
+        "TestGroupEveryWriteAndDeferredCommitRollback",
+        "TestGroupCommitBarrierAndSessionRevalidation/commit-is-not-response",
+        "TestGroupCommitBarrierAndSessionRevalidation/session-REVOKED",
+        "TestGroupCommitBarrierAndSessionRevalidation/session-EPOCH",
+        "TestGroupCommitBarrierAndSessionRevalidation/session-EXPIRED",
+        "TestGroupCommitBarrierAndSessionRevalidation",
+        "TestGroupServerCommittedButReplyLost",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit/after=false",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit/after=true",
+        "TestGroupHTTPResponseLostBeforeAndAfterCommit",
+        "TestGroupSnapshotBeyondOneHundredAndFromStartRecovery",
+        "TestGroupUnknownAndCleanupErrorsPropagate",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend/logout-Session-before-user-FK",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend/send-conversation-before-sender-FK",
+        "TestGroupUserLockCompatibilityWithLogoutAndSend",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix/new-member-requires-earlier-lock-retry",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix/UserSync-waits-for-whole-group-event-pair",
+        "TestGroupRescansMembersBeforeLockingAndUserSyncCommittedPrefix",
+        "TestGroupResponseIOAndRealRollbackFailureKeepCauses",
+        "TestGroupHTTPCurrentAuthAndSnapshot",
+        "TestGroup500SingleLogicalMessageAndOutbox"
+      ],
+      "failures": [],
+      "skips": [],
+      "source_hashes": {
+        "backend/go/core/group.go": "0f883f669b1b2dd82dfacef69adf279d886de986d9fcd7a9d1b0baa888ac9474",
+        "backend/go/core/group_test.go": "153bcd2204b7483762a96be2d97f46afba67318cc61be8f291e9aa62b8bfdb0e",
+        "backend/go/core/http.go": "f63b0772352e4ad105d4bb8123acfc692df0660ed23971a46552b4190fa589bd",
+        "backend/go/core/social.go": "8d94af6d02c86b6995cd837eb0f12ce14c8dca0f3bfb16d7468b94d74141b65c"
+      },
+      "owned_schema": "backend_go_fix_r1_c06713df5c3b4688",
+      "DB_TEST_ENABLE": "1",
+      "PGOPTIONS": "-c search_path=backend_go_fix_r1_c06713df5c3b4688",
+      "NATS_URL": "nats://127.0.0.1:60637"
+    }
+  ],
+  "package_skips_without_test_files": {
+    "whole-normal": [
+      "im-platform/backend/go",
+      "im-platform/backend/go/plugin-host"
+    ],
+    "whole-race": [
+      "im-platform/backend/go",
+      "im-platform/backend/go/plugin-host"
+    ]
+  },
+  "baseline_architecture_tests": {
+    "methods": 88,
+    "existing_skips": 1
+  },
+  "baseline_ci_tests": {
+    "methods": 35,
+    "existing_skips": 4
+  },
+  "checks": [
+    {
+      "tag": "baseline-frozen",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.141,
+      "stdout": "baseline-frozen.stdout",
+      "stderr": "baseline-frozen.stderr"
+    },
+    {
+      "tag": "baseline-planning",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.141,
+      "stdout": "baseline-planning.stdout",
+      "stderr": "baseline-planning.stderr"
+    },
+    {
+      "tag": "baseline-architecture",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 1.406,
+      "stdout": "baseline-architecture.stdout",
+      "stderr": "baseline-architecture.stderr"
+    },
+    {
+      "tag": "baseline-architecture-tests",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/architecture"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 24.828,
+      "stdout": "baseline-architecture-tests.stdout",
+      "stderr": "baseline-architecture-tests.stderr"
+    },
+    {
+      "tag": "baseline-ci-tests",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ci"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 7.25,
+      "stdout": "baseline-ci-tests.stdout",
+      "stderr": "baseline-ci-tests.stderr"
+    },
+    {
+      "tag": "final-frozen",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_frozen_architecture.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.172,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\final-frozen.stdout",
+        "bytes": 163,
+        "sha256": "05640286aee656960091d45bd67f2cd2be6c8a9877f0cdc6c6824e8a6b07a38e"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\final-frozen.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "tag": "final-planning",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_s2_planning.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.156,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\final-planning.stdout",
+        "bytes": 76,
+        "sha256": "3df1e5253d74266b23647092f1519cf9376fb83445dd70df9bf0e01569fcc43f"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\final-planning.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "tag": "final-architecture",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "ci/check_architecture.py",
+        "--scope",
+        "all",
+        "--json"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 3.75,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\final-architecture.stdout",
+        "bytes": 273422,
+        "sha256": "28f6d014143e51e1ac31a3191eee0c655953c5e441ef607dfb569323d45cf0bb"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\final-architecture.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "tag": "group-contract",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "contracts/http/verify-group.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.515,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\group-contract.stdout",
+        "bytes": 135,
+        "sha256": "9f02c127e846062634008ce3875ebf52fd380ef27dab8f51decbe269fe69686a"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\group-contract.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "tag": "group-suite",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract/group",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 29.656,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\group-suite.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\group-suite.stderr",
+        "bytes": 5189,
+        "sha256": "86207b8bf743aeaaac720cc3ca36f6b2a83bbae067e1d5f9c86bb27ddc439658"
+      }
+    },
+    {
+      "tag": "auth-contract",
+      "argv": [
+        "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "contracts/http/verify-auth-user-friend.ps1"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 6.11,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\auth-contract.stdout",
+        "bytes": 183,
+        "sha256": "a29eedb2ce6529b48f9804329d16b5860a60efd6e04143c3832972ef179efb0e"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\auth-contract.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "tag": "sync-contract",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "tools/verify_sync_transport.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.172,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\sync-contract.stdout",
+        "bytes": 129,
+        "sha256": "7463263b065fa0355404d1dee5921d66c765e10ebc3c01452fe23c5c4fb95859"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\sync-contract.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "tag": "sync-suite",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contract",
+        "-p",
+        "test_sync_transport.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.172,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\sync-suite.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\sync-suite.stderr",
+        "bytes": 107,
+        "sha256": "c18c01fac4b0755f46af0f47f3f909f2ef9a6fae57f67897c1946afc84cce4e2"
+      }
+    },
+    {
+      "tag": "wss-contract",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "contracts/websocket/verify.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.109,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\wss-contract.stdout",
+        "bytes": 109,
+        "sha256": "4eb2bd895b7d0d6ff48c073898cc8eb117c642cfbf3c0e34477adc556e1dc78b"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\wss-contract.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "tag": "plugin-contract",
+      "argv": [
+        "C:\\Users\\21441\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-Xutf8",
+        "-B",
+        "contracts/plugin-api/verify.py"
+      ],
+      "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+      "exit_code": 0,
+      "elapsed_seconds": 0.078,
+      "stdout": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\plugin-contract.stdout",
+        "bytes": 133,
+        "sha256": "1ebc963302a2587a60c0685b89613c10d25d2e1ee37bf6eff5ba50173f41083f"
+      },
+      "stderr": {
+        "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\plugin-contract.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "scope_proof": {
+    "result": "SOURCE_AND_PROTECTED_BYTES_PASS",
+    "phase": "prestage",
+    "old_tracked_files": 19062,
+    "protected_old_tracked_files": 19058,
+    "protected_paths_excluded_only": [
+      "backend/go/core/group.go",
+      "backend/go/core/group_test.go",
+      "spec/progress/current.md",
+      "spec/tasks/active/LOOP1-GROUP-001.md"
+    ],
+    "actual_changed_old_paths": [
+      "backend/go/core/group.go",
+      "backend/go/core/group_test.go"
+    ],
+    "old_group_test_body_and_helpers_unchanged_after_removing_only_new_test": true,
+    "group_source_only_utf8_import_and_condition": true,
+    "source_matches_both_new_whole_go_runs": true,
+    "index_protection": true,
+    "git_root": "H:/.codex/worktrees/group/IM-platform",
+    "source_hashes": {
+      "backend/go/core/group.go": "0f883f669b1b2dd82dfacef69adf279d886de986d9fcd7a9d1b0baa888ac9474",
+      "backend/go/core/group_test.go": "153bcd2204b7483762a96be2d97f46afba67318cc61be8f291e9aa62b8bfdb0e"
+    }
+  },
+  "pg": {
+    "schema": "backend_go_fix_r1_c06713df5c3b4688",
+    "postmaster_pid_retained": 49572,
+    "cleaned": true,
+    "preservation_pass": true,
+    "counts_before_drop": {
+      "users": 0,
+      "sessions": 0,
+      "conversations": 0,
+      "members": 0,
+      "receipts": 0,
+      "user_sync_events": 0,
+      "outbox_events": 2,
+      "messages": 0
+    },
+    "residual_outbox_origin": "unavailable; own schema including both residual rows was dropped; no assertion that every legacy test fixture cleaned each row"
+  },
+  "nats": {
+    "id": "cea93cfa948205563dcee448c83c81b4e952661898565a94f2dc9493f2ece15e",
+    "url": "nats://127.0.0.1:60637",
+    "cleaned": true,
+    "preservation_pass": true,
+    "comparison_rules": "Complete public identity/image/labels/state/ports/mount records and volumes; container/mount/volume order normalized; only natural Health.Log Start/End omitted. Raw complete snapshots retained."
+  },
+  "research": {
+    "run_id": "R-BACKEND-GO-FIX-R1-20261020",
+    "finish_result": "FAIL",
+    "finish_cli_exit": 0,
+    "direct_structural_validate_exit": 0,
+    "validate_output": "{\"event_count\": 95, \"run_id\": \"R-BACKEND-GO-FIX-R1-20261020\", \"status\": \"finished\"}",
+    "events": 95,
+    "command_started": 45,
+    "command_finished": 44,
+    "unmatched_command_ids": [
+      "C-d2a0be7c-d5f1-4006-82b8-f3df944ca657"
+    ],
+    "capture_mode": "prospective_resume_partial",
+    "trace_edited": false,
+    "tail_disclosure": "Honest partial trace. Startup and later direct reads, helper/script authoring, communication and tool handling are not completely routed. One rg WinError5 launch emitted command_started without command_finished; no finish is invented and trace remains unchanged. Packaging/final metadata projection, the one commit, clean committed Control and final sealing will be explicitly captured as postclosure tail, not appended to this closed run. All actual failures and raw originals remain."
+  },
+  "development": {
+    "tag": "control-Development",
+    "argv": [
+      "C:/Users/21441/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe",
+      "-NoProfile",
+      "-File",
+      "tools/verify-loop1-ctrl-002.ps1",
+      "-Mode",
+      "Development"
+    ],
+    "cwd": "H:\\.codex\\worktrees\\group\\IM-platform",
+    "exit_code": 0,
+    "elapsed_seconds": 29.11,
+    "stdout": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\control-Development.stdout",
+      "bytes": 317,
+      "sha256": "2e44bc042d62ec3379da1ddb7f3af292eede60577ba422ffca5f7c65b987fb95"
+    },
+    "stderr": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\control-Development.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "clean_committed_control": "PENDING_external_final_receipt_after_single_commit",
+  "new_regular_review": "NEW_PENDING_FINAL_FIX_SHA",
+  "new_error_review": "DIFFERENT_NEW_PENDING_FINAL_FIX_SHA_AFTER_REGULAR_PASS",
+  "publication": "PROHIBITED_FOR_FIX_AGENT",
+  "main_sync": "PENDING_NOT_PERFORMED_HUMAN_STOP_AFTER_PR",
+  "task_state": "active/group_product; S2 OPEN",
+  "final_sha_discovery": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\backend-go-fix-r1\\final-receipt.json"
+}
