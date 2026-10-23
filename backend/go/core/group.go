@@ -109,6 +109,7 @@ func groupObject(body []byte) (map[string]json.RawMessage, error) {
 		return nil, groupInvalid()
 	}
 	d := json.NewDecoder(bytes.NewReader(body))
+	d.UseNumber()
 	first, err := d.Token()
 	if err != nil {
 		return nil, err

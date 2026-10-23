@@ -2,7 +2,7 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/backend_go_fix_r1
+owner: /root/backend_go_fix_r2
 stage: S2
 gate: S2
 client_supplement_phase: group_product
@@ -11,8 +11,8 @@ client_supplement_phase: group_product
 # Goal
 
 current_delivery: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
-backend_regular_review: R1_FAIL_AT_bda9a962_SPEC_P2_001_FIXED_NEW_FRESH_REVIEW_PENDING_FINAL_FIX_SHA
-backend_error_handling_review: DIFFERENT_NEW_FRESH_SPECIALIST_PENDING_FINAL_FIX_SHA_AFTER_NEW_REGULAR_PASS
+backend_regular_review: R3_FAIL_AT_a9bb4877_SPEC_P2_001_FIXED_NEW_FRESH_REVIEW_PENDING_FINAL_FIX_R2_SHA
+backend_error_handling_review: DIFFERENT_NEW_FRESH_SPECIALIST_PENDING_FINAL_FIX_R2_SHA_AFTER_NEW_REGULAR_PASS
 backend_pull_request: NOT_CREATED
 backend_main_sync: PENDING_NOT_PERFORMED_NOT_AUTHORIZED_THIS_ROUND
 backend_review_fixed_base: 79d39dcbd045597ccc5abd459edd388eed269254
@@ -143,7 +143,7 @@ client_runtime: Android
 
 接受链原件由seal逐path/bytes/hash绑定：contract-r6-reviews.json、regularR7/errorR4 receipts、candidate hosted auditor/bindings、protected-integration、actual-main auditor/bindings、contract-r6-acceptance.json、preservation-before-sync及contract-r6-main-sync.json。safe sync全部8检查PASS，H:/IM-platform SHA79；782未知文件含2tracked、recovery/s1-handoff-20261001分支与无关index flags/entries保持。当前assigned managedroot `H:/.codex/worktrees/group/IM-platform`、branch `task/LOOP1-GROUP-001`已ff-only到同79/同tree；未复制main未知工作。新last known good为已接受/同步首契约main79；不代表群产品已接受。
 
-product_owner: /root/backend_go_fix_r1
+product_owner: /root/backend_go_fix_r2
 product_registration: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
 product_G01_G09: NOT_RUN
 product_regular_review: NOT_STARTED
@@ -250,6 +250,14 @@ main_sync_result: PENDING
 independent_review_evidence: unavailable
 hosted_acceptance_evidence: unavailable
 main_sync_evidence: unavailable
+
+# Backend numeric Fix R2 local outcome
+
+Fresh owner `/root/backend_go_fix_r2` recovered exact assigned root/branch/clean a9bb4877, read authority and all five baselines, verified83 authority items and537 sealed R3 originals. R3 regular FAIL has Standards0/Spec1 P2 BACKEND-GO-SPEC-R3-P2-001. Its original numeric probe is genuinely RED1→GREEN0 (14 controls/four extreme ±number failures→zero). Minimal source repair is one standard-library `Decoder.UseNumber` call; existing real HTTP tables only append ten rows, retaining every old source/test line and UTF-8 regression. Missing Bearer obeys401 before nonobject shape; four authenticated cases obey400 with zero effects on both routes.
+
+Final-source whole Go normal native0/51.719s and race native0/111.61s each72 main/281 including subtests/86 Group, zero test failures/skips, two no-test packages. Frozen/planning/all-architecture, group35valid30invalid/29 methods zero skip and old Auth/Sync4/WSS/Plugin pass; startup architecture88(skip1)/CI35(skip4) are explicit. Runtime identity/own schema/canonical migrations/loopback NATS and precise cleanup/nonown preservation pass. Initial connection-refused qualification created no resources; root recovered only originaldata-v2, independently requalified by this Fix as PID40320. No passfile contents were read/hash/copied/printed.
+
+Details and raw originals: `spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r2/report.md` and `local-verification.json`/new archive. Research prospective_resume/partial and original observer failures remain honest; actual finish FAIL/direct structural validation, Development, single commit, clean committed Acceptance, final SHA and lease RELEASED are externally sealed at `C:\Users\21441\.codex\visualizations\2026\10\18\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\backend-go-fix-r2\final-receipt.json`. No recursive self-SHA commit. Fresh regular and different fresh error specialist on the NEW final SHA remain PENDING; only two PASS permit coordinator push/new backend PR, then STOP per Human. No merge/main-sync/Taskdone/client continuation; GROUP active/group_product, S2 OPEN, accepted LKG/main79d39dcbd045597ccc5abd459edd388eed269254 remains. Historical R1 and prior Go/contract outcomes below are preserved.
 
 # Backend UTF-8 Fix R1 Local Outcome
 
