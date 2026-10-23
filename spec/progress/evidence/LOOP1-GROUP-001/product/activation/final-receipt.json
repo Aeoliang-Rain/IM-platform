@@ -1,0 +1,196 @@
+{
+  "result": "PASS_SELECTED_PUBLIC_ORIGINAL_PACKAGE_ONLY",
+  "archive": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-frozen-portable-evidence-20261020\\public-first-contract-acceptance-originals.zip",
+    "bytes": 1027417,
+    "sha256": "1a9c46d04c2e78e2f5648f673e31359221321c307e3272acbda37f4fe0278b01"
+  },
+  "manifest": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-frozen-portable-evidence-20261020\\package-manifest.json",
+    "bytes": 116599,
+    "sha256": "8d444df2b903cdf912fe39b656d56e787e101ad4cdf37f7c2ef8d250257b29c6"
+  },
+  "relocation_map": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-frozen-portable-evidence-20261020\\relocation-map.json",
+    "bytes": 53040,
+    "sha256": "b9eb9dbd12aec98f678c77f0f7aa0de146564a960bbad54985f6fad4198b4ca4"
+  },
+  "report": {
+    "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-frozen-portable-evidence-20261020\\report.md",
+    "bytes": 2508,
+    "sha256": "5d2b884511fdee1040f4b85972a62cfbc5eff830e9565e45b89e9bb4823bd628"
+  },
+  "file_count": 129,
+  "raw_ci_job_logs": 42,
+  "mandatory_items": [
+    {
+      "item": "fixed_seal",
+      "result": "INCLUDED",
+      "file_count": 1
+    },
+    {
+      "item": "root_acceptance_and_sync",
+      "result": "INCLUDED",
+      "file_count": 11
+    },
+    {
+      "item": "review_complete_manifests",
+      "result": "INCLUDED",
+      "file_count": 2
+    },
+    {
+      "item": "review_complete_reports",
+      "result": "INCLUDED",
+      "file_count": 3
+    },
+    {
+      "item": "review_source_inventory",
+      "result": "INCLUDED",
+      "file_count": 2
+    },
+    {
+      "item": "regular_direct_group29",
+      "result": "INCLUDED",
+      "file_count": 3
+    },
+    {
+      "item": "regular_direct_database12",
+      "result": "INCLUDED",
+      "file_count": 3
+    },
+    {
+      "item": "regular_public_pg_identity_count_cleanup",
+      "result": "INCLUDED",
+      "file_count": 4
+    },
+    {
+      "item": "specialized_retained_boundaries",
+      "result": "INCLUDED",
+      "file_count": 1
+    },
+    {
+      "item": "specialized_direct_group29",
+      "result": "INCLUDED",
+      "file_count": 3
+    },
+    {
+      "item": "specialized_direct_database12",
+      "result": "INCLUDED",
+      "file_count": 4
+    },
+    {
+      "item": "specialized_public_pg_identity_count_cleanup",
+      "result": "INCLUDED",
+      "file_count": 1
+    },
+    {
+      "item": "actual_complete_ci_job_logs",
+      "result": "INCLUDED",
+      "file_count": 42
+    },
+    {
+      "item": "actual_ci_run_audits",
+      "result": "INCLUDED",
+      "file_count": 3
+    },
+    {
+      "item": "actual_ci_checkout_receipts",
+      "result": "INCLUDED",
+      "file_count": 3
+    },
+    {
+      "item": "actual_ci_group_execution",
+      "result": "INCLUDED",
+      "file_count": 3
+    },
+    {
+      "item": "final_freshness",
+      "result": "INCLUDED",
+      "file_count": 2
+    },
+    {
+      "item": "final_freshness_public_raw_records",
+      "result": "INCLUDED",
+      "file_count": 13
+    },
+    {
+      "item": "actual_push_classifier_base",
+      "result": "INCLUDED",
+      "file_count": 2
+    },
+    {
+      "item": "public_prepublication_guard",
+      "result": "INCLUDED",
+      "file_count": 1
+    },
+    {
+      "item": "public_protected_merge_guard",
+      "result": "INCLUDED",
+      "file_count": 1
+    }
+  ],
+  "zip_complete_readback": true,
+  "original_bytes_unchanged": true,
+  "not_complete_861_850_corpus": true,
+  "unresolved_public_file_ambiguities": [],
+  "actor": "/root/group_contract_hosted_acceptance_r6",
+  "task_id": "LOOP1-GROUP-001",
+  "scope": "External portable public-original packaging only; not a new semantic review, CI run, contract/Task/Stage decision.",
+  "fixed_seal_sha256": "ab4485bf4f50accfc0ac5f975d0acee0237820565c0d326174c11d35e78c3d93",
+  "fixed_seal_unchanged": true,
+  "final_zip_and_original_readback_files": 129,
+  "final_zip_and_original_readback_pass": true,
+  "complete_original_ci_logs": 42,
+  "complete_raw_stdout_stderr_sets": [
+    "regularR7 group29",
+    "regularR7 PG12",
+    "specializedR4 group29",
+    "specializedR4 PG12"
+  ],
+  "private_credential_or_runtime_config_files_selected": false,
+  "unknown_main_file_contents_read": false,
+  "source_write_lease": "NONE",
+  "runtime_github_mutations": "NONE",
+  "source_zip_historical_fix_recorder_blob_copy": "NONE",
+  "original_receipts_modified": false,
+  "not_self_contained_original_review_artifact_counts": {
+    "regular": 861,
+    "specialized": 850
+  },
+  "public_basis_and_limits": "Per-file sealed references and manifest select current public proof. Review reports explicitly state direct test argv/stdout/stderr omit environment and credential contents. Only safe PG identity/count/cleanup summary portions selected. Full old corpus intentionally remains historical references. New packaging guard binding is explicitly identified.",
+  "relocation_rule": "ZIP entries retain original OUT-relative names; sidecar map resolves original absolute links. Do not rewrite original receipt bytes.",
+  "intended_repository_destination": "spec/progress/evidence/LOOP1-GROUP-001/product/activation/",
+  "copy_authority": "Separate sole repository writer only; packaging agent performed no copy to repository.",
+  "recorder": {
+    "run_id": "R-GROUP-PUBLIC-PACKAGING-20261020",
+    "capture_mode": "prospective_resume",
+    "complete_trace": false,
+    "result": "FAIL_PARTIAL_RESEARCH_ONLY",
+    "events": 22,
+    "commands_started": 8,
+    "commands_finished": 8,
+    "unmatched": 0,
+    "overlaps": [],
+    "direct_finish_validate_exit": 0,
+    "trace_edited": false,
+    "finish": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-frozen-portable-evidence-20261020\\finish.json",
+      "bytes": 1215,
+      "sha256": "a613898eb4bbd4c413b42c5bc7e4d79bc264d33d52154aa3a062e77cebaa79c7"
+    },
+    "validate": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-frozen-portable-evidence-20261020\\validate.json",
+      "bytes": 1179,
+      "sha256": "bc5cb8d7d9cf6479639b7576879b193732d9ce9357375a96b3d729f4bbbf5cc7"
+    },
+    "summary": {
+      "path": "C:\\Users\\21441\\.codex\\visualizations\\2026\\10\\18\\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\\contract-frozen-portable-evidence-20261020\\research\\runs\\R-GROUP-PUBLIC-PACKAGING-20261020\\summary.json",
+      "bytes": 422,
+      "sha256": "cd7094d46c1533abe9034ca6695247486719c837e69811d25b7f03c7864d75cc"
+    }
+  },
+  "activity": "RELEASED",
+  "whole_GROUP": "PENDING_PRODUCT_G01_G09",
+  "stage_gate": "S2 OPEN",
+  "sealed_at": "2026-10-20T11:53:51.786884+00:00"
+}

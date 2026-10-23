@@ -2,13 +2,25 @@
 task_id: LOOP1-GROUP-001
 title: 建群、成员添加与三端群聊接入
 status: active
-owner: /root/group_contract_fix_r6
+owner: /root/backend_go_fix_r2
 stage: S2
 gate: S2
 client_supplement_phase: group_product
 ---
 
 # Goal
+
+current_delivery: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
+backend_regular_review: R3_FAIL_AT_a9bb4877_SPEC_P2_001_FIXED_NEW_FRESH_REVIEW_PENDING_FINAL_FIX_R2_SHA
+backend_error_handling_review: DIFFERENT_NEW_FRESH_SPECIALIST_PENDING_FINAL_FIX_R2_SHA_AFTER_NEW_REGULAR_PASS
+backend_pull_request: NOT_CREATED
+backend_main_sync: PENDING_NOT_PERFORMED_NOT_AUTHORIZED_THIS_ROUND
+backend_review_fixed_base: 79d39dcbd045597ccc5abd459edd388eed269254
+backend_review_spec_source: this_Task_and_latest_Human_backend_only_stop
+
+可恢复discovery（root完成实际审查/PR时外部写真实值，现在不虚构结果）：`C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/backend-go-pr-reviews.json`记录fresh regular/error同最终SHA状态/originalrefs；同目录`backend-go-pr-handoff.json`记录实际最终SHA、PR URL、已执行验证、CI仅触发未接受、main-sync PENDING与STOP_BY_HUMAN。恢复时跟随两文件读取实际最终状态，不为URL再追逐metadata SHA；文件尚未写入/结果缺失不算PASS。
+
+2026-10-20 Human最新停止点：“完成后端代码编写与审查并提交pr后停止工作”。当前交付只首Go四文件、真实群PG/wholeGo/race及本地证据。11个群事务/链路核心主方法及追加IO/当前Auth两个主方法实际共13新增（另保留原500成员方法）；完整Go71主方法/250含子项零failure/skip。root先委派fresh后端窄scope常规Review（Standards+Spec），再different fresh错误处理专项；同一最终SHA两项PASS才可push并创建新的后端PR，创建后按Human停止，不merge、不main-sync、不Taskdone。任何fix后的最终SHA两审重做。下列完整GROUP/三端/G01..G09目标仍未接受，Task active/group_product、S2 OPEN；旧段“接续三端”属于此前计划，已被本停止点明确取代，不启动三端或新runtime。
 
 创建者从自己的好友列表选人，创建GROUP会话并自动加入；任意有效群成员均可从本人的好友列表选择新成员加入当前群，好友资格仅针对本次操作者校验。补齐Web/Desktop/Mobile群会话入口、成员与发言者身份展示；复用现有发送、成员鉴权、seq、幂等、ACK、Outbox、分发和Sync，新文案接入现有i18n。依赖I18N及本规划正式接受，位于I18N后/S2 Gate前。2026-10-18 Human 新请求恢复下一任务；依赖核验通过后先交付独立公共契约切片。
 
@@ -38,7 +50,7 @@ client_runtime: Android
 
 # Allowed Paths
 
-普通业务按服务职责窄列，allowed_paths不豁免canonical。下面只授予未来GROUP激活后使用；激活时核对路径，确有新增输入先修Task范围，不在实施后追认。无跨服务迁移。
+普通业务按服务职责窄列，allowed_paths不豁免canonical。首契约已独立接受/集成/安全同步，当前完整GROUP产品按下述Product Activation登记分阶段继续；确有新增输入先修Task范围，不在实施后追认。当前PHASE2仅首Go四文件及必要群测试/元数据/新证据，受控own PG已获明确grant；三端及公开服务运行等待各自后续grant。无跨服务迁移。
 
 - `contracts/http/group.openapi.json`（建群/加人/本人会话快照；唯一新增HTTP权威）
 - `contracts/http/verify-group.py`（标准库/现有validator适配，不新依赖）
@@ -51,7 +63,7 @@ client_runtime: Android
 - `tests/database/test_migrations.py`（仅上述迁移入口的空库/0001升级/重入/回退/旧fixture兼容正反回归；Fix R6仅追加真实可丢弃PG中单物理version或checksum含TAB/LF而别名为两canonical记录的回归，实际status/up/down非零、ledger/业务schema无效果；原11测试方法及既有行为断言保持，不以skip/隔离text输入代替真实DB）
 - `tests/infrastructure/smoke.ps1`（现Go/Java profile的直接验证边界：EH-R3-P2-003要求ledger SELECT保留ORDER BY version，以保留/转义元素边界的结果精确验证两条且仅两条canonical记录0001_initial、0002_group_operations，大小写/顺序精确；拒绝单条含逗号或换行的unknown version、缺失/额外/重复/乱序/大小写错/native非零，不用另一个有歧义join、过滤unknown或动态接受未来migration。EH-R3-P2-002要求仅检查现owned project cleanup的实际结果，cleanup-only失败使操作非零，body与cleanup同时失败保留两因，环境清理仍执行，全部必需清理完成后才输出PASS。保留role/TLS/WSS/Compose、现资源归属和全部其他检查；不加通用错误/清理/重试框架）
 - `tests/e2e/go_tls_messaging.py`（同一首契约切片的现Go S1 strict TLS E2E迁移ledger输入适配：Fix R6仅修R6-P2-002的现SELECT/断言，显式ORDER BY version并以保留真实记录边界的结构精确比较两条且仅两条0001_initial、0002_group_operations，拒绝单条含LF的unknown version及缺失/额外/重复/乱序/大小写错/native非零；TLS/hostname反例、Auth/成员/ACK/seq/Outbox/Sync/cleanup及原失败传播保持，不扩大完整E2E产品范围）
-- `.github/workflows/ci.yml`（仅在现有shared必需contract步骤接入群verifier与正负suite；保留旧检查、真实非零传播及既有作业选择，不增workflow/job/framework）
+- `.github/workflows/ci.yml`（保留已接受首契约在现shared必需contract步骤的群verifier与正负suite；当前产品仅在同一现有shared必需pwsh步骤追加真实`python3 -B tests/clients/group/verify.py`及立即`if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }`，满足现Verification独立CI输入。保留全部旧检查/原生非零传播/现作业及选择/版本/依赖，不增workflow/job/framework）
 - `contracts/fixtures/group/**`（canonical正负/并发/幂等/兼容输入与expected）
 - `backend/go/core/group.go`（群权限、事务、快照）
 - `backend/go/core/group_test.go`
@@ -96,6 +108,7 @@ client_runtime: Android
 - `clients/desktop/src/ui/style.css`（仅新入口）
 - `clients/mobile/app/src/main/kotlin/im/platform/client/group/**`
 - `clients/mobile/app/src/main/kotlin/im/platform/client/ui/WorkspaceViewModel.kt`
+- `clients/mobile/app/src/main/kotlin/im/platform/client/ui/Workspace.kt`（仅既有Activity-owned同一WorkspaceViewModel的群create/add/retry/select callbacks向现Shell显式透传；无新入口/新VM/业务/native或根源码职责）
 - `clients/mobile/app/src/main/kotlin/im/platform/client/ui/Auth.kt`（仅现HTTP transport，无认证语义修改）
 - `clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Shell.kt`
 - `clients/mobile/app/src/main/kotlin/im/platform/client/ui/components/Chat.kt`
@@ -123,6 +136,53 @@ client_runtime: Android
 - `spec/progress/checkpoints/*group*.md`
 
 以上现有路径及新群文件已明确列举；checker/Reviewer核实，无权增加无关页面、根装配、shared业务、native能力。当前没有schema本地变化依据，不授权native SQLite/schema/Composer改动；如契约冻结后证明必要，先按架构/Task流程处理。
+
+# Product Activation and Verification Registration (2026-10-20)
+
+首契约已正式冻结接受并同步，本Task继续完整Go+Web+已安装Windows Tauri+Android Studio emulator群产品，不把前置切片计作GROUP完成。独立seal：`C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/contract-acceptance-seal.json`，SHA256 `ab4485bf4f50accfc0ac5f975d0acee0237820565c0d326174c11d35e78c3d93`；result PASS_FIRST_CONTRACT_SLICE_FROZEN_ACCEPTED_AND_SYNCHRONIZED。candidate `82a37fad256ef9ffb69bf5940d296b251cf7266d`、fresh regularR7与different fresh errorR4同SHA PASS；push39412332412/PR39412340073各14真实必需jobs/checkout PASS，protected PR44 actualmain `79d39dcbd045597ccc5abd459edd388eed269254`（parents6f163927334c39c9c8833eb8222335c661bde673+82，tree5cfc1a52de19a8b947261d54e200967fb856ef4f）；actualmain39414268672/attempt1全部14真实jobs/checkout PASS，群29/DB12零skip、35valid30invalid及canonical runner0002 up实际执行。
+
+接受链原件由seal逐path/bytes/hash绑定：contract-r6-reviews.json、regularR7/errorR4 receipts、candidate hosted auditor/bindings、protected-integration、actual-main auditor/bindings、contract-r6-acceptance.json、preservation-before-sync及contract-r6-main-sync.json。safe sync全部8检查PASS，H:/IM-platform SHA79；782未知文件含2tracked、recovery/s1-handoff-20261001分支与无关index flags/entries保持。当前assigned managedroot `H:/.codex/worktrees/group/IM-platform`、branch `task/LOOP1-GROUP-001`已ff-only到同79/同tree；未复制main未知工作。新last known good为已接受/同步首契约main79；不代表群产品已接受。
+
+product_owner: /root/backend_go_fix_r2
+product_registration: BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR
+product_G01_G09: NOT_RUN
+product_regular_review: NOT_STARTED
+product_error_handling_review: NOT_STARTED
+product_hosted_acceptance: PENDING_FINAL_CANDIDATE_BOTH_FRESH_REVIEWS
+product_main_sync: PENDING_PRODUCT
+
+PHASE2 current grant：root已独立readback本登记及其余19045文件/index，proof37e1973da72812e9d899e34a555fe5d50a5c124ad57175c0d63b8bfe683ed213，105原件binding233523434e9ca16bfeefa8c1df6657b636d0d91850595f380c0853d112ef6792。现唯一writer已获首Go四文件/必要群测试、Task/current/新product evidence/checkpoint；受控PG新own schema/httptest/COMMIT relay获准，真实资格尚待本次亲核。下面PHASE1-only叙述保留为登记时点历史，不能覆盖此新grant；三端/公开部署/TLS/trust尚未授权启动。
+
+本登记先于产品编辑；Coordinator当前只授本active Task-only lease，未授current/源码/evidence/index/stage/commit/runtime/GitHub。root独立readback本diff/其余19045文件与原index保持后，另行授PHASE2才实施。未来首Go施工集合为core/group.go、core/group_test.go、core/http.go仅更具体路由注册、core/social.go仅现user事件持久步骤窄提取；Gateway现/v1统一代理已足够，不为路径许可新增生产代理。其余既列三端/SDK/测试/i18n路径保留完整产品目标。已接受contracts/0001/0002/旧tests/旧sealed证据原字节保持；本产品登记不重新授予改公共契约、原生/本地schema、ACK/security/兼容或依赖。
+
+最小服务机制按已接受authority：稳定升序锁全部affected users→actor Session/member/conversation并在等待后同事务重鉴权；ADD成员集合变化仅在未写事务rollback后重读重取锁，不逆序补锁。现cursor_id作为群revision，旧Friend revision1保持；群/实际新增成员/原结果receipt/全部active含new成员conversation.changed+membership.changed及匹配Outbox同事务，COMMIT后才成功，replay/no-op无重复事件。GET授权joined rows以(conversationId,member.userId)严格keyset、limit+1真实lookahead、每页当前一致，持续至terminal无总cap；客户端invalidation及周期from-origin重扫，scan中dirty保留。未知内部/清理异常保因正常失败，不复用Auth generic INTERNAL_ERROR或伪409/空页；unknown commit原requestId/memberUserIds保留可重试。
+
+## Registered verification interfaces and ownership
+
+- `python -Xutf8 -B tests/clients/group/verify.py`：实际编译/运行本次群transport/模型/Repository/分页与UI状态/i18n键参数回退正反例；不启动服务或声称native运行。现shared必需pwsh步骤增加`python3 -B tests/clients/group/verify.py`并立即`if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }`，证明原生非零传播；保留原group verifier+29suite及所有旧Send/Sync/GUI/Auth/contract检查、现jobs/classifier/版本/依赖，不藏进仅i18n键检查、不增workflow/job/framework。
+- `python -Xutf8 -B tests/integration/group/runtime.py --config <owned-public-config> --scenario <G01|G02|G03|G04|G05|G06|G07|G08|all> --out <owned-out>`：真实Go/PG/NATS/TLS黑盒及故障编排。`python -Xutf8 -B tests/clients/group/runtime.py --config <owned-public-config> --serial <owned-actual-Android-serial> --capture --out <owned-out>`：真实浏览器/同候选构建安装Windows Tauri/独占Android Studio emulator入口与原图manifest；未实现前均planned/不可计PASS。public config仅fixture ID、公开endpoint/路径、own schema/project/端口/serial、构建安装hash/资源owner；无password/token/privatekey。凭据只现安全环境/PGPASSFILE路径与应用内现通道，不由Agent读/复制凭据。
+- 本地PG由获runtime lease的owner新建随机own schema，用现PGOPTIONS exact search_path不含public回退、同child libpq路径与既有canonical migrate.py status/up/status应用0002；Go连接先真实核DB/user/server/port/current_schema/search_path/ledger。root既有availability原件路径`C:/Users/21441/.codex/visualizations/2026/10/18/01a14d96-146d-7f42-9fd8-0fd0c7e399e0/pg-owned-recovery-20261020-availability.json`、SHA7bd37d4189e60de46439b53a9af949385d17d183b628163a9b592a9912e71e6c仅输入来源，不冒称当前亲核/可清public。真正连接与DDL/SQL尚未授权。backend/go cwd执行`go test -count=1 -run '^TestGroup' ./core`再全`go test -count=1 ./...`及`go test -race -count=1 ./...`；本地全suite亦新own schema隔离。hosted现Go job已提供新可丢弃PG16/im_ci+NATS、DB_TEST_ENABLE=1与runner，不加新的CI env/flag前置或skip；新TestGroup必须在其现配置真实执行。
+- 新group fixture仅自有随机用户/会话/request、唯一条件trigger/function/loopback listeners/processes；不复用遗漏receipt清理的旧messageFixture。PG每写点conversation/member（含批中途）/receipt/user_sync INSERT及UPDATE/Outbox真实trigger拒绝；deferred constraint trigger在实际COMMIT等待/抛错，独立连接核成功前不可见/确定失败全零。test-only装置仅包装既有锁定pgx BuildFrontend在TLS/SASL既有协商之后的IO，使用既有pgproto3与标准库，转发真实COMMIT→观察真正PG CommandComplete COMMIT成功→先独立直连核完整durable，再仅截客户端COMMIT响应/EOF→Core保留真实IO cause正常失败→原ID正常重试原结果，无mock Commit/生产hook/新代理机制/新依赖。auth帧与connConfig不记录/打印，unknown装置错误测试失败。群user按稳定升序FOR NO KEY UPDATE互斥并阻UserSync SHARE，保持现FK KEY SHARE兼容；Session/member/conversation随后按既有职责锁定并重检。真实logout持Session及send持conversation时的条件trigger屏障回归核无user FK锁环，不为群改旧Auth/Message。
+- G06单独owned HTTPS relay仅群POST原序列化bytes：首次不转发证明零commit；另一情形转发后独立PG证明完整提交才截客户端响应；三端真实未确认/原ID与memberUserIds点击重试。不能拿旧message ACK relay冒充群HTTP覆盖。清理保留body及cleanup两因；drop仅own triggers/functions/fixture FK依赖（含receipts），关闭own监听/连接/进程并排空goroutines，schema inventory前后保持非own项。不操作unknown资源/数据。
+
+| G | 本产品必须建立的真实证据（当前全部未执行） |
+| --- | --- |
+| G01 | A-B好友、A建群+B；B-C好友/A-C非好友而B以MEMBER加C；三人同群发现互发及非好友sender真实身份，PG单GROUP/成员/receipt/events/Outbox与实际三端入口绑定 |
+| G02 | TLS入口非member/失效Session/非friend/mixed/DIRECT/伪actor/读取和消息越权拒绝，canonical状态码与request关联、全部表零新效果 |
+| G03 | create/add同key原targets重放原status/body/createdAt，异targets冲突、重复/顺序规范、already-member仍friend授权、操作/actor/conversation分隔、missingreceipt真实服务器失败 |
+| G04 | 真实PG屏障/实际锁等待，同key与不同key/actor重叠、交叉群及login/logout/refresh/send/UserSync竞争，唯一性/稳定提交prefix/单调revision/只actualchange事件 |
+| G05 | 上述每写点及真正deferredCOMMIT确定rollback全零；真正服务端COMMIT成功后响应截断产生unknown，保因未确认/原ID重试且无第二效果 |
+| G06 | 群HTTP首次未提交及已提交响应丢失，两条真实DB/response时序与三端未确认→点击原ID重试→原结果 |
+| G07 | 所有active含new用户各端，无发送亦发现；metadata重复乱序/漏通知/断连、>100持续分页、合法短页/低key插入/inflight dirty再从头扫描；账号/会话隔离 |
+| G08 | 群内现Send/ACK loss/retry/seq/单logicalOutbox/SENT终态/无gap；Desktop/Mobile保留库重启和全新own账号DB补偿，Web仅当前页memory在线窗口；非好友/同名sender可区分 |
+| G09 | 真实browser/同候选安装Windows Tauri/独占Android emulator建/加/成员/sender及loading/empty/rejected/failure/unconfirmed/retry；en/zh-CN/ja-JP切语不丢draft/selection/原request；双主题及受影响font-density极值原PNG manifest→fresh Architect Review/修复重拍/Approval |
+
+三端应用层保存不可变pending群操作（account/endpoint/type/conversation/requestId/memberUserIds）；同账号refresh/rebind保留内存operation/metadata并绑定新generation，logout/expire/account switch清除，旧closed Repository不继续使用。严格验证群HTTP具体201/200/status和canonicalbody，不把GROUP_REQUEST_CONFLICT丢成generic失败。Web全部friend-only open/send/ACK/realtime/sync gates须接授权snapshot；元数据前首条realtime竞态不得用seq1历史baseline掩盖。TS/Kotlin Repository只账号生命周期内存群snapshot/identity，SQLite v2/原user_state revision+cursor事务保持，不塞成员JSON、不改native/schema。senderId关联授权PublicUser displayName+@username，离线缺真实名称诚实显示可区分ID。Native既有10秒Sync idle衔接独立from-origin持续分页，不能被friend cursor相等早退跳过。
+
+真实构建复用现native.py package/gradle与现Send/Sync/i18n回归；group Android instrumentation用既有-PimSendInstrumentation runner选择器。native.py gui-mobile含旧admin/send-runtime ANDROID_USER_HOME/AVD_HOME，禁止盲用/接管；group runtime只新own childenv+实际serial/源构建安装hash，不创建H:/clone/copy/独立产品实现目录、不改旧harness或WT外产品源。当前NATS/HTTPS/native/ADB/trust runtime租约均NONE；ADB历史3221226505和旧Windows CA过期CLOSED不是可用输入/续期授权。先具体核真实入口默认TLS及资源对象；无须Root写则不加Human流程，任何需要的新信任写仍须具体授权，禁止证书绕过。
+
+最终必须同时满足全部G01..G09、旧Auth/Sync/WSS/Plugin及三端Send/Sync/Web/i18n回归、责任/依赖/Minimality/ErrorHandling、真实截图Architect、最终SHA fresh常规→different fresh专项（任何fix两项重做）→实际required exact-head hosted→protected integration→actual-main/tree→保存未知main安全同步，才可GROUP done。firstslice接受、local/Recorder/截图都不替代产品接受或S2 Gate；当前GROUP active/group_product、S2 OPEN。产品运行原件保存spec/progress/evidence/LOOP1-GROUP-001/product/；此前PHASE1仅外部registration receipt的限制已随root明确PHASE2 grant结束。
+
 
 # Public Contract Slice
 
@@ -156,7 +216,7 @@ Web/Desktop沿既有TypeScript分层和各端独立React视觉；Android Kotlin/
 
 # Forbidden
 
-不实现退群/移除/群主管理/邀请审批/链接/二维码/陌生人拉群/群名编辑/已读/新消息类型/每成员持久投递；不加服务/runtime/库/bridge/ORM/通用工作流或错误框架，不提前S3/S4。不改ACK/security/现兼容语义，不绕过契约独立冻结，不扩大搜索/非成员身份访问。未知main工作不复制覆盖；当前只实现下述首契约切片；Go/客户端实现等待该切片独立接受并同步。
+不实现退群/移除/群主管理/邀请审批/链接/二维码/陌生人拉群/群名编辑/已读/新消息类型/每成员持久投递；不加服务/runtime/库/bridge/ORM/通用工作流或错误框架，不提前S3/S4。不改ACK/security/现兼容语义，不绕过契约独立冻结，不扩大搜索/非成员身份访问。未知main工作不复制覆盖；首契约已在82候选/PR44实际main79独立接受并安全同步，当前按Product Activation登记继续完整Go/三端群产品；PHASE2仅明确首Go/own PG范围，不把首契约或本地Go切片当全Task完成。
 
 # Minimality
 
@@ -167,10 +227,10 @@ Web/Desktop沿既有TypeScript分层和各端独立React视觉；Android Kotlin/
 - Minimum activation baseline：`python -Xutf8 -B tools/verify_frozen_architecture.py`、`python -Xutf8 -B ci/check_s2_planning.py`、`python -Xutf8 -B ci/check_architecture.py --scope all --json`，`python -Xutf8 -B -m unittest discover -s tests/architecture`、`python -Xutf8 -B -m unittest discover -s tests/ci`；已有accepted stage-three checker，不豁免。
 - Fix R5三项错误回归：`python -Xutf8 -B -m unittest discover -s tests/contract/group -p "test_verification_failures.py" -v`；实际调用当前PS入口/边界，隔离transport shim只控制外部依赖/原生exit，不作为真实Docker/TLS接受。known structural exit1仍为正常拒绝；初始真实Node正例0后，mutation阶段exit2/37/异常终止/launch与内部异常均令完整verifier非零且无PASS。Go/Java smoke成功、仅primary失败、仅cleanup失败、双失败覆盖真实native退出/两因/环境清理/成功输出时序；精确两canonical记录通过，单逗号/嵌入换行version及缺/extra/duplicate/order/case/nonzero拒绝。新增suite必须在现shared Ubuntu runner已有pwsh/Node下实际执行，不用Windows-only skip、未启用环境或新workflow/job冒充覆盖。
 - 现契约回归：`pwsh -NoProfile -File contracts/http/verify-auth-user-friend.ps1`、`python -Xutf8 -B tools/verify_sync_transport.py`、`python -Xutf8 -B -m unittest discover -s tests/contract -p test_sync_transport.py`、`python -Xutf8 -B contracts/websocket/verify.py`、`python -Xutf8 -B contracts/plugin-api/verify.py`，不删除或压低旧检查。
-- 首契约切片（未来交付后执行）：`python -Xutf8 -B contracts/http/verify-group.py`和`python -Xutf8 -B -m unittest discover -s tests/contract/group -p "test_*.py" -v`真实覆盖群schema/正负fixtures，二者须在现有shared必需contract步骤执行并传播非零退出；核对精确hosted SHA/job/step原始日志，不能只核对classifier选择。
+- 首契约切片（已按activation seal独立接受，保留适用回归）：`python -Xutf8 -B contracts/http/verify-group.py`和`python -Xutf8 -B -m unittest discover -s tests/contract/group -p "test_*.py" -v`真实覆盖群schema/正负fixtures，二者须在现有shared必需contract步骤执行并传播非零退出；核对精确hosted SHA/job/step原始日志，不能只核对classifier选择。
 - 同一首契约切片的迁移验证：在明确受控、可丢弃PostgreSQL中，配置真实psql/libpq PGHOST/PGPORT/PGUSER/PGDATABASE和安全凭据（不放argv或日志），设置`DB_TEST_ENABLE=1`，实际执行`python -Xutf8 -B contracts/database/migrate.py status`、`python -Xutf8 -B contracts/database/migrate.py up`、再次status及up，并运行`python -Xutf8 -B -m unittest discover -s tests/database -p test_migrations.py -v`。回归分别覆盖空库→0002、保留旧数据/ledger的0001→0002、重复应用无新增、checksum不符拒绝、锁/并发与失败整批回滚；按该切片冻结的回退规则仅在受控库调用现有`python -Xutf8 -B contracts/database/migrate.py down --allow-data-loss`，核对0002的实际schema/ledger回退及重入、旧fixtures/兼容窗口。不得把只测0001当0002覆盖，不新增业务DDL入口。记录0001 up/down原字节SHA-256与历史ledger checksum保持、实际迁移level、命令/启用环境/退出/耗时；现有Go up和compatibility数据库suite的真实hosted执行同样必需。缺PG/psql、未启用或skip均未执行，不计PASS；当前规划轮不运行这些未来迁移/产品检查。
-- 未来新增（当前不存在/不可计PASS）：`python -Xutf8 -B contracts/http/verify-group.py`，`python -Xutf8 -B tests/clients/group/verify.py`、`python -Xutf8 -B tests/clients/group/runtime.py --serial <实际独占serial> --capture`。激活后先实现/登记参数、fault hooks/fixture/服务/清理及每G项映射；若命令有变化先Task更新，不能把planned harness当已执行。
-- cwd backend/go：`go test ./...`；真实受控PG/NATS使用DB_TEST_ENABLE=1及受控DATABASE_URL/NATS_URL执行group integration/concurrency/fault测试，缺环境skip不是PASS；`python -Xutf8 -B tools/verify_sync_runtime.py`沿现TLS入口。
+- 后续三端新增（本Go phase尚未实现/不可计PASS）：`python -Xutf8 -B tests/clients/group/verify.py`、`python -Xutf8 -B tests/clients/group/runtime.py --serial <实际独占serial> --capture`及Product Activation已登记完整参数/装置。首契约verify-group.py已存在且已独立接受，本Go phase再次实际回归；三端harness仍须实现其参数、fault装置/fixture/服务/清理及每G项映射，不能把planned harness当已执行。
+- cwd backend/go：`go test -count=1 ./...`及适用现有CC的`go test -race -count=1 ./...`；真实受控PG/NATS使用DB_TEST_ENABLE=1、现pgx实际读取的PGHOST/PGPORT/PGDATABASE/PGUSER/仅path PGPASSFILE、child PGOPTIONS exact own search_path及own NATS_URL执行group integration/concurrency/fault测试。本地执行owner先核服务器身份/随机own schema及隔离，不默认未知DATABASE_URL/public可清空；hosted现有新建im_ci/PG16/NATS配置真实执行，不加新flag或skip gate。缺环境skip不是PASS；`python -Xutf8 -B tools/verify_sync_runtime.py`沿现TLS入口，公开服务/TLS本phase未运行。
 - `python -Xutf8 -B tests/clients/web/verify.py`、`node tests/clients/web/browser.mjs`；shared/Desktop现`tools/verify_client_send.py --scope shared`和`--scope desktop`、`tools/verify_client_sync.py --scope shared`和`--scope desktop`适用回归。
 - Desktop `python -Xutf8 -B tests/clients/gui/native.py package`，Windows现MSVC/Rust/Tauri/locked npm、安装同候选制品并以真实身份运行和截图；host renderer不替代。
 - Android `python -Xutf8 -B tests/clients/gui/native.py gradle assembleDebug assembleDebugAndroidTest`，实际独占Android Studio emulator执行group instrumentation及现Send/Sync回归；记录真实serial/API/受控TLS，无私人物理设备/全局trust修改。`tools/verify_client_send.py --scope mobile --serial <实际serial>`、`tools/verify_client_sync.py --scope mobile --serial <实际serial>`仅真实执行才PASS。
@@ -191,7 +251,43 @@ independent_review_evidence: unavailable
 hosted_acceptance_evidence: unavailable
 main_sync_evidence: unavailable
 
+# Backend numeric Fix R2 local outcome
+
+Fresh owner `/root/backend_go_fix_r2` recovered exact assigned root/branch/clean a9bb4877, read authority and all five baselines, verified83 authority items and537 sealed R3 originals. R3 regular FAIL has Standards0/Spec1 P2 BACKEND-GO-SPEC-R3-P2-001. Its original numeric probe is genuinely RED1→GREEN0 (14 controls/four extreme ±number failures→zero). Minimal source repair is one standard-library `Decoder.UseNumber` call; existing real HTTP tables only append ten rows, retaining every old source/test line and UTF-8 regression. Missing Bearer obeys401 before nonobject shape; four authenticated cases obey400 with zero effects on both routes.
+
+Final-source whole Go normal native0/51.719s and race native0/111.61s each72 main/281 including subtests/86 Group, zero test failures/skips, two no-test packages. Frozen/planning/all-architecture, group35valid30invalid/29 methods zero skip and old Auth/Sync4/WSS/Plugin pass; startup architecture88(skip1)/CI35(skip4) are explicit. Runtime identity/own schema/canonical migrations/loopback NATS and precise cleanup/nonown preservation pass. Initial connection-refused qualification created no resources; root recovered only originaldata-v2, independently requalified by this Fix as PID40320. No passfile contents were read/hash/copied/printed.
+
+Details and raw originals: `spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r2/report.md` and `local-verification.json`/new archive. Research prospective_resume/partial and original observer failures remain honest; actual finish FAIL/direct structural validation, Development, single commit, clean committed Acceptance, final SHA and lease RELEASED are externally sealed at `C:\Users\21441\.codex\visualizations\2026\10\18\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\backend-go-fix-r2\final-receipt.json`. No recursive self-SHA commit. Fresh regular and different fresh error specialist on the NEW final SHA remain PENDING; only two PASS permit coordinator push/new backend PR, then STOP per Human. No merge/main-sync/Taskdone/client continuation; GROUP active/group_product, S2 OPEN, accepted LKG/main79d39dcbd045597ccc5abd459edd388eed269254 remains. Historical R1 and prior Go/contract outcomes below are preserved.
+
+# Backend UTF-8 Fix R1 Local Outcome
+
+Fresh Fix owner `/root/backend_go_fix_r1` recovered exact assigned root/branch/clean `bda9a962d68222b9509d7697e38a6d02862c9e7a`, read frozen authority and completed all five baselines before writes. R1 regular FAIL has exactly one confirmed P2 (Standards0/Spec1), and284 sealed original artifacts match. Minimal repair only adds original-byte UTF-8 validation in existing `groupObject`; post-authentication shape order, requestId/no-store and all transactions/locks/pagination remain. Both actual HTTP routes have FF/C3-28 regressions and validJSON/Unicode/non-object/bad-syntax controls: original probe RED1→GREEN0; formal RED has four encoding case failures/eight passing controls, GREEN15 results/no skips. Old tests/helpers and19058 other tracked files/index are protected.
+
+Final-source whole Go ordinary21.750s/race100.031s native0 each:72 main/265 including subtests/70 Group, no test failure/skip; two packages have no test files. Frozen/planning/all-architecture plus group35valid30invalid/29methods zero skip and old Auth/Sync/WSS/Plugin native0; startup architecture88(skip1)/CI35(skip4) remain explicit. Own schema/NATS cleaned with nonown preservation PASS, PG49572 and path-only passfile retained;2 residual Outbox rows of unavailable origin were removed only with own schema. Details/raw inputs/commands/failures: `spec/progress/evidence/LOOP1-GROUP-001/product/go/fix-r1/local-verification.json` and `report.md`/new archive. Development, single commit, clean committed Control and actual final SHA are sealed externally at `C:\Users\21441\.codex\visualizations\2026\10\18\01a14d96-146d-7f42-9fd8-0fd0c7e399e0\backend-go-fix-r1/final-receipt.json`; no recursive self-SHA metadata commit.
+
+Recorder prospective_resume/partial actually finished FAIL (finish CLI0), direct structural validate0;95events/45starts/44finishes/one unmatched rg launch. No trace edits or fabricated finish. Packaging/commit/clean Control/sealing are explicit postclosure tail. Original shell-escape/default-write/pg_ctl status3 failures remain; same-instance privileged PG status0 required no restart and status3 cause is unavailable. New final SHA requires wholly fresh regular then different fresh error specialist. Both are NEW PENDING, hosted not accepted, PR not created by Fix owner, main-sync PENDING; GROUP active/group_product, S2 OPEN and accepted LKG/main `79d39dcbd045597ccc5abd459edd388eed269254`. Root may push/new PR only after both reviews PASS, then STOP per Human; no merge/main-sync/Taskdone/client continuation.
+
 # Handoff
+
+Backend Fix R1 supersedes the historical implementation next-action text: follow the sealed external fix receipt, verify the single final commit/clean state, and perform NEW regular→different NEW error review before new backend PR; stop after PR creation. Full GROUP acceptance remains pending.
+
+2026-10-20 HUMAN_BACKEND_PR_ONLY：在Go source e145cc1b及一次handoff metadata c20cdbde已经提交、各自clean Control实际0之后收到上述Human收窄；仅本Task/current做最小scope提交恢复停止点，四Go实测hash与原测试/证据不变。当前把实际最终HEAD/ancestry/最后clean Control与Recorder闭合留OUT sealedreceipt，root独立读回后只推进后端fresh双审→新PR→停止。未同步main明确PENDING；产品Review/G/三端/Architect/hosted/受保护集成仍未完成，不因本地Go或PR创建接受完整GROUP。后文任何“root下一client/三端grant”只为旧计划历史，当前禁止继续执行。
+
+2026-10-20 FINAL_GO_HANDOFF：首Go source commit e145cc1b8f6f1304da86f3da4c41fbdc2ed60569（parent79、tree dd126ea6448cc721f4b976f9cb58a36587ce32a0）；已实际clean committed Control Acceptance exit0/native28.718s，status_entries0。四Go rawhash保持最终普通/race测试绑定。当前仅一次metadata/evidence handoff commit补此实际SHA与研究闭合；其最终HEAD/parent、最后clean Acceptance/全路径/保护证明由外部sealed finalreceipt提供，不递归追逐SHA。
+
+Recorder R-GROUP-PRODUCT-R2-GO-20261020实际finish FAIL/exit0、direct validate exit0；139events、67 command_started/67 command_finished、无unmatched，trace未编辑。partial缺口与闭合后的这一metadata/Control/封存tail已提前显式声明，后段真实CLI原件另存，不伪装继续sealed run。ci单一313cache初始不存在/创建时间位于本轮Control，nested Frozen首调用无-B；用实际Control Python3.13.14核magic/header/源code对象相等后，保存原pyc只精确清理该文件与空目录。最初3.12错比较和其他probe FAIL保留；未stage/改CI source。后续Control只childenv PYTHONDONTWRITEBYTECODE=1。完整事实见product/go/handoff.json、handoff-originals.zip与handoff-manifest.json。以下“待提交/将finish”是各段初建时点历史；当前accepted LKG/main仍79，产品review/hosted/sync/G不接受。
+
+2026-10-20 PHASE2_GO_LOCAL_VERIFIED：唯一writer /root/group_product_impl_r2完成首Go四文件；POST CREATE201/ADD200原请求/原结果，当前Session/active GROUP/member/操作者好友逐目标权限，sorted NO KEY UPDATE→Session/member/conversation与新成员重扫，receipt+全部当前成员两种user Sync/Outbox原子提交，DIRECT+GROUP tuple快照。现锁定pgx BuildFrontend test-only IO观察真正COMMIT成功帧，先独立核durable再EOF；原cause传播、原ID重试无新效果。真实logout/send锁图及UserSync提交前缀、每写点/deferred失败、HTTP前后响应丢失、207成员分页/低tuple补漏均通过。最终全Go普通/native21.375s和race/native92.156s各71主方法/250含子项PASS、0fail/0skip；含14个TestGroup主方法（其中既有500成员消息方法1个）、55含子项，新增13主方法。13项authority/contract/Development实际exit0，88architecture(skip1)/35CI(skip4)与29群契约零skip如实保留。
+
+本地原件/命令/退出/耗时/四源码hash与限制见product/go/report.md、verification-summary.json、local-originals.zip；这不是独立产品Review/G/CI接受。own PG schema group_product_r2_e79be46910ac4016已drop、非own schema前后完全一致、root PG49572/16.15身份保持；drop前7条own Outbox残留来源unavailable，其余fixture表与testfunctions0，未伪报全表0。own NATS精确ID/name/image/label/loopbackport核验后已移除；最初fullState比较FAIL原件保留，新稳定identity/status/mount集合/volume比较PASS，差异为mount数组顺序及Health.Log时间。default sandbox格式化/缓存失败、fixture缺GROUP request CHECK失败与修正原件保留。Recorder将诚实partial FAIL并direct finish/validate，最终研究回执与提交SHA另随handoff封存，不把研究当产品接受。
+
+当前source候选待本phase提交；branch task/LOOP1-GROUP-001、accepted LKG/main仍79d39dcbd045597ccc5abd459edd388eed269254，产品sync NOT_STARTED、G01..G09/Architect/最终fresh双审/hosted/受保护集成/actualmain均PENDING。root接续三端前先核本phase精确commit/干净状态/lease release。下段PHASE2_ACTIVE与PHASE1仅为实施/登记起点历史。
+
+2026-10-20 PHASE2_ACTIVE：唯一owner /root/group_product_impl_r2在79/同tree继续首Go产品切片，产品Review/CI/G01..G09仍未接受。首契约generic审查/hosted/sync字段已澄清为已接受82/main79，完整产品状态保持NOT_STARTED/PENDING；current指向新首契约稳定恢复点。受控PG只path引用凭据与新own schema，未知main与旧证据保持。下段PHASE1记录是此前只Task时点历史；产品最终SHA/实际命令及下一动作将追加新证据恢复。
+
+2026-10-20 fresh产品owner `/root/group_product_impl_r2`在assignedroot/branch实际clean79完成恢复顺序与seal21bindings、旧prep138inputs、全部19046files/index核验；五项最低baseline均实际exit0（88architecture/skip1、35CI/skip4）。本PHASE1仅Task产品登记，源码/current/evidence/index/runtime未写，G01..G09全部NOT_RUN。新accepted LKG为首契约actualmain79；完整产品两审/hosted/Architect/集成同步未开始。当前未stage/commit，唯一未提交Task由本owner负责；source-code phase NOT_GRANTED，runtime NONE。精确rawTask/diff/其余19045保护与honest Recorder结果由外部product-implementation-r2-registration/final-receipt.json绑定。root独立readback后才授PHASE2；此登记不是产品接受。
+
+## Historical R6 Handoff (retained)
 
 2026-10-20 fresh Fix R6唯一writer在exact assigned root/branch/clean e218完成mandatory startup与最小baseline；PHASE1只Task登记后，Coordinator独立19040非Task bytes/index读回通过再授PHASE2。R6 report/receipt/801manifest及原件逐hash匹配。现仅runner applied读取真实[version,checksum]行和E2E现版本数组断言改结构化JSON；沿原strictprefix/checksum/duplicate/事务锁/guard，不加catch/兜底/依赖/未来机制。仅追加两个正式方法，原11DB及R5六方法/helpers AST保持、原test_group.py22methods/35valid30invalid与19035其他tracked raw bytes不变。
 
@@ -220,7 +316,11 @@ R3原receipt b083da01148b5cef0b496913358d92efe973e353aee646fdf9b8ec198d046ed7/re
 
 # Next Action
 
-Coordinator先核新contract-fix-r6/final-receipt实际单commit SHA/clean/ownedblobs/Development/clean committedAcceptance/Recorder direct closure与lease RELEASED；NEW fresh regularR7→DIFFERENT NEW fresh错误专项R4同finalSHA，任一Fix两项重审。两项都PASS才publication/exact-head hosted/protected integration/actual-main/安全主目录同步；首契约接受seal前不实施产品、不done、S2 OPEN。
+Backend Fix R1 current next action: root binds external final-receipt.json actual final SHA/clean Control/protected source and obtains wholly new regular plus different fresh error review on that SHA; after both PASS publish new backend PR then STOP_BY_HUMAN. No merge/main-sync/Taskdone or clients.
+
+BACKEND_PR_ONLY_HUMAN_STOP_AFTER_PR：完成本次最小Task/current停止点提交、最终clean Control/OUT sealedreceipt后release唯一source lease；root核实际最终SHA/全部changedpaths/19042保护，只委派fresh后端常规Standards+Spec→different fresh错误专项。同finalSHA两项PASS后push并创建新后端PR，创建后立即按Human停止。不merge/main-sync/Taskdone，不启动三端/新runtime；完整GROUP及G01..G09未接受、S2 OPEN。首契约接受及本地Go结果不替代本次后端独立Review。
+
+Historical pre-seal R6 next action retained: Coordinator先核新contract-fix-r6/final-receipt实际单commit SHA/clean/ownedblobs/Development/clean committedAcceptance/Recorder direct closure与lease RELEASED；NEW fresh regularR7→DIFFERENT NEW fresh错误专项R4同finalSHA，任一Fix两项重审。两项都PASS才publication/exact-head hosted/protected integration/actual-main/安全主目录同步；首契约接受seal前不实施产品、不done、S2 OPEN。
 
 Historical R5 next action below is retained as history, not current acceptance:
 
@@ -241,12 +341,15 @@ GET /v1/conversations 使用 requestId、limit1..100、成对可选 afterConvers
 
 0002只定义窄group operation receipts，保存actor/type/request/conversation/规范targets/原added IDs/原createdAt；CREATE/ADD独立唯一约束，现create唯一键继续有效。成员表不能反推出创建原targets。迁移up按0001→0002在同一advisory-lock事务应用全部pending及ledger；down每次只回退最高已应用版本且需现allow-data-loss，保留旧业务schema/数据至显式回退0001。生产先停止相关writers并备份/评估receipt重试窗口，禁止运行新endpoint时删receipt。旧DIRECT/HTTP/WSS/Sync/ACK兼容不变。
 
-contract_freeze_result: PENDING
-contract_candidate_sha: unavailable
-regular_review: NEW PENDING
-error_handling_review: DIFFERENT NEW PENDING
-hosted_acceptance: PENDING
-main_sync: PENDING
+contract_freeze_result: PASS_FIRST_CONTRACT_SLICE_FROZEN_ACCEPTED_AND_SYNCHRONIZED
+contract_candidate_sha: 82a37fad256ef9ffb69bf5940d296b251cf7266d
+contract_integrated_main_sha: 79d39dcbd045597ccc5abd459edd388eed269254
+contract_main_sync_result: PASS
+contract_acceptance_seal_sha256: ab4485bf4f50accfc0ac5f975d0acee0237820565c0d326174c11d35e78c3d93
+regular_review: CONTRACT_FINAL_82_REGULAR_R7_PASS_PRODUCT_REVIEW_NOT_STARTED
+error_handling_review: CONTRACT_FINAL_82_DIFFERENT_ERROR_R4_PASS_PRODUCT_REVIEW_NOT_STARTED
+hosted_acceptance: CONTRACT_PUSH39412332412_PR39412340073_MAIN39414268672_ALL14_PASS_PRODUCT_PENDING
+main_sync: CONTRACT_MAIN79_PASS_PRODUCT_PENDING
 整体G01..G09/真实三端/Architect/产品接受PENDING，GROUP保持active、S2 OPEN。
 本地个人activation baseline：Frozen/planning/architecture-all exit0；88architecture(skip1)/35CI(skip4) exit0。PG/psql尚未可用，真实迁移未执行，不计PASS；现hosted compatibility DB suite及Go迁移up必须实际执行。外部Recorder R-GROUP-CONTRACT-20261018为prospective_resume，startup/directread/helperauthoring/通信不伪造完整trace。
 下一动作：完成首契约候选/正负与迁移回归→clean commit→fresh常规→different fresh专项同SHA→hosted→protected integration/actual-main→保存未知work安全主目录同步；之后另fresh实现产品。此writer不push/PR/CI/merge/sync，不将整个Task移review/done。
@@ -344,3 +447,5 @@ R6原报告SHA2569857fe7b7ae732bcdffc440e973e41df8e7b390d3b3af7befd147f702895f9f
 PHASE2精确拟写路径：contracts/database/migrate.py、tests/database/test_migrations.py、tests/e2e/go_tls_messaging.py、tests/contract/group/test_verification_failures.py、本active Task、spec/progress/current.md、仅新spec/progress/evidence/LOOP1-GROUP-001/contract/fix-r6/**。保留Frozen/ADR/domain/invariants/acceptance、public schemas/errors/0001/0002/现两PS/原test_group.py22methods与35valid30invalid、原11DB方法、全部Go/clients/CI/Gate/旧sealed字节；不实现群产品。
 
 退出条件：两个原缺陷的当前直接边界真实拒绝、canonical正例及原检查保持；真实受控PG的status/up/down坏ledger零新效果，完整原11项加新DB回归实际运行；现shared discovery执行追加E2E回归；必要真实旧Go/Java smoke和strictTLS E2E保持，其owned资源清理并保存既有资源身份。Development/clean committed Acceptance、单fixcommit、source scope/字节保护、honest Recorder及外部report/manifest/ownedblobs/finalreceipt如实封存后释放lease。新最终SHA fresh常规→different fresh专项、hosted/protected integration/actual-main/安全主目录同步均NEW PENDING；禁止本writer push/PR/CI/merge/sync，首契约未接受、GROUP active/group_product、S2 OPEN，Go/三端/G01..G09尚未实施，不complete/done。
+
+Development Control actual native0/29.11s; non-acceptance output. Clean committed Control/final SHA are sealed externally after the single commit; fresh reviews still PENDING.
