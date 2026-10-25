@@ -128,6 +128,9 @@ Current Task State: active
         # core.quotePath would otherwise store "\\346\\226\\207" octal escapes
         # in status/diff evidence instead of the actual UTF-8 path.
         self.write("docs/说明.md", "non-ascii capture")
+        subprocess.run(["git", "-C", str(self.repo), "add", "docs/说明.md"], check=True)
+        subprocess.run(["git", "-C", str(self.repo), "commit", "-qm", "non-ascii path"], check=True)
+        self.write("docs/说明.md", "non-ascii modified")
         state = recorder.capture_git(self.repo)
         self.assertIn("docs/说明.md", state["changed_paths"])
         self.assertTrue(any("docs/说明.md" in line for line in state["status_porcelain"]))
