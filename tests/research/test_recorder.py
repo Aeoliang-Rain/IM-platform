@@ -279,6 +279,15 @@ Current Task State: active
         self.assertTrue(changed)
         self.assertNotIn("SYNTHETIC_", json.dumps(safe))
 
+    def test_credential_prefix_family_is_redacted(self):
+        # gho/ghu/ghs/ghr (GitHub app/user/server/refresh tokens) and
+        # glpat- (GitLab personal access tokens) share the ghp- shape.
+        text = "tokens: gho_SYNTHETIC0000000000 ghs_SYNTHETIC0000000000 glpat-SYNTHETIC0000"
+        safe, changed = recorder.redact(text)
+        self.assertTrue(changed)
+        self.assertNotIn("SYNTHETIC0000", safe)
+        self.assertIn("[REDACTED]", safe)
+
         prompt_id = self.prompt(json.dumps(structured))
         prompt_dir = self.root / "prompts" / prompt_id
         prompt_text = (prompt_dir / "prompt.txt").read_text(encoding="utf-8")
