@@ -124,6 +124,15 @@ Current Task State: active
         self.assertEqual(before, (self.repo / "dirty.txt").read_bytes())
         self.assertEqual(40, len(state["head_sha"]))
 
+    def test_git_capture_keeps_non_ascii_paths_literal(self):
+        # core.quotePath would otherwise store "\\346\\226\\207" octal escapes
+        # in status/diff evidence instead of the actual UTF-8 path.
+        self.write("docs/说明.md", "non-ascii capture")
+        state = recorder.capture_git(self.repo)
+        self.assertIn("docs/说明.md", state["changed_paths"])
+        self.assertTrue(any("docs/说明.md" in line for line in state["status_porcelain"]))
+        self.assertTrue(any("docs/说明.md" in line for line in state["diff_stat"]))
+
     def test_event_append_seq_hash_and_duplicate_rejected(self):
         run_id = self.start()
         recorder.append_event(self.root, run_id, "finding_created", {"finding": "x"})
